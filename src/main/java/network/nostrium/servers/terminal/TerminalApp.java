@@ -7,6 +7,8 @@
 package network.nostrium.servers.terminal;
 import java.util.HashMap;
 import java.util.Map;
+import network.nostrium.servers.apps.basic.CommandExit;
+import network.nostrium.servers.apps.basic.CommandLs;
 
 /**
 
@@ -16,15 +18,24 @@ import java.util.Map;
  */
 public abstract class TerminalApp {
 
+    public TerminalApp appParent = null;
+    
     public final Map<String, TerminalCommand> commands = new HashMap<>();
     public final TerminalType terminalType;
 
     public TerminalApp(TerminalType terminalType) {
         this.terminalType = terminalType;
         // add the default commands
-        addCommand(new CommandHelp(this));
+        addCommandInternal(new CommandHelp(this));
+        addCommandInternal(new CommandLs(this));
+        addCommandInternal(new CommandExit(this));
     }
 
+    public final void addCommandInternal(TerminalCommand command){
+        command.internalCommand = true;
+        addCommand(command);
+    }
+    
     // shows an intro for this app
     public abstract String getIntro();
     
@@ -72,7 +83,7 @@ public abstract class TerminalApp {
         // try to get this command
         TerminalCommand cmd = null;
         for(TerminalCommand command : commands.values()){
-            if(command.getName().equalsIgnoreCase(commandToProcess)){
+            if(command.hasCommand(commandToProcess)){
                 cmd = command;
                 break;
             }

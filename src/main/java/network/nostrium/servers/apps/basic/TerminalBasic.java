@@ -25,7 +25,6 @@ public class TerminalBasic extends TerminalApp {
         super(terminalType);
         addCommand(new CommandHello(this));
         addCommand(new CommandTime(this));
-        addCommand(new CommandExit(this));
     }
 
     @Override
@@ -61,7 +60,7 @@ public class TerminalBasic extends TerminalApp {
         String intro = paint(GREEN, AsciiArt.intro())
                 + "\n\n"
                 + paint(BLUE,
-                "The NOSTR BBS! Type '/help' for the list of commands."
+                "The NOSTR BBS! Type '/help' to list the commands."
                         + "\n"
                 );
         

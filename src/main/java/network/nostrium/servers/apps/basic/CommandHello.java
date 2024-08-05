@@ -25,7 +25,7 @@ public class CommandHello extends TerminalCommand{
 
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
-        if(parameters == ""){
+        if(parameters.isEmpty()){
             return reply(404, "Please type a name");
         }
         

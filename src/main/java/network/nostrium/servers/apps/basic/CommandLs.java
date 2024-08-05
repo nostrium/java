@@ -8,35 +8,37 @@ package network.nostrium.servers.apps.basic;
 
 import network.nostrium.servers.terminal.CommandResponse;
 import network.nostrium.servers.terminal.TerminalApp;
-import static network.nostrium.servers.terminal.TerminalColor.BLUE;
 import network.nostrium.servers.terminal.TerminalCommand;
 import network.nostrium.servers.terminal.TerminalType;
 
 /**
  * @author Brito
- * @date: 2024-08-04
+ * @date: 2024-08-05
  * @location: Germany
  */
-public class CommandExit extends TerminalCommand{
+public class CommandLs extends TerminalCommand{
 
-    public CommandExit(TerminalApp app) {
+    public CommandLs(TerminalApp app) {
         super(app);
-        this.commandsAlternative.add("return");
+        this.requireSlash = false;
+        // add an alternative command
+        this.commandsAlternative.add("dir");
     }
 
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
-        return reply(-1, paint(BLUE, "Goodbye!"));
+        return reply(200, "Current server time: " + java.time.LocalDateTime.now());
     }
 
     @Override
     public String commandName() {
-        return "exit";
+        return "ls";
     }
-
+    
     @Override
     public String oneLineDescription() {
-        return "Exits the app";
+        return "List the available items";
     }
+
 
 }

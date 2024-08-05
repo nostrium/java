@@ -15,7 +15,6 @@ import java.net.Socket;
 import network.nostrium.servers.apps.basic.TerminalBasic;
 import network.nostrium.servers.terminal.CommandResponse;
 import network.nostrium.servers.terminal.TerminalApp;
-import static network.nostrium.servers.terminal.TerminalColor.GREEN;
 import static network.nostrium.servers.terminal.TerminalColor.GREEN_BRIGHT;
 import network.nostrium.servers.terminal.TerminalType;
 import static network.nostrium.servers.terminal.TerminalUtils.paint;
@@ -51,7 +50,8 @@ public class ServerTelnet {
                 new Thread(new ClientHandler(clientSocket)).start();
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Failed to start. "
+                    + "Another service is already using port " + PORT);
         }
     }
 
@@ -120,9 +120,6 @@ public class ServerTelnet {
         
     }
     
-    private static String getSuggestion(String toString) {
-            return "hello"; 
-    }
     
 
     public static void writeUserPrompt(User user, PrintWriter out) {

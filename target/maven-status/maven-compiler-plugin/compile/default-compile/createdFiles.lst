@@ -16,7 +16,6 @@ network/nostrium/servers/terminal/TerminalUtils.class
 network/nostrium/requests/RequestIndex.class
 network/nostrium/servers/apps/basic/CommandHello.class
 network/nostrium/servers/terminal/TerminalColor.class
-.netbeans_automatic_build
 network/nostrium/servers/ServerTelnet$ClientHandler.class
 network/nostrium/forum/structures/URLtype.class
 network/nostrium/servers/terminal/CommandHelp.class
