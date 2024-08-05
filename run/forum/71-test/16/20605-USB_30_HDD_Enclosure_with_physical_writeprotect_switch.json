@@ -1,0 +1,28 @@
+{
+  "id": "20605",
+  "title": "USB 3.0 HDD Enclosure with physical write-protect switch",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "193969",
+      "timestamp": "2015-07-26T03:41:40+00:00",
+      "author": "venerence",
+      "content": "I thought I would point out one for you guys, I ordered 4 of them and they all appear functional (even with UASP support for SSDs). They are based on the ASM1053 chipset.\n\n![415MxCjk48L.jpg](http://ecx.images-amazon.com/images/I/415MxCjk48L.jpg)\n\n[International Purchase](http://www.miniinthebox.com/ssk-2-5-usb-3-0-to-sata-hard-disk-cartridge_p1710230.html?litb_from\u003dsysmail \"External link\")\n\nIf you want to create it bootable, I suggest an active fat-32 partition at the beginning of the drive, smaller then 100GB (some computers can\u0027t handle booting from a partition larger then 100-someGB). Really a 20GB partition is tons of space. fat-32 to conform to UEFI specs.\n\n**Edited by venerence, 26 July 2015 - 03:43 AM.**\n"
+    },
+    {
+      "id": "193971",
+      "timestamp": "2015-07-26T08:48:18+00:00",
+      "author": "steve6375",
+      "content": "What model number?\n\nDoes it have screws?\n\nWhat speeds do you get using an SSD on USB 3?\n\n"
+    },
+    {
+      "id": "193972",
+      "timestamp": "2015-07-26T09:12:25+00:00",
+      "author": "venerence",
+      "content": "\u003e What model number?  \n\u003e Does it have screws?  \n\u003e What speeds do you get using an SSD on USB 3?\n\n1) SSK HE-G300 (the page I linked is the same page I ordered from).  \n2) yes, two very tiny screws holding the case together (like the zm-ve300), and four that screw in from the bottom (when apart) to hold the HDD in.  \n3) Don\u0027t know until my msata --\\\u003e 2.5\" adapter arrives (was using my ssd in an msata enclosure previously), that\u0027ll be in the middle of the week. Mechanical drives get expected speeds (\\~80MBps for a large copy, 5400rpm). I\u0027ll do a full review when it arrives, pictures and the lot.  \n\nThere is also the HE-G303 (which is supposed to be screwless), but I have no experience with that model, just the one I ordered.\n\n**Edited by venerence, 26 July 2015 - 09:23 AM.**\n"
+    }
+  ]
+}

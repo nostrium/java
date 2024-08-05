@@ -1,0 +1,58 @@
+{
+  "id": "15847",
+  "title": "pwboot windows 7 32 bit loaded, how to load SP1",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "142197",
+      "timestamp": "2011-11-20T07:24:02+00:00",
+      "author": "usb windows 7 OS",
+      "content": "I loaded windows 7 from my usb and everything works well and I was able to get a page file added. Now I get and error while attempting to add SP1 and it will not updated. How do i add SP1 with PWboot?   \n"
+    },
+    {
+      "id": "142199",
+      "timestamp": "2011-11-20T07:47:50+00:00",
+      "author": "amalux",
+      "content": "Are you able to update to SP1 successfully? If so, just run the patch again. If you\u0027re getting an error that won\u0027t allow you to update with the service pack, it\u0027s probably not related to PWBoot. What exactly does the error say?   \n"
+    },
+    {
+      "id": "142200",
+      "timestamp": "2011-11-20T07:59:46+00:00",
+      "author": "usb windows 7 OS",
+      "content": "I can load sp0 successfully and have downloaded sp1. When installing it I get an 0x800f0a12 error which stop the update and the detail says is an error when the installer can not reach the windows system partion.   \n"
+    },
+    {
+      "id": "142201",
+      "timestamp": "2011-11-20T08:04:34+00:00",
+      "author": "usb windows 7 OS",
+      "content": "When I type bsdedit in the command prompt it says\" The boot configuration data store could not be opened. The file has be externally altered so that the file opened is no longer valid\"   \n"
+    },
+    {
+      "id": "142202",
+      "timestamp": "2011-11-20T08:06:27+00:00",
+      "author": "usb windows 7 OS",
+      "content": "\u003e When I type bsdedit in the command prompt it says\" The boot configuration data store could not be opened. The file has be externally altered so that the file opened is no longer valid\"  \n\nsorry \"bcdedit\"   \n"
+    },
+    {
+      "id": "142231",
+      "timestamp": "2011-11-20T17:17:39+00:00",
+      "author": "amalux",
+      "content": "Well, something got corrupted alright :wink:  \n\nYou can check [http://neosmart.net/forums/](http://neosmart.net/forums/ \"External link\") for possible fix/workaround.  \n\nI have not seen this issue with PWBoot but any number of things could cause it. I suggest a clean install, update to SP1 first, check all is well and *then* patch with PWBoot.   \n"
+    },
+    {
+      "id": "142644",
+      "timestamp": "2011-11-24T17:20:53+00:00",
+      "author": "usb windows 7 OS",
+      "content": "Well with a windows disk I got the service pack to install and complete and ask for restart though upon restart is only initializes to 10% before it reverts and gives a DS_S_Success(0x0) error.   \n"
+    },
+    {
+      "id": "142655",
+      "timestamp": "2011-11-24T18:13:17+00:00",
+      "author": "amalux",
+      "content": "I don\u0027t believe this has anything to do with PWBoot, this error isn\u0027t even specific to Win 7. There are good, basic recommendations for install/upgrade here:  \n[http://www.pagestart...teps021611.html](http://www.pagestart.com/win7sp1steps021611.html \"External link\")   \n"
+    }
+  ]
+}

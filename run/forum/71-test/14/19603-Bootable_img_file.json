@@ -1,0 +1,34 @@
+{
+  "id": "19603",
+  "title": "Bootable *.img file",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "182520",
+      "timestamp": "2014-03-03T04:13:51+00:00",
+      "author": "NetRock",
+      "content": "Hi,\n\nI know xBoot supports \\*.ISO files, but is there a way to*use bootable \\*.img file* instead of \\*.ISO files.\n\nThank you for your help.\n\n"
+    },
+    {
+      "id": "182526",
+      "timestamp": "2014-03-03T08:52:52+00:00",
+      "author": "steve6375",
+      "content": "Not sure. XBoot support from the author is no longer available as,sadly, the author (Shamur) died a few years ago and we don\u0027t have the source files.\n\nTry Easy2Boot.\n\n"
+    },
+    {
+      "id": "182553",
+      "timestamp": "2014-03-04T21:26:03+00:00",
+      "author": "NetRock",
+      "content": "God Bless Shamur........\n\n"
+    },
+    {
+      "id": "182556",
+      "timestamp": "2014-03-05T07:02:54+00:00",
+      "author": "Blackcrack",
+      "content": "Hi Steve,\n\nyou have maybe his name, do you have maybe his adress to his family ?,\n\nmaybe can you try over phone or mail ... you see ? if the Computer or files still existand ?\n\nbecause, xboot was a very good approach .. and i bet some old Dos-Dudes have still dos-disk\u0027s img in image like me ..\n\noooor.. can you maybe reprogramming or something xboot as xboot2(in thinking of...),\n\nbecause you know the operation/how it works .. or can you work together with the creator of rufus,\n\nbecause, it is obvious, you see .. (and btw, don\u0027t forget the \\*.img \\*g\\*)\n\nbest regards\n\nBlacky\n\n"
+    }
+  ]
+}

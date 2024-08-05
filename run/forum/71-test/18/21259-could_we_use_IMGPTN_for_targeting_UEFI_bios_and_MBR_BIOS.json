@@ -1,0 +1,334 @@
+{
+  "id": "21259",
+  "title": "could we use IMGPTN for targeting UEFI bios and MBR BIOS",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "200413",
+      "timestamp": "2016-09-25T11:11:00+00:00",
+      "author": "toto08998",
+      "content": "I\u0027m searching a best solution to have an universal usb stick using easy2boot. By universal I mean it can boot in UEFI and in old computer BIOS as well.\n\nTake Kon-Boot for example. On easy2boot website there is 2 solutions:\n\nA) using the floppy image + mnu file \u003d\u003d\\\u003e will work for MBR system\n\nB ) create usb from kon boot script and make a IMGPTN of it.\u003d\u003d\\\u003eWill work for UEFI (as Win8 GPT), but it works for MBR OS too\n\nSo why don\u0027t use solution B only which works on very old computer and on new UEFI BIOS too?\n\nSo if I want an universal solution I should go to solution B which works for both old computer and new one in UEFI.\n\nOr should I put both solution on my USB?\n\nI\u0027ve tested solution B on very old computer and that works (via CSM menu).\n\n**Edited by toto08998, 25 September 2016 - 11:13 AM.**\n"
+    },
+    {
+      "id": "200414",
+      "timestamp": "2016-09-25T12:00:43+00:00",
+      "author": "steve6375",
+      "content": "In a perfect world, you would only need the .imgPTN version, but...\n\nSome UEFI computers have a bug.\n\nIf CSM mode is enabled in the BIOS and they see a USB FAT32 drive with a valid EFI boot file, they will **only**boot to the USB drive in UEFI-mode.\n\nSo if you have Windows on that system and the Windows boots via CSM (not UEFI), then if you used a .imgPTN file, the system would always boot to KonBoot in UEFI-mode, it would then try to boot to Windows in UEFI-mode and (probably) fail.\n\nSo in this case, it is better to boot from the floppy image, because then the computer will not see any EFI boot file and will boot in CSM mode to KonBoot and then KonBoot will boot to Windows in CSM mode.\n\nSo, 90% of the time, you can just use KonBoot as .imgPTN file, but occasionally you may find one of these buggy systems and then you will have to use the floppy image.\n\n"
+    },
+    {
+      "id": "200415",
+      "timestamp": "2016-09-25T13:45:22+00:00",
+      "author": "toto08998",
+      "content": "I understand. I did not even expect this issue (the fact that Kon Boot launch itself the OS in UEFI even if its in MBR...)\n\nBut do you agree if we take for example Bitdefender (which is UEFI compatible), I could use IMGPTN only?\n\nI mean, could some very old computers be more compatible with ISO than with IMGPTN soluton in this case?\n\n"
+    },
+    {
+      "id": "200417",
+      "timestamp": "2016-09-25T15:40:20+00:00",
+      "author": "steve6375",
+      "content": "Yes, but on the buggy systems, you would only be able to boot from the .imgPTN file in UEFI-mode to bitdefender. As long as that is OK then fine.\n\nSimilar issues can arise when you want to boot to Windows PE or an installer in CSM mode and the system won\u0027t let you because it will always boot from the E2B drive in UEFI-mode (e.g. to install or repair a CSM system).\n\n"
+    },
+    {
+      "id": "200443",
+      "timestamp": "2016-09-26T09:39:55+00:00",
+      "author": "toto08998",
+      "content": "Thank you Steve! ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)  \nHere is my \"universal\" key content. Dont hesitate to comment it. The goal is to fit a 16GB key (because my brand new 32GB is not recognizer by my old computer ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif) ) and being able to resolve as many issues as possible with a max of compatibility (from very old to new computers):  \nIMGPTN  \nUEFI compatible  \nBitDefender  \nKon-boot (made from installer script to temporary usb key converted to IMGPTN)  \nPartedMagic  \nSergei Strelec WinPE (very very good!! ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif) can see my RAID disk and contains some Windows Psw remover that really work)  \nMBR only  \nFalcon F4  \nISO  \nUEFI compatible  \nWindows 10 x64 (installation)  \nWindows 7 x86 (installation)  \nMBR only  \nKaspersky  \nKon-boot (from floppy-img + mnu)  \n\n**Edited by toto08998, 26 September 2016 - 09:41 AM.**\n"
+    },
+    {
+      "id": "200444",
+      "timestamp": "2016-09-26T09:53:29+00:00",
+      "author": "steve6375",
+      "content": "ISOs will not boot via UEFI from E2B.\n\nFor the Windows Install ISOs you will need to convert them to FAT32 .imgPTN files.\n\n"
+    },
+    {
+      "id": "200445",
+      "timestamp": "2016-09-26T09:58:30+00:00",
+      "author": "toto08998",
+      "content": "I understand but if I ever need to install Windows, I\u0027ll install it as MBR disabling UEFI in BIOS.\n\nSorry by rereading my post I see UEFI before Windows installer\n\nI meant  \n~~UEFI compatible~~  \n~~Windows 10 x64 (installation)~~  \n~~Windows 7 x86 (installation)~~  \nMBR only  \nKaspersky  \nKon-boot (from floppy-img + mnu)  \nWindows 10 x64 (installation)  \nWindows 7 x86 (installation)\n\n**Edited by toto08998, 26 September 2016 - 10:08 AM.**\n"
+    },
+    {
+      "id": "200446",
+      "timestamp": "2016-09-26T10:15:39+00:00",
+      "author": "steve6375",
+      "content": "If you have a system with \\\u003e2TB HDD, you need UEFI install.\n\n"
+    },
+    {
+      "id": "200447",
+      "timestamp": "2016-09-26T12:57:40+00:00",
+      "author": "toto08998",
+      "content": "yes you are right and despite what I though it is not possible to use a HDD \\\u003e 2 TB with MBR even if splitted in small partitions.\n\nWhat I have to test is if putting imgptn inside \\\\_ISO\\\\Windows\\\\Win10 will still offer the possibility to select product code from a list\n\n**Edited by toto08998, 26 September 2016 - 12:57 PM.**\n"
+    },
+    {
+      "id": "200448",
+      "timestamp": "2016-09-26T13:40:10+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e If you have a system with \\\u003e2TB HDD, you need UEFI install.\n\nActually - to be fair - you need to buy a SSD and use it for boot and system drive and use the \\\u003e2 Tb for storage :wink:.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "200449",
+      "timestamp": "2016-09-26T18:29:01+00:00",
+      "author": "toto08998",
+      "content": "After many tests on different computers I can say that\n\nPartedMagic doesn\u0027t work using imgPTN on very old computer but works fine using ISO. It hangs early after CSM menu when PartedMagic begin to start.\n\nAll other Distributions/OS work fine using imgPTN.\n\nAs expected, Win10x64 installation using imgPTN does not show a product keys selection as when booting from ISO. Sad, it was very handy.\n\nSo I\u0027ll duplicate PartedMagic: ISO + imgPTN\n\nand use imgPTN for almost every other Distributions/OS.\n\nAnother think that makes me cry is the fact that older computers cannot see new big usb keys as my brand new 32GB usb 3.0... and neighther plop boot cd nor usb_boot cd seem to work with easy2boot which claims it is read only... It could have been so simple: one big and fast key + PLOP CD for older computer.\n\n**Edited by toto08998, 26 September 2016 - 06:31 PM.**\n"
+    },
+    {
+      "id": "200450",
+      "timestamp": "2016-09-26T18:47:39+00:00",
+      "author": "steve6375",
+      "content": "see [http://www.easy2boot...m-imgptn-files/](http://www.easy2boot.com/add-payload-files/automating-windows-install-from-imgptn-files/ \"External link\") for details on using different XML files containing different Product Keys.\n\nSome older computers look at the size of the USB storage device and if less than a certain size, they boot it as a floppy disk or ZIP\\\\Superfloppy drive, if over a certain size they boot it as a USB HDD.\n\nOthers may refuse to boot larger devices.\n\nDid you prepare the 32GB USB 3.0 device using the E2B MAKE_E2B_USB_DRIVE.cmd script?\n\nPlop and the grub4dos usb drive only work with USB 2 controllers. Are you using the latest version of E2B 1.84? If so, try the Utilities - grub4dos USB driver menu entry after booting with Plop.\n\nPlop seems to recognise a wider range of USB controllers than the grub4dos driver, but only the grub4dos driver is rd/wr (Plop uses a read-only driver)..\n\nP.S. Be aware that using .imgPTN files carries a small risk of corruption of your USB drive. Things can, and sometimes do, go wrong. Booting from an ISO should be \u0027safer\u0027. Also some linux ISOs can be MBR-booted even in read-only mode using the ISOBOOT method. See List 1c at [http://www.easy2boot...-payload-files/](http://www.easy2boot.com/add-payload-files/list-of-tested-payload-files/ \"External link\"). Some linux ISOs can be MBR and UEFI-booted by using the grub2 menu system for E2B - but this requires bespoke menus for different linux distros and can be quite \u0027picky\u0027.\n\n**Edited by steve6375, 26 September 2016 - 06:54 PM.**\n"
+    },
+    {
+      "id": "200451",
+      "timestamp": "2016-09-26T19:01:30+00:00",
+      "author": "toto08998",
+      "content": "just tried grub4dos USB driver menu with usb 2.0 (16GB)\n\nI got an error when selecting a imgPTN file: \"cannot use imgptn on a CD or WP\"\n\n"
+    },
+    {
+      "id": "200452",
+      "timestamp": "2016-09-26T19:05:32+00:00",
+      "author": "steve6375",
+      "content": "When you ran the USB driver menu entry, did it report that it found a USb drive ?\n\n"
+    },
+    {
+      "id": "200453",
+      "timestamp": "2016-09-26T19:12:45+00:00",
+      "author": "toto08998",
+      "content": "yes it did found 1 usb drive\n\nonly one is connected so it should be the right one\n\nafter selecting partedmagic imgptn, I got:\n\n\"Cannot use .imgPTN on a CD (or WP) \\|\"\n\n**Edited by toto08998, 26 September 2016 - 07:13 PM.**\n"
+    },
+    {
+      "id": "200454",
+      "timestamp": "2016-09-26T19:18:07+00:00",
+      "author": "steve6375",
+      "content": "Edit: Did you try F8 from the Main Menu after loading the USB driver?\n\nIn that case, it might work.\n\nCan you edit the \\\\_ISO\\\\MyE2B.cfg file and add\n\n```\nset GRUB_USB\u003dY\n```\n\nIf you don\u0027t have a \\\\_ISO\\\\MyE2B.cfg file, then add !BAT\n\n```\n!BAT\nset GRUB_USB\u003dY\n```\n\n\u003cbr /\u003e\n\n**Edited by steve6375, 26 September 2016 - 07:19 PM.**\n"
+    },
+    {
+      "id": "200456",
+      "timestamp": "2016-09-26T19:37:03+00:00",
+      "author": "toto08998",
+      "content": "yes that works :smile:\n\nbut I read that the Grub4dos USB 2.0 driver only works on some types of USB 2.0 systems and is still in Beta development.  \nso doesn\u0027t seem to be a good solution for an universal key as I try to do.\n\n"
+    },
+    {
+      "id": "200457",
+      "timestamp": "2016-09-26T19:42:08+00:00",
+      "author": "steve6375",
+      "content": "if you press the U key just as E2B starts to first boot, it will load the grub4dos USB driver, so you can use that and remove the GRUB_USB\u003dY line if you prefer. You have to be quick though (before it enumerates files).\n\nNo one has reported any current problems with the grub4dos USB driver (other than not detecting some USB controllers).\n\nIt\u0027s your choice...\n\nP.S. grub4dos 0.4.6a is Beta status!\n\n**Edited by steve6375, 26 September 2016 - 07:42 PM.**\n"
+    },
+    {
+      "id": "200458",
+      "timestamp": "2016-09-26T19:47:02+00:00",
+      "author": "toto08998",
+      "content": "thank you so much for your help! Good to know that I can use U key. And if I understand well, if an usb key is recognized by the beta driver, it will be ok with the same key on any computer?\n\nhow did you learn all these stuffs? are you using it at work or working on easy2boot project?\n\n"
+    },
+    {
+      "id": "200459",
+      "timestamp": "2016-09-26T19:49:39+00:00",
+      "author": "steve6375",
+      "content": "I am the author of E2B! Hence my signature..\n\nThe USb driver detects the USB controller inside a computer - this will obviously vary from computer to computer. So results will vary depending in the chipset inside each computer.\n\n"
+    },
+    {
+      "id": "200460",
+      "timestamp": "2016-09-26T19:53:06+00:00",
+      "author": "steve6375",
+      "content": "P.S. Did the USB_BOOT CD run Plop ???\n\nThe version of grub4dos in the USB_BOOT ISO is older than the current E2B v1.84 version, so I may need to update it...\n\n"
+    },
+    {
+      "id": "200461",
+      "timestamp": "2016-09-26T20:09:17+00:00",
+      "author": "steve6375",
+      "content": "I have added [USB_BOOT_v2.iso](http://rmprepusb.blogspot.co.uk/2016/09/new-usbbootv2iso-plop-cd.html \"External link\") to the alternate downloads area. It uses the latest version of grub4dos. Try burning a CD using that.\n\nIf you really want to boot a wide range of systems, why not buy an [IODD2531](http://rmprepusb.blogspot.co.uk/2016/09/using-e2b-with-zalmaniodd-disk-drive.html \"External link\")? It is great for running E2B as well!\n\n"
+    },
+    {
+      "id": "200462",
+      "timestamp": "2016-09-27T06:38:59+00:00",
+      "author": "toto08998",
+      "content": "No, I used regular Plop CD that seems to work with USB \\\u0026 (GRUB_USB\u003dY)\n\nI\u0027ll try USB_BOOT_v2.iso\n\nThank you Steve for the brilliant job you made by creating E2B! I love it\n\n"
+    },
+    {
+      "id": "200466",
+      "timestamp": "2016-09-27T19:11:52+00:00",
+      "author": "Tripredacus",
+      "content": "\u003e Some UEFI computers have a bug.  \n\u003e If CSM mode is enabled in the BIOS and they see a USB FAT32 drive with a valid EFI boot file, they will **only**boot to the USB drive in UEFI-mode.\n\nIn this described scenario, are you inferring that the USB drive is booted on a system where the boot settings are allowed to determine which mode to boot the drive in, or does this also occur when using a system\u0027s one-time boot menu to choose the device and boot mode?   \n"
+    },
+    {
+      "id": "200467",
+      "timestamp": "2016-09-27T21:10:38+00:00",
+      "author": "steve6375",
+      "content": "I can only go on what several others on reboot.pro have said previously, but apparently you can use the Function key (e.g. F12 or F8 or whatever) to get the BIOS Boot selection menu, but you are only offered the USB UEFI boot option, you are not offered the USB MBR/BIOS/Legacy boot option, so you can only boot in UEFI-mode.\n\n"
+    },
+    {
+      "id": "200413",
+      "timestamp": "2016-09-25T11:11:00+00:00",
+      "author": "toto08998",
+      "content": "I\u0027m searching a best solution to have an universal usb stick using easy2boot. By universal I mean it can boot in UEFI and in old computer BIOS as well.\n\nTake Kon-Boot for example. On easy2boot website there is 2 solutions:\n\nA) using the floppy image + mnu file \u003d\u003d\\\u003e will work for MBR system\n\nB ) create usb from kon boot script and make a IMGPTN of it.\u003d\u003d\\\u003eWill work for UEFI (as Win8 GPT), but it works for MBR OS too\n\nSo why don\u0027t use solution B only which works on very old computer and on new UEFI BIOS too?\n\nSo if I want an universal solution I should go to solution B which works for both old computer and new one in UEFI.\n\nOr should I put both solution on my USB?\n\nI\u0027ve tested solution B on very old computer and that works (via CSM menu).\n\n**Edited by toto08998, 25 September 2016 - 11:13 AM.**\n"
+    },
+    {
+      "id": "200414",
+      "timestamp": "2016-09-25T12:00:43+00:00",
+      "author": "steve6375",
+      "content": "In a perfect world, you would only need the .imgPTN version, but...\n\nSome UEFI computers have a bug.\n\nIf CSM mode is enabled in the BIOS and they see a USB FAT32 drive with a valid EFI boot file, they will **only**boot to the USB drive in UEFI-mode.\n\nSo if you have Windows on that system and the Windows boots via CSM (not UEFI), then if you used a .imgPTN file, the system would always boot to KonBoot in UEFI-mode, it would then try to boot to Windows in UEFI-mode and (probably) fail.\n\nSo in this case, it is better to boot from the floppy image, because then the computer will not see any EFI boot file and will boot in CSM mode to KonBoot and then KonBoot will boot to Windows in CSM mode.\n\nSo, 90% of the time, you can just use KonBoot as .imgPTN file, but occasionally you may find one of these buggy systems and then you will have to use the floppy image.\n\n"
+    },
+    {
+      "id": "200415",
+      "timestamp": "2016-09-25T13:45:22+00:00",
+      "author": "toto08998",
+      "content": "I understand. I did not even expect this issue (the fact that Kon Boot launch itself the OS in UEFI even if its in MBR...)\n\nBut do you agree if we take for example Bitdefender (which is UEFI compatible), I could use IMGPTN only?\n\nI mean, could some very old computers be more compatible with ISO than with IMGPTN soluton in this case?\n\n"
+    },
+    {
+      "id": "200417",
+      "timestamp": "2016-09-25T15:40:20+00:00",
+      "author": "steve6375",
+      "content": "Yes, but on the buggy systems, you would only be able to boot from the .imgPTN file in UEFI-mode to bitdefender. As long as that is OK then fine.\n\nSimilar issues can arise when you want to boot to Windows PE or an installer in CSM mode and the system won\u0027t let you because it will always boot from the E2B drive in UEFI-mode (e.g. to install or repair a CSM system).\n\n"
+    },
+    {
+      "id": "200443",
+      "timestamp": "2016-09-26T09:39:55+00:00",
+      "author": "toto08998",
+      "content": "Thank you Steve! ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)  \nHere is my \"universal\" key content. Dont hesitate to comment it. The goal is to fit a 16GB key (because my brand new 32GB is not recognizer by my old computer ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif) ) and being able to resolve as many issues as possible with a max of compatibility (from very old to new computers):  \nIMGPTN  \nUEFI compatible  \nBitDefender  \nKon-boot (made from installer script to temporary usb key converted to IMGPTN)  \nPartedMagic  \nSergei Strelec WinPE (very very good!! ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif) can see my RAID disk and contains some Windows Psw remover that really work)  \nMBR only  \nFalcon F4  \nISO  \nUEFI compatible  \nWindows 10 x64 (installation)  \nWindows 7 x86 (installation)  \nMBR only  \nKaspersky  \nKon-boot (from floppy-img + mnu)  \n\n**Edited by toto08998, 26 September 2016 - 09:41 AM.**\n"
+    },
+    {
+      "id": "200444",
+      "timestamp": "2016-09-26T09:53:29+00:00",
+      "author": "steve6375",
+      "content": "ISOs will not boot via UEFI from E2B.\n\nFor the Windows Install ISOs you will need to convert them to FAT32 .imgPTN files.\n\n"
+    },
+    {
+      "id": "200445",
+      "timestamp": "2016-09-26T09:58:30+00:00",
+      "author": "toto08998",
+      "content": "I understand but if I ever need to install Windows, I\u0027ll install it as MBR disabling UEFI in BIOS.\n\nSorry by rereading my post I see UEFI before Windows installer\n\nI meant  \n~~UEFI compatible~~  \n~~Windows 10 x64 (installation)~~  \n~~Windows 7 x86 (installation)~~  \nMBR only  \nKaspersky  \nKon-boot (from floppy-img + mnu)  \nWindows 10 x64 (installation)  \nWindows 7 x86 (installation)\n\n**Edited by toto08998, 26 September 2016 - 10:08 AM.**\n"
+    },
+    {
+      "id": "200446",
+      "timestamp": "2016-09-26T10:15:39+00:00",
+      "author": "steve6375",
+      "content": "If you have a system with \\\u003e2TB HDD, you need UEFI install.\n\n"
+    },
+    {
+      "id": "200447",
+      "timestamp": "2016-09-26T12:57:40+00:00",
+      "author": "toto08998",
+      "content": "yes you are right and despite what I though it is not possible to use a HDD \\\u003e 2 TB with MBR even if splitted in small partitions.\n\nWhat I have to test is if putting imgptn inside \\\\_ISO\\\\Windows\\\\Win10 will still offer the possibility to select product code from a list\n\n**Edited by toto08998, 26 September 2016 - 12:57 PM.**\n"
+    },
+    {
+      "id": "200448",
+      "timestamp": "2016-09-26T13:40:10+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e If you have a system with \\\u003e2TB HDD, you need UEFI install.\n\nActually - to be fair - you need to buy a SSD and use it for boot and system drive and use the \\\u003e2 Tb for storage :wink:.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "200449",
+      "timestamp": "2016-09-26T18:29:01+00:00",
+      "author": "toto08998",
+      "content": "After many tests on different computers I can say that\n\nPartedMagic doesn\u0027t work using imgPTN on very old computer but works fine using ISO. It hangs early after CSM menu when PartedMagic begin to start.\n\nAll other Distributions/OS work fine using imgPTN.\n\nAs expected, Win10x64 installation using imgPTN does not show a product keys selection as when booting from ISO. Sad, it was very handy.\n\nSo I\u0027ll duplicate PartedMagic: ISO + imgPTN\n\nand use imgPTN for almost every other Distributions/OS.\n\nAnother think that makes me cry is the fact that older computers cannot see new big usb keys as my brand new 32GB usb 3.0... and neighther plop boot cd nor usb_boot cd seem to work with easy2boot which claims it is read only... It could have been so simple: one big and fast key + PLOP CD for older computer.\n\n**Edited by toto08998, 26 September 2016 - 06:31 PM.**\n"
+    },
+    {
+      "id": "200450",
+      "timestamp": "2016-09-26T18:47:39+00:00",
+      "author": "steve6375",
+      "content": "see [http://www.easy2boot...m-imgptn-files/](http://www.easy2boot.com/add-payload-files/automating-windows-install-from-imgptn-files/ \"External link\") for details on using different XML files containing different Product Keys.\n\nSome older computers look at the size of the USB storage device and if less than a certain size, they boot it as a floppy disk or ZIP\\\\Superfloppy drive, if over a certain size they boot it as a USB HDD.\n\nOthers may refuse to boot larger devices.\n\nDid you prepare the 32GB USB 3.0 device using the E2B MAKE_E2B_USB_DRIVE.cmd script?\n\nPlop and the grub4dos usb drive only work with USB 2 controllers. Are you using the latest version of E2B 1.84? If so, try the Utilities - grub4dos USB driver menu entry after booting with Plop.\n\nPlop seems to recognise a wider range of USB controllers than the grub4dos driver, but only the grub4dos driver is rd/wr (Plop uses a read-only driver)..\n\nP.S. Be aware that using .imgPTN files carries a small risk of corruption of your USB drive. Things can, and sometimes do, go wrong. Booting from an ISO should be \u0027safer\u0027. Also some linux ISOs can be MBR-booted even in read-only mode using the ISOBOOT method. See List 1c at [http://www.easy2boot...-payload-files/](http://www.easy2boot.com/add-payload-files/list-of-tested-payload-files/ \"External link\"). Some linux ISOs can be MBR and UEFI-booted by using the grub2 menu system for E2B - but this requires bespoke menus for different linux distros and can be quite \u0027picky\u0027.\n\n**Edited by steve6375, 26 September 2016 - 06:54 PM.**\n"
+    },
+    {
+      "id": "200451",
+      "timestamp": "2016-09-26T19:01:30+00:00",
+      "author": "toto08998",
+      "content": "just tried grub4dos USB driver menu with usb 2.0 (16GB)\n\nI got an error when selecting a imgPTN file: \"cannot use imgptn on a CD or WP\"\n\n"
+    },
+    {
+      "id": "200452",
+      "timestamp": "2016-09-26T19:05:32+00:00",
+      "author": "steve6375",
+      "content": "When you ran the USB driver menu entry, did it report that it found a USb drive ?\n\n"
+    },
+    {
+      "id": "200453",
+      "timestamp": "2016-09-26T19:12:45+00:00",
+      "author": "toto08998",
+      "content": "yes it did found 1 usb drive\n\nonly one is connected so it should be the right one\n\nafter selecting partedmagic imgptn, I got:\n\n\"Cannot use .imgPTN on a CD (or WP) \\|\"\n\n**Edited by toto08998, 26 September 2016 - 07:13 PM.**\n"
+    },
+    {
+      "id": "200454",
+      "timestamp": "2016-09-26T19:18:07+00:00",
+      "author": "steve6375",
+      "content": "Edit: Did you try F8 from the Main Menu after loading the USB driver?\n\nIn that case, it might work.\n\nCan you edit the \\\\_ISO\\\\MyE2B.cfg file and add\n\n```\nset GRUB_USB\u003dY\n```\n\nIf you don\u0027t have a \\\\_ISO\\\\MyE2B.cfg file, then add !BAT\n\n```\n!BAT\nset GRUB_USB\u003dY\n```\n\n\u003cbr /\u003e\n\n**Edited by steve6375, 26 September 2016 - 07:19 PM.**\n"
+    },
+    {
+      "id": "200456",
+      "timestamp": "2016-09-26T19:37:03+00:00",
+      "author": "toto08998",
+      "content": "yes that works :smile:\n\nbut I read that the Grub4dos USB 2.0 driver only works on some types of USB 2.0 systems and is still in Beta development.  \nso doesn\u0027t seem to be a good solution for an universal key as I try to do.\n\n"
+    },
+    {
+      "id": "200457",
+      "timestamp": "2016-09-26T19:42:08+00:00",
+      "author": "steve6375",
+      "content": "if you press the U key just as E2B starts to first boot, it will load the grub4dos USB driver, so you can use that and remove the GRUB_USB\u003dY line if you prefer. You have to be quick though (before it enumerates files).\n\nNo one has reported any current problems with the grub4dos USB driver (other than not detecting some USB controllers).\n\nIt\u0027s your choice...\n\nP.S. grub4dos 0.4.6a is Beta status!\n\n**Edited by steve6375, 26 September 2016 - 07:42 PM.**\n"
+    },
+    {
+      "id": "200458",
+      "timestamp": "2016-09-26T19:47:02+00:00",
+      "author": "toto08998",
+      "content": "thank you so much for your help! Good to know that I can use U key. And if I understand well, if an usb key is recognized by the beta driver, it will be ok with the same key on any computer?\n\nhow did you learn all these stuffs? are you using it at work or working on easy2boot project?\n\n"
+    },
+    {
+      "id": "200459",
+      "timestamp": "2016-09-26T19:49:39+00:00",
+      "author": "steve6375",
+      "content": "I am the author of E2B! Hence my signature..\n\nThe USb driver detects the USB controller inside a computer - this will obviously vary from computer to computer. So results will vary depending in the chipset inside each computer.\n\n"
+    },
+    {
+      "id": "200460",
+      "timestamp": "2016-09-26T19:53:06+00:00",
+      "author": "steve6375",
+      "content": "P.S. Did the USB_BOOT CD run Plop ???\n\nThe version of grub4dos in the USB_BOOT ISO is older than the current E2B v1.84 version, so I may need to update it...\n\n"
+    },
+    {
+      "id": "200461",
+      "timestamp": "2016-09-26T20:09:17+00:00",
+      "author": "steve6375",
+      "content": "I have added [USB_BOOT_v2.iso](http://rmprepusb.blogspot.co.uk/2016/09/new-usbbootv2iso-plop-cd.html \"External link\") to the alternate downloads area. It uses the latest version of grub4dos. Try burning a CD using that.\n\nIf you really want to boot a wide range of systems, why not buy an [IODD2531](http://rmprepusb.blogspot.co.uk/2016/09/using-e2b-with-zalmaniodd-disk-drive.html \"External link\")? It is great for running E2B as well!\n\n"
+    },
+    {
+      "id": "200462",
+      "timestamp": "2016-09-27T06:38:59+00:00",
+      "author": "toto08998",
+      "content": "No, I used regular Plop CD that seems to work with USB \\\u0026 (GRUB_USB\u003dY)\n\nI\u0027ll try USB_BOOT_v2.iso\n\nThank you Steve for the brilliant job you made by creating E2B! I love it\n\n"
+    },
+    {
+      "id": "200466",
+      "timestamp": "2016-09-27T19:11:52+00:00",
+      "author": "Tripredacus",
+      "content": "\u003e Some UEFI computers have a bug.  \n\u003e If CSM mode is enabled in the BIOS and they see a USB FAT32 drive with a valid EFI boot file, they will **only**boot to the USB drive in UEFI-mode.\n\nIn this described scenario, are you inferring that the USB drive is booted on a system where the boot settings are allowed to determine which mode to boot the drive in, or does this also occur when using a system\u0027s one-time boot menu to choose the device and boot mode?   \n"
+    },
+    {
+      "id": "200467",
+      "timestamp": "2016-09-27T21:10:38+00:00",
+      "author": "steve6375",
+      "content": "I can only go on what several others on reboot.pro have said previously, but apparently you can use the Function key (e.g. F12 or F8 or whatever) to get the BIOS Boot selection menu, but you are only offered the USB UEFI boot option, you are not offered the USB MBR/BIOS/Legacy boot option, so you can only boot in UEFI-mode.\n\n"
+    },
+    {
+      "id": "200473",
+      "timestamp": "2016-09-28T19:45:19+00:00",
+      "author": "Tripredacus",
+      "content": "OK I do not think it is a bug. For a board firmware (or BIOS) everything is really the same but the different companies use different wordings or settings in their menus. The system will choose to boot something first. We can see this on Asus boards. In CSM settings their boot control will say something like \"UEFI first.\" So it would seem to me that a board set like that could boot a legacy USB key if no EFI ability were present. But if it is present, it will boot in EFI. If you were to set it for Legacy only and had a USB that could do either, it should be able to boot in Legacy mode right?  \n\nAlso another reason why I wouldn\u0027t want to say it is a bug. Do we know exactly how a given firmware goes about its process? In the case of the Asus boards if set to UEFI first, does it:  \n1. Look for UEFI bootable devices first, and if found, boot them as according to the boot order set?  \n2. Try to boot the first device according to boot order in UEFI mode blindly, and then boot it in Legacy mode if it fails?  \n3. Look at all devices and then determine what boot methods they have and then process them as per the settings?  \n\nI had to put #2 in there because I can see this type of shortcut being made.   \n"
+    },
+    {
+      "id": "200475",
+      "timestamp": "2016-09-28T22:02:41+00:00",
+      "author": "steve6375",
+      "content": "A UEFI BIOS can either be set to UEFI-only or UEFI+CSM.\n\n1. When it is set to UEFI-only, it will obviously only boot to UEFI.\n2. When it is set to UEFI+CSM, some BIOSes will not boot in CSM mode if a UEFI boot file exists on the same device.\n\nSo, in either case, you cannot boot in CSM mode when you may wish to, AFAIK there was no \u0027boot Legacy first\u0027 setting in these BIOSes or any other setting which would allow it to CSm boot.\n\nUnfortunately, I don\u0027t have one of these systems to test, but it is my understanding that there is not any BIOS setting will allow it to boot in CSM mode from the E2B USB drive if it also contains a valid UEFI boot file. Several people reported this issue on reboot.pro, but I cannot find the posts/thread...\n\nP.S. This \u0027bug\u0027 materialised when I added the MemTest86 UEFI boot files to Easy2Boot so that if you UEFI-booted, you could run a memory test. Several people who made a FAT32 E2B USB drive, reported that they could no longer boot to E2B on their system and that there was no way they could make it boot. When they deleted the .EFI files, it could then boot to grub4dos and the E2B menu.\n\n**Edited by steve6375, 28 September 2016 - 10:11 PM.**\n"
+    },
+    {
+      "id": "200543",
+      "timestamp": "2016-10-05T21:15:09+00:00",
+      "author": "Tripredacus",
+      "content": "\u003e A UEFI BIOS can either be set to UEFI-only or UEFI+CSM.\n\u003e\n\u003e *   \n\u003e * When it is set to UEFI-only, it will obviously only boot to UEFI.\n\u003e * When it is set to UEFI+CSM, some BIOSes will not boot in CSM mode if a UEFI boot file exists on the same device.\n\nBut this isn\u0027t true. You have Intel NUC system that can be set to  \n- UEFI only  \n- Legacy only (it does not use the term CSM)  \n- UEFI+Legacy  \n\nSince all BIOS are different, even same providers but different ODMs (Barely any follow standards for UEFI and/or BIOS in general) you cannot make a blanket statement like that. You can put in dislcaimer that certain USB builds may not boot on all hardware configurations.  \n\nLink to me how I can make one of these memtest (or whatever) drives so I can test for you if you want.   \n"
+    },
+    {
+      "id": "200544",
+      "timestamp": "2016-10-05T21:54:30+00:00",
+      "author": "steve6375",
+      "content": "You can make a normal CSM-bootable grub4dos FAT32 USB drive - e.g. E2B using a FAT32 partition.\n\nThen download and add MemTest86 [http://www.memtest86.com/](http://www.memtest86.com/ \"External link\")\n\nJust copy the whole \\\\EFI folder to the root of the USB drive.\n\nYou should then be able to boot via UEFI to Memtest86 or CSM boot to E2B/grub4dos.\n\nApparently, some systems (I think Fujitsu LifeBook was one) will not CSM boot to such a drive.\n\n"
+    }
+  ]
+}

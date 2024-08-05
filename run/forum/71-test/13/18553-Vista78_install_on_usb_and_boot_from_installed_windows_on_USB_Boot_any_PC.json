@@ -1,0 +1,22 @@
+{
+  "id": "18553",
+  "title": "Vista+7+8 install on usb and boot from installed windows on USB Boot any PC",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "172560",
+      "timestamp": "2013-05-18T15:37:08+00:00",
+      "author": "Shahzaib",
+      "content": "With Name of ALLAH (God)\n\nI\u0027m not profession Soft-Ware Engineer in computer filed.My English is Poor I.m sorry,.\n\nMy brother running computers Import/Export business,.I make may software for my Elder brother,.\n\nThere are may computers who have faults,there is no time for instillation windows driver instillation etc,.computer have common problems which occurred after instillation or driver instillation or stacking or wifi device or sound not in speakers or bios or ram etc,.I search on internet but i cnt find any topic.\n\nIt makes big loss if computers have faults,.\n\nThis is reason that I think portable windows for computer checking.,.\n\nWe need\n\n1)Windows 8 or 7or vista ISO 2) v mare (rec) or V box 3) disk copy of Ease-US companies HOME edition\n\n4)USB data traveler 16-GB or SSD 80/256 USB drive (rec)\n\n1)Install vmare create VHDD partition capacity of USB not less than 8GB\n\n2)load Windows 8 and install on vmare VHDD but first make partition of v mare VHDD before instillation.\n\n3) Enter windows key click next\n\n4) New instillation\n\n5) Warning ,.Do not delete created partition\n\n6)Make only one partition do not delete and create windows system 350 MB partition.\n\n7)Click next\n\n8) Progress goes 1 to 100\n\n9) Change the Windows ISO to Copy Disk ISO\n\n10)After booting click vmare USB enable your requited.which USB you want install windows\n\n11)System boot make sure you enable usb vmare to detected.\n\n12)Copy ISO boot select Copy Image first option\n\n13)a window open click next\n\n14)if you usb detected than copy partition option enabled\n\n15) click next\n\n16) ask for source drive its always up in the list\n\n17)select first than click next\n\n18)ask for destination drive select usb click Next\n\n19)it say warning overwrite data on drive click next\n\n20) Its begin USB 16 GB take 58 MINTs and SSD USB take 12Mint if Vmare drive 16-GB\n\n21)reboot and run pc from usb Boot it working\n\n22) USB of take 5 hour to install win8 SSD take 30 mints,.\n\nEvery computers drivers windows detected Install it.If not than driver pack solution with keyboard n mouse recorder programmed auto install it,.\n\nI add driver solution pack,hard ware checking tool,bios checking,youcom,.\n\nIt makes check each computer only in few mints,. A portable windows 8 ready for all pc,.\n\n"
+    },
+    {
+      "id": "172562",
+      "timestamp": "2013-05-18T16:42:57+00:00",
+      "author": "steve6375",
+      "content": "Windows 8 To Go can be installed easily without needing any VMs or VM-to-USB copying. Just install direct to a USB drive? See [here](http://www.rmprepusb.com/tutorials/win8togo \"External link\").\n\n"
+    }
+  ]
+}

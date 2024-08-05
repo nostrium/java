@@ -1,0 +1,28 @@
+{
+  "id": "20016",
+  "title": "My PC can\u0027s start Windows installation from USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "187064",
+      "timestamp": "2014-09-05T10:20:01+00:00",
+      "author": "Peter80",
+      "content": "I have one old desktop PC on which i want to install Windows from USB. Currently it have Windows xp installed which i installed from CD when i bought the computer, a 6 years ago. I have Windows xp and Windows 7 on installation USB\u0027s and i have used them to install windows on other PC\u0027s many times. But when i connect any of the usb\u0027s and restart my PC it doesn\u0027t start the installation, just starts normally as it there is not installation usb connected. And this is happening with the both usb\u0027s. When the computer is on and i enter any of the usb it recognizes them but when i restart it it doesn\u0027t start the installation process.  \n\nAny idea why this is happening? Or maybe the hardware is too old and doesn\u0027t support installation from usb?  \n\nThese are the PC specification from Speccy:  \n\n```\nOperating System\n            Windows XP Professional 32-bit SP2\n        CPU\n            AMD Sempron 2600+    39 °C\n            Palermo 90nm Technology\n        RAM\n            1.00GB Single-Channel DDR @ 160MHz (2.5-4-4-7)\n        Motherboard\n            K8NF6G-VSTA (CPUSocket)    34 °C\n        Graphics\n            COMPAQ 7550 (1024x768@85Hz)\n            256MB ATI RADEON X800 GTO (ATI AIB)\n            256MB ATI RADEON X800 GTO Secondary (ATI AIB)\n            CrossFire Disabled\n        Storage\n            76GB ExcelSto r Technology SCSI Disk Device (SATA)    38 °C\n            7GB USB DISK 2.0 USB Device (USB)\n        Optical Drives\n            Optiarc DVD RW AD-5200A\n            POFEF 3WLE7SPE SCSI CdRom Device\n        Audio\n            Realtek High Definition Audio\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "187066",
+      "timestamp": "2014-09-05T10:25:46+00:00",
+      "author": "steve6375",
+      "content": "Did you set up the BIOS settings - [ftp://europe.asrock.com/manual/K8NF6G-VSTA.pdf](ftp://europe.asrock.com/manual/K8NF6G-VSTA.pdf \"External link\")\n\nLegacy USB \u003d Enabled\n\nBoot order \u003d USB device\n\n?\n\n"
+    },
+    {
+      "id": "187088",
+      "timestamp": "2014-09-05T14:19:19+00:00",
+      "author": "Peter80",
+      "content": "Thanks, i changed the boot order settings, though they was a little confusing on this bios, and managed to install Windows 7 from the usb.\n\n"
+    }
+  ]
+}

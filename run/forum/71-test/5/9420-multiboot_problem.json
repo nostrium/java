@@ -1,0 +1,46 @@
+{
+  "id": "9420",
+  "title": "multiboot problem",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "81888",
+      "timestamp": "2009-10-15T18:54:39+00:00",
+      "author": "Zvjerko",
+      "content": "Hi good ppl.  \nI have big problem with friends notebook (Acer aspire One).   \nTrying to reinstal Win XP on that notebook and find this awesome site.  \nNow I download USB_multiboot_10, extract and run and then my nightmare come.  \nFirst of all I run Win 7 on my computer and When I run multiboot in menu choose option \"H\", small window appear with message: \"Permission denied. The administrator rights are required to run this tool.\"  \nIm ONLY owner of my computer and have administrator rights.Then I try to run multiboot with right click on my mouse and choose \"run as administrator\" but then appear this message: \"ERROR - File makebt\\\\TEE.BAT is missing.Press any key to continue...\"  \nWhen that option dont work I try to skip format USB stick with option \"N\" in the menu, on next menu I choose option \"1\" and select XP setup source path (in my case is CD_ROM G:).  \nAfter that I select option \"2\" and multiboot says: \"G: has NOT FAT FAT32 or NTFS Format and is NOT Valid\"  \nI must say that I try ANNY format with Windows 7 and HPUSBFW located in multiboot folder.  \nI dont know what to do now.  \nUSB stick is Maxell 2GB  \n\nBest regards and sorry for my bad english   \n"
+    },
+    {
+      "id": "81893",
+      "timestamp": "2009-10-15T19:30:24+00:00",
+      "author": "was_jaclaz",
+      "content": "Try reading this:  \n\u003e USB_MultiBoot.cmd is Vista Compatible, but requires User Account Control OFF.\nReplacing \"Vista\" with \"Windows 7\".  \n\nRead the whole thing:  \n[http://www.boot-land...?showtopic\u003d4900](http://www.boot-land.net/forums/index.php?showtopic\u003d4900 \"External link\")  \n\nTry using other methods:  \n[http://www.msfn.org/...s-usb-f157.html](http://www.msfn.org/board/install-windows-usb-f157.html \"External link\")  \n\n\u003cbr /\u003e\n\nUse an XP PC if you cannot turn UAC off, you cannot AFAIK use Windows 7 without turning it off.  \n\njaclaz   \n"
+    },
+    {
+      "id": "81975",
+      "timestamp": "2009-10-16T21:27:08+00:00",
+      "author": "Zvjerko",
+      "content": "TYVM I solve this problem on other PC with Win XP, but end of my agony is not over ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png) .  \nFirst when I boot Aspire One from USB in first time says that cant find any hard drive, so I go to BIOS and change SATA mode from AHCI to IDE and on one moment looks fine. Aspire One boot from USB, instal win XP, reboot, change boot priority in BIOS from USB to Hitachi HDD and then message says:  \nWindows could not start because of a computer disk hardware configuraton problem. Could not read from the selected boot disk. Check boot path and disk hardware. Please check the Windows documentation about hardware disk configuration and your hardware reference manuals for additional information.  \n\nI try to change HDD mode back from IDE to AHCI but then dont recognize HDD.  \nSometime message says:  \nWindows could not start because the following file is missing or corrupt: \\\u003cWindows root\\\u003e\\\\system 32\\\\hal.ini. Please reinstall a copy of the above file.  \n\nI must say that I use PE Builder and WinSetupFromUSB software but both fail.  \nNow Im desperate since 2 days trying install XP on Aspire on notebook.   \n"
+    },
+    {
+      "id": "81990",
+      "timestamp": "2009-10-17T01:37:51+00:00",
+      "author": "ilko",
+      "content": "You have 2 (3) stages of XP setup:  \n\n1) Text mode  \n2) GUI mode  \n3) First start of the freshly installed Windows  \n\nWith USB_multiboot you start to enter 1) 2) and 3) every time from USB. Unplug USB stick and start from internal disk after first logon in Windows and after desktop is completely loaded.  \nWith WinSetupFromUSB later versions you start for 1) and 2) from USB.  \n\nWas that the mistake you made?   \n"
+    },
+    {
+      "id": "81994",
+      "timestamp": "2009-10-17T07:14:31+00:00",
+      "author": "wimb",
+      "content": "@Zvjerko  \n\nHave a look here in post #4 and #6  \n[http://www.msfn.org/...ve-t138651.html](http://www.msfn.org/board/computer-wont-boot-without-using-flashdrive-t138651.html \"External link\")  \n\n\u003e After booting XP with USB-stick connected, have a look in XP Disk Management.  \n\u003e Most likely the partition on which you installed XP has not been set Active.  \n\u003e\n\u003e R-mouse on My Computer \\\u003e Computer Management \\\u003e Disk Management   \n\u003e R-mouse on Partition with XP \\\u003e Set Active  \n\u003e\n\u003e Have a look also at boot.ini on your C: drive of your Harddisk.  \n\u003e Check if its boot entry reflects your current partitioning.  \n\u003e Use rdisk(0)partition(1) for XP installed on first partition  \n\u003e Use rdisk(0)partition(2) for XP installed on second partition\n\n"
+    },
+    {
+      "id": "82003",
+      "timestamp": "2009-10-17T10:57:56+00:00",
+      "author": "Zvjerko",
+      "content": "Thank u so much good ppl for helping me.  \nI finaly reinstall Win XP on Acer Aspir One but u never imagine how ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png) .  \nI download from internet small program called LaunchManager_Dritek_v2.0.07_XPx86 ant that solve all my problems.  \nAgain TYVM and good luck to all ppl   \n"
+    }
+  ]
+}

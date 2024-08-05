@@ -1,0 +1,16 @@
+{
+  "id": "15915",
+  "title": "GrubAuto.zip",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "143096",
+      "timestamp": "2011-11-29T15:55:43+00:00",
+      "author": "steve6375",
+      "content": "![Posted Image](http://reboot.pro/index.php?app\u003ddownloads\u0026module\u003ddisplay\u0026section\u003dscreenshot\u0026id\u003d86)\n**File Name** : GrubAuto.zip  \n**File Submitter** : [steve6375](http://reboot.pro/user/17818-steve6375/ \"\")  \n**File Submitted** : 29 Nov 2011  \n**File Updated** : *27 Jan 2012*   \n**File Category** : [Boot tools](http://reboot.pro/files/category/7-boot-tools/ \"\")  \n\nNOTE: This utility has been made obsolete by new 2012 versions of grub4dos which have the \u0027iftitle\u0027 command implemented - and so it is now not needed!  \n\nUtility to convert a grub4dos menu.lst file into an auto-configuring menu. If the payload file does not exist then the menu entry won\u0027t be listed by grub4dos. This means you can make your grub4dos menu as large as you like and only add those ISO/ZIP/GZ/IMG etc files to your USB drive that you need and grub4dos will only list the correct menu items and not all the other menu entries.  \nIf using XP you may need to install an OCX file - see www.rmprepusb.com Tutorial 57 for the links and details  \n\n[Click here to download this file](http://reboot.pro/files/file/86-grubautozip/ \"\")   \n"
+    }
+  ]
+}

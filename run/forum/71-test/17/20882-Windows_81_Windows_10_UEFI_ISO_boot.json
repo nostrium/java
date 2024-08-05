@@ -1,0 +1,352 @@
+{
+  "id": "20882",
+  "title": "Windows 8.1 + Windows 10 UEFI ISO boot",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "196792",
+      "timestamp": "2015-12-18T18:22:31+00:00",
+      "author": "guimenez",
+      "content": "Hi all,\n\ndoes anyone know how can i make a UEFI multiboot USB installer with Windows 8.1 and Windows 10 ISOs?\n\nThank you.\n\n"
+    },
+    {
+      "id": "196794",
+      "timestamp": "2015-12-19T11:17:19+00:00",
+      "author": "steve6375",
+      "content": "Have you tried Easy2Boot?\n\n"
+    },
+    {
+      "id": "196795",
+      "timestamp": "2015-12-19T12:58:13+00:00",
+      "author": "paraglider",
+      "content": "That does not help with uefi multiboot.\n\n"
+    },
+    {
+      "id": "196796",
+      "timestamp": "2015-12-19T13:03:35+00:00",
+      "author": "paraglider",
+      "content": "That uses g4dos so requires CSM mode to be enabled. if you want to go pure uefi then your options are limited. If you can disable secureboot then things improve. I use subfolders and extract the iso into those. Then use windows bootmgr to select which wim to boot.\n\n"
+    },
+    {
+      "id": "196797",
+      "timestamp": "2015-12-19T13:12:28+00:00",
+      "author": "paraglider",
+      "content": "I use the techniques described in Steve\u0027s old tutorials. I find that windows 10 bootmgr is capable of booting win 7 / 8.1 / 10 install boot.wim without problem. Problem comes in launching the correct setup.exe. I find the usb drive then subst the subfolder that contains the root of the windows install folder that I am installing. Then launch setup.exe from the substituted drive. I avoid adding any command line parameters to setup.exe with this approach.\n\n"
+    },
+    {
+      "id": "196800",
+      "timestamp": "2015-12-19T16:48:06+00:00",
+      "author": "Agent47",
+      "content": "\u003e I use the techniques described in Steve\u0027s old tutorials. I find that windows 10 bootmgr is capable of booting win 7 / 8.1 / 10 install boot.wim without problem. Problem comes in launching the correct setup.exe. I find the usb drive then subst the subfolder that contains the root of the windows install folder that I am installing. Then launch setup.exe from the substituted drive. I avoid adding any command line parameters to setup.exe with this approach.  \n\nCan you please explain in detail ?.\n\n"
+    },
+    {
+      "id": "196816",
+      "timestamp": "2015-12-21T10:48:25+00:00",
+      "author": "paraglider",
+      "content": "Format your usb drive as fat32 assuming all your wim files don\u0027t exceed the max fat 32 file size limitations ( 4GB). Many options are described on these forums for formatting the usb drive. Use gpt instead of mbr format for best uefi compatibility.\n\nIf your wim files are \\\u003e 4GB then use rufus to format the USB drive as gpt with a large ntfs partition and a small fat partition with a ntfs uefi driver. You will need to disable secure boot if you go this route.\n\nIf you are lucky your uefi firmware will support ntfs booting ( my asus rampage 5 extreme does ) - and you will not need the small fat partition.\n\nuefi on PC is still an imature technology. Its hard to get a usb stick that boots on every uefi pc.\n\nIf you want to dual boot bios / uefi then you will need to format as mbr but the usb drive may not boot in all uefi computers then. For best compatibility you will need 2 usb sticks - one mbr and one gpt.\n\nCreate folders like:\n\ninstall\\\\win7\n\ninstall\\\\win81\n\nextract the whole of the win7 install iso into the win7 folder etc.\n\nUsing bootice create new entries in the uefi bcd for each of the windows installs. Set the wim path to \\[drive\\]:\\\\install\\\\win7\\\\source\\\\boot.wim / \\[drive\\]\\\\install\\\\win81\\\\source\\\\boot.wim etc. Do that for each of the installs.\n\nWhen you boot on the first windows install screen press shift + F10 to get a cmd prompt. Use diskpart to find the usb drive letter. Then type subst v:\\\\ \\[usbdrive\\]:\\\\install\\\\\\[currentinstallfolder\\] and then exit the command prompt. Continue with the windows install.\n\nThis can all be automated using some of Steve\u0027s techniques. You can automatically discover the \\[currentinstallfolder\\] by reading the registry at HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\CurrentControlSet\\\\Control key,FirmwareBootDevice and SystemStartOptions values. Using those you can determine if you booted from cdrom / iso mounted in ramdisk / root of usb folder / sub folder of USB etc. I have a program that I inject into the boot.wim to do all that automatically. You can also do the same using clever batch files.\n\n"
+    },
+    {
+      "id": "196819",
+      "timestamp": "2015-12-21T15:21:16+00:00",
+      "author": "Agent47",
+      "content": "Hi\n\nThanks for the explanation paraglider. I never played with \"subst\" before. Thanks again for introducing this clever technique to me :smile: .\n\n"
+    },
+    {
+      "id": "196822",
+      "timestamp": "2015-12-21T17:04:12+00:00",
+      "author": "devdevadev",
+      "content": "\u003e If you want to dual boot bios / uefi then you will need to format as mbr but the usb drive may not boot in all uefi computers then. For best compatibility you will need 2 usb sticks - one mbr and **one gpt**.\n\nwhy gpt ?\n\nDo you have any case where it is must to format usb as gpt in order to pure UEFI Boot ?\n\nPlease share your experiences which suggest to also use \u0027GPT\u0027 usb drive.......\n\nThanks \\\u0026 Regards....\n\n"
+    },
+    {
+      "id": "196835",
+      "timestamp": "2015-12-22T10:52:45+00:00",
+      "author": "paraglider",
+      "content": "All UEFI firmware will support gpt. Most will support mbr. All will support fat32, some will support ntfs. Some UEFI firmware will force CSM mode if disk is partitioned as mbr.\n\n"
+    },
+    {
+      "id": "196836",
+      "timestamp": "2015-12-22T11:12:53+00:00",
+      "author": "paraglider",
+      "content": "My loadiso tool ( also runs firadisk\\\\loadiso.cmd if booted from an iso) can be found here along with a few other command line tools that I use ( depend on wimgapi.dll not included ). Run:\n\nloadiso 0 0 \\\u003cfoldercontainingwindowsinstall\\\u003e\n\nfrom a MS adk deployment tools command prompt ( will automatically have wimgapi.dll in the path if you do that )\n\nNote loadiso.cmd assumes that you will mount wim to w:\\\\mount. You will need to adjust for your environment.\n\n[http://wb.paraglider...es/wimtools.zip](http://wb.paraglidernc.com/files/wimtools.zip \"External link\")\n\n"
+    },
+    {
+      "id": "196837",
+      "timestamp": "2015-12-22T12:55:28+00:00",
+      "author": "Monsieur Z",
+      "content": "So if I understand you want to have a USB key, bootable in UEFI mode, with Windows 8.1 and 10?\n\nI did that with WinSetupFromUSB, and it works perfectly. But I\u0027m not sure if it adds automatically the UEFI bootmgr, if not just take the one on your hard drive and use Visual BCD Editor to add the entries.\n\n"
+    },
+    {
+      "id": "196838",
+      "timestamp": "2015-12-22T13:25:21+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e All UEFI firmware will support gpt. Most will support mbr. All will support fat32, some will support ntfs. Some UEFI firmware will force CSM mode if disk is partitioned as mbr.\n\nSumming up all these, it seems like the only foolproof way to have a \"universal\" USB stick would be to \\*somehow\\* mix the Rufus UEFI:NTFS driver with \\*my\\* (or similar) approach to boot through BIOS off GPT partitioned device, adding additionally Clover (or ReFind or similar). ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nThis way the device will be \"fully\" GPT (but still remain bootable on BIOS) allowed to host bigger than 4 Gb images, and if by any chance forced into CSM mode, returned to a \"volatile\" UEFI environment through Clover. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n\u003e uefi on PC is still an imature technology. Its hard to get a usb stick that boots on every uefi pc.\n\u003e\nYep, which after some 10 years of development and at least 5 of \"wide usage\" is something preoccupying ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)\n\nAs I like to say the U in UEFI stands for \"UNLIKE unified\".\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "196839",
+      "timestamp": "2015-12-22T14:19:04+00:00",
+      "author": "Agent47",
+      "content": "\u003e I did that with WinSetupFromUSB, and it works perfectly. But I\u0027m not sure if it adds automatically the UEFI bootmgr, if not just take the one on your hard drive and use Visual BCD Editor to add the entries.\n\nI can confirm that \"WinsetupfromUSB\" will add UEFI boot entries if the ISO file is either Windows 7 x64/Windows 8.x x64 or Windows 10 x64 (probably server family too). Make sure to select Fat32 as the file system since not all firmware supports NTFS. If the ISO file is larger than 4 GB, \"WinsetupfromUSB\" will split the ISO in to pieces.\n\n"
+    },
+    {
+      "id": "196844",
+      "timestamp": "2015-12-23T09:42:05+00:00",
+      "author": "paraglider",
+      "content": "Yes if you are lucky a mbr formatted drive will boot in UEFI mode. There is no way to know without trying it.\n\n"
+    },
+    {
+      "id": "196845",
+      "timestamp": "2015-12-23T09:44:24+00:00",
+      "author": "paraglider",
+      "content": "Its also not easy to know if you are in uefi mode.\n\n"
+    },
+    {
+      "id": "196848",
+      "timestamp": "2015-12-23T12:46:35+00:00",
+      "author": "Monsieur Z",
+      "content": "\u003e Its also not easy to know if you are in uefi mode.\n\nYou just have to go into the BIOS and see if \"Legacy Mode\" is checked or not...\n\n"
+    },
+    {
+      "id": "196849",
+      "timestamp": "2015-12-23T13:08:44+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e You just have to go into the BIOS and see if \"Legacy Mode\" is checked or not...\n\n\u003e All UEFI firmware will support gpt. Most will support mbr. All will support fat32, some will support ntfs. ++**Some** UEFI firmware will force CSM mode if disk is partitioned as mbr.++\n\n![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "196854",
+      "timestamp": "2015-12-23T19:13:09+00:00",
+      "author": "shinomen",
+      "content": "I\u0027ve been working on this same thing recently. I ran into the issue of how to get both x64 and x86 boot.wim files to allow proper access to the install.wim to install windows. I needed to have two sources folders, one for x86 and one for x64, which I could direct the windows installation to use depending on which architecture boot.wim I was using.\n\nThe answer was to use the Windows 10 Media Creation Tool to create an ISO that has both the x86 and x64 versions on one ISO disc. It was super easy. After I had the ISO, I simply copied the entire contents to a USB that I already had prepared with Rufus using the uefi:ntfs format method with the \"MBR parition scheme for BIOS or UEFI\" partition scheme option.\n\nI created an install.wim with 8 versions of 32bit windows and placed it in the x86\\\\sources\\\\ folder and created another install.wim for the 64bit windows versions and placed that in the x64\\\\sources\\\\ folder. I was then able to boot the USB on native UEFI 32bit PC\u0027s (like the intel compute stick), native UEFI 64bit PC\u0027s, and 32 and 64 bit legacy/BIOS systems and it worked perfectly.\n\nEdit: Here\u0027s the link to the tool [http://go.microsoft..../?LinkId\u003d691209](http://go.microsoft.com/fwlink/?LinkId\u003d691209 \"External link\")\n\n**Edited by shinomen, 23 December 2015 - 07:19 PM.**\n"
+    },
+    {
+      "id": "196859",
+      "timestamp": "2015-12-23T20:09:45+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I created an install.wim with 8 versions of 32bit windows and placed it in the x86\\\\sources\\\\ folder and created another install.wim for the 64bit windows versions and placed that in the x64\\\\sources\\\\ folder. I was then able to boot the USB on native UEFI 32bit PC\u0027s (like the intel compute stick), native UEFI 64bit PC\u0027s, and 32 and 64 bit legacy/BIOS systems and it worked perfectly.  \n\u003e\n\u003e Edit: Here\u0027s the link to the tool [http://go.microsoft..../?LinkId\u003d691209](http://go.microsoft.com/fwlink/?LinkId\u003d691209 \"External link\")\nGood. :smile:  \nIN order to make your steps reproducible, can you expand on the following?  \n1) How EXACTLY did you create the two install.wim\u0027s?  \n2) Which EXACT versions of Windows did you add to each?  \n\nOT, but not much, have you ever considered/tested using fujanabc\u0027s way (now coded, evolved, in WinNTSetup)?  \n[http://reboot.pro/to...xternal-drive/](http://reboot.pro/topic/10126-nt-6x-fast-installer-install-win7-directly-to-usb-external-drive/%C2%A0 \"\")  \n[http://www.msfn.org/...nntsetup-v3855/](http://www.msfn.org/board/topic/149612-winntsetup-v3855/ \"External link\")  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    },
+    {
+      "id": "196860",
+      "timestamp": "2015-12-23T21:32:19+00:00",
+      "author": "shinomen",
+      "content": "Here\u0027s an article on merging wim files but I\u0027ll also type what I did below [http://blogs.technet...s-into-one.aspx](http://blogs.technet.com/b/cameronk/archive/2010/04/29/consolidating-your-task-sequence-part-1-how-to-combine-wim-images-into-one.aspx \"External link\")\n\nFor the install.wim files, I started with an install.wim that I copied from an MSDN downloaded copy of Window 7 Professional x86. I simply mounted the ISO in windows 10 then copied the install.wim from the sources directory to my local hard drive.\n\nI downloaded an MSDN copy of Windows 7 Enterprise x86 and mounted the ISO, then copied the install.wim to my computer naming it Win7Entx86.wim so that I could decipher what version windows it was.\n\nNext I mounted the Win7Entx86.wim file to a directory on my computer, in this case c:\\\\mounted. This can be done with DISM (which I think comes in Windows already) but I used a tool I found called VDISM because it\u0027s graphic and much easier.(You can get VDISM here: [http://sourceforge.n...rojects/vdism/)](http://sourceforge.net/projects/vdism/) \"External link\") (Watch Video on VDISM here: )\n\nOnce the Win7Entx86.wim file was mounted, I used the same VDISM tool to append the Win7Entx86.wim to the install.wim file that currently has the Windows 7 Professional x86 installation. Once this was finished, I had an install.wim that contained both Windows 7 Professional x86 and Windows 7 Enterprise x86. I did the same process for the remaining x86 installs that I wanted to include in the single install.wim until I had them all in the one file. They included (all x86) Windows 7 Pro, 7 Enterprise, Windows 8.1 with Update 1 Home, 8.1 with Update 1 Pro, 8.1 with Update 1 Enterprise, Windows 10 Home, 10 Pro, and 10 Enterprise. (I guess that 7 versions :smile: )\n\nThe Enterprise version were obtained from MSDN but the Home and Pro was obtained by using the Media Creation Tools for Windows 8 and Windows 10\n\nTip: I also saw that some of my windows versions would not show up when I went to install even though they were listed in the install.wim. There is a file (sometimes) in the sources folder called ei.cfg and if it\u0027s not there then it should be created and have the following\n\n\\[EditionID\\]  \n\\[Channel\\]  \nvolume  \n\\[VL\\]  \n1  \nWhen I did this, all the versions showed up and it also did not ask for Product Keys before installing windows. Here\u0027s a link about the ei.cfg file: [https://technet.micr...y/hh824952.aspx](https://technet.microsoft.com/en-us/library/hh824952.aspx \"External link\")  \n\nOnce I had my final install.wim with all my x86 versions of windows, I simply copied it to the usb:\\\\x86\\\\sources\\\\ folder replacing any install.wim that was in there. Actually in my case, there was an install.esd instead of install.wim which was there because I used the Windows Media Creation Tool to obtain windows. Further research on install.esd shows that it\u0027s another image file format that Microsoft uses but it compresses better than .wim so because I was downloading Windows from the internet, I assume Microsoft opted to use the .esd file because it would take less time to download. However, this install.esd file acts very similar to install.wim and windows can be extracted from it into a new wim using that same VDISM tool.\n\nThere was very little information on the .esd file but I did find this link: [https://technet.micr...y/dn293447.aspx](https://technet.microsoft.com/en-us/library/dn293447.aspx \"External link\")\n\nI did the same exact thing for the x64 Windows Operating Systems that I wanted to install from this USB drive and put it in the usb:\\\\x64\\\\sources\\\\ folder on the USB drive.\n\nJust to re-state as well, because of the size of these install.wim files, if I had not used the Rufus UEFI:NTFS format method, these files would not have been able to fit on the USB drive because of the 4GB file limitation of FAT32.\n\nLet me know if you have any other questions.\n\nEdit: FYI for anyone interested, I was able to fit 9 Windows x64 OS\u0027s into a single Wim that came out to 12.5GB whereas the individual install.wim files for all 9 of the OS\u0027s was about 32GB!\n\n**Edited by shinomen, 23 December 2015 - 09:35 PM.**\n"
+    },
+    {
+      "id": "196862",
+      "timestamp": "2015-12-24T04:23:22+00:00",
+      "author": "Agent47",
+      "content": "\u003e Yes if you are lucky a mbr formatted drive will boot in UEFI mode. There is no way to know without trying it.  \n\nI work as a PC tech and i have clean installed Windows 8.1 x64 /Windows 10 x64 to PC/laptops from all major manufacturer\u0027s and custom built systems. I can safely say that all UEFI firmware will support and boot from MBR formatted USB flash drives (FAT32). I can\u0027t say the same about USB hard drives as i never played with them. Microsoft\u0027s own tool partitions a USB stick as MBR so i guess GPT is not mandatory as long as the USB stick is a removable type one ( i don\u0027t have a USB fixed type flash stick to test ).\n\nHowever there are some buggy firmware which will only boot to UEFI mode if there is a valid UEFI bootloader is present on the USB stick. One particular example is newer Acer laptops. They will only boot to UEFI mode if \"efi\" folder is present on the root of USB stick (with EFI bootloader inside it) - even though boot mode is set to legacy only in BIOS setup. Only way to install either Windows 8.1/Windows 10 in legacy mode on that system is to delete or rename \"efi\" folder on the root of USB stick.\n\n"
+    },
+    {
+      "id": "196863",
+      "timestamp": "2015-12-24T09:09:17+00:00",
+      "author": "steve6375",
+      "content": "\u003e However there are some buggy firmware which will only boot to UEFI mode if there is a valid UEFI bootloader is present on the USB stick. One particular example is newer Acer laptops. They will only boot to UEFI mode if \"efi\" folder is present on the root of USB stick (with EFI bootloader inside it) - even though boot mode is set to legacy only in BIOS setup. Only way to install either Windows 8.1/Windows 10 in legacy mode on that system is to delete or rename \"efi\" folder on the root of USB stick.\n\nCould you list the models that won\u0027t CSM boot if a EFI boot file is present please?\n\nP.S. You can UEFI-boot and CSM-boot on these \u0027bad\u0027 systems if using Easy2Boot (sort of!).\n\n"
+    },
+    {
+      "id": "196864",
+      "timestamp": "2015-12-24T10:01:15+00:00",
+      "author": "paraglider",
+      "content": "My rufus formatted USB stick ( removable type ) does not boot on my MS Surface Pro.\n\n"
+    },
+    {
+      "id": "196865",
+      "timestamp": "2015-12-24T10:09:40+00:00",
+      "author": "paraglider",
+      "content": "It also depends on what you are trying to achieve i.e. if you are trying to boot in UEFI mode and install windows in UEFI mode or you don\u0027t care what mode is used. In some cases it matters - I wanted to use an intel 750 series nvme ssd as my boot drive. That is only supported in UEFI mode.\n\n"
+    },
+    {
+      "id": "196792",
+      "timestamp": "2015-12-18T18:22:31+00:00",
+      "author": "guimenez",
+      "content": "Hi all,\n\ndoes anyone know how can i make a UEFI multiboot USB installer with Windows 8.1 and Windows 10 ISOs?\n\nThank you.\n\n"
+    },
+    {
+      "id": "196794",
+      "timestamp": "2015-12-19T11:17:19+00:00",
+      "author": "steve6375",
+      "content": "Have you tried Easy2Boot?\n\n"
+    },
+    {
+      "id": "196795",
+      "timestamp": "2015-12-19T12:58:13+00:00",
+      "author": "paraglider",
+      "content": "That does not help with uefi multiboot.\n\n"
+    },
+    {
+      "id": "196796",
+      "timestamp": "2015-12-19T13:03:35+00:00",
+      "author": "paraglider",
+      "content": "That uses g4dos so requires CSM mode to be enabled. if you want to go pure uefi then your options are limited. If you can disable secureboot then things improve. I use subfolders and extract the iso into those. Then use windows bootmgr to select which wim to boot.\n\n"
+    },
+    {
+      "id": "196797",
+      "timestamp": "2015-12-19T13:12:28+00:00",
+      "author": "paraglider",
+      "content": "I use the techniques described in Steve\u0027s old tutorials. I find that windows 10 bootmgr is capable of booting win 7 / 8.1 / 10 install boot.wim without problem. Problem comes in launching the correct setup.exe. I find the usb drive then subst the subfolder that contains the root of the windows install folder that I am installing. Then launch setup.exe from the substituted drive. I avoid adding any command line parameters to setup.exe with this approach.\n\n"
+    },
+    {
+      "id": "196800",
+      "timestamp": "2015-12-19T16:48:06+00:00",
+      "author": "Agent47",
+      "content": "\u003e I use the techniques described in Steve\u0027s old tutorials. I find that windows 10 bootmgr is capable of booting win 7 / 8.1 / 10 install boot.wim without problem. Problem comes in launching the correct setup.exe. I find the usb drive then subst the subfolder that contains the root of the windows install folder that I am installing. Then launch setup.exe from the substituted drive. I avoid adding any command line parameters to setup.exe with this approach.  \n\nCan you please explain in detail ?.\n\n"
+    },
+    {
+      "id": "196816",
+      "timestamp": "2015-12-21T10:48:25+00:00",
+      "author": "paraglider",
+      "content": "Format your usb drive as fat32 assuming all your wim files don\u0027t exceed the max fat 32 file size limitations ( 4GB). Many options are described on these forums for formatting the usb drive. Use gpt instead of mbr format for best uefi compatibility.\n\nIf your wim files are \\\u003e 4GB then use rufus to format the USB drive as gpt with a large ntfs partition and a small fat partition with a ntfs uefi driver. You will need to disable secure boot if you go this route.\n\nIf you are lucky your uefi firmware will support ntfs booting ( my asus rampage 5 extreme does ) - and you will not need the small fat partition.\n\nuefi on PC is still an imature technology. Its hard to get a usb stick that boots on every uefi pc.\n\nIf you want to dual boot bios / uefi then you will need to format as mbr but the usb drive may not boot in all uefi computers then. For best compatibility you will need 2 usb sticks - one mbr and one gpt.\n\nCreate folders like:\n\ninstall\\\\win7\n\ninstall\\\\win81\n\nextract the whole of the win7 install iso into the win7 folder etc.\n\nUsing bootice create new entries in the uefi bcd for each of the windows installs. Set the wim path to \\[drive\\]:\\\\install\\\\win7\\\\source\\\\boot.wim / \\[drive\\]\\\\install\\\\win81\\\\source\\\\boot.wim etc. Do that for each of the installs.\n\nWhen you boot on the first windows install screen press shift + F10 to get a cmd prompt. Use diskpart to find the usb drive letter. Then type subst v:\\\\ \\[usbdrive\\]:\\\\install\\\\\\[currentinstallfolder\\] and then exit the command prompt. Continue with the windows install.\n\nThis can all be automated using some of Steve\u0027s techniques. You can automatically discover the \\[currentinstallfolder\\] by reading the registry at HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\CurrentControlSet\\\\Control key,FirmwareBootDevice and SystemStartOptions values. Using those you can determine if you booted from cdrom / iso mounted in ramdisk / root of usb folder / sub folder of USB etc. I have a program that I inject into the boot.wim to do all that automatically. You can also do the same using clever batch files.\n\n"
+    },
+    {
+      "id": "196819",
+      "timestamp": "2015-12-21T15:21:16+00:00",
+      "author": "Agent47",
+      "content": "Hi\n\nThanks for the explanation paraglider. I never played with \"subst\" before. Thanks again for introducing this clever technique to me :smile: .\n\n"
+    },
+    {
+      "id": "196822",
+      "timestamp": "2015-12-21T17:04:12+00:00",
+      "author": "devdevadev",
+      "content": "\u003e If you want to dual boot bios / uefi then you will need to format as mbr but the usb drive may not boot in all uefi computers then. For best compatibility you will need 2 usb sticks - one mbr and **one gpt**.\n\nwhy gpt ?\n\nDo you have any case where it is must to format usb as gpt in order to pure UEFI Boot ?\n\nPlease share your experiences which suggest to also use \u0027GPT\u0027 usb drive.......\n\nThanks \\\u0026 Regards....\n\n"
+    },
+    {
+      "id": "196835",
+      "timestamp": "2015-12-22T10:52:45+00:00",
+      "author": "paraglider",
+      "content": "All UEFI firmware will support gpt. Most will support mbr. All will support fat32, some will support ntfs. Some UEFI firmware will force CSM mode if disk is partitioned as mbr.\n\n"
+    },
+    {
+      "id": "196836",
+      "timestamp": "2015-12-22T11:12:53+00:00",
+      "author": "paraglider",
+      "content": "My loadiso tool ( also runs firadisk\\\\loadiso.cmd if booted from an iso) can be found here along with a few other command line tools that I use ( depend on wimgapi.dll not included ). Run:\n\nloadiso 0 0 \\\u003cfoldercontainingwindowsinstall\\\u003e\n\nfrom a MS adk deployment tools command prompt ( will automatically have wimgapi.dll in the path if you do that )\n\nNote loadiso.cmd assumes that you will mount wim to w:\\\\mount. You will need to adjust for your environment.\n\n[http://wb.paraglider...es/wimtools.zip](http://wb.paraglidernc.com/files/wimtools.zip \"External link\")\n\n"
+    },
+    {
+      "id": "196837",
+      "timestamp": "2015-12-22T12:55:28+00:00",
+      "author": "Monsieur Z",
+      "content": "So if I understand you want to have a USB key, bootable in UEFI mode, with Windows 8.1 and 10?\n\nI did that with WinSetupFromUSB, and it works perfectly. But I\u0027m not sure if it adds automatically the UEFI bootmgr, if not just take the one on your hard drive and use Visual BCD Editor to add the entries.\n\n"
+    },
+    {
+      "id": "196838",
+      "timestamp": "2015-12-22T13:25:21+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e All UEFI firmware will support gpt. Most will support mbr. All will support fat32, some will support ntfs. Some UEFI firmware will force CSM mode if disk is partitioned as mbr.\n\nSumming up all these, it seems like the only foolproof way to have a \"universal\" USB stick would be to \\*somehow\\* mix the Rufus UEFI:NTFS driver with \\*my\\* (or similar) approach to boot through BIOS off GPT partitioned device, adding additionally Clover (or ReFind or similar). ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nThis way the device will be \"fully\" GPT (but still remain bootable on BIOS) allowed to host bigger than 4 Gb images, and if by any chance forced into CSM mode, returned to a \"volatile\" UEFI environment through Clover. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n\u003e uefi on PC is still an imature technology. Its hard to get a usb stick that boots on every uefi pc.\n\u003e\nYep, which after some 10 years of development and at least 5 of \"wide usage\" is something preoccupying ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)\n\nAs I like to say the U in UEFI stands for \"UNLIKE unified\".\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "196839",
+      "timestamp": "2015-12-22T14:19:04+00:00",
+      "author": "Agent47",
+      "content": "\u003e I did that with WinSetupFromUSB, and it works perfectly. But I\u0027m not sure if it adds automatically the UEFI bootmgr, if not just take the one on your hard drive and use Visual BCD Editor to add the entries.\n\nI can confirm that \"WinsetupfromUSB\" will add UEFI boot entries if the ISO file is either Windows 7 x64/Windows 8.x x64 or Windows 10 x64 (probably server family too). Make sure to select Fat32 as the file system since not all firmware supports NTFS. If the ISO file is larger than 4 GB, \"WinsetupfromUSB\" will split the ISO in to pieces.\n\n"
+    },
+    {
+      "id": "196844",
+      "timestamp": "2015-12-23T09:42:05+00:00",
+      "author": "paraglider",
+      "content": "Yes if you are lucky a mbr formatted drive will boot in UEFI mode. There is no way to know without trying it.\n\n"
+    },
+    {
+      "id": "196845",
+      "timestamp": "2015-12-23T09:44:24+00:00",
+      "author": "paraglider",
+      "content": "Its also not easy to know if you are in uefi mode.\n\n"
+    },
+    {
+      "id": "196848",
+      "timestamp": "2015-12-23T12:46:35+00:00",
+      "author": "Monsieur Z",
+      "content": "\u003e Its also not easy to know if you are in uefi mode.\n\nYou just have to go into the BIOS and see if \"Legacy Mode\" is checked or not...\n\n"
+    },
+    {
+      "id": "196849",
+      "timestamp": "2015-12-23T13:08:44+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e You just have to go into the BIOS and see if \"Legacy Mode\" is checked or not...\n\n\u003e All UEFI firmware will support gpt. Most will support mbr. All will support fat32, some will support ntfs. ++**Some** UEFI firmware will force CSM mode if disk is partitioned as mbr.++\n\n![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "196854",
+      "timestamp": "2015-12-23T19:13:09+00:00",
+      "author": "shinomen",
+      "content": "I\u0027ve been working on this same thing recently. I ran into the issue of how to get both x64 and x86 boot.wim files to allow proper access to the install.wim to install windows. I needed to have two sources folders, one for x86 and one for x64, which I could direct the windows installation to use depending on which architecture boot.wim I was using.\n\nThe answer was to use the Windows 10 Media Creation Tool to create an ISO that has both the x86 and x64 versions on one ISO disc. It was super easy. After I had the ISO, I simply copied the entire contents to a USB that I already had prepared with Rufus using the uefi:ntfs format method with the \"MBR parition scheme for BIOS or UEFI\" partition scheme option.\n\nI created an install.wim with 8 versions of 32bit windows and placed it in the x86\\\\sources\\\\ folder and created another install.wim for the 64bit windows versions and placed that in the x64\\\\sources\\\\ folder. I was then able to boot the USB on native UEFI 32bit PC\u0027s (like the intel compute stick), native UEFI 64bit PC\u0027s, and 32 and 64 bit legacy/BIOS systems and it worked perfectly.\n\nEdit: Here\u0027s the link to the tool [http://go.microsoft..../?LinkId\u003d691209](http://go.microsoft.com/fwlink/?LinkId\u003d691209 \"External link\")\n\n**Edited by shinomen, 23 December 2015 - 07:19 PM.**\n"
+    },
+    {
+      "id": "196859",
+      "timestamp": "2015-12-23T20:09:45+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I created an install.wim with 8 versions of 32bit windows and placed it in the x86\\\\sources\\\\ folder and created another install.wim for the 64bit windows versions and placed that in the x64\\\\sources\\\\ folder. I was then able to boot the USB on native UEFI 32bit PC\u0027s (like the intel compute stick), native UEFI 64bit PC\u0027s, and 32 and 64 bit legacy/BIOS systems and it worked perfectly.  \n\u003e\n\u003e Edit: Here\u0027s the link to the tool [http://go.microsoft..../?LinkId\u003d691209](http://go.microsoft.com/fwlink/?LinkId\u003d691209 \"External link\")\nGood. :smile:  \nIN order to make your steps reproducible, can you expand on the following?  \n1) How EXACTLY did you create the two install.wim\u0027s?  \n2) Which EXACT versions of Windows did you add to each?  \n\nOT, but not much, have you ever considered/tested using fujanabc\u0027s way (now coded, evolved, in WinNTSetup)?  \n[http://reboot.pro/to...xternal-drive/](http://reboot.pro/topic/10126-nt-6x-fast-installer-install-win7-directly-to-usb-external-drive/%C2%A0 \"\")  \n[http://www.msfn.org/...nntsetup-v3855/](http://www.msfn.org/board/topic/149612-winntsetup-v3855/ \"External link\")  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    },
+    {
+      "id": "196860",
+      "timestamp": "2015-12-23T21:32:19+00:00",
+      "author": "shinomen",
+      "content": "Here\u0027s an article on merging wim files but I\u0027ll also type what I did below [http://blogs.technet...s-into-one.aspx](http://blogs.technet.com/b/cameronk/archive/2010/04/29/consolidating-your-task-sequence-part-1-how-to-combine-wim-images-into-one.aspx \"External link\")\n\nFor the install.wim files, I started with an install.wim that I copied from an MSDN downloaded copy of Window 7 Professional x86. I simply mounted the ISO in windows 10 then copied the install.wim from the sources directory to my local hard drive.\n\nI downloaded an MSDN copy of Windows 7 Enterprise x86 and mounted the ISO, then copied the install.wim to my computer naming it Win7Entx86.wim so that I could decipher what version windows it was.\n\nNext I mounted the Win7Entx86.wim file to a directory on my computer, in this case c:\\\\mounted. This can be done with DISM (which I think comes in Windows already) but I used a tool I found called VDISM because it\u0027s graphic and much easier.(You can get VDISM here: [http://sourceforge.n...rojects/vdism/)](http://sourceforge.net/projects/vdism/) \"External link\") (Watch Video on VDISM here: )\n\nOnce the Win7Entx86.wim file was mounted, I used the same VDISM tool to append the Win7Entx86.wim to the install.wim file that currently has the Windows 7 Professional x86 installation. Once this was finished, I had an install.wim that contained both Windows 7 Professional x86 and Windows 7 Enterprise x86. I did the same process for the remaining x86 installs that I wanted to include in the single install.wim until I had them all in the one file. They included (all x86) Windows 7 Pro, 7 Enterprise, Windows 8.1 with Update 1 Home, 8.1 with Update 1 Pro, 8.1 with Update 1 Enterprise, Windows 10 Home, 10 Pro, and 10 Enterprise. (I guess that 7 versions :smile: )\n\nThe Enterprise version were obtained from MSDN but the Home and Pro was obtained by using the Media Creation Tools for Windows 8 and Windows 10\n\nTip: I also saw that some of my windows versions would not show up when I went to install even though they were listed in the install.wim. There is a file (sometimes) in the sources folder called ei.cfg and if it\u0027s not there then it should be created and have the following\n\n\\[EditionID\\]  \n\\[Channel\\]  \nvolume  \n\\[VL\\]  \n1  \nWhen I did this, all the versions showed up and it also did not ask for Product Keys before installing windows. Here\u0027s a link about the ei.cfg file: [https://technet.micr...y/hh824952.aspx](https://technet.microsoft.com/en-us/library/hh824952.aspx \"External link\")  \n\nOnce I had my final install.wim with all my x86 versions of windows, I simply copied it to the usb:\\\\x86\\\\sources\\\\ folder replacing any install.wim that was in there. Actually in my case, there was an install.esd instead of install.wim which was there because I used the Windows Media Creation Tool to obtain windows. Further research on install.esd shows that it\u0027s another image file format that Microsoft uses but it compresses better than .wim so because I was downloading Windows from the internet, I assume Microsoft opted to use the .esd file because it would take less time to download. However, this install.esd file acts very similar to install.wim and windows can be extracted from it into a new wim using that same VDISM tool.\n\nThere was very little information on the .esd file but I did find this link: [https://technet.micr...y/dn293447.aspx](https://technet.microsoft.com/en-us/library/dn293447.aspx \"External link\")\n\nI did the same exact thing for the x64 Windows Operating Systems that I wanted to install from this USB drive and put it in the usb:\\\\x64\\\\sources\\\\ folder on the USB drive.\n\nJust to re-state as well, because of the size of these install.wim files, if I had not used the Rufus UEFI:NTFS format method, these files would not have been able to fit on the USB drive because of the 4GB file limitation of FAT32.\n\nLet me know if you have any other questions.\n\nEdit: FYI for anyone interested, I was able to fit 9 Windows x64 OS\u0027s into a single Wim that came out to 12.5GB whereas the individual install.wim files for all 9 of the OS\u0027s was about 32GB!\n\n**Edited by shinomen, 23 December 2015 - 09:35 PM.**\n"
+    },
+    {
+      "id": "196862",
+      "timestamp": "2015-12-24T04:23:22+00:00",
+      "author": "Agent47",
+      "content": "\u003e Yes if you are lucky a mbr formatted drive will boot in UEFI mode. There is no way to know without trying it.  \n\nI work as a PC tech and i have clean installed Windows 8.1 x64 /Windows 10 x64 to PC/laptops from all major manufacturer\u0027s and custom built systems. I can safely say that all UEFI firmware will support and boot from MBR formatted USB flash drives (FAT32). I can\u0027t say the same about USB hard drives as i never played with them. Microsoft\u0027s own tool partitions a USB stick as MBR so i guess GPT is not mandatory as long as the USB stick is a removable type one ( i don\u0027t have a USB fixed type flash stick to test ).\n\nHowever there are some buggy firmware which will only boot to UEFI mode if there is a valid UEFI bootloader is present on the USB stick. One particular example is newer Acer laptops. They will only boot to UEFI mode if \"efi\" folder is present on the root of USB stick (with EFI bootloader inside it) - even though boot mode is set to legacy only in BIOS setup. Only way to install either Windows 8.1/Windows 10 in legacy mode on that system is to delete or rename \"efi\" folder on the root of USB stick.\n\n"
+    },
+    {
+      "id": "196863",
+      "timestamp": "2015-12-24T09:09:17+00:00",
+      "author": "steve6375",
+      "content": "\u003e However there are some buggy firmware which will only boot to UEFI mode if there is a valid UEFI bootloader is present on the USB stick. One particular example is newer Acer laptops. They will only boot to UEFI mode if \"efi\" folder is present on the root of USB stick (with EFI bootloader inside it) - even though boot mode is set to legacy only in BIOS setup. Only way to install either Windows 8.1/Windows 10 in legacy mode on that system is to delete or rename \"efi\" folder on the root of USB stick.\n\nCould you list the models that won\u0027t CSM boot if a EFI boot file is present please?\n\nP.S. You can UEFI-boot and CSM-boot on these \u0027bad\u0027 systems if using Easy2Boot (sort of!).\n\n"
+    },
+    {
+      "id": "196864",
+      "timestamp": "2015-12-24T10:01:15+00:00",
+      "author": "paraglider",
+      "content": "My rufus formatted USB stick ( removable type ) does not boot on my MS Surface Pro.\n\n"
+    },
+    {
+      "id": "196865",
+      "timestamp": "2015-12-24T10:09:40+00:00",
+      "author": "paraglider",
+      "content": "It also depends on what you are trying to achieve i.e. if you are trying to boot in UEFI mode and install windows in UEFI mode or you don\u0027t care what mode is used. In some cases it matters - I wanted to use an intel 750 series nvme ssd as my boot drive. That is only supported in UEFI mode.\n\n"
+    },
+    {
+      "id": "196866",
+      "timestamp": "2015-12-24T11:42:46+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I work as a PC tech and i have clean installed Windows 8.1 x64 /Windows 10 x64 to PC/laptops from all major manufacturer\u0027s and custom built systems. I can safely say that all UEFI firmware will support and boot from MBR formatted USB flash drives (FAT32).\n\nThat would be of course ***\"a large number of\"*** major manufacturer\u0027s and custom built systems. :wink:\n\nBlack swans are rare, but they do exist.\n\n[https://en.wikipedia...ack_swan_theory](https://en.wikipedia.org/wiki/Black_swan_theory \"External link\")\n\n\u003e However there are some buggy firmware which will only boot to UEFI mode if there is a valid UEFI bootloader is present on the USB stick. One particular example is newer Acer laptops. They will only boot to UEFI mode if \"efi\" folder is present on the root of USB stick (with EFI bootloader inside it) - even though boot mode is set to legacy only in BIOS setup. Only way to install either Windows 8.1/Windows 10 in legacy mode on that system is to delete or rename \"efi\" folder on the root of USB stick.\n\nYou mean \"will only boot in non-UEFI mode if a valid UEFI bootloader is not present\", I believe or - in other words - even if the boot mode is set to \"legacy\" in BIOS, if there is an EFI bootloader on the stick, than UEFI mode will prevail? ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)\n\nI mean, if there is no EFI bootloader the thingy won\u0027t boot to UEFI (of course).\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "196868",
+      "timestamp": "2015-12-24T13:05:43+00:00",
+      "author": "Agent47",
+      "content": "\u003e You mean \"will only boot in non-UEFI mode if a valid UEFI bootloader is not present\", I believe or - in other words - even if the boot mode is set to \"legacy\" in BIOS, if there is an EFI bootloader on the stick, than UEFI mode will prevail? ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)\n\nYes, that\u0027s exactly what i meant. The **F12** boot menu also behaves like the same - it will only list UEFI boot entries if there is an EFI boot loader is present on the stick.\n\n\u003e Could you list the models that won\u0027t CSM boot if a EFI boot file is present please?\n\u003e\n\u003e P.S. You can UEFI-boot and CSM-boot on these \u0027bad\u0027 systems if using Easy2Boot (sort of!).\n\nI don\u0027t remember an exact model number but i believe most of the Acer **E1** series laptops has this issue. I will try to reproduce the issue as soon as i got some Acer laptops and post back some full model numbers.\n\n\u003e My rufus formatted USB stick ( removable type ) does not boot on my MS Surface Pro.  \n\nIn that case i guess i was wrong. I never had a chance to play with \"Surface Pro\" .\n\n"
+    },
+    {
+      "id": "196870",
+      "timestamp": "2015-12-25T09:10:21+00:00",
+      "author": "steve6375",
+      "content": "I think that a bootable FAT32 USB stick containing the correct EFI boot files should boot on a Surface Pro (same as MS tool makes).\n\nAFAIK the Surface Pro is UEFI only (no CSM mode?).\n\n"
+    },
+    {
+      "id": "196871",
+      "timestamp": "2015-12-25T09:27:16+00:00",
+      "author": "paraglider",
+      "content": "Yes - no CSM. You can disable secure boot though. MS does claim that a fat32 usb drive should work.\n\n"
+    },
+    {
+      "id": "197654",
+      "timestamp": "2016-02-04T07:00:46+00:00",
+      "author": "Agent47",
+      "content": "\u003e ould you list the models that won\u0027t CSM boot if a EFI boot file is present please?\n\u003e\n\u003e P.S. You can UEFI-boot and CSM-boot on these \u0027bad\u0027 systems if using Easy2Boot (sort of!).\n\nHere is the full model number of an Acer laptop which has the EFI bug - **Aspire E1-571**. Most probably other E1 models might be also affected ( may be E3 and E5 series too).\n\nSteve, can you please explain how Easy2Boot can be used to CSM boot on these type of firmwares ?. What exactly Easy2boot will do on these kind of scenarios ?.\n\n"
+    },
+    {
+      "id": "197662",
+      "timestamp": "2016-02-04T09:10:50+00:00",
+      "author": "steve6375",
+      "content": "Thanks.\n\nDoes it have firmware version 2.21?\n\nJust to double-check - you have tried *all*BIOS Setup options, etc. to try to get CSM boot working?\n\nDoes CSM boot work if you delete the \\\\EFI\\\\boot\\\\bootx64.efi file?\n\nDoes CSM boot work if you delete the \\\\EFI\\\\boot folder?\n\nDoes CSM work if you delete the \\\\EFI folder?\n\nre. Easy2Boot. Easy2Boot does not have a \\\\EFI folder, when it switches partitions to CSM mode, it does have both CSM boot files and EFI boot files and so can only CSM boot on the E1-571 system, but you can run the Windows app SWITCH_E2B.exe to restore the original E2B partitions (that is why I said \u0027sort of\u0027)!\n\n"
+    },
+    {
+      "id": "197693",
+      "timestamp": "2016-02-06T10:43:04+00:00",
+      "author": "Agent47",
+      "content": "Hi\n\nSorry for the late reply. Unfortunately the customer was in a hurry (owner of the lap) so i was unable to complete all the tests. However i can guarantee that i have tried all the possible settings on BIOS setup. Next time i will try all those scenarios and report back. I also have a plan to experiment with \"rEFInd\" which has an option to boot from a legacy device if the BIOS has CSM support enabled.\n\n"
+    }
+  ]
+}

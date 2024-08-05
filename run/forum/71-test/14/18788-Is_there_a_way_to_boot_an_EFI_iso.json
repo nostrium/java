@@ -1,0 +1,34 @@
+{
+  "id": "18788",
+  "title": "Is there a way to boot an EFI iso?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "175791",
+      "timestamp": "2013-08-15T13:23:06+00:00",
+      "author": "halikus",
+      "content": "Like the title says, is there any EFI bootloader that has the ability to boot a Windows ISO in EFI mode? I have seen references to Grub2 and rEFInd booting loopback linux isos, but nothing regarding a Windows ISO.\n\nAlso, in Grub2 EFI both these commands will take me to a grub4dos cmd prompt, but won\u0027t find the lst file. I don\u0027t think so, but maybe there is a 1% chance to get an iso to load by adding to the commands.\n\nmenuentry \u0027Grub4dos efi\u0027{  \nlinux /efi/grub/grub.exe --config-file\u003d\"/efi/grub/menu.lst\"  \n}  \n\nmenuentry \"GRUB4DOS\" {  \nlinux /boot/grub/grub.exe --config-file\u003d/boot/grub/menu.lst  \n}\n\nAlso, while i started a thread, in g4d, is there a way to distinguish USBs from HDDs with a cat command or something? I\u0027m terrible with offsets.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "175802",
+      "timestamp": "2013-08-15T15:13:02+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, grub4dos will \"cease to work\" as soon as it \"hits\" instead of a BIOS an EFI/UEFI.\n\nThis is \"by design\".\n\n**Steve6375** posted here:\n\n[http://www.911cd.net...ndpost\\\u0026p\u003d174076](http://www.911cd.net/forums//index.php?s\u003d\u0026showtopic\u003d25329\u0026view\u003dfindpost\u0026p\u003d174076 \"External link\")\n\nhow he is going to have a look at some of the alternatives, but it will surely take some time.\n\nIn the above thread of 911 there is some more info on the issues.\n\nWhat do you mean \"distinguish\" USB from HDD?\n\nI don\u0027t think that there is anything like that (I mean \"connection bus distinction\"), wouldn\u0027t it be - in order to solve the whatever actual problem - to use the \"traditional\" \"tag file\" or \"UUID\" (or Disk Signature) to identify a given disk?\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "175811",
+      "timestamp": "2013-08-15T16:24:30+00:00",
+      "author": "halikus",
+      "content": "Thanks. I realize i could use UUID, i can distinguish between cd and usb\\\\hdd, but i would like to be able to check an HDD if it is internal or an external flash drive. Its for if i run grub4dos off an internal HDD, as the odd trick like hooking the (hd0) (hd1) doesn\u0027t work whereas it does from USB. Another example would be loading Win isos from an internal HDD with firadisk; you can\u0027t write to the autounattend or setisoname.cmd. Its just another variable i can play with if something doesn\u0027t work.\n\n"
+    },
+    {
+      "id": "175813",
+      "timestamp": "2013-08-15T17:00:54+00:00",
+      "author": "Wonko the Sane",
+      "content": "As said, besides UUID and Disk Signature (that will only identify a given device) you can use a tag file.\n\nJust drop a 0 byte .txt file \\*like\\* **I_am_USB.txt** in the root of **all** your USB devices and be done with it. :wink:\n\nWhen it comes to USB sticks (of course NOT USB hard disks), a quick and dirty way is to check their size.\n\nThe probability of any PC having an internal hard disk device equal or smaller than - say - 32 Gb AND a USB stick equal or larger than the same 32 Gb are pretty much low.\n\n(or maybe 16 or 64 Gb, it depends on the machines and sticks you have).\n\nAs well, if you happen to have grub4dos installed to the MBR of USB devices AND on the MBR of internal hard disks, you can adopt a \"strategy\" of using one of the otherwise unused flags (\"control bytes\") in the grldr.mbr which is copied to MBR and first few hidden sectors.\n\nJust leave as default (say) bytes @04h to 0x3920 (Space) on all the \"normal\" installs on internal hard disks and change them to \\*something\\* else on all the \"special\" installs on USB.\n\nOr modify the embedded menu.lst in grldr (again only on the USB installs).\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    }
+  ]
+}

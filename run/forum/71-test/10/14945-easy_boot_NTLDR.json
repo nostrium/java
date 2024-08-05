@@ -1,0 +1,28 @@
+{
+  "id": "14945",
+  "title": "easy boot NTLDR",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "132703",
+      "timestamp": "2011-07-10T15:27:47+00:00",
+      "author": "bee4u",
+      "content": "hi i am using easy boot 5.12 to make multiboot dvd of windows xp sp3 and windows 2003 sp3   \ni followed all the instruction and made the dvd but when i run dvd windows xp works fine windows 2003 not it gives this error message NTLDR is corrupt system cannot boot. i have tried many times still this message.any help   \nthe next question is how to add windows 7 in easy boot to make multiboot dvd such as win xp win 2003 and win 7 ..?  \nkindly gurus solve this problem ..THX in advance..!   \n"
+    },
+    {
+      "id": "132920",
+      "timestamp": "2011-07-13T15:44:40+00:00",
+      "author": "bee4u",
+      "content": "any answer how to do it..waiting..... ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n"
+    },
+    {
+      "id": "132921",
+      "timestamp": "2011-07-13T15:54:10+00:00",
+      "author": "Wonko the Sane",
+      "content": "My guess is that you might get more specific \"easy boot\" support on the \"easy boot\" forum:  \n[http://www.ezbsystem....cgi?act\u003dSF;f\u003d1](http://www.ezbsystems.com/cgi-bin/ikonboard.cgi?act\u003dSF;f\u003d1 \"External link\")  \n\nAbout the 2003 (SP1 and later), strangely enough the message \"NTLDR *is corrupt system cannot boot* \" actually means that the file \"*is corrupt system cannot boot* \" :wink: but obviously the file is **NOT** NTLDR but rather SETUPLDR.BIN :wink:. (the good MS guys have a special gift to make simple things either complex or plainly wrong ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif))  \nMost probably you modified the ~~NTLDR~~ SETUPLDR.BIN without recreating the proper checksum (or used on the 2003 SP1 or later version a tool intended for the XP version that doesn\u0027t have the checksum implemented). ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nCompare with:  \n[http://www.msfn.org/...sp1-winpe-2004/](http://www.msfn.org/board/topic/58410-solution-for-multibooting-win-xp2k3-64-bit-win2k3-sp1-winpe-2004/ \"External link\")  \n\n![:blink:](http://reboot.pro/public/style_emoticons/default/blink.png)  \nWonko   \n"
+    }
+  ]
+}

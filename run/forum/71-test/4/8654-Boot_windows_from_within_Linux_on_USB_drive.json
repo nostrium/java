@@ -1,0 +1,52 @@
+{
+  "id": "8654",
+  "title": "Boot windows from within Linux on USB drive",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "73926",
+      "timestamp": "2009-08-07T17:41:25+00:00",
+      "author": "PresaMat",
+      "content": "OK So I am having an issue. I would like to be able to boot windows after I have booted into Linux. Both of which are on a USB drive. What I currently do is boot into linux (using grub4dos in the UFD mbr) which boots linux when I want to boot windows I kexec grub4dos (grub.exe). But it no longer sees any USB drives. Is there anything I am not doing correctly?  \n\nMat   \n"
+    },
+    {
+      "id": "73930",
+      "timestamp": "2009-08-07T18:43:28+00:00",
+      "author": "PresaMat",
+      "content": "Sorry if this is a Double post - I posted for the first time in the wrong section. I closed that topic if a mod could delete it that would be great.  \n\nOK So I am having an issue. I would like to be able to boot windows after I have booted into Linux. Both of which are on a USB drive. What I currently do is boot into linux (using grub4dos in the UFD mbr) which boots linux when I want to boot windows I kexec grub4dos (grub.exe). But it no longer sees any USB drives. Is there anything I am not doing correctly?  \n\nMat   \n"
+    },
+    {
+      "id": "73931",
+      "timestamp": "2009-08-07T18:45:29+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e OK So I am having an issue. I would like to be able to boot windows after I have booted into Linux. Both of which are on a USB drive. What I currently do is boot into linux (using grub4dos in the UFD mbr) which boots linux when I want to boot windows I kexec grub4dos (grub.exe). But it no longer sees any USB drives. Is there anything I am not doing correctly?  \n\u003e\n\u003e Mat\n\nIf you use grub4dos, why don\u0027t you simply add an entry to boot directly Windows from menu.lst? ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif)  \n\nI.e. instead of booting Linux, ***then*** Windows, booting Linux ***or*** Windows.  \n\nIt is possible that the BIOS USB stack (that is used by grub4dos to boot \"originally\" from USB) is not \"present anymore\" or \"not passed on\" correctly after Linux is loaded.  \n\nIf this is the case, you may want to try PLoP (that provides an \"external to BIOS\" USB stack).  \n\ngrub4dos-\\\u003eLinux-\\\u003ePLoP-\\\u003egrub4dos-\\\u003eWindows  \n\nRelated thread:  \n[http://www.boot-land...?showtopic\u003d8620](http://www.boot-land.net/forums/index.php?showtopic\u003d8620 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "73933",
+      "timestamp": "2009-08-07T18:54:46+00:00",
+      "author": "PresaMat",
+      "content": "\u003e If you use grub4dos, why don\u0027t you simply add an entry to boot directly Windows from menu.lst? ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif)  \n\u003e\n\u003e I.e. instead of booting Linux, ***then*** Windows, booting Linux ***or*** Windows.  \n\u003e\n\u003e It is possible that the BIOS USB stack (that is used by grub4dos to boot \"originally\" from USB) is not \"present anymore\" or \"not passed on\" correctly after Linux is loaded.  \n\u003e\n\u003e If this is the case, you may want to try PLoP (that provides an \"external to BIOS\" USB stack).  \n\u003e\n\u003e grub4dos-\\\u003eLinux-\\\u003ePLoP-\\\u003egrub4dos-\\\u003eWindows  \n\u003e\n\u003e Related thread:  \n\u003e [http://www.boot-land...?showtopic\u003d8620](http://www.boot-land.net/forums/index.php?showtopic\u003d8620 \"External link\")  \n\u003e\n\u003e jaclaz\n\nI was thinking something like the grub4dos-\\\u003elinux\\\u003eplop\\\u003egrub4dos\\\u003ewindows. The only issue is I cant figure out how to kexec plop from linux. Have you seen any information on how to do this? Thanks for the help jaclaz! There is a reason I need to boot linux first (project I am working on).   \n\nThanks again and sorry for the double post.  \n\nPS. In the link you provided it looks like plop only supports booting from the first USB device it sees. Is there any way around this? I need to boot from the second usb device (same device just secound LUN).  \n\nMat   \n"
+    },
+    {
+      "id": "73938",
+      "timestamp": "2009-08-07T19:18:00+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I was thinking something like the grub4dos-\\\u003elinux\\\u003eplop\\\u003egrub4dos\\\u003ewindows. The only issue is I cant figure out how to kexec plop from linux. Have you seen any information on how to do this? Thanks for the help jaclaz! There is a reason I need to boot linux first (project I am working on).   \n\u003e\n\u003e Thanks again and sorry for the double post.\n\nWell, this is now another question. :tongue:  \n\nWith all due respect for your project, I am curious to know WHY the \"need\" to boot directly to Windows from Linux.  \n\nMaybe you need to check the kexec-loader related threads. :smile:  \n\nOr this thingy here :tongue::  \n[http://sourceforge.n...s/runnix/files/](http://sourceforge.net/projects/runnix/files/ \"External link\")  \n\n![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "73941",
+      "timestamp": "2009-08-07T19:49:48+00:00",
+      "author": "PresaMat",
+      "content": "The closest I can say is I need to run some commands that can only be run from linux in order for windows to work correctly. I wish i could do it directly from the bootloader then there wouldnt be a need to run linux but plop is the only bootloader with a USB stack and its closed source. If it were opensource I might be able to mod it to do what I need to do.   \n"
+    },
+    {
+      "id": "73956",
+      "timestamp": "2009-08-08T08:26:29+00:00",
+      "author": "was_jaclaz",
+      "content": "Well, then the closest I can say is that probably the commands you run in Linux somehow \"dirt\" something in memory or wherever. ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif)  \n\nOf course, due to not knowing what the heck you are trying to do, just random thoughts:  \n\n* try using instead of Linux, Freedos, using the plop feature of (read only) USB driver for DOS\n* see if whatever you are trying to do can be accomplished in GRUB or grub4dos\n* about the latter, take into consideration the fact that you can write programs that are executed in the grub/grub4dos multiboot compliant environment, an example is here:  \n  [http://www.boot-land...?showtopic\u003d7329](http://www.boot-land.net/forums/index.php?showtopic\u003d7329 \"External link\")\n* another possibility maybe is using somehow memory, pre-loading to ramdisk grub4dos and PLoP, see the \"hmload\" part of readme_grub4dos.txt\n\n\u003cbr /\u003e\n\njaclaz   \n"
+    }
+  ]
+}

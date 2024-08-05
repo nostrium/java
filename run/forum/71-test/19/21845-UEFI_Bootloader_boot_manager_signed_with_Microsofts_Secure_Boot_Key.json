@@ -1,0 +1,136 @@
+{
+  "id": "21845",
+  "title": "UEFI Bootloader / boot manager signed with Microsoft\u0027s Secure Boot Key",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "207765",
+      "timestamp": "2018-09-19T13:41:30+00:00",
+      "author": "mihi",
+      "content": "I\u0027m looking for a UEFI bootloader / boot manager that is signed with Microsoft\u0027s Secure Boot key and that can choose between other (signed) boot loaders.\n\nI believe I read a news article about such a bootloader a few years ago, but now that I need one, I cannot find it any more.\n\nMy situation is that I have a USB key that contains both Windows 10 Recovery and a Ubuntu live CD. Both of them support UEFI boot and are signed, and therefore work with Secure Boot when they are the only OS on the drive.\n\nHowever, multibooting between them does not work when Secure Boot is enabled. I currently have a solution that uses [Linux Foundation\u0027s PreLoader](https://blog.hansenpartnership.com/linux-foundation-secure-boot-system-released/ \"External link\"), but having to confirm the hash on every computer I boot it on is some hassle I\u0027d like to avoid (especially since I use it on most computers only once or rarely more often). I also don\u0027t want to turn of Secure Boot since it is easy to forget turning it on again. Also renaming the boot loader every time I want to switch from Ubuntu to Windows or back is not what I\u0027d like to do. (Using multiple partitions on the USB key for Windows and Ubuntu seems to have problems on some UEFI implementations too).\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "207766",
+      "timestamp": "2018-09-19T14:26:30+00:00",
+      "author": "steve6375",
+      "content": "Why not use a signed grub2 version such as used on Ubuntu.   \n"
+    },
+    {
+      "id": "207770",
+      "timestamp": "2018-09-19T19:03:50+00:00",
+      "author": "mihi",
+      "content": "Good question. Historical answer: Any GRUB version older than 2.02\\~rc1 was unable to chainload a Windows bootloader when Secure Boot is enabled, on certain firmware versions (including my Lenovo ThinkPad). That\u0027s why I made my own little EFI loader to choose. While that bug [was fixed in 2016](http://git.savannah.gnu.org/cgit/grub.git/commit/?id\u003dce95549cc54b5d6f494608a7c390dba3aab4fba7 \"External link\"), Ubuntu did not include the patch until 18.04LTS. So that point is moot now and I should reevaluate it now.\n\nTwo other reasons were:\n\n1. Ubuntu\u0027s signed GRUB versions had a check to disable chainloader command altogether when Secure Boot is enabled. I just tested 18.04, but that restriction has also been lifted.\n\n2. Ubuntu\u0027s signed GRUB leaks memory when using the \"exit\" command. (I like to use that on non-secure-Boot systems which have both UEFI and BIOS boot enabled, since usually it will throw me into BIOS mode then, to boot tools like memtest86 that don\u0027t run on UEFI). In combination with an [old TianoCore (firmware) bug](https://superuser.com/a/762821/1724 \"External link\"), when you boot in BIOS mode afterwards, this results in \"system reserved memory\" to grow by the leaked memory whenever it happens (until you boot into EFI shell and fix the firmware variable manually). Since that bug was also fixed upstream, I should just re-test with latest GRUB and hope it no longer happens (or I no longer run into any system that boots both BIOS and UEFI mode).\n\nAnyway, thanks for making me reevaluate that.\n\n"
+    },
+    {
+      "id": "207771",
+      "timestamp": "2018-09-19T19:46:12+00:00",
+      "author": "steve6375",
+      "content": "[memtest86](https://www.memtest86.com/download.htm \"External link\") by Passmark is signed and should secure boot OK.\n\n"
+    },
+    {
+      "id": "207773",
+      "timestamp": "2018-09-19T23:52:53+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "Or.....you could stop stupidly insisting on using Secure Boot. Why not just boot in UEFI but without SB? SB has many security flaws that have been exploited by researchers, so it\u0027s not really secure, I\u0027m curious to know why you believe otherwise. By insisting on this you are just making things harder for yourself, creating your own problem, and then asking others here to help. I would say that you should instead take advantage of the legacy BIOS/UEFI booting capabilities of the machines you are using, instead of using something that really doesn\u0027t help much anyway. And when you enable SB, legacy BIOS/CSM capabilities become disabled and therefore unusable, since SB and these others can\u0027t be on at the same time. I would much rather retain both legacy BIOS and UEFI booting capabilities at the same time, without having to disable one or the other, if that machine\u0027s BIOS allows for this.   \n"
+    },
+    {
+      "id": "207781",
+      "timestamp": "2018-09-20T20:31:46+00:00",
+      "author": "mihi",
+      "content": "I do not believe (and have never stated) that Secure Boot cannot be circumvented. Just like Antivirus, which can be circumvented very easily and sometimes even adds more attack surface to a system (e. g. in browser plugins). But both Secure Boot and Antivirus help raising the effort an attacker needs to spend to compromise a system or making the compromise persistent (ever tried to clean a PC and found that some malware has disabled the F12 boot menu and replaced it with a software mockup? That kind of things are a lot harder (probably firmware revision specific) when Secure Boot is enabled). And most attackers will go for the low hanging fruit (assuming that they are not after you, but after easy money with botnets or ransomware). So a computer of less tech-savvy people may be better of with Secure Boot and Antivirus enabled.\n\nThat being said, I have made my decisions for myself but I don\u0027t force them upon others. Therefore, when helping somebody repair his computer, and he uses Secure Boot, I don\u0027t change that (I also don\u0027t unhide hidden files or file extensions). So I just want to be able to boot my tools with as little hassle as possible.\n\nAnd I got my Ubuntu GRUB loader working as I wanted. There was one more issue, that causes the bootloader to reboot when trying to chainload an unsigned efi binary, so I could not use that to detect whether Secure Boot is enabled. And loading an unsigned GRUB module also fails without error (but is not loading the module, so you can try to rmmod it and if it fails, you know that you have Secure Boot enabled).\n\nIn case anybody else wants to use it, [here is the config file](https://github.com/schierlm/usb-modboot/blob/master/grub-ubuldr.cfg \"External link\").\n\n**Edited by mihi, 20 September 2018 - 08:32 PM.**\n"
+    },
+    {
+      "id": "207783",
+      "timestamp": "2018-09-21T17:12:59+00:00",
+      "author": "devdevadev",
+      "content": "Can you please provide working download link for \u0027[module.ubuldr.zip](https://github.com/schierlm/usb-modboot/blob/master \"External link\")\u0027 ?\n\nRegards...\n\n"
+    },
+    {
+      "id": "207784",
+      "timestamp": "2018-09-21T17:26:31+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Can you please provide working download link for \u0027[module.ubuldr.zip](https://github.com/schierlm/usb-modboot/blob/master \"External link\")\u0027 ?\n\u003e\n\u003e Regards...\n\nMaybe going to the release might help:\n\n[https://github.com/s...odboot/releases](https://github.com/schierlm/usb-modboot/releases \"External link\")\n\n[https://github.com/s...dule.ubuldr.zip](https://github.com/schierlm/usb-modboot/releases/download/v0.9/module.ubuldr.zip \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "207785",
+      "timestamp": "2018-09-21T17:28:20+00:00",
+      "author": "mihi",
+      "content": "Thanks for reporting, I corrected the link in the README page.\n\n"
+    },
+    {
+      "id": "207786",
+      "timestamp": "2018-09-22T08:39:25+00:00",
+      "author": "devdevadev",
+      "content": "Is it possible to support chainloading of ***Akeo\u0027s*** **[uefi-ntfs.img](https://github.com/pbatard/rufus/blob/master/res/uefi/uefi-ntfs.img?raw\u003dtrue \"External link\")** module through **[module.ubuldr](https://github.com/schierlm/usb-modboot/releases/download/v0.9/module.ubuldr.zip \"External link\")**bootloader in a NTFS + FAT32 partitioned UEFI Bootable USB drive for both Secure Boot On and Off ?\n\ni mean **[module.ubuldr](https://github.com/schierlm/usb-modboot/releases/download/v0.9/module.ubuldr.zip \"External link\")** should chainload .efi bootloaders of Win 10, Ubuntu \\\u0026 **UEFI:NTFS** for both Secure Boot Systems and Non-Secure Boot systems ? So that i will always be able to UEFI boot all above .efi bootloaders for Secure Boot Disabled systems. And for Secure UEFI systems at least Win 10 \\\u0026 Ubuntu .efi bootloaders will surely boot.\n\nNormally **[uefi-ntfs.img](https://github.com/pbatard/rufus/blob/master/res/uefi/uefi-ntfs.img?raw\u003dtrue \"External link\")** does not support Secure UEFI boot. Will it secure boot if chainloading through **[module.ubuldr](https://github.com/schierlm/usb-modboot/releases/download/v0.9/module.ubuldr.zip \"External link\")**?\n\n"
+    },
+    {
+      "id": "207788",
+      "timestamp": "2018-09-22T10:36:39+00:00",
+      "author": "steve6375",
+      "content": "@mihi\n\n~~Sorry, I must be missing something...~~\n\n~~I am trying the usb-modboot project but I just get a rescue prompt.~~\n\n~~I seem to be missing a bunch of grub files?~~\n\n\\[Edit\\] Not sure what my problem was??? When I opened the usb-modboot zip file there was no install folder and the install files were in the root. Now there is an install folder and everything is OK. 7Zip seemed to have gone crazy?? Same file that I downloaded before now shows correct contents so I really don\u0027t know what went wrong. Anyway - it boots OK now. Sorry for false alarm.\n\nAlso, where should I put payload files like Ubuntu.iso ???\n\nIt says to put \u0027modules\u0027 in usb-modboot folder - does this mean ISOs go in here too?\n\n~~ReadMe mentions an \u0027install\u0027 directory but I can\u0027t find one (do you mean the files in the root of the USB drive?)~~\n\n~~Also it says to edit the menu.ini file - but I can\u0027t see one and no mention of what directory it is supposed to be in?~~  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![grubusbmodboot.JPG](http://reboot.pro/uploads/monthly_09_2018/post-17818-0-24198500-1537612519_thumb.jpg)](http://reboot.pro/uploads/monthly_09_2018/post-17818-0-24198500-1537612519.jpg \"grubusbmodboot.JPG - Size: 18.13KB\"){#ipb-attach-url-16138-0-64235900-1676066416}\n\n**Edited by steve6375, 22 September 2018 - 11:22 AM.**\n"
+    },
+    {
+      "id": "207790",
+      "timestamp": "2018-09-22T12:00:32+00:00",
+      "author": "mihi",
+      "content": "\u003e Is it possible to support chainloading of ***Akeo\u0027s*** **[uefi-ntfs.img](https://github.com/pbatard/rufus/blob/master/res/uefi/uefi-ntfs.img?raw\u003dtrue \"External link\")** module through **[module.ubuldr](https://github.com/schierlm/usb-modboot/releases/download/v0.9/module.ubuldr.zip \"External link\")** bootloader in a NTFS + FAT32 partitioned UEFI Bootable USB drive for both Secure Boot On and Off ?  \n\u003e\n\u003e i mean **[module.ubuldr](https://github.com/schierlm/usb-modboot/releases/download/v0.9/module.ubuldr.zip \"External link\")** should chainload .efi bootloaders of Win 10, Ubuntu \\\u0026 **UEFI:NTFS** for both Secure Boot Systems and Non-Secure Boot systems ? So that i will always be able to UEFI boot all above .efi bootloaders for Secure Boot Disabled systems. And for Secure UEFI systems at least Win 10 \\\u0026 Ubuntu .efi bootloaders will surely boot.\n\nSecure boot requires all drivers (including NTFS driver) to be signed (or hash whitelisted). So, as **ntfs_x64.efi** is not signed, you will not be able to load it in Secure Boot (without manually whitelisting its hash), regardless which loader you use. When Secure Boot is disabled, you can chainload and load everything. So in case your Ubuntu and/or Win10 is on a NTFS drive, you will not be able to load it with Secure Boot enabled (without manually whitelisting the hash of the NTFS driver), since you cannot load the NTFS driver.  \n\u003e Normally **[uefi-ntfs.img](https://github.com/pbatard/rufus/blob/master/res/uefi/uefi-ntfs.img?raw\u003dtrue \"External link\")** does not support Secure UEFI boot. Will it secure boot if chainloading through **[module.ubuldr](https://github.com/schierlm/usb-modboot/releases/download/v0.9/module.ubuldr.zip \"External link\")**?\n\nNo. That image is not signed either.\n\n\u003e @mihi  \n\u003e ~~Sorry, I must be missing something...~~   \n\u003e ~~I am trying the usb-modboot project but I just get a rescue prompt.~~   \n\u003e ~~I seem to be missing a bunch of grub files?~~   \n\u003e \\[Edit\\] Not sure what my problem was??? When I opened the usb-modboot zip file there was no install folder and the install files were in the root. Now there is an install folder and everything is OK. 7Zip seemed to have gone crazy?? Same file that I downloaded before now shows correct contents so I really don\u0027t know what went wrong. Anyway - it boots OK now. Sorry for false alarm.  \n\u003e\n\u003e Also, where should I put payload files like Ubuntu.iso ???  \n\u003e\n\u003e It says to put \u0027modules\u0027 in usb-modboot folder - does this mean ISOs go in here too?  \n\u003e\n\u003e ~~ReadMe mentions an \u0027install\u0027 directory but I can\u0027t find one (do you mean the files in the root of the USB drive?)~~   \n\u003e ~~Also it says to edit the menu.ini file - but I can\u0027t see one and no mention of what directory it is supposed to be in?~~\n\n\u003cbr /\u003e\n\nThis tells me that my skills for writing README is bad ![:(](http://reboot.pro/public/style_emoticons/default/sad.png) Yes, they go there too.\n\nI mentioned 3 times in the README that ISOs of many Linux distributions are valid modules. If you have a suggestion how to make the README clearer, feel free to tell me (or send a pull request).\n\n**Edited by mihi, 22 September 2018 - 12:01 PM.**\n"
+    },
+    {
+      "id": "207791",
+      "timestamp": "2018-09-22T12:05:43+00:00",
+      "author": "steve6375",
+      "content": "I call ISOs, .IMG files, etc. \u0027payloads\u0027 not modules.\n\nYou talk about downloading and adding more of your modules so it sounds like \u0027modules\u0027 are extra files which you add for extra functionality, not bootable files.\n\u003e Adding modules  \n\u003e Download the modules you like and copy them to usb-modboot directory. Modules available here are .zip files; they need to be extracted to the root of the USB key (but will drop the majority of files in usb-modboot, too). Modules will be automatically picked up when booting, so there is no need to edit menu files (unless you want to add the modules into the favourite modules menu).\n\u003e\nI suggest you add something like:\n\n```\nPayloads\nPayload files such as .ISO, .IMG, etc. should all be added to the \\usb-modboot folder.\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "207793",
+      "timestamp": "2018-09-22T13:03:38+00:00",
+      "author": "steve6375",
+      "content": "Suggestion re .cfg files\n\nIf a .cfg file is present, it seems to get added into the menu (as xxxx.cfg), even if the target payload file is not present or if the CPU (e.g. 32-bit) does not support the payload file (e.g. 64-bit ISO).\n\nA better way would be to have a .cfg file that contained a complete menuentry menu and add the whole file into the grub2 menu.\n\nThen the .cfg file could contain if statements so that if the payload file was not present or the CPU was incorrect, or UEFI mode was not supported, etc. then the menu entry would simply not be listed in the menu.\n\nIs this something you could add (or maybe use a different file extension for \u0027included\u0027 menu entries)?\n\nI use such a scheme in my [E2B grub2 menu system](http://www.easy2boot.com/uefi-grub2-ptn2/ \"External link\") (using .grub2 files) but your linux, bash and scripting skills are clearly way above my (low) level of expertise!\n\n"
+    },
+    {
+      "id": "207795",
+      "timestamp": "2018-09-22T14:21:46+00:00",
+      "author": "Wonko the Sane",
+      "content": "I tend to call them what they are: \"bootable OS images\".\n\nPayload has a definite, different meaning in computing, AFAICT:\n\n[https://en.wikipedia...oad_(computing)](https://en.wikipedia.org/wiki/Payload_(computing) \"External link\")\n\nAnd module is confusing in GRUB/GRUB2/grub4dos speak beacause of .mod files and insmod command:\n\n[https://www.gnu.org/...rub.html#insmod](https://www.gnu.org/software/grub/manual/grub/grub.html#insmod \"External link\")\n\nThe Tower of Babel guys were *kids* in comparison :wink:.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "207797",
+      "timestamp": "2018-09-22T14:45:06+00:00",
+      "author": "mihi",
+      "content": "\u003e Suggestion re .cfg files\n\u003e\n\u003e If a .cfg file is present, it seems to get added into the menu (as xxxx.cfg), even if the target payload file is not present or if the CPU (e.g. 32-bit) does not support the payload file (e.g. 64-bit ISO).\n\u003e\n\u003e A better way would be to have a .cfg file that contained a complete menuentry menu and add the whole file into the grub2 menu.\n\nI guess both ways have advantages and disadvantages. Having to read each .cfg file will make the menu load more slowly. And you cannot that easily rename menu items using menu.ini file (of course you could implement that in every included file yourself). On the other hand, maybe there is not so much need in renaming menu entries anyway.\n\nI decided to use .inc as an extension for grub config files that are [just included without wrapping them in a menuentry](https://github.com/schierlm/usb-modboot/commit/b9593edcdd0c673578f6e584943e11d990430545 \"External link\").\n\n\u003e I use such a scheme in my [E2B grub2 menu system](http://www.easy2boot.com/uefi-grub2-ptn2/ \"External link\") (using .grub2 files) but your linux, bash and scripting skills are clearly way above my (low) level of expertise!\n\nMaybe a good motivation to increase your expertise in that field. On the other hand, your dedication for adding more distros and for testing corner cases in boot menus is a lot higher than mine.\n\nAs you wrote that your menu system has trouble with spaces in filenames, perhaps it helps if you use the syntax **\"$foo\"** instead of **$foo** more often in your config files, since the latter one will split arguments at spaces, even if the spaces were quoted inside the variable. Not to be confused with **$\"foo\"** which will run the string **foo**through Grub\u0027s menu translation system.\n\n"
+    },
+    {
+      "id": "207798",
+      "timestamp": "2018-09-22T14:50:28+00:00",
+      "author": "steve6375",
+      "content": "Thanks, the problem with spaces in filenames is that the Linux kernel parameters cannot handle spaces e.g. in isoscan-filename path cheat code.   \n"
+    },
+    {
+      "id": "207799",
+      "timestamp": "2018-09-22T15:23:32+00:00",
+      "author": "devdevadev",
+      "content": "I want to keep .efi bootloaders of Ubuntu, Win 10, KonBoot and UEFI:NTFS in /EFI/ directory of FAT32 partition 3 of a removable usb drive.\n\nGrub-ubuldr will be default bootloader which will allow me to chainload all above .efi bootloaders when Secure UEFI mode is disabled.\n\nBut in case of secure UEFI Boot enabled only Win 10 and Ubuntu bootloaders will be chainloaded.\n\nSo what exact .efi file and folder structure i should use to implement above scenario. And what grub-ubuldr.cfg file i will have to use so that it will work for both secure boot on/off cases.\n\nRegards...\n\n"
+    },
+    {
+      "id": "207800",
+      "timestamp": "2018-09-22T17:32:22+00:00",
+      "author": "mihi",
+      "content": "\u003e Thanks, the problem with spaces in filenames is that the Linux kernel parameters cannot handle spaces e.g. in isoscan-filename path cheat code.\n\nAh ok. But that is a limitation on how casper\u0027s iso-scan script parses the command line, not of grub2. You have the same behaviour if you use another bootloader (as long as you keep the iso on the disk), e.g. when you extract the kernel/initramfs and use gummiboot for booting it. That\u0027s why I was confused that on your page you state it is a disadvantage when using Grub2.\n\n\u003e I want to keep .efi bootloaders of Ubuntu, Win 10, KonBoot and UEFI:NTFS in /EFI/ directory of FAT32 partition 3 of a removable usb drive.\n\u003e\n\u003e Grub-ubuldr will be default bootloader which will allow me to chainload all above .efi bootloaders when Secure UEFI mode is disabled.\n\u003e\n\u003e But in case of secure UEFI Boot enabled only Win 10 and Ubuntu bootloaders will be chainloaded.\n\u003e\n\u003e So what exact .efi file and folder structure i should use to implement above scenario. And what grub-ubuldr.cfg file i will have to use so that it will work for both secure boot on/off cases.\n\u003e\n\u003e Regards...\n\nYou will need\n\n/efi/boot/bootx64.efi (Ubuntu\u0027s shim)\n\n/efi/boot/grubx64.efi (Ubuntu\u0027s grub)\n\n/efi/ubuntu/grub.cfg (the ubuldr script)\n\n/efi/ubuntu/x86_64-efi/hello.mod (in case you want to detect whether you are in secure boot mode or not)\n\nEverything else is up to you. I posted a sample script, which checks if secure boot is enabled (by loading and unloading hello.mod), and if not chainloads into loader.efi immediately. Else it shows the menu, where you can decide between Windows, Ubuntu, and preloader.efi.\n\nYou can if you prefer show the menu always, and use if statements to exclude the non-secure-boot enabled options in case Secure Boot is enabled.\n\n"
+    },
+    {
+      "id": "207801",
+      "timestamp": "2018-09-22T21:20:02+00:00",
+      "author": "steve6375",
+      "content": "\u003e That\u0027s why I was confused that on your page you state it is a disadvantage when using Grub2.\n\nIt is a disadvantage of the E2B *grub2* *menu system* . the E2B *grub4dos menu system* can directly boot from any linux ISO even with spaces in the filename because it does not use cheat codes to specify the ISO filepath, instead it uses the partnew technique (for MBR-booting) which can boot almost any linux ISO in a generic manner.\n\n"
+    },
+    {
+      "id": "207863",
+      "timestamp": "2018-10-07T17:20:40+00:00",
+      "author": "devdevadev",
+      "content": "\u003e And I got my Ubuntu GRUB loader working as I wanted. There was one more issue, that causes the bootloader to reboot when trying to chainload an unsigned efi binary, so I could not use that to detect whether Secure Boot is enabled. And loading an unsigned GRUB module also fails without error (but is not loading the module, so you can try to rmmod it and if it fails, you know that you have Secure Boot enabled).\n\u003e\n\u003e In case anybody else wants to use it, [here is the config file](https://github.com/schierlm/usb-modboot/blob/master/grub-ubuldr.cfg \"External link\").\n\nCan anybody provide me config file containing menu entries for \u0027Windows\u0027 , \u0027Memtest\u0027 , **\u0027KonBoot\u0027** (will work when secure boot disable) and \u0027Ubuntu\u0027.\n\n"
+    }
+  ]
+}

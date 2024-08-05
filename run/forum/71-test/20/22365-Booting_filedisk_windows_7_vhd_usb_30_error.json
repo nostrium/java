@@ -1,0 +1,52 @@
+{
+  "id": "22365",
+  "title": "Booting filedisk windows 7 vhd usb 3.0 error!",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "216149",
+      "timestamp": "2020-09-15T09:53:05+00:00",
+      "author": "ayma",
+      "content": "Hi guys. I need help about filedisk win7.vhd\n\nMy old pc vin7.vhd and ramdisk was working well but i have changed my pc to HP and it has no options ide achi etc modes in bios all is usb3.0 intel 7 gen.\n\nI have created win7.vhd and ramdisk with VHD_W7C_85.exe tools. When i boot win7.vhd im getting bluescreen after loading screen done. i think it needs usb 3.0 drivers when bootup vhd filedisk. i have tried to install usb 3.0 drivers with vm but fails. looked many of docs but didnt work for me.\n\n1. Same win7.vhd to Ramdisk works fine but only usb ports doesnt work.\n\n2. Win7.vhd file disk getting bluescreen error after loading screen pass.\n\nCan you help me to make my win7.vhd work on new pc with usb 3.0 drivers. Any solition for it?\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "216150",
+      "timestamp": "2020-09-15T10:00:30+00:00",
+      "author": "wimb",
+      "content": "Windows 10 has build-in support for booting VHD from USB 3.0\n\nI think Windows 7 and booting VHD from USB 3.0 will not work ....\n\n"
+    },
+    {
+      "id": "216151",
+      "timestamp": "2020-09-15T10:07:30+00:00",
+      "author": "ayma",
+      "content": "\u003e Windows 10 has build-in support for booting VHD from USB 3.0\n\u003e\n\u003e I think Windows 7 and booting VHD from USB 3.0 will not work ....\n\u003e\nReally :smile:\n\nOne more question. How can i make small size like 6 gb win10.vhd + ramdisk as windows7.vhd?\n\nand thaks for reply :smile:\n\n"
+    },
+    {
+      "id": "216155",
+      "timestamp": "2020-09-15T11:47:28+00:00",
+      "author": "alacran",
+      "content": "On your 7 VHD you may try this: [http://reboot.pro/to...for-win7-vista/](http://reboot.pro/topic/22322-usb-3xxhci-generic-driver-for-win7-vista/ \"\")\n\nI suggest you better make a new Win10 VHD:\n\nFor filedisk booting make a Win10 Compact install VHD: [http://reboot.pro/to...-mode-installs/](http://reboot.pro/topic/22323-compact-mode-installs/ \"\")\n\nOr for filedisk booting and also Ramboot make a Win10 Wimboot install VHD: [http://reboot.pro/to...vhd/?hl\u003dwimboot](http://reboot.pro/topic/21957-making-the-smallest-win10-install-wimboot-mode-on-512-mb-vhd/?hl\u003dwimboot \"\")and [http://reboot.pro/to...ram/?hl\u003dwimboot](http://reboot.pro/topic/21972-reducing-wimboot-source-wim-file-using-lzx-compression-and-vhd-using-gzip-or-lz4-compression-to-save-room-and-also-load-faster-on-ram/?hl\u003dwimboot \"\")\n\nAnd to compress your Wimboot VHD to load it faster on Ram you can use: [http://reboot.pro/fi...lz4-compressor/](http://reboot.pro/files/file/612-lz4-compressor/ \"\")\n\nTo make the Wimboot or Compact install almost automatically you can use wimb\u0027s tool: [http://reboot.pro/fi...-for-os-in-vhd/](http://reboot.pro/files/file/593-vhd-wimboot-apply-and-capture-of-wim-files-for-os-in-vhd/ \"\")\n\nalacran\n\n"
+    },
+    {
+      "id": "216156",
+      "timestamp": "2020-09-15T14:11:08+00:00",
+      "author": "wimb",
+      "content": "\u003e One more question. How can i make small size like 6 gb win10.vhd + ramdisk as windows7.vhd?\n\u003e\nBefore anything else you can use [USB_FORMAT](https://github.com/wimbrts/USB_FORMAT \"External link\") to prepare USB portable SSD:\n\n0. USB Format Tool - Make Bootable USB Drive with MBR and 2 Partitions - active FAT32 Boot Drive + NTFS System Drive\n\n1. [WinNTSetup](https://msfn.org/board/topic/149612-winntsetup-v423/ \"External link\") - Fresh **Install** Win10x64 with Compact:XPRESS4K mode in VHD fixed 25GB located on internal SSD / harddisk\n\n2. [VHD_WIMBOOT](https://github.com/wimbrts/VHD_WIMBOOT \"External link\") - **Capture** WimBoot mode 25 GB VHD and Copy WIM file to Wimboot folder on NTFS 2nd partition of USB\n\n3. Create FILEDISK - VHD_WIMBOOT - **Apply** WIM with Compact LZX mode in VHD 25 GB located on NTFS System Drive of USB Portable SSD\n\n4. Create RAMDISK - VHD_WIMBOOT - **Apply** WIM with WimBoot mode in VHD 3.9 GB located on NTFS System Drive of USB Portable SSD\n\n5. Internet Off (disconnect LAN cable) - Boot in MBR BIOS mode via F8 menu from USB - Boot Manager Menu with 3.9 GB VHD as FILEDISK\n\n6. Install of **SVBus driver** - use R-mouse menu to Run as admin file **instx64.exe** of SVBus bin folder - Driver for booting from RAMDISK\n\n7. Boot Normal - VHD_WIMBOOT - select 3.9 GB VHD and use **Make Boot** button to make Grub4dos entry for booting from RAMDISK\n\n8. Reboot in MBR BIOS mode from USB and select in Grub4dos Menu your 3.9 GB VHD on USB for booting from RAMDISK\n\n9. Reboot in UEFI Or MBR BIOS mode from USB and select in BootManager Menu 25 GB VHD on USB for booting as FILEDISK\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "216179",
+      "timestamp": "2020-09-17T21:19:15+00:00",
+      "author": "ayma",
+      "content": "Thanks guys. i have done all and vhd works well but im getting windows/sytem32/driverstore/filerepository/urschipidea.inf_amd64_64_86da23c455846f41/urschipidea.sys\n\nstatus: 0xc0000225\n\nthe operating system couln\u0027t be loaded becouse a critical system driver missing or contains errors. error after load RAMDISK.\n\nBut the same vhd file works well.\n\nAny solition for it?\n\n"
+    },
+    {
+      "id": "216184",
+      "timestamp": "2020-09-18T07:07:08+00:00",
+      "author": "wimb",
+      "content": "\u003e Thanks guys. i have done all and vhd works well but im getting windows/sytem32/driverstore/filerepository/urschipidea.inf_amd64_64_86da23c455846f41/urschipidea.sys\n\u003e\n\u003e status: 0xc0000225\n\u003e\n\u003e the operating system couln\u0027t be loaded becouse a critical system driver missing or contains errors. error after load RAMDISK.\n\u003e\n\u003e But the same vhd file works well.\n\u003e\n\u003e Any solition for it?\n\nIn my case urchipidea.sys driver is present in the DriverStore, but is not installed in System32\\\\drivers\n\nIt means my hardware does not make use of the driver.\n\nIn your case after booting with the mother VHD created after fresh install by WinNTSetup and located on internal harddisk\n\n- check if exist System32\\\\drivers\\\\urchipidea.sys\n\n- Use [System_Info](https://github.com/wimbrts/System_Info/releases \"External link\") \\\u003e Device Manager - are there devices having exclamation mark - check especially USB devices - give ScreenShot\n\n- Use System_Info \\\u003e Save HWIDs and attach the result MY-PC_HWIDs_Info.txt\n\nWhat is the WOF Status of System32\\\\drivers\\\\urchipidea.sys in your mounted 3.9 GB VHD ?\n\nDownload and use [WOF_Compress](https://github.com/wimbrts/WOF_Compress/releases \"External link\") to determine WOF Status - More Info: [WOF_Compress](http://reboot.pro/topic/22020-wof-compress/ \"\") - use WOF_Compress_Trusted.cmd\n\nOn booting from USB:\n\n- use other USB connector - preferred is connect straight to motherboard USB connector\n\n- use cold reboot - it means first switch off and disconnect from the mains and press switch on button to empty RAM memory\n\nWhat kind of USB Device are you using ?\n\n"
+    }
+  ]
+}

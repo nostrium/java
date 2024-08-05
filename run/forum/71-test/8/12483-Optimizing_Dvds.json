@@ -1,0 +1,16 @@
+{
+  "id": "12483",
+  "title": "Optimizing Dvd\u0027s",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "109209",
+      "timestamp": "2010-09-14T20:19:17+00:00",
+      "author": "stefany",
+      "content": "First of all, I am sorry to post like this, but apparently you have closed the registrations...   \nSecondly, I\u0027m posting here because of the \"boot anywhere\" description...  \n\nAnd now the real problem.. I have gathered a collection of linux\u0027s and windows that I want to put on a dvd... well actually they were 2 separate projects of mine... And I wanted to join them... but apparently I have a problem with the win part... if it is not on the first layer of the dvd it will boot, but it wont open the image to start the processes and everything else... So do you know any technique or program that will allow me to order the files based on the layer of the dvd?   \n"
+    }
+  ]
+}

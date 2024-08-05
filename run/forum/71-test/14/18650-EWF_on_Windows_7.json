@@ -1,0 +1,28 @@
+{
+  "id": "18650",
+  "title": "EWF on Windows 7",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "173924",
+      "timestamp": "2013-06-22T12:30:56+00:00",
+      "author": "doveman",
+      "content": "I\u0027m looking to use the EWF filter on Window 7 (portable version by wimb [http://reboot.pro/to...to-make-mini-7/](http://reboot.pro/topic/18593-vhd-w7-compact-program-to-make-mini-7/ \"\") ) but I only seem to have a version suitable for XP.\n\nI found these instructions [http://www.mp3car.co...ite-filter.html](http://www.mp3car.com/winnt-based/140081-ewf-on-windows-7-32-bit-or-64-bit-enhanced-write-filter.html \"External link\") and have extracted the required files from the ISO but as that thread is rather old, I thought I should check that it is still correct. I also found this EWF Manager [https://www.microsof...s.aspx?id\u003d27587](https://www.microsoft.com/en-us/download/details.aspx?id\u003d27587 \"External link\") and wondered if I could use that to set it up, rather than finding out Disk Signatures and Partition Offsets and hand writing reg files?\n\n"
+    },
+    {
+      "id": "178639",
+      "timestamp": "2013-10-18T16:53:06+00:00",
+      "author": "Biatu",
+      "content": "There was a program i used that would automatically set the offsets and such.  \nAdditionally I used EWF on a full blown install, which worked great....until I ran out of RAM. No warnings, just BSOD.  \nEven set up a service to run ewfmgr /commit on every boot...even before windows update started. but alot of updates wont work through ewf.  \n\nI will see if I can find that application and i will get back with you.\n\n"
+    },
+    {
+      "id": "178640",
+      "timestamp": "2013-10-18T17:09:39+00:00",
+      "author": "Biatu",
+      "content": "Try these commands...  \n\newfcfg.exe /install  \newfcfg.exe /install-configuration\n\n**Edited by Biatu, 18 October 2013 - 05:09 PM.**\n"
+    }
+  ]
+}

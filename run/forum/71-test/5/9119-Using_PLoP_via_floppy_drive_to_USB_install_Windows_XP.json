@@ -1,0 +1,82 @@
+{
+  "id": "9119",
+  "title": "Using PLoP via floppy drive to USB install Windows XP",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "78966",
+      "timestamp": "2009-09-19T06:48:16+00:00",
+      "author": "shiggidy_",
+      "content": "Hi,  \n\nI have an old Sony VAIO laptop, which is lagging quite bad with Windows XP.  \nI want to reinstall XP fresh, but the CD-ROM drive on the laptop barely reads the CD (it only cooperates when I push the CD tray into the laptop a certain way).  \n\nI looked into using PLoP on a floppy drive and USB booting the XP iso, but PLoP wasn\u0027t working for me.  \n\nMy next option is using UNetbootin\u0027s frugal install to install XP.  \n\nMy only concern is:  \n-Are there any issues I need to be aware of by using the \"frugal install\"?  \n\nThanks for reading!   \n"
+    },
+    {
+      "id": "78979",
+      "timestamp": "2009-09-19T11:06:14+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e My only concern is:  \n\u003e -Are there any issues I need to be aware of by using the \"frugal install\"?\n\nMy corcern is:  \nwhere did you read that a \"frugal install\" of XP is possible? :wink:  \n\nA couple of questions, is the laptop:  \na. somehow connected to network and working?  \nb. having a working floppy drive?  \n\nI presume that if the answer is yes to both, the most straightforward way would be a DOS/WINNT.EXE initiated install from local source files (downloaded from network).l  \n\njaclaz   \n"
+    },
+    {
+      "id": "79001",
+      "timestamp": "2009-09-19T15:54:06+00:00",
+      "author": "karyonix",
+      "content": "What do you mean by \"PLoP wasn\u0027t working for me.\" ?  \n- What does it say ? Is it something \"I refuse to work becuase I can\u0027t find USB controller\" ?  \n- With PLoP, can you load NTLDR + boot.ini menu from USB drive ?   \n"
+    },
+    {
+      "id": "79048",
+      "timestamp": "2009-09-20T01:39:20+00:00",
+      "author": "shiggidy_",
+      "content": "Sorry all for the confusion! Forget the frugal install!  \nI\u0027ve had some time to experiment with PLoP since I made the first post.  \n\nLet me restate what I\u0027m trying to do.  \n\nMy plan is to use PLoP via floppy disk to reinstall XP from a USB flash drive on an old VAIO laptop, since my CD-ROM drive is being picky with me.  \n\nWhat I\u0027ve done so far:  \n\n* successfully used PLoP via floppy disk to boot to USB\n* however, my XP live USB made with Unetbootin failed\n* -- I received an \"Invalid or corrupt kernel image\" error\n\n\u003cbr /\u003e\n\nI\u0027m guessing I need to find another way to create the live USB boot disk.  \n\nI\u0027ve also tried creating the live USB boot disk with PEtoUSB. But the error message I get then is \"Remove any disks. Press any key to continue.\"  \n\nAny help would be appreciated!  \n\nThanks!   \n"
+    },
+    {
+      "id": "79062",
+      "timestamp": "2009-09-20T08:13:30+00:00",
+      "author": "was_jaclaz",
+      "content": "So PLoP is working. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nThis means that now you have \"through software\" a USB booting capable laptop.  \n\nTry the methods here:  \n[http://www.msfn.org/...p-usb-f157.html](http://www.msfn.org/board/install-xp-usb-f157.html \"External link\")  \n\nThe easiest is possibly the one with GUI:  \n[http://www.msfn.org/...30-t120444.html](http://www.msfn.org/board/30-t120444.html \"External link\")  \n\nIf you want to pre-boot a PE, try using this:  \n[http://www.msfn.org/.../2-t121446.html](http://www.msfn.org/board/2-t121446.html \"External link\")  \n\n![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "82524",
+      "timestamp": "2009-10-25T07:01:26+00:00",
+      "author": "shiggidy_",
+      "content": "Okay! Sorry for the long delay!  \n\nI tried WinSetupFromUSB with my Windows XP ISO with the PLoP floppy disk as the USB helper booter.  \n\nI get to the Windows Setup screen like below:  \n\n![Posted Image](http://www.petri.co.il/images/setup2.jpg)  \n\nHowever, I get weird error codes like:  \n\n\\\\$win_nt$\\~bt\\\\ntkrnlmp.exe could not be loaded.  \nthe error code is 18.  \n\nWhich prevents the install from going any further.  \n\nAny idea why?  \n\nThanks for reading!   \n"
+    },
+    {
+      "id": "82526",
+      "timestamp": "2009-10-25T08:15:56+00:00",
+      "author": "shiggidy_",
+      "content": "I\u0027ve read that the errors could be attributed to the boot.ini on the USB drive.  \n\nSo for those of you who know how to read it, here\u0027s my boot.ini:  \n\n\\[Boot Loader\\]  \nTimeout\u003d5  \nDefault\u003dmulti(0)disk(0)rdisk(1)partition(1)\\\\WINDOWS  \n\\[Operating Systems\\]  \nmulti(0)disk(0)rdisk(1)partition(1)\\\\WINDOWS\u003d\"Second part of XP Professional setup from hd 0 part 1\" /FASTDETECT  \nc:\\\\\u003d\"-------------------------\"  \nc:\\\\\u003d\"Try entries below if getting HAL.DLL/NTOSKRNL.EXE not found errors\"  \nc:\\\\\u003d\"--------------------------\"  \nmulti(0)disk(0)rdisk(1)partition(2)\\\\WINDOWS\u003d\"Second part of XP Professional setup from hd 0 part 2\" /FASTDETECT  \nmulti(0)disk(0)rdisk(1)partition(3)\\\\WINDOWS\u003d\"Second part of XP Professional setup from hd 0 part 3\" /FASTDETECT  \nmulti(0)disk(0)rdisk(1)partition(4)\\\\WINDOWS\u003d\"Second part of XP Professional setup from hd 0 part 4\" /FASTDETECT  \nmulti(0)disk(0)rdisk(2)partition(1)\\\\WINDOWS\u003d\"Second part of XP Professional setup from hd 1 part 1\" /FASTDETECT  \nmulti(0)disk(0)rdisk(2)partition(2)\\\\WINDOWS\u003d\"Second part of XP Professional setup from hd 1 part 2\" /FASTDETECT  \nmulti(0)disk(0)rdisk(2)partition(3)\\\\WINDOWS\u003d\"Second part of XP Professional setup from hd 1 part 3\" /FASTDETECT  \nmulti(0)disk(0)rdisk(2)partition(4)\\\\WINDOWS\u003d\"Second part of XP Professional setup from hd 1 part 4\" /FASTDETECT  \n\n---  \n\nI\u0027m not well-versed in boot-speak so any help would be appreciated!  \n\nPS. I understand that this is no longer a UNetBootin thread, so feel free to move it to the appropriate forum.   \n"
+    },
+    {
+      "id": "82529",
+      "timestamp": "2009-10-25T08:42:54+00:00",
+      "author": "was_jaclaz",
+      "content": "Problem is that most probably, since your laptop is not USB booting capable, the order of drives is NOT what the program expects.  \n\nOn a \"normal USB booting\" PC, the USB drive becomes first disk (when you boot from it) and internal hard disk becomes second one.  \nOn your \"PLoP USB booting\" PC, probably the USB drives remains SECOND disk and the internal one remains FIRST one.  \n\nTry editing one of the entries in BOOT.INI as follows:  \n\u003e multi(0)disk(0)rdisk(***0***)partition(1)\\\\WINDOWS\u003d\"Second part of XP Professional setup from hd 0 part 1\" /FASTDETECT\n\nOr change the grub4dos menu.lst on the stick NOT to exchange drives.  \n\nThe \"other\" approach:  \n[http://www.msfn.org/.../2-t121446.html](http://www.msfn.org/board/2-t121446.html \"External link\")  \n\nshould give you no problems.  \n\nAs well, the good ol\u0027 way through DOS (which has a few limitations and needs some basic DOS knowledge) should work allright:  \n[http://www.911cd.net...showtopic\u003d16713](http://www.911cd.net/forums//index.php?showtopic\u003d16713 \"External link\")  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "82569",
+      "timestamp": "2009-10-25T19:11:18+00:00",
+      "author": "shiggidy_",
+      "content": "Hi jaclaz,  \n\nThanks for replying!  \n\nI tried the first option, but was still getting the \"error codes\".  \n\nWhat would I have to edit for menu.lst?  \n\nHere\u0027s my menu.lst:  \n\n```\ncolor black/cyan yellow/cyan\n\ntimeout 10\n\ndefault /default\n\n\n\ntitle Windows XP/2000/2003 Setup- First and Second parts\n\nroot \u0026#40;hd0,0\u0026#41;\n\nconfigfile /winsetup.lst\n\nsavedefault\n```\n\n\u003cbr /\u003e\n\nThanks again!   \n"
+    },
+    {
+      "id": "82572",
+      "timestamp": "2009-10-25T20:23:32+00:00",
+      "author": "was_jaclaz",
+      "content": "Basically that menu.lst \"redirects\" to winsetup.lst, so you need to post that file, additionally.  \n\nBut you also need to access command line (when in menu.lst) and find out which is which.  \njust press \"c\" and then issue these commands:  \n\n```\nfind  \u0026#40;hd0\u0026#41;/\n```\n\n\\[TAB\\]  \n\n```\nfind \u0026#40;hd1\u0026#41;/\n```\n\n\\[TAB\\]  \nto list the files in first and second disk, that should tell you which is which.  \n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "82573",
+      "timestamp": "2009-10-25T20:34:28+00:00",
+      "author": "shiggidy_",
+      "content": "Hi jaclaz,  \n\nHere\u0027s my winsetup.lst:  \n\n```\ncolor black/cyan yellow/cyan\n\ntimeout 10\n\ndefault /windefault\n\n\n\n\n\ntitle First part of Windows XP Professional setup\n\nroot \u0026#40;hd0,0\u0026#41;\n\nchainloader \u0026#40;hd0,0\u0026#41;/$WIN_NT$.~BT/SETUPLDR.BIN\n\nsavedefault 1\n\n\n\ntitle Second part of Windows XP Professional setup\n\nroot \u0026#40;hd0,0\u0026#41;\n\nchainloader \u0026#40;hd0,0\u0026#41;/NTLDR\n\nsavedefault\n```\n\n\u003cbr /\u003e\n\n---  \n\nRe:  \n\n\u003e But you also need to access command line (when in menu.lst) and find out which is which.  \n\u003e just press \"c\" and then issue these commands:\n\nNot really sure how to do this!   \n"
+    },
+    {
+      "id": "82592",
+      "timestamp": "2009-10-26T08:44:41+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Not really sure how to do this!\n\nYou read what I posted, AND read these:  \n[http://diddy.boot-la...iles/basics.htm](http://diddy.boot-land.net/grub4dos/files/basics.htm \"External link\")  \n[http://diddy.boot-la...s/files/cli.htm](http://diddy.boot-land.net/grub4dos/files/cli.htm \"External link\")  \n\nand everything should become clear. ![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif)  \n\nWe need to check the drives in order to make sure the problem is in their mapping (as it could well be somewhere else).  \n\njaclaz   \n"
+    }
+  ]
+}

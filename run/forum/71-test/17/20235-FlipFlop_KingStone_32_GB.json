@@ -1,0 +1,142 @@
+{
+  "id": "20235",
+  "title": "FlipFlop KingStone 32 GB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "189502",
+      "timestamp": "2014-12-31T12:56:44+00:00",
+      "author": "Abdo Refky",
+      "content": "hello every one ,\n\ni have a 32 GB kingstone flash memory , and i want to use it as a basic disk , its removable now .\n\nalso if you have articals that explane flashmemory table and staff like that please send me the link . i like to read alot in order to know better .\n\ni know some about bios and harddisk booting but i know nothing about flash memory .\n\nhere is what i know about HDD booting\n\n[http://www.multiboot.../multiboot.html](http://www.multibooters.co.uk/multiboot.html \"External link\")\n\nthx .\n\n"
+    },
+    {
+      "id": "189505",
+      "timestamp": "2014-12-31T14:26:16+00:00",
+      "author": "Wonko the Sane",
+      "content": "Do you want to \"flip the bit\"?\n\nI.e. making it \"fixed\" instead of \"Removable\"?\n\nStart by following this:\n\n[http://reboot.pro/to...n-datatraveler/](http://reboot.pro/topic/20176-need-tool-to-flip-the-removable-bit-on-a-kingston-datatraveler/ \"\")\n\nFind and provide the info about your specific device, as in:\n\n[http://reboot.pro/to...veler/?p\u003d188703](http://reboot.pro/topic/20176-need-tool-to-flip-the-removable-bit-on-a-kingston-datatraveler/?p\u003d188703 \"\")\n\n**BUT**\n\nThere is **NO NEED** normally to flip the removable bit, in most cases it is unneeded, and in a few you can use a filter driver to have the devices seen as fixed in Windows NT based OS\u0027s:\n\n[http://agnipulse.com...d-disk-windows/](http://agnipulse.com/2012/03/filter-drivers-removable-media-fixed-disk-windows/ \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "189522",
+      "timestamp": "2014-12-31T23:46:56+00:00",
+      "author": "Abdo Refky",
+      "content": "i have tried to use filter driver + its only working at 32 bit , but i want to make the flash , fixed or basic like the hard disk .\n\ni will read the articals you sent and i will provide the required information .\n\n**Edited by Abdo Refky, 31 December 2014 - 11:47 PM.**\n"
+    },
+    {
+      "id": "189523",
+      "timestamp": "2015-01-01T00:42:10+00:00",
+      "author": "Abdo Refky",
+      "content": "USB Flash Info\n\n```\nVolume: G:\nController: Phison 2251-68\nPossible Memory Chip(s): \n  Toshiba TH58NVG8T2JTA20\n  Toshiba TH58TEG8T2JTA20\n  Toshiba TH58TEG8T2JBA4C\n  Toshiba TC58NVG7T2JTA00\n  Toshiba TC58TEG7T2JTA00\nMemory Type: TLC\nFlash ID: 983AA892 7650\nChip F/W: 01.02.53\nFirmware Date: 2014-03-05\nID_BLK Ver.: 1.2.68.0\nMP Ver.: MPALL v3.30.00\nVID: 0951\nPID: 1665\nManufacturer: Kingston\nProduct: DataTraveler 2.0\nQuery Vendor ID: Kingston\nQuery Product ID: DataTraveler 2.0\nQuery Product Revision: PMAP\nPhysical Disk Capacity: 31466323968 Bytes\nWindows Disk Capacity:  16097542144 Bytes\nInternal Tags: 2Q6P-S74Q\nFile System: FAT32\nRelative Offset: 31 KB\nUSB Version: 2.00\nDeclared Power: 200 mA\nContMeas ID: 1405-01-00\nMicrosoft Windows 7 x64\n------------------------------------\nhttp://www.antspec.com/usbflashinfo/\nProgram Version: 8.0.0.550\n\n```\n\n![flash_drive.jpg](http://s3.postimg.org/5ejf51xoj/flash_drive.jpg)\n\n"
+    },
+    {
+      "id": "189524",
+      "timestamp": "2015-01-01T00:45:23+00:00",
+      "author": "Abdo Refky",
+      "content": "its 32 GB chipeasy read only the windows partition . i have made four partitions and was going to use RMPrepUSB .\n\nbut i am trying to flip flop it . is that possible for my flash ?\n\nquoted from flash drive\n\nPhysical Disk Capacity: 31466323968 Bytes  \nWindows Disk Capacity: 16097542144 Bytes\n\nits no problem i can make it 1 partition any time its just for clearing .\n\n"
+    },
+    {
+      "id": "189528",
+      "timestamp": "2015-01-01T10:16:14+00:00",
+      "author": "Wonko the Sane",
+      "content": "The filter drivers AFAIK wrk on BOTH 32 bit and 64 bit.  \n\nController: Phison 2251-68  \n...  \n\nVID: 0951  \nPID: 1665  \n\n[http://reboot.pro/to...s-on-usb-stick/](http://reboot.pro/topic/8704-multiple-partitions-on-usb-stick/ \"\")  \n\nMake sure using the Phison Info tool:  \n[http://www.msfn.org/...sb-stick-issue/](http://www.msfn.org/board/topic/171194-usb-stick-issue/ \"External link\")  \n[http://www.msfn.org/...ssue/?p\u003d1070567](http://www.msfn.org/board/topic/171194-usb-stick-issue/?p\u003d1070567 \"External link\")  \nas data got from it may help in selecting the \"right\" tool.  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    },
+    {
+      "id": "189556",
+      "timestamp": "2015-01-02T01:52:25+00:00",
+      "author": "Abdo Refky",
+      "content": "i dont want the filter drivers . i want to make the drive basic instead of removable .\n\nis my chip capable of doing that ??\n\n"
+    },
+    {
+      "id": "189568",
+      "timestamp": "2015-01-02T12:31:21+00:00",
+      "author": "Wonko the Sane",
+      "content": "Sure it is :smile:.  \nThe point is whether you will be able to find the appropriate tool and manage to use it appropriately.  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    },
+    {
+      "id": "189602",
+      "timestamp": "2015-01-03T00:21:19+00:00",
+      "author": "Abdo Refky",
+      "content": "very cool .\n\n"
+    },
+    {
+      "id": "189603",
+      "timestamp": "2015-01-03T02:12:08+00:00",
+      "author": "Abdo Refky",
+      "content": "i have found this link\n\n[http://www.usbdev.ru...-fwmpall-n0928/](http://www.usbdev.ru/post-ps2268-fwmpall-n0928/ \"External link\")\n\nthis link has 12 of my chip\n\n[http://flashboot.ru/iflash/](http://flashboot.ru/iflash/ \"External link\")\n\nthis link have some tools too :\n\n[http://www.flashdriv...very-tools.html](http://www.flashdrive-repair.com/2014/10/phison-ps2251-68-recovery-tools.html \"External link\")\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "189604",
+      "timestamp": "2015-01-03T02:43:24+00:00",
+      "author": "Abdo Refky",
+      "content": "here is some screen shots for new info and what programs i have , what is the next step .\n\nif you may i also need an artical that explain difference between grub4dos and others algonside explainning them .\n\n**is there something you said i am missing so far ?**\n\n![Untitled.png](http://s5.postimg.org/t0pszxzpz/Untitled.png)\n\n![Uptools.png](http://s5.postimg.org/gidsx3s47/Uptools.png)\n\n![Get_Info.png](http://s5.postimg.org/4colmpdef/Get_Info.png)\n\n![phison_fixed_disk.png](http://s5.postimg.org/gftxa9ogn/phison_fixed_disk.png)\n\n![image.png](http://s5.postimg.org/e27e5iknr/image.png)\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "189624",
+      "timestamp": "2015-01-03T13:50:36+00:00",
+      "author": "Abdo Refky",
+      "content": "i am lost between the tools and the articals .\n\n"
+    },
+    {
+      "id": "189625",
+      "timestamp": "2015-01-03T14:02:55+00:00",
+      "author": "Abdo Refky",
+      "content": "wow .. i have tried to use fixed disk and it worked first time ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif).\n\nwas it supposed to be that easy ?\n\n"
+    },
+    {
+      "id": "189627",
+      "timestamp": "2015-01-03T14:20:58+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e wow .. i have tried to use fixed disk and it worked first time ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif).\n\u003e\n\u003e was it supposed to be that easy ?\n\nYes :smile: meaning that ***when*** it is easy (i.e. a \"simplified\" tool exists and works), it is ***very*** easy. ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "189639",
+      "timestamp": "2015-01-03T20:39:18+00:00",
+      "author": "Abdo Refky",
+      "content": "may i know what does the UPTool do .\n\n"
+    },
+    {
+      "id": "189647",
+      "timestamp": "2015-01-04T03:12:13+00:00",
+      "author": "Abdo Refky",
+      "content": "can i make the 4 partitions visable at bios boot choosing ?\n\n"
+    },
+    {
+      "id": "192054",
+      "timestamp": "2015-04-19T17:05:07+00:00",
+      "author": "Abdo Refky",
+      "content": "hey .\n\nthis flash memory suddenly truned to be write protected . ![:(](http://reboot.pro/public/style_emoticons/default/sad.png) ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\n\ni have tried attributes clear readonly ,,etc\n\nwindows disk managment read it as not initialized .\n\nthanks\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "192055",
+      "timestamp": "2015-04-19T18:02:25+00:00",
+      "author": "Wonko the Sane",
+      "content": "Hmmm. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nIf it is not initialized it is not \"read only\" (or not ++*only*++ \"read only\" if you pardon me the pun) it means that the device is \\*somehow\\* malfunctioning.\n\nThe \"not initialized\" in Disk Management is caused by \"Magic Bytes\" (the two bytes at offset 510 or last two bytes in the MBR) are not 55AA.\n\nUsually (but not always) doing a low-level format with the UPTool resets the device (but the current contents of the device will be lost forever).\n\nIf - besides the Disk Management issue - you can access the device\u0027s RAW sectors, it would be a good idea to make a dd-like image of the device (if it contains or contained valuable data).\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "196990",
+      "timestamp": "2016-01-03T13:47:54+00:00",
+      "author": "Abdo Refky",
+      "content": "UPtool show nothing ![:(](http://reboot.pro/public/style_emoticons/default/sad.png) ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\n\n"
+    },
+    {
+      "id": "197622",
+      "timestamp": "2016-02-02T09:04:21+00:00",
+      "author": "Abdo Refky",
+      "content": "Help some one .\n\n"
+    },
+    {
+      "id": "197623",
+      "timestamp": "2016-02-02T09:05:43+00:00",
+      "author": "Abdo Refky",
+      "content": "i dont care about any data :smile: just need wanna make it work .\n\n"
+    },
+    {
+      "id": "197625",
+      "timestamp": "2016-02-02T12:06:15+00:00",
+      "author": "Abdo Refky",
+      "content": "some photos .\n\n[https://goo.gl/photo...k3yTkkugANG1fo6](https://goo.gl/photos/Ttk3yTkkugANG1fo6 \"External link\")\n\n"
+    }
+  ]
+}

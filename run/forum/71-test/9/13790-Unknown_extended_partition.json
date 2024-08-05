@@ -1,0 +1,64 @@
+{
+  "id": "13790",
+  "title": "Unknown extended partition",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "121549",
+      "timestamp": "2011-02-06T10:52:53+00:00",
+      "author": "Uneitohr",
+      "content": "Hi,  \n\nI have a WD 500GB drive and was partitioned as follows:  \nsda1 10GB - PRIMARY NTFS  \nsda2 465GB - EXTENDED  \nsda5 90GB - LOGICAL NTFS  \nsda6 60GB - LOGICAL NTFS  \nsda7 90GB - LOGICAL EXT4  \nsda8 4GB - LOGICAL FAT16  \nsda9 6GB - LOGICAL LINUX SWAP  \nsda10 200 - LOGICAL NTFS  \n\nI deleted sda1 and created from the unpartitioned space two other ntfs primary partitions. Named (in gparted) sda1 and sda3. Now, the two primary partitions are readable but the extended one has an \"unknown partition\" problem in gparted and in unreadable.  \n\nThe only backup I had was on sda10 and is unredable. Below I posted a log from testdisk. Please, review it and guide through this as I don\u0027t know what to do.  \n\nThanks for all your help. It will be appreciated.  \n\n[http://tinypaste.com/58917f](http://tinypaste.com/58917f \"External link\")   \n"
+    },
+    {
+      "id": "121552",
+      "timestamp": "2011-02-06T11:18:09+00:00",
+      "author": "skyide",
+      "content": "sorry, I deleted my post to eliminate confusion.   \n"
+    },
+    {
+      "id": "121554",
+      "timestamp": "2011-02-06T11:23:02+00:00",
+      "author": "Uneitohr",
+      "content": "Initially, the extended was sda2 but after the re-partitioning, it should\u0027ve been sda3. I don\u0027t know how it happened.   \n"
+    },
+    {
+      "id": "121555",
+      "timestamp": "2011-02-06T11:25:27+00:00",
+      "author": "skyide",
+      "content": "I think your partition table must be stuffed up. If you are on Windows, try using Paragon Partition Manager Free edition. It might be able to fix it or at least see what it comes up with.   \n"
+    },
+    {
+      "id": "121557",
+      "timestamp": "2011-02-06T11:35:26+00:00",
+      "author": "Wonko the Sane",
+      "content": "It seems a lot like a big mess.  \nIn Testdisk try to set:  \nExpert mode: Yes  \nCylinder boundary : No  \nAllow partial last cylinder : Yes  \n\nand scan for partitions.  \n\nDO NOT EVEN THINK of using **ANY** partitioning/re-partitioning program on that disk! ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)  \n\nThose programs are NOT made to recover/fix problems.  \n\nYour priorities are now:  \n\n* recover the DATA\n* if possible restore the previous partitioning scheme\n\n\u003cbr /\u003e\n\nAs an alternative to TESTDISK, you may want to try DMDE:  \n[http://softdm.com/](http://softdm.com/ \"External link\")  \n\nYou SHOULD make a RAW image of that disk (better if two) before making ANY change to it.  \n(I do know that having another two 500 Gb disks is not possible for the average Joe, but if you get NOW at least one slightly bigger disk, let\u0027s say a 640 Gb one, you are going to spend some 80 bucks, but you have to ask yourself: \"do I really want ot save US $ 80,00 but risk losing ALL my DATA?)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "121561",
+      "timestamp": "2011-02-06T12:21:20+00:00",
+      "author": "skyide",
+      "content": "*if possible restore the previous partitioning scheme*   \n\nCorrect, without a doubt his partition table is messed up. Now the question is how exactly is going to restore it? It would have to be done manually. I hope your suggestion solves the issue and I fully agree that he needs to make a raw backup copy of his whole disk before messing any further.  \n\nThe best thing to do would be to somehow get the data of the broken partition and put it to another. The data isn\u0027t lost, it is still there.  \n\n\u003cbr /\u003e\n\nIf in case you attempt to use any tool my suggestion is not to make any changes if you don\u0027t know what it\u0027s asking you so you are better of posting the results here.   \n"
+    },
+    {
+      "id": "121562",
+      "timestamp": "2011-02-06T12:23:52+00:00",
+      "author": "Uneitohr",
+      "content": "Thank you skyide and Wonko for your help. Fortunatelly, I do have a 750 GB hard drive and I\u0027ll begin creating the raw image immediately. I will do what you said and post here the results. Thanks again   \n"
+    },
+    {
+      "id": "121573",
+      "timestamp": "2011-02-06T15:27:55+00:00",
+      "author": "Uneitohr",
+      "content": "\u003e It seems a lot like a big mess.  \n\u003e In Testdisk try to set:  \n\u003e Expert mode: Yes  \n\u003e Cylinder boundary : No  \n\u003e Allow partial last cylinder : Yes  \n\u003e\n\u003e and scan for partitions.\n\nIt worked! Everything is exactly the same. I\u0027m so happy ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)   \nIt took me 2 hours to backup the whole disk using clonezilla.  \nThank you so much.   \n"
+    },
+    {
+      "id": "121575",
+      "timestamp": "2011-02-06T16:01:17+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e It worked! Everything is exactly the same. I\u0027m so happy ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)   \n\u003e It took me 2 hours to backup the whole disk using clonezilla.  \n\u003e Thank you so much.  \nGood. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nAnother happy bunny in the basket ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) :  \n[http://www.msfn.org/...ic\u003d128727\\\u0026st\u003d10](http://www.msfn.org/board/index.php?showtopic\u003d128727\u0026st\u003d10 \"External link\")  \n\n![:merc:](http://reboot.pro/public/style_emoticons/default/merc.gif)  \nWonko   \n"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "8037",
+  "title": "Boot USB Thumb Drive when the bios does not support USB Boot",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "67991",
+      "timestamp": "2009-05-20T18:18:40+00:00",
+      "author": "e2p2",
+      "content": "I have a number of older servers that have usb ports but the bios does not support booting from any USB connected device, CD-ROM or Thumb Drive. Does any one know of a way to setup a floppy it chainload/boot from a connected thumb drive?   \n"
+    },
+    {
+      "id": "67995",
+      "timestamp": "2009-05-20T19:30:23+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I have a number of older servers that have usb ports but the bios does not support booting from any USB connected device, CD-ROM or Thumb Drive. Does any one know of a way to setup a floppy it chainload/boot from a connected thumb drive?\n\nSure ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png), search the board for keyword \"PLoP\" (without quotes).  \n\nCheck the homepage:  \n[http://www.plop.at/](http://www.plop.at/ \"External link\")  \n[http://www.plop.at/en/bootmanager.html](http://www.plop.at/en/bootmanager.html \"External link\")  \n[http://www.plop.at/e...mngrusblog.html](http://www.plop.at/en/bootmngrusblog.html \"External link\")  \n\nthen, depending on WHAT OS you want to boot from USB, you ***may*** need some additional methods.  \n\njaclaz   \n"
+    }
+  ]
+}

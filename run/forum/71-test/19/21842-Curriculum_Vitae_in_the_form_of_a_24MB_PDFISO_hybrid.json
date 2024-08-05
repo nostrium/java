@@ -1,0 +1,28 @@
+{
+  "id": "21842",
+  "title": "Curriculum Vitae in the form of a 24MB PDF/ISO hybrid",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "207720",
+      "timestamp": "2018-09-10T14:43:27+00:00",
+      "author": "Brito",
+      "content": "An engineer created an operating system. He then decided to pack both his curriculum vitae and boot CD inside the same file.\n\nYou can choose to either open the file as a PDF, or boot it from VirtualBox, or both as you can see on the screenshot below.\n\nCool stuff going on at [http://r.dakko.us/](http://r.dakko.us/ \"External link\")\n\n![screenshot.png](http://r.dakko.us/screenshot.png)\n\nHow it was done:\n\n[https://gist.github....4ae90fe0ed0e16e](https://gist.github.com/klange/c49d7836a53c922384ae90fe0ed0e16e \"External link\")\n\nHave fun!\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "207721",
+      "timestamp": "2018-09-10T15:39:30+00:00",
+      "author": "Wonko the Sane",
+      "content": "Also (JFYI), the best example/explanation of a polyglot I ever found is in this \"pocorgtfo\" file \\[2015\\] (12 MB PDF but not only):\n\n[https://www.alchemis....org/pocorgtfo/](https://www.alchemistowl.org/pocorgtfo/ \"External link\")\n\n[https://www.alchemis...pocorgtfo07.pdf](https://www.alchemistowl.org/pocorgtfo/pocorgtfo07.pdf \"External link\")\n\n6 Abusing ﬁle formats; or, Corkami, the Novella by Ange Albertini\n\nAnd more example/pocs:\n\n[https://code.google....hive/p/corkami/](https://code.google.com/archive/p/corkami/ \"External link\")\n\n[https://github.com/corkami](https://github.com/corkami \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "207724",
+      "timestamp": "2018-09-11T08:14:20+00:00",
+      "author": "Brito",
+      "content": "Good read Wonko.\n\n"
+    }
+  ]
+}

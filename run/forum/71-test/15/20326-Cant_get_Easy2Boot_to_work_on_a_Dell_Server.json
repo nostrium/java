@@ -1,0 +1,40 @@
+{
+  "id": "20326",
+  "title": "Can\u0027t get Easy2Boot to work on a Dell Server",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "190490",
+      "timestamp": "2015-02-10T19:02:09+00:00",
+      "author": "kelemvor33",
+      "content": "So, I created an E2B flash drive and copied over ISO files for Server 2012, Server 2012 R2, and Win 8.1. I tested it on a Dell laptop and it all worked perfectly fine.\n\nI then tried to use it on a Dell R630 server and didn\u0027t have any luck. I get the menu, I make my choice, it shows the initial Windows loading screen with the DOS style bar that goes across the bottom, and then I get an error.\n\nWindows fails to start.\n\nFile: \\\\Windows\\\\System32\\\\boot\\\\winload.exe\n\nStatus: 0xc0000001\n\nInfo: The application or operating system couldn\u0027t be loaded because a required file is missing or contains errors.\n\nThe server is brand new, just out of the box. I checked and it is not using UEFI mode.\n\nI took the same flash drive back to a different Dell Laptop and tried again and it loaded up and installed just fine.\n\nI tried all of the ISOs that I have and they all do the same thing.\n\nAnyone run into this and hopefully know a fix? :smile:\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "190491",
+      "timestamp": "2015-02-10T19:11:02+00:00",
+      "author": "steve6375",
+      "content": "When you get the E2B menu - choose the grub4dos 0.4.6a option - then choose the USB driver option (use a USB 2.0 port for the E2B USB drive).\n\nIf the USB driver detects the drive, then try the Windows ISO again.\n\n"
+    },
+    {
+      "id": "190495",
+      "timestamp": "2015-02-11T04:03:47+00:00",
+      "author": "tinybit",
+      "content": "I encountered several newish machines that just could not install windows xp. Only win7 and win8 were allowed to install. Although the machines support normal BIOS, they cannot install xp.   \n"
+    },
+    {
+      "id": "190496",
+      "timestamp": "2015-02-11T05:50:31+00:00",
+      "author": "Zoso",
+      "content": "\u003e I encountered several newish machines that just could not install windows xp. Only win7 and win8 were allowed to install. Although the machines support normal BIOS, they cannot install xp.\nat what point of install? wow that is starnge, I wonder what it could be?  \n\nmy older Dell laptop has a peculiar BIOS. lots of strange behavior when booting various USB. eg. some USB wont boot unless there is a HDD present, others will boot without HDD present.  \n\nsome will boot with only a certain HDD present but not other HDD.  \n\nthats just what I recall but that dell has caused me all kinds of wasted time trying experimental boot senarios   \n"
+    },
+    {
+      "id": "190526",
+      "timestamp": "2015-02-11T16:30:45+00:00",
+      "author": "kelemvor33",
+      "content": "OK, so we figured it out. ARGH! Turns out when the RAID was setup, the Virtual Drives didn\u0027t Initialize so they were in some funky state. I tried using our normal image and that didn\u0027t work either which led me to the solution.\n\nI just reinitialized the drives and tried again and it\u0027s working fine now. \\*sigh\\*\n\nThanks.\n\n"
+    }
+  ]
+}

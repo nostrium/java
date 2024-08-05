@@ -1,0 +1,52 @@
+{
+  "id": "13448",
+  "title": "WinSetupFromUSB 0.2.3 - Win 7 Setup on USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "117546",
+      "timestamp": "2010-12-22T16:00:18+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "I used**WinSetupFromUSB 0.2.3** to transfer Windows 7 Setup to USB. On VMWare, it booted fine, but on real hardware every time Windows Boot Manager displayed this error message:  \n\n```\nWindows Boot Manager\n\n\n\nA recent hardware or software changes ...............\n\n\n\n\u003cSome general instructions\u003e\n\n\n\nFile: \\BOOT\\BCD\n\nStatus: 0xc000000e\n\nInfo: An error occurred while attempting to read boot configuration data\n\n\n\nENTER\u003dCONTINUE                             ESC\u003dCANCEL\n\n```\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nBoth ENTER \\\u0026 Esc reboots the machine. Initially I thought that the BOOT folder on the USB is somehow damaged. I deleted \\\u0026 copied it from the DVD. But no luck.   \n"
+    },
+    {
+      "id": "117550",
+      "timestamp": "2010-12-22T16:28:00+00:00",
+      "author": "maanu",
+      "content": "1.how ur usb is partitioned ?  \n2.get bootice , see the pbr and MBR of USB , post pic here.   \n3.get untouched BOOT folder from dvd.  \n4.make sure u have boot.wim file in \" SOURCES \" folder.   \n"
+    },
+    {
+      "id": "117590",
+      "timestamp": "2010-12-22T21:21:54+00:00",
+      "author": "L A M A",
+      "content": "This looks very close to my post... Check out info\u0027z by karyonix to me below  \n\n\u003cbr /\u003e\n\n[http://reboot.pro/88...post__p__115753](http://reboot.pro/8804/page__view__findpost__p__115753 \"\")  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003e Your BCD does not have valid boot entry.   \n\u003e The easiest way to make BCD is to use BCDBOOT command.  \n\u003e\n\u003e Assign a drive letter to partition inside w7.img. (I assume it is H: in this example) And run bcdboot command  \n\u003e\n\u003e ```\n\u003e bcdboot H:\\Windows /s H:\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "117629",
+      "timestamp": "2010-12-23T01:12:38+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "I placed bcdedit in the BOOT folder \\\u0026 ran this command  \n\n```\nbcdedit /store bcd\n```\n\n\u003cbr /\u003e\n\nHere\u0027s the output  \n\n```\n\n\nWindows Boot Manager\n\n--------------------\n\nidentifier              {bootmgr}\n\ndescription             Windows Boot Manager\n\nlocale                  en-US\n\ninherit                 {globalsettings}\n\ndefault                 {default}\n\ndisplayorder            {default}\n\ntoolsdisplayorder       {memdiag}\n\ntimeout                 30\n\n\n\nWindows Boot Loader\n\n-------------------\n\nidentifier              {default}\n\ndevice                  ramdisk\u003d[boot]\\sources\\boot.wim,{7619dcc8-fafe-11d9-b411-000476eba25f}\n\npath                    \\windows\\system32\\boot\\winload.exe\n\ndescription             Windows Setup\n\nlocale                  en-US\n\ninherit                 {bootloadersettings}\n\nosdevice                ramdisk\u003d[boot]\\sources\\boot.wim,{7619dcc8-fafe-11d9-b411-000476eba25f}\n\nsystemroot              \\windows\n\ndetecthal               Yes\n\nwinpe                   Yes\n\nems                     Yes\n\n```\n\n\u003cbr /\u003e\n\nDoes it need any adjustment?   \n"
+    },
+    {
+      "id": "117633",
+      "timestamp": "2010-12-23T01:41:45+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "\u003e 1.how ur usb is partitioned ?  \nUSB-HDD with one partition as primary, active  \n\n\u003cbr /\u003e\n\n\u003e 2.get bootice , see the pbr and MBR of USB , post pic here.   \n**MBR: Grub4DOS**   \n\n```\n\n\në^€\u0005 9ÿÿ                                                                                        è  [ëc Áë\u0004ŒÈ\u0001ÃŽÛSjuËö\u0006\u0002 \u0004t\u000f1ÀŽÀ¿ü\u0005f¸DUCEf«h  \u0017¼ 1ÉQº€ R´\bùÍ\u0013ZX\u0016\u0007r\u0017€á?ùt\u0011‘´\u0002‰Å1ÛARùÍ\u0013Zr\u0002öÜ\u000e\u001fœ1ö1ÿ¹ß üó¥»ü\u001ff¸GRUªf9\u0007u\u0003èî\u001aêÞ   \u0016\u001ff9\u0007t1f`¡\u0018 ƒø?w \u003c\u0010r\u001cH¿\u0003 ´\u0002™» \u0002¹\u0002 `Í\u0013as\t`1ÀÍ\u0013aOuèfaf9\u0007uVr\u003e\u000e\u001f­ˆæ­‰Á$?t\u001f)èHöØ¿\u0003 ´\u0002h \n\n\u00071Û`Í\u0013as\n\n`1ÀÍ\u0013aOuéùè0\u0011\u000f‡”\u001aƒÆ\fþþ\u0001rÄw\u0015¾²1´\b™RÍ\u0013Xr\t™‘$?t\u0003Aë¾¾\u0001è\u0016 ëþú¸  ŽÐ¼Üûfa\u0007\u001fëÈ´\u000eÍ\u0010.¬\u003c uöÃ\n\nMissing MBR-helper.                    DJ\u0015\u0001  €\u0001\u0001 \u000bþì?   Áïx                                                 Uª\n\n```\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n**PBR: NTLDR**   \n\n```\n\n\nëXMSDOS5.0 \u0002\b\u0026 \u0002    ø  ? ÿ ?   Áïx -\u001e      \u0002   \u0001 \u0006               )Æ¤û|NO NAME    FAT32   3ÉŽÑ¼ô{ŽÁŽÙ½ |ˆN\u0002ŠV@´\bÍ\u0013s\u0005¹ÿÿŠñf\u000f¶Æ@f\u000f¶Ñ€â?÷â†ÍÀí\u0006Af\u000f·Éf÷áf‰Føƒ~\u0016 u8ƒ~* w2f‹F\u001cfƒÀ\f» €¹\u0001 è+ éH\u0003 ú}´}‹ð¬„Àt\u0017\u003cÿt\t´\u000e»\u0007 Í\u0010ëî û}ëå ù}ëà˜Í\u0016Í\u0019f`f;Fø\u000f‚J fj fP\u0006Sfh\u0010 \u0001 €~\u0002 \u000f…  ´A»ªUŠV@Í\u0013\u000f‚\u001c ûUª\u000f…\u0014 öÁ\u0001\u000f„\n\n þF\u0002´BŠV@‹ôÍ\u0013°ùfXfXfXfXë*f3Òf\u000f·N\u0018f÷ñþÂŠÊf‹ÐfÁê\u0010÷v\u001a†ÖŠV@ŠèÀä\u0006\n\nÌ¸\u0001\u0002Í\u0013fa\u000f‚TÿÃ \u0002f@I\u000f…qÿÃNTLDR                                                       \n\nRemove disks or other media.ÿ\n\nDisk errorÿ\n\nPress any key to restart\n\n     ¬ËØ  Uª\n\n```\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003e 3.get untouched BOOT folder from dvd.  \n\nDone  \n\n\u003e 4.make sure u have boot.wim file in \" SOURCES \" folder.  \n\nIt\u0027s there in SOURCES folder   \n"
+    },
+    {
+      "id": "118073",
+      "timestamp": "2010-12-30T07:23:04+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "One more astonishing result - the above USB HDD worked fine on my laptop also (like it was in VMWare). The test I performed earlier was on my desktop. Another example of craziness of BIOSes. Can anybody come forward with some ideas this time? I\u0027m here to try them out patiently.   \n"
+    },
+    {
+      "id": "118080",
+      "timestamp": "2010-12-30T11:12:57+00:00",
+      "author": "L A M A",
+      "content": "Since you say your laptop boots right, could it be SATA driver? I had one such case which required different driver for ICH7 (desktop) and ICH8 (laptop) at the time of driver integration into XP setup. Anyhow for the solution part, i sniffed around MSFN and found a guy who made un-official ahci driver mix (he claimed it may show \"unsigned\" or something) but its always wise to integrate two official drivers. (i wanted to avoid possible conflict at that point)  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\ni think it was under msfn\\\\unattended or something...  \n\nALSO you may get some hints here? : \u003chttp://reboot.pro/9196/\u003e   \n"
+    }
+  ]
+}

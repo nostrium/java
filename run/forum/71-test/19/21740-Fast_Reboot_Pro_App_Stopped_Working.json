@@ -1,0 +1,34 @@
+{
+  "id": "21740",
+  "title": "Fast Reboot Pro App Stopped Working",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "206504",
+      "timestamp": "2018-03-22T11:27:43+00:00",
+      "author": "vikaskundu",
+      "content": "I have recently purchased the Fast Reboot Pro app from Google Play Store. The app had been running smooth when my Note 8 was on Android 7.0 however today as I have upgraded to Android 8.0 the app is simply crashing on the startup. Can anyone please help me?\n\n"
+    },
+    {
+      "id": "206596",
+      "timestamp": "2018-03-27T09:25:49+00:00",
+      "author": "vikaskundu",
+      "content": "**Update:** Since I\u0027ve uninstalled and reinstalled the latest version of the app it has been working just fine again, thank you so much for releasing the fix so quick :smile:\n\n\\~ Vikas\n\n"
+    },
+    {
+      "id": "206616",
+      "timestamp": "2018-04-02T02:20:34+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "You aren\u0027t likely to get help with Android-related issues here, this forum is primarily focused on booting methods as they relate to Windows, and other PC OSes to a much lesser extent. You would be much better off reporting such problems to the app developer so they can maybe address it. For Android issues the XDA forums is the go-to spot for me.   \n"
+    },
+    {
+      "id": "206695",
+      "timestamp": "2018-04-19T08:41:59+00:00",
+      "author": "abbeyslinger",
+      "content": "Well that\u0027s a really quick fix. After updating to Oreo i am also experiencing bugs of battery drainage\n\n"
+    }
+  ]
+}

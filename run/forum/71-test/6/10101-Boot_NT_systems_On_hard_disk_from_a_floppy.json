@@ -1,0 +1,58 @@
+{
+  "id": "10101",
+  "title": "Boot NT systems On hard disk from a floppy",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "87993",
+      "timestamp": "2009-12-29T04:59:59+00:00",
+      "author": "chenall",
+      "content": "Hi,  \nthis is my first post.  \nI think this tools can help someone。  \n\nthis img can boot Windows NT SYSTEM (2000-2008) on hard disk When the system boot on the hard disk is broken  \n\nthe menu  \nwindows 2000-2003 is NT5.X  \nwindows VISTA/WIN7/WIN2008 is NT6.X  \n\nUse:  \nfirst Please copy files NTLDR,NTDETECT.COM(from windows 2003 sp1) and bootmgr (from win7 or Win2008) into ntboot.img  \n\n1.grub4dos  \ntitle Ntboot  \nmap --mem /ntboot.img.gz (fd0)  \nmap --hook  \nchainloader (fd0)/grldr  \n#or   \n#rootnoverify (fd0)  \n#chainloader +1  \n2.syslinux  \nkernel /memdisk.gz  \ninitrd /ntboot.img.gz  \n\nSorry my english,hope it\u0027s useful to you.  \n\n2009-12-30  \nmodify menu.lst to find the right NT5.X system  \n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003d418b2be7333c96a88239736bfc5b68c7\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d10218 \"Download attachment\") [**ntboot.zip**](http://reboot.pro/index.php?s\u003d418b2be7333c96a88239736bfc5b68c7\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d10218 \"Download attachment\") **127.03KB** 383 downloads\n\n"
+    },
+    {
+      "id": "88005",
+      "timestamp": "2009-12-29T11:52:26+00:00",
+      "author": "maanu",
+      "content": "hi and welcome to Boot land .   \n\ni m sure it will be nice experience over here , same as you do have on wuyou and znpc.   \n\nand certainly thanks for the first post although i have it already from wuyou.. :smile:   \n"
+    },
+    {
+      "id": "88015",
+      "timestamp": "2009-12-29T13:57:46+00:00",
+      "author": "fujianabc",
+      "content": "Beware please.  \n\nYou included the files bootmgr, ntldr, ntdetect.com in your image file. They are the files from windows, which are not allowed to upload here. :smile:   \n"
+    },
+    {
+      "id": "88016",
+      "timestamp": "2009-12-29T14:01:08+00:00",
+      "author": "maanu",
+      "content": "\u003e Beware please.  \n\u003e\n\u003e You included the files bootmgr, ntldr, ntdetect.com in your image file. They are the files from windows, which are not allowed to uploaded here. :smile:\n\n\u003cbr /\u003e\n\nooh , you still remember your previous thread chit chat :smile:   \n"
+    },
+    {
+      "id": "88020",
+      "timestamp": "2009-12-29T15:51:12+00:00",
+      "author": "Lancelot",
+      "content": "Hi chenall  \n\nThanks a lot for sharing,  \nHere on boot-land we currently\\* have some forum rules [here](http://www.boot-land.net/forums/index.php?showtopic\u003d9101 \"External link\") which prevents us sharing undistributable files like Billy\u0027s files. (Example: ntldr, ntdetect.com, bootmgr in your package)  \n\nFor the cases where special files from Billy needed (or another..), you may write a tutorial or create a batcher (.cmd, winbuilder script etc) so users obtain files and follow the batcher or tutorial.  \nIt is not too hard, just provide ntboot.img without files mentioned, write which files needed (ex: ntdetect.com from 2k3sp1), provide a patcher to patch files (example: you may use wonderful patcher from nikzzzz [bPatch.exe](http://livexp.boot-land.net/Tools/LiveXP/bPatch.exe \"External link\")) and ask user to put these file inside ntboot.img (maybe with [imdisk](http://www.boot-land.net/forums/index.php?showforum\u003d59 \"External link\") or...)  \n\nThis helps many users understand what is going on easly and makes developers support when available.  \n\n:smile:   \n"
+    },
+    {
+      "id": "88435",
+      "timestamp": "2010-01-04T21:01:08+00:00",
+      "author": "ireneuszp",
+      "content": "with grub4dos from here [http://grub4dos-chen...-04-chenall.rar](http://grub4dos-chenall.googlecode.com/files/grub4dos-0.4.5a-2010-01-04-chenall.rar \"External link\")  \nit doesn\u0027t work  \n\nNT5.X/NT6.X  \n[http://bbs.wuyou.com...\u003d15...\u003d1\\\u0026page\u003d1](http://bbs.wuyou.com/viewthread.php?tid\u003d158244\u0026extra\u003dpage%3D1\u0026page\u003d1 \"External link\")  \n\n:smile:   \n"
+    },
+    {
+      "id": "88437",
+      "timestamp": "2010-01-04T21:09:44+00:00",
+      "author": "maanu",
+      "content": "\u003e with grub4dos from here [http://grub4dos-chen...-04-chenall.rar](http://grub4dos-chenall.googlecode.com/files/grub4dos-0.4.5a-2010-01-04-chenall.rar \"External link\")  \n\u003e it doesn\u0027t work  \n\u003e\n\u003e NT5.X/NT6.X  \n\u003e [http://bbs.wuyou.com...\u003d15...\u003d1\\\u0026page\u003d1](http://bbs.wuyou.com/viewthread.php?tid\u003d158244\u0026extra\u003dpage%3D1\u0026page\u003d1 \"External link\")  \n\u003e\n\u003e :smile:\n\nwhat doesn\u0027t work?. he used custom grldr for that purpose by the way.   \n"
+    },
+    {
+      "id": "95275",
+      "timestamp": "2010-03-20T11:10:56+00:00",
+      "author": "ireneuszp",
+      "content": "new version  \n2010-03-19  \n[http://grub4dos-iren...ot2010-03-19.gz](http://grub4dos-ireneuszp.googlecode.com/files/ntboot2010-03-19.gz \"External link\")  \n\nntboot2010-03-22  \n[http://grub4dos-iren...ot2010-03-22.gz](http://grub4dos-ireneuszp.googlecode.com/files/ntboot2010-03-22.gz \"External link\")  \n\nin menu.lst add  \n\n```\ntitle ntboot\n\nmap --mem /ntboot.img.gz \u0026#40;fd0\u0026#41;\n\nmap --hook\n\nconfigfile \u0026#40;fd0\u0026#41;/menu.lst\n```\n\n\u003cbr /\u003e\n\nor here [http://bbs.wuyou.com...5...\\\u0026page\u003d12###](http://bbs.wuyou.com/viewthread.php?tid\u003d158244\u0026extra\u003dpage%3D1\u0026page\u003d12### \"External link\")  \n\n![:wodoo:](http://reboot.pro/public/style_emoticons/default/wodoo.gif)   \n"
+    }
+  ]
+}

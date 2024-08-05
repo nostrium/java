@@ -1,0 +1,16 @@
+{
+  "id": "16334",
+  "title": "BOOT EXTERNAL USB HDD VISTA",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "148149",
+      "timestamp": "2012-02-12T07:11:59+00:00",
+      "author": "armandusy",
+      "content": "[http://www.filedropper.com/fot-](http://www.filedropper.com/fot- \"External link\")  \n\nI got this error message when windows vista is booting. I patch the HDD with pwboot. The windows is booting up once, but after restart the problem appears again. BLUE DEATH.  \n\nI\u0027M using external exiting windows vista. What can I do to boot from USB HDD without format or windows install?  \n\nAny issues to fix this problem?   \n"
+    }
+  ]
+}

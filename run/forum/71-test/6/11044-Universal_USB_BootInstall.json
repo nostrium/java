@@ -1,0 +1,34 @@
+{
+  "id": "11044",
+  "title": "Universal USB Boot/Install",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "97288",
+      "timestamp": "2010-04-08T13:20:36+00:00",
+      "author": "Stasheck",
+      "content": "Hi everyone,  \n\nI\u0027m currently on a quest in developing Ultimate Universal USB Boot/Install Drive ™®© ;-)  \n\nI\u0027m using grub2 (1.97b4), and memdisk (loaded via grub2). I haven\u0027t found a way to chainload grub4dos from grub2 - so if someone knows how to do it, tell me please :-)  \n\nAlso note that I need this pendrive to:  \n- have only a single partition (it\u0027s easier to remove/add things this way)  \n- be based on NTFS (so I can have files bigger than 4 GB \\\u0026 still be able to run Windows installers off it)  \n\nWhat I already achieved:  \n- I\u0027m able to boot a couple of Linux distros (in fact it\u0027s only important for me to boot Ubuntu, Debian and CentOS)  \n- I\u0027m able to boot a number of \"utility\" distros and tools (Parted Magic, RIPLinux, Clonezilla)  \n\nWhat else do I want:  \n- to be able to run multiple different Windows installations  \n\nI need:  \n- Windows 7 x86  \n- Windows 7 x64  \n- Windows 2K8 Server  \n- Windows XP Pro  \n- Windows XP Home  \n- Windows 2K3 Server  \n\nNow, as I found out reading this forum, it\u0027s impossible to have multiple NT6.x installers on a single disk - which is a shame. Also, I know that one can run NT5.x installer from DOS mode, but I\u0027m not sure how to boot plain DOS with NTFS support from grub2.  \n\nI\u0027m quite willing to create pre-install images of all these windows versions, but I\u0027ve never done it before, so:  \n- what\u0027s the best way to do this  \n- are they going to be universal? I mean, will I be able to install them on any machine?  \n- from what I read, installing W7 from WinPE may result in it being on \"D\" instead of \"C\" drive - that\u0027s unacceptable for me  \n- any hints?   \n"
+    },
+    {
+      "id": "97290",
+      "timestamp": "2010-04-08T13:32:11+00:00",
+      "author": "Stasheck",
+      "content": "OK, I just found the solution to grub4dos from grub2 problem:  \n\nlinux16 /grub.exe  \n\ndoes it :-)  \n\nThe rest - still waiting for bright ideas :-)   \n"
+    },
+    {
+      "id": "97294",
+      "timestamp": "2010-04-08T13:55:30+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e The rest - still waiting for bright ideas :-)\nIdeas, yes. :smile:  \nBright, ***maybe*** . ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nWith all due respect, you started the wrong way. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n\u003e Also note that I ***need*** this pendrive to:  \n\u003e - have only a single partition (it\u0027s easier to remove/add things this way)  \n\u003e - be based on NTFS (so I can have files bigger than 4 GB \\\u0026 still be able to run Windows installers off it)\nThere is NO ***need*** for a single partition, there***may be*** reasons, once evaluated the (supposed) \"advantages\" of having a single partition against the ***N*** problems you will have and workarounds and what not you will actually ***need*** to solve them.  \n\nIn other words. it seems to me like you are focusing more on the means than on the actual goal, this can make things very difficult or even impossible.  \n\nAlso, again IMHO, you fail to set the needed parameters, like amount of RAM on target machines, size/type of the USB drive, and so on.  \n\nMore generally, we have the advantage of having multiple partitions, why not using it? :smile:  \n\nAlso, since you have at least 6 \"somethings\" that will need grub4dos (or has now GRUB2 the \"MS side\" features grub4dos has? ![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png) - but then there would be no reason for grub4dos at all...:smile:), and listed a number of other \"somethngs\" that can be booted off grub4dos, the choice of using GRUB2 as \"main\" loader seems to me unjustified.  \n\nPersonally, I would use grub4dos as \"main\" loader and GRUB2 only for those thingies that actually need it (if any), in order to have on average more \"direct\" booting steps.  \n\nReading between the lines of this:  \n[http://www.boot-land...?...ic\u003d7138\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d7138\u0026hl\u003d \"External link\")  \n\nyou may find some ideas to workaround the \"single\" partition limit.  \n\n![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png)  \nWonko   \n"
+    },
+    {
+      "id": "97297",
+      "timestamp": "2010-04-08T14:08:39+00:00",
+      "author": "Stasheck",
+      "content": "Yes, I\u0027m aware that I chose the hard way :-) But that\u0027s how I do things - I like to make computers do my bidding, not me doing theirs.  \n\nI believe that it\u0027s perfectly possible to achieve the goals I set for this project. And yes, probably having multiple partitions would make creating installers easiers - except that if I\u0027d wanted to change eg Win7 x86 install to some linux distros, I\u0027d effectively have to re-create the whole setup.  \n\nAbout params:  \n- I have 16 GB pendrive, but I want to be able to create such keys for other guys @work, they have some 4 and 8 GB sticks  \n- Lowest mem would be 512 MB, but that\u0027s extreme - most of machines I have to deal with have \\\u003e1GB.  \n\nI use GRUB2, because the project started when I wanted to explore it a bit :-)  \n\nAlso, I\u0027m not sure if I need GRUB4DOS for anything: preinstal images are run from WinPE, aren\u0027t they? Nevertheless, I\u0027m not sure if that\u0027s the way to go.   \n"
+    }
+  ]
+}

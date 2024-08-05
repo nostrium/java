@@ -1,0 +1,76 @@
+{
+  "id": "560",
+  "title": "usb hdd",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "4446",
+      "timestamp": "2006-10-24T11:26:45+00:00",
+      "author": "Mike69",
+      "content": "hi,  \n\n\u003cbr /\u003e\n\nim asking for your help becouse im going nuts with this project im trying to do...  \n\n\u003cbr /\u003e\n\ni have a 5gb usb hdd, and i want to make it bootable so i can boot seperatly to 3 different partitions,  \npartition 1 - fat32 - msdos  \npartition 2 - fat32 - msdos  \npartition 3 - ntfs - xp (using the method of installing winxp to usb hdd)  \n\ni´ve managed to make it bootable but just in the first partition (where i have some dos tools), but how can   \ni make a different boot sector to different partitions?  \n\ni would also like to make a boot menu where i choose from any of that partitions!!  \n\nthanks in advance  \n\nps. and dont forget... im a newbie :tongue:   \n"
+    },
+    {
+      "id": "4451",
+      "timestamp": "2006-10-24T13:16:53+00:00",
+      "author": "phox",
+      "content": "\u003e ...  \n\u003e i would also like to make a boot menu where i choose from any of that partitions!!  \n\u003e\n\u003e thanks in advance  \n\u003e\n\u003e ps. and dont forget... im a newbie :tongue:\n\nTry this:  \n\n[http://www.ezbsystems.com/easyboot/](http://www.ezbsystems.com/easyboot/ \"External link\")  \n\nEasyBoot is an integrated tool to create MultiBoot,   \nMenu driven CDs \\\u0026 DVDs with native language.   \nIt has the ability to automatically produce boot image files,   \nand generate the ISO file as well.   \n"
+    },
+    {
+      "id": "4460",
+      "timestamp": "2006-10-24T14:28:13+00:00",
+      "author": "Mike69",
+      "content": "yes ok...  \n\n\u003cbr /\u003e\n\nbut can it be used in a usb hdd with multiple partitions?   \n"
+    },
+    {
+      "id": "4467",
+      "timestamp": "2006-10-24T15:22:44+00:00",
+      "author": "was_jaclaz",
+      "content": "Here is a method explained by markimoo here:  \n[http://www.msfn.org/...showtopic\u003d69211](http://www.msfn.org/board/index.php?showtopic\u003d69211 \"External link\")  \nand one explained by spacesurfer here:  \n[http://www.911cd.net...o...c\u003d18045\\\u0026hl\u003d](http://www.911cd.net/forums//index.php?sho...c\u003d18045\u0026hl\u003d \"External link\")  \n\nThe problem for XP installed on a USB stick can be if the device is seen as \"Fixed\" or \"Removable\".  \n\nIf the device is seen as removable you MUST use either the \"Hitachi Microfilter Driver\" or the recently found \"dummydisk.sys\":  \n[http://www.911cd.net...o...181\\\u0026st\u003d1954](http://www.911cd.net/forums//index.php?sho...181\u0026st\u003d1954 \"External link\")  \n\nOtherwise will be able to mount ONLY first partition.  \n\nIf you need any help with Grub4dos syntax, just post questions here.  \n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "4479",
+      "timestamp": "2006-10-24T17:30:24+00:00",
+      "author": "phox",
+      "content": "\u003e yes ok...  \n\u003e but can it be used in a usb hdd with multiple partitions?\n\nI don\u0027t know and I am interested in that to.   \nIt works fine with CD boot.   \n"
+    },
+    {
+      "id": "4481",
+      "timestamp": "2006-10-24T18:14:23+00:00",
+      "author": "was_jaclaz",
+      "content": "Easyboot, besides being COMMERCIAL software :tongue: , is a tool related to building ONLY boot CD\u0027s and DVD\u0027s, **NOT** HD, USB sticks or USB hard disks.  \n\nThere are a fair number of tools, both Commercial and Open Source that fall into the category of \"bootmanagers\" that ONLY work on FD or HD like devices.  \n\nOf these, among the Freeware ones I can mention partita:  \n[http://www.pedrofrei...om/crea1_en.htm](http://www.pedrofreire.com/crea1_en.htm \"External link\")  \nand mrbldr:  \n[http://www.boot-land...mbldr-t334.html](http://www.boot-land.net/forums/OS-BS-ride...mbldr-t334.html \"External link\")  \nthe distinctive advantage of these two is that they both fit completely in the MBR (512 bytes), so they are theoretically compatible with ALL partition managing software, unlike some other ones that occupy some of the \"hidden\" sectors of first track.  \n\nOn the contrary Grub4DOS, GPL, is a tool specific to HD\u0027s and similar devices that can ALSO be used on bootable CD\u0027s.  \n\nThe good thing about Grub4dos is the fact that it can be run fro either DOS (grub.exe) or from BOOT.INI (grldr) through NTLDR, so that you won\u0027t need to even touch the MBR.  \n\nThe syntax is more \"logical\" than most other bootmanagers and the same menu.lst can be used on floppy, CD or HD type of devices, and it is of course fully compatible with any kind of Linux.  \n\njaclaz   \n"
+    },
+    {
+      "id": "4504",
+      "timestamp": "2006-10-25T10:22:24+00:00",
+      "author": "Mike69",
+      "content": "hi again...  \n\ntks jaclaz for all your help!!  \n\nive managed to sucessfully make the boot menu to start from each partition, but now every time i start the first partition or the second one (msdos tools) automatically the second and third partition hides itself!!  \n\nthis is strange becouse i dont have anything in this msdos tools to hide such partitions.  \n\nps. ive created the boot menu with special fdisk   \n"
+    },
+    {
+      "id": "4511",
+      "timestamp": "2006-10-25T13:34:05+00:00",
+      "author": "was_jaclaz",
+      "content": "Yes, that\u0027s normal, you CANNOT have more than one PRIMARY partition visible to DOS.  \n\nThe question here is two (actually three) folded:  \n1) WHY do you need to have more than one partition?  \n2) WHY, IF more than one partition is needed, from second on they cannot be Logical Volumes inside Extended Partition?  \n2a) WHY, IF more than one partition is needed, AND from second on they cannot be Logical Volumes inside Extended Partition, do they need to \"see\" each other?  \n\n\u003cbr /\u003e\n\nPlease, do not take it as an offence :tongue: , but maybe you need a little bit of study on MBR\u0027s, Partitioning and limits of each OS (mainly DOS), some good links are:  \n[http://www.ranish.com/part/primer.htm](http://www.ranish.com/part/primer.htm \"External link\")  \n[http://pclt.cis.yale...OT/PARTITIO.HTM](http://pclt.cis.yale.edu/pclt/BOOT/PARTITIO.HTM \"External link\")  \n[http://thestarman.pcministry.com/](http://thestarman.pcministry.com/ \"External link\")  \n[http://home.att.net/...oot/pc_boot.htm](http://home.att.net/~rayknights/pc_boot/pc_boot.htm \"External link\")  \n[http://www.goodells....iboot/notes.htm](http://www.goodells.net/multiboot/notes.htm \"External link\")  \n\n\u003cbr /\u003e\n\nAnd, though not so good, my page here:  \n[http://home.graffiti...B/USBstick.html](http://home.graffiti.net/jaclaz:graffiti.n...B/USBstick.html \"External link\")  \nexplains a bit about USB stick booting  \n\njaclaz   \n"
+    },
+    {
+      "id": "4559",
+      "timestamp": "2006-10-26T15:09:53+00:00",
+      "author": "Mike69",
+      "content": "i need to see all partitions when i plug the usb hdd to winxp...   \n"
+    },
+    {
+      "id": "4563",
+      "timestamp": "2006-10-26T16:03:17+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e i need to see all partitions when i plug the usb hdd to winxp...\n\nThen you should make second and third partitions Logical Volumes inside Extended Partition.  \n\njaclaz   \n"
+    },
+    {
+      "id": "4894",
+      "timestamp": "2006-11-01T18:59:31+00:00",
+      "author": "Yorn",
+      "content": "jaclaz is right, you can do what you\u0027re trying to do, you just have to have one primary and then an extended that contains logical partitions. Once you get the mbr and partition stuff out of the way, you\u0027ll never need to go back and do it again.   \n"
+    }
+  ]
+}

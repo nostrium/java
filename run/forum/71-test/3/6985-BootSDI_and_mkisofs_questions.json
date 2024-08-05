@@ -1,0 +1,328 @@
+{
+  "id": "6985",
+  "title": "BootSDI and mkisofs questions",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "58079",
+      "timestamp": "2009-02-05T13:41:28+00:00",
+      "author": "Tokener",
+      "content": "Hello Bootland . . .  \n\nBooting a BootSDI-CD led me to the question how to install this system to Harddisk.  \nFirst I was using BartPE-Installer: creating Minint-Directory and Programs/Programme.  \nBut this method doesn´t take advantage of the PE-2-RAM-loading of BootSDI.  \nTo change this I moved the original BootSDI.iso from Winbuilder´s OutputFolder to C:\\\\ and made an entry in boot.ini for grldr,  \nand one entry in menu.lst for BootSDI.iso.  \nWhen booting the Harddisk you can call Grub4Dos from boot.ini, and Grub4Dos can call BootSDI.iso to load.  \nYou need 3 files: BootSDI.iso, grldr and ntldr(might be on C:\\\\).  \nYou have to modify 2 other files: boot.ini and menu.lst.  \nAnd that´s it !  \nBut normally the BootSDI.iso isn´t on the BootSDI-CD so you can´t install to HDD.  \n\nNow my idea is to rebuild the BootSDI.iso from the BootSDI-CD:  \nWhat2Do:  \n-boot the BootSDI-CD.  \n-copy all files from BootSDI-CD(source) to TEMP-folder.  \n-add bootsect.bin that might be hidden.  \n-compile the ISO by mkisofs.exe.  \n-copy grldr and ntldr to C:\\\\  \n-make entries in boot.ini and menu.lst.  \n\nThis could be done by a simple batchfile, if there was not one tricky part:  \nmkisofs doesn´t behave like in real-XP.  \nThough the cloned ISO can boot any PC (burned on Disk), it will not be accepted by Grub4Dos.  \ngrldr says: \"Error 60: File for drive emulation must be in one contiguous disk area\",  \nalthough the ISO is placed in C:\\\\, according to menu.lst.  \n\nQuestion:  \nWhy does mkisofs act so strange ?  \nHow could one come around this issue ?  \n\nT.   \n"
+    },
+    {
+      "id": "58083",
+      "timestamp": "2009-02-05T14:01:55+00:00",
+      "author": "was_jaclaz",
+      "content": "Hallo **Tokener** , I took the liberty of splitting your post from where you posted it originally, here:  \n[http://www.boot-land...?...c\u003d6913\\\u0026st\u003d0](http://www.boot-land.net/forums/index.php?showtopic\u003d6913\u0026st\u003d0 \"External link\")  \n\nsince it seems to me like a bit \"general\", rather than specific.  \n\nAs I read it, maybe mistakingly ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) it has this \"structure\":  \n\n* I did exactly as you did, ***but introduced a number of variations***\n* I had a problem (which I fail to describe extensively)\n* By the way, since I am already posting, I want to ask about several other problems I have using different methods (that again I describe with so few details that very hard to understand what I did)\n* After having asked several questions I ask whether \"this\" (WHICH :cool: is interesting or not)\n\n\u003cbr /\u003e\n\nI guess it would be better if we start again with some order, please review points #d and #f of the \"common sense advice\" given with Rules:  \n[http://www.boot-land...?act\u003dboardrules](http://www.boot-land.net/forums/index.php?act\u003dboardrules \"External link\")  \n\nRest assured that:  \n\u003e And my final question is:  \n\u003e Is this interresting at all, / is this issue solved somewhere else ?\n***ANY*** thing is interesting, and as soon as someone can understand what the actual questions are, if the issue has been already solved you will be told/guided, and if not yet, we\u0027ll try to help you in finding the solution. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\njaclaz  \n\nP.S.: Questions like   \n\u003e Does anybody else get this result ?\nmay get just answers like YES or NO.  \n[http://homepages.tes...no-answers.html](http://homepages.tesco.net/J.deBoynePollard/FGA/questions-with-yes-or-no-answers.html \"External link\")  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nwhich won\u0027t help you much unless you are trying to gather statistical data or taking a poll/survey   \n"
+    },
+    {
+      "id": "58090",
+      "timestamp": "2009-02-05T14:27:25+00:00",
+      "author": "Tokener",
+      "content": "@jaclaz  \n\nOh mercy me dumb, please delete this post, before it spreads, I will try one more time later.  \n\nSorry T.   \n"
+    },
+    {
+      "id": "58095",
+      "timestamp": "2009-02-05T15:29:12+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e @jaclaz  \n\u003e\n\u003e Oh mercy me dumb, please delete this post, before it spreads, I will try one more time later.  \n\u003e\n\u003e Sorry T.\n\nNo prob. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nOnce you have jolted down a clearer set of questions, just post them here, my fear was that of hijacking the \"vertical\" thread started by Ariom, since this one is \"horizontal\" enough from the start, there is not (much :cool:) risk of going \"off-topic\".  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "58202",
+      "timestamp": "2009-02-06T09:20:11+00:00",
+      "author": "Tokener",
+      "content": "Hi Bootland (again)  \n\nI rewrote my post (see top), to make my question clearer.  \nSo this is just a dummyreply![Posted Image](http://www.boot-land.net/forums/style_emoticons/default/cool.gif) to point to it.  \n\nT.   \n"
+    },
+    {
+      "id": "58203",
+      "timestamp": "2009-02-06T09:32:54+00:00",
+      "author": "Icecube",
+      "content": "\u003e There are two distinct types of mapping, direct and memory. Direct mapping is generally used for larger images/devices. If using direct mapping to create a virtual device from a disk image, then the image file must be contiguous (not fragmented). Either of the following programs can be used to defragment a file that is contiguous - contig or wincontig. Attempting to directly map a non-contiguous file will result in **Error 60: File for drive emulation must be in one contiguous disk area** , in which case memory mapping or defragmenting the file, and then retrying, should be attempted.\nSee: [http://diddy.boot-la...s/files/map.htm](http://diddy.boot-land.net/grub4dos/files/map.htm \"External link\") for the links to contig and wincontig.   \n"
+    },
+    {
+      "id": "58206",
+      "timestamp": "2009-02-06T09:57:35+00:00",
+      "author": "was_jaclaz",
+      "content": "@Tokener  \nWhat you might be missing is that the CD ***IS*** the .iso and the .iso ***IS*** the CD. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nYou just need to \"convert\" or \"extract\" the CD to a .iso.  \n\nTake your pick (just examples):  \n[http://www.lucersoft.com/freeware.php](http://www.lucersoft.com/freeware.php \"External link\")  \n[http://www.dubaron.com/cd2iso/](http://www.dubaron.com/cd2iso/ \"External link\")  \n[http://www.isodisk.com/](http://www.isodisk.com/ \"External link\")  \n[http://isorecorder.a...isorecorder.htm](http://isorecorder.alexfeinman.com/isorecorder.htm \"External link\")  \n[http://dpaehl.dd6338...dr/cddvdiso.php](http://dpaehl.dd6338.kasserver.com/cdr/cddvdiso.php \"External link\")  \nand of course cdrtools (command line):  \n[http://cdrecord.berl...e/cdrecord.html](http://cdrecord.berlios.de/old/private/cdrecord.html \"External link\")  \n[http://www.student.t...t/thomas.plank/](http://www.student.tugraz.at/thomas.plank/ \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "58207",
+      "timestamp": "2009-02-06T09:57:37+00:00",
+      "author": "wimb",
+      "content": "**@Tokener**   \nYou are confusing CD-ISO files with Harddisk-IMG Files.  \nYou should make use of \\\u003cWinBuilder\\\u003e\\\\ISO\\\\Ram\\\\I386\\\\BootSDI.img file.  \n\nYou can use **BOOT_IMG.exe** to Install LiveXP BootSDI.img IMAGE File   \nas Boot Option in boot.ini Menu or GRUB4DOS menu.lst  \n[http://www.boot-land...?showtopic\u003d5306](http://www.boot-land.net/forums/index.php?showtopic\u003d5306 \"External link\")   \n"
+    },
+    {
+      "id": "58227",
+      "timestamp": "2009-02-06T13:03:55+00:00",
+      "author": "Tokener",
+      "content": "@Icecube  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) THANKYOUTHANKYOUTHANKYOU :cool:   \n\nThat was IT !  \nContig showed up: File was defraged into 2 sometimes 3 or 4 frags.  \nWhen contig did his job the iso booted correct.  \n\nTHANKYOUVERYMUCH, all you WINBUILDERS !  \n\nT.   \n"
+    },
+    {
+      "id": "58230",
+      "timestamp": "2009-02-06T13:24:36+00:00",
+      "author": "was_jaclaz",
+      "content": "Nice batch. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nA couple of ideas to \"clean\" it, if I may:  \n\n```\nif not exist bootsect.bin set miss\u003dYES\u0026echo. File missing\u0026#58; bootsect.bin\n\nif not exist Contig.exe set miss\u003dYES\u0026echo. File missing\u0026#58; Contig.exe v1.55\n\nif not exist grldr set miss\u003dYES\u0026echo. File missing\u0026#58; grldr\n\nif not exist mkisofs.exe set miss\u003dYES\u0026echo. File missing\u0026#58; mkisofs.exe\n\nif not exist ntldr set miss\u003dYES\u0026echo. File missing\u0026#58; ntldr\n```\n\ncould become:  \n\n```\nFOR %%? IN \u0026#40;\n\nContig.exe\n\ngrldr\n\nmkisofs.exe\n\nntldr\n\n\u0026#41; DO SET miss\u003dYES\u0026ECHO File missing\u0026#58; %%?\n```\n\n\u003cbr /\u003e\n\nand this:  \n\n```\necho \u0026#91;boot loader\u0026#93;\u003e\u003e%FTW%\n\necho default\u003dC\u0026#58;\\grldr\u003e\u003e%FTW%\n\necho \u0026#91;operating systems\u0026#93;\u003e\u003e%FTW%\n\necho C\u0026#58;\\grldr\u003d\u0026#34;Start GRUB4DOS Menu\u0026#34;\u003e\u003e%FTW%\n\necho. \u003e\u003e%FTW%\n```\n\n\u003cbr /\u003e\n\nmay become:  \n\n```\n\u0026#40;\n\necho \u0026#91;boot loader\u0026#93;\n\necho default\u003dC\u0026#58;\\grldr\n\necho \u0026#91;operating systems\u0026#93;\n\necho C\u0026#58;\\grldr\u003d\u0026#34;Start GRUB4DOS Menu\u0026#34;\n\necho. \n\n\u0026#41;\u003e\u003e%FTW%\n```\n\n\u003cbr /\u003e\n\nsee \"Group commands for redirection\" #15 here:  \n[http://www.robvander...levertricks.php](http://www.robvanderwoude.com/clevertricks.php \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "58241",
+      "timestamp": "2009-02-06T16:11:20+00:00",
+      "author": "cdob",
+      "content": "\u003e @Tokener  \n\u003e What you might be missing is that the CD ***IS*** the .iso and the .iso ***IS*** the CD. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\nYes, that\u0027s true. Nicely written.  \n\nThere is readcd, dd, dsfo or ISOBuster to read a CD to a ISO file.  \n\n\u003cbr /\u003e\n\nAnother option if you like to create ISO file yourself: chainload setupldr.bin.  \nISO file is not bootable, hence dosn\u0027t require bootsect.bin.  \nAnd don\u0027t copy temp files to hard disk first. mkisofs.exe -iso-level 4 -force-uppercase -o C:\\\\LIVEXP.ISO X:\\\\\n\n\u003e title - ISO Image - LiveXP BootSDI  \n\u003e find --set-root /LIVEXP.ISO  \n\u003e map /LIVEXP.ISO (hd32)  \n\u003e map --hook  \n\u003e root (hd32)  \n\u003e chainloader (hd32)/I386/SETUPLDR.BIN\n\n"
+    },
+    {
+      "id": "58266",
+      "timestamp": "2009-02-06T19:29:17+00:00",
+      "author": "Tokener",
+      "content": "@cdob  \nHallo cdob  \nYou mentioned:  \n\u003e @Tokener  \n\u003e What you might be missing is that the CD IS the .iso and the .iso IS the CD.\nLet me please ask you what that Quote means or what my fault is.  \nAm I standing in darkness ?![Posted Image](http://www.boot-land.net/forums/style_emoticons/default/sad.gif)  \n\nT.   \n"
+    },
+    {
+      "id": "58280",
+      "timestamp": "2009-02-06T22:15:42+00:00",
+      "author": "cdob",
+      "content": "\u003e Let me please ask you what that Quote means\nWell, this goes to previous But normally the BootSDI.iso isn´t on the BootSDI-CD so you can´t install to HDD.\nHow do you create a BootSDI-CD?  \nFirst a CD image file is created: a ISO file BootSDI.iso.   \nNext this ISO file is written to cd.  \nThe hole CD represent the ISO file BootSDI.iso.   \n\nExtract the hole CD to a file: this get the previous image file BootSDI.iso.   \n"
+    },
+    {
+      "id": "58283",
+      "timestamp": "2009-02-06T23:30:10+00:00",
+      "author": "Tokener",
+      "content": "OK.  \n\nThat´s what i wrote:  \n\u003e To change this I moved the original BootSDI.iso from Winbuilder´s OutputFolder to C:\\\\ and made an entry in boot.ini for grldr,  \n\u003e and one entry in menu.lst for BootSDI.iso.  \n\u003e When booting the Harddisk you can call Grub4Dos from boot.ini, and Grub4Dos can call BootSDI.iso to load.  \n\u003e You need 3 files: BootSDI.iso, grldr and ntldr(might be on C:\\\\).  \n\u003e You have to modify 2 other files: boot.ini and menu.lst.\n\nDid you place a BootSDI.iso in C:\\\\ , and all the other steps ?  \nI guess not, because if you did, you´d have seen that the BootSDI.iso, that the WINBUILDER074 creates, **IS** the bootable system, that waits to be called by grldr .  \nNow, if you want to install this specific system on another HDD you have to carry the ISO - right ?  \n\n\u003e But normally the BootSDI.iso isn´t on the BootSDI-CD so you can´t install (it) to HDD.\n- right ? **NO**  \nRead the description on top of the post and you will find a way to get this installation going.  \n\nThis BootSDI thing is so GREAT because it can replicate itself, it´s biological - like the mother of pearl.  \noops... I´m getting offtopic.  \nGood Night and ThanX again for the BootSDI.  \n\nT.   \n"
+    },
+    {
+      "id": "58289",
+      "timestamp": "2009-02-07T07:50:34+00:00",
+      "author": "was_jaclaz",
+      "content": "Tokener, take it easy. ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\nWhat both myself and **cdob** are saying is that your initial idea is partly overkill:  \n\n\u003e Now my idea is to rebuild the BootSDI.iso from the BootSDI-CD:  \n\u003e What2Do:  \n\u003e -boot the BootSDI-CD.  \n\u003e -copy all files from BootSDI-CD(source) to TEMP-folder.  \n\u003e -add bootsect.bin that might be hidden.  \n\u003e -compile the ISO by mkisofs.exe.  \n\u003e -copy grldr and ntldr to C:\\\\  \n\u003e -make entries in boot.ini and menu.lst.\n\nas it can be done as follows:  \n-boot the BootSDI-CD.  \n~~-copy all files from BootSDI-CD(source) to TEMP-folder.~~   \n~~-add bootsect.bin that might be hidden.~~   \n~~-compile the ISO by mkisofs.exe.~~   \n***-extract whole CD to .iso saving it as LIVEXP.ISO on C:\\\\***   \n-copy grldr and ntldr to C:\\\\  \n-make entries in boot.ini and menu.lst.  \n\nTwo steps less. ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\nI\u0027ll try to rephrase the info I posted:  \n\u003e What you might be missing is that the CD ***IS*** the .iso and the .iso ***IS*** the CD.\n\nA .iso file is a byte by byte copy of a CD: an image or clone.  \nA CD is byte by byte copy of a .iso file.  \n\nInstead of extracting ***parts*** of the \"whole\" (files, bootsect.bin) to a TEMP folder, then re-assemble those ***parts*** in a new \"whole\", it is easier, faster and evidently less error prone, to simply copy the said \"whole\".  \n\n![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "58291",
+      "timestamp": "2009-02-07T08:24:17+00:00",
+      "author": "cdob",
+      "content": "@Tokener  \nParts from first post Booting a BootSDI-CD led me to the question how to install this system to Harddisk.   \n\u003e\n\u003e But normally the BootSDI.iso isn´t on the BootSDI-CD so you can´t install to HDD.  \n\u003e\n\u003e Now my idea is to rebuild the BootSDI.iso from the BootSDI-CD:\nI undestand:  \nFirst you like to boot the BootSDI-CD.  \nNext you like to copy BootSDI-CD to hard disk and make it bootable.  \n\n\u003e But normally the BootSDI.iso isn´t on the BootSDI-CD so you can´t install (it) to HDD.\nThat\u0027s true and false.  \n\nYes, there is no file BootSDI.iso at CD.  \n\nHowever the BootSDi-cd is a result of the previous ISO image.   \nHence the ISO image is available at CD still.  \n\nThere is no need to recreate this ISO image again.  \nNo need to copy files to hard disk temp directory.  \nNo need for a file bootsect.bin.  \n\nBoot BootSDi-cd and extract cd to a file\n\n```\ndd if\u003d\\\\.\\x\u0026#58; of\u003dC\u0026#58;\\LIVEXP.ISO bs\u003d20480\n```\n\nAdd grldr and adjust menu.lst.   \n"
+    },
+    {
+      "id": "58298",
+      "timestamp": "2009-02-07T12:23:06+00:00",
+      "author": "Tokener",
+      "content": "@cdob  \n\nThanX alot cdob ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n\nT:   \n"
+    },
+    {
+      "id": "58299",
+      "timestamp": "2009-02-07T12:34:49+00:00",
+      "author": "Tokener",
+      "content": "@wimb  \n\nThank you for creating the BOOT_IMG.exe   \nIt´s a masterpiece.  \n\nT.   \n"
+    },
+    {
+      "id": "58342",
+      "timestamp": "2009-02-07T19:50:01+00:00",
+      "author": "Tokener",
+      "content": "@Bootland  \n\nSorry for my childish behavior (asking without thinking). ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n\nI took all the good advices of the crew ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif) (ThanX again),  \nmixed´em up and created a new script to install BootSDI to HDD.  \nTested, working and easy to use.  \nDownload and rename the attachment, provide the files that are asked for when starting the batch.  \n[![Attached File](http://reboot.pro/public/style_extra/mime_types/txt.gif)](http://reboot.pro/index.php?s\u003da7f937efaa7b38283945230c666cf13f\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d7488 \"Download attachment\") [**Batch.cmd.txt**](http://reboot.pro/index.php?s\u003da7f937efaa7b38283945230c666cf13f\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d7488 \"Download attachment\") **4.76KB** 582 downloadsv.90210b  \nCondition is of course an inserted regular Winbuilder-BootSDI-CD/ISO.  \nHave fun.  \n\nT.   \n"
+    },
+    {
+      "id": "58346",
+      "timestamp": "2009-02-07T20:02:44+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Tested, working and easy to use.\n\nNice. ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\nWhich version of ***dd*** are you using? ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "58347",
+      "timestamp": "2009-02-07T20:11:10+00:00",
+      "author": "Tokener",
+      "content": "@jaclaz  \n\nThanX for looking.  \n\nThe dd-version is from U_XP_SET, 334kb version 0.5.  \nContig Version is 1.5.  \nI just made a little change in the Batch.txt, now it´s newest version.  \n\nT.   \n"
+    },
+    {
+      "id": "58414",
+      "timestamp": "2009-02-08T10:09:58+00:00",
+      "author": "wimb",
+      "content": "Why to load first the CD-ISO and then to load BootSDI.img ?  \n\nYou can Select to direct Install BootSDI.img file from I386 folder which is on the CD ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n(or even without burning a CD, it is in your \\\u003cWinBuilder\\\u003e\\\\ISO\\\\Ram\\\\I386 folder)   \n"
+    },
+    {
+      "id": "58416",
+      "timestamp": "2009-02-08T10:40:47+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Why to load first the CD-ISO and then to load BootSDI.img ?\n\nWhy not? ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\nJust for the fun of it? ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\n![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "58425",
+      "timestamp": "2009-02-08T11:41:50+00:00",
+      "author": "Tokener",
+      "content": "@wimb  \nThanX for looking.  \n\u003e Why to load first the CD-ISO and then to load BootSDI.img ?  \n\u003e\n\u003e You can Select to direct Install BootSDI.img file from I386 folder which is on the CD ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n\u003e (or even without burning a CD, it is in your \\\u003cWinBuilder\\\u003e\\\\ISO\\\\Ram\\\\I386 folder)\nMy train of thought is:  \n- You create the CD/ISO by the Winbuilder.  \n- You carry this CD anywhere, lets say to your neighbour, who has just problems booting his OS.  \n- You boot up his PC by BootSDI and take a look at his broken system.  \n- And even if you can´t get his system fixed he will be able to use his PC if you installed the BootSDI  \non his HDD.  \nUp to this point our tools serve the same purpose.  \nBut if you leave, taking your CD with you (for unknown reason![Posted Image](http://www.boot-land.net/forums/style_emoticons/default/wink.gif)), he will not be able to recreate the BootSDI-CD if he´s got only the bootsdi.img left.![Posted Image](http://www.boot-land.net/forums/style_emoticons/default/sad.gif)  \nHaving the ISO installed on HDD he´d be able to burn it on CD, maybe to give it to his sister or brother who have also trouble with their machines.(might occur)  \nOK, it´s not a big advantage but why should I conceal this way of HDD-Install ?  \nBy the way:   \nThumbs way up for your BOOT_IMG.exe that is able to boot up many different BootSDIs.   \nUsing it I came across the issue to define the path to XP-source.  \nIf you place ntldr into the i386-Folder of the BootSDI-CD(beside the \\*.img-file)   \nthe BootSDI-drive would be selectable as XP-source and no need to hold ready a real XP-CD.  \nHope I don´t talk trash . . . ![Posted Image](http://www.boot-land.net/forums/style_emoticons/default/rolleyes.gif)  \n\nT.   \n"
+    },
+    {
+      "id": "58437",
+      "timestamp": "2009-02-08T12:34:08+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e My train of thought is:  \n\u003e ....  \n\u003e Hope I don´t talk trash . . .\n\nUnfortunately your hope isn\u0027t fulfilled. ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n\nYou understand how this is an infringement of the EULA? ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif), avoiding redistributing Copyrighted files is EXACTLY what the whole idea of building PE\u0027s is about.  \n\nThough I don\u0027t think Police will knock on your or your neighbour\u0027s door for this reason, if you plan to use this approach you should consider using a redistributable OS, like one of the various Linux distributions.  \n\nThis page on Bart Lagerwej site, though intended for his Pebuilder, applies fully to a Winbuilder build:  \n[http://www.nu2.nu/pebuilder/#legal](http://www.nu2.nu/pebuilder/#legal \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "58079",
+      "timestamp": "2009-02-05T13:41:28+00:00",
+      "author": "Tokener",
+      "content": "Hello Bootland . . .  \n\nBooting a BootSDI-CD led me to the question how to install this system to Harddisk.  \nFirst I was using BartPE-Installer: creating Minint-Directory and Programs/Programme.  \nBut this method doesn´t take advantage of the PE-2-RAM-loading of BootSDI.  \nTo change this I moved the original BootSDI.iso from Winbuilder´s OutputFolder to C:\\\\ and made an entry in boot.ini for grldr,  \nand one entry in menu.lst for BootSDI.iso.  \nWhen booting the Harddisk you can call Grub4Dos from boot.ini, and Grub4Dos can call BootSDI.iso to load.  \nYou need 3 files: BootSDI.iso, grldr and ntldr(might be on C:\\\\).  \nYou have to modify 2 other files: boot.ini and menu.lst.  \nAnd that´s it !  \nBut normally the BootSDI.iso isn´t on the BootSDI-CD so you can´t install to HDD.  \n\nNow my idea is to rebuild the BootSDI.iso from the BootSDI-CD:  \nWhat2Do:  \n-boot the BootSDI-CD.  \n-copy all files from BootSDI-CD(source) to TEMP-folder.  \n-add bootsect.bin that might be hidden.  \n-compile the ISO by mkisofs.exe.  \n-copy grldr and ntldr to C:\\\\  \n-make entries in boot.ini and menu.lst.  \n\nThis could be done by a simple batchfile, if there was not one tricky part:  \nmkisofs doesn´t behave like in real-XP.  \nThough the cloned ISO can boot any PC (burned on Disk), it will not be accepted by Grub4Dos.  \ngrldr says: \"Error 60: File for drive emulation must be in one contiguous disk area\",  \nalthough the ISO is placed in C:\\\\, according to menu.lst.  \n\nQuestion:  \nWhy does mkisofs act so strange ?  \nHow could one come around this issue ?  \n\nT.   \n"
+    },
+    {
+      "id": "58083",
+      "timestamp": "2009-02-05T14:01:55+00:00",
+      "author": "was_jaclaz",
+      "content": "Hallo **Tokener** , I took the liberty of splitting your post from where you posted it originally, here:  \n[http://www.boot-land...?...c\u003d6913\\\u0026st\u003d0](http://www.boot-land.net/forums/index.php?showtopic\u003d6913\u0026st\u003d0 \"External link\")  \n\nsince it seems to me like a bit \"general\", rather than specific.  \n\nAs I read it, maybe mistakingly ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) it has this \"structure\":  \n\n* I did exactly as you did, ***but introduced a number of variations***\n* I had a problem (which I fail to describe extensively)\n* By the way, since I am already posting, I want to ask about several other problems I have using different methods (that again I describe with so few details that very hard to understand what I did)\n* After having asked several questions I ask whether \"this\" (WHICH :cool: is interesting or not)\n\n\u003cbr /\u003e\n\nI guess it would be better if we start again with some order, please review points #d and #f of the \"common sense advice\" given with Rules:  \n[http://www.boot-land...?act\u003dboardrules](http://www.boot-land.net/forums/index.php?act\u003dboardrules \"External link\")  \n\nRest assured that:  \n\u003e And my final question is:  \n\u003e Is this interresting at all, / is this issue solved somewhere else ?\n***ANY*** thing is interesting, and as soon as someone can understand what the actual questions are, if the issue has been already solved you will be told/guided, and if not yet, we\u0027ll try to help you in finding the solution. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\njaclaz  \n\nP.S.: Questions like   \n\u003e Does anybody else get this result ?\nmay get just answers like YES or NO.  \n[http://homepages.tes...no-answers.html](http://homepages.tesco.net/J.deBoynePollard/FGA/questions-with-yes-or-no-answers.html \"External link\")  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nwhich won\u0027t help you much unless you are trying to gather statistical data or taking a poll/survey   \n"
+    },
+    {
+      "id": "58090",
+      "timestamp": "2009-02-05T14:27:25+00:00",
+      "author": "Tokener",
+      "content": "@jaclaz  \n\nOh mercy me dumb, please delete this post, before it spreads, I will try one more time later.  \n\nSorry T.   \n"
+    },
+    {
+      "id": "58095",
+      "timestamp": "2009-02-05T15:29:12+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e @jaclaz  \n\u003e\n\u003e Oh mercy me dumb, please delete this post, before it spreads, I will try one more time later.  \n\u003e\n\u003e Sorry T.\n\nNo prob. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nOnce you have jolted down a clearer set of questions, just post them here, my fear was that of hijacking the \"vertical\" thread started by Ariom, since this one is \"horizontal\" enough from the start, there is not (much :cool:) risk of going \"off-topic\".  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "58202",
+      "timestamp": "2009-02-06T09:20:11+00:00",
+      "author": "Tokener",
+      "content": "Hi Bootland (again)  \n\nI rewrote my post (see top), to make my question clearer.  \nSo this is just a dummyreply![Posted Image](http://www.boot-land.net/forums/style_emoticons/default/cool.gif) to point to it.  \n\nT.   \n"
+    },
+    {
+      "id": "58203",
+      "timestamp": "2009-02-06T09:32:54+00:00",
+      "author": "Icecube",
+      "content": "\u003e There are two distinct types of mapping, direct and memory. Direct mapping is generally used for larger images/devices. If using direct mapping to create a virtual device from a disk image, then the image file must be contiguous (not fragmented). Either of the following programs can be used to defragment a file that is contiguous - contig or wincontig. Attempting to directly map a non-contiguous file will result in **Error 60: File for drive emulation must be in one contiguous disk area** , in which case memory mapping or defragmenting the file, and then retrying, should be attempted.\nSee: [http://diddy.boot-la...s/files/map.htm](http://diddy.boot-land.net/grub4dos/files/map.htm \"External link\") for the links to contig and wincontig.   \n"
+    },
+    {
+      "id": "58206",
+      "timestamp": "2009-02-06T09:57:35+00:00",
+      "author": "was_jaclaz",
+      "content": "@Tokener  \nWhat you might be missing is that the CD ***IS*** the .iso and the .iso ***IS*** the CD. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nYou just need to \"convert\" or \"extract\" the CD to a .iso.  \n\nTake your pick (just examples):  \n[http://www.lucersoft.com/freeware.php](http://www.lucersoft.com/freeware.php \"External link\")  \n[http://www.dubaron.com/cd2iso/](http://www.dubaron.com/cd2iso/ \"External link\")  \n[http://www.isodisk.com/](http://www.isodisk.com/ \"External link\")  \n[http://isorecorder.a...isorecorder.htm](http://isorecorder.alexfeinman.com/isorecorder.htm \"External link\")  \n[http://dpaehl.dd6338...dr/cddvdiso.php](http://dpaehl.dd6338.kasserver.com/cdr/cddvdiso.php \"External link\")  \nand of course cdrtools (command line):  \n[http://cdrecord.berl...e/cdrecord.html](http://cdrecord.berlios.de/old/private/cdrecord.html \"External link\")  \n[http://www.student.t...t/thomas.plank/](http://www.student.tugraz.at/thomas.plank/ \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "58207",
+      "timestamp": "2009-02-06T09:57:37+00:00",
+      "author": "wimb",
+      "content": "**@Tokener**   \nYou are confusing CD-ISO files with Harddisk-IMG Files.  \nYou should make use of \\\u003cWinBuilder\\\u003e\\\\ISO\\\\Ram\\\\I386\\\\BootSDI.img file.  \n\nYou can use **BOOT_IMG.exe** to Install LiveXP BootSDI.img IMAGE File   \nas Boot Option in boot.ini Menu or GRUB4DOS menu.lst  \n[http://www.boot-land...?showtopic\u003d5306](http://www.boot-land.net/forums/index.php?showtopic\u003d5306 \"External link\")   \n"
+    },
+    {
+      "id": "58227",
+      "timestamp": "2009-02-06T13:03:55+00:00",
+      "author": "Tokener",
+      "content": "@Icecube  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) THANKYOUTHANKYOUTHANKYOU :cool:   \n\nThat was IT !  \nContig showed up: File was defraged into 2 sometimes 3 or 4 frags.  \nWhen contig did his job the iso booted correct.  \n\nTHANKYOUVERYMUCH, all you WINBUILDERS !  \n\nT.   \n"
+    },
+    {
+      "id": "58230",
+      "timestamp": "2009-02-06T13:24:36+00:00",
+      "author": "was_jaclaz",
+      "content": "Nice batch. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nA couple of ideas to \"clean\" it, if I may:  \n\n```\nif not exist bootsect.bin set miss\u003dYES\u0026echo. File missing\u0026#58; bootsect.bin\n\nif not exist Contig.exe set miss\u003dYES\u0026echo. File missing\u0026#58; Contig.exe v1.55\n\nif not exist grldr set miss\u003dYES\u0026echo. File missing\u0026#58; grldr\n\nif not exist mkisofs.exe set miss\u003dYES\u0026echo. File missing\u0026#58; mkisofs.exe\n\nif not exist ntldr set miss\u003dYES\u0026echo. File missing\u0026#58; ntldr\n```\n\ncould become:  \n\n```\nFOR %%? IN \u0026#40;\n\nContig.exe\n\ngrldr\n\nmkisofs.exe\n\nntldr\n\n\u0026#41; DO SET miss\u003dYES\u0026ECHO File missing\u0026#58; %%?\n```\n\n\u003cbr /\u003e\n\nand this:  \n\n```\necho \u0026#91;boot loader\u0026#93;\u003e\u003e%FTW%\n\necho default\u003dC\u0026#58;\\grldr\u003e\u003e%FTW%\n\necho \u0026#91;operating systems\u0026#93;\u003e\u003e%FTW%\n\necho C\u0026#58;\\grldr\u003d\u0026#34;Start GRUB4DOS Menu\u0026#34;\u003e\u003e%FTW%\n\necho. \u003e\u003e%FTW%\n```\n\n\u003cbr /\u003e\n\nmay become:  \n\n```\n\u0026#40;\n\necho \u0026#91;boot loader\u0026#93;\n\necho default\u003dC\u0026#58;\\grldr\n\necho \u0026#91;operating systems\u0026#93;\n\necho C\u0026#58;\\grldr\u003d\u0026#34;Start GRUB4DOS Menu\u0026#34;\n\necho. \n\n\u0026#41;\u003e\u003e%FTW%\n```\n\n\u003cbr /\u003e\n\nsee \"Group commands for redirection\" #15 here:  \n[http://www.robvander...levertricks.php](http://www.robvanderwoude.com/clevertricks.php \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "58241",
+      "timestamp": "2009-02-06T16:11:20+00:00",
+      "author": "cdob",
+      "content": "\u003e @Tokener  \n\u003e What you might be missing is that the CD ***IS*** the .iso and the .iso ***IS*** the CD. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\nYes, that\u0027s true. Nicely written.  \n\nThere is readcd, dd, dsfo or ISOBuster to read a CD to a ISO file.  \n\n\u003cbr /\u003e\n\nAnother option if you like to create ISO file yourself: chainload setupldr.bin.  \nISO file is not bootable, hence dosn\u0027t require bootsect.bin.  \nAnd don\u0027t copy temp files to hard disk first. mkisofs.exe -iso-level 4 -force-uppercase -o C:\\\\LIVEXP.ISO X:\\\\\n\n\u003e title - ISO Image - LiveXP BootSDI  \n\u003e find --set-root /LIVEXP.ISO  \n\u003e map /LIVEXP.ISO (hd32)  \n\u003e map --hook  \n\u003e root (hd32)  \n\u003e chainloader (hd32)/I386/SETUPLDR.BIN\n\n"
+    },
+    {
+      "id": "58266",
+      "timestamp": "2009-02-06T19:29:17+00:00",
+      "author": "Tokener",
+      "content": "@cdob  \nHallo cdob  \nYou mentioned:  \n\u003e @Tokener  \n\u003e What you might be missing is that the CD IS the .iso and the .iso IS the CD.\nLet me please ask you what that Quote means or what my fault is.  \nAm I standing in darkness ?![Posted Image](http://www.boot-land.net/forums/style_emoticons/default/sad.gif)  \n\nT.   \n"
+    },
+    {
+      "id": "58280",
+      "timestamp": "2009-02-06T22:15:42+00:00",
+      "author": "cdob",
+      "content": "\u003e Let me please ask you what that Quote means\nWell, this goes to previous But normally the BootSDI.iso isn´t on the BootSDI-CD so you can´t install to HDD.\nHow do you create a BootSDI-CD?  \nFirst a CD image file is created: a ISO file BootSDI.iso.   \nNext this ISO file is written to cd.  \nThe hole CD represent the ISO file BootSDI.iso.   \n\nExtract the hole CD to a file: this get the previous image file BootSDI.iso.   \n"
+    },
+    {
+      "id": "58283",
+      "timestamp": "2009-02-06T23:30:10+00:00",
+      "author": "Tokener",
+      "content": "OK.  \n\nThat´s what i wrote:  \n\u003e To change this I moved the original BootSDI.iso from Winbuilder´s OutputFolder to C:\\\\ and made an entry in boot.ini for grldr,  \n\u003e and one entry in menu.lst for BootSDI.iso.  \n\u003e When booting the Harddisk you can call Grub4Dos from boot.ini, and Grub4Dos can call BootSDI.iso to load.  \n\u003e You need 3 files: BootSDI.iso, grldr and ntldr(might be on C:\\\\).  \n\u003e You have to modify 2 other files: boot.ini and menu.lst.\n\nDid you place a BootSDI.iso in C:\\\\ , and all the other steps ?  \nI guess not, because if you did, you´d have seen that the BootSDI.iso, that the WINBUILDER074 creates, **IS** the bootable system, that waits to be called by grldr .  \nNow, if you want to install this specific system on another HDD you have to carry the ISO - right ?  \n\n\u003e But normally the BootSDI.iso isn´t on the BootSDI-CD so you can´t install (it) to HDD.\n- right ? **NO**  \nRead the description on top of the post and you will find a way to get this installation going.  \n\nThis BootSDI thing is so GREAT because it can replicate itself, it´s biological - like the mother of pearl.  \noops... I´m getting offtopic.  \nGood Night and ThanX again for the BootSDI.  \n\nT.   \n"
+    },
+    {
+      "id": "58289",
+      "timestamp": "2009-02-07T07:50:34+00:00",
+      "author": "was_jaclaz",
+      "content": "Tokener, take it easy. ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\nWhat both myself and **cdob** are saying is that your initial idea is partly overkill:  \n\n\u003e Now my idea is to rebuild the BootSDI.iso from the BootSDI-CD:  \n\u003e What2Do:  \n\u003e -boot the BootSDI-CD.  \n\u003e -copy all files from BootSDI-CD(source) to TEMP-folder.  \n\u003e -add bootsect.bin that might be hidden.  \n\u003e -compile the ISO by mkisofs.exe.  \n\u003e -copy grldr and ntldr to C:\\\\  \n\u003e -make entries in boot.ini and menu.lst.\n\nas it can be done as follows:  \n-boot the BootSDI-CD.  \n~~-copy all files from BootSDI-CD(source) to TEMP-folder.~~   \n~~-add bootsect.bin that might be hidden.~~   \n~~-compile the ISO by mkisofs.exe.~~   \n***-extract whole CD to .iso saving it as LIVEXP.ISO on C:\\\\***   \n-copy grldr and ntldr to C:\\\\  \n-make entries in boot.ini and menu.lst.  \n\nTwo steps less. ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\nI\u0027ll try to rephrase the info I posted:  \n\u003e What you might be missing is that the CD ***IS*** the .iso and the .iso ***IS*** the CD.\n\nA .iso file is a byte by byte copy of a CD: an image or clone.  \nA CD is byte by byte copy of a .iso file.  \n\nInstead of extracting ***parts*** of the \"whole\" (files, bootsect.bin) to a TEMP folder, then re-assemble those ***parts*** in a new \"whole\", it is easier, faster and evidently less error prone, to simply copy the said \"whole\".  \n\n![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "58291",
+      "timestamp": "2009-02-07T08:24:17+00:00",
+      "author": "cdob",
+      "content": "@Tokener  \nParts from first post Booting a BootSDI-CD led me to the question how to install this system to Harddisk.   \n\u003e\n\u003e But normally the BootSDI.iso isn´t on the BootSDI-CD so you can´t install to HDD.  \n\u003e\n\u003e Now my idea is to rebuild the BootSDI.iso from the BootSDI-CD:\nI undestand:  \nFirst you like to boot the BootSDI-CD.  \nNext you like to copy BootSDI-CD to hard disk and make it bootable.  \n\n\u003e But normally the BootSDI.iso isn´t on the BootSDI-CD so you can´t install (it) to HDD.\nThat\u0027s true and false.  \n\nYes, there is no file BootSDI.iso at CD.  \n\nHowever the BootSDi-cd is a result of the previous ISO image.   \nHence the ISO image is available at CD still.  \n\nThere is no need to recreate this ISO image again.  \nNo need to copy files to hard disk temp directory.  \nNo need for a file bootsect.bin.  \n\nBoot BootSDi-cd and extract cd to a file\n\n```\ndd if\u003d\\\\.\\x\u0026#58; of\u003dC\u0026#58;\\LIVEXP.ISO bs\u003d20480\n```\n\nAdd grldr and adjust menu.lst.   \n"
+    },
+    {
+      "id": "58298",
+      "timestamp": "2009-02-07T12:23:06+00:00",
+      "author": "Tokener",
+      "content": "@cdob  \n\nThanX alot cdob ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n\nT:   \n"
+    },
+    {
+      "id": "58299",
+      "timestamp": "2009-02-07T12:34:49+00:00",
+      "author": "Tokener",
+      "content": "@wimb  \n\nThank you for creating the BOOT_IMG.exe   \nIt´s a masterpiece.  \n\nT.   \n"
+    },
+    {
+      "id": "58342",
+      "timestamp": "2009-02-07T19:50:01+00:00",
+      "author": "Tokener",
+      "content": "@Bootland  \n\nSorry for my childish behavior (asking without thinking). ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n\nI took all the good advices of the crew ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif) (ThanX again),  \nmixed´em up and created a new script to install BootSDI to HDD.  \nTested, working and easy to use.  \nDownload and rename the attachment, provide the files that are asked for when starting the batch.  \n[![Attached File](http://reboot.pro/public/style_extra/mime_types/txt.gif)](http://reboot.pro/index.php?s\u003d3b2ecbe3258788db8280d7e98a70b348\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d7488 \"Download attachment\") [**Batch.cmd.txt**](http://reboot.pro/index.php?s\u003d3b2ecbe3258788db8280d7e98a70b348\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d7488 \"Download attachment\") **4.76KB** 582 downloadsv.90210b  \nCondition is of course an inserted regular Winbuilder-BootSDI-CD/ISO.  \nHave fun.  \n\nT.   \n"
+    },
+    {
+      "id": "58346",
+      "timestamp": "2009-02-07T20:02:44+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Tested, working and easy to use.\n\nNice. ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\nWhich version of ***dd*** are you using? ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "58347",
+      "timestamp": "2009-02-07T20:11:10+00:00",
+      "author": "Tokener",
+      "content": "@jaclaz  \n\nThanX for looking.  \n\nThe dd-version is from U_XP_SET, 334kb version 0.5.  \nContig Version is 1.5.  \nI just made a little change in the Batch.txt, now it´s newest version.  \n\nT.   \n"
+    },
+    {
+      "id": "58414",
+      "timestamp": "2009-02-08T10:09:58+00:00",
+      "author": "wimb",
+      "content": "Why to load first the CD-ISO and then to load BootSDI.img ?  \n\nYou can Select to direct Install BootSDI.img file from I386 folder which is on the CD ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n(or even without burning a CD, it is in your \\\u003cWinBuilder\\\u003e\\\\ISO\\\\Ram\\\\I386 folder)   \n"
+    },
+    {
+      "id": "58416",
+      "timestamp": "2009-02-08T10:40:47+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Why to load first the CD-ISO and then to load BootSDI.img ?\n\nWhy not? ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\nJust for the fun of it? ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\n![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "58425",
+      "timestamp": "2009-02-08T11:41:50+00:00",
+      "author": "Tokener",
+      "content": "@wimb  \nThanX for looking.  \n\u003e Why to load first the CD-ISO and then to load BootSDI.img ?  \n\u003e\n\u003e You can Select to direct Install BootSDI.img file from I386 folder which is on the CD ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n\u003e (or even without burning a CD, it is in your \\\u003cWinBuilder\\\u003e\\\\ISO\\\\Ram\\\\I386 folder)\nMy train of thought is:  \n- You create the CD/ISO by the Winbuilder.  \n- You carry this CD anywhere, lets say to your neighbour, who has just problems booting his OS.  \n- You boot up his PC by BootSDI and take a look at his broken system.  \n- And even if you can´t get his system fixed he will be able to use his PC if you installed the BootSDI  \non his HDD.  \nUp to this point our tools serve the same purpose.  \nBut if you leave, taking your CD with you (for unknown reason![Posted Image](http://www.boot-land.net/forums/style_emoticons/default/wink.gif)), he will not be able to recreate the BootSDI-CD if he´s got only the bootsdi.img left.![Posted Image](http://www.boot-land.net/forums/style_emoticons/default/sad.gif)  \nHaving the ISO installed on HDD he´d be able to burn it on CD, maybe to give it to his sister or brother who have also trouble with their machines.(might occur)  \nOK, it´s not a big advantage but why should I conceal this way of HDD-Install ?  \nBy the way:   \nThumbs way up for your BOOT_IMG.exe that is able to boot up many different BootSDIs.   \nUsing it I came across the issue to define the path to XP-source.  \nIf you place ntldr into the i386-Folder of the BootSDI-CD(beside the \\*.img-file)   \nthe BootSDI-drive would be selectable as XP-source and no need to hold ready a real XP-CD.  \nHope I don´t talk trash . . . ![Posted Image](http://www.boot-land.net/forums/style_emoticons/default/rolleyes.gif)  \n\nT.   \n"
+    },
+    {
+      "id": "58437",
+      "timestamp": "2009-02-08T12:34:08+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e My train of thought is:  \n\u003e ....  \n\u003e Hope I don´t talk trash . . .\n\nUnfortunately your hope isn\u0027t fulfilled. ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n\nYou understand how this is an infringement of the EULA? ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif), avoiding redistributing Copyrighted files is EXACTLY what the whole idea of building PE\u0027s is about.  \n\nThough I don\u0027t think Police will knock on your or your neighbour\u0027s door for this reason, if you plan to use this approach you should consider using a redistributable OS, like one of the various Linux distributions.  \n\nThis page on Bart Lagerwej site, though intended for his Pebuilder, applies fully to a Winbuilder build:  \n[http://www.nu2.nu/pebuilder/#legal](http://www.nu2.nu/pebuilder/#legal \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "58439",
+      "timestamp": "2009-02-08T12:42:50+00:00",
+      "author": "wimb",
+      "content": "**@Tokener**   \nOK, I understand. ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n\n\u003e But if you leave, taking your CD with you (for unknown reason), he will not be able to recreate the BootSDI-CD if he´s got only the bootsdi.img left.\nBut one would be able to make USB-stick bootable with LiveXP BootSDI.img loaded into RAMDISK without burning a CD.  \nOr one might decide to Install LiveXP BootSDI.img on Harddisk of other computer.  \n\nIn any case there is a lot of fun in booting with BootSDI ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n"
+    },
+    {
+      "id": "58480",
+      "timestamp": "2009-02-08T16:49:03+00:00",
+      "author": "Tokener",
+      "content": "@jaclaz \\\u0026 @wimb  \n\nThanX for your reply.  \nIn fact, redistribute copyrighted files was an aspect that I did not consider and not intend.  \nThe main thing for me is, like wimb said, to have fun in building and booting the  \nunbelieveable ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif) BootSDI and beyond this to run the superb ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif) WinBuilder.  \nAt least I enjoyed the exciting communication with you and the lessons you taught me.  \n\nThankfull T.   \n"
+    },
+    {
+      "id": "58492",
+      "timestamp": "2009-02-08T17:38:49+00:00",
+      "author": "was_jaclaz",
+      "content": "Rule #12 ...:  \n[http://www.boot-land...?act\u003dboardrules](http://www.boot-land.net/forums/index.php?act\u003dboardrules \"External link\")  \n\n*...rulez!* ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n\n![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\njaclaz   \n"
+    }
+  ]
+}

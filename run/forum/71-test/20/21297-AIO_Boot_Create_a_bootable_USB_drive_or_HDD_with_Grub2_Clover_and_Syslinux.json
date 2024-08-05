@@ -1,0 +1,640 @@
+{
+  "id": "21297",
+  "title": "AIO Boot - Create a bootable USB drive or HDD with Grub2, Clover and Syslinux",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "200738",
+      "timestamp": "2016-11-11T22:57:46+00:00",
+      "author": "nguyentu",
+      "content": "About AIO Boot\n\u003e Create a bootable USB drive or HDD with Grub2 or Clover, and integrate multiple support packages, with this minimalistic utility  \n\u003e AIO Boot is a handy utility that enables you to create a bootable USB or disk drive with Grub2, Clover or Syslinux in a few simple steps. Additionally, it allows you to boot via LAN with Tiny PXE Server and iPXE, as well as integrate multiple operating systems or support programs.  \n\u003e All in all, AIO Boot is a useful application that enables you to create bootable USB drives, hard drives or even memory cards using Grub2, Clover or Syslinux. It features a minimalistic UI with neatly organized options.  \n[See more...](http://www.softpedia.com/get/System/Boot-Manager-Disk/AIO-Boot.shtml \"External link\")  \nFeatures\n\n* For Legacy-MBR: Grub2, Grub4dos, Syslinux and Clover \\[Legacy\\].\n* For UEFI-GPT: Grub2, Clover \\[UEFI\\] and rEFInd.\n* UEFI-GPT and MBR-Legacy.\n* Supports boot into Legacy mode for the hard disk in GPT style.\n* USB and HDD with FAT32/NTFS/exFAT format.\n* Boot via LAN with Tiny PXE Server.\n* One or multiple partitions, AIO Boot also supports hidden partition.\n* Support hotkeys for Grub2. At the main menu, if you want to boot into a certain menu, simply press their hot key. For example, to restart your computer, you simply press the \"r\" or \"o\" to shutdown.\n* Supports multiple languages, including Vietnamese, English, Russian and French...\n* Multiple sets of Windows setup files- XP, 2000, 2003, Vista, WIndows 7, Server 2008, Windows 8, Server 2012, both 32 and 64 bit versions are supported. Both BIOS and (U)EFI mode are supported.\n* Support to restore the Windows bootloader for both Legacy and UEFI mode.\n* Supports installing Windows 7 on a USB 3.0 port. This will help you resolve the error: A required CD/DVD drive device driver is missing. If you have a driver floppy disk, CD, DVD, or USB flash drive, please insert it now.\n* Support to integrate the following Package: Windows, Linux, Antivirus, DOS Programs, Android, Backup \\\u0026 Recovery, Disk Tools\n* Support to edit and delete the MENU (except for Windows packages).\n* Automatically identifies the DOS program to integrate.\n* Bypass the Secure Boot on the UEFI mode via Shimx64.efi (need tester). If your computer has a Secure Boot section, turn it on, then boot /EFI/Boot/shimx64.efi.\n\nDownload\n\nOnce you have downloaded the application, you need to select the drive where the necessary files should be extracted. This should be the bootable USB or HDD you wish to create.\n\n----------------------------------------------------------------------\n\n++File name++ AIO_Boot_Extractor.exe  \n++Size++ 43,6 MB  \n++Version++ 0.9.1.1  \n++Last updated++ 08.11.2016  \n++MD5 Checksum++ 8861724ce95475ffeabc06c2dc40e63d  \n**Link to download:**  \n[Google Drive](http://www.sitecuatui.com/out/aiogd \"External link\") \\| [GitHub](https://github.com/nguyentumine/AIO-Boot/releases \"External link\") \\| [Softpedia](http://www.softpedia.com/get/System/Boot-Manager-Disk/AIO-Boot.shtml \"External link\") \\| [SourceForge](https://sourceforge.net/projects/aioboot/ \"External link\") \\| [Fshare.vn](http://www.sitecuatui.com/out/aioboot \"External link\")  \n----------------------------------------------------------------------\n\nSoftpedia guarantees that AIO Boot is [100% Clean](http://www.softpedia.com/get/System/Boot-Manager-Disk/AIO-Boot.shtml#status \"External link\"), which means it does not contain any form of malware, including but not limited to: spyware, viruses, trojans and backdoors.\n\nScreenShot\n\n![aio-boot-v0.9.jpg](https://a.fsdn.com/con/app/proj/aioboot/screenshots/aio-boot-v0.9.jpg)\n\n![Clover-bootloader-cua-AIO-Boot.jpg](https://a.fsdn.com/con/app/proj/aioboot/screenshots/Clover-bootloader-cua-AIO-Boot.jpg)\n\n![boot-qua-mang-lan.jpg](https://a.fsdn.com/con/app/proj/aioboot/screenshots/boot-qua-mang-lan.jpg)\n\n![aio-boot_1.png](http://i1-win.softpedia-static.com/screenshots/aio-boot_1.png)\n\n![aio-boot_2.png](http://i1-win.softpedia-static.com/screenshots/aio-boot_2.png)\n\n![aio-boot_3.png](http://i1-win.softpedia-static.com/screenshots/aio-boot_3.png)\n\n![aio-boot_4.png](http://i1-win.softpedia-static.com/screenshots/aio-boot_4.png)\n\n![cai-dat-va-khoi-phuc-bootloader.jpg](https://a.fsdn.com/con/app/proj/aioboot/screenshots/cai-dat-va-khoi-phuc-bootloader.jpg)\n\n![chia-usb-thanh-2-o.jpg](https://a.fsdn.com/con/app/proj/aioboot/screenshots/chia-usb-thanh-2-o.jpg)\n\nPackages are supported\n\nWinPE \\\u0026 Setup\n\n1. Windows 7/8.1/10 Setup\n2. Windows XP/2003 Setup\n3. WinPE 7/8.1/10\n4. WinPE XP\n\nLinux OS:\n\n1. Auto Detect\n2. Ubuntu Desktop\n3. Linux Mint\n4. Parted Magic\n5. CentOS 7\n6. Red Hat Enterprise Linux\n7. Kali Linux\n8. Arch Linux\n9. WifiSlax\n10. System Rescue CD\n11. Debian Live\n12. Debian Installer\n13. Fedora Workstation\n14. Fedora Server\n15. elementary OS\n16. KNOPPIX Linux\n17. Manjaro\n18. DEFT-Zero\n19. Parrot Security OS\n20. Network Security Toolkit\n21. BackBox Linux\n22. Tails Live\n23. Solus Operating System\n24. Slackware\n25. Gentoo Minimal\n26. Slax Linux\n27. openSUSE LiveCDs/Rescue CD\n28. openSUSE Installer\n29. Clonezilla\n30. GParted\n31. Puppy Linux\n32. Lubuntu Desktop\n33. PCLinuxOS\n34. Antergos OS\n35. antiX OS\n36. Linux Lite\n37. LXLE OS\n38. Peppermint OS\n39. Zorin OS\n40. Simplicity Linux\n41. Black Lab Linux\n42. Cub Linux\n43. 3CX Phone System\n44. AbulÉdu\n45. APODIO\n46. AsteriskNOW\n47. AV Linux\n48. Baltix GNU/Linux\n49. Baruwa Enterprise Edition\n50. Berry Linux\n51. Bio-Linux\n52. BLAG\n53. BlankOn\n54. BlueOnyx\n55. Bodhi Linux\n56. BOSS GNU/Linux\n57. budgie-remix\n58. BunsenLabs Linux\n59. CAINE\n60. Caixa Mágica\n61. Canaima GNU/Linux\n62. ChaletOS\n63. Chapeau\n64. ClearOS\n65. Devuan GNU+Linux\n66. DuZeru\n67. Edubuntu\n68. Elastix\n69. Elive\n70. Emmabuntüs\n71. Exe GNU/Linux\n72. ExTiX\n73. eZeY\n74. Finnix\n75. GALPon MiniNo\n76. gNewSense\n77. Greenie Linux\n78. Grml\n79. Guadalinex\n80. HandyLinux\n81. Hanthana Linux\n82. Kaiana\n83. KANOTIX\n84. Karoshi\n85. KDE neon\n86. Korora\n87. Kubuntu\n88. KXStudio\n89. Leeenux\n90. LinEx\n91. Linpus Lite\n92. Linux Kodachi\n93. Linux Mangaka\n94. LinuxBBQ\n95. Linuxfx\n96. LliureX\n97. LuninuX OS\n98. Madrid_Linux\n99. MakuluLinux\n100. Maui Linux\n101. Metamorphose\n102. MX Linux\n103. Neptune\n104. NethServer\n105. Netrunner\n106. NexentaStor\n107. OB2D Linux\n108. OLPC OS\n109. Omoikane GNU/Linux\n110. OpenLX\n111. OpenMediaVault\n112. Openwall GNU/\\*/Linux\n113. OSMC\n114. Overclockix\n115. Pardus\n116. Parsix GNU/Linux\n117. Peach OSI\n118. Pearl Linux OS\n119. PelicanHPC\n120. Pinguy OS\n121. Point Linux\n122. PrimTux\n123. Proxmox\n124. Q4OS\n125. Qubes OS\n126. Raspbian\n127. RebeccaBlackOS\n128. Rebellin Linux\n129. Refracta\n130. REMnux\n131. Rescatux\n132. Resulinux\n133. Robolinux\n134. Rocks Cluster Distribution\n135. Rockstor\n136. Runtu\n137. SalentOS\n138. SELKS\n139. Semplice Linux\n140. siduction\n141. Skolelinux\n142. SME Server\n143. SolydX\n144. SparkyLinux\n145. Springdale Linux\n146. Stella\n147. SuliX\n148. SuperX\n149. Tanglu\n150. Trisquel GNU/Linux\n151. TurnKey Linux\n152. UberStudent\n153. Ubuntu GNOME\n154. Ubuntu Kylin\n155. Ubuntu MATE\n156. Ubuntu Studio\n157. Ubuntu\\*Pack\n158. Ulteo Application System\n159. Ultimate Edition\n160. Univention Corporate Server\n161. Untangle NG Firewall\n162. Uruk GNU/Linux\n163. Vinux\n164. Volumio\n165. Voyager Live\n166. VyOS\n167. wattOS\n168. Webconverger\n169. Whonix\n170. Window Maker Live\n171. Xubuntu\n172. ZevenOS\n173. Others\n\nAntivirus:\n\n1. Kaspersky Rescue Disk\n2. Bitdefender Rescue CD\n3. Avira Rescue System\n4. ESET SysRescue Live\n5. Dr.Web LiveDisk\n6. AVG Rescue CD\n7. COMODO Resuce Disk\n8. Anvi Rescue Disk\n9. F-Secure Rescue CD\n\nBackup \\\u0026 Recovery:\n\n1. Symantec Ghost\n2. Acronis True Image 2016-2017\n3. Acronis Backup Advanced Universal\n4. EaseUS Todo Backup\n5. AOMEI Backupper\n6. MiniTool Power Data Recovery\n7. R-Drive Image\n8. Acronis Snap Deploy 5\n9. Clonezilla\n10. System Rescue CD\n11. Redo Backup \\\u0026 Recovery\n12. Acronis True Image 2012-2015\n13. Acronis True Image 2011\n14. Acronis Snap Deploy 4\n\nDisk utilities:\n\n1. MiniTool Partition Wizard\n2. Partition Guru\n3. Acronis Disk Director\n4. Paragon Hard Disk Manager\n5. Parted Magic\n6. GParted\n7. HDD Regenerator\n\nAndroid:\n\n1. Remix OS \\[64-bit \\\u0026 32-bit, UEFI \\\u0026 Legacy\\]\n2. Phoenix OS \\[64-bit \\\u0026 32-bit, hỗ trợ UEFI \\\u0026 Legacy\\]\n3. Android-x86 \\[64-bit \\\u0026 32-bit\\]\n\nDOS Program:\n\n1. Auto Detect\n2. Symantec Ghost\n3. Partition Guru\n4. HDD Regenerator\n5. Active Boot Disk\n6. Active Password Changer\n7. Kon-Boot\n8. MemTest86\n9. Others.\n\nThank to all!\n\nAIO Boot is constructed from a variety of sources, certainly still a lot of flaws, eager for sympathy. I would love to hear from you so that I can improve this tool better.\n\nLet me know if you have any questions. Thanks!\n\n**Edited by nguyentu, 11 November 2016 - 11:14 PM.**\n"
+    },
+    {
+      "id": "202954",
+      "timestamp": "2017-03-27T16:49:21+00:00",
+      "author": "f1ult23",
+      "content": "\\*\\*AIO Boot v0.9.3.6 (27/03/2017):\\*\\*  \n\n- Added password protection for Grub2. Create or remove your password in \\*\\*Settings\\*\\*.  \n\\* Anyone who does not have a password can not boot, edit menus, and use the Grub2 command line.  \n\\* The password uses the \\*\\*PBKDF2\\*\\* method to encrypt so no one can know the password you have set.  \n\\* Anyone can change or remove passwords if they have access to Grub2 files.  \n- Added the \\*\\*Uninstall\\*\\* option.  \n\\* Make sure your computer is booted without using the AIO Boot\u0027s Grub2.  \n\\* If your computer can only boot through the AIO Boot\u0027s Grub2, uninstalling will cause your computer to fail to boot.  \n\\* To restore the Windows boot loader, please use the Bootloaders button or use the DVD.  \n- Added supports CentOS 6.  \n\n"
+    },
+    {
+      "id": "202961",
+      "timestamp": "2017-03-27T18:41:43+00:00",
+      "author": "genetix",
+      "content": "Beautiful work.\n\nHow do I multi-partition?\n\n-**edit**-\n\nO, I understood wrong the and the XP/2003 is singular installer same with NT6/10.\n\nand there\u0027s some bug with Arch Linux...\n\n![something_here.jpg](http://www.kellosalo.fi/something_here.jpg)\n\n-**edit #2**-\n\nIt\u0027s a bit different now that testing the tool how and what it\u0027s made for than my own build. Curious how much research you\u0027ve done for the bootloaders which is really impressive work.\n\n"
+    },
+    {
+      "id": "202966",
+      "timestamp": "2017-03-28T00:52:33+00:00",
+      "author": "nguyentu",
+      "content": "@genetix: Thanks.\n\nUsing partitioning tools to create multiple partitions (BOOTICE in Windows and GParted in Linux are tools I use often).  \nArch Linux 2017 does not include the i686 architecture. I will have an update soon. Go to **Settings** , select **No need to verify the file** and save, then you can integrate Arch Linux.\n\n**Edited by nguyentu, 28 March 2017 - 01:14 AM.**\n"
+    },
+    {
+      "id": "202968",
+      "timestamp": "2017-03-28T03:45:52+00:00",
+      "author": "nguyentu",
+      "content": "v0.9.3.6 (27/03/2017):\n\n* Added password protection for Grub2. Create or remove your password in Settings.\n  * Anyone who does not have a password can not boot, edit menus, and use the Grub2 command line.\n  * The password uses the PBKDF2 method to encrypt so no one can know the password you have set.\n  * Anyone can change or remove passwords if they have access to Grub2 files.\n* Added the Uninstall option (Tools -\\\u003e Uninstall).\n  * Make sure your computer is booted without using the AIO Boot\u0027s Grub2.\n  * If your computer can only boot through the AIO Boot\u0027s Grub2, uninstalling will cause your computer to fail to boot.\n  * To restore the Windows boot loader, please use the Bootloaders button or use the DVD.\n* Added supports CentOS 6.\n* Remove EDK II and UDK2014.\n\nv0.9.3.7 (28/03/2017):\n\n* Support Arch Linux latest version. Arch Linux 2017.03.01 does not include the i686 architecture. If you do not want to update this version, go to Settings, select No need to verify the file and save, then you can integrate Arch Linux.\n* Added supports Paragon Rescue Kit and Paragon Backup \\\u0026 Recovery.\n* Fixed some bugs.\n\n**Download** : [Google Drive](https://www.sitecuatui.com/out/aiogd \"External link\")\n\n"
+    },
+    {
+      "id": "202974",
+      "timestamp": "2017-03-28T16:29:25+00:00",
+      "author": "vigipirate",
+      "content": "help me ! J opens aiobootestrator but it opens a window asks me to insert a cd that i is not attached\n\nscreenshot\n\n[http://www.casimages...893496.png.html](http://www.casimages.com/i/170328064941893496.png.html \"External link\")\n\n"
+    },
+    {
+      "id": "202978",
+      "timestamp": "2017-03-28T22:50:49+00:00",
+      "author": "nguyentu",
+      "content": "@vigipirate:\n\nGo to Disk Management, right click on K: drive and select Change Drive Letter and Paths to remove it.\n\n---  \nThis error occurs when the drive is listed but no device is attached. I will try to fix this in later versions.  \nThanks!\n\n**Edited by nguyentu, 28 March 2017 - 11:06 PM.**\n"
+    },
+    {
+      "id": "202980",
+      "timestamp": "2017-03-29T02:09:33+00:00",
+      "author": "genetix",
+      "content": "@nguyentu\n\nDunno what you wrote the soft with, but working here on my own similar project as I told ya. Anyway, just finished the VolumeID and boot sector (MBR, PBR) code (I dislike using 3rd party tools so wrote my own \u0027rawrite\u0027 with C#.NET) and I have all the media databases configured now (unlike this project my engine exports original -\\\u003e minimize the media size) currently writing the EFI section where it seems you have pretty damn nice understanding over it, so,\n\nHave you found anything that could memory map an iso9660 image when booted from (U)EFI ?\n\nAny experience of \u0027memmap\u0027 command from EFIShell ?\n\n(I\u0027ve tested Grub 2, Clover and hmm, lilo-efi and I think all of them which you use too, but never found a single thing capable of mapping image to memory unless we count Windows bootmgr with WIM format.)\n\n**-EDIT-**\n\nnotes: yeah, I know I can mount an iso9660 and then load kernel and initrd probably easiest would be grub 2, but looking now to actually mapping image to memory, so, media where it\u0027s mapped from can be removed.\n\n"
+    },
+    {
+      "id": "202981",
+      "timestamp": "2017-03-29T02:30:41+00:00",
+      "author": "nguyentu",
+      "content": "I do not know about what you are looking for. I only use the modules that Grub2 provides, learning how to use them rather than how to write them out. I think reading their source code would be helpful.  \nGrub2 can mount iso9660, ElTorito, FAT32 img file... uses the loopback command. That\u0027s all I know about mounting ISO. Assuming on Windows, we mount an ISO to the drive. And read its files and then unmount. Grub2 probably works as well.  \n---  \nI don\u0027t know anything about the memmap command in UEFI Shell.\n\n**Edited by nguyentu, 29 March 2017 - 02:49 AM.**\n"
+    },
+    {
+      "id": "202982",
+      "timestamp": "2017-03-29T04:17:38+00:00",
+      "author": "genetix",
+      "content": "\u003e I do not know about what you are looking for. I only use the modules that Grub2 provides, learning how to use them rather than how to write them out. I think reading their source code would be helpful.  \n\u003e Grub2 can mount iso9660, ElTorito, FAT32 img file... uses the loopback command. That\u0027s all I know about mounting ISO. Assuming on Windows, we mount an ISO to the drive. And read its files and then unmount. Grub2 probably works as well.  \n\u003e ---  \n\u003e I don\u0027t know anything about the memmap command in UEFI Shell.\n\u003e\nYep, Grub 2 can map, load kernel and initrd, but not ISO to memory. It will with:\n\n```\ninsmods:\n- scsi, ata, pata, loopback, normal, gzio, iso9660, fat, ntfs, part_msdos\n\nloopback CD (hdX,msdosX)/iso/file.iso\nset root\u003d\u0027CD\u0027\nchainloader +1\nboot\n```\n\nWill pop an invalid partition error while, yeah:\n\n```\nlinux (CD)/kernel.efi\ninitrd (CD)/initrd.gz\n```\n\nThat can again be loaded from mapped disk.\n\nWhat I\u0027m looking for is any EFI based bootloader or tool that can map iso file to memory so media where the iso file residents can be removed while content of iso file could still be used (specially useful when doing forensics or cleaning up).\n\n"
+    },
+    {
+      "id": "202983",
+      "timestamp": "2017-03-29T04:37:41+00:00",
+      "author": "nguyentu",
+      "content": "If you find a way to do that, share with me :smile:\n\n"
+    },
+    {
+      "id": "203261",
+      "timestamp": "2017-04-08T10:16:36+00:00",
+      "author": "f1ult23",
+      "content": "**AIO Boot v0.9.4.2 (08/04/2017):**\n\n* Supports resident mode for Remix OS, Phoenix OS and Android-x86. Available 2/3/4/8/16 and 32GB depending on the partition\u0027s free space and format. The speed of the OS depends on the read and write speed of the hard drive. If your USB read and write speed is too slow, do not use this feature.\n* Updated to the latest iPXE build.\n* Some bugs found in the previous version have been fixed.\n\n"
+    },
+    {
+      "id": "203297",
+      "timestamp": "2017-04-13T04:16:06+00:00",
+      "author": "f1ult23",
+      "content": "\\*\\*AIO Boot v0.9.4.4 (12/04/2017):\\*\\*  \n\n- Since v0.9.4.1, there are some changes in the integration method that make the fragmentation rate high. If you integrate multiple Windows Setup packages, the last integrated package will probably not work. This issue has been fixed in this version. Thanks a user for reporting this issue.  \n- Added supports Trend Micro Rescue Disk. You need to use 7-Zip or WinRAR to open the EXE file and get the Gemini.iso file.  \n- Fixed a bug related to Partition Image Creator.  \n- Fixed a bug that did not display the progress bar correctly. It only happens on NTFS partitions.  \n- Fixed some other bugs.\n\n[https://sourceforge....ojects/aioboot/](https://sourceforge.net/projects/aioboot/ \"External link\")\n\n"
+    },
+    {
+      "id": "203315",
+      "timestamp": "2017-04-14T13:29:10+00:00",
+      "author": "f1ult23",
+      "content": "**++\\*\\*AIO Boot v0.9.4.5 (14/04/2017):\\*\\*++**   \n\n- Added support for Windows VHD XP/7/8.1/10. Does not support UEFI mode.  \n- Added support for 2GB and 3GB for Ubuntu persistent mode.  \n- Added support for \\*\\*Slackware Live Edition\\*\\*, \\*\\*wifislax64-1.0\\*\\* and persistent mode. Persistent mode only supports FAT32.  \n- Added persistent mode for Wifislax 4.12 (FAT32 and NTFS support).  \n- Supports to remove \\*\\*Windows XP/2003 Setup\\*\\* packages. You need to re-integrate in case the number of the current partition has been changed. If you update from the old version, you need to delete the following files and then re-integrate them:  \n\\* \\*\\*/AIO/WS/XPx(?)\\*\\* directory.  \n\\* The \\*\\*/AIO/WS/XPx(?).iso\\*\\* and \\*\\*/AIO/Menu/XPSetup.lst\\*\\* files.\n\n"
+    },
+    {
+      "id": "203449",
+      "timestamp": "2017-04-30T05:36:06+00:00",
+      "author": "freesoft00",
+      "content": "Chinese users, because AIO_Boot no Chinese language, and AIO_Boot default is non-English language, Will display garbled, if there is no Chinese language can change the default English interface   \n"
+    },
+    {
+      "id": "203712",
+      "timestamp": "2017-05-29T16:12:46+00:00",
+      "author": "f1ult23",
+      "content": "* **v0.9.5.5 (30.05.2017)**\n  * Added option to change default bootloader in UEFI mode. You can choose between Grub2, Windows Boot Manager, Clover and rEFInd in **Settings**.\n  * Fixed issue on **R-Drive Image** and **Acronis** packages.\n  * Change home page.\n* New home page is : [https://www.aioboot.com/](https://www.aioboot.com/ \"External link\")\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "203713",
+      "timestamp": "2017-05-30T05:33:50+00:00",
+      "author": "Blackcrack",
+      "content": "an small question, it is possible ( i have try it not at moment, no possible at moment)\n\nto copy the whole iso (without extraction) and use this to boot directly\n\nfrom/with grub2, because it is many pe/live iso\u0027s on the way where don\u0027t need to extraction,\n\nboot from this iso/or maybe directly burning on a iso, and this boots.. as a single iso..\n\nwithout extraction/decompressing as iso.\n\nbest regards\n\nBacky\n\n"
+    },
+    {
+      "id": "203714",
+      "timestamp": "2017-05-30T05:41:19+00:00",
+      "author": "nguyentu",
+      "content": "Hi,\n\nBecause extraction will support PXE. Some operating systems do not support booting from ISO like Dr.Web, Android...\n\n"
+    },
+    {
+      "id": "203717",
+      "timestamp": "2017-05-31T06:04:52+00:00",
+      "author": "Blackcrack",
+      "content": "but some iso\u0027s be listed like i think ?\n\nall the others be easy copy in the folder and be started as \"boot the iso\"\n\ndo you know OpenMandriva, there be the iso\u0027s :\n\n[https://abf.openmand...uct_build_lists](https://abf.openmandriva.org/product_build_lists \"External link\")\n\nand the build Complete can be testet, they iso\u0027s\n\nbe bootable and via dd on usb or burning directly in iso\n\nby they are be the same files but in different versions,\n\nthey must be in any case booting via iso and not extracting.\n\nfor have different iso\u0027s/builds by side, 32bit/x64 iso\u0027s and stabile32bit/x64 iso\u0027s\n\nfor have all in one usb,\n\nwe are check at moment now the 1082 build of openmandriva\n\n[https://forum.openma...ild-1082/1194/2](https://forum.openmandriva.org/t/candidate-iso-build-1082/1194/2 \"External link\")\n\nif you wanna play with , common and have fun :wink: Any report\u0027s be very well.\n\nbest regards\n\nBlacky\n\nyour frend in openmandriva it is drakconf and rpmdrake, both it\u0027s exist since Mandrake\n\nif you want more, try in the tty drak\\[tab/tab\\] . It comes from MandDRAKE/mandriva and\n\nnow the Community OpenMandriva and want never be commercial ! Community only.\n\n"
+    },
+    {
+      "id": "203718",
+      "timestamp": "2017-05-31T09:53:08+00:00",
+      "author": "nguyentu",
+      "content": "There are many OS that boot directly from the ISO file, I do not know how to get it to work with extracting, or unnecessary to extract.  \nBitdefender, Gentoo, Kaspersky, 4MLinux, Acronis, Comodo, Cr OS Linux, Gecko, KDE neon, Manjaro, openSUSE Live DVD... boots directly from ISO.  \nISO files larger than 4GB also require extraction on FAT32 partitions such as openSUSE...\n\nI did not succeed with OpenMandriva and Mageia, can you boot them from ISO or extract them?\n\n"
+    },
+    {
+      "id": "203719",
+      "timestamp": "2017-05-31T10:19:26+00:00",
+      "author": "Blackcrack",
+      "content": "you can boot from iso.. like i guess.. i have ever only dd the iso with rufus\n\nand it have works, so should boot openmandriva directly from iso.\n\ni quess, it\u0027s more useful it add iso\u0027s who it is need to extract ..\n\nor let the user decide , with a checkbox,\n\nas example win (also winxp with usb-drivers) so win7 it is possible for extract but\n\nshould also in able to boot the iso, Reactos, like i guess also, and iso\u0027s where it is on linux,\n\nshould all able to boot be, so an checkbox for \"\\[X\\] use the iso as bootable iso and don\u0027t extract\" or something..\n\nfor the possible to setting up for extended users. so it is maybe able for use different linuxiso\u0027s\n\non one usb-stick and all be iso-bootable and no iso comes in the \"preserve\" with the others\n\nand all be able for booting as single iso :smile: .. as suggestion..\n\ni guess the most iso\u0027s from Orderingsystems be directly bootable, it must easy only testing..\n\nand i bet, maby works with the reactosboot (so direclty install as headsystem)\n\nit is also bootable and the livecd from reactos also.. therewith can be portable programs\n\ndirectly copy on the stick and the iso boot the whole.. and if Reactos or Win7pe iso..\n\nthe same, the onlineinstaller from opensuse it is a something around 80megabyte it is also a iso,\n\nthis should also bootable directly with the iso, so it is not need for burning or every dd on a whole\n\nusb-stick and kill the rest of the space, so can it put / past it to other iso\u0027s also.. where it is bootable.\n\nso, openmandriva should be bootable, mageia is is a branch from Mandriva, openmandriva it is\n\nthe directly follower of mandriva but only as community, no more commerzial.\n\nMageia should make a peace and should come to openMandriva back again..\n\nalso because OMLx the more modern System now be. But draktools exist in OMLx.\n\nbest regards\n\nblacky\n\n"
+    },
+    {
+      "id": "203720",
+      "timestamp": "2017-05-31T10:33:40+00:00",
+      "author": "nguyentu",
+      "content": "But, what\u0027s the problem with extracting?  \nOpenMandriva and Mageia only work with dd, although the documentation from the homepage shows that it can boot directly from ISO, but it does not. This may only apply to older versions. If you use Rufus to create a USB for Mageia, it will only work on dd mode.  \nI do not know how to boot WinPE or Windows from ISO that supports UEFI mode. Also, if you use wimboot or memdisk, it will consume a lot of RAM, how could it perform better for computers with less memory?  \nI do not have much time to experiment more, but it will always be fuller in the future.  \n\n**Edited by nguyentu, 31 May 2017 - 10:34 AM.**\n"
+    },
+    {
+      "id": "203721",
+      "timestamp": "2017-05-31T10:53:57+00:00",
+      "author": "Blackcrack",
+      "content": "the problem with extracting it is, if you have 2 iso\u0027s who be most the same will it move mostly in the same folder so have you not\n\nthe well possible to hold it apart and therewith well working, as example an openmandriva x64 and an 32.bit and then\n\nthe same with other versions.. if you not be strict hold at all apart, works the booting with the different versions of iso not\n\nand it comes in the \"preserve\" and works not well, like it should.\n\nwell, you can maybe try to move TPG, Bero and so in direction to be it is like in the old times, real iso bootable\n\nand well usable on programs who boot iso\u0027s, you can write there a issue issues.openmandriva.org\n\nItchka, Colin Close it is the Chaiman at moment of OMLx but .. bero and TPG be the programmer :\\\\\n\nand they want move omlx to his own way .. hmm... how ever, if you have the short time for writing\n\na issue because the booting iso, you be highest welcome :smile:\n\nbest regards\n\nblacky\n\n"
+    },
+    {
+      "id": "203722",
+      "timestamp": "2017-05-31T11:52:36+00:00",
+      "author": "nguyentu",
+      "content": "You can also move the extracted directories, which are also located in their own directories.\n\n"
+    },
+    {
+      "id": "203723",
+      "timestamp": "2017-05-31T12:10:54+00:00",
+      "author": "Blackcrack",
+      "content": "would maybe not bad, if the directory\u0027s created, from the name of the iso,\n\nso it is also possible use similar iso\u0027s like :\n\nOpenMandrivaLx.3.02-B925-PLASMA.x86_64.iso\n\nOpenMandrivaLx.3.02-B1005-PLASMA.x86_64.iso\n\nOpenMandrivaLx.3.00-stabile-PLASMA.x86_64.iso\n\nOpenMandrivaLx.3.00-stabile-PLASMA.i586.iso\n\nFedora-16-i686-Live-Desktop.iso\n\nFedora-Server-DVD-x86_64-23.iso\n\nin\n\nOpenMandrivaLx.3.02-B925-PLASMA.x86_64\n\nOpenMandrivaLx.3.02-B1005-PLASMA.x86_64\n\nOpenMandrivaLx.3.00-stabile-PLASMA.x86_64\n\nOpenMandrivaLx.3.00-stabile-PLASMA.i586\n\nFedora-16-i686-Live-Desktop\n\nFedora-Server-DVD-x86_64-23\n\non a 16gig usb..\n\ntherewith it is possible for use equal iso\u0027s but\n\n100% no mixing up .. if this works\n\nmoved by own... naaa not so an well idea, should maked from your\n\nprogrammed Program and your experience :smile:\n\ni am only a more extended user.. with an bit html, php css and an bit scripting skills\n\nwhere have become in the last 20 years.. :smile:\n\nbest regards\n\nblacky\n\n"
+    },
+    {
+      "id": "200738",
+      "timestamp": "2016-11-11T22:57:46+00:00",
+      "author": "nguyentu",
+      "content": "About AIO Boot\n\u003e Create a bootable USB drive or HDD with Grub2 or Clover, and integrate multiple support packages, with this minimalistic utility  \n\u003e AIO Boot is a handy utility that enables you to create a bootable USB or disk drive with Grub2, Clover or Syslinux in a few simple steps. Additionally, it allows you to boot via LAN with Tiny PXE Server and iPXE, as well as integrate multiple operating systems or support programs.  \n\u003e All in all, AIO Boot is a useful application that enables you to create bootable USB drives, hard drives or even memory cards using Grub2, Clover or Syslinux. It features a minimalistic UI with neatly organized options.  \n[See more...](http://www.softpedia.com/get/System/Boot-Manager-Disk/AIO-Boot.shtml \"External link\")  \nFeatures\n\n* For Legacy-MBR: Grub2, Grub4dos, Syslinux and Clover \\[Legacy\\].\n* For UEFI-GPT: Grub2, Clover \\[UEFI\\] and rEFInd.\n* UEFI-GPT and MBR-Legacy.\n* Supports boot into Legacy mode for the hard disk in GPT style.\n* USB and HDD with FAT32/NTFS/exFAT format.\n* Boot via LAN with Tiny PXE Server.\n* One or multiple partitions, AIO Boot also supports hidden partition.\n* Support hotkeys for Grub2. At the main menu, if you want to boot into a certain menu, simply press their hot key. For example, to restart your computer, you simply press the \"r\" or \"o\" to shutdown.\n* Supports multiple languages, including Vietnamese, English, Russian and French...\n* Multiple sets of Windows setup files- XP, 2000, 2003, Vista, WIndows 7, Server 2008, Windows 8, Server 2012, both 32 and 64 bit versions are supported. Both BIOS and (U)EFI mode are supported.\n* Support to restore the Windows bootloader for both Legacy and UEFI mode.\n* Supports installing Windows 7 on a USB 3.0 port. This will help you resolve the error: A required CD/DVD drive device driver is missing. If you have a driver floppy disk, CD, DVD, or USB flash drive, please insert it now.\n* Support to integrate the following Package: Windows, Linux, Antivirus, DOS Programs, Android, Backup \\\u0026 Recovery, Disk Tools\n* Support to edit and delete the MENU (except for Windows packages).\n* Automatically identifies the DOS program to integrate.\n* Bypass the Secure Boot on the UEFI mode via Shimx64.efi (need tester). If your computer has a Secure Boot section, turn it on, then boot /EFI/Boot/shimx64.efi.\n\nDownload\n\nOnce you have downloaded the application, you need to select the drive where the necessary files should be extracted. This should be the bootable USB or HDD you wish to create.\n\n----------------------------------------------------------------------\n\n++File name++ AIO_Boot_Extractor.exe  \n++Size++ 43,6 MB  \n++Version++ 0.9.1.1  \n++Last updated++ 08.11.2016  \n++MD5 Checksum++ 8861724ce95475ffeabc06c2dc40e63d  \n**Link to download:**  \n[Google Drive](http://www.sitecuatui.com/out/aiogd \"External link\") \\| [GitHub](https://github.com/nguyentumine/AIO-Boot/releases \"External link\") \\| [Softpedia](http://www.softpedia.com/get/System/Boot-Manager-Disk/AIO-Boot.shtml \"External link\") \\| [SourceForge](https://sourceforge.net/projects/aioboot/ \"External link\") \\| [Fshare.vn](http://www.sitecuatui.com/out/aioboot \"External link\")  \n----------------------------------------------------------------------\n\nSoftpedia guarantees that AIO Boot is [100% Clean](http://www.softpedia.com/get/System/Boot-Manager-Disk/AIO-Boot.shtml#status \"External link\"), which means it does not contain any form of malware, including but not limited to: spyware, viruses, trojans and backdoors.\n\nScreenShot\n\n![aio-boot-v0.9.jpg](https://a.fsdn.com/con/app/proj/aioboot/screenshots/aio-boot-v0.9.jpg)\n\n![Clover-bootloader-cua-AIO-Boot.jpg](https://a.fsdn.com/con/app/proj/aioboot/screenshots/Clover-bootloader-cua-AIO-Boot.jpg)\n\n![boot-qua-mang-lan.jpg](https://a.fsdn.com/con/app/proj/aioboot/screenshots/boot-qua-mang-lan.jpg)\n\n![aio-boot_1.png](http://i1-win.softpedia-static.com/screenshots/aio-boot_1.png)\n\n![aio-boot_2.png](http://i1-win.softpedia-static.com/screenshots/aio-boot_2.png)\n\n![aio-boot_3.png](http://i1-win.softpedia-static.com/screenshots/aio-boot_3.png)\n\n![aio-boot_4.png](http://i1-win.softpedia-static.com/screenshots/aio-boot_4.png)\n\n![cai-dat-va-khoi-phuc-bootloader.jpg](https://a.fsdn.com/con/app/proj/aioboot/screenshots/cai-dat-va-khoi-phuc-bootloader.jpg)\n\n![chia-usb-thanh-2-o.jpg](https://a.fsdn.com/con/app/proj/aioboot/screenshots/chia-usb-thanh-2-o.jpg)\n\nPackages are supported\n\nWinPE \\\u0026 Setup\n\n1. Windows 7/8.1/10 Setup\n2. Windows XP/2003 Setup\n3. WinPE 7/8.1/10\n4. WinPE XP\n\nLinux OS:\n\n1. Auto Detect\n2. Ubuntu Desktop\n3. Linux Mint\n4. Parted Magic\n5. CentOS 7\n6. Red Hat Enterprise Linux\n7. Kali Linux\n8. Arch Linux\n9. WifiSlax\n10. System Rescue CD\n11. Debian Live\n12. Debian Installer\n13. Fedora Workstation\n14. Fedora Server\n15. elementary OS\n16. KNOPPIX Linux\n17. Manjaro\n18. DEFT-Zero\n19. Parrot Security OS\n20. Network Security Toolkit\n21. BackBox Linux\n22. Tails Live\n23. Solus Operating System\n24. Slackware\n25. Gentoo Minimal\n26. Slax Linux\n27. openSUSE LiveCDs/Rescue CD\n28. openSUSE Installer\n29. Clonezilla\n30. GParted\n31. Puppy Linux\n32. Lubuntu Desktop\n33. PCLinuxOS\n34. Antergos OS\n35. antiX OS\n36. Linux Lite\n37. LXLE OS\n38. Peppermint OS\n39. Zorin OS\n40. Simplicity Linux\n41. Black Lab Linux\n42. Cub Linux\n43. 3CX Phone System\n44. AbulÉdu\n45. APODIO\n46. AsteriskNOW\n47. AV Linux\n48. Baltix GNU/Linux\n49. Baruwa Enterprise Edition\n50. Berry Linux\n51. Bio-Linux\n52. BLAG\n53. BlankOn\n54. BlueOnyx\n55. Bodhi Linux\n56. BOSS GNU/Linux\n57. budgie-remix\n58. BunsenLabs Linux\n59. CAINE\n60. Caixa Mágica\n61. Canaima GNU/Linux\n62. ChaletOS\n63. Chapeau\n64. ClearOS\n65. Devuan GNU+Linux\n66. DuZeru\n67. Edubuntu\n68. Elastix\n69. Elive\n70. Emmabuntüs\n71. Exe GNU/Linux\n72. ExTiX\n73. eZeY\n74. Finnix\n75. GALPon MiniNo\n76. gNewSense\n77. Greenie Linux\n78. Grml\n79. Guadalinex\n80. HandyLinux\n81. Hanthana Linux\n82. Kaiana\n83. KANOTIX\n84. Karoshi\n85. KDE neon\n86. Korora\n87. Kubuntu\n88. KXStudio\n89. Leeenux\n90. LinEx\n91. Linpus Lite\n92. Linux Kodachi\n93. Linux Mangaka\n94. LinuxBBQ\n95. Linuxfx\n96. LliureX\n97. LuninuX OS\n98. Madrid_Linux\n99. MakuluLinux\n100. Maui Linux\n101. Metamorphose\n102. MX Linux\n103. Neptune\n104. NethServer\n105. Netrunner\n106. NexentaStor\n107. OB2D Linux\n108. OLPC OS\n109. Omoikane GNU/Linux\n110. OpenLX\n111. OpenMediaVault\n112. Openwall GNU/\\*/Linux\n113. OSMC\n114. Overclockix\n115. Pardus\n116. Parsix GNU/Linux\n117. Peach OSI\n118. Pearl Linux OS\n119. PelicanHPC\n120. Pinguy OS\n121. Point Linux\n122. PrimTux\n123. Proxmox\n124. Q4OS\n125. Qubes OS\n126. Raspbian\n127. RebeccaBlackOS\n128. Rebellin Linux\n129. Refracta\n130. REMnux\n131. Rescatux\n132. Resulinux\n133. Robolinux\n134. Rocks Cluster Distribution\n135. Rockstor\n136. Runtu\n137. SalentOS\n138. SELKS\n139. Semplice Linux\n140. siduction\n141. Skolelinux\n142. SME Server\n143. SolydX\n144. SparkyLinux\n145. Springdale Linux\n146. Stella\n147. SuliX\n148. SuperX\n149. Tanglu\n150. Trisquel GNU/Linux\n151. TurnKey Linux\n152. UberStudent\n153. Ubuntu GNOME\n154. Ubuntu Kylin\n155. Ubuntu MATE\n156. Ubuntu Studio\n157. Ubuntu\\*Pack\n158. Ulteo Application System\n159. Ultimate Edition\n160. Univention Corporate Server\n161. Untangle NG Firewall\n162. Uruk GNU/Linux\n163. Vinux\n164. Volumio\n165. Voyager Live\n166. VyOS\n167. wattOS\n168. Webconverger\n169. Whonix\n170. Window Maker Live\n171. Xubuntu\n172. ZevenOS\n173. Others\n\nAntivirus:\n\n1. Kaspersky Rescue Disk\n2. Bitdefender Rescue CD\n3. Avira Rescue System\n4. ESET SysRescue Live\n5. Dr.Web LiveDisk\n6. AVG Rescue CD\n7. COMODO Resuce Disk\n8. Anvi Rescue Disk\n9. F-Secure Rescue CD\n\nBackup \\\u0026 Recovery:\n\n1. Symantec Ghost\n2. Acronis True Image 2016-2017\n3. Acronis Backup Advanced Universal\n4. EaseUS Todo Backup\n5. AOMEI Backupper\n6. MiniTool Power Data Recovery\n7. R-Drive Image\n8. Acronis Snap Deploy 5\n9. Clonezilla\n10. System Rescue CD\n11. Redo Backup \\\u0026 Recovery\n12. Acronis True Image 2012-2015\n13. Acronis True Image 2011\n14. Acronis Snap Deploy 4\n\nDisk utilities:\n\n1. MiniTool Partition Wizard\n2. Partition Guru\n3. Acronis Disk Director\n4. Paragon Hard Disk Manager\n5. Parted Magic\n6. GParted\n7. HDD Regenerator\n\nAndroid:\n\n1. Remix OS \\[64-bit \\\u0026 32-bit, UEFI \\\u0026 Legacy\\]\n2. Phoenix OS \\[64-bit \\\u0026 32-bit, hỗ trợ UEFI \\\u0026 Legacy\\]\n3. Android-x86 \\[64-bit \\\u0026 32-bit\\]\n\nDOS Program:\n\n1. Auto Detect\n2. Symantec Ghost\n3. Partition Guru\n4. HDD Regenerator\n5. Active Boot Disk\n6. Active Password Changer\n7. Kon-Boot\n8. MemTest86\n9. Others.\n\nThank to all!\n\nAIO Boot is constructed from a variety of sources, certainly still a lot of flaws, eager for sympathy. I would love to hear from you so that I can improve this tool better.\n\nLet me know if you have any questions. Thanks!\n\n**Edited by nguyentu, 11 November 2016 - 11:14 PM.**\n"
+    },
+    {
+      "id": "202954",
+      "timestamp": "2017-03-27T16:49:21+00:00",
+      "author": "f1ult23",
+      "content": "\\*\\*AIO Boot v0.9.3.6 (27/03/2017):\\*\\*  \n\n- Added password protection for Grub2. Create or remove your password in \\*\\*Settings\\*\\*.  \n\\* Anyone who does not have a password can not boot, edit menus, and use the Grub2 command line.  \n\\* The password uses the \\*\\*PBKDF2\\*\\* method to encrypt so no one can know the password you have set.  \n\\* Anyone can change or remove passwords if they have access to Grub2 files.  \n- Added the \\*\\*Uninstall\\*\\* option.  \n\\* Make sure your computer is booted without using the AIO Boot\u0027s Grub2.  \n\\* If your computer can only boot through the AIO Boot\u0027s Grub2, uninstalling will cause your computer to fail to boot.  \n\\* To restore the Windows boot loader, please use the Bootloaders button or use the DVD.  \n- Added supports CentOS 6.  \n\n"
+    },
+    {
+      "id": "202961",
+      "timestamp": "2017-03-27T18:41:43+00:00",
+      "author": "genetix",
+      "content": "Beautiful work.\n\nHow do I multi-partition?\n\n-**edit**-\n\nO, I understood wrong the and the XP/2003 is singular installer same with NT6/10.\n\nand there\u0027s some bug with Arch Linux...\n\n![something_here.jpg](http://www.kellosalo.fi/something_here.jpg)\n\n-**edit #2**-\n\nIt\u0027s a bit different now that testing the tool how and what it\u0027s made for than my own build. Curious how much research you\u0027ve done for the bootloaders which is really impressive work.\n\n"
+    },
+    {
+      "id": "202966",
+      "timestamp": "2017-03-28T00:52:33+00:00",
+      "author": "nguyentu",
+      "content": "@genetix: Thanks.\n\nUsing partitioning tools to create multiple partitions (BOOTICE in Windows and GParted in Linux are tools I use often).  \nArch Linux 2017 does not include the i686 architecture. I will have an update soon. Go to **Settings** , select **No need to verify the file** and save, then you can integrate Arch Linux.\n\n**Edited by nguyentu, 28 March 2017 - 01:14 AM.**\n"
+    },
+    {
+      "id": "202968",
+      "timestamp": "2017-03-28T03:45:52+00:00",
+      "author": "nguyentu",
+      "content": "v0.9.3.6 (27/03/2017):\n\n* Added password protection for Grub2. Create or remove your password in Settings.\n  * Anyone who does not have a password can not boot, edit menus, and use the Grub2 command line.\n  * The password uses the PBKDF2 method to encrypt so no one can know the password you have set.\n  * Anyone can change or remove passwords if they have access to Grub2 files.\n* Added the Uninstall option (Tools -\\\u003e Uninstall).\n  * Make sure your computer is booted without using the AIO Boot\u0027s Grub2.\n  * If your computer can only boot through the AIO Boot\u0027s Grub2, uninstalling will cause your computer to fail to boot.\n  * To restore the Windows boot loader, please use the Bootloaders button or use the DVD.\n* Added supports CentOS 6.\n* Remove EDK II and UDK2014.\n\nv0.9.3.7 (28/03/2017):\n\n* Support Arch Linux latest version. Arch Linux 2017.03.01 does not include the i686 architecture. If you do not want to update this version, go to Settings, select No need to verify the file and save, then you can integrate Arch Linux.\n* Added supports Paragon Rescue Kit and Paragon Backup \\\u0026 Recovery.\n* Fixed some bugs.\n\n**Download** : [Google Drive](https://www.sitecuatui.com/out/aiogd \"External link\")\n\n"
+    },
+    {
+      "id": "202974",
+      "timestamp": "2017-03-28T16:29:25+00:00",
+      "author": "vigipirate",
+      "content": "help me ! J opens aiobootestrator but it opens a window asks me to insert a cd that i is not attached\n\nscreenshot\n\n[http://www.casimages...893496.png.html](http://www.casimages.com/i/170328064941893496.png.html \"External link\")\n\n"
+    },
+    {
+      "id": "202978",
+      "timestamp": "2017-03-28T22:50:49+00:00",
+      "author": "nguyentu",
+      "content": "@vigipirate:\n\nGo to Disk Management, right click on K: drive and select Change Drive Letter and Paths to remove it.\n\n---  \nThis error occurs when the drive is listed but no device is attached. I will try to fix this in later versions.  \nThanks!\n\n**Edited by nguyentu, 28 March 2017 - 11:06 PM.**\n"
+    },
+    {
+      "id": "202980",
+      "timestamp": "2017-03-29T02:09:33+00:00",
+      "author": "genetix",
+      "content": "@nguyentu\n\nDunno what you wrote the soft with, but working here on my own similar project as I told ya. Anyway, just finished the VolumeID and boot sector (MBR, PBR) code (I dislike using 3rd party tools so wrote my own \u0027rawrite\u0027 with C#.NET) and I have all the media databases configured now (unlike this project my engine exports original -\\\u003e minimize the media size) currently writing the EFI section where it seems you have pretty damn nice understanding over it, so,\n\nHave you found anything that could memory map an iso9660 image when booted from (U)EFI ?\n\nAny experience of \u0027memmap\u0027 command from EFIShell ?\n\n(I\u0027ve tested Grub 2, Clover and hmm, lilo-efi and I think all of them which you use too, but never found a single thing capable of mapping image to memory unless we count Windows bootmgr with WIM format.)\n\n**-EDIT-**\n\nnotes: yeah, I know I can mount an iso9660 and then load kernel and initrd probably easiest would be grub 2, but looking now to actually mapping image to memory, so, media where it\u0027s mapped from can be removed.\n\n"
+    },
+    {
+      "id": "202981",
+      "timestamp": "2017-03-29T02:30:41+00:00",
+      "author": "nguyentu",
+      "content": "I do not know about what you are looking for. I only use the modules that Grub2 provides, learning how to use them rather than how to write them out. I think reading their source code would be helpful.  \nGrub2 can mount iso9660, ElTorito, FAT32 img file... uses the loopback command. That\u0027s all I know about mounting ISO. Assuming on Windows, we mount an ISO to the drive. And read its files and then unmount. Grub2 probably works as well.  \n---  \nI don\u0027t know anything about the memmap command in UEFI Shell.\n\n**Edited by nguyentu, 29 March 2017 - 02:49 AM.**\n"
+    },
+    {
+      "id": "202982",
+      "timestamp": "2017-03-29T04:17:38+00:00",
+      "author": "genetix",
+      "content": "\u003e I do not know about what you are looking for. I only use the modules that Grub2 provides, learning how to use them rather than how to write them out. I think reading their source code would be helpful.  \n\u003e Grub2 can mount iso9660, ElTorito, FAT32 img file... uses the loopback command. That\u0027s all I know about mounting ISO. Assuming on Windows, we mount an ISO to the drive. And read its files and then unmount. Grub2 probably works as well.  \n\u003e ---  \n\u003e I don\u0027t know anything about the memmap command in UEFI Shell.\n\u003e\nYep, Grub 2 can map, load kernel and initrd, but not ISO to memory. It will with:\n\n```\ninsmods:\n- scsi, ata, pata, loopback, normal, gzio, iso9660, fat, ntfs, part_msdos\n\nloopback CD (hdX,msdosX)/iso/file.iso\nset root\u003d\u0027CD\u0027\nchainloader +1\nboot\n```\n\nWill pop an invalid partition error while, yeah:\n\n```\nlinux (CD)/kernel.efi\ninitrd (CD)/initrd.gz\n```\n\nThat can again be loaded from mapped disk.\n\nWhat I\u0027m looking for is any EFI based bootloader or tool that can map iso file to memory so media where the iso file residents can be removed while content of iso file could still be used (specially useful when doing forensics or cleaning up).\n\n"
+    },
+    {
+      "id": "202983",
+      "timestamp": "2017-03-29T04:37:41+00:00",
+      "author": "nguyentu",
+      "content": "If you find a way to do that, share with me :smile:\n\n"
+    },
+    {
+      "id": "203261",
+      "timestamp": "2017-04-08T10:16:36+00:00",
+      "author": "f1ult23",
+      "content": "**AIO Boot v0.9.4.2 (08/04/2017):**\n\n* Supports resident mode for Remix OS, Phoenix OS and Android-x86. Available 2/3/4/8/16 and 32GB depending on the partition\u0027s free space and format. The speed of the OS depends on the read and write speed of the hard drive. If your USB read and write speed is too slow, do not use this feature.\n* Updated to the latest iPXE build.\n* Some bugs found in the previous version have been fixed.\n\n"
+    },
+    {
+      "id": "203297",
+      "timestamp": "2017-04-13T04:16:06+00:00",
+      "author": "f1ult23",
+      "content": "\\*\\*AIO Boot v0.9.4.4 (12/04/2017):\\*\\*  \n\n- Since v0.9.4.1, there are some changes in the integration method that make the fragmentation rate high. If you integrate multiple Windows Setup packages, the last integrated package will probably not work. This issue has been fixed in this version. Thanks a user for reporting this issue.  \n- Added supports Trend Micro Rescue Disk. You need to use 7-Zip or WinRAR to open the EXE file and get the Gemini.iso file.  \n- Fixed a bug related to Partition Image Creator.  \n- Fixed a bug that did not display the progress bar correctly. It only happens on NTFS partitions.  \n- Fixed some other bugs.\n\n[https://sourceforge....ojects/aioboot/](https://sourceforge.net/projects/aioboot/ \"External link\")\n\n"
+    },
+    {
+      "id": "203315",
+      "timestamp": "2017-04-14T13:29:10+00:00",
+      "author": "f1ult23",
+      "content": "**++\\*\\*AIO Boot v0.9.4.5 (14/04/2017):\\*\\*++**   \n\n- Added support for Windows VHD XP/7/8.1/10. Does not support UEFI mode.  \n- Added support for 2GB and 3GB for Ubuntu persistent mode.  \n- Added support for \\*\\*Slackware Live Edition\\*\\*, \\*\\*wifislax64-1.0\\*\\* and persistent mode. Persistent mode only supports FAT32.  \n- Added persistent mode for Wifislax 4.12 (FAT32 and NTFS support).  \n- Supports to remove \\*\\*Windows XP/2003 Setup\\*\\* packages. You need to re-integrate in case the number of the current partition has been changed. If you update from the old version, you need to delete the following files and then re-integrate them:  \n\\* \\*\\*/AIO/WS/XPx(?)\\*\\* directory.  \n\\* The \\*\\*/AIO/WS/XPx(?).iso\\*\\* and \\*\\*/AIO/Menu/XPSetup.lst\\*\\* files.\n\n"
+    },
+    {
+      "id": "203449",
+      "timestamp": "2017-04-30T05:36:06+00:00",
+      "author": "freesoft00",
+      "content": "Chinese users, because AIO_Boot no Chinese language, and AIO_Boot default is non-English language, Will display garbled, if there is no Chinese language can change the default English interface   \n"
+    },
+    {
+      "id": "203712",
+      "timestamp": "2017-05-29T16:12:46+00:00",
+      "author": "f1ult23",
+      "content": "* **v0.9.5.5 (30.05.2017)**\n  * Added option to change default bootloader in UEFI mode. You can choose between Grub2, Windows Boot Manager, Clover and rEFInd in **Settings**.\n  * Fixed issue on **R-Drive Image** and **Acronis** packages.\n  * Change home page.\n* New home page is : [https://www.aioboot.com/](https://www.aioboot.com/ \"External link\")\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "203713",
+      "timestamp": "2017-05-30T05:33:50+00:00",
+      "author": "Blackcrack",
+      "content": "an small question, it is possible ( i have try it not at moment, no possible at moment)\n\nto copy the whole iso (without extraction) and use this to boot directly\n\nfrom/with grub2, because it is many pe/live iso\u0027s on the way where don\u0027t need to extraction,\n\nboot from this iso/or maybe directly burning on a iso, and this boots.. as a single iso..\n\nwithout extraction/decompressing as iso.\n\nbest regards\n\nBacky\n\n"
+    },
+    {
+      "id": "203714",
+      "timestamp": "2017-05-30T05:41:19+00:00",
+      "author": "nguyentu",
+      "content": "Hi,\n\nBecause extraction will support PXE. Some operating systems do not support booting from ISO like Dr.Web, Android...\n\n"
+    },
+    {
+      "id": "203717",
+      "timestamp": "2017-05-31T06:04:52+00:00",
+      "author": "Blackcrack",
+      "content": "but some iso\u0027s be listed like i think ?\n\nall the others be easy copy in the folder and be started as \"boot the iso\"\n\ndo you know OpenMandriva, there be the iso\u0027s :\n\n[https://abf.openmand...uct_build_lists](https://abf.openmandriva.org/product_build_lists \"External link\")\n\nand the build Complete can be testet, they iso\u0027s\n\nbe bootable and via dd on usb or burning directly in iso\n\nby they are be the same files but in different versions,\n\nthey must be in any case booting via iso and not extracting.\n\nfor have different iso\u0027s/builds by side, 32bit/x64 iso\u0027s and stabile32bit/x64 iso\u0027s\n\nfor have all in one usb,\n\nwe are check at moment now the 1082 build of openmandriva\n\n[https://forum.openma...ild-1082/1194/2](https://forum.openmandriva.org/t/candidate-iso-build-1082/1194/2 \"External link\")\n\nif you wanna play with , common and have fun :wink: Any report\u0027s be very well.\n\nbest regards\n\nBlacky\n\nyour frend in openmandriva it is drakconf and rpmdrake, both it\u0027s exist since Mandrake\n\nif you want more, try in the tty drak\\[tab/tab\\] . It comes from MandDRAKE/mandriva and\n\nnow the Community OpenMandriva and want never be commercial ! Community only.\n\n"
+    },
+    {
+      "id": "203718",
+      "timestamp": "2017-05-31T09:53:08+00:00",
+      "author": "nguyentu",
+      "content": "There are many OS that boot directly from the ISO file, I do not know how to get it to work with extracting, or unnecessary to extract.  \nBitdefender, Gentoo, Kaspersky, 4MLinux, Acronis, Comodo, Cr OS Linux, Gecko, KDE neon, Manjaro, openSUSE Live DVD... boots directly from ISO.  \nISO files larger than 4GB also require extraction on FAT32 partitions such as openSUSE...\n\nI did not succeed with OpenMandriva and Mageia, can you boot them from ISO or extract them?\n\n"
+    },
+    {
+      "id": "203719",
+      "timestamp": "2017-05-31T10:19:26+00:00",
+      "author": "Blackcrack",
+      "content": "you can boot from iso.. like i guess.. i have ever only dd the iso with rufus\n\nand it have works, so should boot openmandriva directly from iso.\n\ni quess, it\u0027s more useful it add iso\u0027s who it is need to extract ..\n\nor let the user decide , with a checkbox,\n\nas example win (also winxp with usb-drivers) so win7 it is possible for extract but\n\nshould also in able to boot the iso, Reactos, like i guess also, and iso\u0027s where it is on linux,\n\nshould all able to boot be, so an checkbox for \"\\[X\\] use the iso as bootable iso and don\u0027t extract\" or something..\n\nfor the possible to setting up for extended users. so it is maybe able for use different linuxiso\u0027s\n\non one usb-stick and all be iso-bootable and no iso comes in the \"preserve\" with the others\n\nand all be able for booting as single iso :smile: .. as suggestion..\n\ni guess the most iso\u0027s from Orderingsystems be directly bootable, it must easy only testing..\n\nand i bet, maby works with the reactosboot (so direclty install as headsystem)\n\nit is also bootable and the livecd from reactos also.. therewith can be portable programs\n\ndirectly copy on the stick and the iso boot the whole.. and if Reactos or Win7pe iso..\n\nthe same, the onlineinstaller from opensuse it is a something around 80megabyte it is also a iso,\n\nthis should also bootable directly with the iso, so it is not need for burning or every dd on a whole\n\nusb-stick and kill the rest of the space, so can it put / past it to other iso\u0027s also.. where it is bootable.\n\nso, openmandriva should be bootable, mageia is is a branch from Mandriva, openmandriva it is\n\nthe directly follower of mandriva but only as community, no more commerzial.\n\nMageia should make a peace and should come to openMandriva back again..\n\nalso because OMLx the more modern System now be. But draktools exist in OMLx.\n\nbest regards\n\nblacky\n\n"
+    },
+    {
+      "id": "203720",
+      "timestamp": "2017-05-31T10:33:40+00:00",
+      "author": "nguyentu",
+      "content": "But, what\u0027s the problem with extracting?  \nOpenMandriva and Mageia only work with dd, although the documentation from the homepage shows that it can boot directly from ISO, but it does not. This may only apply to older versions. If you use Rufus to create a USB for Mageia, it will only work on dd mode.  \nI do not know how to boot WinPE or Windows from ISO that supports UEFI mode. Also, if you use wimboot or memdisk, it will consume a lot of RAM, how could it perform better for computers with less memory?  \nI do not have much time to experiment more, but it will always be fuller in the future.  \n\n**Edited by nguyentu, 31 May 2017 - 10:34 AM.**\n"
+    },
+    {
+      "id": "203721",
+      "timestamp": "2017-05-31T10:53:57+00:00",
+      "author": "Blackcrack",
+      "content": "the problem with extracting it is, if you have 2 iso\u0027s who be most the same will it move mostly in the same folder so have you not\n\nthe well possible to hold it apart and therewith well working, as example an openmandriva x64 and an 32.bit and then\n\nthe same with other versions.. if you not be strict hold at all apart, works the booting with the different versions of iso not\n\nand it comes in the \"preserve\" and works not well, like it should.\n\nwell, you can maybe try to move TPG, Bero and so in direction to be it is like in the old times, real iso bootable\n\nand well usable on programs who boot iso\u0027s, you can write there a issue issues.openmandriva.org\n\nItchka, Colin Close it is the Chaiman at moment of OMLx but .. bero and TPG be the programmer :\\\\\n\nand they want move omlx to his own way .. hmm... how ever, if you have the short time for writing\n\na issue because the booting iso, you be highest welcome :smile:\n\nbest regards\n\nblacky\n\n"
+    },
+    {
+      "id": "203722",
+      "timestamp": "2017-05-31T11:52:36+00:00",
+      "author": "nguyentu",
+      "content": "You can also move the extracted directories, which are also located in their own directories.\n\n"
+    },
+    {
+      "id": "203723",
+      "timestamp": "2017-05-31T12:10:54+00:00",
+      "author": "Blackcrack",
+      "content": "would maybe not bad, if the directory\u0027s created, from the name of the iso,\n\nso it is also possible use similar iso\u0027s like :\n\nOpenMandrivaLx.3.02-B925-PLASMA.x86_64.iso\n\nOpenMandrivaLx.3.02-B1005-PLASMA.x86_64.iso\n\nOpenMandrivaLx.3.00-stabile-PLASMA.x86_64.iso\n\nOpenMandrivaLx.3.00-stabile-PLASMA.i586.iso\n\nFedora-16-i686-Live-Desktop.iso\n\nFedora-Server-DVD-x86_64-23.iso\n\nin\n\nOpenMandrivaLx.3.02-B925-PLASMA.x86_64\n\nOpenMandrivaLx.3.02-B1005-PLASMA.x86_64\n\nOpenMandrivaLx.3.00-stabile-PLASMA.x86_64\n\nOpenMandrivaLx.3.00-stabile-PLASMA.i586\n\nFedora-16-i686-Live-Desktop\n\nFedora-Server-DVD-x86_64-23\n\non a 16gig usb..\n\ntherewith it is possible for use equal iso\u0027s but\n\n100% no mixing up .. if this works\n\nmoved by own... naaa not so an well idea, should maked from your\n\nprogrammed Program and your experience :smile:\n\ni am only a more extended user.. with an bit html, php css and an bit scripting skills\n\nwhere have become in the last 20 years.. :smile:\n\nbest regards\n\nblacky\n\n"
+    },
+    {
+      "id": "203724",
+      "timestamp": "2017-05-31T22:37:54+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "So, how does this compare to @Steve6375\u0027s Easy2Boot? Opinions? Advantages/disadvantages when compared to/against E2B? It looks like AIO Boot primarily uses GRUB2, Clover, and Syslinux, whereas E2B uses GRUB4DOS. I\u0027m preferential to E2B right now but only because it has worked reliably for the most most when it comes to booting a variety of boot mediums/OSes. I use a 256GB USB stick with E2B on it. Maybe I will try AIO out on a smaller secondary stick as a test, but I probably wouldn\u0027t switch, since what I have \"just works\".\n\n"
+    },
+    {
+      "id": "203725",
+      "timestamp": "2017-05-31T23:15:44+00:00",
+      "author": "nguyentu",
+      "content": "@Blackcrack: Yes, the ISO is extracted into the directory as its name.  \n@Zoso_The_Internet_Fucktard  \nBecause Grub2 is a little faster than Grub4Dos. Furthermore, E2B uses the method of scanning existing files at boot time. AIO uses real files and menus when integrated through the tool. So maybe it\u0027s a little faster too.  \nGrub4Dos can not read non-contiguous files, while Grub2 can.  \nGrub2 supports UEFI mode, E2B also supports but it needs to switch to Grub2.  \nE2B does not support PXE, AIO does.  \nBecause we do not need too much, AIO is lighter than E2B.\n\n**Edited by nguyentu, 31 May 2017 - 11:19 PM.**\n"
+    },
+    {
+      "id": "207961",
+      "timestamp": "2018-10-21T12:07:34+00:00",
+      "author": "nice_guy75",
+      "content": "This is an amazing tool, I was searching for a tool like this, I wanted to create a Multiboot Windows Installer with Hiren Boot CD, it is working fine on my new laptop with UEFI but not working on my older Vaio laptop with BIOS. When I select my 4TB HDD as my boot device it only show \"GRUB and flashing cursor. It doesn\u0027t go and further. Please help me and also give me link of a tutorial for Windows on the go, means a working Windows 7/8/10 on a 20-30 GB partition of my 4TB HDD and all these installer which I have already created.\n\nWaiting for a quick reply.\n\n"
+    },
+    {
+      "id": "207974",
+      "timestamp": "2018-10-22T01:25:22+00:00",
+      "author": "slothman",
+      "content": "\u003e This is an amazing tool, I was searching for a tool like this, I wanted to create a Multiboot Windows Installer with Hiren Boot CD, it is working fine on my new laptop with UEFI but not working on my older Vaio laptop with BIOS. When I select my 4TB HDD as my boot device it only show \"GRUB and flashing cursor. It doesn\u0027t go and further. Please help me and also give me link of a tutorial for Windows on the go, means a working Windows 7/8/10 on a 20-30 GB partition of my 4TB HDD and all these installer which I have already created.\n\u003e\n\u003e Waiting for a quick reply.\n\nWell I think the problem there is the 4TB drive. Since BIOS systems are limited to seeing max 2TB, that may be the issue.\n\nI don\u0027t have a 4TB drive to experiment with, but if I did, the first thing I would try is to create a much smaller partition of 1GB or so and see how well it boots. I usually just use smaller drives for older systems since I know it will always work. Usually 128GB or less drives because of the 137GB \"bad bios\" issue.\n\nWindows on the go is very easy. Just use winntsetup and install windows to the drive. Then you have to add it\u0027s bootmgr to the boot menu of your aio program.\n\nIf you want multiple windows installs, install them to vhd\u0027s and you can boot them from the aio program.\n\n"
+    },
+    {
+      "id": "207977",
+      "timestamp": "2018-10-22T05:51:24+00:00",
+      "author": "nice_guy75",
+      "content": "Ok, I have deleted all the partitions, leaving a 20 GB partition for \"Windows on the Go\", a 10mb partition which is the boot partition, and a 30 GB partition for AIO files and setups of all the version of Windows. Still not booting in BIOS system only showing \"GRUB _\" with flashing cursor. If I can\u0027t boot my AIO setup on BIOS system then this AIO setup is useless for me. ![:(](https://reboot.pro/public/style_emoticons/default/sad.png) ![:(](https://reboot.pro/public/style_emoticons/default/sad.png) ![:(](https://reboot.pro/public/style_emoticons/default/sad.png) ![:(](https://reboot.pro/public/style_emoticons/default/sad.png) ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)\n\n"
+    },
+    {
+      "id": "207979",
+      "timestamp": "2018-10-22T07:06:42+00:00",
+      "author": "nice_guy75",
+      "content": "\u003e Windows on the go is very easy. Just use winntsetup and install windows to the drive. Then you have to add it\u0027s bootmgr to the boot menu of your aio program.\n\nPlease guide me how can I add bootmgr of installed Windows 7 or 10 to the boot menu of AIO program?\n\n**Edited by nice_guy75, 22 October 2018 - 07:07 AM.**\n"
+    },
+    {
+      "id": "207981",
+      "timestamp": "2018-10-22T07:35:09+00:00",
+      "author": "slothman",
+      "content": "\u003e Ok, I have deleted all the partitions, leaving a 20 GB partition for \"Windows on the Go\", a 10mb partition which is the boot partition, and a 30 GB partition for AIO files and setups of all the version of Windows. Still not booting in BIOS system only showing \"GRUB _\" with flashing cursor. If I can\u0027t boot my AIO setup on BIOS system then this AIO setup is useless for me. ![:(](https://reboot.pro/public/style_emoticons/default/sad.png) ![:(](https://reboot.pro/public/style_emoticons/default/sad.png) ![:(](https://reboot.pro/public/style_emoticons/default/sad.png) ![:(](https://reboot.pro/public/style_emoticons/default/sad.png) ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)\n\nhmmmm well it seems that your older system has some issues with grub2\n\ni don\u0027t know grub2 anywhere near as well as i do grub4dos\n\ni know that grub2 can boot on either bios or uefi and that\u0027s why aioboot uses it\n\ngrub4dos is bios only, but it is super easy to get to work\n\nif you want to try troubleshooting grub2, look here:\n\n[https://help.ubuntu....Troubleshooting](https://help.ubuntu.com/community/Grub2/Troubleshooting \"External link\")\n\nhopefully that will get it working, but no guarantees, since i haven\u0027t run into that issue\n\nquite honestly if all that you are looking for is something to multiboot on those 2 different systems i would try another multiboot system\n\ni\u0027m going to use aioboot for all my stuff since i like the built in pxe server and it boots on all the systems I\u0027ve tried it on so far\n\ni would try the multiboot toolkit since that one can even boot in secure boot since the default loader is microsoft\u0027s bootloader\n\nbut i personally don\u0027t like it since i can\u0027t boot anything except ms stuff unless i disable secureboot\n\nkeep me updated what you decide to do and what the results are from your attempts, i may be able to help further\n\n"
+    },
+    {
+      "id": "207982",
+      "timestamp": "2018-10-22T08:03:11+00:00",
+      "author": "slothman",
+      "content": "it looks like aio boot only supports windows installed into vhd for adding through its interface\n\nyou could try hitting \"c\" and getting to a grub prompt, then type chainloader /bootmgr\n\nit should load windows if it was installed correctly to the drive\n\ni know mine worked when i used grub4dos\n\nspeaking of which, you can try to switch to the grub4dos bootloader in aio boot, it has the option to switch to that bootloader\n\n"
+    },
+    {
+      "id": "207984",
+      "timestamp": "2018-10-22T09:26:05+00:00",
+      "author": "nice_guy75",
+      "content": "\u003e it looks like aio boot only supports windows installed into vhd for adding through its interface\n\u003e\n\u003e you could try hitting \"c\" and getting to a grub prompt, then type chainloader /bootmgr\n\u003e\n\u003e it should load windows if it was installed correctly to the drive\n\u003e\n\u003e i know mine worked when i used grub4dos\n\u003e\n\u003e speaking of which, you can try to switch to the grub4dos bootloader in aio boot, it has the option to switch to that bootloader\n\nGRUB4dos doesn\u0027t work on GPT disk. Secondly I am not trying to boot into the installed OS, I am trying to boot into the already created AIO, which is working fine on UEFI system but not working on BIOS systems. I have integrated installation setups of XP, Windows7 x86 and x64, Windows x86 and x64 and Hiren Boot CD with live Windows 10. But this AIO is not booting on BIOS system.\n\n"
+    },
+    {
+      "id": "207985",
+      "timestamp": "2018-10-22T12:31:29+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e GRUB4dos doesn\u0027t work on GPT disk.\n\ngrub4dos works just fine on GPT disks.\n\nIt doesn\u0027t work with UEFI firmware.\n\nThat is not the same thing.\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "207987",
+      "timestamp": "2018-10-22T16:57:06+00:00",
+      "author": "nice_guy75",
+      "content": "\u003e grub4dos works just fine on GPT disks.\n\u003e\n\u003e It doesn\u0027t work with UEFI firmware.\n\u003e\n\u003e That is not the same thing.\n\u003e\n\u003e ![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\u003e\n\u003e Wonko\n\nMay be............. but when I tried to install Grub4dos from bootloader it says, \"The selected disk is of the GPT partition style. Only Grub2, rEFInd and Clover are supported.\"\n\nI have tried on UEFI as well as on BIOS system and got the same message on both the systems.\n\nYou can try for yourself, forum is not allowing me to post pics otherwise I would have posted the screenshot as well.\n\n**Edited by nice_guy75, 22 October 2018 - 04:59 PM.**\n"
+    },
+    {
+      "id": "207991",
+      "timestamp": "2018-10-22T18:23:04+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e May be............. but when I tried to install Grub4dos from bootloader it says, \"The selected disk is of the GPT partition style. Only Grub2, rEFInd and Clover are supported.\"\n\u003e\n\u003e I have tried on UEFI as well as on BIOS system and got the same message on both the systems.\n\u003e\n\u003e You can try for yourself, forum is not allowing me to post pics otherwise I would have posted the screenshot as well.\n\nI have tried long before you, rest assured. :smile:\n\nThe fact that the tool you are using does not support installing grub4dos on GPT disk it doesn\u0027t mean that grub4dos doesn\u0027t work on a GPT disk, the tool simply won\u0027t (correctly) allow installing the grldr.mbr to a GPT disk (and it is obvious, as the GPT disk has not enough space for the grldr.mbr).\n\nBut there are other ways:\n\n[http://reboot.pro/to...in-bios-to-gpt/](http://reboot.pro/topic/19516-hack-bootmgr-to-boot-windows-in-bios-to-gpt/ \"\")\n\nRecent thread, highlighting the available methods:\n\n[http://reboot.pro/to...b-with-bootice/](http://reboot.pro/topic/21856-cant-install-grub-with-bootice/ \"\")\n\nThe procedures are however complex and I believe well beyond your current level of familiarity with both the concepts and the tools used (and all in all they end up as being suitable only in a handful of selected cases).\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "207994",
+      "timestamp": "2018-10-22T21:20:12+00:00",
+      "author": "devdevadev",
+      "content": "\u003e I have tried long before you, rest assured. :smile:\n\u003e\n\u003e The fact that the tool you are using does not support installing grub4dos on GPT disk it doesn\u0027t mean that grub4dos doesn\u0027t work on a GPT disk, the tool simply won\u0027t (correctly) allow installing the grldr.mbr to a GPT disk (and it is obvious, as the GPT disk has not enough space for the grldr.mbr).\n\u003e\n\u003e But there are other ways:\n\u003e\n\u003e [http://reboot.pro/to...in-bios-to-gpt/](http://reboot.pro/topic/19516-hack-bootmgr-to-boot-windows-in-bios-to-gpt/ \"\")\n\u003e\n\u003e Recent thread, highlighting the available methods:\n\u003e\n\u003e [http://reboot.pro/to...b-with-bootice/](http://reboot.pro/topic/21856-cant-install-grub-with-bootice/ \"\")\n\u003e\n\u003e The procedures are however complex and I believe well beyond your current level of familiarity with both the concepts and the tools used (and all in all they end up as being suitable only in a handful of selected cases).\n\u003e\n\u003e ![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\u003e\n\u003e Wonko\n\n*[umbr](https://www.rmprepusb.com/tutorials/bios_gpt_boot \"External link\") can also be useful in this case ?*\n\n"
+    },
+    {
+      "id": "207995",
+      "timestamp": "2018-10-22T22:38:24+00:00",
+      "author": "slothman",
+      "content": "\u003e May be............. but when I tried to install Grub4dos from bootloader it says, \"The selected disk is of the GPT partition style. Only Grub2, rEFInd and Clover are supported.\"\n\u003e\n\u003e I have tried on UEFI as well as on BIOS system and got the same message on both the systems.\n\u003e\n\u003e You can try for yourself, forum is not allowing me to post pics otherwise I would have posted the screenshot as well.\n\nhmmm i didn\u0027t know it didn\u0027t let you switch the bootloader to grub4dos, otherwise i wouldn\u0027t have mentioned it\n\nanyway, since you have tried to make another aio with smaller partitions and that didn\u0027t work, i would move on to 2 more trials\n\n1. use hpa (a feature on most modern drives, allows you to resize the actual physical space seen by the system) to cut the drive down to less than 2 tb\n\n2. use another drive of 128gb or less and make an aio and see if it boots\n\nthat\u0027s the best advice i can offer so far since the largest drive i own is 1.5tb\n\nhaven\u0027t had the need for anything bigger\n\n"
+    },
+    {
+      "id": "207998",
+      "timestamp": "2018-10-23T08:46:20+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e *[umbr](https://www.rmprepusb.com/tutorials/bios_gpt_boot \"External link\") can also be useful in this case ?*\n\nWhat do you think the given threads revolve about?\n\n\u003e 1. use hpa (a feature on most modern drives, allows you to resize the actual physical space seen by the system) to cut the drive down to less than 2 tb\n\nGiving up 2 TB of available storage, and it is not like modifying a HPA (via USB connection? ![:w00t:](https://reboot.pro/public/style_emoticons/default/w00t.gif)) is exactly \"easy-peasy\" and within the reach/capabilities of someone non-expert in the matter.\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "208000",
+      "timestamp": "2018-10-23T15:05:35+00:00",
+      "author": "nice_guy75",
+      "content": "\u003e .............the largest drive i own is 1.5tb  \n\u003e\n\u003e haven\u0027t had the need for anything bigger\nPlease do me a favour, if your drive is GPT try on your 1.5tb drive to create a windows installation media using this tool and try to boot it on BIOS system. Because I think the problem is not the size as I left 3.5tb space unallocated. I believe the problem is something else.   \n\n**Edited by nice_guy75, 23 October 2018 - 03:11 PM.**\n"
+    },
+    {
+      "id": "208002",
+      "timestamp": "2018-10-23T17:16:35+00:00",
+      "author": "slothman",
+      "content": "\u003e Please do me a favour, if your drive is GPT try on your 1.5tb drive to create a windows installation media using this tool and try to boot it on BIOS system. Because I think the problem is not the size as I left 3.5tb space unallocated. I believe the problem is something else.\n\nwell now i think i can see the issue\n\ni thought you were also having a problem booting up the menu on the bios system as well though?\n\nyou said it was stuck at a grub prompt?\n\nbut yes, in general it will take some hackery to get windows to boot from a gpt disk on a bios system\n\n"
+    },
+    {
+      "id": "208003",
+      "timestamp": "2018-10-23T18:41:58+00:00",
+      "author": "devdevadev",
+      "content": "\u003e This is an amazing tool, I was searching for a tool like this, I wanted to create a Multiboot Windows Installer with Hiren Boot CD, it is working fine on my new laptop with UEFI but not working on my older Vaio laptop with BIOS. When I select my 4TB HDD as my boot device it only show \"GRUB and flashing cursor. It doesn\u0027t go and further. Please help me and also give me link of a tutorial for Windows on the go, means a working Windows 7/8/10 on a 20-30 GB partition of my 4TB HDD and all these installer which I have already created.\n\u003e\n\u003e Waiting for a quick reply.\n\n[https://www.aioboot.com/en/mbr4tb/](https://www.aioboot.com/en/mbr4tb/ \"External link\")\n\n[http://reboot.pro/to...e-2#entry188813](http://reboot.pro/topic/19868-ultimate-super-smart-secret-removable-usb-drive-with-mega-booting/page-2#entry188813 \"\")\n\n[https://www.aioboot....en/windows-vhd/](https://www.aioboot.com/en/windows-vhd/ \"External link\")\n\n[https://www.aioboot....pt-legacy-bios/](https://www.aioboot.com/en/windows-10-gpt-legacy-bios/ \"External link\")\n\n"
+    },
+    {
+      "id": "208004",
+      "timestamp": "2018-10-24T12:43:18+00:00",
+      "author": "nice_guy75",
+      "content": "\u003e [https://www.aioboot.com/en/mbr4tb/](https://www.aioboot.com/en/mbr4tb/ \"External link\")\n\u003e\n\u003e [http://reboot.pro/to...e-2#entry188813](http://reboot.pro/topic/19868-ultimate-super-smart-secret-removable-usb-drive-with-mega-booting/page-2#entry188813 \"\")\n\u003e\n\u003e [https://www.aioboot....en/windows-vhd/](https://www.aioboot.com/en/windows-vhd/ \"External link\")\n\u003e\n\u003e [https://www.aioboot....pt-legacy-bios/](https://www.aioboot.com/en/windows-10-gpt-legacy-bios/ \"External link\")\n\nFirst link has a limitation of only 3 partition maximum, Second link is about Windows and my current problem is booting AIO Windows Installer of GPT disk in Legacy mode. 3rd link is about booting windows in legacy mode which is installed in vhd , I think link 4 is very interesting if you can explain me how can I boot my AIO directly into Clover, as my AIO is not booting in GRUB2 in legacy mode or in BIOS systems, so it is not possible for me to go to clover from grub2. I opened the setting and set Clover as default bootloader in UEFI mode but this is of no use as I want to boot my AIO in legacy mode or on BIOS systems.\n\n"
+    },
+    {
+      "id": "208005",
+      "timestamp": "2018-10-24T12:49:11+00:00",
+      "author": "nice_guy75",
+      "content": "\u003e well now i think i can see the issue\n\u003e\n\u003e i thought you were also having a problem booting up the menu on the bios system as well though?\n\u003e\n\u003e you said it was stuck at a grub prompt?\n\u003e\n\u003e but yes, in general it will take some hackery to get windows to boot from a gpt disk on a bios system\n\nYou are bang on target, the menu on the BIOS system is not booting at all, it is not able to go that far, but I am not stuck at grub prompt, I think it is not grub prompt as I can\u0027t type any thing over there, I get \"GRUB\" written over there and a \"Flashing cursor\" that is it, I can\u0027t type anything over there and no key is working over there as well only \"Ctrl+alt+del\" is rebooting the system.\n\nI don\u0027t want windows to boot, I just want my AIO to boot properly till menu, so that I can to to Windows Installer and can install any version of Windows on BIOS system and UEFI/EFI systems.\n\nMy AIO is working fine on UEFI systems but not booting on BIOS systems.\n\n"
+    },
+    {
+      "id": "208006",
+      "timestamp": "2018-10-24T13:20:11+00:00",
+      "author": "devdevadev",
+      "content": "\u003e my current problem is booting AIO Windows Installer of GPT disk in Legacy mode. 3rd link is about booting windows in legacy mode which is installed in vhd , I think link 4 is very interesting if you can explain me how can I boot my AIO directly into Clover, as my AIO is not booting in GRUB2 in legacy mode or in BIOS systems, so it is not possible for me to go to clover from grub2. I opened the setting and set Clover as default bootloader in UEFI mode but this is of no use as I want to boot my AIO in legacy mode or on BIOS systems.\n\nHave you already tried following method to Boot into Grub2 menu within from your GPT hard disk in Legacy BIOS mode ?\n\n++***[Install Grub2 without a boot partition](https://www.aioboot.com/en/gpt-legacy/ \"External link\")***++\n\nThis is a new feature of AIO Boot v0.9.8.1. It supports installing Grub2 on the GPT hard disk to boot in Legacy BIOS mode without creating a boot partition.\n\n\u003cbr /\u003e\n\n1. Install [AIO Boot](https://www.aioboot.com/en/download/ \"External link\") to a partition on GPT disks.\n2. Run AIOCreator.exe.\n3. Select Install Grub2 (Legacy) from the Tools button. This button only appears when the current hard disk is GPT and the current drive format is FAT32 or NTFS.  \n   [![grub2-boot-gpt-in-legacy-bios-without-ue](https://static.aioboot.com/wp-content/uploads/2017/06/grub2-boot-gpt-in-legacy-bios-without-uefi.jpg)](https://static.aioboot.com/wp-content/uploads/2017/06/grub2-boot-gpt-in-legacy-bios-without-uefi.jpg \"External link\")\n4. Please note that you should reinstall Grub2 every time you defragment on this drive.\n\nGood luck!\n\n"
+    },
+    {
+      "id": "208008",
+      "timestamp": "2018-10-24T23:49:42+00:00",
+      "author": "nice_guy75",
+      "content": "Yes, I did install grub from here, as well as from bootloader but my AIO is not booting on BIOS system.  \n\nDo I have to delete that 10mb boot partition and install grub2 from \"Tools\"?   \n"
+    },
+    {
+      "id": "208009",
+      "timestamp": "2018-10-25T01:17:57+00:00",
+      "author": "devdevadev",
+      "content": "\u003e Yes, I did install grub from here, as well as from bootloader but my AIO is not booting on BIOS system.  \n\u003e\n\u003e Do I have to delete that 10mb boot partition and install grub2 from \"Tools\"?\n\nShould try one method at a time ?  \nRepartition from start and try above method first. if not working then try small boot partition method from starting point. Let us know if both not working for you...   \n"
+    },
+    {
+      "id": "208014",
+      "timestamp": "2018-10-25T09:45:18+00:00",
+      "author": "nice_guy75",
+      "content": "\u003e Should try one method at a time ?  \n\u003e Repartition from start and try above method first. if not working then try small boot partition method from starting point. Let us know if both not working for you...\nOk, I have deleted all the partitions after backing up my AIO drive, repartitioned it in UEFI system. This time I have created first partition of10mb but did not install GRUB2, created second partition of 30 GB (FAT32) and then copied all the files of AIO to this 30GB partition and then ran AIOCreator.exe, went to tools and installed GRUB2 and then tried to boot it in BIOS system, same GRUB text with flashing cursor. But when I tried the same disk on UEFI, it booted into the Clover as earlier I did set Clover as default bootloader in UEFI mode from settings.  \n\nThen I installed GRUB2 in 10 mb partition using Bootloader tab of AIO Creator, still the same result, did not boot in BIOS but working fine in UEFI system.  \n\nI wish the developer would look at this problem and suggest me a solution.   \n\n**Edited by nice_guy75, 25 October 2018 - 09:51 AM.**\n"
+    },
+    {
+      "id": "208020",
+      "timestamp": "2018-10-26T21:00:35+00:00",
+      "author": "alacran",
+      "content": "\u003e I wish the developer would look at this problem and suggest me a solution.\n\nTry on his page: [https://www.aioboot.com/en/](https://www.aioboot.com/en/ \"External link\")\n\n"
+    },
+    {
+      "id": "208021",
+      "timestamp": "2018-10-27T08:46:52+00:00",
+      "author": "wimb",
+      "content": "For booting from USB with Windows bootmgr in BIOS mode it is essential that the Boot drive has been set **active.**\n\nWhen the Boot drive is not **active** than you can perfectly boot in UEFI mode, but not in BIOS mode.\n\nYou can use DiskPart to set your boot drive **active.**\n\nIn admin cmd window run DiskPart\n\nIn **DiskPart** give commands:\n\n```\nlist volume\nselect volume \u003cyour FAT32 boot volume id\u003e\nactive\n\n```\n\nAlso in Windows Disk Management you can see if your USB Boot drive is **active**\n\nTo [support](http://reboot.pro/topic/18182-uefi-multi-make-multi-boot-usb-drive/?p\u003d207848 \"\") booting from USB with Windows bootmgr in **BIOS** mode and **UEFI**mode:\n\n- Your Boot drive should be less than 32 GB and have FAT32 format and must be set active.\n\n- The USB disk must have MBR partitioning and not GPT.\n\n- [MediaCreationTool183.exe](https://www.microsoft.com/en-us/software-download/windows10 \"External link\") can be used to make USB drive booting in BIOS mode and in UEFI mode (x86 and x64) for Install of Windows 10\n\n- Add **WIM** file for booting from RAMDISK and Add **VHDX** file to support booting with full Windows 10 as FILEDISK\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\n"
+    },
+    {
+      "id": "208022",
+      "timestamp": "2018-10-27T10:56:39+00:00",
+      "author": "devdevadev",
+      "content": "\u003e Ok, I have deleted all the partitions after backing up my AIO drive, repartitioned it in UEFI system. This time I have created first partition of10mb but did not install GRUB2, created second partition of 30 GB (FAT32) and then copied all the files of AIO to this 30GB partition and then ran AIOCreator.exe, went to tools and installed GRUB2 and then tried to boot it in BIOS system, same **++GRUB text with flashing cursor.++** But when I tried the same disk on UEFI, it booted into the Clover as earlier I did set Clover as default bootloader in UEFI mode from settings.\n\nI have just tested above method in my 32 GB GPT Partitioned FAT32 Removable USB Drive. And it show following Grub 2 menu screen for 40-60 secs in real booting mode.\n\n![post-65263-0-67291500-1540637315.png](http://reboot.pro/uploads/monthly_10_2018/post-65263-0-67291500-1540637315.png)\n\nAfter completing loading of \u0027boo.wim\u0027 winpe in RAM, it stating Windows 10 Installer as usual.\n\nSo it work just fine after 40-60 sec in case of GPT FAT32 Removable USB Drive.....Can anybody do the same thing for GPT HDD of size less than 2TB to see if 4TB size if cause of problem ?\n\nAre you also getting same screen as shown in above screenshot ? How long you wait when you see above cursor blinking screen ?  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![GPT.png](http://reboot.pro/uploads/monthly_10_2018/post-65263-0-67291500-1540637315_thumb.png)](http://reboot.pro/uploads/monthly_10_2018/post-65263-0-67291500-1540637315.png \"GPT.png - Size: 359.48KB\"){#ipb-attach-url-16173-0-57714800-1676066386}\n\n"
+    },
+    {
+      "id": "208023",
+      "timestamp": "2018-10-27T11:22:29+00:00",
+      "author": "nice_guy75",
+      "content": "\u003e Try on his page: [https://www.aioboot.com/en/](https://www.aioboot.com/en/ \"External link\")\n\nI have tried this tutorial but not working, even after converting my disk to mbr still it is not booting on BIOS system. I can only see \"GRUB\" with a flashing cursor, no key is working, I can not even type any command over there. Same thing with mbr and gpt disk on BIOS system. Though on UEFI system it is working fine but not on BIOS system.\n\n"
+    },
+    {
+      "id": "208024",
+      "timestamp": "2018-10-27T11:56:04+00:00",
+      "author": "nice_guy75",
+      "content": "\u003e I have just tested above method in my 32 GB GPT Partitioned FAT32 Removable USB Drive. And it show following Grub 2 menu screen for 40-60 secs in real booting mode.\n\u003e\n\u003e ![post-65263-0-67291500-1540637315.png](http://reboot.pro/uploads/monthly_10_2018/post-65263-0-67291500-1540637315.png)\n\u003e\n\u003e After completing loading of \u0027boo.wim\u0027 winpe in RAM, it stating Windows 10 Installer as usual.\n\u003e\n\u003e So it work just fine after 40-60 sec in case of GPT FAT32 Removable USB Drive.....Can anybody do the same thing for GPT HDD of size less than 2TB to see if 4TB size if cause of problem ?\n\u003e\n\u003e Are you also getting same screen as shown in above screenshot ? How long you wait when you see above cursor blinking screen ?\n\nNope, I am getting black screen with the text \"GRUB _\" and the cursor is flashing. There was no background like yours. I had even tried the GTP to mbr still not booting on BIOS system. I created only 3 partition on my 4TB disk, first one is 10mb boot partition, then 30gb FAT32 GB partition and the last one is 20GB NTFS partition to install \"windows on the go\" once I managed to boot into my AIO on BIOS system.\n\nBooting into flash drive is not a problem, earlier also I managed to create a \"Windows on the Go\" on 32GB Flash drive but on 3TB mbr disk the same method was not working.\n\n"
+    },
+    {
+      "id": "208055",
+      "timestamp": "2018-10-29T13:00:33+00:00",
+      "author": "devdevadev",
+      "content": "\u003e but on 3TB mbr disk the same method was not working.\n\nIs your hard disk 512 or 4096 bytes per sector?\n\n"
+    },
+    {
+      "id": "208062",
+      "timestamp": "2018-10-30T05:41:42+00:00",
+      "author": "nice_guy75",
+      "content": "\u003e Is your hard disk 512 or 4096 bytes per sector?\n\nIt is showing 512 in system information. I believe BIOS system systems are old so they should support 512 sector size.\n\nSecondly, AIO files require a FAT32 partition and when I format that partition in FAT32 filesystem it is not giving option of 4096 sector size.\n\nCan I change the sector size from 512 to 4096, if yes please let me know how?\n\n"
+    },
+    {
+      "id": "208063",
+      "timestamp": "2018-10-30T14:34:03+00:00",
+      "author": "devdevadev",
+      "content": "Why not try Bootice for GPT Partitioning ?\n\n"
+    },
+    {
+      "id": "208064",
+      "timestamp": "2018-10-30T15:55:21+00:00",
+      "author": "nice_guy75",
+      "content": "\u003e Why not try Bootice for GPT Partitioning ? Why not you read personal message in forum ?\n\nDoes it matter how do you partition your disk?\n\nI would search and try to partition my drive using Bootice. Please check your inbox and sorry for not replying to you earlier.\n\n"
+    },
+    {
+      "id": "208066",
+      "timestamp": "2018-10-30T17:03:24+00:00",
+      "author": "devdevadev",
+      "content": "\u003e Does it matter how do you partition your disk?\n\nMay be...I think ***[MBT](https://www.youtube.com/watch?v\u003dDWsFBgh6kAg\u0026t\u003d172s \"External link\")*** ++**[2.3](https://drive.google.com/file/d/1un0suDI8zMlhWw5th2oo07F8_jGXefob/view?usp\u003dsharing \"External link\")**++ can help you....\n\n"
+    },
+    {
+      "id": "208067",
+      "timestamp": "2018-10-30T17:05:42+00:00",
+      "author": "nice_guy75",
+      "content": "Tried with Bootice as well but did not work.\n\n"
+    },
+    {
+      "id": "208069",
+      "timestamp": "2018-10-30T18:35:47+00:00",
+      "author": "slothman",
+      "content": "Well I just tried to change the bootloader on my aio partitioned with gpt to syslinux.\n\nAfter putting in a basic syslinux.cfg that boots to grub4dos, it shows me the aio menu in legacy mode.\n\nAlso, on the plus side, it lets me choose between UEFI and legacy in the boot menu.\n\nFor some reason, when I have it selected to grub2 legacy as the bootloader, it only shows the legacy option.\n\nI think that\u0027s probably because the protective mbr gets too protective lol.\n\nI used parted magic to install syslinux.\n\nFollow this guide here to install it:\n\n[http://www.lightofda...cgi/BIOSBootGPT](http://www.lightofdawn.org/wiki/wiki.cgi/BIOSBootGPT \"External link\")\n\nThen copy grldr from grub4dos to the root of the drive.\n\nCreate a text file called syslinux.cfg in the same directory as ldlinux.sys with the following in it:  \ndefault grub4dos  \nLABEL grub4dos  \nMENU LABEL Grub4dos  \nBOOT /grldr  \nIt doesn\u0027t seem to work \\*quite\\* right.  \nI\u0027m probably missing some minor stuff to make it work like it should.  \nBut at least now you have 2 different options for a legacy bootloader.  \nI think grub2 has a bug with your particular bios.  \nThat happened to me once with grub4dos a long time ago.  \nHad to debug to get it work, can\u0027t even remember how I debugged it or if I got it to work finally.  \nHopefully syslinux will work for you.  \nI can\u0027t recall any of my systems having a problem with syslinux.  \nI just never liked it\u0027s menu structure or inflexibility with changing boot options at runtime.\n\n**Edited by slothman, 30 October 2018 - 07:11 PM.**\n"
+    },
+    {
+      "id": "208070",
+      "timestamp": "2018-10-30T20:53:12+00:00",
+      "author": "slothman",
+      "content": "Well for some reason I can\u0027t fathom, I can\u0027t edit my post again.\n\nI was thinking about copying grldr to the root just seems a bit messy to me.\n\nSo omit that part from my last post and use this syslinux.cfg instead:  \ndefault grub4dos  \nLABEL grub4dos  \nMENU LABEL Grub4dos  \nBOOT /AIO/Tools/grub4dos/grldr\n\n"
+    },
+    {
+      "id": "208073",
+      "timestamp": "2018-10-31T05:48:18+00:00",
+      "author": "nice_guy75",
+      "content": "\u003e May be...I think ***[MBT](https://www.youtube.com/watch?v\u003dDWsFBgh6kAg\u0026t\u003d172s \"External link\")*** ++**[2.3](https://drive.google.com/file/d/1un0suDI8zMlhWw5th2oo07F8_jGXefob/view?usp\u003dsharing \"External link\")**++ can help you....\n\n2.3 is not released yet, it is under development. I have tried v2.2 it doesn\u0027t support GPT disks. :-(\n\n"
+    },
+    {
+      "id": "208074",
+      "timestamp": "2018-10-31T05:55:31+00:00",
+      "author": "nice_guy75",
+      "content": "\u003e Well for some reason I can\u0027t fathom, I can\u0027t edit my post again.\n\u003e\n\u003e I was thinking about copying grldr to the root just seems a bit messy to me.\n\u003e\n\u003e So omit that part from my last post and use this syslinux.cfg instead:  \n\u003e default grub4dos  \n\u003e LABEL grub4dos  \n\u003e MENU LABEL Grub4dos  \n\u003e BOOT /AIO/Tools/grub4dos/grldr\n\u003e\nAnd where should I place this syslinux.cfg?\n\n"
+    },
+    {
+      "id": "208081",
+      "timestamp": "2018-10-31T18:28:22+00:00",
+      "author": "slothman",
+      "content": "\u003e And where should I place this syslinux.cfg?\n\nPlace it in the same directory as ldlinux.sys\n\nWhich actually should be installed to \\\\AIO\\\\Menu\n\nSince there is a syslinux.cfg already there.\n\nI tested it, it works fine.\n\nYou need to copy over vesamenu.c32 to \\\\AIO\\\\Menu\n\nYou can find it in one of its respective directories under \\\\AIO\\\\Tools\\\\syslinux\n\nParted Magic apparently uses 4.06, which was close enough to 4.07 to work\n\n"
+    },
+    {
+      "id": "208157",
+      "timestamp": "2018-11-08T03:45:22+00:00",
+      "author": "devdevadev",
+      "content": "Happy Diwali Dear...  \n\nYesterday night I have MBR booted to AIOBOOT through Grub4dos as default bootloader instead of Grub2 Legacy in my 32 GB GPT USB Drive. I have successfully booted to Windows 10 build 1903 x86/x64 ISO. I have also successfully MBR booted to Windows 8.1 Installer by using Grub4dos + NTBOOT combination.  \n\nDoes Grub2 Legacy work for you if you test it in USB/HDD of size less than 2TB ? I think if your MBR boot to Grub4dos as default bootloader in your 3TB GPT HDD and then switch to Grub2 menu then it should work ?  \n\nYou have to test following steps to see if Grub4dos -\\\u003e Grub2 chainloading works for \\\u003e 2TB HDD ?  \n\n1- Format 3TB HDD as GPT and create 30GB FAT32 GPT Partition for AIOBOOT.***Note down Disk Number of your 3TB HDD from Disk Management***. I have used Rufus for creating FAT32 GPT partition in my 32GB USB Drive. Let me know what method you use for GPT Partitioning of 3TB HDD ?\n\n\u003cbr /\u003e\n\n![post-65263-0-10186500-1541655681.png](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-10186500-1541655681.png)  \n\n2- Download attached **GPTgrldr.zip** *(All thanks to **Wonko** for this great concept)* and move to C: Drive and extract as **C:\\\\GPTgrldr** folder using 7-zip.\n\n[![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003d5a3c15ae77291cbaabe5f6bec164cf09\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d16182 \"Download attachment\") [**GPTgrldr.zip**](http://reboot.pro/index.php?s\u003d5a3c15ae77291cbaabe5f6bec164cf09\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d16182 \"Download attachment\") **476.59KB** 384 downloads  \n\n3-Open **C:\\\\GPTgrldr** folder and choose File -\\\u003e ***Open Windows PowerShell as Administrator***option and type\n\n```\ncmd\n```\n\n![post-65263-0-43007400-1541655764.png](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-43007400-1541655764.png)  \n\nPress ***Enter*** and type following command and press *Enter* . Where ***3*** is Disk number of your 3TB AIOBOOT HDD.\n\n```\nmkhidGPT.cmd myimage.img 3\n```\n\nType ***YES*** to confirm, press***\\[ENTER\\]. Grub4dos*** bootloader have been successfully installed in your GPT HDD...  \n\n![post-65263-0-01763100-1541655830.png](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-01763100-1541655830.png)\n\n4- Download attached ***NTBOOT.zip*** and extract all files in the root of your 3TB GPT HDD as follows.\n\n[![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003d5a3c15ae77291cbaabe5f6bec164cf09\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d16193 \"Download attachment\") [**NTBOOT.zip**](http://reboot.pro/index.php?s\u003d5a3c15ae77291cbaabe5f6bec164cf09\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d16193 \"Download attachment\") **565.87KB** 345 downloads\n\n![post-65263-0-02609100-1541655879.png](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-02609100-1541655879.png)  \n\n5- Open ***AIO_Boot_Extractor.exe*** and choose your AIOBOOT FAT32 GPT Partition and press **\u0027OK\u0027**button to extract all AIOBOOT files in the root of your AIOBOOT Partition of GPT HDD.\n\n\u003cbr /\u003e\n\n![post-65263-0-70386900-1541655931.png](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-70386900-1541655931.png)\n\n***Note-*** Don\u0027t format your your GPT HDD here using AIOBOOT, Only extract AIOBOOT files using ***\u0027OK\u0027*** button.  \n\n![post-65263-0-05067700-1541656007.png](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-05067700-1541656007.png)  \n\n6- After extracting successfully it will Run AIOCreator.exe automatically, Click the Bootloaders button and install Clover.  \n\n![post-65263-0-02299000-1541656067.png](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-02299000-1541656067.png)  \n\n7- Now copy following files from *Windows 8.1 ISO* to the root of *AIOBOOT FAT32 GPT Partition*.\n\n```\n/sources\n/setup.exe\n```\n\n![post-65263-0-79486200-1541657163.png](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-79486200-1541657163.png)  \n\n8- Now also add latest **Windows 10 Build 1903 x86/x64 ISO**using AIOCreator.exe in your AIOBOOT GPT Partition..\n\n++***CASE-1***++\n\n1**-**Boot from 3TB GPT HDD in Legacy BIOS mode and choose ***AIOBOOT Grub4dos Menu*** option\n\n2- Then select ***\u0027Load Grub 2\u0027*** entry to open Grub2 Legacy menu and Select the WinPE \\\u0026 Setup menu to start the Windows installation. Perform the installation as usual.\n\n++***CASE-2***++\n\n++**Install Windows 10 on *GPT partition Internal HDD* using*3TB GPT USB-HDD* in *Legacy BIOS mode***++\n\nYou can also try to boot from your 3TB***GPT HDD*** in Legacy BIOS mode and choose ***AIOBOOT Grub4dos Menu*** option and boot ***Clover*** from Grub4dos menu and choose to *boot back to **Grub2** (Grub2 will now be booted in **UEFI**mode)* . Select the WinPE \\\u0026 Setup menu to start the Windows installation. Perform the installation in ***GPT partitioned Internal HDD*** connected in ***BIOS/MBR based legacy system***. The installer created the boot files during installation at this stage, waiting for the system to reboot. Boot into Clover but don\u0027t select Grub2, select the Windows icon that the installer has created to continue the installation process.\n\n++***CASE-3***++\n\n++***Grub4dos + NTBOOT combiation to boot Windows 8.1 Installer from 3TB GPT HDD***++\n\nIf Grub2 legacy menu is still not working through Grub4dos chainloading in your 3TB GPT HDD then you can try following steps to boot Windows 8.1 Installer from your 3TB GPT USB-HDD using Grub4dos + NTBOOT combination.\n\nBoot from your 3TB***GPT HDD*** in Legacy BIOS mode and test both menu entries one by one-\n\n1- NTBOOT TEST 1\n\n2- NTBOOT TEST 2\n\nProceed till Disk Selection screen of Windows 8.1 Installer to see which entry allow your 3TB GPT to install Windows 8.1 in MBR/GPT Internal HDD of your system. You can test full Windows 8.1 Installation if have spare partition in Internal HDD.  \n\nLet me know if Grub2 legacy menu work for 3TB GPT HDD by using Grub4dos as default bootloader ?\n\nAlso test both NTBOOT menu entries to see if any work from your 3TB GPT HDD ?\n\nRegards.....  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![Rufus.png](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-10186500-1541655681_thumb.png)](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-10186500-1541655681.png \"Rufus.png - Size: 20.53KB\"){#ipb-attach-url-16184-0-57747400-1676066386}\n* [![CMD.png](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-43007400-1541655764_thumb.png)](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-43007400-1541655764.png \"CMD.png - Size: 6.85KB\"){#ipb-attach-url-16185-0-57753800-1676066386}\n* [![MBR.png](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-01763100-1541655830_thumb.png)](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-01763100-1541655830.png \"MBR.png - Size: 23.95KB\"){#ipb-attach-url-16186-0-57758900-1676066386}\n* [![NTBOOT.png](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-02609100-1541655879_thumb.png)](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-02609100-1541655879.png \"NTBOOT.png - Size: 17.76KB\"){#ipb-attach-url-16187-0-57763500-1676066386}\n* [![AIOCreater.png](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-70386900-1541655931_thumb.png)](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-70386900-1541655931.png \"AIOCreater.png - Size: 12.46KB\"){#ipb-attach-url-16188-0-57767700-1676066386}\n* [![AIOBOOT.png](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-05067700-1541656007_thumb.png)](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-05067700-1541656007.png \"AIOBOOT.png - Size: 28.68KB\"){#ipb-attach-url-16189-0-57771800-1676066386}\n* [![CLOVER.png](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-02299000-1541656067_thumb.png)](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-02299000-1541656067.png \"CLOVER.png - Size: 53.22KB\"){#ipb-attach-url-16190-0-57775800-1676066386}\n* [![WIN81.png](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-79486200-1541657163_thumb.png)](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-79486200-1541657163.png \"WIN81.png - Size: 36.59KB\"){#ipb-attach-url-16192-0-57781000-1676066386}\n\n"
+    },
+    {
+      "id": "208158",
+      "timestamp": "2018-11-08T09:42:17+00:00",
+      "author": "nice_guy75",
+      "content": "Happy Deepawali and Happy New year,\n\nThanks for your help, but....................\n\n1. Do I have to create a single partition of my 4TB HDD? Or I can create a 30GB partition for AIO files in my 4TB GPT disk?\n\n2. I don\u0027t want Windows 8 or 8.1 in my AIO so can I skip step number 7 of copying sources folder and setup.exe files in the that partition or it is essential?\n\n3. Can I use my already created AIO, I have copied all the files of 30GB AIO partition when I was experimenting earlier? Though I would copy AIO and EFI folder and AIOcreator.exe, boot7 and partIMGmapper.exe files only.\n\n4. I am unable to download NTBOOT.zip I am getting following message................. ![:wacko:](https://reboot.pro/public/style_emoticons/default/wacko.png) ![:wacko:](https://reboot.pro/public/style_emoticons/default/wacko.png) ![:wacko:](https://reboot.pro/public/style_emoticons/default/wacko.png)\n\nSorry, we couldn\u0027t find that!  \n\\[#10170\\]\n\nWe could not find the attachment you were attempting to view.\n\nNeed Help?\n\n* [Our help documentation](http://reboot.pro/index.php?app\u003dcore\u0026module\u003dhelp \"\")\n* Contact the community administrator\n\n**Edited by nice_guy75, 08 November 2018 - 09:54 AM.**\n"
+    },
+    {
+      "id": "208159",
+      "timestamp": "2018-11-08T11:40:43+00:00",
+      "author": "devdevadev",
+      "content": "\u003e 1. Do I have to create a single partition of my 4TB HDD? Or I can create a 30GB partition for AIO files in my 4TB GPT disk?\n\nCreate a 30GB FAT32 partition for AIO files in your 4TB GPT disk. Also create NTFS partitions in remaining free space\n\n\u003e 2. I don\u0027t want Windows 8 or 8.1 in my AIO so can I skip step number 7 of copying sources folder and setup.exe files in the that partition or it is essential?\n\nAs per current testing it\u0027s looking that NTBOOT is full compatible upto Windows 8.1 \u0027bootmgr\u0027. Just copy those files we will check Windows 10 bootmgr to see if which version of Windows 10 will be supportable. I think initial Windows 10 Builds is supportable...?\n\n\u003e 3. Can I use my already created AIO, I have copied all the files of 30GB AIO partition when I was experimenting earlier? Though I would copy AIO and EFI folder and AIOcreator.exe, boot7 and partIMGmapper.exe files only.\n\nYou can do it...But it will be better to start from beginning to avoid and any conflict in MBR code...\n\n\u003e 4. I am unable to download NTBOOT.zip I am getting following message................. ![:wacko:](https://reboot.pro/public/style_emoticons/default/wacko.png) ![:wacko:](https://reboot.pro/public/style_emoticons/default/wacko.png) ![:wacko:](https://reboot.pro/public/style_emoticons/default/wacko.png)\n\nIt is working for me. May be you was trying to download from previous link...I had updated it in between...Just refresh page and download...\n\n"
+    },
+    {
+      "id": "208161",
+      "timestamp": "2018-11-08T14:46:25+00:00",
+      "author": "nice_guy75",
+      "content": "Ok I went ahead, I can now boot into my GPT disk, I have selected AIO Boot GRUB4DOS menu then I have selected Load Grub2 but I stuck there only there I see following text:\n\n```\nWelcome to AIO BOOT!\n\nError: no such device: /AIO/Sitecuatui.com.html\nError: unknown filesystem.\nEntering rescue mode...\nGrub rescue\u003e\n```\n\nI have even tried to select WinPE and Setup from GRUB4DOS but it gave me this error:\n\n```\nWindows failed to start. A recent hardware or software change might be the cause. To fix the problem:\n1. Insert your Windows installation disc and restart your computer.\n2. Choose your language settings, and then click \"Next\"\n3. Click \"Repair your computer.\"\n\nIf you don\u0027t have this disc, contact your system administrator or computer manufacturer for assistance.\nand bla bla...........................\n```\n\n**All in all, it is not going into WinPE and Setup from GRUB4DOS, I have to first load grub2 but it is not loading.**   \n\nNow I have question don\u0027t we need to install grub2, as we didn\u0027t install grub2 we had only installed clover in step number 6.  \n\nI have created a fresh AIO as you instructed, and didn\u0027t use the other one which I already have. Secondly I have created this AIO on my UEFI system, is this the reason of not loading grub2 from GRUB4DOS or it has nothing to do with it?  \n\n**Please help me further, I think I am inches away from success.**\n\n**Edited by nice_guy75, 08 November 2018 - 02:48 PM.**\n"
+    },
+    {
+      "id": "208163",
+      "timestamp": "2018-11-08T15:42:50+00:00",
+      "author": "devdevadev",
+      "content": "\u003e Now I have question don\u0027t we need to install grub2, as we didn\u0027t install grub2 we had only installed clover in step number 6.\n\n![post-65263-0-70386900-1541655931.png](http://reboot.pro/uploads/monthly_11_2018/post-65263-0-70386900-1541655931.png)\n\nAFAIK, It already Auto installed default AIOBOOT Bootloader .i.e Grub2 ?\n\n\u003e Secondly I have created this AIO on my UEFI system, is this the reason of not loading grub2 from GRUB4DOS or it has nothing to do with it?\n\nMay be....But not sure. You can re-create from BIOS Booted OS ? I think you should also try to do whole steps in a 32GB GPT USB and boot in Target system. So that we can be sure that something is wrong with 4TB HDD ?\n\nAlso test both ***++CASE-2++*** and ++***CASE-3***++ given in ++***[above post](http://reboot.pro/topic/21297-aio-boot-create-a-bootable-usb-drive-or-hdd-with-grub2-clover-and-syslinux/page-3#entry208157 \"\")***++ ? and report result ?\n\n"
+    },
+    {
+      "id": "208168",
+      "timestamp": "2018-11-08T18:59:47+00:00",
+      "author": "devdevadev",
+      "content": "Had you tried to create ***MBR*** partitions in your ***4TB HDD*** instead of ***GPT*** ?\n\nIf not you should try to create *MBR Partitions* in your 4TB HDD by using ++***[MBR4TB](https://www.aioboot.com/en/mbr4tb/ \"External link\")***++ software..\n\nIf you use the 4TB disk to boot in Legacy BIOS mode, you should use ***MBR*** instead of GPT, which is ALSO recommended for ***AIO Boot***.\n\n1- If your disk is ++***new***++ or has ***no data***, you can clean the disk, delete all partitions and re-initialize by running following\n\nCommand in CMD prompt as Admin.\n\n```\ndiskpart\nlist disk\nselect disk disk_number\nclean\nconvert mbr\n```\n\n2- First, you need to download ++***[MBR4TB.exe](https://www.aioboot.com/out/mbr4tb \"External link\")***++then run the software.\n\n3- Use MBR4TB to create the last partition, then you can optionally create new partitions in the first 2TB area.\n\n4- Enter the disk number of the disk you want to use. You can use Disk Management to get the disk number of the\n\ndisk you want. Disk 0 is 0, Disk 1 is 1 and Disk n is n.\n\n5- Press Enter and wait for the message in the software window.\n\n![MBR4TB.png](https://static.aioboot.com/wp-content/uploads/2018/06/MBR4TB.png)\n\n6- MBR4TB only helps you create new partitions, you can see the new partition in Disk Management and format it there.\n\n7- Now create 32GB FAT32 ***AIOBOOT*** Partition at the beginning of 4TB MBR HDD...\n\n8- Now try to create 2nd NTFS Partition between 1st 32 GB FAT32 ***AIOBOOT*** Partiton and 3rd ***(1677.29 MB)*** NTFS\n\nPartition at the end of 4TB MBR HDD created by ++***MBR4TB***++ software.\n\n![MBR4TB-4TB-Hard-Disk-Partition-Software-](https://static.aioboot.com/wp-content/uploads/2018/06/MBR4TB-4TB-Hard-Disk-Partition-Software-for-Windows.png)\n\n++***NOTE-***++ Tu Nguyen just tested this software on a virtual disk on a virtual machine because he don\u0027t have 3TB or 4TB hard disk. Please let me know your results. Thank you and wish you success!\n\n"
+    },
+    {
+      "id": "208173",
+      "timestamp": "2018-11-09T12:14:02+00:00",
+      "author": "nice_guy75",
+      "content": "\u003e Had you tried to create ***MBR*** partitions in your ***4TB HDD*** instead of ***GPT*** ?\n\u003e\n\u003e If not you should try to create *MBR Partitions* in your 4TB HDD by using ++***[MBR4TB](https://www.aioboot.com/en/mbr4tb/ \"External link\")***++ software..\n\u003e\n\u003e If you use the 4TB disk to boot in Legacy BIOS mode, you should use ***MBR*** instead of GPT, which is ALSO recommended for ***AIO Boot***.\n\u003e\n\u003e 1- If your disk is ++***new***++ or has ***no data***, you can clean the disk, delete all partitions and re-initialize by running following\n\u003e\n\u003e Command in CMD prompt as Admin.\n\u003e\n\u003e ```\n\u003e diskpart\n\u003e list disk\n\u003e select disk disk_number\n\u003e clean\n\u003e convert mbr\n\u003e ```\n\u003e\n\u003e 2- First, you need to download ++***[MBR4TB.exe](https://www.aioboot.com/out/mbr4tb \"External link\")***++then run the software.\n\u003e\n\u003e 3- Use MBR4TB to create the last partition, then you can optionally create new partitions in the first 2TB area.\n\u003e\n\u003e 4- Enter the disk number of the disk you want to use. You can use Disk Management to get the disk number of the\n\u003e\n\u003e disk you want. Disk 0 is 0, Disk 1 is 1 and Disk n is n.\n\u003e\n\u003e 5- Press Enter and wait for the message in the software window.\n\u003e\n\u003e ![MBR4TB.png](https://static.aioboot.com/wp-content/uploads/2018/06/MBR4TB.png)\n\u003e\n\u003e 6- MBR4TB only helps you create new partitions, you can see the new partition in Disk Management and format it there.\n\u003e\n\u003e 7- Now create 32GB FAT32 ***AIOBOOT*** Partition at the beginning of 4TB MBR HDD...\n\u003e\n\u003e 8- Now try to create 2nd NTFS Partition between 1st 32 GB FAT32 ***AIOBOOT*** Partiton and 3rd ***(1677.29 MB)*** NTFS\n\u003e\n\u003e Partition at the end of 4TB MBR HDD created by ++***MBR4TB***++ software.\n\u003e\n\u003e ![MBR4TB-4TB-Hard-Disk-Partition-Software-](https://static.aioboot.com/wp-content/uploads/2018/06/MBR4TB-4TB-Hard-Disk-Partition-Software-for-Windows.png)\n\u003e\n\u003e ++***NOTE-***++ Tu Nguyen just tested this software on a virtual disk on a virtual machine because he don\u0027t have 3TB or 4TB hard disk. Please let me know your results. Thank you and wish you success!\n\u003e\nTried this method, I am back to square one, same GRUB text with blinking cursor, :-(\n\nFirst I have converted my disk to mbr partition then used that mbr4tb tool to create a partition of around 1.6tb then I have created one 30 GB FAT32 partition, second 30 GB NTFS partition and 2 extended partition of 1tb and remaining space. Then followed your tutorial and created my AIO tried booting on BIOS system, same result of GRUB text with blinking cursor.\n\n"
+    },
+    {
+      "id": "208178",
+      "timestamp": "2018-11-09T18:16:11+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Ok I went ahead, I can now boot into my GPT disk, I have selected AIO Boot GRUB4DOS menu then I have selected Load Grub2 but I stuck there only there I see following text:\n\u003e\n\u003e ```\n\u003e Welcome to AIO BOOT!\n\u003e\n\u003e Error: no such device: /AIO/Sitecuatui.com.html\n\u003e Error: unknown filesystem.\n\u003e Entering rescue mode...\n\u003e Grub rescue\u003e\n\u003e ```\n\u003e\n\u003e **All in all, it is not going into WinPE and Setup from GRUB4DOS, I have to first load grub2 but it is not loading.**   \n\u003e ....  \n\u003e **Please help me further, I think I am inches away from success.**\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nThe grub4dos loaded (so technically the system booted :smile:).  \n\nThe GRUB2 loaded allright :smile: ( that is what printed the message \"Welcome to Aioboot\" and then - because of some misconfiguration/conflict of the GRUB2 menu file or grub.cfg and/or some file missing because of the exact way you used AIOboor or for \\*whatever\\* other reason, possibly a \"wrong\" root established or a missing GRUB2 module - dropped to the grub rescue\\\u003e prompt).  \n\nThere you should have stopped and reviewed a set of command lines in the GRUB2 command line capable of prosecuting the booting (or maybe even change/override the menu.lst of gtub4dos - if it is the case of a \"wrong\" root \"passed on\" to GRUB2)  \n\nSo you were inches away, and now you are likely to be several feet away, instead ![:(](https://reboot.pro/public/style_emoticons/default/sad.png).   \n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    },
+    {
+      "id": "208185",
+      "timestamp": "2018-11-10T03:23:59+00:00",
+      "author": "nice_guy75",
+      "content": "\u003e The grub4dos loaded (so technically the system booted :smile:). The GRUB2 loaded allright :smile: ( that is what printed the message \"Welcome to Aioboot\" and then - because of some misconfiguration/conflict of the GRUB2 menu file or grub.cfg and/or some file missing because of the exact way you used AIOboor or for \\*whatever\\* other reason, possibly a \"wrong\" root established or a missing GRUB2 module - dropped to the grub rescue\\\u003e prompt). There you should have stopped and reviewed a set of command lines in the GRUB2 command line capable of prosecuting the booting (or maybe even change/override the menu.lst of gtub4dos - if it is the case of a \"wrong\" root \"passed on\" to GRUB2) So you were inches away, and now you are likely to be several feet away, instead ![:(](https://reboot.pro/public/style_emoticons/default/sad.png). :duff:Wonko\nNo, the \"Grub prompt\" one is on mbr disk, with GPT disk I can still boot into GPT disk via grub4dos, only grub2 is not loading. NTBOOT 1 and NTBOOT 2 are also not working. But surprisingly same method is working on 32 GB GPT flash drive but not working on my 4TB GPT disk, if you can help, I would be very grateful to both of you, you both have been very helpful to me.  \n\nYesterday itself I tried the same method on 32 GB GPT flash drive, it is perfectly working, tried Windows 8.1 installation setup, Windows 10 installation setup, Hiren Boot CD with WinPE, Acronis True Image 2011, 2014 as well as 2018 all integrated in my AIO, everything is working on flash drive but not on 4 TB GPT disk.  \n\nI can setup the same AIO in minutes, but I\u0027m unaware of command lines od grub2, if you can help me with this I can try.   \n\n**Edited by nice_guy75, 10 November 2018 - 03:27 AM.**\n"
+    },
+    {
+      "id": "208186",
+      "timestamp": "2018-11-10T06:48:10+00:00",
+      "author": "devdevadev",
+      "content": "\u003e No,s the \"Grub prompt\" one is on mbr disk,\n\nSorry...But when you reported \u0027Grub rescue\u0027 error you was not using MBR. Was not this error occur in 4TB GPT Disk ?\n\n"
+    },
+    {
+      "id": "208187",
+      "timestamp": "2018-11-10T07:08:11+00:00",
+      "author": "nice_guy75",
+      "content": "\u003e Sorry...But when you reported \u0027Grub rescue\u0027 error you was not using MBR. Was not this error occur in 4TB GPT Disk ?\n\nYes, \"Grub Rescue\" was on GPT disk only, but on the same screen the first line was \"Welcome to AIO BOOT\", doesn\u0027t that mean, AIO is booting? I thought Wonko was talking about the \"Grub with blinking cursor\" case, it was with mbr disk on BIOS system.\n\nThis is the screenshot of GPT 4TB Hard disk: [https://www.flickr.c...eposted-public/](https://www.flickr.com/photos/90538043@N04/30851223807/in/dateposted-public/ \"External link\")\n\n"
+    },
+    {
+      "id": "208602",
+      "timestamp": "2018-12-11T15:47:19+00:00",
+      "author": "devdevadev",
+      "content": "I have seen that ***AIOBOOT*** uses modified /AIO/Tools/grub4dos/**grldr** file which load /AIO/Tools/grub4dos/menu.lst automatically as default instead of /menu.lst, /boot/grub/menu.lst, /grub/menu.lst .........\n\n[![Annotation 2018-12-11 204121.jpg](http://reboot.pro/uploads/monthly_12_2018/post-65263-0-17527800-1544543366_thumb.jpg)](http://reboot.pro/uploads/monthly_12_2018/post-65263-0-17527800-1544543366.jpg \"Annotation 2018-12-11 204121.jpg - Size: 26.71KB\"){#ipb-attach-url-16247-0-87172200-1676066386}\n\n![post-65263-0-17527800-1544543366.jpg](http://reboot.pro/uploads/monthly_12_2018/post-65263-0-17527800-1544543366.jpg)\n\n"
+    },
+    {
+      "id": "209110",
+      "timestamp": "2019-01-27T11:05:35+00:00",
+      "author": "friske",
+      "content": "What is the most convenient way to add a menu item with the customized code?\n\n"
+    },
+    {
+      "id": "209192",
+      "timestamp": "2019-02-05T20:26:58+00:00",
+      "author": "slothman",
+      "content": "\u003e What is the most convenient way to add a menu item with the customized code?\n\nWell usually I\u0027ll add the iso I want custom options with as an item in the DOS section, because it will always add it.\n\nThen navigate to /AIO/Menu/Dos and find the boot menu for the item you just added.\n\nMake your modifications and you should be set.\n\nYou can do the same to other items on other menus, just don\u0027t add or edit anything outside of the Start and Stop lines in the menus\n\notherwise the menu editor will get confused.\n\n"
+    },
+    {
+      "id": "215539",
+      "timestamp": "2020-07-26T11:08:13+00:00",
+      "author": "f1ult23",
+      "content": "* **v0.9.8.18 (24.07.2020)**\n  * Removed PartIMGMapper, Syslinux, rEFInd and Chameleon bootloader.\n  * Updated Grub 2.05, Grub4dos, Clover, imdisk and 7-Zip.\n  * AIO Boot Extractor now only supports USB\n\n\u003cbr /\u003e\n\n"
+    }
+  ]
+}

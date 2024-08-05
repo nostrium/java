@@ -1,0 +1,106 @@
+{
+  "id": "20618",
+  "title": "Easy2Boot - 5.6GB Windows 10 ISO on a FAT32 drive",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "194059",
+      "timestamp": "2015-07-29T18:35:52+00:00",
+      "author": "TheReduxPL",
+      "content": "Hello,\n\nseems like [this](http://www.easy2boot.com/add-payload-files/adding-windows-install-isos-without-needing-a-helper-flash-drive/ \"External link\") page describes how to add +4 GB files on FAT32 drives but I don\u0027t know which method should I use (the entire page looks really chaotic for me). Therefore I want to ask you which method should I use.\n\n* I\u0027ve downloaded a Windows 10 Pro x86 + x64 ISO which size is 5.6GB\n* My drive is formatted as FAT32 for compatibility reasons (I had multiple PC\u0027s which couldn\u0027t boot a NTFS drive) so I can\u0027t just copy the ISO on it\n* I want to install Windows 10 using [the VHD method](http://www.zdnet.com/article/how-to-use-a-vhd-to-dual-boot-windows-8-on-a-windows-7-pc/ \"External link\") for testing, and then maybe install it as a main OS\n* Currently I have Windows 8.1 installed in **non**-UEFI mode, I\u0027m mentioning it because I think it might be important\n\nSo how do I copy the Windows 10 ISO file on my drive?\n\n"
+    },
+    {
+      "id": "194060",
+      "timestamp": "2015-07-29T18:51:22+00:00",
+      "author": "steve6375",
+      "content": "No - that page describes how to make .imgPTN files. If any of your source files are over 4GB then you MUST have an E2B drive that is formatted as NTFS (or possibly exFAT).\n\nYou say you have multiple PCs that will not boot NTFS - can you describe the problem.\n\nAt the point at which systems start to boot from a USB drive, normally the BIOS does not distinguish between NTFS and FAT32.\n\nThe only other thing to consider if some systems are UEFI-only systems (do not have CSM Mode).\n\nSo please give details of these strange systems.\n\n"
+    },
+    {
+      "id": "194061",
+      "timestamp": "2015-07-29T18:57:19+00:00",
+      "author": "TheReduxPL",
+      "content": "\u003e No - that page describes how to make .imgPTN files. If any of your source files are over 4GB then you MUST have an E2B drive that is formatted as NTFS (or possibly exFAT).\n\u003e\n\u003e You say you have multiple PCs that will not boot NTFS - can you describe the problem.\n\u003e\n\u003e At the point at which systems start to boot from a USB drive, normally the BIOS does not distinguish between NTFS and FAT32.\n\u003e\n\u003e The only other thing to consider if some systems are UEFI-only systems (do not have CSM Mode).\n\u003e\n\u003e So please give details of these strange systems.\n\nThe problem happens on one of my old notebooks (Acer Aspire 5732Z) and some other PCs I was servicing. When the drive was formatted as NTFS, these computers simply couldn\u0027t boot from it even if I selected the boot drive manually. It\u0027d simply skip and boot from hard drive instead. Everything worked perfectly right after I formatted the same drive as FAT32.\n\nThe notebook I mentioned doesn\u0027t support UEFI if I recall correctly but this problem happened on multiple configurations, even on these that can work in both UEFI and non-UEFI mode.\n\nIs there really no way to add the ISO to my drive without reformatting it?\n\n**Edited by TheReduxPL, 29 July 2015 - 06:58 PM.**\n"
+    },
+    {
+      "id": "194062",
+      "timestamp": "2015-07-29T19:02:33+00:00",
+      "author": "steve6375",
+      "content": "Not as a ISO or a .imgPTN file if the file is over 4GB.\n\nYou could simply copy the entire contents of the ISO to the root of the E2B USB drive and then boot to /bootmgr - but the install.wim would need to be under 4GB.\n\n"
+    },
+    {
+      "id": "194063",
+      "timestamp": "2015-07-29T19:06:24+00:00",
+      "author": "TheReduxPL",
+      "content": "\u003e Not as a ISO or a .imgPTN file if the file is over 4GB.\n\u003e\n\u003e You could simply copy the entire contents of the ISO to the root of the E2B USB drive and then boot to /bootmgr - but the install.wim would need to be under 4GB.\n\nThere are no install.wim files but there are install.esd files which do not exceed 3 gigabytes.\n\nI\u0027ll try copying the files in the way you mentioned. So I can\u0027t copy it to \"\\\\_ISO\\\\WINDOWS\\\\WIN10\" and I should copy it to the root of my E2B drive?\n\n"
+    },
+    {
+      "id": "194064",
+      "timestamp": "2015-07-29T19:10:09+00:00",
+      "author": "steve6375",
+      "content": "yes. If you have to use FAT32.\n\nYou will need to add a bootmgr .mnu file to \\\\_ISO\\\\MAINMENU so you can boot to \\\\bootmgr\n\n\"\\\\_ISO\\\\docs\\\\Sample mnu files\\\\Windows\\\\Boot Windows bootmgr.mnu\" \\\u003e\\\u003e \\\\_ISO\\\\MAINMENU\n\nI would also consider removing (or at least renaming) the \\\\EFI folder if you have trouble booting to E2B on some systems which support UEFI.\n\n"
+    },
+    {
+      "id": "194065",
+      "timestamp": "2015-07-29T19:13:49+00:00",
+      "author": "TheReduxPL",
+      "content": "Thank you, I\u0027ll try this solution and let you know in case of any issues :smile:\n\n"
+    },
+    {
+      "id": "194067",
+      "timestamp": "2015-07-29T19:58:44+00:00",
+      "author": "TheReduxPL",
+      "content": "Installer boots up but after creating the partitions it shows me that \"We couldn\u0027t create a new partition or locate an existing one. For more information, see the Setup log files\".\n\nI\u0027m trying to install Windows 10 on a VHD and I don\u0027t know where are the log files located.\n\n**Edited by TheReduxPL, 29 July 2015 - 08:07 PM.**\n"
+    },
+    {
+      "id": "194088",
+      "timestamp": "2015-07-30T11:37:07+00:00",
+      "author": "steve6375",
+      "content": "Have you mounted\\\\attached the VHD?\n\n"
+    },
+    {
+      "id": "194089",
+      "timestamp": "2015-07-30T13:04:25+00:00",
+      "author": "tinybit",
+      "content": "Yes, FATs have good compatibility with motherboards. It is possible that some motherboards use the FAT boot sector to determine the geometry of the USB storage devices, and even worse, some motherboards could decide to not boot from the non-FAT USB drives. Quite often there are reports about the NTFS boot failure whereas (on the same machine) FAT32 no problems.   \n"
+    },
+    {
+      "id": "200363",
+      "timestamp": "2016-09-22T22:36:23+00:00",
+      "author": "TheReduxPL",
+      "content": "Hello, has anything changed during those months? Are there ways to store multiple +4 GB Windows installers on FAT32, or can I only use steve\u0027s method to store just one?\n\n"
+    },
+    {
+      "id": "200364",
+      "timestamp": "2016-09-23T00:37:15+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "You could try splitting the install.wim file into pieces that are less than 4GB each, then copy those files onto USB or make an E2B drive. Google for split wim or swm. If the ISO contains more than one edition of 10 (Home, Pro, Enterprise, etc), then you can delete the file called ei.cfg in the \\\\sources\\\\ folder, so that Setup will allow you to choose the edition you want. I\u0027m wondering, where did you get a 10 ISO that is over 5GB? Is it 100% official, or modified (pirated, had updates/drivers integrated into it, etc)? I don\u0027t think Microsoft would release a 10 ISO that has an install.wim/install.esd larger than 4GB, because this would make it difficult to boot the installer in UEFI mode, in which case FAT32 is generally required.  \n\nEdit: If your ISO has an install.ESD in \\\\sources\\\\, then you may need to decrypt it first, then convert it to install.wim. Then you can split the WIM into smaller pieces. ESD Decrypter can do both of these.\n\n[http://www.easy2boot...per-flash-drive](http://www.easy2boot.com/add-payload-files/adding-windows-install-isos-without-needing-a-helper-flash-drive/ \"External link\")  \n\nRead method 1 in the section called \"UEFI booting: How to add Windows 7/8/10 installers with \\\u003e4GB Install.wim files\". There are other ways you can do this but I think that splitting the wim then creating an E2B drive from files, will be the easiest way. Make sure you read the part about splitting the WIM into 3000MB chunks, you can\u0027t just use any size or you\u0027ll hit issues. I found this out a few years ago and was searching for the info so I could post a link, but happened to find it on E2B\u0027s pages. I had tried to install 8.1 with a \\\u003e4GB WIM and got the same issue as you. Also, at any points on the linked page that steve6375 refers only to Windows 8/8.1, it will also generally work with 10.\n\n"
+    },
+    {
+      "id": "200370",
+      "timestamp": "2016-09-23T15:31:58+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "Your other machines probably had issues booting from NTFS because maybe the partition wasn\u0027t marked as active/bootable, or it didn\u0027t contain a proper bootcode/bootsector. A FAT32 partition doesn\u0027t need to be marked as active to boot in UEFI mode. How old are these machines? If they aren\u0027t relatively new then they should be capable of both legacy MBR and UEFI booting. Do their BIOSes have options for legacy MBR/CSM? If so it needs to be toggled on for MBR booting to work. Or maybe you have less common hardware like mine, which can boot in either mode without having to toggle an option (which in my case means I only need to disable Secure Boot and activate CSM, then I can boot in either mode without toggling again).\n\n"
+    },
+    {
+      "id": "200390",
+      "timestamp": "2016-09-24T10:53:57+00:00",
+      "author": "TheReduxPL",
+      "content": "Thanks for your responses, TheAntiFinder :smile: I\u0027m trying out the 1st method right now, I\u0027ll let you know how it goes.\n\nSince it was over a year ago, I legitimately do not remember where I got that image from (could be 3rd party). But since several other problems arose with that image, I got rid of that ISO and downloaded the separate ones from Microsoft. Now I\u0027m working on Windows 7 images with all recent updates included, hence the 5 GB+ size.\n\nAbout the other machines - I went through every single relevant BIOS option (legacy boot/MBR etc), none of which has helped. I prepared the NTFS drive using RMPrepUSB and I made sure it\u0027s already set to active. That Acer laptop just refused to boot from it. I believe it was bought about 5 years ago, so it\u0027s not as ancient as certain notebooks I used to repair.\n\n**Edited by TheReduxPL, 24 September 2016 - 11:15 AM.**\n"
+    },
+    {
+      "id": "200394",
+      "timestamp": "2016-09-24T13:32:48+00:00",
+      "author": "steve6375",
+      "content": "\u003e The problem happens on one of my old notebooks (Acer Aspire 5732Z) and some other PCs I was servicing. When the drive was formatted as NTFS, these computers simply couldn\u0027t boot from it even if I selected the boot drive manually. It\u0027d simply skip and boot from hard drive instead. Everything worked perfectly right after I formatted the same drive as FAT32.\n\nI would be interested in some tests on those notebooks/PCs to find out just why it does not like NTFS.\n\nDid you make a grub4dos bootable USB drive with two partitions using RMPrepUSB each time?\n\nDid you install grub4dos to both the MBR and PBR?\n\ne.g.\n\n* Use RMPrepUSB to make a FAT32 drive (Bootmgr + Boot as HDD + FAT32 + MAX)\n* Install grub4dos to both MBR and PBR\n* Test it on the \u0027bad\u0027 systems - should boot to grub\\\u003e prompt\n* Repeat but choose NTFS instead of FAT32\n\nUse the same USB drive each time and same USB port. Switch off the system every time.\n\n"
+    },
+    {
+      "id": "200395",
+      "timestamp": "2016-09-24T13:34:46+00:00",
+      "author": "TheReduxPL",
+      "content": "Hmm, I\u0027m no longer using that notebook since the hard drive and screen broke, but if I manage to find it somewhere in my house, I could do some testing again :smile:\n\n"
+    }
+  ]
+}

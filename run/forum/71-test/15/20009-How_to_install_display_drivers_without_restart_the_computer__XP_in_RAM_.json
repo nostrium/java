@@ -1,0 +1,22 @@
+{
+  "id": "20009",
+  "title": "How to install display drivers without restart the computer ? ( XP in RAM )",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "186899",
+      "timestamp": "2014-09-01T20:22:56+00:00",
+      "author": "elek",
+      "content": "Hey guys,\n\nI used the diddy boot land tutorial to ++boot XP From a RAM Disk.++\n\n(the windows image is on my usb key and load in RAM)\n\nHere the tutorial : [http://diddy.boot-la...xp_full_ram.htm](http://diddy.boot-land.net/firadisk/files/xp_full_ram.htm \"External link\")\n\nSo now, my windows XP is universal, it can boot on all pc, from my usb key. There are no drivers in so it can boot everywhere. I install the drivers after the boot only.\n\nMy problem is I need to install display drivers ( ATI wtih catalyst or NVIDIA ).\n\nSo I install the drivers with no problems but the drivers say : \"you need to reboot your computer\"\n\nSince my windows XP image is in RAM, if I reboot all the modifications are erased, so I can\u0027t have my display drivers.\n\nI tested on two differents computers, one with ati card, the other with nvdia card, but they always want : \"reboot your computer\".\n\nDo you have a solution ? Thank you\n\n**Edited by elek, 01 September 2014 - 08:23 PM.**\n"
+    },
+    {
+      "id": "186903",
+      "timestamp": "2014-09-02T09:07:26+00:00",
+      "author": "pscEx",
+      "content": "Maybe it will help when you add an universal display driver to the build.\n\n[http://reboot.pro/to...3-video-driver/](http://reboot.pro/topic/2325-universal-windows-9xnt2kxp2003-video-driver/ \"\")\n\nIt works on most video hardware.\n\nPeter\n\n"
+    }
+  ]
+}

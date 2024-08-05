@@ -1,0 +1,40 @@
+{
+  "id": "19052",
+  "title": "Multiple Secure Boot WIM Files on UEFI Bootable USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "178618",
+      "timestamp": "2013-10-18T06:20:25+00:00",
+      "author": "Chaos Storm",
+      "content": "I\u0027ve looked around on the forums and while I\u0027ve found plenty of tutorials on making Multi Boot USB that are UEFI ready, what I am after is slightly different.\n\nI have a NTFS 64GB flash drive I currently use to boot Legacy systems with utilities such as WinRE, Acronis, Paragon, etc. These I created using EasyBCD which was easy enough.\n\nNow, I have another 64GB flash drive that I have formatted as FAT32 and currently it boots into Acronis using UEFI Secure Boot.\n\nI want to add more to the boot entries so my other WIM files which are UEFI ready, can be booted. However, when I try and add them using EasyBCD it always reverts to adding them as MBR/Legacy and does not use winload.efi in the boot entry but instead uses winload.exe which forces the image to boot into Legacy Mode. With UEFI Secure Boot on, this causes the machine to just sit at a black screen.\n\nIs there a command or way to add more entries but have them use winload.efi? I\u0027ve searched high and low (to the best of my knowledge) but I saw allot of Multi Boot/UEFI (No mention of Secure Boot which is a requirement)\n\nAny help is most appreciated.\n\n"
+    },
+    {
+      "id": "178620",
+      "timestamp": "2013-10-18T08:09:57+00:00",
+      "author": "ilko",
+      "content": "Maybe add entries to the wim files in the relevant bcd store, using bcdedit utility, or bootice?   \n"
+    },
+    {
+      "id": "178621",
+      "timestamp": "2013-10-18T09:21:54+00:00",
+      "author": "wimb",
+      "content": "\u003e Now, I have another 64GB flash drive that I have formatted as FAT32 and currently it boots into Acronis using UEFI Secure Boot.\n\u003e\n\u003e I want to add more to the boot entries so my other WIM files which are UEFI ready, can be booted.\n\nWhat you want is in fact to add more entries in UEFI BootManager menu for booting various sources\\\\boot_xxx.wim into RAMDISK where xxx is pe4 or acr or par\n\nI think you need then to modify the EFI\\\\Microsoft\\\\Boot\\\\BCD store by using bcdedit or more easy by using BOOTICE\n\n[http://bbs.ipauly.co...pic.php?f\u003d2\\\u0026t\u003d2](http://bbs.ipauly.com/viewtopic.php?f\u003d2\u0026t\u003d2 \"External link\")\n\nBOOTICE is also part of WinNTSetup v3 Beta3 and can be launched with icon in upper right corner in WinNTSetup3 - [http://www.msfn.org/...winntsetup-v23/](http://www.msfn.org/board/topic/149612-winntsetup-v23/ \"External link\")\n\nWinNTSetup v3 will download also the right bcdedit tool given in WinNTSetup3\\\\Tools\\\\x86\n\nBOOTICE allows you to view the specific BCD store and probably to Add more entries for booting into RAMDISK\n\n"
+    },
+    {
+      "id": "178638",
+      "timestamp": "2013-10-18T15:42:26+00:00",
+      "author": "boyans",
+      "content": "You can always edit winload.exe to winload.efi using [Visual BCD Editor](http://www.boyans.net \"External link\").\n\nI hope next version will come soon and insert proper path automatically depending on BIOS/UEFI boot.\n\n"
+    },
+    {
+      "id": "179122",
+      "timestamp": "2013-11-01T15:35:40+00:00",
+      "author": "wimb",
+      "content": "UEFI_MULTI_79 has now support to Add WIM files to Boot Manager menu for making Mult-Boot USB Drive\n\n[http://reboot.pro/to...e-2#entry179121](http://reboot.pro/topic/18182-uefi-multi-make-multi-boot-usb-harddisk/page-2#entry179121 \"\")\n\n\u003cbr /\u003e\n\n\u003e \u003cbr /\u003e\n\u003e\n\u003e - UEFI + BIOS Support for Windows 8 Recovery Or 7/8 WinPE boot.wim files booting from RAMDISK  \n\u003e - Add WIM and VHD Boot Image files to Boot Manager Menu and make Grub4dos Menu for ISO or VHD  \n\u003e Download - [UEFI_MULTI_79](http://reboot.pro/files/file/279-uefi-multi/ \"\")  \n\u003e\n\u003cbr /\u003e\n\n"
+    }
+  ]
+}

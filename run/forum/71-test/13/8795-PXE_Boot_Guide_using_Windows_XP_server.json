@@ -1,0 +1,136 @@
+{
+  "id": "8795",
+  "title": "PXE Boot Guide using Windows XP server",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "75472",
+      "timestamp": "2009-08-20T22:41:29+00:00",
+      "author": "diddy",
+      "content": "New draft completed - available [here](http://diddy.boot-land.net/pxe/index.htm \"External link\")   \n\nDraft v2 includes instructions for using grub4dos as the PXE boot loader/file.  \n\n**Setting Up A Windows XP PXE Server (DRAFT v2)**   \n\nGuide covers -   \n\n* Install Windows 2000/XP/2003 (RIS)\n* Install Windows Vista/2008/7 from a network share\n* Boot disk images\n* Boot WinPE (XP/2003 based - e.g. LiveXP, PEBuilder)\n* Boot WinPE 2.\\*/3.0\n* Boot Linux (Parted Magic example included)\n\n\u003cbr /\u003e\n\nIncludes download link for an offline version of the guide (in .htm format). Some scripts are included (in the offline download) for automating various sections.   \n\nFeedback welcome - please remember it is still in draft.  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nEnjoy,  \n\ndiddy   \n"
+    },
+    {
+      "id": "85410",
+      "timestamp": "2009-11-28T16:55:23+00:00",
+      "author": "allanf",
+      "content": "Hi **diddy**   \n\nThanks for the guide.  \n\nI have been trying to PXE Boot WinPE 2.1 (bootfile pxeboot.n12) in [VirtualBox](http://www.virtualbox.org/manual/UserManual.html#id2513649 \"External link\") with little success - a \u0027Windows failed to start... \\\\Boot\\\\BCD... 0xc0000001\" screen.  \n\nResearching the matter, I came across a message by **Bubble** [here](http://www.deployvista.com/Default.aspx?tabid\u003d70\u0026EntryID\u003d27 \"External link\") relating to the problem with Boot Manager entry names, i. e. \"Ramdisk options\" for all entries.  \n\n\u003e The solution? Delete \u0027{ramdiskoptions}\u0027s description, something like:  \n\u003e\n\u003e \\\u003e Bcdedit /store /deletevalue {ramdiskoptions} description  \n\u003e\n\u003e And now, the boot entries have no description to inherit, and so display their own.\nI haven\u0027t tried it, so can\u0027t vouch for it - just stumbled across it and recalled the note in your guide.  \n\nAlso, I can\u0027t seem to locate your batch files in the downloadable version of the guide. In particular, I was wanting to look at your 4a_WinPE.cmd and 4b_WinPE.cmd. How do I find them?  \n\nRegards :smile:   \n"
+    },
+    {
+      "id": "85411",
+      "timestamp": "2009-11-28T17:06:10+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Researching the matter, I came across a message by **Bubble** [here](http://www.deployvista.com/Default.aspx?tabid\u003d70\u0026EntryID\u003d27 \"External link\") relating to the problem with Boot Manager entry names, i. e. \"Ramdisk options\" for all entries.\n\nInteresting.  \n\nJust for the record, it seems that different versions of BOOTMGR behave differently:  \n[http://www.msfn.org/...32-t125543.html](http://www.msfn.org/board/multi-boot-and-tftp32-t125543.html \"External link\")  \n[http://www.msfn.org/...dd-t114711.html](http://www.msfn.org/board/winpe-v2-1-usb-hdd-t114711.html \"External link\")  \n\n![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "85423",
+      "timestamp": "2009-11-28T20:49:08+00:00",
+      "author": "cdob",
+      "content": "Yes, Windows 7 bootmgr list {ramdiskoptions} description, if available.  \n\n[http://diddy.boot-la...files/winpe.htm](http://diddy.boot-land.net/pxe/files/winpe.htm \"External link\")  \nremove /d \"Ramdisk options\"\n\n```\ncall :add_W7RE \\sources\\BOOT7_86.WIM x86:add_W7RE for /f \"tokens\u003d1-3\" %%a in (\u0026#39;BCDedit.exe /store %BCD% /create /device\u0026#39;) do set guid_options\u003d%%c BCDedit.exe /store %BCD% /set %guid_options% ramdisksdidevice boot BCDedit.exe /store %BCD% /set %guid_options% ramdisksdipath \\boot\\boot2.sdi for /f \"tokens\u003d1-3\" %%a in (\u0026#39;BCDedit.exe /store %BCD% /create /application OSLOADER\u0026#39;) do set guid\u003d%%c BCDedit.exe /store %BCD% /set %guid% description \"Windows 7 Recovery Console %2\" BCDedit.exe /store %BCD% /set %guid% osdevice ramdisk\u003d[boot]%1,%guid_options% BCDedit.exe /store %BCD% /set %guid% device ramdisk\u003d[boot]%1,%guid_options% BCDedit.exe /store %BCD% /set %guid% systemroot \\windows BCDedit.exe /store %BCD% /set %guid% path \\windows\\system32\\boot\\winload.exe BCDedit.exe /store %BCD% /set %guid% detecthal Yes BCDedit.exe /store %BCD% /set %guid% winpe Yes BCDedit.exe /store %BCD% /displayorder %guid% /addlastgoto :eof\n```\n\n\u003cbr /\u003e\n\nOr use different {ramdiskoptions} always.   \nSet description to both ramdiskoptions and OSLOADER section.  \nThis should work at all different bootmgr.   \n"
+    },
+    {
+      "id": "95676",
+      "timestamp": "2010-03-24T13:30:35+00:00",
+      "author": "itcrew",
+      "content": "Hey Diddy  \n\n\u003cbr /\u003e\n\nGreate Guide, there is no cmd scripts though. Please can you update   \n"
+    },
+    {
+      "id": "95739",
+      "timestamp": "2010-03-24T21:07:13+00:00",
+      "author": "Tense",
+      "content": "I second that. There are no scripts in the download. Can you readd them?   \n"
+    },
+    {
+      "id": "95751",
+      "timestamp": "2010-03-24T22:46:25+00:00",
+      "author": "diddy",
+      "content": "Sorry for the mix up with the scripts.  \n\nI\u0027ve re-uploaded the guide - scripts are included this time.  \n\ndiddy  \n\np.s. Child commitments continue to keep me busy so appologies for lack of responses over the past few months.   \n"
+    },
+    {
+      "id": "95966",
+      "timestamp": "2010-03-26T20:23:36+00:00",
+      "author": "Sha0",
+      "content": "A very nice guide. The RIS \"INF file XXX is corrupt or missing, status 21.\" error has been addressed in Syslinux 3.83, so anything newer should be fine.  \n\n[http://syslinux.zyto...ust/013127.html](http://syslinux.zytor.com/archives/2009-August/013127.html \"External link\")  \n[http://git.kernel.or...c135cb5793d847e](http://git.kernel.org/?p\u003dboot/syslinux/syslinux.git;a\u003dcommitdiff;h\u003d18ca4d8cc;hp\u003d38e1c74db64e02152e525c2d5c135cb5793d847e \"External link\")   \n"
+    },
+    {
+      "id": "96029",
+      "timestamp": "2010-03-27T16:21:04+00:00",
+      "author": "Aviad Raviv",
+      "content": "ok, i don\u0027t wanna sound rood and trash all your hard work.  \n\nbut all of this has been done before into a very well working virtual appliance call UDA.  \n\nthe creator has incorporated a lot of the stuff you show in your guide into a Linux free VM that can be used using a simple webGUI.  \n\nwith that said, both I (as a long time user of this product) and its creator have moved on because we found two things to be true:  \n\n1. if your going to install windows with a flat install over the network (witch both of us no longer recommend) your better off using MSs RIS\\\\WDS as reverse engineering the process doesn\u0027t bring anything new to the table, and doing it just gets harder with every new release and you can implement the additions done with PXElinux like boot ubuntu and acronis just fine on a server thats hosting WDS\\\\RIS with a regular MS server.  \n\n2. flat installs are a thing of the past... images are way easier to get running with less effort and take a fraction of the time to deploy.  \n\ni have moved from the UDA project to the FOG one because of these two reasons and i have added to it all the additions i have done to UDA in my youtube films.  \n\nmy youtube channel (shameless self promotion):  \n[http://www.youtube.c...g...\\\u0026playnext\u003d1](http://www.youtube.com/watch?v\u003dmJZsDQtmQvg\u0026feature\u003dPlayList\u0026p\u003d6D695B6DF7B8EF29\u0026index\u003d0\u0026playnext\u003d1 \"External link\")  \n\nthe UDA home page (homage):  \n[http://www.ultimatedeployment.org/](http://www.ultimatedeployment.org/ \"External link\")  \n\nthe FOG page (recommended):  \n[http://www.fogproject.org/](http://www.fogproject.org/ \"External link\")   \n"
+    },
+    {
+      "id": "96052",
+      "timestamp": "2010-03-27T19:23:34+00:00",
+      "author": "RCollewijn",
+      "content": "\u003e Note - due to an error the menu entries created above will not display properly when bootmgr.exe (the WinPE boot loader) loads the BCD store. The entry for x86.wim should display WinPE (x86) and amd64.wim should display WinPE (amd64), however both entries read as Ramdisk options\n\nYou can solve this by using the bootmgr.exe from vista rtm  \n\nRobert Collewijn  \nDeployment Solutions   \n"
+    },
+    {
+      "id": "96271",
+      "timestamp": "2010-03-30T05:38:36+00:00",
+      "author": "Fox-Bill",
+      "content": "Hi Diddy !  \nMany Thanks for your effort !  \nI am trying PXE Windows XP server 2.1 and I see that\u0027s what I search.   \n"
+    },
+    {
+      "id": "96382",
+      "timestamp": "2010-03-30T19:12:55+00:00",
+      "author": "Tense",
+      "content": "First...  \n\nThank you! This works well for me. Now, that being said. I was able to boot Win7PERescue by renaming the wim to x86.wim.. though I have a question now.  \n\nI want to add more options in the menu.1st.. which I know how too.  \n\nSuch as: \\[codebox\\]LABEL winpe   \nMENU LABEL WinPE 3.0  \nKERNEL /boot/pxeboot.0   \n\\[/codebox\\]  \n\nBUT... how can I add the entries to pxeboot.0? Or if that is not right.. How can I have multiple types of PEs to choose from and execute? Can you point me in the direction or topic that can help me.   \n"
+    },
+    {
+      "id": "100566",
+      "timestamp": "2010-05-19T17:27:30+00:00",
+      "author": "diddy",
+      "content": "@cdob  \n\nIn response to your post [here](http://www.boot-land.net/forums/index.php?s\u003d\u0026showtopic\u003d8795\u0026view\u003dfindpost\u0026p\u003d85423 \"External link\") - removing the /d switch works as you described to display the correct descriptions for WinPE entries. Sorry for the late response I only recently got around to testing it due to other commitments. The use of different {ramdiskoptions} may well be a lifesaver in future.   \n\n![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)  \n\ndiddy   \n"
+    },
+    {
+      "id": "100571",
+      "timestamp": "2010-05-19T18:07:17+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e In response to your post [here](http://www.boot-land.net/forums/index.php?s\u003d\u0026showtopic\u003d8795\u0026view\u003dfindpost\u0026p\u003d85423 \"External link\") - removing the /d switch works as you described to display the correct descriptions for WinPE entries. Sorry for the late response I only recently got around to testing it due to other commitments. The use of different {ramdiskoptions} may well be a lifesaver in future.\n\nJust to keep things as together as possible:  \n[http://www.boot-land...showtopic\u003d11442](http://www.boot-land.net/forums/index.php?showtopic\u003d11442 \"External link\")  \na further confirmation. ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)  \n\n![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)  \nWonko   \n"
+    },
+    {
+      "id": "102015",
+      "timestamp": "2010-06-09T23:20:41+00:00",
+      "author": "rsuren",
+      "content": "Hello,  \nthank you for your great work,  \nbut non of the offline document download links are working, please check them out,  \n\nThank you,   \n"
+    },
+    {
+      "id": "173358",
+      "timestamp": "2013-06-11T16:03:08+00:00",
+      "author": "tonikas",
+      "content": "\u003e If anyone has any feedback regarding this guide, please post [here](http://www.boot-land.net/forums/index.php?showtopic\u003d8795 \"External link\").\n\nHi Mate,  \nyour tutorial \"Setting Up A Windows XP PXE Server\" is very good and clearly understood, but I have a problem with BINL Service. I hope you will help me.  \nThe problem is that the infparser.exe (or infparser.py) with CMD does not compile (nics.txt and devlist.cache) my PC(s) network card driver files. I tried to use your converted BINL Service py2exe and Gianluigi Tiesi\u0027s BINL service (with Python). I did everything according to the instructions. Where is the problems?\n\nMaybe you could compile (nics.txt and devlist.cache) my PC(s) network card driver files and send me? **[Here](https://docs.google.com/file/d/0BwZ2R-UX2CEpVlRjcU15UFNLTFE/edit?usp\u003dsharing \"External link\")** is network card driver files 3Com 3C920 Integrated LAN, v.ECD5.43A2(4.26).\n\nOf course would be glad to know, why do not work BINL.\n\n"
+    },
+    {
+      "id": "173365",
+      "timestamp": "2013-06-11T18:00:15+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Hi Mate,  \n\u003e your tutorial \"Setting Up A Windows XP PXE Server\" is very good and clearly understood, but I have a problem with BINL Service. I hope you will help me.  \n\u003e The problem is that the infparser.exe (or infparser.py) with CMD does not compile (nics.txt and devlist.cache) my PC(s) network card driver files. I tried to use your converted BINL Service py2exe and Gianluigi Tiesi\u0027s BINL service (with Python). I did everything according to the instructions. Where is the problems?\n\u003e\n\u003e Maybe you could compile (nics.txt and devlist.cache) my PC(s) network card driver files and send me? **[Here](https://docs.google.com/file/d/0BwZ2R-UX2CEpVlRjcU15UFNLTFE/edit?usp\u003dsharing \"External link\")** is network card driver files 3Com 3C920 Integrated LAN, v.ECD5.43A2(4.26).\n\u003e\n\u003e Of course would be glad to know, why do not work BINL.\n\nHave you checked (and followed EXACTLY) this procedure?\n\n[http://diddy.boot-la.../files/binl.htm](http://diddy.boot-land.net/pxe/files/binl.htm \"External link\")\n\nWHICH errors did you get?\n\nWhen?\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "173372",
+      "timestamp": "2013-06-11T18:49:37+00:00",
+      "author": "tonikas",
+      "content": "I followed exactly. I stopped in step 4.  \nWhen I write in CMD \"**infparser.exe C:\\\\PXE\\\\binl\\\\INF**\", I get answer:\n\n```\n\u0027infparser.exe\u0027 is not recognized as an internal or external command, operable program or batch file.\n```\n\nAll files and directories are definitely in place and 1-3 steps done perfectly. Where is the problems?\n\n**Edited by tonikas, 11 June 2013 - 06:55 PM.**\n"
+    },
+    {
+      "id": "173377",
+      "timestamp": "2013-06-11T19:12:17+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I followed exactly. I stopped in step 4.  \n\u003e When I write in CMD \"**infparser.exe C:\\\\PXE\\\\binl\\\\INF**\", I get answer:\n\u003e\n\u003e ```\n\u003e\n\u003e\n\u003e\n\u003e \u0027infparser.exe\u0027 is not recognized as an internal or external command, operable program or batch file.\n\u003e ```\n\u003e\n\u003e All files and directories are definitely in place and 1-3 steps done perfectly. Where is the problems?\n\nThat error seems like you are not in the right directory (i.e. infparser.exe cannot be found).\n\nWhere are you in the CMD prompt?\n\nWhere is the infparser.exe program?\n\nExample:\n\nYou should have:  \nC:\\\\PXE\\\\binl\\\\infparser.exe\n\nC:\\\\PXE\\\\binl\\\\INF\\\\\\\u003cone or more .inf files\\\u003e\n\nC:\\\\PXE\\\\binl\\\\DRIVERS\\\\\\\u003cone or more .sys files\\\u003e\n\nWhen you open a command console it should open on (normally):\n\n```\nC:\\Windows\\system32\u003e\n```\n\nthis is where you should type:\n\n```\nCD C:\\PXE\\binl\n```\n\n\\[ENTER\\]\n\nand get as prompt:\n\n```\nC:\\PXE\\binl\u003e\n```\n\nand if you type:\n\n```\nDIR\n```\n\n\\[ENTER\\]\n\nyou should see infparser.exe listed.\n\nIF your CMD opens on another drive (say D:\\\\Windows\\\\System32\\\u003e, then you have to add the /d switch to CD, i.e.:\n\n```\nCD /d C:\\PXE\\binl\n```\n\n\\[ENTER\\]\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "173386",
+      "timestamp": "2013-06-11T21:15:11+00:00",
+      "author": "tonikas",
+      "content": "Thanks mate, problem was inattention. I created a subfolder \"binl\" in binl directory, and there I add all binl directory files. DOS dir command helped to clarify the problem.\n\n"
+    },
+    {
+      "id": "173387",
+      "timestamp": "2013-06-11T21:26:43+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Thanks mate, problem was inattention. I created a subfolder \"binl\" in binl directory, and there I add all binl directory files. DOS dir command helped to clarify the problem.\n\nGood :smile:, so problem solved ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif) AND importance of EXACTness proved once again ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    }
+  ]
+}

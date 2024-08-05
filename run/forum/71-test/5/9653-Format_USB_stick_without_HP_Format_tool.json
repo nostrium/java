@@ -1,0 +1,46 @@
+{
+  "id": "9653",
+  "title": "Format USB stick without HP Format tool",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "83727",
+      "timestamp": "2009-11-06T13:55:58+00:00",
+      "author": "pecd.net",
+      "content": "Hello,  \n\nwhen i want to make a bootable USB stick i need to format it first in a way that it boots correctly.  \n\nMost scripts use hpusb format tool to do this.  \n\nIt works, but i would like a alternative way that can be scripted (without user interaction) an that can be used and distributed freely.  \n\nMaybe someone came across something like this...any hints/links will be apreciated...  \n\nThanks !   \n"
+    },
+    {
+      "id": "83729",
+      "timestamp": "2009-11-06T14:04:15+00:00",
+      "author": "pecd.net",
+      "content": "BTW: I already found this: [http://www.boot-land...;showtopic\u003d7739](http://www.boot-land.net/forums/index.php?noref\u003d1\u0026showtopic\u003d7739 \"External link\")  \n\nlooking for alternatives though...   \n"
+    },
+    {
+      "id": "83730",
+      "timestamp": "2009-11-06T14:23:52+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e BTW: I already found this: [http://www.boot-land...;showtopic\u003d7739](http://www.boot-land.net/forums/index.php?noref\u003d1\u0026showtopic\u003d7739 \"External link\")  \n\u003e\n\u003e looking for alternatives though...\n\nWould the sticky in \"Boot from everywhere\" (the place you started this thread into) do? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \nIt is titled:  \nIndex of USB Boot Making Applications  \n\nand it is here:  \n[http://www.boot-land...?showtopic\u003d9460](http://www.boot-land.net/forums/index.php?showtopic\u003d9460 \"External link\")  \n\nbesides RMPREPUSB, FBINST is also command line.  \n\njaclaz   \n"
+    },
+    {
+      "id": "83732",
+      "timestamp": "2009-11-06T14:51:27+00:00",
+      "author": "pecd.net",
+      "content": "Well fbinst looks good...thanks...   \n"
+    },
+    {
+      "id": "83733",
+      "timestamp": "2009-11-06T15:20:06+00:00",
+      "author": "pecd.net",
+      "content": "well, fbinst would have been great, but it does not work under vista and seven...  \n\ni believe under seven it could be done with diskpart...but is this possible under vista as well?   \n"
+    },
+    {
+      "id": "83743",
+      "timestamp": "2009-11-06T16:49:05+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e well, fbinst would have been great, but it does not work under vista and seven...  \n\u003e\n\u003e i believe under seven it could be done with diskpart...but is this possible under vista as well?\n\nWell, yes and no.  \n\nRead here:  \n[http://www.boot-land...?showtopic\u003d8200](http://www.boot-land.net/forums/index.php?showtopic\u003d8200 \"External link\")  \nGrubinst/bootlace may fail also, but there are workarounds:  \n[http://www.boot-land...?...\u003d8200\\\u0026st\u003d24](http://www.boot-land.net/forums/index.php?showtopic\u003d8200\u0026st\u003d24 \"External link\")  \n[http://www.boot-land...?...\u003d8200\\\u0026st\u003d39](http://www.boot-land.net/forums/index.php?showtopic\u003d8200\u0026st\u003d39 \"External link\")  \nIn a nutshell on 2008 and 7 you can put the drive offline, of course Vista is more ***stoopid*** and you need to zero the signature (and recreate it).  \nPossibly MBRfix would be the best tool to do so.  \n\nFor once with an apparent reason, a nice picture of a cat:  \n![Posted Image](http://riviera.org.uk/wp-content/uploads/2009/08/funny-pictures-cat-says-your-disease-is-incurable.jpg)  \n\n![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\njaclaz   \n"
+    }
+  ]
+}

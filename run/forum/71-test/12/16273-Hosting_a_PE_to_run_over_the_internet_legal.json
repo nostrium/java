@@ -1,0 +1,832 @@
+{
+  "id": "16273",
+  "title": "Hosting a PE to run over the internet - legal?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "147395",
+      "timestamp": "2012-01-30T20:21:08+00:00",
+      "author": "MedEvil",
+      "content": "Have a question.  \nIf we would be hosting a complete PE, not for download, but to boot straight into it, via something like iPXE.   \n\nWould that still fall under illegal ditribution? Since we wouldn\u0027t distribute anything?  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147397",
+      "timestamp": "2012-01-30T20:28:41+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Have a question.  \n\u003e If we would be hosting a complete PE, not for download, but to boot straight into it, via something like iPXE.  \n\u003e\n\u003e Would that still fall under illegal ditribution? Since we wouldn\u0027t distribute anything?  \n\nYou must be joking. ![:buehehe:](http://reboot.pro/public/style_emoticons/default/buehehe.gif)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147401",
+      "timestamp": "2012-01-30T20:58:28+00:00",
+      "author": "MedEvil",
+      "content": "No why?  \nIt\u0027s illegal to bring a camera into the cinema, because it would allow me to make a copy of the movie, i can carry away and even make more copies from.  \n\nIt is not illegal to bring my eyes and brain into the cinema, because i can\u0027t make a copy from my memory.  \n\nFollowing that logic. Allowing you to download a PE that you can store locally and maybe even make more copies is illegal. Allowing you to use a PE without being able to keep it / carry it away. Shouldn\u0027t be.  \n\nbtw. A similar system is already in place. People ae allowed to listen to CD before they buy them, without the shop paying off the music company, something a radio station has to do.  \nWhat\u0027s the difference? A shop owner can make it clear, that the person listening, is not making a copy he or she can carry away. Something no radio station can.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147403",
+      "timestamp": "2012-01-30T21:55:48+00:00",
+      "author": "steve6375",
+      "content": "Well, you can download a Windows 7 ISO now and that contains PE and an (unactivated) copy of Win7.  \nSo WinPE v3 is probably strictly speaking illegal but it is not a full OS and cannot be run for more than 72 hrs without it rebooting.  \nI was thinking more about linux - why, for instance, aren\u0027t some linux distributions available via iPXE (if they will fit in ram) as well as FreeDOS say?   \n"
+    },
+    {
+      "id": "147404",
+      "timestamp": "2012-01-30T22:02:07+00:00",
+      "author": "saddlejib",
+      "content": "i was already interested in this idea but open source after reading plop moreso after reading steve6375\u0027s recent post  \n\u003chttp://reboot.pro/16272/\u003e  \nand  \n[http://www.plop.at/e...linux.html#pxel](http://www.plop.at/en/ploplinux.html#pxel \"External link\")   \nand  \n[http://www.plop.at/e...linux.html#pxew](http://www.plop.at/en/ploplinux.html#pxew \"External link\")  \nand  \n[http://forum.plop.at...hp?topic\u003d1070.0](http://forum.plop.at/index.php?topic\u003d1070.0 \"External link\")  \nalthough the last one concerns writing plop to the lan card eeprom  \nbut such a resource of booting an os with tools hosted by say reeboot.pro could be usefull to say the least ??   \n"
+    },
+    {
+      "id": "147406",
+      "timestamp": "2012-01-30T22:05:37+00:00",
+      "author": "steve6375",
+      "content": "I have written up what I tried here [http://www.rmprepusb.../tutorials/ipxe](http://www.rmprepusb.com/tutorials/ipxe \"External link\") - quite fun to boot wirelessly from a tiny USB drive and load another OS via the internet with no wires (WiFi)!   \n"
+    },
+    {
+      "id": "147417",
+      "timestamp": "2012-01-31T08:53:40+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e btw. A similar system is already in place. People ae allowed to listen to CD before they buy them, without the shop paying off the music company, something a radio station has to do.  \n\u003e What\u0027s the difference? A shop owner can make it clear, that the person listening, is not making a copy he or she can carry away. Something no radio station can.  \nAt first sight, and in my semplicity, I find more similarities between a radio broadcast and remote iPXE booting than between a walk-in music CD/record shop and the latter. ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \nSo, why are Radio stations required to pay music companies?  \nBecause they are broadcasting copyrighted material. (no matter if the end users records the broadcast or not)  \nWhat they pay are broadcasting fees.  \nWhy would the iPXE servers pay the copyright holders?  \nBecause they are ~~broadcasting~~ distributing copyrighted software.(no matter if the end users records the broadcast or not)  \nWhat they would pay are re-distribution fees.  \n\nOf course this does NOT apply to re-distributable software.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147418",
+      "timestamp": "2012-01-31T09:10:37+00:00",
+      "author": "Brito",
+      "content": "\u003e but such a resource of booting an os with tools hosted by say reeboot.pro could be usefull to say the least ??\nIf this is legal, reboot.pro would be available to support this feature.   \n"
+    },
+    {
+      "id": "147419",
+      "timestamp": "2012-01-31T09:45:27+00:00",
+      "author": "steve6375",
+      "content": "Well FreeDOS and most linux SKUs would be legal to host... DSL might be a good one to try first...  \nIt would certainly raise the profile of reboot.pro if it hosted a selection of these iPXE images (though it may cause excessive load???)   \n"
+    },
+    {
+      "id": "147421",
+      "timestamp": "2012-01-31T09:51:06+00:00",
+      "author": "Brito",
+      "content": "\u003e Well FreeDOS and most linux SKUs would be legal to host... DSL might be a good one to try first...  \n\u003e It would certainly raise the profile of reboot.pro if it hosted a selection of these iPXE images (though it may cause excessive load???)  \nWe already have good server conditions and can upgrade when deemed necessary. The idea of starting with boot images that raise no doubts is a good approach.  \n\nHow can we get started?  \n\n:smile:   \n"
+    },
+    {
+      "id": "147422",
+      "timestamp": "2012-01-31T10:20:41+00:00",
+      "author": "saddlejib",
+      "content": "I was thinking to keep within the spirit of reboot.pro a small linux with tools and tutorials to fix booting issues from novice to advanced.  \nGparted, fixmbr,plop if Elmar agrees etc.  \nFrom acorns (and the old pc) grow oaks.   \n"
+    },
+    {
+      "id": "147423",
+      "timestamp": "2012-01-31T10:21:19+00:00",
+      "author": "saddlejib",
+      "content": "I was thinking to keep within the spirit of reboot.pro a small linux with tools and tutorials to fix booting issues from novice to advanced.  \nGparted, fixmbr,plop if Elmar agrees etc.  \nFrom acorns (and the old pc) grow oaks.   \n"
+    },
+    {
+      "id": "147424",
+      "timestamp": "2012-01-31T10:29:38+00:00",
+      "author": "steve6375",
+      "content": "As a first step, I guess you could try hosting a small ISO ??  \nThen maybe build or ask people to supply builds for you to host.  \n\nIf you put this on the server, I could see if I can iPXE boot to it if you give us the URL?  \n\nTheir demo URL is [http://boot.ipxe.org/demo/boot.php](http://boot.ipxe.org/demo/boot.php \"External link\")  \n\nthis page displays  \n\n```\n#!ipxe\n\nkernel vmlinuz-2.6.17-14mdv bootfile\u003dhttp://boot.ipxe.org/demo/boot.php fastboot\n\ninitrd initrd.img\n\nboot\n```\n\n\u003cbr /\u003e\n\nso I guess that these files need to be in the same folder too??  \nThis has instructions on how to set up a server - [http://ipxe.org/howto/msdhcp](http://ipxe.org/howto/msdhcp \"External link\") or [http://ipxe.org/howto/dhcpd](http://ipxe.org/howto/dhcpd \"External link\")- not sure quite what is required...?   \n"
+    },
+    {
+      "id": "147425",
+      "timestamp": "2012-01-31T10:44:05+00:00",
+      "author": "Brito",
+      "content": "So, from our side on the server we only need to host the images?  \n\nI\u0027m reading the documentation and that seems to be all that is needed.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147429",
+      "timestamp": "2012-01-31T12:39:05+00:00",
+      "author": "steve6375",
+      "content": "HDT might be a useful one to try - very small. [http://hdt-project.org/](http://hdt-project.org/ \"External link\") I think it is free to distribute???   \n"
+    },
+    {
+      "id": "147431",
+      "timestamp": "2012-01-31T13:26:39+00:00",
+      "author": "Brito",
+      "content": "Very good suggestion.  \n\nThis can be improved by using a Java PC emulator to see these OS\u0027s working on the browser window before booting, not much effort to implement and good addon: [http://jpc.sourcefor...ome_status.html](http://jpc.sourceforge.net/home_status.html \"External link\") and [http://jpc.sourcefor.../home_home.html](http://jpc.sourceforge.net/home_home.html \"External link\")   \n"
+    },
+    {
+      "id": "147432",
+      "timestamp": "2012-01-31T14:10:43+00:00",
+      "author": "sambul61",
+      "content": "Any way to boot OS from Reboot.pro via iPXE from a public PC? :smile:   \n"
+    },
+    {
+      "id": "147441",
+      "timestamp": "2012-01-31T17:34:47+00:00",
+      "author": "Tripredacus",
+      "content": "I can do some more research, but I am fairly certain that hosting the WinPE on a webserver is going to be a legal problem. I see there is a $1.50 (USD) royalty fee per unit if a WinPE is used without being accompanied by a Windows COA. It is already known that the 72 hour limitation is put in place to prevent the WinPE from \"being used as a pirated operating system\" and that it isn\u0027t licensed to be used as a thin client. Moreso, if it were legal to use a remote boot with WinPE that anyone could use, Microsoft would likely consider each boot attempt as the \"unit\" that the royalty is applied to. So it could become quite costly. Just doing it altogether without containing Microsoft Partner Support could be even worse... they could send the lawyers after you!  \n\nWinPE is licensed for installation, recovery and troubleshooting. As far as the troubleshooting aspect, this falls within the Enterprise scope of licensing. Such as you can definately use this technology within a company or private location, for example using WinPE via PXE that runs a burn-in program.   \n"
+    },
+    {
+      "id": "147443",
+      "timestamp": "2012-01-31T18:02:54+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I see there is a $1.50 (USD) royalty fee per unit if a WinPE is used without being accompanied by a Windows COA.  \nYou see where? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)  \nAnyway this is about \"use\", what about re-distribution fees?  \n\nThe guys over at neosmart (after having distributed WInPE\u0027s for years without a redistribution agreeement with MS) are now charging::  \n[http://neosmart.net/...ted-reinstated/](http://neosmart.net/blog/2011/windows-recovery-discs-updated-reinstated/ \"External link\")  \n[http://neosmart.net/...m-repair-discs/](http://neosmart.net/blog/2009/windows-7-system-repair-discs/ \"External link\")  \nUS $9.00 per download, it would be interesting to know how much of these 9 bucks go to MS and how much goes to cover hosting costs and bandwidth, and how much (if any) goes \\*elsewhere\\*:  \n\u003e The bad news is that there will now be a nine dollar download charge for each CD. There was no way for us to avoid charging this, as we now pay a licensing fee to Microsoft in exchange for making these CDs available, and also pay per download to outsource the high-speed web hosting for these large CD images (150 to 200 MiB, each) to an outside service.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147453",
+      "timestamp": "2012-01-31T20:03:32+00:00",
+      "author": "MedEvil",
+      "content": "\u003e I can do some more research, but I am fairly certain that hosting the WinPE on a webserver is going to be a legal problem. I see there is a $1.50 (USD) royalty fee per unit if a WinPE is used without being accompanied by a Windows COA.\nSince WinPE is included with every Windows7 DVD and actually used as bootenvironment for the install, every costumer would need to pay a fee per install.   \nSounds wrong to me.  \n\n\u003e It is already known that the 72 hour limitation is put in place to prevent the WinPE from \"being used as a pirated operating system\" and that it isn\u0027t licensed to be used as a thin client.\nNobody said our WinPE would be available for anything more than what is allowed.  \n\n\u003e Moreso, if it were legal to use a remote boot with WinPE that anyone could use, Microsoft would likely consider each boot attempt as the \"unit\" that the royalty is applied to. So it could become quite costly.\nM$ can not consider anything. Eighter it is free or not.  \n\nAs usual with all copyright problems, it comes down to the question, what is considered a copy.  \nSomething, which is nowhere clearly defined and changed all the time.  \n\nIn the quality conscious times before internet and filesharing, a tape copy of a song or a recording from a radio station, was not considered a copy, not even by the recording industry, as it was a low quality copy, which did not impact sales of records in a negative way.  \n\nThen, after the recoding industry pushed the lower quality CDs, as being equal to records, people changed their opinion on quality and suddenly a MP3 was good enough too!  \n\nNow the recoding industry realized, how much they shot themselfs in the foot and declared a MP3 to be a valid copy as well, to hunt down and close filesharing sites.  \n\n\u003e Just doing it altogether without containing Microsoft Partner Support could be even worse... they could send the lawyers after you!\nLike i tryed to explain over and over again, anyone can sue you, no matter if you did anything or not. Behaving in a perfectly legal manner, does **NOT** mean, you\u0027re safe from being sued!!!  \n\nJust that your chances a slightly better at winning in court. :wink:  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147454",
+      "timestamp": "2012-01-31T20:06:46+00:00",
+      "author": "Tripredacus",
+      "content": "I can\u0027t speak for WinPE 1.x, but the $1.50 per unit fee is for WinPE 3.0. Information is from the MIcrosoft Partner site, so I can\u0027t post a link to it since its behind a portal. I relayed that information here awhile back:  \n[http://www.msfn.org/...post__p__864209](http://www.msfn.org/board/topic/125582-winpe-availability/page__view__findpost__p__864209 \"External link\")  \n\nFinding the location of that document seems difficult since I posted it. Some of my old bookmarks no longer work. A post on Social says that there is a EULA in the WAIK but I don\u0027t have that installed.  \n\n\u003e Since WinPE is included with every Windows7 DVD and actually used as bootenvironment for the install, every costumer would need to pay a fee per install.\n\nYes, that is because that WinPE license is included with the Windows 7 license. However the difference is using WinPE to boot on hardware with no OS already, potentially for a purpose other than installation, recovery or troubleshooting.   \n"
+    },
+    {
+      "id": "147457",
+      "timestamp": "2012-01-31T20:22:01+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Yes, that is because that WinPE license is included with the Windows 7 license.\nAnd Windows 7 is free to use for 30 days or so. So why should WinPE not be free to use for 30 days? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\n\u003e However the difference is using WinPE to boot on hardware with no OS already, potentially for a purpose other than installation, recovery or troubleshooting.\nBut our PE have no other purpose than installation, recovery or troubleshooting!  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147462",
+      "timestamp": "2012-01-31T21:11:03+00:00",
+      "author": "Tripredacus",
+      "content": "I\u0027m not here to argue about licensing, I\u0027m just trying to provide information.  \n\nIf you want to be technical, you could install Windows 7 without a product key and use it \"for free\" for 30 days, yes...  \nOr download the WAIK to make WinPE after validating the download on say a computer at the library, then use your WinPE anywhere you want, also for free.  \n\nBut as far as this iPXE thing, it seems similar to my (broken) implementation of using PXELinux that will go read from the webserver to do \\*whatever\\* which is supposed to install Ubuntu but I had to shelve that project. Is it just an alternative project to that?   \n"
+    },
+    {
+      "id": "147464",
+      "timestamp": "2012-01-31T22:10:02+00:00",
+      "author": "sambul61",
+      "content": "Booting WinPE via iPXE is not equivalent to its download and local use, hence its not re-distribution. The source code is not downloaded or distributed.  \n\nAs to MS suing someone for that, I never heard anyone being sued by MS without evident significant loss of revenue and prior request to Cease and Desist with explanation, if they deem such activity illegal. And that\u0027s one of possible ways to find out if any activity is deemed lawful or not by MS, when otherwise unclear.  \n\nI\u0027d still suspect that using WinPE for any purpose outside of a licensed or trial Windows install would presume some licensing fees expected to be paid, but only if explicitly requested and demonstrated to be lawful and reasonable by the licensee, or usage otherwise explicitly prohibited. I doubt that a user can even theoretically be sued for something that was not prohibited explicitly in materials accessible to him.  \n\n\u003e Behaving in a perfectly legal manner, does **NOT** mean, you\u0027re safe from being sued!! Just that your chances a slightly better at winning in court. :wink:  \nIt also depends on the country and its regime, and who is suing you and with what real purpose. In some scenarios the chances of winning are non-existent no matter innocent or guilty, if such terms definitions can be generic. :smile:   \n"
+    },
+    {
+      "id": "147465",
+      "timestamp": "2012-01-31T22:26:17+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Booting WinPE via iPXE is not equivalent to its download and local use, hence its not re-distribution.  \nIf you steal an apple but you don\u0027t eat it you didn\u0027t stole it? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\n\u003e The source code is not downloaded or distributed.  \nJust for the record, most MS source code is not available (not published) , most MS binaries are not redistributable.  \nIn iPXE booting binaries are downloaded ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif).  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147395",
+      "timestamp": "2012-01-30T20:21:08+00:00",
+      "author": "MedEvil",
+      "content": "Have a question.  \nIf we would be hosting a complete PE, not for download, but to boot straight into it, via something like iPXE.   \n\nWould that still fall under illegal ditribution? Since we wouldn\u0027t distribute anything?  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147397",
+      "timestamp": "2012-01-30T20:28:41+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Have a question.  \n\u003e If we would be hosting a complete PE, not for download, but to boot straight into it, via something like iPXE.  \n\u003e\n\u003e Would that still fall under illegal ditribution? Since we wouldn\u0027t distribute anything?  \n\nYou must be joking. ![:buehehe:](http://reboot.pro/public/style_emoticons/default/buehehe.gif)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147401",
+      "timestamp": "2012-01-30T20:58:28+00:00",
+      "author": "MedEvil",
+      "content": "No why?  \nIt\u0027s illegal to bring a camera into the cinema, because it would allow me to make a copy of the movie, i can carry away and even make more copies from.  \n\nIt is not illegal to bring my eyes and brain into the cinema, because i can\u0027t make a copy from my memory.  \n\nFollowing that logic. Allowing you to download a PE that you can store locally and maybe even make more copies is illegal. Allowing you to use a PE without being able to keep it / carry it away. Shouldn\u0027t be.  \n\nbtw. A similar system is already in place. People ae allowed to listen to CD before they buy them, without the shop paying off the music company, something a radio station has to do.  \nWhat\u0027s the difference? A shop owner can make it clear, that the person listening, is not making a copy he or she can carry away. Something no radio station can.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147403",
+      "timestamp": "2012-01-30T21:55:48+00:00",
+      "author": "steve6375",
+      "content": "Well, you can download a Windows 7 ISO now and that contains PE and an (unactivated) copy of Win7.  \nSo WinPE v3 is probably strictly speaking illegal but it is not a full OS and cannot be run for more than 72 hrs without it rebooting.  \nI was thinking more about linux - why, for instance, aren\u0027t some linux distributions available via iPXE (if they will fit in ram) as well as FreeDOS say?   \n"
+    },
+    {
+      "id": "147404",
+      "timestamp": "2012-01-30T22:02:07+00:00",
+      "author": "saddlejib",
+      "content": "i was already interested in this idea but open source after reading plop moreso after reading steve6375\u0027s recent post  \n\u003chttp://reboot.pro/16272/\u003e  \nand  \n[http://www.plop.at/e...linux.html#pxel](http://www.plop.at/en/ploplinux.html#pxel \"External link\")   \nand  \n[http://www.plop.at/e...linux.html#pxew](http://www.plop.at/en/ploplinux.html#pxew \"External link\")  \nand  \n[http://forum.plop.at...hp?topic\u003d1070.0](http://forum.plop.at/index.php?topic\u003d1070.0 \"External link\")  \nalthough the last one concerns writing plop to the lan card eeprom  \nbut such a resource of booting an os with tools hosted by say reeboot.pro could be usefull to say the least ??   \n"
+    },
+    {
+      "id": "147406",
+      "timestamp": "2012-01-30T22:05:37+00:00",
+      "author": "steve6375",
+      "content": "I have written up what I tried here [http://www.rmprepusb.../tutorials/ipxe](http://www.rmprepusb.com/tutorials/ipxe \"External link\") - quite fun to boot wirelessly from a tiny USB drive and load another OS via the internet with no wires (WiFi)!   \n"
+    },
+    {
+      "id": "147417",
+      "timestamp": "2012-01-31T08:53:40+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e btw. A similar system is already in place. People ae allowed to listen to CD before they buy them, without the shop paying off the music company, something a radio station has to do.  \n\u003e What\u0027s the difference? A shop owner can make it clear, that the person listening, is not making a copy he or she can carry away. Something no radio station can.  \nAt first sight, and in my semplicity, I find more similarities between a radio broadcast and remote iPXE booting than between a walk-in music CD/record shop and the latter. ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \nSo, why are Radio stations required to pay music companies?  \nBecause they are broadcasting copyrighted material. (no matter if the end users records the broadcast or not)  \nWhat they pay are broadcasting fees.  \nWhy would the iPXE servers pay the copyright holders?  \nBecause they are ~~broadcasting~~ distributing copyrighted software.(no matter if the end users records the broadcast or not)  \nWhat they would pay are re-distribution fees.  \n\nOf course this does NOT apply to re-distributable software.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147418",
+      "timestamp": "2012-01-31T09:10:37+00:00",
+      "author": "Brito",
+      "content": "\u003e but such a resource of booting an os with tools hosted by say reeboot.pro could be usefull to say the least ??\nIf this is legal, reboot.pro would be available to support this feature.   \n"
+    },
+    {
+      "id": "147419",
+      "timestamp": "2012-01-31T09:45:27+00:00",
+      "author": "steve6375",
+      "content": "Well FreeDOS and most linux SKUs would be legal to host... DSL might be a good one to try first...  \nIt would certainly raise the profile of reboot.pro if it hosted a selection of these iPXE images (though it may cause excessive load???)   \n"
+    },
+    {
+      "id": "147421",
+      "timestamp": "2012-01-31T09:51:06+00:00",
+      "author": "Brito",
+      "content": "\u003e Well FreeDOS and most linux SKUs would be legal to host... DSL might be a good one to try first...  \n\u003e It would certainly raise the profile of reboot.pro if it hosted a selection of these iPXE images (though it may cause excessive load???)  \nWe already have good server conditions and can upgrade when deemed necessary. The idea of starting with boot images that raise no doubts is a good approach.  \n\nHow can we get started?  \n\n:smile:   \n"
+    },
+    {
+      "id": "147422",
+      "timestamp": "2012-01-31T10:20:41+00:00",
+      "author": "saddlejib",
+      "content": "I was thinking to keep within the spirit of reboot.pro a small linux with tools and tutorials to fix booting issues from novice to advanced.  \nGparted, fixmbr,plop if Elmar agrees etc.  \nFrom acorns (and the old pc) grow oaks.   \n"
+    },
+    {
+      "id": "147423",
+      "timestamp": "2012-01-31T10:21:19+00:00",
+      "author": "saddlejib",
+      "content": "I was thinking to keep within the spirit of reboot.pro a small linux with tools and tutorials to fix booting issues from novice to advanced.  \nGparted, fixmbr,plop if Elmar agrees etc.  \nFrom acorns (and the old pc) grow oaks.   \n"
+    },
+    {
+      "id": "147424",
+      "timestamp": "2012-01-31T10:29:38+00:00",
+      "author": "steve6375",
+      "content": "As a first step, I guess you could try hosting a small ISO ??  \nThen maybe build or ask people to supply builds for you to host.  \n\nIf you put this on the server, I could see if I can iPXE boot to it if you give us the URL?  \n\nTheir demo URL is [http://boot.ipxe.org/demo/boot.php](http://boot.ipxe.org/demo/boot.php \"External link\")  \n\nthis page displays  \n\n```\n#!ipxe\n\nkernel vmlinuz-2.6.17-14mdv bootfile\u003dhttp://boot.ipxe.org/demo/boot.php fastboot\n\ninitrd initrd.img\n\nboot\n```\n\n\u003cbr /\u003e\n\nso I guess that these files need to be in the same folder too??  \nThis has instructions on how to set up a server - [http://ipxe.org/howto/msdhcp](http://ipxe.org/howto/msdhcp \"External link\") or [http://ipxe.org/howto/dhcpd](http://ipxe.org/howto/dhcpd \"External link\")- not sure quite what is required...?   \n"
+    },
+    {
+      "id": "147425",
+      "timestamp": "2012-01-31T10:44:05+00:00",
+      "author": "Brito",
+      "content": "So, from our side on the server we only need to host the images?  \n\nI\u0027m reading the documentation and that seems to be all that is needed.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147429",
+      "timestamp": "2012-01-31T12:39:05+00:00",
+      "author": "steve6375",
+      "content": "HDT might be a useful one to try - very small. [http://hdt-project.org/](http://hdt-project.org/ \"External link\") I think it is free to distribute???   \n"
+    },
+    {
+      "id": "147431",
+      "timestamp": "2012-01-31T13:26:39+00:00",
+      "author": "Brito",
+      "content": "Very good suggestion.  \n\nThis can be improved by using a Java PC emulator to see these OS\u0027s working on the browser window before booting, not much effort to implement and good addon: [http://jpc.sourcefor...ome_status.html](http://jpc.sourceforge.net/home_status.html \"External link\") and [http://jpc.sourcefor.../home_home.html](http://jpc.sourceforge.net/home_home.html \"External link\")   \n"
+    },
+    {
+      "id": "147432",
+      "timestamp": "2012-01-31T14:10:43+00:00",
+      "author": "sambul61",
+      "content": "Any way to boot OS from Reboot.pro via iPXE from a public PC? :smile:   \n"
+    },
+    {
+      "id": "147441",
+      "timestamp": "2012-01-31T17:34:47+00:00",
+      "author": "Tripredacus",
+      "content": "I can do some more research, but I am fairly certain that hosting the WinPE on a webserver is going to be a legal problem. I see there is a $1.50 (USD) royalty fee per unit if a WinPE is used without being accompanied by a Windows COA. It is already known that the 72 hour limitation is put in place to prevent the WinPE from \"being used as a pirated operating system\" and that it isn\u0027t licensed to be used as a thin client. Moreso, if it were legal to use a remote boot with WinPE that anyone could use, Microsoft would likely consider each boot attempt as the \"unit\" that the royalty is applied to. So it could become quite costly. Just doing it altogether without containing Microsoft Partner Support could be even worse... they could send the lawyers after you!  \n\nWinPE is licensed for installation, recovery and troubleshooting. As far as the troubleshooting aspect, this falls within the Enterprise scope of licensing. Such as you can definately use this technology within a company or private location, for example using WinPE via PXE that runs a burn-in program.   \n"
+    },
+    {
+      "id": "147443",
+      "timestamp": "2012-01-31T18:02:54+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I see there is a $1.50 (USD) royalty fee per unit if a WinPE is used without being accompanied by a Windows COA.  \nYou see where? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)  \nAnyway this is about \"use\", what about re-distribution fees?  \n\nThe guys over at neosmart (after having distributed WInPE\u0027s for years without a redistribution agreeement with MS) are now charging::  \n[http://neosmart.net/...ted-reinstated/](http://neosmart.net/blog/2011/windows-recovery-discs-updated-reinstated/ \"External link\")  \n[http://neosmart.net/...m-repair-discs/](http://neosmart.net/blog/2009/windows-7-system-repair-discs/ \"External link\")  \nUS $9.00 per download, it would be interesting to know how much of these 9 bucks go to MS and how much goes to cover hosting costs and bandwidth, and how much (if any) goes \\*elsewhere\\*:  \n\u003e The bad news is that there will now be a nine dollar download charge for each CD. There was no way for us to avoid charging this, as we now pay a licensing fee to Microsoft in exchange for making these CDs available, and also pay per download to outsource the high-speed web hosting for these large CD images (150 to 200 MiB, each) to an outside service.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147453",
+      "timestamp": "2012-01-31T20:03:32+00:00",
+      "author": "MedEvil",
+      "content": "\u003e I can do some more research, but I am fairly certain that hosting the WinPE on a webserver is going to be a legal problem. I see there is a $1.50 (USD) royalty fee per unit if a WinPE is used without being accompanied by a Windows COA.\nSince WinPE is included with every Windows7 DVD and actually used as bootenvironment for the install, every costumer would need to pay a fee per install.   \nSounds wrong to me.  \n\n\u003e It is already known that the 72 hour limitation is put in place to prevent the WinPE from \"being used as a pirated operating system\" and that it isn\u0027t licensed to be used as a thin client.\nNobody said our WinPE would be available for anything more than what is allowed.  \n\n\u003e Moreso, if it were legal to use a remote boot with WinPE that anyone could use, Microsoft would likely consider each boot attempt as the \"unit\" that the royalty is applied to. So it could become quite costly.\nM$ can not consider anything. Eighter it is free or not.  \n\nAs usual with all copyright problems, it comes down to the question, what is considered a copy.  \nSomething, which is nowhere clearly defined and changed all the time.  \n\nIn the quality conscious times before internet and filesharing, a tape copy of a song or a recording from a radio station, was not considered a copy, not even by the recording industry, as it was a low quality copy, which did not impact sales of records in a negative way.  \n\nThen, after the recoding industry pushed the lower quality CDs, as being equal to records, people changed their opinion on quality and suddenly a MP3 was good enough too!  \n\nNow the recoding industry realized, how much they shot themselfs in the foot and declared a MP3 to be a valid copy as well, to hunt down and close filesharing sites.  \n\n\u003e Just doing it altogether without containing Microsoft Partner Support could be even worse... they could send the lawyers after you!\nLike i tryed to explain over and over again, anyone can sue you, no matter if you did anything or not. Behaving in a perfectly legal manner, does **NOT** mean, you\u0027re safe from being sued!!!  \n\nJust that your chances a slightly better at winning in court. :wink:  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147454",
+      "timestamp": "2012-01-31T20:06:46+00:00",
+      "author": "Tripredacus",
+      "content": "I can\u0027t speak for WinPE 1.x, but the $1.50 per unit fee is for WinPE 3.0. Information is from the MIcrosoft Partner site, so I can\u0027t post a link to it since its behind a portal. I relayed that information here awhile back:  \n[http://www.msfn.org/...post__p__864209](http://www.msfn.org/board/topic/125582-winpe-availability/page__view__findpost__p__864209 \"External link\")  \n\nFinding the location of that document seems difficult since I posted it. Some of my old bookmarks no longer work. A post on Social says that there is a EULA in the WAIK but I don\u0027t have that installed.  \n\n\u003e Since WinPE is included with every Windows7 DVD and actually used as bootenvironment for the install, every costumer would need to pay a fee per install.\n\nYes, that is because that WinPE license is included with the Windows 7 license. However the difference is using WinPE to boot on hardware with no OS already, potentially for a purpose other than installation, recovery or troubleshooting.   \n"
+    },
+    {
+      "id": "147457",
+      "timestamp": "2012-01-31T20:22:01+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Yes, that is because that WinPE license is included with the Windows 7 license.\nAnd Windows 7 is free to use for 30 days or so. So why should WinPE not be free to use for 30 days? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\n\u003e However the difference is using WinPE to boot on hardware with no OS already, potentially for a purpose other than installation, recovery or troubleshooting.\nBut our PE have no other purpose than installation, recovery or troubleshooting!  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147462",
+      "timestamp": "2012-01-31T21:11:03+00:00",
+      "author": "Tripredacus",
+      "content": "I\u0027m not here to argue about licensing, I\u0027m just trying to provide information.  \n\nIf you want to be technical, you could install Windows 7 without a product key and use it \"for free\" for 30 days, yes...  \nOr download the WAIK to make WinPE after validating the download on say a computer at the library, then use your WinPE anywhere you want, also for free.  \n\nBut as far as this iPXE thing, it seems similar to my (broken) implementation of using PXELinux that will go read from the webserver to do \\*whatever\\* which is supposed to install Ubuntu but I had to shelve that project. Is it just an alternative project to that?   \n"
+    },
+    {
+      "id": "147464",
+      "timestamp": "2012-01-31T22:10:02+00:00",
+      "author": "sambul61",
+      "content": "Booting WinPE via iPXE is not equivalent to its download and local use, hence its not re-distribution. The source code is not downloaded or distributed.  \n\nAs to MS suing someone for that, I never heard anyone being sued by MS without evident significant loss of revenue and prior request to Cease and Desist with explanation, if they deem such activity illegal. And that\u0027s one of possible ways to find out if any activity is deemed lawful or not by MS, when otherwise unclear.  \n\nI\u0027d still suspect that using WinPE for any purpose outside of a licensed or trial Windows install would presume some licensing fees expected to be paid, but only if explicitly requested and demonstrated to be lawful and reasonable by the licensee, or usage otherwise explicitly prohibited. I doubt that a user can even theoretically be sued for something that was not prohibited explicitly in materials accessible to him.  \n\n\u003e Behaving in a perfectly legal manner, does **NOT** mean, you\u0027re safe from being sued!! Just that your chances a slightly better at winning in court. :wink:  \nIt also depends on the country and its regime, and who is suing you and with what real purpose. In some scenarios the chances of winning are non-existent no matter innocent or guilty, if such terms definitions can be generic. :smile:   \n"
+    },
+    {
+      "id": "147465",
+      "timestamp": "2012-01-31T22:26:17+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Booting WinPE via iPXE is not equivalent to its download and local use, hence its not re-distribution.  \nIf you steal an apple but you don\u0027t eat it you didn\u0027t stole it? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\n\u003e The source code is not downloaded or distributed.  \nJust for the record, most MS source code is not available (not published) , most MS binaries are not redistributable.  \nIn iPXE booting binaries are downloaded ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif).  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147467",
+      "timestamp": "2012-01-31T22:31:42+00:00",
+      "author": "sambul61",
+      "content": "For the record, I prefer pears. :smile:  \n\nEven if some code is downloaded, the host server doesn\u0027t aim or offer means to distribute it, but rather assists in its remote use from the host. ![:mega_shok:](https://reboot.pro/public/style_emoticons/default/mega_shok.gif)   \n"
+    },
+    {
+      "id": "147469",
+      "timestamp": "2012-01-31T22:41:38+00:00",
+      "author": "Wonko the Sane",
+      "content": "OT ![:ph34r:](https://reboot.pro/public/style_emoticons/default/scared9.gif), but not much :wink:, a nice quote from the Megaupload indictment:  \n\u003e On or about July 9, 2008, VAN DER KOLK sent an e-mail to a third- party, entitled \"funny chat-log.\" In the e-mail, VAN DER KOLK copied the text of a previous online conversation between himself and ORTMANN, in which VAN DER KOLK had stated, \"we have a funny business . . . modern days pirates :smile:\" ORTMANN responded, \"we\u0027re not pirates, we\u0027re just providing shipping services to pirates :smile:\"\n\n![:1st:](https://reboot.pro/public/style_emoticons/default/1st.gif)  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147470",
+      "timestamp": "2012-01-31T22:45:27+00:00",
+      "author": "Icecube",
+      "content": "Sites that allow booting Linux distros straight from the internet:  \n\n[http://www.netboot.me/](http://www.netboot.me/ \"External link\")  \n[http://boot.kernel.org/](http://boot.kernel.org/ \"External link\") \u003d\u003d\\\u003e not operational atm, but will hopefully be back soon \u003d\u003d\\\u003e mirror of the site: [http://boot.rit.edu/index.html](http://boot.rit.edu/index.html \"External link\")   \n"
+    },
+    {
+      "id": "147471",
+      "timestamp": "2012-01-31T22:45:43+00:00",
+      "author": "MedEvil",
+      "content": "\u003e If you steal an apple but you don\u0027t eat it you didn\u0027t stole it? ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)\nIf he takes an apple and leaves the shop without paying for it and eats it, it is theft. If he eats it in the shop, wihout paying, it\u0027s petty larceny of food, which has a far less severe punishment.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147472",
+      "timestamp": "2012-01-31T22:56:52+00:00",
+      "author": "MedEvil",
+      "content": "btw. If \"providing shipping services to pirates\" should be ruled to be illegal. USA will have a huge problem on their hands.  \n\nThey helped lots of dictators, like Saddam, into office, so they could be held responsible by all victim.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147473",
+      "timestamp": "2012-01-31T22:59:31+00:00",
+      "author": "saddlejib",
+      "content": "Anyway back to reboot.pro and this  \n[http://forum.plop.at...hp?topic\u003d1070.0](http://forum.plop.at/index.php?topic\u003d1070.0 \"External link\")  \nBomz as far as I can mediate the translation in this topic, due to translation problems (cyrillic deutsche english) bomz thought that you had to write the cards eeprom and not the bios rom as described in plop.Thou through endevour succeded in writing the eeprom with plop and made it work i.e hijacked the bios adding plops usb and cd drivers.  \nMy question is has this been covered by reboot pro before  \ni.e Extended bios by eeprom ?   \n"
+    },
+    {
+      "id": "147474",
+      "timestamp": "2012-01-31T23:05:04+00:00",
+      "author": "steve6375",
+      "content": "\u003e Sites that allow booting Linux distros straight from the internet:  \n\u003e\n\u003e [http://www.netboot.me/](http://www.netboot.me/ \"External link\")  \n\u003e [http://boot.kernel.org/](http://boot.kernel.org/ \"External link\") \u003d\u003d\\\u003e not operational atm, but will hopefully be back soon \u003d\u003d\\\u003e mirror of the site: [http://boot.rit.edu/index.html](http://boot.rit.edu/index.html \"External link\")  \nGreat! Thanks for the netboot.me link. I added the ISO to my grub4dos menu and ran it under QEMU - works great! Booted to live Slitaz desktop and viewed this page on FireFox!   \n"
+    },
+    {
+      "id": "147475",
+      "timestamp": "2012-01-31T23:09:14+00:00",
+      "author": "Icecube",
+      "content": "\u003e Great! Thanks for the netboot.me link. I added the ISO to my grub4dos menu and ran it under QEMU - works great! Booted to live Slitaz desktop and viewed this page on FireFox!  \nYou can even add your own custom configuration to netboot.me:  \n[http://www.netboot.me/help#create](http://www.netboot.me/help#create \"External link\")   \n"
+    },
+    {
+      "id": "147476",
+      "timestamp": "2012-01-31T23:14:07+00:00",
+      "author": "sambul61",
+      "content": "Wonko,  \n\nSuch talk often tends to get overblown, mostly by people who are just \"talkers\". Megaupload made a huge profit from such activity, which is not the case discussed here. All IP rights talk is about financial profit and loss, not abstract ideas.  \n\nIn fact, it might be the right move to have them closed, there should be some balance in every system. No need to fear of every smallish bush though... Before someone can prosecute, or even worse, punish Wonko for stealing that apple, they need to be convinced and make others convinced its something worse doing. I\u0027d personally buy you some pears instead given your claimed age and Finder status. :smile:   \n"
+    },
+    {
+      "id": "147477",
+      "timestamp": "2012-01-31T23:19:35+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e If he takes an apple and leaves the shop without paying for it and eats it, it is theft. If he eats it in the shop, wihout paying, it\u0027s petty larceny of food, which has a far less severe punishment.  \nRead up a definition of petty larceny, whether the apple is eaten or not it deosn\u0027t make any difference.  \n[http://legal-diction...m/petty+larceny](http://legal-dictionary.thefreedictionary.com/petty+larceny \"External link\")  \nAn apple has been stolen (taken away from the shop, taken away from the shop and eaten or eaten in the shop).  \nThe culprit may be accused of petty larceny and eventually go to jail (or pay a fine) for this.  \nIf the apple is an Apple, it is then grand larceny. (and if the Apple was eaten the culprit will go to the hospital first thing :wink:)  \n\n\u003cbr /\u003e\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147478",
+      "timestamp": "2012-02-01T00:22:40+00:00",
+      "author": "steve6375",
+      "content": "Yeah - let\u0027s go ahead and host WinPE on reboot.pro - I mean, what can MS possibly do about it...  \n\n*The Stop Online Piracy Act (SOPA) is a United States [bill](http://en.wikipedia.org/wiki/Bill_(proposed_law) \"External link\") introduced by [U.S. Representative](http://en.wikipedia.org/wiki/United_States_House_of_Representatives \"External link\") [Lamar S. Smith](http://en.wikipedia.org/wiki/Lamar_S._Smith \"External link\") (R-TX) to expand the ability of U.S. law enforcement to fight online trafficking in copyrighted [intellectual property](http://en.wikipedia.org/wiki/Intellectual_property \"External link\") and [counterfeit goods](http://en.wikipedia.org/wiki/Counterfeit_consumer_goods \"External link\"). Provisions include the requesting of court orders to bar [advertising](http://en.wikipedia.org/wiki/Online_advertising \"External link\") networks and payment facilities from conducting business with infringing websites, and [search engines](http://en.wikipedia.org/wiki/Search_engine \"External link\") from linking to the sites, and court orders requiring [Internet service providers](http://en.wikipedia.org/wiki/Internet_service_provider \"External link\") to block access to the sites. The law would expand existing criminal laws to include unauthorized [streaming](http://en.wikipedia.org/wiki/Streaming_media \"External link\") of copyright material, **imposing a maximum penalty of five years in prison**.*   \n\nMaybe we can all visit Nuno in prison...   \n"
+    },
+    {
+      "id": "147479",
+      "timestamp": "2012-02-01T00:25:58+00:00",
+      "author": "MedEvil",
+      "content": "@Wonko   \n![:lol:](https://reboot.pro/public/style_emoticons/default/laugh.png) Just wanted to look up, what the punishment for the two different offenses are and \"Mundraub\" doesn\u0027t exist anymore. Since 1975!  \nHow time flies, if you\u0027re having fun! ![:rofl:](https://reboot.pro/public/style_emoticons/default/roll1.gif)  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147480",
+      "timestamp": "2012-02-01T00:41:13+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e @Wonko  \n\u003e ![:lol:](https://reboot.pro/public/style_emoticons/default/laugh.png) Just wanted to look up, what the punishment for the two different offenses are and \"Mundraub\" doesn\u0027t exist anymore. Since 1975!  \n\u003e How time flies, if you\u0027re having fun! ![:rofl:](https://reboot.pro/public/style_emoticons/default/roll1.gif)  \n\nBut, on the other hand, \"Scrumping\" has been the oldest crime recorded (and VERY severely punished at the time):  \n[http://en.wiktionary.org/wiki/scrump](http://en.wiktionary.org/wiki/scrump \"External link\")  \n\nAnd copying is not theft ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n[http://indiworks.wor...le-and-h-264-3/](http://indiworks.wordpress.com/2011/05/19/copying-is-not-theft-2009-and-software-patents-organised-stealing-e-g-apple-and-h-264-3/ \"External link\")  \nat least as much as piracy is not theft:  \n![Posted Image](http://www.funnymotivationalposters.info/wp-content/uploads/2011/05/Piracy.jpg)  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147482",
+      "timestamp": "2012-02-01T02:39:59+00:00",
+      "author": "sambul61",
+      "content": "\u003e Yeah - let\u0027s go ahead and host WinPE on reboot.pro - I mean, what can MS possibly do about it.  \n\nThe question was, would MS even be interested to look at it from enforcement prospective, even less demand prosecution? It they do, one would receive a letter from them alleging why they deem such activity illegal, which regardless may or may not be the fact depending on many things. Who knows, they might even get interested in such unusual promotion of their deeply scaled down OS demo. A basic WinPE is not a practical OS replacement, and its free, meaning MS doesn\u0027t offer to sell it to consumers for a fee, and can\u0027t loose money on WinPE Network boot. In fact, many packages are offered by their developers for free to consumers, but for a fee to businesses.  \n\n[SOPA stopped after unprecedented protests.](http://news.nationalpost.com/2012/01/20/sopa-stopped-after-unprecedented-online-protests/ \"External link\")  \n\n![Posted Image](http://nationalpostnews.files.wordpress.com/2012/01/sopa1.jpg?w\u003d620)  \n\nBut lets threaten these fools anyway... ![:buehehe:](https://reboot.pro/public/style_emoticons/default/buehehe.gif)   \n\nIf you believe that hosting WinPE for network boot is illegal, prove it, and lets move on to what is legal.  \n\nThe next question would then be, is it lawful to modify WinPE using tools like WinBuilder, or distribute such tools and modified PEs? And if it seems not, had anyone went to jail for this? MS ain\u0027t stupid, they see the difference btw having fan while promoting their soft, and making big bucks on its piracy. ![:beer:](https://reboot.pro/public/style_emoticons/default/beer.gif)   \n"
+    },
+    {
+      "id": "147486",
+      "timestamp": "2012-02-01T08:36:37+00:00",
+      "author": "TheHive",
+      "content": "Interesting!   \n"
+    },
+    {
+      "id": "147490",
+      "timestamp": "2012-02-01T09:53:09+00:00",
+      "author": "steve6375",
+      "content": "WinPE definitely has copyright, distribution and licence restrictions. You can\u0027t just start providing a download and wait till you get an email from your ISP saying they have received a complaint and have now blocked your site!  \nMaybe we should ask MS to provide an iPXE host http server which hosts all versions of WinPE Repair images for OS repairs (Vista, Win7, SVR2K8, 32\\\u002664 etc). That would be of great benefit to people who have lost their recovery DVD and cannot repair their OS, and at the same time be very difficult for anyone to misuse as they won\u0027t actually have a \u0027copy\u0027 of it.   \n"
+    },
+    {
+      "id": "147495",
+      "timestamp": "2012-02-01T11:16:20+00:00",
+      "author": "MedEvil",
+      "content": "The problem with WinPE and some other prgrams is it\u0027s completely unlogical set of restrictions.  \n\n- one can download it for free  \n- one can use it for free  \n- but you can not give it to someone else, he has to download himself  \n\nIf you break the rules, you will have to pay a fine. For what???  \nM$ isn\u0027t a government, they can\u0027t give you a fine for offenses against their law (Eula).  \nThe best they can do is prove that you caused them to loose money and therefore have to compensate them.  \n\nIts free to download, its free to use, very hard to convince a judge that they have suffered a loss by anyone redistributing it.  \n\nOn the other hand this is law and law has very little to do with common sense. Especialy if one has the cloud to swing judges.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147498",
+      "timestamp": "2012-02-01T13:06:14+00:00",
+      "author": "sambul61",
+      "content": "I still doubt that network boot is equivalent to redistribution. Until MS or a law of the country where server is located explicitly says it is, one can take it as it is not. But again, Megaupload distributed millions of deemed illegal (ordinary paid for) copies, not just one free title which network boot (not distribution by download) is not stated to be illegal in any known document. And again, the 1st question any court or enforcement office would ask - \"did you notify the alleged violator about suspecting violation of your IP rights\"? And that\u0027s also part of the law - both existing and set aside. One MUST notify an alleged violator first, instead of immediately seeking enforcement. And that\u0027s how its done in practice, being also very cost effective for all sides.   \n"
+    },
+    {
+      "id": "147500",
+      "timestamp": "2012-02-01T13:19:08+00:00",
+      "author": "Wonko the Sane",
+      "content": "@Medevil  \nJFYI, though I know how it will be of no use and this poor horse will be beaten to death over and over ![:(](https://reboot.pro/public/style_emoticons/default/sad.png), this has not really much to do with the Eula, and a lot to do with Copyright Laws.  \nThe Eula, like it or not, leverages on Rights that are granted to the intellectual property holder by Copyright Laws.  \nDeja-vu:  \n\u003chttp://reboot.pro/13973/\u003e  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147501",
+      "timestamp": "2012-02-01T14:03:03+00:00",
+      "author": "MedEvil",
+      "content": "@Wonko  \nYou and i have a differnt view on this. Imo, you look at it from the point, that leagal is, what is not written to be illegal, i see it from the point, legal is, what i can do without getting legal problems.  \n\nDistributing a 20 year old software without holding copyright, for instance, is still illegal, yet can be done without anyone caring.   \n\nBut like you said, we had that topic before and before and before. :wink:  \n\n\u003cbr /\u003e\n\n@sambul61  \nMaking a WinPE available via iPXE, isn\u0027t the same as distributing, imo as well, but more similar to lending your book to someone else for reading, who has to give it back afterwards.  \n\nThis page deals with copyright and it\u0027s application to libraries. [http://fairuse.stanf...3_07_minow.html](http://fairuse.stanford.edu/commentary_and_analysis/2003_07_minow.html \"External link\")  \nWhich imo, would apply to us as well.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147502",
+      "timestamp": "2012-02-01T14:42:41+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e You and i have a differnt view on this. Imo, you look at it from the point, that leagal is, what is not written to be illegal, i see it from the point, legal is, what i can do without getting legal problems.  \n\u003e\n\u003e Distributing a 20 year old software without holding copyright, for instance, is still illegal, yet can be done without anyone caring.  \nWell, words do have a meaning, illegal is something that is not legal.  \n\nIf you are not prosecuted/sued/jailed/flogged/crucifixed :w00t:/whatever for something illegal you do, it does NOT mean that what you did was legal, it means that your action carried no consequences to you.  \n\n[http://www.imdb.com/...es?qt\u003dqt0471984](http://www.imdb.com/title/tt0079470/quotes?qt\u003dqt0471984 \"External link\")  \n\u003e Brian: What will they do to me?  \n\u003e Ben the Prisoner: Oh you\u0027ll probably get away with crucifixion.  \n\u003e Brian: CRUCIFIXION?  \n\u003e Ben the Prisoner: Yeah, first offense.\n\nThen it is not anymore about stealing apples, but rather in stealing apples noone will ever claim property upon or stealing apples and not getting caught (please read as running faster than the peasant :wink:).  \n\nIn a nutshell:\n\n* stealing apples is not legal, i.e. it is illegal.\n* you are perfectly free to try and steal apples :smile:\n* if you decide to steal apples, knowing that it is not legal, it would be smarter (from your viewpoint) to steal apples AND avoid consequences (but you will be a thief anyway, the difference is only between being a dumb thief and a smart one)\n\n\u003cbr /\u003e\n\nSo, the topic is not anymore about legality, but rather about chances to get caught and/or suffer from consequences of carrying an illegal action or about which possible consequence the illegal action may cause, or, if you prefer the question is more pragmatical than the original:  \n\u003e Is this legal?\nand it rather becomes:  \n\u003e Can I do this *- no matter if legal or illegal -* and get away with it?\n\n**Wonko** approves of pragmatical questions. ![:smiling9:](https://reboot.pro/public/style_emoticons/default/smiling9.gif)  \n\n\u003cbr /\u003e\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147503",
+      "timestamp": "2012-02-01T15:59:36+00:00",
+      "author": "MedEvil",
+      "content": "You present a very good case and i wholeheartedly agree with everything.  \n\nJust one thing to add.  \nThere\u0027s a lawyer/author, who wrote a very witty book about german laws.   \nIn that book he presents common everyday scenes, that we\u0027re all familiar with and points out, which laws we break, while thinking of behaving in a perfectly legal way.  \nSome laws are not enforced anymore for over 100 years, yet they are still valid.  \n\nWhat would you call breaking a law, that is no longer enforced? legal / ilegal?  \nI have a hard time even understanding, that it is legal to have valid laws not enforced. :wink:  \n\n\u003cbr /\u003e\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147504",
+      "timestamp": "2012-02-01T16:33:13+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e You present a very good case and i wholeheartedly agree with everything.  \nBut you insist on stating (wrongly IMHO) that \"prohibited by law but law not enforced\"\u003d\"legal\", while more simply \"prohibited by law but law not enforced\"\u003d\"still illegal but no consequences for carrying action\".  \nSo, again, you may do that without consequences, but it will never become legal until the law prohibiting it will be changed as to allow it.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147505",
+      "timestamp": "2012-02-01T16:54:40+00:00",
+      "author": "MedEvil",
+      "content": "Just checking, if we\u0027re on the same page, about that.  \n\nWhich bears the question, why governments choose to keep the laws valid, but not enforce them, instead of deleting the law.  \n\nOr differently put, what interest does governments have, to make sure everyone breaks the law?  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147506",
+      "timestamp": "2012-02-01T17:18:05+00:00",
+      "author": "sambul61",
+      "content": "\u003e So, again, you may do that without consequences, but it will never become legal until the law prohibiting it will be changed as to allow it.  \nWhat consequences you\u0027re talking about, if its far not evident that booting WinPE over network is illegal in any country? And if MS believes it is (which I don\u0027t know), they would certainly be required by law to notify you first about the suspected violation, which is the right thing to do, since you might not be aware of it.  \n\nTalking more broadly about law and justice, Justice and Legal / Illegal are only remotely related terms. Justice is a philosophical term about social equality in enforcing a Fair Set of society rules. *\"[Justice](http://en.wikipedia.org/wiki/Justice \"External link\") is a concept of moral rightness based on ethics, rationality, law, natural law, religion, or equity, along with the punishment of the breach of said ethics; justice is the act of being just and/or fair\"* .  \n\n![Posted Image](http://upload.wikimedia.org/wikipedia/commons/thumb/5/53/JMR-Memphis1.jpg/200px-JMR-Memphis1.jpg)  \n\nLaw in a certain country on the other hand is a snapshot of current power sharing, its content is affected by what groups control power at the moment in that society, it reflects interests largely of these groups, and may have very remote if any rational based on \"Justice for all\" concept. That\u0027s why many laws overtime become unenforceable, i.e. de-facto stayed. Because they no longer reflect current interests of power brokers. More, some laws historically led their main enforcers to a Guillotine just a few years down the road, so remote they were to true Justice as perceived by the majority. That\u0027s also why most religions claim to establish Fair Rules and Proper Conduct baselines, not recognizing it being fully reflected in today\u0027s law whatever it is, because they address society as a whole, its every individual regardless of what social group s/he belongs to, which may not be the factual case with law and its enforcement in some countries.  \n\n![Posted Image](http://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Guillotinemodels.jpg/220px-Guillotinemodels.jpg)   \n"
+    },
+    {
+      "id": "147507",
+      "timestamp": "2012-02-01T17:26:20+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Which bears the question, why governments choose to keep the laws valid, but not enforce them, instead of deleting the law.  \n\u003e\n\u003e Or differently put, what interest does governments have, to make sure everyone breaks the law?  \nIt hardly bears anything, I thought I had managed to have you pursuing a more practical approach ![:frusty:](https://reboot.pro/public/style_emoticons/default/frusty.gif), the reason why does not change facts.  \n\nChoose one (as answer to question #1):\n\n* because they are bastards at heart\n* because they are not paying enough attention to what they are doing\n* because of sloth ![:ph34r:](https://reboot.pro/public/style_emoticons/default/scared9.gif)\n* ....\n\nor one (as answer to the differently put question):\n\n\u003c!-- --\u003e\n\n* they enjoy themselves, being bastards at heart\n* they have no interest whatever, they simply don\u0027t know what they are doing\n* they have no interest whatever, but between working (to cancel a law) and doing nothing, they prefer the second\n* ....\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147508",
+      "timestamp": "2012-02-01T17:58:45+00:00",
+      "author": "MedEvil",
+      "content": "\u003e I thought I had managed to have you pursuing a more practical approach\nHey, sometimes i just enjoy a good philosophical discussion. :wink:  \n\nBack to topic.  \nCan we host a WinPE for use over iPXE without getting into hot water?  \nI think so, at least for some time.  \nMaybe even longer. :wink:  \n\n@sambul61  \nVery nice post. Love the justice - law comparison. ![:thumbsup:](https://reboot.pro/public/style_emoticons/default/thumbsup.gif)  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147510",
+      "timestamp": "2012-02-01T18:20:15+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Can we host a WinPE for use over iPXE without getting into hot water?  \n\u003e I think so, at least for some time.  \n\u003e Maybe even longer. :wink:  \nA pragmatical question that need a preliminary answer:\n\n* WHO are the \"we\"?\n\nOr, if you prefer, who is gonna get into trouble (and pay the consequences) ***if*** and ***when*** an \"Internet investigator\" :wink: will get to the \"we\" (and of course ***if*** and ***when*** there will be consequences)?  \n\nFor the definition of \"some time\" and \"maybe even longer longer\", I suggest you \"a little Latin time\", which provides a similar accuracy in a shorter sentence.  \n\n\u003cbr /\u003e\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147513",
+      "timestamp": "2012-02-01T18:59:49+00:00",
+      "author": "saddlejib",
+      "content": "I would have thought a simple resolution to the question of hosting pe legal or not would be to email Microsoft and ask their position on this and if allowed what restrictions if any ?  \n\nIf they disagree we can have a good bitch about them !!   \n"
+    },
+    {
+      "id": "147514",
+      "timestamp": "2012-02-01T19:08:18+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I would have thought a simple resolution to the question of hosting pe legal or not would be to email Microsoft and ask their position on this and if allowed what restrictions if any ?  \nWhy didn\u0027t you already mail them? ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147516",
+      "timestamp": "2012-02-01T19:11:14+00:00",
+      "author": "Tripredacus",
+      "content": "I did some searching and there are definately other companies that have implemented a WinPE iPXE boot. But what is the configuration of those servers? Can you only boot to this server using the companies IP blocks or are these servers freely accessable on the internet somewhere? That information is harder to find. I\u0027m interested in this question (just because) but I don\u0027t feel a need to email Partner Support about it, since I can\u0027t find a use for it within my own company. I may wait until some friends pop up on IM and see but who knows when that would be.  \n\nAnyways, I think that it is OK for this to be done in a company, as a service to the company. But that if a public website where anyone can join offering this service to everyone (or even registered members) might be a different story.   \n"
+    },
+    {
+      "id": "147517",
+      "timestamp": "2012-02-01T19:13:26+00:00",
+      "author": "saddlejib",
+      "content": "@ Wonko  \ni would have thought it would carry more weight from one of the administrators of the prospective and well respected host site whos whole ethos is booting operating systems within the framework of the law.   \n\n**Edited by saddlejib, 01 February 2012 - 07:20 PM.**\n"
+    },
+    {
+      "id": "147518",
+      "timestamp": "2012-02-01T19:16:46+00:00",
+      "author": "Wonko the Sane",
+      "content": "I would have thought that MS - when no money or possible loss of money are involved - doesn\u0027t \"weight\" at all. ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147520",
+      "timestamp": "2012-02-01T20:01:54+00:00",
+      "author": "MedEvil",
+      "content": "\u003e A pragmatical question that need a preliminary answer:\n\u003e\n\u003e * WHO are the \"we\"?\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\nWe as in ~~Boot-Land~~ reboot.pro community. Of course in the end it\u0027s the one person whos name is on the hosting contract, whoever that may be.  \n\nWell, actually it will be Nuno. Cause it is eighter legal enough to be hosted here or it won\u0027t be linked to, what makes hosting it somewhere else pointless.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147521",
+      "timestamp": "2012-02-01T20:57:02+00:00",
+      "author": "Wonko the Sane",
+      "content": "[http://www.domainwho....com/reboot.pro](http://www.domainwhoisinfo.com/reboot.pro \"External link\")  \n\nSo the question is now:  \n**Nuno** , do you think you can host for use over iPXE a PE 3.x*- no matter if legal or not -* without getting into hot water at least for a little latin time?  \nor:  \n**Nuno** , are you willing to risk whatever consequences hosting for a little latin time an iPXE bootable PE 3.x may carry?  \n\nA rather personal question, then, and probably more suitable to be asked through PM or e-mail.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko  \n\nP.S.: The fact that I would ask this same question as follows:  \n**Nuno** , I don\u0027t think you are completely demented, but since this ***may*** be the case, what about hosting an iPXE bootable PE 3.0, at the ***possible*** risk of having ~~boot-land~~ reboot.pro domain blocked, besides ***possible*** personal legal problems?  \nhas obviously no relevance whatsoever. :wink:   \n"
+    },
+    {
+      "id": "147525",
+      "timestamp": "2012-02-01T22:02:51+00:00",
+      "author": "sambul61",
+      "content": "\u003e I would have thought that MS - when no money or possible loss of money are involved - doesn\u0027t \"weight\" at all.  \nAnd if that\u0027s the case, then there is no party who\u0027s IP rights were allegedly violated, which makes WinPE boot over network lawful. Because law enforcement isn\u0027t needed, when there is no complaint filed, alleging violation of someone\u0027s rights and damages (neither its enough in most cases). And if at some Latin time MS will suddenly change their opinion and inform the party they think it might violate their IP rights, at this point the party will choose the best action, which may be 1) disregard such letter, if it believes no law was violated, or 2) comply with that letter thus resolving the matter. :smile:  \n\nSo, why are you threatening people with something you have very little clue about? ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\nIn fact, a better approach may be to start testing web boot of some other OS that has explicit permitting EULA clauses. It might be, there will be no interest to such feature, making it not worse to discuss. On the other hand, MS in fact might be (blindfully) grateful for such modern approach to Windows promotion, also helping to develop future programmers for them.   \n"
+    },
+    {
+      "id": "147527",
+      "timestamp": "2012-02-01T23:07:19+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e So, why are you threatening people with something you have very little clue about? ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\nI am not threatening anyone. :smile:  \nAll I tried to do was to shift the (false) issue about (theoretical) legality to (real) issue about (practical) ***possible*** consequences and on whom these may fall.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147529",
+      "timestamp": "2012-02-01T23:29:30+00:00",
+      "author": "saddlejib",
+      "content": "When you guys sort out a boot issue you look at it logically (will it won\u0027t it, could it,can it,can I??) but looking at practical things you hit a quagmire of philosophy and ethics.  \nYou have to lay down the facts as normal rather than bickering. i.e the facts have to be established No1 fact in this debate is it legal to use PE\\\u003e Nobody has asked the question of MS and its better coming from a group with integrity (reboot.pro).  \nI\u0027m sorry I don\u0027t have the clarity of Jacklaz but I see the lack of direction.   \n"
+    },
+    {
+      "id": "147530",
+      "timestamp": "2012-02-01T23:34:39+00:00",
+      "author": "steve6375",
+      "content": "Step 1 - Is hosting iPXE http images on reboot feasible (i.e. does it work)  \nStep 2 - add \u0027licence free\u0027 images  \nStep 3 - Try a test WinPE v2/v3/MSDART image - if it works - ask MS if reboot can host Recovery images  \n\nLet\u0027s get Step 1 and 2 sorted first! Why ask MS if we can do something when we don\u0027t even know if we can make it work...   \n"
+    },
+    {
+      "id": "147531",
+      "timestamp": "2012-02-01T23:53:14+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Step 1 - Is hosting iPXE http images on reboot feasible (i.e. does it work)  \n\u003e Step 2 - add \u0027licence free\u0027 images  \n\u003e Step 3 - Try a test WinPE v2/v3/MSDART image - if it works - ask MS if reboot can host Recovery images  \n\u003e\n\u003e Let\u0027s get Step 1 and 2 sorted first! Why ask MS if we can do something when we don\u0027t even know if we can make it work...  \n\n\u003cbr /\u003e\n\nEven better, let\u0027s get Step 1 and 2 sorted and then ask nothing to MS. (this way we won\u0027t be deluded IF they say \"no you cannot do it\").  \n\n\u003cbr /\u003e\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147546",
+      "timestamp": "2012-02-02T10:52:20+00:00",
+      "author": "Brito",
+      "content": "Reboot will only make available Windows PE images if/when Microsoft allows such action.  \n\nTo clear any doubts, I am making available the License terms on this website: [http://reboot.pro/fi...-license-terms/](http://reboot.pro/files/file/138-waik-license-terms/ \"\")  \n\nSomeone will be tempted to throw a rock highlighting the fact that this document is also copyrighted from MS and shouldn\u0027t be hosted here, my reply in advance: please don\u0027t troll, you know there is a difference between both cases.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147548",
+      "timestamp": "2012-02-02T11:31:28+00:00",
+      "author": "MedEvil",
+      "content": "\u003e you know there is a difference between both cases.\nWithout wanting to be a pain in the behind, which?  \nBoth are free to download and both are not allowed to be redistributed.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147549",
+      "timestamp": "2012-02-02T12:12:07+00:00",
+      "author": "NetFanTom",
+      "content": "Hello!  \n\nI think this plan is an excellent idea. ![:good:](https://reboot.pro/public/style_emoticons/default/good.gif)  \n\nThe license terms are, like all terms not easy to understand.  \n\nHow about if Nuno Brito would MS just ask by e-mail. ![:thumbup:](https://reboot.pro/public/style_emoticons/default/thumbup.gif)  \nOf course only if Nuno Brito agrees.  \n\n[https://support.micr...1539\\\u0026ws\u003dsupport](https://support.microsoft.com/contactus/emailcontact.aspx?scid\u003dsw;en;1539\u0026ws\u003dsupport \"External link\")  \n\nRegards,  \nNetFanTom   \n"
+    },
+    {
+      "id": "147552",
+      "timestamp": "2012-02-02T12:44:29+00:00",
+      "author": "sambul61",
+      "content": "There is no need to ask someone\u0027s permission to do anything that one doesn\u0027t feel is illegal - you ARE permitted doing it regardless of others opinions. If an IP rights holder feels different they will let you know - don\u0027t worry... And this is the ONLY consequence, if one agrees with them and complies, but again you don\u0027t have to, because they might be wrong, as their \"generic\" vision may not fit with your local law or its interpretation by you (if there is no an official interpretation or precedent).   \n"
+    },
+    {
+      "id": "147553",
+      "timestamp": "2012-02-02T13:01:45+00:00",
+      "author": "NetFanTom",
+      "content": "\u003e There is no need to ask someone\u0027s permission to do anything that one does not feel is illegal\nI give you right.  \nBut I\u0027m still asking for.That can hurt in any way.  \n\nRegards   \n"
+    },
+    {
+      "id": "147555",
+      "timestamp": "2012-02-02T13:07:35+00:00",
+      "author": "sambul61",
+      "content": "No-one can give a permission to do something stated illegal, unless special clauses or loopholes exist in the law (such as *License to Kill* for James Bond :smile:). One may ask for clarification of any issues, but such requests I guess won\u0027t be answered to avoid License Terms interpretation on case by case basis, unless its Terms are changed by a signed Contract.   \n"
+    },
+    {
+      "id": "147556",
+      "timestamp": "2012-02-02T13:25:38+00:00",
+      "author": "NetFanTom",
+      "content": "The proof of the pudding is in the eating.  \n\nNo offense. -- None taken. ![:worship:](https://reboot.pro/public/style_emoticons/default/worship.gif)  \n\nNetFanTom  \n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147557",
+      "timestamp": "2012-02-02T13:53:34+00:00",
+      "author": "MedEvil",
+      "content": "I jave phoned a bit around and there is no lawyer known in Germany, which deals with \"Intenet Law\", only some that deal with german law and its application to the Internet.  \n\nI asked especialy about a case, where company owner is located in country A, company in country B, server in country C, download is done from county D. Unless something is legal/illegal in all 4 countries, noone can give a definitiv answer upfront. This is a huge grey area.  \n\nThings are so complicated/uncertain, that even big companies, like M$, with a rather big legal department, write into the EULA rather \"unless overruled by local law\" than to create one, specific to each country.  \nSo the EULA is rather a list of wishes of M$, than a document to look up legal aspects.  \n\nThe only way to be sure in legal questions, is to stay local, 100%!   \n\n\u003cbr /\u003e\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147559",
+      "timestamp": "2012-02-02T14:36:14+00:00",
+      "author": "Brito",
+      "content": "\u003e So the EULA is rather a list of wishes of M$, than a document to look up legal aspects.  \nI believe it is more ethical to follow Microsoft wishes on this case. In due fairness, we like to see our own software license terms to be respected by whomever. It makes more sense to ask MS for formal authorization (which I never personally tried) than override these license terms even if local law does not restrict us from distribution.  \n\nThis is my view over this situation.   \n"
+    },
+    {
+      "id": "147560",
+      "timestamp": "2012-02-02T14:38:40+00:00",
+      "author": "sambul61",
+      "content": "Or do things one believes are reasonable and lawful, i.e. not harmful to anyone, until proven otherwise.  \n\nFor example, can someone demonstrate how booting an unaltered WinPE over network and using it for PC service can harm MS, despite WinPE is freely available for download and use for PC service by anyone?  \n\nBtw, network boot is NOT distribution.   \n"
+    },
+    {
+      "id": "147561",
+      "timestamp": "2012-02-02T14:51:12+00:00",
+      "author": "NetFanTom",
+      "content": "@Nuno Brito:  \nexactly, that\u0027s my opinion. ![:good:](https://reboot.pro/public/style_emoticons/default/good.gif)  \n\nWe can load Doom, other games, some BSD and Linux via Internet.  \n\nWhy should it not be possible for WinBuilder built WinPE.  \n\nAfter all, that would be an advertisement for Windows. ![:D](https://reboot.pro/public/style_emoticons/default/biggrin.png)  \n\nNetFanTom   \n"
+    },
+    {
+      "id": "147564",
+      "timestamp": "2012-02-02T15:09:16+00:00",
+      "author": "sambul61",
+      "content": "Actually there are multiple reasons, why MS prefers software be downloaded from their own site, even if free. But booting an unaltered WinPE is \"use\", not \"distribution\". And because internet is very innovative place, many such innovations come from outside of MS, so their very generic license same for a broad range of products can\u0027t possibly cover new applications of an old product, neither listed no explicitly prohibited by such license. So, if MS doesn\u0027t offer to boot WinPE from their website, most probably they simply didn\u0027t figure it out yet - its normal. :smile:   \n"
+    },
+    {
+      "id": "147565",
+      "timestamp": "2012-02-02T15:15:36+00:00",
+      "author": "MedEvil",
+      "content": "Nuno, interesting opinion.  \n\nI wouldn\u0027t pay full price, for a retail version of Windows, just because M$ doesn\u0027t want me to buy a OEM version, though it is perfectly legal to do so in the EU and they would actually be the ones breaking the law by insisting on their Eula.  \n\nBut i\u0027m from crazy times, long ago. :wink:  \n\n\u003cbr /\u003e\n\nAnd as far as copyright goes. I agree that people should have the right to profit from their work. This however does not include the right to withhold their work, from people by any means, like for instance controlling the distribution.   \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147568",
+      "timestamp": "2012-02-02T15:57:33+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Btw, network boot is NOT distribution.  \nAh, well, if you say so, then it\u0027s allright.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147582",
+      "timestamp": "2012-02-02T17:42:56+00:00",
+      "author": "sambul61",
+      "content": "Show me some proof that law enforcement (in which country?) took a proactive action for a presumed single free title IP rights violation, when no complaint was even filed by its IP rights holder? Or it wasn\u0027t accompanied by a copy of Infringement Notice, sent long before by the Holder to the suspect and disregarded. ![:music_guitar:](https://reboot.pro/public/style_emoticons/default/music24.gif)  \n\nYou\u0027re scaring guys for no reason, simply to show you know something about it (which you DON\u0027T). ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)   \n"
+    },
+    {
+      "id": "147588",
+      "timestamp": "2012-02-02T18:52:33+00:00",
+      "author": "Wonko the Sane",
+      "content": "Again, I am not threatening anyone. :smile:  \n\nI was simply very happy to learn the undeniable truth:  \n\u003e Btw, network boot is NOT distribution.  \nand expressed my relief for this.  \n\nYou have fully convinced me on this, the arguments you brought forward to support this statement being so vast, complete, and exhaustive that they cannot be denied ![:worship:](https://reboot.pro/public/style_emoticons/default/worship.gif), now all you have to do is to convince **Nuno** about it.  \n\n\u003cbr /\u003e\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147590",
+      "timestamp": "2012-02-02T20:14:11+00:00",
+      "author": "MedEvil",
+      "content": "And before you two get into a knife fight, for no good reason.  \n\nsambul61 writes threatening, but means scaring.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "147591",
+      "timestamp": "2012-02-02T20:31:52+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e sambul61 writes threatening, but means scaring.  \nWell, if I scared anyone, it has been unintentional, and I apologize.  \n\nMy intention was to merely enumerate possibilities.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147595",
+      "timestamp": "2012-02-02T23:01:09+00:00",
+      "author": "sambul61",
+      "content": "Your count was wrong. :smile: Neither my intention is to convince anyone, just sharing observations. One of these is:  \neither both  \n1) modifying WinPE and distributing tools for it  \nAND  \n2) booting WinPE over network  \nare not prohibited by its EULA, and therefore permitted,  \nOR  \nboth are not permitted since not listed as permitted in the EULA or may even contradict its clauses, and therefore prohibited.  \n\nBut it doesn\u0027t make sense, when you scary people about network boot (enumerate possibilities ![:victory:](https://reboot.pro/public/style_emoticons/default/victory.gif) ), while saying nothing about modifying WinPE, which caused no MS objections for as long as it was done here while may look similar in terms of possible IP rights violation.  \n\nAnd the topic starter didn\u0027t explicitly link his question to Reboot.pro, so why you do? ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)   \n"
+    },
+    {
+      "id": "147596",
+      "timestamp": "2012-02-02T23:20:39+00:00",
+      "author": "saddlejib",
+      "content": "Well no wonder the global economy is screwed you sound like politicians and lawyers discussing who knows what!  \nReboot.pro is about, as far as i can see booting machines and bypassing software limitations, with software.  \nSo rather than get into the limitations of other peoples software why does\u0027nt the community create a pxe bootable tool (open source) with no legality questions.   \n"
+    },
+    {
+      "id": "147597",
+      "timestamp": "2012-02-02T23:24:03+00:00",
+      "author": "sambul61",
+      "content": "\u003e Reboot.pro is about, as far as i can see booting machines and bypassing software limitations.  \nIt sounds like an accurate observation to me, thus rendering this talk indeed making little sense. :smile: And I may add, MS may be very happy to see inquisitive minds and learning spirit around its software that attract plenty of interest to it and give MS new development (and product protection) ideas. I read they set the policy to not interfere with \"mad scientists\" unless result in large revenue loss for MS sold products (like bypassing Windows Activation, or distributing modified \\\u0026 infected \\\u0026 obsolete MS products that compromise user experience, or sharing MS downloads requiring Genuine Windows verification, or such).   \n"
+    },
+    {
+      "id": "147598",
+      "timestamp": "2012-02-02T23:33:49+00:00",
+      "author": "saddlejib",
+      "content": "correct.  \nWithin this community we have very resourcefull people and i mean VERY resourcefull who can rise above this.  \nUnfortunately I\u0027m not one of them but all thats needed is a simple bootable, dare I say \u0027tool\u0027 that assists the novice.  \nOnce that\u0027s been created the  \n\"World\u0027s your Oyster\"  \nUnd Deutsch  \n\"Alles Possible\"   \n"
+    },
+    {
+      "id": "147600",
+      "timestamp": "2012-02-02T23:43:36+00:00",
+      "author": "steve6375",
+      "content": "Well netboot.me, as suggested by IceCube, provides a reasonable selection for iPXE http booting choices - see netboot.me section at [http://www.rmprepusb.../tutorials/ipxe](http://www.rmprepusb.com/tutorials/ipxe \"External link\") ... ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)   \n"
+    },
+    {
+      "id": "147601",
+      "timestamp": "2012-02-02T23:52:15+00:00",
+      "author": "saddlejib",
+      "content": "Seen it.  \nHow do you pass (parse)  \ndhcp  \nchain [http://boot.ipxe/demo/boot.php](http://boot.ipxe/demo/boot.php \"External link\")  \nto this  \n\ntitle iPxenBoot from iPxe  \nfind --set-root /iPXE/ipxe.krn  \nkernel /iPXE/ipxe.krn  \ninitrd /iPXE/ipxe.krn  \nor is it not possibe ?   \n"
+    },
+    {
+      "id": "147602",
+      "timestamp": "2012-02-02T23:53:30+00:00",
+      "author": "steve6375",
+      "content": "see next section - netboot.me - it is fully automatic and boots from an ISO file - awesome!   \n"
+    },
+    {
+      "id": "147603",
+      "timestamp": "2012-02-02T23:59:22+00:00",
+      "author": "saddlejib",
+      "content": "@Steve \u0027der Meister\u0027  \nyea but some old computers don,t like .iso,s int 13h and all that.  \nSorry havent checked it out this is an edit so must hold my breath.  \nDon\u0027t speak until youre spoken to. I say to myself.  \nWill look tomorrow. Thanks   \n\n**Edited by saddlejib, 03 February 2012 - 12:03 AM.**\n"
+    },
+    {
+      "id": "147604",
+      "timestamp": "2012-02-03T00:03:36+00:00",
+      "author": "sambul61",
+      "content": "I wonder, how safe is it to boot OS from a remote web server you know nothing about, and expose your hard drives to it?  \n\nThough one can create own config on Netboot.me, it seems by uploading a preferred bootable image to a file sharing host like Mediafire and entering a link to it in your config - is that correct? Or your own image must be uploaded to Netboot.me? Or kept on a local networked PC HD?   \n"
+    },
+    {
+      "id": "147605",
+      "timestamp": "2012-02-03T00:16:38+00:00",
+      "author": "saddlejib",
+      "content": "I think reeboot.pro community has lost focus on this issue and is fixated on PE and the philosophy of legality whereas it should host a simple pxe style (legal) os as part of its armoury.  \nOnce that has been done the ethos will progress naturally (Darwinian style) and boundarys will be pushed naturally.  \n\"From Acorns grow Mighty Oaks.\"   \n"
+    },
+    {
+      "id": "147606",
+      "timestamp": "2012-02-03T00:17:08+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e And the topic starter didn\u0027t explicitly link his question to Reboot.pro, so why you do? ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\nBecause I **explicitly** asked the OP:  \n\n\u003e A pragmatical question that need a preliminary answer:\n\u003e\n\u003e * WHO are the \"we\"?\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nand OP **explicitly** answered the question:  \n\n\u003e We as in ~~Boot-Land~~ reboot.pro community. Of course in the end it\u0027s the one person whos name is on the hosting contract, whoever that may be.  \n\u003e\n\u003e Well, actually it will be Nuno. Cause it is eighter legal enough to be hosted here or it won\u0027t be linked to, what makes hosting it somewhere else pointless.  \n\u003e\n\u003cbr /\u003e\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "147608",
+      "timestamp": "2012-02-03T00:59:56+00:00",
+      "author": "sambul61",
+      "content": "Hmmm... Tried to network boot with their ISOs in VMWare from both Netboot.me and Boot.rit.edu, and none seems to allow downloading boot menu. It just hangs forever on \"downloading Menu...\". Anyone was lucky to get through?   \n"
+    },
+    {
+      "id": "147609",
+      "timestamp": "2012-02-03T01:02:01+00:00",
+      "author": "steve6375",
+      "content": "works under QEMU run from RMPrepUSB, tried it an hr ago...   \n"
+    },
+    {
+      "id": "147610",
+      "timestamp": "2012-02-03T01:23:40+00:00",
+      "author": "sambul61",
+      "content": "Yep, both ISOs load Menu in QEMU with XP guest. Interesting to play... :smile: But in VMWare \\\u0026 WVPC with Win7 guest both don\u0027t work here. ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)   \n\nSimilar ISO can be offered for download on Reboot.pro, and may offer to boot say [SliTaz](http://www.slitaz.org/en/about/ \"External link\") into RAM or a choice of free tools similar to offered by Netboot.me.   \n"
+    },
+    {
+      "id": "159903",
+      "timestamp": "2012-09-02T18:16:32+00:00",
+      "author": "Michele13",
+      "content": "OK I Cannot resist to tell this but: I don\u0027t care of the EULA of Microsoft or of other softwares that say: \"you can make only a backup for this product and you can\u0027t install it on two PCs, if you want to install more copies of the software you have to buy one license for installation, you also cannot give your copy of software to your friend and if you sell your software copy you have to destroy your backup!\" that\u0027s a shame! I am the owner of the software now and I can do whatever I want! Why should I buy two times the same product? they are the same and do the same things! Let\u0027s be honest (I hope that I will not be banned for that ![:ph34r:](https://reboot.pro/public/style_emoticons/default/scared9.gif)), I have a pirated copy of XP installed in my PC!!! And you know why? Because when you buy a PC here in italy they never give you an installation disc of the OS! It is a miracle if below of your laptop there\u0027s a label with the Product Key. I don\u0027t have one in my HP 510 but at least they give you a recovery partition or a recovery CD! but they are still not good! We have the right to have an original CD of our OS! Another thing that I hate of the microsoft is the WGA (Windows Genuine Advantage ![:ph34r:](https://reboot.pro/public/style_emoticons/default/scared9.gif)) and the WPA (Windows Product Activation ![:ph34r:](https://reboot.pro/public/style_emoticons/default/scared9.gif)); let\u0027s say I have not an internet connection, that may be absurd but hey there are many people that cannot connect to the internet, now why in the hell I should activate the software online?! For preventing we pirates from \"stealing\" your software? Oh sorry honey but there are cracks and patch to stop the WPA from working. So that\u0027s useless that you continue to frustrate these poor users that want to help you and buy an original software! another thing: Windows is too expensive to buy why don\u0027t you make it cheaper?  \n\nSorry for shouting loudly like that but I had to say what I think now I will continue reading the topic. ![:angry:](https://reboot.pro/public/style_emoticons/default/mad.gif)  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "159908",
+      "timestamp": "2012-09-02T18:49:18+00:00",
+      "author": "steve6375",
+      "content": "You don\u0027t own the software. You just own a ***licence*** to use the software.  \nIt does not matter where you got the CD/ISO from, what matters is that you are correctly licensed to run the software on each OS on each system (according to the licence T\\\u0026Cs).  \nAll legal OEM and system builder systems should come with a COA label - if it hasn\u0027t got one then you should complain and report them to M$.  \n\nIf you spent 3 years writing an application and charged $50 for it per copy, how would you feel if someone just copied it and gave it to all of his family and friends (or even offered a download for free)?  \n\nOEMs can choose to include a Recovery DVD or not. If you want a Recovery DVD, then only buy a computer that comes with one.  \n\nYou don\u0027t have to run Windows - no one is holding a gun to your head...   \n"
+    },
+    {
+      "id": "159911",
+      "timestamp": "2012-09-02T20:16:51+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I have a pirated copy of XP installed in my PC!!! And you know why? Because when you buy a PC here in italy they ***never*** give you an installation disc of the OS!  \nWell, that is - to say the least - an ***inaccurate*** statement.  \n*Strangely enough* I was given a CD (or DVD) orginal disc EVERY single time I bought an OS (or a PC with accompanying the OS).  \nThe exception being a few laptops where I got a \"recovery CD\" instead.  \nAnd of course it is perfectly possible in most cases to recreate an install CD from such \"recovery CD\" or \"recovery partition\", whilst MOST computer makers in exchange for a thing called \"money\", usually between 10 and 15 Euros will provide an install CD.  \nAnd OBVIOUSLY whatever PC I bought in the last, say, 10 years with a MS OS had it\u0027s \"regular\" COA sticker.  \nNOONE (really NOONE) is forcing you to:\n\n* buy a windows OS\n* use it\n\nlet alone get a pirate copy of it ![:ph34r:](https://reboot.pro/public/style_emoticons/default/scared9.gif).  \n\nAnd no, not even a pre-loaded Windows, there has been a couple of sentences about it:  \n[http://bubbakk.ivell...o-passo-avanti/](http://bubbakk.ivellezza.it/software-libero/2307/rimborso-di-windows-un-altro-passo-avanti/ \"External link\")  \nif you find that something is not fair, fight for it ![:boxing:](https://reboot.pro/public/style_emoticons/default/boxing.gif) , but do not expect that because of this unfairness illegal behaviours can be justified.  \n\n\u003cbr /\u003e\n\n\u003e Sorry for shouting loudly like that but I had to say what I think now I will continue reading the topic. ![:angry:](https://reboot.pro/public/style_emoticons/default/mad.gif)  \nThe issue is not much about the shouting or the loudly, I see it more as the nonsense. ![:ph34r:](https://reboot.pro/public/style_emoticons/default/scared9.gif)  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "159912",
+      "timestamp": "2012-09-02T20:43:24+00:00",
+      "author": "Michele13",
+      "content": "They HAVE to include a WIndows XP CD as when I buy the PC I pay even for the Windows License! Don\u0027t you know that? Oh well fortunately there are the utilities that make a free image of your hardisk and create recovery disk as well. And fortunately there\u0027s WinPE that now is free so you can do some recovery tasks. **@Wonko The Sane** Well When my uncle bought his first PC in 2001 (Assembled) there was no Installation Disc or Recovery Partition there... Fortunately HP and Acer are giving you such cd\u0027s and in the C: directory there\u0027s a i386 folder that allows you to make a PE or an original Installation disk. I like Windows and Linux infact when my laptop was not functional I installed Ubuntu on it but unfortunately I was unable to surf the internet because I had a USB Modem ![:ph34r:](https://reboot.pro/public/style_emoticons/default/scared9.gif) and No printer ![:(](https://reboot.pro/public/style_emoticons/default/sad.png) after that I got an Installation CD of Windows XP but now I know what I will do the next time I buy a computer. I\u0027ll ask if there\u0027s an installation CD, a Recovery CD or a Recovery Partition; If there isn\u0027t then I will create one by myself using Mactium Reflect ![:lightbulb:](https://reboot.pro/public/style_emoticons/default/lightbulb.gif) I\u0027m sorry I know that I\u0027m not right but there\u0027s something about the Microsoft Eula that I don\u0027t understand: Like that rule that say that I can\u0027t give to someone a WinPE Disk made with WAIK. I Wonder If I can still give to my friend a copy of the WAIK CD that I\u0027ve downloaded. I respect the maker of the program. I don\u0027t like pirated programs as well but I sometimes I need them. (like the Windows XP). I Like Windows but as far as I\u0027m concerned it is too expansive   \n"
+    },
+    {
+      "id": "159930",
+      "timestamp": "2012-09-03T11:45:02+00:00",
+      "author": "MedEvil",
+      "content": "From all the newly invented copyright rules, i find the one about non-redistribution the worst. Cause it basicly means, that you can\u0027t even give the book, that you just bought, away as a present.  \n\n\u003e You don\u0027t have to run Windows - no one is holding a gun to your head...\nWell if noone is holding a gun to your head, than you should be fine to stop breathing. ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\nI\u0027m not a computer noob, not a gamer, i even know how to compile a program, still neither MacOS nor Linux nor BSD are an adequate replacement for a Windows, simply because the hard- and software support isn\u0027t there.  \n\n\u003e NOONE (really NOONE) is forcing you to: buy a windows OS\nWell, actually they do!   \nOne can\u0027t buy a preassembled PC without a Windows. And while you\u0027re free to not use it, you can\u0027t get any money back, if you wanted to return it.  \nSo yes, Everyone is forcing you to buy a Windows OS.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "159932",
+      "timestamp": "2012-09-03T12:29:12+00:00",
+      "author": "steve6375",
+      "content": "\u003e So yes, Everyone is forcing you to buy a Windows OS.  \nDell don\u0027t ...  \n[http://www.dell.com/...0\\~0\\~1791343\\\u0026p\u003d1](http://www.dell.com/us/enterprise/p/desktops-n-workstations.aspx?c\u003dus\u0026cs\u003d555\u0026l\u003den\u0026s\u003dbiz\u0026~ck\u003dmn#!facets\u003d80770~0~1791343\u0026p\u003d1 \"External link\")  \n\nYou can get Ubuntu Desktops and laptops from Dell (and several others too)   \n"
+    },
+    {
+      "id": "159935",
+      "timestamp": "2012-09-03T13:32:17+00:00",
+      "author": "Brito",
+      "content": "Instead of OSX or Ubuntu as alternatives, I would prefer to see my family folks using an Android device.  \n\nIf you an opportunity, try one of these for yourselves: [http://www.asus.com/...nsformer_TF101/](http://www.asus.com/Eee/Eee_Pad/Eee_Pad_Transformer_TF101/ \"External link\")  \n\n\u003cbr /\u003e\n\nFeels like a real laptop, however comes with no Windows whatsoever. What I like best is the way how applications get installed. Just head out to the play store and get them running with a few clicks after reading the reviews if you wish.  \n\nPerfect if you need to explain to the other side of the phone line how to get TeamViewer working so that you can access Mom\u0027s machine.  \n\n\u003cbr /\u003e\n\nSlowly I see Android as a simple and usable desktop operative system. Lately I get disappointed on either Ubuntu Unity/Gnome3 or Windows Metro that just keep trying to catch up with what Google is doing on Android without really getting the point: it is open source and works great.  \n\nI wish mom had Android. Would make it so much easier to install skype, teamviewer or any app she would like. This is the reason why I see Microsoft losing a grip on the monopoly, Windows became too complicated for what the base users are accustomed nowadays and too dumbified for what professional users need on their work office.  \n\nDon\u0027t really see the point in restricting PE disks from distribution on current days, just makes fan/power users disappointed.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "159936",
+      "timestamp": "2012-09-03T14:08:30+00:00",
+      "author": "Michele13",
+      "content": "Ehm Nuno I actually LOVE Android but did you know that it has a BIG SECURITY BUG? You can skip the PIN code check!!! I discovered this bug when I thought: \"if I reboot my mobile id does not ask for PIN then what if I reboot my mobile when it actually asks for PIN?\" I rebooted my Mobile using the reboot sequence (press at the same time vol + and power button) and voilà no PIN request. ![:ph34r:](https://reboot.pro/public/style_emoticons/default/scared9.gif) I suggest you to enable an unlock code for your mobile. I reported this bug to the Android security team this summer but they did not answered me yet ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)   \n"
+    },
+    {
+      "id": "159937",
+      "timestamp": "2012-09-03T14:23:11+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Dell don\u0027t ...\nDell doesn\u0027t sell preassembled PCs!  \nThey build one, acording to your specs, just like the guy in the computer shop next door.  \n\n@Nuno  \nWhen i want to annoy the hell out of my buddies, with their shiny new expansive smartphones, then i get my old slow shabby PDA out and challenge them, to use navigation for hours, without going broke. ![:lol:](https://reboot.pro/public/style_emoticons/default/laugh.png)  \n\nWhich brings me to my question. Is there really no offline navigation for Android available?  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "159965",
+      "timestamp": "2012-09-04T09:45:03+00:00",
+      "author": "Wonko the Sane",
+      "content": "You are obviously perfectly free :smile: to get all the copies of whatever you want in any which way you can.  \n\nBut you also should know and acknowledge that when you breach an Eula or, conversely the Law, you are doing something that is not allowed and that the justification \"I did it because they (MS, HP, whomever are a buch of bastards) is m00t\".  \n\nDon\u0027t try playing Robin Hood ![:w00t:](https://reboot.pro/public/style_emoticons/default/w00t.gif), we are talking of software (essentially NOT a \"primary need\") and particularly a software for which there are alternatives.  \n\nAs you might know in the Italian Law there is a provision for the \"furto lieve per bisogno\" (roughly translated to \"light steal for need\") Art. 626, comma 2:  \n[http://it.wikisource..._II/Titolo_XIII](http://it.wikisource.org/wiki/Codice_penale/Libro_II/Titolo_XIII \"External link\")  \n\nThat is (example) you are hungry, really hungry, have no means to get some food and steal some (the sheer quantity needed for a meal).  \n\n\u003cbr /\u003e\n\n@Medevil  \nSure, life is tough. ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)  \n\nRemember, when you buy a new television, to ask for the CD/DVD of the OS, so that you can re-install it and/or modify it according to your needs.  \n\n\u003e I\u0027m not a computer noob, not a gamer, i even know how to compile a program, still neither MacOS nor Linux nor BSD are an adequate replacement for a Windows, simply because the hard- and software support isn\u0027t there.\nGood, then you ***pay*** for getting Windows and - strangely enough - depending on how much you pay you are given different Licenses, and different rights.  \nUltimately you get what you pay for (as almost always in life).  \n\n@Michele  \n\nThis said, is the MS EULA mostly senseless? Yes.  \nIs it mostly \"unfair\"? Yes.  \nIs this a good reason to ignore it? No, but even if you think it is, just §@ç#ing do whatever you see fit, without ***whining*** ![:ph34r:](https://reboot.pro/public/style_emoticons/default/scared9.gif) or crying for the unfairness or trying to justify your actions.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "159966",
+      "timestamp": "2012-09-04T10:02:31+00:00",
+      "author": "Michele13",
+      "content": "I would be happy to throw away Winzozz if every piece of hardware that I buy would be compatible with Linux but unfortunately this is not possible. Such printers are not compatible with Linux natively but you have to install drivers from the productor (if any) or buy a software called turbo print (if we are talking about printers) and use that. fortunately there are hundreds of Printers in the market that are supported by linux :smile:   \n"
+    },
+    {
+      "id": "160004",
+      "timestamp": "2012-09-05T01:51:30+00:00",
+      "author": "sbaeder",
+      "content": "\u003e Which brings me to my question. Is there really no offline navigation for Android available?  \n\u003e\n\u003e ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nYes, they are starting to appear, based on the OpenStreet maps, etc. Some others just let you download the route (calculated online)...  \n\nsee this...[http://www.makeuseof...s-apps-android/](http://www.makeuseof.com/tag/top-3-free-offline-gps-apps-android/ \"External link\")  \n\n\u003cbr /\u003e\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nScott   \n"
+    },
+    {
+      "id": "160140",
+      "timestamp": "2012-09-07T22:25:39+00:00",
+      "author": "Michele13",
+      "content": "This Website hosts a WinPE bootdisk in his package. Why Microsoft did not say anything? aren\u0027t they broking the MS EULA?  \n\n[http://www.boot-disk.com/](http://www.boot-disk.com/ \"External link\")   \n"
+    },
+    {
+      "id": "160141",
+      "timestamp": "2012-09-07T23:42:36+00:00",
+      "author": "steve6375",
+      "content": "It is a retail product. No doubt they have paid M$ a hefty licence fee for WinPE...   \n"
+    },
+    {
+      "id": "160143",
+      "timestamp": "2012-09-07T23:55:34+00:00",
+      "author": "sbaeder",
+      "content": "I have been a long time customer of LSoft (who make this), and it has a few tricks that made it well worth the money to recover a bad hard drive many years ago. And yes, in their docs, they clearly state that they have a license, and you can bet that if they didn\u0027t, M$ would be all over them.   \n"
+    }
+  ]
+}

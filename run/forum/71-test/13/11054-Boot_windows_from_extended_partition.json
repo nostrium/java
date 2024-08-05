@@ -1,0 +1,562 @@
+{
+  "id": "11054",
+  "title": "Boot windows from extended partition",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "97413",
+      "timestamp": "2010-04-09T13:42:14+00:00",
+      "author": "xpt",
+      "content": "Hi,   \n\nIs it possible to boot any kind of windows from an extended partition?   \n\nThanks  \n\nPS. Linux has been able to do that for over a decade.   \n"
+    },
+    {
+      "id": "97424",
+      "timestamp": "2010-04-09T14:50:45+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Is it possible to boot any kind of windows from an extended partition?\nYES/NO. :smile:   \n[http://homepages.tes...no-answers.html](http://homepages.tesco.net/J.deBoynePollard/FGA/questions-with-yes-or-no-answers.html \"External link\")  \n\nDefine \"Any\".  \n\nNT based version YES, that means NT 3.51, NT4.00,2K/XP/2003/Vista/2008 and 7.  \nDOS based versions NO. (unless a remapping is done).  \n\nCompare with example given in \"common sense advice\" point #d ![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png):  \n[http://www.boot-land...?showtopic\u003d9101](http://www.boot-land.net/forums/index.php?showtopic\u003d9101 \"External link\")  \n\n\u003e PS. Linux has been able to do that for over a decade.\nWindows NT also, since 1993 or 1994, if I recall correctly.  \n\nSee here:  \n[http://www.msfn.org/...howtopic\u003d142960](http://www.msfn.org/board/index.php?showtopic\u003d142960 \"External link\")  \n\n:smile:  \nWonko   \n"
+    },
+    {
+      "id": "97428",
+      "timestamp": "2010-04-09T15:23:34+00:00",
+      "author": "xpt",
+      "content": "Sorry, it was not my intention to start some kind of religious war.  \n\n\u003e Define \"Any\".\n\nAny means any, i.e., I need a working solution to boot a windows from extended partition, any windows, including NT, but hopefully with winxp, vista, or windows 7 (because all of them are newer than NT).   \n\nEspecially, for winxp, would that be a yes or no?   \n"
+    },
+    {
+      "id": "97429",
+      "timestamp": "2010-04-09T15:30:41+00:00",
+      "author": "xpt",
+      "content": "ok, guess it would be yes,   \n\nnow continuing on reading with  \n[http://www.goodells....iboot/index.htm](http://www.goodells.net/multiboot/index.htm \"External link\")  \n\nthanks   \n"
+    },
+    {
+      "id": "97431",
+      "timestamp": "2010-04-09T15:43:29+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Sorry, it was not my intention to start some kind of religious war.\nNo prob, you haven\u0027t. ![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png)  \n\n\u003e Especially, for winxp, would that be a yes or no?\n\n\u003e NT based version **YES** , that means NT 3.51, NT4.00,2K/**XP**/2003/Vista/2008 and 7.\n\n:smile:  \n\n\u003e thanks\nYou\u0027re welcome. :smile:  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "97433",
+      "timestamp": "2010-04-09T15:50:43+00:00",
+      "author": "xpt",
+      "content": "\\\u003e \"Windows 2000/XP \"knows\" about other partitions, even if they\u0027re hidden.\"  \n\nSo if I want to install Windows XP in an extended partition, do I still need to hide my vista which is in a prime partition?   \n\n\\\u003e \"recent versions of DriveImage and Ghost may be sophisticated enough to alter the boot.ini value automatically when the image is restored. -- 2003\"  \n\nSo with Ghost 11.0.2, I don\u0027t need to fix Windows 2000/XP BOOT.INI Files, correct?   \n\n\\\u003e \"a key parameter in the partition boot sector may prevent an OS from booting from an extended logical partition\" is the parameter, \"Hidden Sectors\"  \n\nDoes that statement still holds for Windows XP ntldr?  \n\nThanks   \n"
+    },
+    {
+      "id": "97443",
+      "timestamp": "2010-04-09T17:02:09+00:00",
+      "author": "MedEvil",
+      "content": "Just for the record, installing an older version Windows, after a newer version Windows, **always** kills the newer version!  \n\nSo better read up now, how to fix this later.   \nMaybe Wonko has a link for you, where it is described.   \n\n![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png)   \n"
+    },
+    {
+      "id": "97456",
+      "timestamp": "2010-04-09T17:56:57+00:00",
+      "author": "Wonko the Sane",
+      "content": "Where are you quoting from?  \n\n\u003e \\\u003e \"Windows 2000/XP \"knows\" about other partitions, even if they\u0027re hidden.\"\nIt doesn\u0027t actually \"know\" about them, as it won\u0027t give \u0027em a drive letter, thus they will be NOT accessed by the OS, normally.  \n[http://www.boot-land...showtopic\u003d10169](http://www.boot-land.net/forums/index.php?showtopic\u003d10169 \"External link\")  \n\n\u003cbr /\u003e\n\n\u003e So if I want to install Windows XP in an extended partition, do I still need to hide my vista which is in a prime partition?\nThere is NOT one reason in the world to \"hide\" partitions to other OS, exception made for some \"subtle\" problems with NTFS versions.   \nWin2K had the bad habit of changing NTFS type thus rendering pre-SP3 or pre-SP4 (cannot remember right now) installs useless.  \nI don\u0027t seem to remember any problems with dual booting Vista/2008/7 and previous versions, once the partitioning has been done PROPERLY:  \n[http://www.boot-land...?...ic\u003d9897\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d9897\u0026hl\u003d \"External link\")  \n\nRead this however:  \n[http://www.msfn.org/...howtopic\u003d142620](http://www.msfn.org/board/index.php?showtopic\u003d142620 \"External link\")  \nParticularly this:  \n[http://www.msfn.org/...o...42620\\\u0026st\u003d31](http://www.msfn.org/board/index.php?showtopic\u003d142620\u0026st\u003d31 \"External link\")  \n\n\u003e \\\u003e \"recent versions of DriveImage and Ghost may be sophisticated enough to alter the boot.ini value automatically when the image is restored. -- 2003\"  \n\u003e\n\u003e So with Ghost 11.0.2, I don\u0027t need to fix Windows 2000/XP BOOT.INI Files, correct?\nCannot say, but heck, is a plain text file, there is no problem in editing it if needed.  \n\n\u003e \\\u003e \"a key parameter in the partition boot sector may prevent an OS from booting from an extended logical partition\" is the parameter, \"Hidden Sectors\"  \n\u003e\n\u003e Does that statement still holds for Windows XP ntldr?\nSure it does, but has NOTHING to do with the actual NTLDR, and a lot of things to do about the BOOTSECTOR CODE. ![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png)  \n\n\u003cbr /\u003e\n\n:smile:  \nWonko   \n"
+    },
+    {
+      "id": "97491",
+      "timestamp": "2010-04-10T04:04:53+00:00",
+      "author": "xpt",
+      "content": "Find the following in a Linux forum:  \n\n\u003e remember you will not be able to reinstall XP (clean or repair) with out a primary partition XP can read.\n\nIs this true?   \n"
+    },
+    {
+      "id": "97505",
+      "timestamp": "2010-04-10T07:01:45+00:00",
+      "author": "engmod",
+      "content": "I have to disagree here.  \n\nHard Drive Partitions  \n\nA hard drive may be split into partitions. NT uses two main partitions but I believe these two may be installed on one partition. There can be up to 4 primary partitions and only one extended partition which may include several logical drives. A logical drive is assigned its own drive letter and uses part of or all the space in an extended partition. **Only one partition may be extended and an extended partition may not be marked as active which means operating systems cannot be booted from it** . Only one partition on a disk may be active at a time. On IBM compatible computers, only a primary partition may be a system partition which is where the NT boot loader must reside.   \n\nfrom [http://www.comptechd...win2kdisks.html](http://www.comptechdoc.org/os/windows/win2k/win2kdisks.html \"External link\")   \n\nDerek   \n"
+    },
+    {
+      "id": "97511",
+      "timestamp": "2010-04-10T08:45:44+00:00",
+      "author": "davlak",
+      "content": "booting from an extended partition has no sense, while booting from a LOGICAL one does.  \nevery NT based OS can do that, under the **condition to put the boot files on a primary and active partition** .  \nthe configuration file sitting on the primary (boot.ini or bcd) can be edited to boot any present OS (no matter if on a primary or a logical partition).  \nboot.ini can\u0027t configure a NT60 based OS, while BCD can configure NT52, switching through ntldr.   \nafter that the ntldr will read the relative **boot.ini present on the same primary active partition** .  \n\nusing NTFS file system, through ghost or similar tools, you can even make an image of a xp\\\\2k\\\\2003 installed on a primary partition and paste that ghost image on a LOGICAL partition, the result will be a logical partition installed OS booting with the above conditions.  \nin this way you can put many identical copies of XP on the same HD, and each one will keep the C: letter.  \ndon\u0027t know about VISTA but SEVEN keeps the C: letter even if you INSTALL it twice or more on the same HD in multi boot, not needing to hide any other primary partition.  \nthe only limit is of a maximum of 4 primary partition or 3 primary more 1 extended, **which IS a primary too** for each HD.   \n"
+    },
+    {
+      "id": "97678",
+      "timestamp": "2010-04-11T20:56:59+00:00",
+      "author": "dog",
+      "content": "\u003e There is NOT one reason in the world to \"hide\" partitions to other OS, exception made for some \"subtle\" problems with NTFS versions.\nHere\u0027s three: portability, isolation, control. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\u003e Sorry, it was not my intention to start some kind of religious war.\nThis war has been going a while...  \n\nIIRC some OSs will mount a hidden partition anyway, so on a new setup I\u0027d use grub4dos partnew instead, and other OSs will just see unallocated space ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nIt also has the handy side-effect of bypassing the 4 primary partition limit, as you can have as many primary partitions as you like and just \u0027swap in\u0027 the 1-4 that you want visible. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "97683",
+      "timestamp": "2010-04-11T21:31:54+00:00",
+      "author": "engmod",
+      "content": "Is there any grub type system we can use for the win 7 partitioning system?  \n\nDerek   \n"
+    },
+    {
+      "id": "97687",
+      "timestamp": "2010-04-11T22:25:58+00:00",
+      "author": "Wonko the Sane",
+      "content": "@engmod  \n@davlak  \n\nLet\u0027s try to disambiguate.  \n**xpt** was referring (though using a not completely exact term) to Logical volumes inside extended, and my replies were related to that.  \n\nYou should both read the references I gave before, as both of you are pointing out some limitations of the DEFAULT ways to boot a NT system.  \n\nThere are two - more or less indirect ways - to have a NT system COMPLETELY on a Logical partition inside extended.  \nFirst one is to have a bootmanager (almost any will do) to bypass the limitation of the logical inside extended that cannot be made active AND, after having corrected the \"sectors before\" in the logical partition bootsector (manually, like Dan Goodell explains), chainload it.  \nSecond one is to use grub4dos (or syslinux, or a similar \"more advanced\" boot manager) to bypass completely the logical partition bootsector and directly chainload the actual NT loader (NTLDR or BOOTMGR) residing on it.  \n\nThis is NOT a question that makes sense:  \n\u003e Is there any grub type system we can use for the win 7 partitioning system?\nIf you need help on the use of grub4dos, start a new thread here:  \n[http://www.boot-land...hp?showforum\u003d66](http://www.boot-land.net/forums/index.php?showforum\u003d66 \"External link\")  \nbut post some details, right now the only answer is:  \nYES. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n[http://homepage.ntlw...no-answers.html](http://homepage.ntlworld.com./jonathan.deboynepollard/FGA/questions-with-yes-or-no-answers.html \"External link\")  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "97714",
+      "timestamp": "2010-04-12T03:20:31+00:00",
+      "author": "xpt",
+      "content": "\u003e . . .  \n\u003e There are two - more or less indirect ways - to have a NT system COMPLETELY on a Logical partition inside extended. . .  \n\u003e\n\u003e Second one is to use grub4dos (or syslinux, or a similar \"more advanced\" boot manager) to bypass completely the logical partition bootsector and directly chainload the actual NT loader (NTLDR or BOOTMGR) residing on it.\n\nThanks a lot for the clarification, Wonko.   \n\nI\u0027ve been using grub4dos for years, but basically only limited to the Linux world. Didn\u0027t know that it solves the booting windows logical partitions so nicely. Otherwise, I won\u0027t be reading the \"Understanding MultiBooting and Booting Windows from an Extended Partition\" over and over and over for many days...  \n\nThanks again.   \n"
+    },
+    {
+      "id": "97717",
+      "timestamp": "2010-04-12T03:36:59+00:00",
+      "author": "xpt",
+      "content": "\u003e . . . I\u0027ve been using grub4dos for years, but ... didn\u0027t know that it solves the booting windows logical partitions so nicely. . .\n\nSo, in conclusion,   \n\nto boot windows XP from extended partition:  \n\n- put (restore) ghosted image on the logical partitions, as explained in the \"Understanding MultiBooting and Booting Windows from an Extended Partition\" article.   \n- use grub4dos to chainload the actual NT loader (NTLDR), no need to do \"Fixing Boot Records in Logical Partitions\", no need to worry the 8-GB Boundary  \n- but still need to do \"Fixing Windows 2000/XP BOOT.INI Files\" \\\u0026 \"Fixing Windows 2000/XP Drive Letters\" (correct?)  \n- no need to make the logical partitions active  \n- no need to (deactivate and) hide the primary windows partition  \n\nCorrect?   \nCan somebody re-assure this?   \n\nThanks   \n"
+    },
+    {
+      "id": "98159",
+      "timestamp": "2010-04-17T12:54:19+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Correct?   \n\u003e Can somebody re-assure this?\nYES. :wink:   \n\n(as long as you have an already installed XP on a primary and have \"ghosted\" it)  \n\nYou can allright install (as it SHOULD) the XP on a logical volume inside extended (with the system files on an active primary) and later copy the system files to the same logical partition, without ANY need to correct ANYTHING.   \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "98167",
+      "timestamp": "2010-04-17T14:00:07+00:00",
+      "author": "xpt",
+      "content": "\u003e You can allright install (as it SHOULD) the XP on a logical volume inside extended (with the system files on an active primary) and later copy the system files to the same logical partition, without ANY need to correct ANYTHING.\n\nThanks, Wonko.   \n\nMore about your reply,   \n\nwhat do you mean, \"You \\***can** \\* allright install XP on a logical volume...\"? -- Windows installation always goes by default into C:, good to know that you can choose something else, but the questions is, is the installation bootable?   \n\nwhat do you mean, \"later **copy the system files** to\" it. What system files are your talking about?   \n\nFurther, if you backup then restore a system to the same place, it is obvious that you don\u0027t need to do anything for it to work, what do you mean by \"without ANY need to correct ANYTHING\", do you imply anything further than that?   \n\nThanks   \n"
+    },
+    {
+      "id": "98176",
+      "timestamp": "2010-04-17T16:03:04+00:00",
+      "author": "Wonko the Sane",
+      "content": "We are still at square #1.  \n\nThe fact that 99.99% of OEM\u0027s do install XP on the First (and often ONLY) active partition on the disk (thus making the SAME partition BOTH \"System\" and \"Boot\" one) and the fact that the NT/2K/XP install does not provide an intuitive way to create partitions, DOES NOT mean that it is the right thing to do.  \n\nThe concept of having a SEPARATE **system** partition from the **boot** one, is made particularly difficult to grasp by people that have not \"historical\" experience with NT based systems in dual booting with good ol\u0027 MS-DOS by the good guys at MS, that besides MANY other things, managed to MESS copletely the names attributed to them (read here):  \n[http://www.multiboot....uk/system.html](http://www.multibooters.co.uk/system.html \"External link\")  \n\nI will use the ***right*** terms (exactly VICEVERSA to the ones the MS guys use):  \n\n* **Boot** is the partition that is **boot**ed by the MBR (normally the Active Primary)\n* **System** is the whatever partition that holds the given Operating **System**\n\n\u003cbr /\u003e\n\nIt is not difficult at all, once you get the hang of it, NT based systems, UNLIKE DOS based ones, were DESIGNED to be RUN from Logical Volumes inside extended, this is one of the reasons why BOOT.INI and ARCPATHS were introduced.  \n\nThe typical status of a PC at the time was that of having a DOS (usually MS-DOS 5.0÷6.22) AND to it a NT (3.5 or 4.0) was ADDED, normally the PC would have a single (smallish hard disk drive - tiny for today\u0027s \"standards\" - possibly very BIG for the \"standards\" of the time, like 300÷500 Mbytes! ) normally (as ALL hard disk SHOULD be) partitioned in one single Primary partition and one Extended Partition containing several Logical Volumes or, maybe, filled up to the brim by the DOS apps and DATA, and an additional hard disk was used.  \n\nInitially there were NO tools like \"Partition Magic\", so the good guys at MS devised a rather simple trick, \"divide\" the OS in such a way that most (99.99% of it) could be installed on ANY partition (no matter if Primary or Logical Volume inside Extended or on which disk), with the ONLY limitation that the 0.01%, and namely the files:  \n\n* NTLDR\n* NTDETECT.COM\n* BOOT.INI\n* NTBOOTDD.SYS (optional, only used for SCSI hard disks - or - to be correct - for NON-IDE HD\u0027s)\n\nNEEDed to actually be on the First Active Primary partition (the one that had DOS).  \n\nRemember also how NT 4.00 could use BOTH FAT16 and NTFS partitions (the latter being the advised filesystem for the System partition), whilst DOS could ONLY boot and access FAT16 partitions.  \n\nNow, take your time, and besides the given link to multibooters, read also:  \n[http://support.microsoft.com/kb/102873](http://support.microsoft.com/kb/102873 \"External link\")  \n[http://en.wikipedia.org/wiki/NTLDR](http://en.wikipedia.org/wiki/NTLDR \"External link\")  \n[http://www.winimage.com/bootpart.htm](http://www.winimage.com/bootpart.htm \"External link\")  \n\nQuick sum up:  \nNormal Operation:  \n\"Standard\" MBR-\\\u003eBootsector of Active Primary partition invoking NTLDR-\\\u003eNTLDR on SAME partition-\\\u003e BOOT.INI on SAME partition-\\\u003eNTDETECT.COM on SAME partition-\\\u003e NT install on WHATEVER partition mapped in BOOT.INI and chosen (NO MATTER on WHICH disk)  \n\nIndirect method one:  \n\"special\" MBR (bootloader)-\\\u003eBootsector of WHATEVER partition invoking NTLDR (if Logical Volume with the manual correction of \"sectors before\")-\\\u003eNTLDR on SAME partition-\\\u003e BOOT.INI on SAME partition-\\\u003eNTDETECT.COM on SAME partition-\\\u003e NT install on WHATEVER partition mapped in BOOT.INI and chosen (BUT the partition on which NTLDR is MUST be on FIRST disk)  \n\nGrub4dos (or Syslinux) DIRECT chainloading  \n\"special\" MBR (or ANY other way to invoke grub4dos or syslinux)-\\\u003eNTLDR on WHATEVER partition-\\\u003e BOOT.INI on SAME partition-\\\u003eNTDETECT.COM on SAME partition-\\\u003e NT install on WHATEVER partition mapped in BOOT.INI and chosen (BUT the partition on which NTLDR is MUST be on FIRST disk)  \n\nBeside any other consideration, there are reasons why installing NT on a non-at-the-beginning partition, and more exactly on a Logical Volume inside Extended, is (statistically) SAFER:  \n[http://www.msfn.org/...showtopic\u003d33964](http://www.msfn.org/board/index.php?showtopic\u003d33964 \"External link\")  \n[http://www.msfn.org/...opic\u003d33964\\\u0026st\u003d6](http://www.msfn.org/board/index.php?showtopic\u003d33964\u0026st\u003d6 \"External link\")  \n\nCircular back to Dan\u0027s site :wink::  \n[http://74.125.77.132...G...\u003dit\\\u0026ct\u003dclnk](http://74.125.77.132/search?q\u003dcache:NBbVSGvnUWYJ:ericleite.com/tag/partitions/+/search%3Fhl%3Dit%26client%3Dopera%26hs%3DdiV%26rls%3Dit%26q%3Dhttp://ericleite.com/%2Bsite:ericleite.com%2B\u0026cd\u003d5\u0026hl\u003dit\u0026ct\u003dclnk \"External link\")  \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "98448",
+      "timestamp": "2010-04-20T23:40:08+00:00",
+      "author": "xpt",
+      "content": "Thanks a lot for the comprehensive reply -- have been chewing on it for a day now and still continuing. will get back to you if I have further questions.   \n\nThanks!   \n"
+    },
+    {
+      "id": "98473",
+      "timestamp": "2010-04-21T07:50:44+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Thanks a lot for the comprehensive reply -- have been chewing on it for a day now and still continuing. will get back to you if I have further questions.   \n\u003e\n\u003e Thanks!\n\nYou\u0027re welcome. ![:ranting2:](http://reboot.pro/public/style_emoticons/default/ranting2.gif)  \n\n![:ranting2:](http://reboot.pro/public/style_emoticons/default/ranting2.gif)  \nWonko   \n"
+    },
+    {
+      "id": "101050",
+      "timestamp": "2010-05-28T03:35:29+00:00",
+      "author": "xpt",
+      "content": "\u003e Hi,   \n\u003e\n\u003e Is it possible to boot any kind of windows from a logical partition?   \n\u003e (Any means any, i.e., I need a working solution to boot a windows from logical partition, any windows, including NT, but hopefully with winxp, vista, or windows 7)  \n\u003e\n\u003e Especially, for winxp, would that be a yes or no?\n\nI finally get an environment to test all this, and theee ...   \n\n**Conclusion:**   \n\n***NO, a stand-alone windows cannot be boot from logical partition.***   \n\nHere is my proof:  \n\nSame ghost image, same ghost restore software (Ghost 11.0.2), same grub indirect boot mechanize, only difference is one is restored to logical partition, and the other is to primary partition -- The restored logical partition can\u0027t be booted, whereas the restored primary partition booted fine without any problem.  \n\nDetailed trial steps to boot windows XP from logical partition:  \n\n- put (restore) ghosted image on the logical partitions, as explained in the \"Understanding MultiBooting and Booting Windows from an Extended Partition\" article.  \n- use grub4dos to chainload the actual NT loader (NTLDR), no need to do \"Fixing Boot Records in Logical Partitions\", no need to worry the 8-GB Boundary  \n- No need to do \"Fixing Windows 2000/XP BOOT.INI Files\" \\\u0026 \"Fixing Windows 2000/XP Drive Letters\", because Ghost 11.0.2 has done that for me already. Double checked and verified with the partition being restored to the 2nd primary partition.  \n- no need to make the restored partitions active, yes verified  \n- no need to (deactivate and) hide the primary windows partition -- wasn\u0027t able to test.   \n\nHere is something I found to backup my finding:  \n\nFrom   \n[http://www.multiboot....uk/system.html](http://www.multibooters.co.uk/system.html \"External link\")  \n\n*\"No matter how many OSes or drives you add the System partition stays the same and the running OS becomes the Boot partition. In this example the booted operating system is on the third partition of the second hard drive.\nThe System partition always has to be the Active primary partition on the boot hard drive and this can be any one of the 4 primary partitions it is possible to have. The Boot partition can be any primary or logical partition on non-removable drives (except eSATA).\"*\n\nAny comment?   \n"
+    },
+    {
+      "id": "101053",
+      "timestamp": "2010-05-28T04:14:28+00:00",
+      "author": "xpt",
+      "content": "\u003e Hi,   \n\u003e\n\u003e Is it possible to boot any kind of windows from a logical partition?   \n\u003e\n\u003e Thanks  \n\u003e\n\u003e PS. Linux has been able to do that for over a decade.\n\nIt\u0027s Not Logical  \n[http://www.multiboot.../multiboot.html](http://www.multibooters.co.uk/multiboot.html \"External link\")  \n\n*\"If you want to have more than three Windows OSes and an extended partition per hard drive then you will need to put Windows onto a logical partition. With Linux you are able to install a fully independent and stand alone OS directly to a logical partition or to a second or higher hard drive, because the Linux IPL is clever enough to be able to pass control to that OS. Unfortunately Microsoft have never introduced such abilities in their IPL and so have never seen the need to allow you to do a fully independent install of Windows to a logical partition or other drive. Their IPL can only work with primary partitions on its own boot hard drive, so if you want to install to anything other than one of these primaries then you can only do it by allowing a boot drive primary to become a system partition where ntldr or bootmgr will operate as a bootmanager. The Windows setup will simply refuse to continue if there is not a suitable boot drive primary that it can use.\"*\n\n"
+    },
+    {
+      "id": "101063",
+      "timestamp": "2010-05-28T06:59:55+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I finally get an environment to test all this, and theee ...   \n\u003e\n\u003e **Conclusion:**   \n\u003e\n\u003e ***NO, a stand-alone windows cannot be boot from logical partition.***   \n\u003e\n\u003e Here is my proof:  \n\u003e ....  \n\u003e\n\u003e Any comment?\n\nYes, what you exposed is a report, NOT a ***proof*** of anything.  \n\nI see nowhere that you tried the ***needed*** fixes as per Dan Goodell given link ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif), you don\u0027t detail what you did with grub4dos, you mention the 8Gb limit as NOT pertaining, you used GHOST which may (or may be not) the right tool/method, so what gives?  \n\n\u003cbr /\u003e\n\nIf you are happy to say that it\u0027s not possible, you are welcome ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif), but you are very, very far from having proved it. ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)  \n\n\u003cbr /\u003e\n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "101091",
+      "timestamp": "2010-05-28T13:48:17+00:00",
+      "author": "xpt",
+      "content": "\u003e Yes, what you exposed is a report, NOT a ***proof*** of anything.\n\n\\\u003e you don\u0027t detail what you did with grub4dos,   \n\n```\ntitle Boot HDD1, sda2\n\n\t\trootnoverify \u0026#40;hd0,1\u0026#41;\n\n\t\tchainloader +1\n\n\n\ntitle Boot HDD1, sda6\n\n\t\trootnoverify \u0026#40;hd0,5\u0026#41;\n\n\t\tchainloader +1\n```\n\n\u003cbr /\u003e\n\n\\\u003e you mention the 8Gb limit as NOT pertaining,   \n\nThat limitation should have long gone, shouldn\u0027t it? It doesn\u0027t apply to grub at all, correct?  \n\n\\\u003e I see nowhere that you tried the ***needed*** fixes as per Dan Goodell given link ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif),   \n\nI Said so: *\"Ghost 11.0.2 has done that for me already. Double checked\"*   \n\nRemember Dan Goodell said:  \n\n*\"recent versions of DriveImage and Ghost may be sophisticated enough to alter the boot.ini value automatically when the image is restored. Always check the boot.ini values, but you may or may not have to manually change them. \"*\n\n?  \n\n\\\u003e you used GHOST which may (or may be not) the right tool/method,   \n\nIsn\u0027t that what Dan Goodell recommended?   \n\nI beleive that, successfully boot a image ghosted from 1st partition and restored to the 2nd partition of an empty machine without any of my manual tweaking is the strong proof that the tool/method/setup/chain-loading is right.   \n"
+    },
+    {
+      "id": "97413",
+      "timestamp": "2010-04-09T13:42:14+00:00",
+      "author": "xpt",
+      "content": "Hi,   \n\nIs it possible to boot any kind of windows from an extended partition?   \n\nThanks  \n\nPS. Linux has been able to do that for over a decade.   \n"
+    },
+    {
+      "id": "97424",
+      "timestamp": "2010-04-09T14:50:45+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Is it possible to boot any kind of windows from an extended partition?\nYES/NO. :smile:   \n[http://homepages.tes...no-answers.html](http://homepages.tesco.net/J.deBoynePollard/FGA/questions-with-yes-or-no-answers.html \"External link\")  \n\nDefine \"Any\".  \n\nNT based version YES, that means NT 3.51, NT4.00,2K/XP/2003/Vista/2008 and 7.  \nDOS based versions NO. (unless a remapping is done).  \n\nCompare with example given in \"common sense advice\" point #d ![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png):  \n[http://www.boot-land...?showtopic\u003d9101](http://www.boot-land.net/forums/index.php?showtopic\u003d9101 \"External link\")  \n\n\u003e PS. Linux has been able to do that for over a decade.\nWindows NT also, since 1993 or 1994, if I recall correctly.  \n\nSee here:  \n[http://www.msfn.org/...howtopic\u003d142960](http://www.msfn.org/board/index.php?showtopic\u003d142960 \"External link\")  \n\n:smile:  \nWonko   \n"
+    },
+    {
+      "id": "97428",
+      "timestamp": "2010-04-09T15:23:34+00:00",
+      "author": "xpt",
+      "content": "Sorry, it was not my intention to start some kind of religious war.  \n\n\u003e Define \"Any\".\n\nAny means any, i.e., I need a working solution to boot a windows from extended partition, any windows, including NT, but hopefully with winxp, vista, or windows 7 (because all of them are newer than NT).   \n\nEspecially, for winxp, would that be a yes or no?   \n"
+    },
+    {
+      "id": "97429",
+      "timestamp": "2010-04-09T15:30:41+00:00",
+      "author": "xpt",
+      "content": "ok, guess it would be yes,   \n\nnow continuing on reading with  \n[http://www.goodells....iboot/index.htm](http://www.goodells.net/multiboot/index.htm \"External link\")  \n\nthanks   \n"
+    },
+    {
+      "id": "97431",
+      "timestamp": "2010-04-09T15:43:29+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Sorry, it was not my intention to start some kind of religious war.\nNo prob, you haven\u0027t. ![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png)  \n\n\u003e Especially, for winxp, would that be a yes or no?\n\n\u003e NT based version **YES** , that means NT 3.51, NT4.00,2K/**XP**/2003/Vista/2008 and 7.\n\n:smile:  \n\n\u003e thanks\nYou\u0027re welcome. :smile:  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "97433",
+      "timestamp": "2010-04-09T15:50:43+00:00",
+      "author": "xpt",
+      "content": "\\\u003e \"Windows 2000/XP \"knows\" about other partitions, even if they\u0027re hidden.\"  \n\nSo if I want to install Windows XP in an extended partition, do I still need to hide my vista which is in a prime partition?   \n\n\\\u003e \"recent versions of DriveImage and Ghost may be sophisticated enough to alter the boot.ini value automatically when the image is restored. -- 2003\"  \n\nSo with Ghost 11.0.2, I don\u0027t need to fix Windows 2000/XP BOOT.INI Files, correct?   \n\n\\\u003e \"a key parameter in the partition boot sector may prevent an OS from booting from an extended logical partition\" is the parameter, \"Hidden Sectors\"  \n\nDoes that statement still holds for Windows XP ntldr?  \n\nThanks   \n"
+    },
+    {
+      "id": "97443",
+      "timestamp": "2010-04-09T17:02:09+00:00",
+      "author": "MedEvil",
+      "content": "Just for the record, installing an older version Windows, after a newer version Windows, **always** kills the newer version!  \n\nSo better read up now, how to fix this later.   \nMaybe Wonko has a link for you, where it is described.   \n\n![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png)   \n"
+    },
+    {
+      "id": "97456",
+      "timestamp": "2010-04-09T17:56:57+00:00",
+      "author": "Wonko the Sane",
+      "content": "Where are you quoting from?  \n\n\u003e \\\u003e \"Windows 2000/XP \"knows\" about other partitions, even if they\u0027re hidden.\"\nIt doesn\u0027t actually \"know\" about them, as it won\u0027t give \u0027em a drive letter, thus they will be NOT accessed by the OS, normally.  \n[http://www.boot-land...showtopic\u003d10169](http://www.boot-land.net/forums/index.php?showtopic\u003d10169 \"External link\")  \n\n\u003cbr /\u003e\n\n\u003e So if I want to install Windows XP in an extended partition, do I still need to hide my vista which is in a prime partition?\nThere is NOT one reason in the world to \"hide\" partitions to other OS, exception made for some \"subtle\" problems with NTFS versions.   \nWin2K had the bad habit of changing NTFS type thus rendering pre-SP3 or pre-SP4 (cannot remember right now) installs useless.  \nI don\u0027t seem to remember any problems with dual booting Vista/2008/7 and previous versions, once the partitioning has been done PROPERLY:  \n[http://www.boot-land...?...ic\u003d9897\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d9897\u0026hl\u003d \"External link\")  \n\nRead this however:  \n[http://www.msfn.org/...howtopic\u003d142620](http://www.msfn.org/board/index.php?showtopic\u003d142620 \"External link\")  \nParticularly this:  \n[http://www.msfn.org/...o...42620\\\u0026st\u003d31](http://www.msfn.org/board/index.php?showtopic\u003d142620\u0026st\u003d31 \"External link\")  \n\n\u003e \\\u003e \"recent versions of DriveImage and Ghost may be sophisticated enough to alter the boot.ini value automatically when the image is restored. -- 2003\"  \n\u003e\n\u003e So with Ghost 11.0.2, I don\u0027t need to fix Windows 2000/XP BOOT.INI Files, correct?\nCannot say, but heck, is a plain text file, there is no problem in editing it if needed.  \n\n\u003e \\\u003e \"a key parameter in the partition boot sector may prevent an OS from booting from an extended logical partition\" is the parameter, \"Hidden Sectors\"  \n\u003e\n\u003e Does that statement still holds for Windows XP ntldr?\nSure it does, but has NOTHING to do with the actual NTLDR, and a lot of things to do about the BOOTSECTOR CODE. ![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png)  \n\n\u003cbr /\u003e\n\n:smile:  \nWonko   \n"
+    },
+    {
+      "id": "97491",
+      "timestamp": "2010-04-10T04:04:53+00:00",
+      "author": "xpt",
+      "content": "Find the following in a Linux forum:  \n\n\u003e remember you will not be able to reinstall XP (clean or repair) with out a primary partition XP can read.\n\nIs this true?   \n"
+    },
+    {
+      "id": "97505",
+      "timestamp": "2010-04-10T07:01:45+00:00",
+      "author": "engmod",
+      "content": "I have to disagree here.  \n\nHard Drive Partitions  \n\nA hard drive may be split into partitions. NT uses two main partitions but I believe these two may be installed on one partition. There can be up to 4 primary partitions and only one extended partition which may include several logical drives. A logical drive is assigned its own drive letter and uses part of or all the space in an extended partition. **Only one partition may be extended and an extended partition may not be marked as active which means operating systems cannot be booted from it** . Only one partition on a disk may be active at a time. On IBM compatible computers, only a primary partition may be a system partition which is where the NT boot loader must reside.   \n\nfrom [http://www.comptechd...win2kdisks.html](http://www.comptechdoc.org/os/windows/win2k/win2kdisks.html \"External link\")   \n\nDerek   \n"
+    },
+    {
+      "id": "97511",
+      "timestamp": "2010-04-10T08:45:44+00:00",
+      "author": "davlak",
+      "content": "booting from an extended partition has no sense, while booting from a LOGICAL one does.  \nevery NT based OS can do that, under the **condition to put the boot files on a primary and active partition** .  \nthe configuration file sitting on the primary (boot.ini or bcd) can be edited to boot any present OS (no matter if on a primary or a logical partition).  \nboot.ini can\u0027t configure a NT60 based OS, while BCD can configure NT52, switching through ntldr.   \nafter that the ntldr will read the relative **boot.ini present on the same primary active partition** .  \n\nusing NTFS file system, through ghost or similar tools, you can even make an image of a xp\\\\2k\\\\2003 installed on a primary partition and paste that ghost image on a LOGICAL partition, the result will be a logical partition installed OS booting with the above conditions.  \nin this way you can put many identical copies of XP on the same HD, and each one will keep the C: letter.  \ndon\u0027t know about VISTA but SEVEN keeps the C: letter even if you INSTALL it twice or more on the same HD in multi boot, not needing to hide any other primary partition.  \nthe only limit is of a maximum of 4 primary partition or 3 primary more 1 extended, **which IS a primary too** for each HD.   \n"
+    },
+    {
+      "id": "97678",
+      "timestamp": "2010-04-11T20:56:59+00:00",
+      "author": "dog",
+      "content": "\u003e There is NOT one reason in the world to \"hide\" partitions to other OS, exception made for some \"subtle\" problems with NTFS versions.\nHere\u0027s three: portability, isolation, control. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\u003e Sorry, it was not my intention to start some kind of religious war.\nThis war has been going a while...  \n\nIIRC some OSs will mount a hidden partition anyway, so on a new setup I\u0027d use grub4dos partnew instead, and other OSs will just see unallocated space ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nIt also has the handy side-effect of bypassing the 4 primary partition limit, as you can have as many primary partitions as you like and just \u0027swap in\u0027 the 1-4 that you want visible. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "97683",
+      "timestamp": "2010-04-11T21:31:54+00:00",
+      "author": "engmod",
+      "content": "Is there any grub type system we can use for the win 7 partitioning system?  \n\nDerek   \n"
+    },
+    {
+      "id": "97687",
+      "timestamp": "2010-04-11T22:25:58+00:00",
+      "author": "Wonko the Sane",
+      "content": "@engmod  \n@davlak  \n\nLet\u0027s try to disambiguate.  \n**xpt** was referring (though using a not completely exact term) to Logical volumes inside extended, and my replies were related to that.  \n\nYou should both read the references I gave before, as both of you are pointing out some limitations of the DEFAULT ways to boot a NT system.  \n\nThere are two - more or less indirect ways - to have a NT system COMPLETELY on a Logical partition inside extended.  \nFirst one is to have a bootmanager (almost any will do) to bypass the limitation of the logical inside extended that cannot be made active AND, after having corrected the \"sectors before\" in the logical partition bootsector (manually, like Dan Goodell explains), chainload it.  \nSecond one is to use grub4dos (or syslinux, or a similar \"more advanced\" boot manager) to bypass completely the logical partition bootsector and directly chainload the actual NT loader (NTLDR or BOOTMGR) residing on it.  \n\nThis is NOT a question that makes sense:  \n\u003e Is there any grub type system we can use for the win 7 partitioning system?\nIf you need help on the use of grub4dos, start a new thread here:  \n[http://www.boot-land...hp?showforum\u003d66](http://www.boot-land.net/forums/index.php?showforum\u003d66 \"External link\")  \nbut post some details, right now the only answer is:  \nYES. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n[http://homepage.ntlw...no-answers.html](http://homepage.ntlworld.com./jonathan.deboynepollard/FGA/questions-with-yes-or-no-answers.html \"External link\")  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "97714",
+      "timestamp": "2010-04-12T03:20:31+00:00",
+      "author": "xpt",
+      "content": "\u003e . . .  \n\u003e There are two - more or less indirect ways - to have a NT system COMPLETELY on a Logical partition inside extended. . .  \n\u003e\n\u003e Second one is to use grub4dos (or syslinux, or a similar \"more advanced\" boot manager) to bypass completely the logical partition bootsector and directly chainload the actual NT loader (NTLDR or BOOTMGR) residing on it.\n\nThanks a lot for the clarification, Wonko.   \n\nI\u0027ve been using grub4dos for years, but basically only limited to the Linux world. Didn\u0027t know that it solves the booting windows logical partitions so nicely. Otherwise, I won\u0027t be reading the \"Understanding MultiBooting and Booting Windows from an Extended Partition\" over and over and over for many days...  \n\nThanks again.   \n"
+    },
+    {
+      "id": "97717",
+      "timestamp": "2010-04-12T03:36:59+00:00",
+      "author": "xpt",
+      "content": "\u003e . . . I\u0027ve been using grub4dos for years, but ... didn\u0027t know that it solves the booting windows logical partitions so nicely. . .\n\nSo, in conclusion,   \n\nto boot windows XP from extended partition:  \n\n- put (restore) ghosted image on the logical partitions, as explained in the \"Understanding MultiBooting and Booting Windows from an Extended Partition\" article.   \n- use grub4dos to chainload the actual NT loader (NTLDR), no need to do \"Fixing Boot Records in Logical Partitions\", no need to worry the 8-GB Boundary  \n- but still need to do \"Fixing Windows 2000/XP BOOT.INI Files\" \\\u0026 \"Fixing Windows 2000/XP Drive Letters\" (correct?)  \n- no need to make the logical partitions active  \n- no need to (deactivate and) hide the primary windows partition  \n\nCorrect?   \nCan somebody re-assure this?   \n\nThanks   \n"
+    },
+    {
+      "id": "98159",
+      "timestamp": "2010-04-17T12:54:19+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Correct?   \n\u003e Can somebody re-assure this?\nYES. :wink:   \n\n(as long as you have an already installed XP on a primary and have \"ghosted\" it)  \n\nYou can allright install (as it SHOULD) the XP on a logical volume inside extended (with the system files on an active primary) and later copy the system files to the same logical partition, without ANY need to correct ANYTHING.   \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "98167",
+      "timestamp": "2010-04-17T14:00:07+00:00",
+      "author": "xpt",
+      "content": "\u003e You can allright install (as it SHOULD) the XP on a logical volume inside extended (with the system files on an active primary) and later copy the system files to the same logical partition, without ANY need to correct ANYTHING.\n\nThanks, Wonko.   \n\nMore about your reply,   \n\nwhat do you mean, \"You \\***can** \\* allright install XP on a logical volume...\"? -- Windows installation always goes by default into C:, good to know that you can choose something else, but the questions is, is the installation bootable?   \n\nwhat do you mean, \"later **copy the system files** to\" it. What system files are your talking about?   \n\nFurther, if you backup then restore a system to the same place, it is obvious that you don\u0027t need to do anything for it to work, what do you mean by \"without ANY need to correct ANYTHING\", do you imply anything further than that?   \n\nThanks   \n"
+    },
+    {
+      "id": "98176",
+      "timestamp": "2010-04-17T16:03:04+00:00",
+      "author": "Wonko the Sane",
+      "content": "We are still at square #1.  \n\nThe fact that 99.99% of OEM\u0027s do install XP on the First (and often ONLY) active partition on the disk (thus making the SAME partition BOTH \"System\" and \"Boot\" one) and the fact that the NT/2K/XP install does not provide an intuitive way to create partitions, DOES NOT mean that it is the right thing to do.  \n\nThe concept of having a SEPARATE **system** partition from the **boot** one, is made particularly difficult to grasp by people that have not \"historical\" experience with NT based systems in dual booting with good ol\u0027 MS-DOS by the good guys at MS, that besides MANY other things, managed to MESS copletely the names attributed to them (read here):  \n[http://www.multiboot....uk/system.html](http://www.multibooters.co.uk/system.html \"External link\")  \n\nI will use the ***right*** terms (exactly VICEVERSA to the ones the MS guys use):  \n\n* **Boot** is the partition that is **boot**ed by the MBR (normally the Active Primary)\n* **System** is the whatever partition that holds the given Operating **System**\n\n\u003cbr /\u003e\n\nIt is not difficult at all, once you get the hang of it, NT based systems, UNLIKE DOS based ones, were DESIGNED to be RUN from Logical Volumes inside extended, this is one of the reasons why BOOT.INI and ARCPATHS were introduced.  \n\nThe typical status of a PC at the time was that of having a DOS (usually MS-DOS 5.0÷6.22) AND to it a NT (3.5 or 4.0) was ADDED, normally the PC would have a single (smallish hard disk drive - tiny for today\u0027s \"standards\" - possibly very BIG for the \"standards\" of the time, like 300÷500 Mbytes! ) normally (as ALL hard disk SHOULD be) partitioned in one single Primary partition and one Extended Partition containing several Logical Volumes or, maybe, filled up to the brim by the DOS apps and DATA, and an additional hard disk was used.  \n\nInitially there were NO tools like \"Partition Magic\", so the good guys at MS devised a rather simple trick, \"divide\" the OS in such a way that most (99.99% of it) could be installed on ANY partition (no matter if Primary or Logical Volume inside Extended or on which disk), with the ONLY limitation that the 0.01%, and namely the files:  \n\n* NTLDR\n* NTDETECT.COM\n* BOOT.INI\n* NTBOOTDD.SYS (optional, only used for SCSI hard disks - or - to be correct - for NON-IDE HD\u0027s)\n\nNEEDed to actually be on the First Active Primary partition (the one that had DOS).  \n\nRemember also how NT 4.00 could use BOTH FAT16 and NTFS partitions (the latter being the advised filesystem for the System partition), whilst DOS could ONLY boot and access FAT16 partitions.  \n\nNow, take your time, and besides the given link to multibooters, read also:  \n[http://support.microsoft.com/kb/102873](http://support.microsoft.com/kb/102873 \"External link\")  \n[http://en.wikipedia.org/wiki/NTLDR](http://en.wikipedia.org/wiki/NTLDR \"External link\")  \n[http://www.winimage.com/bootpart.htm](http://www.winimage.com/bootpart.htm \"External link\")  \n\nQuick sum up:  \nNormal Operation:  \n\"Standard\" MBR-\\\u003eBootsector of Active Primary partition invoking NTLDR-\\\u003eNTLDR on SAME partition-\\\u003e BOOT.INI on SAME partition-\\\u003eNTDETECT.COM on SAME partition-\\\u003e NT install on WHATEVER partition mapped in BOOT.INI and chosen (NO MATTER on WHICH disk)  \n\nIndirect method one:  \n\"special\" MBR (bootloader)-\\\u003eBootsector of WHATEVER partition invoking NTLDR (if Logical Volume with the manual correction of \"sectors before\")-\\\u003eNTLDR on SAME partition-\\\u003e BOOT.INI on SAME partition-\\\u003eNTDETECT.COM on SAME partition-\\\u003e NT install on WHATEVER partition mapped in BOOT.INI and chosen (BUT the partition on which NTLDR is MUST be on FIRST disk)  \n\nGrub4dos (or Syslinux) DIRECT chainloading  \n\"special\" MBR (or ANY other way to invoke grub4dos or syslinux)-\\\u003eNTLDR on WHATEVER partition-\\\u003e BOOT.INI on SAME partition-\\\u003eNTDETECT.COM on SAME partition-\\\u003e NT install on WHATEVER partition mapped in BOOT.INI and chosen (BUT the partition on which NTLDR is MUST be on FIRST disk)  \n\nBeside any other consideration, there are reasons why installing NT on a non-at-the-beginning partition, and more exactly on a Logical Volume inside Extended, is (statistically) SAFER:  \n[http://www.msfn.org/...showtopic\u003d33964](http://www.msfn.org/board/index.php?showtopic\u003d33964 \"External link\")  \n[http://www.msfn.org/...opic\u003d33964\\\u0026st\u003d6](http://www.msfn.org/board/index.php?showtopic\u003d33964\u0026st\u003d6 \"External link\")  \n\nCircular back to Dan\u0027s site :wink::  \n[http://74.125.77.132...G...\u003dit\\\u0026ct\u003dclnk](http://74.125.77.132/search?q\u003dcache:NBbVSGvnUWYJ:ericleite.com/tag/partitions/+/search%3Fhl%3Dit%26client%3Dopera%26hs%3DdiV%26rls%3Dit%26q%3Dhttp://ericleite.com/%2Bsite:ericleite.com%2B\u0026cd\u003d5\u0026hl\u003dit\u0026ct\u003dclnk \"External link\")  \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "98448",
+      "timestamp": "2010-04-20T23:40:08+00:00",
+      "author": "xpt",
+      "content": "Thanks a lot for the comprehensive reply -- have been chewing on it for a day now and still continuing. will get back to you if I have further questions.   \n\nThanks!   \n"
+    },
+    {
+      "id": "98473",
+      "timestamp": "2010-04-21T07:50:44+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Thanks a lot for the comprehensive reply -- have been chewing on it for a day now and still continuing. will get back to you if I have further questions.   \n\u003e\n\u003e Thanks!\n\nYou\u0027re welcome. ![:ranting2:](http://reboot.pro/public/style_emoticons/default/ranting2.gif)  \n\n![:ranting2:](http://reboot.pro/public/style_emoticons/default/ranting2.gif)  \nWonko   \n"
+    },
+    {
+      "id": "101050",
+      "timestamp": "2010-05-28T03:35:29+00:00",
+      "author": "xpt",
+      "content": "\u003e Hi,   \n\u003e\n\u003e Is it possible to boot any kind of windows from a logical partition?   \n\u003e (Any means any, i.e., I need a working solution to boot a windows from logical partition, any windows, including NT, but hopefully with winxp, vista, or windows 7)  \n\u003e\n\u003e Especially, for winxp, would that be a yes or no?\n\nI finally get an environment to test all this, and theee ...   \n\n**Conclusion:**   \n\n***NO, a stand-alone windows cannot be boot from logical partition.***   \n\nHere is my proof:  \n\nSame ghost image, same ghost restore software (Ghost 11.0.2), same grub indirect boot mechanize, only difference is one is restored to logical partition, and the other is to primary partition -- The restored logical partition can\u0027t be booted, whereas the restored primary partition booted fine without any problem.  \n\nDetailed trial steps to boot windows XP from logical partition:  \n\n- put (restore) ghosted image on the logical partitions, as explained in the \"Understanding MultiBooting and Booting Windows from an Extended Partition\" article.  \n- use grub4dos to chainload the actual NT loader (NTLDR), no need to do \"Fixing Boot Records in Logical Partitions\", no need to worry the 8-GB Boundary  \n- No need to do \"Fixing Windows 2000/XP BOOT.INI Files\" \\\u0026 \"Fixing Windows 2000/XP Drive Letters\", because Ghost 11.0.2 has done that for me already. Double checked and verified with the partition being restored to the 2nd primary partition.  \n- no need to make the restored partitions active, yes verified  \n- no need to (deactivate and) hide the primary windows partition -- wasn\u0027t able to test.   \n\nHere is something I found to backup my finding:  \n\nFrom   \n[http://www.multiboot....uk/system.html](http://www.multibooters.co.uk/system.html \"External link\")  \n\n*\"No matter how many OSes or drives you add the System partition stays the same and the running OS becomes the Boot partition. In this example the booted operating system is on the third partition of the second hard drive.\nThe System partition always has to be the Active primary partition on the boot hard drive and this can be any one of the 4 primary partitions it is possible to have. The Boot partition can be any primary or logical partition on non-removable drives (except eSATA).\"*\n\nAny comment?   \n"
+    },
+    {
+      "id": "101053",
+      "timestamp": "2010-05-28T04:14:28+00:00",
+      "author": "xpt",
+      "content": "\u003e Hi,   \n\u003e\n\u003e Is it possible to boot any kind of windows from a logical partition?   \n\u003e\n\u003e Thanks  \n\u003e\n\u003e PS. Linux has been able to do that for over a decade.\n\nIt\u0027s Not Logical  \n[http://www.multiboot.../multiboot.html](http://www.multibooters.co.uk/multiboot.html \"External link\")  \n\n*\"If you want to have more than three Windows OSes and an extended partition per hard drive then you will need to put Windows onto a logical partition. With Linux you are able to install a fully independent and stand alone OS directly to a logical partition or to a second or higher hard drive, because the Linux IPL is clever enough to be able to pass control to that OS. Unfortunately Microsoft have never introduced such abilities in their IPL and so have never seen the need to allow you to do a fully independent install of Windows to a logical partition or other drive. Their IPL can only work with primary partitions on its own boot hard drive, so if you want to install to anything other than one of these primaries then you can only do it by allowing a boot drive primary to become a system partition where ntldr or bootmgr will operate as a bootmanager. The Windows setup will simply refuse to continue if there is not a suitable boot drive primary that it can use.\"*\n\n"
+    },
+    {
+      "id": "101063",
+      "timestamp": "2010-05-28T06:59:55+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I finally get an environment to test all this, and theee ...   \n\u003e\n\u003e **Conclusion:**   \n\u003e\n\u003e ***NO, a stand-alone windows cannot be boot from logical partition.***   \n\u003e\n\u003e Here is my proof:  \n\u003e ....  \n\u003e\n\u003e Any comment?\n\nYes, what you exposed is a report, NOT a ***proof*** of anything.  \n\nI see nowhere that you tried the ***needed*** fixes as per Dan Goodell given link ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif), you don\u0027t detail what you did with grub4dos, you mention the 8Gb limit as NOT pertaining, you used GHOST which may (or may be not) the right tool/method, so what gives?  \n\n\u003cbr /\u003e\n\nIf you are happy to say that it\u0027s not possible, you are welcome ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif), but you are very, very far from having proved it. ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)  \n\n\u003cbr /\u003e\n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "101091",
+      "timestamp": "2010-05-28T13:48:17+00:00",
+      "author": "xpt",
+      "content": "\u003e Yes, what you exposed is a report, NOT a ***proof*** of anything.\n\n\\\u003e you don\u0027t detail what you did with grub4dos,   \n\n```\ntitle Boot HDD1, sda2\n\n\t\trootnoverify \u0026#40;hd0,1\u0026#41;\n\n\t\tchainloader +1\n\n\n\ntitle Boot HDD1, sda6\n\n\t\trootnoverify \u0026#40;hd0,5\u0026#41;\n\n\t\tchainloader +1\n```\n\n\u003cbr /\u003e\n\n\\\u003e you mention the 8Gb limit as NOT pertaining,   \n\nThat limitation should have long gone, shouldn\u0027t it? It doesn\u0027t apply to grub at all, correct?  \n\n\\\u003e I see nowhere that you tried the ***needed*** fixes as per Dan Goodell given link ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif),   \n\nI Said so: *\"Ghost 11.0.2 has done that for me already. Double checked\"*   \n\nRemember Dan Goodell said:  \n\n*\"recent versions of DriveImage and Ghost may be sophisticated enough to alter the boot.ini value automatically when the image is restored. Always check the boot.ini values, but you may or may not have to manually change them. \"*\n\n?  \n\n\\\u003e you used GHOST which may (or may be not) the right tool/method,   \n\nIsn\u0027t that what Dan Goodell recommended?   \n\nI beleive that, successfully boot a image ghosted from 1st partition and restored to the 2nd partition of an empty machine without any of my manual tweaking is the strong proof that the tool/method/setup/chain-loading is right.   \n"
+    },
+    {
+      "id": "101096",
+      "timestamp": "2010-05-28T15:09:14+00:00",
+      "author": "Wonko the Sane",
+      "content": "Good. ![:w00t:](https://reboot.pro/public/style_emoticons/default/w00t.gif)  \n\nWhat happens, I mean what can you see when you try :  \n\n```\ntitle Boot HDD1, sda6\n\n\t\trootnoverify \u0026#40;hd0,5\u0026#41;\n\n\t\tchainloader +1\n```\n\n\u003cbr /\u003e\n\n:wink:  \nA blinking cursor, a completely blank (black) screen, and error message, a BSOD, nothing at all, a reboot....  \n\nCan you detail how the disk is partitioned?  \n(that seems a lot like the second logical volume inside extended)  \n\nI am not saying at all that the 8Gb limit may be involved, I am only saying that you have no proper grounds to affirm it is not. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nCan you post a copy of the MBR and EPBR and bootsector of the logical volume?  \n\nThe BOOT.INI settings have nothing to do with the ***needed*** fixes to the bootsector, I will try again, have you checked that the number of sectors before has been corrected by GHOST ![:ph34r:](https://reboot.pro/public/style_emoticons/default/scared9.gif)? (and that they have been corrected properly)  \n\nI mean THIS check:  \n[http://www.goodells....boot/ptedit.htm](http://www.goodells.net/multiboot/ptedit.htm \"External link\")  \n\nOr, what happens if you actually do what you were going to do last time ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif):  \n\u003e - use grub4dos to chainload the actual NT loader (NTLDR), no need to do \"Fixing Boot Records in Logical Partitions\", no need to worry the 8-GB Boundary\n\n![:thumbsup:](https://reboot.pro/public/style_emoticons/default/thumbsup.gif)  \nWonko   \n"
+    },
+    {
+      "id": "101133",
+      "timestamp": "2010-05-29T02:38:09+00:00",
+      "author": "xpt",
+      "content": "Thanks for you reply, Wonko.  \n\n\u003e What happens, I mean what can you see when you try :  \n\u003e\n\u003e ```\n\u003e title Boot HDD1, sda6\n\u003e\n\u003e \t\trootnoverify \u0026#40;hd0,5\u0026#41;\n\u003e\n\u003e \t\tchainloader +1\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nchainloading with plain grub, nothing happens, 2 line of info saying something like \"booting ...\", then nothing at all, HD light never flash. I waited for 5 minutes then reboot myself.   \n\nIf chainloading with grub4dos, machine reboots immediately.  \n\n\u003cbr /\u003e\n\n\\\u003e Can you detail how the disk is partitioned?  \n\\\u003e (that seems a lot like the second logical volume inside extended)  \n\nsda1, active primary, 1G, Linux  \nsda2, primary, 4G, NTFS, WinXP  \nsda3, extended   \nsda4, empty  \nsda5, linux swap, 500M  \nsda6, logic, 4G, NTFS, WinXP  \n\nSo the 8Gb limit is actually irrelevant here.  \n\n\\\u003e Or, what happens if you actually do what you were going to do last time   \n\nNo, I wasn\u0027t able to test all these until now. What I was doing was to conclude from what I had been reading thus far. I thought I was using grub4dos to chainload the actual NT loader (NTLDR), but I realized that you meant something different. So I gave it a try:  \n\n```\ntitle Boot Windows XP on \u0026#40;hd0,1\u0026#41;\n\n  root \u0026#40;hd0,1\u0026#41;\n\n  chainloader /ntldr \n\n\n\ntitle Boot Windows XP on \u0026#40;hd0,5\u0026#41;\n\n  hide \u0026#40;hd0,1\u0026#41;\n\n  root \u0026#40;hd0,5\u0026#41;\n\n  chainloader \u0026#40;hd0,5\u0026#41;/ntldr\n```\n\n\u003cbr /\u003e\n\n(hd0,1) boots fine, when trying to boot (hd0,5), I get:  \n\n```\nInvalid BOOT.INI file\n\nBooting from C\u0026#58;\\windows\\\n\nNTDETCT failed.\n```\n\n\u003cbr /\u003e\n\nI\u0027ll skip the rest of the questions because I believe they all related with booting with windows boot manger, not grub4dos.  \n\n\u003e Can you post a copy of the MBR and EPBR and bootsector of the logical volume?  \n\u003e\n\u003e The BOOT.INI settings have nothing to do with the ***needed*** fixes to the bootsector, I will try again, have you checked that the number of sectors before has been corrected by GHOST ![:thumbsup:](https://reboot.pro/public/style_emoticons/default/thumbsup.gif)? (and that they have been corrected properly)  \n\u003e\n\u003e I mean THIS check:  \n\u003e [http://www.goodells....boot/ptedit.htm](http://www.goodells.net/multiboot/ptedit.htm \"External link\")\n\n"
+    },
+    {
+      "id": "101143",
+      "timestamp": "2010-05-29T08:44:25+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Thanks for you reply, Wonko.\nThanks my sock! ![:thumbsup:](https://reboot.pro/public/style_emoticons/default/thumbsup.gif)   \n\n\u003e I\u0027ll skip the rest of the questions because I believe they all related with booting with windows boot manger, not grub4dos.\n\nFine ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif) , I\u0027ll skip the rest of the answers and suggestions ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif) because I believe that until you don\u0027t assume an approach based on the things that we discussed INSTEAD of basing your tests on ASSUMPTIONS and semi-random attempts taking bits and pieces all over the net without filling the obvious gaps, it will be wasted time.  \n\n\u003cbr /\u003e\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "101147",
+      "timestamp": "2010-05-29T10:01:26+00:00",
+      "author": "karyonix",
+      "content": "For Windows XP, you only need ntldr, ntdetect.com and boot.ini in active primary partition of boot disk.   \nWindows directory and all other files can be in logical partition.   \n\nIf you don\u0027t want FAT/NTFS active primary partition, you can still boot Windows in logical partition from floppy disk.   \nJust put ntldr, ntdetect.com and boot.ini in a floppy disk and boot ntldr in it.   \n\nIf you don\u0027t want to use real floppy disk, use a fake one.   \n\n* Use ImDisk or other tool to create a 1440-KB floppy disk image \"floppy.img\" in your Windows logical partition.\n* Format it.\n* Copy ntldr, ntdetect.com and boot.ini into it.\n* Make sure partition number in boot.ini is correct.  \n  From your partition layout. Here is GRUB4DOS partition number and boot.ini partition number.  \n  sda1 \u003d (hd0,0) \u003d partition(1), active primary, 1G, Linux  \n  sda2 \u003d (hd0,1) \u003d partition(2), primary, 4G, NTFS, WinXP  \n  sda3 \u003d (hd0,2) \u003d - , extended  \n  sda4 \u003d (hd0,3) \u003d - , empty  \n  sda5 \u003d (hd0,4) \u003d partition(3), linux swap, 500M  \n  sda6 \u003d (hd0,5) \u003d partition(4), logic, 4G, NTFS, WinXP  \n\n  Your Windows XP logical partition is (hd0,5) in GRUB4DOS and partition(4) in boot.ini.   \n\n  boot.ini in floppy should be like this  \n\n  ```\n  \u0026#91;boot loader\u0026#93;\n\n  timeout\u003d30\n\n  default\u003dmulti\u0026#40;0\u0026#41;disk\u0026#40;0\u0026#41;rdisk\u0026#40;0\u0026#41;partition\u0026#40;4\u0026#41;\\WINDOWS\n\n  \u0026#91;operating systems\u0026#93;\n\n  multi\u0026#40;0\u0026#41;disk\u0026#40;0\u0026#41;rdisk\u0026#40;0\u0026#41;partition\u0026#40;4\u0026#41;\\WINDOWS\u003d\u0026#34;Microsoft Windows XP Professional\u0026#34; /noexecute\u003doptin /fastdetect /pae\n  ```\n\n* Unmount virtual floppy\n* Create entry in your menu.lst.  \n\n  ```\n  title Boot Windows XP on \u0026#40;hd0,5\u0026#41;\n\n    map \u0026#40;hd0,5\u0026#41;/floppy.img \u0026#40;fd0\u0026#41;\n\n    map --hook\n\n    chainloader \u0026#40;fd0\u0026#41;/ntldr\n  ```\n\n\u003cbr /\u003e\n\nYou should also make sure you have correct \\\\DosDevices\\\\\\* values in MountedDevices key in system hive in your Windows logical partition.   \nIf the source Windows is in C:, \\\\DosDevices\\\\C: should contain disk signature and partition offset of your Windows logical partition.   \n"
+    },
+    {
+      "id": "101153",
+      "timestamp": "2010-05-29T11:50:36+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e For Windows XP, you only need ntldr, ntdetect.com and boot.ini in active primary partition of boot disk.   \n\u003e Windows directory and all other files can be in logical partition.\n\nWell, the whole point is that you can \"fix\" a logical partition inside extended and have also NTLDR, NTDETECT.COM and BOOT.INI on it.  \n\n[http://www.goodells....iboot/index.htm](http://www.goodells.net/multiboot/index.htm \"External link\")  \n\u003e Fixing Boot Records in Logical Partitions  \n\u003e A logical volume in the extended primary partition does not usually contain an operating system, and there is not normally a boot record there. (Okay, maybe there\u0027s technically a \"boot sector\", but it\u0027s normally blank unless we put an OS there.) If we put an OS and boot record there we need to check the boot record to make sure it knows where to find itself. Petr Soucek has documented that a key parameter in the partition boot sector may prevent an OS from booting from an extended logical partition. This parameter, \"Hidden Sectors\", should be the total number of sectors on the disk preceding the partition, but for a logical partition the value may be incorrectly initialized by the tool used to create or manipulate the partition. Sometimes it is the number of sectors from the start of the extended partition (e.g., 63) instead of from the beginning of the disk. If this number is incorrect the OS cannot determine where the other sectors of its own partition are and the boot process hangs. Powerquest\u0027s Partition Table Editor may be used to fix the \"Hidden Sectors\" parameter in the partition boot record of any OS\u0027s installed in logical partitions. Partition boot records in primary partitions are normally okay\n\n\u003cbr /\u003e\n\n[http://www.goodells....boot/ptedit.htm](http://www.goodells.net/multiboot/ptedit.htm \"External link\")  \n\ngrub4dos can fix the Sectors before without need of PTEDIT or a similar tool, by using the partnew command (a free entry in the PT of MBR is needed, or you need a more complex workaround) or use the map --in-situ command to TEMPORARILY fix the problem.  \n\n![:thumbsup:](https://reboot.pro/public/style_emoticons/default/thumbsup.gif)  \nWonko   \n"
+    },
+    {
+      "id": "101163",
+      "timestamp": "2010-05-29T12:49:34+00:00",
+      "author": "karyonix",
+      "content": "You are right.   \nAfter logical partition\u0027s \"number of hidden sector\" (4 bytes at offset 0x1C) is fixed, it can boot from its PBR to NTLDR and Windows XP.   \nNo virtual floppy is required.   \n"
+    },
+    {
+      "id": "101172",
+      "timestamp": "2010-05-29T13:42:58+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e You are right.\n\nHmm ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif), I though that was an initial AXIOM:  \n[http://en.wikipedia.org/wiki/Axiom](http://en.wikipedia.org/wiki/Axiom \"External link\")  \n\n:wink:  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\n![:thumbsup:](https://reboot.pro/public/style_emoticons/default/thumbsup.gif)  \nWonko   \n"
+    },
+    {
+      "id": "101252",
+      "timestamp": "2010-05-31T03:55:14+00:00",
+      "author": "xpt",
+      "content": "If one bases his action on false perception, he would surly go the wrong route.   \n\nPlease check the post  \n[http://www.boot-land...amp;#entry97717](http://www.boot-land.net/forums/index.php?showtopic\u003d11054\u0026st\u003d10\u0026p\u003d97717\u0026#entry97717 \"External link\")  \nI concluded that based on all my previous readings, and asked specifically if the conclusion is correct. Please read it again, especially, the conclusion *(if) use grub4dos to chainload the actual NT loader (NTLDR), no need to do \"Fixing Boot Records in Logical Partitions\"*   \n\nThanks   \n"
+    },
+    {
+      "id": "101257",
+      "timestamp": "2010-05-31T06:15:52+00:00",
+      "author": "karyonix",
+      "content": "From my test this is wrong.   \n\u003e *(if) use grub4dos to chainload the actual NT loader (NTLDR), no need to do \"Fixing Boot Records in Logical Partitions\"*\nPartition that contain ntldr, ntdetect.com, boot.ini must have correct *number of hidden sector* in its partition boot record.   \n\n* Primary partition, correct *number of hidden sectors*   \n  - \"chainloader (hd0,x)+1\" boot success  \n  - \"chainloader (hd0,x)/ntldr\" boot success\n* Logical partition, wrong *number of hidden sectors*   \n  - \"chainloader (hd0,x)+1\" boot fail  \n  - \"chainloader (hd0,x)/ntldr\" boot fail\n* Logical partition, corrected *number of hidden sectors*   \n  - \"chainloader (hd0,x)+1\" boot success  \n  - \"chainloader (hd0,x)/ntldr\" boot success\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "101266",
+      "timestamp": "2010-05-31T09:41:27+00:00",
+      "author": "Wonko the Sane",
+      "content": "OK, I now see the problem. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nA misunderstanding, definitely my fault. :wink:  \n\nI meant another thing, I now understand how I wasn\u0027t clear enough, sorry. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nWhilst the Dan Goodels tutorial is about the NEED of hexediting the volume to correct the previous sectors, and the volume NEEDS to have a bootsector invoking NTLDR, using grub4dos you do NOT \\*need\\* these \"fixes\" as grub4dos can \"fix\" them on the fly. (but you still need to \"tell it\" to do the fixes ![:thumbsup:](https://reboot.pro/public/style_emoticons/default/thumbsup.gif)).  \n\nIf, instead of using chainloader (hd0,x)+1 you use chainloader (hd0,x)/ntldr, the bootsector code can be whatever (or even be completely missing).  \n\nTo correct the \"sectors before\" there are TWO methods:  \n\n* Using the partnew command:  \n\n  If you have an empty partition entry in the main MBR (as you should have) you can use partnew to create a new primary partition entry pointing to the logical volume inside extended, during this process the \"sectors before\" will be automatically and PERMANENTLY corrected .  \n  Example, say you have a logical NTFS partition that you want to boot (hd0,5) and an empty partition entry in the main MBR (hd0,3):  \n\n  ```\n  partnew \u0026#40;hd0,3\u0026#41; 0x07 \u0026#40;hd0,5\u0026#41;+1\n  ```\n\n  this will create an entry in last entry of the main MBR and correct the \"sectors before\" in the partition bootsector automatically and PERMANENTLY.  \n  Then you can:  \n\n  ```\n  root \u0026#40;hd0,3\u0026#41;\n\n  chainloader /ntldr\n\n  boot\n  ```\n\n  to boot or:  \n\n  ```\n  partnew \u0026#40;hd0,3\u0026#41; 0 0 0\n  ```\n\n  reset the empty entry and chainload normally the logical volume  \n\n  ```\n  root \u0026#40;hd0,5\u0026#41;\n\n  chainloader /ntldr\n\n  boot\n  ```\n\n* Using the map --in-situ command, create a TEMPORARY fix:  \n\n  ```\n  map --in-situ \u0026#40;hd0,5\u0026#41;+1 \u0026#40;hd0\u0026#41;\n\n  root \u0026#40;hd0,5\u0026#41;\n\n  chainloader /ntldr\n\n  boot\n  ```\n\n  this will correct the \"sectors before\" in the partition bootsector automatically and TEMPORARILY.\n\nthis latter method is extremely convenient as it doesn\u0027t \"touch\" anything, and you can boot from a logical volume \"on-the-fly\", this is what I meant, when I said you don\u0027t need to correct the values if using grub4dos....  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "102170",
+      "timestamp": "2010-06-12T00:49:55+00:00",
+      "author": "xpt",
+      "content": "Thanks a lot for your replies, karyonix \\\u0026 Wonko.  \n\nContinue on the topic in  \n[http://www.boot-land...?...\u003d11675\\\u0026st\u003d0](http://www.boot-land.net/forums/index.php?showtopic\u003d11675\u0026st\u003d0 \"External link\")  \nbecause the discussion is now specifically focused on Grub4dos...   \n\nthx   \n"
+    },
+    {
+      "id": "102172",
+      "timestamp": "2010-06-12T02:07:27+00:00",
+      "author": "karyonix",
+      "content": "If you don\u0027t have empty entry in partition table, you can still use partnew command.   \nJust backup old MBR somewhere, use partnew command, and restore old MBR.  \n\nExample (adapted from Wonko\u0027s example above)  \n\n```\n# Backup old MBR+partition table to RAM \u0026#40;address 32MB\u0026#41;\n\ndd if\u003d\u0026#40;hd0\u0026#41;0+1 of\u003d\u0026#40;md\u0026#41;0x10000+1\n\n# Fix \u0026#34;sectors before\u0026#34; field in \u0026#40;hd0,5\u0026#41; PBR.  Change first entry in partition table. \n\npartnew \u0026#40;hd0,0\u0026#41; 0x07 \u0026#40;hd0,5\u0026#41;+1\n\n# Restore old MBR+partition table from RAM \u0026#40;address 32MB\u0026#41;\n\ndd of\u003d\u0026#40;hd0\u0026#41;0+1 if\u003d\u0026#40;md\u0026#41;0x10000+1\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "102173",
+      "timestamp": "2010-06-12T02:17:43+00:00",
+      "author": "Sha0",
+      "content": "Also, instead of choosing a memory address at random and ignoring the possibility that the RAM is used by someone, you can do this:  \n\n```\n...\n\n# Establish a buffer in usable memory\n\nmap --rd-size\u003d2048\n\nmap --mem \u0026#40;rd\u0026#41;+4 \u0026#40;0x55\u0026#41;\n\nmap --rehook\n\n# Backup old MBR+partition table to the buffer\n\ndd if\u003d\u0026#40;hd0\u0026#41;0+1 of\u003d\u0026#40;0x55\u0026#41;0+1\n\n# Fix \u0026#34;sectors before\u0026#34; field in \u0026#40;hd0,5\u0026#41; PBR.  Change first entry in partition table. \n\npartnew \u0026#40;hd0,0\u0026#41; 0x07 \u0026#40;hd0,5\u0026#41;+1\n\n# Restore old MBR+partition table from buffer\n\ndd if\u003d\u0026#40;0x55\u0026#41;0+1 of\u003d\u0026#40;hd0\u0026#41;0+1\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "102208",
+      "timestamp": "2010-06-13T01:27:57+00:00",
+      "author": "xpt",
+      "content": "That\u0027s really a great news to me, because the machine that I want to boot WinXP from, really doesn\u0027t give me the option to have a free primary partition. My current primary partitions are:  \n\n- Factory default partition to store all factory default tools  \n- Win vista, which I don\u0027t want to destroy  \n- Linux, my prime boot partition that dispatch actual boots  \n- Extended partition,   \n\nI know I can move Linux to logic partitions and boot from there with some special MBR, but that\u0027s considered too dangerous to me... anyway, back to the topic,  \n\nThanks for the example code, karyonix \\\u0026 Sha0,that\u0027s extremely useful for me to put all jigsaw puzzles together. One further question ...  \n\n\u003e If you don\u0027t have empty entry in partition table, you can still use partnew command.   \n\u003e Just backup old MBR somewhere, use partnew command, and restore old MBR.\n\nat which point in the above steps should I boot the logical partition then? Before restore or after restore?  \n\nthanks   \n"
+    },
+    {
+      "id": "102209",
+      "timestamp": "2010-06-13T02:42:35+00:00",
+      "author": "karyonix",
+      "content": "In these examples MBR is saved in RAM. You should restore MBR immediately after partnew command.   \nIf you run any other program or turn off or reboot before restoring old MBR, your old MBR is lost (unless you have MBR backup in file in another drive).   \n\nYou do partnew \\\u0026 restore old MBR only once. The change are permanent.   \n\nAfter that you can try to boot logical partition with \u0027chainloader (hd0,5)/ntldr\u0027 whenever you want.   \n"
+    },
+    {
+      "id": "102212",
+      "timestamp": "2010-06-13T04:16:16+00:00",
+      "author": "xpt",
+      "content": "\u003e . . .   \n\u003e You do partnew \\\u0026 restore old MBR only once. The change are permanent.   \n\u003e\n\u003e After that you can try to boot logical partition with \u0027chainloader (hd0,5)/ntldr\u0027 whenever you want.\n\nAh, thanks.   \n\nOne further question, I want to put it in a \"template\" menu entry. By \"template\" menu entry, I mean for example, I have \"Boot HD1 P1\" template entry in my grub4dos menu, when I try to boot other partitions, I just edit it, then press \u0027b\u0027 to let it boot.   \n\nis it possible to do the same here? I mean, how can I tell grub4dos to go ahead with the amened menu entry, then return to menu again?   \n\nThanks   \n"
+    },
+    {
+      "id": "102230",
+      "timestamp": "2010-06-13T10:58:02+00:00",
+      "author": "karyonix",
+      "content": "If there is no kernel/chainloader/configfile/reboot/halt command in a menu item, you cannot select it with up/down key but you can select it with left/right key and press Enter to execute or E to edit and then B to execute.   \nWhen last command in non-boot menu item completes, it return to menu automatically.   \n"
+    },
+    {
+      "id": "102657",
+      "timestamp": "2010-06-17T21:45:27+00:00",
+      "author": "xpt",
+      "content": "Hi,   \n\nSorry for responding late -- you can tell from my posts in other forums that I was busy. Let me first explain what took me so long, before getting into \"business\".   \n\nWhen trying the following out, almost everything failed on me and I had almost retreated to the \"stone-age\" to get things going.   \n\nI attempted 2 types of windows install, ghost restore and direct windows install, each having 2 or more different CDs. BTW, you\u0027ve got to be a Chinese in order to understand why there are so many ways to install windows instead of just one, the official one. FYI, just to proof that I am not lying, :-), I\u0027ve been trying, \"GHOST XP SP3 2010 V2.0 统一纯净版\", which has been working for me fine before, then \"GHOST XP SP3 2010 V2.1统一会员纯净版\", when all these ghost restore didn\u0027t work, I reverted to direct windows install, using \"WinXP SP3 2009 v1.3精简安装版（220MB)\", then \"深度 Windows XP SP3完美精简 V6.2版\\[215M小盘\\]\" produced in 2008年6月13日, then \"Windows XP Professional and Retail All-in-one SP3\". Nothing worked. All crashed with blue screen saying something like plug and play driver error.   \n\nThis is not only tested on a single machine, but two entirely different ones. All get the same result. Only when I reverted to \"Win2K Professional (SP4, RU1-V2)\" when I was finally able to see windows installation finished to the end.   \n\nMeanwhile, my USB Linux boot failed on me as well, and even booting primary windows partition using grub4dos failed on me too! So I reverted booting grub4dos from USB back to CDROM. Then things started to move forward. Moreover, I\u0027ve repartitioned my HD just to test out the following word for word.  \n\nAll I want to say is that I\u0027ve met with tremendous difficulties, but all solved by myself, but not the following:  \n\n\u003e To correct the \"sectors before\" there are TWO methods:  \n\u003e \\[list\u003d1\\]  \n\u003e \\[\\*\\]Using the partnew command:  \n\u003e\n\u003e If you have an empty partition entry in the main MBR (as you should have) you can use partnew to create a new primary partition entry pointing to the logical volume inside extended, during this process the \"sectors before\" will be automatically and PERMANENTLY corrected .  \n\u003e Example, say you have a logical NTFS partition that you want to boot (hd0,5) and an empty partition entry in the main MBR (hd0,3):  \n\u003e\n\u003e ```\n\u003e partnew \u0026#40;hd0,3\u0026#41; 0x07 \u0026#40;hd0,5\u0026#41;+1\n\u003e ```\n\u003e\n\u003e this will create an entry in last entry of the main MBR and correct the \"sectors before\" in the partition bootsector automatically and PERMANENTLY.  \n\u003e Then you can:  \n\u003e\n\u003e ```\n\u003e root \u0026#40;hd0,3\u0026#41;\n\u003e\n\u003e chainloader /ntldr\n\u003e\n\u003e boot\n\u003e ```\n\u003e\n\u003e to boot or:  \n\u003e\n\u003e ```\n\u003e partnew \u0026#40;hd0,3\u0026#41; 0 0 0\n\u003e ```\n\u003e\n\u003e reset the empty entry and chainload normally the logical volume  \n\u003e\n\u003e ```\n\u003e root \u0026#40;hd0,5\u0026#41;\n\u003e\n\u003e chainloader /ntldr\n\u003e\n\u003e boot\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nBeen there, done that, word for word. Didn\u0027t work for me.   \n\n```\nroot \u0026#40;hd0,3\u0026#41;\n\nchainloader /ntldr\n\nboot\n```\n\nto boot or:  \n\n```\npartnew \u0026#40;hd0,3\u0026#41; 0 0 0\n```\n\nreset the empty entry and chainload normally the logical volume  \n\n```\nroot \u0026#40;hd0,5\u0026#41;\n\nchainloader /ntldr\n\nboot\n```\n\n\u003cbr /\u003e\n\nboth failed; chainloading PBR with   \n\n```\nroot \u0026#40;hd0,5\u0026#41;\n\nchainloader +1\n\nboot\n```\n\n\u003cbr /\u003e\n\nGave me the same error as well. something like,  \n\nwindows32\\\\ntoskrnel.exe missing or corrupted.   \n\nI am now, as McTavish put, \"lose the will to live\". Yeah, I like that expression, :-) .   \n"
+    },
+    {
+      "id": "102659",
+      "timestamp": "2010-06-17T22:13:07+00:00",
+      "author": "Sha0",
+      "content": "\u003e ...BTW, you\u0027ve got to be a Chinese in order to understand why there are so many ways to install windows instead of just one, the official one. FYI, just to proof that I am not lying, :-), I\u0027ve been trying, \"GHOST XP SP3 2010 V2.0 统一纯净版\", which has been working for me fine before, then \"GHOST XP SP3 2010 V2.1统一会员纯净版\", when all these ghost restore didn\u0027t work, I reverted to direct windows install, using \"WinXP SP3 2009 v1.3精简安装版（220MB)\", then \"深度 Windows XP SP3完美精简 V6.2版\\[215M小盘\\]\" produced in 2008年6月13日, then \"Windows XP Professional and Retail All-in-one SP3\"...\nWhat does this mean? Why do you have to match the criteria you mention in the quotation? I don\u0027t understand the requirement, let alone its proof.  \n\nPlease provide the Blue Screen of Death error code.  \n\nWhat is the ARC path in your **BOOT.INI** file? Does it match with whatever MBR you are spoofing in-memory?   \n"
+    },
+    {
+      "id": "102665",
+      "timestamp": "2010-06-17T23:17:41+00:00",
+      "author": "xpt",
+      "content": "\u003e What does this mean? Why do you have to match the criteria you mention in the quotation? I don\u0027t understand the requirement, let alone its proof.\n\nI don\u0027t quite understand what you mean, but anyway, let\u0027s forget about it.  \n\n\\\u003e Please provide the Blue Screen of Death error code.  \n\nDon\u0027t worry, if I want to fix it, I most probably would ask in a better place than boot-land.net, at least in a different thread.  \n\n\\\u003e What is the ARC path in your **BOOT.INI** file? Does it match with whatever MBR you are spoofing in-memory?  \n\nAh, good question, I believe that my Ghost is decent enough to fix BOOT.INI for me, but it is worthwhile to double check.  \n\nYes, my Ghost is decent enough to fix BOOT.INI for me, but strange, it changes \"partition(2)\" to \"partition(9)\".   \n\nLet me fix it to \"partition(4)\", according to karyonix\u0027s suggestion (  \n[http://www.boot-land...?...054\\\u0026st\u003d20#)](http://www.boot-land.net/forums/index.php?showtopic\u003d11054\u0026st\u003d20#) \"External link\")  \n\nNope, still get   \n\nwindows32\\\\ntoskrnl.exe missing or corrupted.   \n\nAgain, here is detail how the disk is partitioned:  \n\nsda1, active primary, 1G, Linux  \nsda2, primary, 4G, NTFS, WinXP  \nsda3, extended  \nsda4, empty  \nsda5, linux swap, 500M  \nsda6, logic, 4G, NTFS, WinXP  \n\nlet me zero out the (hd0,3) with  \n\n```\npartnew \u0026#40;hd0,3\u0026#41; 0 0 0\n```\n\n\u003cbr /\u003e\n\n. . .   \n"
+    },
+    {
+      "id": "102666",
+      "timestamp": "2010-06-17T23:22:10+00:00",
+      "author": "xpt",
+      "content": "\u003e let me zero out the (hd0,3) with  \n\u003e\n\u003e partnew (hd0,3) 0 0 0  \n\u003e\n\u003e . . .\n\nYES! **Windows boots from the logical partition!**   \n\nHoray!!!  \n\nThanks **\\*everyone\\*** who helped!!!   \n"
+    },
+    {
+      "id": "102671",
+      "timestamp": "2010-06-18T01:04:19+00:00",
+      "author": "maanu",
+      "content": "\u003e YES! **Windows boots from the logical partition!**   \n\u003e\n\u003e Horay!!!  \n\u003e\n\u003e Thanks **\\*everyone\\***who helped!!!\n\na short Each Step-Detail will be very much appreciated , i mean your travel to your destiny in short steps ![:thumbup:](https://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n\notherwise i\u0027d have to open each post to view whole thread..   \n"
+    },
+    {
+      "id": "102689",
+      "timestamp": "2010-06-18T09:01:51+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e All I want to say is that I\u0027ve met with tremendous difficulties, but all solved by myself, but not the following:\n\nTry re-reading what **Wonko** wrote:  \n\u003e Using the partnew command:  \n\u003e\n\u003e If you have an empty partition entry in the main MBR (as you should have) you can use partnew to create a new primary partition entry pointing to the logical volume inside extended, during this process the \"sectors before\" will be automatically and PERMANENTLY corrected .\nand compare with what you did in order to have the given advice working:  \n\n\u003e let me zero out the (hd0,3) with  \n\u003e\n\u003e ```\n\u003e partnew \u0026#40;hd0,3\u0026#41; 0 0 0\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\n![:thumbup:](https://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "102949",
+      "timestamp": "2010-06-20T17:30:48+00:00",
+      "author": "xpt",
+      "content": "\u003e YES! **Windows boots from the logical partition!**   \n\u003e\n\u003e Horay!!!\n\nWait ... Oh, NO! my Vista in the primary partition cannot be booted any more!!! It\u0027s asking for installation disk, but I don\u0027t know if I have it -- the Vista is created via the 1st boot of my PC from the (1st) OEM utility disk. I did have backup the utility disk to DVDs, but they are straight 6\\~8 DVD disks and I don\u0027t know which is which.   \n\nI can\u0027t point my finger to booting XP from logical partition to be the culprit, but my Vista stops booting right after it.   \n"
+    },
+    {
+      "id": "103047",
+      "timestamp": "2010-06-21T15:35:53+00:00",
+      "author": "xpt",
+      "content": "\u003e \\\u003e YES! Windows boots from the logical partition!  \n\u003e \\\u003e Horay!!!  \n\u003e Wait ... Oh, NO! my Vista in the primary partition cannot be booted any more!!!\n\nChecking back my test machine, yes, my Win2K can still boots from the logical partition, but I get a blank screen after logging in. Several minutes later, Windows goes back to login screen again. If I log in again, it goes back to login screen again immediately.   \n\nBooting back the primary partition and see what I will get. Only then I remember that my Windows 2K in primary partition has been overwritten by a new Windows XP.   \n\n\u003e I can\u0027t point my finger to booting XP from logical partition to be the culprit, but my Vista stops booting right after it.\n\nNow I still can\u0027t point my finger to anything (at least without duplicate it again), but I do know now, from my own experience,   \n\n- installing a new Windows in the logical partition made my Vista in the primary partition un-bootable.  \n- installing a new Windows in the primary partition made my Win2K in the logical partition can\u0027t log in.   \n\nI\u0027ve completely lost interest to spend any time further on this since my Vista is whacked anyway (but still thanks everyone who has accompany me along this bumpy road). Hope that the document here has at least make it a bit easier for another brave soul to take on further (or poor soul to be more correct? ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png) ).   \n\nThanks everyone!   \n"
+    },
+    {
+      "id": "103051",
+      "timestamp": "2010-06-21T16:08:10+00:00",
+      "author": "Sha0",
+      "content": "Imagine this: You\u0027re Windows. You have kept a note in the Registry for what volume is associated with **C:** . Suppose your note includes the following volume information:  \n\n* Disk signature\n* Offset to partition\n* Length of partition\n\nNow suppose *any* of these details change. Now try booting Windows. Windows says, \"Hey, my **C:** volume is missing. Which volume is **C:** , in that case?\" Now suppose Windows looks at the MBR and enumerates the volumes it finds there. Now suppose it picks one to be **C:** . Suppose it picks the wrong one. Suppose that you log in and **userinit.exe** is executed, but it\u0027s trying to access OS files for the wrong OS installation. Due to the severity of the error, it logs you out and returns you to the logon screen. This is easily reproducible when fiddling with partition shuffling.   \n"
+    },
+    {
+      "id": "103056",
+      "timestamp": "2010-06-21T16:54:40+00:00",
+      "author": "xpt",
+      "content": "\u003e Now suppose *any* of these details change.\n\nJust FTR, further explanation (taken from [http://www.pcreview....2237038-2.php):](http://www.pcreview.co.uk/forums/thread-2237038-2.php): \"External link\")  \n\n\u003e Yes. Particularly (in Windows NT) a pointer in the registry (HKLM\\\\System,  \n\u003e \\\\DISK or \\\\MountedDevices) which contains the mapping of the \"letters\"; this  \n\u003e mapping is done by the signature of the physical disk (bytes 1B8 to 1BB in  \n\u003e the MBR) along with the starting offset for the mounted file system  \n\u003e (starting at byte 0 in LBA 0).  \n\u003e\n\u003e So every different clone will assign C: to the same physical file system on  \n\u003e disk,  \n\u003e _unless_ the said file system has been made invisible to Windows before  \n\u003e booting (which is the case if you disconnect the original disk and install  \n\u003e the newly cloned one in place),  \n\u003e _or_ either if the cloning utility has slightly edited the registry (the  \n\u003e same way it already changes the HiddenSectors count in the boot record.)  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e The funny part is that Windows does not seem to check whether the indication  \n\u003e in BOOT.INI of the kernel to boot (the ARCpath, multi() etc.) actually  \n\u003e matches its view of the kernel once booted (i.e.  \n\u003e %SystemRoot%\\\\system32\\\\ntoskrnl.exe): it only complains (loudly, STOP 0x7B,  \n\u003e BSoD) if it is not able to _find_ the latter while booted.  \n\u003e\n\u003e Behaviours might evolve between versions at this level, my tests were with  \n\u003e W2K, YMMV with XP.\n\n"
+    },
+    {
+      "id": "103057",
+      "timestamp": "2010-06-21T16:58:58+00:00",
+      "author": "xpt",
+      "content": "\u003e . . . You have kept a note in the Registry for what volume is associated with **C:** . Suppose your note includes the following volume information:  \n\u003e\n\u003e \\[\\*\\]Disk signature\n\nWhat\u0027s this Disk signature (bytes 1B8 to 1BB in  \nthe MBR)?  \n\nI notice mine just get changed, by ghost restore?   \n"
+    },
+    {
+      "id": "103058",
+      "timestamp": "2010-06-21T17:07:57+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Suppose that you log in and **userinit.exe** is executed, but it\u0027s trying to access OS files for the wrong OS installation. Due to the severity of the error, it logs you out and returns you to the logon screen. This is easily reproducible when fiddling with partition shuffling.\nRight idea :wink: , maybe wrong example. :wink:  \n[http://support.micro...kb/249321/en-us](http://support.microsoft.com/kb/249321/en-us \"External link\")  \n\n![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)  \n\n\u003e What\u0027s this Disk signature (bytes 1B8 to 1BB in  \n\u003e the MBR)?  \n\u003e\n\u003e I notice mine just get changed, by ghost restore?\n[http://thestarman.pc...br/Win2kmbr.htm](http://thestarman.pcministry.com/asm/mbr/Win2kmbr.htm \"External link\")  \n[http://www.911cd.net...showtopic\u003d19663](http://www.911cd.net/forums//index.php?showtopic\u003d19663 \"External link\")  \n\nDrive lettering (if not assigned/fixed) is a quite complex topic, take your time here (AND links within):  \n[http://www.msfn.org/...howtopic\u003d142620](http://www.msfn.org/board/index.php?showtopic\u003d142620 \"External link\")  \n\n![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)  \nWonko   \n"
+    },
+    {
+      "id": "103064",
+      "timestamp": "2010-06-21T17:51:19+00:00",
+      "author": "Sha0",
+      "content": "\u003e Right idea ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png) , maybe wrong example. ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)  \n\u003e [http://support.micro...kb/249321/en-us](http://support.microsoft.com/kb/249321/en-us \"External link\")  \n\u003e\n\u003e :wink:\nExactly what do you mean by using the word \"wrong\"? Is this not exactly the scenario detailed by the article you\u0027ve referenced?   \n"
+    },
+    {
+      "id": "103071",
+      "timestamp": "2010-06-21T18:29:25+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Exactly what do you mean by using the word \"wrong\"? Is this not exactly the scenario detailed by the article you\u0027ve referenced?\nAlmost but not quite.  \n\nIt is a quirk in the standard Registry entry for userinit.exe with the hardcoded full path, which can normally be solved by replacing it with just the userinit.exe filename, that will then be supposedly looked for and found on the \"right\" drive.  \n\nI.e. you are right about the possible problem, but an easy solution exists. ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)  \n\n![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)  \nWonko   \n"
+    },
+    {
+      "id": "103175",
+      "timestamp": "2010-06-22T22:33:45+00:00",
+      "author": "xpt",
+      "content": "\u003e . . . Drive lettering (if not assigned/fixed) is a quite complex topic, take your time here (AND links within):. . .\n\nOh well, I bet that will not be the last surprise that I will see.  \n\n\u003e a short Each Step-Detail will be very much appreciated , i mean your travel to your destiny in short steps ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)   \n\u003e\n\u003e otherwise i\u0027d have to open each post to view whole thread..\n\nJust looking at my **conclusion post** s would be enough. If you don\u0027t even care to look for them, then the safest conclusion that you can take home is [here](http://www.boot-land.net/forums/index.php?s\u003d\u0026showtopic\u003d11054\u0026view\u003dfindpost\u0026p\u003d97717 \"External link\") and [here](http://www.boot-land.net/forums/index.php?s\u003d\u0026showtopic\u003d11054\u0026view\u003dfindpost\u0026p\u003d103047 \"External link\"), depending on which side you want to take.   \n"
+    },
+    {
+      "id": "174795",
+      "timestamp": "2013-07-14T20:30:53+00:00",
+      "author": "Zoso",
+      "content": "bumping an old post..  \n\nI plan to try this method for booting XP from logical partition without the need for a primary partition containing system files soon.  \n\n\u003cbr /\u003e\n\nit is a shame the forum screws up all these grub4dos entries! its complicated enough without having to adjust the examples given but I think I can manage it.  \n\n\u003cbr /\u003e\n\nI was wondering if the same can be done with W7 and if not is there a way to accomplish the same objective?   \n"
+    },
+    {
+      "id": "174800",
+      "timestamp": "2013-07-15T03:19:27+00:00",
+      "author": "Zoso",
+      "content": "SUCCESS! YAY! XP booting from (hd5) instructions seemed more complicated than it was but I started simple so now I try to set up a USB HDD with many different Windows versions.   \n\nI dont see any reason why W7 wont work this same way either, no?  \n\nis there any limits with this method? I can see having 20 different partitions with 20 different OS available from the same drive, am I missing something, is there a hitch?   \n"
+    },
+    {
+      "id": "174808",
+      "timestamp": "2013-07-15T10:05:32+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I dont see any reason why W7 wont work this same way either, no?\n\n\u003cbr /\u003e\n\nAs a matter of fact the BOOTMGR has seemingly \"better\" code and it seems like it needs not the correction of the \"sectors before\".  \nSee:  \n[http://reboot.pro/to...s-also-logical/](http://reboot.pro/topic/17892-cloning-and-multibooting-several-win78-partitions-also-logical/ \"\")  \n[http://reboot.pro/to...gical/?p\u003d167962](http://reboot.pro/topic/17892-cloning-and-multibooting-several-win78-partitions-also-logical/?p\u003d167962 \"\")  \n(and following few posts)  \n**BUT** - no matter if it works or not - **DO** anyway **correct** them **hidden sectors** , the number of tools/commands/utilities that may be \"fooled\" is big, and their nature tend to be that of \"lowish level\" hard disk related tools, i.e. VERY dangerous potentially for the integrity of partitions/filesystems.  \nThere is also the possibility that (if the sectors before are not corrected) that you get some form of \"hybrid boot\", making use of some files on another volume. ![:ph34r:](https://reboot.pro/public/style_emoticons/default/scared9.gif)  \n\u003e is there any limits with this method? I can see having 20 different partitions with 20 different OS available from the same drive, am I missing something, is there a hitch?\n\nThe limit is the number of drive letters available (26-2\u003d24), but you\u0027ll probably want to leave a couple letters free for when you connect / boot from a USB device and/or CD/DVD.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "174814",
+      "timestamp": "2013-07-15T13:47:20+00:00",
+      "author": "Zoso",
+      "content": "hi Wonko, good advice and info as usual! Im happy to start to understand the partition sectors (finally!) next will be more study of grub4dos because I have only scratched the surface of its abilities.  \n\non the drive letters.. what happens if you have 30 partitions and boot one of them with windows? it just dont see beyond 24 or crash or worse?  \n\nedit: one other question, is there a way to make a logical volume in extended partition appear to non-M$ bootloader as \"active\"?  \n\nthanks   \n"
+    },
+    {
+      "id": "174820",
+      "timestamp": "2013-07-15T16:14:35+00:00",
+      "author": "Wonko the Sane",
+      "content": "No, the issue is only with drive letters as mountpoints.\n\nLinux (as an example) that does not use drive letters as mount points will have no issues anyway.\n\nBut also on \\*any\\* Windows NT starting from Win 2000 you can use mountpoints (for the non-boot volumes), so the limit is only \"virtual\", if you prefer a DOS/Windows 9x/Me will never be able to have access to more than 24 hard disk volumes.\n\nSame goes for NT up to NT 4.00.\n\nStarting with 2000 and provided that at least one of the volumes is NTFS, you can mount the volumes exceeeding the first 24 to mountpoints.\n\nA few tools/utilities/whatever (as an example something that only works with a path like C:\\\\myhardcodedfolder\\\\ ) may have issues with volumes mounted to a directory mountpoint, though most wil have no issues whatsoever.\n\nA logical volume inside Extended CANNOT be made \"active\".\n\nThe \"active\" ONLY makes sense in the MBR and in the MBR there can be ONLY Primary Partitions (volumes) or the Extended Partition.\n\nThis is \"OS\" and \"Bootloader\" agnostic.\n\nA bootloader installed to the MBR (ike grub4dos) may provide means to boot from a logical volume, but this will happen because of settings \"outside\" the \"active status\".\n\nA \"normal\" MBR will be read by BIOS and will use the \"active\" flag to identify the partition which PBR will be chainloaded, and since the MBR does NOT contain data about logical volumes there is no way to set a non-existing entry to \"active\".\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "175230",
+      "timestamp": "2013-07-30T19:14:16+00:00",
+      "author": "Zoso",
+      "content": "why is it that when I use the same OS that is in the primary partition where grub4dos gets called from and place it on another partition to be booted by grub4dos, it gets cross-linked (shows the primary as C: even though with the /sos switch it shows the other partition I am booting is loading?  \n\nthis only seems to happen when I use the same OS (exact copy placed on another partition) but not when they are different version of the same OS or different OS it does not cross-link?  \n\nhow to prevent this cross-linking (I think that is the correct term for this, not certain though)?   \n"
+    },
+    {
+      "id": "175231",
+      "timestamp": "2013-07-30T19:22:14+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e why is it that when I use the same OS that is in the primary partition where grub4dos gets called from and place it on another partition to be booted by grub4dos, it gets cross-linked (shows the primary as C: even though with the /sos switch it shows the other partition I am booting is loading?  \n\u003e\n\u003e this only seems to happen when I use the same OS (exact copy placed on another partition) but not when they are different version of the same OS or different OS it does not cross-link?  \n\u003e\n\u003e how to prevent this cross-linking (I think that is the correct term for this, not certain though)?\n\nWhat do you think that the (HKLM\\\\SYSTEM\\\\MountedDevices\\\\) DosDevices Keys in the Registry are for? ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nOr - more loosely - WHY exactly you cannot normally change the drive letter of the Windows System volume? ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)\n\nSee if the info here (ONLY seemingly OT) helps (it does) :wink::\n\n[http://www.911cd.net...showtopic\u003d19663](http://www.911cd.net/forums//index.php?showtopic\u003d19663 \"External link\")\n\nBTW, this SAME thread, only a few posts earlier, does mention something very related ![:whistling:](https://reboot.pro/public/style_emoticons/default/happy22.gif):\n\n[http://reboot.pro/to...ition/?p\u003d103051](http://reboot.pro/topic/11054-boot-windows-from-extended-partition/?p\u003d103051 \"\")\n\nyou may want to re-read a few posts starting from the above....\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "175234",
+      "timestamp": "2013-07-30T20:13:06+00:00",
+      "author": "Zoso",
+      "content": "I always clear the mnt dev key though.  \n\nI have an idea that may work to eliminate the other hassles.. Im going to encrypt the primary system and boot from there to grub4dos then point to the copy in logical partition that is not encrypted so Im thinking that it cant crosslink what it cant see.   \n\nbut what about grub4dos, can I use it to hide the primary after it has been called form there? like adding something to the menu item that I use to boot the OS that is in the extended partition?  \n\nedit: I tried the encrypted primary idea with no success, once you have booted into the primary to access grub4dos from the boot.ini it is unencrypted so when you point to the logical partition and boot it up, the primary is still unencrypted (not sure why?)  \n\ndiskcryptor\u0027s feature for booting a specific partition with unique password is really good but it only works for partitions marked active so it is not of much use here.  \n\nnow I am testing the hide function in grub4dos and the first thing I noticed is that it is not temporary.. after my first test with it, I shut down and unplugged the USB HDD and plugged it into another running system only to find I could not access that partition.  \n\nIm reading the guide (again) but I dont see a way to temporary hide when booting so that when you shut down you can access all partitions again on another system.  \n\nI guess I could add a menu list to unhide all but that would require a reboot. is there any way to unhide once booted from within windows before shutdown?   \n"
+    },
+    {
+      "id": "175243",
+      "timestamp": "2013-07-31T08:41:30+00:00",
+      "author": "Wonko the Sane",
+      "content": "Look, the general idea is that you need to assign drive letters manually.\n\nIf you just delete the dosdevices drive letter key and drive letters were assigned automatically, strangely enough ![:whistling:](https://reboot.pro/public/style_emoticons/default/happy22.gif), the SAME drive letters will be assigned. (repeatability of drive lettering).\n\nOf course you can hide and unhide partitions (both from windows before shutdown and from grub4dos BEFORE booting windows), but that won\u0027t normally \"solve\" by itself drive lettering issues (that need to be solved \"internally\" with manual assigning the \"right\" drive letters to the \"right\" volumes).\n\nAbout partition hiding, there is no problem, imagine you have a hard disk that (for simplicity) has only two primary partitions.\n\n```\ntitle Part1\nhide (0,1)\nunhide (0,0)\nroot (hd0,0)\nchainloader +1\n\ntitle Part2\nhide (0,0)\nunhide (0,1)\nroot (hd0,1)\nchainloader +1\n```\n\nin practice each menu entry has a \"++complete++ set\" of hiding/unhiding commands, so that **all** the partitions/volumes are set to the way you want them when you initiate the (Windows) booting. :wink:\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "175264",
+      "timestamp": "2013-07-31T16:19:02+00:00",
+      "author": "Zoso",
+      "content": "I want to have each windows boot and think it is C: drive.  \n\nI think the problem Im having is that according to the goodells info: \"do not let new-XP see the old-XP partition the first time it boots.\"  \n\nbut since Im using grub4dos called from the primary partition with that XPs boot.ini, I dont know how to boot the XP in logical partition so it wont see the \"old-XP\"  \n\nmaybe I need to assign the drive letters in the new-XP before booting but Im not sure how to do that from outside (offline) reading again this thread and goodells since I must have missed it.  \n\nedit: after you use the hide command does that change the partition order?  \n\nin other words, if I hide hd0,1 does that then make hd0,2 now into hd0,1?   \n"
+    }
+  ]
+}

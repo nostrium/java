@@ -1,0 +1,28 @@
+{
+  "id": "20263",
+  "title": "USBoot",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "189810",
+      "timestamp": "2015-01-13T20:38:35+00:00",
+      "author": "Zoso",
+      "content": "seems USBoot.org, my favorite boot XP tool of all time is down. hope its just temporary since the tool is not useable without it due to having to get a pass code online each time you used it.  \n\nI used that for many things other than booting XP from USB, it is great! hope to see it back soon.  \n\nanyone know whats going on with it? I remember seeing Gerd Ross (the author) post here in the past. hopefully he will see this and let us know.  \n\n\u003cbr /\u003e\n\nthanks   \n"
+    },
+    {
+      "id": "189812",
+      "timestamp": "2015-01-13T21:36:00+00:00",
+      "author": "ambralivio",
+      "content": "Zoso,\n\nthis is strange because I was able to browse within the site (see attachmet).\n\nI do not follow that site, but it seems that it works, even if they are declaring to have some trouble lastly.\n\nambralivio ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003d7b29641ad2423172fa1fb1255a300bb7\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d15303 \"Download attachment\") [**HomePage.7z**](http://reboot.pro/index.php?s\u003d7b29641ad2423172fa1fb1255a300bb7\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d15303 \"Download attachment\") **234.78KB** 681 downloads\n\n"
+    },
+    {
+      "id": "189814",
+      "timestamp": "2015-01-13T23:07:51+00:00",
+      "author": "Zoso",
+      "content": "hi ambralivio,  \n\ninteresting... yes, seems all the other linkage from usboot.org works! only the main entry [https://usboot.org](https://usboot.org \"External link\") is not.   \n\nresults in error message \"Sorry, but the domain you specified does not exist on this server!  \nPlease check the URL for typing errors ...\"  \n\nI will try to message the forum admin about it. this link is working: [https://www.usboot.o...m.php?forumId\u003d1](https://www.usboot.org/tiki-view_forum.php?forumId\u003d1 \"External link\")  \n\nwhich is good to see because there is some good infos available on that one too.  \n\nthanks   \n"
+    }
+  ]
+}

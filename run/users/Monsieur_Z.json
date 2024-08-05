@@ -1,0 +1,11 @@
+{
+  "id": "Monsieur Z",
+  "memberGroup": "Developer",
+  "memberLevel": "Member",
+  "imageURL": "/data/profile_images/5ba26a5ee00812711043083865b1e74ccb365474.png",
+  "customFields": {
+    "": "France",
+    "Interests": "Computers, C# and spaghetti",
+    "Location": "France"
+  }
+}

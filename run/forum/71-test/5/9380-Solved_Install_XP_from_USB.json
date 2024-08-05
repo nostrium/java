@@ -1,0 +1,22 @@
+{
+  "id": "9380",
+  "title": "[Solved] Install XP from USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "77965",
+      "timestamp": "2009-09-11T01:03:17+00:00",
+      "author": "Xamimilian",
+      "content": "Firstly, I want to say thank you to all who made usb_multiboot_10 possible. It\u0027s really a great program and has been the only possible method for me getting Windows XP installed on my Macbook Pro.  \n\nHere\u0027s my situation (long story, short): I have a Macbook Pro without an optical drive because I accidentally ran it over with my car. Oddly enough, I only lost my LCD and the optical drive. Everything else was intact and is functional to this day (it happened two years ago).   \n\nUnfortunately, I\u0027m now presented with the most difficult task of installing XP to a Boot Camp partition without an optical drive. Apple\u0027s boot menu for their EFI does not bother to search for foreign installations connected via USB (i.e. Windows, Linux distros, etc.). To work around this, I have managed to install rEFIt, a great boot menu that detects nearly anything you can throw at it.   \n\nUsing usb_multiboot_10, I was able to get an XP install on my flash drive and easily proceed with the text installation to my 32GB NTFS partition. The text part of my installation completed without a hitch, but I seem to have hit a road block after the first restart.  \n\nAs I understand it, I must select from the Main Menu of usb_multiboot_10 the corresponding GUI install option. And since I am installing to the third partition on my laptop\u0027s hdd (partition one is what rEFIt installs to, OS X is the second partition), I need to modify the boot.ini on the flash drive to give me that option.   \n\nI added the line:   \n\u003e multi(0)disk(0)rdisk(0)partition(3)\\\\WINDOWS\u003d\"Continue GUI Setup + Start XP from HD 0 - Part 3\" /FASTDETECT\nHowever, when I try to use that option, I get:  \n\u003e \"Windows could not start because of a computer disk hardware configuration problem. Could not read from the selected boot disk. Check boot path and disk hardward. Please check the Windows documentation about hardware disk configuration and your hardware reference manuals for additional information.\"\n\nCan any of you think of something I may have missed or mistaken? Thank you in advance.   \n"
+    },
+    {
+      "id": "77982",
+      "timestamp": "2009-09-11T08:21:52+00:00",
+      "author": "ilko",
+      "content": "\u003e ...I added the line:   \n\u003e \u003e multi(0)disk(0)rdisk(0)partition(3)\\\\WINDOWS\u003d\"Continue GUI Setup + Start XP from HD 0 - Part 3\" /FASTDETECT\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\nrdisk(0) is your boot disk, if booted from USB it\u0027s the USB stick. The internal hard disk becomes rdisk(1).  \n\nUse rdisk(1)partition(N).   \n"
+    }
+  ]
+}

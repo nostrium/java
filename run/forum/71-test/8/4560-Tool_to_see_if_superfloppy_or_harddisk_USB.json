@@ -1,0 +1,76 @@
+{
+  "id": "4560",
+  "title": "Tool to see if superfloppy or harddisk USB?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "34690",
+      "timestamp": "2008-05-02T20:05:20+00:00",
+      "author": "kcom",
+      "content": "Windows sees it as normal USB in any case.  \n\nIs there a graphical tool for windows to see if an USB disk is formated as superfloppy or harddisk? Or to reformat it as superfloppy?  \n\nAt the moment I use Hp Drive Key but it seams to format it as harddisk.   \n"
+    },
+    {
+      "id": "34730",
+      "timestamp": "2008-05-03T08:32:08+00:00",
+      "author": "was_jaclaz",
+      "content": "The device firmware has a bit that \"tells\" whether the device is \"Fixed\" or \"Removable\".  \n\nALL USB hard disks have this bit set as \"Fixed\".  \n\nMOST USB flash devices have this bit set as \"Removable\", this bit can be \"flipped\" to \"Fixed\" through an utility from the controller chip manufacturer (which very few manufacturers provide).  \n\nBy default windows 2K/XP/2003 consider \"Removable\" devices as \"super-floppy\", but if, through an external utility, like the mentioned HP one, a MBR is written to the device, it will be seen as a partitioned disk (read hard disk) with the limitation that one, **and only one**, partition will be accesible.  \n\nIt is possible to install a \"filter driver\" that makes 2K/XP see the device as \"Fixed\" and thus allow for accessing all the partitions on it.  \n\nIn other words a USB flash can be seen in THREE ways:  \n1) unpartitioned Removable (superfloppy)  \n2) partitioned Removable (HD with one partition accessible)  \n3) partitioned Fixed (HD)  \n\nAs shipped, USB flash devices are 99% of times formatted as 1) above, and if you just use the internal Format command or GUI, they wull remain that way.  \n\nUtilities like the HP USB one and petousb write to the first sector of the stick a MBR, thus making the device become through a Format (included within the utility or the normal windows one), formatted as 2) above.  \n\nManufacturer utilities can make the device become permanently formatted as 3) above on any PC, whilst installing the Hitachi Microdrive Filter cfadisk.sys or Anton Bassov\u0027s dummydisk.sys allows this only on the single machine where the filter is installed.  \n\nIf needed there is a \"reversed\" dummydisk.sys filter driver to make a \"fixed\" device be seen as \"removable\".  \n\nI don\u0027t think there is a graphical utility aimed to show which is which, but with command line or indirectly it is very easy:  \nin case 1) above the first sector of the device has bootsector code  \nin cases 2) and 3) the first sector has MBR code  \n\nAccessing the device with a hex/disk editor one can visually check whhat is in first sector, or accessing it with a partition table editor like neenlenrox or ptedit32 you would see \"crazy\" values in partition table (if it is actually a bootsector).  \n\nTo re-format a stick that has been formatted with the HP utility (but still has the \"Removable\" bit) simply fill first sector of the device with 00\u0027s and use the Format command.  \n\nBe aware that most motherboards, even those that allow for booting from the maun three device types (superfloppy, zip, HD) actually have problems with the first two types and that a large number of motherboards only boot from USB \"HD\".  \n\nIf you need more detailed instructions, just ask.  \n\njaclaz   \n"
+    },
+    {
+      "id": "34746",
+      "timestamp": "2008-05-03T12:41:11+00:00",
+      "author": "kcom",
+      "content": "A great. Thanks for big explanation.  \n\nI know how to bring a device in the mode so the BIOS will recognize it as USB harddisk, boot it and the device becomes C:\\\\ (FreeDOS). That\\`s easy with the HP Drive Key.  \n\nThe windows standard format gui does allow to format that USB flash device, but not to create a MS-DOS-Startupdisk.  \n\nMy failure was not to tell you already in first post that I want to convert one of my USB flash drives into a bootable superfloppy. (My BIOS allows to boot either USB HDD or USB FDD.) This bootable superfloppy should have a FreeDOS or a GRUB4DOS bootsector. I hope this USB flash device becomes then A:\\\\ and (fd0) in FreeDOS, so my normal internal hd will stay C:\\\\ and (hd0).  \n\nHow realistic is this? Or becomes an USB flash drive which has been booted from BIOS always C:\\\\ and (hd0), no matter if it\\`s formated as superfloppy (only bootsector) or harddisk (full mbr)?   \n"
+    },
+    {
+      "id": "34752",
+      "timestamp": "2008-05-03T13:57:50+00:00",
+      "author": "was_jaclaz",
+      "content": "The problem is that there is no way (without directly testing) to know how your particular motherboard assigns drive letters to a superfloppy device (***if*** it can actually boot from it).  \n\nDo the following:  \n1) Use a hex/disk editor to write 00\u0027s to the first sector of the stick  \n(or create a 512 byte file filled with 00\u0027s and use either dsfo/dsfi or Dimio\u0027s HDhacker or   \n2) Extract and reinsert the stick  \n3) try opening it in Explorer, it should prompt you to format  \n4) choose to format it either as FAT16 (RECOMMENDED) or FAT32 (NOT recommended)  \n5) copy to the stick:  \nNTLDR  \nNTDETECT.COM  \nBOOT.INI (the one in your C:\\\\ partition will do)  \ngrldr (from grub4dos package)  \n6) Edit BOOT.INI with Notepad, adding a line:  \n\n```\nC\u0026#58;\\grldr\u003d\u0026#34;Grub4dos\u0026#34;\n```\n\n\u003cbr /\u003e\n\nTry booting from the stick, can you access the BOOT.INI choices?  \nCan you choose the \"grub4dos\" entry and see grub4dos loading?  \n\njaclaz   \n"
+    },
+    {
+      "id": "34757",
+      "timestamp": "2008-05-03T15:51:55+00:00",
+      "author": "kcom",
+      "content": "As I did read your posting the first couple of times I thought you forgot to say how to write this magical bootesctor. Always I wanted this bootsectors just to see as a normal file in explorer so I can backup and exchange it easy without any hacker tools. But you did not forgot it. Somehow on nt-based systems it seams the bootloader is NTLDR and Windows explorer will put it at the right place automatically. Just copy a file to disk doesn\\`t work for anything beside this bootloader (afaik), like for grub you need some extra tool to write this magical bootsector. But nvm.  \n\nSimilar like you Bart is explaining how to create a NT boot floppy disk.  \n[http://www.nu2.nu/bootdisk/ntboot/](http://www.nu2.nu/bootdisk/ntboot/ \"External link\")  \nI tested yours and his instructions on a virtual floppy disk and booted from it in VMware, it worked. Just to make sure I did not mess up anything.  \n\nThen I made the things you told me to make the USB flash drive bootable. The bootsector on the USB flash drive looked very similar compared to the one on the floppy. With Plop Bootmanager I did try to boot the USB in VMware, it found the USB device, loaded the bootsector and then the error \"Remove disk Restart Press Key\".  \n\nAfter that I wanted to test my real BIOS. Tested to boot USB-FDD and USB-HD. Nothing worked, each time error message from BIOS no operating system found.  \n\nSo... I think my little survey on booting superfloppy is over. Don\\`t think I made a failure but my BIOS doesn\\`t support it.  \n\nAll this booting stuff is pretty messed up. But that\\`s sure not your fault. However, I did learn lots of new things and hope at some day some BIOS extender or the EFI will deliverance us from all those glitches.   \n"
+    },
+    {
+      "id": "34766",
+      "timestamp": "2008-05-03T17:43:36+00:00",
+      "author": "kcom",
+      "content": "Small remark. Maybe this will interest someone.  \n\nThis: [http://img152.images...03193910aa0.jpg](http://img152.imageshack.us/img152/8531/20080503193910aa0.jpg \"External link\") is the normal HP Drive Key, many will know. It\\`s often linked and you find it on google with HP Drive Key. Gui style.  \n\nThis: [http://img152.images...03193801xx6.jpg](http://img152.imageshack.us/img152/7784/20080503193801xx6.jpg \"External link\")  \n[http://img136.images...03193820fp9.jpg](http://img136.imageshack.us/img136/1826/20080503193820fp9.jpg \"External link\")  \n[http://img383.images...03193835qc3.jpg](http://img383.imageshack.us/img383/4172/20080503193835qc3.jpg \"External link\")  \n[http://img383.images...03193843ym0.jpg](http://img383.imageshack.us/img383/1109/20080503193843ym0.jpg \"External link\")  \n[http://img136.images...03193851ks9.jpg](http://img136.imageshack.us/img136/9726/20080503193851ks9.jpg \"External link\")  \n[http://img383.images...03193859vp2.jpg](http://img383.imageshack.us/img383/9730/20080503193859vp2.jpg \"External link\")  \nis the HP Flash Drive Boot Utility. It\\`s on my harddisk. It\\`s more wizzard style.  \n\nHP Flash Drive Boot Utility offers to create bootable flash drive in floppy mode. But doesn\\`t work for me. Maybe it\\`s still working for someone else. I can\\`t find it on google anymore and this hp.com site is not that clear.  \n\nWhen I search for USB boot tools I find always only this HP tool.   \n"
+    },
+    {
+      "id": "34780",
+      "timestamp": "2008-05-03T20:43:43+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e So... I think my little survey on booting superfloppy is over. Don\\`t think I made a failure but my BIOS doesn\\`t support it.\n\nSo you are giving up? ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)  \n\nToo bad ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif), just when I was going to introduce you to makebootfat and it\u0027s triple way MBR/bootsector....![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\n[http://www.boot-land.../?showtopic\u003d761](http://www.boot-land.net/forums/?showtopic\u003d761 \"External link\")  \n\n![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "34787",
+      "timestamp": "2008-05-03T22:10:18+00:00",
+      "author": "kcom",
+      "content": "\u003e So you are giving up? ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)\nOh. Did not know there are still other ways to deal with it.  \n\n\u003cbr /\u003e\n\n\u003e Too bad ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif), just when I was going to introduce you to makebootfat and it\u0027s triple way MBR/bootsector....![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\u003e [http://www.boot-land.../?showtopic\u003d761](http://www.boot-land.net/forums/?showtopic\u003d761 \"External link\")\nVery interesting! Sure I will try this soon. ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n"
+    },
+    {
+      "id": "115004",
+      "timestamp": "2010-11-29T06:47:06+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "\u003e The device firmware has a bit that \"tells\" whether the device is \"Fixed\" or \"Removable\".  \n\u003e\n\u003e ALL USB hard disks have this bit set as \"Fixed\".  \n\u003e\n\u003e MOST USB flash devices have this bit set as \"Removable\", this bit can be \"flipped\" to \"Fixed\" through an utility from the controller chip manufacturer (which very few manufacturers provide).\n\nDoes anybody know such a tool for **Transcend Jetflash** UFDs?   \n"
+    },
+    {
+      "id": "115009",
+      "timestamp": "2010-11-29T08:55:09+00:00",
+      "author": "steve6375",
+      "content": "to OP  \n\nIf your question is:  \n\n\u0027How do I make a USB drive boot as either a floppy or a hard disk to MSDOS or FreeDOS?\u0027 - then the answer is easy  \n\nsee the bottom of this page for examples  \n\n[http://sites.google....orials/grub4dos](http://sites.google.com/site/rmprepusb/tutorials/grub4dos \"External link\")  \n\nI have no doubt that the menu items could be better re-written to use \\|\\| so that if one mapping failed another would automatically be used, but the technique works for me ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n"
+    },
+    {
+      "id": "115012",
+      "timestamp": "2010-11-29T09:17:23+00:00",
+      "author": "Wonko the Sane",
+      "content": "OP had this problem in 2008.  \n\nI hope that whatever happened to it already happened.  \n\n**Holmes.Sherlock** senseless revived this thread, hijacking it instead of starting his own new one.  \n\n\"Transcend Jetflash\" means NOTHING.  \n\nUse appropriate tools:  \n[http://www.boot-land...?showtopic\u003d4661](http://www.boot-land.net/forums/?showtopic\u003d4661 \"External link\")  \n\nSearch for an app:  \n[http://flashboot.ru/...php?name\u003diflash](http://flashboot.ru/index.php?name\u003diflash \"External link\")  \n\n![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \nWonko   \n"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "21294",
+  "title": "Booting Super Grub2 Disk in UEFI mode using E2B",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "200709",
+      "timestamp": "2016-11-06T15:32:18+00:00",
+      "author": "TheReduxPL",
+      "content": "As in title.\n\nI tried converting the .iso file to .imgPTN using the MPI Tool Pack but it doesn\u0027t work - when trying to boot in UEFI mode, it just skips right into booting Windows from my SSD.\n\nIs there anything I have to do to make it work?\n\n"
+    },
+    {
+      "id": "200710",
+      "timestamp": "2016-11-06T22:06:13+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "It may not be UEFI compatible. Check the ISO to see if it has a /boot/efi folder. If it does you should see at least one file with \\*.efi extension. Also search the ISO for a file similarly named to efiboot.img or efi.img (can\u0027t remember the exact name). Open the file with 7-Zip or whatever, then create the /boot/efi path, extract into that. There is an option in E2B\u0027s MPI Toolpack to create bootable media from a folder, so extract the rest of the ISO as well. I had to do this with Kali Linux ISO, which is UEFI-compatible but had no /boot/efi folder, only a small img file.\n\nYou\u0027ll also want to disable 8.1/10\u0027s Fast Startup feature.\n\n"
+    },
+    {
+      "id": "200711",
+      "timestamp": "2016-11-06T23:21:29+00:00",
+      "author": "TheReduxPL",
+      "content": "Thanks, I\u0027ve done what you said. I extracted the entire ISO, extracted the bootx64.efi file from efi.img into the /boot/efi directory and created a bootable media out of the extracted directory. Sadly that didn\u0027t work, the image still won\u0027t boot up.\n\nAlso looks like this tool is available [as an .EFI file](https://sourceforge.net/projects/supergrub2/files/2.02s5/super_grub2_disk_standalone_x86_64_efi_2.02s5.EFI/download \"External link\"). Maybe using this file would be easier to prepare a valid UEFI file for E2B?\n\nAnd thanks for the reminder about fast startup, I know it has to be disabled for dualboot setups but I actually forgot to switch it off :smile:\n\n"
+    },
+    {
+      "id": "200712",
+      "timestamp": "2016-11-06T23:25:33+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "I\u0027ll try this myself to test. It should have worked.\n\n"
+    },
+    {
+      "id": "200713",
+      "timestamp": "2016-11-06T23:38:19+00:00",
+      "author": "TheReduxPL",
+      "content": "Wait... Isn\u0027t it /efi/boot instead of /boot/efi?\n\n"
+    },
+    {
+      "id": "200714",
+      "timestamp": "2016-11-06T23:41:56+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "Actually you may be right. Yes I do believe it\u0027s /efi/boot. If there were any other files in efi.img, they need to be extracted too. Also check BIOS.\n\nTo boot E2B in UEFI mode, select imgptn, select Y to replace partition table. Then you will see a bunch of options. One will be boot in MBR. Select reboot instead, then choose UEFI boot option after pressing whatever key your PC requires to choose boot device.\n\n"
+    },
+    {
+      "id": "200715",
+      "timestamp": "2016-11-07T00:38:08+00:00",
+      "author": "TheReduxPL",
+      "content": "Yeah, /efi/boot worked, thank you for your help!\n\n"
+    }
+  ]
+}

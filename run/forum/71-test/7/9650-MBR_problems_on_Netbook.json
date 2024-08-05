@@ -1,0 +1,328 @@
+{
+  "id": "9650",
+  "title": "MBR problems on Netbook",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "83704",
+      "timestamp": "2009-11-06T10:31:39+00:00",
+      "author": "Balfaryus",
+      "content": "i have various USB stick tools but can\u0027t seem to get anywhere trying to re-write my borked MBR.   \n\ni am assuming this is the problem because Win Recovery Console and WinXP setup fail with the 7b inaccessible device error. this is when loading them from USB_MultiBoot_10  \n\ni tried loading UNR to hard disk, to see what would happen and it would load until halting at an \"end trace\". GRUB error 22 happened in there somewhere too. i then wrote a new parition table to see if it was bad partitioning or if i was the MBR.   \n\nbooting the netbook now from the hard disk throws up GRUB error 17. anything trying to onstall to hard disk throws the 0000007b error.   \n\nas it is a netbook, i have no CD and i don\u0027t want to take the disk out since it is only a few days old.   \n\nthanks for any advice   \n"
+    },
+    {
+      "id": "83705",
+      "timestamp": "2009-11-06T10:39:03+00:00",
+      "author": "maanu",
+      "content": "check in your bios if you have compatibility mode in HDD . if so then shift your sata mode to IDE or Legacy and try booting RC image again .   \n"
+    },
+    {
+      "id": "83710",
+      "timestamp": "2009-11-06T11:02:38+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e thanks for any advice\n\nNot the advice you are wishing to hear, but you should really be a bit more complete/detailed when you report a problem.   \n\nWhat the heck is \"UNR\"? My guess is that it is Ubuntu Netbook Remix, but not everyone would know what it is.  \nYou don\u0027t have \"a netbook\". You have an eepc model ***zzz*** or an Acer one model ***xxx*** or a Delll mini***y*** or a .... model .....  \netc., etc.  \n\nIt is already difficult enough to try and help from a distance, let alone if the willing helping member has to guess or imagine half the things you have done.  \n\nYou see, the more detailed and specific is the report, the more specific and possibly more likely to work will be the reply.  \n\nCompare with the \"common sense advice\" attached to Rules:  \n[http://www.boot-land...?act\u003dboardrules](http://www.boot-land.net/forums/index.php?act\u003dboardrules \"External link\")  \n\n![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "83715",
+      "timestamp": "2009-11-06T11:42:34+00:00",
+      "author": "Balfaryus",
+      "content": "\u003e check in your bios if you have compatibility mode in HDD . if so then shift your sata mode to IDE or Legacy and try booting RC image again .\n\nRecovery Console? i can\u0027t try this though because the BIOS hasn\u0027t the selection.   \n\n\u003e What the heck is \"UNR\"? My guess is that it is Ubuntu Netbook Remix, but not everyone would know what it is.  \n\u003e You don\u0027t have \"a netbook\". You have an eepc model ***zzz*** or an Acer one model ***xxx*** or a Delll mini***y*** or a .... model .....  \n\u003e etc., etc.\n\ni appreeciate where you are coming from but i am not in a hurry and i am experienced enough at using forums to know that i don\u0027t bother plastering every detail into my very first post.   \n\nit can turn out to be a complete waste of time. i use my own common sense to state the basic outline of the problem and see what answers i get if any.   \n\n-----   \n\nUbuntu Netbook Remix (ubuntu-9.04-netbook-remix-i386)   \n\nHP Mini 5101, Atom N280 1.66GHz with Intel 950GMA GPU, 1Gb 533MHz DDR2 RAM, 160Gb WD1600BEKT 60F3T1. 1366x768 native res.   \n\nmore specifically it is a VM531PA although this number is mostly irrelevant once you now the specs above, US versions are something like FM97xxx.   \n"
+    },
+    {
+      "id": "83717",
+      "timestamp": "2009-11-06T11:54:49+00:00",
+      "author": "was_jaclaz",
+      "content": "Well, if you have not an option in BIOS to switch from SATA to IDE mode, you are pretty much stuck. ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\nWhat you need is then a PE of some kind that has the appropriate SATA drivers integrated (or a Recovery Console build with same drivers, or a linux live USB with same drivers).  \n\nEasiest of the three is possibly creating a minimal LiveXP with the drivers packs integrated or try using \"horror\" ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif) a Vista Recovery CD \"shifted\" to USB use.  \n\nOf course it depends on which OS you have handy.  \n\nWhat happens with good ol\u0027 DOS?  \n\nCan\u0027t it see the drive?  \n\nUsing some good ol\u0027 apps, like RPM (Ranish Partition Manager) or MBRwiz it should be possible to fix/restore the MBR, if the physicaldrive is accessible.  \n\njaclaz   \n"
+    },
+    {
+      "id": "83718",
+      "timestamp": "2009-11-06T12:27:03+00:00",
+      "author": "Balfaryus",
+      "content": "thanks for the help, i might have a next move now.   \n\ni have Ranish here, i\u0027ll see if i can get it going using a CD drive into a USB port.   \n\ni also considered installing XOSL bootmanager but i have moved onto PLoP (www.plop.at a bootmanager and small linux distro) , i tried that but it failed because of the \u0027Netbook\u0027 problem (no floppy, no CD, no extra HDD headers etc).   \n\nactually, the way i installed PLoP didn\u0027t work because i had it installing from a USB stick that was at hd0, so all this achieved was installing PLoP into the mbr of the same stick! there is noption to instaal it into the next disk - that i know of.   \n\ni could get my CD drive to connect with an adapter to the netbook\u0027s USB. i\u0027ll try Ranish and PLoP from there.   \n"
+    },
+    {
+      "id": "83722",
+      "timestamp": "2009-11-06T13:07:11+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e actually, the way i installed PLoP didn\u0027t work because i had it installing from a USB stick that was at hd0, so all this achieved was installing PLoP into the mbr of the same stick! there is noption to instaal it into the next disk - that i know of.   \n\u003e\n\u003e i could get my CD drive to connect with an adapter to the netbook\u0027s USB. i\u0027ll try Ranish and PLoP from there.\n\nWell, then you can use grub4dos to exchange drives before installing PLoP.  \n\njaclaz   \n"
+    },
+    {
+      "id": "83731",
+      "timestamp": "2009-11-06T14:40:16+00:00",
+      "author": "Balfaryus",
+      "content": "sorry about missing your question of earlier askinig about \"good ol\u0027 DOS?\", i was trying to eat dinner and dig my optical drive out of my desktop ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif) this is what has happened in DOS:   \n\ni had a floppy image running from my USB_MultiBoot_10 setup. i created and formatted a partition with the intention of writing DOS boot files to it. when rebooted to hard disk GRUB was still there. the full message is:   \n-----  \nGRUB Loading stage1.5.   \n\nGRUB loading, please wait...   \nError 17  \n-----  \n(why no space between \u0027stage\u0027 and \u00271.5\u0027? maybe this is non-standard or just a typo)  \n\n\u003e Well, then you can use grub4dos to exchange drives before installing PLoP.  \n\u003e\n\u003e jaclaz\n\ni\u0027d like to know how to do that please.   \n\ndid you mean to boot into grub4dos within the USB_MultiBoot_10 package i have or to get it onto a CD and boot from there?   \n\n-----   \n\njust as an update - CD/DVD is available now. this HP 5101 BIOS is very friendly regarding getting USB things booting but i have failed again.  \n\ni created a CD using a win98 boot iso that i had injected with Ranish partition manager. when i ask the netbook to boot from the external CD the GRUB error kicks in!? WTF is the hard disk being looked at for? the CD didn\u0027t even spin-up.   \n"
+    },
+    {
+      "id": "83746",
+      "timestamp": "2009-11-06T17:08:58+00:00",
+      "author": "karyonix",
+      "content": "You may asked wrong question.   \nI think 0000007b error was not caused by bad MBR or bad partition table.   \n\nWhat OS are you trying to install in your hard disk in netbook ?   \n- WinXP   \n- Ubuntu Netbook Remix  \n- or dual boot WinXP + Ubuntu Netbook Remix  \n\nWhat content do you already have inside your hard disk ?   \nHow many partitions ? What is inside each partition ?  \nDo you have recovery partition or recovery CD/DVD ?   \n"
+    },
+    {
+      "id": "83749",
+      "timestamp": "2009-11-06T17:24:13+00:00",
+      "author": "was_jaclaz",
+      "content": "We may be overlapping things, you presented yourself as a \"knowledgeable\" user (which I don\u0027t doubt ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif), but maybe you are not very familiar with grub4dos) so I took several shortcuts. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\nYou do have a booting USB stick, right?  \n\nWhat does it boot to?  \n\nWhatever, see here:  \n[http://diddy.boot-la...os/Grub4dos.htm](http://diddy.boot-land.net/grub4dos/Grub4dos.htm \"External link\")  \n[http://diddy.boot-la...les/install.htm](http://diddy.boot-land.net/grub4dos/files/install.htm \"External link\")  \nfor a method suitable for loading from the \"whatever\" grub4dos on the stick.  \n\nRead also at least these two:  \n[http://diddy.boot-la...iles/basics.htm](http://diddy.boot-land.net/grub4dos/files/basics.htm \"External link\")  \n[http://diddy.boot-la...s/files/cli.htm](http://diddy.boot-land.net/grub4dos/files/cli.htm \"External link\")  \n\nGet grub4dos:  \n[http://nufans.net/grub4dos/](http://nufans.net/grub4dos/ \"External link\")  \n[http://nufans.net/gr...-2009-10-16.zip](http://nufans.net/grub4dos/grub4dos-0.4.4-2009-10-16.zip \"External link\")  \n\nCheck you can boot from the USB thingy in grub4dos command prompt (if you are not taken directly there because you have a menu.lst somewhere press \"c\" to access command line).  \n\nType:  \n\n```\ngeometry \u0026#40;hd0\u0026#41;\n```\n\n\\[ENTER\\]  \nand   \n\n```\ngeometry \u0026#40;hd1\u0026#41;\n```\n\n\\[ENTER\\]  \n\njolt down results.  \n\nType:  \n\n```\nmap \u0026#40;hd0\u0026#41; \u0026#40;hd1\u0026#41;\n\nmap \u0026#40;hd1\u0026#41; \u0026#40;hd0\u0026#41;\n\nmap --hook\n```\n\n(press \\[ENTER\\] after having typed each line)  \n\nRe run:  \n\n```\ngeometry \u0026#40;hd0\u0026#41;\n```\n\n\u003cbr /\u003e\n\nand   \n\n```\ngeometry \u0026#40;hd1\u0026#41;\n```\n\ndrives should be exchenged.  \n\nNow you can map a DOS floppy image on the stick, like:  \n\n```\nmap \u0026#40;hd1,0\u0026#41;/afloppy.img \u0026#40;fd0\u0026#41;\n\nmap --hook\n\nroot \u0026#40;fd0\u0026#41;\n\nchainloader /io.sys\n\nboot\n```\n\n\u003cbr /\u003e\n\nAnd you should be booted to DOS with the hard disks exchanged.  \n\njaclaz   \n"
+    },
+    {
+      "id": "83752",
+      "timestamp": "2009-11-06T17:40:00+00:00",
+      "author": "Balfaryus",
+      "content": "\u003e You may asked wrong question.   \n\u003e I think 0000007b error was not caused by bad MBR or bad partition table.   \n\u003e\n\u003e What OS are you trying to install in your hard disk in netbook ?\n\nthanks for the reply. what do you think the problem is? i don\u0027t think there is anything wrong with the partition table either, i have been able to successfully edit it throughout troubleshooting.   \n\nwhich OS? anything at this stage to get control back of the HDD :\\\\ (notes about OS plans below)   \n\n\u003e What content do you already have inside your hard disk ?\n\nnone. this is mentioned above  \n\n\u003e How many partitions ? What is inside each partition ?\n\nnone and nothing. this is mentioned above  \n\n\u003e Do you have recovery partition or recovery CD/DVD ?\n\nno recovery partition, as above and a recovery CD/DVD might come with some Netbooks but not this one.   \n\n-----   \n\nfurther OS details that might later become relevant:   \nthe plan is to have XP (32bit) on two separate partitions, one for each of 2 people, along with another partition for collective data, and Slackware 13 on the fourth and later partitions.   \n\nWin7 x64 will take over from one of the XP partitions depending on what restrictions there are against it cleanly taking over a single partition. i might re-do the process in a month for this.   \n"
+    },
+    {
+      "id": "83756",
+      "timestamp": "2009-11-06T18:28:45+00:00",
+      "author": "karyonix",
+      "content": "Partitioning is the first thing to do to your hard disk. It can be done from Windows setup.   \nThe problem is now how to integrate SATA driver and install Windows XP from USB.   \n"
+    },
+    {
+      "id": "83763",
+      "timestamp": "2009-11-06T19:51:50+00:00",
+      "author": "Balfaryus",
+      "content": "\u003e We may be overlapping things, you presented yourself as a \"knowledgeable\" user (which I don\u0027t doubt ![:(](http://reboot.pro/public/style_emoticons/default/sad.png), but maybe you are not very familiar with grub4dos) so I took several shortcuts. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\u003e\n\u003e You do have a booting USB stick, right?  \n\u003e \\\u003csnip\\\u003e  \n\u003e And you should be booted to DOS with the hard disks exchanged.  \n\u003e\n\u003e jaclaz\n\ni know next to nothing about grub really, i have only customised so far by editing sample various menu.lst\u0027s. i have been using bootloaders and every other PC things for \\\u003e30yrs though and my experience is all over the place with many holes ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n\ni\u0027ll try your instructions as soon as i can thank you very much.   \n\n\u003e Partitioning is the first thing to do to your hard disk. It can be done from Windows setup.   \n\u003e The problem is now how to integrate SATA driver and install Windows XP from USB.\n\ni think you may not have read the thread or i do not understand your recommendation.   \n"
+    },
+    {
+      "id": "83778",
+      "timestamp": "2009-11-06T23:42:43+00:00",
+      "author": "Balfaryus",
+      "content": "i followed your instructions, thanks, i ended with booting a 98 image, and used fdisk /mbr  \n\nthe GRUB error is gone but the problem persists regarding getting XP installed. i\u0027ve run out of time for now but i plan on running pmagic to see what is going on.   \n\nany ideas?  \n\n-----   \n\nmore...   \n\ni had used various tools to see if there was an evil hidden partition before these problems occurred from within WinXP (factory installed SP3), gparted, and DOS.   \n\ni have now checked again by looking for other users that may have discovered something. i can\u0027t find any mention of one being there.   \n\ni will be running Ranish tomorrow; and an embedded \"HDD Self Test\" is running right now. (clutching at straws but it will tell us something)   \n"
+    },
+    {
+      "id": "83786",
+      "timestamp": "2009-11-07T11:00:28+00:00",
+      "author": "was_jaclaz",
+      "content": "Now that you are \"satisfied\" with having a MBR, we can go back to business.  \n\nThere are a number of reports, about people having NO problems using WinsetupfromUSB on the HP mini:  \n[http://myeeeguides.w...sb-flash-drive/](http://myeeeguides.wordpress.com/2008/11/15/winsetupfromusb-install-windows-xp-from-usb-flash-drive/ \"External link\")  \n\nAnd as well a few that do report some problems.  \n\nNow, please do try the WinsetupfromUSB way:  \nget the app here:  \n[http://www.msfn.org/...32-t120444.html](http://www.msfn.org/board/32-t120444.html \"External link\")  \n\nFollow this (AFTER having read the docs in the download):  \n[http://ccollomb.free.fr/blog/?p\u003d59](http://ccollomb.free.fr/blog/?p\u003d59 \"External link\")  \n\nMake sure the source has integrated the appropriate Mass Storage driver. (that should be the one responsible for the 0x0000007b)  \n\njaclaz   \n"
+    },
+    {
+      "id": "83791",
+      "timestamp": "2009-11-07T12:40:34+00:00",
+      "author": "Balfaryus",
+      "content": "thank you for continuing to help me.   \n\n\u003e Now that you are \"satisfied\" with having a MBR, we can go back to business.\n\nhah. i do actually feel better. it was wrong of me to assume that was the main thing getting on the way of installing the OS\u0027s i want on this thing.   \n\ncould all of this been avoided if my \"USB_MultiBoot_10\" stick had a more current storage driver or have i missed the point again? i never would have thought that since i have installed XP on my other SATA based machines.   \n\n\u003cbr /\u003e\n\n\u003e Now, please do try the WinsetupfromUSB way:  \n\u003e \\\u003csnip\\\u003e  \n\u003e Make sure the source has integrated the appropriate Mass Storage driver. (that should be the one responsible for the 0x0000007b)\n\ni will thanks for the link. i\u0027ll also be looking for what others have used for the HP 5101. most netbooks use ICH9 will that guide me to a driver that the setup can use to get me past the install?   \n"
+    },
+    {
+      "id": "83793",
+      "timestamp": "2009-11-07T12:56:16+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e hah. i do actually feel better. it was wrong of me to assume that was the main thing getting on the way of installing the OS\u0027s i want on this thing.\nwaiter, come taste this soup....  \n[http://www.imdb.com/...98/crazycredits](http://www.imdb.com/title/tt0094898/crazycredits \"External link\")  \n**Aha. Aha! ...**   \n![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)   \n\n\u003e could all of this been avoided if my \"USB_MultiBoot_10\" stick had a more current storage driver or have i missed the point again? i never would have thought that since i have installed XP on my other SATA based machines.\nYep, that\u0027s what **karyonix** was trying to tell you.  \n\nWhich again brings us back to the \"common sense advice\", points #f, this time:  \n[http://www.boot-land...?act\u003dboardrules](http://www.boot-land.net/forums/index.php?act\u003dboardrules \"External link\")  \n![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n\nThe easiest would be an integrated BTS driverpack in source, check again the USB_multiboot thread:  \n[http://www.msfn.org/...sb-t111406.html](http://www.msfn.org/board/install-xp-usb-t111406.html \"External link\")  \n***AND*** FAQ #3 ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n[http://www.msfn.org/...qs-t116766.html](http://www.msfn.org/board/faqs-t116766.html \"External link\")  \n\nCannot really say if the BTS supports your machine, but it should. ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\n\u003e i will thanks for the link. i\u0027ll also be looking for what others have used for the HP 5101. most netbooks use ICH9 will that guide me to a driver that the setup can use to get me past the install?\nTHe ICH8 and ICH9 are tricky, in case read here:  \n[http://www.msfn.org/...e...04.html\\\u0026hl\u003d](http://www.msfn.org/board/integration-intels-sata-ahci-and-raid-drivers-t107504.html\u0026hl\u003d \"External link\")  \n\n![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "83794",
+      "timestamp": "2009-11-07T13:16:59+00:00",
+      "author": "Balfaryus",
+      "content": "\u003e waiter, come taste this soup....  \n\u003e [http://www.imdb.com/...98/crazycredits](http://www.imdb.com/title/tt0094898/crazycredits \"External link\")  \n\u003e **Aha. Aha! ...**   \n\u003e ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)\ni watched that about a dozen times..   \n\n\"bark like a dog\"..   \n- \"bow wow\"  \n\n\"a big dog!\"..   \n- \"grwoof grwoof\"   \n\n\"now a little dog\"   \n- \"arf! arf!\"   \n\n\u003cbr /\u003e\n\n\u003e Which again brings us back to the \"common sense advice\", points #f, this time:  \n\u003e [http://www.boot-land...?act\u003dboardrules](http://www.boot-land.net/forums/index.php?act\u003dboardrules \"External link\")  \n\u003e ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\ni didn\u0027t presume to know anything about the help i would get here on my very first post. i have been many many times left without responses at all after carefully drawing out an entire problem, rather than asking for help in \u0027pieces\u0027.   \n\nif we are being exact then you could say that i asked for help getting my mbr back to normal and i got it. should we start a new thread now to appease the rules? ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)   \n"
+    },
+    {
+      "id": "83799",
+      "timestamp": "2009-11-07T15:14:35+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e if we are being exact then you could say that i asked for help getting my mbr back to normal and i got it. should we start a new thread now to appease the rules? ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\nNo, it\u0027s allright. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \nYou asked the \"wrong\" question, ***that*** question is solved now, and we can go back to the \"real\" question, to hopefully find a solution for that one too.  \n\n![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "83800",
+      "timestamp": "2009-11-07T16:37:48+00:00",
+      "author": "karyonix",
+      "content": "I want to help but I don\u0027t have enough experience about installing XP in SATA disk.   \nI can only write some comments but no real solution.   \nI know how to install XP from USB to USB or to IDE disk but SATA make thing more complicated.   \n\n1. Normal installation to SATA/RAID disk need floppy disk.   \nUser have to press F6 during setup boot loading and load SCSI/RAID/SATA driver from floppy disk.   \nBut many computers don\u0027t have floppy disk drive.  \n2. Another possibility is to modify setup files, integrate SATA driver in it.  \nSome people made automated tools to do this.   \n- I think nLite is the easiest way to integrate SATA driver in Window XP setup CD. But It may have a little problem for installation from USB without CD. I am not sure.  \n- USBMultiBoot is another solution. I have not tried it yet. No comment.  \n3. Virtual floppy disk for F6.  \nLike in this thread [http://www.msfn.org/...ge-t137714.html](http://www.msfn.org/board/install-xp-ram-loaded-iso-image-t137714.html \"External link\")  \nI have not tried it yet.   \n\nThe latest Intel SATA/RAID 32-bit F6 floppy is here.  \n[http://downloadcente...p;DwnldID\u003d17883](http://downloadcenter.intel.com/Detail_Desc.aspx?ProdId\u003d2101\u0026DwnldID\u003d17883 \"External link\")   \n"
+    },
+    {
+      "id": "83801",
+      "timestamp": "2009-11-07T16:41:19+00:00",
+      "author": "Balfaryus",
+      "content": "\u003e No, it\u0027s allright. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\u003e You asked the \"wrong\" question, ***that*** question is solved now, and we can go back to the \"real\" question, to hopefully find a solution for that one too.  \n\u003e\n\u003e ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n\u003e\n\u003e jaclaz\n\ni ask to questions to try and understand things and solve problems myself, with assistance. i suppose this is more common \"hey!! halp!! fix all my stuffs.. it has broken all by itself!!\" i try to learn, bot just \"get\".   \n\nsince overwriting the corrupted mbr i was able to load UNR from the SD slot; using a version of Ubuntu Netbook Remix that has a mix of options for running from USB, RAM, and installing to HDD.   \n\nsince this was the only OS i had installed to the netbook, in my mind, the question became \"something has stopped me from being able to install UNR, how to repair *that situation* ?\"   \n"
+    },
+    {
+      "id": "83806",
+      "timestamp": "2009-11-07T17:43:45+00:00",
+      "author": "karyonix",
+      "content": "It is better to learn and be able to solve the problem yourself. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)   \n\nYou installed UNR in SD ? Wow!   \nHow does it boot ?   \n- Your BIOS can read SD card and boot from it directly -- that men your BIOS is good  \n- or you have boot partition in hard disk and everything else in SD card  \n\nOne problem that can arise after installing OS from USB and try to boot from internal hard disk later is that BIOS drive number has changed.   \nWhen you boot from USB it become drive number 0x80 or (hd0) in GRUB. And hard disk is probably 0x81 or (hd1).  \nWhen you boot from internal hard disk its drive number is 0x80.  \nWhen you install Linux from USB and install GRUB, it may guess wrong drive number for internal disk.   \nIt may wrongly install GRUB stage 1 in MBR of USB drive instead of internal disk.  \nIt may install GRUB stage 1 in MBR of internal disk. But when stage 1 boot try to load stage2 from (hd1) or (0x81) while the installed stage2 is in 0x80, so it result in error while booting.   \n"
+    },
+    {
+      "id": "83809",
+      "timestamp": "2009-11-07T18:49:47+00:00",
+      "author": "Balfaryus",
+      "content": "thanks again for your advice **karyonix** , **jaclaz** . i have used the DPs_BASE app and mass storage pack into my USB_MultiBoot_10 and can get further into setup.   \n\ni aborted, and will use the suggested WinSetup From USB, which i have already had a quick look at. is it only AHK bringing all those tools together? looks like a good collection of things to me and it\u0027s going straight into my toolkit for my making a mess with OS\u0027es ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)   \n\n\u003e It is better to learn and be able to solve the problem yourself. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)   \n\u003e\n\u003e You installed UNR in SD ? Wow!   \n\u003e How does it boot ?   \n\u003e - Your BIOS can read SD card and boot from it directly -- that men your BIOS is good  \n\u003e - or you have boot partition in hard disk and everything else in SD card\n\nidk if the BIOS is good, it is certainly very simple. on the HP 5101 the SD is just recognised as another USB Hard Disk, like regular UFD\u0027s are. i\u0027m glad of that.   \n\ni guess HP chose a nice SD reader to attach to the bus?   \n\ni have never used SD for this before, it is just one from an mp3 player ![:(](http://reboot.pro/public/style_emoticons/default/sad.png) at any one time, the list of detected boot devices also allows for a USB CD/DVD.   \n\nmy normal setup will only be the SD and HDD. i wonder if i could use a SATA to CF adapter for the internal disk, and run it as a regular hard disk.   \n"
+    },
+    {
+      "id": "83810",
+      "timestamp": "2009-11-07T19:00:55+00:00",
+      "author": "was_jaclaz",
+      "content": "@shifter  \nUSB_Multiboot and WinSetupfromUSB are developed \"in parallel\", thus usually the one and the other can be exhanged and it is only a matter of preferring a command line tool over a GUI one or viceversa.  \n\nThe respective Authors, **wimb** and **ilko_t** are members here, on MSFN and on 911CD and it is rare that some new finding is not integrated very quickly in both the apps. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\n\u003e ...... i have used the DPs_BASE app and mass storage pack into my USB_MultiBoot_10 and can get further into setup.   \n\u003e\n\u003e i aborted, and will use .....\n\nYou do know how to keep the level of suspence high, don\u0027t you? ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)   \n\n![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "83811",
+      "timestamp": "2009-11-07T19:42:33+00:00",
+      "author": "Balfaryus",
+      "content": "ah, that\u0027s cool they are both good looking projects and much needed. there is a new win7 tool actually by MS isn\u0027t there? i looked but didn\u0027t try it.   \n\nno more suspense, hehe, i went full steam ahead with common looking options in WinSetupfromUSB using an unpacked vanilla XPSP2 and it installed very easily. it was fast too, i chose an NTFS partition for the stick as suggested. builds that are well nLited must fly ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)   \n\nthe only kink was the Driver Pack Finisher that clocked up huundreds of \u0027close driver signing warnings\u0027. what have i done there? an overkill KTD option i think, no big deal anyway, i don\u0027t need to perfect my own setup.   \n\n-----   \n\nthank you both, again, for your patience and kind help. next session i need to look into how i should best do the multi boot XP and XP (one of which becomes win7) and later slack13.   \n\nsince the situation is explained here any extra pointers would be welcome. i want to start by building up a single XP install, get it all clean and optioned with core stuff, partition shrink, then image.   \n\nEDIT: ![:(](http://reboot.pro/public/style_emoticons/default/sad.png) look what i just found in the pre-installation folder that i had stored before wiping the disk. hope this may help someone else.  \n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003da57a9e1febcdac4865a26fb06e044c4a\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d9858 \"Download attachment\") [**massStorageDriver_hPMini5101.rar**](http://reboot.pro/index.php?s\u003da57a9e1febcdac4865a26fb06e044c4a\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d9858 \"Download attachment\") **188.26KB** 303 downloads\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/txt.gif)](http://reboot.pro/index.php?s\u003da57a9e1febcdac4865a26fb06e044c4a\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d9859 \"Download attachment\") [**massStorageDriver_hPMini5101.txt**](http://reboot.pro/index.php?s\u003da57a9e1febcdac4865a26fb06e044c4a\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d9859 \"Download attachment\") **543bytes** 294 downloads\n\n"
+    },
+    {
+      "id": "83704",
+      "timestamp": "2009-11-06T10:31:39+00:00",
+      "author": "Balfaryus",
+      "content": "i have various USB stick tools but can\u0027t seem to get anywhere trying to re-write my borked MBR.   \n\ni am assuming this is the problem because Win Recovery Console and WinXP setup fail with the 7b inaccessible device error. this is when loading them from USB_MultiBoot_10  \n\ni tried loading UNR to hard disk, to see what would happen and it would load until halting at an \"end trace\". GRUB error 22 happened in there somewhere too. i then wrote a new parition table to see if it was bad partitioning or if i was the MBR.   \n\nbooting the netbook now from the hard disk throws up GRUB error 17. anything trying to onstall to hard disk throws the 0000007b error.   \n\nas it is a netbook, i have no CD and i don\u0027t want to take the disk out since it is only a few days old.   \n\nthanks for any advice   \n"
+    },
+    {
+      "id": "83705",
+      "timestamp": "2009-11-06T10:39:03+00:00",
+      "author": "maanu",
+      "content": "check in your bios if you have compatibility mode in HDD . if so then shift your sata mode to IDE or Legacy and try booting RC image again .   \n"
+    },
+    {
+      "id": "83710",
+      "timestamp": "2009-11-06T11:02:38+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e thanks for any advice\n\nNot the advice you are wishing to hear, but you should really be a bit more complete/detailed when you report a problem.   \n\nWhat the heck is \"UNR\"? My guess is that it is Ubuntu Netbook Remix, but not everyone would know what it is.  \nYou don\u0027t have \"a netbook\". You have an eepc model ***zzz*** or an Acer one model ***xxx*** or a Delll mini***y*** or a .... model .....  \netc., etc.  \n\nIt is already difficult enough to try and help from a distance, let alone if the willing helping member has to guess or imagine half the things you have done.  \n\nYou see, the more detailed and specific is the report, the more specific and possibly more likely to work will be the reply.  \n\nCompare with the \"common sense advice\" attached to Rules:  \n[http://www.boot-land...?act\u003dboardrules](http://www.boot-land.net/forums/index.php?act\u003dboardrules \"External link\")  \n\n![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "83715",
+      "timestamp": "2009-11-06T11:42:34+00:00",
+      "author": "Balfaryus",
+      "content": "\u003e check in your bios if you have compatibility mode in HDD . if so then shift your sata mode to IDE or Legacy and try booting RC image again .\n\nRecovery Console? i can\u0027t try this though because the BIOS hasn\u0027t the selection.   \n\n\u003e What the heck is \"UNR\"? My guess is that it is Ubuntu Netbook Remix, but not everyone would know what it is.  \n\u003e You don\u0027t have \"a netbook\". You have an eepc model ***zzz*** or an Acer one model ***xxx*** or a Delll mini***y*** or a .... model .....  \n\u003e etc., etc.\n\ni appreeciate where you are coming from but i am not in a hurry and i am experienced enough at using forums to know that i don\u0027t bother plastering every detail into my very first post.   \n\nit can turn out to be a complete waste of time. i use my own common sense to state the basic outline of the problem and see what answers i get if any.   \n\n-----   \n\nUbuntu Netbook Remix (ubuntu-9.04-netbook-remix-i386)   \n\nHP Mini 5101, Atom N280 1.66GHz with Intel 950GMA GPU, 1Gb 533MHz DDR2 RAM, 160Gb WD1600BEKT 60F3T1. 1366x768 native res.   \n\nmore specifically it is a VM531PA although this number is mostly irrelevant once you now the specs above, US versions are something like FM97xxx.   \n"
+    },
+    {
+      "id": "83717",
+      "timestamp": "2009-11-06T11:54:49+00:00",
+      "author": "was_jaclaz",
+      "content": "Well, if you have not an option in BIOS to switch from SATA to IDE mode, you are pretty much stuck. ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\nWhat you need is then a PE of some kind that has the appropriate SATA drivers integrated (or a Recovery Console build with same drivers, or a linux live USB with same drivers).  \n\nEasiest of the three is possibly creating a minimal LiveXP with the drivers packs integrated or try using \"horror\" ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif) a Vista Recovery CD \"shifted\" to USB use.  \n\nOf course it depends on which OS you have handy.  \n\nWhat happens with good ol\u0027 DOS?  \n\nCan\u0027t it see the drive?  \n\nUsing some good ol\u0027 apps, like RPM (Ranish Partition Manager) or MBRwiz it should be possible to fix/restore the MBR, if the physicaldrive is accessible.  \n\njaclaz   \n"
+    },
+    {
+      "id": "83718",
+      "timestamp": "2009-11-06T12:27:03+00:00",
+      "author": "Balfaryus",
+      "content": "thanks for the help, i might have a next move now.   \n\ni have Ranish here, i\u0027ll see if i can get it going using a CD drive into a USB port.   \n\ni also considered installing XOSL bootmanager but i have moved onto PLoP (www.plop.at a bootmanager and small linux distro) , i tried that but it failed because of the \u0027Netbook\u0027 problem (no floppy, no CD, no extra HDD headers etc).   \n\nactually, the way i installed PLoP didn\u0027t work because i had it installing from a USB stick that was at hd0, so all this achieved was installing PLoP into the mbr of the same stick! there is noption to instaal it into the next disk - that i know of.   \n\ni could get my CD drive to connect with an adapter to the netbook\u0027s USB. i\u0027ll try Ranish and PLoP from there.   \n"
+    },
+    {
+      "id": "83722",
+      "timestamp": "2009-11-06T13:07:11+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e actually, the way i installed PLoP didn\u0027t work because i had it installing from a USB stick that was at hd0, so all this achieved was installing PLoP into the mbr of the same stick! there is noption to instaal it into the next disk - that i know of.   \n\u003e\n\u003e i could get my CD drive to connect with an adapter to the netbook\u0027s USB. i\u0027ll try Ranish and PLoP from there.\n\nWell, then you can use grub4dos to exchange drives before installing PLoP.  \n\njaclaz   \n"
+    },
+    {
+      "id": "83731",
+      "timestamp": "2009-11-06T14:40:16+00:00",
+      "author": "Balfaryus",
+      "content": "sorry about missing your question of earlier askinig about \"good ol\u0027 DOS?\", i was trying to eat dinner and dig my optical drive out of my desktop ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif) this is what has happened in DOS:   \n\ni had a floppy image running from my USB_MultiBoot_10 setup. i created and formatted a partition with the intention of writing DOS boot files to it. when rebooted to hard disk GRUB was still there. the full message is:   \n-----  \nGRUB Loading stage1.5.   \n\nGRUB loading, please wait...   \nError 17  \n-----  \n(why no space between \u0027stage\u0027 and \u00271.5\u0027? maybe this is non-standard or just a typo)  \n\n\u003e Well, then you can use grub4dos to exchange drives before installing PLoP.  \n\u003e\n\u003e jaclaz\n\ni\u0027d like to know how to do that please.   \n\ndid you mean to boot into grub4dos within the USB_MultiBoot_10 package i have or to get it onto a CD and boot from there?   \n\n-----   \n\njust as an update - CD/DVD is available now. this HP 5101 BIOS is very friendly regarding getting USB things booting but i have failed again.  \n\ni created a CD using a win98 boot iso that i had injected with Ranish partition manager. when i ask the netbook to boot from the external CD the GRUB error kicks in!? WTF is the hard disk being looked at for? the CD didn\u0027t even spin-up.   \n"
+    },
+    {
+      "id": "83746",
+      "timestamp": "2009-11-06T17:08:58+00:00",
+      "author": "karyonix",
+      "content": "You may asked wrong question.   \nI think 0000007b error was not caused by bad MBR or bad partition table.   \n\nWhat OS are you trying to install in your hard disk in netbook ?   \n- WinXP   \n- Ubuntu Netbook Remix  \n- or dual boot WinXP + Ubuntu Netbook Remix  \n\nWhat content do you already have inside your hard disk ?   \nHow many partitions ? What is inside each partition ?  \nDo you have recovery partition or recovery CD/DVD ?   \n"
+    },
+    {
+      "id": "83749",
+      "timestamp": "2009-11-06T17:24:13+00:00",
+      "author": "was_jaclaz",
+      "content": "We may be overlapping things, you presented yourself as a \"knowledgeable\" user (which I don\u0027t doubt ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif), but maybe you are not very familiar with grub4dos) so I took several shortcuts. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\nYou do have a booting USB stick, right?  \n\nWhat does it boot to?  \n\nWhatever, see here:  \n[http://diddy.boot-la...os/Grub4dos.htm](http://diddy.boot-land.net/grub4dos/Grub4dos.htm \"External link\")  \n[http://diddy.boot-la...les/install.htm](http://diddy.boot-land.net/grub4dos/files/install.htm \"External link\")  \nfor a method suitable for loading from the \"whatever\" grub4dos on the stick.  \n\nRead also at least these two:  \n[http://diddy.boot-la...iles/basics.htm](http://diddy.boot-land.net/grub4dos/files/basics.htm \"External link\")  \n[http://diddy.boot-la...s/files/cli.htm](http://diddy.boot-land.net/grub4dos/files/cli.htm \"External link\")  \n\nGet grub4dos:  \n[http://nufans.net/grub4dos/](http://nufans.net/grub4dos/ \"External link\")  \n[http://nufans.net/gr...-2009-10-16.zip](http://nufans.net/grub4dos/grub4dos-0.4.4-2009-10-16.zip \"External link\")  \n\nCheck you can boot from the USB thingy in grub4dos command prompt (if you are not taken directly there because you have a menu.lst somewhere press \"c\" to access command line).  \n\nType:  \n\n```\ngeometry \u0026#40;hd0\u0026#41;\n```\n\n\\[ENTER\\]  \nand   \n\n```\ngeometry \u0026#40;hd1\u0026#41;\n```\n\n\\[ENTER\\]  \n\njolt down results.  \n\nType:  \n\n```\nmap \u0026#40;hd0\u0026#41; \u0026#40;hd1\u0026#41;\n\nmap \u0026#40;hd1\u0026#41; \u0026#40;hd0\u0026#41;\n\nmap --hook\n```\n\n(press \\[ENTER\\] after having typed each line)  \n\nRe run:  \n\n```\ngeometry \u0026#40;hd0\u0026#41;\n```\n\n\u003cbr /\u003e\n\nand   \n\n```\ngeometry \u0026#40;hd1\u0026#41;\n```\n\ndrives should be exchenged.  \n\nNow you can map a DOS floppy image on the stick, like:  \n\n```\nmap \u0026#40;hd1,0\u0026#41;/afloppy.img \u0026#40;fd0\u0026#41;\n\nmap --hook\n\nroot \u0026#40;fd0\u0026#41;\n\nchainloader /io.sys\n\nboot\n```\n\n\u003cbr /\u003e\n\nAnd you should be booted to DOS with the hard disks exchanged.  \n\njaclaz   \n"
+    },
+    {
+      "id": "83752",
+      "timestamp": "2009-11-06T17:40:00+00:00",
+      "author": "Balfaryus",
+      "content": "\u003e You may asked wrong question.   \n\u003e I think 0000007b error was not caused by bad MBR or bad partition table.   \n\u003e\n\u003e What OS are you trying to install in your hard disk in netbook ?\n\nthanks for the reply. what do you think the problem is? i don\u0027t think there is anything wrong with the partition table either, i have been able to successfully edit it throughout troubleshooting.   \n\nwhich OS? anything at this stage to get control back of the HDD :\\\\ (notes about OS plans below)   \n\n\u003e What content do you already have inside your hard disk ?\n\nnone. this is mentioned above  \n\n\u003e How many partitions ? What is inside each partition ?\n\nnone and nothing. this is mentioned above  \n\n\u003e Do you have recovery partition or recovery CD/DVD ?\n\nno recovery partition, as above and a recovery CD/DVD might come with some Netbooks but not this one.   \n\n-----   \n\nfurther OS details that might later become relevant:   \nthe plan is to have XP (32bit) on two separate partitions, one for each of 2 people, along with another partition for collective data, and Slackware 13 on the fourth and later partitions.   \n\nWin7 x64 will take over from one of the XP partitions depending on what restrictions there are against it cleanly taking over a single partition. i might re-do the process in a month for this.   \n"
+    },
+    {
+      "id": "83756",
+      "timestamp": "2009-11-06T18:28:45+00:00",
+      "author": "karyonix",
+      "content": "Partitioning is the first thing to do to your hard disk. It can be done from Windows setup.   \nThe problem is now how to integrate SATA driver and install Windows XP from USB.   \n"
+    },
+    {
+      "id": "83763",
+      "timestamp": "2009-11-06T19:51:50+00:00",
+      "author": "Balfaryus",
+      "content": "\u003e We may be overlapping things, you presented yourself as a \"knowledgeable\" user (which I don\u0027t doubt ![:(](http://reboot.pro/public/style_emoticons/default/sad.png), but maybe you are not very familiar with grub4dos) so I took several shortcuts. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\u003e\n\u003e You do have a booting USB stick, right?  \n\u003e \\\u003csnip\\\u003e  \n\u003e And you should be booted to DOS with the hard disks exchanged.  \n\u003e\n\u003e jaclaz\n\ni know next to nothing about grub really, i have only customised so far by editing sample various menu.lst\u0027s. i have been using bootloaders and every other PC things for \\\u003e30yrs though and my experience is all over the place with many holes ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n\ni\u0027ll try your instructions as soon as i can thank you very much.   \n\n\u003e Partitioning is the first thing to do to your hard disk. It can be done from Windows setup.   \n\u003e The problem is now how to integrate SATA driver and install Windows XP from USB.\n\ni think you may not have read the thread or i do not understand your recommendation.   \n"
+    },
+    {
+      "id": "83778",
+      "timestamp": "2009-11-06T23:42:43+00:00",
+      "author": "Balfaryus",
+      "content": "i followed your instructions, thanks, i ended with booting a 98 image, and used fdisk /mbr  \n\nthe GRUB error is gone but the problem persists regarding getting XP installed. i\u0027ve run out of time for now but i plan on running pmagic to see what is going on.   \n\nany ideas?  \n\n-----   \n\nmore...   \n\ni had used various tools to see if there was an evil hidden partition before these problems occurred from within WinXP (factory installed SP3), gparted, and DOS.   \n\ni have now checked again by looking for other users that may have discovered something. i can\u0027t find any mention of one being there.   \n\ni will be running Ranish tomorrow; and an embedded \"HDD Self Test\" is running right now. (clutching at straws but it will tell us something)   \n"
+    },
+    {
+      "id": "83786",
+      "timestamp": "2009-11-07T11:00:28+00:00",
+      "author": "was_jaclaz",
+      "content": "Now that you are \"satisfied\" with having a MBR, we can go back to business.  \n\nThere are a number of reports, about people having NO problems using WinsetupfromUSB on the HP mini:  \n[http://myeeeguides.w...sb-flash-drive/](http://myeeeguides.wordpress.com/2008/11/15/winsetupfromusb-install-windows-xp-from-usb-flash-drive/ \"External link\")  \n\nAnd as well a few that do report some problems.  \n\nNow, please do try the WinsetupfromUSB way:  \nget the app here:  \n[http://www.msfn.org/...32-t120444.html](http://www.msfn.org/board/32-t120444.html \"External link\")  \n\nFollow this (AFTER having read the docs in the download):  \n[http://ccollomb.free.fr/blog/?p\u003d59](http://ccollomb.free.fr/blog/?p\u003d59 \"External link\")  \n\nMake sure the source has integrated the appropriate Mass Storage driver. (that should be the one responsible for the 0x0000007b)  \n\njaclaz   \n"
+    },
+    {
+      "id": "83791",
+      "timestamp": "2009-11-07T12:40:34+00:00",
+      "author": "Balfaryus",
+      "content": "thank you for continuing to help me.   \n\n\u003e Now that you are \"satisfied\" with having a MBR, we can go back to business.\n\nhah. i do actually feel better. it was wrong of me to assume that was the main thing getting on the way of installing the OS\u0027s i want on this thing.   \n\ncould all of this been avoided if my \"USB_MultiBoot_10\" stick had a more current storage driver or have i missed the point again? i never would have thought that since i have installed XP on my other SATA based machines.   \n\n\u003cbr /\u003e\n\n\u003e Now, please do try the WinsetupfromUSB way:  \n\u003e \\\u003csnip\\\u003e  \n\u003e Make sure the source has integrated the appropriate Mass Storage driver. (that should be the one responsible for the 0x0000007b)\n\ni will thanks for the link. i\u0027ll also be looking for what others have used for the HP 5101. most netbooks use ICH9 will that guide me to a driver that the setup can use to get me past the install?   \n"
+    },
+    {
+      "id": "83793",
+      "timestamp": "2009-11-07T12:56:16+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e hah. i do actually feel better. it was wrong of me to assume that was the main thing getting on the way of installing the OS\u0027s i want on this thing.\nwaiter, come taste this soup....  \n[http://www.imdb.com/...98/crazycredits](http://www.imdb.com/title/tt0094898/crazycredits \"External link\")  \n**Aha. Aha! ...**   \n![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)   \n\n\u003e could all of this been avoided if my \"USB_MultiBoot_10\" stick had a more current storage driver or have i missed the point again? i never would have thought that since i have installed XP on my other SATA based machines.\nYep, that\u0027s what **karyonix** was trying to tell you.  \n\nWhich again brings us back to the \"common sense advice\", points #f, this time:  \n[http://www.boot-land...?act\u003dboardrules](http://www.boot-land.net/forums/index.php?act\u003dboardrules \"External link\")  \n![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n\nThe easiest would be an integrated BTS driverpack in source, check again the USB_multiboot thread:  \n[http://www.msfn.org/...sb-t111406.html](http://www.msfn.org/board/install-xp-usb-t111406.html \"External link\")  \n***AND*** FAQ #3 ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n[http://www.msfn.org/...qs-t116766.html](http://www.msfn.org/board/faqs-t116766.html \"External link\")  \n\nCannot really say if the BTS supports your machine, but it should. ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\n\u003e i will thanks for the link. i\u0027ll also be looking for what others have used for the HP 5101. most netbooks use ICH9 will that guide me to a driver that the setup can use to get me past the install?\nTHe ICH8 and ICH9 are tricky, in case read here:  \n[http://www.msfn.org/...e...04.html\\\u0026hl\u003d](http://www.msfn.org/board/integration-intels-sata-ahci-and-raid-drivers-t107504.html\u0026hl\u003d \"External link\")  \n\n![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "83794",
+      "timestamp": "2009-11-07T13:16:59+00:00",
+      "author": "Balfaryus",
+      "content": "\u003e waiter, come taste this soup....  \n\u003e [http://www.imdb.com/...98/crazycredits](http://www.imdb.com/title/tt0094898/crazycredits \"External link\")  \n\u003e **Aha. Aha! ...**   \n\u003e ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)\ni watched that about a dozen times..   \n\n\"bark like a dog\"..   \n- \"bow wow\"  \n\n\"a big dog!\"..   \n- \"grwoof grwoof\"   \n\n\"now a little dog\"   \n- \"arf! arf!\"   \n\n\u003cbr /\u003e\n\n\u003e Which again brings us back to the \"common sense advice\", points #f, this time:  \n\u003e [http://www.boot-land...?act\u003dboardrules](http://www.boot-land.net/forums/index.php?act\u003dboardrules \"External link\")  \n\u003e ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\ni didn\u0027t presume to know anything about the help i would get here on my very first post. i have been many many times left without responses at all after carefully drawing out an entire problem, rather than asking for help in \u0027pieces\u0027.   \n\nif we are being exact then you could say that i asked for help getting my mbr back to normal and i got it. should we start a new thread now to appease the rules? ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)   \n"
+    },
+    {
+      "id": "83799",
+      "timestamp": "2009-11-07T15:14:35+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e if we are being exact then you could say that i asked for help getting my mbr back to normal and i got it. should we start a new thread now to appease the rules? ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\nNo, it\u0027s allright. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \nYou asked the \"wrong\" question, ***that*** question is solved now, and we can go back to the \"real\" question, to hopefully find a solution for that one too.  \n\n![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "83800",
+      "timestamp": "2009-11-07T16:37:48+00:00",
+      "author": "karyonix",
+      "content": "I want to help but I don\u0027t have enough experience about installing XP in SATA disk.   \nI can only write some comments but no real solution.   \nI know how to install XP from USB to USB or to IDE disk but SATA make thing more complicated.   \n\n1. Normal installation to SATA/RAID disk need floppy disk.   \nUser have to press F6 during setup boot loading and load SCSI/RAID/SATA driver from floppy disk.   \nBut many computers don\u0027t have floppy disk drive.  \n2. Another possibility is to modify setup files, integrate SATA driver in it.  \nSome people made automated tools to do this.   \n- I think nLite is the easiest way to integrate SATA driver in Window XP setup CD. But It may have a little problem for installation from USB without CD. I am not sure.  \n- USBMultiBoot is another solution. I have not tried it yet. No comment.  \n3. Virtual floppy disk for F6.  \nLike in this thread [http://www.msfn.org/...ge-t137714.html](http://www.msfn.org/board/install-xp-ram-loaded-iso-image-t137714.html \"External link\")  \nI have not tried it yet.   \n\nThe latest Intel SATA/RAID 32-bit F6 floppy is here.  \n[http://downloadcente...p;DwnldID\u003d17883](http://downloadcenter.intel.com/Detail_Desc.aspx?ProdId\u003d2101\u0026DwnldID\u003d17883 \"External link\")   \n"
+    },
+    {
+      "id": "83801",
+      "timestamp": "2009-11-07T16:41:19+00:00",
+      "author": "Balfaryus",
+      "content": "\u003e No, it\u0027s allright. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\u003e You asked the \"wrong\" question, ***that*** question is solved now, and we can go back to the \"real\" question, to hopefully find a solution for that one too.  \n\u003e\n\u003e ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n\u003e\n\u003e jaclaz\n\ni ask to questions to try and understand things and solve problems myself, with assistance. i suppose this is more common \"hey!! halp!! fix all my stuffs.. it has broken all by itself!!\" i try to learn, bot just \"get\".   \n\nsince overwriting the corrupted mbr i was able to load UNR from the SD slot; using a version of Ubuntu Netbook Remix that has a mix of options for running from USB, RAM, and installing to HDD.   \n\nsince this was the only OS i had installed to the netbook, in my mind, the question became \"something has stopped me from being able to install UNR, how to repair *that situation* ?\"   \n"
+    },
+    {
+      "id": "83806",
+      "timestamp": "2009-11-07T17:43:45+00:00",
+      "author": "karyonix",
+      "content": "It is better to learn and be able to solve the problem yourself. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)   \n\nYou installed UNR in SD ? Wow!   \nHow does it boot ?   \n- Your BIOS can read SD card and boot from it directly -- that men your BIOS is good  \n- or you have boot partition in hard disk and everything else in SD card  \n\nOne problem that can arise after installing OS from USB and try to boot from internal hard disk later is that BIOS drive number has changed.   \nWhen you boot from USB it become drive number 0x80 or (hd0) in GRUB. And hard disk is probably 0x81 or (hd1).  \nWhen you boot from internal hard disk its drive number is 0x80.  \nWhen you install Linux from USB and install GRUB, it may guess wrong drive number for internal disk.   \nIt may wrongly install GRUB stage 1 in MBR of USB drive instead of internal disk.  \nIt may install GRUB stage 1 in MBR of internal disk. But when stage 1 boot try to load stage2 from (hd1) or (0x81) while the installed stage2 is in 0x80, so it result in error while booting.   \n"
+    },
+    {
+      "id": "83809",
+      "timestamp": "2009-11-07T18:49:47+00:00",
+      "author": "Balfaryus",
+      "content": "thanks again for your advice **karyonix** , **jaclaz** . i have used the DPs_BASE app and mass storage pack into my USB_MultiBoot_10 and can get further into setup.   \n\ni aborted, and will use the suggested WinSetup From USB, which i have already had a quick look at. is it only AHK bringing all those tools together? looks like a good collection of things to me and it\u0027s going straight into my toolkit for my making a mess with OS\u0027es ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)   \n\n\u003e It is better to learn and be able to solve the problem yourself. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)   \n\u003e\n\u003e You installed UNR in SD ? Wow!   \n\u003e How does it boot ?   \n\u003e - Your BIOS can read SD card and boot from it directly -- that men your BIOS is good  \n\u003e - or you have boot partition in hard disk and everything else in SD card\n\nidk if the BIOS is good, it is certainly very simple. on the HP 5101 the SD is just recognised as another USB Hard Disk, like regular UFD\u0027s are. i\u0027m glad of that.   \n\ni guess HP chose a nice SD reader to attach to the bus?   \n\ni have never used SD for this before, it is just one from an mp3 player ![:(](http://reboot.pro/public/style_emoticons/default/sad.png) at any one time, the list of detected boot devices also allows for a USB CD/DVD.   \n\nmy normal setup will only be the SD and HDD. i wonder if i could use a SATA to CF adapter for the internal disk, and run it as a regular hard disk.   \n"
+    },
+    {
+      "id": "83810",
+      "timestamp": "2009-11-07T19:00:55+00:00",
+      "author": "was_jaclaz",
+      "content": "@shifter  \nUSB_Multiboot and WinSetupfromUSB are developed \"in parallel\", thus usually the one and the other can be exhanged and it is only a matter of preferring a command line tool over a GUI one or viceversa.  \n\nThe respective Authors, **wimb** and **ilko_t** are members here, on MSFN and on 911CD and it is rare that some new finding is not integrated very quickly in both the apps. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\n\u003e ...... i have used the DPs_BASE app and mass storage pack into my USB_MultiBoot_10 and can get further into setup.   \n\u003e\n\u003e i aborted, and will use .....\n\nYou do know how to keep the level of suspence high, don\u0027t you? ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)   \n\n![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "83811",
+      "timestamp": "2009-11-07T19:42:33+00:00",
+      "author": "Balfaryus",
+      "content": "ah, that\u0027s cool they are both good looking projects and much needed. there is a new win7 tool actually by MS isn\u0027t there? i looked but didn\u0027t try it.   \n\nno more suspense, hehe, i went full steam ahead with common looking options in WinSetupfromUSB using an unpacked vanilla XPSP2 and it installed very easily. it was fast too, i chose an NTFS partition for the stick as suggested. builds that are well nLited must fly ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)   \n\nthe only kink was the Driver Pack Finisher that clocked up huundreds of \u0027close driver signing warnings\u0027. what have i done there? an overkill KTD option i think, no big deal anyway, i don\u0027t need to perfect my own setup.   \n\n-----   \n\nthank you both, again, for your patience and kind help. next session i need to look into how i should best do the multi boot XP and XP (one of which becomes win7) and later slack13.   \n\nsince the situation is explained here any extra pointers would be welcome. i want to start by building up a single XP install, get it all clean and optioned with core stuff, partition shrink, then image.   \n\nEDIT: ![:(](http://reboot.pro/public/style_emoticons/default/sad.png) look what i just found in the pre-installation folder that i had stored before wiping the disk. hope this may help someone else.  \n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003d648eb49026d25ffe994643ac59aebfa2\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d9858 \"Download attachment\") [**massStorageDriver_hPMini5101.rar**](http://reboot.pro/index.php?s\u003d648eb49026d25ffe994643ac59aebfa2\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d9858 \"Download attachment\") **188.26KB** 303 downloads\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/txt.gif)](http://reboot.pro/index.php?s\u003d648eb49026d25ffe994643ac59aebfa2\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d9859 \"Download attachment\") [**massStorageDriver_hPMini5101.txt**](http://reboot.pro/index.php?s\u003d648eb49026d25ffe994643ac59aebfa2\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d9859 \"Download attachment\") **543bytes** 294 downloads\n\n"
+    },
+    {
+      "id": "83813",
+      "timestamp": "2009-11-07T20:06:38+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e ah, that\u0027s cool they are both good looking projects and much needed. there is a new win7 tool actually by MS isn\u0027t there? i looked but didn\u0027t try it.\nThen don\u0027t. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \nThe mentioned app can add Win 7 to the stick allright:  \n[http://www.msfn.org/...ui-t120444.html](http://www.msfn.org/board/install-usb-winsetupfromusb-gui-t120444.html \"External link\")  \n\n\u003e What it can be used for adding to your USB stick/disk:  \n\u003e\n\u003e - multiple Windows XP/2kX sources in the same partition (up to 10). They have to be in the first partition of the disk! Existing folders \\~BT and \\~LS and TXTSETUP.SIF will be renamed, and SETUPLDR.BIN and SETUPDD.SYS patched against the new names. Checksum checks are also corrected. BTS OEM folders are supported and renamed accordingly.  \n\u003e - BartPE/WinBulder/UBCD4Win/WinFLPC (NOT ramdisk versions) to any primary partition. Multiple BartPE for example, in the SAME partition are NOT supported. Neither is the mix of them on a single partition.  \n\u003e - Vista/Windows 7 setup to different primary partitions. Multiple Vista sources in the SAME partition are NOT supported. Place your second Vista setup in another partition. It can be placed on any primary partition.  \n\u003e - PartedMagic, a friendly Linux distro including GParted- open source partition manager.  \n\u003e - SyLinux bootsector, and optionally a directory, containing (Linux) distro booting off SysLinux. For example you may extract UBCD411.ISO, and point it to this folder. Entire contents will be copied and entry for SysLinux will be added to the boot menu.\n\njaclaz   \n"
+    },
+    {
+      "id": "83815",
+      "timestamp": "2009-11-07T21:13:22+00:00",
+      "author": "Balfaryus",
+      "content": "\u003e Then don\u0027t. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\u003e The mentioned app can add Win 7 to the stick allright:  \n\u003e [http://www.msfn.org/...ui-t120444.html](http://www.msfn.org/board/install-usb-winsetupfromusb-gui-t120444.html \"External link\")\n\ndon\u0027t look at the MS one? i wasn\u0027t comparing if thats what you mean. it is surprising that MS are in this century all of a sudden.   \n\nalmost as surprised as i was when i found win7 to be a decent window manager ![:(](http://reboot.pro/public/style_emoticons/default/sad.png) (then Aero broke and wouldn\u0027t allow transparency to be disabled haha)   \n"
+    },
+    {
+      "id": "99223",
+      "timestamp": "2010-05-01T18:23:44+00:00",
+      "author": "arjen20",
+      "content": "Hi guys i have selected the model of my new netbook. I am going for Dell but i also want and good looking skin on in it so i have searched a lot on internet regarding this and came through this website [http://decalskin.com/](http://decalskin.com/ \"External link\") Is this website is really good in providing netbook with nice skin?   \n"
+    }
+  ]
+}

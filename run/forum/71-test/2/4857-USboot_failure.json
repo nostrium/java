@@ -1,0 +1,82 @@
+{
+  "id": "4857",
+  "title": "USboot failure",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "37016",
+      "timestamp": "2008-06-05T18:11:23+00:00",
+      "author": "kosmosv5",
+      "content": "i failed to create a bootable usb flash drive with usboot tried everything, the author recommanded me to ask here because my problem is with booting the flash drive.  \nwell i cant get it to boot i get either \"boot error\" or \"missing operating system\" or \"press f1 to reboot or f2 for setup\"  \nmy PC support USB booting actually i managed to run linux (ubuntu) from the flash drive with this tutorial [http://www.pendrivel...ia-the-live-cd/](http://www.pendrivelinux.com/2008/05/08/usb-ubuntu-804-persistent-install-via-the-live-cd/ \"External link\").  \nalso i tried fromatting my flash drive with every possible way FAt,FAT32,NTFS with both windows or the HP tool.  \nany thing im missing ? is there something i need to do to get the drive to boot ?   \n"
+    },
+    {
+      "id": "37019",
+      "timestamp": "2008-06-05T18:28:50+00:00",
+      "author": "was_jaclaz",
+      "content": "Ok, let\u0027s start from that tutorial that is working for you.  \nSteps 1 to 6 are OK  \n\nIn step 7 create just first partition, the suggested 750 M is fine.  \n\nSteps 8 and 9 OK  \n\nNow remove the stick.  \n\nReboot in Windows 2K/XP.  \n\nInsert stick.  \n\nIt will get a drive letter in explorer.  \n\nRight click on the appropriate drive letter and choose to format it as FAT16.  \n\nCopy to it:  \nNTDETECT.COM  \nNTLDR  \na boot.ini file with at least two entries.  \n\nTry booting from the stick.  \n\nReport what happens.  \n\njaclaz   \n"
+    },
+    {
+      "id": "37039",
+      "timestamp": "2008-06-05T21:21:28+00:00",
+      "author": "kosmosv5",
+      "content": "i Get:  \nDisk Error  \nPress Any key To Restart   \n"
+    },
+    {
+      "id": "37041",
+      "timestamp": "2008-06-05T21:53:16+00:00",
+      "author": "was_jaclaz",
+      "content": "OK.  \n\nGet beeblebrox:  \n[http://students.cs.byu.edu/\\~codyb/](http://students.cs.byu.edu/~codyb/ \"External link\")  \nand check whether you have a partition ID of 06 (CHS) or 0E (LBA).  \n\nIf you have a partition ID of 06, try changing it to 0E.  \n\nIf you have a partition ID of 0E, try changing it to 06.  \n\nSee if it makes a difference.  \n\nGet Hdhacker:  \n[http://dimio.altervista.org/eng/](http://dimio.altervista.org/eng/ \"External link\")  \n\nuse it to save a copy of the MBR (physical drive) and of bootsector (logical drive).  \n\nCompress the two files in a .zip or .7z archive and attach the archive to your next post.  \n\njaclaz   \n"
+    },
+    {
+      "id": "37045",
+      "timestamp": "2008-06-05T22:51:12+00:00",
+      "author": "kosmosv5",
+      "content": "I had a 06 Type changed it to 0E but i still get the same error.  \nhere is the 2 files.  \n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003d32be562759ca2bc5b2099ef90ea49e7d\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d5586 \"Download attachment\") [**hd_hacker.zip**](http://reboot.pro/index.php?s\u003d32be562759ca2bc5b2099ef90ea49e7d\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d5586 \"Download attachment\") **1.21KB** 405 downloads\n\n"
+    },
+    {
+      "id": "37074",
+      "timestamp": "2008-06-06T08:19:03+00:00",
+      "author": "was_jaclaz",
+      "content": "There is something wrong.  \n\nMBR:  \nThe data in partition table is:  \n**07** partition ID (should be either 06 or 0E)  \n0/1/1 CHS start OK  \n1023/254/63 end NOT good, it is beyond the 8Gb CHS limit  \n63 Sectors before OK  \n147460572 sectors in partition WRONG  \n147.460.572\\*512\u003d75.499.812.864 bytes  \n75.499.812.864/1024\u003d73.730.286  \n73.730.286/1024\u003d72.002  \n\nThis is a 70 Gb NTFS partition!  \nMaybe you got the MBR of your hard disk instead of that of the USB device. :wink:  \n\nBootsector:  \nFAT 16 OK  \ninvoking NTLDR OK  \n1477917 sectors appear correct  \nbyte at offset 36 decimal **should be 80** (it is now 00)  \n\nAssuming that you sent the wrong MBR, try just changing the byte at offset 36, or use hdhacker to replace the bootsector with the one I am attaching (that has been already edited)  \n\njaclaz  \n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003d32be562759ca2bc5b2099ef90ea49e7d\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d5597 \"Download attachment\") [**nBootSector_DriveG.zip**](http://reboot.pro/index.php?s\u003d32be562759ca2bc5b2099ef90ea49e7d\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d5597 \"Download attachment\") **651bytes** 416 downloads\n\n"
+    },
+    {
+      "id": "37085",
+      "timestamp": "2008-06-06T11:17:44+00:00",
+      "author": "kosmosv5",
+      "content": "\u003e This is a 70 Gb NTFS partition!  \n\u003e Maybe you got the MBR of your hard disk instead of that of the USB device.\nprobably, because i selected 0 for Physical Drive (MBR). any other number give my impossible to read sector on disk.  \n\n\u003e Assuming that you sent the wrong MBR, try just changing the byte at offset 36, or use hdhacker to replace the bootsector with the one I am attaching (that has been already edited)\nnow i get to the OS selection screen. selecting any entry give me:  \nWindows Could Not Start because of The Following File is Missing or Corrupt  \n\\\u003cWindows Root\\\u003e\\\\System 32\\\\Hal.dll  \nPlease Reinstall a copy of the Above File.   \n"
+    },
+    {
+      "id": "37090",
+      "timestamp": "2008-06-06T12:07:33+00:00",
+      "author": "was_jaclaz",
+      "content": "Well, we got past your bootsector problem. ![:thumbup:](https://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\nTHe error about   \n\u003e Windows Could Not Start because of The Following File is Missing or Corrupt  \n\u003e \\\u003cWindows Root\\\u003e\\\\System 32\\\\Hal.dll  \n\u003e Please Reinstall a copy of the Above File.\nis normal, you should have just NTLDR, NTDETECT.COM and BOOT.INI on the stick.  \n\nThe fact that hdhacker does not allow for copying the MBR on stick is strange however. :wink:  \n\nAnyway.  \n\nYour USB stick is now booting.  \n\nWhich OS do you want it to boot?  \n\nCopy to it grldr and menu.lst from grub4dos:  \n[http://grub4dos.jot.com/WikiHome](http://grub4dos.jot.com/WikiHome \"External link\")  \n[http://grub4dos.jot....-2008-05-14.zip](http://grub4dos.jot.com/WikiHome/grub4dos-0.4.3-2008-05-14.zip \"External link\")?  \n\nAdd to boot.ini an entry like this:  \n\u003e C:\\\\grldr\u003d\"grub4dos\"\n\nand you should be able to get to the grub4dos choices.  \n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "37104",
+      "timestamp": "2008-06-06T13:25:22+00:00",
+      "author": "kosmosv5",
+      "content": "\u003e Which OS do you want it to boot?\nWindows Xp either Sp2 or Sp3.  \n\n\u003e and you should be able to get to the grub4dos choices.\nyes i did, i tried the first one to load windows and it just quickly showed some text and get back to the OS selection screen.   \n"
+    },
+    {
+      "id": "37116",
+      "timestamp": "2008-06-06T15:46:53+00:00",
+      "author": "was_jaclaz",
+      "content": "Well, you are past the \"cannot boot from USB stick\" problem, but you have still a long way to go before being able to boot XP SP2 (FORGET for the moment SP3).  \n\nWindows XP CANNOT be booted from USB UNLESS some modifications are made to it.  \n\nStart studying the tutorials in Dietmar\u0027s Signature:  \n[http://www.911cd.net...showtopic\u003d14181](http://www.911cd.net/forums//index.php?showtopic\u003d14181 \"External link\")  \n\nthen check this:  \n[http://www.usboot.org/tiki-index.php](http://www.usboot.org/tiki-index.php \"External link\")  \n\nthis:  \n[http://www.ngine.de/article/id/8/](http://www.ngine.de/article/id/8/ \"External link\")  \n\nand this:  \n[http://www.911cd.net...showtopic\u003d21445](http://www.911cd.net/forums//index.php?showtopic\u003d21445 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "37138",
+      "timestamp": "2008-06-06T18:23:59+00:00",
+      "author": "kosmosv5",
+      "content": "I got it to work redone the usboot on a fresh windows install.  \ncopied to the modified stick and it works. :wink: thanks you very much for your help.  \nis there a reason i should avoid SP3 ?   \n"
+    },
+    {
+      "id": "37141",
+      "timestamp": "2008-06-06T18:35:43+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e is there a reason i should avoid SP3 ?\n\nNot really.  \n\nNow that you have had success with SP2 you may well try it.  \n\nI dd not want to add another factor to the equation. :wink:  \n\njaclaz   \n"
+    }
+  ]
+}

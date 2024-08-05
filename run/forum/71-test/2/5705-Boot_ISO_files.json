@@ -1,0 +1,52 @@
+{
+  "id": "5705",
+  "title": "Boot .ISO files",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "44390",
+      "timestamp": "2008-09-14T15:40:36+00:00",
+      "author": "Cybex",
+      "content": "Hello,  \n\nI am searching for a solution that can do the following:  \nPlace several .ISO files on a harddisk (external via USB or connected via SATA) and boot a .ISO file (selected from a menu). For example an .ISO with Windows XP installation, a n .ISO with Linux and a .ISO with Ultimate Boot CD.   \n\nDoes somebody know if this is possible?  \n\nRegards, John   \n"
+    },
+    {
+      "id": "44393",
+      "timestamp": "2008-09-14T16:05:37+00:00",
+      "author": "ktp",
+      "content": "Refer to this thread:  \n[http://www.boot-land...?showtopic\u003d5041](http://www.boot-land.net/forums/index.php?showtopic\u003d5041 \"External link\")   \n"
+    },
+    {
+      "id": "44395",
+      "timestamp": "2008-09-14T16:07:43+00:00",
+      "author": "Cybex",
+      "content": "\u003e Refer to this thread:  \n\u003e [http://www.boot-land...?showtopic\u003d5041](http://www.boot-land.net/forums/index.php?showtopic\u003d5041 \"External link\")\n\nGreat thank you! I will dig into this...   \n"
+    },
+    {
+      "id": "44520",
+      "timestamp": "2008-09-15T18:17:25+00:00",
+      "author": "Cybex",
+      "content": "Well, I digged into this and from what I\u0027ve seen it\u0027s NOT possible to load Windows XP setup via Grub4Dos. Am I right, or is there somthing I overlooked?   \n"
+    },
+    {
+      "id": "44582",
+      "timestamp": "2008-09-16T03:21:17+00:00",
+      "author": "ktp",
+      "content": "You are right, currently it is not possible to boot NT-based OS iso (XP/Vista...) with grub4dos due to real/protected mode switching.   \n"
+    },
+    {
+      "id": "44588",
+      "timestamp": "2008-09-16T06:14:02+00:00",
+      "author": "Cybex",
+      "content": "\u003e You are right, currently it is not possible to boot NT-based OS iso (XP/Vista...) with grub4dos due to real/protected mode switching.\n\nThanks for the heads up, I\u0027ll better stop searching then ![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png)  \nI don\u0027t understand that there isn\u0027t a hardware solution for something like this. For example an external harddisk that is able to \"mount\" iso\u0027s on the harddisk. I searched for a device like that, but it just doesn\u0027t exist, does it?   \n"
+    },
+    {
+      "id": "44595",
+      "timestamp": "2008-09-16T07:04:44+00:00",
+      "author": "ktp",
+      "content": "@Cybes  \nGeneric solution is not avaiable today, but specific one could be done, e.g. booting XP install CD, boot Vista install DVD...  \nOther possibilities is to use U3 USB key:  \n[http://www.911cd.net...showtopic\u003d19066](http://www.911cd.net/forums//index.php?showtopic\u003d19066 \"External link\")   \n"
+    }
+  ]
+}

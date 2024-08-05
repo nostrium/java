@@ -1,0 +1,40 @@
+{
+  "id": "8407",
+  "title": "partition usb to make bootable possible",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "71669",
+      "timestamp": "2009-07-13T12:49:44+00:00",
+      "author": "jeroentuin",
+      "content": "hey everybody,  \n\ni\u0027ve tried to make my usb in partitions because i have a program called petousb.exe and that program can only make a bootdisk of fat16(lba)  \nso i need to make an partition of 2gb for it to work.(if my research was right)bootitng doesnt work on this usb stic\u0027k  \n\nand if you chan the .inf file with hitachi it does work but than he doesn\u0027t see the stick as a fixed usb but only as local drive...  \ni don\u0027t know what to do..please help  \n\ngrtzzz,  \njeroentuin   \n"
+    },
+    {
+      "id": "71676",
+      "timestamp": "2009-07-13T14:21:51+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e hey everybody,  \n\u003e\n\u003e i\u0027ve tried to make my usb in partitions because i have a program called petousb.exe and that program can only make a bootdisk of fat16(lba)  \n\u003e so i need to make an partition of 2gb for it to work.(if my research was right)bootitng doesnt work on this usb stic\u0027k  \n\u003e\n\u003e and if you chan the .inf file with hitachi it does work but than he doesn\u0027t see the stick as a fixed usb but only as local drive...  \n\u003e i don\u0027t know what to do..please help  \n\u003e\n\u003e grtzzz,  \n\u003e jeroentuin\n\nTry this one first thing:  \n[http://www.boot-land...?...ic\u003d7739\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d7739\u0026hl\u003d \"External link\")  \n\nMore listed in this post:  \n[http://www.msfn.org/...o...87993\\\u0026st\u003d17](http://www.msfn.org/board/index.php?showtopic\u003d87993\u0026st\u003d17 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "71682",
+      "timestamp": "2009-07-13T14:47:45+00:00",
+      "author": "jeroentuin",
+      "content": "\u003e Try this one first thing:  \n\u003e [http://www.boot-land...?...ic\u003d7739\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d7739\u0026hl\u003d \"External link\")\nthis doesn\u0027t work either i wil try the other page next thing tomorro   \n"
+    },
+    {
+      "id": "71723",
+      "timestamp": "2009-07-14T07:56:42+00:00",
+      "author": "jeroentuin",
+      "content": "none of them work...  \nthis is a bummer...and you don\u0027t know my question?  \nhow to make it fixed besides those two options?  \n\ngrtz,  \njeroentuin   \n"
+    },
+    {
+      "id": "71733",
+      "timestamp": "2009-07-14T12:46:49+00:00",
+      "author": "online",
+      "content": "\u003e with hitachi it does work but than he doesn\u0027t see the stick as a fixed usb but only as local drive...\nPlease, note that \"Local Disk\" just coincides as Fixed Disk (at least under Windows). ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)  \n\nAlso, note that some tools (just as PeToUSB) are able to format your drive with only 1 partition.  \nFor PeToUSB if it is a removable drive or a fixed drive then it is not matter, but other utilities need a Removable drive.  \nSo, if you need more than 1 partition then you can use (under XP) just Disk Management Console (with Hitachi Microdrive Filter Driver or DummyDisk Filter Driver) in order both to partition and to format your drive.  \n\nTry to check this topic too  \n[http://www.boot-land...?...ost\\\u0026p\u003d62682](http://www.boot-land.net/forums/index.php?s\u003d\u0026showtopic\u003d7466\u0026view\u003dfindpost\u0026p\u003d62682 \"External link\")  \nand if you find interesting things about your \"issue\" then let know your results.   \n"
+    }
+  ]
+}

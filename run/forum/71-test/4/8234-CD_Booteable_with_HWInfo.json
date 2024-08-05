@@ -1,0 +1,34 @@
+{
+  "id": "8234",
+  "title": "CD Booteable with HWInfo",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "69936",
+      "timestamp": "2009-06-17T15:16:41+00:00",
+      "author": "asecasp",
+      "content": "I have created a CD booteable with HWInfo (http: // www.hwinfo.com/) and on having executed it me the following error appears and could not have met on the problem.  \n\n```\nNot enough memory to run.\n\nPlease free 15008 bytes of system memory.\n```\n\n\u003cbr /\u003e\n\nThe configuration of autoexec.bat is   \n\n```\n@ECHO OFF\n\nMSCDEX.EXE /D\u0026#58;CDDRIVER /L\u0026#58;X\n\nXMSDSK.EXE 102400 R\u0026#58; /t /y\n\nCTMOUSE.EXE\n\nPATH\u003dA\u0026#58;\\;R\u0026#58;\\\n\nGOTO %CONFIG%\n\n\n\n\u0026#58;HWINFO\n\nCOPY X\u0026#58;\\HWINFO\\*.* R\u0026#58;\n\nR\u0026#58;\\HWInfo.exe\n\nx\u0026#58;\\\n\nGOTO DOS\n\n\n\n\u0026#58;DOS\n\nECHO  X\u0026#58; CD DRIVE\n\nECHO  R\u0026#58; RAM DRIVE\n```\n\n\u003cbr /\u003e\n\nAnd the configuration of config.sys is   \n\n```\n\u0026#91;MENU\u0026#93;\n\nmenuitem\u003dHWINFO, HWInfo\n\n\n\n\u0026#91;DOS\u0026#93;\n\nDEVICE\u003dOAKCDROM.SYS /D\u0026#58;CDDRIVER /L\u0026#58;X\n\n\n\n\u0026#91;HWINFO\u0026#93;\n\ninclude\u003dDOS\n\n\n\n\u0026#91;COMMON\u0026#93;\n\nLASTDRIVE\u003dZ\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "69939",
+      "timestamp": "2009-06-17T15:35:29+00:00",
+      "author": "was_jaclaz",
+      "content": "A small advice (following the attempt to reduce language barriers :wink:).  \n\nIn English a program may generate an ERROR, while an user may be committing a MISTAKE.  \n\nBack to your question, you need to study a bit about the LH or LOADHIGH DOS command:  \n[http://www.computerhope.com/lhhlp.htm](http://www.computerhope.com/lhhlp.htm \"External link\")  \n\n:wink:  \n\njaclaz   \n"
+    },
+    {
+      "id": "70431",
+      "timestamp": "2009-06-24T02:15:00+00:00",
+      "author": "asecasp",
+      "content": "jaclaz already probe with the command LH and I me do not work either, the same error goes out for me.   \n"
+    },
+    {
+      "id": "70528",
+      "timestamp": "2009-06-25T18:44:55+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e jaclaz already probe with the command LH and I me do not work either, the same error goes out for me.\n\nLet\u0027 do a deal.  \n\nYou post the info, in a proper way, and I will try and help you.  \n\nHOW did you create the bootable CD? \\\u003c-DETAILS  \nWHAT bootmanager (if any) are you using? \\\u003c-DETAILS  \nDoes the WHATEVER you put together boots allright to plain DOS if you REM out the commands in :HWINFO section of autoexec.bat?  \nIf yes, add to the build mem.exe and run it.  \n[http://www.computerhope.com/memhlp.htm](http://www.computerhope.com/memhlp.htm \"External link\")  \nReport results.  \nTry again after having Loaded HIGH whatever can be loaded HIGH.  \nReport results.  \nIs memory available the same?  \nTry unremming the commands in :HWINFO section.  \nIs the erros still:  \n\u003e Not enough memory to run.  \n\u003e Please free **15008**bytes of system memory.\n? ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)  \n\nIs this thread related to the other one you just posted?:  \n[http://www.boot-land...?...ic\u003d8305\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d8305\u0026hl\u003d \"External link\")  \n\nHave you already considered using grub4dos (or grub4dos/memdisk) floppy image mapping?  \nSee here:  \n[http://www.boot-land...?showtopic\u003d3963](http://www.boot-land.net/forums/index.php?showtopic\u003d3963 \"External link\")  \n\njaclaz   \n"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "id": "22422",
+  "title": "SVBus_v1.3 signed",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "217314",
+      "timestamp": "2020-12-12T18:09:36+00:00",
+      "author": "alacran",
+      "content": "![Posted Image](http://reboot.pro/index.php?app\u003ddownloads\u0026module\u003ddisplay\u0026section\u003dscreenshot\u0026id\u003d625)\n**File Name** : SVBus_v1.3 signed  \n**File Submitter** : [alacran](http://reboot.pro/index.php?showuser\u003d26560 \"\")  \n**File Submitted** : 12 Dec 2020  \n**File Updated** : *03 Aug 2022*   \n**File Category** : [Boot tools](http://reboot.pro/index.php?app\u003ddownloads\u0026showcat\u003d7 \"\")  \n\nOn the picture you can see a Mini-10x64 VHD of a minimum size running on Ram, the info to create your own is on this topic: [http://reboot.pro/in...showtopic\u003d22383](http://reboot.pro/index.php?showtopic\u003d22383 \"\")  \n\nThis filter driver is used to let us boot Win OSs from Ram (on MBR/CSM and UEFI) by means on grub4dos and fthe new [grub4dos for UEFI](http://reboot.pro/index.php?showtopic\u003d22400 \"\") usually it works fine from Vista to 10 but there are some reports about it can be installed also on the good old XP.  \n\nIt has same funcionality as **WinVBlock** by **Shao Miller** and **Firadisk** by **karionix** filter drivers, that do not work fine on Win 10.  \nThis is a signed version of SVBus driver developed by **schtrom.**   \n\nHis topic on the forum is: [http://reboot.pro/in...showtopic\u003d21787](http://reboot.pro/index.php?showtopic\u003d21787 \"\")  \n\nAnd this is the driver page on Sourceforge.net:[https://sourceforge....projects/svbus/](https://sourceforge.net/projects/svbus/ \"External link\")  \nI\u0027m only uploading it here to keep it handy if a signed version is required.  \n\nOur fellow **a1ve** was very kind in share v1.2 signed version with us: [http://reboot.pro/in...e\u003d5#entry217253](http://reboot.pro/index.php?showtopic\u003d22400\u0026page\u003d5#entry217253 \"\")  \n\n**JFX** very kindly shared with me the SVBus_v1.3 download page: [https://github.com/R...D-UEFI/releases](https://github.com/Rigil-Kentaurus/SVBus-Modified-for-G4D-UEFI/releases \"External link\")  \n\nBut the download lacks following required files:  \nInstall_SVBus.txt  \ninstx64.exe  \ninstx86.exe  \n\nSo I decided to integrate this v1.3 package with all required for desinstall previous version and install v1.3.  \nA README file with instructions is also included in this package.  \n**Password is: reboot.pro**  \n\n**NOTE-1:** I want to let you know Avast AV made a big fuss, when I extracted v1.2, as same tools and procedure used to sign it, is often used on some malware programs to also sign them, so if you want to use it, I suggest to dissable your AV when extracting and installing it, and create an exception on your AV for svbusx86.sys and/or svbusx64.sys files as required.  \n\n**NOTE-2: v1.3 uses a different certificate that is not blacklisted so far, so there is no need to edit all the internal and external BCDs**  \n\nIf you want to make any comment about this download, please go to: [http://reboot.pro/in...showtopic\u003d22422](http://reboot.pro/index.php?showtopic\u003d22422 \"\")  \n\nalacran  \n\n[Click here to download this file](http://reboot.pro/index.php?app\u003ddownloads\u0026showfile\u003d625 \"\")  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![10.png](http://reboot.pro/uploads/monthly_02_2021/post-26560-0-08022900-1613926232_thumb.png)](http://reboot.pro/uploads/monthly_02_2021/post-26560-0-08022900-1613926232.png \"10.png - Size: 166.38KB\"){#ipb-attach-url-17751-0-15163200-1676066374}\n\n"
+    },
+    {
+      "id": "217610",
+      "timestamp": "2021-01-10T04:34:25+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "The last link doesnt work.....\"The requested URL was not found on this server\".\n\nIs the file you\u0027re providing 100% identical (completely unmodified) to what is provided on Schtrom\u0027s SourceForge page?\n\n"
+    },
+    {
+      "id": "217611",
+      "timestamp": "2021-01-10T06:45:13+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "Ignore, I got it installed. Just had to temp disable driver signature enforcement, install driver, reboot. The driver stays loaded even when DSE is enabled and testsigning is disabled. Eventually, I\u0027ll get around to my first ever run of W10 in a ram disk. My next step is to clone my C drive into a VHD and try to get Grub4DOS/SVBus to boot that.   \n"
+    },
+    {
+      "id": "217613",
+      "timestamp": "2021-01-10T10:29:21+00:00",
+      "author": "Wonko the Sane",
+      "content": "The file is ok, the issue is the new board not being yet \"tuned\" with the same (BTW stupid) approach used till now (but not always, in spots).\n\nSee:\n\n[http://reboot.pro/in...showtopic\u003d22430](http://reboot.pro/index.php?showtopic\u003d22430 \"\")\n\nThe link working right now is:\n\n[http://reboot.pro/in...ds\\\u0026showfile\u003d625](http://reboot.pro/index.php?app\u003ddownloads\u0026showfile\u003d625 \"\")\n\ni.e. generically:\n\nhxxp://reboot.pro/index.php?app\u003ddownloads\\\u0026showfile\u003d\\\u003cfile #\\\u003e\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "217630",
+      "timestamp": "2021-01-13T03:34:41+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "i noticed there is an extra .reg file in the signed archive. Schtrom\u0027s original SVBus 1.2 archive doesnt have this. I\u0027ve already integrated the signed driver with dism. I\u0027ve also integrated Samsung\u0027s NVMe driver, obtained from the win-raid forum. Now I just need to know whether I also need to mount my custom install.wim and import the reg file into the offline Registry.\n\n"
+    },
+    {
+      "id": "217633",
+      "timestamp": "2021-01-13T21:12:35+00:00",
+      "author": "alacran",
+      "content": "From: [http://reboot.pro/in...e\u003d4#entry217631](http://reboot.pro/index.php?showtopic\u003d22254\u0026page\u003d4#entry217631 \"\")\n\u003e\n\u003e **Update USB_FORMAT-54 and UEFI_MULTI-54 plus Addons and VHD_WIMBOOT-49**\n\u003e\n\u003e Download: from [wimb GitHub](https://github.com/wimbrts \"External link\") - [USB_FORMAT-54](https://github.com/wimbrts/USB_FORMAT/releases \"External link\") and [UEFI_MULTI-54](https://github.com/wimbrts/UEFI_MULTI/releases \"External link\") and [VHD_WIMBOOT-49](https://github.com/wimbrts/VHD_WIMBOOT/releases \"External link\")\n\u003e\n\u003e Manual: [VHD_WIMBOOT.pdf](https://github.com/wimbrts/VHD_WIMBOOT/releases \"External link\") - Download File E \u003d Encrypted Password \u003d bootwimb\n\u003e\n\u003e - Update [UEFI Grub4dos](https://github.com/chenall/grub4dos/releases \"External link\") - G4E\n\u003e\n\u003e - Update [UEFI Grub2](https://github.com/a1ive/grub/releases \"External link\") and [Grub2 FileManager](https://github.com/a1ive/grub2-filemanager/releases \"External link\")\n\u003e\n\u003e - Always Shut-Off AntVirus Software and Disable Windows Defender when working with [signed SVBus driver](https://github.com/wimbrts/VHD_WIMBOOT/releases \"External link\")\n\nFollow instructions on VHD_WIMBOOT.pdf file\n\nalacran\n\n"
+    },
+    {
+      "id": "217635",
+      "timestamp": "2021-01-13T22:25:12+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "@Alacran: Too late, I\u0027ve already integrated the .reg file. And confirmed its\u0027 existence in the installed OS\u0027s Registry. It doesn\u0027t seem to have helped or hurt anything. And unlike the driver from the SVBus SourceForge page, your version appears as signed in Device Management. But the unsigned driver loaded fine too after integration.  \n\nI will probably RAMload a VHD file, but at first I won\u0027t be using wimboot. Just SVBus signed/Samsung NVMe drivers integrated, Grub4DOS (uncertain whether i should use regular/official G4D or the NVMe/AHCI speed patched version), and a VHD.   \n"
+    },
+    {
+      "id": "217637",
+      "timestamp": "2021-01-15T21:13:00+00:00",
+      "author": "alacran",
+      "content": "NVMe/AHCI speed patch is valid only for grub4dos 0.45c old version, which is only MBR bootable and not UEFI capable, and also not capable to boot non contiguous files.\n\nThe VHD_WIMBOOT program by **wimb** lets you make Wimboot mode, Compact mode or Normal installations.\n\nalacran\n\n"
+    },
+    {
+      "id": "217638",
+      "timestamp": "2021-01-15T23:36:26+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "@alacran: That\u0027s fine, I\u0027ll only be booting in legacy/CSM mode anyway. I suppose the only way to find out which G4D is best for me, is to try both and see which one loads faster. I\u0027ll start with regular G4D, then try the AHCI/NVMe speed patch version. However, I\u0027m of the opinion that the only difference should be in the booting time, once the VHD is loaded from the NVMe drive into RAM then they should run at the same speed. Correct?  \n\nHow do you make a VHD file contiguous?   \n"
+    },
+    {
+      "id": "217639",
+      "timestamp": "2021-01-16T04:18:45+00:00",
+      "author": "antonino61",
+      "content": "@Vendetta\n\nyes, with only one caveat - svbus and, for that matter, firadisk, as filedisks, feature 1-second-longer booting times than ordinary bootmgr. as ramdisks, there is no way of, or no point in, comparing, as u cannot do without svbus or firadisk anyway. I did sorta report this a few years ago, when I found that out, maybe to spur some intention or other to look into bootmgr better or to see what could be done to make svbus or firadisk \"quicker\", and the replies I got are of the following fashions:\n\n1) Microsoft mysteries;\n\n2) nothing doing from the end of the preramloading (when it is the case) stage onwards;\n\n3) no reply at all.\n\n"
+    },
+    {
+      "id": "217644",
+      "timestamp": "2021-01-16T21:26:10+00:00",
+      "author": "alacran",
+      "content": "\u003e @alacran: That\u0027s fine, I\u0027ll only be booting in legacy/CSM mode anyway. I suppose the only way to find out which G4D is best for me, is to try both and see which one loads faster. I\u0027ll start with regular G4D, then try the AHCI/NVMe speed patch version. However, I\u0027m of the opinion that the only difference should be in the booting time, once the VHD is loaded from the NVMe drive into RAM then they should run at the same speed. Correct?  \n\u003e\n\u003e How do you make a VHD file contiguous?\n\nYes, the difference will be only the time required to load to Ram the VHD.\n\nYes, once loaded to Ram then all will be done on Ram, and only limited by SVBus driver speed, with the only exception of Wimboot mode installation, where there is still the need to read info from the linked WIM file located on a drive outside of the VHD.\n\nIf a VHD file is created as fixed size, it will be contiguous, but if it is created expandable, very possible it will not be contiguous, to make it contiguous we can use Wincontig and/or Defraggler and defragment the **VHD file** if required, of course it is also a good practice to also defragment the content of the VHD when booting from it or when attached.\n\n[grub4dos 0.46a for MBR](http://dl.grub4dos.chenall.net/grub4dos-0.4.6a-2020-08-09.7z \"External link\") works very fine on fixed size or expandable VHDs, it is said it theoretically supports to work with a file with upto 64 fragments, but other people say in real life the limit is 32 fragments.\n\nExpandable VHDs load faster on Ram than fixed size VHDs.\n\n[lz4 compressor](http://reboot.pro/index.php?app\u003ddownloads\u0026showfile\u003d612 \"\") (Valid for grub4dos 0.46a for MBR and grub4dos for UEFI) lz4 compressed VHDs load faster on Ram than expandable VHDs, but this only apply to fixed size VHDs, expandable VHDs lz4 compressed DO NOT boot.\n\nalacran\n\n"
+    },
+    {
+      "id": "219850",
+      "timestamp": "2021-11-14T02:28:55+00:00",
+      "author": "alacran",
+      "content": "JFYI\n\nJust to have all info related to this topic together.\n\nOur fellow **wimb** recently made a new program to offline install SVBus_V1.2 signed into our VHDs.\n\nIt is available on [VHD_WIMBOOT](https://github.com/wimbrts/VHD_WIMBOOT \"External link\") page on GitHub, File is SVBus_INST_Trusted-20-E.zip, and you can download it [here](https://github.com/wimbrts/VHD_WIMBOOT/releases \"External link\").\n\n**Encrypted PassWord \u003d bootwimb**\n\nI will add a note about this info on first post too.\n\nalacran\n\n"
+    },
+    {
+      "id": "221523",
+      "timestamp": "2022-08-03T04:11:32+00:00",
+      "author": "alacran",
+      "content": "New SVBus_v1.3 signed was just uploaded.\n\n**v1.3 uses a different certificate that is not blacklisted so far, so there is no need to edit all the internal and external BCDs**\n\n**Download link to reboot.pro forum Downloads Section:** [http://reboot.pro/in...ds\\\u0026showfile\u003d625](http://reboot.pro/index.php?app\u003ddownloads\u0026showfile\u003d625 \"\")\n\n**My thanks to JFX who shared with me the link to github page.**\n\nBut the download lacks following files:\n\nInstall_SVBus.txt  \ninstx64.exe  \ninstx86.exe  \n\nSo for users convenience I included them into this package. A README file with instructions is also included in this package.\n\nalacran\n\n"
+    },
+    {
+      "id": "221524",
+      "timestamp": "2022-08-03T05:00:18+00:00",
+      "author": "misty",
+      "content": "I\u0027m unable to download and check at the moment, however what\u0027s new in version 1.3? I can\u0027t see any release or information on the svbus sourceforge site.   \n"
+    },
+    {
+      "id": "221525",
+      "timestamp": "2022-08-03T07:10:00+00:00",
+      "author": "alacran",
+      "content": "This is the only info available in githup page **[SVBus-Modified-for-G4D-UEFI](https://github.com/Rigil-Kentaurus/SVBus-Modified-for-G4D-UEFI \"External link\")** in the Readme:\n\n\u003e 0. This program is originally written by Kai Schtrom, and the code can be found at [https://sourceforge....projects/svbus/](https://sourceforge.net/projects/svbus/ \"External link\"). **Patches are contributed by yaya to the core code. Released under the GPL v3 license.**   \n\u003e\n\u003e 1. If you want to go sln compilation, the compilation environment is VS2019 + WDK10.0.22000  \n\u003e\n\u003e 2. A number of files such as make_fre, make_chk.cmd and source are prepared for ddk with win7. Before using, set the environment variable DDKDIR to the directory of win7 ddk (open the batch file to see it, change it yourself)  \n\u003e\n\u003e 3.svbusx64.inf and svbusx86.inf are only useful for compiling under VS. The two compilation batches use svbus.inf and txtsetup.oem  \n\u003e\n\u003e 4. The password of signcer.pfx is 123456  \n\u003e\n\u003e 5. The two batches seem to compile without spaces in the full path.  \n\u003e\n\u003e 6. The ones compiled by wdk7 can be used in various versions, and those compiled by wdk10 can only be used by Win10. (Stupid M$!)\n\u003e\nBeing **yaya** the creator of grub4dos for UEFI, and also the current main developer of new version of grub4dos v0.46a for MBR I may assume it was tuned up specifically to work better with the new improvements in both versions of grub4dos, remember when Kai Schtrom (the author of original versions of SvBus) made the driver it was for g4d v0.45c\n\n**But the more relevant thing I have found so far is it has a valid signature,** and there is no need to edit all internal and external BCDs to set boot in Test Mode, and add the option LoadOptionsString \u003d DISABLE_INTEGRITY_CHECKS or pre-load EfiGuardDxe.efi\n\nalacran\n\n"
+    }
+  ]
+}

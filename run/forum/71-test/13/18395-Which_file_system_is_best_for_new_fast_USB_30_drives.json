@@ -1,0 +1,34 @@
+{
+  "id": "18395",
+  "title": "Which file system is best for new fast USB 3.0 drives?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "170559",
+      "timestamp": "2013-04-02T21:56:54+00:00",
+      "author": "popov",
+      "content": "Hey there,\n\nI am wondering which file system would be best, in terms of speed, for booting and running OS natively from new USB 3.0 flash drive. From what I underrstand, it is 4K read speed, that is most important(unless OS is stored as one big file) for running smoothness. I don\u0027t care about compatibility, as this is purely synthetic question. Wikipedia produces whole list of flash drive specific file systems:\n\n[http://en.wikipedia....sh_file_systems](http://en.wikipedia.org/wiki/List_of_flash_file_systems \"External link\")\n\nThen we got those flash drives that reach 200MB/s read times(15MB/s for 4K), which is already better than non-SSD hard drives. The question is, how fast those are with files systems designed specially for them?\n\n"
+    },
+    {
+      "id": "170567",
+      "timestamp": "2013-04-03T09:58:15+00:00",
+      "author": "Wonko the Sane",
+      "content": "JFYI, it\u0027s not \\*only\\* about filesystems, it is also about OS drivers for the given filesystem, compare:\n\n[http://www.msfn.org/...d-on-usb-stick/](http://www.msfn.org/board/topic/125116-fat16-vs-fat32-vs-ntfs-speed-on-usb-stick/ \"External link\")\n\nMost probably the most \"useful\" filesystem would be exFAT, since it can be also used to boot with grub4dos (at least a few OS\u0027s/tools), see:\n\n[http://reboot.pro/to...ated-usb-drive/](http://reboot.pro/topic/18244-is-there-a-way-to-boot-an-exfat-formated-usb-drive/ \"\")\n\nand also:\n\n[http://reboot.pro/to...system-support/](http://reboot.pro/topic/18330-change-or-add-filesystem-support/ \"\")\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170572",
+      "timestamp": "2013-04-03T11:26:29+00:00",
+      "author": "popov",
+      "content": "Regarding new samsung flash drive filesystem designed for linux(kernels 3.8+), here are some benchmarks:\n\n[http://www.phoronix....f2fs_usb3\\\u0026num\u003d1](http://www.phoronix.com/scan.php?page\u003darticle\u0026item\u003dlinux_f2fs_usb3\u0026num\u003d1 \"External link\")\n\n[http://www.phoronix....2fs_exfat\\\u0026num\u003d1](http://www.phoronix.com/scan.php?page\u003darticle\u0026item\u003dlinux_f2fs_exfat\u0026num\u003d1 \"External link\")\n\nThe whole point is - it is being still actively developed and many newer kernels bring updates.\n\n**Edited by popov, 03 April 2013 - 11:27 AM.**\n"
+    },
+    {
+      "id": "170604",
+      "timestamp": "2013-04-04T09:06:03+00:00",
+      "author": "alacran",
+      "content": "You may tray UDF format, It is not only for optical disks, (I started looking for it since Wonko mentioned that some where in the forum)\n\nI sugest to read this: [http://serverfault.c...rd-drive-as-udf](http://serverfault.com/questions/55089/with-what-tool-should-i-format-a-hard-drive-as-udf \"External link\")\n\n* Windows Vista or later: \"format x: /fs:UDF\" (don\u0027t use /q ! )\n* Linux: \"mkudffs --media-type\u003dhd --blocksize\u003d512 /dev/sdx\"\n\nOf curse it\u0027s good to read to the end of page, there are several tips on it. Like \"Do not forget to zero the MBR first\" or \"it is faster than NTFS\"\n\nI\u0027m going to make some tests using this format, and I\u0027ll post my findings, first will be check if Grub4dos works on it.\n\nBest Regards\n\n**Edited by alacran, 04 April 2013 - 09:47 AM.**\n"
+    }
+  ]
+}

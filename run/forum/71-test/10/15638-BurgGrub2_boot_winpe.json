@@ -1,0 +1,70 @@
+{
+  "id": "15638",
+  "title": "Burg/Grub2 boot winpe",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "139625",
+      "timestamp": "2011-10-17T04:58:36+00:00",
+      "author": "Flyboarder",
+      "content": "Hello,  \n\nI have burg installed via fbinst in my usb drive. How can I boot a winpe located on the hidden/ unhidden space on the drive?  \n\nThanks!!!   \n"
+    },
+    {
+      "id": "139629",
+      "timestamp": "2011-10-17T08:35:12+00:00",
+      "author": "Wonko the Sane",
+      "content": "Oww, come on.  \nI have a boat and a sail, how can I get to Cape Horn/North Pole? ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)  \n\nPlease try again giving some more meaningful details:  \n[http://homepages.tes...ard-litany.html](http://homepages.tesco.net/J.deBoynePollard/FGA/problem-report-standard-litany.html \"External link\")  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "139644",
+      "timestamp": "2011-10-17T14:11:19+00:00",
+      "author": "RoyM",
+      "content": "I have a boat and a sail, how can I get to Cape Horn/North Pole?  \n\nMy guess would be going South then make a right!   \n"
+    },
+    {
+      "id": "139646",
+      "timestamp": "2011-10-17T14:15:57+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e My guess would be going South then make a right!  \n\nIncomplete set of instructions ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif), a more accurate one would be :wink::  \n\u003e going South then*, on Saturday,* make a right!\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "139670",
+      "timestamp": "2011-10-17T20:49:48+00:00",
+      "author": "Flyboarder",
+      "content": "I have installed BURG with the burgv3.fba file via fbinst (in the hidden 8m section) , I have WinPE on the visible space on the drive. My burg.cfg is on the hidden section of the drive. What is the menu entry needed to boot the bootmgr file for winpe?   \n"
+    },
+    {
+      "id": "139777",
+      "timestamp": "2011-10-19T11:53:54+00:00",
+      "author": "pokemon1",
+      "content": "Hi Flyboarder,  \nCan you try the below menu entry and report back?  \n\nmenuentry \"WinPE ISO\" {  \nlinux /grub.exe --config-file\u003d\"ls /winpe.iso \\|\\| find --set-root --ignore-floppies /winpe.iso;map /winpe.iso (0xff);map --hook;root (0xff);chainloader /BOOTMGR\"  \n}  \n\nHere grub.exe, grldr, default these three files are in root.  \n\n\\*/winpe.iso: you may need to change the location/drive based on your orientation.   \n\n**Edited by pokemon1, 19 October 2011 - 11:56 AM.**\n"
+    },
+    {
+      "id": "139778",
+      "timestamp": "2011-10-19T12:16:22+00:00",
+      "author": "Wonko the Sane",
+      "content": "Quick reminder (if needed):\n\n* PE 1.x based on XP/2003 sources \\\u003c-WinPE 1.x, BartPE, UBCD4WIN, etc.\n* PE 2.x based on Vista ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif) /Server 2008 sources \\\u003c-WinPE 2, VistaPE, etc.\n* PE 3.x based on 7/Server 2008R2 sources \\\u003c-WinPE 3, Win7PE, etc.\n\n\u003cbr /\u003e\n\n\"WinPE\" \\\u003c- possibly \\*any\\* of the above, for the record the PE 2.x and 3.x should work allright with the menuentry **pokemon1** suggested ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif), a PE 1.x won\u0027t ![:(](http://reboot.pro/public/style_emoticons/default/sad.png).  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "139894",
+      "timestamp": "2011-10-21T01:49:32+00:00",
+      "author": "Flyboarder",
+      "content": "The above menu entry does not work as my files are not located in an iso they are on the root of the visible part of the drive.   \n"
+    },
+    {
+      "id": "139906",
+      "timestamp": "2011-10-21T07:51:30+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e The above menu entry does not work as my files are not located in an iso they are on the root of the visible part of the drive.  \nAnd if you don\u0027t say this, you will have not an useful answer **pokemon1** , trying to help you ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif) , assumed ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif) that you were using one among the possible ways to boot the PE.  \n\nHowever this should have been enough:  \n\u003e \\*/winpe.iso: you may need to change the location/drive based on your orientation.  \nto let you simplify the menu entry to:  \n\n\u003cbr /\u003e\n\nmenuentry \"WinPE flat\" {  \nlinux /grub.exe --config-file\u003d\"find --set-root --ignore-floppies /BOOTMGR;chainloader /BOOTMGR\"  \n}  \nor  \nmenuentry \"WinPE flat\" {  \nlinux /grub.exe --config-file\u003d\"find --set-root --ignore-floppies /bootmgr;chainloader /bootmgr\"  \n}  \n\nThe above are for GRUB2.  \n\nBURG can chainload directly BOOTMGR,see here:  \n[http://groups.google...e2ea1a25aecccd6](http://groups.google.com/group/burg-devel/browse_thread/thread/ce2ea1a25aecccd6 \"External link\")  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "139930",
+      "timestamp": "2011-10-21T12:49:16+00:00",
+      "author": "pokemon1",
+      "content": "\u003e Quick reminder (if needed):\n\u003e\n\u003e * PE 1.x based on XP/2003 sources \\\u003c-WinPE 1.x, BartPE, UBCD4WIN, etc.\n\u003e * PE 2.x based on Vista ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif) /Server 2008 sources \\\u003c-WinPE 2, VistaPE, etc.\n\u003e * PE 3.x based on 7/Server 2008R2 sources \\\u003c-WinPE 3, Win7PE, etc.\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e \"WinPE\" \\\u003c- possibly \\*any\\* of the above, for the record the PE 2.x and 3.x should work allright with the menuentry **pokemon1** suggested ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif), a PE 1.x won\u0027t ![:(](http://reboot.pro/public/style_emoticons/default/sad.png).  \n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\u003e Wonko  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nYes, my bad, PE1.x will not work. Thanks for pointing this out.  \n\nAnd yes, I have tested earlier with burg, the syntax Wonko mentioned does work with burg as well.   \n"
+    }
+  ]
+}

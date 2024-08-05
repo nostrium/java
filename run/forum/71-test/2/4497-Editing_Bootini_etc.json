@@ -1,0 +1,16 @@
+{
+  "id": "4497",
+  "title": "Editing Boot.ini etc.",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "34028",
+      "timestamp": "2008-04-24T18:56:56+00:00",
+      "author": "archp2008",
+      "content": "Hello,   \nI have three hard drives and five OS\u0027s installed as follows  \nSATA1: WinXP32, Vista32, Ubuntu 7.22  \nSATA2: Vista 64  \nIDE (slave to DVD RW) XP64  \nI installed the OS\u0027s in the order listed.  \nI disconnected SATA 1 and the IDE hard drive when I intalled Vista64 on SATA2 so I have to go through BIOS to access Vista 64  \nI disconnected the SATA drives when I installed XP64 on the slave IDE drive, so I now have to go through BIOS also to access XP64.  \nIs there a way to edit Boot.ini to include the two 64-bit operating systems and not have to go through BIOS?  \nThank you in advance for any assistance on this one.   \n"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "5250",
+  "title": "Dual boot WinpE 2.0 and FreeDos",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "40241",
+      "timestamp": "2008-07-23T21:30:37+00:00",
+      "author": "aryan_ai",
+      "content": "Hello,  \n\nI am working in dual boot stuff between FreeDOS and WinPE 2.0. Could some one guide me on how to boot from FreeDOS to winPE  \n\n1) From WinPE- I am able to switch to FreedOS after doing the steps below  \na) modifying the entries in the BCD (to boot as WinPE) file using BcdEDIT   \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) run the command C:\\\\bootsect.exe /nt52 C: /Force  \nc) reboot the machine, After reboot machine is switching to FreeDOS  \n\n2) From FreeDOS - Could some guide me on how to switch from FreeDOS to WinPE  \nI can\u0027t run bootsect.exe from FreeDOS. so tell me the alternate way to swtich to WinPE.  \n\n\u003cbr /\u003e\n\nlet me know If I need to provide more information.   \n\nThanks in advance  \nAryan   \n"
+    },
+    {
+      "id": "40243",
+      "timestamp": "2008-07-23T22:31:32+00:00",
+      "author": "Brito",
+      "content": "The easiest way is using Grub4Dos to launch WinPE straight from within Freedos without need to reboot.  \n\n\u003cbr /\u003e\n\nWe support grub4dos with a dedicated subforum section, look it up on the site tree and see the member posted topics to see how it can be used.  \n\nThe documentation is also very easy to follow.   \n\nGood luck!  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "40278",
+      "timestamp": "2008-07-24T15:42:14+00:00",
+      "author": "aryan_ai",
+      "content": "\u003e The easiest way is using Grub4Dos to launch WinPE straight from within Freedos without need to reboot.  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e We support grub4dos with a dedicated subforum section, look it up on the site tree and see the member posted topics to see how it can be used.  \n\u003e\n\u003e The documentation is also very easy to follow.   \n\u003e\n\u003e Good luck!  \n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\n\u003cbr /\u003e\n\nThanks for Quick reply. Ok, I will read the Grub4Dos documentation before play with it. Is there any other alternate method to achieve this without using third party tools.   \n"
+    },
+    {
+      "id": "40335",
+      "timestamp": "2008-07-25T01:41:51+00:00",
+      "author": "aryan_ai",
+      "content": "Nuno - Thanks for your quick response to my e-mail.  \n\nI am able to switch between FreeDOS and WinPE now without grub4dos.   \n\nMy machine hard disk is loaded with both WinPE and FreeDOS  \n1) Captured primary partition (C:) boot sector to and kept at C:\\\\BOOTSECT.DOS  \n2) then modified the bootsector C:\\\\bootsect.exe /nt60 C: /Force (this is for WinPE)  \n3) Copied all the required files BCD, boot.ini, NTLDR etc... to C drive   \n4) Modified BCD file such that boot menu gives option for both WinPE after reboot  \n\nNow I am able to switch between FREEDOS and WinPE based on boot menu selection :-)   \n\nHowever my next thing is boot from USB instead of Hard disk i.e USB will have files required for both FreeDOS and WinPE  \n\nTo implement this ,First USB should be bootable on FAT32 with FreeDOS. I am able make USB bootable with FAT16 only having FreeDOS in it but I need to boot from FAT32. Can some one guide me on how to boot FAT32 with FreeDOS in it.  \n\n\u003cbr /\u003e\n\nThanks  \nAryan   \n"
+    },
+    {
+      "id": "40343",
+      "timestamp": "2008-07-25T08:22:44+00:00",
+      "author": "was_jaclaz",
+      "content": "Booting FreeDOS on USB FAT32 can in some cases be tricky.  \n\nThe actual reason is yet not clearly found.  \n\nThrough grub4dos (installing the grldr.mbr) there should be better chances (search on the board, there is a report by **ktp** about FAT32 booting problems solved), but since you seem to not want using it, you can try using makebootfat.  \n\nRead this thread **and** links therein:  \n[http://www.boot-land...?showtopic\u003d5206](http://www.boot-land.net/forums/?showtopic\u003d5206 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "40354",
+      "timestamp": "2008-07-25T10:09:05+00:00",
+      "author": "Brito",
+      "content": "Hi Aryan,  \n\nGlad you found the solution you were looking, these are good news.  \n\nI mentioned grub4dos regarding your second question:  \n\u003e 2) From FreeDOS - Could some guide me on how to switch from FreeDOS to WinPE  \n\u003e I can\u0027t run bootsect.exe from FreeDOS. so tell me the alternate way to swtich to WinPE.\n\nI thought you wanted to boot WinPE while running *inside* FreeDOS.  \n\nGrub4Dos allows to boot another OS while using the DOS environment.  \n\n----  \n\nGood luck with FAT32.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    }
+  ]
+}

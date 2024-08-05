@@ -1,0 +1,58 @@
+{
+  "id": "13652",
+  "title": "Hard Drive Install",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "119686",
+      "timestamp": "2011-01-19T11:23:11+00:00",
+      "author": "baruch",
+      "content": "Hi,  \n\nI would like to setup my hard drive to be a dual boot. One partition will be for an XP install and the other partition I would like to have as actually being windows xp. How can I go about accomplishing this?   \n"
+    },
+    {
+      "id": "119711",
+      "timestamp": "2011-01-19T19:00:43+00:00",
+      "author": "baruch",
+      "content": "Ok I have gotten pretty far on my own. I got it all figured out (I think) except that I need the proper line to place in the boot.ini folder. I currently get the hal.dll error. Here is the way it looks now. This is not the whole file obviously.  \n\n\u003cbr /\u003e\n\n```\nmulti(0)disk(0)rdisk(0)partition(1)\\i386\\winnt.exe\u003d\"Microsoft Windows XP Professional install\" /fastdetect\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "119715",
+      "timestamp": "2011-01-19T19:44:43+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Ok I have gotten pretty far on my own. I got it all figured out (I think) except that I need the proper line to place in the boot.ini folder. I currently get the hal.dll error. Here is the way it looks now. This is not the whole file obviously.  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e ```\n\u003e multi(0)disk(0)rdisk(0)partition(1)\\i386\\winnt.exe\u003d\"Microsoft Windows XP Professional install\" /fastdetect\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nWell, that line - no offence intended ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)- means that your \"pretty far\" and \"all\" is between 0 (zero) and 0.42% of the actual knowledge needed. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\nYou cannot (meaning that you CANNOT) run WINNT.EXE (which is a DOS 16-bit program) without DOS, and DEFINITELY NOT by putting it in a BOOT.INI line.  \n\nIF your target drive is to be formatted as FAT16 or FAT32, you can load DOS, and from it run WINNT.EXE.  \n\nOtherwise you need to either:  \n\n* load a PE (Pre-installation Environment) of some kind (LiveXP suggested) and run from it WINNT32.EXE, or this:  \n  \u003chttp://reboot.pro/7721/\u003e  \n  (EASIEST)  \n  or\n* you can use a bootmanager, like grub4dos or Syslinux or the like to run the actual install loader (SETUPLDR.BIN) from another partition  \n  (more \"advanced\")\n\n\u003cbr /\u003e\n\nOr, even more \"advanced\", you can use one of the above bootmanagers in conjunction with a suitable filedisk/ramdisk drivers, such as Firadisk or WinVblock to load a .iso or .img of the actual install source.  \n\nThe NTLDR (and conversely BOOT.INI) ONLY can boot:  \n\n* an ARCPATH pointing to a DIRECTORY (containing an ALREADY installed NT), example:  \n\n  \u003e multi(0)disk(0)rdisk(0)partition(1)\\\\windows\u003d\"Microsoft Windows XP Professional\"\n* a binary file representing a volume bootsector or code that \"works the same\", examples:  \n  \u003e C:\\\\bootsect.dos\u003d\"MS-DOS\"\n  or  \n  \u003e C:\\\\grldr\u003d\"grub4dos\"\n\n\u003cbr /\u003e\n\n![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)  \nWonko   \n"
+    },
+    {
+      "id": "120366",
+      "timestamp": "2011-01-25T13:23:53+00:00",
+      "author": "baruch",
+      "content": "Ok so I have made tremendous progress. I now have a bootable hd that boots up into grub4dos and will install windows xp. Here is where the problem comes in to play. It only works once. After that, I must remake the had. It changes the boot sequence(I think it changes the mbr, but I don\u0027t want someone to say that it doesn\u0027t)so that it runs the boot.ini file. Now in theory I could add an entry to the boot.ini file that would load grub which would in turn load the xp install but that sounds strange. Also I have heard that even if I did that, the xp install will delete certain files which will turn the installation base into inoperable. There have been many topics written about this for a usb install (which don\u0027t work for me anyways since my usb is too big or never boots), but i have never seen anything written for a hd install. I want this because I as much of a newbie that I am, I will be handing this computer over to a bigger newbie and he will probably have no prayer of reinstalling windows other than calling me again. While that is a good way to generate business, it\u0027s not my cup of tea. I would like to give him a solution for the next time.   \n"
+    },
+    {
+      "id": "120367",
+      "timestamp": "2011-01-25T13:32:51+00:00",
+      "author": "Wonko the Sane",
+      "content": "The XP install deletes it\u0027s files when run on writable media.  \n\nYou need to read the \"historical\" thread of the \"Install Windows from USB\" forum, here:  \n[http://www.msfn.org/...l-from-usb-key/](http://www.msfn.org/board/topic/61384-how-to-bootinstall-from-usb-key/ \"External link\")  \nAND this:  \n[http://www.msfn.org/...omusb-with-gui/](http://www.msfn.org/board/topic/120444-how-to-install-windows-from-usb-winsetupfromusb-with-gui/ \"External link\")  \nAND this:  \n[http://www.msfn.org/...ll-xp-from-usb/](http://www.msfn.org/board/topic/111406-how-to-install-xp-from-usb/ \"External link\")  \nand extract from them the parts that do apply to HD initiated install (no matter if internally connected or USB connected).  \n\nOr if you still don\u0027t want to use the PE method, you can use this:  \n[http://www.msfn.org/...aded-iso-image/](http://www.msfn.org/board/topic/137714-install-xp-from-a-ram-loaded-iso-image/ \"External link\")  \n\n![:rofl:](http://reboot.pro/public/style_emoticons/default/roll1.gif)  \nWonko   \n"
+    },
+    {
+      "id": "120388",
+      "timestamp": "2011-01-25T16:22:44+00:00",
+      "author": "sambul61",
+      "content": "\u003e I will be handing this computer over to a bigger newbie and he will probably have no prayer of reinstalling windows other than calling me again.\nWhy don\u0027t you burn an install CD for him? Or do you want to add a XP Recovery partition to the HD to make it look \\\u0026 feel like an OEM install?   \n"
+    },
+    {
+      "id": "120412",
+      "timestamp": "2011-01-25T22:43:53+00:00",
+      "author": "baruch",
+      "content": "\u003e Why don\u0027t you burn an install CD for him? Or do you want to add a XP Recovery partition to the HD to make it look \\\u0026 feel like an OEM install?  \n\nThis is an old laptop and for some reason, he doesn\u0027t have the cd rom that goes with it. There is a usb cd rom that he bought but I can\u0027t boot anything off of it. Anyways I have decided that basically almost all install scenarios have an issue with them since windows will write to the boot sector which essentially means that my friend will just have 1 time to install and then it will never work again. So I have decided on installing once with drivers and then going with a ghosting scenario.   \n"
+    },
+    {
+      "id": "120440",
+      "timestamp": "2011-01-26T08:05:05+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Anyways I have decided that basically almost all install scenarios have an issue with them since windows will write to the boot sector which essentially means that my friend will just have 1 time to install and then it will never work again.   \nNot at all. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)  \nWhat is written to bootsector has NO relevance.  \nYou have been pointed to two or three different solutions, perfectly usable in your case.  \nYou are of course free (and welcome :smile:) to decide NOT to use any of them, but don\u0027t assume things (\"since windows will write to the bootsector\") that are completely irrelevant, and don\u0027t use them as a \"reason why it\u0027s not possible\"...  \n\n:smile:  \nWonko   \n"
+    }
+  ]
+}

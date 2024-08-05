@@ -1,0 +1,94 @@
+{
+  "id": "21563",
+  "title": "What Windows 10 tools to back up bootable USB?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "204090",
+      "timestamp": "2017-07-10T11:45:13+00:00",
+      "author": "hemlatuyda",
+      "content": "I need to backup my bootable USB stick because I have to format it. But I do need a complete dd-like 1:1 copy because I want it still to be bootable after recovery. I can only use Windows 10 for this. Which tools would be good?\n\n"
+    },
+    {
+      "id": "204091",
+      "timestamp": "2017-07-10T12:03:35+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I need to backup my bootable USB stick because I have to format it. But I do need a complete dd-like 1:1 copy because I want it still to be bootable after recovery. I can only use Windows 10 for this. Which tools would be good?\n\nClonedisk.\n\n[http://labalec.fr/erwan/?page_id\u003d42](http://labalec.fr/erwan/?page_id\u003d42 \"External link\")\n\nOr dd for windows.\n\n[http://www.chrysocome.net/dd](http://www.chrysocome.net/dd \"External link\")\n\nOr dsfok.\n\n[http://members.ozema...eezip/freeware/](http://members.ozemail.com.au/~nulifetv/freezip/freeware/ \"External link\")\n\nIt has to be seen on Windows 10 if you need to set the disk offline to get access to the \\\\\\\\.\\\\Physicaldrive.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "204092",
+      "timestamp": "2017-07-10T12:36:53+00:00",
+      "author": "hemlatuyda",
+      "content": "Thanks, is there any tool that would actually have simple GUI for this kind of stuff? I\u0027ve been told that win32diskimager could do it, but unsure if true.\n\n"
+    },
+    {
+      "id": "204093",
+      "timestamp": "2017-07-10T13:13:21+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Thanks, is there any tool that would actually have simple GUI for this kind of stuff? I\u0027ve been told that win32diskimager could do it, but unsure if true.\n\nClonedisk is GUI, though admittedly not-so-simple.\n\nBut objectively:\n\ndsf**o** \\\\\\\\.\\\\Physaldrive***n*** 0 0 X:\\\\image.img\n\nand:\n\ndsf**i** \\\\\\\\.\\\\Physicaldrive***n*** 0 0 X:\\\\image.img\n\nis not that much difficult.\n\nWin32diskimager is good as well, but then why you asked?\n\n[https://sourceforge....in32diskimager/](https://sourceforge.net/projects/win32diskimager/ \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "204094",
+      "timestamp": "2017-07-10T15:36:14+00:00",
+      "author": "hemlatuyda",
+      "content": "DSFO is for backing up and DSFI for recovering? How would command that is supposed to copy files back to USB look like, like you posted?\n\ndsf**i** \\\\\\\\.\\\\Physicaldrive***n*** 0 0 X:\\\\image.img\n\n**Edited by hemlatuyda, 10 July 2017 - 03:38 PM.**\n"
+    },
+    {
+      "id": "204096",
+      "timestamp": "2017-07-10T17:53:24+00:00",
+      "author": "steve6375",
+      "content": "RMPrepUSB - Drive-\\\u003eFile\n\nRMPrepUSB - File-\\\u003eDrive\n\nsimilar to dd but has GUI\n\nor try Passmark [ImageUSB](http://osforensics.com/tools/write-usb-images.html \"External link\")\n\n"
+    },
+    {
+      "id": "204097",
+      "timestamp": "2017-07-10T18:25:16+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e DSFO is for backing up and DSFI for recovering? How would command that is supposed to copy files back to USB look like, like you posted?\n\u003e\n\u003e dsf**i** \\\\\\\\.\\\\Physicaldrive***n*** 0 0 X:\\\\image.img\n\nYep :smile:, try reading the commands as:\n\nGET (dsf) **o** ut of \\\\\\\\.\\\\Physicaldrive***n***sectors starting from sector 0 up to last sector available (conventionally using 0 for max) and write them to an image X:\\\\image.img\n\nGET (dsf) **i** nto \\\\\\\\.\\\\Physicaldrive***n***sectors starting from sector 0 up to last sector available (conventionally using 0 for max) getting them from X:\\\\image.img\n\nIn other words, with dsfo the source is the \"left side\" device or file and the target is the \"right side\" one, with dsfi the source is the \"right side\" device or file and the target is the \"left side\" one.\n\nThe alternatives Steve6375 proposed are also excellent, of course, and there are many other ones, here are two more GUI ones:\n\n[http://www.roadkil.n...hp?ProgramID\u003d12](http://www.roadkil.net/program.php?ProgramID\u003d12 \"External link\")\n\n[http://www.alexpage....-tool/download/](http://www.alexpage.de/usb-image-tool/download/ \"External link\")\n\nAlso DMDE has such a feature, but it is not as simple as the other ones mentioned:\n\n[http://dmde.com/](http://dmde.com/ \"External link\")\n\n[http://dmde.com/manu...opysectors.html](http://dmde.com/manual/copysectors.html \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "204099",
+      "timestamp": "2017-07-11T00:34:24+00:00",
+      "author": "Akeo",
+      "content": "\u003e But I do need a complete dd-like 1:1 copy because I want it still to be bootable after recovery. I can only use Windows 10 for this. Which tools would be good?\n\nWell, as the author of that utility, I\u0027m obviously a bit biased on this, but [Rufus](https://rufus.akeo.ie \"External link\") will happily do that for you if you use the Alt-V [cheat mode](https://github.com/pbatard/rufus/wiki/FAQ#Power_keysCheat_modes \"External link\").\n\nThis\u0027ll dump your whole USB drive to an **uncompressed** VHD, which you can later use in Rufus (if you select DD-Image), to recreate your drive exactly as it was.\n\n"
+    },
+    {
+      "id": "204101",
+      "timestamp": "2017-07-11T06:59:57+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Well, as the author of that utility, I\u0027m obviously a bit biased on this, but [Rufus](https://rufus.akeo.ie \"External link\") will happily do that for you if you use the Alt-V [cheat mode](https://github.com/pbatard/rufus/wiki/FAQ#Power_keysCheat_modes \"External link\").\n\u003e\n\u003e This\u0027ll dump your whole USB drive to an **uncompressed** VHD, which you can later use in Rufus (if you select DD-Image), to recreate your drive exactly as it was.\n\nVery good ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif) , and since it is mentioned, I will add the usual note about a fixed (uncompressed) VHD being nothing but a RAW image with a descriptor sector appended to it :wink:.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "204102",
+      "timestamp": "2017-07-11T08:11:54+00:00",
+      "author": "hemlatuyda",
+      "content": "Thanks. And what would be good tool for complete USB Stick format? Those tools provided by stick manufacturer don\u0027t work.\n\n"
+    },
+    {
+      "id": "204103",
+      "timestamp": "2017-07-11T10:33:06+00:00",
+      "author": "hemlatuyda",
+      "content": "I have used HDDLLF.4.40, sadly it doesn\u0027t solve my real problem. That is, I do have UC340/32GB USB3.0 stick that doesn\u0027t want to work in 3.0 port on MSI B250M Pro-VD motherboard. It gets not detected neither in BIOS nor in Windows. ADATA support told me to format it with their special tool that apparently doesn\u0027t work. Will probably have to return it.\n\n**Edited by hemlatuyda, 11 July 2017 - 10:33 AM.**\n"
+    },
+    {
+      "id": "204104",
+      "timestamp": "2017-07-11T11:50:56+00:00",
+      "author": "steve6375",
+      "content": "Try my RMPrepUSB tool. Link in signature.\n\nP.S. If you are trying to boot MBR USB sticks, make sure you disable UEFI Secure Boot and fast boot and enable Legacy\\\\CSM Mode in the BIOS settings\n\n"
+    },
+    {
+      "id": "204106",
+      "timestamp": "2017-07-11T13:10:12+00:00",
+      "author": "naruto1979",
+      "content": "I need this because i also formatting computer......Thanks it will me a lot. I\u0027ll get back if its working ...\n\n"
+    },
+    {
+      "id": "204113",
+      "timestamp": "2017-07-12T12:26:30+00:00",
+      "author": "Rootman",
+      "content": "I use a sync tool, there are many out there. It will not preserve the boot system but will preserve the data on the drive. The main advantage is that it does not have to copy everything, just what\u0027s changed. I happen to use Syncback Pro.\n\nI create a folder on my HDD and sync the entire stick to it. I do this weekly because I\u0027ve corrupted the stick too many times and it takes too long to recreate the stuff. I use it as a backup of many important docs and databases, I also have tons of fairly static stuff - boot ISOs and installation files. The weekly backup assures me I can get it back just about like it was quickly..\n\n"
+    }
+  ]
+}

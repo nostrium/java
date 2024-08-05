@@ -1,0 +1,76 @@
+{
+  "id": "4863",
+  "title": "Change from USB-ZIP to USB-HDD by removing partition boot flag!?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "37067",
+      "timestamp": "2008-06-06T07:28:32+00:00",
+      "author": "Paulus",
+      "content": "I recently posted my experience in trying to boot from a WD external USB drive.  \nThe HD booted in one PC, but not in another. I use grub4dos as boot manager in the MBR.  \n\nThe PC that would not boot from this HD, recognised this HD as **USB-ZIP** . This is a  \nDell Inspiron 531 with MCP61 motherboard and 1.09 Dell BIOS.  \n\nAfter some experimenting, I found some very mysterious and disturbing behaviour.  \n\nHaving 4 partitions (as suggested by Jaclaz) did not solve my booting problem.  \n\nHowever when I **removed** the **boot flag on ALL my partitions** , suddenly the BIOS  \nrecognised this device as a **USB-HDD** device! It then would start up grub4dos  \nfrom the MBR, which in turn will search all partitions for grldr, and booting continued  \nsuccesfully!  \n\nWhen I then turned on the boot flag again on a (FAT32) partition, the device was recognised  \nas USB-ZIP again. When further investigating, it turns out the BIOS does try to boot,  \nbut it will boot from the Partition Boot Record (PBR) in the partition marked as bootable!  \nIt will NOT execute code in the MBR.  \n\nWhen I installed grub4dos in the PBR too, I had the problem that grub4dos could not  \nfind grldr, and thus would not succesfully boot.  \n\nIs it possibly to make a compatible setup with grub4dos both in MBR and PBR that actually  \n*will* boot the grldr?   \n"
+    },
+    {
+      "id": "37072",
+      "timestamp": "2008-06-06T07:51:58+00:00",
+      "author": "was_jaclaz",
+      "content": "VERY interesting report! ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\nWhy it does so remains a mistery to me. :wink:  \n\nFor the record, the original thread is here:  \n[http://www.boot-land...?showtopic\u003d4830](http://www.boot-land.net/forums/?showtopic\u003d4830 \"External link\")  \n\nDoes it does so whatever partition entry is used?  \n\nOr moving the partition address data *to* or *from* 4th entry in partition changes anything?  \n\nIf the grldr.mbr installed in the MBR can load the grldr and it\u0027s menu.lst, with NO partitions flagged active, you actually do not \"need\" the PBR at all.  \n\nYou can try to either:  \n1) \"skip\" the PBR alltogether, by rooting to a drive and chainloading directly the system file:  \nfind --set-root /NTLDR  \nchainloader /NTLDR  \nor  \nfind --set-root /IO.SYS  \nchainloader /IO.SYS  \n2) use the the \"makeactive\" directory to change boot flag for the partition after first booting  \n3) experiment with two newish features of grub4dos, \"--in-situ\" and \"partnew\" commands  \n[http://www.boot-land...opic\u003d3287\\\u0026st\u003d50](http://www.boot-land.net/forums/?showtopic\u003d3287\u0026st\u003d50 \"External link\")  \n[http://www.911cd.net...showtopic\u003d21562](http://www.911cd.net/forums//index.php?\u0026showtopic\u003d21562 \"External link\")  \n\nI would be interested in seeing your MBR and boot records.  \n\nWould it be possible that the BIOS of that machine somehow, if it finds not any \"80\" (boot flag) in the partition tables defaults to chainload CHS 0/0/1 (PBR of first partition on geometry nx255x63)?  \n\nBut if it does so, how is the grldr.mbr loaded? ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\nWhich exact version of grub4dos are you using/testing?  \n\njaclaz   \n"
+    },
+    {
+      "id": "37076",
+      "timestamp": "2008-06-06T08:26:50+00:00",
+      "author": "tinybit",
+      "content": "\u003e I recently posted my experience in trying to boot from a WD external USB drive.  \n\u003e The HD booted in one PC, but not in another. I use grub4dos as boot manager in the MBR.  \n\u003e\n\u003e The PC that would not boot from this HD, recognised this HD as **USB-ZIP** . This is a  \n\u003e Dell Inspiron 531 with MCP61 motherboard and 1.09 Dell BIOS.  \n\u003e\n\u003e After some experimenting, I found some very mysterious and disturbing behaviour.  \n\u003e\n\u003e Having 4 partitions (as suggested by Jaclaz) did not solve my booting problem.  \n\u003e\n\u003e However when I **removed** the **boot flag on ALL my partitions** , suddenly the BIOS  \n\u003e recognised this device as a **USB-HDD** device! It then would start up grub4dos  \n\u003e from the MBR, which in turn will search all partitions for grldr, and booting continued  \n\u003e succesfully!  \n\u003e\n\u003e When I then turned on the boot flag again on a (FAT32) partition, the device was recognised  \n\u003e as USB-ZIP again. When further investigating, it turns out the BIOS does try to boot,  \n\u003e but it will boot from the Partition Boot Record (PBR) in the partition marked as bootable!  \n\u003e It will NOT execute code in the MBR.  \n\u003e\n\u003e When I installed grub4dos in the PBR too, I had the problem that grub4dos could not  \n\u003e find grldr, and thus would not succesfully boot.\n\nThank you for telling us the interesting/strange behavior/story of the BIOS.  \n\n\u003e Is it possibly to make a compatible setup with grub4dos both in MBR and PBR that actually  \n\u003e *will* boot the grldr?\n\nYes, it is. You may first try to install a DOS on the partition. Make sure the DOS can boot normally. Then, at the DOS prompt, run this command  \n\n```\nbootlace.com  --floppy  --chs  0x00\n```\n\n\u003cbr /\u003e\n\nThis will install GRLDR\u0027s boot record on the boot sector of the floppy (fd0). The 0x00 stands for the BIOS drive number for (fd0). Note that your USB-ZIP drive is supposed to be recognized as floppy (fd0).  \n\nAt last, copy grldr into the root dir **of the floppy (fd0)** , and reboot.   \n"
+    },
+    {
+      "id": "37084",
+      "timestamp": "2008-06-06T11:16:19+00:00",
+      "author": "Paulus",
+      "content": "\u003e Does it does so whatever partition entry is used?\n\nLooking back, it does this both for the 3rd and 4th partition entry. I have no reason to believe  \nthat it will work differently for the 1st and 2nd entries.  \n\n\u003e Or moving the partition address data *to* or *from* 4th entry in partition changes anything?\n\nI do not entirely grasp your meaning here, but I did not actually do any partition editing. I just deleted  \nmy 3rd partition, and made 2 new partitions in place. I did not change anything else in the MBR.  \n\nJust after this, I used breeblebox to toggle the partition\u0027s boot flag, with the reported result.  \n\n\u003cbr /\u003e\n\n\u003e If the grldr.mbr installed in the MBR can load the grldr and it\u0027s menu.lst, with NO partitions flagged active, you actually do not \"need\" the PBR at all.\n\nTechnically, yes, if only I was using grub4dos in all cases. Strictly speaking however, the BIOS should not skip  \nthe MBR. But now that it does, I want to have a solution that works also with a proper PBR in place.  \n\n\u003e I would be interested in seeing your MBR and boot records.\n\nI will send them to you later.  \n\n\u003e Would it be possible that the BIOS of that machine somehow, if it finds not any \"80\" (boot flag) in the partition tables defaults to chainload CHS 0/0/1 (PBR of first partition on geometry nx255x63)?  \n\u003e\n\u003e But if it does so, how is the grldr.mbr loaded? :wink:\n\nNo! I only have grub4dos in the MBR and in the active FAT32 partition. Other partitions do not have grub4dos  \nand are ntfs, extended and raw. I know for certain that the PBR of these partitions do not get executed in  \nany case mentioned in my report.  \n\nWhen NO boot flag is present, the disk is seen as USB-HDD and the MBR will be executed. Hence this will work  \nas a normal disk. However, this gives problems when using a standard MBR, because it does not know which partition  \nto boot from (which one is active) once MBR code is executed.   \n\nWhen a boot flag is present, the disk is seen as USB-ZIP, the MBR is NOT executed, but the PBR  \nof the active/bootable partition is executed. However, when installing grub4dos in the PBR of a FAT32  \npartition made active, it does NOT find the grldr file (although it is present). So apparently, something is amiss.  \nHow can I repair it in such a way that in \\*this case\\* the grldr file is found.  \n\n\u003e Which exact version of grub4dos are you using/testing?\n\nLatest stable version (2nd may 2008)   \n"
+    },
+    {
+      "id": "37086",
+      "timestamp": "2008-06-06T11:24:02+00:00",
+      "author": "Paulus",
+      "content": "\u003e You may first try to install a DOS on the partition. Make sure the DOS can boot normally. Then, at the DOS prompt, run this command  \n\u003e\n\u003e ```\n\u003e bootlace.com  --floppy  --chs  0x00\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e This will install GRLDR\u0027s boot record on the boot sector of the floppy (fd0). The 0x00 stands for the BIOS drive number for (fd0). Note that your USB-ZIP drive is supposed to be recognized as floppy (fd0).  \n\u003e\n\u003e At last, copy grldr into the root dir **of the floppy (fd0)** , and reboot.\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nHi Tinybit, thanks for your reply.  \n\nI did use grubinst for Windows (the ..._gui.exe) (because I have no DOS available).  \nIt works fine for the MBR. I also used it to install the PBR.  \nIn that case it could not find grldr.  \n\nWhat I understand from the documentation, bootlace should do about the same as grubinst, correct?  \nOr is grubinst maybe broken for installing in the PBR?   \n"
+    },
+    {
+      "id": "37107",
+      "timestamp": "2008-06-06T13:57:41+00:00",
+      "author": "tinybit",
+      "content": "\u003e Hi Tinybit, thanks for your reply.  \n\u003e\n\u003e I did use grubinst for Windows (the ..._gui.exe) (because I have no DOS available).  \n\u003e It works fine for the MBR. I also used it to install the PBR.  \n\u003e In that case it could not find grldr.  \n\u003e\n\u003e What I understand from the documentation, bootlace should do about the same as grubinst, correct?  \n\u003e Or is grubinst maybe broken for installing in the PBR?\n\nIn the old days DOS was the de facto standard. Even now it is still considered as the de facto standard and all BIOSes seem to be able to boot into DOS in one way or the other. If DOS cannot be booted, then we would know/confirm there is something wrong with the BIOS.  \n\nWhere is your grldr, by the way? And what is the error message displayed on the screen?  \n\nNote the grldr should be placed in the root dir of the active partition(with grldr boot record installed on its boot sector), or else grldr will not be found.  \n\nGenerally grubinst and bootlace work in the same way. But there are some minor differences between them. Any way, try to boot DOS and see if we could find out something new.   \n"
+    },
+    {
+      "id": "37108",
+      "timestamp": "2008-06-06T14:17:29+00:00",
+      "author": "Brito",
+      "content": "There are several sources for getting DOS.  \n\nLook here:  \n[http://www.freedos.org/](http://www.freedos.org/ \"External link\")  \n[http://www.bootdisk.com/](http://www.bootdisk.com/ \"External link\")  \n\n:wink:   \n"
+    },
+    {
+      "id": "102510",
+      "timestamp": "2010-06-16T16:07:40+00:00",
+      "author": "Seifer",
+      "content": "One of my usb drive (Toshiba Transmemory 16GB pen drive) started to show as usb-zip0 in bios. and eventually i can not boot from it anymore. i ve read this topic but still could not change my usb drive back to usb-hdd. How can i change it back?  \ni have used hp format utility and normal windows format.   \n"
+    },
+    {
+      "id": "102522",
+      "timestamp": "2010-06-16T17:50:46+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e i have used hp format utility and normal windows format.\nTry using first thing RMPREPUSB (NOT selecting USB-ZIP :wink:):  \n[http://www.boot-land...?showtopic\u003d9460](http://www.boot-land.net/forums/index.php?showtopic\u003d9460 \"External link\")  \n[http://www.boot-land...?showtopic\u003d7739](http://www.boot-land.net/forums/index.php?showtopic\u003d7739 \"External link\")  \n\n![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \nWonko   \n"
+    },
+    {
+      "id": "102536",
+      "timestamp": "2010-06-16T19:02:36+00:00",
+      "author": "steve6375",
+      "content": "Hi,  \nFrom experience with some very dodgy BIOSes, I can say this when experimenting -**ALWAYS switch off the PC and switch it on again whenever you change the USB PBR or MBR** ! I have seen BIOSes which detect the \u0027type\u0027 of USB device on a cold boot (switch on) but do NOT redetect the type of device (e.g ZIP or HDD) on a warm reboot. After DAYS !!! of pulling my hair out I discovered this!  \n\nBy definition, a BIOS that treats a USB storage device as a USB-ZIP device will boot directly to the PBR (no MBR executed). See the explanation in the PDF of RMPrepUSB for more details. When the BIOS loads the PBR code and jumps to it, the USB device will respond to BIOS calls via the floppy Int 13h routines, so any code you have must expect to find files on a **floppy** drive. However, to fix this you could try swapping the mapping around in the menu.lst - maybe something like (untested!) ...  \n\n#MAP REAL HDD AS ANOTHER HDD  \nmap (hd0) (hd32)  \n#MAP FDD (actually our USB drive) as first hd ptn  \nmap (fd0) (hd0,0)+1   \nmap --hook  \n#ADJUST number of disks to suit system (assume only one HDD and one USB drive in system and no floppy disk drive)  \nmap --floppies\u003d0  \nmap --harddrives\u003d2  \n# now use chainloader etc to boot to boot file here...  \n\n\u003cbr /\u003e\n\nHTH  \nSteve   \n"
+    },
+    {
+      "id": "102539",
+      "timestamp": "2010-06-16T19:19:00+00:00",
+      "author": "Seifer",
+      "content": "thank you Wonko the Sane and steve6375 for your answers.  \n\nRMPREPUSB successfully changed the boot flag to usb-hdd.   \n"
+    }
+  ]
+}

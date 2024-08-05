@@ -1,0 +1,34 @@
+{
+  "id": "20911",
+  "title": "HORM with EWF in Win7",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "196976",
+      "timestamp": "2016-01-03T00:21:08+00:00",
+      "author": "friske",
+      "content": "I have installed the driver; HORM is enabled.\n\nIf i shutdown the data are lost; it work.\n\nBut if i hibernate it not resume but restart.\n\nI think it might be due to winload.exe and Winresume.exe.\n\nSomeone can give me help on this?\n\nI have also winload.exe and Winresume.exe but \"Windows verify digital signature error\".\n\n"
+    },
+    {
+      "id": "196978",
+      "timestamp": "2016-01-03T01:12:10+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "Hmm, is Win97 some super-secret version of Windows that only elite hackers are aware of? To my knowledge Microsoft never released a Windows 97.\n\n"
+    },
+    {
+      "id": "196979",
+      "timestamp": "2016-01-03T01:17:45+00:00",
+      "author": "friske",
+      "content": "excuse misprint\n\n"
+    },
+    {
+      "id": "196983",
+      "timestamp": "2016-01-03T03:09:09+00:00",
+      "author": "Zoso",
+      "content": "hi friske,  \n\nwhat is \"i driver\"?  \n\nHORM \u003d Hibernate Once Resume Many  \n\nso I think that means you only hibernate when you have the set-up you want to resume on every start up. Im not certain about this though but I am certain the the \"O\" in HORM stands for \"Once\"  \n\nalso see this post about your error message: [http://reboot.pro/to...xe/#entry196982](http://reboot.pro/topic/20910-digital-signature-of-winloadexe/#entry196982 \"\")   \n"
+    }
+  ]
+}

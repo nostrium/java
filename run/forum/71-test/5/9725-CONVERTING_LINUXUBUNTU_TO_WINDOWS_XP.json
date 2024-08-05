@@ -1,0 +1,22 @@
+{
+  "id": "9725",
+  "title": "CONVERTING LINUX/UBUNTU TO WINDOWS XP",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "84419",
+      "timestamp": "2009-11-15T13:32:09+00:00",
+      "author": "sheikhlaodum",
+      "content": "i have a Dell GX520 optical series (desktop) without an optical driver. it has linux/ubuntu installed. that being the case, i bought a buffalo external DVDRW.  \n\nthe problem is, i can\u0027t seem to remove linux/ubuntu and install windows XP. oh i can open the .exe file all right using the wine emulator but it hangs at the opening window of choices of what i wan to do (install windows xp).  \n\ni\u0027m not that a technical person really so i am stumped at what to do next. can somebody show me a step by step (walk-through) of what i must do?   \n\nlinux may be a great os but its not really that user-friendly.   \n"
+    },
+    {
+      "id": "84449",
+      "timestamp": "2009-11-15T17:30:48+00:00",
+      "author": "amalux",
+      "content": "\u003e i have a Dell GX520 optical series (desktop) without an optical driver. it has linux/ubuntu installed. that being the case, i bought a buffalo external DVDRW.  \n\u003e\n\u003e the problem is, i can\u0027t seem to remove linux/ubuntu and install windows XP. oh i can open the .exe file all right using the wine emulator but it hangs at the opening window of choices of what i wan to do (install windows xp).  \n\u003e\n\u003e i\u0027m not that a technical person really so i am stumped at what to do next. can somebody show me a step by step (walk-through) of what i must do?   \n\u003e\n\u003e linux may be a great os but its not really that user-friendly.\n**You need to backup any needed data on the drive before proceeding. All data will be lost that isn\u0027t first backed up to CD/DVD, ext. drive etc.**   \n\n*\"without an optical driver\"* - Can you boot to XP install disc? You may need to check BIOS settings and change boot order to CD first.   \n\nYou need to format the hard drive (ntfs) and do a clean install of XP from the Windows install/boot CD. This is DOS like interface (no gui) and can be a bit confusing to beginners but basically walks you through the delete/format/install steps.  \n\n**If** or when you have access to a gui (graphic user interface) type boot CD, like LiveXP etc. you can boot to that (XP like desktop and tools) and perform all these actions from the comfort of an *XP like* desktop.  \n\nIf any of this sounds too technical, you may need to consult (hire) a local computer tech to help out, they\u0027ll appreciate your business ![:drunk:](http://reboot.pro/public/style_emoticons/default/drunk.gif)   \n"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "id": "9515",
+  "title": "[SPLIT] from Index of USB Boot Making ....",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "82207",
+      "timestamp": "2009-10-20T12:19:59+00:00",
+      "author": "sanbarrow",
+      "content": "Maanu - thanks for the nice list - very useful.  \nDo you have a special reason to wrap links in code-tags ?  \n\nUlli   \n"
+    },
+    {
+      "id": "82252",
+      "timestamp": "2009-10-21T04:42:40+00:00",
+      "author": "ktp",
+      "content": "@maanu  \nIn the DiskGenius part, there is a mistake in the legend. It is not grldr.exe that is invoked but grub.exe after booting FreeDos.  \n\nOther applications to be mentioned are :  \ngrub4dos bootlace.com  \nSyslinux  \nbean\u0027s grubinst/grubinst_gui  \njaclaz\u0027s Grub4DOS Toolbox for Windows-0.1   \n"
+    },
+    {
+      "id": "82257",
+      "timestamp": "2009-10-21T07:07:04+00:00",
+      "author": "maanu",
+      "content": "\u003e Other applications to be mentioned are :  \n\u003e grub4dos bootlace.com  \n\u003e Syslinux  \n\u003e bean\u0027s grubinst/grubinst_gui  \n\u003e jaclaz\u0027s Grub4DOS Toolbox for Windows-0.1\n\ni have included only those applications which can format the usb and make it bootable .   \n\ni ll fix that grldr thing . thanks .   \n"
+    },
+    {
+      "id": "82320",
+      "timestamp": "2009-10-21T23:36:21+00:00",
+      "author": "Pr()ZaC",
+      "content": "Great thread! Thanks.   \n"
+    },
+    {
+      "id": "82331",
+      "timestamp": "2009-10-22T09:59:04+00:00",
+      "author": "Brito",
+      "content": "Great idea and very good content.  \n\nOnly one remark, if it\u0027s an index - then the top of the topic should contain a small list of the applications that you\u0027re mentioning throughout the rest of the topic before detailing each one to ease readability, for example:  \n\n1. fbinst  \n2. fuwi\u0027s bootable  \n....  \n\nAlso, your topic has been added on top of Boot Land\u0027s FAQ boot list topics as reference for others *(myself included since it\u0027s difficult to keep track of all available software and know which one to choose)*   \n\n**Congratulations and keep it up!**   \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "82447",
+      "timestamp": "2009-10-24T06:33:05+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e jaclaz\u0027s Grub4DOS Toolbox for Windows-0.1\n\nreally is:  \n\u003e ~~jaclaz\u0027s~~ Grub4DOS Toolbox for Windows-0.1\n\nIt\u0027s here:  \n[http://www.boot-land...?showtopic\u003d7328](http://www.boot-land.net/forums/index.php?showtopic\u003d7328 \"External link\")  \n[http://grub4dostoolb...ourceforge.net/](http://grub4dostoolbox.sourceforge.net/ \"External link\")  \n[http://sourceforge.n...rub4dostoolbox/](http://sourceforge.net/projects/grub4dostoolbox/ \"External link\")  \n\nThough **jaclaz** finds it nice and useful ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif), and actually recommends it, he has no merit (nor blame :wink:) in the making of it, the Author is**farter** on Sourceforge:  \n[http://farter.users.sourceforge.net/](http://farter.users.sourceforge.net/ \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "82562",
+      "timestamp": "2009-10-25T17:36:59+00:00",
+      "author": "Icecube",
+      "content": "I added this topic to the Boot Land Directory: **Boot Land Library \\\u003e\\\u003e Boot from USB** , so it will be easy to find this post again:  \n[http://www.boot-land.net/dir/usb/](http://www.boot-land.net/dir/usb/ \"External link\")  \n\n@ maanu  \nWhy do you always use \\[code\u003dauto:0\\] tags instead of \\[url\u003d\\] for links? It is annoying when you can\u0027t click on a link.   \n"
+    },
+    {
+      "id": "82568",
+      "timestamp": "2009-10-25T18:55:39+00:00",
+      "author": "was_jaclaz",
+      "content": "Removed code tags, there is no reason to use them and it makes using the links awkward.  \n\nIf only we could have the images removed and placed in the appropriate threads, maybe we will end up with a readable \"index\". ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "82605",
+      "timestamp": "2009-10-26T09:38:13+00:00",
+      "author": "maanu",
+      "content": "\u003e Removed code tags, there is no reason to use them and it makes using the links awkward.  \n\u003e\n\u003e If only we could have the images removed and placed in the appropriate threads, maybe we will end up with a readable \"index\". ![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif)  \n\u003e\n\u003e jaclaz\n\nthanks .   \n\nand done . check the 1st post,. :wink:   \n"
+    },
+    {
+      "id": "82608",
+      "timestamp": "2009-10-26T10:34:11+00:00",
+      "author": "was_jaclaz",
+      "content": "Very good. :wink:  \n\nIt is now a sticky inside \" Boot Land \\\u003e Groups \\\u003e Boot from USB / Boot anywhere\".  \n\n![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "82613",
+      "timestamp": "2009-10-26T12:08:14+00:00",
+      "author": "wimb",
+      "content": "**@maanu**   \n\nThanks for the list of Apps to make bootable USB-sticks.  \n\nBTW My country is Netherlands instead of Belgium ![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif)   \n"
+    },
+    {
+      "id": "82616",
+      "timestamp": "2009-10-26T12:24:40+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e BTW My country is Netherlands instead of Belgium :wink:\n\nThat was then my bad ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)  \n\nI suggested it to **maanu** , sorry. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)  \n\nFixed. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)  \n\n![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif)  \n\njaclaz   \n"
+    }
+  ]
+}

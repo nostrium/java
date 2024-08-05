@@ -1,0 +1,34 @@
+{
+  "id": "15987",
+  "title": "Install Windows 7 \u0026 Windows XP from same dvd",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "143970",
+      "timestamp": "2011-12-10T08:55:22+00:00",
+      "author": "florin91",
+      "content": "Hi!  \n\nI am in the following situation: I have an Windows 7 install dvd and an windows xp install cd and I want to \"copy\" the windows xp files to hdd, among windows 7 install files and burn them to a 4.7 dvd, so I could install / boot both the Windows 7 install and windows xp install from the same dvd.  \n\nThe problem is not the dvd space, as it fits both on the 4.7 GB -\\\u003e \\~3 GB + 700 MB \u003d\\~ 3.7GB \\\u003c 4.7 GB  \n\nThe problem is the booting method and the boot loader used.  \n\nI was thinking at a solution like this: copy both medium files to hdd, add menu.lst on root and insert into it  \n\ntitle Windows7Install ...  \ntitle WindowsXPInstall .... and then burn the dvd with grldr as boot loader.  \n\nOr, somehow, try to \"use\" windows xp install bootloader to boot windows7install files or use windows7install boot loader to boot windowsxpinstall files, something with boot.ini or bcd files.  \n\nI think I described well my situation and I\u0027m waiting for ideas / solutions / links.  \n\nCheers!   \n"
+    },
+    {
+      "id": "143971",
+      "timestamp": "2011-12-10T09:40:35+00:00",
+      "author": "steve6375",
+      "content": "I would suggest you just add the XP i386 files to a folder on the Win 7 install DVD.  \nWhen you boot from the Win7 install DVD you can then use WinPE to install XP onto the hard disk.  \nTutorial #3 on the RMPrepUSB website describes this (for a USB drive) but it will work from a DVD. You could create a WinPE shell script to automate it.  \n\nAlternatively, you could create a wim file of a completed XP install and just apply the image to a hard disk using ImageX...   \n"
+    },
+    {
+      "id": "143972",
+      "timestamp": "2011-12-10T11:58:37+00:00",
+      "author": "Taylor Suchan",
+      "content": "I\u0027m no genius here, but I have had with a good bit of luck with the tutorial over at RMPrepUSB for booting to multiple iso files from both usb stik or usn hd #43 using \"  \n**Install Windows 7 \\\u0026 2K8 \\\u0026 Vista from multiple ISO files on the same Flash drive using FiraDisk\"**...****   \n\n**I currently have a usb stick with every version of Windows I need to use including Win xp,Vista,7 2008 Server and several PE\u0027s and live booting disk utilities.**   \nI can say for sure it works as advertised.   \n"
+    },
+    {
+      "id": "143977",
+      "timestamp": "2011-12-10T13:51:41+00:00",
+      "author": "cdob",
+      "content": "\u003e boot both the Windows 7 install and windows xp install from the same dvd  \n\u003e\n\u003e The problem is the booting method and the boot loader used.\nWindows 7 DVD uses a boot loader already. You may include XP install.  \n\n[http://www.msfn.org/...post__p__951608](http://www.msfn.org/board/topic/146594-multiboot-dvdusb-xp7vista-is-it-possible/page__view__findpost__p__951608 \"External link\")  \n\nCopy XP files to hard disk first, Windows 7 install next. Overwrite a XP \\\\setup.exe.  \nThat way Windows 7 \\\\setup.exe goes to DVD.   \n"
+    }
+  ]
+}

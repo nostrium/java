@@ -1,0 +1,52 @@
+{
+  "id": "5849",
+  "title": "Is there a way to put (and run) a bootable CD to a HD partition?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "45756",
+      "timestamp": "2008-09-29T07:44:14+00:00",
+      "author": "damlays",
+      "content": "Is there a way to place a bootable CD or .ISO (for example Hiren\u0027s boot CD) to one partition of my internal harddisk? And make that partition bootable like cd, of course?  \n\nIf yes, I can choose that partition from a boot manager menu (for example I use Acronis OS Selector) so I don\u0027t need to carry and put the CD everytime (or any other removable media) for booting my computer from that boot CD.   \n"
+    },
+    {
+      "id": "45759",
+      "timestamp": "2008-09-29T08:35:23+00:00",
+      "author": "Brito",
+      "content": "We can only help with boot disks obtained through legal means. Hiren\u0027s boot CD contains unlicensed software and the forum rules are clear about this matter.  \n\nI suggest you read the forum rules, we can\u0027t help you on this case - sorry.  \n\n\u003e 1. This is not a warez site! Links/Requests to warez and/or illegal material (porn, cracks, serials, etc..) will not be tolerated. Discussion of circumventing WGA/activation/timebombs/keygens or any other illegal activity will also not be tolerated. You may be banned without notice.\n[http://www.boot-land...hp?showtopic\u003d82](http://www.boot-land.net/forums/index.php?showtopic\u003d82 \"External link\")  \n\n![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png)   \n"
+    },
+    {
+      "id": "45764",
+      "timestamp": "2008-09-29T09:29:26+00:00",
+      "author": "was_jaclaz",
+      "content": "Then, exception made for illegal releases, read here:  \n[http://www.boot-land...hp?showforum\u003d66](http://www.boot-land.net/forums/index.php?showforum\u003d66 \"External link\")  \n[http://www.boot-land...?showtopic\u003d5187](http://www.boot-land.net/forums/index.php?showtopic\u003d5187 \"External link\")  \n[http://www.boot-land...?showtopic\u003d5041](http://www.boot-land.net/forums/index.php?showtopic\u003d5041 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "45771",
+      "timestamp": "2008-09-29T10:21:00+00:00",
+      "author": "damlays",
+      "content": "I do have no information about that cd is not legal. It came first to my mind so I wrote it, forget about that cd.   \n\nMy question\u0027s focus is not any specific CD, the subject is any bootable cd. Is there any way to adapt a bootable cd (or .iso) to a hd partition?   \n"
+    },
+    {
+      "id": "45773",
+      "timestamp": "2008-09-29T10:30:28+00:00",
+      "author": "Brito",
+      "content": "This depends entirely on the OS under which your boot disk is running.  \n\nLinux based LiveCD\u0027s seem to run very well directly as ISO image, look for grub on this forum as the links that Jaclaz mentioned earlier.  \n\nIf it\u0027s windows XP PE based - you will need to adapt your build to run from HDD or use the RAM files from windows 2003 to create a SDI compatible image.  \n\nThe informations for doing this sort of step is also mentioned on this forum - using the search tool should bring up a lot of relevant informations.  \n\nIf you use the LiveXP project (Windows XP PE from LiveCD using winbuilder) then you find a script that will do all these steps for you to prepare the image to load into memory and be started as a single image.  \n\nThis involves reading a bit to understand how they work.  \n\nLook on the tutorials section of this forum for more informations.  \n\n![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png)   \n"
+    },
+    {
+      "id": "45774",
+      "timestamp": "2008-09-29T10:53:18+00:00",
+      "author": "damlays",
+      "content": "okay, I would like to learn if there is a certain way of doing this but I understand from you answer that there is no one way.  \n\nlet me ask and request help in more spesific example then. I am using PLoP Boot Manager (I hope it is legal ![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png)) in a bootabe CD (I downloaded from [http://www.plop.at/e...managerdl.html)](http://www.plop.at/en/bootmanagerdl.html) \"External link\")  \n\nThere is harddisk install version of the program but it writes on MBR so I don\u0027t want to use that version. I want my MBR stay untouched.   \n\nSo, I created a new partition at the end ofmy harddisk and I only want to install CD version of this boot manager to thi very small partition on my HD. And then I will add this partition as a choice of boot, to Acronis OS selector menu.  \n\nCan you help me by giving information with some specific steps, what should I do first?   \n"
+    },
+    {
+      "id": "45786",
+      "timestamp": "2008-09-29T14:36:59+00:00",
+      "author": "amalux",
+      "content": "You can do what you want through the tutorial [here](http://www.911cd.net/forums//index.php?showtopic\u003d21883\u0026pid\u003d148803\u0026st\u003d0\u0026#entry148803 \"External link\") (with or wout the installing XP part) \"*BOOT_IMG.cmd copies WinBuilder LiveXP BootSDI.img Image file to C-HDD or USB-Drive and makes Entry for boot.ini Menu and GRUB4DOS menu.lst for Booting with PE from RAMDISK. BOOT_IMG.cmd can also Create IMG or ISO BOOT IMAGE Files from LiveXP / BartPE output Folder.* \" so, you\u0027ll have a boot menu allowing you to boot from the LiveXP image or your regular OS from the same HDD (you can also boot LiveXP from external USB HD or UFD if wanted). Just make sure you backup your HDD first! ![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png)   \n"
+    }
+  ]
+}

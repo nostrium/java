@@ -1,0 +1,112 @@
+{
+  "id": "21149",
+  "title": "Command Line Tool to Create IMG Floppy Image",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "199221",
+      "timestamp": "2016-06-15T07:40:59+00:00",
+      "author": "Uneitohr",
+      "content": "Hi guys! I\u0027m looking for a way to automate the creation of a .img floppy image from a folder containing some files.\n\nI basically have folder X and I\u0027d like to create an img image of 1440K size with a FAT partition containing the files from X folder. This will not be a one-time thing, it will be done very often so it needs to be automated.\n\nIs there a command line tool for this job that you can share with me?\n\nThank you\n\n"
+    },
+    {
+      "id": "199222",
+      "timestamp": "2016-06-15T08:48:01+00:00",
+      "author": "Icecube",
+      "content": "You can use tools from the mtools suite.\n\nA version compiled for Windows can be found here (with also some links to some examples I wrote):\n\n\u003chttp://reboot.pro/topic/17993-mtools/\u003e\n\nThe official site:\n\n[http://www.gnu.org/software/mtools/](http://www.gnu.org/software/mtools/ \"External link\")\n\n"
+    },
+    {
+      "id": "199223",
+      "timestamp": "2016-06-15T08:50:05+00:00",
+      "author": "Zharif",
+      "content": "You may want to use Imdisk.\n\nThis is a very short example script that might be useful for a start-up.\n\nSave code as a \\*.cmd file.\n\nDon\u0027t run it first! Instead, open the file via text editor and set your source directory.\n\nThis script creates an imagedrv in memory and copies files from folder X to the image mountpoint.\n\nSource is: please adjust\n\nMountpoint is A:\n\nFileSystem is: FAT\n\nLabel is : MyFloppy\n\nSize is: 1440k **Edited**\n\n```\n@ECHO OFF\nSETLOCAL ENABLEEXTENSIONS\nECHO.\n\n:: adjust settings here\nSet Src\u003dDrvLetter:\\Directory\nSET MPoint\u003dA:\nSET FS\u003dFAT\nSET Lbl\u003dMyFloppy\nSET Size\u003d1440k\n\n:: create imagedrv in memory\nIMDISK -a -t vm -m %MPoint% -o fd -s %SIZE% -p \"/fs:%FS% /v:%LBL% /q /y\"\n\n:: copy source files to imagedrv/mountpoint\nXCOPY /E /I \"%Src%\" \"%MPoint%\"\n\nPAUSE\u003eNUL\u0026EXIT \n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "199224",
+      "timestamp": "2016-06-15T10:26:29+00:00",
+      "author": "Uneitohr",
+      "content": "@Zharif:\n\nIt works but how do you save it as an img afterwards, through the command line?\n\n"
+    },
+    {
+      "id": "199225",
+      "timestamp": "2016-06-15T10:39:42+00:00",
+      "author": "Zharif",
+      "content": "Use rawcopy (also from Olof) to save as Image or iso file.\n\nDon\u0027t forget to dismount the drv afterwards (via imdisk again).\n\nAdd:\n\nrawcopy -ml \\\\\\\\.\\\\Mountpoint DestDir\\\\DestFile.img\n\n...and the appropriate imdisk command to unmount the imagedrv.\n\nType imdisk /? to get the command line Syntax.\n\n"
+    },
+    {
+      "id": "199226",
+      "timestamp": "2016-06-15T13:30:13+00:00",
+      "author": "Wonko the Sane",
+      "content": "UNless:\n\n1) IMDISK is already installed (for \\*any\\* reason)\n\nAND\n\n2) there is an actual need for a \"bootable\" image (i.e. one that has been formatted by the Windows Format.com which is what IMDISK uses and thus has boot code in the PBR)\n\nUsing imdisk is more complicated than really needed, and mtools will be faster and \"less intrusive\".\n\nHere (unrelated thread):  \n[http://reboot.pro/to...e-9#entry193659](http://reboot.pro/topic/19516-hack-bootmgr-to-boot-windows-in-bios-to-gpt/page-9#entry193659 \"\")\n\nyou can find an example of a batch that makes use of the mtools to create a floppy image with detailed parameters (BTW it is anyway possible to to write a given PBR code).\n\nBUT depending on what the actual specific need is, if the image is that of a standard 1.44 Mb floppy you can use good ol\u0027 BFI alright and even the mtools are more complex than needed:  \n[https://web.archive....p://nu2.nu/bfi/](https://web.archive.org/web/20150319095506/http://nu2.nu/bfi/ \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199227",
+      "timestamp": "2016-06-15T13:33:51+00:00",
+      "author": "Uneitohr",
+      "content": "I\u0027ll take a look at mtools tomorrow.\n\nI\u0027ve went with the IMDISK batch for now because I already have it installed.\n\nThank you all for your replies.\n\n"
+    },
+    {
+      "id": "199228",
+      "timestamp": "2016-06-15T18:40:40+00:00",
+      "author": "Uneitohr",
+      "content": "Well, mtools were way too complex for this type of job.\n\nIMDISK batch was easier but as you said, dependent on the installment of IMDISK.\n\nI went with bfi as all I needed was a standard floppy image.\n\nSo thank you all for your help.\n\n"
+    },
+    {
+      "id": "199229",
+      "timestamp": "2016-06-15T20:35:41+00:00",
+      "author": "Olof Lagerkvist",
+      "content": "If you use ImDisk, you could simplify the whole thing a bit by skipping the rawcopy operation and instead mount the image file directly.\n\n\u003cbr /\u003e\n\n```\nIMDISK -a -f DestDir\\DestFile.img -m %MPoint% -o fd -s %SIZE% -p \"/fs:%FS% /v:%LBL% /q /y\"\nXCOPY /E /I \"%Src%\" \"%MPoint%\"\nIMDISK -d -m %MPoint%\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "199234",
+      "timestamp": "2016-06-17T00:14:58+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "I would also like to create an IMG, but something much bigger than a floppy image. It will be empty initially (no partition table, filesystems, etc), and must be fully Linux compatible (capable of both being read and written to from either Windows or Linux, etc.). A rooted Android must also also be able to handle it, my primary purpose is to use this IMG to contain a Linux install that will be booted from within Android in a chroot jail environment. What is best for this, mtools or ImDisk)?\n\n"
+    },
+    {
+      "id": "199235",
+      "timestamp": "2016-06-17T07:18:04+00:00",
+      "author": "Wonko the Sane",
+      "content": "Apart the initial status of \"empty\", does it need to be a partitioned, i.e. a \"hd-like\" image or does it need to be non-partitioned, i.e. a \"superfloppy\"?\n\nAnd which filesystem would be later used?\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199236",
+      "timestamp": "2016-06-17T07:25:30+00:00",
+      "author": "wendy",
+      "content": "BFI allows you to use various boot sectors. I have a directory with a supply of boot sectors, and then when creating a msdos, win9x or pcdos disk, simply tell the command to \u0027copy\u0027 a boot sector + directory to a diskette image. so, eg dosdisk pcdos502.144 c:\\\\mydisks\\\\disk1 disk1.dsk.\n\n"
+    },
+    {
+      "id": "199237",
+      "timestamp": "2016-06-17T11:51:08+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e BFI allows you to use various boot sectors. I have a directory with a supply of boot sectors, and then when creating a msdos, win9x or pcdos disk, simply tell the command to \u0027copy\u0027 a boot sector + directory to a diskette image. so, eg dosdisk pcdos502.144 c:\\\\mydisks\\\\disk1 disk1.dsk.\n\nSure it does :smile:.\n\nThe \"difficult\" part is maybe to \"procure\" the supply of boot sectors.\n\nAnd of course BFI is (by design) limited to a couple \"standard formats\"\n\nIt all depends on the OS running and on the expected result, if you are running (say) XP and you want a \"standard\" 1.44 MS-DOS disk, the simplest would be to extract the image from diskcopy.dll:  \n[http://www.911cd.net...showtopic\u003d16745](http://www.911cd.net/forums//index.php?showtopic\u003d16745 \"External link\")\n\nIMDISK allows for non-standard images, but because it uses the format.com it may have some limitations in customizing the image, whilst the mtools allow full modification/tweaking of all parameters of the image, besides size number of fats, etc..\n\nOT ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif), but not much (and shameless plug :wink:), here is some discussion on floppy (and superfloppy) formats:\n\n[http://www.msfn.org/...d-their-images/](http://www.msfn.org/board/topic/152097-on-superfloppies-and-their-images/ \"External link\")\n\nand a small worksheet to calculate size of fats, etc. for most known floppy size formats and \"optimized\" for custom ones:  \n[http://www.msfn.org/...#comment-988732](http://www.msfn.org/board/topic/152097-on-superfloppies-and-their-images/?page\u003d6#comment-988732 \"External link\")\n\nand a (nifty? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)) little batch to view a floppy bootsector contents:  \n[http://www.msfn.org/...comment-1001712](http://www.msfn.org/board/topic/152097-on-superfloppies-and-their-images/?page\u003d7#comment-1001712 \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199238",
+      "timestamp": "2016-06-17T14:29:25+00:00",
+      "author": "Zharif",
+      "content": "**Edited:** Thanks for mention bfi. I nearly forgot this tool.  \nJust for sake of completeness - the code below is a batch proposal that checks for bfi, imdisk and rawcopy.  \nConsidering their limiations, bfi will be used to create the floppy image if it has been detected.  \nOtherwise, Imdisk is used.  \nThis batch should be flexible enough to avoid errors and provides the ability  \nto batch floppy image operations with different settings.  \nPlease note that this code is based on my personal coding preferences.  \nFeel free to remove or change any unwanted/unneeded code.\n\nAs always, adjust settings before running this batch.  \n\n```\n@ECHO OFF\nSETLOCAL ENABLEEXTENSIONS\n\n:: set filepathes here - will be checked by _FileExists\nCALL:_FileExists \"%CD%\\bfi.exe\" _BFI\nIF NOT DEFINED _BFI CALL:_FileExists \"imdisk.exe\" _ImDsk\nIF DEFINED _ImDsk CALL:_FileExists \"%CD%\\rawcopy.exe\" _RawC\nIF NOT DEFINED _BFI IF NOT DEFINED _IMDSK ECHO BFI and Imdisk not found ...exit batch.\u0026PAUSE\u003eNUL\u0026EXIT\n\n:: Use BFI prior to Imdisk - pass your parameters to call\n:: Syntax: ImageFileIN  ImageLabelIN  [DirPathInjectIN]  [ImageBootSectorFileIN] [ImageTypeIN]\n:: 1st and 2nd parm are needed - 3rd, 4th and 5th parm are optional\n:: Any parm should be surrounded by dblquotes.\nIF DEFINED _BFI (\n  CALL:_Nu2BFI \"%CD%\\MyFloppy.img\" \"MyFloppy\" \"D:\\test\" \"%CD%\\FloppyEmulation.bin\"\n  CALL:_Nu2BFI \"%CD%\\MyFloppy1.img\" \"MyFloppy\" \"D:\\test\" \"%CD%\\FloppyEmulation.bin\" \"7\"\n  CALL:_Nu2BFI \"%CD%\\MyFloppy2.img\" \"MyFloppy\" \"D:\\test\" \"%CD%\\FloppyEmulation.bin\" 4\n  PAUSE\u003eNUL\u0026EXIT\n)\n\n:: use Imdisk - pass your parameters to call\n:: Syntax: ImageMountpointIN  ImageSizeIN  ImageFileSystemIN  ImageLabelIN  [ImageFileIN]  [DirPathInjectIN]\n:: 1st to 4th parm are needed - 5th and 6th parm are optional\n:: Any parm should be surrounded by dblquotes.\nIF DEFINED _ImDsk (\n  CALL:_Imdisk \"A:\" \"1440k\" \"FAT\" \"MyFloppy\" \"%CD%\\MyFloppy.img\" \"D:\\test\"\n  CALL:_Imdisk \"A:\" \"2880k\" \"FAT\" \"MyFloppy\" \"%CD%\\MyFloppy1.img\" \"D:\\test\"\n  CALL:_Imdisk \"A:\" \"720k\" \"FAT\" \"MyFloppy\" \"%CD%\\MyFloppy2.img\" \"D:\\test\"\n)\nPAUSE\u003eNUL\u0026EXIT\n\n\n:_Nu2BFI ImageFileIN ImageLabelIN [DirPathInjectIN] [ImageBootSectorFileIN] [ImageTypeIN]\nSETLOCAL\nIF NOT \"%~3\"\u003d\u003d\"\" PUSHD %3 \u003eNUL 2\u003e\u00261 \u0026\u0026 SET _Nu2Inj\u003d%3\u0026\u0026 POPD\nIF NOT \"%~4\"\u003d\u003d\"\" CALL:_FileExists %4 _Nu2Boot\nIF DEFINED _Nu2Boot SET \"_Nu2Boot\u003d-b\u003d%4\"\nSET _Nu2Type\u003d-t\u003d6\u0026 IF NOT \"%~5\"\u003d\u003d\"\" SET \"_Nu2Type\u003d-t\u003d%~5\"\n\nECHO.\u0026SET /P \"\u003dBFI: Creating a FAT12 floppy image: \" \u003cNUL\n%_BFI% -f\u003d%1 -l\u003d%2 %_Nu2Boot% %_Nu2Type% %_Nu2Inj%\u003eNUL 2\u003e\u00261 \u0026\u0026 ECHO ok||ECHO failed\nECHO      Image File: %~s1\nECHO      Image Label: %~2\nECHO      Image DirToInject: %_Nu2Inj%\nECHO      Image BootSector: %_Nu2Boot%\nECHO      Image Type: %_Nu2Type:*t\u003d%\nENDLOCAL\nGOTO:EOF\n\n:_ImDisk ImageMountpointIN ImageSizeIN ImageFileSystemIN ImageLabelIN [ImageFileIN] [DirPathInjectIN]\nSETLOCAL\nECHO.\u0026SET /P \"\u003dImDisk: Creating image drive: \" \u003cNUL\n%_IMDSK% -a -t vm -m %1 -o fd -s %2 -p \"/fs:%3 /v:%4 /q /y\" \u003eNUL 2\u003e\u00261 \u0026\u0026 ECHO ok||ECHO failed\n\nCALL:_FileExists %5 _ImdF\nIF DEFINED _ImdF SET \"_ImdF\u003d%5\"\nIF NOT \"%~6\"\u003d\u003d\"\" PUSHD %6 \u003eNUL 2\u003e\u00261 \u0026\u0026 SET _ImdInj\u003d%6\u0026\u0026 POPD\n\nIF DEFINED _ImdInj (\n    SET /P \"\u003dImdisk: Copying files: \" \u003cNUL\n    XCOPY /E /I /Q %6 %1 \u003eNUL 2\u003e\u00261 \u0026\u0026 ECHO ok||ECHO failed\n)\nIF DEFINED _ImdF IF DEFINED _RAWC (\n    SET /P \"\u003dImdisk: Saving image drive: \" \u003cNUL\n    %_RAWC% -mli \\\\.\\%~1 %5 \u003eNUL 2\u003e\u00261 \u0026\u0026 ECHO ok||ECHO failed\n)\nSET /P \"\u003dImdisk: Forcing dismount image drive: \" \u003cNUL\n%_IMDSK% -D -m %1 \u003eNUL 2\u003e\u00261 \u0026\u0026 ECHO ok||ECHO failed\nECHO         Image Mountpoint: %~1\nECHO         Image Size: %~2\nECHO         Image FileSystem: %~3\nECHO         Image Label: %~4\nECHO         Image File: %_ImdF%\nECHO         Image DirToInject: %_ImdInj%\nENDLOCAL\nGOTO:EOF\n\n:_FileExists  FilePath-FileNameToSearchIN  PathVarNameOUT\nSET \"_FileExists\u003d\"\nIF \"%~1\"\u003d\u003d\"\" GOTO:EOF\nIF \"%~2\"\u003d\u003d\"\" GOTO:EOF\nSET \"%~2\u003d\"\n\n:: map directory part of filepath, dir filename, save full filepath, unmap\n(PUSHD \"%~dp1\" 2\u003eNUL \u0026\u0026 DIR /B \"%~nx1\" \u003eNUL 2\u003e\u00261 \u0026\u0026 SET \"%~2\u003d%~1\") \u0026 POPD\nIF DEFINED %~2 SET _FileExists\u003d1\u0026 GOTO:EOF\n\n:: loop through PATH variable, map directories, dir filename,\n:: save directory path [last match only]\nFOR %%A IN (\"%PATH:;\u003d\" \"%\") DO (\n    PUSHD \"%%A\" 2\u003eNUL\n    DIR /B \"%~1\" \u003eNUL 2\u003e\u00261 \u0026\u0026 SET \"%~2\u003d%%~A\"\n  POPD\n)\n:: VarOUT is not defined - quit, set tempvar\nIF NOT DEFINED %~2 GOTO:EOF\nCALL SET \"_OUT\u003d%%%~2%%\"\n\n:: remove trailing bkslsh from directory path\nIF \"%_OUT:~-1%\"\u003d\u003d\"\\\" SET \"%~2\u003d%_OUT:~0,-1%\" 2\u003eNUL\n:: add filename to directory path and set function TRUE\nSET \"%~2\u003d%_OUT%\\%~1\" 2\u003eNUL \u0026\u0026 SET _FileExists\u003d1\nSET \"_OUT\u003d\"\nGOTO:EOF\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "199239",
+      "timestamp": "2016-06-17T17:00:51+00:00",
+      "author": "Wonko the Sane",
+      "content": "@zharif  \nWith all due respect :smile:, I thought that the idea was about having something \"simple\".  \n\nJFYI, sometimes it is easier to actually attempt to run an executable, rather than \"looking for it\", \\*like\\*:  \n\n\u003cbr /\u003e\n\n```\n@ECHO OFF\nSETLOCAL\n\nimdisk.exe --version \u003enul 2\u003e\u00261 \u0026\u0026ECHO IMDISK found *somewhere*\n\nbfi.exe -f\u003dnul \u0026\u0026 ECHO BFI found *somewhere*\n\nrawcopy.exe 0 0 nul nul \u0026\u0026 ECHO RAWCOPY found *somewhere*\n\nPAUSE\n\n::Another way\n\nimdisk /? \u003enul 2\u003e\u00261\nIF %ERRORLEVEL%.\u003d\u003d-1. ECHO IMDISK found\n\nbfi /? \u003enul 2\u003e\u00261\nIF %ERRORLEVEL%.\u003d\u003d255. ECHO BFI found\n\nrawcopy /? \u003enul 2\u003e\u00261\nIF %ERRORLEVEL%.\u003d\u003d-1. ECHO Rawcopy found\n\n::Since Rawcopy is a \"common enough\" name, this might be better:\nrawcopy /? 2\u003e\u00261|FIND \"Lagerkvist\"\u003enul\u0026\u0026ECHO Rawcopy by Olof Lagerkvist found.\n```\n\nafter all, you don\u0027t really need to know where the tool is, only if it is available to the batch :wink:.  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    },
+    {
+      "id": "199240",
+      "timestamp": "2016-06-17T17:35:56+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "@ Wonko: It will be partitioned, like an HDD, and will have at least one partition (Linux EXT4), maybe also a swap partition. My plan is to use something like rsync to restore the root filesystem from a backup into an empty EXT4 inside the new IMG, thereby making a near-\"clone\" (at a filesystem level) of a current IMG which is already bootable. The reason for all this is that I haven\u0027t had any real luck syncing up an IMG to either my Dropbox or MEGA accounts, since every time a tiny bit of the file changes, the entire file is resynced (over 8GB!), rather than just the changed bytes. This must be due to the nature of the file, its\u0027 structure, etc. So I decided that backing up/restoring (online) at FS level might be more efficient. I also figured that syncing/backing up/restoring from IMG to IMG would also be an effective strategy.\n\nMy app, Linux Deploy, appears to use the dd command to create the IMG (on Android, not PC). From the logs when creating an example 2048MB/2GB IMG:\n\n+ echo done  \n+ \\[ file \u003d file \\]  \n+ local file_size\u003d0  \n+ \\[ -f /storage/sdcard0/linux.img \\]  \n+ \\[ 2048 -eq 0 \\]  \n+ let file_size\u003d0/1048576  \n+ \\[ 2048 !\u003d 0 \\]  \n+ msg -n Making new disk image (2048 MB) ...  \n+ echo -n Making new disk image (2048 MB) ...  \n+ expr 2048 - 1  \nMaking new disk image (2048 MB) ... + dd if\u003d/dev/zero of\u003d/storage/sdcard0/linux.img bs\u003d1048576 seek\u003d2047 count\u003d1  \n1+0 records in  \n1+0 records out  \n1048576 bytes (1.0MB) copied, 0.017460 seconds, 57.3MB/s  \ndone\n\nHowever, it doesn\u0027t allow me to just create an empty IMG then stop, instead it continues with the installation. I\u0027m not sure how it determines the bs (blocksize), count, and seek values. So I figure it\u0027s best for now to just find a program that semi-automates the process, with me inputting just the desired size.\n\n"
+    },
+    {
+      "id": "199241",
+      "timestamp": "2016-06-17T19:59:13+00:00",
+      "author": "Wonko the Sane",
+      "content": "I am not sure to understand your overall plan, however both IMDISK and MTOOLS are not the \"right\" tools for a partitioned image.  \nUsing some workarounds of course both can be used, but you will better use something capable of managing a hard disk like (partitioned) image.  \n\nIf you were not using an EXT2/3/4 filesystem I would have proposed you my good ol\u0027 batches:  \n[http://reboot.pro/to...atch-001-alpha/](http://reboot.pro/topic/3191-mbrbatch-001-alpha/ \"\")  \n\nBut you would have to modify it/them for using a non-MS format utility capable of creating the filesystem of your choice.  \nAt this point it would be probably easier to use a recent disk driver (the Arsenal Image Mounter, also by Olof, is excellent) and whatever filesystem driver for windows (with the format capabilities or or mke2fs port) you use for EXT2/3/4.  \n\nAll in all it seems to me better/easier to do the whole thing under Linux.  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    }
+  ]
+}

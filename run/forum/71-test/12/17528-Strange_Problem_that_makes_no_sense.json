@@ -1,0 +1,112 @@
+{
+  "id": "17528",
+  "title": "Strange Problem that makes no sense",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "160601",
+      "timestamp": "2012-09-20T06:35:52+00:00",
+      "author": "Damnation",
+      "content": "I\u0027ve run into a very bizarre problem,  \n\nFollowing this tutorial  \n\n[http://www.rmprepusb...ials/firawiniso](http://www.rmprepusb.com/tutorials/firawiniso \"External link\")  \n\nI\u0027ve gotten the windows 7 ISO up and running, but...  \n\nFor some strange reason that I don\u0027t understand, it will only work in a USB 3.0 port  \n\nIn a USB 2.0 port, mysetup.cmd stops with - COULD NOT FIND INSTALL.WIM!  \n\nbut USB 3.0 is no problem,  \n\nYou would think it should be the opposite,  \n\nThe only thing I can think of that I changed recently was syslinux, from 4.06pre1 to pre7, some of the PCs I tested would not boot with pre1  \n\nAny ideas on how to fix?   \n"
+    },
+    {
+      "id": "160603",
+      "timestamp": "2012-09-20T08:48:55+00:00",
+      "author": "steve6375",
+      "content": "The tutorial does not use syslinux?  \nDo you mean that this used to work on the same PC, but now it does not work?  \nIf it says that it cannot find install.wim, then it implies that it found the ISO file and tried to load it - so presumably if you break in with SHIFT+F2 you will not see the virtual drive created by FiraDisk?  \nDid you try the latest download from the tutorial which also includes ImDisk?  \nIs the ISO you are using pure Win 7 (and does not have any mix of 7 and 8 in it?)   \n"
+    },
+    {
+      "id": "160605",
+      "timestamp": "2012-09-20T09:55:42+00:00",
+      "author": "Damnation",
+      "content": "\u003e The tutorial does not use syslinux?  \n\u003e\n\u003cbr /\u003e\n\nyeah I know, but I can load grub4dos with  \n\nKERNEL /multiboot/grub.exe  \n\n\u003e Do you mean that this used to work on the same PC, but now it does not work?  \n\u003e\n\u003cbr /\u003e\n\nYep  \nand it still works if I use USB3  \n\n\u003e If it says that it cannot find install.wim, then it implies that it found the ISO file and tried to load it - so presumably if you break in with SHIFT+F2 you will not see the virtual drive created by FiraDisk?  \n\u003e\n\u003cbr /\u003e\n\nhaven\u0027t tried that, will do that  \n\n\u003e Did you try the latest download from the tutorial which also includes ImDisk?  \n\u003e\n\u003e \\[\n\nyep, using that one  \n\n\u003e Is the ISO you are using pure Win 7 (and does not have any mix of 7 and 8 in it?)  \n\u003e\n\u003cbr /\u003e\n\nI\u0027m uning an ISO with some windows updates integrated, I\u0027ll try an unmodified ISO, see how that goes   \n"
+    },
+    {
+      "id": "160627",
+      "timestamp": "2012-09-21T06:55:26+00:00",
+      "author": "Damnation",
+      "content": "Unmodified (except for mysetup.cmd being added) didn\u0027t work, same problem  \n\nany ideas?   \n"
+    },
+    {
+      "id": "160628",
+      "timestamp": "2012-09-21T07:05:39+00:00",
+      "author": "Damnation",
+      "content": "default 0  \ntimeout\u003d0  \n\ntitle Windows 7 x64 ISO  \n\nmap --mem (md)0x800+4 (99)  \nmap /multiboot/ISOs/win7.x64.mysetup.ISO (0xff)  \nmap (hd0) (hd1)  \nmap (hd1) (hd0)  \nmap --hook  \nwrite (99) \\[FiraDisk\\]nStartOptions\u003dcdrom,vmem\u003dfind:/multiboot/ISOs/win7.x64.mysetup.ISO;n0  \nchainloader (0xff)/BOOTMGR \\|\\| chainloader (0xff)  \n\nAnything wrong with this?   \n"
+    },
+    {
+      "id": "160629",
+      "timestamp": "2012-09-21T09:03:56+00:00",
+      "author": "steve6375",
+      "content": "So, this is a USB HDD?  \nIt works if you boot it from a USB 3 port, but if you boot it from a USB 2 port then it can\u0027t find install.wim?  \nWhat is the hardware (PC/nb) model and which ports are you using exactly?  \nWhat if you try it on a different system\u0027s USB 2 port?  \n\nP.S. the iso filename seems unusual - could you try the normal 8.3 filename or use _ instead of . (just in case it is confusing firadisk).  \nDid you try using grub4dos MBR boot loader and not chaining via syslinux?   \n"
+    },
+    {
+      "id": "160630",
+      "timestamp": "2012-09-21T09:40:54+00:00",
+      "author": "Damnation",
+      "content": "\u003e So, this is a USB HDD?\n\nSSD actually  \n\n\u003e It works if you boot it from a USB 3 port, but if you boot it from a USB 2 port then it can\u0027t find install.wim?\n\nCorrect, weird huh?  \n\n\u003e What is the hardware (PC/nb) model and which ports are you using exactly?\n\ncustom build, board is a Gigabyte Z68-XP-UD3, using front USB2 on case, back USB2 ports have same problem though  \n\n\u003e What if you try it on a different system\u0027s USB 2 port?\n\nTried it on a Clevo P150HM laptop, same problem there.  \n\n\u003e P.S. the iso filename seems unusual - could you try the normal 8.3 filename or use _ instead of . (just in case it is confusing firadisk).\n\nOK, I\u0027ll try that   \n"
+    },
+    {
+      "id": "160631",
+      "timestamp": "2012-09-21T09:49:59+00:00",
+      "author": "steve6375",
+      "content": "very weird! ![:cold:](http://reboot.pro/public/style_emoticons/default/cold.gif)  \nMaybe it is to do with the USB SSD? Can you xfer the contents to a flash drive or USB HDD and test that?  \nSome USB 3 controllers will work with Win7 (in USB 2 mode) if the USB chip controller registers are compatible with USB 2 controllers - so it is not very surprising that it works on a USB 3 port, but it should work on a USB 2 port.  \nMaybe, the SSD USB interface is somehow confusing FiraDisk? Could you try editing loadiso.cmd so that it skips Firadisk and always uses ImDisk (you need the line for SET MYISO\u003dxxx in the menu.lst) and maybe turn echo on (echo on instead of echo off) so you can see what is happening?   \n"
+    },
+    {
+      "id": "160632",
+      "timestamp": "2012-09-21T10:00:14+00:00",
+      "author": "pscEx",
+      "content": "In my experience Usb boot works always w/o issues only on the direct (onboard) way. Indirect (front) often brings issues.  \n\nIs usb3 direct and usb2 indirect?  \n\nPeter   \n"
+    },
+    {
+      "id": "160634",
+      "timestamp": "2012-09-21T10:12:56+00:00",
+      "author": "steve6375",
+      "content": "\u003e In my experience Usb boot works always w/o issues only on the direct (onboard) way. Indirect (front) often brings issues.  \n\u003e\n\u003e Is usb3 direct and usb2 indirect?  \n\u003e\n\u003e Peter  \nyes, he said  \n\u003e back USB2 ports have same problem though\nalso the notebook would have direct connection and he tested that too???   \n"
+    },
+    {
+      "id": "160636",
+      "timestamp": "2012-09-21T11:02:50+00:00",
+      "author": "Damnation",
+      "content": "I think what might be happening is it\u0027s not finding LOADISO.CMD but I\u0027m not sure,  \n\nmysetup.cmd  \n\n```\n\n\nREM run wpeinit after loading ISO file\n\n:findload\n\nSET USBDRIVE\u003d\n\necho Looking for a drive containing FIRADISKLOADISO.CMD...\n\ncmd /q /c  \"FOR %%i IN (C D E F G H I J K L N M O P Q R S T U V W X Y Z) DO IF EXIST %%i:FIRADISKLOADISO.CMD  cmd /k %%i:FIRADISKLOADISO.cmd\"\n\n::if \"%USBDRIVE%\"\u003d\u003d\"\" goto :findload\n\n\n\n```\n\n\u003cbr /\u003e\n\nit must find it though, wouldn\u0027t it loop forever otherwise?  \n\n\u003cbr /\u003e\n\nWell, I\u0027m going away for a weekend, so I\u0027ll be back to work on this on Tuesday   \n"
+    },
+    {
+      "id": "160637",
+      "timestamp": "2012-09-21T11:06:00+00:00",
+      "author": "steve6375",
+      "content": "no, the last line is commented out with :: - so it will just drop through.  \nSo it probably means that WinPE cannot find the SSD drive (when booted from a USB 2 port) - weird!   \n"
+    },
+    {
+      "id": "160638",
+      "timestamp": "2012-09-21T11:10:03+00:00",
+      "author": "Damnation",
+      "content": "I get this in the command prompt  \n\nLooking for a drive containing FIRADISKLOADISO.CMD...  \nERROR - COULD NOT FIND INSTALL.WIM!  \nPress any key to continue . . .  \n\nthat\u0027s all  \n\nShouldn\u0027t I be getting echoes from LOADISO.CMD?  \n\nP.S, I\u0027m going away for a weekend, so I\u0027ll be back to work on this on Tuesday   \n"
+    },
+    {
+      "id": "160639",
+      "timestamp": "2012-09-21T11:26:46+00:00",
+      "author": "Damnation",
+      "content": "I\u0027m off!,  \n\none last thing, just noticed, the unmodified ISO, won\u0027t work in USB3, modified ISO does work in USB3,  \n\nso maybe the USB2 driver isn\u0027t being loaded?   \n"
+    },
+    {
+      "id": "160667",
+      "timestamp": "2012-09-21T18:53:47+00:00",
+      "author": "pscEx",
+      "content": "\u003e back USB2 ports have same problem though  \n\"Back\" is sometimes a plug in a card!  \n\nBut the new knowledge about the drivers seems to be more success promisi8ng.  \n\nPeter ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "160769",
+      "timestamp": "2012-09-26T08:51:51+00:00",
+      "author": "Damnation",
+      "content": "I fixed it  \n\n```\n\n\nREM run wpeinit after loading ISO file\n\n:findload\n\nSET USBDRIVE\u003d\n\necho Looking for a drive containing FIRADISKLOADISO.CMD...\n\npause\n\ncmd /q /c  \"FOR %%i IN (C D E F G H I J K L N M O P Q R S T U V W X Y Z) DO IF EXIST %%i:FIRADISKLOADISO.CMD  cmd /k %%i:FIRADISKLOADISO.cmd\"\n\n::if \"%USBDRIVE%\"\u003d\u003d\"\" goto :findload\n\n```\n\n\u003cbr /\u003e\n\nall it needed was a brief pause to find the USB drive   \n"
+    },
+    {
+      "id": "160770",
+      "timestamp": "2012-09-26T09:18:38+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e all it needed was a brief pause to find the USB drive  \nhttp://ss64.com/nt/ping.html  \n\u003e PAUSE for 1 or more seconds by pinging the loopback address (127.0.0.1):  \n\u003e e.g. for a delay of 30 seconds:  \n\u003e PING -n 31 127.0.0.1\\\u003enul  \n\u003e In tests this consumes less processor time than Sleep or Timeout - see Clay Calvert\u0027s original newsgroup posting.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    }
+  ]
+}

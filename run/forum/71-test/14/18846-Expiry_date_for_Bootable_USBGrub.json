@@ -1,0 +1,94 @@
+{
+  "id": "18846",
+  "title": "Expiry date for Bootable USB/Grub",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "176674",
+      "timestamp": "2013-09-03T03:50:55+00:00",
+      "author": "Uvais",
+      "content": "hi EveryOne :smile:\n\nI want to know is it possible to make a bootable USB with Expiry date ?\n\nGoal : I want to boot from some ISO\u0027 \\\u0026 want to set USB\u0027 life to 30 Days OR till some specify date .\n\nwe have used some software\u0027s which makes usb like that..hope u got my Q. :smile: any trick for adding these info in menu.lst .so it can authenticate expiry date etc or **limit USB\u0027s boot time ?**\n\n"
+    },
+    {
+      "id": "176676",
+      "timestamp": "2013-09-03T07:14:57+00:00",
+      "author": "steve6375",
+      "content": "[http://www.rmprepusb...-an-Expiry-Date](http://www.rmprepusb.com/tutorials/grubutils#TOC-Another-Batch-file-example---use-checkdate.g4b-to-check-an-Expiry-Date \"External link\")\n\n"
+    },
+    {
+      "id": "176681",
+      "timestamp": "2013-09-03T10:31:11+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, it depends what the actual scope is. (I mean like distributing time-limited proprietary tools, etc.)\n\nIt may make some sense in the usage example **Steve** provided ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif) (reminding the user to update the software/tool) but little else. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nOf course anyone with more than 2 neurons can de-activate that kind of \"time bomb\".\n\nFor the USB without any issue of any kind, for the CD/DVD by re-burning it (or simply changing the BIOS date).\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "176683",
+      "timestamp": "2013-09-03T10:42:44+00:00",
+      "author": "steve6375",
+      "content": "Using 7Zip to convert the menu.lst to a Gzip file might help to raise the \u0027hack\u0027 threshold to \u0027someone with more than 3 neurons\u0027?\n\n"
+    },
+    {
+      "id": "176685",
+      "timestamp": "2013-09-03T12:06:09+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Using 7Zip to convert the menu.lst to a Gzip file might help to raise the \u0027hack\u0027 threshold to \u0027someone with more than 3 neurons\u0027?\n\n3.5 will be enough, 3 full functioning ones + 1 in the process of re-growing a synapse.\n\nAnd changing the BIOS date requirements still remains set at 2+.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "176717",
+      "timestamp": "2013-09-04T12:33:43+00:00",
+      "author": "Uvais",
+      "content": "\u003e [http://www.rmprepusb...-an-Expiry-Date](http://www.rmprepusb.com/tutorials/grubutils#TOC-Another-Batch-file-example---use-checkdate.g4b-to-check-an-Expiry-Date \"External link\")\n\nThanks for your Quick Reply Steve...But I am li\u0027l confused :\\| ..can you make an Example ? which lines I need to add in menu.lst \\\u0026 where i need to put \"checkdate.g4b\" . which Lines of\n\n\"checkdate.g4b\" I need to modify/Edit\n\nhere is mine menu.lst\n\n```\n\n```\n\n```\ntimeout 10\ndefault 04\ngfxmenu /Boot/GFX-BOOT.GFX\ntitle ...::Test Of Time limit ;) ::...\\n\nroot\n\ntitle \\n\nroot\n\ntitle Boot From Hard Drive (Windows Vista/7/2008 or Xp)\\n\nfind --set-root --ignore-floppies --ignore-cd /bootmgr || find --set-root --ignore-floppies --ignore-cd /ntldr || rootnoverify (hd0) \u0026\u0026 chainloader +1 \u0026\u0026 boot\nmap () (hd0) \u0026\u0026 map (hd0) () \u0026\u0026 map --rehook\nfind --set-root --devices\u003dh /bootmgr || find --set-root --ignore-floppies --ignore-cd /ntldr\nchainloader /bootmgr || chainloader /ntldr\n\ntitle \\n\nroot\n\ntitle \u003d\u003d\u003d\u003e Microsoft Windows 7 Uv@!S \u003c\u003d\u003d\u003d\nfind --set-root /XPE/cmdcons/4dt.iso\nmap /XPE/cmdcons/4dt.iso (0xff)\nmap --hook\nroot (0xff)\nchainloader (0xff)\n\ntitle \\n\nroot\n\ntitle \u003d\u003d\u003d\u003d\u003d\u003e Ghost \u003c\u003d\u003d\u003d\u003d\u003d\nfind --set-root /XPE/cmdcons/gt.ISO\nmap /XPE/cmdcons/gt.ISO (0xff)\nmap --hook\nroot (0xff)\nchainloader (0xff)\n\ntitle \\n\nroot\n\n\ntitle Reboot\nreboot\n\ntitle Shutdown\nhalt\n\ntitle ... Test @ 2013 .\nroot\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "176720",
+      "timestamp": "2013-09-04T12:47:08+00:00",
+      "author": "steve6375",
+      "content": "The example was  \n\n```\n# Usage: /checkdate.g4b \u003cRelease Year\u003e \u003cRelease Month\u003e \u003cRelease DayOfMonth\u003e \u003cExpiresInDays\u003e [\u003cSILENT\u003e]\n/checkdate.g4b 2012 12 3 30\npause\nif NOT \"%CHECKDATE%\"\u003d\u003d\"OK\" reboot\n```\n\nSo just put these lines of code where ***before***you load GFXMenu (otherwise you won\u0027t see any messages!).  \nAs the command is **/**checkdate.g4b, the file checkdate.g4b should be in the root. If you want it somewhere else then path it accordingly - e.g.  \n\n```\n/boot/checkdate.g4b 2013 9 4 30\n```\n\nfor a 30 day expiry starting today.  \nIf you are still having problems, try it from the grub4do command line  \ngrub\\\u003e**/checkdate.g4b 2013 9 4 30**  \ngrub\\\u003e **set CH**  \nshould return **CHECKDAT\u003dOK**  \nHTH  \nSteve\n\n"
+    },
+    {
+      "id": "176722",
+      "timestamp": "2013-09-04T12:52:27+00:00",
+      "author": "steve6375",
+      "content": "p.s. grub4dos only has max of 8 characters per variable name, so %CHECKDATE% \u003d\u003d %CHECKDAT%\n\n"
+    },
+    {
+      "id": "176729",
+      "timestamp": "2013-09-04T14:43:07+00:00",
+      "author": "Wonko the Sane",
+      "content": "With all due respect to the good **Steve6375** , his batch is a rather complex form of mathematical calculation with dates, elapsed days and what not, and while really nice ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif), if the concept is that of \"limiting\" the use to a given date (calculated separately) something much more simpler can be IMHO used, even directly in a menu.lst example:\n\n```\n\ntitle testhalt\nif 20140101\u003e\u003d%@date:~0,4%%@date:~5,2%%@date:~8,2% echo halt\npause\n```\n\nthat may ultimately become a one-liner:\n\n```\n\nif 20140101\u003e\u003d%@date:~0,4%%@date:~5,2%%@date:~8,2%  halt\n```\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "176734",
+      "timestamp": "2013-09-04T17:39:16+00:00",
+      "author": "Uvais",
+      "content": "\u003e The example was  \n\u003e\n\u003e ```\n\u003e # Usage: /checkdate.g4b \u003cRelease Year\u003e \u003cRelease Month\u003e \u003cRelease DayOfMonth\u003e \u003cExpiresInDays\u003e [\u003cSILENT\u003e]\n\u003e /checkdate.g4b 2012 12 3 30\n\u003e pause\n\u003e if NOT \"%CHECKDATE%\"\u003d\u003d\"OK\" reboot\n\u003e ```\n\u003e\n\u003e So just put these lines of code where ***before***you load GFXMenu (otherwise you won\u0027t see any messages!).  \n\u003e As the command is **/**checkdate.g4b, the file checkdate.g4b should be in the root. If you want it somewhere else then path it accordingly - e.g.  \n\u003e\n\u003e ```\n\u003e /boot/checkdate.g4b 2013 9 4 30\n\u003e ```\n\u003e\n\u003e for a 30 day expiry starting today.  \n\u003e If you are still having problems, try it from the grub4do command line  \n\u003e grub\\\u003e**/checkdate.g4b 2013 9 4 30**  \n\u003e grub\\\u003e **set CH**  \n\u003e should return **CHECKDAT\u003dOK**  \n\u003e HTH  \n\u003e Steve\n\u003e\nHey do i need to Modify \"checkdate.g4b\" ?\n\n**Please Modify this menu.lst**\n\n[http://db.tt/uXeoQMkQ](http://db.tt/uXeoQMkQ \"External link\")\n\n**Edited by Uvais, 04 September 2013 - 05:59 PM.**\n"
+    },
+    {
+      "id": "176735",
+      "timestamp": "2013-09-04T17:55:31+00:00",
+      "author": "steve6375",
+      "content": "\u003e Hey do i need to Modify \"checkdate.g4b\" ?\n\nNot sure what you mean?\n\nIf you want to use checkdate then it doesn\u0027t need modifiying.\n\nIf you want to use Wonko\u0027s one line check then use that **instead**of checkdate.g4b.\n\n"
+    },
+    {
+      "id": "176736",
+      "timestamp": "2013-09-04T18:05:33+00:00",
+      "author": "Uvais",
+      "content": "i think I am making mistakes in adding commands in menu.lst\n\n**Please Modify this menu.lst**\n\n[http://db.tt/uXeoQMkQ](http://db.tt/uXeoQMkQ \"External link\")\n\n"
+    },
+    {
+      "id": "176737",
+      "timestamp": "2013-09-04T18:31:01+00:00",
+      "author": "steve6375",
+      "content": "That looks fine to me (if you remove the # comment characters).\n\nWhat version of grub4dos are you using? It should be a 2013 version - you can try the 2013-07-24 045c version or the most recent featured version from [here](https://code.google.com/p/grub4dos-chenall/downloads/list \"External link\") (just overwrite the grldr file on your USB drive).\n\n"
+    },
+    {
+      "id": "176743",
+      "timestamp": "2013-09-05T09:59:37+00:00",
+      "author": "Uvais",
+      "content": "\u003e That looks fine to me (if you remove the # comment characters).\n\u003e\n\u003e What version of grub4dos are you using? It should be a 2013 version - you can try the 2013-07-24 045c version or the most recent featured version from [here](https://code.google.com/p/grub4dos-chenall/downloads/list \"External link\") (just overwrite the grldr file on your USB drive).\n\nohh yeah i was using \"Make_USB\" but after using ur tool its working :smile:  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![Capture.JPG](http://reboot.pro/uploads/monthly_09_2013/post-45477-0-39362700-1378375166_thumb.jpg)](http://reboot.pro/uploads/monthly_09_2013/post-45477-0-39362700-1378375166.jpg \"Capture.JPG - Size: 79.49KB\"){#ipb-attach-url-14525-0-07020400-1676066522}\n\n"
+    }
+  ]
+}

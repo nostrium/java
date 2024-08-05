@@ -1,0 +1,34 @@
+{
+  "id": "21530",
+  "title": "Error Xboot usb windows",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "203672",
+      "timestamp": "2017-05-24T10:44:36+00:00",
+      "author": "Cappal",
+      "content": "Using xboot to make a bootable USB thumb with several tools, antivirus, linux and windows isos.\n\nI just had this error. Have a nice day.\n\nERROR REPORT ( 05/24/2017 12:23:51 )  \nPlease submit this error report to developer.  \nOperating System version :Microsoft Windows NT 6.1.7601 Service Pack 1  \n.NET Framework version :4.0.30319.42000  \nError Message :  \nCould not load file or assembly \u0027PGK.Extensions, Version\u003d1.0.0.0, Culture\u003dneutral, PublicKeyToken\u003df93e897f802ddcb7\u0027 or one of its dependencies. Le fichier spécifié est introuvable.  \nStackTrace :  \nat A.V.D()  \nat A.V.D(ImageItemBase , ProcessLog )  \nat A.KB.D()  \nat System.Threading.ThreadHelper.ThreadStart_Context(Object state)  \nat System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)  \nat System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)  \nat System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)  \nat System.Threading.ThreadHelper.ThreadStart()\n\n"
+    },
+    {
+      "id": "203676",
+      "timestamp": "2017-05-24T17:44:08+00:00",
+      "author": "Wonko the Sane",
+      "content": "You are missing a very definite (stupid BTW) .Net package:\n\u003e **Could not load** file or assembly \u0027PGK.Extensions, Version\u003d1.0.0.0\n\u003e\nread:\n\n\u003chttp://reboot.pro/forum/126-xboot/\u003e\n\nAny other thread in the Xboot dedicated sub-forum is about that issue, one among the many:\n\n[http://reboot.pro/to...g-gyurus260217/](http://reboot.pro/topic/21438-error-log-gyurus260217/ \"\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "203689",
+      "timestamp": "2017-05-25T06:28:50+00:00",
+      "author": "Cappal",
+      "content": "No, Master, I am not stupid, simply, I did not know... ![\u003c_\u003c](http://reboot.pro/public/style_emoticons/default/dry.png)\n\n"
+    },
+    {
+      "id": "203691",
+      "timestamp": "2017-05-25T09:46:15+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e No, Master, I am not stupid, simply, I did not know... ![\u003c_\u003c](http://reboot.pro/public/style_emoticons/default/dry.png)\n\nYou misunderstood, it is the .Net package (and the need for it to be in a very specific version) that is stupid.\n\n.Net is IMNSHO an unneeded mass of bloat but if you have 7 or later you have it anyway, and it may be OK, but any program working on it should work and need not a specific package or include that missing package.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    }
+  ]
+}

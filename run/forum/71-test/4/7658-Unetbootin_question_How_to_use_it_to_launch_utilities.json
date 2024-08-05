@@ -1,0 +1,16 @@
+{
+  "id": "7658",
+  "title": "Unetbootin question... How to use it to launch utilities?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "64280",
+      "timestamp": "2009-04-08T02:29:05+00:00",
+      "author": "wreckage",
+      "content": "Hello all. Can somebody please help me with this comment from the [Unetbootin page](http://unetbootin.sourceforge.net/ \"External link\"):  \n\n\"UNetbootin can also be used to load various system utilities\". I would like to use it (from a thumbdrive) to access PartedMagic as well as NTPassword. Being a Linux novice, I was expecting some sort of instructions on how to do this, but can see none on the Sourceforge page.  \n\nCan somebody please advise me on how I can do this suggested task?  \n\nThanks.   \n"
+    }
+  ]
+}

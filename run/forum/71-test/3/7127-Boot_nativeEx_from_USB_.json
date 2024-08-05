@@ -1,0 +1,40 @@
+{
+  "id": "7127",
+  "title": "Boot nativeEx from USB ???",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "59533",
+      "timestamp": "2009-02-17T03:57:10+00:00",
+      "author": "mANZOCRICH",
+      "content": "what I am trying is to boot nativeEx from a USB stick but when I instruct pe2usb.cmd to write it to my stick , it usually stop after \"Please Wait\" message with the error of 00000007B , my goal is to boot any minimal version of windows from stick so it doesnt take time to boot with USB 1.1 and also to support the wireless service . Please help me. Thanks in advance   \n"
+    },
+    {
+      "id": "59547",
+      "timestamp": "2009-02-17T07:49:51+00:00",
+      "author": "amalux",
+      "content": "\u003e what I am trying is to boot nativeEx from a USB stick but when I instruct pe2usb.cmd to write it to my stick , it usually stop after \"Please Wait\" message with the error of 00000007B , my goal is to boot any minimal version of windows from stick so it doesnt take time to boot with USB 1.1 and also to support the wireless service . Please help me. Thanks in advance\nHi mANZOCRICH, welcome ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n\nFor the 00000007B error, use the modified ntdetect [here](http://www.msfn.org/board/index.php?showtopic\u003d112630\u0026pid\u003d738009\u0026mode\u003dthreaded\u0026start\u003d#entry738009 \"External link\") and explained in detail in tutorial [here](http://www.boot-land.net/forums/?showtopic\u003d4111 \"External link\") under More Advanced Options section. The USB speed is determined by your hardware, as long as you use a 2.0 UFD/USB device and your host machine supports 2.0 you should be fine. Wireless is more complicated; focus on mastering the first two steps with NIC support and *wired* connectivity for now ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n"
+    },
+    {
+      "id": "59783",
+      "timestamp": "2009-02-19T01:09:46+00:00",
+      "author": "mANZOCRICH",
+      "content": "Okay , I got LiveXP booting well from the USB stick now , thank you very much , I also got a HUWAUI modem device , it is 3g wireless modem I am using to connect to the Internet , the problem is I can\u0027t get it working under LiveXP , have anyone tryed to install a USB device under LiveXP , I tryed using the driver backup/restore method but it is not working ,The point is that I want to get a TP-LINK wireless USB stick but I am afraid to buy it and get it \"useless\" under the LiveXP. Manzo   \n"
+    },
+    {
+      "id": "59785",
+      "timestamp": "2009-02-19T02:43:12+00:00",
+      "author": "Galapo",
+      "content": "Try the PEDialup script under \u0027Apps\\\\Net\u0027.  \n\nRegards,  \nGalapo.   \n"
+    },
+    {
+      "id": "59792",
+      "timestamp": "2009-02-19T03:23:28+00:00",
+      "author": "amalux",
+      "content": "\u003e Okay , I got LiveXP booting well from the USB stick now , thank you very much , I also got a HUWAUI modem device , it is 3g wireless modem I am using to connect to the Internet , the problem is I can\u0027t get it working under LiveXP , have anyone tryed to install a USB device under LiveXP , I tryed using the driver backup/restore method but it is not working ,The point is that I want to get a TP-LINK wireless USB stick but I am afraid to buy it and get it \"useless\" under the LiveXP. Manzo\nThe TP-LINK is just an adapter so you won\u0027t want to install LiveXP on that ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif) - wireless in LiveXP is experimental at best and I\u0027m not sure it\u0027s even possible yet based on posts like [this one](http://www.boot-land.net/forums/index.php?showtopic\u003d6582 \"External link\"). You can read more about it [here](http://www.boot-land.net/forums/index.php?showtopic\u003d7036 \"External link\") and decide if it\u0027s something you want to try; just saw Galapo\u0027s post on PEDialup (get it [here](http://livexp.boot-land.net/ \"External link\")), looks interesting, I haven\u0027t tried it yet myself but let us know if you have success ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n"
+    }
+  ]
+}

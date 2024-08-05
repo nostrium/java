@@ -1,0 +1,22 @@
+{
+  "id": "20910",
+  "title": "digital signature of winload.exe",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "196970",
+      "timestamp": "2016-01-02T20:36:29+00:00",
+      "author": "friske",
+      "content": "I have downloaded \"Standard 7 SP1 64bit IBW\" and would to try to use winload.exe in boot in the current win7 installation.\n\nWhen i change the item with bcdedit i receive a \"windows can not verify the digital signature of this file\".\n\nDo it have fix to it?\n\n"
+    },
+    {
+      "id": "196982",
+      "timestamp": "2016-01-03T03:04:18+00:00",
+      "author": "Zoso",
+      "content": "hi friske,  \n\nI think you need to turn on test signing for digital signatures. can be done manually or with easyBCD i think.   \n"
+    }
+  ]
+}

@@ -1,0 +1,388 @@
+{
+  "id": "1299",
+  "title": "How to make image of an USB key",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "9493",
+      "timestamp": "2007-02-16T18:44:11+00:00",
+      "author": "ktp",
+      "content": "Hi all,  \n\nIs there a way to make an image of an USB key under XP? The USB key drive is seen as removable disk and so not shown  \nas hard disk. So the usual Drive Image, DiskImage, Drive Snapshot, Ghost, R-DriveImage etc... do not allow to make  \nan image. The idea is to clone another USB key (same model).  \n\nI know there is a Hitachi filter than can make the USB key appear as fixed disk, but this requires tweaking and is specific  \nth one system.   \n"
+    },
+    {
+      "id": "9532",
+      "timestamp": "2007-02-16T21:04:32+00:00",
+      "author": "was_jaclaz",
+      "content": "There are several apps, two are these:  \nRoadkil\u0027s Disk image:  \n[http://www.roadkil.net/DiskImg.html](http://www.roadkil.net/DiskImg.html \"External link\")  \n\nDsfo from the dsfok package:  \n[http://members.ozema...eezip/freeware/](http://members.ozemail.com.au/~nulifetv/freezip/freeware/ \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "9538",
+      "timestamp": "2007-02-17T07:24:41+00:00",
+      "author": "ktp",
+      "content": "Thanks jaclaz, the Roadkil diskimg does not show USB drive, only fixed disks. So the only possibility for me is to try dsfok since  \nit allows a logical drive letter. I will test it.   \n"
+    },
+    {
+      "id": "9539",
+      "timestamp": "2007-02-17T07:39:24+00:00",
+      "author": "ktp",
+      "content": ":-(  \n\nI successed to make an image with the command : dsfo \\\\\\\\.\\\\g: 0 0 i:\\\\$image\\\\mykey.img  \nBut then to test, I format the USB key on g:, unplug/replug, reverify : g: is well formatted and empty.  \nI then execute the reverse command :  \ndsfo i:\\\\$image\\\\mykey.img 0 0 \\\\\\\\.\\\\g:  \n\nthen I got \\\\\\\\.\\\\g: access denied  \n\nSo I cannot restore my previous image ? So what is the utility to make the image ?   \n"
+    },
+    {
+      "id": "9543",
+      "timestamp": "2007-02-17T09:30:57+00:00",
+      "author": "was_jaclaz",
+      "content": "I am not sure I get it right, but:  \n1) the \"reverse command\" is not dsf**o** with arguments inverted, but rather dsf**i** with the same arguments.  \n2) if the key was unpartitioned/unformatted, the resulting image **is** unpartitioned/unformatted, so that it doesn\u0027t matter what you do to the stick, once you re-apply the previously taken image, it will be EXACTLY as before.  \nAn image taken like this is a RAW image, i.e. a byte by byte copy of the original.  \n\nThe idea of imaging a USB stick is to copy it in it\u0027s entirety, using the \"PHYSICALDRIVE\" reference, rather than a partition (or drive letter) on it, it\u0027s very strange that you cannot see the stick with Roadkil\u0027s Disk Image, it should see it allright, if \"somehow\" a letter has been assigned to a partition on the stick, the main \"physical drive\" must have been mounted, in case. try using vlm (on the dsfok package) to get the alternate link, something like \"\\\\Device\\\\Floppy0\".  \n\nAnother app you may want to try is duBaron diskimage, that has some more options:  \n[http://dubaron.com/diskimage/](http://dubaron.com/diskimage/ \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "9564",
+      "timestamp": "2007-02-17T13:25:08+00:00",
+      "author": "ktp",
+      "content": "Thank you jaclaz, I did not know the dsfi.exe command.  \n\nI tried all the three tools. Rectification : Roadkill Diskimg did show the physical disks, but its combo-box  \nis so small so I need to scroll down all the combo-box to see all the disks (that could explain that first time  \nI thought it does not detect the USB disk since removable).  \n\nThe three tools use different terminology that for me is backup the USB key to an image file, and restore from the image file to the USB key.  \ndsfo source offset size destination \u003d Roadkill Diskimg Store Image (to target file) \u003d Dubaron Disk image write to file \u003d backup  \ndsfi destination offset size source \u003d Roadkill Diskimg Write Image (from source file) \u003d Dubaron Disk image import from file \u003d restore.  \n\nComments :  \n1- Roadkill Diskimg does not show size of disk/vendor name, nor file system name etc... only hard disk 0/1/2... so it\u0027s difficult to be sure about the right disk/usb key  \n2- dsfo/dsfi (once used to) could be easier thanks to drive letter naming, and command line interface power.  \nMaybe I can boot to DOS with USB drivers, then use HX extender to run it. It could be a free man backup/restore tool  \n(like Drive Snapshot that can be run also from DOS command line, while dsfo/dsfi is Win32-console programs, not DOS programs).  \n3- Dubaron DiskImage has a GUI, is a little better, with logical volume (drive letter) or physical drive selection, so less error prone.  \nThen just select write to file or import from file.   \n\nBut dsfi is much faster than Dubaron Disk Image to write back to USB key from saved image file.  \nSo personally I choose dsfo/dsfi for backup/restore USB key image (power, more versatile, batch file, faster).   \n"
+    },
+    {
+      "id": "9566",
+      "timestamp": "2007-02-17T13:50:04+00:00",
+      "author": "was_jaclaz",
+      "content": "Since it appears that you like this kind of comparing, more apps are listed here:  \n[http://www.911cd.net...showtopic\u003d16534](http://www.911cd.net/forums//index.php?showtopic\u003d16534 \"External link\")  \n\nThere is really no need to use the DSFOK under HXDOS, there are good imaging utilities that already work perfectly in DOS, but it would be interesting if you have time to try it.  \n\n\u003e 2- dsfo/dsfi (once used to) could be easier thanks to drive letter naming, and command line interface power.\nSorry, but it still seems to me that you are failing to see the difference:  \nif you use (with dsfo) a source like PHYSICALDRIVEx (with disk image this is the only way) the result is an image of an ENTIRE DRIVE  \nif you use (with dsfo) a source drive letter, the result is the image of JUST the PARTITION to which that letter is assigned (NO MBR, NO hidden sectors, no other partitions, no unpartitioned space)  \n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "9567",
+      "timestamp": "2007-02-17T14:21:00+00:00",
+      "author": "ktp",
+      "content": "OK thank you jaclaz for pointing out the difference. Since my USB key is removable and cannot be partitioned, and since it is  \nalways formatted with same file system, this why with the drive letter method and dsfo/dsfi I did not see the differences.  \nThe best way is of course using the PHYSICALDRIVE notation as you said since everything as you said is saved (mbr, hidden  \nsectors, all partitions if any etc...), and so this is the right method to backup and to restore later with exact image.  \n\nThank you for the link to other tools, I will try them.   \n"
+    },
+    {
+      "id": "9568",
+      "timestamp": "2007-02-17T15:03:08+00:00",
+      "author": "ktp",
+      "content": "OK after few tests, currently I prefer DriveImage XML; It has a GUI, no installation, present in most BartPE as plugin, possibility to mount the saved image.  \nBackup/restore easy. No partition though, only logical drives, but for me it is sufficient since I know how to format the USB key if needed, and no need nor   \npossibility to partition an USB key. There is no password protection though nor compression, it can use raw mode (this means probably sector copy instead of  \ndata copy). I assume by its backup through drive letter iI could also restore to a different key model (provided sufficient target space).   \n"
+    },
+    {
+      "id": "9575",
+      "timestamp": "2007-02-17T16:45:01+00:00",
+      "author": "was_jaclaz",
+      "content": "Yet another small correction:  \nThe fact that your stick has the \"Removable\" bit set in the controller does NOT mean that it :  \n\u003e cannot be partitioned\n\nit means that it cannot be partitioned *with internal 2K/XP/2003 disk management* (it **can** be partitioned **allright** with other tools) AND that, if partitioned, 2K/XP/2003 will be able to mount ONLY first partition, unless you use the filter driver.  \n\nThis is a main concern for bootability of 2K/XP from a USB stick as, if the stick is not partitioned, the needed arcpath to %systemdir% directory is not generated.  \n\nDepending on the model/make of the stick, it is even possible to use the Manufacturer Production Tool to reset the \"Removable\" bit in the controller, so that all partitions will be mountable on ANY OS.  \n\nAlso, it is possible that due to inherent \"undivisibility\" between REAL stick geometry and \"HAL induced\" N x 255 x 63 one, a noticeable amount of the stick space is not used/addressed, something that can be fixed with multiple partitioning and/or custom calculated MBR.  \n\nSome links:  \n[http://home.graffiti...B/USBstick.html](http://home.graffiti.net/jaclaz:graffiti.n...B/USBstick.html \"External link\")  \n[http://www.911cd.net...showtopic\u003d15776](http://www.911cd.net/forums//index.php?showtopic\u003d15776 \"External link\")  \n[http://www.911cd.net...o...\u003d15837\\\u0026st\u003d6](http://www.911cd.net/forums//index.php?sho...\u003d15837\u0026st\u003d6 \"External link\")  \n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "9578",
+      "timestamp": "2007-02-17T17:24:33+00:00",
+      "author": "ktp",
+      "content": "I do not fully understand all what you said, but in other words, do you mean that partitioned USB key is recommended over non-partitioned USB key ? (recommended for booting on more systems?).  \n\nBy the way I cannot post yet to other forum so I append here the data on my keys :  \n\n---  \nnoname high speed (120x) key  \nusb 2GB   \nHKEY_LOCAL_MACHINE\\\\SYSTEM\\\\ControlSet001\\\\Enum\\\\USBSTOR\\\\Disk\\\u0026Ven_USB2.0\\\u0026Prod_USB_Flash_Disk\\\u0026Rev_0.00  \nName: USB2.0 USB Flash Disk (USB2.0)  \n\nLogic Driver: W:\\\\   \n\nVID\\\u0026PID: Vid_0457\\\u0026Pid_0151  \nSpeed: high speed  \n\nVendorID: USB2.0  \nProductID: USB Flash Disk  \nProduct Revision: 0.00  \n\nVendor Description:   \nProduct Description:   \nSerial Number:   \n---  \n\nsecure flash key 1GB  \nusb 1GB secure flash disk  \nHKEY_LOCAL_MACHINE\\\\SYSTEM\\\\ControlSet001\\\\Enum\\\\USBSTOR\\\\Disk\\\u0026Ven_USB2.0\\\u0026Prod_Flash_Disk\\\u0026Rev_2.00  \n\nName: (USB2.0)  \n\nLogic Driver: U:\\\\   \n\nVID\\\u0026PID: Vid_0204\\\u0026Pid_6025  \nSpeed: high speed  \n\nVendorID: USB2.0  \nProductID: Flash Disk  \nProduct Revision: 2.00  \n\nVendor Description:   \nProduct Description:   \nSerial Number:   \n\n---  \npconkey 2GB  \npconkey  \nHKEY_LOCAL_MACHINE\\\\SYSTEM\\\\ControlSet001\\\\Enum\\\\USBSTOR\\\\Disk\\\u0026Ven_USB\\\u0026Prod_Flash_Disk\\\u0026Rev_V1.1  \n\nName: Flash Disk (USB2.0)  \n\nLogic Driver: F:\\\\   \n\nVID\\\u0026PID: Vid_13fe\\\u0026Pid_1a00  \nSpeed: high speed  \n\nVendorID: USB  \nProductID: Flash Disk  \nProduct Revision: V1.1  \n\nVendor Description: USB   \nProduct Description: Flash Disk   \nSerial Number: 906C17000090  \n\n---  \ntakems  \nHKEY_LOCAL_MACHINE\\\\SYSTEM\\\\ControlSet001\\\\Enum\\\\USBSTOR\\\\Disk\\\u0026Ven_takeMS\\\u0026Prod_MEM-Drive\\\u0026Rev_v1.0  \nUSB key 4 GB  \n\nName: MEM-Drive (USB2.0)  \n\nLogic Driver: T:\\\\   \n\nVID\\\u0026PID: Vid_13fe\\\u0026Pid_1d00  \nSpeed: high speed  \n\nVendorID: takeMS  \nProductID: MEM-Drive  \nProduct Revision: v1.0  \n\nVendor Description: takeMS   \nProduct Description: MEM-Drive   \nSerial Number: 90710800057A  \n\n---  \nmpman mp3/usb key 1GB  \nHKEY_LOCAL_MACHINE\\\\SYSTEM\\\\ControlSet001\\\\Enum\\\\USBSTOR\\\\Disk\\\u0026Ven_GENERIC\\\u0026Prod_USB_DISK_DEVICE\\\u0026Rev_1.00  \nName: USB MASS STORAGE CLASS (USB1.1)  \n\nLogic Driver: M:\\\\   \n\nVID\\\u0026PID: Vid_10d6\\\u0026Pid_1100  \nSpeed: full speed  \n\nVendorID: GENERIC  \nProductID: USB DISK DEVICE  \nProduct Revision: 1.00  \n\nVendor Description:   \nProduct Description: USB MASS STORAGE CLASS   \nSerial Number: USB MASS STORAGE CLASS   \n\nNote: on this key my BIOS recognizes it as removable media (like floppy, so must be usb-fdd), while all the others  \nare seen as hard disk (must be usb-hdd).  \n---   \n"
+    },
+    {
+      "id": "9581",
+      "timestamp": "2007-02-17T19:37:17+00:00",
+      "author": "was_jaclaz",
+      "content": "No, sorry, but there is still a communication problem, it seems to me as you are mixing different things.  \n\nUnder Win2K/XP/2003 the SAME stick will be seen as either \"Removable\" or \"Fixed\" depending of a bit in the controller, that can either be changed with the appropriate \"Production Tool\" (if available) or filtered by a \"Filter Driver\".  \nThe attribute \"Removable\" or \"Fixed\" is linked to \"Device\" or, better, to \"USB Mass Storage Device\", not to HD or FD.  \n\nThis has NOTHING to do with the way the drive is partitioned (or not) or formatted.  \n\nIn other words, you can have the SAME stick as BOTH \"Removable\" Hard Disk (if partitioned) or \"Removable\" Super Floppy (if not partitioned), as well as you can have ANOTHER one as \"Fixed\" Hard Disk (if partitioned) or \"Fixed\" Super Floppy (if not partitioned).  \n\nIf you need to boot from the stick 2K/XP, the entry to boot them in BOOT.INI requires an arcpath, i.e. something like:  \nmulti(0)disk(0)rdisk(0)partition(1)\\\\WINNT  \nthat you simply won\u0027t have if the device is non-partitioned (superfloppy) independently from it being \"Fixed\" or \"Removable\"  \n\njaclaz   \n"
+    },
+    {
+      "id": "9593",
+      "timestamp": "2007-02-18T06:42:01+00:00",
+      "author": "ktp",
+      "content": "OK for the 2x2 matrix (removable, fixed) x (partitioned, non-partitioned).  \nAll my keys are not seen with as fixed disks under Disk management of XP (so I cannot suppress or create partitions on them using XP built-in tools).  \nI understand from your explanations that hp-usb or PeToUSB formatter tools format those keys with MBR and single partition.   \nUnder ptedit32 or beeblebrox I can see the MBR with 4 entries, the fist with correct partition ID and disk id 0x80. Also in the boot sector  \nof the first/partition the disk id is also 0x80 (and not 0x0).  \n\nSo my keys formatted by hp-us/petousb can be accessed by arcpath, isn\u0027t ?  \n\nI tried to use boot.ini on my hard disk to provide a kind of boot manager to boot my USB key without requiring changing BIOS setting  \n(hard disk order).  \n\nI try to use similar syntax as with Grub  \nC:\\\\grldr\u003d\"Grub4Dos\"  \nby changing C: into X: where X: is the drive letter given by XP to the usb key on normal bootup (in fact I tried from D: to F:).  \nD:\\\\grldr\u003d\"Grub4Dos on USB key\"  \nBut unfortunately it got worst, I did not pass the \\\\(windows root)\\\\system32\\\\hal.dll step (file not found).  \nThe system did access the USB key since the USB LED is blinking ON during those entries selection.  \n\n1) Where is this special boot.ini syntax documented ? it appears that ntdlr can boot another boot loader in addition  \nto the more classic arcpath with windows directory.  \n\nI also try several entries like :  \nmulti(0)disk(0)rdisk(1)partition(1)\\\\minint\u003d\"minint on USB key rdisk 1 partition 1\"  \nmulti(0)disk(0)rdisk(1)partition(1)\\\\grldr\u003d\"grldr on USB key rdisk 1 partition 1\"  \nmulti(0)disk(0)rdisk(1)partition(1)\\\\cmdc\u003d\"cmdc on USB key rdisk 1 partition 1\"  \nmulti(0)disk(0)rdisk(1)partition(1)\\\\erdc\u003d\"erdc on USB key rdisk 1 partition 1\"  \n\nbut got same errors on hal.dll.  \n\nIf it ever this work, this is very pratical since I do not have to change each time my BIOS setting to get my USB key  \non top of the detected hard disk.  \nAs far as I know, the solution is to use Grub4dos, then use the swap hard disk  \nfunction (map hd0 and hd1 ?).   \n\nCould someone point out the syntax to do this ?  \n\nBy the way is there a detailed documentation on each of the grub4dos command somewhere?  \nIn the grub4dos the documenation is scarce, and there is not such a list where each command is explained,  \nonly some examples. For example I do not understand when I need to use the +1 like chainloader (fd0)+1 or  \nchainloader (hd0)+1. Or map --hook usage.  \n\nAlso for me :  \nmulti(0)disk(0)rdisk(0)partition(1) \u003d (hd0,0)  \nmulti(0)disk(0)rdisk(0)partition(2) \u003d (hd0,1)  \nmulti(0)disk(0)rdisk(1)partition(1) \u003d (hd1,0)  \nmulti(0)disk(0)rdisk(1)partition(2) \u003d (hd1,1)  \n\nCould you confirm ?   \n"
+    },
+    {
+      "id": "9652",
+      "timestamp": "2007-02-18T17:53:38+00:00",
+      "author": "ktp",
+      "content": "Well I find some answer to my own questions :tongue:   \n\nMy PC Internal hard disk and USB key both have boot.ini loading grub4dos.  \n\nOn the hard disk, in menu.lst:  \ntitle Boot USB key (usually 2nd hard disk)  \nmap (hd1) (hd0)  \nroot (hd1,0)  \nchainloader +1  \nboot  \n\nOn the USB key in menu.lst:  \ntitle Boot 2nd hard disk from USB key (\u003d Windows XP usually)  \n# note: the 2 map commands are necessary, otherwise it does not work  \nmap (hd1) (hd0)  \nmap (hd0) (hd1)  \nrootnoverify (hd1)  \nchainloader +1  \nboot  \n\nSo, if change my BIOS settings to set my USB key as first hard disk, grub on USB key has one entry to boot on my PC internal HDD (good).  \nIf the key is withdrawn, the default BIOS setting is internal hard disk as first HDD, so later on if I plug my key I can still  \ntest(boot) the key WITHOUT changing the BIOS setting (USB disk first), grub on HDD invoke grub on the key. This works well for booting Linux or BartPE-like OS.  \n\nI still got a problem: booting DOS or DOS image like:  \n\ntitle Partition magic 8.05  \nfind --set-root /images/pmagic8.ima  \nmap --mem /images/pmagic8.ima (fd0)  \n#map --hook  \nchainloader (fd0)+1  \n\nI got the error:  \n- FAT12 BPB found with 0xEB (jmp) leading the boot sector, then Error 27: Dsk read error, Press any key to continue.  \nI commented out the \"map --hook\" command (without understanding its usage) to avoid another error saying  \nError 41: The int13 handler already on hook  \n\nIs there a solution so that it will work perfectly booting from any device (hdd, usb key) in any order in BIOS setting, booting any OS?   \n"
+    },
+    {
+      "id": "9654",
+      "timestamp": "2007-02-18T20:00:40+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I still got a problem: booting DOS or DOS image like:  \n\u003e\n\u003e title Partition magic 8.05  \n\u003e find --set-root /images/pmagic8.ima  \n\u003e map --mem /images/pmagic8.ima (fd0)  \n\u003e #map --hook  \n\u003e chainloader (fd0)+1  \n\u003e\n\u003e I got the error:  \n\u003e - FAT12 BPB found with 0xEB (jmp) leading the boot sector, then Error 27: Dsk read error, Press any key to continue.  \n\u003e I commented out the \"map --hook\" command (without understanding its usage) to avoid another error saying  \n\u003e Error 41: The int13 handler already on hook  \n\u003e\n\u003e Is there a solution so that it will work perfectly booting from any device (hdd, usb key) in any order in BIOS setting, booting any OS?\n\n\u003cbr /\u003e\n\nEVERYTIME you use the map --mem command, you **have to** \"hook\" memory afterwards, see it as something like \"Save current settings\".  \n\nOnce memory is \"hooked\" you can\u0027t \"hook\" it again.  \n\nYou need to give the command  \n\n```\nmap --unhook\n```\n\n\u003cbr /\u003e\n\nBefore being able to \"hook\" it again.  \n\njaclaz   \n"
+    },
+    {
+      "id": "9656",
+      "timestamp": "2007-02-18T20:41:53+00:00",
+      "author": "ktp",
+      "content": "Thank yaclaz, the missing map --hook command caused error 27 : disk read error.  \nAdding the map --unhook command helps, but only when a previous hook is installed, otherwise  \nit is a fatal error. So I found that the best command is map --rehook, this works every time, regardless  \nof previous hook state.  \n\nSo far so good, now I am very happy since I no longer need to change each time my BIOS settings (a lengthy operation)  \nin order to test my keys. Now I just plug in and reboot the system ! I use different colors for menu.lst on the key and on the hard disk  \nto be sure which grub I am booting or switched too ::-).  \n\nThank you a lot for your help. :tongue:   \n\nMy next step is to try to install XP from USB key (so the key is like the install CD), this seems to have various methods but what is your recommened one ?   \n"
+    },
+    {
+      "id": "9659",
+      "timestamp": "2007-02-19T06:38:26+00:00",
+      "author": "ktp",
+      "content": "Rectification from above post: the map --rehook command cannot be used (fatal error) if no previous is found. So the best way  \nseems to keep map --hook in menu.lst, and only when it fails edit (type \"e\" in Grub menu) to edit the command to map --rehook.   \n"
+    },
+    {
+      "id": "9680",
+      "timestamp": "2007-02-19T16:14:48+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e My next step is to try to install XP from USB key (so the key is like the install CD), this seems to have various methods but what is your recommened one ?\n\nWell, with reference to my post here:  \n[http://www.msfn.org/...mp;#entry563654](http://www.msfn.org/board/index.php?showto...mp;#entry563654 \"External link\")  \n\nmethod 1) is fully documented (so no more fun with it :tongue:)  \nmethod 2) has yet to be started working upon, no takers here:  \n[http://www.boot-land...p?showtopic\u003d644](http://www.boot-land.net/forums/index.php?showtopic\u003d644 \"External link\")  \nmethod 3) still requires experimenting  \nmethod 4) :  \n[http://www.msfn.org/...showtopic\u003d61384](http://www.msfn.org/board/index.php?showtopic\u003d61384 \"External link\")  \nis on hold at the moment due to lack of time (and also of some ideas) from me and porear, and possibly someone that could merge into it the reported experience of cdob:  \n[http://www.msfn.org/...showtopic\u003d81788](http://www.msfn.org/board/index.php?showtopic\u003d81788 \"External link\")  \nmethod 5): is in my opinion easily attainable, but the hardware reuirements make it a possible solution only for \"high end\" hardware.  \n\nSince you seem very quick in experimenting and learning, to report your experience in detail, and you like grub4dos, I would suggest you get involved in method 3):  \n[http://www.911cd.net...showtopic\u003d17425](http://www.911cd.net/forums//index.php?showtopic\u003d17425 \"External link\")  \n\nI would leave method 2) to people already familiar and \"up to date\" with .script developing (I have at this point lost any expectation :tongue: of ever being able to write .script code, at least until syntax becomes, if not fully defined, a bit more \"stable\" - this is not a critic to the development of Winbuilder or to the very good work developers are doing :tongue: - just my point of view of the current \"variability\" of the language).  \n\nIf you have any idea or suggestion about any possible workaround for the current (hopefully last) obstacle to defining method 4) you are of course welcome.  \n\n\u003e Adding the map --unhook command helps, but only when a previous hook is installed, otherwise  \n\u003e it is a fatal error.\nJust an idea, mind you, and totally NOT experimented, but there are two possible way out:  \n1) Add a map --unhook to EVERY menu.lst entry that has a map --hook command AFTER the chainloader (or boot) command   \n2) Study the sintax of the fallback command and use it to the purpose of \"looping\" through a map --unhook command in case of booting failure  \n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "9688",
+      "timestamp": "2007-02-19T17:51:00+00:00",
+      "author": "ktp",
+      "content": "OK jaclaz, I like method 3 too, since it is exactly what I am expecting. It is exactly the method that works already but from my multiboot DVD using bcdw 2.01. Installing XP Pro is just a line in bcdw bootcat.ini with :  \n\\\\PRO1\\\\setupldr.bin ; Install Microsoft Windows XP Pro SP2 US ; xppro2  \n\nI already tried this method on the USB key, copying the PRO1 directory to the USB stick then add a menu  \nto grub on the stick. But I got an error that now I forgot, I have to experiment with more details (maybe patching \\\\PRO1\\\\setupldr.bin.  \n\nFor the additional map --unhook as you suggested, I will try and retport the result.   \n"
+    },
+    {
+      "id": "9709",
+      "timestamp": "2007-02-19T19:31:49+00:00",
+      "author": "ktp",
+      "content": "Result of my experimentations :  \n\nMy hard disk and USB key have both ntldr/boot.ini and grub installed. HDD is the first hard disk in BIOS.  \n\nThe boot sequence is:  \nhdd ntldr - hdd boot.ini - hdd grldr - switch to usb key boot with   \n\n```\nmap \u0026#40;hd0\u0026#41; \u0026#40;hd1\u0026#41;\n\nmap \u0026#40;hd1\u0026#41; \u0026#40;hd0\u0026#41;\n\nroot \u0026#40;hd1,0\u0026#41;\n\nchainloader +1\n\nboot\n```\n\n\u003cbr /\u003e\n\nthen  \n- usb ntldr - usb grldr - usb menu.lst - load dos image with  \n\n```\ntitle Partition magic 8.05\n\nfind --set-root /images/pmagic8.ima\n\nmap --mem /images/pmagic8.ima \u0026#40;fd0\u0026#41;\n\nmap --hook\n\nchainloader \u0026#40;fd0\u0026#41;+1\n```\n\n\u003cbr /\u003e\n\nThe problem is with the map --hook above (int13 already hooked).  \nI change to map --unhook, but by doing this, when I boot the key as first drive  \nthen select directly the pqmagic.ima, map --rehook fails (since no hook previously).  \n\nWishlist for grub4dos: a kind of \"force\" option. Automatically unhook if previous hook found (\u003d --rehook).  \nmap --hookforce  \n\n@jaclaz, your suggestion for map --unhook AFTER chainloader does not apply car after chainloader I  \nalready boot into DOS image so the command does nothing. The problem of hook here is due to one instance of grub (hdd) calling another  \ninstance of grub (on usb).  \n\n\u003cbr /\u003e\n\nFor using USB to install XP (method 3), I got the error txtsetup.sif not found error 18 (\u003d no directory).  \nI invoke the install from my key with:  \n\ntitle Windows XP Pro SP2 install  \nchainloader /PRO1/setupldr.bin  \n\n\\\\PRO1\\\\setupldr.bin has been patched correctly to change I386 to PRO1.  \nAlso In \\\\PRO1\\\\txtsetup.sif  \nSetupSourcePath \u003d \"\\\\PRO1\\\\\"  \nOsLoadOptions \u003d \"/fastdetect /noguiboot /nodebug\"  \n\n\u003cbr /\u003e\n\nSo why do I encounter the error code 18 for txtsetup.sif ?   \n\nDirectory structure of PRO1:  \nPRO1\\\\  \nPRO1\\\\i386  \nPRO1\\\\system32  \n\nThis should not be not so far, since the same directory structure and file contents but on the CD/DVD with bcdw 2.01 works.   \n"
+    },
+    {
+      "id": "9729",
+      "timestamp": "2007-02-19T20:04:21+00:00",
+      "author": "ktp",
+      "content": "Update :  \n\nI patched 2 occurrences of minint in \\\\pro1\\\\setupldr.bin  \nNow I go farther, and got message \\\\$WIN_NT$.\\~BT\\\\biosinfo.inf not found, code 18.  \nWow, sound familiar, so I patched again 2 occurrences of it in \\\\pro1\\\\setupldr.bin to PRO1 then reboot.  \nI then get for the first time to the Windows setup blue screen, with F6/F2 (ASR) and loading drivers etc... then the message  \nThe file dmload.sys could not be found. Press any key to continue.  \nThen I press a key \u003d\\\u003e status line: Setup failed. Press any ky to restart your computer.  \n\nI think it will be difficult for me to go farther :-(.   \n"
+    },
+    {
+      "id": "9822",
+      "timestamp": "2007-02-20T18:32:04+00:00",
+      "author": "ktp",
+      "content": "Update: wow now it is much better.  \nI restart from scratch, clean the \\\\PRO1 directory on the stick, copy to \\\\PRO1 the content of I386 from the XP CD.  \nThen I patch 2 occurrences of minint, 2 occurrences of $WIN_NT$.\\~BT   \nin \\\\PRO1\\\\setupldr.bin and reboot on the key.  \nThen now F6, F2, windows executive step, drivers loading etc... passed OK. I got to the blue screen where I can quit (F3),  \nEnter to install or Repair. Wow!   \n\nI will test on with iso image under Vmware, since the invocation of grub on usb key is same as invocation of bcdw on CD/DVD.  \ngrub on USB key: chainloader /PRO1/setupldr.bin  \nbcdw on CD/DVD : \\\\PRO1\\\\setupldr.bin  \n\nUpdate #2:  \n\nAfter pressing Enter I got the message: Setup cannot find the End User License Agreement (EULA).  \nThen I edit \\\\pro1\\\\txtsetup.sif, change to SetupSourcePath \u003d \"\\\\PRO1\\\\\" and reboot : same eror  \n\nIn \\\\PRO1\\\\txtsetup.sif, there is one line:  \n\neula.txt \u003d 1,,,,,,_x,2,0,0  \n\nMaybe someone could tell how to check and fix for the location of the eula.txt file ?   \n"
+    },
+    {
+      "id": "9858",
+      "timestamp": "2007-02-21T12:13:55+00:00",
+      "author": "was_jaclaz",
+      "content": "Check here:  \n[http://www.msfn.org/...showtopic\u003d14852](http://www.msfn.org/board/index.php?showtopic\u003d14852 \"External link\")  \nparticularly, get the .gif here:  \n[http://www.msfn.org/...opic\u003d14852\\\u0026st\u003d3](http://www.msfn.org/board/index.php?showtopic\u003d14852\u0026st\u003d3 \"External link\")  \n[http://www.msfn.org/...t...ost\\\u0026id\u003d1038](http://www.msfn.org/board/index.php?act\u003dat...ost\u0026id\u003d1038 \"External link\")  \n\nand these:  \n[http://www.msfn.org/...showtopic\u003d50513](http://www.msfn.org/board/index.php?showtopic\u003d50513 \"External link\")  \n[http://gosh.msfn.org/txtsetup.htm](http://gosh.msfn.org/txtsetup.htm \"External link\")  \n\n\u003cbr /\u003e\n\nAlso, try the:  \n\u003e OemSkipEula \u003d Yes\nsuggested here:  \n[http://www.msfn.org/...showtopic\u003d31844](http://www.msfn.org/board/index.php?showtopic\u003d31844 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "9866",
+      "timestamp": "2007-02-21T14:59:01+00:00",
+      "author": "ktp",
+      "content": "I made some progress, but now I stumble on the following message:  \n\nSetup  \ninsert the cd labeled Windows xp professional service pack 2 CD into your cd-rom drive. press enter when ready  \n\nWell I already have the files win51ip and win51ip.sp2 on the root of the key and inside the \\\\PRO1 (equivalent to \\\\i386 on CD).   \nAny idea? I am searching with Google to find out a solution for this.   \n"
+    },
+    {
+      "id": "9872",
+      "timestamp": "2007-02-21T16:20:58+00:00",
+      "author": "was_jaclaz",
+      "content": "I guess that the problem might be some registry entry mapping DosDevices or something like that, maybe you can find a solution through the migrate.inf.  \n\nDo review the info posted by me, cdob and porear here:  \n[http://www.msfn.org/...opic\u003d81788\\\u0026st\u003d7](http://www.msfn.org/board/index.php?showtopic\u003d81788\u0026st\u003d7 \"External link\")  \n[http://www.msfn.org/...s...61384\\\u0026st\u003d22](http://www.msfn.org/board/index.php?\u0026s...61384\u0026st\u003d22 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "9493",
+      "timestamp": "2007-02-16T18:44:11+00:00",
+      "author": "ktp",
+      "content": "Hi all,  \n\nIs there a way to make an image of an USB key under XP? The USB key drive is seen as removable disk and so not shown  \nas hard disk. So the usual Drive Image, DiskImage, Drive Snapshot, Ghost, R-DriveImage etc... do not allow to make  \nan image. The idea is to clone another USB key (same model).  \n\nI know there is a Hitachi filter than can make the USB key appear as fixed disk, but this requires tweaking and is specific  \nth one system.   \n"
+    },
+    {
+      "id": "9532",
+      "timestamp": "2007-02-16T21:04:32+00:00",
+      "author": "was_jaclaz",
+      "content": "There are several apps, two are these:  \nRoadkil\u0027s Disk image:  \n[http://www.roadkil.net/DiskImg.html](http://www.roadkil.net/DiskImg.html \"External link\")  \n\nDsfo from the dsfok package:  \n[http://members.ozema...eezip/freeware/](http://members.ozemail.com.au/~nulifetv/freezip/freeware/ \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "9538",
+      "timestamp": "2007-02-17T07:24:41+00:00",
+      "author": "ktp",
+      "content": "Thanks jaclaz, the Roadkil diskimg does not show USB drive, only fixed disks. So the only possibility for me is to try dsfok since  \nit allows a logical drive letter. I will test it.   \n"
+    },
+    {
+      "id": "9539",
+      "timestamp": "2007-02-17T07:39:24+00:00",
+      "author": "ktp",
+      "content": ":-(  \n\nI successed to make an image with the command : dsfo \\\\\\\\.\\\\g: 0 0 i:\\\\$image\\\\mykey.img  \nBut then to test, I format the USB key on g:, unplug/replug, reverify : g: is well formatted and empty.  \nI then execute the reverse command :  \ndsfo i:\\\\$image\\\\mykey.img 0 0 \\\\\\\\.\\\\g:  \n\nthen I got \\\\\\\\.\\\\g: access denied  \n\nSo I cannot restore my previous image ? So what is the utility to make the image ?   \n"
+    },
+    {
+      "id": "9543",
+      "timestamp": "2007-02-17T09:30:57+00:00",
+      "author": "was_jaclaz",
+      "content": "I am not sure I get it right, but:  \n1) the \"reverse command\" is not dsf**o** with arguments inverted, but rather dsf**i** with the same arguments.  \n2) if the key was unpartitioned/unformatted, the resulting image **is** unpartitioned/unformatted, so that it doesn\u0027t matter what you do to the stick, once you re-apply the previously taken image, it will be EXACTLY as before.  \nAn image taken like this is a RAW image, i.e. a byte by byte copy of the original.  \n\nThe idea of imaging a USB stick is to copy it in it\u0027s entirety, using the \"PHYSICALDRIVE\" reference, rather than a partition (or drive letter) on it, it\u0027s very strange that you cannot see the stick with Roadkil\u0027s Disk Image, it should see it allright, if \"somehow\" a letter has been assigned to a partition on the stick, the main \"physical drive\" must have been mounted, in case. try using vlm (on the dsfok package) to get the alternate link, something like \"\\\\Device\\\\Floppy0\".  \n\nAnother app you may want to try is duBaron diskimage, that has some more options:  \n[http://dubaron.com/diskimage/](http://dubaron.com/diskimage/ \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "9564",
+      "timestamp": "2007-02-17T13:25:08+00:00",
+      "author": "ktp",
+      "content": "Thank you jaclaz, I did not know the dsfi.exe command.  \n\nI tried all the three tools. Rectification : Roadkill Diskimg did show the physical disks, but its combo-box  \nis so small so I need to scroll down all the combo-box to see all the disks (that could explain that first time  \nI thought it does not detect the USB disk since removable).  \n\nThe three tools use different terminology that for me is backup the USB key to an image file, and restore from the image file to the USB key.  \ndsfo source offset size destination \u003d Roadkill Diskimg Store Image (to target file) \u003d Dubaron Disk image write to file \u003d backup  \ndsfi destination offset size source \u003d Roadkill Diskimg Write Image (from source file) \u003d Dubaron Disk image import from file \u003d restore.  \n\nComments :  \n1- Roadkill Diskimg does not show size of disk/vendor name, nor file system name etc... only hard disk 0/1/2... so it\u0027s difficult to be sure about the right disk/usb key  \n2- dsfo/dsfi (once used to) could be easier thanks to drive letter naming, and command line interface power.  \nMaybe I can boot to DOS with USB drivers, then use HX extender to run it. It could be a free man backup/restore tool  \n(like Drive Snapshot that can be run also from DOS command line, while dsfo/dsfi is Win32-console programs, not DOS programs).  \n3- Dubaron DiskImage has a GUI, is a little better, with logical volume (drive letter) or physical drive selection, so less error prone.  \nThen just select write to file or import from file.   \n\nBut dsfi is much faster than Dubaron Disk Image to write back to USB key from saved image file.  \nSo personally I choose dsfo/dsfi for backup/restore USB key image (power, more versatile, batch file, faster).   \n"
+    },
+    {
+      "id": "9566",
+      "timestamp": "2007-02-17T13:50:04+00:00",
+      "author": "was_jaclaz",
+      "content": "Since it appears that you like this kind of comparing, more apps are listed here:  \n[http://www.911cd.net...showtopic\u003d16534](http://www.911cd.net/forums//index.php?showtopic\u003d16534 \"External link\")  \n\nThere is really no need to use the DSFOK under HXDOS, there are good imaging utilities that already work perfectly in DOS, but it would be interesting if you have time to try it.  \n\n\u003e 2- dsfo/dsfi (once used to) could be easier thanks to drive letter naming, and command line interface power.\nSorry, but it still seems to me that you are failing to see the difference:  \nif you use (with dsfo) a source like PHYSICALDRIVEx (with disk image this is the only way) the result is an image of an ENTIRE DRIVE  \nif you use (with dsfo) a source drive letter, the result is the image of JUST the PARTITION to which that letter is assigned (NO MBR, NO hidden sectors, no other partitions, no unpartitioned space)  \n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "9567",
+      "timestamp": "2007-02-17T14:21:00+00:00",
+      "author": "ktp",
+      "content": "OK thank you jaclaz for pointing out the difference. Since my USB key is removable and cannot be partitioned, and since it is  \nalways formatted with same file system, this why with the drive letter method and dsfo/dsfi I did not see the differences.  \nThe best way is of course using the PHYSICALDRIVE notation as you said since everything as you said is saved (mbr, hidden  \nsectors, all partitions if any etc...), and so this is the right method to backup and to restore later with exact image.  \n\nThank you for the link to other tools, I will try them.   \n"
+    },
+    {
+      "id": "9568",
+      "timestamp": "2007-02-17T15:03:08+00:00",
+      "author": "ktp",
+      "content": "OK after few tests, currently I prefer DriveImage XML; It has a GUI, no installation, present in most BartPE as plugin, possibility to mount the saved image.  \nBackup/restore easy. No partition though, only logical drives, but for me it is sufficient since I know how to format the USB key if needed, and no need nor   \npossibility to partition an USB key. There is no password protection though nor compression, it can use raw mode (this means probably sector copy instead of  \ndata copy). I assume by its backup through drive letter iI could also restore to a different key model (provided sufficient target space).   \n"
+    },
+    {
+      "id": "9575",
+      "timestamp": "2007-02-17T16:45:01+00:00",
+      "author": "was_jaclaz",
+      "content": "Yet another small correction:  \nThe fact that your stick has the \"Removable\" bit set in the controller does NOT mean that it :  \n\u003e cannot be partitioned\n\nit means that it cannot be partitioned *with internal 2K/XP/2003 disk management* (it **can** be partitioned **allright** with other tools) AND that, if partitioned, 2K/XP/2003 will be able to mount ONLY first partition, unless you use the filter driver.  \n\nThis is a main concern for bootability of 2K/XP from a USB stick as, if the stick is not partitioned, the needed arcpath to %systemdir% directory is not generated.  \n\nDepending on the model/make of the stick, it is even possible to use the Manufacturer Production Tool to reset the \"Removable\" bit in the controller, so that all partitions will be mountable on ANY OS.  \n\nAlso, it is possible that due to inherent \"undivisibility\" between REAL stick geometry and \"HAL induced\" N x 255 x 63 one, a noticeable amount of the stick space is not used/addressed, something that can be fixed with multiple partitioning and/or custom calculated MBR.  \n\nSome links:  \n[http://home.graffiti...B/USBstick.html](http://home.graffiti.net/jaclaz:graffiti.n...B/USBstick.html \"External link\")  \n[http://www.911cd.net...showtopic\u003d15776](http://www.911cd.net/forums//index.php?showtopic\u003d15776 \"External link\")  \n[http://www.911cd.net...o...\u003d15837\\\u0026st\u003d6](http://www.911cd.net/forums//index.php?sho...\u003d15837\u0026st\u003d6 \"External link\")  \n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "9578",
+      "timestamp": "2007-02-17T17:24:33+00:00",
+      "author": "ktp",
+      "content": "I do not fully understand all what you said, but in other words, do you mean that partitioned USB key is recommended over non-partitioned USB key ? (recommended for booting on more systems?).  \n\nBy the way I cannot post yet to other forum so I append here the data on my keys :  \n\n---  \nnoname high speed (120x) key  \nusb 2GB   \nHKEY_LOCAL_MACHINE\\\\SYSTEM\\\\ControlSet001\\\\Enum\\\\USBSTOR\\\\Disk\\\u0026Ven_USB2.0\\\u0026Prod_USB_Flash_Disk\\\u0026Rev_0.00  \nName: USB2.0 USB Flash Disk (USB2.0)  \n\nLogic Driver: W:\\\\   \n\nVID\\\u0026PID: Vid_0457\\\u0026Pid_0151  \nSpeed: high speed  \n\nVendorID: USB2.0  \nProductID: USB Flash Disk  \nProduct Revision: 0.00  \n\nVendor Description:   \nProduct Description:   \nSerial Number:   \n---  \n\nsecure flash key 1GB  \nusb 1GB secure flash disk  \nHKEY_LOCAL_MACHINE\\\\SYSTEM\\\\ControlSet001\\\\Enum\\\\USBSTOR\\\\Disk\\\u0026Ven_USB2.0\\\u0026Prod_Flash_Disk\\\u0026Rev_2.00  \n\nName: (USB2.0)  \n\nLogic Driver: U:\\\\   \n\nVID\\\u0026PID: Vid_0204\\\u0026Pid_6025  \nSpeed: high speed  \n\nVendorID: USB2.0  \nProductID: Flash Disk  \nProduct Revision: 2.00  \n\nVendor Description:   \nProduct Description:   \nSerial Number:   \n\n---  \npconkey 2GB  \npconkey  \nHKEY_LOCAL_MACHINE\\\\SYSTEM\\\\ControlSet001\\\\Enum\\\\USBSTOR\\\\Disk\\\u0026Ven_USB\\\u0026Prod_Flash_Disk\\\u0026Rev_V1.1  \n\nName: Flash Disk (USB2.0)  \n\nLogic Driver: F:\\\\   \n\nVID\\\u0026PID: Vid_13fe\\\u0026Pid_1a00  \nSpeed: high speed  \n\nVendorID: USB  \nProductID: Flash Disk  \nProduct Revision: V1.1  \n\nVendor Description: USB   \nProduct Description: Flash Disk   \nSerial Number: 906C17000090  \n\n---  \ntakems  \nHKEY_LOCAL_MACHINE\\\\SYSTEM\\\\ControlSet001\\\\Enum\\\\USBSTOR\\\\Disk\\\u0026Ven_takeMS\\\u0026Prod_MEM-Drive\\\u0026Rev_v1.0  \nUSB key 4 GB  \n\nName: MEM-Drive (USB2.0)  \n\nLogic Driver: T:\\\\   \n\nVID\\\u0026PID: Vid_13fe\\\u0026Pid_1d00  \nSpeed: high speed  \n\nVendorID: takeMS  \nProductID: MEM-Drive  \nProduct Revision: v1.0  \n\nVendor Description: takeMS   \nProduct Description: MEM-Drive   \nSerial Number: 90710800057A  \n\n---  \nmpman mp3/usb key 1GB  \nHKEY_LOCAL_MACHINE\\\\SYSTEM\\\\ControlSet001\\\\Enum\\\\USBSTOR\\\\Disk\\\u0026Ven_GENERIC\\\u0026Prod_USB_DISK_DEVICE\\\u0026Rev_1.00  \nName: USB MASS STORAGE CLASS (USB1.1)  \n\nLogic Driver: M:\\\\   \n\nVID\\\u0026PID: Vid_10d6\\\u0026Pid_1100  \nSpeed: full speed  \n\nVendorID: GENERIC  \nProductID: USB DISK DEVICE  \nProduct Revision: 1.00  \n\nVendor Description:   \nProduct Description: USB MASS STORAGE CLASS   \nSerial Number: USB MASS STORAGE CLASS   \n\nNote: on this key my BIOS recognizes it as removable media (like floppy, so must be usb-fdd), while all the others  \nare seen as hard disk (must be usb-hdd).  \n---   \n"
+    },
+    {
+      "id": "9581",
+      "timestamp": "2007-02-17T19:37:17+00:00",
+      "author": "was_jaclaz",
+      "content": "No, sorry, but there is still a communication problem, it seems to me as you are mixing different things.  \n\nUnder Win2K/XP/2003 the SAME stick will be seen as either \"Removable\" or \"Fixed\" depending of a bit in the controller, that can either be changed with the appropriate \"Production Tool\" (if available) or filtered by a \"Filter Driver\".  \nThe attribute \"Removable\" or \"Fixed\" is linked to \"Device\" or, better, to \"USB Mass Storage Device\", not to HD or FD.  \n\nThis has NOTHING to do with the way the drive is partitioned (or not) or formatted.  \n\nIn other words, you can have the SAME stick as BOTH \"Removable\" Hard Disk (if partitioned) or \"Removable\" Super Floppy (if not partitioned), as well as you can have ANOTHER one as \"Fixed\" Hard Disk (if partitioned) or \"Fixed\" Super Floppy (if not partitioned).  \n\nIf you need to boot from the stick 2K/XP, the entry to boot them in BOOT.INI requires an arcpath, i.e. something like:  \nmulti(0)disk(0)rdisk(0)partition(1)\\\\WINNT  \nthat you simply won\u0027t have if the device is non-partitioned (superfloppy) independently from it being \"Fixed\" or \"Removable\"  \n\njaclaz   \n"
+    },
+    {
+      "id": "9593",
+      "timestamp": "2007-02-18T06:42:01+00:00",
+      "author": "ktp",
+      "content": "OK for the 2x2 matrix (removable, fixed) x (partitioned, non-partitioned).  \nAll my keys are not seen with as fixed disks under Disk management of XP (so I cannot suppress or create partitions on them using XP built-in tools).  \nI understand from your explanations that hp-usb or PeToUSB formatter tools format those keys with MBR and single partition.   \nUnder ptedit32 or beeblebrox I can see the MBR with 4 entries, the fist with correct partition ID and disk id 0x80. Also in the boot sector  \nof the first/partition the disk id is also 0x80 (and not 0x0).  \n\nSo my keys formatted by hp-us/petousb can be accessed by arcpath, isn\u0027t ?  \n\nI tried to use boot.ini on my hard disk to provide a kind of boot manager to boot my USB key without requiring changing BIOS setting  \n(hard disk order).  \n\nI try to use similar syntax as with Grub  \nC:\\\\grldr\u003d\"Grub4Dos\"  \nby changing C: into X: where X: is the drive letter given by XP to the usb key on normal bootup (in fact I tried from D: to F:).  \nD:\\\\grldr\u003d\"Grub4Dos on USB key\"  \nBut unfortunately it got worst, I did not pass the \\\\(windows root)\\\\system32\\\\hal.dll step (file not found).  \nThe system did access the USB key since the USB LED is blinking ON during those entries selection.  \n\n1) Where is this special boot.ini syntax documented ? it appears that ntdlr can boot another boot loader in addition  \nto the more classic arcpath with windows directory.  \n\nI also try several entries like :  \nmulti(0)disk(0)rdisk(1)partition(1)\\\\minint\u003d\"minint on USB key rdisk 1 partition 1\"  \nmulti(0)disk(0)rdisk(1)partition(1)\\\\grldr\u003d\"grldr on USB key rdisk 1 partition 1\"  \nmulti(0)disk(0)rdisk(1)partition(1)\\\\cmdc\u003d\"cmdc on USB key rdisk 1 partition 1\"  \nmulti(0)disk(0)rdisk(1)partition(1)\\\\erdc\u003d\"erdc on USB key rdisk 1 partition 1\"  \n\nbut got same errors on hal.dll.  \n\nIf it ever this work, this is very pratical since I do not have to change each time my BIOS setting to get my USB key  \non top of the detected hard disk.  \nAs far as I know, the solution is to use Grub4dos, then use the swap hard disk  \nfunction (map hd0 and hd1 ?).   \n\nCould someone point out the syntax to do this ?  \n\nBy the way is there a detailed documentation on each of the grub4dos command somewhere?  \nIn the grub4dos the documenation is scarce, and there is not such a list where each command is explained,  \nonly some examples. For example I do not understand when I need to use the +1 like chainloader (fd0)+1 or  \nchainloader (hd0)+1. Or map --hook usage.  \n\nAlso for me :  \nmulti(0)disk(0)rdisk(0)partition(1) \u003d (hd0,0)  \nmulti(0)disk(0)rdisk(0)partition(2) \u003d (hd0,1)  \nmulti(0)disk(0)rdisk(1)partition(1) \u003d (hd1,0)  \nmulti(0)disk(0)rdisk(1)partition(2) \u003d (hd1,1)  \n\nCould you confirm ?   \n"
+    },
+    {
+      "id": "9652",
+      "timestamp": "2007-02-18T17:53:38+00:00",
+      "author": "ktp",
+      "content": "Well I find some answer to my own questions :tongue:   \n\nMy PC Internal hard disk and USB key both have boot.ini loading grub4dos.  \n\nOn the hard disk, in menu.lst:  \ntitle Boot USB key (usually 2nd hard disk)  \nmap (hd1) (hd0)  \nroot (hd1,0)  \nchainloader +1  \nboot  \n\nOn the USB key in menu.lst:  \ntitle Boot 2nd hard disk from USB key (\u003d Windows XP usually)  \n# note: the 2 map commands are necessary, otherwise it does not work  \nmap (hd1) (hd0)  \nmap (hd0) (hd1)  \nrootnoverify (hd1)  \nchainloader +1  \nboot  \n\nSo, if change my BIOS settings to set my USB key as first hard disk, grub on USB key has one entry to boot on my PC internal HDD (good).  \nIf the key is withdrawn, the default BIOS setting is internal hard disk as first HDD, so later on if I plug my key I can still  \ntest(boot) the key WITHOUT changing the BIOS setting (USB disk first), grub on HDD invoke grub on the key. This works well for booting Linux or BartPE-like OS.  \n\nI still got a problem: booting DOS or DOS image like:  \n\ntitle Partition magic 8.05  \nfind --set-root /images/pmagic8.ima  \nmap --mem /images/pmagic8.ima (fd0)  \n#map --hook  \nchainloader (fd0)+1  \n\nI got the error:  \n- FAT12 BPB found with 0xEB (jmp) leading the boot sector, then Error 27: Dsk read error, Press any key to continue.  \nI commented out the \"map --hook\" command (without understanding its usage) to avoid another error saying  \nError 41: The int13 handler already on hook  \n\nIs there a solution so that it will work perfectly booting from any device (hdd, usb key) in any order in BIOS setting, booting any OS?   \n"
+    },
+    {
+      "id": "9654",
+      "timestamp": "2007-02-18T20:00:40+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I still got a problem: booting DOS or DOS image like:  \n\u003e\n\u003e title Partition magic 8.05  \n\u003e find --set-root /images/pmagic8.ima  \n\u003e map --mem /images/pmagic8.ima (fd0)  \n\u003e #map --hook  \n\u003e chainloader (fd0)+1  \n\u003e\n\u003e I got the error:  \n\u003e - FAT12 BPB found with 0xEB (jmp) leading the boot sector, then Error 27: Dsk read error, Press any key to continue.  \n\u003e I commented out the \"map --hook\" command (without understanding its usage) to avoid another error saying  \n\u003e Error 41: The int13 handler already on hook  \n\u003e\n\u003e Is there a solution so that it will work perfectly booting from any device (hdd, usb key) in any order in BIOS setting, booting any OS?\n\n\u003cbr /\u003e\n\nEVERYTIME you use the map --mem command, you **have to** \"hook\" memory afterwards, see it as something like \"Save current settings\".  \n\nOnce memory is \"hooked\" you can\u0027t \"hook\" it again.  \n\nYou need to give the command  \n\n```\nmap --unhook\n```\n\n\u003cbr /\u003e\n\nBefore being able to \"hook\" it again.  \n\njaclaz   \n"
+    },
+    {
+      "id": "9656",
+      "timestamp": "2007-02-18T20:41:53+00:00",
+      "author": "ktp",
+      "content": "Thank yaclaz, the missing map --hook command caused error 27 : disk read error.  \nAdding the map --unhook command helps, but only when a previous hook is installed, otherwise  \nit is a fatal error. So I found that the best command is map --rehook, this works every time, regardless  \nof previous hook state.  \n\nSo far so good, now I am very happy since I no longer need to change each time my BIOS settings (a lengthy operation)  \nin order to test my keys. Now I just plug in and reboot the system ! I use different colors for menu.lst on the key and on the hard disk  \nto be sure which grub I am booting or switched too ::-).  \n\nThank you a lot for your help. :tongue:   \n\nMy next step is to try to install XP from USB key (so the key is like the install CD), this seems to have various methods but what is your recommened one ?   \n"
+    },
+    {
+      "id": "9659",
+      "timestamp": "2007-02-19T06:38:26+00:00",
+      "author": "ktp",
+      "content": "Rectification from above post: the map --rehook command cannot be used (fatal error) if no previous is found. So the best way  \nseems to keep map --hook in menu.lst, and only when it fails edit (type \"e\" in Grub menu) to edit the command to map --rehook.   \n"
+    },
+    {
+      "id": "9680",
+      "timestamp": "2007-02-19T16:14:48+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e My next step is to try to install XP from USB key (so the key is like the install CD), this seems to have various methods but what is your recommened one ?\n\nWell, with reference to my post here:  \n[http://www.msfn.org/...mp;#entry563654](http://www.msfn.org/board/index.php?showto...mp;#entry563654 \"External link\")  \n\nmethod 1) is fully documented (so no more fun with it :tongue:)  \nmethod 2) has yet to be started working upon, no takers here:  \n[http://www.boot-land...p?showtopic\u003d644](http://www.boot-land.net/forums/index.php?showtopic\u003d644 \"External link\")  \nmethod 3) still requires experimenting  \nmethod 4) :  \n[http://www.msfn.org/...showtopic\u003d61384](http://www.msfn.org/board/index.php?showtopic\u003d61384 \"External link\")  \nis on hold at the moment due to lack of time (and also of some ideas) from me and porear, and possibly someone that could merge into it the reported experience of cdob:  \n[http://www.msfn.org/...showtopic\u003d81788](http://www.msfn.org/board/index.php?showtopic\u003d81788 \"External link\")  \nmethod 5): is in my opinion easily attainable, but the hardware reuirements make it a possible solution only for \"high end\" hardware.  \n\nSince you seem very quick in experimenting and learning, to report your experience in detail, and you like grub4dos, I would suggest you get involved in method 3):  \n[http://www.911cd.net...showtopic\u003d17425](http://www.911cd.net/forums//index.php?showtopic\u003d17425 \"External link\")  \n\nI would leave method 2) to people already familiar and \"up to date\" with .script developing (I have at this point lost any expectation :tongue: of ever being able to write .script code, at least until syntax becomes, if not fully defined, a bit more \"stable\" - this is not a critic to the development of Winbuilder or to the very good work developers are doing :tongue: - just my point of view of the current \"variability\" of the language).  \n\nIf you have any idea or suggestion about any possible workaround for the current (hopefully last) obstacle to defining method 4) you are of course welcome.  \n\n\u003e Adding the map --unhook command helps, but only when a previous hook is installed, otherwise  \n\u003e it is a fatal error.\nJust an idea, mind you, and totally NOT experimented, but there are two possible way out:  \n1) Add a map --unhook to EVERY menu.lst entry that has a map --hook command AFTER the chainloader (or boot) command   \n2) Study the sintax of the fallback command and use it to the purpose of \"looping\" through a map --unhook command in case of booting failure  \n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "9688",
+      "timestamp": "2007-02-19T17:51:00+00:00",
+      "author": "ktp",
+      "content": "OK jaclaz, I like method 3 too, since it is exactly what I am expecting. It is exactly the method that works already but from my multiboot DVD using bcdw 2.01. Installing XP Pro is just a line in bcdw bootcat.ini with :  \n\\\\PRO1\\\\setupldr.bin ; Install Microsoft Windows XP Pro SP2 US ; xppro2  \n\nI already tried this method on the USB key, copying the PRO1 directory to the USB stick then add a menu  \nto grub on the stick. But I got an error that now I forgot, I have to experiment with more details (maybe patching \\\\PRO1\\\\setupldr.bin.  \n\nFor the additional map --unhook as you suggested, I will try and retport the result.   \n"
+    },
+    {
+      "id": "9709",
+      "timestamp": "2007-02-19T19:31:49+00:00",
+      "author": "ktp",
+      "content": "Result of my experimentations :  \n\nMy hard disk and USB key have both ntldr/boot.ini and grub installed. HDD is the first hard disk in BIOS.  \n\nThe boot sequence is:  \nhdd ntldr - hdd boot.ini - hdd grldr - switch to usb key boot with   \n\n```\nmap \u0026#40;hd0\u0026#41; \u0026#40;hd1\u0026#41;\n\nmap \u0026#40;hd1\u0026#41; \u0026#40;hd0\u0026#41;\n\nroot \u0026#40;hd1,0\u0026#41;\n\nchainloader +1\n\nboot\n```\n\n\u003cbr /\u003e\n\nthen  \n- usb ntldr - usb grldr - usb menu.lst - load dos image with  \n\n```\ntitle Partition magic 8.05\n\nfind --set-root /images/pmagic8.ima\n\nmap --mem /images/pmagic8.ima \u0026#40;fd0\u0026#41;\n\nmap --hook\n\nchainloader \u0026#40;fd0\u0026#41;+1\n```\n\n\u003cbr /\u003e\n\nThe problem is with the map --hook above (int13 already hooked).  \nI change to map --unhook, but by doing this, when I boot the key as first drive  \nthen select directly the pqmagic.ima, map --rehook fails (since no hook previously).  \n\nWishlist for grub4dos: a kind of \"force\" option. Automatically unhook if previous hook found (\u003d --rehook).  \nmap --hookforce  \n\n@jaclaz, your suggestion for map --unhook AFTER chainloader does not apply car after chainloader I  \nalready boot into DOS image so the command does nothing. The problem of hook here is due to one instance of grub (hdd) calling another  \ninstance of grub (on usb).  \n\n\u003cbr /\u003e\n\nFor using USB to install XP (method 3), I got the error txtsetup.sif not found error 18 (\u003d no directory).  \nI invoke the install from my key with:  \n\ntitle Windows XP Pro SP2 install  \nchainloader /PRO1/setupldr.bin  \n\n\\\\PRO1\\\\setupldr.bin has been patched correctly to change I386 to PRO1.  \nAlso In \\\\PRO1\\\\txtsetup.sif  \nSetupSourcePath \u003d \"\\\\PRO1\\\\\"  \nOsLoadOptions \u003d \"/fastdetect /noguiboot /nodebug\"  \n\n\u003cbr /\u003e\n\nSo why do I encounter the error code 18 for txtsetup.sif ?   \n\nDirectory structure of PRO1:  \nPRO1\\\\  \nPRO1\\\\i386  \nPRO1\\\\system32  \n\nThis should not be not so far, since the same directory structure and file contents but on the CD/DVD with bcdw 2.01 works.   \n"
+    },
+    {
+      "id": "9729",
+      "timestamp": "2007-02-19T20:04:21+00:00",
+      "author": "ktp",
+      "content": "Update :  \n\nI patched 2 occurrences of minint in \\\\pro1\\\\setupldr.bin  \nNow I go farther, and got message \\\\$WIN_NT$.\\~BT\\\\biosinfo.inf not found, code 18.  \nWow, sound familiar, so I patched again 2 occurrences of it in \\\\pro1\\\\setupldr.bin to PRO1 then reboot.  \nI then get for the first time to the Windows setup blue screen, with F6/F2 (ASR) and loading drivers etc... then the message  \nThe file dmload.sys could not be found. Press any key to continue.  \nThen I press a key \u003d\\\u003e status line: Setup failed. Press any ky to restart your computer.  \n\nI think it will be difficult for me to go farther :-(.   \n"
+    },
+    {
+      "id": "9822",
+      "timestamp": "2007-02-20T18:32:04+00:00",
+      "author": "ktp",
+      "content": "Update: wow now it is much better.  \nI restart from scratch, clean the \\\\PRO1 directory on the stick, copy to \\\\PRO1 the content of I386 from the XP CD.  \nThen I patch 2 occurrences of minint, 2 occurrences of $WIN_NT$.\\~BT   \nin \\\\PRO1\\\\setupldr.bin and reboot on the key.  \nThen now F6, F2, windows executive step, drivers loading etc... passed OK. I got to the blue screen where I can quit (F3),  \nEnter to install or Repair. Wow!   \n\nI will test on with iso image under Vmware, since the invocation of grub on usb key is same as invocation of bcdw on CD/DVD.  \ngrub on USB key: chainloader /PRO1/setupldr.bin  \nbcdw on CD/DVD : \\\\PRO1\\\\setupldr.bin  \n\nUpdate #2:  \n\nAfter pressing Enter I got the message: Setup cannot find the End User License Agreement (EULA).  \nThen I edit \\\\pro1\\\\txtsetup.sif, change to SetupSourcePath \u003d \"\\\\PRO1\\\\\" and reboot : same eror  \n\nIn \\\\PRO1\\\\txtsetup.sif, there is one line:  \n\neula.txt \u003d 1,,,,,,_x,2,0,0  \n\nMaybe someone could tell how to check and fix for the location of the eula.txt file ?   \n"
+    },
+    {
+      "id": "9858",
+      "timestamp": "2007-02-21T12:13:55+00:00",
+      "author": "was_jaclaz",
+      "content": "Check here:  \n[http://www.msfn.org/...showtopic\u003d14852](http://www.msfn.org/board/index.php?showtopic\u003d14852 \"External link\")  \nparticularly, get the .gif here:  \n[http://www.msfn.org/...opic\u003d14852\\\u0026st\u003d3](http://www.msfn.org/board/index.php?showtopic\u003d14852\u0026st\u003d3 \"External link\")  \n[http://www.msfn.org/...t...ost\\\u0026id\u003d1038](http://www.msfn.org/board/index.php?act\u003dat...ost\u0026id\u003d1038 \"External link\")  \n\nand these:  \n[http://www.msfn.org/...showtopic\u003d50513](http://www.msfn.org/board/index.php?showtopic\u003d50513 \"External link\")  \n[http://gosh.msfn.org/txtsetup.htm](http://gosh.msfn.org/txtsetup.htm \"External link\")  \n\n\u003cbr /\u003e\n\nAlso, try the:  \n\u003e OemSkipEula \u003d Yes\nsuggested here:  \n[http://www.msfn.org/...showtopic\u003d31844](http://www.msfn.org/board/index.php?showtopic\u003d31844 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "9866",
+      "timestamp": "2007-02-21T14:59:01+00:00",
+      "author": "ktp",
+      "content": "I made some progress, but now I stumble on the following message:  \n\nSetup  \ninsert the cd labeled Windows xp professional service pack 2 CD into your cd-rom drive. press enter when ready  \n\nWell I already have the files win51ip and win51ip.sp2 on the root of the key and inside the \\\\PRO1 (equivalent to \\\\i386 on CD).   \nAny idea? I am searching with Google to find out a solution for this.   \n"
+    },
+    {
+      "id": "9872",
+      "timestamp": "2007-02-21T16:20:58+00:00",
+      "author": "was_jaclaz",
+      "content": "I guess that the problem might be some registry entry mapping DosDevices or something like that, maybe you can find a solution through the migrate.inf.  \n\nDo review the info posted by me, cdob and porear here:  \n[http://www.msfn.org/...opic\u003d81788\\\u0026st\u003d7](http://www.msfn.org/board/index.php?showtopic\u003d81788\u0026st\u003d7 \"External link\")  \n[http://www.msfn.org/...s...61384\\\u0026st\u003d22](http://www.msfn.org/board/index.php?\u0026s...61384\u0026st\u003d22 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "9888",
+      "timestamp": "2007-02-21T19:20:25+00:00",
+      "author": "ktp",
+      "content": "@jaclaz, unfortunately the migrate.inf (taken from indicated link assigning drive letter U: to the stick) did not solve the problem.  \nI am really stuck; My idea was that bcdw 2.01 patches on the fly \\\\i386\\\\setupldr.bin, the \\\\i386 is copied from an XP CD.  \nSo on the USB key we need to patch statically \\\\i386\\\\setupldr.bin, but what to patch? I have to go by successive tries  \n(patch minint string, then $WIN_NT$.\\~BT stuff., now I run to the CD detection problem.  \n\nUnfortunately we don\u0027t have bcdw source code (no news from the author) to understand what bcdw does.  \nThe direction taken in thread [http://www.911cd.net...showtopic\u003d14181](http://www.911cd.net/forums//index.php?showtopic\u003d14181 \"External link\") seems too complicated for me.   \n"
+    },
+    {
+      "id": "9898",
+      "timestamp": "2007-02-22T07:06:24+00:00",
+      "author": "Garfield",
+      "content": "@ktp  \n\nI have some time ago created a Multi OS CD containing 4 versions of windows XP loading from different folders (XPP2, XPH2, XPUP, XP) booting from BCDW and it works like a charm. :tongue:   \n\nI only had to change **\\\\I386\\\\** in both BOOTSECT.BIN and SETUPLDR.BIN to get it going. But in the relevant folders (XPP2, XPH2, XPUP, XP) you copy just the boot part of the bluescreen setup (4 boot stiffies) and create an i386 folder with the rest of the CD\\\\i386 contents.  \n\nIt was more than a year ago that i did this but if you want i will dig up the relevant documents... :tongue:   \n"
+    },
+    {
+      "id": "9904",
+      "timestamp": "2007-02-22T08:42:19+00:00",
+      "author": "was_jaclaz",
+      "content": "Hmmm, what I can say is that if it were an easy to do thing, most probably it would have been already done. :tongue:  \n\nWhat I would do:  \n1) Sleep a few nights over this, more often than not when you don\u0027t think too much to a problem, the solution comes up by itself. :tongue:  \n2) If I were you, I would re-start from scratch along these lines:  \na. forget for the moment the multibooting part, just try with a \"standard\" \\\\I386 folder  \nb. try with a ntldr like the one gray suggested here:  \n[http://www.911cd.net...o...3784\\\u0026st\u003d249](http://www.911cd.net/forums//index.php?showtopic\u003d13784\u0026st\u003d249 \"External link\")  \nc. Also, check the report diddy made here (1st drive important?):  \n[http://www.911cd.net...o...18031\\\u0026st\u003d34](http://www.911cd.net/forums//index.php?showtopic\u003d18031\u0026st\u003d34 \"External link\")  \n3) I don\u0027t think that info in Dietmar\u0027s thread has any relevance when we are talking about installing, the only part that may come handy as I see it is the modified ntdetect.com, however the procedures by Dietmar (and others) are listed in this post of mine:  \n[http://www.911cd.net...o...181\\\u0026st\u003d1988](http://www.911cd.net/forums//index.php?showtopic\u003d14181\u0026st\u003d1988 \"External link\")  \nbesides the new one just posted:  \n[http://www.nedprod.c...uff/BootWinUSB/](http://www.nedprod.com/Niall_stuff/BootWinUSB/ \"External link\")  \nThey are not too difficult, but if you try the \"automated\" way from   \n[http://www.usboot.org/](http://www.usboot.org/ \"External link\")  \nit\u0027s a breeze.  \n\njaclaz   \n"
+    },
+    {
+      "id": "9906",
+      "timestamp": "2007-02-22T09:02:38+00:00",
+      "author": "ktp",
+      "content": "\u003e @ktp  \n\u003e\n\u003e I have some time ago created a Multi OS CD containing 4 versions of windows XP loading from different folders (XPP2, XPH2, XPUP, XP) booting from BCDW and it works like a charm. :tongue:   \n\u003e\n\u003e I only had to change **\\\\I386\\\\** in both BOOTSECT.BIN and SETUPLDR.BIN to get it going. But in the relevant folders (XPP2, XPH2, XPUP, XP) you copy just the boot part of the bluescreen setup (4 boot stiffies) and create an i386 folder with the rest of the CD\\\\i386 contents.  \n\u003e\n\u003e It was more than a year ago that i did this but if you want i will dig up the relevant documents... :tongue:\n\nOK thanks Garfield, I also have information on this by examining other Multiboot AIO DVD. The bootsect.bin technique unfortunately applies only for CD, so it is not applicable to USB boot. In fact we miss bcdw functionality for USB boot. If ever bcdw supports USB boot, it would be universal !   \n"
+    },
+    {
+      "id": "9907",
+      "timestamp": "2007-02-22T09:34:40+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e The bootsect.bin technique unfortunately applies only for CD, so it is not applicable to USB boot.\n\nJust for the record, you can use grub4dos on USB sticks with the same results.  \n\n```\nTitle /I386\n\nchainloader /I386/setupldr.bin\n\n\n\nTitle /XPP2\n\nchainloader /XPP2/setupldr.bin\n\n\n\nTitle /XPH2\n\nchainloader /XPH2/setupldr.bin\n\n\n\n......\n```\n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "9910",
+      "timestamp": "2007-02-22T09:56:54+00:00",
+      "author": "Garfield",
+      "content": "Sorry what i was actually trying to say wasthat when it asks for the winXP CD it might be looking for an I386 folder inside your XXXX folder.  \n\n\u003e But in the relevant folders (XPP2, XPH2, XPUP, XP) you copy just the boot part of the bluescreen setup (4 boot stiffies) and create an i386 folder with the rest of the CD\\\\i386 contents.\n\n"
+    },
+    {
+      "id": "9911",
+      "timestamp": "2007-02-22T10:12:50+00:00",
+      "author": "ktp",
+      "content": "Thanks Garfield, I already did this before, I.e. I have \\\\PRO1 and \\\\PRO1\\\\I386.. Even \\\\PRO1 has all \\\\I386 from CD and same for \\\\PRO1\\\\I386. All setupldr.bin have been patched !  \n\nMy other failed experience was with \\\\PRO1 content filled with XP boot diskettes (6 diskettes), and \\\\PRO1\\\\I386\\\\ content from CD, with setupldr.bin patched. Same error.  \n\n@jaclaz  \nI already starting from scratch with \\\\I386 without name patch, still same problem. In fact if you use XP recovery console, instead of pressing R to repair you press Enter \u003d install, got same problem that setup require CD. The recovery console is similar to XP install but it does not allow running command ! so I cannot try winnt32.exe.  \n\nI wil however take your advice and try other things, starting from scratch with simpler objectives.   \n"
+    },
+    {
+      "id": "9955",
+      "timestamp": "2007-02-23T13:29:26+00:00",
+      "author": "Garfield",
+      "content": "Booting form USB HDD i got to WinXP Blue screen setup disk partitioning.. :tongue:   \nNo need to hack anything yet...  \n\nEULA displays fine....  \n\nI don\u0027t have the GRUB loader to change my boot sequence so usb hdd is still seen as primary disk...  \n\nSome more testing... :tongue:   \n\nWhat was the thing about Migrate.inf.... i am not a member of MSFN forum so i can\u0027t download the file :tongue:   \n\nAnd i don\u0027t have online internet at home, only dial up, which is almost useless.... :tongue:   \n\nCan someone please get me some info on changing the boot sequence so i can test @ home over the weekend :tongue:   \n"
+    },
+    {
+      "id": "9956",
+      "timestamp": "2007-02-23T13:46:42+00:00",
+      "author": "Garfield",
+      "content": "Blue screen setup passed successfully.... :tongue:   \n\nIn gui setup got to a screen saying ASMS files needed  \n\nJust like in porear\u0027s post [http://www.msfn.org/...s...1384\\\u0026st\u003d22#](http://www.msfn.org/board/index.php?\u0026s...1384\u0026st\u003d22# \"External link\")   \n"
+    },
+    {
+      "id": "10014",
+      "timestamp": "2007-02-23T14:51:15+00:00",
+      "author": "ktp",
+      "content": "\u003e Blue screen setup passed successfully.... :tongue:   \n\u003e\n\u003e In gui setup got to a screen saying ASMS files needed  \n\u003e\n\u003e Just like in porear\u0027s post [http://www.msfn.org/...s...1384\\\u0026st\u003d22#](http://www.msfn.org/board/index.php?\u0026s...1384\u0026st\u003d22# \"External link\")\n\nWow, congratulations, I\u0027m still at the dialog need the XP CD, press a key :tongue: But this is USB key, which is different from USB hard disk.  \nFollowing is the migrate.inf I got if ever you need it :  \n\n```\n\u0026#91;Version\u0026#93;\n\nSignature \u003d \u0026#34;$Windows NT$\u0026#34;\n\n \n\n\u0026#91;Addreg\u0026#93;\n\nHKLM,\u0026#34;SYSTEM\\MountedDevices\u0026#34;,,0x00000010\n\nHKLM,\u0026#34;SYSTEM\\MountedDevices\u0026#34;,\u0026#34;\\DosDevices\\U\u0026#58;\u0026#34;,0x00030001,\\\n\n\t 5c,00,3f,00,3f,00,5c,00,53,00,54,00,4f,00,52,00,41,00,47,00,45,00,23,00,52,\\\n\n\t 00,65,00,6d,00,6f,00,76,00,61,00,62,00,6c,00,65,00,4d,00,65,00,64,00,69,00,\\\n\n\t 61,00,23,00,37,00,26,00,31,00,64,00,64,00,65,00,34,00,37,00,39,00,65,00,26,\\\n\n\t 00,30,00,26,00,52,00,4d,00,23,00,7b,00,35,00,33,00,66,00,35,00,36,00,33,00,\\\n\n\t 30,00,64,00,2d,00,62,00,36,00,62,00,66,00,2d,00,31,00,31,00,64,00,30,00,2d,\\\n\n\t 00,39,00,34,00,66,00,32,00,2d,00,30,00,30,00,61,00,30,00,63,00,39,00,31,00,\\\n\n\t 65,00,66,00,62,00,38,00,62,00,7d,00\n```\n\n\u003cbr /\u003e\n\nThe more the merrier on the bandwagon of XP install from USB key :tongue:   \n"
+    },
+    {
+      "id": "10017",
+      "timestamp": "2007-02-23T15:13:57+00:00",
+      "author": "Garfield",
+      "content": "Have a look at generating your source by booting from dos, loading cdrom driver, in XpSource CD\\\\i386 run WINNT.EXE /s:%CDromDriveLetter:%, where %CDromDriveLetter:% is your cdrom drive letter  \n\nThis should create **$WIN_NT$.\\~BT** and **$WIN_NT$.\\~LS** on your hdd...   \n\nBeware this might change your hdd bootsector and boot.ini so rather disconnect your hdd and do on an empty fat32 partition  \n\nGarfield signing off for the weekend   \n"
+    },
+    {
+      "id": "10019",
+      "timestamp": "2007-02-23T15:38:20+00:00",
+      "author": "ktp",
+      "content": "OK but this is method #1, already eplored. I am exploring method #3 (number after jaclaz).   \n"
+    },
+    {
+      "id": "18434",
+      "timestamp": "2007-07-28T18:40:03+00:00",
+      "author": "Elad Karako",
+      "content": "A very simple way to do this is by using WinImage:  \n(after install \\\u0026 run it:)  \n\n{under \"Disk\" Menu}  \n\n1. click \"Disk\" and choose your removable drive (a \"v\" will mark it from now).  \n2. click \"Read Disk\".  \n\n{wait till\u0027 it\u0027s over}  \n\n3. \"File\"-\\\u003e\"Save As...\"  \n\n\u003cbr /\u003e\n\ndefault is ima / img   \nyou can also make ISO file from it  \n{reopen and Search for \"ISO SAVE\" or somthing similar...}  \n\nElad Karako   \n"
+    }
+  ]
+}

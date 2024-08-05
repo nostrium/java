@@ -1,0 +1,412 @@
+{
+  "id": "11345",
+  "title": "DiskGenius 3.3.0525 OFFICIAL (including DOS)",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "99679",
+      "timestamp": "2010-05-10T07:39:22+00:00",
+      "author": "maanu",
+      "content": "now this is what i have been dreaming for last 6 months ,  \n\n\u003cbr /\u003e\n\nAN OFFICIAL ENGLISH DOS VERSION of the 3.2 series . and they just did it .  \n\ntoo bad , i read my mail too late ,that **Dgen** sent me about it (it was 2 weeks before) .  \n\nanyways following is the new web link to the tool ,  \n\n[http://dgisok.com/](http://dgisok.com/ \"External link\")   \n\n(click on download )  \n\nit is **shareware** now , but as far as i could see ,there is no time stamp and no feature restriction .  \n\nthe package includes the dos version too . although it is not in ready to use manner .  \nin case u guys need it , let me know .   \n\n(once it is installed, u can go to program files ,in its directory and u can use it portable by copying the files from there . )   \n\nby the way , it seems that the chinese version will remain FREE . ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \nBUT the good thing is , DOS english version is still freeware.   \nand thats what i needed BADLY . its dos version .  \n\n**edit :**   \n\nhere is the dos version (FREE DOS) . download the win version from the official link i mentioned above.   \n\ndos version of **3.3.0525**   \n\n[http://filebeam.com/...0964cf3830b7499](http://filebeam.com/f423d4af274c8eb040964cf3830b7499 \"External link\")  \n\n\u003cbr /\u003e\n\n**edit 2 :**   \n\nonly DOS version has a limitation of Copying or deleting files from the hdd. it can be overcome by registering the windows version . thanks to fuwi for reporting it ,\\\\  \n\nhere ,  \n\n[http://www.boot-land...mp;#entry100512](http://www.boot-land.net/forums/index.php?showtopic\u003d11345\u0026pid\u003d100512\u0026start\u003d20\u0026#entry100512 \"External link\")  \n\n**edit 3 :**   \n\ni noticed another FEATURE RESTRICTION .   \n\ni tried partition recovery option yesterday . diskgenius found my partitions , and it asked me to \" save partition table \" . when i tried to do it , it said to REGISTER diskgenius . ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \ni tested it in WINDOWS version only ,   \n\n**edit 4 :**   \n\nthe above LOST PARTITION RECOVERY restrictions is not included in **DOS** version .   \nupdated the dos version to **3.3.0525** . windows version can be downloaded from the main link i posted above . it is updated today . (as of 26th May 2010)  \n\ni ll be updating the restrictions shortly one by one of windows and Dos versions.   \n"
+    },
+    {
+      "id": "99682",
+      "timestamp": "2010-05-10T07:46:09+00:00",
+      "author": "Wonko the Sane",
+      "content": "Good news ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif) though I don\u0027t understand. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nThe DOS version is **unusable** ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif) AND Free?  \n\n:tongue:  \nWonko   \n"
+    },
+    {
+      "id": "99683",
+      "timestamp": "2010-05-10T07:52:07+00:00",
+      "author": "maanu",
+      "content": "\u003e Good news ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif) though I don\u0027t understand. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\u003e\n\u003e The DOS version is **unusable** ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif) AND Free?  \n\u003e\n\u003e ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\u003e Wonko\n\nwhen you will install the app , and go to its program directory , and open the DOS folder , you will know what i meant . :tongue:   \n\nDgen , for God knows WHY , did not release a .img file containing the DOS file of diskgenius . instead he copied all the files needed to make a dos floppy ( FREE DOS) as well as dos exe of the tool in DOS directory .   \n"
+    },
+    {
+      "id": "99738",
+      "timestamp": "2010-05-10T17:51:56+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Dgen , for God knows WHY , did not release a .img file containing the DOS file of diskgenius . instead he copied all the files needed to make a dos floppy ( FREE DOS) as well as dos exe of the tool in DOS directory .\nGood. ![:huh:](https://reboot.pro/public/style_emoticons/default/huh.png)  \n\nWhy don\u0027t you supply the info needed by the less experienced users to make a floppy image from those files?![:lol:](https://reboot.pro/public/style_emoticons/default/laugh.png)  \n\nIf the \"base\" is FreeDOS, there is no problem in getting a \"standard\" FreeDOS floppy image:  \n[http://www.fdos.org/bootdisks/](http://www.fdos.org/bootdisks/ \"External link\")  \nand add/replace the files with the ones in the download.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "99753",
+      "timestamp": "2010-05-10T19:18:42+00:00",
+      "author": "maanu",
+      "content": "it was in my mind . but i was in hurry .  \n\ni ll release a img file tonight . as well as a little autoit based loader (NOT a crack) to get rid of pressing \" register later \" every time the windows version is loaded .   \n"
+    },
+    {
+      "id": "99760",
+      "timestamp": "2010-05-10T21:40:16+00:00",
+      "author": "maanu",
+      "content": "updated the first post . with download link to both dos and win version .   \n"
+    },
+    {
+      "id": "99782",
+      "timestamp": "2010-05-11T06:43:23+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e it was in my mind . but i was in hurry .  \n\u003e\n\u003e i ll release a img file tonight . as well as a little autoit based loader (NOT a crack) to get rid of pressing \" register later \" every time the windows version is loaded .\nPersonally I find an autoit that presses automatically the reminder a crack ![:lol:](https://reboot.pro/public/style_emoticons/default/laugh.png), only **poorly implemented**. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nThe good news is that being not anymore**jaclaz** the Admin of the board, it is unlikely that you will be kicked out of it for this.  \n\nThe bad news is the feeling of sadness and sorrow you induced in him due to the evidently complete and utter futility of all the time he spent trying to explain how a software is property of it\u0027s Author and about the need to comply fully with it\u0027s license. ![:huh:](https://reboot.pro/public/style_emoticons/default/huh.png)  \n\nWonko   \n"
+    },
+    {
+      "id": "99786",
+      "timestamp": "2010-05-11T08:25:57+00:00",
+      "author": "maanu",
+      "content": "\u003e Personally I find an autoit that presses automatically the reminder a crack ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif), only **poorly implemented**. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\u003e\n\u003e The good news is that being not anymore**jaclaz** the Admin of the board, it is unlikely that you will be kicked out of it for this.  \n\u003e\n\u003e The bad news is the feeling of sadness and sorrow you induced in him due to the evidently complete and utter futility of all the time he spent trying to explain how a software is property of it\u0027s Author and about the need to comply fully with it\u0027s license. ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)  \n\u003e\n\u003e Wonko\n\nit was not my intention .   \n\nanyways i have edited my 1st post. and u could use nice words instead of kicking around .   \n"
+    },
+    {
+      "id": "99825",
+      "timestamp": "2010-05-11T16:42:10+00:00",
+      "author": "agni",
+      "content": "Thanks a lot Maanu  \n\nI am using this code to load the DGDOS.IMG  \n\n```\ntitle Boot Disk Genius\n\nfind --set-root --ignore-floppies /DGDOS.IMG\n\nmap /DGDOS.IMG \u0026#40;fd0\u0026#41; \n\nmap --hook \n\nchainloader \u0026#40;fd0\u0026#41;+1 \n\nrootnoverify \u0026#40;fd0\u0026#41; \n\nmap --floppies\u003d1\n```\n\n\u003cbr /\u003e\n\nCan you please tell us how you created the DGDOS.IMG file?   \n"
+    },
+    {
+      "id": "99837",
+      "timestamp": "2010-05-11T19:01:42+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Personally I find an autoit that presses automatically the reminder a crack ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif),\nInteresting philosophical question. Is a program that presses a button for me a crack?  \nIf so, what about a script or a macro, i use to automate a task?  \nDoes a programer have the right, to force me, to manually press the buttons of his program?  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "99840",
+      "timestamp": "2010-05-11T19:10:18+00:00",
+      "author": "maanu",
+      "content": "\u003e Interesting philosophical question. Is a program that presses a button for me a crack?  \n\u003e If so, what about a script or a macro, i use to automate a task?  \n\u003e Does a programer have the right, to force me, to manually press the buttons of his program?  \n\u003e\n\u003e ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\ni had this in mind . but i just did not want to argue anymore . thats why i removed the link .   \n\nhe (with all due respect) is overly obsessed .   \n"
+    },
+    {
+      "id": "99841",
+      "timestamp": "2010-05-11T19:14:15+00:00",
+      "author": "maanu",
+      "content": "\u003e Thanks a lot Maanu  \n\u003e\n\u003e I am using this code to load the DGDOS.IMG  \n\u003e\n\u003e ```\n\u003e title Boot Disk Genius\n\u003e\n\u003e find --set-root --ignore-floppies /DGDOS.IMG\n\u003e\n\u003e map /DGDOS.IMG \u0026#40;fd0\u0026#41; \n\u003e\n\u003e map --hook \n\u003e\n\u003e chainloader \u0026#40;fd0\u0026#41;+1 \n\u003e\n\u003e rootnoverify \u0026#40;fd0\u0026#41; \n\u003e\n\u003e map --floppies\u003d1\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e Can you please tell us how you created the DGDOS.IMG file?\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\ni did not create it . it is official img file from their old chinese version . i just replaced the chinese exe with english exe (the one in this release).  \n\nby the way the code SHOULD be ,  \n\ntitle Boot Disk Genius  \nfind --set-root --ignore-floppies /DGDOS.IMG  \nmap **--mem** /DGDOS.IMG (fd0)   \nmap --hook   \nchainloader (fd0)+1   \nrootnoverify (fd0)   \nmap --floppies\u003d1   \n"
+    },
+    {
+      "id": "99872",
+      "timestamp": "2010-05-12T08:38:13+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Does a programer have the right, to force me, to manually press the buttons of his program?\nYes, unless you ***pay*** for his work, and the button is removed by the registration process.  \n\nQuick reminder:  \nsomeone works, using his time and knowledge to produce a program/app/whatever, then he decides:  \n\n* to release the product of his work as FREE \\\u003c-everything is OK  \n  OR:\n* to release the product as Shareware/Commercial \\\u003c- here the problems begin\n\n\u003cbr /\u003e\n\nIF #2. he either:  \n\n* releases a FULLY FUNCTIONAL version in order to allow you to try it for a reasonable amount of time before paying him for his work, putting a small nag screen to remind you that you really should show your appreciation for the program if you intend to continue using it beyound the trial period  \n  OR:\n* releases a CRIPPLED, only partially functional, TRIAL version, possibly overlayed by a number of useless protection code to prevent you from using it beyond the intended trial period or to use all it\u0027s features\n\n\u003cbr /\u003e\n\nThis program appears like being of type #1. above.  \n\nIt doesn\u0027t seem to me that difficult to understand how by providing ***any*** means of bypassing the will of the Author you contribute to induce programmers to choose #2. which means even less freedom and \"worse\", more bloated programs.  \n\nLet\u0027s assume that this particular program is a very good one, and has a particular feature that no other similar program has or has it implemented in a particularly \"easy\" or \"convenient\" way.  \n\n* If program is released/coded as #1, the one time you will need it in an emergency, you will be able to use it freely and for free, and the small nag won\u0027t be a problem.\n* If program is released/coded as #2 , the one time you will need it in an emergency, the feature you need WON\u0027T be available.\n\n\u003cbr /\u003e\n\nIf you use it for more than a \"casual\" or \"trial\" use, if the program is correctly priced, and IMNSHO this particular one at US$49.95 is not very highly priced, if it delivers everything it promises, you should contribute to the programmer\u0027s wealthness by paying for his work.  \n\nIn other words, the more people will use tricks to workaround Authors\u0027 will and avoid paying the fair price he asks for his work, the more we all will have more crippled, worse programs.  \n\nI perfectly know it\u0027s all wasted time anyway to try to explain this concept to you, I guess it\u0027s the ***n*** th time I try to , with NO apparent result . ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n@maanu  \nJust in case, you are perfectly free to think I am obsessed, but I won\u0027t stop expressing my opinions on this and other subjects, and I feel free, within the limits of the forum Rules, to adopt whatever language and approach I see fit.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "99890",
+      "timestamp": "2010-05-12T11:36:16+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Yes, unless you ***pay*** for his work, and the button is removed by the registration process.  \n\u003e\n\u003e It doesn\u0027t seem to me that difficult to understand how by providing ***any*** means of bypassing the will of the Author you contribute to induce programmers to choose #2. which means even less freedom and \"worse\", more bloated programs.  \n\u003e\n\u003e If you use it for more than a \"casual\" or \"trial\" use, if the program is correctly priced, and IMNSHO this particular one at US$49.95 is not very highly priced, if it delivers everything it promises, you should contribute to the programmer\u0027s wealthness by paying for his work.  \n\u003e\n\u003e In other words, the more people will use tricks to workaround Authors\u0027 will and avoid paying the fair price he asks for his work, the more we all will have more crippled, worse programs.\nI start to agree with maanu.  \nThere was nowhere in any post implied, that anyone would use the program for longer than the author allows for, yet you see everyone cheating the author. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nAs for the authors will. **Every** button is meant by he author to be pushed by the user. Therefore using any script or macro or tool like ghostmouse to click buttons is violating the authors will, even if you\u0027ve paid for the software.  \n\nFor instance paragliders HwPnP clicks automaticly away driver installation dialogs. If it would have been the authors will, that the installation can proceed without bugging the user, he would have provided for a switch that disables those dialogs.  \n\nOr how about the authors will of Malware? They don\u0027t wont you to remove their software. So as law-abiding citizen should we keep it?  \n\nOr applies complying to authors will just with nag screens in your opinion?  \n\nHow about downloading and installing a software upon need into a PE? The software will always start the grace period by 0. No matter how often you\u0027ve already used it. This would not be possible on a real XP, unless the registry is thoroughly cleaned.  \nIs resetting or cleaning the registry allowed? It violates authors will to keep a constant marker on your system.   \n\n\u003cbr /\u003e\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "99892",
+      "timestamp": "2010-05-12T12:03:07+00:00",
+      "author": "Wonko the Sane",
+      "content": "As already said:  \n\u003e I perfectly know it\u0027s all wasted time anyway to try to explain this concept to you, I guess it\u0027s the ***n*** th time I try to , with NO apparent result . ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nThe horse has already been beaten to death. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nI do know well your rhetorical tricks (in this case that of transposing the actual issue into a generalized concept that bears no valid link to the specific case).  \n\nHowever accusing me of making an enthymeme:  \n[http://en.wikipedia.org/wiki/Enthymeme](http://en.wikipedia.org/wiki/Enthymeme \"External link\")  \n\n\u003e There was nowhere in any post implied, that anyone would use the program for longer than the author allows for\nis a nice twist. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nIn case you missed it, the topic was that of a \"good\" program Author, which was kind enough to release his apps with a \"grace\" period of FULL functionality, with a small reminder that if you use his software you should pay for it, nothing connected to malware, instaaling drivers or whatever else.  \n\nAnd yes, most people, given the means to save money without any consequence, nor nag, will attempt to do it.  \n\n\u003e I start to agree with maanu.\n\nI am happy for you. ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)  \n\n**BUT** :  \n[http://en.wikipedia....9;t_give_a_damn](http://en.wikipedia.org/wiki/Frankly,_my_dear,_I_don%27t_give_a_damn \"External link\")  \n\n\u003cbr /\u003e\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "99898",
+      "timestamp": "2010-05-12T13:25:56+00:00",
+      "author": "MedEvil",
+      "content": "\u003e I do know well your rhetorical tricks (in this case that of transposing the actual issue into a generalized concept that bears no valid link to the specific case).\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif) i had the exact opposite problem with your post above. You\u0027re trying to circumvent the question of the legality of the automatic push of a button, by declaring it the same problem as ripping off the author and thereby making it illegal.   \n\nI don\u0027t know if i\u0027m the exception or not, but i don\u0027t spend time finding freeware replacements for software that i like. I spend time finding the best suited software for my needs and don\u0027t care about free-, share-, or buyware.  \nBut even though i pay the \u0027author\u0027, that does not mean, that i don\u0027t hack the software.   \nMost commonly i fix labels of buttons, remove - or add buttons to the toolbar or just plain reorder them. Another favorite of mine is, to fix a program so that the default options are my options. That prevents troubles with the program forgetting my prefered settings.  \nSo while not ripping the author off, i definitly do something against his will.  \n\nSo you see going against authors will and ripping him off, are two seperate things which can happen together, but do not have to.  \n\nWould probably be interesting to know what the individual authors prefer, getting paid for the software and me hacking it, or me not buying and using it.   \n\n\u003e In case you missed it, the topic was that of a \"good\" program Author, which was kind enough to release his apps with a \"grace\" period of FULL functionality, with a small reminder that if you use his software you should pay for it, nothing connected to malware, instaaling drivers or whatever else.\nAren\u0027t you a little old to still classify things as good and bad? There is not good and no bad. Every soldier killing another soldier on the battlefield is always regarded a hero by his peoples and a villian by the opposite peoples.  \n\nSoftware is eighter useful **to you** or not.   \nYour personal opinion about a piece of software, should however not influence your opinion on the subject in general.  \nMaking up different rules for identical things, upon personal preferences, has always been proven to be a bad idea.   \nSee for instance treating people differently based on gender, skin color, religion, ......  \n\n\u003e And yes, most people, given the means to save money without any consequence, nor nag, will attempt to do it.\nNow i\u0027m confused. Do you believe that people will use the program as freebee once the nag screen is removed or do you believe that they will use the program as freebee regardless.   \nCause if the later and it sure sounds that way, then i understand even less, why you\u0027re trying to connect the automatic pushing of a button to the illegal use of the program.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "99904",
+      "timestamp": "2010-05-12T13:59:19+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Now i\u0027m confused. Do you believe that people will use the program as freebee once the nag screen is removed or do you believe that they will use the program as freebee regardless.   \n\u003e Cause if the later and it sure sounds that way, then i understand even less, why you\u0027re trying to connect the automatic pushing of a button to the illegal use of the program.\n\nLet\u0027s say that, generally speaking, people is forgetful ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif), and that\u0027s exactly the reason why a reminder is placed by the Author.  \n\nSpecifically, removing the reminder helps forgetful people to continue using the program indefinitely, without their conscience (if any) nagging them, which translates in ripping the Author (fair) request for a price for his/her work in most cases.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "99910",
+      "timestamp": "2010-05-12T14:40:38+00:00",
+      "author": "MedEvil",
+      "content": "So your problem is, that \u0027the automatic\u0027 makes it more convenient for people, with questionable morals, to rip off the author, not that \u0027the automatic\u0027 by itself would make it possible to rip off the author, what imo is the classical description for a crack.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "99916",
+      "timestamp": "2010-05-12T15:19:19+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e So your problem is, that \u0027the automatic\u0027 makes it more convenient for people, with questionable morals, to rip off the author, not that \u0027the automatic\u0027 by itself would make it possible to rip off the author, what imo is the classical description for a crack.\n\nHere you are wrong (again) I have no problems. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nAnd I presume that people ***without*** questionable morals wouldn\u0027t use a crack anyway.  \n\nGiven that questionable morals is a thin line, I see not much difference between something that:  \n\n* occasions\n* helps\n* assists\n* induces\n* allows\n\npeople to rip the Author from the money he asks for his work and/or  \n\n* supports\n* promotes\n* inspires\n\ncircumventing the specific nag screen.  \n\nJFYI:  \n[http://www.911cd.net...showtopic\u003d15431](http://www.911cd.net/forums//index.php?showtopic\u003d15431 \"External link\")  \n[http://www.911cd.net...o...\u003d15431\\\u0026st\u003d3](http://www.911cd.net/forums//index.php?showtopic\u003d15431\u0026st\u003d3 \"External link\")  \n\nI really cannot see any diffference between binary cracking a file to remove a nag screen and provide an automated programs that oh - so quickly - makes it disappear, apart from the fact that is, as said, also a bad implementation.  \n\nAnd again, as said, this is:  \n\n* NOT a problem\n* my personal view on the matter with NO practical consequence of any kind on this board\n\n\u003cbr /\u003e\n\nYou, like anyone else, are perfectly free to have a (wrong BTW ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)) different opinion on the same matter.  \n\n\u003cbr /\u003e\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "99952",
+      "timestamp": "2010-05-12T21:06:23+00:00",
+      "author": "MedEvil",
+      "content": "\u003e I really cannot see any diffference between binary cracking a file to remove a nag screen and provide an automated programs that oh - so quickly - makes it disappear, apart from the fact that is, as said, also a bad implementation.\nSo in your view, if i would sit right beside you and click the nag screen away fast, before it can annoy you, then i would be a crack too? ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nbtw. Implementation is all that stands between something being legal or illegal.  \nFresh from german news:   \nIf someone uses my WLAN illegaly for illegal stuff, then \\\u003e **I** \\\u003c comit a crime, if i have not set a personalized password. If i have, i don\u0027t.  \n\nThe exact same happens in both cases, yet are legaly very differently treated.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "99957",
+      "timestamp": "2010-05-12T22:51:30+00:00",
+      "author": "maanu",
+      "content": "ok its been almost 2 days since i REMOVED that damn version from the   \n1st post .   \n\ni dont know why a thread with a very good app , went into a argue-war.  \n\nyou guys are free to argue , but plz take this to a new thread ,with something like ,  \n\nAUTOMATIC BUTTON pushing script is a crack or not .  \n\nif it proves as CRACK ,come to Pakistan . charge me . and Hang me.   \n"
+    },
+    {
+      "id": "99964",
+      "timestamp": "2010-05-13T00:19:31+00:00",
+      "author": "MedEvil",
+      "content": "Thanks for the invitation, never been to Pakistan. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nedit: Can\u0027t split the topic, i don\u0027t have admin rights here.   \n"
+    },
+    {
+      "id": "99979",
+      "timestamp": "2010-05-13T06:52:24+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e i dont know why a thread with a very good app , went into a argue-war.\nSure, this is a far from perfect world, life is tough. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n\u003e edit: Can\u0027t split the topic, i don\u0027t have admin rights here.\n\n\u003cbr /\u003e\n\nWell, maybe you can use the duplicate thread ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif):  \n[http://www.boot-land...showtopic\u003d11344](http://www.boot-land.net/forums/index.php?showtopic\u003d11344 \"External link\")  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "99998",
+      "timestamp": "2010-05-13T11:26:32+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Well, maybe you can use the duplicate thread ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif):\nNah, that\u0027s to short. Not worth splitting! ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "100408",
+      "timestamp": "2010-05-18T08:46:44+00:00",
+      "author": "maanu",
+      "content": "**V3.2.2010.10:\nBug fixed: The process of recovering lost files will be terminated when bad track encountered.\nBug fixed: The software can not respond the Delete key stock when DiskGenius is open.**   \n"
+    },
+    {
+      "id": "99679",
+      "timestamp": "2010-05-10T07:39:22+00:00",
+      "author": "maanu",
+      "content": "now this is what i have been dreaming for last 6 months ,  \n\n\u003cbr /\u003e\n\nAN OFFICIAL ENGLISH DOS VERSION of the 3.2 series . and they just did it .  \n\ntoo bad , i read my mail too late ,that **Dgen** sent me about it (it was 2 weeks before) .  \n\nanyways following is the new web link to the tool ,  \n\n[http://dgisok.com/](http://dgisok.com/ \"External link\")   \n\n(click on download )  \n\nit is **shareware** now , but as far as i could see ,there is no time stamp and no feature restriction .  \n\nthe package includes the dos version too . although it is not in ready to use manner .  \nin case u guys need it , let me know .   \n\n(once it is installed, u can go to program files ,in its directory and u can use it portable by copying the files from there . )   \n\nby the way , it seems that the chinese version will remain FREE . ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \nBUT the good thing is , DOS english version is still freeware.   \nand thats what i needed BADLY . its dos version .  \n\n**edit :**   \n\nhere is the dos version (FREE DOS) . download the win version from the official link i mentioned above.   \n\ndos version of **3.3.0525**   \n\n[http://filebeam.com/...0964cf3830b7499](http://filebeam.com/f423d4af274c8eb040964cf3830b7499 \"External link\")  \n\n\u003cbr /\u003e\n\n**edit 2 :**   \n\nonly DOS version has a limitation of Copying or deleting files from the hdd. it can be overcome by registering the windows version . thanks to fuwi for reporting it ,\\\\  \n\nhere ,  \n\n[http://www.boot-land...mp;#entry100512](http://www.boot-land.net/forums/index.php?showtopic\u003d11345\u0026pid\u003d100512\u0026start\u003d20\u0026#entry100512 \"External link\")  \n\n**edit 3 :**   \n\ni noticed another FEATURE RESTRICTION .   \n\ni tried partition recovery option yesterday . diskgenius found my partitions , and it asked me to \" save partition table \" . when i tried to do it , it said to REGISTER diskgenius . ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \ni tested it in WINDOWS version only ,   \n\n**edit 4 :**   \n\nthe above LOST PARTITION RECOVERY restrictions is not included in **DOS** version .   \nupdated the dos version to **3.3.0525** . windows version can be downloaded from the main link i posted above . it is updated today . (as of 26th May 2010)  \n\ni ll be updating the restrictions shortly one by one of windows and Dos versions.   \n"
+    },
+    {
+      "id": "99682",
+      "timestamp": "2010-05-10T07:46:09+00:00",
+      "author": "Wonko the Sane",
+      "content": "Good news ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif) though I don\u0027t understand. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nThe DOS version is **unusable** ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif) AND Free?  \n\n:tongue:  \nWonko   \n"
+    },
+    {
+      "id": "99683",
+      "timestamp": "2010-05-10T07:52:07+00:00",
+      "author": "maanu",
+      "content": "\u003e Good news ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif) though I don\u0027t understand. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\u003e\n\u003e The DOS version is **unusable** ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif) AND Free?  \n\u003e\n\u003e ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\u003e Wonko\n\nwhen you will install the app , and go to its program directory , and open the DOS folder , you will know what i meant . :tongue:   \n\nDgen , for God knows WHY , did not release a .img file containing the DOS file of diskgenius . instead he copied all the files needed to make a dos floppy ( FREE DOS) as well as dos exe of the tool in DOS directory .   \n"
+    },
+    {
+      "id": "99738",
+      "timestamp": "2010-05-10T17:51:56+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Dgen , for God knows WHY , did not release a .img file containing the DOS file of diskgenius . instead he copied all the files needed to make a dos floppy ( FREE DOS) as well as dos exe of the tool in DOS directory .\nGood. ![:huh:](https://reboot.pro/public/style_emoticons/default/huh.png)  \n\nWhy don\u0027t you supply the info needed by the less experienced users to make a floppy image from those files?![:lol:](https://reboot.pro/public/style_emoticons/default/laugh.png)  \n\nIf the \"base\" is FreeDOS, there is no problem in getting a \"standard\" FreeDOS floppy image:  \n[http://www.fdos.org/bootdisks/](http://www.fdos.org/bootdisks/ \"External link\")  \nand add/replace the files with the ones in the download.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "99753",
+      "timestamp": "2010-05-10T19:18:42+00:00",
+      "author": "maanu",
+      "content": "it was in my mind . but i was in hurry .  \n\ni ll release a img file tonight . as well as a little autoit based loader (NOT a crack) to get rid of pressing \" register later \" every time the windows version is loaded .   \n"
+    },
+    {
+      "id": "99760",
+      "timestamp": "2010-05-10T21:40:16+00:00",
+      "author": "maanu",
+      "content": "updated the first post . with download link to both dos and win version .   \n"
+    },
+    {
+      "id": "99782",
+      "timestamp": "2010-05-11T06:43:23+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e it was in my mind . but i was in hurry .  \n\u003e\n\u003e i ll release a img file tonight . as well as a little autoit based loader (NOT a crack) to get rid of pressing \" register later \" every time the windows version is loaded .\nPersonally I find an autoit that presses automatically the reminder a crack ![:lol:](https://reboot.pro/public/style_emoticons/default/laugh.png), only **poorly implemented**. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nThe good news is that being not anymore**jaclaz** the Admin of the board, it is unlikely that you will be kicked out of it for this.  \n\nThe bad news is the feeling of sadness and sorrow you induced in him due to the evidently complete and utter futility of all the time he spent trying to explain how a software is property of it\u0027s Author and about the need to comply fully with it\u0027s license. ![:huh:](https://reboot.pro/public/style_emoticons/default/huh.png)  \n\nWonko   \n"
+    },
+    {
+      "id": "99786",
+      "timestamp": "2010-05-11T08:25:57+00:00",
+      "author": "maanu",
+      "content": "\u003e Personally I find an autoit that presses automatically the reminder a crack ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif), only **poorly implemented**. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\u003e\n\u003e The good news is that being not anymore**jaclaz** the Admin of the board, it is unlikely that you will be kicked out of it for this.  \n\u003e\n\u003e The bad news is the feeling of sadness and sorrow you induced in him due to the evidently complete and utter futility of all the time he spent trying to explain how a software is property of it\u0027s Author and about the need to comply fully with it\u0027s license. ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)  \n\u003e\n\u003e Wonko\n\nit was not my intention .   \n\nanyways i have edited my 1st post. and u could use nice words instead of kicking around .   \n"
+    },
+    {
+      "id": "99825",
+      "timestamp": "2010-05-11T16:42:10+00:00",
+      "author": "agni",
+      "content": "Thanks a lot Maanu  \n\nI am using this code to load the DGDOS.IMG  \n\n```\ntitle Boot Disk Genius\n\nfind --set-root --ignore-floppies /DGDOS.IMG\n\nmap /DGDOS.IMG \u0026#40;fd0\u0026#41; \n\nmap --hook \n\nchainloader \u0026#40;fd0\u0026#41;+1 \n\nrootnoverify \u0026#40;fd0\u0026#41; \n\nmap --floppies\u003d1\n```\n\n\u003cbr /\u003e\n\nCan you please tell us how you created the DGDOS.IMG file?   \n"
+    },
+    {
+      "id": "99837",
+      "timestamp": "2010-05-11T19:01:42+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Personally I find an autoit that presses automatically the reminder a crack ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif),\nInteresting philosophical question. Is a program that presses a button for me a crack?  \nIf so, what about a script or a macro, i use to automate a task?  \nDoes a programer have the right, to force me, to manually press the buttons of his program?  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "99840",
+      "timestamp": "2010-05-11T19:10:18+00:00",
+      "author": "maanu",
+      "content": "\u003e Interesting philosophical question. Is a program that presses a button for me a crack?  \n\u003e If so, what about a script or a macro, i use to automate a task?  \n\u003e Does a programer have the right, to force me, to manually press the buttons of his program?  \n\u003e\n\u003e ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\ni had this in mind . but i just did not want to argue anymore . thats why i removed the link .   \n\nhe (with all due respect) is overly obsessed .   \n"
+    },
+    {
+      "id": "99841",
+      "timestamp": "2010-05-11T19:14:15+00:00",
+      "author": "maanu",
+      "content": "\u003e Thanks a lot Maanu  \n\u003e\n\u003e I am using this code to load the DGDOS.IMG  \n\u003e\n\u003e ```\n\u003e title Boot Disk Genius\n\u003e\n\u003e find --set-root --ignore-floppies /DGDOS.IMG\n\u003e\n\u003e map /DGDOS.IMG \u0026#40;fd0\u0026#41; \n\u003e\n\u003e map --hook \n\u003e\n\u003e chainloader \u0026#40;fd0\u0026#41;+1 \n\u003e\n\u003e rootnoverify \u0026#40;fd0\u0026#41; \n\u003e\n\u003e map --floppies\u003d1\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e Can you please tell us how you created the DGDOS.IMG file?\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\ni did not create it . it is official img file from their old chinese version . i just replaced the chinese exe with english exe (the one in this release).  \n\nby the way the code SHOULD be ,  \n\ntitle Boot Disk Genius  \nfind --set-root --ignore-floppies /DGDOS.IMG  \nmap **--mem** /DGDOS.IMG (fd0)   \nmap --hook   \nchainloader (fd0)+1   \nrootnoverify (fd0)   \nmap --floppies\u003d1   \n"
+    },
+    {
+      "id": "99872",
+      "timestamp": "2010-05-12T08:38:13+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Does a programer have the right, to force me, to manually press the buttons of his program?\nYes, unless you ***pay*** for his work, and the button is removed by the registration process.  \n\nQuick reminder:  \nsomeone works, using his time and knowledge to produce a program/app/whatever, then he decides:  \n\n* to release the product of his work as FREE \\\u003c-everything is OK  \n  OR:\n* to release the product as Shareware/Commercial \\\u003c- here the problems begin\n\n\u003cbr /\u003e\n\nIF #2. he either:  \n\n* releases a FULLY FUNCTIONAL version in order to allow you to try it for a reasonable amount of time before paying him for his work, putting a small nag screen to remind you that you really should show your appreciation for the program if you intend to continue using it beyound the trial period  \n  OR:\n* releases a CRIPPLED, only partially functional, TRIAL version, possibly overlayed by a number of useless protection code to prevent you from using it beyond the intended trial period or to use all it\u0027s features\n\n\u003cbr /\u003e\n\nThis program appears like being of type #1. above.  \n\nIt doesn\u0027t seem to me that difficult to understand how by providing ***any*** means of bypassing the will of the Author you contribute to induce programmers to choose #2. which means even less freedom and \"worse\", more bloated programs.  \n\nLet\u0027s assume that this particular program is a very good one, and has a particular feature that no other similar program has or has it implemented in a particularly \"easy\" or \"convenient\" way.  \n\n* If program is released/coded as #1, the one time you will need it in an emergency, you will be able to use it freely and for free, and the small nag won\u0027t be a problem.\n* If program is released/coded as #2 , the one time you will need it in an emergency, the feature you need WON\u0027T be available.\n\n\u003cbr /\u003e\n\nIf you use it for more than a \"casual\" or \"trial\" use, if the program is correctly priced, and IMNSHO this particular one at US$49.95 is not very highly priced, if it delivers everything it promises, you should contribute to the programmer\u0027s wealthness by paying for his work.  \n\nIn other words, the more people will use tricks to workaround Authors\u0027 will and avoid paying the fair price he asks for his work, the more we all will have more crippled, worse programs.  \n\nI perfectly know it\u0027s all wasted time anyway to try to explain this concept to you, I guess it\u0027s the ***n*** th time I try to , with NO apparent result . ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n@maanu  \nJust in case, you are perfectly free to think I am obsessed, but I won\u0027t stop expressing my opinions on this and other subjects, and I feel free, within the limits of the forum Rules, to adopt whatever language and approach I see fit.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "99890",
+      "timestamp": "2010-05-12T11:36:16+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Yes, unless you ***pay*** for his work, and the button is removed by the registration process.  \n\u003e\n\u003e It doesn\u0027t seem to me that difficult to understand how by providing ***any*** means of bypassing the will of the Author you contribute to induce programmers to choose #2. which means even less freedom and \"worse\", more bloated programs.  \n\u003e\n\u003e If you use it for more than a \"casual\" or \"trial\" use, if the program is correctly priced, and IMNSHO this particular one at US$49.95 is not very highly priced, if it delivers everything it promises, you should contribute to the programmer\u0027s wealthness by paying for his work.  \n\u003e\n\u003e In other words, the more people will use tricks to workaround Authors\u0027 will and avoid paying the fair price he asks for his work, the more we all will have more crippled, worse programs.\nI start to agree with maanu.  \nThere was nowhere in any post implied, that anyone would use the program for longer than the author allows for, yet you see everyone cheating the author. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nAs for the authors will. **Every** button is meant by he author to be pushed by the user. Therefore using any script or macro or tool like ghostmouse to click buttons is violating the authors will, even if you\u0027ve paid for the software.  \n\nFor instance paragliders HwPnP clicks automaticly away driver installation dialogs. If it would have been the authors will, that the installation can proceed without bugging the user, he would have provided for a switch that disables those dialogs.  \n\nOr how about the authors will of Malware? They don\u0027t wont you to remove their software. So as law-abiding citizen should we keep it?  \n\nOr applies complying to authors will just with nag screens in your opinion?  \n\nHow about downloading and installing a software upon need into a PE? The software will always start the grace period by 0. No matter how often you\u0027ve already used it. This would not be possible on a real XP, unless the registry is thoroughly cleaned.  \nIs resetting or cleaning the registry allowed? It violates authors will to keep a constant marker on your system.   \n\n\u003cbr /\u003e\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "99892",
+      "timestamp": "2010-05-12T12:03:07+00:00",
+      "author": "Wonko the Sane",
+      "content": "As already said:  \n\u003e I perfectly know it\u0027s all wasted time anyway to try to explain this concept to you, I guess it\u0027s the ***n*** th time I try to , with NO apparent result . ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nThe horse has already been beaten to death. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nI do know well your rhetorical tricks (in this case that of transposing the actual issue into a generalized concept that bears no valid link to the specific case).  \n\nHowever accusing me of making an enthymeme:  \n[http://en.wikipedia.org/wiki/Enthymeme](http://en.wikipedia.org/wiki/Enthymeme \"External link\")  \n\n\u003e There was nowhere in any post implied, that anyone would use the program for longer than the author allows for\nis a nice twist. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nIn case you missed it, the topic was that of a \"good\" program Author, which was kind enough to release his apps with a \"grace\" period of FULL functionality, with a small reminder that if you use his software you should pay for it, nothing connected to malware, instaaling drivers or whatever else.  \n\nAnd yes, most people, given the means to save money without any consequence, nor nag, will attempt to do it.  \n\n\u003e I start to agree with maanu.\n\nI am happy for you. ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)  \n\n**BUT** :  \n[http://en.wikipedia....9;t_give_a_damn](http://en.wikipedia.org/wiki/Frankly,_my_dear,_I_don%27t_give_a_damn \"External link\")  \n\n\u003cbr /\u003e\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "99898",
+      "timestamp": "2010-05-12T13:25:56+00:00",
+      "author": "MedEvil",
+      "content": "\u003e I do know well your rhetorical tricks (in this case that of transposing the actual issue into a generalized concept that bears no valid link to the specific case).\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif) i had the exact opposite problem with your post above. You\u0027re trying to circumvent the question of the legality of the automatic push of a button, by declaring it the same problem as ripping off the author and thereby making it illegal.   \n\nI don\u0027t know if i\u0027m the exception or not, but i don\u0027t spend time finding freeware replacements for software that i like. I spend time finding the best suited software for my needs and don\u0027t care about free-, share-, or buyware.  \nBut even though i pay the \u0027author\u0027, that does not mean, that i don\u0027t hack the software.   \nMost commonly i fix labels of buttons, remove - or add buttons to the toolbar or just plain reorder them. Another favorite of mine is, to fix a program so that the default options are my options. That prevents troubles with the program forgetting my prefered settings.  \nSo while not ripping the author off, i definitly do something against his will.  \n\nSo you see going against authors will and ripping him off, are two seperate things which can happen together, but do not have to.  \n\nWould probably be interesting to know what the individual authors prefer, getting paid for the software and me hacking it, or me not buying and using it.   \n\n\u003e In case you missed it, the topic was that of a \"good\" program Author, which was kind enough to release his apps with a \"grace\" period of FULL functionality, with a small reminder that if you use his software you should pay for it, nothing connected to malware, instaaling drivers or whatever else.\nAren\u0027t you a little old to still classify things as good and bad? There is not good and no bad. Every soldier killing another soldier on the battlefield is always regarded a hero by his peoples and a villian by the opposite peoples.  \n\nSoftware is eighter useful **to you** or not.   \nYour personal opinion about a piece of software, should however not influence your opinion on the subject in general.  \nMaking up different rules for identical things, upon personal preferences, has always been proven to be a bad idea.   \nSee for instance treating people differently based on gender, skin color, religion, ......  \n\n\u003e And yes, most people, given the means to save money without any consequence, nor nag, will attempt to do it.\nNow i\u0027m confused. Do you believe that people will use the program as freebee once the nag screen is removed or do you believe that they will use the program as freebee regardless.   \nCause if the later and it sure sounds that way, then i understand even less, why you\u0027re trying to connect the automatic pushing of a button to the illegal use of the program.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "99904",
+      "timestamp": "2010-05-12T13:59:19+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Now i\u0027m confused. Do you believe that people will use the program as freebee once the nag screen is removed or do you believe that they will use the program as freebee regardless.   \n\u003e Cause if the later and it sure sounds that way, then i understand even less, why you\u0027re trying to connect the automatic pushing of a button to the illegal use of the program.\n\nLet\u0027s say that, generally speaking, people is forgetful ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif), and that\u0027s exactly the reason why a reminder is placed by the Author.  \n\nSpecifically, removing the reminder helps forgetful people to continue using the program indefinitely, without their conscience (if any) nagging them, which translates in ripping the Author (fair) request for a price for his/her work in most cases.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "99910",
+      "timestamp": "2010-05-12T14:40:38+00:00",
+      "author": "MedEvil",
+      "content": "So your problem is, that \u0027the automatic\u0027 makes it more convenient for people, with questionable morals, to rip off the author, not that \u0027the automatic\u0027 by itself would make it possible to rip off the author, what imo is the classical description for a crack.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "99916",
+      "timestamp": "2010-05-12T15:19:19+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e So your problem is, that \u0027the automatic\u0027 makes it more convenient for people, with questionable morals, to rip off the author, not that \u0027the automatic\u0027 by itself would make it possible to rip off the author, what imo is the classical description for a crack.\n\nHere you are wrong (again) I have no problems. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nAnd I presume that people ***without*** questionable morals wouldn\u0027t use a crack anyway.  \n\nGiven that questionable morals is a thin line, I see not much difference between something that:  \n\n* occasions\n* helps\n* assists\n* induces\n* allows\n\npeople to rip the Author from the money he asks for his work and/or  \n\n* supports\n* promotes\n* inspires\n\ncircumventing the specific nag screen.  \n\nJFYI:  \n[http://www.911cd.net...showtopic\u003d15431](http://www.911cd.net/forums//index.php?showtopic\u003d15431 \"External link\")  \n[http://www.911cd.net...o...\u003d15431\\\u0026st\u003d3](http://www.911cd.net/forums//index.php?showtopic\u003d15431\u0026st\u003d3 \"External link\")  \n\nI really cannot see any diffference between binary cracking a file to remove a nag screen and provide an automated programs that oh - so quickly - makes it disappear, apart from the fact that is, as said, also a bad implementation.  \n\nAnd again, as said, this is:  \n\n* NOT a problem\n* my personal view on the matter with NO practical consequence of any kind on this board\n\n\u003cbr /\u003e\n\nYou, like anyone else, are perfectly free to have a (wrong BTW ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)) different opinion on the same matter.  \n\n\u003cbr /\u003e\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "99952",
+      "timestamp": "2010-05-12T21:06:23+00:00",
+      "author": "MedEvil",
+      "content": "\u003e I really cannot see any diffference between binary cracking a file to remove a nag screen and provide an automated programs that oh - so quickly - makes it disappear, apart from the fact that is, as said, also a bad implementation.\nSo in your view, if i would sit right beside you and click the nag screen away fast, before it can annoy you, then i would be a crack too? ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nbtw. Implementation is all that stands between something being legal or illegal.  \nFresh from german news:   \nIf someone uses my WLAN illegaly for illegal stuff, then \\\u003e **I** \\\u003c comit a crime, if i have not set a personalized password. If i have, i don\u0027t.  \n\nThe exact same happens in both cases, yet are legaly very differently treated.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "99957",
+      "timestamp": "2010-05-12T22:51:30+00:00",
+      "author": "maanu",
+      "content": "ok its been almost 2 days since i REMOVED that damn version from the   \n1st post .   \n\ni dont know why a thread with a very good app , went into a argue-war.  \n\nyou guys are free to argue , but plz take this to a new thread ,with something like ,  \n\nAUTOMATIC BUTTON pushing script is a crack or not .  \n\nif it proves as CRACK ,come to Pakistan . charge me . and Hang me.   \n"
+    },
+    {
+      "id": "99964",
+      "timestamp": "2010-05-13T00:19:31+00:00",
+      "author": "MedEvil",
+      "content": "Thanks for the invitation, never been to Pakistan. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nedit: Can\u0027t split the topic, i don\u0027t have admin rights here.   \n"
+    },
+    {
+      "id": "99979",
+      "timestamp": "2010-05-13T06:52:24+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e i dont know why a thread with a very good app , went into a argue-war.\nSure, this is a far from perfect world, life is tough. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n\u003e edit: Can\u0027t split the topic, i don\u0027t have admin rights here.\n\n\u003cbr /\u003e\n\nWell, maybe you can use the duplicate thread ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif):  \n[http://www.boot-land...showtopic\u003d11344](http://www.boot-land.net/forums/index.php?showtopic\u003d11344 \"External link\")  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "99998",
+      "timestamp": "2010-05-13T11:26:32+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Well, maybe you can use the duplicate thread ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif):\nNah, that\u0027s to short. Not worth splitting! ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "100408",
+      "timestamp": "2010-05-18T08:46:44+00:00",
+      "author": "maanu",
+      "content": "**V3.2.2010.10:\nBug fixed: The process of recovering lost files will be terminated when bad track encountered.\nBug fixed: The software can not respond the Delete key stock when DiskGenius is open.**   \n"
+    },
+    {
+      "id": "100486",
+      "timestamp": "2010-05-19T08:11:43+00:00",
+      "author": "fuwi",
+      "content": "@maanu AN OFFICIAL ENGLISH DOS VERSION of the 3.2 series . and they just did it .  \n\u003e\n\u003e it is **shareware** now , but as far as i could see ,there is no time stamp and no feature restriction .  \n\u003e\n\u003e BUT the good thing is , DOS english version is still freeware.\nUnfortunately there are restrictions in the DOS-version. ![:lol:](https://reboot.pro/public/style_emoticons/default/laugh.png)   \nIn the \"Files\" menu of a partition, all the context-menu commands like \"Copy to\", \"Delete\" etc are disabled. ![:lol:](https://reboot.pro/public/style_emoticons/default/laugh.png)   \n\nThis is the message box:  \n![Posted Image](http://www.fuwi.ethz.ch/images/dg-dos2.jpg)  \n\nfuwi   \n"
+    },
+    {
+      "id": "100512",
+      "timestamp": "2010-05-19T11:27:13+00:00",
+      "author": "maanu",
+      "content": "\u003e @maanu  \n\u003e Unfortunately there are restrictions in the DOS-version. ![:lol:](https://reboot.pro/public/style_emoticons/default/laugh.png)   \n\u003e In the \"Files\" menu of a partition, all the context-menu commands like \"Copy to\", \"Delete\" etc are disabled. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\u003e\n\u003e This is the message box:  \n\u003e ![Posted Image](http://www.fuwi.ethz.ch/images/dg-dos2.jpg)  \n\u003e\n\u003e fuwi\n\nit is my mistake . sorry . i should have tested the dos version\u0027s complete options .  \nbut i had an impression that since it stated \" professional \" in the name , it might have been the full version , UNLIKE windows version which stated as UNREGISTERED .   \nthey have taken care of in the new version of dos. 3.2.2010.10  \n\nnow it states it as UNREGISTERED version .  \n\n[http://filebeam.com/...615164444a3fb4e](http://filebeam.com/cc50d5082b263a5c0615164444a3fb4e \"External link\")  \n\nanyways , in windows version , this copying feature is NOT disable. not any other option that could test . everything is working in windows version .   \n\none thing that i could not understand is , HOW registering the windows version will effect the DOS version ? since the dos version is saying to register it THROUGH windows version ??????   \n"
+    },
+    {
+      "id": "100529",
+      "timestamp": "2010-05-19T12:43:18+00:00",
+      "author": "fuwi",
+      "content": "@maanu  \n\nIn the windows version, there ist an option \"Reboot to DiskGenius DOS version\":  \n\n![Posted Image](http://www.fuwi.ethz.ch/images/dg-dos.jpg)  \n\nProbably it works only via this option (but not applicable in a PE environment) ![:lol:](https://reboot.pro/public/style_emoticons/default/laugh.png)   \nfuwi   \n"
+    },
+    {
+      "id": "100533",
+      "timestamp": "2010-05-19T12:56:27+00:00",
+      "author": "maanu",
+      "content": "\u003e @maanu  \n\u003e\n\u003e In the windows version, there ist an option \"Reboot to DiskGenius DOS version\":  \n\u003e\n\u003e ![Posted Image](http://www.fuwi.ethz.ch/images/dg-dos.jpg)  \n\u003e\n\u003e Probably it works only via this option (but not applicable in a PE environment) ![:lol:](https://reboot.pro/public/style_emoticons/default/laugh.png)   \n\u003e fuwi\n\nyes may be it is possible . it is such a pity that they made dos version with limitations .   \nwhen i clicked on that option , an error occurred that it cant copy dos files because software is not registered .   \n"
+    },
+    {
+      "id": "100534",
+      "timestamp": "2010-05-19T12:56:29+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e one thing that i could not understand is , HOW registering the windows version will effect the DOS version ? since the dos version is saying to register it THROUGH windows version ??????\nIt\u0027s also possible that the \"old\" way is used.  \nThat\u0027s usually called \"binary patching\" ![:lol:](https://reboot.pro/public/style_emoticons/default/laugh.png), it has been done for years on COMMERCIAL software.  \nYou get a crippled DOS executable.  \nWhen registering the Windows version the DOS executable is patched (or replaced alltogether) by an uncrippled version.  \n\n\u003cbr /\u003e\n\n\u003e yes may be it is possible . it is such a pity that they made dos version with limitations .\nWell, then ALL COMMERCIAL software/not fully functional SHAREWARE around it\u0027s a pity. :wink:  \n\n\u003cbr /\u003e\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "100834",
+      "timestamp": "2010-05-24T09:43:28+00:00",
+      "author": "maanu",
+      "content": "another **critical** feature restriction was found in WINDOWS version , see first post.   \n"
+    },
+    {
+      "id": "100948",
+      "timestamp": "2010-05-26T10:48:35+00:00",
+      "author": "maanu",
+      "content": "check first post , added some points and updated dos version .   \n"
+    },
+    {
+      "id": "102774",
+      "timestamp": "2010-06-19T07:47:57+00:00",
+      "author": "sebus",
+      "content": "There was a x64 version 3.2.2010.6 freely available that was Chinese language only - DGen3220106_x64.rar (just Google for it)  \n\nIt seems that copying just the LangEng.dll from the current shareware makes that version work in English  \n\nThere is no menu displayed, but the shortcuts seems to work  \n\nsebus   \n"
+    },
+    {
+      "id": "102805",
+      "timestamp": "2010-06-19T13:46:28+00:00",
+      "author": "maanu",
+      "content": "\u003e There was a x64 version 3.2.2010.6 freely available that was Chinese language only - DGen3220106_x64.rar (just Google for it)  \n\u003e\n\u003e It seems that copying just the LangEng.dll from the current shareware makes that version work in English  \n\u003e\n\u003e There is no menu displayed, but the shortcuts seems to work  \n\u003e\n\u003e sebus\n\ntry right clicking on any available menu , if it will not crash , i \u0027d be amazed . ![:thumbup:](https://reboot.pro/public/style_emoticons/default/thumbup.gif) \\* that is when you will change around the .dll file with any other version .  \n\nAFAIK , the latest available disk genius works OK on 64bit OS\u0027s..   \n"
+    },
+    {
+      "id": "102829",
+      "timestamp": "2010-06-19T17:11:37+00:00",
+      "author": "sebus",
+      "content": "Clicking on anything works fine, few little operations I done also work.  \n\nI have no need to test it any more (maybe somebody will)  \n\nAnd the replaced dll is only (I expect) GUI language  \n\nAnd the dll does NOT replace anything, it is ADDITION (which is auto picked up by the program, English interface is displayed with no need for any selection!)  \n\nLatest version like in what no (the shareware one, or the last with English GUI?)  \n\nsebus   \n"
+    },
+    {
+      "id": "102848",
+      "timestamp": "2010-06-19T21:35:13+00:00",
+      "author": "maanu",
+      "content": "\u003e Clicking on anything works fine, few little operations I done also work.  \n\u003e\n\u003e I have no need to test it any more (maybe somebody will)  \n\u003e\n\u003e And the replaced dll is only (I expect) GUI language  \n\u003e\n\u003e And the dll does NOT replace anything, it is ADDITION (which is auto picked up by the program, English interface is displayed with no need for any selection!)  \n\u003e\n\u003e Latest version like in what no (the shareware one, or the last with English GUI?)  \n\u003e\n\u003e sebus\n\nahh , so this check is only for 32bit versions .   \n\nin 32 bit versions , if we will try to swap around langeng or langchs.dll file with each other on different versions , it will load up fine but software wont work .  \n\nby latest software i meant , what english version is on their site now. may be it is V3.3.0525.0:   \n"
+    },
+    {
+      "id": "102898",
+      "timestamp": "2010-06-20T08:01:15+00:00",
+      "author": "sebus",
+      "content": "\u003e by latest software i meant , what english version is on their site now. may be it is V3.3.0525.0:\n\nIn fact latest version on their website [http://www.diskgenius.cn/](http://www.diskgenius.cn/ \"External link\") is 2010.3.18更新 V3.2.2010.6  \n\nsebus   \n"
+    },
+    {
+      "id": "102901",
+      "timestamp": "2010-06-20T08:04:06+00:00",
+      "author": "maanu",
+      "content": "\u003e In fact latest version on their website [http://www.diskgenius.cn/](http://www.diskgenius.cn/ \"External link\") is 2010.3.18更新 V3.2.2010.6  \n\u003e\n\u003e sebus\n\nyou did not bother to even read my first post or did you ?  \n\nhere is the OFFICIAL ENGLISH VERSION LINK   \n\n[http://www.dgisok.com/](http://www.dgisok.com/ \"External link\")   \n"
+    },
+    {
+      "id": "102922",
+      "timestamp": "2010-06-20T12:44:59+00:00",
+      "author": "sebus",
+      "content": "Of course I did read it, but I am not talking about English version, am I?  \n\nV3.2.2010.6 is still FULL version (and not shareware!)  \n\nsebus   \n"
+    },
+    {
+      "id": "102925",
+      "timestamp": "2010-06-20T13:27:20+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e V3.2.2010.6 is still FULL version (and not shareware!)\nAnd why not V3.2.2010.**7** ? ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)  \n\n![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)  \nWonko   \n"
+    },
+    {
+      "id": "102936",
+      "timestamp": "2010-06-20T15:01:50+00:00",
+      "author": "sebus",
+      "content": "\u003e And why not V3.2.2010.**7** ? ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)\n\nI believe that 7 was only for x86 \\\u0026 6 was for x64 (but I might be ofcourse wrong - I could never find DGen322010**7** _x64.rar)  \n\nsebus   \n"
+    },
+    {
+      "id": "105260",
+      "timestamp": "2010-07-23T21:57:01+00:00",
+      "author": "Jotnar",
+      "content": "You can get full functionality for free until the end of 2010.  \n\u003e the free code works until Dec. 30, 2010\nSee here: [http://www.diskgeniu...e-software.html](http://www.diskgenius.net/partition-restore-software.html \"External link\")  \n\nIt looks like it dumps the license info into an ini file for those who were wondering (DOS/Windows).  \n\nCheers   \n"
+    }
+  ]
+}

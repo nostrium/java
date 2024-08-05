@@ -1,0 +1,46 @@
+{
+  "id": "13072",
+  "title": "Tricking BIOS how to boot to USB HDD",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "114099",
+      "timestamp": "2010-11-18T06:26:04+00:00",
+      "author": "mactepu",
+      "content": "Hi guys...I need help...I dont know if I\u0027m posting in the right place... :smile:  \n\nI have an old laptop Toshiba Satellite A60-S166 with ACPI BIOS (recently I have updated to latest version 1.90 provided in toshiba\u0027s site) it only have four boot options...HDD, CDROM, FDD (USB-FDD Legacy Emulation), and LAN (PXE)...it does not have option to boot from USB-HDD or USB-ZIP  \n\nRecently it cannot detect internal 30GB HDD anymore, and I think the internal HDD has broken and I have Seagate GoFlex 500GB USB-HDD...I want to be able to instal OS in my USB-HDD and boot from it instead of using LiveCD...I have ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif) around but cannot find solver to my problem...My questions are:  \n\n1. Is it possible to trick BIOS so it will see my USB-HDD as USB FDD and chainloader to primary OS? If so how can I do so? Step by step please :wink:  \n2. Or should I use or...is there any PATA-\\\u003eUSB connector and connect my USB-HDD directly to mainboard? Will it be possible?  \n\nthanks in advanced for boot masters in here ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif)   \n"
+    },
+    {
+      "id": "114105",
+      "timestamp": "2010-11-18T08:29:42+00:00",
+      "author": "Icecube",
+      "content": "You cqn use PLoP bootloader (BIOS extender which adds USB-HDD support):  \n[http://www.plop.at/e...r.html#features](http://www.plop.at/en/bootmanager.html#features \"External link\")   \n"
+    },
+    {
+      "id": "114125",
+      "timestamp": "2010-11-18T15:31:23+00:00",
+      "author": "mactepu",
+      "content": "\u003e You cqn use PLoP bootloader (BIOS extender which adds USB-HDD support):  \n\u003e [http://www.plop.at/e...r.html#features](http://www.plop.at/en/bootmanager.html#features \"External link\")\nthx icecube for your reply...but i dont have any OS on my USB-HDD, i only use LiveCD for now to access USB-HDD...how can i install or could you please guide me...i appreciate your help ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif)   \n"
+    },
+    {
+      "id": "114127",
+      "timestamp": "2010-11-18T15:50:58+00:00",
+      "author": "Icecube",
+      "content": "Read the whole page at [http://www.plop.at/en/bootmanager.html](http://www.plop.at/en/bootmanager.html \"External link\") (table of contents in the beginning).  \n\nYou can install PLoP on your internal hard drive (MBR).  \n\nOr you don\u0027t even need to install it: boot it from the Windows boot loader, boot it from Syslinux, grub4dos, ..., boot from CD, ...  \n[http://www.plop.at/e....html#noinstall](http://www.plop.at/en/bootmanager.html#noinstall \"External link\")  \n\nYou can even install it in your network card rom (you will loose the ability to boot from the network (PXE). But this can be a bit more dangerous to do:  \n[http://www.plop.at/e...ger.html#plprom](http://www.plop.at/en/bootmanager.html#plprom \"External link\")  \n\nChoice enough ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif)   \n\nIn your case, booting from CD, would probably the easiest way. Your laptop probably doesn\u0027t have a floppy disk reader, I suppose.   \n"
+    },
+    {
+      "id": "114130",
+      "timestamp": "2010-11-18T16:34:52+00:00",
+      "author": "mactepu",
+      "content": "\u003e Read the whole page at [http://www.plop.at/en/bootmanager.html](http://www.plop.at/en/bootmanager.html \"External link\") (table of contents in the beginning).  \n\u003e\n\u003e You can install PLoP on your internal hard drive (MBR).  \n\u003e\n\u003e Or you don\u0027t even need to install it: boot it from the Windows boot loader, boot it from Syslinux, grub4dos, ..., boot from CD, ...  \n\u003e [http://www.plop.at/e....html#noinstall](http://www.plop.at/en/bootmanager.html#noinstall \"External link\")  \n\u003e\n\u003e You can even install it in your network card rom (you will loose the ability to boot from the network (PXE). But this can be a bit more dangerous to do:  \n\u003e [http://www.plop.at/e...ger.html#plprom](http://www.plop.at/en/bootmanager.html#plprom \"External link\")  \n\u003e\n\u003e Choice enough :wink:   \n\u003e\n\u003e In your case, booting from CD, would probably the easiest way. Your laptop probably doesn\u0027t have a floppy disk reader, I suppose.\ni\u0027ve read it all...bios cant detect internal hard drive, dont have fdd reader, my bios is not ami or award so i cant install it on rom either, its acpi...so i will choose the booting from cd option...![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif)   \n"
+    },
+    {
+      "id": "114172",
+      "timestamp": "2010-11-19T05:18:51+00:00",
+      "author": "mactepu",
+      "content": "\u003e i\u0027ve read it all...bios cant detect internal hard drive, dont have fdd reader, my bios is not ami or award so i cant install it on rom either, its acpi...so i will choose the booting from cd option...:smile:\ncorrection...i still need to make BIOS detecting my USB-HDD...help ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif) :wink: :wink:   \n"
+    }
+  ]
+}

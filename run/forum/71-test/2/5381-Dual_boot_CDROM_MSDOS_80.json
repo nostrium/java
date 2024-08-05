@@ -1,0 +1,16 @@
+{
+  "id": "5381",
+  "title": "Dual boot CD-ROM \u0026 MS-DOS 8.0",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "41373",
+      "timestamp": "2008-08-06T07:18:29+00:00",
+      "author": "0ffer",
+      "content": "From this floppy you can boot CD (for old BIOS only) on computers that cannot use a bootable CD-ROM or by press and hold down CTRL booting to DOS prompt. No mentioned in Old forum [Boot cdroms from a floppy](http://z3.invisionfree.com/Boot_Land/index.php?act\u003dST\u0026f\u003d12\u0026t\u003d40 \"External link\") file BOOTSECT.cdr renamed to boot.cdr \\\u0026 start by modified boot sector from Ranish partition manager.Working with virtual floppy \"vfloppy.exe\". [Dual boot](http://www.multiboot.ru/files.htm \"External link\")   \n"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "11700",
+  "title": "PLoP (plpbt.bin) supports passing arguments now",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "102372",
+      "timestamp": "2010-06-14T21:40:03+00:00",
+      "author": "Icecube",
+      "content": "PLoP (plpbt.bin) supports passing arguments now.  \n\u003e Mon 14/Jun/2010  \n\u003e\n\u003e I added a new feature to the plpbt.bin 5.0.11-test2 version. Icecube had the idea and now you can set a few parameters with the Linux Kernel Command Line. Use it with \"append\" in lilo, syslinux and grub.  \n\u003e\n\u003e Parameters:  \n\u003e **hiddenusb** is the short version of \"stm\u003dhidden cnt\u003don cntval\u003d1 dbt\u003dusb\"  \n\u003e **usb1\u003d1, usb1\u003d2, vm\u003dtext, fnt\u003dbios** see plpcfgbt  \n\u003e others currently not supported.\n[http://www.plop.at/e...mngrusblog.html](http://www.plop.at/en/bootmngrusblog.html \"External link\")   \n"
+    },
+    {
+      "id": "102390",
+      "timestamp": "2010-06-15T06:58:30+00:00",
+      "author": "maanu",
+      "content": "that looks like a nice feature that Elmar put in with your suggestion , but i am wondering , what will be the real life usage of it and in what cases ?   \n"
+    },
+    {
+      "id": "102392",
+      "timestamp": "2010-06-15T07:17:20+00:00",
+      "author": "Icecube",
+      "content": "\u003e What will be the real life usage of it and in what cases ?\nIt is useful when you want to run plpbt.bin from another bootloader (Syslinux, Grub4dos, Grub, Grub2, ...) and you need a specific PLoP setting for some PCs (and you don\u0027t want to use plpcfgbt)  \n\nFor example, the graphical interface doesn\u0027t work on one of my PCs (red lines on my screen).  \n\nsyslinux.cfg  \n\n```\nUI menu.c32\n\n\n\nLABEL plop\n\nMENU LABEL PLoP\n\nLINUX plpbt.bin\n\n\n\nLABEL ploptextmode\n\nMENU LABEL PLoP \u0026#40;text mode\u0026#41;\n\nLINUX plpbt.bin\n\nAPPEND vm\u003dtext\n```\n\nWith this config file, I can choose to boot PLoP with or without the graphical mode, while still using one plpbt.bin file.  \n\nYou can use the same principle when you have PCs where PLoP only works when you set the USB1 setting and others where you can use the USB2 setting.   \n"
+    },
+    {
+      "id": "102395",
+      "timestamp": "2010-06-15T07:37:44+00:00",
+      "author": "maanu",
+      "content": "ahh ok , nice . so i suppose the same with some minor changes can also be booted from grub4dos . ?  \n\nalso , what \u0027d be the command , where it SILENTLY selects the first available usb AUTOMATICALLY and boot it .   \n\nexample ,  \n\nmy usb is 1.1 ,   \ni booted plpbt from grub4dos  \nit SHOULD not popup the menu instead it will boot the first available usb automatically ?   \n"
+    },
+    {
+      "id": "102396",
+      "timestamp": "2010-06-15T07:44:52+00:00",
+      "author": "Icecube",
+      "content": "```\ntitle Boot PLoP silently with USB1.1\n\nkernel /plpbt.bin hiddenusb usb1\u003d1\n```\n\n\u003cbr /\u003e\n\n"
+    }
+  ]
+}

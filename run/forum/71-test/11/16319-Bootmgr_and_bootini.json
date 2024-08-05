@@ -1,0 +1,16 @@
+{
+  "id": "16319",
+  "title": "Bootmgr and boot.ini",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "147974",
+      "timestamp": "2012-02-09T20:28:58+00:00",
+      "author": "0ffer",
+      "content": "Bootmgr can read both boot configuration files: bcd and boot.ini  \nUnlike ntldr bootmgr parses only 3 strings from \\[operating systems\\] section  \nBootmgr can boot: ntldr, setupldr.bin, windiag, partition boot sector and MBR with boot.ini  \n\nDual boot Windows 7 and Windows XP with bootmgr boot.ini ntldr and ntdetect in root directory 1st primary partition  \n\n```\n[boot loader]\n\ntimeout\u003d0\n\ndefault\u003dmulti(0)disk(0)rdisk(0)partition(2)\\WINDOWS\n\n[operating systems]\n\nmulti(0)disk(0)rdisk(0)partition(2)\\WINDOWS\u003d\"Microsoft Windows XP Professional\" /noexecute\u003doptin /fastdetect\n\nc:\\ntldr\u003d\"Microsoft Windows XP Professional\"\n\n```\n\n\u003cbr /\u003e\n\nboot.ini for GRUB4DOS  \n\n```\n[boot loader]\n\ndefault\u003dc:\\grldr.mbr\n\n[operating systems]\n\nc:\\grldr.mbr\u003d\"GRUB4DOS\"\n\n```\n\n\u003cbr /\u003e\n\n"
+    }
+  ]
+}

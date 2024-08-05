@@ -1,0 +1,28 @@
+{
+  "id": "15035",
+  "title": "Bootmanager/Tool for CD images on HDD with auto-menu",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "133472",
+      "timestamp": "2011-07-21T13:22:31+00:00",
+      "author": "MedEvil",
+      "content": "I\u0027m looking for a bootmanager / tool to boot CD-images of a HDD.  \n\nI know there are a few bootmanagers that can do that, but they all require explicit menu entries for each CD.  \n\nI\u0027m looking for a simpler (automatic) solution.   \n\nI just want to drop a wagonload of CDs into a folder and have the bootmanager / tool present them to me as a boot option, without any manual configuration.  \n\nAny tips?  \n\n![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n"
+    },
+    {
+      "id": "133487",
+      "timestamp": "2011-07-21T18:24:03+00:00",
+      "author": "Wonko the Sane",
+      "content": "Do you find any relation with this? :smile:  \n\u003chttp://reboot.pro/8944/\u003e  \n\nI presume you mean \"of***f*** a HD\" or do you really mean \"CD-images of a HD\"? ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)  \n\nThe things that most probably resemble more what you ask for are Sardu, Xboot or similar, but still they are not \"automagic\" enough to do what you asked.... ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n\n:smile:  \nWonko   \n"
+    },
+    {
+      "id": "133495",
+      "timestamp": "2011-07-21T20:31:41+00:00",
+      "author": "MedEvil",
+      "content": "Yep, i meant off.  \n\nGood to know, that at least my google-fu is not as bad as i thought. ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\nThanks for the answer!  \n\n:smile:   \n"
+    }
+  ]
+}

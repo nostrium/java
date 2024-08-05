@@ -1,0 +1,22 @@
+{
+  "id": "6598",
+  "title": "winbuilder",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "53409",
+      "timestamp": "2008-12-30T19:30:36+00:00",
+      "author": "bholston",
+      "content": "trying to convert to VistaPE V11. After entering Vistape.net/ archive and clicking ok, VistaPE MultiBoot V.11 dosn\u0027t appear on leftside of screen...  \nHas anyone else had this issue.....   \n"
+    },
+    {
+      "id": "53410",
+      "timestamp": "2008-12-30T19:35:34+00:00",
+      "author": "Brito",
+      "content": "Hi bholston.  \n\nThis is the hello world, where you\u0027re supposed to talk a bit about yourself.  \n\nTo get help at VistaPE, I\u0027d seriously recommend looking at the VistaPE section on this site where all the other developers hang out.  \n\n---  \n\nFor a start, I\u0027d just advice you to run version 12 as it is the one currently used by more people that might help you.  \n\nPlease post again at the VistaPE section after trying version 12 and add as many details as possible.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    }
+  ]
+}

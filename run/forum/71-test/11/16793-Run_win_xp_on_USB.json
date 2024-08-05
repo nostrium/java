@@ -1,0 +1,322 @@
+{
+  "id": "16793",
+  "title": "Run win xp on USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "153463",
+      "timestamp": "2012-05-01T00:19:33+00:00",
+      "author": "hypogeum",
+      "content": "Hello.  \nI have searched, but could not find the normal information about how to create and run Windows XP on a USB.  \nCan anyone create normal guid how to do that step by step:  \n\n1. How to create windows xp iso for your system.  \n2. How to prepare your usb flash drive for portable use.  \n3. How run yr win xp on usb drive.  \n\nTy for answers and sry for my english.   \n"
+    },
+    {
+      "id": "153464",
+      "timestamp": "2012-05-01T00:47:13+00:00",
+      "author": "MedEvil",
+      "content": "The topic you\u0027re looking for is here: \u003chttp://reboot.pro/9830/\u003e  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "153467",
+      "timestamp": "2012-05-01T02:13:52+00:00",
+      "author": "anhhuyla",
+      "content": "Try this :  \n+ Install VirtualBox on PC. Create new virtual machine, new fixed .vhd disk, new virtual CDrom, mount the cdrom with xp installation ISO file.  \n+ Start the VM, install winxp, install WinVBlock driver, Defragement the C: drive, reboot the VM, shutdown the VM.  \n+ Now you have the winxp.vhd image.  \n+ Format your USB disk, copy the winxp.vhd to USB disk.  \n+ Install grub4dos to USB.  \n+ Boot the usb with grub4dos, then load the vhd image, suppose your usb is hd0 :   \n++ map (hd0,0)/winxp.vhd (hd0)  \n++ map --hook  \n++ chainloader (hd0,0)/ntldr  \n++ boot  \n\nGood luck with that.   \nAtrus.   \n"
+    },
+    {
+      "id": "153489",
+      "timestamp": "2012-05-01T11:24:07+00:00",
+      "author": "hypogeum",
+      "content": "Thanks for answers.  \n\nI dont understanding from this line : suppose your usb is hd0 :   \n++ map (hd0,0)/winxp.vhd (hd0)  \n++ map --hook  \n++ chainloader (hd0,0)/ntldr  \n++ boot  \n\nWhere i must write these lines on win 7   \n"
+    },
+    {
+      "id": "153490",
+      "timestamp": "2012-05-01T11:47:56+00:00",
+      "author": "anhhuyla",
+      "content": "No.   \n+ Boot the USB with Grub4Dos, Enter the command prompt ( press C ) and take those command : map ...  \n\nBRs.  \nAtrus.   \n"
+    },
+    {
+      "id": "153493",
+      "timestamp": "2012-05-01T12:41:10+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e No.  \n\u003e + Boot the USB with Grub4Dos, Enter the command prompt ( press C ) and take those command : map ...  \n\u003e\n\u003e BRs.  \n\u003e Atrus.  \n...and once you have it working, you write them with a **title** in menu.lst (omitting the final **boot** command), i.e:  \n\u003e title My nice XP from vhd  \n\u003e map (hd0,0)/winxp.vhd (hd0)  \n\u003e map --hook  \n\u003e chainloader (hd0,0)/ntldr\n\n\u003cbr /\u003e\n\nPersonally I would write them adding a \"root\" statement:  \n\n\u003e title My nice XP from vhd  \n\u003e map (hd0,0)/winxp.vhd (hd0)  \n\u003e map --hook  \n\u003e root (hd0,0)  \n\u003e chainloader /ntldr\n\nor (to be able to put the winxp.vhd on another disk)  \n\n\u003e title My nice XP from vhd  \n\u003e find --set-root /winxp.vhd  \n\u003e map /winxp.vhd (hd0)  \n\u003e map --hook  \n\u003e root (hd0,0)  \n\u003e chainloader /ntldr\n\nYou should really READ the grub4dos guide:  \n[http://diddy.boot-la...os/Grub4dos.htm](http://diddy.boot-land.net/grub4dos/Grub4dos.htm \"External link\")  \nAT THE VERY LEAST:  \n[http://diddy.boot-la...iles/basics.htm](http://diddy.boot-land.net/grub4dos/files/basics.htm \"External link\")  \n[http://diddy.boot-la...s/files/cli.htm](http://diddy.boot-land.net/grub4dos/files/cli.htm \"External link\")  \n[http://diddy.boot-la.../files/menu.htm](http://diddy.boot-land.net/grub4dos/files/menu.htm \"External link\")  \nAND:  \n[http://diddy.boot-la...les/boot.htm#nt](http://diddy.boot-land.net/grub4dos/files/boot.htm#nt \"External link\")  \n[http://diddy.boot-la...s/files/map.htm](http://diddy.boot-land.net/grub4dos/files/map.htm \"External link\")  \nbefore fiddling with grub4dos...  \n(your next issue will probably be \"Error 60: File for drive emulation must be in one contiguous disk area\" for which you will need to make the image contiguous, just in case :wink: [http://wincontig.mdtzone.it/en/](http://wincontig.mdtzone.it/en/ \"External link\") )  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "153517",
+      "timestamp": "2012-05-01T20:09:36+00:00",
+      "author": "hypogeum",
+      "content": "one more think.  \nhow to install install WinVBlock driver, where get these drivers, and where to instal in to USB or in to virtual image with win xp?   \n"
+    },
+    {
+      "id": "153532",
+      "timestamp": "2012-05-02T01:28:33+00:00",
+      "author": "anhhuyla",
+      "content": "Install WinVBlock driver inside the VM.  \nGoogle for downloading the driver.  \n\nBrs.  \nAtrus.   \n"
+    },
+    {
+      "id": "153541",
+      "timestamp": "2012-05-02T09:05:17+00:00",
+      "author": "hypogeum",
+      "content": "i found where to download WinVBlock driver, but how to install i dont understand. maybe someone can explane in simple human understanding speach?   \n"
+    },
+    {
+      "id": "153542",
+      "timestamp": "2012-05-02T09:56:22+00:00",
+      "author": "Sphinx114",
+      "content": "```\n@echo off\n\nSET A\u003d32\n\nIF \"%PROCESSOR_ARCHITECTURE%\"\u003d\u003d\"AMD64\" SET A\u003d64\n\ncopy WVBlk%A%.sys %windir%system32drivers\n\necho Choice method (any):\n\necho 1 -sc.exe\n\necho 2 -winvblk.exe\n\nSET /P B\u003d\n\nIF %B%\u003d\u003d1 (sc create WinVBlock binPath\u003d %windir%system32driverswvblk%A%.sys type\u003d kernel start\u003d boot group\u003d \"SCSI miniport\")\n\nIF %B%\u003d\u003d2 (start winvblk.exe -cmd install -service wvblk%A%)\n\nnet start winvblock\n\nstart  %windir%system32devmgmt.msc\n\npause\n```\n\n\u003cbr /\u003e\n\nPut this batch file in winvblock folder. Start batch and choice any install method. At the end update driver manualy from device manager.   \n"
+    },
+    {
+      "id": "153553",
+      "timestamp": "2012-05-02T13:01:01+00:00",
+      "author": "anhhuyla",
+      "content": "GUI step for installing winVblock driver :  \n+ Download winVblock driver. Unzip it.  \n+ Open Control Panel, Add New Hardware, ..., Manual Add Hardware, ... Show all device, ... Have disk, ... point to the .inf file in the driver folder.  \n+ Ignore the warning of Digital Signature.  \n+ Done.  \n+ Open Device Manager, you will see a device name \"WinVblock ...\" under the leaf RAID and SCSI ...  \n+ Reboot the VM.  \n\nGood luck with that !  \n\nBrs.  \nAtrus.   \n"
+    },
+    {
+      "id": "153560",
+      "timestamp": "2012-05-02T14:12:13+00:00",
+      "author": "hypogeum",
+      "content": "I think i done all these steps, but when i try to boot windows xp form usb i get bootmgr is missing message. What i have done wrong?   \n"
+    },
+    {
+      "id": "153561",
+      "timestamp": "2012-05-02T14:40:56+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I think i done all these steps, but when i try to boot windows xp form usb i get bootmgr is missing message. What i have done wrong?  \nYou have most probably formatted the filesystem under Vista ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif) or 7.  \nThis will write a bootsector invoking BOOTMGR (and not NTLDR).  \nRun bootsect.exe (with the /nt52 option) or re-format from 2K/XP.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "153568",
+      "timestamp": "2012-05-02T15:18:07+00:00",
+      "author": "hypogeum",
+      "content": "yes i formated with win 7. now i formated with [HP USB Disk Storage Format Tool - v2.1.8](http://files.extremeoverclocking.com/file.php?f\u003d197 \"External link\") to fat32  \nCopping winxp.vhd  \nthen i install grub4dos and try to start my own hell mashine from usb... muhahaha. ![:devil:](http://reboot.pro/public/style_emoticons/default/devil.gif)   \n"
+    },
+    {
+      "id": "153569",
+      "timestamp": "2012-05-02T15:23:43+00:00",
+      "author": "anhhuyla",
+      "content": "When you successfully boot the ntldr, maybe you will get the BSOD 6B or 7B if you not lucky ! :wink:) Good luck with that.  \n\nSo, it looks like that these stuff are so difficult for you (and maybe for me, too). If you just want to run WinXP on USB, I recommend you move to Embedded platform, which is more simpler to follow. No more terms like image, vhd, grub4dos, fira driver, blah blah blah ...  \n\nTry these :  \n+ Install Windows Embedded Standard 2009 Studio (it maybe requires .net framework 2, SQL Server Express 2005, ...)  \n+ Open Target Designer, New ...  \n+ Insert the \"Sample Windows Logon\" component  \n+ Insert these components to be able to run on USB : USB boot 2.0, USB boot mass storage, USB 2.0, USB common.  \n+ Insert some others components that you want : device manager, user account, administrator user, internet explorer, task manager, ...  \n+ Check Dependencied, Resolve the conflict by choosing : NTLoader, Explorer Shell, English language, NTFS, Win Logon, ...  \n+ Build the Target. Suppose the image directory : C:Embedded StudioImage ...  \n+ Format the USB disk, it must be a primary partition and be set active (Use Windows Disk Management to take these task)  \n+ Copy all file in the image folder to the USB disk.  \n+ Suppose the USB disk is D: drive.  \n+ Make the USB bootables : run windows command cli (Runcmd), \"Bootsector.exe /nt52 D: /force\".  \n+ The \"Bootsector.exe\" can be found on the Win 7 Installation Disc (Boot folder)  \n+ Done.  \n+ Boot the USB and it will load the XP Windows FBA, configuring, reboot and Done.  \n\nGood luck with that.  \nBr.  \nAtrus.   \n"
+    },
+    {
+      "id": "153571",
+      "timestamp": "2012-05-02T15:27:12+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e So, it looks like that these stuff are so difficult for you (and maybe for me, too). If you just want to run WinXP on USB, I recommend you move to Embedded platform, which is more simpler to follow. No more terms like image, vhd, grub4dos, fira driver, blah blah blah ...  \nAre you going to pay the difference in cash for the Windows Embedded License? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "153574",
+      "timestamp": "2012-05-02T15:38:26+00:00",
+      "author": "anhhuyla",
+      "content": "Hehehe. WinXP is also need license man, it\u0027s not free ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \nEmbedded is just an other concept to follow, you can have a try on trial license.  \n\nGet Live Ubuntu CD for free ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)  \n\nBrs.  \nAtrus.   \n"
+    },
+    {
+      "id": "153575",
+      "timestamp": "2012-05-02T15:44:33+00:00",
+      "author": "hypogeum",
+      "content": "Now im getting this message : Remove disk or other media.  \nPress any key to restart ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)   \n"
+    },
+    {
+      "id": "153577",
+      "timestamp": "2012-05-02T15:52:53+00:00",
+      "author": "hypogeum",
+      "content": "Why i want to run win xp from USB  \nbecouse i want to run hon from win xp becouse on win 7 i cant play without lag, but i need to have win 7 for my work.  \nI tryed to install on ubuntu and feodora, but mine usb only 4 gb, soo not enoth disk space.  \nSo i want to try how it work on win xp.   \n"
+    },
+    {
+      "id": "153578",
+      "timestamp": "2012-05-02T15:56:59+00:00",
+      "author": "anhhuyla",
+      "content": "Where are you ? Still stuck at NTLDR boot or get into the Grub4dos CLI ?  \n\nTry this :  \n+ Format the USB with Win7 or winXP, primary partiton, set active.  \n+ Copy these file to USB : boot.ini, ntldr, ntdetect.com, grldr, grldr.mbr, winxp.vhd.  \n+ Make it bootable : \"bootsector.exe /nt52 usb: /force\"  \n+ Add these to the boot.ini : C:grldr \u003d \"grub\"  \n+ Boot the USB, Chose Grub menu and go on ... map (hd0,0)/xp.vhd ...  \n\nBrs.  \nAtrus.   \n"
+    },
+    {
+      "id": "153581",
+      "timestamp": "2012-05-02T16:12:53+00:00",
+      "author": "hypogeum",
+      "content": "i tryed change settings with grub4dos and i can access menu : My nice XP from vhdd  \nBut when i press enter i get new error :  \nmag (hd0,0)/winxp.vhd (hd0)  \nError 15 : File not found  \nPress ...   \n"
+    },
+    {
+      "id": "153584",
+      "timestamp": "2012-05-02T17:04:02+00:00",
+      "author": "hypogeum",
+      "content": "any idea how to fix this?   \n"
+    },
+    {
+      "id": "153585",
+      "timestamp": "2012-05-02T17:10:43+00:00",
+      "author": "steve6375",
+      "content": "try  \nmap /winxp.vhd (hd0)  \ninstead?  \n\nTo troubleshoot grub4dos see [here](http://www.rmprepusb.com/tutorials/grub4dos#TOC-Part-5---Troubleshooting \"External link\")   \n"
+    },
+    {
+      "id": "153589",
+      "timestamp": "2012-05-02T17:40:43+00:00",
+      "author": "hypogeum",
+      "content": "Yes it worked ty. but when windows xp loading i get blue creen error. i think it will be error with WinVBlock.   \n"
+    },
+    {
+      "id": "153590",
+      "timestamp": "2012-05-02T17:46:55+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Hehehe. WinXP is also need license man, it\u0027s not free ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \nYep, that\u0027s why I talked of \"difference\".  \nList price of XP (IF you are able to find it) : around 200÷250 bucks  \n[http://www.nextag.co...nse/stores-html](http://www.nextag.com/window-xp-professional-license/stores-html \"External link\")  \nList price of Windows XP Embedded, last time I checked was roughly 4 times that.  \n\n@hypogeum  \nIn case you hadn\u0027t noticed you were told NOT to use a menu.lst BUT command line.  \nTo do that you need to learn some basics.  \nOnce you have succeeded on command line, THEN (NOT BEFORE) you use an entry in menu.lst.  \n\nAbout \"Blue Screen Error\" there are HUNDREDS of them, you will need to provide the exact STOP ERROR, most likely it is a 0x0000007b, but we cannot say from a distance.  \n\nYou have no idea how I hate to say this ![:(](http://reboot.pro/public/style_emoticons/default/sad.png), but maybe you are not (yet :wink:) \"ready\" to attempt a completely manual build.  \nYou may want to try **wimb** \u0027s nice app and build yourself an XP with it, so that it is confirmaed that it works on your hardware:  \n\u003chttp://reboot.pro/9830/\u003e  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "153463",
+      "timestamp": "2012-05-01T00:19:33+00:00",
+      "author": "hypogeum",
+      "content": "Hello.  \nI have searched, but could not find the normal information about how to create and run Windows XP on a USB.  \nCan anyone create normal guid how to do that step by step:  \n\n1. How to create windows xp iso for your system.  \n2. How to prepare your usb flash drive for portable use.  \n3. How run yr win xp on usb drive.  \n\nTy for answers and sry for my english.   \n"
+    },
+    {
+      "id": "153464",
+      "timestamp": "2012-05-01T00:47:13+00:00",
+      "author": "MedEvil",
+      "content": "The topic you\u0027re looking for is here: \u003chttp://reboot.pro/9830/\u003e  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "153467",
+      "timestamp": "2012-05-01T02:13:52+00:00",
+      "author": "anhhuyla",
+      "content": "Try this :  \n+ Install VirtualBox on PC. Create new virtual machine, new fixed .vhd disk, new virtual CDrom, mount the cdrom with xp installation ISO file.  \n+ Start the VM, install winxp, install WinVBlock driver, Defragement the C: drive, reboot the VM, shutdown the VM.  \n+ Now you have the winxp.vhd image.  \n+ Format your USB disk, copy the winxp.vhd to USB disk.  \n+ Install grub4dos to USB.  \n+ Boot the usb with grub4dos, then load the vhd image, suppose your usb is hd0 :   \n++ map (hd0,0)/winxp.vhd (hd0)  \n++ map --hook  \n++ chainloader (hd0,0)/ntldr  \n++ boot  \n\nGood luck with that.   \nAtrus.   \n"
+    },
+    {
+      "id": "153489",
+      "timestamp": "2012-05-01T11:24:07+00:00",
+      "author": "hypogeum",
+      "content": "Thanks for answers.  \n\nI dont understanding from this line : suppose your usb is hd0 :   \n++ map (hd0,0)/winxp.vhd (hd0)  \n++ map --hook  \n++ chainloader (hd0,0)/ntldr  \n++ boot  \n\nWhere i must write these lines on win 7   \n"
+    },
+    {
+      "id": "153490",
+      "timestamp": "2012-05-01T11:47:56+00:00",
+      "author": "anhhuyla",
+      "content": "No.   \n+ Boot the USB with Grub4Dos, Enter the command prompt ( press C ) and take those command : map ...  \n\nBRs.  \nAtrus.   \n"
+    },
+    {
+      "id": "153493",
+      "timestamp": "2012-05-01T12:41:10+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e No.  \n\u003e + Boot the USB with Grub4Dos, Enter the command prompt ( press C ) and take those command : map ...  \n\u003e\n\u003e BRs.  \n\u003e Atrus.  \n...and once you have it working, you write them with a **title** in menu.lst (omitting the final **boot** command), i.e:  \n\u003e title My nice XP from vhd  \n\u003e map (hd0,0)/winxp.vhd (hd0)  \n\u003e map --hook  \n\u003e chainloader (hd0,0)/ntldr\n\n\u003cbr /\u003e\n\nPersonally I would write them adding a \"root\" statement:  \n\n\u003e title My nice XP from vhd  \n\u003e map (hd0,0)/winxp.vhd (hd0)  \n\u003e map --hook  \n\u003e root (hd0,0)  \n\u003e chainloader /ntldr\n\nor (to be able to put the winxp.vhd on another disk)  \n\n\u003e title My nice XP from vhd  \n\u003e find --set-root /winxp.vhd  \n\u003e map /winxp.vhd (hd0)  \n\u003e map --hook  \n\u003e root (hd0,0)  \n\u003e chainloader /ntldr\n\nYou should really READ the grub4dos guide:  \n[http://diddy.boot-la...os/Grub4dos.htm](http://diddy.boot-land.net/grub4dos/Grub4dos.htm \"External link\")  \nAT THE VERY LEAST:  \n[http://diddy.boot-la...iles/basics.htm](http://diddy.boot-land.net/grub4dos/files/basics.htm \"External link\")  \n[http://diddy.boot-la...s/files/cli.htm](http://diddy.boot-land.net/grub4dos/files/cli.htm \"External link\")  \n[http://diddy.boot-la.../files/menu.htm](http://diddy.boot-land.net/grub4dos/files/menu.htm \"External link\")  \nAND:  \n[http://diddy.boot-la...les/boot.htm#nt](http://diddy.boot-land.net/grub4dos/files/boot.htm#nt \"External link\")  \n[http://diddy.boot-la...s/files/map.htm](http://diddy.boot-land.net/grub4dos/files/map.htm \"External link\")  \nbefore fiddling with grub4dos...  \n(your next issue will probably be \"Error 60: File for drive emulation must be in one contiguous disk area\" for which you will need to make the image contiguous, just in case :wink: [http://wincontig.mdtzone.it/en/](http://wincontig.mdtzone.it/en/ \"External link\") )  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "153517",
+      "timestamp": "2012-05-01T20:09:36+00:00",
+      "author": "hypogeum",
+      "content": "one more think.  \nhow to install install WinVBlock driver, where get these drivers, and where to instal in to USB or in to virtual image with win xp?   \n"
+    },
+    {
+      "id": "153532",
+      "timestamp": "2012-05-02T01:28:33+00:00",
+      "author": "anhhuyla",
+      "content": "Install WinVBlock driver inside the VM.  \nGoogle for downloading the driver.  \n\nBrs.  \nAtrus.   \n"
+    },
+    {
+      "id": "153541",
+      "timestamp": "2012-05-02T09:05:17+00:00",
+      "author": "hypogeum",
+      "content": "i found where to download WinVBlock driver, but how to install i dont understand. maybe someone can explane in simple human understanding speach?   \n"
+    },
+    {
+      "id": "153542",
+      "timestamp": "2012-05-02T09:56:22+00:00",
+      "author": "Sphinx114",
+      "content": "```\n@echo off\n\nSET A\u003d32\n\nIF \"%PROCESSOR_ARCHITECTURE%\"\u003d\u003d\"AMD64\" SET A\u003d64\n\ncopy WVBlk%A%.sys %windir%system32drivers\n\necho Choice method (any):\n\necho 1 -sc.exe\n\necho 2 -winvblk.exe\n\nSET /P B\u003d\n\nIF %B%\u003d\u003d1 (sc create WinVBlock binPath\u003d %windir%system32driverswvblk%A%.sys type\u003d kernel start\u003d boot group\u003d \"SCSI miniport\")\n\nIF %B%\u003d\u003d2 (start winvblk.exe -cmd install -service wvblk%A%)\n\nnet start winvblock\n\nstart  %windir%system32devmgmt.msc\n\npause\n```\n\n\u003cbr /\u003e\n\nPut this batch file in winvblock folder. Start batch and choice any install method. At the end update driver manualy from device manager.   \n"
+    },
+    {
+      "id": "153553",
+      "timestamp": "2012-05-02T13:01:01+00:00",
+      "author": "anhhuyla",
+      "content": "GUI step for installing winVblock driver :  \n+ Download winVblock driver. Unzip it.  \n+ Open Control Panel, Add New Hardware, ..., Manual Add Hardware, ... Show all device, ... Have disk, ... point to the .inf file in the driver folder.  \n+ Ignore the warning of Digital Signature.  \n+ Done.  \n+ Open Device Manager, you will see a device name \"WinVblock ...\" under the leaf RAID and SCSI ...  \n+ Reboot the VM.  \n\nGood luck with that !  \n\nBrs.  \nAtrus.   \n"
+    },
+    {
+      "id": "153560",
+      "timestamp": "2012-05-02T14:12:13+00:00",
+      "author": "hypogeum",
+      "content": "I think i done all these steps, but when i try to boot windows xp form usb i get bootmgr is missing message. What i have done wrong?   \n"
+    },
+    {
+      "id": "153561",
+      "timestamp": "2012-05-02T14:40:56+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I think i done all these steps, but when i try to boot windows xp form usb i get bootmgr is missing message. What i have done wrong?  \nYou have most probably formatted the filesystem under Vista ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif) or 7.  \nThis will write a bootsector invoking BOOTMGR (and not NTLDR).  \nRun bootsect.exe (with the /nt52 option) or re-format from 2K/XP.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "153568",
+      "timestamp": "2012-05-02T15:18:07+00:00",
+      "author": "hypogeum",
+      "content": "yes i formated with win 7. now i formated with [HP USB Disk Storage Format Tool - v2.1.8](http://files.extremeoverclocking.com/file.php?f\u003d197 \"External link\") to fat32  \nCopping winxp.vhd  \nthen i install grub4dos and try to start my own hell mashine from usb... muhahaha. ![:devil:](http://reboot.pro/public/style_emoticons/default/devil.gif)   \n"
+    },
+    {
+      "id": "153569",
+      "timestamp": "2012-05-02T15:23:43+00:00",
+      "author": "anhhuyla",
+      "content": "When you successfully boot the ntldr, maybe you will get the BSOD 6B or 7B if you not lucky ! :wink:) Good luck with that.  \n\nSo, it looks like that these stuff are so difficult for you (and maybe for me, too). If you just want to run WinXP on USB, I recommend you move to Embedded platform, which is more simpler to follow. No more terms like image, vhd, grub4dos, fira driver, blah blah blah ...  \n\nTry these :  \n+ Install Windows Embedded Standard 2009 Studio (it maybe requires .net framework 2, SQL Server Express 2005, ...)  \n+ Open Target Designer, New ...  \n+ Insert the \"Sample Windows Logon\" component  \n+ Insert these components to be able to run on USB : USB boot 2.0, USB boot mass storage, USB 2.0, USB common.  \n+ Insert some others components that you want : device manager, user account, administrator user, internet explorer, task manager, ...  \n+ Check Dependencied, Resolve the conflict by choosing : NTLoader, Explorer Shell, English language, NTFS, Win Logon, ...  \n+ Build the Target. Suppose the image directory : C:Embedded StudioImage ...  \n+ Format the USB disk, it must be a primary partition and be set active (Use Windows Disk Management to take these task)  \n+ Copy all file in the image folder to the USB disk.  \n+ Suppose the USB disk is D: drive.  \n+ Make the USB bootables : run windows command cli (Runcmd), \"Bootsector.exe /nt52 D: /force\".  \n+ The \"Bootsector.exe\" can be found on the Win 7 Installation Disc (Boot folder)  \n+ Done.  \n+ Boot the USB and it will load the XP Windows FBA, configuring, reboot and Done.  \n\nGood luck with that.  \nBr.  \nAtrus.   \n"
+    },
+    {
+      "id": "153571",
+      "timestamp": "2012-05-02T15:27:12+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e So, it looks like that these stuff are so difficult for you (and maybe for me, too). If you just want to run WinXP on USB, I recommend you move to Embedded platform, which is more simpler to follow. No more terms like image, vhd, grub4dos, fira driver, blah blah blah ...  \nAre you going to pay the difference in cash for the Windows Embedded License? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "153574",
+      "timestamp": "2012-05-02T15:38:26+00:00",
+      "author": "anhhuyla",
+      "content": "Hehehe. WinXP is also need license man, it\u0027s not free ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \nEmbedded is just an other concept to follow, you can have a try on trial license.  \n\nGet Live Ubuntu CD for free ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)  \n\nBrs.  \nAtrus.   \n"
+    },
+    {
+      "id": "153575",
+      "timestamp": "2012-05-02T15:44:33+00:00",
+      "author": "hypogeum",
+      "content": "Now im getting this message : Remove disk or other media.  \nPress any key to restart ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)   \n"
+    },
+    {
+      "id": "153577",
+      "timestamp": "2012-05-02T15:52:53+00:00",
+      "author": "hypogeum",
+      "content": "Why i want to run win xp from USB  \nbecouse i want to run hon from win xp becouse on win 7 i cant play without lag, but i need to have win 7 for my work.  \nI tryed to install on ubuntu and feodora, but mine usb only 4 gb, soo not enoth disk space.  \nSo i want to try how it work on win xp.   \n"
+    },
+    {
+      "id": "153578",
+      "timestamp": "2012-05-02T15:56:59+00:00",
+      "author": "anhhuyla",
+      "content": "Where are you ? Still stuck at NTLDR boot or get into the Grub4dos CLI ?  \n\nTry this :  \n+ Format the USB with Win7 or winXP, primary partiton, set active.  \n+ Copy these file to USB : boot.ini, ntldr, ntdetect.com, grldr, grldr.mbr, winxp.vhd.  \n+ Make it bootable : \"bootsector.exe /nt52 usb: /force\"  \n+ Add these to the boot.ini : C:grldr \u003d \"grub\"  \n+ Boot the USB, Chose Grub menu and go on ... map (hd0,0)/xp.vhd ...  \n\nBrs.  \nAtrus.   \n"
+    },
+    {
+      "id": "153581",
+      "timestamp": "2012-05-02T16:12:53+00:00",
+      "author": "hypogeum",
+      "content": "i tryed change settings with grub4dos and i can access menu : My nice XP from vhdd  \nBut when i press enter i get new error :  \nmag (hd0,0)/winxp.vhd (hd0)  \nError 15 : File not found  \nPress ...   \n"
+    },
+    {
+      "id": "153584",
+      "timestamp": "2012-05-02T17:04:02+00:00",
+      "author": "hypogeum",
+      "content": "any idea how to fix this?   \n"
+    },
+    {
+      "id": "153585",
+      "timestamp": "2012-05-02T17:10:43+00:00",
+      "author": "steve6375",
+      "content": "try  \nmap /winxp.vhd (hd0)  \ninstead?  \n\nTo troubleshoot grub4dos see [here](http://www.rmprepusb.com/tutorials/grub4dos#TOC-Part-5---Troubleshooting \"External link\")   \n"
+    },
+    {
+      "id": "153589",
+      "timestamp": "2012-05-02T17:40:43+00:00",
+      "author": "hypogeum",
+      "content": "Yes it worked ty. but when windows xp loading i get blue creen error. i think it will be error with WinVBlock.   \n"
+    },
+    {
+      "id": "153590",
+      "timestamp": "2012-05-02T17:46:55+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Hehehe. WinXP is also need license man, it\u0027s not free ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \nYep, that\u0027s why I talked of \"difference\".  \nList price of XP (IF you are able to find it) : around 200÷250 bucks  \n[http://www.nextag.co...nse/stores-html](http://www.nextag.com/window-xp-professional-license/stores-html \"External link\")  \nList price of Windows XP Embedded, last time I checked was roughly 4 times that.  \n\n@hypogeum  \nIn case you hadn\u0027t noticed you were told NOT to use a menu.lst BUT command line.  \nTo do that you need to learn some basics.  \nOnce you have succeeded on command line, THEN (NOT BEFORE) you use an entry in menu.lst.  \n\nAbout \"Blue Screen Error\" there are HUNDREDS of them, you will need to provide the exact STOP ERROR, most likely it is a 0x0000007b, but we cannot say from a distance.  \n\nYou have no idea how I hate to say this ![:(](http://reboot.pro/public/style_emoticons/default/sad.png), but maybe you are not (yet :wink:) \"ready\" to attempt a completely manual build.  \nYou may want to try **wimb** \u0027s nice app and build yourself an XP with it, so that it is confirmaed that it works on your hardware:  \n\u003chttp://reboot.pro/9830/\u003e  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "153592",
+      "timestamp": "2012-05-02T18:00:53+00:00",
+      "author": "hypogeum",
+      "content": "Thank u for all support, but Wonko the Sane showed the tool which i was shearching. Tools for basic/nebies users. ![:clap:](http://reboot.pro/public/style_emoticons/default/clap.gif) ty   \n"
+    },
+    {
+      "id": "158193",
+      "timestamp": "2012-07-25T02:51:37+00:00",
+      "author": "anhhuyla",
+      "content": "to hypoguym@ :  \n\nAfter googling, I found a complete guide here : [http://www.linuxbyex...nxp-on-usb-disk](http://www.linuxbyexamples.net/windows/Running-a-full-winxp-on-usb-disk \"External link\")  \n\nHop it can help you.  \n\nCheers.   \n"
+    }
+  ]
+}

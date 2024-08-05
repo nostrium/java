@@ -1,0 +1,46 @@
+{
+  "id": "9800",
+  "title": "What PE install do i need?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "85114",
+      "timestamp": "2009-11-24T14:03:16+00:00",
+      "author": "p8ntballgod87",
+      "content": "Heres my situation, i am a computer tech that is responsible for 35 pcs a day all of them are different model laptop and desktops, all running at least vista basic. I need a method to boot from a usb HDD so i can run diagnostic apps. Right now im using bartpe but its a pain to rebuild the ISO everytime i need to change the diagnostic apps. What i was thinking was to install xp or win 7 32 bit onto the drive from a laptop and then move it from pc to pc. So when a change needs to be made i simple boot it-make the change and shutdown. BUT i have had problems with booting different pcs it will BSOD, im guessing cuz of the different chipsets/USB...is there a way to do it thus way but somehow strip away the USB/CHIPSET drivers at shutdown so when a diff pc is booted it will simply imstall the new drivers?   \n"
+    },
+    {
+      "id": "85120",
+      "timestamp": "2009-11-24T16:33:44+00:00",
+      "author": "was_jaclaz",
+      "content": "There are two differnt \"sets\" of problems:  \n\n* USB drivers (the services are normally set to non-boot priority)\n* Chipset drivers\n\n\u003cbr /\u003e\n\nThings you should read:  \nStickies here:  \n[http://www.boot-land...hp?showforum\u003d77](http://www.boot-land.net/forums/index.php?showforum\u003d77 \"External link\")  \n\nThis thread:  \n[http://www.boot-land...?showtopic\u003d9051](http://www.boot-land.net/forums/index.php?showtopic\u003d9051 \"External link\")  \n\nAnd this one:  \n[http://www.boot-land...?showtopic\u003d9227](http://www.boot-land.net/forums/index.php?showtopic\u003d9227 \"External link\")  \n\nThis said there is NOT any need to use a PE from the .iso, it can be used from HD allright, and of course in this case it is easier to update/add drivers.  \n\nA PE 2.x (Vista based) or 3.x (windows 7 based) may be the solution for you. :smile:  \n\nIn case looky here:  \n[http://www.boot-land...hp?showforum\u003d51](http://www.boot-land.net/forums/index.php?showforum\u003d51 \"External link\")  \nand/or here:  \n[http://www.boot-land...hp?showforum\u003d91](http://www.boot-land.net/forums/index.php?showforum\u003d91 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "85125",
+      "timestamp": "2009-11-24T17:50:18+00:00",
+      "author": "p8ntballgod87",
+      "content": "i found this post [http://www.boot-land...?showtopic\u003d9196](http://www.boot-land.net/forums/index.php?showtopic\u003d9196 \"External link\") that says that as long as that script is run it should allow a portable win 7. i tried on vista as thats the only cd i have right with me right now, and it BSOD on every pc except the one it was created on.   \n"
+    },
+    {
+      "id": "85127",
+      "timestamp": "2009-11-24T18:02:36+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e i found this post [http://www.boot-land...?showtopic\u003d9196](http://www.boot-land.net/forums/index.php?showtopic\u003d9196 \"External link\") that says that as long as that script is run it should allow a portable **win 7** . i tried on **vista** as thats the only cd i have right with me right now, and it BSOD on every pc except the one it was created on.\n\nReally? ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\nThat\u0027s strange. :smile:  \n\n***Maybe*** you found the reason why that thread is titled \"\\[Tutorial\\] Boot **Windows 7** from USB hard disk by karyonix\"? and ***NOT*** \"\\[Tutorial\\] Boot Windows **Vista** from USB hard disk by karyonix\"...:smile:  \n\nJFYI, I once tried using superglue instead of lubricating oil while re-assembling an engine, as superglue was the only thing I had, but the engine didn\u0027t start very well....  \n\n![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "85128",
+      "timestamp": "2009-11-24T18:14:41+00:00",
+      "author": "p8ntballgod87",
+      "content": "I under stand that but if you look at the post by KTP he states that he has used the method for vista AND win 7.   \n"
+    },
+    {
+      "id": "85131",
+      "timestamp": "2009-11-24T18:49:27+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I under stand that but if you look at the post by KTP he states that he has used the method for vista AND win 7.\n\nNO. :smile:  \n\nI know I do seem picky (mostly because I am :smile:), but in this kind of matters one has to be very, very accurate.  \n\nWhat **ktp** stated was that ***since*** the method as originally explained by **karyonix** for **Windows 7** on a **Windows 7** install **FAILED**, he tried on the **Windows 7** the same method (usb_all.reg ) already known and working for ***Vista*** .  \nIn other words, he applied an \"old\" \"Vista tested\" method on the Windows 7 based build, additionally, as ***opposed*** to applying the \"new\" Windows 7 method to a Vista build.  \n\nIf you want a \"full\" Vista USB build, use a **Vista** USB tutorial method, check links in Dietmar\u0027s Signature:  \n[http://www.911cd.net...showtopic\u003d14181](http://www.911cd.net/forums//index.php?showtopic\u003d14181 \"External link\")  \n\nAND this thread:  \n[http://www.911cd.net...showtopic\u003d22473](http://www.911cd.net/forums//index.php?showtopic\u003d22473 \"External link\")  \n\n![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\njaclaz   \n"
+    }
+  ]
+}

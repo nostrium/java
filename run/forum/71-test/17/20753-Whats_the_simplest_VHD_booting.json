@@ -1,0 +1,100 @@
+{
+  "id": "20753",
+  "title": "What\u0027s the simplest VHD booting?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "195605",
+      "timestamp": "2015-09-28T12:55:44+00:00",
+      "author": "mbzadegan",
+      "content": "Hi everyone,\n\nI\u0027ve make a VHD file with 2 partitions and it can boot correctly on the virual-box BUT I want to boot it with my USB memstick too.\n\nWhat\u0027s the simplest boot loader that can boot and load my true VHD file on my memstick without errors?\n\nIs that the GRUB2 is the best selection or not?\n\nRegards.\n\n"
+    },
+    {
+      "id": "195608",
+      "timestamp": "2015-09-28T14:19:01+00:00",
+      "author": "alacran",
+      "content": "You do not say what OS is in your PC and on the VHD, also you don\u0027t say if your disks partitions are GPT or MBR, so I will try to make the info generic.  \n\nYou can use grubfordos and a menu.lst like this:  \n\nSpoiler  \ncolor white/blue black/light-gray  \ntimeout 5  \ndefault 0  \n\ntitle Boot Windows 7 from VHD - Win7.vhd  \nfind --set-root --ignore-floppies /Win7.vhd  \nmap /Win7-1.vhd (hd0)  \nmap --hook  \nroot (hd0,0)  \nchainloader /bootmgr  \n\ntitle Boot Windows XP from Image - XP.vhd - WinVBlock driver - 3900 MB  \nfind --set-root --ignore-floppies /XP.vhd  \nmap /XP.vhd (hd0)  \nmap --hook  \nroot (hd0,0)  \nchainloader /ntldr\n\n\u003cbr /\u003e\n\nNOTE: This only works on MBR partitioned HDD and Non UEFI Secure Boot, also VHD must be fixed size.  \n\nFor UEFI Secure Boot you may use Windows Boot Manager directly.  \n\nOr you can make and partition your VHD the way you want and then use [WinNTSetup](http://www.msfn.org/board/topic/149612-winntsetup-v3811-385-beta-4/ \"External link\") to install Win to this mounted VHD located directly in your USB device, and it will make all required Boot manager entries in both BCD files (the UEFI one and the standard one), to let you boot in UEFI and non UEFI PC\u0027s, but you need an active primary partition FAT32 on your USB in order to install Boot files to be able to boot in UEFI PC\u0027s. Partition where VHD is located most be NTFS.  \nI recommend better use an external HDD USB 2.0 (only Win8 and newer can boot from USB 3.0 natively). Booting from USB sticks is very slow that\u0027s why I suggest USB HDD.  \n\nUsing WinNTSetup you can make a Compact install XPRESS8K on an expandable VHD of 10 to 15 GB and you end up with a 5.7 GB VHD file (Win10x64Pro without any other programs). NO page file and NO hiberfile, selected in tricks.  \n\nAnother option if you want to use your USB stick is to use [Rufus](https://rufus.akeo.ie/ \"External link\")  \n\nalacran\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "195711",
+      "timestamp": "2015-10-03T12:24:39+00:00",
+      "author": "mbzadegan",
+      "content": "Hi,\n\nMy VHD image contain a clear partition + truecrypt encrypted partition.\n\nIt booted up windows 8 (32Bit) on the Virtual-Box without error but I want to boot it with my USB memstick.\n\nmy menu.lst:\n\ncolor white/blue black/light-gray white/black white/black  \ntitle Portable W832USP1.vhd - FiraDisk FILEDISK - 2.5 GB  \nfind --set-root --ignore-floppies /W832USP1.vhd  \nmap --heads\u003d2 --sectors-per-track\u003d18 --mem (md)0x800+4 (99)  \nmap /W832USP1.vhd (hd0)  \nmap --hook  \nwrite (99) \\[FiraDisk\\]\\\\nStartOptions\u003ddisk,vmem\u003dfind:/W832USP1.vhd,boot;\\\\n\\\\0  \nrootnoverify (hd0,0)  \nchainloader /bootmgr  \nmap --status  \npause Press any key . . .  \nBut when I booted this error message was appear!  \n![16dfqFWy.jpg](http://pasteboard.co/16dfqFWy.jpg)\n\nHow can I resolve that?\n\n"
+    },
+    {
+      "id": "195759",
+      "timestamp": "2015-10-07T11:05:33+00:00",
+      "author": "mbzadegan",
+      "content": "Also, When I booted the encrypted VHD file from my memstick these 2 attached photo has been notified me!\n\nBTW, I can boot my Non encrypted VHD file without error And If I encrypted it with TrueCrypt it can boot without error only with Virtual-Box.\n\nBut I can not boot it ( encrypted VHD ) with my memstick!\n\n![1cdHW2aY.jpg](http://pasteboard.co/1cdHW2aY.jpg) ![1cdNgoHo.jpg](http://pasteboard.co/1cdNgoHo.jpg)\n\n"
+    },
+    {
+      "id": "195760",
+      "timestamp": "2015-10-07T11:44:09+00:00",
+      "author": "steve6375",
+      "content": "How are you booting from VBox?\n\nDid you try using VMUB to boot from the USB drive?\n\nIs the USB drive a fixed disk or removable type?\n\nHave you successfully booted a two-partition VHD (of any sort) from the USB drive?\n\nAre the firadisk lines needed? Does it fail to boot if you comment them out?\n\nInstead of chainloader /bootmgr, did you try chainloader (hd0,0)+1 ?\n\n**Edited by steve6375, 07 October 2015 - 11:48 AM.**\n"
+    },
+    {
+      "id": "195775",
+      "timestamp": "2015-10-08T10:14:35+00:00",
+      "author": "mbzadegan",
+      "content": "\u003e How are you booting from VBox?\n\u003e\n\u003e Did you try using VMUB to boot from the USB drive?\n\u003e\n\u003e Is the USB drive a fixed disk or removable type?\n\u003e\n\u003e Have you successfully booted a two-partition VHD (of any sort) from the USB drive?\n\u003e\n\u003e Are the firadisk lines needed? Does it fail to boot if you comment them out?\n\u003e\n\u003e Instead of chainloader /bootmgr, did you try chainloader (hd0,0)+1 ?\n\nI copied VHD file into my HDD and then open it in VirtualBox and run it without error.\n\nMy memstick is removable type.\n\nWhen I have 2 unencrypted partition (boot+win8data) it can boot without any error (by memstick usb booting) but while i encrypted the data partition that error occured (by memstick usb booting)!\n\nYes, I tried with chainloader (hd0,0)+1 but everything was not changed.\n\n**Edited by mbzadegan, 08 October 2015 - 10:17 AM.**\n"
+    },
+    {
+      "id": "195776",
+      "timestamp": "2015-10-08T10:28:40+00:00",
+      "author": "steve6375",
+      "content": "So do you get the password prompt from TrueCrypt boot code?\n\n"
+    },
+    {
+      "id": "195784",
+      "timestamp": "2015-10-08T19:56:06+00:00",
+      "author": "cdob",
+      "content": "\u003e What\u0027s the simplest boot loader that can boot and load my true VHD file\nWhat about native solution bootmgr?  \nAdd the vhd file to \\\\boot\\\\bcd: bcdboot.exe [https://technet.micr...y/hh824874.aspx](https://technet.microsoft.com/en-us/library/hh824874.aspx \"External link\")  \n[https://technet.micr...y/hh825691.aspx](https://technet.microsoft.com/en-us/library/hh825691.aspx \"External link\")   \n"
+    },
+    {
+      "id": "195809",
+      "timestamp": "2015-10-10T05:50:09+00:00",
+      "author": "mbzadegan",
+      "content": "\u003e So do you get the password prompt from TrueCrypt boot code?\n\nOfcourse 100%\n\n\u003e What about native solution bootmgr?  \n\u003e Add the vhd file to \\\\boot\\\\bcd: bcdboot.exe [https://technet.micr...y/hh824874.aspx](https://technet.microsoft.com/en-us/library/hh824874.aspx \"External link\")  \n\u003e [https://technet.micr...y/hh825691.aspx](https://technet.microsoft.com/en-us/library/hh825691.aspx \"External link\")\n\nAs I said, The native bootmgr can not load and boot encrypted VHD.\n\n"
+    },
+    {
+      "id": "195811",
+      "timestamp": "2015-10-10T08:10:27+00:00",
+      "author": "steve6375",
+      "content": "Can you try booting the USB drive using VMUB+VBox?\n\nThe difference is that Truecrypt/Windows will see the USB drive as a Fixed Disk and not a Removable USB drive.\n\n"
+    },
+    {
+      "id": "195819",
+      "timestamp": "2015-10-10T11:18:29+00:00",
+      "author": "cdob",
+      "content": "\u003e My VHD image contain a clear partition + truecrypt encrypted partition.\n\n\u003e As I said, The native bootmgr can not load and boot encrypted VHD.\n.  \nCan you describe: which part is encrypted?  \nHow did you used truecrypt to encrypt the partition?  \nDoes the MBR holds truecrypt code or windows default code?  \nDoes (hd0,0) refers to a encrypted partiton?  \nWhich data are at clear partition?  \nWhich data are at encrypted partition?   \n"
+    },
+    {
+      "id": "195842",
+      "timestamp": "2015-10-11T04:21:05+00:00",
+      "author": "wimb",
+      "content": "My experience is that bootable in Virtual Box is not at all compatible with booting on real hardware.\n\n[http://reboot.pro/to...ox/#entry182038](http://reboot.pro/topic/19533-help-win-xp-on-usb-with-virtual-box/#entry182038 \"\")\n\nIf the original VHD was prepared in Virtual Box or made from Windows installed in Virtual Box,\n\nthen I expect that it will be difficult (may be impossible) to boot that VHD on real hardware.\n\nHow and in what environment was the VHD exactly prepared ?\n\nBTW - All your jpg attachments are invisible for me, since they do no load .... and the browser hangs ....\n\n"
+    },
+    {
+      "id": "195860",
+      "timestamp": "2015-10-12T10:06:11+00:00",
+      "author": "mbzadegan",
+      "content": "\u003e Can you try booting the USB drive using VMUB+VBox?\n\nNo, I booting USB without VMUB+VBox mode.\n\n"
+    },
+    {
+      "id": "195861",
+      "timestamp": "2015-10-12T10:11:09+00:00",
+      "author": "mbzadegan",
+      "content": "My Photoes that I uploaded was:\n\n[https://www.photobox...9705#8878319705](https://www.photobox.co.uk/my/photo?album_id\u003d3739467170\u0026photo_id\u003d8878319705#8878319705 \"External link\")\n\n[https://www.photobox...0195#8878320195](https://www.photobox.co.uk/my/photo?album_id\u003d3739467170\u0026photo_id\u003d8878320195#8878320195 \"External link\")\n\n"
+    },
+    {
+      "id": "195862",
+      "timestamp": "2015-10-12T10:21:48+00:00",
+      "author": "steve6375",
+      "content": "Can you try booting the USB drive using VMUB+VBox?  \nThe difference is that Truecrypt/Windows will see the USB drive as a Fixed Disk and not a Removable USB drive.\n\ni.e. please try booting using VMUB+VBox direct from USB\n\n[http://www.rmprepusb...r-vmware-server](http://www.rmprepusb.com/tutorials/how-to-boot-from-usb-under-vmware-server \"External link\")\n\n"
+    }
+  ]
+}

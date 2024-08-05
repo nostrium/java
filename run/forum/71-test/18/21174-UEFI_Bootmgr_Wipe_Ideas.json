@@ -1,0 +1,352 @@
+{
+  "id": "21174",
+  "title": "UEFI Bootmgr Wipe Ideas",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "199450",
+      "timestamp": "2016-07-08T17:16:07+00:00",
+      "author": "Uneitohr",
+      "content": "Hi guys!\n\nI\u0027m trying to come up with a way to wipe the MBR/GPT of all the drives within a system booting only to UEFI Secure Boot, without CSM. I know I can change in UEFI the settings and enable CSM but I need it to work this way.\n\nI have a USB drive, formatted with FAT32, bootmgr, copied *boot* and *efi*folders. Tested it and boots fine in BIOS and UEFI. But now I\u0027m looking for a way to also do a wipe of mbr/gpt of every existing disk in the system.\n\nHere\u0027s the way i\u0027m thinking:\n\nUEFI -\\\u003e bootmgr -\\\u003e **wipe command**\n\nor something like this\n\nUEFI -\\\u003e bootmgr -\\\u003e very small winpe.wim -\\\u003e **wipe command**\n\nIs there any possibility of running a command via bootmgr, without loading a .wim image, that can kill the partition table?\n\nI would not prefer loading a full wim due the delay of loading the image. Something very similar to what Wonko posted over this thread [http://reboot.pro/to...an/#entry194793](http://reboot.pro/topic/20677-fast-bootable-alternative-to-dban/#entry194793 \"\")but something that will work with bootmgr.\n\nThank you\n\n"
+    },
+    {
+      "id": "199451",
+      "timestamp": "2016-07-08T17:47:23+00:00",
+      "author": "erwan.l",
+      "content": "Hi,\n\nGrub4dos can be chained from bootmgr : what dont do you stick to what Wonko already posted ?\n\nRegards,\n\nErwan\n\n"
+    },
+    {
+      "id": "199452",
+      "timestamp": "2016-07-08T17:56:53+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, to be *picky* what Wonko posted there works fine with bootmgr, only it won\u0027t work with bootmgr**.efi** (which is what you want to use).\n\n(EFI/UEFI don\u0027t use bootmgr).\n\nGrub4dos won\u0027t work in EFI/UEFI.\n\nThe idea there was to load (through BIOS) a very minimal OS (which in this case is grub4dos) capable of wiping a single sector (or a few of them) via direct disk access.\n\nYou can do the same (still in BIOS) with a DOS and DEBUG.\n\nNow, EFI/UEFI is (in theory) already a very basic OS, in practice it seems like noone wrote a EFI program capable of having direct disk access and wiping one or more sectors.\n\nIn any case (rather obviously) bootmgr.efi is not the \"right\" approach, maybe GRUB2 would do, but you asked, besides \"EFI/UEFI only\" also SecureBoot, and I really doubt that anyone is going to go through the complications of SecureBoot for somethinglike that.\n\nIMHO you\u0027d better find a way to have a minimal PE (and wait a little bit for it to load) or manage to use a mini-mini Linux distro (which might or might not allow SecureBoot).\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199454",
+      "timestamp": "2016-07-09T12:02:01+00:00",
+      "author": "erwan.l",
+      "content": "Ah correct, had forgotten that there is no grub4dos for EFI...\n\nA small winpe is probably the easiest then.\n\nIf scripted / automated thus, I would still seek some user interfaction (\"yes, sure?/no\") as wiping datas is not something light.\n\nRegards,\n\nErwan\n\n"
+    },
+    {
+      "id": "199455",
+      "timestamp": "2016-07-09T12:11:45+00:00",
+      "author": "Uneitohr",
+      "content": "I agree with winpe. But I just find the original one, of 400MB, to be of extremely large size for such a simple operation.\n\nA small hex editor would suffice for this. Just to kill the first 510 bytes off every drive.\n\nWould a DOS floppy work? bootmgr.efi to chainload a DOS floppy/wim image?\n\n"
+    },
+    {
+      "id": "199457",
+      "timestamp": "2016-07-09T12:18:51+00:00",
+      "author": "erwan.l",
+      "content": "You can easily generate a winpe below 200mb.\n\nHave a look at QuickPE in my signature.\n\nI dont believe you can chainload dos/freedos from UEFI.\n\n"
+    },
+    {
+      "id": "199458",
+      "timestamp": "2016-07-09T14:16:13+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Would a DOS floppy work? bootmgr.efi to chainload a DOS floppy/wim image?\n\nOf course not, DOS needs BIOS services (just like grub4dos).\n\nAs said, EFI in itself can be compared to a minimal OS (not unlike what DOS or grub4dos represent in BIOS environment) but:\n\n[http://www.rodsbooks...fi-programming/](http://www.rodsbooks.com/efi-programming/ \"External link\")\n\u003e\n\u003e Tech-savvy individuals know the Extensible Firmware Interface (EFI) and its newer variant, the Unified EFI (UEFI) as a replacement for the older Basic Input/Output System (BIOS) on PCs and other computers. What you may not be aware of is that EFI is a complex software environment, comparable in size and features to a simple OS such as DOS. As such, EFI can host a variety of programs---**but** *++those programs can\u0027t spring into existence fully-formed, like Athena from Zeus\u0027 head.++* Rather, they must be written by individuals.\n\nFor some reasons no programmer seemingly writes them programs (with the notable exception of our friend Akeo, Author of Rufus):  \n[http://pete.akeo.ie/...ions-using.html](http://pete.akeo.ie/2015/01/easily-create-uefi-applications-using.html \"External link\")\n\nEFI disk utilities (including a UEFI diskpart) do exist:\n\n[https://firmwaresecu...disk-utilities/](https://firmwaresecurity.com/2015/09/26/intel-efi-disk-utilities/ \"External link\")  \n[http://www.intel.com...ee_diskutil.htm](http://www.intel.com/technology/efi/agree_diskutil.htm \"External link\")\n\nso it is clear the EFI native can have direct disk access alright, but having them work/compile, actually make them run, and then modify them to wipe disk sectors AND having them work on \\*any\\* hardware and with SecureBoot enabled (if applicable) is - I believe - far from trivial.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199471",
+      "timestamp": "2016-07-09T20:12:28+00:00",
+      "author": "Uneitohr",
+      "content": "I downloaded the Intel EFI Disk Utilities. Copied diskpart.efi to USB stick and created a new entry in the EFI bcd store.\n\nThe error output is:\n\n```\nThe application or operating system couldn\u0027t be loaded because a required file is missing or contains errors.\n\nFile:\\EFI\\Microsoft\\Boot\\diskpart.efi\n\nError code: 0xc0000007b\n```\n\nI don\u0027t get why it outputs this error. The paths are all correct, boot device is correct.\n\n"
+    },
+    {
+      "id": "199477",
+      "timestamp": "2016-07-10T07:46:12+00:00",
+      "author": "Wonko the Sane",
+      "content": "Sure, that error is perfectly normal  \nIt cannot be chainloaded from the BCD, of course, that is written to chainload either a Winload.exe or a bootsector.  \nThough it is highly doubtful that the EFI diskpart will actually work on current EFI/UEFI, it is an internal EFI command.  \nYou (maybe) can run it through the EFI shell (that is IF you have one and IF you can reach it, etc.).  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "199478",
+      "timestamp": "2016-07-10T07:58:37+00:00",
+      "author": "Uneitohr",
+      "content": "But BCD also loads memtest.efi, as a recovery application. I figured it is capable of also chainloading applications.\n\n"
+    },
+    {
+      "id": "199480",
+      "timestamp": "2016-07-10T08:43:53+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e But BCD also loads memtest.efi, as a recovery application. I figured it is capable of also chainloading applications.\n\nWell, you tried it, good :smile:, but it doesn\u0027t work, which was ***largely*** expected, as I tried to tell you.\n\nThe MS Memtest is most probably a tool specially crafted for being loaded by bootmgr.efi.\n\nYou tried it but it didn\u0027t work ![:(](http://reboot.pro/public/style_emoticons/default/sad.png), don\u0027t be too surprised by it, at least you tried :wink:.\n\nMaybe you were confused (if you checked the releasenote.txt) by the:\n\u003e The pre-built binaries can be found in \\\\binaries\\\\ia32, \\\\binaries\\\\x64 and\n\u003e \\\\binaries\\\\ipf, respectively.  \n\u003e\n\u003e To use the utilities, copy the binaries folder into a floppy or USB disk and  \n\u003e then mount the disk on the target. DISKPART **can be invoked from the boot manager**   \n\u003e directly because it is not a shell application. EFIFMT and EFICHK need to run  \n\u003e under the EFI Shell environment.\n\nHere the boot manager is not bootmgr.efi it is the EFI boot manager, see:  \n[https://www.happyass...ally-work-then/](https://www.happyassassin.net/2014/01/25/uefi-boot-how-does-that-actually-work-then/ \"External link\")\n\nProvided that it works, the diskpart tool seemingly has a \"CmdClean\" that can wipe \"ALL\" (DO NOT even THINK of using it, it will take AGES to wipe a whole disk) or just the first and last Mb of the disk.\n\nAs a side note, and as a reminder, the GPT MBR and partition table is mirrored at the end of the disk, so it is advised to wipe both the \"main one\" at the beginning of the disk and the \"mirrror\" at the end.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199484",
+      "timestamp": "2016-07-10T20:31:15+00:00",
+      "author": "sbaeder",
+      "content": "if you haven\u0027t yet looked more at \"reFind\" ([http://www.rodsbooks.com/refind/](http://www.rodsbooks.com/refind/ \"External link\")) the author of that fork also wrote a multiple purpose gpt version of fdisk, [http://www.rodsbooks.com/gdisk/](http://www.rodsbooks.com/gdisk/ \"External link\") that may provide some clues to help you along. It also has a script drive variant... See [http://www.rodsbooks...alkthrough.html](http://www.rodsbooks.com/gdisk/sgdisk-walkthrough.html \"External link\")\n\nIt has a \"zap\" option...\n\nNote: refind is a full boot manqager, and can provide some limited scripting as part of a boot manager entry - but as Wonko said, it all depends uses the efi \"shell\" to do this work.\n\nSo, it probably needs something like this...\n\nTotally automatic...\n\n* UEFI -\\\u003e UEFI boot manager of some sort -\\\u003e An entry that runs the efi \"shell ( shell.efi) running commands to drive something to do the work (like sgdisk).\n\nOr manually...\n\n* UEFU -\\\u003e UEFi boot manager (like refind that allows selecting the shell) -\\\u003e run the gdisk.efi to do things interactively.\n\nScott\n\n**Edited by sbaeder, 10 July 2016 - 08:35 PM.**\n"
+    },
+    {
+      "id": "199499",
+      "timestamp": "2016-07-11T12:35:14+00:00",
+      "author": "Uneitohr",
+      "content": "I downloaded the iso image of reFind and it freezes my boot menu for some reason.\n\nI\u0027ll do some more research on it.\n\n"
+    },
+    {
+      "id": "199500",
+      "timestamp": "2016-07-11T13:01:15+00:00",
+      "author": "Wonko the Sane",
+      "content": "Sgdisk is not an EFI executable.\n\nIt is a Linux/BSD (but also windows though for some reasons is not distributed as pre-compiled binary for windows) program.\n\nI.e. in any case an Operating System environment is needed to run those.\n\nThe EFI diskpart is instead intended to be run directly from the EFI boot manager (not from the EFI shell) so it might (or it might not) be executable by a boot manager (though not necessarily the Windows BOOTMGR.efi), though more likely it needs to be modified and recompiled, and again Alexander Ceed\u0027s request wasn\u0027t only for EFI/UEFI but also with SecureBoot in it, which is a further complication.\n\nThe fastest solution for UEFI and SecureBoot will probably be a very small Linux something though again the issues with SecureBoot may prove to be difficult to solve.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199504",
+      "timestamp": "2016-07-11T15:38:38+00:00",
+      "author": "Uneitohr",
+      "content": "I was thinking if this would be possible:\n\nUsing an autounattend.xml inside the root of an windows 8 setup iso:\n\n```\n\u003c?xml version\u003d\"1.0\" encoding\u003d\"utf-8\"?\u003e\n\u003cunattend xmlns\u003d\"urn:schemas-microsoft-com:unattend\"\u003e\n  \u003csettings pass\u003d\"windowsPE\"\u003e\n    \u003ccomponent name\u003d\"Microsoft-Windows-International-Core-WinPE\" processorArchitecture\u003d\"x86\" publicKeyToken\u003d\"31bf3856ad364e35\" language\u003d\"neutral\" versionScope\u003d\"nonSxS\" xmlns:wcm\u003d\"http://schemas.microsoft.com/WMIConfig/2002/State\" xmlns:xsi\u003d\"http://www.w3.org/2001/XMLSchema-instance\"\u003e\n      \u003cSetupUILanguage\u003e\n        \u003cUILanguage\u003een-US\u003c/UILanguage\u003e\n      \u003c/SetupUILanguage\u003e\n      \u003cInputLocale\u003e1033:00000409\u003c/InputLocale\u003e\n      \u003cSystemLocale\u003een-US\u003c/SystemLocale\u003e\n      \u003cUILanguage\u003een-US\u003c/UILanguage\u003e\n      \u003cUserLocale\u003een-US\u003c/UserLocale\u003e\n    \u003c/component\u003e\n    \u003ccomponent name\u003d\"Microsoft-Windows-International-Core-WinPE\" processorArchitecture\u003d\"amd64\" publicKeyToken\u003d\"31bf3856ad364e35\" language\u003d\"neutral\" versionScope\u003d\"nonSxS\" xmlns:wcm\u003d\"http://schemas.microsoft.com/WMIConfig/2002/State\" xmlns:xsi\u003d\"http://www.w3.org/2001/XMLSchema-instance\"\u003e\n      \u003cSetupUILanguage\u003e\n        \u003cUILanguage\u003een-US\u003c/UILanguage\u003e\n      \u003c/SetupUILanguage\u003e\n      \u003cInputLocale\u003e1033:00000409\u003c/InputLocale\u003e\n      \u003cSystemLocale\u003een-US\u003c/SystemLocale\u003e\n      \u003cUILanguage\u003een-US\u003c/UILanguage\u003e\n      \u003cUserLocale\u003een-US\u003c/UserLocale\u003e\n    \u003c/component\u003e\n    \u003ccomponent name\u003d\"Microsoft-Windows-Setup\" processorArchitecture\u003d\"x86\" publicKeyToken\u003d\"31bf3856ad364e35\" language\u003d\"neutral\" versionScope\u003d\"nonSxS\" xmlns:wcm\u003d\"http://schemas.microsoft.com/WMIConfig/2002/State\" xmlns:xsi\u003d\"http://www.w3.org/2001/XMLSchema-instance\"\u003e\n      \u003cDiagnostics\u003e\n        \u003cOptIn\u003efalse\u003c/OptIn\u003e\n      \u003c/Diagnostics\u003e\n      \u003cDiskConfiguration\u003e\n        \u003cWillShowUI\u003eOnError\u003c/WillShowUI\u003e\n        \u003cDisk wcm:action\u003d\"add\"\u003e\n          \u003cDiskID\u003e0\u003c/DiskID\u003e\n          \u003cWillWipeDisk\u003etrue\u003c/WillWipeDisk\u003e\n        \u003c/Disk\u003e\n        \u003cDisk wcm:action\u003d\"add\"\u003e\n          \u003cDiskID\u003e1\u003c/DiskID\u003e\n          \u003cWillWipeDisk\u003etrue\u003c/WillWipeDisk\u003e\n        \u003c/Disk\u003e\n      \u003c/DiskConfiguration\u003e\n    \u003c/component\u003e\n    \u003ccomponent name\u003d\"Microsoft-Windows-Setup\" processorArchitecture\u003d\"amd64\" publicKeyToken\u003d\"31bf3856ad364e35\" language\u003d\"neutral\" versionScope\u003d\"nonSxS\" xmlns:wcm\u003d\"http://schemas.microsoft.com/WMIConfig/2002/State\" xmlns:xsi\u003d\"http://www.w3.org/2001/XMLSchema-instance\"\u003e\n      \u003cDiagnostics\u003e\n        \u003cOptIn\u003efalse\u003c/OptIn\u003e\n      \u003c/Diagnostics\u003e\n      \u003cDiskConfiguration\u003e\n        \u003cWillShowUI\u003eOnError\u003c/WillShowUI\u003e\n        \u003cDisk wcm:action\u003d\"add\"\u003e\n          \u003cDiskID\u003e0\u003c/DiskID\u003e\n          \u003cWillWipeDisk\u003etrue\u003c/WillWipeDisk\u003e\n        \u003c/Disk\u003e\n        \u003cDisk wcm:action\u003d\"add\"\u003e\n          \u003cDiskID\u003e1\u003c/DiskID\u003e\n          \u003cWillWipeDisk\u003etrue\u003c/WillWipeDisk\u003e\n        \u003c/Disk\u003e\n      \u003c/DiskConfiguration\u003e\n    \u003c/component\u003e\n  \u003c/settings\u003e\n\u003c/unattend\u003e\n```\n\nAnd removing everything from the iso except boot.wim. Theoretically it will load the boot.wim, read unattend.xml, wipe all drives, reboot on error.\n\nIt\u0027s not pretty but I\u0027m guessing it will work. I\u0027ll test it tomorrow.\n\n"
+    },
+    {
+      "id": "199506",
+      "timestamp": "2016-07-11T17:07:23+00:00",
+      "author": "erwan.l",
+      "content": "If you are to use the boot.wim from an install dvd, you would better off add a few bytes to stuff in a script and call it from winpeshl.ini.\n\nCleaner; safer, more flexible ...\n\n"
+    },
+    {
+      "id": "199507",
+      "timestamp": "2016-07-11T17:38:33+00:00",
+      "author": "Wonko the Sane",
+      "content": "Anyway I don\u0027t think it would be faster than booting a Mini-Linux targeted to that, but yes, a batch called by WinPEshl.ini seems by far more flexible and controllable.\n\nTo me (and personally of course) the sheer idea of having something that boots and wipes all disks MBR/GPT tables is a perfect recipe for disaster.\n\nI would want double (and triple) checks and explicit user confirmation (and BTW OP already got burned alright by the original grub4dos menu.lst entry):\n\n[http://reboot.pro/to...-dban/?p\u003d195345](http://reboot.pro/topic/20677-fast-bootable-alternative-to-dban/?p\u003d195345 \"\")\n\nStill the \"beginning of it all\" was - unless I am mistaken - because Dban was too slow, but one could have a modified Dban (since it is already smallish and quickly booted) and run the mentioned sgdisk or a \"normal\" set of dd commands, I believe that booting a minimal Linux will be faster than a minimal PE 3.x and later ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199509",
+      "timestamp": "2016-07-11T18:09:02+00:00",
+      "author": "Uneitohr",
+      "content": "\u003e To me (and personally of course) the sheer idea of having something that boots and wipes all disks MBR/GPT tables is a perfect recipe for disaster.\n\u003e\nYes, you are perfectly right Wonko. I got burned with that but was only because I set the Wipe Entry to be the default. I was testing something at work and wanted to ease my work.\n\nNow, I have 2 prompts for that entry with y/n confirmation and is placed in the middle of the list.\n\nI want to build this thing because at work we get many new laptops with this new UEFI standard. the problem is that we cannot enable legacy mode with CSM if the OS exists. These come preinstalled with Windows 10, and for some reason, when changing the legacy setting in UEFI, it does not save the change. Multi tries, save the new setting, upon restart, it does not change. But a wipe of the OS will do the trick, i tested this.\n\nWhich is why I need this.\n\n\u003e Still the \"beginning of it all\" was - unless I am mistaken - because Dban was too slow, but one could have a modified Dban (since it is already smallish and quickly booted) and run the mentioned sgdisk or a \"normal\" set of dd commands\n\u003e\nI did not use dd but I did set the bootloader to quick. I\u0027m not that technical with linux, unfortunatelly.\n\n\u003e I believe that booting a minimal Linux will be faster than a minimal PE 3.x and later ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\u003e\nAgreed. But we don\u0027t know if it works. I know for certain that windows 8+ is able to boot through any UEFI. reFind freezes the boot process and is linux-based.\n\n"
+    },
+    {
+      "id": "199510",
+      "timestamp": "2016-07-11T19:21:09+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well , all in all it is now then (related to UEFI) not anymore \"the most convenient or faster\", but actually the \"only thing that works\", and still instead of \"unatttended.xml\" I would use a \"proper batch\".\n\nSince you MUST be attending the thingy (as you actually want a confirmation, to avid the risk of wiping something that you may want to regret) it needs not to be in any \"auto-start file\" you type the batch name in the cmd windows and that counts as confirmation of your intention to wipe.\n\nAnd - still - I would try using gdisk or sgdisk or a simple batch using a dd or dd like tool given this recent report by Akeo about a bug in diskpart (related to stupid 10, but maybe same in previous versions of the OS ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)):  \n[http://reboot.pro/to...eased/?p\u003d199488](http://reboot.pro/topic/20358-rufus-20-has-been-released/?p\u003d199488 \"\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199511",
+      "timestamp": "2016-07-11T20:25:29+00:00",
+      "author": "cdob",
+      "content": "\u003e \\\u003cDiskID\\\u003e0\\\u003c/DiskID\\\u003e  \n\u003e \\\u003cWillWipeDisk\\\u003etrue\\\u003c/WillWipeDisk\\\u003e  \n\u003e\n\u003e wipe all drives\nI understand: autounattend wipes disk 0 only, not all drives.  \nBut in almost all cases disk 0 is the \"windows\" disk.  \nSo this should fix your request at special hardware.  \nGood luck.   \n"
+    },
+    {
+      "id": "199515",
+      "timestamp": "2016-07-12T07:28:16+00:00",
+      "author": "Uneitohr",
+      "content": "The script is probably better with startnet.cmd. The WinPEshl.ini is very sensitive if encouters errors and might restart the image without wiping anything.\n\nAny tool in mind for this operation? Perhaps a good command-line hexeditor to wipe to first 510 bytes of the drive?\n\nI could use diskpart but it doesn\u0027t accept command line, as it runs only via custom script. Not very customizable.\n\n"
+    },
+    {
+      "id": "199516",
+      "timestamp": "2016-07-12T08:35:48+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e The script is probably better with startnet.cmd. The WinPEshl.ini is very sensitive if encouters errors and might restart the image without wiping anything.\n\u003e\n\u003e Any tool in mind for this operation? Perhaps a good command-line hexeditor to wipe to first 510 bytes of the drive?\n\u003e\n\u003e I could use diskpart but it doesn\u0027t accept command line, as it runs only via custom script. Not very customizable.\n\n1) you need to wipe WAY more that just first 510 (or 512) bytes on a GPT disk ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif), why you don\u0027t actually try to study and understand HOW EXACTLY a GPT disk is made? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nWiping only the MBR on a GPT disk is - more or less - like attempting to empty the water entering your leaking boat with a colander. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)\n\nWiping the first 510 (or 512 better) bytes you will wipe the protective EE partition entry, that will be recreated exactly as it was at next attempt to partition/format the volume, leaving ALL the actual volume info intact (twice) and potentially creating each and every kind of conflict (+1 more).\n\n2) JFYI, diskpart ***is said by MS*** to not accept command line and to need a script (which BTW would not be an issue at all in your specific case) as a matter of fact with a trick or two it can be made to accept command lines from a batch.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199527",
+      "timestamp": "2016-07-13T07:07:49+00:00",
+      "author": "Uneitohr",
+      "content": "I have created a WinPE 4.0 iso and added the diskpart script to startnet.cmd/WinPEshl.ini. WinPE freezes at the windows 8 logo on both uefi and bios systems. Same issue as before [http://reboot.pro/to...fter-boot-logo/](http://reboot.pro/topic/21052-winpe-black-screen-after-boot-logo/ \"\"). That one was resolved with grub4dos command *map --e820cycles\u003d0.*This is very weird and don\u0027t know to fix it.\n\n"
+    },
+    {
+      "id": "199528",
+      "timestamp": "2016-07-13T10:24:39+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I have created a WinPE 4.0 iso and added the diskpart script to startnet.cmd/WinPEshl.ini. WinPE freezes at the windows 8 logo on both uefi and bios systems. Same issue as before [http://reboot.pro/to...fter-boot-logo/](http://reboot.pro/topic/21052-winpe-black-screen-after-boot-logo/ \"\"). That one was resolved with grub4dos command *map --e820cycles\u003d0.*This is very weird and don\u0027t know to fix it.\n\nThen it is likely a failed build.\n\nIt happens, try using a proven method to build the PE, like the nice QuickPE by Erwan.l, DO NOT add any script (diskpart or other, DO NOT modify startnet.cmd/WinPEshl.ini).\n\nIf it boots, re-build using EXACTLY the same method and source, but this time add the scripts and modify the startnet.cmd/WinPEshl.ini, etc.\n\n[http://reboot.pro/fi...le/340-quickpe/](http://reboot.pro/files/file/340-quickpe/ \"\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199539",
+      "timestamp": "2016-07-13T17:18:03+00:00",
+      "author": "Uneitohr",
+      "content": "This time I used un untouched boot.wim image from Windows 8.0 ADK via copype amd64\n\nAnd created the bootable iso image using oscdimg -lBUPE -h -n -m -b\"etfsboot.com\" -b\"efisys.bin\" C:\\\\_TEMP C:\\\\BUPE.iso\n\nAt first I only tried it with etfsboot.com. Then I tried the command with both etfsboot.com and efisys.bin. Same thing, it freezes in UEFI mode. It\u0027s got to be something I\u0027ve missed. I know the original windows 8 DVD works file. It probably is some stupid driver that cannot be initialized.\n\n"
+    },
+    {
+      "id": "199450",
+      "timestamp": "2016-07-08T17:16:07+00:00",
+      "author": "Uneitohr",
+      "content": "Hi guys!\n\nI\u0027m trying to come up with a way to wipe the MBR/GPT of all the drives within a system booting only to UEFI Secure Boot, without CSM. I know I can change in UEFI the settings and enable CSM but I need it to work this way.\n\nI have a USB drive, formatted with FAT32, bootmgr, copied *boot* and *efi*folders. Tested it and boots fine in BIOS and UEFI. But now I\u0027m looking for a way to also do a wipe of mbr/gpt of every existing disk in the system.\n\nHere\u0027s the way i\u0027m thinking:\n\nUEFI -\\\u003e bootmgr -\\\u003e **wipe command**\n\nor something like this\n\nUEFI -\\\u003e bootmgr -\\\u003e very small winpe.wim -\\\u003e **wipe command**\n\nIs there any possibility of running a command via bootmgr, without loading a .wim image, that can kill the partition table?\n\nI would not prefer loading a full wim due the delay of loading the image. Something very similar to what Wonko posted over this thread [http://reboot.pro/to...an/#entry194793](http://reboot.pro/topic/20677-fast-bootable-alternative-to-dban/#entry194793 \"\")but something that will work with bootmgr.\n\nThank you\n\n"
+    },
+    {
+      "id": "199451",
+      "timestamp": "2016-07-08T17:47:23+00:00",
+      "author": "erwan.l",
+      "content": "Hi,\n\nGrub4dos can be chained from bootmgr : what dont do you stick to what Wonko already posted ?\n\nRegards,\n\nErwan\n\n"
+    },
+    {
+      "id": "199452",
+      "timestamp": "2016-07-08T17:56:53+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, to be *picky* what Wonko posted there works fine with bootmgr, only it won\u0027t work with bootmgr**.efi** (which is what you want to use).\n\n(EFI/UEFI don\u0027t use bootmgr).\n\nGrub4dos won\u0027t work in EFI/UEFI.\n\nThe idea there was to load (through BIOS) a very minimal OS (which in this case is grub4dos) capable of wiping a single sector (or a few of them) via direct disk access.\n\nYou can do the same (still in BIOS) with a DOS and DEBUG.\n\nNow, EFI/UEFI is (in theory) already a very basic OS, in practice it seems like noone wrote a EFI program capable of having direct disk access and wiping one or more sectors.\n\nIn any case (rather obviously) bootmgr.efi is not the \"right\" approach, maybe GRUB2 would do, but you asked, besides \"EFI/UEFI only\" also SecureBoot, and I really doubt that anyone is going to go through the complications of SecureBoot for somethinglike that.\n\nIMHO you\u0027d better find a way to have a minimal PE (and wait a little bit for it to load) or manage to use a mini-mini Linux distro (which might or might not allow SecureBoot).\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199454",
+      "timestamp": "2016-07-09T12:02:01+00:00",
+      "author": "erwan.l",
+      "content": "Ah correct, had forgotten that there is no grub4dos for EFI...\n\nA small winpe is probably the easiest then.\n\nIf scripted / automated thus, I would still seek some user interfaction (\"yes, sure?/no\") as wiping datas is not something light.\n\nRegards,\n\nErwan\n\n"
+    },
+    {
+      "id": "199455",
+      "timestamp": "2016-07-09T12:11:45+00:00",
+      "author": "Uneitohr",
+      "content": "I agree with winpe. But I just find the original one, of 400MB, to be of extremely large size for such a simple operation.\n\nA small hex editor would suffice for this. Just to kill the first 510 bytes off every drive.\n\nWould a DOS floppy work? bootmgr.efi to chainload a DOS floppy/wim image?\n\n"
+    },
+    {
+      "id": "199457",
+      "timestamp": "2016-07-09T12:18:51+00:00",
+      "author": "erwan.l",
+      "content": "You can easily generate a winpe below 200mb.\n\nHave a look at QuickPE in my signature.\n\nI dont believe you can chainload dos/freedos from UEFI.\n\n"
+    },
+    {
+      "id": "199458",
+      "timestamp": "2016-07-09T14:16:13+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Would a DOS floppy work? bootmgr.efi to chainload a DOS floppy/wim image?\n\nOf course not, DOS needs BIOS services (just like grub4dos).\n\nAs said, EFI in itself can be compared to a minimal OS (not unlike what DOS or grub4dos represent in BIOS environment) but:\n\n[http://www.rodsbooks...fi-programming/](http://www.rodsbooks.com/efi-programming/ \"External link\")\n\u003e\n\u003e Tech-savvy individuals know the Extensible Firmware Interface (EFI) and its newer variant, the Unified EFI (UEFI) as a replacement for the older Basic Input/Output System (BIOS) on PCs and other computers. What you may not be aware of is that EFI is a complex software environment, comparable in size and features to a simple OS such as DOS. As such, EFI can host a variety of programs---**but** *++those programs can\u0027t spring into existence fully-formed, like Athena from Zeus\u0027 head.++* Rather, they must be written by individuals.\n\nFor some reasons no programmer seemingly writes them programs (with the notable exception of our friend Akeo, Author of Rufus):  \n[http://pete.akeo.ie/...ions-using.html](http://pete.akeo.ie/2015/01/easily-create-uefi-applications-using.html \"External link\")\n\nEFI disk utilities (including a UEFI diskpart) do exist:\n\n[https://firmwaresecu...disk-utilities/](https://firmwaresecurity.com/2015/09/26/intel-efi-disk-utilities/ \"External link\")  \n[http://www.intel.com...ee_diskutil.htm](http://www.intel.com/technology/efi/agree_diskutil.htm \"External link\")\n\nso it is clear the EFI native can have direct disk access alright, but having them work/compile, actually make them run, and then modify them to wipe disk sectors AND having them work on \\*any\\* hardware and with SecureBoot enabled (if applicable) is - I believe - far from trivial.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199471",
+      "timestamp": "2016-07-09T20:12:28+00:00",
+      "author": "Uneitohr",
+      "content": "I downloaded the Intel EFI Disk Utilities. Copied diskpart.efi to USB stick and created a new entry in the EFI bcd store.\n\nThe error output is:\n\n```\nThe application or operating system couldn\u0027t be loaded because a required file is missing or contains errors.\n\nFile:\\EFI\\Microsoft\\Boot\\diskpart.efi\n\nError code: 0xc0000007b\n```\n\nI don\u0027t get why it outputs this error. The paths are all correct, boot device is correct.\n\n"
+    },
+    {
+      "id": "199477",
+      "timestamp": "2016-07-10T07:46:12+00:00",
+      "author": "Wonko the Sane",
+      "content": "Sure, that error is perfectly normal  \nIt cannot be chainloaded from the BCD, of course, that is written to chainload either a Winload.exe or a bootsector.  \nThough it is highly doubtful that the EFI diskpart will actually work on current EFI/UEFI, it is an internal EFI command.  \nYou (maybe) can run it through the EFI shell (that is IF you have one and IF you can reach it, etc.).  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "199478",
+      "timestamp": "2016-07-10T07:58:37+00:00",
+      "author": "Uneitohr",
+      "content": "But BCD also loads memtest.efi, as a recovery application. I figured it is capable of also chainloading applications.\n\n"
+    },
+    {
+      "id": "199480",
+      "timestamp": "2016-07-10T08:43:53+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e But BCD also loads memtest.efi, as a recovery application. I figured it is capable of also chainloading applications.\n\nWell, you tried it, good :smile:, but it doesn\u0027t work, which was ***largely*** expected, as I tried to tell you.\n\nThe MS Memtest is most probably a tool specially crafted for being loaded by bootmgr.efi.\n\nYou tried it but it didn\u0027t work ![:(](http://reboot.pro/public/style_emoticons/default/sad.png), don\u0027t be too surprised by it, at least you tried :wink:.\n\nMaybe you were confused (if you checked the releasenote.txt) by the:\n\u003e The pre-built binaries can be found in \\\\binaries\\\\ia32, \\\\binaries\\\\x64 and\n\u003e \\\\binaries\\\\ipf, respectively.  \n\u003e\n\u003e To use the utilities, copy the binaries folder into a floppy or USB disk and  \n\u003e then mount the disk on the target. DISKPART **can be invoked from the boot manager**   \n\u003e directly because it is not a shell application. EFIFMT and EFICHK need to run  \n\u003e under the EFI Shell environment.\n\nHere the boot manager is not bootmgr.efi it is the EFI boot manager, see:  \n[https://www.happyass...ally-work-then/](https://www.happyassassin.net/2014/01/25/uefi-boot-how-does-that-actually-work-then/ \"External link\")\n\nProvided that it works, the diskpart tool seemingly has a \"CmdClean\" that can wipe \"ALL\" (DO NOT even THINK of using it, it will take AGES to wipe a whole disk) or just the first and last Mb of the disk.\n\nAs a side note, and as a reminder, the GPT MBR and partition table is mirrored at the end of the disk, so it is advised to wipe both the \"main one\" at the beginning of the disk and the \"mirrror\" at the end.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199484",
+      "timestamp": "2016-07-10T20:31:15+00:00",
+      "author": "sbaeder",
+      "content": "if you haven\u0027t yet looked more at \"reFind\" ([http://www.rodsbooks.com/refind/](http://www.rodsbooks.com/refind/ \"External link\")) the author of that fork also wrote a multiple purpose gpt version of fdisk, [http://www.rodsbooks.com/gdisk/](http://www.rodsbooks.com/gdisk/ \"External link\") that may provide some clues to help you along. It also has a script drive variant... See [http://www.rodsbooks...alkthrough.html](http://www.rodsbooks.com/gdisk/sgdisk-walkthrough.html \"External link\")\n\nIt has a \"zap\" option...\n\nNote: refind is a full boot manqager, and can provide some limited scripting as part of a boot manager entry - but as Wonko said, it all depends uses the efi \"shell\" to do this work.\n\nSo, it probably needs something like this...\n\nTotally automatic...\n\n* UEFI -\\\u003e UEFI boot manager of some sort -\\\u003e An entry that runs the efi \"shell ( shell.efi) running commands to drive something to do the work (like sgdisk).\n\nOr manually...\n\n* UEFU -\\\u003e UEFi boot manager (like refind that allows selecting the shell) -\\\u003e run the gdisk.efi to do things interactively.\n\nScott\n\n**Edited by sbaeder, 10 July 2016 - 08:35 PM.**\n"
+    },
+    {
+      "id": "199499",
+      "timestamp": "2016-07-11T12:35:14+00:00",
+      "author": "Uneitohr",
+      "content": "I downloaded the iso image of reFind and it freezes my boot menu for some reason.\n\nI\u0027ll do some more research on it.\n\n"
+    },
+    {
+      "id": "199500",
+      "timestamp": "2016-07-11T13:01:15+00:00",
+      "author": "Wonko the Sane",
+      "content": "Sgdisk is not an EFI executable.\n\nIt is a Linux/BSD (but also windows though for some reasons is not distributed as pre-compiled binary for windows) program.\n\nI.e. in any case an Operating System environment is needed to run those.\n\nThe EFI diskpart is instead intended to be run directly from the EFI boot manager (not from the EFI shell) so it might (or it might not) be executable by a boot manager (though not necessarily the Windows BOOTMGR.efi), though more likely it needs to be modified and recompiled, and again Alexander Ceed\u0027s request wasn\u0027t only for EFI/UEFI but also with SecureBoot in it, which is a further complication.\n\nThe fastest solution for UEFI and SecureBoot will probably be a very small Linux something though again the issues with SecureBoot may prove to be difficult to solve.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199504",
+      "timestamp": "2016-07-11T15:38:38+00:00",
+      "author": "Uneitohr",
+      "content": "I was thinking if this would be possible:\n\nUsing an autounattend.xml inside the root of an windows 8 setup iso:\n\n```\n\u003c?xml version\u003d\"1.0\" encoding\u003d\"utf-8\"?\u003e\n\u003cunattend xmlns\u003d\"urn:schemas-microsoft-com:unattend\"\u003e\n  \u003csettings pass\u003d\"windowsPE\"\u003e\n    \u003ccomponent name\u003d\"Microsoft-Windows-International-Core-WinPE\" processorArchitecture\u003d\"x86\" publicKeyToken\u003d\"31bf3856ad364e35\" language\u003d\"neutral\" versionScope\u003d\"nonSxS\" xmlns:wcm\u003d\"http://schemas.microsoft.com/WMIConfig/2002/State\" xmlns:xsi\u003d\"http://www.w3.org/2001/XMLSchema-instance\"\u003e\n      \u003cSetupUILanguage\u003e\n        \u003cUILanguage\u003een-US\u003c/UILanguage\u003e\n      \u003c/SetupUILanguage\u003e\n      \u003cInputLocale\u003e1033:00000409\u003c/InputLocale\u003e\n      \u003cSystemLocale\u003een-US\u003c/SystemLocale\u003e\n      \u003cUILanguage\u003een-US\u003c/UILanguage\u003e\n      \u003cUserLocale\u003een-US\u003c/UserLocale\u003e\n    \u003c/component\u003e\n    \u003ccomponent name\u003d\"Microsoft-Windows-International-Core-WinPE\" processorArchitecture\u003d\"amd64\" publicKeyToken\u003d\"31bf3856ad364e35\" language\u003d\"neutral\" versionScope\u003d\"nonSxS\" xmlns:wcm\u003d\"http://schemas.microsoft.com/WMIConfig/2002/State\" xmlns:xsi\u003d\"http://www.w3.org/2001/XMLSchema-instance\"\u003e\n      \u003cSetupUILanguage\u003e\n        \u003cUILanguage\u003een-US\u003c/UILanguage\u003e\n      \u003c/SetupUILanguage\u003e\n      \u003cInputLocale\u003e1033:00000409\u003c/InputLocale\u003e\n      \u003cSystemLocale\u003een-US\u003c/SystemLocale\u003e\n      \u003cUILanguage\u003een-US\u003c/UILanguage\u003e\n      \u003cUserLocale\u003een-US\u003c/UserLocale\u003e\n    \u003c/component\u003e\n    \u003ccomponent name\u003d\"Microsoft-Windows-Setup\" processorArchitecture\u003d\"x86\" publicKeyToken\u003d\"31bf3856ad364e35\" language\u003d\"neutral\" versionScope\u003d\"nonSxS\" xmlns:wcm\u003d\"http://schemas.microsoft.com/WMIConfig/2002/State\" xmlns:xsi\u003d\"http://www.w3.org/2001/XMLSchema-instance\"\u003e\n      \u003cDiagnostics\u003e\n        \u003cOptIn\u003efalse\u003c/OptIn\u003e\n      \u003c/Diagnostics\u003e\n      \u003cDiskConfiguration\u003e\n        \u003cWillShowUI\u003eOnError\u003c/WillShowUI\u003e\n        \u003cDisk wcm:action\u003d\"add\"\u003e\n          \u003cDiskID\u003e0\u003c/DiskID\u003e\n          \u003cWillWipeDisk\u003etrue\u003c/WillWipeDisk\u003e\n        \u003c/Disk\u003e\n        \u003cDisk wcm:action\u003d\"add\"\u003e\n          \u003cDiskID\u003e1\u003c/DiskID\u003e\n          \u003cWillWipeDisk\u003etrue\u003c/WillWipeDisk\u003e\n        \u003c/Disk\u003e\n      \u003c/DiskConfiguration\u003e\n    \u003c/component\u003e\n    \u003ccomponent name\u003d\"Microsoft-Windows-Setup\" processorArchitecture\u003d\"amd64\" publicKeyToken\u003d\"31bf3856ad364e35\" language\u003d\"neutral\" versionScope\u003d\"nonSxS\" xmlns:wcm\u003d\"http://schemas.microsoft.com/WMIConfig/2002/State\" xmlns:xsi\u003d\"http://www.w3.org/2001/XMLSchema-instance\"\u003e\n      \u003cDiagnostics\u003e\n        \u003cOptIn\u003efalse\u003c/OptIn\u003e\n      \u003c/Diagnostics\u003e\n      \u003cDiskConfiguration\u003e\n        \u003cWillShowUI\u003eOnError\u003c/WillShowUI\u003e\n        \u003cDisk wcm:action\u003d\"add\"\u003e\n          \u003cDiskID\u003e0\u003c/DiskID\u003e\n          \u003cWillWipeDisk\u003etrue\u003c/WillWipeDisk\u003e\n        \u003c/Disk\u003e\n        \u003cDisk wcm:action\u003d\"add\"\u003e\n          \u003cDiskID\u003e1\u003c/DiskID\u003e\n          \u003cWillWipeDisk\u003etrue\u003c/WillWipeDisk\u003e\n        \u003c/Disk\u003e\n      \u003c/DiskConfiguration\u003e\n    \u003c/component\u003e\n  \u003c/settings\u003e\n\u003c/unattend\u003e\n```\n\nAnd removing everything from the iso except boot.wim. Theoretically it will load the boot.wim, read unattend.xml, wipe all drives, reboot on error.\n\nIt\u0027s not pretty but I\u0027m guessing it will work. I\u0027ll test it tomorrow.\n\n"
+    },
+    {
+      "id": "199506",
+      "timestamp": "2016-07-11T17:07:23+00:00",
+      "author": "erwan.l",
+      "content": "If you are to use the boot.wim from an install dvd, you would better off add a few bytes to stuff in a script and call it from winpeshl.ini.\n\nCleaner; safer, more flexible ...\n\n"
+    },
+    {
+      "id": "199507",
+      "timestamp": "2016-07-11T17:38:33+00:00",
+      "author": "Wonko the Sane",
+      "content": "Anyway I don\u0027t think it would be faster than booting a Mini-Linux targeted to that, but yes, a batch called by WinPEshl.ini seems by far more flexible and controllable.\n\nTo me (and personally of course) the sheer idea of having something that boots and wipes all disks MBR/GPT tables is a perfect recipe for disaster.\n\nI would want double (and triple) checks and explicit user confirmation (and BTW OP already got burned alright by the original grub4dos menu.lst entry):\n\n[http://reboot.pro/to...-dban/?p\u003d195345](http://reboot.pro/topic/20677-fast-bootable-alternative-to-dban/?p\u003d195345 \"\")\n\nStill the \"beginning of it all\" was - unless I am mistaken - because Dban was too slow, but one could have a modified Dban (since it is already smallish and quickly booted) and run the mentioned sgdisk or a \"normal\" set of dd commands, I believe that booting a minimal Linux will be faster than a minimal PE 3.x and later ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199509",
+      "timestamp": "2016-07-11T18:09:02+00:00",
+      "author": "Uneitohr",
+      "content": "\u003e To me (and personally of course) the sheer idea of having something that boots and wipes all disks MBR/GPT tables is a perfect recipe for disaster.\n\u003e\nYes, you are perfectly right Wonko. I got burned with that but was only because I set the Wipe Entry to be the default. I was testing something at work and wanted to ease my work.\n\nNow, I have 2 prompts for that entry with y/n confirmation and is placed in the middle of the list.\n\nI want to build this thing because at work we get many new laptops with this new UEFI standard. the problem is that we cannot enable legacy mode with CSM if the OS exists. These come preinstalled with Windows 10, and for some reason, when changing the legacy setting in UEFI, it does not save the change. Multi tries, save the new setting, upon restart, it does not change. But a wipe of the OS will do the trick, i tested this.\n\nWhich is why I need this.\n\n\u003e Still the \"beginning of it all\" was - unless I am mistaken - because Dban was too slow, but one could have a modified Dban (since it is already smallish and quickly booted) and run the mentioned sgdisk or a \"normal\" set of dd commands\n\u003e\nI did not use dd but I did set the bootloader to quick. I\u0027m not that technical with linux, unfortunatelly.\n\n\u003e I believe that booting a minimal Linux will be faster than a minimal PE 3.x and later ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\u003e\nAgreed. But we don\u0027t know if it works. I know for certain that windows 8+ is able to boot through any UEFI. reFind freezes the boot process and is linux-based.\n\n"
+    },
+    {
+      "id": "199510",
+      "timestamp": "2016-07-11T19:21:09+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well , all in all it is now then (related to UEFI) not anymore \"the most convenient or faster\", but actually the \"only thing that works\", and still instead of \"unatttended.xml\" I would use a \"proper batch\".\n\nSince you MUST be attending the thingy (as you actually want a confirmation, to avid the risk of wiping something that you may want to regret) it needs not to be in any \"auto-start file\" you type the batch name in the cmd windows and that counts as confirmation of your intention to wipe.\n\nAnd - still - I would try using gdisk or sgdisk or a simple batch using a dd or dd like tool given this recent report by Akeo about a bug in diskpart (related to stupid 10, but maybe same in previous versions of the OS ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)):  \n[http://reboot.pro/to...eased/?p\u003d199488](http://reboot.pro/topic/20358-rufus-20-has-been-released/?p\u003d199488 \"\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199511",
+      "timestamp": "2016-07-11T20:25:29+00:00",
+      "author": "cdob",
+      "content": "\u003e \\\u003cDiskID\\\u003e0\\\u003c/DiskID\\\u003e  \n\u003e \\\u003cWillWipeDisk\\\u003etrue\\\u003c/WillWipeDisk\\\u003e  \n\u003e\n\u003e wipe all drives\nI understand: autounattend wipes disk 0 only, not all drives.  \nBut in almost all cases disk 0 is the \"windows\" disk.  \nSo this should fix your request at special hardware.  \nGood luck.   \n"
+    },
+    {
+      "id": "199515",
+      "timestamp": "2016-07-12T07:28:16+00:00",
+      "author": "Uneitohr",
+      "content": "The script is probably better with startnet.cmd. The WinPEshl.ini is very sensitive if encouters errors and might restart the image without wiping anything.\n\nAny tool in mind for this operation? Perhaps a good command-line hexeditor to wipe to first 510 bytes of the drive?\n\nI could use diskpart but it doesn\u0027t accept command line, as it runs only via custom script. Not very customizable.\n\n"
+    },
+    {
+      "id": "199516",
+      "timestamp": "2016-07-12T08:35:48+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e The script is probably better with startnet.cmd. The WinPEshl.ini is very sensitive if encouters errors and might restart the image without wiping anything.\n\u003e\n\u003e Any tool in mind for this operation? Perhaps a good command-line hexeditor to wipe to first 510 bytes of the drive?\n\u003e\n\u003e I could use diskpart but it doesn\u0027t accept command line, as it runs only via custom script. Not very customizable.\n\n1) you need to wipe WAY more that just first 510 (or 512) bytes on a GPT disk ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif), why you don\u0027t actually try to study and understand HOW EXACTLY a GPT disk is made? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nWiping only the MBR on a GPT disk is - more or less - like attempting to empty the water entering your leaking boat with a colander. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)\n\nWiping the first 510 (or 512 better) bytes you will wipe the protective EE partition entry, that will be recreated exactly as it was at next attempt to partition/format the volume, leaving ALL the actual volume info intact (twice) and potentially creating each and every kind of conflict (+1 more).\n\n2) JFYI, diskpart ***is said by MS*** to not accept command line and to need a script (which BTW would not be an issue at all in your specific case) as a matter of fact with a trick or two it can be made to accept command lines from a batch.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199527",
+      "timestamp": "2016-07-13T07:07:49+00:00",
+      "author": "Uneitohr",
+      "content": "I have created a WinPE 4.0 iso and added the diskpart script to startnet.cmd/WinPEshl.ini. WinPE freezes at the windows 8 logo on both uefi and bios systems. Same issue as before [http://reboot.pro/to...fter-boot-logo/](http://reboot.pro/topic/21052-winpe-black-screen-after-boot-logo/ \"\"). That one was resolved with grub4dos command *map --e820cycles\u003d0.*This is very weird and don\u0027t know to fix it.\n\n"
+    },
+    {
+      "id": "199528",
+      "timestamp": "2016-07-13T10:24:39+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I have created a WinPE 4.0 iso and added the diskpart script to startnet.cmd/WinPEshl.ini. WinPE freezes at the windows 8 logo on both uefi and bios systems. Same issue as before [http://reboot.pro/to...fter-boot-logo/](http://reboot.pro/topic/21052-winpe-black-screen-after-boot-logo/ \"\"). That one was resolved with grub4dos command *map --e820cycles\u003d0.*This is very weird and don\u0027t know to fix it.\n\nThen it is likely a failed build.\n\nIt happens, try using a proven method to build the PE, like the nice QuickPE by Erwan.l, DO NOT add any script (diskpart or other, DO NOT modify startnet.cmd/WinPEshl.ini).\n\nIf it boots, re-build using EXACTLY the same method and source, but this time add the scripts and modify the startnet.cmd/WinPEshl.ini, etc.\n\n[http://reboot.pro/fi...le/340-quickpe/](http://reboot.pro/files/file/340-quickpe/ \"\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199539",
+      "timestamp": "2016-07-13T17:18:03+00:00",
+      "author": "Uneitohr",
+      "content": "This time I used un untouched boot.wim image from Windows 8.0 ADK via copype amd64\n\nAnd created the bootable iso image using oscdimg -lBUPE -h -n -m -b\"etfsboot.com\" -b\"efisys.bin\" C:\\\\_TEMP C:\\\\BUPE.iso\n\nAt first I only tried it with etfsboot.com. Then I tried the command with both etfsboot.com and efisys.bin. Same thing, it freezes in UEFI mode. It\u0027s got to be something I\u0027ve missed. I know the original windows 8 DVD works file. It probably is some stupid driver that cannot be initialized.\n\n"
+    },
+    {
+      "id": "199540",
+      "timestamp": "2016-07-13T17:52:15+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e This time I used un untouched boot.wim image from Windows 8.0 ADK via copype amd64  \n\u003e And created the bootable iso image using oscdimg -lBUPE -h -n -m -b\"etfsboot.com\" -b\"efisys.bin\" C:\\\\_TEMP C:\\\\BUPE.iso  \n\u003e\n\u003e At first I only tried it with etfsboot.com. Then I tried the command with both etfsboot.com and efisys.bin. Same thing, it freezes in UEFI mode. It\u0027s got to be something I\u0027ve missed. I know the original windows 8 DVD works file. It probably is some stupid driver that cannot be initialized.\n\nI don\u0027t recognize that command line syntax.  \nThe \"right\" one has traditionally been:  \n[https://support.micr...en-us/kb/947024](https://support.microsoft.com/en-us/kb/947024 \"External link\")\n\n```\noscdimg -m -o -u2 -udfver102 -bootdata:2#p0,e,bc:\\winpe_x64\\etfsboot.com#pEF,e,bc:\\winpe_x64\\efisys.bin c:\\winpe_x64\\ISO c:\\winpe_x64\\winpeuefi.iso\n```\n\nOr, using a particular recent version of mkisofs:  \n[http://reboot.pro/to...e-2#entry189483](http://reboot.pro/topic/18744-quickpe/page-2#entry189483 \"\")  \n\n```\nmkisofs.exe -iso-level 4 -l -R -J -joliet-long -D -volid \"WINRE\" -b boot/etfsboot.com -no-emul-boot -boot-load-size 8 -hide boot.catalog -eltorito-alt-boot -eltorito-platform efi -no-emul-\nboot -b efi/microsoft/boot/efisys.bin -o x64\\winre.iso x64\\iso\n```\n\n[http://reboot.pro/to...ickpe/?p\u003d189490](http://reboot.pro/topic/18744-quickpe/?p\u003d189490 \"\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199546",
+      "timestamp": "2016-07-13T19:21:41+00:00",
+      "author": "cdob",
+      "content": "\u003e I have a USB drive, formatted with FAT32, bootmgr, copied *boot* and *efi*folders. Tested it and boots fine in BIOS and UEFI.\n\nAdjust this USB drive.  \n\nChange boot.wim:  \nHKEY_LOCAL_MACHINE\\\\SYSTEM\\\\Setup\\\\Cmdline is processed at boot.  \nAdjust the setting and call your batch.   \n"
+    },
+    {
+      "id": "199551",
+      "timestamp": "2016-07-14T07:05:20+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Adjust this USB drive.  \n\u003e\n\u003e Change boot.wim:  \n\u003e HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\Setup\\\\Cmdline is processed at boot.  \n\u003e Adjust the setting and call your batch.\n\nNice idea! :smile:\n\nJust in case:  \n[https://social.techn...forum\u003ditproxpsp](https://social.technet.microsoft.com/Forums/windows/en-US/b942a34d-c4a7-489c-bb01-45dd65fa9b20/setuptype-and-cmdline-at-hkeylocalmachinesystemsetup?forum\u003ditproxpsp \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199553",
+      "timestamp": "2016-07-14T09:36:53+00:00",
+      "author": "Uneitohr",
+      "content": "Thanks Wonko. The oscdimg worked fine.\n\nHere is the full script:\n\n**startnet.cmd**\n\n```\nwpeinit\ncmd /c %~d0\\00_Config\\diskpart.cmd\n```\n\n**diskpart.cmd**\n\n```\n@echo off\nsetlocal enableextensions disabledelayedexpansion\n\n\ncall :showDiskTable\nset /p \"diskNumber\u003dType number of disk to format: \" || goto :processCancelled\n\nSET strterm\u003d___ENDOFSTRING___\nSET tmp\u003d%diskNumber%%strterm%\n:loop\nSET item\u003d%tmp:~0,1%\nSET tmp\u003d%tmp:~1%\n\n\n(   echo select disk %item%\n    echo list disk\n) | diskpart\n\nset \"scriptFile\u003d%temp%\\%~nx0.%random%%random%%random%.tmp\"\n\u003e \"%scriptFile%\" (\n    echo SELECT DISK %item%\n    echo CLEAN\n    echo CREATE PARTITION PRIMARY\n    echo FORMAT QUICK FS\u003dNTFS\n    echo ACTIVE\n    echo ASSIGN LETTER\u003d\"C\"\n)\n\n\ndiskpart /s \"%scriptFile%\"\ndel /q \"%scriptFile%\"\n\n\nIF NOT \"%tmp%\" \u003d\u003d \"%strterm%\" GOTO loop\nexit /b 0\n\n\n\n\n:showDiskTable\necho \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\necho list disk | diskpart\necho \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\necho(\ngoto :eof\n\n\n:processCancelled\necho(\necho PROCESS CANCELLED\necho(\nexit /b 1\n```\n\nNow, onto your other suggestions. Why would I use HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\Setup\\\\Cmdline instead of startnet.cmd?\n\n"
+    },
+    {
+      "id": "199554",
+      "timestamp": "2016-07-14T12:48:06+00:00",
+      "author": "Wonko the Sane",
+      "content": "I don\u0027t know. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nThat script has little to do with \"wipe\", and a lot about \"wipe and make a senselessly huge single primary NTFS partition AND format it AND assign to it letter C:\".\n\nIt is interesting how useful has been the warning in this post:\n\n[http://reboot.pro/to...as/#entry199510](http://reboot.pro/topic/21174-uefi-bootmgr-wipe-ideas/#entry199510 \"\")\n\nAnd the batch is (obviously) a badly made copy and paste/merge from:  \n[http://stackoverflow...or-disk-or-quit](http://stackoverflow.com/questions/31157522/automate-partitioning-a-disk-using-diskpart-and-prompting-user-for-disk-or-quit \"External link\")\n\n[https://stackoverflo...le-string-batch](https://stackoverflow.com/questions/15004825/looping-for-every-character-in-variable-string-batch \"External link\")\n\nwith some error control removed ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)\n\nIf you went as far as finding the way to avoid a temporary diskpart script file:\n\n```\n(   echo select disk %item%\n    echo list disk\n) | diskpart\n```\n\nI wonder why just after it you went back to the script file ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png):\n\n```\nset \"scriptFile\u003d%temp%\\%~nx0.%random%%random%%random%.tmp\"\n\u003e \"%scriptFile%\" (\n    echo SELECT DISK %item%\n    echo CLEAN\n    echo CREATE PARTITION PRIMARY\n    echo FORMAT QUICK FS\u003dNTFS\n    echo ACTIVE\n    echo ASSIGN LETTER\u003d\"C\"\n)\n\n\ndiskpart /s \"%scriptFile%\"\ndel /q \"%scriptFile%\"\n```\n\nThe list disk command - however - needs not a select disk before.\n\nPersonally it sounds to me like some:\n\n[https://en.wikipedia...kboard_scraping](https://en.wikipedia.org/wiki/Chalkboard_scraping \"External link\")\n\nbut anyway, if it works for you, and for what you want to have the .cmd do, it\u0027s fine :smile:.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199556",
+      "timestamp": "2016-07-14T12:59:03+00:00",
+      "author": "Uneitohr",
+      "content": "Sorry if it is not your linking.\n\nI was in a rush.\n\n"
+    },
+    {
+      "id": "201250",
+      "timestamp": "2016-12-30T00:04:36+00:00",
+      "author": "Uneitohr",
+      "content": "I redid the script back in August but forgot to add it.\n\ndiskpart.cmd executed using startnet.cmd is as follows:\n\n```\n@echo off\n\necho list disk | diskpart\necho(\n\nset /p \"diskNumber\u003dType number of disk to format: \"\n\n\n(echo select disk %diskNumber%\necho clean\necho convert mbr\necho create partition primary size\u003d350\necho format quick fs\u003dntfs label\u003d\"System Reserved\"\necho active\necho create partition primary\necho format quick fs\u003dntfs\necho exit ) | diskpart.exe\n```\n\nI\u0027ve been using this to wipe manufacturer disks which come with GPT layout. It works but the problem is that I have to boot a 500MB iso just to execute a 1KB script.\n\nWhat I am looking for now is either *wipe/corrupt partition table from within windows* . as is described in this thread [http://reboot.pro/to...local-system/](http://reboot.pro/topic/18750-fast-erasing-of-running-local-system/%C2%A0%C2%A0 \"\")or *add a bcd/boot.ini entry that will load something to wipe the drive*.\n\nSometimes you cannot use a CD or USB device to perform these actions and must be done automatically.\n\n"
+    }
+  ]
+}

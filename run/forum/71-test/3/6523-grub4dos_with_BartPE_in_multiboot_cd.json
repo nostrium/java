@@ -1,0 +1,64 @@
+{
+  "id": "6523",
+  "title": "grub4dos with BartPE in multiboot cd",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "52768",
+      "timestamp": "2008-12-23T13:01:29+00:00",
+      "author": "r140",
+      "content": "Hi,  \n\nI successfully integrate gparted to grub4dos, thank you jaclaz.  \nI want to integrate the multi-BartPE cd, but my research on the forum have been inconclusive.  \nI created \"BartPE\" with the program PEBuilder.  \n\nI copied the file \"BartPE\" on target \\\\ Vistape \\\\ root directoryy.  \n\nI try :  \nroot (cd)/root  \nkernel /memdisk  \ninitrd /bootsect.bin  \nBut I have the message Cdboot: Unable to boot Code 5  \nHow can i resolve my problem ?  \nThanks   \n"
+    },
+    {
+      "id": "52771",
+      "timestamp": "2008-12-23T13:34:06+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Hi,  \n\u003e\n\u003e I successfully integrate gparted to grub4dos, thank you jaclaz.  \n\u003e I want to integrate the multi-BartPE cd, but my research on the forum have been inconclusive.  \n\u003e I created \"BartPE\" with the program PEBuilder.  \n\u003e\n\u003e I copied the file \"BartPE\" on target \\\\ Vistape \\\\ root directoryy.  \n\u003e\n\u003e I try :  \n\u003e root (cd)/root  \n\u003e kernel /memdisk  \n\u003e initrd /bootsect.bin  \n\u003e But I have the message Cdboot: Unable to boot Code 5  \n\u003e How can i resolve my problem ?  \n\u003e Thanks\n\nWith all due respect ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n:wink:  \n\nI am pretty sure that pebuilder DOES NOT produce a *file* \"BartPE\".  \nIt can produce either a number of files, possibly in a \\\\I386 or \\\\minint subdirectory or a .iso image file.  \n\nWhere did you get this:  \n\u003e kernel /memdisk  \n\u003e initrd /bootsect.bin\nthey simply don\u0027t make sense.  \n\nCan you please **COMPLETELY FORGET** using memdisk with an initrd that is (probably) a no-emulation CD bootsector. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nAnd describe properly where you found info on the \"multi-BartPE cd\", and what you actually built with PEbuilder?  \n\njaclaz   \n"
+    },
+    {
+      "id": "52794",
+      "timestamp": "2008-12-23T16:09:12+00:00",
+      "author": "r140",
+      "content": "hi,  \n\nYes, Pebuilder produce a directory \"Bartpe\" with subfolder \"I386\" and \"Programs\".  \nI would like use the bartpe for old computer and vistape for a new.  \nWhen I try the command   \nroot(cd)/root  \nchainloader /ntldr.bin  \nboot  \nThe pc is reboot.  \nthe details with virtualbox in the file attachment  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![virtualbox.JPG](http://reboot.pro/uploads/monthly_12_2008/post-21172-1230048133_thumb.jpg)](http://reboot.pro/uploads/monthly_12_2008/post-21172-1230048133.jpg \"virtualbox.JPG - Size: 62.06KB\"){#ipb-attach-url-6926-0-72476300-1676066729}\n\n"
+    },
+    {
+      "id": "52796",
+      "timestamp": "2008-12-23T16:16:57+00:00",
+      "author": "was_jaclaz",
+      "content": "Better ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif), a ***directory*** is NOT a ***file*** .  \n\n* You cannot put the bartPE directory inside another directory.\n* You cannot even put the bartpe directory in ROOT.\n* You can only put the \\\\I386 (and \\\\Programs) directory in ROOT on a Removable media (CD/DVD or superfloppy).\n* Otherwise (HD or HD like device i.e. stick with MBR) you will need to rename \\\\I386 to \\\\minint or modify SETUPLDR.BIN.\n\n\u003cbr /\u003e\n\nAgain, what the HECK is ntldr.bin? :wink: A renamed NTLDR? A renamed SETUPLDR.BIN? Why renamed? ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nNow, read this:  \n[http://www.boot-land...?showtopic\u003d5769](http://www.boot-land.net/forums/index.php?showtopic\u003d5769 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "52817",
+      "timestamp": "2008-12-23T18:20:29+00:00",
+      "author": "r140",
+      "content": "Yes thank you, it works correctly,  \nIs it possible under VistaPe rename the Programs folder to avoid the confusion with the Programs folder of BartPE.  \nAnd if so, how?  \nThanks   \n"
+    },
+    {
+      "id": "52828",
+      "timestamp": "2008-12-23T19:44:19+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Yes thank you, it works correctly,\nHappy to hear a story of success. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n\u003e Is it possible under VistaPe rename the Programs folder to avoid the confusion with the Programs folder of BartPE.  \n\u003e And if so, how?  \n\u003e Thanks\n\nI have no idea about VistaPE, renaming Programs in bartPE should be easier, or at least it is more probable that a method has been documented, I seem to remember that it is possible to change the name of the folder at build time, but cannot really remember where you can find this info. :wink:  \n\njaclaz   \n"
+    },
+    {
+      "id": "52915",
+      "timestamp": "2008-12-24T12:49:41+00:00",
+      "author": "r140",
+      "content": "For the programs folder i have find a solution:  \nIt is in on the \"edit\" (right) of the source vistape, and find the folder \"Programs\"  \n\nI have a new problem now  \nThe make of iso with the command:  \n\n\"C:\\\\winpe_inst\\\\outil\\\\mkisofs.exe\" -rdNlDTJ -force-uppercase  \n-joliet-long -hide-joliet-trans-tbl -volid VistaPE -eltorito-boot boot/grldr -no  \n-emul-boot -boot-load-size 4 -boot-info-table -hide boot.catalog -o \"C:\\\\winpe_in  \nst\\\\outil\\\\ISO\\\\essai2.iso\" \"C:\\\\winpe_inst\\\\outil\\\\Target\\\\VistaPE-Core\"  \n\nwith result  \nmkisofs: Error: C:\\\\winpe_inst\\\\outil\\\\Target\\\\VistaPE-Core/I386/WINSXS/MANIFESTS/X8  \n6_MICROSOFT.TOOLS.VISUALCPLUSPLUS.RUNTIME-LIBRARIES.RESOURCES_6595B64144CCF1DF_6  \n.0.0.0_FR-FR_9D8C4A39.CAT and C:\\\\winpe_inst\\\\outil\\\\Target\\\\VistaPE-Core/I386/WINSX  \nS/MANIFESTS/X86_MICROSOFT.TOOLS.VISUALCPLUSPLUS.RUNTIME-LIBRARIES.RESOURCES_6595  \nB64144CCF1DF_6.0.0.0_FR-FR_9D8C4A39.MANIFEST have the same Joliet name  \nmkisofs: Joliet tree sort failed.  \n\nand the command:  \nC:\\\\winpe_inst\\\\outil\\\\mkisofs.exe -iso-level 4 -volid \"BartPE\" -b boot/grldr -no-emul-boot -boot-load-size 4 -hide boot.catalog -o \"C:\\\\winpe_inst\\\\outil\\\\ISO\\\\essai.iso\" \"C:\\\\winpe_inst\\\\outil\\\\Target\\\\VistaPE-Core\"  \nWork but VistaPe boot Failed.  \n\nHow to resolve this problem ?  \nthanks   \n"
+    },
+    {
+      "id": "52918",
+      "timestamp": "2008-12-24T13:27:11+00:00",
+      "author": "was_jaclaz",
+      "content": "And again, did you dream about those command lines? ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nDid you invent them? :wink:  \nOr you got them from somewhere?   \nLink please. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nYou seem to have two files with a name that is simply TOOOOO LOOOOOONG to be represented by Joliet naming convention, thus it is truncated and the two files get the same name.  \n\nHere is a table of mkisofs commands:  \n[http://www.bootcd.us...ofs_options.php](http://www.bootcd.us/Mkisofs_options.php \"External link\")  \n\nHint:  \n\n\u003e ***-joliet-long*** Allow Joliet file names to be 103 Unicode characters\n\n```\n10\t\t 20\t\t 30\t\t 40\t\t 50\t\t 60\t\t 70\t\t 80\t\t 90\t\t100\t\n\n01234567989-1234567989-1234567989-1234567989-1234567989-1234567989-1234567989-1234567989-1234567989-1234567989-123| - HIC SUNT LEONES - |\n\n/I386/WINSXS/MANIFESTS/X86_MICROSOFT.TOOLS.VISUALCPLUSPLUS.RUNTIME-LIBRARIES.RESOURCES_6595B64144CCF1DF_6.0.0.0_FR-FR_9D8C4A39.MANIFEST\n\n/I386/WINSXS/MANIFESTS/X86_MICROSOFT.TOOLS.VISUALCPLUSPLUS.RUNTIME-LIBRARIES.RESOURCES_6595B64144CCF1DF_6.0.0.0_FR-FR_9D8C4A39.CAT\n```\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "53191",
+      "timestamp": "2008-12-28T14:03:13+00:00",
+      "author": "r140",
+      "content": "Thanks   \n\nThe files worked with renowned seems BartPE...  \n\nI created a document with the DVD multiboot I\u0027ve done with the help of forum  \n\nI will make available in a topic  \n@ +   \n"
+    }
+  ]
+}

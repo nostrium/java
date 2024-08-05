@@ -1,0 +1,106 @@
+{
+  "id": "14265",
+  "title": "Boot rEFIt iso from isolinux boot cd",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "126539",
+      "timestamp": "2011-04-09T18:18:40+00:00",
+      "author": "lstar",
+      "content": "I have a multiboot utility CD. It\u0027s isolinux based, and can call up grub.  \n\nI want to add a bootable cd from: [My link](http://refit.sourceforge.net/ \"External link\")  \n\nIt\u0027s used as a bootable start-up manager for MacOSX. So, it\u0027s based on HFS+ and uses EFI  \n\nGrub does not support booting HFS.  \n\nSo, I looking for a way start the bootloader of this cd from within my muliboot utility.  \n\nI have it as an .iso file but also converted it to .img  \n\nPerhaps someone can look at the contents of the .iso file from  \n\nthe url link.  \n\nI need help with the commands to get this running.   \n\nThanks to this group and forum.   \n"
+    },
+    {
+      "id": "126541",
+      "timestamp": "2011-04-09T19:05:53+00:00",
+      "author": "Sha0",
+      "content": "The rEFIt disc image contains an HFS filesystem. It is not bootable by a PC as it does not contain El Torito boot information, nor an ISO9660 filesystem (as far as I could see with a quick glance). Macintoshes will look the the \"**bless** ed\" file on the HFS filesystem and boot that file. GRUB4DOS can boot El Torito discs, but not HFS discs. Does the PC you are trying to boot even have EFI? If not, there\u0027s no guarantee that even if you could boot **refit.efi** , that it\u0027d work. You could consider the [TianoCore](http://sourceforge.net/apps/mediawiki/tianocore/index.php?title\u003dWelcome \"External link\") EFI environment.   \n"
+    },
+    {
+      "id": "126542",
+      "timestamp": "2011-04-09T19:14:37+00:00",
+      "author": "lstar",
+      "content": "\u003e The rEFIt disc image contains an HFS filesystem. It is not bootable by a PC as it does not contain El Torito boot information, nor an ISO9660 filesystem (as far as I could see with a quick glance). Macintoshes will look the the \"**bless** ed\" file on the HFS filesystem and boot that file. GRUB4DOS can boot El Torito discs, but not HFS discs. Does the PC you are trying to boot even have EFI? If not, there\u0027s no guarantee that even if you could boot **refit.efi** , that it\u0027d work. You could consider the [TianoCore](http://sourceforge.net/apps/mediawiki/tianocore/index.php?title\u003dWelcome \"External link\") EFI environment.  \n\nI do have access to Macs, that is why I want to have it on the multiboot utility disk.  \n\nso it is possible to point to the /efi/refit/refit.efi file from isolinux and get it to start?   \n\nI\u0027m still learning syslinux so not complete clear on the lines to use to start refit.efi.   \n"
+    },
+    {
+      "id": "126547",
+      "timestamp": "2011-04-09T21:30:14+00:00",
+      "author": "Sha0",
+      "content": "\u003e I do have access to Macs, that is why I want to have it on the multiboot utility disk.  \n\u003e\n\u003e so it is possible to point to the /efi/refit/refit.efi file from isolinux and get it to start?   \n\u003e\n\u003e I\u0027m still learning syslinux so not complete clear on the lines to use to start refit.efi.  \n**gunzip** the rEFIt **.CDR** download and then use [HFSExplorer](http://www.catacombae.org/hfsx.html \"External link\") to open it. Choose **Tools** -\\\u003e **File system info** . You will observe under the **Finder info** section that the **System folder ID** is **35** . You\u0027ll see that the **Startup application parent folder ID** is **62** . If you right-click on the **efi/refit/** directory, you will observe under the **Detailed** tab that its **Folder ID** is **35** . That makes it the \"Mac OS X **bless** ed system folder,\" even though Mac OS X has nothing to do with it. Similarly, if you look at the **refit.efi** file, you\u0027ll see that its ID is **62** , making it the \"Mac OS X blessed file.\"  \n\nThat is how a Mac booting this disc will know which file to boot. Now \"Intel Macs\" can also boot El Torito discs, such as an **ISOLINUX** disc. I have not tried a hybrid El Torito/HFS disc in an \"Intel Mac\" so I do not know which would be booted on a CD/DVD boot.  \n\nI do not believe that Syslinux can load an EFI program, such as **refit.efi** . Why? Because Syslinux is designed for use on x86 BIOS PCs, not the EFI environment. That might change some day.   \n"
+    },
+    {
+      "id": "126548",
+      "timestamp": "2011-04-09T21:51:32+00:00",
+      "author": "lstar",
+      "content": "You mentioned, \"The rEFIt disc image contains an HFS filesystem. It is not bootable by a PC as it does not contain El Torito boot information, nor an ISO9660 filesystem\"  \n\nI was reading Intel\u0027s EFI How to and it states:  \n\n\"How to Make an EFI Bootable CD-ROM/DVD-ROM  \n\n**CDs and DVDs must be burned using the El Torito format** . Ahead Software, Inc. has several Nero\\* CD-ROM burning programs that allow you to burn CDs and DVDs using this format. You can use any of the following programs:  \n\n• Nero Enterprise Edition • Nero 5.5 Edition • Nero 6 Ultra Edition (the latest version that is available)  \nNero Enterprise Edition contains built-in wizards for burning EFI bootable and visible CD-ROMs.  \nNero 5.5 Edition does not have built-in wizards to help you burn CD-ROMs, but the instructions below will help you burn a CD-ROM for EFI. It is recommended that you use Nero Enterprise Edition or Nero 6 Ultra Edition, which are much more user friendly than the Nero 5.5 Edition.  \nGo to the Nero web site ([http://www.nero.com\\*](http://www.nero.com* \"External link\")) to purchase a copy of the software. Note that only Nero 6 Ultra Edition will be available and instructions are not covered in this guide  \n\nEl Torito, Operating Systems, and EFI  \n\nFor Linux\\*-based systems, other programs are also available to burn CDs in the El Torito format; this topic does not cover these programs, however, **CDs that are burned with the El Torito format are visible to both operating systems (Windows\\* and Linux) and EFI.** \"  \n\n-------------------  \n\nSo, this is possible...  \n\nPerhaps extract the contents of the rEFIt iso and then burning them on a cd using nero.  \n\nI don\u0027t clearly know how to call up the .iso (which I will convert to an .img file) to kick start it.  \n\nI tried:  \n\nkernel /rEFIt.img  \n\nbut that gave me a series of colors on my virtual box.  \n\nDo I need a ramdrive to the img file into?  \n\nThanks.   \n"
+    },
+    {
+      "id": "126550",
+      "timestamp": "2011-04-09T22:10:03+00:00",
+      "author": "Sha0",
+      "content": "Ugh. First of all, we are talking about **Apple** . I think it\u0027s likely that however they choose to implement EFI and their power-on processes, it is going to have little resemblance to any other type of computer. That means that their CD/DVD boot is going to be done \"their way.\"  \n\nConsider that you have a hybrid .ISO with both HFS boot info and El Torito boot info. Which one will the Macintosh use? Would it examine the CD/DVD and offer both options? I don\u0027t know right now, but we can find out by creating a hybrid .ISO and burning it to a real disc and trying it.  \n\nYour idea of chaining the .ISO will not work. GRUB4DOS and MEMDISK can boot El Torito .ISOs only. Also, I do believe that when a Macintosh boots an El Torito disc, you cannot \\[easily\\] get back to the Mac\u0027s EFI environment. So if you do Mac CD/DVD boot -\\\u003e ISOLINUX, now the EFI environment is \"gone.\"  \n\nPlease remember Apple versus any other implementation. Please also remember that rEFIt\u0027s disc is designed for Apple.   \n"
+    },
+    {
+      "id": "126562",
+      "timestamp": "2011-04-10T08:06:56+00:00",
+      "author": "lstar",
+      "content": "Well I appreciate you elaborating on this.  \n\nIt would be interesting to see how a hybrid CD behaves on a Mac.  \n\nSomeone pointed out to me Linux has been able to use EFI at boot time since early 2000, using the elilo EFI boot loader or, more recently, EFI versions of GRUB.   \n\nYet as you mentioned it\u0027s Apple and rEFIt is based on it...  \n\nSo, at this point, its time to move on...  \n\nThanks again.   \n"
+    },
+    {
+      "id": "126565",
+      "timestamp": "2011-04-10T09:35:35+00:00",
+      "author": "Sha0",
+      "content": "Well, I could certainly be wrong, but I believe that once you go CD/DVD boot -\\\u003e BIOS emulation (needed for ISOLINUX), you cannot then go -\\\u003e Apple\u0027s EFI -\\\u003e rEFIt. If there is a standard way to jump into Apple\u0027s EFI environment from Apple\u0027s BIOS emulation environment, I have no idea what that way would be, but it\u0027s not something I\u0027ve read GRUB\\* or Syslinux as having as a feature.  \n\nYou could potentially have a hybrid disc for which Apple\u0027s \"Intel Macs\" would boot the disc\u0027s rEFIt first, which could then offer the user a choice to enter into BIOS emulation mode and \"reboot\" the disc with BIOS emulation and El Torito. That would be very interesting... rEFIt already supports booting El Torito discs anyway, so all the magic would be in making the hybrid .ISO just right. Would that satisfy your needs?   \n"
+    },
+    {
+      "id": "126573",
+      "timestamp": "2011-04-10T16:30:51+00:00",
+      "author": "lstar",
+      "content": "That is a very interesting idea. Boot into rEFIt then have choice to continue or reboot into emulation/eltorito to startup the other utilities.  \n\nYes, that would satisfy my needs.   \n"
+    },
+    {
+      "id": "126578",
+      "timestamp": "2011-04-10T22:00:52+00:00",
+      "author": "Sha0",
+      "content": "\u003e Yes, that would satisfy my needs.  \nWell, I\u0027ve been trying to produce such a hybrid image using **genisoimage** (a **mkisofs** replacement, if I\u0027m not mistaken) but without nice results... Attaching the .ISO under Mac OS 10.4.x complains about HFS filesystem errors. When I force it to mount anyway and run **bless --info /Volumes/foo** (on the mount-point), the **-hfs-bless** parameter that I specified to genisoimage doesn\u0027t seem to be the blessed folder.  \n\nThis seems like a bug in genisoimage. It\u0027s easy to make an HFS disc under Mac OS X, but then it won\u0027t have El Torito. Hmmm, it might be time for a bug report...   \n"
+    },
+    {
+      "id": "126613",
+      "timestamp": "2011-04-11T16:12:36+00:00",
+      "author": "lstar",
+      "content": "What about working with the contents of the rEFIt Boot CD itself. It has a blessed folder, and subsequent files to do that already.  \nI\u0027m curious how your going to make the disk so that you can do a restart of it, and have it come up El Torito Mode since the cd is read-only, and I think you loose contents in memory when you cycle a machine. Meaning setting a flag to indicate booting in another mode (el torito).   \n"
+    },
+    {
+      "id": "126620",
+      "timestamp": "2011-04-11T20:19:34+00:00",
+      "author": "Sha0",
+      "content": "\u003e What about working with the contents of the rEFIt Boot CD itself. It has a blessed folder, and subsequent files to do that already.  \nYes, so far I simply extracted the rEFIt contents and tried:  \n\n```\nmkisofs -part -hfs -o refit.iso refit/\n\n```\n\nWhich ought to at least create a hybrid ISO9660 + HFS image. And it does, but attaching it under Mac OS X, **fsck_hfs** describes problem with the HFS filesystem. This is not pleasant, as a real CD/DVD would be the same and would cause an error message under Mac OS X. If this part could be fixed, then the El Torito boot info could be added to the command line above.  \n\n\u003e I\u0027m curious how your going to make the disk so that you can do a restart of it, and have it come up El Torito Mode since the cd is read-only, and I think you loose contents in memory when you cycle a machine. Meaning setting a flag to indicate booting in another mode (el torito).  \nI wasn\u0027t suggesting a real reboot. Just for rEFIt to do what it does: Enumerate bootable disks/discs and allow booting them. The hope would be: that one of the enumerated discs would be the modified rEFIt disc itself and that choosing it would boot it as an El Torito disc, as rEFIt already does for El Torito discs. We can\u0027t know until we try.   \n"
+    },
+    {
+      "id": "126643",
+      "timestamp": "2011-04-12T15:49:47+00:00",
+      "author": "lstar",
+      "content": "You mentioned, \"modified rEFIt disc\" what is it that is modified?   \n"
+    },
+    {
+      "id": "126649",
+      "timestamp": "2011-04-12T17:04:05+00:00",
+      "author": "Sha0",
+      "content": "\u003e You mentioned, \"modified rEFIt disc\" what is it that is modified?  \nThe rEFIt disc image contains neither an ISO9660 filesystem nor El Torito boot information. So the modified rEFIt disc image in this case would be a hybrid .ISO with both HFS and ISO9660 filesystems, with HFS boot data (\"blessed\" folder, \"blessed\" file) and El Torito boot data (ISOLINUX). All of the rEFIt files ought to be included in the filesystems, and all of your ISOLINUX and other files ought to be included in the filesystems.   \n"
+    },
+    {
+      "id": "126672",
+      "timestamp": "2011-04-12T21:59:12+00:00",
+      "author": "lstar",
+      "content": "Did you happen to note this with mkisofs:  \n\nAs an alternative, mkisofs can generate the Apple Extensions to ISO9660  \nfor each file. These extensions provide each file with CREATOR, TYPE  \nand certain Finder Flags when accessed from a Macintosh. See the HFS  \nMACINTOSH FILE FORMATS section below.  \n\nShot in the dark, but wonder if this might solve the mac complaining about the file system on the disk?   \n"
+    },
+    {
+      "id": "126673",
+      "timestamp": "2011-04-12T22:36:34+00:00",
+      "author": "Sha0",
+      "content": "\u003e Did you happen to note this with mkisofs...  \nYes.  \n\n\u003e Shot in the dark, but wonder if this might solve the mac complaining about the file system on the disk?  \nUnfortunately, without an HFS or HFS+ filesystem, we cannot specify to the \"Intel Mac\" that it should boot **refit.efi** . If it *is* possible with these extensions, I certainly couldn\u0027t find documentation on how to shape the Finder info to accomplish this when I looked for it a few days ago.   \n"
+    }
+  ]
+}

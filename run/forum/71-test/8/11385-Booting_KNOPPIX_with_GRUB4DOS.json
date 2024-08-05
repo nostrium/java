@@ -1,0 +1,64 @@
+{
+  "id": "11385",
+  "title": "Booting KNOPPIX with GRUB4DOS",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "99994",
+      "timestamp": "2010-05-13T10:39:29+00:00",
+      "author": "Guest_P4G0_*",
+      "content": "Hey Guys,  \n\nI\u0027ve been searching around for some hours how to boot KNOPPIX with GRUB4DOS. I found a working solution some time ago, but cannot find it anymore. Can someone tell me how to boot KNOPPIX with grub4dos?  \n\nI think there\u0027s no working solution for directly booting the iso-File but to boot with the three files linux, minirt.gz and KNOPPIX.  \n\nThank You  \nPatrick   \n"
+    },
+    {
+      "id": "100022",
+      "timestamp": "2010-05-13T14:54:51+00:00",
+      "author": "Sha0",
+      "content": "I get the impression that what you actually meant was, \"boot **Knoppix** from an **.ISO** file.\" While you can certainly emulate an ODD (optical disc drive) with **GRUB4DOS** and an .ISO file, you\u0027d have to be certain that your OS is capable of booting from an .ISO file. That is, the OS would have to support scanning your attached disks for the .ISO file, mounting it as a loop-back device, then continuing as though it had been booted from OD. ~~I don\u0027t believe that Knoppix supports this, but could be mistaken.~~ See Icecube\u0027s post, below!  \n\nGRUB4DOS hooks **BIOS INT 13h** services to emulate an ODD.  \n\nOperating systems that do not use INT 13h (such as Windows and Linux) will not have access to such an emulated ODD; they have to use some other means to find and use the .ISO file.   \n"
+    },
+    {
+      "id": "100038",
+      "timestamp": "2010-05-13T17:25:08+00:00",
+      "author": "Wonko the Sane",
+      "content": "AFAIK there is no known way for knoppix \"inside\" .iso, exception made for the isohybrided approach:  \n[http://www.boot-land...?showtopic\u003d9916](http://www.boot-land.net/forums/index.php?showtopic\u003d9916 \"External link\")  \n[http://www.boot-land...?...\u003d9916\\\u0026st\u003d31](http://www.boot-land.net/forums/index.php?showtopic\u003d9916\u0026st\u003d31 \"External link\")  \nWhich is only \"somehow inside\" the .iso.  \n\nBooting with the \"extracted\" files Knoppix is something that has been repeatedly reported as working/not working, and then again working.  \nI presume the good guys at Knoppix often change the settings, we have a number of reports for DSL working (which is KNOPPIX based) but I don\u0027t seem to remember a \"definite\" way for KNOPPIX.  \n\nTry working your way from here ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif):  \n[http://www.boot-land...?showtopic\u003d4707](http://www.boot-land.net/forums/?showtopic\u003d4707 \"External link\")  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "100042",
+      "timestamp": "2010-05-13T18:26:21+00:00",
+      "author": "Icecube",
+      "content": "\u003e **bootfrom** cheat code  \n\u003e\n\u003e This allows you to use an iso image file stored on media. Insert the CD and start with the CD. At the boot prompt, type: \"knoppix bootfrom\u003d\\\u003cpath to where iso is stored\\\u003e. After boot up, the CD can be removed.\n[http://www.knoppix.n...ki/Live_CD_Tips](http://www.knoppix.net/wiki/Live_CD_Tips \"External link\")   \n"
+    },
+    {
+      "id": "100044",
+      "timestamp": "2010-05-13T18:36:49+00:00",
+      "author": "Guest_P4G0_*",
+      "content": "\u003e bootfrom cheat code  \n\u003e\n\u003e This allows you to use an iso image file stored on media. Insert the CD and start with the CD. At the boot prompt, type: \"knoppix bootfrom\u003d\\\u003cpath to where iso is stored\\\u003e. After boot up, the CD can be removed.\nThat makes an USB-Bootstick useless ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nCan somebody tell me how to start Knoppix from an USB-Drive without an iso-File? If possible, Knoppix should lie in a folder named Knoppix on the USB-Drive and I don\u0027t want to edit the initrd. I\u0027m relative shure that I had such a running Stick, but that\u0027s some time ago ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "100045",
+      "timestamp": "2010-05-13T18:43:09+00:00",
+      "author": "Wonko the Sane",
+      "content": "@Icecube  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nBut can the cheat code be passed as a parameter (i.e. can it be added to the grub4dos entry in menu.lst)? ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nCan you post a complete example of KNOPPIX booting from .iso or \"mixed mode\" (with the kenrnel and initrd and whatever else extracted) like it was done here?:  \n[http://www.boot-land...?...c\u003d11372\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d11372\u0026hl\u003d \"External link\")  \n[http://www.boot-land...?...\u003d11372\\\u0026st\u003d7](http://www.boot-land.net/forums/index.php?showtopic\u003d11372\u0026st\u003d7 \"External link\")  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "100049",
+      "timestamp": "2010-05-13T19:09:13+00:00",
+      "author": "yggdrasil",
+      "content": "@ P4G0  \n\nI tested integrating dsl-4.4.10-syslinux.iso to USB stick this way:  \n\nOpen DSL.ISO and extract folder \"knoppix\" to the root of USB.  \nNote: I use FAT32 as file system on USB device ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \nUse this text in menu.lst on USB device:   \n\ntitle launch DSL (knoppix)  \nmap --mem /Knoppix/boot.img (fd0)  \nmap --hook  \nchainloader (fd0)+1  \nrootnoverify (fd0)  \nboot  \n\nyggdrasil   \n"
+    },
+    {
+      "id": "100062",
+      "timestamp": "2010-05-13T21:46:04+00:00",
+      "author": "Icecube",
+      "content": "@ P4G0  \nCan you post the contents of the isolinux.cfg file of your KNOPPIX iso?  \n\nIt isn\u0027t necessary to boot from CD. KNOPPIX just needs its kernel and initrd. After that it can find its ISO when you use bootfrom\u003d.  \n\nSuppose your have named your iso \"**knoppix.iso** \" and you have put it in the root of your USB stick.  \nUse the following grub4dos code:  \n\n```\ntitle KNOPPIX\n\nmap knoppix /knoppix.iso \u0026#40;hd32\u0026#41; || map --mem knoppix /knoppix.iso \u0026#40;hd32\u0026#41;\n\nmap --hook\n\nroot \u0026#40;hd32\u0026#41;\n\nchainloader \u0026#40;hd32\u0026#41;\n```\n\nAt the \u0027boot:\u0027 command that you see, type:  \n\n```\nknoppix bootfrom\u003d/dev/hda1/knoppix.iso\n```\n\nThe /dev/??? part can be different for you:  \n/dev/hda, /dev/hdb, /dev/hdc, ...  \nor  \n/dev/sda, /dev/sdb, /dev/sdc, ...  \n\nor the number can be different:  \n/dev/hda1 \u003d\u003d\\\u003e ISO on first primary partition  \n/dev/hda2 \u003d\u003d\\\u003e ISO on second primary partition  \n/dev/hda3 \u003d\u003d\\\u003e ISO on third primary partition  \n/dev/hda4 \u003d\u003d\\\u003e ISO on fourth primary partition  \n/dev/hda5 \u003d\u003d\\\u003e ISO on first logical partition  \n/dev/hda6 \u003d\u003d\\\u003e ISO on second logical partition   \n"
+    },
+    {
+      "id": "112343",
+      "timestamp": "2010-10-28T16:09:04+00:00",
+      "author": "pokemon1",
+      "content": "Icecube,  \n\nWith regard to the question that \u0027Wonko the sane\u0027 asked -   \n\n\\\u003cBut can the cheat code be passed as a parameter (i.e. can it be added to the grub4dos entry in menu.lst)?\\\u003e  \n\nDo you have any answer yet? i.e. is there any way to pass this \u0027bootfrom\u003d/dev/hda1\u0027 cheatcode as a parameter in G4D menu entry?  \n\nThanks, sorry for opening an old thread.   \n"
+    }
+  ]
+}

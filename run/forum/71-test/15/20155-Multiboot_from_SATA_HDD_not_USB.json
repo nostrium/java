@@ -1,0 +1,64 @@
+{
+  "id": "20155",
+  "title": "Multiboot from SATA HDD not USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "188344",
+      "timestamp": "2014-11-07T21:53:11+00:00",
+      "author": "Karl Fiabeschi",
+      "content": "Hi guys,  \n\ni want to creat a multiboot (acronis, clonezilla and other utils) in a HDD Sata drive.. to plug and unplug in PC for work. (not usb)  \n\nI try to do it with sardu but dosen\u0027t work.. any suggest?  \n\nsorry 4 my bad english\n\n"
+    },
+    {
+      "id": "188345",
+      "timestamp": "2014-11-07T22:01:12+00:00",
+      "author": "steve6375",
+      "content": "Try Easy2Boot.\n\nUse RMPrepUSB to prepare the hard disk and be sure to tick the Setttings - List Hard Disks.\n\n[http://www.easy2boot...sing-rmprepusb/](http://www.easy2boot.com/make-an-easy2boot-usb-drive/make-and-e2b-usb-drive-using-rmprepusb/ \"External link\")\n\n"
+    },
+    {
+      "id": "188351",
+      "timestamp": "2014-11-08T08:33:18+00:00",
+      "author": "Karl Fiabeschi",
+      "content": "Ohhh thank you!!! it works!!! ![-_-](http://reboot.pro/public/style_emoticons/default/sleep.png)  \n\nBut after paste same iso (acronis) and use that the hdd wont boot again.  \n\nIt say cant find Grub and i cant open the directory (like antivirus, win ecc ecc) to copy more iso.. ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\n\n"
+    },
+    {
+      "id": "188352",
+      "timestamp": "2014-11-08T08:46:41+00:00",
+      "author": "steve6375",
+      "content": "Must be something wrong with the hard disk or the system BIOS you are testing with. Copying files does not normally make a drive unbootable.\n\n"
+    },
+    {
+      "id": "188353",
+      "timestamp": "2014-11-08T08:57:01+00:00",
+      "author": "Karl Fiabeschi",
+      "content": "Ok, ty  \n\nnow i try it with 2 partitions on the HDD and for now no error.. if work stable for my work i got you a donations 4 your fantastic work.. :smile:\n\n"
+    },
+    {
+      "id": "188354",
+      "timestamp": "2014-11-08T09:01:03+00:00",
+      "author": "steve6375",
+      "content": "OK, but bear in mind that Easy2Boot is designed to work as an external USB drive, so some things might not work - e.g. installing an OS, etc. because the SATA E2B drive will be \u0027seen\u0027 by the installer as boot drive and therefore you may get boot code installed onto the E2B drive if you try to run installer ISOs, etc!\n\n"
+    },
+    {
+      "id": "188355",
+      "timestamp": "2014-11-08T10:21:46+00:00",
+      "author": "Karl Fiabeschi",
+      "content": "Oook ty! but i need it only for acronis and clonezilla service, so i don\u0027t need to install any OS :smile:\n\nin the next week i try it to clone HD (with acronis and clonezilla) and restore it ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)\n\nnow i try to install Windows7 just for test.. i wrote here the result :smile:\n\n**Edited by Karl Fiabeschi, 08 November 2014 - 10:25 AM.**\n"
+    },
+    {
+      "id": "188357",
+      "timestamp": "2014-11-08T11:36:25+00:00",
+      "author": "Karl Fiabeschi",
+      "content": "Hi!  \n\nthe installation of Windows7 works but wont boot -as you say-.. how i can fix the win7 bootloader?\n\nty :smile:\n\n"
+    },
+    {
+      "id": "188358",
+      "timestamp": "2014-11-08T11:46:31+00:00",
+      "author": "steve6375",
+      "content": "Probably your E2B drive won\u0027t boot now either.\n\nTo fix the E2B drive - use RMPrepUSB and click on Install grub4dos to MBR\n\nTo fix the win 7 OS, boot from a Win 7 DVD or USb E2B drive and Repair (or run bcdboot).\n\n"
+    }
+  ]
+}

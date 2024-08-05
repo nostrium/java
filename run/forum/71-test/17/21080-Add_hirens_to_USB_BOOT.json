@@ -1,0 +1,52 @@
+{
+  "id": "21080",
+  "title": "Add hirens to USB BOOT",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "198612",
+      "timestamp": "2016-04-06T10:26:00+00:00",
+      "author": "rocheiro",
+      "content": "Hello i have a doubt, i have a bootable usb, already have a many Windows and tool, now I want add a Hirens in Tools.  \n\nI copy the hirens to tools folder and edit the tools_setup\n\ntitle Hirens Boot CD 15.2  \nmap --unmap\u003d0:0xff  \nmap --unhook \\\u0026\\\u0026 map --rehook  \ncat --hex --locate\u003dPoLPu@ (md)0x3D0+0x130 \\\u003e nul \\\u0026\\\u0026 echo Cannot continue if PLoP is active, please start this entry without loading PLoP first \\\u0026\\\u0026 echo \\\u0026\\\u0026 pause Press any key to return to the main menu \\\u0026\\\u0026 configfile /menu.lst  \nset /a dev\u003d\\*0x8280\\\u00260xff  \nroot (%dev%,0)  \nset ISO\u003d/ISO/Hirens_Boot_CD_15_2.iso  \nls %ISO% \\\u003e nul \\|\\| find --set-root --devices\u003dhf /usbdrive.tag\\|\\| echo Error! Could not find usbdrive.tag \\\u0026\\\u0026 echo \\\u0026\\\u0026 pause Press any key to return to the main menu \\\u0026\\\u0026 configfile /menu.lst  \nls %ISO% \\\u003e nul \\|\\| find --set-root --devices\u003dhf %ISO% \\|\\| echo Error! Could not find %ISO% \\\u0026\\\u0026 echo \\\u0026\\\u0026 pause Press any key to return to the main menu \\\u0026\\\u0026 configfile /menu.lst  \nmap %ISO% (0xff) \\|\\| map --heads\u003d0 --sectors-per-track\u003d0 %ISO% (0xff) \\|\\| echo FATAL ERROR mapping %ISO%, please check if file is present and defragmented \\\u0026\\\u0026 pause Press any key to return to main menu \\\u0026\\\u0026 configfile /menu.lst  \n#[http://reboot.pro/to...ge-2#entry88531](http://reboot.pro/topic/9916-grub4dos-isohybrided/page-2#entry88531 \"\")  \n#[http://www.rmprepusb...tutorials/tails](http://www.rmprepusb.com/tutorials/tails \"External link\")  \nset /a dev\u003d\\*0x82a0\\\u00260xff  \ndebug 1  \nparttype (%dev%,3) \\| set check\u003d  \ndebug off  \nset check\u003d%check:\\~-5,4%  \nif \"%check%\"\u003d\u003d\"0x00\" partnew (%dev%,3) 0 0 0 \\\u0026\\\u0026 partnew (%dev%,3) 0x00 %ISO%  \nif not \"%check%\"\u003d\u003d\"0x00\" echo WARNING: PARTITION TABLE 4 IN BIOS DEVICE %dev% IS ALREADY IN USE! \\\u0026\\\u0026 echo \\\u0026\\\u0026 echo To prevent possible data loss will not continue further \\\u0026\\\u0026 pause \\\u0026\\\u0026 configfile /menu.lst  \nmap --rehook  \nroot (0xff)  \nchainloader (0xff)  \nI try but have a error  \nBooting Hirens boot Cd  \n128(HEX:0x80)  \nFilesystem type ins fat, partition type 0x0c  \nFatal error mapping /ISO/Hirens_Boot_cd.iso, please check file is present and defragmented  \nPress any key to return to main menu.  \nSorry my bad english :/  \nthanks a lot\n\n"
+    },
+    {
+      "id": "198613",
+      "timestamp": "2016-04-06T10:30:33+00:00",
+      "author": "steve6375",
+      "content": "Is the ISO contiguous?\n\ntry\n\nblocklist /ISO/Hirens_Boot_CD_15_2.iso\n\n"
+    },
+    {
+      "id": "198614",
+      "timestamp": "2016-04-06T10:59:37+00:00",
+      "author": "rocheiro",
+      "content": "I did Download, I dont know if is continguous, how can know ?\n\nI try set ISO\u003dblocklist/ISO/Hirens_Boot_CD_15_2.iso\n\ndont work :/\n\n"
+    },
+    {
+      "id": "198615",
+      "timestamp": "2016-04-06T11:01:45+00:00",
+      "author": "steve6375",
+      "content": "```\nblocklist /ISO/Hirens_Boot_CD_15_2.iso\n```\n\nThis is a console command. type it from the grub4dos shell.\n\n"
+    },
+    {
+      "id": "198616",
+      "timestamp": "2016-04-06T11:17:42+00:00",
+      "author": "steve6375",
+      "content": "To add Hirens ISO to grub4dos see\n\n[http://www.rmprepusb...utorials/hirens](http://www.rmprepusb.com/tutorials/hirens \"External link\")\n\n"
+    },
+    {
+      "id": "198618",
+      "timestamp": "2016-04-06T13:14:30+00:00",
+      "author": "rocheiro",
+      "content": "I got It , now I can remove some Iso, i already remove the iso but i can not see in themenu. I have\n\ntitle Windows Vista/7/8/8.1/10  \nmap --unhook  \nmap --unmap\u003d0:0xff \\\u0026\\\u0026 map --rehook  \nsavedefault +1  \nls /shifthd.bat \\\u003e nul \\|\\| find --set-root --devices\u003dhf /shifthd.bat  \n/shifthd.bat  \nif \"%RDSK%\"\u003d\u003d\"\" pause Fatal error while swapping hard disk order, cannot continue! \\\u0026\\\u0026 configfile /menu.lst  \nroot (hd%RDSK%,0)  \nchainloader /BOOTMGR  \nIn Shifthd.bat I have  \n[http://pastebin.com/LzVbcJHe](http://pastebin.com/LzVbcJHe \"External link\")\n\n**Edited by rocheiro, 06 April 2016 - 01:47 PM.**\n"
+    },
+    {
+      "id": "198631",
+      "timestamp": "2016-04-07T11:25:24+00:00",
+      "author": "rocheiro",
+      "content": "someone ? :/\n\n"
+    }
+  ]
+}

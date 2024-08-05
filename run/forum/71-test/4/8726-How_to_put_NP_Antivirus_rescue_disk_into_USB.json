@@ -1,0 +1,370 @@
+{
+  "id": "8726",
+  "title": "How to put NP Antivirus rescue disk into USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "74771",
+      "timestamp": "2009-08-16T03:04:17+00:00",
+      "author": "apple9999",
+      "content": "Dear Sirs  \nI have created a **Netprotector** Antivirus rescue boot-disk.  \nThe Netprotecor says Windows will run in Native mode while booting from the rescue disk  \nIts windows xp sp3 base as it creates rescue disk from windows xp source files. When I extracted the boot sector of the disk it reads \"NATIVE CDFS GENERATOR.img\". When I try to put this cd\u0027s image file NP.ISO into USB using grub4dos and menu list like...  \n**find --set-root --ignore-floppies /iso/NP.iso\nmap /iso/NP.iso (0xFF)\nmap --hook\nchainloader (0xFF)**   \nIts not working. It halts with blue screen.  \n\nHence I extracted the rescue disk on the USB and tried to run the \"setupldr.bin\"  \nThere are no files on the root of the cd.  \n(All the files are in i386 folder. The boot loader runs \"Setupldr.bin\" from this folder.)  \nI used the following menu list but its not working...  \n**title qh\nfind --set-root /i386/SETUPLDR.BIN\nchainloader /i386/SETUPLDR.BIN\nrootnoverify\nboot**   \n\nPlease guide me in how to put this cd into USB.  \nI tried --mem command also but it Hangs.  \nI have 2GB Ram with C2D.   \n"
+    },
+    {
+      "id": "74784",
+      "timestamp": "2009-08-16T07:14:37+00:00",
+      "author": "maanu",
+      "content": "just a hint : rename I386 to **minint** . copy **ntdetect.com** from within minint to **root** of usb drive . and see by chainloading setupldr.bin .  \n\nim stuck in another issue on live xp . but i ll download that netprotector thing and see if it can be called fully from ram .,  \n\nedit : what was the **error code** of that blue screen when u tried 0xff ?   \n"
+    },
+    {
+      "id": "74788",
+      "timestamp": "2009-08-16T08:36:13+00:00",
+      "author": "apple9999",
+      "content": "\u003e just a hint : rename I386 to **minint** . copy **ntdetect.com** from within minint to **root** of usb drive . and see by chainloading setupldr.bin .  \n\u003e\n\u003e im stuck in another issue on live xp . but i ll download that netprotector thing and see if it can be called fully from ram .,  \n\u003e\n\u003e edit : what was the **error code** of that blue screen when u tried 0xff ?\nI beg your pardon Maanu as the software is not Netprotector but Quickheal Antivirus. Pls download it and give it try  \nError code I will tell you  \nThanks   \n"
+    },
+    {
+      "id": "74799",
+      "timestamp": "2009-08-16T10:00:24+00:00",
+      "author": "maanu",
+      "content": "no problem ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)   \n\ndont forget to mention also IF u have sata hdd .   \n"
+    },
+    {
+      "id": "74833",
+      "timestamp": "2009-08-16T14:54:59+00:00",
+      "author": "apple9999",
+      "content": "@maanu  \nI have a sata disk. The CD boots and scans perfectly from CD-Drive. But if the cd\u0027s .iso is put into USB it gives me error with blue screen  \n................Problem detected windows shutdown to protect computer...............................  \nTechical info...........  \nSTOP: 0x0000007B(0xF78D6528,0XC0000034,0X00000000,OX00000000)  \n\nI am getting same error with boot live xp CD-iso with this method.   \n"
+    },
+    {
+      "id": "74836",
+      "timestamp": "2009-08-16T15:53:01+00:00",
+      "author": "was_jaclaz",
+      "content": "Unfortunately :wink: the trophy has just been awarded:  \n[http://www.boot-land...?...ic\u003d8721\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d8721\u0026hl\u003d \"External link\")  \n![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)  \n\nMore seriously, it won\u0027t work as (hd32) or (0xFF) unless it\u0027s a RAMDISK build.  \n\nIt should work with files extracted to root of USB and \\\\minint, see here:  \n[http://www.boot-land...?...7739\\\u0026st\u003d154](http://www.boot-land.net/forums/index.php?showtopic\u003d7739\u0026st\u003d154 \"External link\")  \n\nIt is possible (typical if it\u0027s a DELL) that you need a modified NTDETECT.COM, read FAQ #3 here:  \n[http://www.msfn.org/...howtopic\u003d116766](http://www.msfn.org/board/index.php?showtopic\u003d116766 \"External link\")  \nand given links in it.  \n\n![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "74885",
+      "timestamp": "2009-08-17T02:21:44+00:00",
+      "author": "apple9999",
+      "content": "\u003e Unfortunately ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png) the trophy has just been awarded:  \n\u003e [http://www.boot-land...?...ic\u003d8721\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d8721\u0026hl\u003d \"External link\")  \n\u003e ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)  \n\u003e\n\u003e More seriously, it won\u0027t work as (hd32) or (0xFF) unless it\u0027s a RAMDISK build.  \n\u003e\n\u003e It should work with files extracted to root of USB and \\\\minint, see here:  \n\u003e [http://www.boot-land...?...7739\\\u0026st\u003d154](http://www.boot-land.net/forums/index.php?showtopic\u003d7739\u0026st\u003d154 \"External link\")  \n\u003e\n\u003e It is possible (typical if it\u0027s a DELL) that you need a modified NTDETECT.COM, read FAQ #3 here:  \n\u003e [http://www.msfn.org/...howtopic\u003d116766](http://www.msfn.org/board/index.php?showtopic\u003d116766 \"External link\")  \n\u003e and given links in it.  \n\u003e\n\u003e ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)  \n\u003e\n\u003e jaclaz\n@Jaclaz  \nThanks for your prompt response.  \nI think the \"information\" on this topic/problem is much scattered in this forum. Hence finding it difficult to search or understand.   \nI will let you know after I give it a try  \nThanks   \n"
+    },
+    {
+      "id": "75107",
+      "timestamp": "2009-08-18T02:12:15+00:00",
+      "author": "apple9999",
+      "content": "@Jaclaz  \nI was trying to boot usb by extracting the files of the .iso / original boot cd to usb drive. (As I said earlier The original rescue disk CD boots fine. There are no files on the root of the the except win51??? size zero files)  \n\nI followed these steps   \n1. Format UFD with RMPrepUSB   \n2. Copy setupldr.bin from \\\\i386 to the root of the UFD as ntldr.  \n3. Copy the custom ntdetect.com described inthe links provided by you to the root of the UFD.   \n4. Copy the target files and folders, renaming \\\\i386 to \\\\minint.  \nNow its not going upto BSOD. Before that getting error.  \nI tried foramatting with FAT16/FAT32/NTFS.  \nERRORS: with ntfs:txtsetup.sif missing error code 14  \nwith fat: file\\\\$WIN_NTS.\"BT\\\\biosinfo.inf couldn\u0027t find error code 18.  \n\nPlease guide.  \nMy other observations are...  \nI was creating a livexp-usb using \"pe2usb\" then  \n1) When I gave source path of original xpsp2 i got the error code \\\\$WIN_NTS.\"BT\\\\biosinfo.inf   \n2) When I gave souce path of a already created xplive I got the erro BSOD.  \nEven copying modded ntdetect.com didn\u0027t solve the problem   \n"
+    },
+    {
+      "id": "75123",
+      "timestamp": "2009-08-18T08:46:58+00:00",
+      "author": "was_jaclaz",
+      "content": "Usually an error saying \"missing txtsetup.sif\" does mean that txtsetup.sif cannot be found. ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\nTry putting a copy of txtsetup.sif in root of the stick.  \n\nYou should get familiar with the \"queer\" ways Windows Setup (and PE\u0027s) boot, and with the differences when booting on different media (CD vs. HD vs USB stick HD like vs. floppy/superfloppy).  \n\nTake your time reading this seemingly unrelated thread:  \n[http://www.boot-land...?showtopic\u003d5316](http://www.boot-land.net/forums/index.php?showtopic\u003d5316 \"External link\")  \nit does contain a lot of info on the booting process and which files are needed where.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "75208",
+      "timestamp": "2009-08-18T17:55:23+00:00",
+      "author": "apple9999",
+      "content": "\u003e Try putting a copy of txtsetup.sif in root of the stick.  \n\u003e\n\u003e jaclaz\nNo Sir...It did not work.  \nI will try another way through the links you provided and let you know if I succeed.  \nBut if you see **WAREZ** you can put it in any usb stick. What method has he used? I tried to contact him and asked but he is not guiding.   \n"
+    },
+    {
+      "id": "75212",
+      "timestamp": "2009-08-18T18:28:28+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e No Sir...It did not work.  \n\u003e I will try another way through the links you provided and let you know if I succeed.  \n\u003e But if you see **WAREZ** you can put it in any usb stick. What method has he used? I tried to contact him and asked but he is not guiding.\n\nBolded part above is my edit.  \n\nHalf to three quarters of the world have managed to boot from USB, by reading, learning and using legally available software, no need to use **WAREZ** .  \n\nSimply read, learn, experiment.  \n\njaclaz   \n"
+    },
+    {
+      "id": "75247",
+      "timestamp": "2009-08-19T01:55:59+00:00",
+      "author": "apple9999",
+      "content": "Sorry jaclaz for discussing WAREZ  \nOK. Now my new finding is:  \nIf I use Sandisk 2GB MMC/SD Card,the BartpE windows live boots perfectly (created by pE2usb). But it doesn\u0027t boot (even after following the exactly same procedure) with Kingstone 2GB Pen Drive.  \nRegards   \n"
+    },
+    {
+      "id": "75266",
+      "timestamp": "2009-08-19T08:34:21+00:00",
+      "author": "maanu",
+      "content": "\u003e Sorry jaclaz for discussing WAREZ  \n\u003e OK. Now my new finding is:  \n\u003e If I use Sandisk 2GB MMC/SD Card,the BartpE windows live boots perfectly (created by pE2usb). But it doesn\u0027t boot (even after following the exactly same procedure) with Kingstone 2GB Pen Drive.  \n\u003e Regards\n\n(assuming that ur later kingston drive did not boot at all )  \n\nfollow post #2 of the following thread **exactly**   \n\n```\nhttp\u0026#58;//www.boot-land.net/forums/index.php?showtopic\u003d8177\n```\n\n\u003cbr /\u003e\n\n(if ur kingston boot allright BUT not the pe )  \n\nwhat was the error ?  \n\nand how ur bios see ur usb drive , as usb-zip , usb-fdd ,usb-hdd ?   \n"
+    },
+    {
+      "id": "75271",
+      "timestamp": "2009-08-19T08:58:41+00:00",
+      "author": "was_jaclaz",
+      "content": "@apple999  \nFor the record and for your knowledge, very few things manage to make me :wink: as much as someone who writes \"doesn\u0027t boot\", there can be several reasons why a stick does not boot, and most of them cause \"something\" that can be ***DESCRIBED*** , like (examples):  \n\n* a completely blank screen\n* a flashing cursor in top left of the screen\n* a j in top left of the screen\n* something quickly flashing\n* an error message (white text on black background\n* a BSOD (white text on blue background)\n\n\u003cbr /\u003e\n\nWould you go to the doctor and tell him:  \n\u003e I have a pain somewhere, what can it be?\n**?** :wink:  \n\n@maanu  \nWould the doctor then say, without knowing what the problem is:  \n\u003e Sure, take these broad spectrum antibiotics, one pill every eight hours.\n**?** :wink:  \n\n:wink:   \n\n![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "75278",
+      "timestamp": "2009-08-19T09:37:15+00:00",
+      "author": "maanu",
+      "content": "aaah so u atleast considering me a Dr... ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \n"
+    },
+    {
+      "id": "75279",
+      "timestamp": "2009-08-19T09:54:43+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e aaah so u atleast considering me a Dr... ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\n:wink: Maybe \"intern\" would be more accurate...![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n[http://www.thefreedi...nary.com/intern](http://www.thefreedictionary.com/intern \"External link\")  \n:wink:  \n\n:smile:  \n\njaclaz   \n"
+    },
+    {
+      "id": "75281",
+      "timestamp": "2009-08-19T10:04:24+00:00",
+      "author": "maanu",
+      "content": "\u003e :wink: Maybe \"intern\" would be more accurate...![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\u003e [http://www.thefreedi...nary.com/intern](http://www.thefreedictionary.com/intern \"External link\")  \n\u003e :wink:  \n\u003e\n\u003e :smile:  \n\u003e\n\u003e jaclaz\n\ngot u . ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "75283",
+      "timestamp": "2009-08-19T10:26:39+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e got u . :wink:\n\nI guess you are familiar with the \"Dilbert\" Comics :wink::  \n[http://en.wikipedia....bert_character)](http://en.wikipedia.org/wiki/Asok_(Dilbert_character) \"External link\")  \n\n[http://www.dilbert.c...mic/2005-10-23/](http://www.dilbert.com/strips/comic/2005-10-23/ \"External link\")  \n\n![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "75287",
+      "timestamp": "2009-08-19T11:30:03+00:00",
+      "author": "maanu",
+      "content": "\u003e I guess you are familiar with the \"Dilbert\" Comics :wink::  \n\u003e [http://en.wikipedia....bert_character)](http://en.wikipedia.org/wiki/Asok_(Dilbert_character) \"External link\")  \n\u003e\n\u003e [http://www.dilbert.c...mic/2005-10-23/](http://www.dilbert.com/strips/comic/2005-10-23/ \"External link\")  \n\u003e\n\u003e ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\u003e\n\u003e jaclaz\n\nno sir im not.   \n"
+    },
+    {
+      "id": "75311",
+      "timestamp": "2009-08-19T14:21:12+00:00",
+      "author": "apple9999",
+      "content": "well well well  \nThis topic is turning out tobe a comic book episode.  \nMay be more with my quries!!!!!!  \n\nIf I use Sandisk 2GB MMC/SD Card,the BartpE windows live boots perfectly (created by pE2usb).   \nBut it halts with BSOD (even after following the exactly same procedure) with Kingstone 2gb pen drive.  \nWhy is that?   \n"
+    },
+    {
+      "id": "75314",
+      "timestamp": "2009-08-19T15:12:36+00:00",
+      "author": "maanu",
+      "content": "\u003e well well well  \n\u003e This topic is turning out tobe a comic book episode.  \n\u003e May be more with my quries!!!!!!  \n\u003e\n\u003e If I use Sandisk 2GB MMC/SD Card,the BartpE windows live boots perfectly (created by pE2usb).   \n\u003e But it halts with BSOD (even after following the exactly same procedure) with Kingstone 2gb pen drive.  \n\u003e Why is that?\n\ni have a feeling that u have made jaclaz angry again .   \n\ntell us ,  \n\n1. HOW did u make bartpe (eeewww ,why didn\u0027t u use winbuilder ? )   \n2. did u try ramboot approach ?  \n3. did u use setupldr.bin ,ramdisk.sys,ntdetect.com from 2k3 sp1 ?  \n4. what was the error code ?   \n"
+    },
+    {
+      "id": "75319",
+      "timestamp": "2009-08-19T15:58:55+00:00",
+      "author": "apple9999",
+      "content": "1.I used pebuilder ([http://www.nu2.nu/pebuilder/](http://www.nu2.nu/pebuilder/ \"External link\")) to create livexp then pe2usb to put it into usb  \n2.Could you pls give me step by step instructions for ramboot approach  \n3.I tried modified ntdetect..and not from w2k3sp1. pls give me link for that.  \n4. Same BSOD errror   \n................Problem detected windows shutdown to protect computer...............................  \nTechical info...........  \nSTOP: 0x0000007B(0xF78D6528,0XC0000034,0X00000000,OX00000000  \n\nPlease don\u0027t angry!! young man!   \n"
+    },
+    {
+      "id": "75330",
+      "timestamp": "2009-08-19T16:47:50+00:00",
+      "author": "was_jaclaz",
+      "content": "@apple9999  \n\nPlease take note that \"LiveXP\" is the (extremely INACCURATE) name of a winbuilder project, if you use Bart\u0027s PEBuilder what you have as output is a BartPE build, but you started about a \"Net Protector\" something. ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\nAlso, before you reported using RMprepusb, now pe2usb. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nThere are two similarly named programs:  \npe**2** usb, which is a script included in bartPE, and pe**to** usb, which is a program.  \n\nThe pe2usb (script within BartPE) has been reported often to create problems, though the reported problems are NOT usually connected with BSOD 0x0000007b.  \n\nA 0x0000007b comes normally with a \"inaccessible boot device\" text message.   \n\nAre you positive you partitioned/formatted the Kingston USB stick properly?  \nThe message may come from attempting booting a stick partitioned as superfloppy on a motherboard that \"accepts as AUTO\" this kind of media.  \n\nCan you get this app:  \nHDHACKER  \n[http://dimio.altervista.org/eng/](http://dimio.altervista.org/eng/ \"External link\")  \nbackup MBR (first sector of Physicaldrive corresponding to your USB stick)  \nbackup bootsector( first sector of LogicalDrive corresponding to first partition on your USB stick)  \ncompress the two files together and post the resaulting archive as attachment?  \n\nAnd how is/was the MMC/sd card connected to the PC?  \n\nAlso are you trying both builds on the same computer?  \n\n@maanu  \nwhy don\u0027t you go all the way and suggest to use Linux or Solaris instead?  \n\nThe problem at hand is WHY same build works with one media and not with another. Not about different ways to create a PE (like RAMDISK builds).  \n\njaclaz   \n"
+    },
+    {
+      "id": "75335",
+      "timestamp": "2009-08-19T17:05:38+00:00",
+      "author": "maanu",
+      "content": "@ jaclaz   \n\ni was just trying to help . ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \n"
+    },
+    {
+      "id": "75338",
+      "timestamp": "2009-08-19T17:14:08+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e @ jaclaz   \n\u003e\n\u003e i was just trying to help . ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)\n\nI know. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nBut it is easy to confuse a new member, and expecially one that has not been able till now to post a simple, exact report of what he did, by opening before him multiple choices.  \n\n:smile:  \n\njaclaz   \n"
+    },
+    {
+      "id": "74771",
+      "timestamp": "2009-08-16T03:04:17+00:00",
+      "author": "apple9999",
+      "content": "Dear Sirs  \nI have created a **Netprotector** Antivirus rescue boot-disk.  \nThe Netprotecor says Windows will run in Native mode while booting from the rescue disk  \nIts windows xp sp3 base as it creates rescue disk from windows xp source files. When I extracted the boot sector of the disk it reads \"NATIVE CDFS GENERATOR.img\". When I try to put this cd\u0027s image file NP.ISO into USB using grub4dos and menu list like...  \n**find --set-root --ignore-floppies /iso/NP.iso\nmap /iso/NP.iso (0xFF)\nmap --hook\nchainloader (0xFF)**   \nIts not working. It halts with blue screen.  \n\nHence I extracted the rescue disk on the USB and tried to run the \"setupldr.bin\"  \nThere are no files on the root of the cd.  \n(All the files are in i386 folder. The boot loader runs \"Setupldr.bin\" from this folder.)  \nI used the following menu list but its not working...  \n**title qh\nfind --set-root /i386/SETUPLDR.BIN\nchainloader /i386/SETUPLDR.BIN\nrootnoverify\nboot**   \n\nPlease guide me in how to put this cd into USB.  \nI tried --mem command also but it Hangs.  \nI have 2GB Ram with C2D.   \n"
+    },
+    {
+      "id": "74784",
+      "timestamp": "2009-08-16T07:14:37+00:00",
+      "author": "maanu",
+      "content": "just a hint : rename I386 to **minint** . copy **ntdetect.com** from within minint to **root** of usb drive . and see by chainloading setupldr.bin .  \n\nim stuck in another issue on live xp . but i ll download that netprotector thing and see if it can be called fully from ram .,  \n\nedit : what was the **error code** of that blue screen when u tried 0xff ?   \n"
+    },
+    {
+      "id": "74788",
+      "timestamp": "2009-08-16T08:36:13+00:00",
+      "author": "apple9999",
+      "content": "\u003e just a hint : rename I386 to **minint** . copy **ntdetect.com** from within minint to **root** of usb drive . and see by chainloading setupldr.bin .  \n\u003e\n\u003e im stuck in another issue on live xp . but i ll download that netprotector thing and see if it can be called fully from ram .,  \n\u003e\n\u003e edit : what was the **error code** of that blue screen when u tried 0xff ?\nI beg your pardon Maanu as the software is not Netprotector but Quickheal Antivirus. Pls download it and give it try  \nError code I will tell you  \nThanks   \n"
+    },
+    {
+      "id": "74799",
+      "timestamp": "2009-08-16T10:00:24+00:00",
+      "author": "maanu",
+      "content": "no problem ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)   \n\ndont forget to mention also IF u have sata hdd .   \n"
+    },
+    {
+      "id": "74833",
+      "timestamp": "2009-08-16T14:54:59+00:00",
+      "author": "apple9999",
+      "content": "@maanu  \nI have a sata disk. The CD boots and scans perfectly from CD-Drive. But if the cd\u0027s .iso is put into USB it gives me error with blue screen  \n................Problem detected windows shutdown to protect computer...............................  \nTechical info...........  \nSTOP: 0x0000007B(0xF78D6528,0XC0000034,0X00000000,OX00000000)  \n\nI am getting same error with boot live xp CD-iso with this method.   \n"
+    },
+    {
+      "id": "74836",
+      "timestamp": "2009-08-16T15:53:01+00:00",
+      "author": "was_jaclaz",
+      "content": "Unfortunately :wink: the trophy has just been awarded:  \n[http://www.boot-land...?...ic\u003d8721\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d8721\u0026hl\u003d \"External link\")  \n![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)  \n\nMore seriously, it won\u0027t work as (hd32) or (0xFF) unless it\u0027s a RAMDISK build.  \n\nIt should work with files extracted to root of USB and \\\\minint, see here:  \n[http://www.boot-land...?...7739\\\u0026st\u003d154](http://www.boot-land.net/forums/index.php?showtopic\u003d7739\u0026st\u003d154 \"External link\")  \n\nIt is possible (typical if it\u0027s a DELL) that you need a modified NTDETECT.COM, read FAQ #3 here:  \n[http://www.msfn.org/...howtopic\u003d116766](http://www.msfn.org/board/index.php?showtopic\u003d116766 \"External link\")  \nand given links in it.  \n\n![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "74885",
+      "timestamp": "2009-08-17T02:21:44+00:00",
+      "author": "apple9999",
+      "content": "\u003e Unfortunately ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png) the trophy has just been awarded:  \n\u003e [http://www.boot-land...?...ic\u003d8721\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d8721\u0026hl\u003d \"External link\")  \n\u003e ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)  \n\u003e\n\u003e More seriously, it won\u0027t work as (hd32) or (0xFF) unless it\u0027s a RAMDISK build.  \n\u003e\n\u003e It should work with files extracted to root of USB and \\\\minint, see here:  \n\u003e [http://www.boot-land...?...7739\\\u0026st\u003d154](http://www.boot-land.net/forums/index.php?showtopic\u003d7739\u0026st\u003d154 \"External link\")  \n\u003e\n\u003e It is possible (typical if it\u0027s a DELL) that you need a modified NTDETECT.COM, read FAQ #3 here:  \n\u003e [http://www.msfn.org/...howtopic\u003d116766](http://www.msfn.org/board/index.php?showtopic\u003d116766 \"External link\")  \n\u003e and given links in it.  \n\u003e\n\u003e ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)  \n\u003e\n\u003e jaclaz\n@Jaclaz  \nThanks for your prompt response.  \nI think the \"information\" on this topic/problem is much scattered in this forum. Hence finding it difficult to search or understand.   \nI will let you know after I give it a try  \nThanks   \n"
+    },
+    {
+      "id": "75107",
+      "timestamp": "2009-08-18T02:12:15+00:00",
+      "author": "apple9999",
+      "content": "@Jaclaz  \nI was trying to boot usb by extracting the files of the .iso / original boot cd to usb drive. (As I said earlier The original rescue disk CD boots fine. There are no files on the root of the the except win51??? size zero files)  \n\nI followed these steps   \n1. Format UFD with RMPrepUSB   \n2. Copy setupldr.bin from \\\\i386 to the root of the UFD as ntldr.  \n3. Copy the custom ntdetect.com described inthe links provided by you to the root of the UFD.   \n4. Copy the target files and folders, renaming \\\\i386 to \\\\minint.  \nNow its not going upto BSOD. Before that getting error.  \nI tried foramatting with FAT16/FAT32/NTFS.  \nERRORS: with ntfs:txtsetup.sif missing error code 14  \nwith fat: file\\\\$WIN_NTS.\"BT\\\\biosinfo.inf couldn\u0027t find error code 18.  \n\nPlease guide.  \nMy other observations are...  \nI was creating a livexp-usb using \"pe2usb\" then  \n1) When I gave source path of original xpsp2 i got the error code \\\\$WIN_NTS.\"BT\\\\biosinfo.inf   \n2) When I gave souce path of a already created xplive I got the erro BSOD.  \nEven copying modded ntdetect.com didn\u0027t solve the problem   \n"
+    },
+    {
+      "id": "75123",
+      "timestamp": "2009-08-18T08:46:58+00:00",
+      "author": "was_jaclaz",
+      "content": "Usually an error saying \"missing txtsetup.sif\" does mean that txtsetup.sif cannot be found. ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\nTry putting a copy of txtsetup.sif in root of the stick.  \n\nYou should get familiar with the \"queer\" ways Windows Setup (and PE\u0027s) boot, and with the differences when booting on different media (CD vs. HD vs USB stick HD like vs. floppy/superfloppy).  \n\nTake your time reading this seemingly unrelated thread:  \n[http://www.boot-land...?showtopic\u003d5316](http://www.boot-land.net/forums/index.php?showtopic\u003d5316 \"External link\")  \nit does contain a lot of info on the booting process and which files are needed where.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "75208",
+      "timestamp": "2009-08-18T17:55:23+00:00",
+      "author": "apple9999",
+      "content": "\u003e Try putting a copy of txtsetup.sif in root of the stick.  \n\u003e\n\u003e jaclaz\nNo Sir...It did not work.  \nI will try another way through the links you provided and let you know if I succeed.  \nBut if you see **WAREZ** you can put it in any usb stick. What method has he used? I tried to contact him and asked but he is not guiding.   \n"
+    },
+    {
+      "id": "75212",
+      "timestamp": "2009-08-18T18:28:28+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e No Sir...It did not work.  \n\u003e I will try another way through the links you provided and let you know if I succeed.  \n\u003e But if you see **WAREZ** you can put it in any usb stick. What method has he used? I tried to contact him and asked but he is not guiding.\n\nBolded part above is my edit.  \n\nHalf to three quarters of the world have managed to boot from USB, by reading, learning and using legally available software, no need to use **WAREZ** .  \n\nSimply read, learn, experiment.  \n\njaclaz   \n"
+    },
+    {
+      "id": "75247",
+      "timestamp": "2009-08-19T01:55:59+00:00",
+      "author": "apple9999",
+      "content": "Sorry jaclaz for discussing WAREZ  \nOK. Now my new finding is:  \nIf I use Sandisk 2GB MMC/SD Card,the BartpE windows live boots perfectly (created by pE2usb). But it doesn\u0027t boot (even after following the exactly same procedure) with Kingstone 2GB Pen Drive.  \nRegards   \n"
+    },
+    {
+      "id": "75266",
+      "timestamp": "2009-08-19T08:34:21+00:00",
+      "author": "maanu",
+      "content": "\u003e Sorry jaclaz for discussing WAREZ  \n\u003e OK. Now my new finding is:  \n\u003e If I use Sandisk 2GB MMC/SD Card,the BartpE windows live boots perfectly (created by pE2usb). But it doesn\u0027t boot (even after following the exactly same procedure) with Kingstone 2GB Pen Drive.  \n\u003e Regards\n\n(assuming that ur later kingston drive did not boot at all )  \n\nfollow post #2 of the following thread **exactly**   \n\n```\nhttp\u0026#58;//www.boot-land.net/forums/index.php?showtopic\u003d8177\n```\n\n\u003cbr /\u003e\n\n(if ur kingston boot allright BUT not the pe )  \n\nwhat was the error ?  \n\nand how ur bios see ur usb drive , as usb-zip , usb-fdd ,usb-hdd ?   \n"
+    },
+    {
+      "id": "75271",
+      "timestamp": "2009-08-19T08:58:41+00:00",
+      "author": "was_jaclaz",
+      "content": "@apple999  \nFor the record and for your knowledge, very few things manage to make me :wink: as much as someone who writes \"doesn\u0027t boot\", there can be several reasons why a stick does not boot, and most of them cause \"something\" that can be ***DESCRIBED*** , like (examples):  \n\n* a completely blank screen\n* a flashing cursor in top left of the screen\n* a j in top left of the screen\n* something quickly flashing\n* an error message (white text on black background\n* a BSOD (white text on blue background)\n\n\u003cbr /\u003e\n\nWould you go to the doctor and tell him:  \n\u003e I have a pain somewhere, what can it be?\n**?** :wink:  \n\n@maanu  \nWould the doctor then say, without knowing what the problem is:  \n\u003e Sure, take these broad spectrum antibiotics, one pill every eight hours.\n**?** :wink:  \n\n:wink:   \n\n![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "75278",
+      "timestamp": "2009-08-19T09:37:15+00:00",
+      "author": "maanu",
+      "content": "aaah so u atleast considering me a Dr... ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \n"
+    },
+    {
+      "id": "75279",
+      "timestamp": "2009-08-19T09:54:43+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e aaah so u atleast considering me a Dr... ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\n:wink: Maybe \"intern\" would be more accurate...![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n[http://www.thefreedi...nary.com/intern](http://www.thefreedictionary.com/intern \"External link\")  \n:wink:  \n\n:smile:  \n\njaclaz   \n"
+    },
+    {
+      "id": "75281",
+      "timestamp": "2009-08-19T10:04:24+00:00",
+      "author": "maanu",
+      "content": "\u003e :wink: Maybe \"intern\" would be more accurate...![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\u003e [http://www.thefreedi...nary.com/intern](http://www.thefreedictionary.com/intern \"External link\")  \n\u003e :wink:  \n\u003e\n\u003e :smile:  \n\u003e\n\u003e jaclaz\n\ngot u . ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "75283",
+      "timestamp": "2009-08-19T10:26:39+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e got u . :wink:\n\nI guess you are familiar with the \"Dilbert\" Comics :wink::  \n[http://en.wikipedia....bert_character)](http://en.wikipedia.org/wiki/Asok_(Dilbert_character) \"External link\")  \n\n[http://www.dilbert.c...mic/2005-10-23/](http://www.dilbert.com/strips/comic/2005-10-23/ \"External link\")  \n\n![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "75287",
+      "timestamp": "2009-08-19T11:30:03+00:00",
+      "author": "maanu",
+      "content": "\u003e I guess you are familiar with the \"Dilbert\" Comics :wink::  \n\u003e [http://en.wikipedia....bert_character)](http://en.wikipedia.org/wiki/Asok_(Dilbert_character) \"External link\")  \n\u003e\n\u003e [http://www.dilbert.c...mic/2005-10-23/](http://www.dilbert.com/strips/comic/2005-10-23/ \"External link\")  \n\u003e\n\u003e ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\u003e\n\u003e jaclaz\n\nno sir im not.   \n"
+    },
+    {
+      "id": "75311",
+      "timestamp": "2009-08-19T14:21:12+00:00",
+      "author": "apple9999",
+      "content": "well well well  \nThis topic is turning out tobe a comic book episode.  \nMay be more with my quries!!!!!!  \n\nIf I use Sandisk 2GB MMC/SD Card,the BartpE windows live boots perfectly (created by pE2usb).   \nBut it halts with BSOD (even after following the exactly same procedure) with Kingstone 2gb pen drive.  \nWhy is that?   \n"
+    },
+    {
+      "id": "75314",
+      "timestamp": "2009-08-19T15:12:36+00:00",
+      "author": "maanu",
+      "content": "\u003e well well well  \n\u003e This topic is turning out tobe a comic book episode.  \n\u003e May be more with my quries!!!!!!  \n\u003e\n\u003e If I use Sandisk 2GB MMC/SD Card,the BartpE windows live boots perfectly (created by pE2usb).   \n\u003e But it halts with BSOD (even after following the exactly same procedure) with Kingstone 2gb pen drive.  \n\u003e Why is that?\n\ni have a feeling that u have made jaclaz angry again .   \n\ntell us ,  \n\n1. HOW did u make bartpe (eeewww ,why didn\u0027t u use winbuilder ? )   \n2. did u try ramboot approach ?  \n3. did u use setupldr.bin ,ramdisk.sys,ntdetect.com from 2k3 sp1 ?  \n4. what was the error code ?   \n"
+    },
+    {
+      "id": "75319",
+      "timestamp": "2009-08-19T15:58:55+00:00",
+      "author": "apple9999",
+      "content": "1.I used pebuilder ([http://www.nu2.nu/pebuilder/](http://www.nu2.nu/pebuilder/ \"External link\")) to create livexp then pe2usb to put it into usb  \n2.Could you pls give me step by step instructions for ramboot approach  \n3.I tried modified ntdetect..and not from w2k3sp1. pls give me link for that.  \n4. Same BSOD errror   \n................Problem detected windows shutdown to protect computer...............................  \nTechical info...........  \nSTOP: 0x0000007B(0xF78D6528,0XC0000034,0X00000000,OX00000000  \n\nPlease don\u0027t angry!! young man!   \n"
+    },
+    {
+      "id": "75330",
+      "timestamp": "2009-08-19T16:47:50+00:00",
+      "author": "was_jaclaz",
+      "content": "@apple9999  \n\nPlease take note that \"LiveXP\" is the (extremely INACCURATE) name of a winbuilder project, if you use Bart\u0027s PEBuilder what you have as output is a BartPE build, but you started about a \"Net Protector\" something. ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\nAlso, before you reported using RMprepusb, now pe2usb. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nThere are two similarly named programs:  \npe**2** usb, which is a script included in bartPE, and pe**to** usb, which is a program.  \n\nThe pe2usb (script within BartPE) has been reported often to create problems, though the reported problems are NOT usually connected with BSOD 0x0000007b.  \n\nA 0x0000007b comes normally with a \"inaccessible boot device\" text message.   \n\nAre you positive you partitioned/formatted the Kingston USB stick properly?  \nThe message may come from attempting booting a stick partitioned as superfloppy on a motherboard that \"accepts as AUTO\" this kind of media.  \n\nCan you get this app:  \nHDHACKER  \n[http://dimio.altervista.org/eng/](http://dimio.altervista.org/eng/ \"External link\")  \nbackup MBR (first sector of Physicaldrive corresponding to your USB stick)  \nbackup bootsector( first sector of LogicalDrive corresponding to first partition on your USB stick)  \ncompress the two files together and post the resaulting archive as attachment?  \n\nAnd how is/was the MMC/sd card connected to the PC?  \n\nAlso are you trying both builds on the same computer?  \n\n@maanu  \nwhy don\u0027t you go all the way and suggest to use Linux or Solaris instead?  \n\nThe problem at hand is WHY same build works with one media and not with another. Not about different ways to create a PE (like RAMDISK builds).  \n\njaclaz   \n"
+    },
+    {
+      "id": "75335",
+      "timestamp": "2009-08-19T17:05:38+00:00",
+      "author": "maanu",
+      "content": "@ jaclaz   \n\ni was just trying to help . ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \n"
+    },
+    {
+      "id": "75338",
+      "timestamp": "2009-08-19T17:14:08+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e @ jaclaz   \n\u003e\n\u003e i was just trying to help . ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)\n\nI know. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nBut it is easy to confuse a new member, and expecially one that has not been able till now to post a simple, exact report of what he did, by opening before him multiple choices.  \n\n:smile:  \n\njaclaz   \n"
+    },
+    {
+      "id": "75344",
+      "timestamp": "2009-08-19T18:17:00+00:00",
+      "author": "apple9999",
+      "content": "@jaclaz   \n**Sorry** bothering you!  \nI will go thro all the links you provided and post my queries only **after** thoughly studying it.  \nAny way my basic problem was not batrpe build xp to usb.  \nBut  \nI am using a license antivirus software   \nQuick Heal Antivirus Plus 2009 for Desktop on windows xpsp3 license fully updated.  \n[http://www.quickheal...n/downloads.asp](http://www.quickheal.co.in/downloads.asp \"External link\")  \nThrough this software you can create a bootable rescue cd rom disk.   \nThis bootable cd, I am unable to put in the usb stick or usb memory card  \nKindly read \"quickheal\" instead of \"Netprotector\" in my first post  \n[http://www.boot-land...?showtopic\u003d8726](http://www.boot-land.net/forums/index.php?showtopic\u003d8726 \"External link\")  \nregards   \n"
+    },
+    {
+      "id": "75347",
+      "timestamp": "2009-08-19T18:28:35+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e This bootable cd, I am unable to put in the usb stick or usb memory card\nBut since I have not a license for it, and my crystal ball is in the shop for tuning, I have no idea of the contents of that CD-ROM. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nWhy don\u0027t we start again from scratch? :smile:  \n\nYou have a CD, right?  \n\nCan we have a Directory listing of it\u0027s contents?  \n\nRun this command in a Windows Command Prompt:  \n\n```\nDIR /S D\u0026#58;\\\u003eC\u0026#58;\\mycd.dir\n```\n\nAssuming that your internal hard disk is C:\\\\ and that the \"quickheal\" CD is D:, change letters if needed.  \n\nCompress mycd.dir to mycd.zip and attach it to your next post or upload it to a file sharing site and post the link to it.  \n\nMaybe if we manage to have an idea of WHAT ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) it is, a solution can be found. ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "75372",
+      "timestamp": "2009-08-20T01:53:14+00:00",
+      "author": "apple9999",
+      "content": "@jaclaz   \nOk I am attaching the dir listing with subdir.   \nAlso the boot extract of the cd using isobuster trial version.  \n\nedit: Could you please download the trial version of the The \"quickheal\" link provided. You can Create the rescue CD from the trial version through the menu \"tools\"  \nQuick Heal AntiVirus Plus 2009 for Desktop - Free One Month Trial link is   \n[http://www.quickheal...n/downloads.asp](http://www.quickheal.co.in/downloads.asp \"External link\")  \n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003d101f12aa5e7b2e18d8e53e5dceffdb3b\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d8997 \"Download attachment\") [**mycd.dir.rar**](http://reboot.pro/index.php?s\u003d101f12aa5e7b2e18d8e53e5dceffdb3b\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d8997 \"Download attachment\") **2.1KB** 297 downloads\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003d101f12aa5e7b2e18d8e53e5dceffdb3b\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d8996 \"Download attachment\") [**Bootextract_of_the_Disc.rar**](http://reboot.pro/index.php?s\u003d101f12aa5e7b2e18d8e53e5dceffdb3b\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d8996 \"Download attachment\") **1.25KB** 360 downloads\n\n"
+    },
+    {
+      "id": "75391",
+      "timestamp": "2009-08-20T07:29:46+00:00",
+      "author": "was_jaclaz",
+      "content": "It seems like a \"normal\" PE.  \n\nIt is possible that the \"\\\\I386\\\\\" is hardcoded.  \n\nIf this is the case, you should use \\\\i386 at hard disc (read Usb stick) too:  \n[http://www.911cd.net...showtopic\u003d17504](http://www.911cd.net/forums//index.php?showtopic\u003d17504 \"External link\")  \n\nIf I were you, I would try using **fuwi** \u0027s utilities:  \n[http://www.911cd.net...o...c\u003d21702\\\u0026hl\u003d](http://www.911cd.net/forums//index.php?showtopic\u003d21702\u0026hl\u003d \"External link\")  \nto create the USB key.  \n\nDo read the thread, before using the utilities.  \n\njaclaz   \n"
+    },
+    {
+      "id": "75401",
+      "timestamp": "2009-08-20T09:23:34+00:00",
+      "author": "maanu",
+      "content": "downloading the trial now . but i can feel how crappy this AV is (no offense to u or to the developers ) , 85 MB for a AV????? ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \n\nif i ll succeed in making a working usb image , i ll advise u 2 AV\u0027s which ll make ur life a lot more easier (one of them is freeware)...both for installation and for emergency use..  \n\ni personally dont use any AV (left them in 2008 ) . but i install that freeware AV on my family and friend\u0027s systems which i setup for them .   \n"
+    },
+    {
+      "id": "75407",
+      "timestamp": "2009-08-20T10:40:30+00:00",
+      "author": "maanu",
+      "content": "ok , so i downloaded it , install it in vmware ,when tried to create emerg cd , it asked me to give driver # , i mounted my xp sp3 image , and gave it path ,   \n\nafter it created , it asked me to insert blank cd , and here is the story , i dont have my dvd writer attached currently . and there was no option for saving the iso image somewhere on hdd .  \n\nso i cant help it unless i get back my dvd writer , or u send me iso image for testing purposes . (i hope it is ok since i have 0% interest in this thing ,and wont keep it in ANY case)   \n\nthe GOOD sustitutes and FREE are avira rescue cd and dr.web live cd . both based on linux and both are free. both can be booted from usb .both can be update on the fly or from net while in setup.  \n\navira is also good substitute for quick heal. and considers to be one of lightest and cool AV\u0027s which gives free version with full features (almost ).   \n"
+    },
+    {
+      "id": "75412",
+      "timestamp": "2009-08-20T12:02:50+00:00",
+      "author": "apple9999",
+      "content": "Thanks maanu!  \nI will upload it to rapidshare and post the link here.  \nIf possible you may try virtual cd software to create a .ISO image  \n[http://www.virtualcd...wnload.cfm?lg\u003d0](http://www.virtualcd-online.com/vcd/apps/download/download.cfm?lg\u003d0 \"External link\")  \nI have done so.  \n\n@jaclaz   \nI tried **fuwi** \u0027s utilities:  \nFirst attempt failed.  \nThe same error . BSOD. STOP: 0x0000007b error.   \nStill trying / working on it.  \n\nregards   \n"
+    },
+    {
+      "id": "75415",
+      "timestamp": "2009-08-20T12:09:56+00:00",
+      "author": "maanu",
+      "content": "oops . dont remember if it created iso image in temp directory thats why it was asking me to insert blank cd. i cancelled the procedure and restore the snap point to previous vmware point.  \n\nso it ll be great if u could forward the cd image (7z it first plz ) and upload to mediafire .it is free.  \n\n(ask jaclaz first if it is ok to post the link here )   \n"
+    },
+    {
+      "id": "75429",
+      "timestamp": "2009-08-20T14:40:53+00:00",
+      "author": "apple9999",
+      "content": "\u003e oops . dont remember if it created iso image in temp directory thats why it was asking me to insert blank cd. i cancelled the procedure and restore the snap point to previous vmware point.  \n\u003e\n\u003e so it ll be great if u could forward the cd image (7z it first plz ) and upload to mediafire .it is free.  \n\u003e\n\u003e (ask jaclaz first if it is ok to post the link here )\nIf you have installed QH on C Drive.  \nLook at c:\\\\program files\\\\quickheal\\\\quickheal antivirus plus \\\\osfiles\\\\......  \nAll the files on the Rescue-disk are there.  \nBoot sector I have already uploaded.  \nUsing UltraISO..you can create Qh -rescue disk or .ISO  \nRegards.   \n"
+    },
+    {
+      "id": "75437",
+      "timestamp": "2009-08-20T15:42:52+00:00",
+      "author": "apple9999",
+      "content": "\u003e oops . dont remember if it created iso image in temp directory thats why it was asking me to insert blank cd. i cancelled the procedure and restore the snap point to previous vmware point.  \n\u003e\n\u003e so it ll be great if u could forward the cd image (7z it first plz ) and upload to mediafire .it is free.  \n\u003e\n\u003e (ask jaclaz first if it is ok to post the link here )\n\n@Jaclaz,  \nIs it ok to post the link to the \".iso image of quickheal rescue disk\" ? Its not warez as its 30 days trial pack!   \n"
+    }
+  ]
+}

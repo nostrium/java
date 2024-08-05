@@ -1,0 +1,334 @@
+{
+  "id": "8528",
+  "title": "How to patch FAT32 boot sector",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "72641",
+      "timestamp": "2009-07-26T15:30:07+00:00",
+      "author": "ktp",
+      "content": "Hello,  \n\nI remember reading an article about patching FAT32 boot sector (by setting 3 or 4 NOPs to the boot sector code) in order to fix MS boot sector code. In U_SET_XP program the wording is \"CHS knockout\".  \n\nI desperately searched using Google/BootLand but could find again this article :-(.  \nWhat I need is to know the old binary values to be patched, and the new values (NOPs).  \n\nThank you.   \n"
+    },
+    {
+      "id": "72642",
+      "timestamp": "2009-07-26T15:34:57+00:00",
+      "author": "was_jaclaz",
+      "content": "Here ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif):  \n[http://www.911cd.net...o...1702\\\u0026st\u003d129](http://www.911cd.net/forums//index.php?showtopic\u003d21702\u0026st\u003d129 \"External link\")  \n\n:tongue:  \n\njaclaz   \n"
+    },
+    {
+      "id": "72645",
+      "timestamp": "2009-07-26T15:57:18+00:00",
+      "author": "ktp",
+      "content": "Thank you Master jaclaz for your quick answer !   \n"
+    },
+    {
+      "id": "72649",
+      "timestamp": "2009-07-26T16:07:44+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Thank you Master jaclaz for your quick answer !\n\nYou are welcome.  \n\njaclaz   \n"
+    },
+    {
+      "id": "72651",
+      "timestamp": "2009-07-26T16:12:55+00:00",
+      "author": "ktp",
+      "content": "For the records :  \n\n**FAT32 boot sector** (\"MSWIN4.1\" or \"MSDOS5.0\" found starting at address 0x03) :  \nAt address 0xE6, 4 bytes 0x0F, 0x82, 0x4A, 0x00 \u003d\\\u003e patched to 0x90 0x90 0x90 0x90  \n\n**NTFS boot sector** (\"NTFS\" found starting at address 0x03) :  \nAt address 0xD9, 4 bytes 0x0F, 0x82, 0x3A, 0x00 \u003d\\\u003e patched to 0x90 0x90 0x90 0x90  \n\nWith this patch, I think I can solve my booting problem with my mp3 player :  \n[http://www.boot-land...?showtopic\u003d8493](http://www.boot-land.net/forums/index.php?showtopic\u003d8493 \"External link\")  \n\nNow I will go to experiment with this !   \n"
+    },
+    {
+      "id": "72654",
+      "timestamp": "2009-07-26T16:26:33+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e With this patch, I think I can solve my booting problem with my mp3 player :\n\nI cannot see how it could be related to it.  \n\nFrom what you posted, your only hope is finding a way to have makebootfat (or it\u0027s principles, i.e. double or triple use MBR, as **tinybit** suggested) working.  \n\n[http://www.boot-land...?showtopic\u003d7507](http://www.boot-land.net/forums/index.php?showtopic\u003d7507 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "72658",
+      "timestamp": "2009-07-26T16:50:02+00:00",
+      "author": "ktp",
+      "content": "@jaclaz  \n\nThe problem is that I cannot use MBR : the mp3 player (\u003d USB key) has only boot sector (in other words either you select under HDHacker boot sector for E: or Physical drive 1, the content is the same).   \n\nOriginally the mp3 player came with an almost nulled (all zeroes) boot sector (no boot sector code, only the 55AA and few signature bytes at start). After formatting to FAT32 with XP, and patching the boot sector, I still have the \"Disk error, Press any key to restart\" message. chkdsk gives no problem, and the mp3 player works fot its music functions.  \n\nI understand that triple MBR assumes MBR, or in my case no MBR is possible.   \n"
+    },
+    {
+      "id": "72662",
+      "timestamp": "2009-07-26T18:04:06+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I understand that triple MBR assumes MBR, or in my case no MBR is possible.\n\nTriple MBR assumes nothing.  \n\nYou are assuming something. :tongue:  \n\nThe idea is to have some code that LOOKS to the BIOS and Windows as a MBR, but that can ALSO be seen as a bootsector (so that the MP3 thingie will still think it is a bootsector) and NO hidden sectors.  \nOr, if you prefer, a bootsector that has also partition data and disk signature.  \n\nPlease try reading the above comparing it with this:  \n\u003e The problem is that I cannot use MBR : the mp3 player (\u003d USB key) has only boot sector (in other words either you select under HDHacker boot sector for E: or Physical drive 1, the content is the same).\nDoesn\u0027t it look strangely similar? ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif)  \n\nWhat if you actually READ:  \n[http://www.boot-land...?...c\u003d7507\\\u0026st\u003d5](http://www.boot-land.net/forums/index.php?showtopic\u003d7507\u0026st\u003d5 \"External link\")  \n\nAND this:  \n[http://www.boot-land...p?showtopic\u003d761](http://www.boot-land.net/forums/index.php?showtopic\u003d761 \"External link\")  \n\nAND links within the latter? :smile:  \n\nThen, once you have got the hang of it, you can start experimenting with either makebootfat or **tinybit** \u0027s solution.  \n\njaclaz   \n"
+    },
+    {
+      "id": "72671",
+      "timestamp": "2009-07-26T18:36:15+00:00",
+      "author": "ktp",
+      "content": "@jaclaz  \n\nThank you for your help. I tried makebootfat using your mkboot.cmd batch file. But as soon as I replug the mp3 player it automatically does a \"Memory checking\", which results in an automatic reformat of the USB key to factory mode by the player itself. The bootsector is reset to almost null as said previously.   \n\nEdit: if I install grub4dos to it, I got \"disk error\" message too from grub4dos boot code.  \n\nSo the only boot sector it seems to accept is FAT32 boot sector, but then my BIOS could not boot it (Disk error), even after patching with 4 NOPs as said. So the problem is why the boot sector code cannot read the ntldr on the disk.   \n"
+    },
+    {
+      "id": "72675",
+      "timestamp": "2009-07-26T18:52:10+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I tried makebootfat using your mkboot.cmd batch file. But as soon as I replug the mp3 player it automatically does a \"Memory checking\", which results in an automatic reformat of the USB key to factory mode by the player itself. The bootsector is reset to almost null as said previously.   \n\u003e\n\u003e Edit: if I install grub4dos to it, I got \"disk error\" message too from grub4dos boot code.  \n\u003e\n\u003e So the only boot sector it seems to accept is FAT32 boot sector, but then my BIOS could not boot it (Disk error), even after patching with 4 NOPs as said. So the problem is why the boot sector code cannot read the ntldr on the disk.\n\nNO.  \nThe whole point is NOT that one.  \n\nThe point is that even if you make it load NTLDR, any Windows NT based system WON\u0027T boot from the stick, as it would miss Disk Signature and thus you won\u0027t have a valid arcpath.  \n\nSure makebootfat won\u0027t work \"as is\", but maybe you can manually use it\u0027s \"short MBR\".  \n\n* Format the stick as FAT32 (with NO partitions, as superfloppy).\n* Try using it as MP3. Make sure that the MP3 function does not change anything.\n* Post the bootsector.\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "72680",
+      "timestamp": "2009-07-26T19:17:43+00:00",
+      "author": "ktp",
+      "content": "@jaclaz  \n\nFollowing are the requested data :  \n[http://www.mediafire.com/?jnfxtwtf2tj](http://www.mediafire.com/?jnfxtwtf2tj \"External link\")  \n\nIn the zip file:  \nBootSector_DriveE_YP-U3_original.dat : original boot sector from mp3 player  \nBootSector_DriveE_YP-U3_ntldr.dat : boot sector after formating with FAT32 (no NOP patch), mp3 player OK, \"Disk Error, Press any key to restart\" message  \nBootSector_DriveE_YP-U3_grub4dos.dat : boot sector after formating with FAT32 and grub4dos installed to boot sector, mp3 player OK, \"disk error\" message   \n"
+    },
+    {
+      "id": "72741",
+      "timestamp": "2009-07-27T09:51:29+00:00",
+      "author": "was_jaclaz",
+      "content": "Got \u0027em.   \n\nI\u0027ll have a look and let you know.  \n\njaclaz   \n"
+    },
+    {
+      "id": "72938",
+      "timestamp": "2009-07-29T07:32:26+00:00",
+      "author": "was_jaclaz",
+      "content": "I have now what I presume to be a workable solution.  \n\nI still need to make a few tests and find an \"easy\" way to make you replicate it.  \n\njaclaz   \n"
+    },
+    {
+      "id": "72948",
+      "timestamp": "2009-07-29T10:52:25+00:00",
+      "author": "was_jaclaz",
+      "content": "OK. :tongue:  \n\nThis should be repeatable.  \n\nI am assuming you are already familiar with MBRBATCH/MKIMG batches, if not read here:  \n[http://www.boot-land...?showtopic\u003d3191](http://www.boot-land.net/forums/?showtopic\u003d3191 \"External link\")  \n[http://www.boot-land...?showtopic\u003d5000](http://www.boot-land.net/forums/index.php?showtopic\u003d5000 \"External link\")  \n\nHave \u0027em (and the needed tools for it in a directory on the NTFS partition, say C:\\\\mbrbatch), unxip to it also the mbrfat.bin inside the makebootfat package.  \n\nOpen a command prompt in it.  \n\nMake sure you have the RIGHT \\\\\\\\.\\\\PhysicalDrive***n*** for the USB stick.  \n\nLet\u0027s assume ***n*** \u003d2  \n\nRun this command, see here for reference: [http://www.boot-land...?...c\u003d5000\\\u0026st\u003d1](http://www.boot-land.net/forums/index.php?showtopic\u003d5000\u0026st\u003d1 \"External link\")  \ndsfo \\\\\\\\.\\\\PHYSICALDRIVE2 0 0 NUL  \n\nYou should get ~~1.987.608.064~~ 1.987.575.808 bytes as the size of your stick.  \n\nNow run mkimg with these parameters:  \nImage name: ktptest.img  \nImage size: ~~1987608064~~ 1987575808  \nGeometry: 255/63  \nPart type: 0B  \n\\[ENTER\\] to use mksparse  \n\nIn the Explorer window of the mounted drive paste NTLDR, NTDETECT.COM and a BOOT.INI (with at least two entries).  \n\nStart tiny hexer:  \n[http://www.boot-land...?...\u003d8296\\\u0026st\u003d13](http://www.boot-land.net/forums/index.php?showtopic\u003d8296\u0026st\u003d13 \"External link\")  \n(or the hexeditor you prefer).  \n\nLoad the appropriate \\\\\\\\.\\\\PhysicalDrive for the image.  \nSave first 512 bytes as freshMBR.DAT  \nLoad the appropriate mounted drive letter.  \nSave first 512 bytes as freshBS.DAT  \n\nNow it comes the \"tricky\" part. :tongue:   \n\nOpen freshBS.DAT and save it as moddedBS.DAT.  \nPatch it with the four NOPs at offset 0xE6, i.e. 0F824A00-\\\u003e90909090  \nSave moddedBS.DAT.  \n\nOpen freshMBR.DAT and save it as moddedMBR.DAT.  \nOpen mbrfat.bin.  \nCopy mbrfat.bin wholly (from 0x00 to 0x01AB) OVER first 428 bytes of moddedMBR.DAT.  \nSave moddedMBR.DAT.  \nCopy first 89 bytes of moddedBS.dat (from 0x00 to ~~0x59~~ 0x58) OVER first 89 bytes of moddedMBR.DAT  \nSave moddedMBR.DAT.  \nOpen the file you attached before, BootSector_DriveE_YP-U3_original.dat.  \nCopy the volume label from BootSector_DriveE_YP-U3_original.dat (from 0x47 to 0x52) - 11 bytes OVER same location on BOTH moddedBS.DAT AND moddedMBR.DAT.  \nSave moddedMBR.DAT.  \nSave moddedBS.DAT.  \n\nCopy moddedMBR.DAT to the \\\\\\\\.\\\\PhysicalDrive for the image, replacing the MBR.  \nCopy moddedBS.DAT to the mounted drive letter for the image, replacing the bootsector.  \nCopy again moddedBS.DAT to the mounted drive letter for the image, replacing sector 6, i.e. the backup of the bootsector.  \n\nClose Tiny Hexer.  \n\nClose the Explorer window opened by MKIMG, go on with MKIMG prompt and uninstall the VDK driver.  \n\nTest the image in Qemu (+ Qemu Manager). Note: You may need to run Unlocker on ktptest.img  \n\nIf it works, clone it over the USB device or repeat the above hex editing directly on the USB device.  \n\nCheck if the \"stupid\" MP3 thingy overwrites/modify anything. :tongue:   \n\nYou owe me a beer. :tongue: (even if it doesn\u0027t work ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif))  \n\n\u003cbr /\u003e\n\n:smile:  \n\njaclaz   \n"
+    },
+    {
+      "id": "72960",
+      "timestamp": "2009-07-29T12:06:57+00:00",
+      "author": "ktp",
+      "content": "@jaclaz  \n\nI got this result :  \n\ndsfo \\\\\\\\.\\\\physicaldrive1 0 0 nul  \n\\\\\\\\.\\\\physicaldrive1 - The request could not be performed because of an I/O device error.  \nThis error can probably be ignored.  \nOK, 1987575808 bytes, 525.625s, MD5 \u003d 40ef7de416254cd4fcea2aab1fb6c57a  \n\nCould I continue? Are there any changes in your procedure then?   \n"
+    },
+    {
+      "id": "72965",
+      "timestamp": "2009-07-29T12:49:51+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e @jaclaz  \n\u003e\n\u003e I got this result :  \n\u003e\n\u003e dsfo \\\\\\\\.\\\\physicaldrive1 0 0 nul  \n\u003e \\\\\\\\.\\\\physicaldrive1 - The request could not be performed because of an I/O device error.  \n\u003e This error can probably be ignored.  \n\u003e OK, 1987575808 bytes, 525.625s, MD5 \u003d 40ef7de416254cd4fcea2aab1fb6c57a  \n\u003e\n\u003e Could I continue? Are there any changes in your procedure then?\n\nPlease read:  \n\u003e This error can ***probably*** be ignored.\nas:  \n\u003e This error can ***definitely*** be ignored.\nThe Author of dsfo/dsfi has been overcautious.  \n\nAbout size, yes, it\u0027s allright, forgot to point out this. :tongue:  \n\nThe data in the bootsectors you sent is 3881984 sectors, hence 3.881.984x512\u003d1.987.575.808 ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif)   \n\nThe 1987608064 I used in my post was an initial \"test\" size., obtained by adding to the 3.881.984, 63 \"hidden sectors\", thus 3.881.984+63\u003d3.882.047 and 3.882.047x512\u003d1.987.608.064, that I wrote down in my notes and forgot to correct in the previous post, correcting it now.  \n\nYou should try with the \"right\" 1987575808. :tongue:  \n\njaclaz  \n\nP.S.: I was forgetting, you are using a French XP, aren\u0027t you? :tongue:  \nRemember to check this:  \n[http://www.boot-land...?...\u003d3191\\\u0026st\u003d17](http://www.boot-land.net/forums/index.php?showtopic\u003d3191\u0026st\u003d17 \"External link\")  \n[http://www.boot-land...?...\u003d3229\\\u0026st\u003d14](http://www.boot-land.net/forums/index.php?showtopic\u003d3229\u0026st\u003d14 \"External link\")  \nI don\u0027t remember having \"adjusted\" the batch for French punctuation.....:smile:   \n"
+    },
+    {
+      "id": "72973",
+      "timestamp": "2009-07-29T14:01:14+00:00",
+      "author": "ktp",
+      "content": "@jaclaz   \n\nWow, it took me as an exercise to learn and familiarize a little with TinyHexer.  \nCorrection:  \n\\\u003e Copy first 89 bytes of moddedBS.dat (from 0x00 to 0x59)   \nShould read of course:  \nCopy first 89 bytes of moddedBS.dat (from 0x00 to 0x58)   \n\n\u003cbr /\u003e\n\n\\\u003e Test the image in Qemu (+ Qemu Manager)  \nResult: it boots, I saw boot.ini menu!  \nI have to search for you a fresh beer :-).  \n\n\\\u003e If it works, clone it over the USB device or repeat the above hex editing directly on the USB device  \nIn the real device, the boot sector is physically the same sector as MBR, so how could your above procedure apply?   \n"
+    },
+    {
+      "id": "72976",
+      "timestamp": "2009-07-29T14:32:40+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e In the real device, the boot sector is physically the same sector as MBR, so how could your above procedure apply?\n\nWell, the idea is that the MBR ***AND*** the bootsector of the image are the \"special\" makebootfat mbrfat.bin.  \n\nmbrfat.bin works (or should work) this way:  \n\n* it *looks* like a boot-sector, including the filesystem DATA and initial three bytes jump CODE\n* it works like a MBR\n\n\u003cbr /\u003e\n\nIt is UNestablished whether it ALSO works as a bootsector, i.e. if it does also work as as a bootable bootsector on the (few) motherboards that only boot from \"super-floppy\", but you are in a \"normal\" situation:  \n\n* your PC boots from a HD like device (and mbrfat.bin is a working MBR CODE, with the specific MBR DATA you supplied by NOT overwriting the last bytes 512-428 bytes of the MBR)\n* your MP3 thingy (hopefully :tongue:) does NOT need bootsector booting CODE, only bootsector DATA on first sector of the device, which also mbrfat.bin undoubtedly provides (the first 89 bytes you supplied)\n\n\u003cbr /\u003e\n\nOf course, it depends on the actual checks the \"stupid\" MP3 thingy does, if for example it wants the number of \"hidden sectors\" to be equal to 0, we need to manipulate the data about \"reserved sectors\" or invent something else. ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif)  \n\nSince you are in Tiny Hexer, try the Tools-\\\u003eStructure Viewer-\\\u003e FAT32 bootsector on the files. :smile:  \n\n\u003e Correction:  \n\u003e \\\u003e Copy first 89 bytes of moddedBS.dat (from 0x00 to 0x59)   \n\u003e Should read of course:  \n\u003e Copy first 89 bytes of moddedBS.dat (from 0x00 to 0x58)\ndoing it now.  \n\njaclaz   \n"
+    },
+    {
+      "id": "72984",
+      "timestamp": "2009-07-29T15:34:22+00:00",
+      "author": "ktp",
+      "content": "@jaclaz  \n\nUnfortunately my last experimentation on real mp3 player was bad: it did \"Memory checking\" which means reformatting the drive, after applying mkbootfat mbr as indicated above.  \n\nI finally give up, since it was only for fun. In practive, the device is too slow (read 5 MB/s), too big vs. real USB key, and if I ever load UBCD4Win on it, it would leave less space for my mp3 files :-).  \n\nFor information, this mp3 player originally is only equipped with MTP protocol, and not MSC (not USB mass-storage). By changing the firmware it becomes mass-storage device which is easier to handle. Now I am reversing it back to MTP since it supports extra functions like RDS radio station.  \n\nMany thanks to **jaclaz** for your help and guidance. You deserve a second fresh beer ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif) l learned a lot and had fun during experimentation.   \n"
+    },
+    {
+      "id": "72986",
+      "timestamp": "2009-07-29T15:43:22+00:00",
+      "author": "was_jaclaz",
+      "content": "You mean you are giving UP? :tongue:  \n\nThat is NOT an option! :smile:  \n\n...what\u0027s the fun of it? :tongue:  \n\n...are you going to tell your nephews:  \n\u003e You see that piece of rusted metal/plastic over the fireplace?  \n\u003e It used to be a MP3 player, I was very near to find a way to hack it in such a way to have it working BOTH as MP3 player and Mass Storage device, but I gave up, I keep it there since it reminds me of my failure at it.\n\nor:  \n\u003e You see that piece of rusted metal/plastic over the fireplace?  \n\u003e It used to be a MP3 player, I was able to find a way to hack it in such a way to have it working BOTH as MP3 player and Mass Storage device, I keep it there since it reminds me of the fun I had at the time devising a way to do it. Pretty much useless, I know, but I did it!\n\n![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "72989",
+      "timestamp": "2009-07-29T16:16:32+00:00",
+      "author": "ktp",
+      "content": "Well, there were so many reformats of the device after my many experimentations, each time I have to reload everything, redo all my mp3 player many settings, reupload my mp3 files, so I am really tired of it. And the last straw was the last experimentation patching mkbootfat MBR, it hang TinyHexer so strongly that even explorer.exe hangs, no way to use the taskbar, just Ctrl-Tab. I tried to unplug by force without success. I have to reboot. It was enough for me, at least for today :-).   \n"
+    },
+    {
+      "id": "73205",
+      "timestamp": "2009-07-31T06:33:49+00:00",
+      "author": "dencorso",
+      "content": "\u003e Here ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif):  \n\u003e [http://www.911cd.net...o...1702\\\u0026st\u003d129](http://www.911cd.net/forums//index.php?showtopic\u003d21702\u0026st\u003d129 \"External link\")\nFor what it\u0027s worth, here I offer the boot-land community my revised version of Clemens Fruhwirth\u0027s KillCHS utility, both compiled and as source code, alongside with Fruhwirth\u0027s original code renamed killchs.ori, to help those interested in determining what I added to the code. My revised version can patch the NTFS boot loader and both flavors of the FAT-32 NTLDR boot loader (viz. MSWIN4.1 and MSDOS5.0). It has been compiled with djgpp\u0027s gcc 4.10 and runs in the NT-family Windows OSes, in Win 9x/ME and in plain DOS (but CWSDPMI is required).   \nUsage is simple:  \nKillCHS \\\u003cfilename.ext\\\u003e  \n~~It will crash, however, if run without providing a filename.~~   \nUpdate (Aug 01, 2009): I\u0027ve incorporated Icecube\u0027s suggestions (in [post #24](http://www.boot-land.net/forums/index.php?showtopic\u003d8528\u0026st\u003d23 \"External link\"), below) and revised further the code. The new version (1.2) is more user-friendly, and only accepts one parameter, but it\u0027ll just complain and do nothing in case none or more are provided in the command line, instead of crashing on none and ignoring all parameters but the first, when more than one is provided.  \n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003d67d46e69da32172dd45601f1f4678fb8\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d8843 \"Download attachment\") [**KillCHS.7z**](http://reboot.pro/index.php?s\u003d67d46e69da32172dd45601f1f4678fb8\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d8843 \"Download attachment\") **34.59KB** 996 downloads\n\n"
+    },
+    {
+      "id": "73226",
+      "timestamp": "2009-07-31T12:43:41+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e It was enough for me, at least for today :-).\n\nYesterday was already tomorrow. :tongue:  \n\nAnyway I re-thought a bit about the matter:  \n\u003e Of course, it depends on the actual checks the \"stupid\" MP3 thingy does, if for example it wants the number of \"hidden sectors\" to be equal to 0, we need to manipulate the data about \"reserved sectors\" or invent something else. ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif)\n\nOn a \"normal\" \"superfloppy\":  \nThe number of hidden sectors is 0 (zero) as the bootsector is first sector of the disk.  \nThe number of reserved sectors is determined by size of volume and app that formatted it  \n\ni.e. in Tiny Hexer \"Structure Viewer\" (example):  \n\n```\n...\n\nReserved Sectors\u0026#58;\t\t\t  \u0026#39;0x0020\u0026#39; \u0026#40;32 dec\u0026#41;\n\n...\n\nHidden sectors\u0026#58;\t\t\t\t\u0026#39;0x00000000\u0026#39; \u0026#40;0 dec\u0026#41;\n\n...\n```\n\n\u003cbr /\u003e\n\nOn a partitioned drive with 63 hidden sectors the values in the \"right\" bootsector (the one on sector 63 LBA) are, again in Tiny Hexer:  \n\n```\n...\n\nReserved Sectors\u0026#58;\t\t\t  \u0026#39;0x0024\u0026#39; \u0026#40;36 dec\u0026#41;\n\n...\n\nHidden sectors\u0026#58;\t\t\t\t\u0026#39;0x0000003F\u0026#39; \u0026#40;63 dec\u0026#41;\n\n...\n```\n\n\u003cbr /\u003e\n\nWe copied this latter values on the \"fake\" bootsector DATA on first sector of disk, and they are actually \"wrong\", there.  \n\nYou should try incrementing the \"Reserved Sectors\" and decrement the \"Hidden Sectors\" by the offset we created, i.e. 63 or 0x3F.  \n\nThus you will have:  \n\n```\n...\n\nReserved Sectors\u0026#58;\t\t\t  \u0026#39;0x0063\u0026#39; \u0026#40;99 dec\u0026#41;\n\n...\n\nHidden sectors\u0026#58;\t\t\t\t\u0026#39;0x00000000\u0026#39; \u0026#40;0 dec\u0026#41;\n\n...\n```\n\n\u003cbr /\u003e\n\nWhen you will feel tomorrow has come, that would be the try to make. :smile:  \n\n@dencorso  \nThanks for the app.  \nI cross-posted it on original thread:  \n[http://www.911cd.net...o...1702\\\u0026st\u003d241](http://www.911cd.net/forums//index.php?showtopic\u003d21702\u0026st\u003d241 \"External link\")  \n\n:tongue:  \n\njaclaz   \n"
+    },
+    {
+      "id": "73229",
+      "timestamp": "2009-07-31T13:02:16+00:00",
+      "author": "Icecube",
+      "content": "@dencorso  \nThe following code will check if a argv1 exists before continuing.  \nAlso added some more info about what the program does (maybe not complete. I didn\u0027t read the topic very carefully).  \n\n```\nint main\u0026#40;int argc, char **argv\u0026#41; {\n\n\n\n\tprintf\u0026#40;\u0026#34;\\nKillCHS, by Clemens Fruhwirth \u003cclemens@endorphin.org\u003e, 2007.\\n\\\n\n\u0026#40;revised by dencorso, 2009\u0026#41;.\\n\\n \\\n\n   This program binary patches the FAT32/NTFS boot loader to never ever\\n \\\n\n   use CHS based indexing again. CHS based access is broken when then\\n \\\n\n   disk geometry for heads and sectors is different from the one\\n \\\n\n   stored in the BPB.\\n\\n\u0026#34;\u0026#41;;\n\n\n\n\tif\u0026#40;argc \u003c 2\u0026#41; {\n\n\t\tperror\u0026#40;\u0026#34;Usage\u0026#58; killchs \u003cfile\u003e\\n\u0026#34;\u0026#41;; return 1;\n\n\t}\n\n\n\n\tint fd\u003dopen\u0026#40;argv\u0026#91;1\u0026#93;,O_RDWR|O_BINARY\u0026#41;;\n\n\tunsigned char buf\u0026#91;512\u0026#93;;\n```\n\nSide note: The source code is also not consistently formatted.   \n"
+    },
+    {
+      "id": "73238",
+      "timestamp": "2009-07-31T16:20:44+00:00",
+      "author": "wimb",
+      "content": "**@ktp**   \n\nTo make it bootable you need also:  \n\nFAT32 Bootsector - drive-id patch 0x80 at offset 0x40 , after XP format it is 00 and Not bootable  \n\n[http://www.boot-land...?...5306\\\u0026st\u003d214](http://www.boot-land.net/forums/index.php?showtopic\u003d5306\u0026st\u003d214 \"External link\")  \n\nMore Info on BootSector patches in **Format Stick** Section of improved Tutorial  \n[http://www.boot-land...?showtopic\u003d5306](http://www.boot-land.net/forums/index.php?showtopic\u003d5306 \"External link\")  \n\n![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif)   \n"
+    },
+    {
+      "id": "72641",
+      "timestamp": "2009-07-26T15:30:07+00:00",
+      "author": "ktp",
+      "content": "Hello,  \n\nI remember reading an article about patching FAT32 boot sector (by setting 3 or 4 NOPs to the boot sector code) in order to fix MS boot sector code. In U_SET_XP program the wording is \"CHS knockout\".  \n\nI desperately searched using Google/BootLand but could find again this article :-(.  \nWhat I need is to know the old binary values to be patched, and the new values (NOPs).  \n\nThank you.   \n"
+    },
+    {
+      "id": "72642",
+      "timestamp": "2009-07-26T15:34:57+00:00",
+      "author": "was_jaclaz",
+      "content": "Here ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif):  \n[http://www.911cd.net...o...1702\\\u0026st\u003d129](http://www.911cd.net/forums//index.php?showtopic\u003d21702\u0026st\u003d129 \"External link\")  \n\n:tongue:  \n\njaclaz   \n"
+    },
+    {
+      "id": "72645",
+      "timestamp": "2009-07-26T15:57:18+00:00",
+      "author": "ktp",
+      "content": "Thank you Master jaclaz for your quick answer !   \n"
+    },
+    {
+      "id": "72649",
+      "timestamp": "2009-07-26T16:07:44+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Thank you Master jaclaz for your quick answer !\n\nYou are welcome.  \n\njaclaz   \n"
+    },
+    {
+      "id": "72651",
+      "timestamp": "2009-07-26T16:12:55+00:00",
+      "author": "ktp",
+      "content": "For the records :  \n\n**FAT32 boot sector** (\"MSWIN4.1\" or \"MSDOS5.0\" found starting at address 0x03) :  \nAt address 0xE6, 4 bytes 0x0F, 0x82, 0x4A, 0x00 \u003d\\\u003e patched to 0x90 0x90 0x90 0x90  \n\n**NTFS boot sector** (\"NTFS\" found starting at address 0x03) :  \nAt address 0xD9, 4 bytes 0x0F, 0x82, 0x3A, 0x00 \u003d\\\u003e patched to 0x90 0x90 0x90 0x90  \n\nWith this patch, I think I can solve my booting problem with my mp3 player :  \n[http://www.boot-land...?showtopic\u003d8493](http://www.boot-land.net/forums/index.php?showtopic\u003d8493 \"External link\")  \n\nNow I will go to experiment with this !   \n"
+    },
+    {
+      "id": "72654",
+      "timestamp": "2009-07-26T16:26:33+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e With this patch, I think I can solve my booting problem with my mp3 player :\n\nI cannot see how it could be related to it.  \n\nFrom what you posted, your only hope is finding a way to have makebootfat (or it\u0027s principles, i.e. double or triple use MBR, as **tinybit** suggested) working.  \n\n[http://www.boot-land...?showtopic\u003d7507](http://www.boot-land.net/forums/index.php?showtopic\u003d7507 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "72658",
+      "timestamp": "2009-07-26T16:50:02+00:00",
+      "author": "ktp",
+      "content": "@jaclaz  \n\nThe problem is that I cannot use MBR : the mp3 player (\u003d USB key) has only boot sector (in other words either you select under HDHacker boot sector for E: or Physical drive 1, the content is the same).   \n\nOriginally the mp3 player came with an almost nulled (all zeroes) boot sector (no boot sector code, only the 55AA and few signature bytes at start). After formatting to FAT32 with XP, and patching the boot sector, I still have the \"Disk error, Press any key to restart\" message. chkdsk gives no problem, and the mp3 player works fot its music functions.  \n\nI understand that triple MBR assumes MBR, or in my case no MBR is possible.   \n"
+    },
+    {
+      "id": "72662",
+      "timestamp": "2009-07-26T18:04:06+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I understand that triple MBR assumes MBR, or in my case no MBR is possible.\n\nTriple MBR assumes nothing.  \n\nYou are assuming something. :tongue:  \n\nThe idea is to have some code that LOOKS to the BIOS and Windows as a MBR, but that can ALSO be seen as a bootsector (so that the MP3 thingie will still think it is a bootsector) and NO hidden sectors.  \nOr, if you prefer, a bootsector that has also partition data and disk signature.  \n\nPlease try reading the above comparing it with this:  \n\u003e The problem is that I cannot use MBR : the mp3 player (\u003d USB key) has only boot sector (in other words either you select under HDHacker boot sector for E: or Physical drive 1, the content is the same).\nDoesn\u0027t it look strangely similar? ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif)  \n\nWhat if you actually READ:  \n[http://www.boot-land...?...c\u003d7507\\\u0026st\u003d5](http://www.boot-land.net/forums/index.php?showtopic\u003d7507\u0026st\u003d5 \"External link\")  \n\nAND this:  \n[http://www.boot-land...p?showtopic\u003d761](http://www.boot-land.net/forums/index.php?showtopic\u003d761 \"External link\")  \n\nAND links within the latter? :smile:  \n\nThen, once you have got the hang of it, you can start experimenting with either makebootfat or **tinybit** \u0027s solution.  \n\njaclaz   \n"
+    },
+    {
+      "id": "72671",
+      "timestamp": "2009-07-26T18:36:15+00:00",
+      "author": "ktp",
+      "content": "@jaclaz  \n\nThank you for your help. I tried makebootfat using your mkboot.cmd batch file. But as soon as I replug the mp3 player it automatically does a \"Memory checking\", which results in an automatic reformat of the USB key to factory mode by the player itself. The bootsector is reset to almost null as said previously.   \n\nEdit: if I install grub4dos to it, I got \"disk error\" message too from grub4dos boot code.  \n\nSo the only boot sector it seems to accept is FAT32 boot sector, but then my BIOS could not boot it (Disk error), even after patching with 4 NOPs as said. So the problem is why the boot sector code cannot read the ntldr on the disk.   \n"
+    },
+    {
+      "id": "72675",
+      "timestamp": "2009-07-26T18:52:10+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I tried makebootfat using your mkboot.cmd batch file. But as soon as I replug the mp3 player it automatically does a \"Memory checking\", which results in an automatic reformat of the USB key to factory mode by the player itself. The bootsector is reset to almost null as said previously.   \n\u003e\n\u003e Edit: if I install grub4dos to it, I got \"disk error\" message too from grub4dos boot code.  \n\u003e\n\u003e So the only boot sector it seems to accept is FAT32 boot sector, but then my BIOS could not boot it (Disk error), even after patching with 4 NOPs as said. So the problem is why the boot sector code cannot read the ntldr on the disk.\n\nNO.  \nThe whole point is NOT that one.  \n\nThe point is that even if you make it load NTLDR, any Windows NT based system WON\u0027T boot from the stick, as it would miss Disk Signature and thus you won\u0027t have a valid arcpath.  \n\nSure makebootfat won\u0027t work \"as is\", but maybe you can manually use it\u0027s \"short MBR\".  \n\n* Format the stick as FAT32 (with NO partitions, as superfloppy).\n* Try using it as MP3. Make sure that the MP3 function does not change anything.\n* Post the bootsector.\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "72680",
+      "timestamp": "2009-07-26T19:17:43+00:00",
+      "author": "ktp",
+      "content": "@jaclaz  \n\nFollowing are the requested data :  \n[http://www.mediafire.com/?jnfxtwtf2tj](http://www.mediafire.com/?jnfxtwtf2tj \"External link\")  \n\nIn the zip file:  \nBootSector_DriveE_YP-U3_original.dat : original boot sector from mp3 player  \nBootSector_DriveE_YP-U3_ntldr.dat : boot sector after formating with FAT32 (no NOP patch), mp3 player OK, \"Disk Error, Press any key to restart\" message  \nBootSector_DriveE_YP-U3_grub4dos.dat : boot sector after formating with FAT32 and grub4dos installed to boot sector, mp3 player OK, \"disk error\" message   \n"
+    },
+    {
+      "id": "72741",
+      "timestamp": "2009-07-27T09:51:29+00:00",
+      "author": "was_jaclaz",
+      "content": "Got \u0027em.   \n\nI\u0027ll have a look and let you know.  \n\njaclaz   \n"
+    },
+    {
+      "id": "72938",
+      "timestamp": "2009-07-29T07:32:26+00:00",
+      "author": "was_jaclaz",
+      "content": "I have now what I presume to be a workable solution.  \n\nI still need to make a few tests and find an \"easy\" way to make you replicate it.  \n\njaclaz   \n"
+    },
+    {
+      "id": "72948",
+      "timestamp": "2009-07-29T10:52:25+00:00",
+      "author": "was_jaclaz",
+      "content": "OK. :tongue:  \n\nThis should be repeatable.  \n\nI am assuming you are already familiar with MBRBATCH/MKIMG batches, if not read here:  \n[http://www.boot-land...?showtopic\u003d3191](http://www.boot-land.net/forums/?showtopic\u003d3191 \"External link\")  \n[http://www.boot-land...?showtopic\u003d5000](http://www.boot-land.net/forums/index.php?showtopic\u003d5000 \"External link\")  \n\nHave \u0027em (and the needed tools for it in a directory on the NTFS partition, say C:\\\\mbrbatch), unxip to it also the mbrfat.bin inside the makebootfat package.  \n\nOpen a command prompt in it.  \n\nMake sure you have the RIGHT \\\\\\\\.\\\\PhysicalDrive***n*** for the USB stick.  \n\nLet\u0027s assume ***n*** \u003d2  \n\nRun this command, see here for reference: [http://www.boot-land...?...c\u003d5000\\\u0026st\u003d1](http://www.boot-land.net/forums/index.php?showtopic\u003d5000\u0026st\u003d1 \"External link\")  \ndsfo \\\\\\\\.\\\\PHYSICALDRIVE2 0 0 NUL  \n\nYou should get ~~1.987.608.064~~ 1.987.575.808 bytes as the size of your stick.  \n\nNow run mkimg with these parameters:  \nImage name: ktptest.img  \nImage size: ~~1987608064~~ 1987575808  \nGeometry: 255/63  \nPart type: 0B  \n\\[ENTER\\] to use mksparse  \n\nIn the Explorer window of the mounted drive paste NTLDR, NTDETECT.COM and a BOOT.INI (with at least two entries).  \n\nStart tiny hexer:  \n[http://www.boot-land...?...\u003d8296\\\u0026st\u003d13](http://www.boot-land.net/forums/index.php?showtopic\u003d8296\u0026st\u003d13 \"External link\")  \n(or the hexeditor you prefer).  \n\nLoad the appropriate \\\\\\\\.\\\\PhysicalDrive for the image.  \nSave first 512 bytes as freshMBR.DAT  \nLoad the appropriate mounted drive letter.  \nSave first 512 bytes as freshBS.DAT  \n\nNow it comes the \"tricky\" part. :tongue:   \n\nOpen freshBS.DAT and save it as moddedBS.DAT.  \nPatch it with the four NOPs at offset 0xE6, i.e. 0F824A00-\\\u003e90909090  \nSave moddedBS.DAT.  \n\nOpen freshMBR.DAT and save it as moddedMBR.DAT.  \nOpen mbrfat.bin.  \nCopy mbrfat.bin wholly (from 0x00 to 0x01AB) OVER first 428 bytes of moddedMBR.DAT.  \nSave moddedMBR.DAT.  \nCopy first 89 bytes of moddedBS.dat (from 0x00 to ~~0x59~~ 0x58) OVER first 89 bytes of moddedMBR.DAT  \nSave moddedMBR.DAT.  \nOpen the file you attached before, BootSector_DriveE_YP-U3_original.dat.  \nCopy the volume label from BootSector_DriveE_YP-U3_original.dat (from 0x47 to 0x52) - 11 bytes OVER same location on BOTH moddedBS.DAT AND moddedMBR.DAT.  \nSave moddedMBR.DAT.  \nSave moddedBS.DAT.  \n\nCopy moddedMBR.DAT to the \\\\\\\\.\\\\PhysicalDrive for the image, replacing the MBR.  \nCopy moddedBS.DAT to the mounted drive letter for the image, replacing the bootsector.  \nCopy again moddedBS.DAT to the mounted drive letter for the image, replacing sector 6, i.e. the backup of the bootsector.  \n\nClose Tiny Hexer.  \n\nClose the Explorer window opened by MKIMG, go on with MKIMG prompt and uninstall the VDK driver.  \n\nTest the image in Qemu (+ Qemu Manager). Note: You may need to run Unlocker on ktptest.img  \n\nIf it works, clone it over the USB device or repeat the above hex editing directly on the USB device.  \n\nCheck if the \"stupid\" MP3 thingy overwrites/modify anything. :tongue:   \n\nYou owe me a beer. :tongue: (even if it doesn\u0027t work ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif))  \n\n\u003cbr /\u003e\n\n:smile:  \n\njaclaz   \n"
+    },
+    {
+      "id": "72960",
+      "timestamp": "2009-07-29T12:06:57+00:00",
+      "author": "ktp",
+      "content": "@jaclaz  \n\nI got this result :  \n\ndsfo \\\\\\\\.\\\\physicaldrive1 0 0 nul  \n\\\\\\\\.\\\\physicaldrive1 - The request could not be performed because of an I/O device error.  \nThis error can probably be ignored.  \nOK, 1987575808 bytes, 525.625s, MD5 \u003d 40ef7de416254cd4fcea2aab1fb6c57a  \n\nCould I continue? Are there any changes in your procedure then?   \n"
+    },
+    {
+      "id": "72965",
+      "timestamp": "2009-07-29T12:49:51+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e @jaclaz  \n\u003e\n\u003e I got this result :  \n\u003e\n\u003e dsfo \\\\\\\\.\\\\physicaldrive1 0 0 nul  \n\u003e \\\\\\\\.\\\\physicaldrive1 - The request could not be performed because of an I/O device error.  \n\u003e This error can probably be ignored.  \n\u003e OK, 1987575808 bytes, 525.625s, MD5 \u003d 40ef7de416254cd4fcea2aab1fb6c57a  \n\u003e\n\u003e Could I continue? Are there any changes in your procedure then?\n\nPlease read:  \n\u003e This error can ***probably*** be ignored.\nas:  \n\u003e This error can ***definitely*** be ignored.\nThe Author of dsfo/dsfi has been overcautious.  \n\nAbout size, yes, it\u0027s allright, forgot to point out this. :tongue:  \n\nThe data in the bootsectors you sent is 3881984 sectors, hence 3.881.984x512\u003d1.987.575.808 ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif)   \n\nThe 1987608064 I used in my post was an initial \"test\" size., obtained by adding to the 3.881.984, 63 \"hidden sectors\", thus 3.881.984+63\u003d3.882.047 and 3.882.047x512\u003d1.987.608.064, that I wrote down in my notes and forgot to correct in the previous post, correcting it now.  \n\nYou should try with the \"right\" 1987575808. :tongue:  \n\njaclaz  \n\nP.S.: I was forgetting, you are using a French XP, aren\u0027t you? :tongue:  \nRemember to check this:  \n[http://www.boot-land...?...\u003d3191\\\u0026st\u003d17](http://www.boot-land.net/forums/index.php?showtopic\u003d3191\u0026st\u003d17 \"External link\")  \n[http://www.boot-land...?...\u003d3229\\\u0026st\u003d14](http://www.boot-land.net/forums/index.php?showtopic\u003d3229\u0026st\u003d14 \"External link\")  \nI don\u0027t remember having \"adjusted\" the batch for French punctuation.....:smile:   \n"
+    },
+    {
+      "id": "72973",
+      "timestamp": "2009-07-29T14:01:14+00:00",
+      "author": "ktp",
+      "content": "@jaclaz   \n\nWow, it took me as an exercise to learn and familiarize a little with TinyHexer.  \nCorrection:  \n\\\u003e Copy first 89 bytes of moddedBS.dat (from 0x00 to 0x59)   \nShould read of course:  \nCopy first 89 bytes of moddedBS.dat (from 0x00 to 0x58)   \n\n\u003cbr /\u003e\n\n\\\u003e Test the image in Qemu (+ Qemu Manager)  \nResult: it boots, I saw boot.ini menu!  \nI have to search for you a fresh beer :-).  \n\n\\\u003e If it works, clone it over the USB device or repeat the above hex editing directly on the USB device  \nIn the real device, the boot sector is physically the same sector as MBR, so how could your above procedure apply?   \n"
+    },
+    {
+      "id": "72976",
+      "timestamp": "2009-07-29T14:32:40+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e In the real device, the boot sector is physically the same sector as MBR, so how could your above procedure apply?\n\nWell, the idea is that the MBR ***AND*** the bootsector of the image are the \"special\" makebootfat mbrfat.bin.  \n\nmbrfat.bin works (or should work) this way:  \n\n* it *looks* like a boot-sector, including the filesystem DATA and initial three bytes jump CODE\n* it works like a MBR\n\n\u003cbr /\u003e\n\nIt is UNestablished whether it ALSO works as a bootsector, i.e. if it does also work as as a bootable bootsector on the (few) motherboards that only boot from \"super-floppy\", but you are in a \"normal\" situation:  \n\n* your PC boots from a HD like device (and mbrfat.bin is a working MBR CODE, with the specific MBR DATA you supplied by NOT overwriting the last bytes 512-428 bytes of the MBR)\n* your MP3 thingy (hopefully :tongue:) does NOT need bootsector booting CODE, only bootsector DATA on first sector of the device, which also mbrfat.bin undoubtedly provides (the first 89 bytes you supplied)\n\n\u003cbr /\u003e\n\nOf course, it depends on the actual checks the \"stupid\" MP3 thingy does, if for example it wants the number of \"hidden sectors\" to be equal to 0, we need to manipulate the data about \"reserved sectors\" or invent something else. ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif)  \n\nSince you are in Tiny Hexer, try the Tools-\\\u003eStructure Viewer-\\\u003e FAT32 bootsector on the files. :smile:  \n\n\u003e Correction:  \n\u003e \\\u003e Copy first 89 bytes of moddedBS.dat (from 0x00 to 0x59)   \n\u003e Should read of course:  \n\u003e Copy first 89 bytes of moddedBS.dat (from 0x00 to 0x58)\ndoing it now.  \n\njaclaz   \n"
+    },
+    {
+      "id": "72984",
+      "timestamp": "2009-07-29T15:34:22+00:00",
+      "author": "ktp",
+      "content": "@jaclaz  \n\nUnfortunately my last experimentation on real mp3 player was bad: it did \"Memory checking\" which means reformatting the drive, after applying mkbootfat mbr as indicated above.  \n\nI finally give up, since it was only for fun. In practive, the device is too slow (read 5 MB/s), too big vs. real USB key, and if I ever load UBCD4Win on it, it would leave less space for my mp3 files :-).  \n\nFor information, this mp3 player originally is only equipped with MTP protocol, and not MSC (not USB mass-storage). By changing the firmware it becomes mass-storage device which is easier to handle. Now I am reversing it back to MTP since it supports extra functions like RDS radio station.  \n\nMany thanks to **jaclaz** for your help and guidance. You deserve a second fresh beer ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif) l learned a lot and had fun during experimentation.   \n"
+    },
+    {
+      "id": "72986",
+      "timestamp": "2009-07-29T15:43:22+00:00",
+      "author": "was_jaclaz",
+      "content": "You mean you are giving UP? :tongue:  \n\nThat is NOT an option! :smile:  \n\n...what\u0027s the fun of it? :tongue:  \n\n...are you going to tell your nephews:  \n\u003e You see that piece of rusted metal/plastic over the fireplace?  \n\u003e It used to be a MP3 player, I was very near to find a way to hack it in such a way to have it working BOTH as MP3 player and Mass Storage device, but I gave up, I keep it there since it reminds me of my failure at it.\n\nor:  \n\u003e You see that piece of rusted metal/plastic over the fireplace?  \n\u003e It used to be a MP3 player, I was able to find a way to hack it in such a way to have it working BOTH as MP3 player and Mass Storage device, I keep it there since it reminds me of the fun I had at the time devising a way to do it. Pretty much useless, I know, but I did it!\n\n![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "72989",
+      "timestamp": "2009-07-29T16:16:32+00:00",
+      "author": "ktp",
+      "content": "Well, there were so many reformats of the device after my many experimentations, each time I have to reload everything, redo all my mp3 player many settings, reupload my mp3 files, so I am really tired of it. And the last straw was the last experimentation patching mkbootfat MBR, it hang TinyHexer so strongly that even explorer.exe hangs, no way to use the taskbar, just Ctrl-Tab. I tried to unplug by force without success. I have to reboot. It was enough for me, at least for today :-).   \n"
+    },
+    {
+      "id": "73205",
+      "timestamp": "2009-07-31T06:33:49+00:00",
+      "author": "dencorso",
+      "content": "\u003e Here ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif):  \n\u003e [http://www.911cd.net...o...1702\\\u0026st\u003d129](http://www.911cd.net/forums//index.php?showtopic\u003d21702\u0026st\u003d129 \"External link\")\nFor what it\u0027s worth, here I offer the boot-land community my revised version of Clemens Fruhwirth\u0027s KillCHS utility, both compiled and as source code, alongside with Fruhwirth\u0027s original code renamed killchs.ori, to help those interested in determining what I added to the code. My revised version can patch the NTFS boot loader and both flavors of the FAT-32 NTLDR boot loader (viz. MSWIN4.1 and MSDOS5.0). It has been compiled with djgpp\u0027s gcc 4.10 and runs in the NT-family Windows OSes, in Win 9x/ME and in plain DOS (but CWSDPMI is required).   \nUsage is simple:  \nKillCHS \\\u003cfilename.ext\\\u003e  \n~~It will crash, however, if run without providing a filename.~~   \nUpdate (Aug 01, 2009): I\u0027ve incorporated Icecube\u0027s suggestions (in [post #24](http://www.boot-land.net/forums/index.php?showtopic\u003d8528\u0026st\u003d23 \"External link\"), below) and revised further the code. The new version (1.2) is more user-friendly, and only accepts one parameter, but it\u0027ll just complain and do nothing in case none or more are provided in the command line, instead of crashing on none and ignoring all parameters but the first, when more than one is provided.  \n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003d55fd558bfa202b246ce5564e017f420b\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d8843 \"Download attachment\") [**KillCHS.7z**](http://reboot.pro/index.php?s\u003d55fd558bfa202b246ce5564e017f420b\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d8843 \"Download attachment\") **34.59KB** 996 downloads\n\n"
+    },
+    {
+      "id": "73226",
+      "timestamp": "2009-07-31T12:43:41+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e It was enough for me, at least for today :-).\n\nYesterday was already tomorrow. :tongue:  \n\nAnyway I re-thought a bit about the matter:  \n\u003e Of course, it depends on the actual checks the \"stupid\" MP3 thingy does, if for example it wants the number of \"hidden sectors\" to be equal to 0, we need to manipulate the data about \"reserved sectors\" or invent something else. ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif)\n\nOn a \"normal\" \"superfloppy\":  \nThe number of hidden sectors is 0 (zero) as the bootsector is first sector of the disk.  \nThe number of reserved sectors is determined by size of volume and app that formatted it  \n\ni.e. in Tiny Hexer \"Structure Viewer\" (example):  \n\n```\n...\n\nReserved Sectors\u0026#58;\t\t\t  \u0026#39;0x0020\u0026#39; \u0026#40;32 dec\u0026#41;\n\n...\n\nHidden sectors\u0026#58;\t\t\t\t\u0026#39;0x00000000\u0026#39; \u0026#40;0 dec\u0026#41;\n\n...\n```\n\n\u003cbr /\u003e\n\nOn a partitioned drive with 63 hidden sectors the values in the \"right\" bootsector (the one on sector 63 LBA) are, again in Tiny Hexer:  \n\n```\n...\n\nReserved Sectors\u0026#58;\t\t\t  \u0026#39;0x0024\u0026#39; \u0026#40;36 dec\u0026#41;\n\n...\n\nHidden sectors\u0026#58;\t\t\t\t\u0026#39;0x0000003F\u0026#39; \u0026#40;63 dec\u0026#41;\n\n...\n```\n\n\u003cbr /\u003e\n\nWe copied this latter values on the \"fake\" bootsector DATA on first sector of disk, and they are actually \"wrong\", there.  \n\nYou should try incrementing the \"Reserved Sectors\" and decrement the \"Hidden Sectors\" by the offset we created, i.e. 63 or 0x3F.  \n\nThus you will have:  \n\n```\n...\n\nReserved Sectors\u0026#58;\t\t\t  \u0026#39;0x0063\u0026#39; \u0026#40;99 dec\u0026#41;\n\n...\n\nHidden sectors\u0026#58;\t\t\t\t\u0026#39;0x00000000\u0026#39; \u0026#40;0 dec\u0026#41;\n\n...\n```\n\n\u003cbr /\u003e\n\nWhen you will feel tomorrow has come, that would be the try to make. :smile:  \n\n@dencorso  \nThanks for the app.  \nI cross-posted it on original thread:  \n[http://www.911cd.net...o...1702\\\u0026st\u003d241](http://www.911cd.net/forums//index.php?showtopic\u003d21702\u0026st\u003d241 \"External link\")  \n\n:tongue:  \n\njaclaz   \n"
+    },
+    {
+      "id": "73229",
+      "timestamp": "2009-07-31T13:02:16+00:00",
+      "author": "Icecube",
+      "content": "@dencorso  \nThe following code will check if a argv1 exists before continuing.  \nAlso added some more info about what the program does (maybe not complete. I didn\u0027t read the topic very carefully).  \n\n```\nint main\u0026#40;int argc, char **argv\u0026#41; {\n\n\n\n\tprintf\u0026#40;\u0026#34;\\nKillCHS, by Clemens Fruhwirth \u003cclemens@endorphin.org\u003e, 2007.\\n\\\n\n\u0026#40;revised by dencorso, 2009\u0026#41;.\\n\\n \\\n\n   This program binary patches the FAT32/NTFS boot loader to never ever\\n \\\n\n   use CHS based indexing again. CHS based access is broken when then\\n \\\n\n   disk geometry for heads and sectors is different from the one\\n \\\n\n   stored in the BPB.\\n\\n\u0026#34;\u0026#41;;\n\n\n\n\tif\u0026#40;argc \u003c 2\u0026#41; {\n\n\t\tperror\u0026#40;\u0026#34;Usage\u0026#58; killchs \u003cfile\u003e\\n\u0026#34;\u0026#41;; return 1;\n\n\t}\n\n\n\n\tint fd\u003dopen\u0026#40;argv\u0026#91;1\u0026#93;,O_RDWR|O_BINARY\u0026#41;;\n\n\tunsigned char buf\u0026#91;512\u0026#93;;\n```\n\nSide note: The source code is also not consistently formatted.   \n"
+    },
+    {
+      "id": "73238",
+      "timestamp": "2009-07-31T16:20:44+00:00",
+      "author": "wimb",
+      "content": "**@ktp**   \n\nTo make it bootable you need also:  \n\nFAT32 Bootsector - drive-id patch 0x80 at offset 0x40 , after XP format it is 00 and Not bootable  \n\n[http://www.boot-land...?...5306\\\u0026st\u003d214](http://www.boot-land.net/forums/index.php?showtopic\u003d5306\u0026st\u003d214 \"External link\")  \n\nMore Info on BootSector patches in **Format Stick** Section of improved Tutorial  \n[http://www.boot-land...?showtopic\u003d5306](http://www.boot-land.net/forums/index.php?showtopic\u003d5306 \"External link\")  \n\n![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif)   \n"
+    },
+    {
+      "id": "73307",
+      "timestamp": "2009-08-01T04:15:03+00:00",
+      "author": "dencorso",
+      "content": "\u003e I cross-posted it on original thread:  \n\u003e [http://www.911cd.net...o...1702\\\u0026st\u003d241](http://www.911cd.net/forums//index.php?showtopic\u003d21702\u0026st\u003d241 \"External link\")\nThanks, jaclaz! I have updated the KillCHS program to v. 1.2, by incorporating Icecube\u0027s suggestions (thanks, Icecube!), and revising a little more the whole code. The new version is now in place of the former, still in [post #22](http://www.boot-land.net/forums/index.php?showtopic\u003d8528\u0026st\u003d21 \"External link\"), so that your posted link remains valid. You both rock! ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif)  \nSide note: The source code remains not consistently formatted, but is nevetheless, a little better, visually.   \n"
+    },
+    {
+      "id": "73828",
+      "timestamp": "2009-08-06T10:38:52+00:00",
+      "author": "online",
+      "content": "@ktp  \nNot sure if the patching at every boot-up could be useful in your case... ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif)  \nPlease, see here  \n[http://www.boot-land...?...ost\\\u0026p\u003d73826](http://www.boot-land.net/forums/index.php?s\u003d\u0026showtopic\u003d8599\u0026view\u003dfindpost\u0026p\u003d73826 \"External link\")   \n"
+    },
+    {
+      "id": "133230",
+      "timestamp": "2011-07-18T18:10:54+00:00",
+      "author": "calfared",
+      "content": "\u003e For what it\u0027s worth, here I offer the boot-land community my revised version of Clemens Fruhwirth\u0027s KillCHS utility, both compiled and as source code, alongside with Fruhwirth\u0027s original code renamed killchs.ori, to help those interested in determining what I added to the code. My revised version can patch the NTFS boot loader and both flavors of the FAT-32 NTLDR boot loader (viz. MSWIN4.1 and MSDOS5.0). It has been compiled with djgpp\u0027s gcc 4.10 and runs in the NT-family Windows OSes, in Win 9x/ME and in plain DOS (but CWSDPMI is required).   \n\u003e Usage is simple:  \n\u003e KillCHS \\\u003cfilename.ext\\\u003e  \n\u003e ~~It will crash, however, if run without providing a filename.~~   \n\u003e Update (Aug 01, 2009): I\u0027ve incorporated Icecube\u0027s suggestions (in [post #24](http://www.boot-land.net/forums/index.php?showtopic\u003d8528\u0026st\u003d23 \"External link\"), below) and revised further the code. The new version (1.2) is more user-friendly, and only accepts one parameter, but it\u0027ll just complain and do nothing in case none or more are provided in the command line, instead of crashing on none and ignoring all parameters but the first, when more than one is provided.  \n\u003e Attached File(s)  \n\u003e KillCHS.7z (34.59K)   \n\u003e Number of downloads: 250   \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nForgive my ignorance, but how you use it? I\u0027m having problem of \"missing NTLDR\" and informed me that it could solve.  \n\nThanks   \n\n**Edited by calfared, 18 July 2011 - 06:12 PM.**\n"
+    },
+    {
+      "id": "133233",
+      "timestamp": "2011-07-18T19:45:12+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Forgive my ignorance, but how you use it? I\u0027m having problem of \"missing NTLDR\" and informed me that it could solve.  \n\u003e\n\u003e Thanks  \n**calfared** , it doesn\u0027t work like this ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif).  \n\nI told you here:  \n\u003chttp://reboot.pro/14961/\u003e  \nthat that was *a possible* cause.  \n\nThe general idea is that ONCE we know (because you are so kind as to post the required info):  \n\n* the EXACT error\n* the EXACT configuration you have\n* the EXACT hardware you have\n\nthe issue can be solved by this or by ANOTHER fix, since the CAUSE is another one.  \nIn any case, as told you, it is possible that some fixes are needed in the partition table of the MBR, anyway.  \n(or it is possible that the cause is a completely different thing, so that it needs a completely different fix).  \n\nRight now we are still in the \"I\u0027m ill Doctor, Help!\" stage, reference:  \n[http://homepage.ntlw...ard-litany.html](http://homepage.ntlworld.com./jonathan.deboynepollard/FGA/problem-report-standard-litany.html \"External link\")  \n\nStart **a new thread** .  \n\n* Describe EXACTLY what you did.\n* Describe EXACTLY the behaviour you are getting.\n* Describe EXACTLY what you are trying to achieve.\n* Describe EXACTLY the hardware you are using.\n\n\u003cbr /\u003e\n\nThis way someone will be able to actually help you solve your problem, as opposed to make guesses (*educated* ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif), but still guesses) about what your problem ***may*** be and what solution you ***may*** find for it.  \n\nAnyway the little program is made to patch a bootsector, that you need to extract from the actual Volume, and after the patch, re-write to the proper location (first sector of volume).  \nYou can do the patch manually, with a normal hex/disk editor (such as Tiny Hexer) following the info given in the referenced \"original\" thread here:  \n[http://www.911cd.net...ic\u003d21702\\\u0026st\u003d129](http://www.911cd.net/forums//index.php?showtopic\u003d21702\u0026st\u003d129 \"External link\")  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    }
+  ]
+}

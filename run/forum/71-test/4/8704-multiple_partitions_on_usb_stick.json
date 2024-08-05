@@ -1,0 +1,40 @@
+{
+  "id": "8704",
+  "title": "multiple partitions on usb stick",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "74515",
+      "timestamp": "2009-08-14T06:56:09+00:00",
+      "author": "hodgestructure",
+      "content": "I bought kingston datatraveler 150 , 64GB usb stick.  \nI want to partition it (4 partitions).  \nOn XP，it can see the first partitions.  \nI have found two ways to make multiple partitions on usb sticks. But one of them works only for those computers on which a specific driver is installed. The other way use some usb modification tool, but I can\u0027t find such tool for   \nkingston datatraveler 150 .   \n\nIs there any way to do this on my usb stick.  \nHere is my usb information.  \n\nUSB Mass Storage Device(Kingston DataTraveler 150 USB Device)  \nVID \u003d 0951 PID \u003d 1621  \n0018F30C08395B9708140030  \nPMAP  \nphison  \nPS2231\\~PS2232  \nKingston  \nDataTraveler 150  \n\nI know this is not a question of usb booting.  \nIf you know anyforum to discuss this issue, please tell me.  \nthanks.   \n"
+    },
+    {
+      "id": "74521",
+      "timestamp": "2009-08-14T08:37:16+00:00",
+      "author": "joakim",
+      "content": "Did you try the Hitachi micro filter driver?  \n\nIt works for me on usb sticks from 1Gb to 16Gb on xp/vista/2008.  \n\nJoakim   \n"
+    },
+    {
+      "id": "74524",
+      "timestamp": "2009-08-14T08:46:35+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Did you try the Hitachi micro filter driver?\n\n\u003e But one of them works only for those computers on which a specific driver is installed.\n\n![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)  \n\n\u003e The other way use some usb modification tool, but I can\u0027t find such tool for   \n\u003e kingston datatraveler 150 .   \n\u003e\n\u003e Is there any way to do this on my usb stick.  \n\u003e Here is my usb information.  \n\u003e\n\u003e USB Mass Storage Device(Kingston DataTraveler 150 USB Device)  \n\u003e VID \u003d 0951 PID \u003d 1621  \n\u003e 0018F30C08395B9708140030  \n\u003e PMAP  \n\u003e phison  \n\u003e PS2231\\~PS2232  \n\u003e Kingston  \n\u003e DataTraveler 150\nFlipping the \"removable bit\":  \n[http://www.911cd.net...o...\u003d22874\\\u0026st\u003d8](http://www.911cd.net/forums//index.php?showtopic\u003d22874\u0026st\u003d8 \"External link\")  \n[http://flashboot.ru/...\\\u0026...rd\u003d1\\\u0026pord\u003d0](http://flashboot.ru/index.php?name\u003diflash\u0026vord\u003d1\u0026pord\u003d0 \"External link\")  \n\u003e Kingston DataTraveler 150 64 Gb VID_0951 PID_1621 -- -- Phison_UP10-UP14_1.08, CheckUDisk\n[http://flashboot.ru/....php?name\u003dFiles](http://flashboot.ru/index.php?name\u003dFiles \"External link\")  \n[http://flashboot.ru/...les\\\u0026op\u003dcat\\\u0026id\u003d6](http://flashboot.ru/index.php?name\u003dFiles\u0026op\u003dcat\u0026id\u003d6 \"External link\")  \n\n\u003cbr /\u003e\n\nYour mileage ***may*** vary. :wink:   \n\n![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)  \n\njaclaz   \n"
+    },
+    {
+      "id": "74534",
+      "timestamp": "2009-08-14T09:54:39+00:00",
+      "author": "hodgestructure",
+      "content": "Thank you very much, jaclaz.  \nI have download Phison_UP10-UP14_1.08 and look a bit at the tutorial. But I don\u0027t understand one thing. When I open   \n\nMP2232_F1_B4_V108_0A.exe  \nMP2232_F2_V108_0A.exe  \nParamEdt-F1-v2.1.0.3.exe  \nParamEdt-F2-v2.1.0.3.exe  \n\nThey didn\u0027t list my kingston usb stick. In fact , they didn\u0027t list any of my usb stick or usb device. It seems that they are different from those tools I have seen before. Do you know anything about this?   \n"
+    },
+    {
+      "id": "74537",
+      "timestamp": "2009-08-14T10:11:11+00:00",
+      "author": "was_jaclaz",
+      "content": "Remember that this is ***tricky*** business, be very careful in what you do, and in case anything goes wrong, you should ALWAYS say:  \n\u003e the ***devil*** made me do it\nNEVER, and I mean ***NEVER*** say:  \n\u003e **jaclaz** told me to do it\n\n:wink:  \n\nIt is possible that kingston changes the \"standard\" VID/PID from Phison and that the utility ONLY recognizes the original Phison ones, at least this is what happens with other chip manufacturers/OEM\u0027s.  \n\nThe procedure, I\u0027ll re-iterate, VERY RISKY, is then to change the VID/PID to the \"right\" one the utility recognizes, flip the bit, than restore the OEM one.  \n\nCheck this:  \n[http://www.boot-land...?showtopic\u003d1659](http://www.boot-land.net/forums/index.php?showtopic\u003d1659 \"External link\")  \n\nit may help (or completely fail to).  \n\nGeneral advice:  \nCheck also the other Mass Production Tools from Phison, read \"between the lines\" of the guides/docs, make sure that you installed (if any) the dedicated driver properly, disconnect ANY, and I mean ***ANY*** other USB device, use a \"clean\" system, possibly XP and NOT Vista, to avoid possible conflicts.  \n\n![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)  \n\njaclaz   \n"
+    }
+  ]
+}

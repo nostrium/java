@@ -1,0 +1,16 @@
+{
+  "id": "22289",
+  "title": "Chainloading iPXE from Grub2",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "214552",
+      "timestamp": "2020-05-10T15:51:43+00:00",
+      "author": "nogera",
+      "content": "Hi,\n\nI\u0027m chainloading from grub2 to ipxe but the interface disappears everytime after the chainload.\n\nchainloader /ipxe.efi\n\nboot\n\niPXE initialising devices... (it\u0027s just stuck there)\n\nchainloader /snponly.efi\n\nboot\n\nno more network device\n\nI checked the interface in grub before the chainloader to make sure it works. i also tried to chainload grub2 with grub2 to test if it was an issue with ipxe but same results, no interface after chainloading.\n\nAnyone know what I\u0027m doing wrong?\n\n"
+    }
+  ]
+}

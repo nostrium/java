@@ -1,0 +1,112 @@
+{
+  "id": "18805",
+  "title": "Drive letter disappeared on triple-boot install",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "176060",
+      "timestamp": "2013-08-21T08:56:24+00:00",
+      "author": "Peter80",
+      "content": "I have Windows 7, Ubuntu and Windows XP installed. I first installed Windows 7 than Ubuntu and than Windows XP. My Windows 7 is on C drive, Ubuntu is on a logical drive in my extended partition and Windows xp is on a primary partition F. I have another primary partition E on which for some reason when i installed Windows XP it placed boot.int file on it. I am using grub to boot the three operating system.  \n\nYesterday, i reinstalled Windows 7 and after the installation i saw that the drive letter from drive E was gone. I tried to restore but it was not available from the drop down menu in Computer Management and it is not assigned to any other drive. I had to assign another letter to make the drive visible in windows explorer.  \n\nMy question is how to recover the letter E on this partition and why it is not available?  \n\nThe other problem i have is Windows XP can\u0027t boot now and i think it some how related to this missing E drive letter.\n\n"
+    },
+    {
+      "id": "176064",
+      "timestamp": "2013-08-21T09:38:28+00:00",
+      "author": "Wonko the Sane",
+      "content": "It is possible that \\*somehow\\* during the re-install you changed the DISK SIGNATURE.\n\nDrive letter assignment is based on Registry entries in HKLM\\\\SYSTEM\\\\MountedDevices\\\\DosDevices\\\\ and it is based on the Disk Signature.\n\nThe \"XP can\u0027t boot\" is not a description of what happens.\n\nWhat do you get?\n\nYou don\u0027t have anymore an entry for it in the bootmanager, you get a bluescreen of death (with which STOP ERROR), or what?\n\nCheck this (only SEEMINGLY unrelated):\n\n[http://www.911cd.net...showtopic\u003d19663](http://www.911cd.net/forums//index.php?showtopic\u003d19663 \"External link\")\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "176069",
+      "timestamp": "2013-08-21T10:25:45+00:00",
+      "author": "Peter80",
+      "content": "The letter E was assigned to the CD-ROM during the installation. Somehow i missed to see it.\n\nWhen i try to boot Windows XP it shows that the ntldr file is missing but the file is there. I guess the problem is in boot.ini. I will try the Repair Console to rebuild it.\n\n"
+    },
+    {
+      "id": "176071",
+      "timestamp": "2013-08-21T10:31:57+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e When i try to boot Windows XP it shows that the ntldr file is missing but the file is there. I guess the problem is in boot.ini. I will try the Repair Console to rebuild it.\n\nSince NTLDR is what actually reads BOOT.INI, allow me to doubt that BOOT.INI is involved (it is simply \"never reached\").\n\nIf you are using BOOTMGR as your main bootloader, you should check the entries in the \\\\boot\\\\BCD with BCDEDIT or other BCD editor/viewer, first thing.\n\nIn which volume is NTLDR?\n\nIn which volume it is expected to be (according to settings in \\\\boot\\\\BCD?\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "176085",
+      "timestamp": "2013-08-21T13:09:24+00:00",
+      "author": "Peter80",
+      "content": "I tried to use Repair Console from my Windows xp installation usb but i didn\u0027t get option to Repair so i guess it is not included in my XP install copy. I reinstalled Windows XP and now it placed the three files - boot.ini, ntldr and ntdetect.com on C drive where my Windows 7 install is.  \n\nThis is what shows EasyBCD:  \n\n```\nThere are a total of 2 entries listed in the bootloader.\nPath: C:\\Boot\\BCD\n\nDefault: Windows 7\nTimeout: 30 seconds\nBoot Drive: E:\\\n\nEntry #1\nName: Earlier Version of Windows\nBCD ID: {ntldr}\nDrive: E:\\\nBootloader Path: \\ntldr\n\nEntry #2\nName: Windows 7\nBCD ID: {default}\nDrive: C:\\\nBootloader Path: \\Windows\\system32\\winload.exe\n```\n\n\u003cbr /\u003e\n\nI don\u0027t know why it shows E drive as a boot drive when C drive is marked as active and GParted shows the boot flag on C drive.  \n\nThis is also my boot configuration from Boot Repair:  \n\n```\nhttp://paste.ubuntu.com/6010112/\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "176086",
+      "timestamp": "2013-08-21T13:25:02+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I don\u0027t know why it shows E drive as a boot drive when C drive is marked as active and GParted shows the boot flag on C drive.  \n\nBecause, as you have been already told, you likely messed with Disk Signature, partitioning and drive letter assignments.\n\nThe situation in your report shows that your first partition is an Extended Partition, this is a non-standard situation that may affect the way drive letters are assigned automatically (though this should be not the actual issue you have).\n\nYou have three NTFS partitions (Primary), of which (seemingly):\n\n1. first one (sda2) is your \"main\" boot volume with BOOTMGR and the BCD\n2. second one (sda3) is \"a suffusion of yellow\", possibly a \"data only\" partition\n3. third one (sda4) is seemingly the partition on which you have XP installed\n\nTry copying the files:\n\n* NTLDR\n* BOOT.INI\n* NTDETECT.COM\n\nfrom first to third partition.\n\nYou should at least get to the BOOT.INI choices.\n\nTo this effect it is needed that your BOOT.INI contains at least TWO entries, example:\n\n```\n\n[boot loader]\nTimeout\u003d30\ndefault\u003dmulti(0)disk(0)rdisk(0)partition(1)\\WINDOWS\n[operating systems]\nmulti(0)disk(0)rdisk(0)partition(1)\\WINDOWS\u003d\"Microsoft Windows XP Professional\" /noexecute\u003doptin /fastdetect\nC:\\grldr\u003d\"grub4dos\"\n```\n\nYou can add the entry C:\\\\grldr\u003d\"grub4dos\" even without actually having grldr anywhere, it is just a way to make sure that the BOOT.INI is found by NTLDR.\n\nWhile you are editing the BOOT.INI, do check which arcpath the Windows XP install has, the \"relevant\" figure is:\n\u003e multi(0)disk(0)rdisk(0)partition(**1**)\\\\WINDOWS\n\u003e\nwhich, in your case should probably be **3**.\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "176090",
+      "timestamp": "2013-08-21T14:23:43+00:00",
+      "author": "Peter80",
+      "content": "I copy the three files on 3 partition and i edit the boot.ini but it still can\u0027t boot.  \n\nThis is how the boot.ini file looks:  \n\n```\n[boot loader]\ntimeout\u003d30\ndefault\u003dmulti(0)disk(0)rdisk(0)partition(3)\\WINDOWS\n[operating systems]\nmulti(0)disk(0)rdisk(0)partition(3)\\WINDOWS\u003d\"Microsoft Windows XP Professional\" /noexecute\u003doptin /fastdetect\nC:\\grldr\u003d\"grub4dos\"\n```\n\n\u003cbr /\u003e\n\nAnd this is screenshot from Computer Management. The partitions without letters are one with Ubuntu and the other Linux Swap.  \n\n[![vat3.png](http://img51.imageshack.us/img51/7800/vat3.png)](http://img51.imageshack.us/i/vat3.png/ \"External link\")\n\n"
+    },
+    {
+      "id": "176092",
+      "timestamp": "2013-08-21T14:40:05+00:00",
+      "author": "Peter80",
+      "content": "I fixed it. I use EasyBCD and change the drive letter for \"Earlier Version of Windows\" from E to F and now Windows XP is booting.\n\nBut how can i get Windows XP entry to show in Grub menu? Now it shows only Windows 7 entry and when i select it shows two entries - Windows 7 and Earlier Version of Windows.\n\nBefore reinstalling Windows 7 the Windows xp entry was showing in Grub menu but now it is gone.\n\n"
+    },
+    {
+      "id": "176094",
+      "timestamp": "2013-08-21T14:59:26+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e And this is screenshot from Computer Management. The partitions without letters are one with Ubuntu and the other Linux Swap.\n\nYep, but that is the Computer management form the booted Xp or the one form the booted 7? (in any case compare with - or post - the \"other\" one).\n\nAs well, post your current GRUB2 configuration file.\n\nThe \"rules\" for automatic drive lettering are here (if needed):\n\n[http://support.micro...kb/234048/en-us](http://support.microsoft.com/kb/234048/en-us \"External link\")\n\n(they are still the same AFAIK)\n\n* Scan all fixed hard disks as they are enumerated, assign drive letters starting with any active primary partitions (if there is one), otherwise, scan the first primary partition on each drive. Assign next available letter starting with C:\n* Repeat scan for all fixed hard disks and removable (JAZ, MO) disks and assign drive letters to all logical drives in an extended partition, or the removable disk(s) as enumerated. Assign next available letter starting with C:.\n* Finally, repeat scan for all fixed hard disk drives, and assign drive letters to all remaining primary partitions. Assign next available letter starting with C:.\n* Floppy drives. Assign letter starting with A:\n* CD-ROM drives. Assign next available letter starting with D:.\n\nso, that screenshot is seemingly conforming to the \"automatic\" drive lettering, but the \"other\" OS corresponding one may well be different.\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "176096",
+      "timestamp": "2013-08-21T15:29:16+00:00",
+      "author": "Peter80",
+      "content": "This is a screenshot from Windows XP, the first one is from Windows 7. I will repartition my disk and create C drive as a first partition and install Windows 7 on it.  \n\n[![l0pr.png](http://img59.imageshack.us/img59/2411/l0pr.png)](http://img59.imageshack.us/i/l0pr.png/ \"External link\")  \n\nI have noticed that if i copy only NTLDR and NTDETECT.COM from C to F drive without boot.ini Windows XP is still booting.  \n\n\u003cbr /\u003e\n\nHow to get Grub configuration file?   \n\n"
+    },
+    {
+      "id": "176097",
+      "timestamp": "2013-08-21T16:02:58+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I have noticed that if i copy only NTLDR and NTDETECT.COM from C to F drive without boot.ini Windows XP is still booting.\n\nYes, it is possible that you are making use of a \"failsafe\" feature of XP, basically if NTLDR cannot find BOOT.INI on the same volume from which NTLDR is run, it attempts anyway to \"default\" to booting the \\\\Windows\\\\ install on that same volume.  \n\n\u003e How to get Grub configuration file?\n\nIt should be a file named grub.cfg (please always use GRUB2\" when talking of GRUB2, no matter if their Authors decided to call it simply \"GRUB\", in order to avoid confusion with the \"real\" GRUB - now GRUB Legacy - or with grub4dos, also often abbreviated to \"grub\").  \nIt should be - I believe - in \\\\boot\\\\grub\\\\ directory on the sda6 volume\n\n[http://paste.ubuntu.com/6010112/](http://paste.ubuntu.com/6010112/ \"External link\")\n\n\u003e \u003d\\\u003e Grub2 (v1.99) is installed in the MBR of /dev/sda and looks at sector 1 of  \n\u003e the same hard drive for core.img. core.img is at this location and looks  \n\u003e for (,msdos6)/boot/grub on this drive.\n\u003e\n\u003e sda6/boot/grub/grub.cfg\n\u003e\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "176099",
+      "timestamp": "2013-08-21T17:16:04+00:00",
+      "author": "Peter80",
+      "content": "This is the configuration file. I am net very familiar with linux yet. I recently installed Ubuntu and i still learning. Only have used Windows mostly.\n\n```\n#\n# DO NOT EDIT THIS FILE\n#\n# It is automatically generated by grub-mkconfig using templates\n# from /etc/grub.d and settings from /etc/default/grub\n#\n\n### BEGIN /etc/grub.d/00_header ###\nif [ -s $prefix/grubenv ]; then\n  set have_grubenv\u003dtrue\n  load_env\nfi\nset default\u003d\"4\"\nif [ \"${prev_saved_entry}\" ]; then\n  set saved_entry\u003d\"${prev_saved_entry}\"\n  save_env saved_entry\n  set prev_saved_entry\u003d\n  save_env prev_saved_entry\n  set boot_once\u003dtrue\nfi\n\nfunction savedefault {\n  if [ -z \"${boot_once}\" ]; then\n    saved_entry\u003d\"${chosen}\"\n    save_env saved_entry\n  fi\n}\n\nfunction recordfail {\n  set recordfail\u003d1\n  if [ -n \"${have_grubenv}\" ]; then if [ -z \"${boot_once}\" ]; then save_env recordfail; fi; fi\n}\n\nfunction load_video {\n  insmod vbe\n  insmod vga\n  insmod video_bochs\n  insmod video_cirrus\n}\n\ninsmod part_msdos\ninsmod ext2\nset root\u003d\u0027(hd0,msdos6)\u0027\nsearch --no-floppy --fs-uuid --set\u003droot 9b548fee-766b-4e39-9848-9fad28971027\nif loadfont /usr/share/grub/unicode.pf2 ; then\n  set gfxmode\u003dauto\n  load_video\n  insmod gfxterm\n  insmod part_msdos\n  insmod ext2\n  set root\u003d\u0027(hd0,msdos6)\u0027\n  search --no-floppy --fs-uuid --set\u003droot 9b548fee-766b-4e39-9848-9fad28971027\n  set locale_dir\u003d($root)/boot/grub/locale\n  set lang\u003den_US\n  insmod gettext\nfi\nterminal_output gfxterm\nif [ \"${recordfail}\" \u003d 1 ]; then\n  set timeout\u003d10\nelse\n  set timeout\u003d10\nfi\n### END /etc/grub.d/00_header ###\n\n### BEGIN /etc/grub.d/05_debian_theme ###\nset menu_color_normal\u003dwhite/black\nset menu_color_highlight\u003dblack/light-gray\nif background_color 44,0,30; then\n  clear\nfi\n### END /etc/grub.d/05_debian_theme ###\n\n### BEGIN /etc/grub.d/10_linux ###\nfunction gfxmode {\n    set gfxpayload\u003d\"${1}\"\n    if [ \"${1}\" \u003d \"keep\" ]; then\n        set vt_handoff\u003dvt.handoff\u003d7\n    else\n        set vt_handoff\u003d\n    fi\n}\nif [ \"${recordfail}\" !\u003d 1 ]; then\n  if [ -e ${prefix}/gfxblacklist.txt ]; then\n    if hwmatch ${prefix}/gfxblacklist.txt 3; then\n      if [ ${match} \u003d 0 ]; then\n        set linux_gfx_mode\u003dkeep\n      else\n        set linux_gfx_mode\u003dtext\n      fi\n    else\n      set linux_gfx_mode\u003dtext\n    fi\n  else\n    set linux_gfx_mode\u003dkeep\n  fi\nelse\n  set linux_gfx_mode\u003dtext\nfi\nexport linux_gfx_mode\nif [ \"${linux_gfx_mode}\" !\u003d \"text\" ]; then load_video; fi\nmenuentry \u0027Ubuntu, with Linux 3.5.0-23-generic\u0027 --class ubuntu --class gnu-linux --class gnu --class os {\n    recordfail\n    gfxmode $linux_gfx_mode\n    insmod gzio\n    insmod part_msdos\n    insmod ext2\n    set root\u003d\u0027(hd0,msdos6)\u0027\n    search --no-floppy --fs-uuid --set\u003droot 9b548fee-766b-4e39-9848-9fad28971027\n    linux    /boot/vmlinuz-3.5.0-23-generic root\u003dUUID\u003d9b548fee-766b-4e39-9848-9fad28971027 ro   quiet splash $vt_handoff\n    initrd    /boot/initrd.img-3.5.0-23-generic\n}\nmenuentry \u0027Ubuntu, with Linux 3.5.0-23-generic (recovery mode)\u0027 --class ubuntu --class gnu-linux --class gnu --class os {\n    recordfail\n    insmod gzio\n    insmod part_msdos\n    insmod ext2\n    set root\u003d\u0027(hd0,msdos6)\u0027\n    search --no-floppy --fs-uuid --set\u003droot 9b548fee-766b-4e39-9848-9fad28971027\n    echo    \u0027Loading Linux 3.5.0-23-generic ...\u0027\n    linux    /boot/vmlinuz-3.5.0-23-generic root\u003dUUID\u003d9b548fee-766b-4e39-9848-9fad28971027 ro recovery nomodeset\n    echo    \u0027Loading initial ramdisk ...\u0027\n    initrd    /boot/initrd.img-3.5.0-23-generic\n}\n### END /etc/grub.d/10_linux ###\n\n### BEGIN /etc/grub.d/20_linux_xen ###\n### END /etc/grub.d/20_linux_xen ###\n\n### BEGIN /etc/grub.d/20_memtest86+ ###\nmenuentry \"Memory test (memtest86+)\" {\n    insmod part_msdos\n    insmod ext2\n    set root\u003d\u0027(hd0,msdos6)\u0027\n    search --no-floppy --fs-uuid --set\u003droot 9b548fee-766b-4e39-9848-9fad28971027\n    linux16    /boot/memtest86+.bin\n}\nmenuentry \"Memory test (memtest86+, serial console 115200)\" {\n    insmod part_msdos\n    insmod ext2\n    set root\u003d\u0027(hd0,msdos6)\u0027\n    search --no-floppy --fs-uuid --set\u003droot 9b548fee-766b-4e39-9848-9fad28971027\n    linux16    /boot/memtest86+.bin console\u003dttyS0,115200n8\n}\n### END /etc/grub.d/20_memtest86+ ###\n\n### BEGIN /etc/grub.d/30_os-prober ###\nmenuentry \"Windows 7 (loader) (on /dev/sda2)\" --class windows --class os {\n    insmod part_msdos\n    insmod ntfs\n    set root\u003d\u0027(hd0,msdos2)\u0027\n    search --no-floppy --fs-uuid --set\u003droot 8ED03C35D03C263D\n    chainloader +1\n}\n### END /etc/grub.d/30_os-prober ###\n\n### BEGIN /etc/grub.d/30_uefi-firmware ###\n### END /etc/grub.d/30_uefi-firmware ###\n\n### BEGIN /etc/grub.d/40_custom ###\n# This file provides an easy way to add custom menu entries.  Simply type the\n# menu entries you want to add after this comment.  Be careful not to change\n# the \u0027exec tail\u0027 line above.\n### END /etc/grub.d/40_custom ###\n\n### BEGIN /etc/grub.d/41_custom ###\nif [ -f  $prefix/custom.cfg ]; then\n  source $prefix/custom.cfg;\nfi\n### END /etc/grub.d/41_custom ###\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "176121",
+      "timestamp": "2013-08-22T09:08:31+00:00",
+      "author": "Wonko the Sane",
+      "content": "The good guys that created GRUB2 must have had some envy for the good MS guys that created BOOTMGR+ \\\\boot\\\\BCD (senselessly complicating the BOOT:INI plain syntax and format) and decided to make the plain, simple syntax of GRUB (and grub4dos) menu.lst a highly sophisticated (and complex) conditional language (and the good guys at Ubuntu must have taken advantage on that) and currently the grub.cfg is a merge of other \"base\" files through a script (but for tests you can edit grub.cfg directly alright).\n\nAn entry like this (add it at the END of you grub.cfg), might do ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png):\n\n```\nmenuentry \"Windows XP (loader) (on /dev/sda4)\" --class windows --class os {\ninsmod part_msdos\ninsmod ntfs\nset root\u003d\u0027(hd0,msdos4)\u0027\nchainloader +1\n}\n```\n\nThough also this should do ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png):\n\n```\nmenuentry \"Windows XP (loader) simple (on /dev/sda4)\" { \nset root\u003d(hd0,4)\nchainloader +1 \n}\n```\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "176128",
+      "timestamp": "2013-08-22T11:11:26+00:00",
+      "author": "Peter80",
+      "content": "I used another method: I use EasyBCD to delete the Windows XP entry, then i run this command from Ubuntu - sudo update-grub, and now both entries of Windows 7 and Windows XP are showing in Grub2 menu and booting directly from it.  \n\nBy the way, why Windows 7 didn\u0027t reset the remaining trial time back to 30 days after i reinstall it? I deleted the partition, then reformat it. How it still can keep the trial period data after this?\n\n"
+    },
+    {
+      "id": "176130",
+      "timestamp": "2013-08-22T12:41:24+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I used another method: I use EasyBCD to delete the Windows XP entry, then i run this command from Ubuntu - sudo update-grub, and now both entries of Windows 7 and Windows XP are showing in Grub2 menu and booting directly from it.\nGood :smile:, how about posting the entry for Windows XP that was added to your grub.cfg?  \nThis way it may be useful to anyone else wanting to add it \"manually\".  \n\n\u003e By the way, why Windows 7 didn\u0027t reset the remaining trial time back to 30 days after i reinstall it? I deleted the partition, then reformat it. How it still can keep the trial period data after this?\nProbably because it is INTENDED to be a 30 day trial, and information about working around that provision would constitute IMNSHO \"cracking\".  \nThe trial can be however legally \"re-armed\" (up to 4 times):  \n[http://www.howtogeek...30-to-120-days/](http://www.howtogeek.com/howto/windows-7/extend-the-windows-7-trial-from-30-to-120-days/ \"External link\")  \n\n\u003cbr /\u003e\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "176131",
+      "timestamp": "2013-08-22T13:25:02+00:00",
+      "author": "Peter80",
+      "content": "This is the entry for Windows XP in grub.cfg:  \n\n```\nmenuentry \"Microsoft Windows XP Professional (on /dev/sda4)\" --class windows --class os {\n    insmod part_msdos\n    insmod ntfs\n    set root\u003d\u0027(hd0,msdos4)\u0027\n    search --no-floppy --fs-uuid --set\u003droot BCCC0246CC01FC00\n    drivemap -s (hd0) ${root}\n    chainloader +1\n```\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nI am just curious where Windows 7 stores the data for the trial period, because during the install all data on the partition is wiped out.  \n\nOne other question: From where i can download some good Windows LiveCD? I tried MiniXP from Hiren BootCD but most of my portable application that are on my hard disk couldn\u0027t run and it didn\u0027t recognize my wireless card so i couldn\u0027t connect to internet.\n\n"
+    },
+    {
+      "id": "176140",
+      "timestamp": "2013-08-22T18:28:08+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e One other question: From where i can download some good Windows LiveCD? I tried MiniXP from Hiren BootCD but most of my portable application that are on my hard disk couldn\u0027t run and it didn\u0027t recognize my wireless card so i couldn\u0027t connect to internet.\nI won\u0027t support you in \\*any\\* way where WAREZ ![:ph34r:](https://reboot.pro/public/style_emoticons/default/scared9.gif) or however unauthorized re-distribution is involved. ![:frusty:](https://reboot.pro/public/style_emoticons/default/frusty.gif)  \n\nYou can read however the Tutorial here:  \n[http://reboot.pro/to...-to-find-warez/](http://reboot.pro/topic/10984-how-to-find-warez/ \"\")  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    }
+  ]
+}

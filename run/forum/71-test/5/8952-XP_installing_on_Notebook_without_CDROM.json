@@ -1,0 +1,100 @@
+{
+  "id": "8952",
+  "title": "XP installing on Notebook without CD-ROM",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "77313",
+      "timestamp": "2009-09-05T19:18:33+00:00",
+      "author": "mbzadegan",
+      "content": "Hi,  \nI have a notebook that have not any CD-ROM and i try to install XP on its HDD with my FLASH USB .  \nCan anyone help me about it ?  \nTNX...   \n"
+    },
+    {
+      "id": "77327",
+      "timestamp": "2009-09-05T23:34:44+00:00",
+      "author": "maanu",
+      "content": "\u003e Hi,  \n\u003e I have a notebook that have not any CD-ROM and i try to install XP on its HDD with my FLASH USB .  \n\u003e Can anyone help me about it ?  \n\u003e TNX...\n\nAssalamualaikum ,  \n\nwelcome to bootland .   \n\nplz see here ,  \n\n[http://www.msfn.org/...ui-t120444.html](http://www.msfn.org/board/install-usb-winsetupfromusb-gui-t120444.html \"External link\")  \n\nlink is within .  \n\nplz report back if u face any issues .  \n\nGood Luck   \n\nRegards,  \nMaanu from Pakistan   \n"
+    },
+    {
+      "id": "77657",
+      "timestamp": "2009-09-08T13:54:24+00:00",
+      "author": "Immortal",
+      "content": "I am using UNetbootin and it worked fine for me  \n\n[http://sourceforge.n...cts/unetbootin/](http://sourceforge.net/projects/unetbootin/ \"External link\")   \n"
+    },
+    {
+      "id": "77666",
+      "timestamp": "2009-09-08T14:44:01+00:00",
+      "author": "mbzadegan",
+      "content": "\u003e I am using UNetbootin and it worked fine for me  \n\u003e\n\u003e [http://sourceforge.n...cts/unetbootin/](http://sourceforge.net/projects/unetbootin/ \"External link\")\n\nYour Tools is very good but don\u0027t worked on XP for me !!  \ni select my xp ISO image with diskimage radio button .  \ni can\u0027t boot on xp When i reboot notebook from USB and appear a white menu with counter .  \nMaybe your software do with linux distros ok .  \nTNX...   \n"
+    },
+    {
+      "id": "77667",
+      "timestamp": "2009-09-08T14:48:10+00:00",
+      "author": "mbzadegan",
+      "content": "\u003e Assalamualaikum ,  \n\u003e\n\u003e welcome to bootland .   \n\u003e\n\u003e plz see here ,  \n\u003e\n\u003e [http://www.msfn.org/...ui-t120444.html](http://www.msfn.org/board/install-usb-winsetupfromusb-gui-t120444.html \"External link\")  \n\u003e\n\u003e link is within .  \n\u003e\n\u003e plz report back if u face any issues .  \n\u003e\n\u003e Good Luck   \n\u003e\n\u003e Regards,  \n\u003e Maanu from Pakistan\n\nThanks about of your comment but after the first boot the file HAL.DLL warning will be appear .   \n"
+    },
+    {
+      "id": "77727",
+      "timestamp": "2009-09-09T06:52:47+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Thanks about of your comment but after the first boot the file HAL.DLL warning will be appear .\n\nLet\u0027s put it in another way.  \n\nHere:  \n[http://www.msfn.org/...p-usb-f157.html](http://www.msfn.org/board/install-xp-usb-f157.html \"External link\")  \nThere is an entire Forum dedicated to methods to install XP from a USB stick, among which is the WinsetupfromUSB GUI method **maanu** pointed you to.  \n\nThese apps were used successfully by several thousands of people.  \n\nThere is a Faqs thread here:  \n[http://www.msfn.org/...qs-t116766.html](http://www.msfn.org/board/faqs-t116766.html \"External link\")  \n\nRead them, most probably you are in the situation described in FAQ #4.  \n\njaclaz   \n"
+    },
+    {
+      "id": "79004",
+      "timestamp": "2009-09-19T16:23:51+00:00",
+      "author": "Immortal",
+      "content": "I found a Russian site that makes it REAL easy.  \n1. Have the source ready on HD (xpsp3 or sp2)  \n2. Start the prog (WinToFlash)  \n3. Choose the source (xpsp3)  \n4. Choose destination (usb-drive)  \nWait 10-15 minutes. Done!  \n\n[http://wintoflash.com/](http://wintoflash.com/ \"External link\")   \n"
+    },
+    {
+      "id": "79007",
+      "timestamp": "2009-09-19T16:32:21+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I found a Russian site that makes it REAL easy.\n\nYep.  \n\nJFYI, some comments are here:  \n[http://www.msfn.org/...sh-t137540.html](http://www.msfn.org/board/novicorp-wintoflash-t137540.html \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "79020",
+      "timestamp": "2009-09-19T18:51:24+00:00",
+      "author": "Immortal",
+      "content": "\u003e Yep.  \n\u003e\n\u003e JFYI, some comments are here:  \n\u003e [http://www.msfn.org/...sh-t137540.html](http://www.msfn.org/board/novicorp-wintoflash-t137540.html \"External link\")  \n\u003e\n\u003e jaclaz\n\nThe eula in Russian is a problem?  \n\nTo all users: Format the usb to fat32, not ntfs!  \n\n[http://wintoflash.com/](http://wintoflash.com/ \"External link\")   \n"
+    },
+    {
+      "id": "79023",
+      "timestamp": "2009-09-19T19:21:13+00:00",
+      "author": "mbzadegan",
+      "content": "@ the first thanks about all :  \n\nevery ways that told to this topic has a problem on my tests and no way couldn\u0027t install xp on my flashes .  \n\n@ this moment no way to solve this problem completely !!  \nmany of these ways couldn\u0027t 2nd boot !! ...   \n"
+    },
+    {
+      "id": "79024",
+      "timestamp": "2009-09-19T19:21:46+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e The eula in Russian is a problem?\nNot really, if you know Russian. :wink:  \n\nI thought that my post on the MSFN thread was clear enough. :wink:  \n\njaclaz   \n"
+    },
+    {
+      "id": "79026",
+      "timestamp": "2009-09-19T19:30:38+00:00",
+      "author": "ilko",
+      "content": "\u003e The eula in Russian is a problem?\nDid you notice that problem only?  \n\n\u003e To all users: Format the usb to fat32, not ntfs!\nMay I ask why?  \nCompare speed:  \n[http://www.msfn.org/.../2-t125116.html](http://www.msfn.org/board/2-t125116.html \"External link\")  \n\n\u003e [http://wintoflash.com/](http://wintoflash.com/ \"External link\")\nDidn\u0027t you post that already?  \n\n\u003e I am using UNetbootin and it worked fine for me  \n\u003e\n\u003e [http://sourceforge.n...cts/unetbootin/](http://sourceforge.net/projects/unetbootin/ \"External link\")\n:wink:   \nYou used it with Windows (XP/2000/2003) ISO and it worked? Can you share some details, please?  \nThat would be very interesting new feature of UNetbootin...  \n\n**@mohammad badizadegan**   \n\nCan you describe in details what problems are you hitting?  \nStick with one application, report with details.   \n"
+    },
+    {
+      "id": "79028",
+      "timestamp": "2009-09-19T20:03:01+00:00",
+      "author": "Immortal",
+      "content": "Well...I am now sticking to ONE app.  \nIt is WintoFlash.  \nIt\u0027s the best \"out there\"  \nConcerning Fat32 or NTFS:  \nMe, myself and I had problems with NTFS on MY usb-stick!  \nIt did not work.  \nSo my thinking is that it is more \"safe\" to use Fat32.  \nConcerning the link twice:  \nOnly to upset the \"police, prosecutor and judge\" :-)   \n"
+    },
+    {
+      "id": "79029",
+      "timestamp": "2009-09-19T20:19:52+00:00",
+      "author": "Immortal",
+      "content": "Here is how it looks when done:  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![ScreenShot00024.jpg](http://reboot.pro/uploads/monthly_09_2009/post-27748-1253391584_thumb.jpg)](http://reboot.pro/uploads/monthly_09_2009/post-27748-1253391584.jpg \"ScreenShot00024.jpg - Size: 23.08KB\"){#ipb-attach-url-9357-0-52266300-1676066691}\n\n"
+    },
+    {
+      "id": "79045",
+      "timestamp": "2009-09-20T00:04:00+00:00",
+      "author": "ilko",
+      "content": "Fine, I\u0027d agree, after such extensive explanation, for all questions asked, very helpful and informative ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)   \n"
+    }
+  ]
+}

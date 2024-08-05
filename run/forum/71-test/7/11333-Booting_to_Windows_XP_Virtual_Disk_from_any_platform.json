@@ -1,0 +1,58 @@
+{
+  "id": "11333",
+  "title": "Booting to Windows XP Virtual Disk from any platform",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "99622",
+      "timestamp": "2010-05-09T00:53:18+00:00",
+      "author": "zumka",
+      "content": "Hi,  \n\nWe are faced almost on a daily bases with the rolling out company SOE using Norton ghost on to a different hardware laptops and workstations.  \nAs you can imagine it can be very time consuming.   \nCan you please suggest the way to boot to a Windows XP virtual disk (VHD, VDMK or simmilar) from the different hardware platforms.  \nFor some reasons I can\u0027t find a solid solution to this problem, VHD only allows to boot Windows 7 or 2008, VLite Vboot doesn\u0027t support windows xp yet, I\u0027m not even sure about VMware and their solutions.   \nPlease note remote desktop or similar solutions are not the options for us at the moment.  \n\nAt the end of the day what we are looking for is bare metal workstation with the ability to boot to virtual disk with Win XP.  \n\nThank you for your help   \n"
+    },
+    {
+      "id": "99623",
+      "timestamp": "2010-05-09T02:17:31+00:00",
+      "author": "Sha0",
+      "content": "Some questions:  \n\n* What does \"SOE\" mean?\n* Did you know that different types of computers require different **HAL** s and **kernel** s, and have different **HDD controller**s? It reads like you are interested in a \"universal image.\"\n* What is your minimum amount of RAM?\n* What is your intended boot medium (network, USB, CD/DVD, HDD, etc.)?\n* Did you know that **MEMDISK** and **GRUB4DOS** support RAM disks from raw HDD images?\n* Do you have \"virtulization technology\" on all computer types? Have you read about **KVM+QEmu**?\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "99624",
+      "timestamp": "2010-05-09T03:18:12+00:00",
+      "author": "zumka",
+      "content": "\u003e Some questions:  \n\u003e\n\u003e * What does \"SOE\" mean?\n\u003e * Did you know that different types of computers require different **HAL** s and **kernel** s, and have different **HDD controller**s? It reads like you are interested in a \"universal image.\"\n\u003e * What is your minimum amount of RAM?\n\u003e * What is your intended boot medium (network, USB, CD/DVD, HDD, etc.)?\n\u003e * Did you know that **MEMDISK** and **GRUB4DOS** support RAM disks from raw HDD images?\n\u003e * Do you have \"virtulization technology\" on all computer types? Have you read about **KVM+QEmu**?\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nSOE - Standard Operating Environment  \n\nWe use HP laptops, for some reason they have changed from Intel to AMD processor on their new generation range, which created major problem with drivers for us. Most of the times our desktops and laptops are using minimum 1GB of RAM some newer ones 2GB.  \nIntended boot medium is HDD.   \n"
+    },
+    {
+      "id": "99625",
+      "timestamp": "2010-05-09T05:33:03+00:00",
+      "author": "zumka",
+      "content": "\u003e Do you have \"virtulization technology\" on all computer types? Have you read about **KVM+QEmu**?\n\nWill KVM allow to boot directly to virtual guest ?   \n"
+    },
+    {
+      "id": "99631",
+      "timestamp": "2010-05-09T09:50:16+00:00",
+      "author": "Wonko the Sane",
+      "content": "Check:  \n[http://www.boot-land...?...ic\u003d9830\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d9830\u0026hl\u003d \"External link\")  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "99634",
+      "timestamp": "2010-05-09T10:30:48+00:00",
+      "author": "zumka",
+      "content": "\u003e Check:  \n\u003e [http://www.boot-land...?...ic\u003d9830\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d9830\u0026hl\u003d \"External link\")  \n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\u003e Wonko\n\nThank you this is good however we already can do very similar with the Norton ghost.   \n"
+    },
+    {
+      "id": "99635",
+      "timestamp": "2010-05-09T10:36:34+00:00",
+      "author": "zumka",
+      "content": "Is there are way to have small Linux distro that loads VMplayer or similar, and start virtual guest.   \n"
+    },
+    {
+      "id": "99638",
+      "timestamp": "2010-05-09T11:15:49+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Is there are way to have small Linux distro that loads VMplayer or similar, and start virtual guest.\nCheck liveview:  \n[http://www.boot-land...p?showtopic\u003d967](http://www.boot-land.net/forums/index.php?showtopic\u003d967 \"External link\")  \n\nLook at sanbarrow\u0027s:  \n[http://www.sanbarrow.com/](http://www.sanbarrow.com/ \"External link\")  \n[http://sanbarrow.com/moa.html](http://sanbarrow.com/moa.html \"External link\")  \n\nThe info is not as clear as it may be, but probaly it is exactly what you are looking for. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    }
+  ]
+}

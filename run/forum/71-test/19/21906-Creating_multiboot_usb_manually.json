@@ -1,0 +1,100 @@
+{
+  "id": "21906",
+  "title": "Creating multiboot usb manually?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "208527",
+      "timestamp": "2018-12-09T09:35:18+00:00",
+      "author": "Peter80",
+      "content": "I know how to create partitions on hard disk, then install different operating systems on these partitions, and have multiboot system. Is there a similar process for doing that with usb flash drive with Live CD\u0027s? I mean something like: create a partition, copy the live iso file, and add the entry in the boot and menu configuration files. Then if you want to add another live cd repeat the process.  \nNow, i am using multiboot usb creators, like YUMI, but it often do not work well with all live cd, and i don\u0027t know why. I want to have more control of how the multiboot usb drive is created, so i can troubleshoot more easy any problems that will occur.\n\n"
+    },
+    {
+      "id": "208528",
+      "timestamp": "2018-12-09T10:05:44+00:00",
+      "author": "misty",
+      "content": "An old thread on 911cd forum (RIP) covers a manual setup. The **Guide for Multi-booting from a USB Drive** thread is available at [https://archive.is/QsxYT](https://archive.is/QsxYT \"External link\"). Note that this is a very old thread and is way out of date, however it may give you an idea about some of the complexities involved in manually setting up a multiboot USB.  \n\nIf you intend to setup a USB stick for use on BIOS systems, or UEFI systems in compatibility mode, then I would recommend using the GRUB4DOS boot manager. GRUB4DOS supports booting from ++some++ .iso files.  \n\nSome .iso files simply cannot be booted successfully. You may however be able to extract the required files from the .iso and boot using GRUB4DOS - e.g. using **kernel** and **initrd** commands.  \n\nThere is likely to be lots of trial and error involved.  \n\nGood luck - you will likely need it. ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)  \n\nIf using GRUB4DOS, then you can always ask for help in the relevant section of the forum ([here](http://reboot.pro/forum/66-grub4dos/ \"\")) for any specific Linux distros or other operating systems.  \n\nAlso, there are a number of threads in the GRUB4DOS section of the forum specific to booting .iso files - happy reading.  \n\nMisty   \n"
+    },
+    {
+      "id": "208529",
+      "timestamp": "2018-12-09T11:02:46+00:00",
+      "author": "steve6375",
+      "content": "grub4dos has a way of booting 99% of all linux ISOs correctly by using the partnew command to create a new partition on the USB drive using the ISO file. This mechanism, based on grub4dos, is used by Easy2Boot.\n\nBooting linux ISOs in other ways is always problematic because of the 101 different ways the ISOs are created and the many different \u0027cheat codes\u0027 they use (or don\u0027t use). See [https://rmprepusb.bl...-boot-iso.html](https://rmprepusb.blogspot.com/2013/09/why-is-it-so-difficult-to-boot-iso.html%C2%A0 \"External link\")for one of my blog articles.\n\nWith E2B, once you have created the USB drive, you simply copy over the ISOs and boot (though most ISOs need to be made contiguous in order to use the partnew command).\n\n"
+    },
+    {
+      "id": "208532",
+      "timestamp": "2018-12-09T13:21:55+00:00",
+      "author": "Peter80",
+      "content": "I used Easy2Boot to create multiboot usb and i copy the Clonezilla and Parted Magic .iso files in Utilities folder. Then i tested the usb drive and Clonezilla booted fine, it even loaded from RAM mode, which do not work if i create the usb with YUMI.  \nBut there is a issue with Parted Magic, which i am not sure it is related with Easy2Boot or YUMI, because i see this issue in both cases. If i use the default loading method, from RAM, no tools practically runs fine. GParted takes for ever just to scan drives on startup and i have to kill it. And if i try to load Parted Magic from the usb it won\u0027t boot at all, it just reboots the laptop.  \nBut so far i like Easy2Boot. Maybe it will be a better replacement of YUMI.\n\n"
+    },
+    {
+      "id": "208534",
+      "timestamp": "2018-12-09T13:42:46+00:00",
+      "author": "steve6375",
+      "content": "Not quite sure what you mean about Parted Magic?\n\u003e And if i try to load Parted Magic from the usb it won\u0027t boot at all, it just reboots the laptop\n\u003e\nHow else are you running it - if you are not running from USB ???\n\nDo you get the menu when booting from the ISO? If so, which menu option does not work?\n\nParted Magic 2018_08_06.iso works fine for me - you can test it using \\\\QEMU_MENU_TEST (run as admin).cmd on the E2B USB drive and boot to a 32-bit menu entry. There won\u0027t be enough RAM in QEMU, but at least is should start to boot and not reset.\n\n"
+    },
+    {
+      "id": "208537",
+      "timestamp": "2018-12-09T14:50:58+00:00",
+      "author": "Peter80",
+      "content": "\u003e How else are you running it - if you are not running from USB ???\n\u003e\nI mean when you boot Parted Magic from usb you see this menu:  \n\n![xEHAgcf.png](https://i.imgur.com/xEHAgcf.png)  \n\nIf i choose the first two options it loads parted magic fine from RAM, but the tools do not work very well, and specially GParted. It runs very slow and sometimes it\u0027s stuck on implementing operation, so i have to kill it.  \nIf i choose the third option it do not load parted magic but restarts the laptop.  \nThe fourth option loads parted magic fine, but again the tools are running very slow.\n\nI have these issues if i create the usb using YUMI.  \n\nI don\u0027t have cd rom on my laptop - Thinkpad T420, i replaced it with second hard disk, so i can\u0027t test how parted magic will perform if i burn it on a cd. But i test the .iso on virtualbox, and it is loading fine from all four options and the tools are running fine, so that might be a issue only for running parted magic from usb.\n\n"
+    },
+    {
+      "id": "208538",
+      "timestamp": "2018-12-09T14:55:50+00:00",
+      "author": "Wonko the Sane",
+      "content": "@Peter80\n\nBasically there are two ways to boot a Linux .iso.\n\n#1 if the Linux .iso has been designed to be booted as a .iso, by using a more or less \"standard\" set of commands (these may vary from distro to distro, but basically they are just a set of kernel and initrd commands)\n\n#2 since a number of .iso\u0027s for \\*whatever reason\\* don\u0027t like to be booted as .iso, the \"trick\" is to write for the extents they occupy on the disk-like device a \"fake\" (id 00) partition in the MBR, most Linux distro\u0027s will see it and \"find themselves\".\n\nThe trick was found/invented by cdob, around here:\n\n[http://reboot.pro/to...brided/?p\u003d88531](http://reboot.pro/topic/9916-grub4dos-isohybrided/?p\u003d88531 \"\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "208539",
+      "timestamp": "2018-12-09T15:11:04+00:00",
+      "author": "steve6375",
+      "content": "You probably need to add a cheat code like nomodeset or edd\u003don or edd\u003doff or noacpi or something for your particular hardware\n\nMy version has extra menu options for \u0027black screen\u0027\n\nIf you Google for similar problems you will probably find the cheat code you require. It sounds like a hardware/driver issue to me.  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![pmagicfu.JPG](http://reboot.pro/uploads/monthly_12_2018/post-17818-0-71632000-1544368158_thumb.jpg)](http://reboot.pro/uploads/monthly_12_2018/post-17818-0-71632000-1544368158.jpg \"pmagicfu.JPG - Size: 52.56KB\"){#ipb-attach-url-16239-0-99918300-1676066413}\n\n"
+    },
+    {
+      "id": "208540",
+      "timestamp": "2018-12-09T15:38:17+00:00",
+      "author": "Peter80",
+      "content": "Will test these boot codes to see if it will make any difference.  \n\nDoes Easy2Boot work with hiren cd\u0027s? I have Hiren PE x64 and Hiren 15.2 versions. Can Easy2Boot use both and in which folder i have to copy the .iso files?\n\n"
+    },
+    {
+      "id": "208541",
+      "timestamp": "2018-12-09T16:17:59+00:00",
+      "author": "steve6375",
+      "content": "Yes, it supports a few different ISOs including those\n\n[http://www.easy2boot...-payload-files/](http://www.easy2boot.com/add-payload-files/list-of-tested-payload-files/ \"External link\")\n\n[http://www.easy2boot...-payload-files/](http://www.easy2boot.com/add-payload-files/ \"External link\")\n\n"
+    },
+    {
+      "id": "208543",
+      "timestamp": "2018-12-09T17:09:53+00:00",
+      "author": "Peter80",
+      "content": "I copy Hiren PE x64 .iso file in WINPE folder, but when i booted it showed a message to press any key to boot from cd or dvd. If i press a key it shows the Windows 10 login screen and stuck there. Nothing happens after that.\n\n"
+    },
+    {
+      "id": "208544",
+      "timestamp": "2018-12-09T17:15:47+00:00",
+      "author": "steve6375",
+      "content": "It is a 64-bit WinPE ISO - it will need a compatible 64-bit system with 2GB of RAM.\n\nIt works for everyone else, so either the ISO is corrupt, you have a bad flash drive or something about your system is flaky.\n\nDId you try a VBox boot using VMUB?\n\n"
+    },
+    {
+      "id": "208546",
+      "timestamp": "2018-12-09T18:11:08+00:00",
+      "author": "Peter80",
+      "content": "I think my laptop, Thinkpad T420, is enough powerful and compatible to run Hiren PE x64. It has 4GB of RAM and i run Windows 7 x64 and Debian X64 with dual boot on it.  \nI don\u0027t think the .iso is corrupt because i downloaded it from the developers website, and it runs fine on vritualbox.\n\n"
+    },
+    {
+      "id": "208547",
+      "timestamp": "2018-12-09T18:15:46+00:00",
+      "author": "steve6375",
+      "content": "Try booting from the E2B USB drive using VirtualBox + VMUB.\n\n[http://www.easy2boot...lper-usb-drive/](http://www.easy2boot.com/testing-e2b/using-qemu-or-virtual-box/using-vbox-with-a-winhelper-usb-drive/ \"External link\")\n\n"
+    },
+    {
+      "id": "208560",
+      "timestamp": "2018-12-10T07:50:20+00:00",
+      "author": "Peter80",
+      "content": "This seems to require second usb drive which i don\u0027t have at the moment. I will just assume that this is a issue with my hardware and move on testing other .iso files.\n\n"
+    }
+  ]
+}

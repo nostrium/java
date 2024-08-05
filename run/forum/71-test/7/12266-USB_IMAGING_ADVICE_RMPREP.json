@@ -1,0 +1,724 @@
+{
+  "id": "12266",
+  "title": "USB IMAGING ADVICE RMPREP",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "106736",
+      "timestamp": "2010-08-13T07:41:57+00:00",
+      "author": "Technotika",
+      "content": "Hi  \n\nI really like the speeds of RMPREP imaging utility but I just cant get it to work how I want to.  \n\nMaybe I cant do this but please help if I can.  \n\nMy Main USB is 32gb. The data is about 7.5 gb.  \nI want to make an image that I can \"roll out\" to other smaller say 16 or 8 USB sticks.  \n\nI know I can specifiy the number of bytes the image can be when taking a clone so I tried this.  \n1. Stuck the 32 in  \n2. USB to file.  \n3. selected the byte size of the total ammount of data on the stick.  \n4. completed process.  \n\n\u003cbr /\u003e\n\nTHEN TO TEST  \n1. Stuck in test 8gb  \n2. File to USB  \n3. Loaded file from above  \n4. Complete without errors.  \n\nHowever straight away windows says its corrupt and unreadable, I even couldnt get any machines to format it because it hung the system. Good job my main stick has a linux distro on there to smash it back into action.  \n\nGparted was having trouble with the imaged stick, it said something about file table being outside of the disk area, only when I reloaded a new partition table was I able to get it formatted etc.  \n\nWhats wrong team? ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n"
+    },
+    {
+      "id": "106738",
+      "timestamp": "2010-08-13T08:07:55+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Whats wrong team? ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)\n\nYour approach. ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)  \n\nSummed up:  \nQ: My Main USB is 32gb. The data is about 7.5 gb. I want to make an image that I can \"roll out\" to other smaller say 16 or 8 USB sticks.  \nA: THEN I made a PARTIAL image and expected it would work. :smile:  \n\nThis sounds ***a lot*** like:  \nQ: My dad\u0027s car is a Station Wagon, 4.8 meters in length. The seats occupy just 4.3 meters. I want to park it in garages that are, say 4.4 or 4.5 meters long.  \nA: THEN I sawed off it last 50 centimeters with a chainsaw :wink: . I am 10 years old and my dad is strangely very, very angry :smile: at me!  \n\n:wink:  \n\nOW, comeon!  \n\nThe OBVIOUS reply to:  \nQ: My dad\u0027s car is a Station Wagon, 4.8 meters in length. The seats occupy just 4.2 meters. I want to park it in garages that are, say 4.3 or 4.3 meters long.  \nis:  \nA: THEN I brought it to a to a wreckers yard and had it pressed shorter ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png) . I am still 10 years old and my dad is STILL very, very angry :wink: at me, but at least the car has still 4 wheels ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)!  \n\n![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)  \nWonko   \n"
+    },
+    {
+      "id": "106741",
+      "timestamp": "2010-08-13T08:35:15+00:00",
+      "author": "Technotika",
+      "content": "Haha Hilarious  \n![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n\nSo \"obviously\" thats a bad idea, but I need to have a system in place, what would YOU do, DAD? ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n"
+    },
+    {
+      "id": "106743",
+      "timestamp": "2010-08-13T08:51:50+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Haha Hilarious  \n\u003e ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n\u003e\n\u003e So \"obviously\" thats a bad idea, but I need to have a system in place, what would YOU do, DAD? ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)\nUse an appropriate method. :wink:  \n\nSince - generally speaking - it is MUCH easier to EXPAND an image than to SHRINK it, I would build the smallest possible image able to contain the data, and the expand it to the actual stick size:  \n\nA couple of things for you to test:  \n[http://www.boot-land...?showtopic\u003d8480](http://www.boot-land.net/forums/index.php?showtopic\u003d8480 \"External link\")  \n[http://www.boot-land...showtopic\u003d12077](http://www.boot-land.net/forums/index.php?showtopic\u003d12077 \"External link\")  \n\nAlso take your time checking the apps listed here:  \n[http://www.msfn.org/...howtopic\u003d100299](http://www.msfn.org/board/index.php?showtopic\u003d100299 \"External link\")  \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "106746",
+      "timestamp": "2010-08-13T10:13:08+00:00",
+      "author": "steve6375",
+      "content": "Yep -as WtS said  \n\nCreate a stick with a 7.8GB partition using RMPrepUSB and make an image of that.It will then work on any 8GB+ stick ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n"
+    },
+    {
+      "id": "106747",
+      "timestamp": "2010-08-13T10:50:13+00:00",
+      "author": "Technotika",
+      "content": "Ok cool - I think I\u0027m all set - Just did that, and it worked a treat!! Much faster than ghosting will use the 8gb stick image as the master, to then load on to 16\u0027s or maybe 32\u0027s if \\\u0026 when they come for mastering.  \n\nI take it if I slapped a 8gb IMG on to say 32gb the 32 would show as 8 gb until the part was grown?  \nIn RMPREP if I set the max byte size of the file to the max bytes of the target USB will it do that or am I being dumb again? ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)  \nedit  \nyes I am max bytes relates only to the iMG file. I guess I just have to grow the partition afterwards.   \n"
+    },
+    {
+      "id": "106750",
+      "timestamp": "2010-08-13T12:07:56+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I take it if I slapped a 8gb IMG on to say 32gb the 32 would show as 8 gb until the part was grown?  \n\u003e In RMPREP if I set the max byte size of the file to the max bytes of the target USB will it do that or am I being dumb again? :wink:  \n\u003e edit  \n\u003e yes I am max bytes relates only to the iMG file. I guess I just have to grow the partition afterwards.\n\nYou are no dumb at all ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png), you are simply illiterate (currently) when it comes to partitions/filesystems/images, take your time, read and learn, there is nothing really \\*difficult\\* just a little of magic ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png) here and there...:wink:  \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "106753",
+      "timestamp": "2010-08-13T13:19:49+00:00",
+      "author": "Technotika",
+      "content": "Ouch, good job I learnt not to be too sensitive in BOOT LAND. \"Simply\" illiterate I would personally upgrade to \"slightly\". My problem today has stemmed from coming from \"do it all for you\" GUI\u0027s (i.e Ghost ) straight into RAW and trying to apply the principals of one to the other. Failed. But I\u0027m here to stay and become the best booter in town! I\u0027ll get there, you \u0027ll see. Although thinking about it, there\u0027s not much I can think of given current employment. Probably refinements to exisitng.  \n\n3 months ago, I couldnt boot a goose!  \n\nNow I have a domestic 500 gb utility disk partioned up to the max, with windows XP, vista, seven installers flying off it in every direction and also a utility for every occaision. + GFX MENU\u0027S  \nI have transformed the way we deploy images at work, multi image dos usb driver loaded USB drives and utils etc.  \n\nIntroduced remote rebuilding with G4D ( something others wrote off as impossible ).  \nI couldnt have done it with out all the kind folks at BL with their tips and advice. ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png) Love it!  \nI\u0027m not trying to justify anything but just pointing out that this is the achievements of a \"slightly\" Illeterate rather than a \"complete retard\".  \n\nI mean how else would I be able to read all your instructions in order to achieve the above ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n"
+    },
+    {
+      "id": "106756",
+      "timestamp": "2010-08-13T13:58:33+00:00",
+      "author": "steve6375",
+      "content": "Feel free to post anything you have learnt and got working here. Example menu.lst files, how to\u0027s etc.  \nI am sure it will be useful to others and save them having to wade through all the posts on BL like you had to!   \n"
+    },
+    {
+      "id": "106757",
+      "timestamp": "2010-08-13T13:59:31+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I\u0027m not trying to justify anything but just pointing out that this is the achievements of a \"slightly\" Illeterate rather than a \"complete retard\".\nWe are saying the same thing. :smile:   \n\n\"dumb\": (meaning #6)  \n[http://www.merriam-w...dictionary/dumb](http://www.merriam-webster.com/dictionary/dumb \"External link\")  \nor \"retard(ed)\":  \n[http://www.merriam-w...ionary/retarded](http://www.merriam-webster.com/dictionary/retarded \"External link\")  \nboth mean being incapable of understanding or learning. ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)  \n\n\"illiterate\" means simply that you still need to learn on a given field. :wink: (meaning #3):  \n[http://www.merriam-w...nary/illiterate](http://www.merriam-webster.com/dictionary/illiterate \"External link\")  \n\nSo, given the recent evolution of your abilities in booting geese ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png), if you want to be defined \"fast learning illiterate\" (still talking of partitions/filesystems/images) it\u0027s OK. ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n\n...I see your achievements NOT as an arrival but rather as a starting point for more and better....:wink:  \n[http://www.boot-land...?...c\u003d2398\\\u0026st\u003d1](http://www.boot-land.net/forums/index.php?showtopic\u003d2398\u0026st\u003d1 \"External link\")  \n\n:smile:  \nWonko  \n\nP.S.: I have a scoop, an actual image of the goose you use in your experiments:  \n![Posted Image](http://xoomi.com/wp-content/uploads/2009/09/AngryGoose.jpg)  \nit seems like it doesn\u0027t particularly appreciate being booted....:wink:   \n"
+    },
+    {
+      "id": "106760",
+      "timestamp": "2010-08-13T14:07:49+00:00",
+      "author": "Technotika",
+      "content": "And for those scouring the forum trying to learn how to do it.............  \n\n\u003cbr /\u003e\n\n```\nTitle Big Duck Boot\n\nfind --set-goose\n\nMap --Shoe\u0026#40;L\u0026R\u0026#41;/Gooses.ar$e\n\nbuk--squark\n\nairborne/?\n\nVERIFIED\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "106762",
+      "timestamp": "2010-08-13T14:14:19+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Map --Shoe(L\\\u0026R)/Gooses.ar$e\n![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)  \n\nYou should be careful with plurals:  \n[http://www.merriam-w...ictionary/goose](http://www.merriam-webster.com/dictionary/goose \"External link\")  \n:wink:  \n\nYour menu.lst makes me ~~shiver~~ *get goose bumps* !  \n\n:wink:  \n\nand BTW, you miss a space between the **buk** directive and the **--squark** option ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png), if you try that on command line you will get:  \n\n```\nerror 73\u0026#58; unnkown squeak\n```\n\n\u003cbr /\u003e\n\nWonko   \n"
+    },
+    {
+      "id": "106773",
+      "timestamp": "2010-08-13T17:19:50+00:00",
+      "author": "Technotika",
+      "content": "LOL.... ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png) ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n\nAre you trying to make me feel like (wait for it) a...\"GOOOOOSE-BERRY\"  \n\n\u003cbr /\u003e\n\n(guufffaaawwwww) :wink:   \n"
+    },
+    {
+      "id": "106793",
+      "timestamp": "2010-08-13T22:05:29+00:00",
+      "author": "Technotika",
+      "content": "re assurance required...... ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n\nI just cut a tight \"final\" raw USB image from my (now) 8 GB master PEN DRIVE ready to \"deploy\"/\"rollout\" to colleagues who want in on the action.  \n\nFirst 8GB stick I get, RMPREP tells me the drive isn\u0027t big enough. Nooo  \n\nI guess being a different brand the geometry differs enough to cause the mis match of sizes.  \n\nOn the master stick there is about 650 mb spare so about 6.80GB filled.   \nIf I then in my next attempt tell REMPREP to copy only 7GB (in bytes as it wants) and then try to reclone to the new drive, the drop in size WILL let me continue won\u0027t it? Or will I be chainsawing dads wagin all over again?  \n\nThanks   \n"
+    },
+    {
+      "id": "106794",
+      "timestamp": "2010-08-13T22:23:58+00:00",
+      "author": "steve6375",
+      "content": "That is why I said to format a drive as **7.8GB** (or as small as possible so you can just fit the files on) and not to format an 8GB drive as MAX!!!  \n\nSo   \n\n1. Use RMPrepUSB to format a drive as 7.8GB (or even smaller if possible)  \n2. Install files and check it works  \n3. Take an image --\\\u003e file   \n"
+    },
+    {
+      "id": "106797",
+      "timestamp": "2010-08-13T22:39:20+00:00",
+      "author": "Technotika",
+      "content": "Hey Thanks I think I get it now.....just been looking at the RMPREP webby...I wish I\u0027d seen that multi windows installer article a bit sooner......!!!!!!!! ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n\nI was mixed up between setting the BYTE size of the image file as opposed to prepping the drive from scratch and setting MAX (part 1) to say 7000 MBS which is gonna be fine. THEN image, and the defaults will make the image size the same as max partition size clearing my problem.   \n\nJust having a go on beta version aswell for the latest tech! Awsome. Thanks, looks like I\u0027m on the way now to FAST and reliable imaging for my project.  \n\nMany thanks :wink:   \nDo you think Imdisk is a good editor for updating images created in RMPREP?   \n"
+    },
+    {
+      "id": "106817",
+      "timestamp": "2010-08-14T09:48:51+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Do you think Imdisk is a good editor for updating images created in RMPREP?\nNO!.  \n\n\u003cbr /\u003e\n\nIMDISK does NOT deal (in the way needed/wanted) with HD-like images.  \nIt is a \"volume\" driver, you need a \"whole disk\" driver (if you want to modify the MBR and partition size), it\u0027s OK if you just want to add/delete files to/from the volume.  \n\nTime to stop guessing and start reading:  \n[http://www.boot-land...hp?showforum\u003d94](http://www.boot-land.net/forums/index.php?showforum\u003d94 \"External link\")  \n\n\u003cbr /\u003e\n\nHints:  \n\n* VDK by Ken Kato\n* MS own VSS drivers\n* Firadisk\n* WinVblock\n\nare \"whole hard disk\" drivers.  \n\n![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)  \nWonko   \n"
+    },
+    {
+      "id": "106825",
+      "timestamp": "2010-08-14T11:28:11+00:00",
+      "author": "Technotika",
+      "content": "Yes it is then! just files and menu entries is the only editing I need to do now sorted the size issue.RELAX TURBO! ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n"
+    },
+    {
+      "id": "106837",
+      "timestamp": "2010-08-14T15:17:11+00:00",
+      "author": "ksanderash",
+      "content": "I always used WinImage to make a backup of the 16Gb UFD. To update that backup I simply mount it with ImDisk. And yes, it is logical drive processing, not the whole (as \"physical\" in WinHex), with many possible partitions inside. But WinImage/ImDisk suit my basic needs perfectly. I have only one UFD to be updated frequently, not many different.  \n\nThe imaging functions of RMPrepUSB suite are also great variant to do the job. I just began to get acquainted with this great app. And the Clonedisk -- never heard about it, screens look very very promising. Thanks for bringing up the thread, **Technotika** -- you helped others! ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)  \n\nAnd **Wonko** and **steve** also get greetings, of course!! ![Posted Image](http://i.ru-board.com/s/pray.gif) :smile:   \n"
+    },
+    {
+      "id": "106839",
+      "timestamp": "2010-08-14T15:58:07+00:00",
+      "author": "Technotika",
+      "content": "Yeah the other beauty of rmprep compared to things like ghost32 ghost explorer is the speed. In ghost usage sometimes we had to wait over an hour in some cases for a image to transfer. With or without any compression. Also in ghost explorer the cases of folders and file names changes sometimes during edit which as many have found out can create havoc when trying to chain off BooTMgR!!! And having one of our builds chaining off exactly that, there can\u0027t be any room fir this kind off problem.   \n\nRmprep 22 minutes and only 5 to create.  \n\nDefintley big thanks for this awesome software, to boot land and everything helpful within it; posts, links, suggestions, code the lot. You come here post some problems and ALWAYS next time you check your email you got a response. A rare thing to behold. The kindness of strangers. And all that Jazz.   \n\nLooking forward to giving something back soon. :smile:   \n"
+    },
+    {
+      "id": "106840",
+      "timestamp": "2010-08-14T17:07:09+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I always used WinImage to make a backup of the 16Gb UFD. To update that backup I simply mount it with ImDisk. And yes, it is logical drive processing, not the whole (as \"physical\" in WinHex), with many possible partitions inside. But WinImage/ImDisk suit my basic needs perfectly. I have only one UFD to be updated frequently, not many different.\nJust to keep up the tradition of grumpiness :smile:, the Second worst app for dealing with \"Whole disk\" images is IMDISK, the **First** being Winimage. ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)  \n\n* IMDISK will (once mounted a \"whole disk\" image) completely IGNORE the MBR.\n* Winimage will RECREATE one (export to image with MBR) and more often than not it will create a wrong geometry for it OR use filedisk (also a \"volume only\" kind of driver)\n\n\u003cbr /\u003e\n\nThe possibilities of \"ruining\" the image using an unintended command is high. :smile:  \n\n@Technotika  \nGhost DOS may well be slower than something else. ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)  \nI doubt about ghost32, most probably it depends on the options used. ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png) If you have a clean source and select to skip empty sectors it should be faster, expecially on large drives.  \n\nOdin and selfimage also have this feature, AFAICR, but if your 7.x Gbytes are \"full\" there will be of course no or very little difference.  \n\nIt would be interesting to do a comparison test of different imaging utilities....  \n\n![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)  \nWonko   \n"
+    },
+    {
+      "id": "106843",
+      "timestamp": "2010-08-14T18:17:40+00:00",
+      "author": "Technotika",
+      "content": "Mr Wonko, \"grumpy\"? Nooo, surely not. Whatever next. :smile:   \n\nGrumpy people, last time I looked, don\u0027t take much pleasure in messing about with conceptualised goose booting. ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n\nIn keeping with \"reassurance\" \\\u0026 \"s-s-s-sl-l-l-o-o-o-w-w-w learning\", can I just be clear on this \"1\" matter.  \n\nIMDISK \"is\" OK for shifting files and folders about within the image. I understand that editing the geometry or more complex aspects of imaging the \\*.IMG file is not advisable with IMDISK.  \nAt this stage I\u0027m solely concerned with the files/folders aspect.  \n\nPeaceable Kingdoms :smile:   \n"
+    },
+    {
+      "id": "106845",
+      "timestamp": "2010-08-14T18:53:34+00:00",
+      "author": "ksanderash",
+      "content": "**Wonko**   \nSo I\u0027m kinda sitting now on a barrel of gunpowder? OMG, what am I to do?! ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png) Yes, I know about MBR cause I always have to install GRUB after restoring the image :smile: And it works! I affirm this :smile:   \n\nI like ImDisk for its easyness of use. It does mount ISOs, it does mount images ...em-m-m volumes, right? Anyway, not all of us are programmers, and we want something more handy, and would be better if with a pleasant GUI! ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n\n**Technotika**   \nIt seems to me that Ghost images by files-and-folders method, not sectored one. That\u0027s the only guess of mine why it is so slow.   \n"
+    },
+    {
+      "id": "106848",
+      "timestamp": "2010-08-14T19:25:32+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Yes, I know about MBR cause I always have to install GRUB after restoring the image :smile: And it works! I affirm this ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)\n\nSure, you can also type the values in a disk editor nibble by nibble and it works....:smile:  \n\nIf you don\u0027t have a Philips #2 screwdriver, and you want to drive a #2 Philips screw in a plank, you can try with a Philips #1 one, or with a flat one of the appropriate size, or even with a hammer ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png).  \n\nMost of the times you\u0027ll manage to do it, but do not pretend that anything but the appropriate #2 screwdriver is the better choice. ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)  \n\n![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)  \nWonko   \n"
+    },
+    {
+      "id": "106904",
+      "timestamp": "2010-08-15T10:16:56+00:00",
+      "author": "Technotika",
+      "content": "One more thing....slightly veering off topic, perhaps, apologies in advance.  \n\nLets say I wanted to push the image down the network to a colleagues desktop so they can image themselves. In the past this has sometimes caused such slight corruption it has made iso\u0027s not boot correctly and all sorts.  \n\nIs there something I can run against my \"gospel\" image to generate a verification file then re run \"whatever\" process that maybe to check it   \nis in exactly the same \"good\" condition as it was prior to sending.  \n\nHope that makes a sense.   \n"
+    },
+    {
+      "id": "106736",
+      "timestamp": "2010-08-13T07:41:57+00:00",
+      "author": "Technotika",
+      "content": "Hi  \n\nI really like the speeds of RMPREP imaging utility but I just cant get it to work how I want to.  \n\nMaybe I cant do this but please help if I can.  \n\nMy Main USB is 32gb. The data is about 7.5 gb.  \nI want to make an image that I can \"roll out\" to other smaller say 16 or 8 USB sticks.  \n\nI know I can specifiy the number of bytes the image can be when taking a clone so I tried this.  \n1. Stuck the 32 in  \n2. USB to file.  \n3. selected the byte size of the total ammount of data on the stick.  \n4. completed process.  \n\n\u003cbr /\u003e\n\nTHEN TO TEST  \n1. Stuck in test 8gb  \n2. File to USB  \n3. Loaded file from above  \n4. Complete without errors.  \n\nHowever straight away windows says its corrupt and unreadable, I even couldnt get any machines to format it because it hung the system. Good job my main stick has a linux distro on there to smash it back into action.  \n\nGparted was having trouble with the imaged stick, it said something about file table being outside of the disk area, only when I reloaded a new partition table was I able to get it formatted etc.  \n\nWhats wrong team? ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n"
+    },
+    {
+      "id": "106738",
+      "timestamp": "2010-08-13T08:07:55+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Whats wrong team? ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)\n\nYour approach. ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)  \n\nSummed up:  \nQ: My Main USB is 32gb. The data is about 7.5 gb. I want to make an image that I can \"roll out\" to other smaller say 16 or 8 USB sticks.  \nA: THEN I made a PARTIAL image and expected it would work. :smile:  \n\nThis sounds ***a lot*** like:  \nQ: My dad\u0027s car is a Station Wagon, 4.8 meters in length. The seats occupy just 4.3 meters. I want to park it in garages that are, say 4.4 or 4.5 meters long.  \nA: THEN I sawed off it last 50 centimeters with a chainsaw :wink: . I am 10 years old and my dad is strangely very, very angry :smile: at me!  \n\n:wink:  \n\nOW, comeon!  \n\nThe OBVIOUS reply to:  \nQ: My dad\u0027s car is a Station Wagon, 4.8 meters in length. The seats occupy just 4.2 meters. I want to park it in garages that are, say 4.3 or 4.3 meters long.  \nis:  \nA: THEN I brought it to a to a wreckers yard and had it pressed shorter ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png) . I am still 10 years old and my dad is STILL very, very angry :wink: at me, but at least the car has still 4 wheels ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)!  \n\n![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)  \nWonko   \n"
+    },
+    {
+      "id": "106741",
+      "timestamp": "2010-08-13T08:35:15+00:00",
+      "author": "Technotika",
+      "content": "Haha Hilarious  \n![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n\nSo \"obviously\" thats a bad idea, but I need to have a system in place, what would YOU do, DAD? ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n"
+    },
+    {
+      "id": "106743",
+      "timestamp": "2010-08-13T08:51:50+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Haha Hilarious  \n\u003e ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n\u003e\n\u003e So \"obviously\" thats a bad idea, but I need to have a system in place, what would YOU do, DAD? ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)\nUse an appropriate method. :wink:  \n\nSince - generally speaking - it is MUCH easier to EXPAND an image than to SHRINK it, I would build the smallest possible image able to contain the data, and the expand it to the actual stick size:  \n\nA couple of things for you to test:  \n[http://www.boot-land...?showtopic\u003d8480](http://www.boot-land.net/forums/index.php?showtopic\u003d8480 \"External link\")  \n[http://www.boot-land...showtopic\u003d12077](http://www.boot-land.net/forums/index.php?showtopic\u003d12077 \"External link\")  \n\nAlso take your time checking the apps listed here:  \n[http://www.msfn.org/...howtopic\u003d100299](http://www.msfn.org/board/index.php?showtopic\u003d100299 \"External link\")  \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "106746",
+      "timestamp": "2010-08-13T10:13:08+00:00",
+      "author": "steve6375",
+      "content": "Yep -as WtS said  \n\nCreate a stick with a 7.8GB partition using RMPrepUSB and make an image of that.It will then work on any 8GB+ stick ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n"
+    },
+    {
+      "id": "106747",
+      "timestamp": "2010-08-13T10:50:13+00:00",
+      "author": "Technotika",
+      "content": "Ok cool - I think I\u0027m all set - Just did that, and it worked a treat!! Much faster than ghosting will use the 8gb stick image as the master, to then load on to 16\u0027s or maybe 32\u0027s if \\\u0026 when they come for mastering.  \n\nI take it if I slapped a 8gb IMG on to say 32gb the 32 would show as 8 gb until the part was grown?  \nIn RMPREP if I set the max byte size of the file to the max bytes of the target USB will it do that or am I being dumb again? ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)  \nedit  \nyes I am max bytes relates only to the iMG file. I guess I just have to grow the partition afterwards.   \n"
+    },
+    {
+      "id": "106750",
+      "timestamp": "2010-08-13T12:07:56+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I take it if I slapped a 8gb IMG on to say 32gb the 32 would show as 8 gb until the part was grown?  \n\u003e In RMPREP if I set the max byte size of the file to the max bytes of the target USB will it do that or am I being dumb again? :wink:  \n\u003e edit  \n\u003e yes I am max bytes relates only to the iMG file. I guess I just have to grow the partition afterwards.\n\nYou are no dumb at all ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png), you are simply illiterate (currently) when it comes to partitions/filesystems/images, take your time, read and learn, there is nothing really \\*difficult\\* just a little of magic ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png) here and there...:wink:  \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "106753",
+      "timestamp": "2010-08-13T13:19:49+00:00",
+      "author": "Technotika",
+      "content": "Ouch, good job I learnt not to be too sensitive in BOOT LAND. \"Simply\" illiterate I would personally upgrade to \"slightly\". My problem today has stemmed from coming from \"do it all for you\" GUI\u0027s (i.e Ghost ) straight into RAW and trying to apply the principals of one to the other. Failed. But I\u0027m here to stay and become the best booter in town! I\u0027ll get there, you \u0027ll see. Although thinking about it, there\u0027s not much I can think of given current employment. Probably refinements to exisitng.  \n\n3 months ago, I couldnt boot a goose!  \n\nNow I have a domestic 500 gb utility disk partioned up to the max, with windows XP, vista, seven installers flying off it in every direction and also a utility for every occaision. + GFX MENU\u0027S  \nI have transformed the way we deploy images at work, multi image dos usb driver loaded USB drives and utils etc.  \n\nIntroduced remote rebuilding with G4D ( something others wrote off as impossible ).  \nI couldnt have done it with out all the kind folks at BL with their tips and advice. ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png) Love it!  \nI\u0027m not trying to justify anything but just pointing out that this is the achievements of a \"slightly\" Illeterate rather than a \"complete retard\".  \n\nI mean how else would I be able to read all your instructions in order to achieve the above ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n"
+    },
+    {
+      "id": "106756",
+      "timestamp": "2010-08-13T13:58:33+00:00",
+      "author": "steve6375",
+      "content": "Feel free to post anything you have learnt and got working here. Example menu.lst files, how to\u0027s etc.  \nI am sure it will be useful to others and save them having to wade through all the posts on BL like you had to!   \n"
+    },
+    {
+      "id": "106757",
+      "timestamp": "2010-08-13T13:59:31+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I\u0027m not trying to justify anything but just pointing out that this is the achievements of a \"slightly\" Illeterate rather than a \"complete retard\".\nWe are saying the same thing. :smile:   \n\n\"dumb\": (meaning #6)  \n[http://www.merriam-w...dictionary/dumb](http://www.merriam-webster.com/dictionary/dumb \"External link\")  \nor \"retard(ed)\":  \n[http://www.merriam-w...ionary/retarded](http://www.merriam-webster.com/dictionary/retarded \"External link\")  \nboth mean being incapable of understanding or learning. ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)  \n\n\"illiterate\" means simply that you still need to learn on a given field. :wink: (meaning #3):  \n[http://www.merriam-w...nary/illiterate](http://www.merriam-webster.com/dictionary/illiterate \"External link\")  \n\nSo, given the recent evolution of your abilities in booting geese ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png), if you want to be defined \"fast learning illiterate\" (still talking of partitions/filesystems/images) it\u0027s OK. ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n\n...I see your achievements NOT as an arrival but rather as a starting point for more and better....:wink:  \n[http://www.boot-land...?...c\u003d2398\\\u0026st\u003d1](http://www.boot-land.net/forums/index.php?showtopic\u003d2398\u0026st\u003d1 \"External link\")  \n\n:smile:  \nWonko  \n\nP.S.: I have a scoop, an actual image of the goose you use in your experiments:  \n![Posted Image](http://xoomi.com/wp-content/uploads/2009/09/AngryGoose.jpg)  \nit seems like it doesn\u0027t particularly appreciate being booted....:wink:   \n"
+    },
+    {
+      "id": "106760",
+      "timestamp": "2010-08-13T14:07:49+00:00",
+      "author": "Technotika",
+      "content": "And for those scouring the forum trying to learn how to do it.............  \n\n\u003cbr /\u003e\n\n```\nTitle Big Duck Boot\n\nfind --set-goose\n\nMap --Shoe\u0026#40;L\u0026R\u0026#41;/Gooses.ar$e\n\nbuk--squark\n\nairborne/?\n\nVERIFIED\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "106762",
+      "timestamp": "2010-08-13T14:14:19+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Map --Shoe(L\\\u0026R)/Gooses.ar$e\n![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)  \n\nYou should be careful with plurals:  \n[http://www.merriam-w...ictionary/goose](http://www.merriam-webster.com/dictionary/goose \"External link\")  \n:wink:  \n\nYour menu.lst makes me ~~shiver~~ *get goose bumps* !  \n\n:wink:  \n\nand BTW, you miss a space between the **buk** directive and the **--squark** option ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png), if you try that on command line you will get:  \n\n```\nerror 73\u0026#58; unnkown squeak\n```\n\n\u003cbr /\u003e\n\nWonko   \n"
+    },
+    {
+      "id": "106773",
+      "timestamp": "2010-08-13T17:19:50+00:00",
+      "author": "Technotika",
+      "content": "LOL.... ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png) ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n\nAre you trying to make me feel like (wait for it) a...\"GOOOOOSE-BERRY\"  \n\n\u003cbr /\u003e\n\n(guufffaaawwwww) :wink:   \n"
+    },
+    {
+      "id": "106793",
+      "timestamp": "2010-08-13T22:05:29+00:00",
+      "author": "Technotika",
+      "content": "re assurance required...... ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n\nI just cut a tight \"final\" raw USB image from my (now) 8 GB master PEN DRIVE ready to \"deploy\"/\"rollout\" to colleagues who want in on the action.  \n\nFirst 8GB stick I get, RMPREP tells me the drive isn\u0027t big enough. Nooo  \n\nI guess being a different brand the geometry differs enough to cause the mis match of sizes.  \n\nOn the master stick there is about 650 mb spare so about 6.80GB filled.   \nIf I then in my next attempt tell REMPREP to copy only 7GB (in bytes as it wants) and then try to reclone to the new drive, the drop in size WILL let me continue won\u0027t it? Or will I be chainsawing dads wagin all over again?  \n\nThanks   \n"
+    },
+    {
+      "id": "106794",
+      "timestamp": "2010-08-13T22:23:58+00:00",
+      "author": "steve6375",
+      "content": "That is why I said to format a drive as **7.8GB** (or as small as possible so you can just fit the files on) and not to format an 8GB drive as MAX!!!  \n\nSo   \n\n1. Use RMPrepUSB to format a drive as 7.8GB (or even smaller if possible)  \n2. Install files and check it works  \n3. Take an image --\\\u003e file   \n"
+    },
+    {
+      "id": "106797",
+      "timestamp": "2010-08-13T22:39:20+00:00",
+      "author": "Technotika",
+      "content": "Hey Thanks I think I get it now.....just been looking at the RMPREP webby...I wish I\u0027d seen that multi windows installer article a bit sooner......!!!!!!!! ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n\nI was mixed up between setting the BYTE size of the image file as opposed to prepping the drive from scratch and setting MAX (part 1) to say 7000 MBS which is gonna be fine. THEN image, and the defaults will make the image size the same as max partition size clearing my problem.   \n\nJust having a go on beta version aswell for the latest tech! Awsome. Thanks, looks like I\u0027m on the way now to FAST and reliable imaging for my project.  \n\nMany thanks :wink:   \nDo you think Imdisk is a good editor for updating images created in RMPREP?   \n"
+    },
+    {
+      "id": "106817",
+      "timestamp": "2010-08-14T09:48:51+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Do you think Imdisk is a good editor for updating images created in RMPREP?\nNO!.  \n\n\u003cbr /\u003e\n\nIMDISK does NOT deal (in the way needed/wanted) with HD-like images.  \nIt is a \"volume\" driver, you need a \"whole disk\" driver (if you want to modify the MBR and partition size), it\u0027s OK if you just want to add/delete files to/from the volume.  \n\nTime to stop guessing and start reading:  \n[http://www.boot-land...hp?showforum\u003d94](http://www.boot-land.net/forums/index.php?showforum\u003d94 \"External link\")  \n\n\u003cbr /\u003e\n\nHints:  \n\n* VDK by Ken Kato\n* MS own VSS drivers\n* Firadisk\n* WinVblock\n\nare \"whole hard disk\" drivers.  \n\n![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)  \nWonko   \n"
+    },
+    {
+      "id": "106825",
+      "timestamp": "2010-08-14T11:28:11+00:00",
+      "author": "Technotika",
+      "content": "Yes it is then! just files and menu entries is the only editing I need to do now sorted the size issue.RELAX TURBO! ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n"
+    },
+    {
+      "id": "106837",
+      "timestamp": "2010-08-14T15:17:11+00:00",
+      "author": "ksanderash",
+      "content": "I always used WinImage to make a backup of the 16Gb UFD. To update that backup I simply mount it with ImDisk. And yes, it is logical drive processing, not the whole (as \"physical\" in WinHex), with many possible partitions inside. But WinImage/ImDisk suit my basic needs perfectly. I have only one UFD to be updated frequently, not many different.  \n\nThe imaging functions of RMPrepUSB suite are also great variant to do the job. I just began to get acquainted with this great app. And the Clonedisk -- never heard about it, screens look very very promising. Thanks for bringing up the thread, **Technotika** -- you helped others! ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)  \n\nAnd **Wonko** and **steve** also get greetings, of course!! ![Posted Image](http://i.ru-board.com/s/pray.gif) :smile:   \n"
+    },
+    {
+      "id": "106839",
+      "timestamp": "2010-08-14T15:58:07+00:00",
+      "author": "Technotika",
+      "content": "Yeah the other beauty of rmprep compared to things like ghost32 ghost explorer is the speed. In ghost usage sometimes we had to wait over an hour in some cases for a image to transfer. With or without any compression. Also in ghost explorer the cases of folders and file names changes sometimes during edit which as many have found out can create havoc when trying to chain off BooTMgR!!! And having one of our builds chaining off exactly that, there can\u0027t be any room fir this kind off problem.   \n\nRmprep 22 minutes and only 5 to create.  \n\nDefintley big thanks for this awesome software, to boot land and everything helpful within it; posts, links, suggestions, code the lot. You come here post some problems and ALWAYS next time you check your email you got a response. A rare thing to behold. The kindness of strangers. And all that Jazz.   \n\nLooking forward to giving something back soon. :smile:   \n"
+    },
+    {
+      "id": "106840",
+      "timestamp": "2010-08-14T17:07:09+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I always used WinImage to make a backup of the 16Gb UFD. To update that backup I simply mount it with ImDisk. And yes, it is logical drive processing, not the whole (as \"physical\" in WinHex), with many possible partitions inside. But WinImage/ImDisk suit my basic needs perfectly. I have only one UFD to be updated frequently, not many different.\nJust to keep up the tradition of grumpiness :smile:, the Second worst app for dealing with \"Whole disk\" images is IMDISK, the **First** being Winimage. ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)  \n\n* IMDISK will (once mounted a \"whole disk\" image) completely IGNORE the MBR.\n* Winimage will RECREATE one (export to image with MBR) and more often than not it will create a wrong geometry for it OR use filedisk (also a \"volume only\" kind of driver)\n\n\u003cbr /\u003e\n\nThe possibilities of \"ruining\" the image using an unintended command is high. :smile:  \n\n@Technotika  \nGhost DOS may well be slower than something else. ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)  \nI doubt about ghost32, most probably it depends on the options used. ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png) If you have a clean source and select to skip empty sectors it should be faster, expecially on large drives.  \n\nOdin and selfimage also have this feature, AFAICR, but if your 7.x Gbytes are \"full\" there will be of course no or very little difference.  \n\nIt would be interesting to do a comparison test of different imaging utilities....  \n\n![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)  \nWonko   \n"
+    },
+    {
+      "id": "106843",
+      "timestamp": "2010-08-14T18:17:40+00:00",
+      "author": "Technotika",
+      "content": "Mr Wonko, \"grumpy\"? Nooo, surely not. Whatever next. :smile:   \n\nGrumpy people, last time I looked, don\u0027t take much pleasure in messing about with conceptualised goose booting. ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n\nIn keeping with \"reassurance\" \\\u0026 \"s-s-s-sl-l-l-o-o-o-w-w-w learning\", can I just be clear on this \"1\" matter.  \n\nIMDISK \"is\" OK for shifting files and folders about within the image. I understand that editing the geometry or more complex aspects of imaging the \\*.IMG file is not advisable with IMDISK.  \nAt this stage I\u0027m solely concerned with the files/folders aspect.  \n\nPeaceable Kingdoms :smile:   \n"
+    },
+    {
+      "id": "106845",
+      "timestamp": "2010-08-14T18:53:34+00:00",
+      "author": "ksanderash",
+      "content": "**Wonko**   \nSo I\u0027m kinda sitting now on a barrel of gunpowder? OMG, what am I to do?! ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png) Yes, I know about MBR cause I always have to install GRUB after restoring the image :smile: And it works! I affirm this :smile:   \n\nI like ImDisk for its easyness of use. It does mount ISOs, it does mount images ...em-m-m volumes, right? Anyway, not all of us are programmers, and we want something more handy, and would be better if with a pleasant GUI! ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)   \n\n**Technotika**   \nIt seems to me that Ghost images by files-and-folders method, not sectored one. That\u0027s the only guess of mine why it is so slow.   \n"
+    },
+    {
+      "id": "106848",
+      "timestamp": "2010-08-14T19:25:32+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Yes, I know about MBR cause I always have to install GRUB after restoring the image :smile: And it works! I affirm this ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)\n\nSure, you can also type the values in a disk editor nibble by nibble and it works....:smile:  \n\nIf you don\u0027t have a Philips #2 screwdriver, and you want to drive a #2 Philips screw in a plank, you can try with a Philips #1 one, or with a flat one of the appropriate size, or even with a hammer ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png).  \n\nMost of the times you\u0027ll manage to do it, but do not pretend that anything but the appropriate #2 screwdriver is the better choice. ![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)  \n\n![:mellow:](https://reboot.pro/public/style_emoticons/default/mellow.png)  \nWonko   \n"
+    },
+    {
+      "id": "106904",
+      "timestamp": "2010-08-15T10:16:56+00:00",
+      "author": "Technotika",
+      "content": "One more thing....slightly veering off topic, perhaps, apologies in advance.  \n\nLets say I wanted to push the image down the network to a colleagues desktop so they can image themselves. In the past this has sometimes caused such slight corruption it has made iso\u0027s not boot correctly and all sorts.  \n\nIs there something I can run against my \"gospel\" image to generate a verification file then re run \"whatever\" process that maybe to check it   \nis in exactly the same \"good\" condition as it was prior to sending.  \n\nHope that makes a sense.   \n"
+    },
+    {
+      "id": "106909",
+      "timestamp": "2010-08-15T13:50:07+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Is there something I can run against my \"gospel\" image to generate a verification file then re run \"whatever\" process that maybe to check it   \n\u003e is in exactly the same \"good\" condition as it was prior to sending.  \n\u003e\n\u003e Hope that makes a sense.\n\nLike using from the beginning a dd-like utility with MD5 hashing? ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n\nDSFOK:  \n[http://members.ozema...eezip/freeware/](http://members.ozemail.com.au/~nulifetv/freezip/freeware/ \"External link\")  \n\nOr any MD5 hashing utility?  \n[http://www.boot-land...?\\\u0026showtopic\u003d130](http://www.boot-land.net/forums/index.php?\u0026showtopic\u003d130 \"External link\")  \n\n\u003cbr /\u003e\n\n![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \nWonko   \n"
+    },
+    {
+      "id": "106949",
+      "timestamp": "2010-08-16T05:18:11+00:00",
+      "author": "Technotika",
+      "content": "Hey the link to md5click check is broken , does any one have a copy of the file or the correct link. Thanks ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n"
+    },
+    {
+      "id": "106962",
+      "timestamp": "2010-08-16T09:38:32+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Hey the link to md5click check is broken , does any one have a copy of the file or the correct link.\nYES. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n[http://homepages.tes...no-answers.html](http://homepages.tesco.net/J.deBoynePollard/FGA/questions-with-yes-or-no-answers.html \"External link\")  \n\nThe ***whole*** point is that you \\*need\\* not specifically md5click, ANY md5 utility will give you the SAME hash (or it is broken ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif))  \n[http://www.boot-land...?showtopic\u003d2532](http://www.boot-land.net/forums/index.php?showtopic\u003d2532 \"External link\")  \n\n![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \nWonko   \n"
+    },
+    {
+      "id": "106963",
+      "timestamp": "2010-08-16T09:58:21+00:00",
+      "author": "ksanderash",
+      "content": "[The server is DOWN](http://www.youtube.com/watch?v\u003d7wRxASytPuQ \"External link\") ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n\nUse classics ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)   \n[http://www.md5summer.org/](http://www.md5summer.org/ \"External link\")   \n"
+    },
+    {
+      "id": "106964",
+      "timestamp": "2010-08-16T10:13:12+00:00",
+      "author": "Technotika",
+      "content": "LOL some crazy smilies in this forum - thanks fella ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n"
+    },
+    {
+      "id": "107014",
+      "timestamp": "2010-08-17T01:05:27+00:00",
+      "author": "ksanderash",
+      "content": "Em-m-m... RMPrepUSB took **13** minutes to fill up a 16Gb UFD with my data. I.e. 20,09 Mb/sec write. Holy molly ![Posted Image](http://s19.rimg.info/8d77168181c032bdd02ea3fbfbd52512.gif)   \n"
+    },
+    {
+      "id": "107024",
+      "timestamp": "2010-08-17T08:09:38+00:00",
+      "author": "Technotika",
+      "content": "yeah man it\u0027s RAPID, On my win 7 64 pc it took 22 mins to ghost 7.22 GB image , at work on XP I have just imaged some ones disk and it took only 9 minutes, same 7.22 GB image, Kind of worried its too fast? I have md5 checksummed after copying the image across the network. Is it ok?   \n"
+    },
+    {
+      "id": "107041",
+      "timestamp": "2010-08-17T11:51:09+00:00",
+      "author": "Technotika",
+      "content": "Oh man, now I\u0027m really confused.......  \n\nSet the process in motion toda.  \n\nSent my final image down the lan to a colleagues machine, used RMPREP to load the file on to his USB.   \n\nMd5 checked. Works on some machines but just gets a flashing cursor on others at boot. Where as before on tests it was fine.   \n\nI tested my stick same machine same bios which had been reimaged with RMPREP and same problem. I then reimaged with an old ghost file and the system booted.  \n\nWhat on earth is going on there?   \n"
+    },
+    {
+      "id": "107044",
+      "timestamp": "2010-08-17T12:00:15+00:00",
+      "author": "Wonko the Sane",
+      "content": "Oww, comeon, it can\u0027t be voodoo....![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n\n* Wipe a stick. (writing 00\u0027s to it).\n* Restore to it the \"RMPREP\" image.\n* Try it on the machines.\n* Make an image of the actual \\\\\\\\.\\\\PhysicalDrive (the one that doesn\u0027t work on some machines) **with dsfo**.\n* Wipe that stick again.\n* Restore the ghost image on that **SAME** stick and make sure it boots on **that** machine that didn\u0027t boot previously.\n* Make an image of the actual \\\\\\\\.\\\\PhysicalDrive (the one that **does** work on that machine) **with dsfo**.\n* Compare the two files.\n\n\u003cbr /\u003e\n\n![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)  \nWonko   \n"
+    },
+    {
+      "id": "107045",
+      "timestamp": "2010-08-17T12:08:37+00:00",
+      "author": "Technotika",
+      "content": "I\u0027ll have to wait till I get some free time, it\u0027s tough trying to do this whilst doing my day job at the same time.  \n\nPerhaps I should \"CLEAN\" the USB sticks before loading the files back on in RMPREP?   \n"
+    },
+    {
+      "id": "107046",
+      "timestamp": "2010-08-17T12:08:52+00:00",
+      "author": "steve6375",
+      "content": "Check BIOS settings are same on all systems - user may have changed USB options.  \n\nAlso, always switch on each system from power off - not reboot or CTRL-ALT-DEL to get consistent results.  \n\nSome BIOS remember a device - e.g. it sees USB drive xxxx as formatted like an FDD - it remembers this until power off even if you reformat the USB drive and re-plug it.  \n1. Power up  \n2. Plug in USB formatted as FDD  \n3. BIOS remembers USB stick xyz as \u0027FDD\u0027  \n4. Now format USB stick as HDD  \n5. Place USB stick back in system and CTRL-ALT-DEL - BIOS STILL THINKS USB drive is FDD and tries to boot it as FDD/ZIP  \n6. Switch off system - and on again (may need to setup USB device in boot menu) - try booting again - USB seen as HDD and boots correctly.  \n\n\u003cbr /\u003e\n\nSo - always check BIOS settings are same across all systems and always switch off before USB booting.  \n\nSome BIOSes do this and it took me DAYS to figure out what was going on! Nearly tore all my hair out and thought I was going crazy!  \n\nSteve   \n"
+    },
+    {
+      "id": "107047",
+      "timestamp": "2010-08-17T12:17:20+00:00",
+      "author": "Technotika",
+      "content": "yeah the last 3 months I ran out of hair to pull out and had to resort to other places for a handful  \n\nOk with my new working GHOSTED usb stick - I made a filecopy with RMPREP.  \n\nI tried to restore my original one and for some reason said that the last 1 byte will be garbage? It didnt do that when I tested at home?  \n\nNow I am reimaging using RMPREP using the file I just created and is now taking 22 minutes as opposed to 9 mins this morning. Something happened to the image I think. And you know what I been mounting and editing the files using IMDISK. Maybe it smashed it?   \n"
+    },
+    {
+      "id": "107054",
+      "timestamp": "2010-08-17T12:37:31+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Perhaps I should \"CLEAN\" the USB sticks before loading the files back on in RMPREP?\n\nNo, that\u0027s of course NOT needed, WHY ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif) do you think that I wrote:  \n\u003e \u003cbr /\u003e\n\u003e\n\u003e * **Wipe a stick. (writing 00\u0027s to it).**\n\u003e * Restore to it the \"RMPREP\" image.\n\u003e * Try it on the machines.\n\u003e * Make an image of the actual \\\\\\\\.\\\\PhysicalDrive (the one that doesn\u0027t work on some machines) **with dsfo**.\n\u003e * Wipe that stick again.\n\u003e * Restore the ghost image on that **SAME** stick and make sure it boots on **that** machine that didn\u0027t boot previously.\n\u003e * Make an image of the actual \\\\\\\\.\\\\PhysicalDrive (the one that **does** work on that machine) **with dsfo**.\n\u003e * Compare the two files.\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nYou may want to compare with points #f of the \"common sense advice\", expecially point #f.3 ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif):  \n[http://www.boot-land...?showtopic\u003d9101](http://www.boot-land.net/forums/index.php?showtopic\u003d9101 \"External link\")  \n\n![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \nWonko   \n"
+    },
+    {
+      "id": "107055",
+      "timestamp": "2010-08-17T12:39:11+00:00",
+      "author": "Technotika",
+      "content": "OK PANIC OVER FRESH RMPREP FROM WORKING STICK IS #OK#  \n\nIM NOT EDITING IMAGES ANY MORE - END OF STORY   \n\nSORRY FOR SHOUTING BUT IM RELEASING TENSIONS   \n"
+    },
+    {
+      "id": "107057",
+      "timestamp": "2010-08-17T12:44:41+00:00",
+      "author": "ksanderash",
+      "content": "How do you edit images? ImDisk never spoiled any image for me! ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif) If you take the whole UFD image (from 0 and to the end of drive), you simply choose the partition. Have finished with editing? Unmount.  \n\n![Posted Image](http://img808.imageshack.us/img808/2875/14162767.png)  \n\nDo you make MD5 stamp on the files inside the image too, for safety?   \n"
+    },
+    {
+      "id": "107062",
+      "timestamp": "2010-08-17T13:13:08+00:00",
+      "author": "Technotika",
+      "content": "It seems fine now I am testing on all my test sticks and now redeploying to a another stick, good idea for md5 on the internal images, I right click and mount with IMDISK and use defaults.   \nCLEANING sticks first now aswell. Here goes another.........   \n"
+    },
+    {
+      "id": "107101",
+      "timestamp": "2010-08-17T22:14:32+00:00",
+      "author": "Technotika",
+      "content": "Guys, I\u0027m going to burst with frustration,   \n\n@wnk0  \n\nIf I create an image of working imaged USB and a not working image USB disk, what am I looking for between the 2 files, something like this (ImgPTEdit) will show me will it?   \n\nSomething terrible is happening..............  \n\nI formatted (hpformat) 3 different sticks (a 4gb, 1 gb \\\u0026 8gb) , and made bootable with grubinst.exe 1.1 and the copied menu.lst and stable grldr (21/03/2009) to root.  \n\nI wanted to just establish bare minimal g4b booting possible on the dc/7800 desktop (\\\u003c\\\u003c\\\u003cit\u0027s the only model, with this refusal to boot from imaged USBS) I tried 2 in the office and i got reports from another site of the same thing!) all same bios , and I have a spreadsheet with speed tests from dos driver testing (previous) so I know it works!!!!!!!!!!But how!?  \n\nHowever, all three blinking cursored, just like the image made them do earlier.  \nI checked the bios settings, and its fine, but as soon as ! ghost the stick or now use that rmprep img created after getting working from ghost , it boots fine.   \n\nI\u0027m confused as hell now and losing the plot. Sorry I didnt try dsfok yet, I never used it yet, could I achieve the same with odin, or self image? I can work those.   \n\n\u003cbr /\u003e\n\nin these 2 image details is there anything that looks like it might cause this strange isolated problem  \n\n1 is the 8gb stick imaged with RMPREP and blinking cursored on this onemachine (ok on others though!!! arrrh)its called sr33  \n\nand the other is the rmprep image taken from a usb imaged with the working ghost files   \nits a different size 32gb is sr33wkng  \n\n[![Posted Image](http://img19.imageshack.us/img19/9828/capturegy.jpg)](http://img19.imageshack.us/i/capturegy.jpg/ \"External link\")  \n\nUploaded with [ImageShack.us](http://imageshack.us \"External link\")   \n"
+    },
+    {
+      "id": "107112",
+      "timestamp": "2010-08-18T05:43:39+00:00",
+      "author": "steve6375",
+      "content": "Somewhere you have a BIOS which is using **240** heads per cylinder instead of 255 heads. I have seen this before with some BIOSes. You need to be careful of how you partition (not format) the USB drive and on what system you do this.  \n\nAlso, as I have said before - always start from a cold (off) system. Are you doing this?  \n\nRMPrepUSB will always partition and format the USB drive in the same way (same cyl/hds/sectors) regardless of what system you partition and format it on - HP Format may not and it may depend on the BIOS to determine no. of cyls/hds/sectors. So are you always using the same system to partition these pens on?  \n\nSome BIOSes look at the \\*\\*current\\*\\* partition table to determine how many heads per cylinders to use for disk LBA translation. If the partition table has 240 hds per cyl then it will use 240 for LBA conversion. Some (more modern) BIOSes do not do this and just use 255. So if it originally had 240 hpc a partition program may use 240 again as it gets the current chs params from the BIOS when it partitions the drive.  \n\nSuggest you **always use RMPrepUSB for partitioning** and you should get consistent results as it does not use any system calls to get disk parameters when creating the partition table (i.e. will always boot on system x or will never boot on system x).   \n"
+    },
+    {
+      "id": "107121",
+      "timestamp": "2010-08-18T07:55:00+00:00",
+      "author": "Technotika",
+      "content": "Yep I\u0027m doing cold off, testing now with a basic 2gb flashpen and 2 of these machines.  \n\nI am now a RMPREP groupie and am using that but getting some even more confusing results.  \n\non both machines  \n\nGrub4dos - blinking cursor  \nsyslinux - attempts to boot  \nfreedos - attempts to boot  \n\nIts as if suddenly they have a problem with G4D when 1) I know they work fine 2) the Ghost image that works was created with G4D  \n\nI\u0027m missing something   \n"
+    },
+    {
+      "id": "107123",
+      "timestamp": "2010-08-18T08:29:03+00:00",
+      "author": "steve6375",
+      "content": "If you used RMPrepUSB, do have a 255/63 head /spt format.  \n\nMaybe the systems don\u0027t like that.???  \n\nCan you try using the 64hd/32sec option instead?  \n\nWhen imaging - are you copyin whole disk or just 1st partition (PALL or DALL) ???  \n\nGetting a bit confused now - can you outline steps starting with a CLEANed USB drive...   \n"
+    },
+    {
+      "id": "107124",
+      "timestamp": "2010-08-18T08:41:31+00:00",
+      "author": "Technotika",
+      "content": "Ok here we go stuck a test 2gb USB PEN IN  \nfired up V.2.1.1  \n\n1. CLEANED /mbr wiped etc.  \n2. PRPEPARE DRIVE  \n\n```\nMAKE PARTITION NOT BOOTBABLE - unticked\n\nBOOT OPTIONS left on WinPe \u0026#40;top option\u0026#41;\n\nFAT32 \u0026#40;no over rides selected\u0026#41;\n```\n\n\u003cbr /\u003e\n\n3. INSTALL G4D  \nyes to copy GRLDR  \n\nThen I copy a sample menu.lst   \n\n4. EJECT  \n\nTest to see if can just get to menu  \nfine on anything but these machines  \nWith this going on it\u0027s like a madness, I mean how has it ever worked before, freaking me out..... ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n\nEDIT - Just tried 64hd/32sec and same cursor prob   \n"
+    },
+    {
+      "id": "107128",
+      "timestamp": "2010-08-18T09:00:40+00:00",
+      "author": "steve6375",
+      "content": "Maybe you partitioned the pens using the system that doesn\u0027t work using HPformat and it put a 240hd 63spt partition on them which those systems like???  \n\nOr - you booted a PC with the pen in which had 240 hds per track geometry in partition table - then used HPFormat tool which preserved 240 hds per track.  \n\n\\[Edit\\]  \nWhen you used RMPrepUSB it changed pen to 255/63 but when formatting with HPformat it still uses 240/63 - UNTIL you reboot the system - then is starts using 255/63 as that is what was on the pen when it booted???  \n\\[/Edit\\]  \n\nYou have an image with 240hds - if you put that on and then run grub4dos - does it get to menu.lst OK??   \n"
+    },
+    {
+      "id": "107131",
+      "timestamp": "2010-08-18T09:20:41+00:00",
+      "author": "Technotika",
+      "content": "edit  \n\\[Edit\\]  \nWhen you used RMPrepUSB it changed pen to 255/63 but when formatting with HPformat it still uses 240/63 - UNTIL you reboot the system - then is starts using 255/63 as that is what was on the pen when it booted??? \\\u003c\\\u003c\\\u003c\\\u003c\\\u003cyou mean the system im preparing the stick on or the target PC?  \n\\[/Edit\\]  \n\n\u003cbr /\u003e\n\nthe 250 image is the blinking cursor image.........  \n\nthe 240 is an image of my 32gb corsair that does work, coincidentally, this 32gb was the last stick to be imaged using ghost! (the image that got the sticks working on the machine again which then was imaged in rmprep and working)  \n\nImaging aside, I never had any hassle, getting g4d to boot on hardly anything, I even just formated in windows sometimes and then put g4d on and thats it no problem.  \n\nI think now I want to sack of the imaging side of this problem and just concentrate on getting it to boot g4d, then I can take care of the rest and sort the images. I think a fluke scenario hit one of the images and I need to know rather rely on some freak thing that got it working  \n\nRight Im going to find some different \"same\" machines and test, seems too complicated all of a sudden has to be simpler   \n"
+    },
+    {
+      "id": "107132",
+      "timestamp": "2010-08-18T09:29:50+00:00",
+      "author": "Wonko the Sane",
+      "content": "@Techotika  \n\nI have some good advice for you:  \n\nDON\u0027T PANIC  \nassume the above to be written in large, friendly letters ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n\nYour reports are practically impossible to understand, you are clearly freakin\u0027 out, (and there is NO need to).  \n\nTry calming down, FORGET anything you attempted till now and report things with some order.  \n\nI cannot see any problem in using dsfok, and you will have to learn to use it (or a similar dd-like utility before or later).  \n\n* Choose one stick and one stick only.\n* Wipe it.\n* Use RMPREPUSB ON THE SAME MACHINE IT IS SUPPOSED TO BOOT to partition/format it. (one of those that give you problems)\n* Add to it GRLDR(or NTLDR) and see if you have the blinking cursor on THAT SAME machine.\n* If not, save it\u0027s MBR.\n* If yes, save it\u0027s MBR all the same.\n* Give to the files a meaningful name, like MBR_PC_7800_working.mbr\n* Additionally, save the first secotr of the first partition (bootsector)\n* Give to the file a meaningful name, like BS_PC_7800_working.mbr\n\n\u003cbr /\u003e\n\nRepeat the above steps on another machine (one of those that do normally work).  \n\nName the two machines (say first one is 7800 and second one is \"IBM\").  \n\nCompress the two MBR\u0027s AND the two Bootsectors in a .zip file and upload it to a file sharing service and post a link.  \n\nYou can use HDhacker allright to save this sectors, if dsfo scares you ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif):  \n[http://dimio.altervi.../eng/index.html](http://dimio.altervista.org/eng/index.html \"External link\")  \n\nBTW, the problem can normally be solved by patching the bootsector.  \n\n![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \nWonko   \n"
+    },
+    {
+      "id": "107134",
+      "timestamp": "2010-08-18T09:39:52+00:00",
+      "author": "steve6375",
+      "content": "And repeat above but using HP Format.  \n\nIt seems to be that 240 geometry works but 255 does not. RMPrepUSB will always use 255 (or 64/32 if you tell it to), but HPformat may use \u0027system\u0027 BIOS geometry.  \n\nYour problem may be that you have used HPFormat (\u003dworked as 240 hds) but then went to **partitioning** using RMPrep Prepare (255 hds). Images will preserve/restore original (ptn table in the image) partition table. RMPrep Image function is just image (all other options in RMprepUSB are ignored).   \n"
+    },
+    {
+      "id": "107136",
+      "timestamp": "2010-08-18T10:14:05+00:00",
+      "author": "Technotika",
+      "content": "Ok, I\u0027m relaxing a bit now, thanks chaps ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n\nJust before I start the experiment for real....(just had a test)..can I be certain you want the MBR\u0027s \\\u0026 Sects from the USB stick or the HDD in the machine?? Sorry. Gotta check. Once I get confirmation I\u0027ll get cracking and post.   \n"
+    },
+    {
+      "id": "107140",
+      "timestamp": "2010-08-18T10:43:01+00:00",
+      "author": "hussey",
+      "content": "hello guys!!  \nwhat is this.. i am not getting  \n\n[T .. s](http://www.g.com/ \"External link\")  \n**Service note: Advertising link removed by psc**   \n"
+    },
+    {
+      "id": "107148",
+      "timestamp": "2010-08-18T11:19:26+00:00",
+      "author": "Technotika",
+      "content": "[Mbr tests](http://dl.dropbox.com/u/6631636/Mbr-tests-tika.7z \"External link\")  \n\nHi Done it..  \n\nTwo folders, RMPREP TEST (then subbed to WORKING \\\u0026 NOTWORKING with appropriate named files inside) \\\u0026 same for HPFORMAT as requested.  \n\nThe one and only stick \"8gb Sandisk Cruzer Micro\"  \n\nWonder what it\u0027s going to reveal...... ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n"
+    },
+    {
+      "id": "107149",
+      "timestamp": "2010-08-18T11:53:10+00:00",
+      "author": "steve6375",
+      "content": "You can use RMPrep USB Info to get details of each stick and post here.   \n"
+    },
+    {
+      "id": "107151",
+      "timestamp": "2010-08-18T12:08:28+00:00",
+      "author": "Technotika",
+      "content": "RMPARTUSB v2.1.0 ©2008-10 RM Education plc \\[SSi\\]  \n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\nAccessing Drive 1 - SanDisk Cruzer Micro USB Device 8,036,285,440 bytes  \nUSB Sector 0  \n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d SECTOR DATA \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\n\u003cbr /\u003e\n\n\\[Sector 0\\] 0MB  \n0000 EB 5E 80 05 20 39 FF FF - 00 00 00 00 00 00 00 00 ë\\^€. 9ÿÿ ........  \n0010 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0020 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0030 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0040 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0050 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0060 E8 00 00 5B 81 EB 63 00 - C1 EB 04 8C C8 01 C3 8E è..\\[ëc. Áë.ŒÈ.ÃŽ  \n0070 DB 53 6A 75 CB F6 06 02 - 00 04 74 0F 31 C0 8E C0 ÛSjuËö.. ..t\u000f1ÀŽÀ  \n0080 BF FC 05 66 B8 44 55 43 - 45 66 AB 68 00 20 17 BC ¿ü.f¸DUC Ef\\\u003c\\\u003ch. \u0017¼  \n0090 00 90 31 C9 51 BA 80 00 - 52 B4 08 F9 CD 13 5A 58 .1ÉQº€. R´.ùÍ\u0013ZX  \n00A0 16 07 72 17 80 E1 3F F9 - 74 11 91 B4 02 89 C5 31 \u0016.r\u0017€á?ù t\u0011\u0027´.‰Å1  \n00B0 DB 41 52 F9 CD 13 5A 72 - 02 F6 DC 0E 1F 9C 31 F6 ÛARùÍ\u0013Zr .öÜ\u000e\u001fœ1ö  \n00C0 31 FF B9 DF 00 FC F3 A5 - BB FC 1F 66 B8 47 52 55 1ÿ¹ß.üó¥ \\\u003e\\\u003eü\u001ff¸GRU  \n00D0 AA 66 39 07 75 03 E8 EE - 1A EA DE 00 00 20 16 1F ªf9.u.èî \u001aêÞ.. \u0016\u001f  \n00E0 66 39 07 74 31 66 60 A1 - 18 00 83 F8 3F 77 20 3C f9.t1f\\`¡ \u0018.ƒø?w \\\u003c  \n00F0 10 72 1C 48 BF 03 00 B4 - 02 99 BB 00 02 B9 02 00 \u0010r\u001cH¿..´ .™\\\u003e\\\u003e..¹..  \n0100 60 CD 13 61 73 09 60 31 - C0 CD 13 61 4F 75 E8 66 \\`Í\u0013as.\\`1 ÀÍ\u0013aOuèf  \n0110 61 66 39 07 75 56 9D 72 - 3E 0E 1F AD 88 E6 AD 89 af9.uVr \\\u003e\u000e\u001fˆæ‰  \n0120 C1 24 3F 74 1F 29 E8 48 - F6 D8 BF 03 00 B4 02 68 Á$?t\u001f)èH öØ¿..´.h  \n0130 00 0D 07 31 DB 60 CD 13 - 61 73 0A 60 31 C0 CD 13 ...1Û\\`Í\u0013 as.\\`1ÀÍ\u0013  \n0140 61 4F 75 E9 F9 E8 30 11 - 0F 87 94 1A 83 C6 0C 81 aOuéùè0\u0011 \u000f‡\"\u001aƒÆ.  \n0150 FE FE 01 72 C4 77 15 BE - B2 31 B4 08 99 52 CD 13 þþ.rÄw\u0015¾ ²1´.™RÍ\u0013  \n0160 58 72 09 99 91 24 3F 74 - 03 41 EB BE BE 8F 01 E8 Xr.™\u0027$?t .Aë¾¾.è  \n0170 16 00 EB FE FA B8 00 20 - 8E D0 BC DC 8F FB 66 61 \u0016.ëþú¸. ŽÐ¼Üûfa  \n0180 07 1F EB C8 B4 0E CD 10 - 2E AC 3C 00 75 F6 C3 0D .\u001fëÈ´\u000eÍ\u0010 .¬\\\u003c.uöÃ.  \n0190 0A 4D 69 73 73 69 6E 67 - 20 4D 42 52 2D 68 65 6C .Missing MBR-hel  \n01A0 70 65 72 2E 00 00 00 00 - 00 00 00 00 00 00 00 00 per..... ........  \n01B0 00 00 00 00 00 00 00 00 - BB 9D 16 00 00 00 80 01 ........ \\\u003e\\\u003e\u0016...€.  \n01C0 01 00 0C FE FF D0 3F 00 - 00 00 C0 7F EF 00 00 00 ...þÿÐ?. ..Àï...  \n01D0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n01E0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n01F0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 55 AA ........ ......Uª  \n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d END OF SECTOR DATA \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\n\u003cbr /\u003e\n\nPartition 1 (SIZE\u003d7663.969GiB) Type: 0C FAT32LBA (2047GB max) ACTIVE  \nSTART POS \u003d CYL:0 HD:1 SEC:1 END POS \u003d CYL:976 HD:254 SEC:63  \nSTART (LBA) \u003d 63 (0000003F) SIZE (LBA) \u003d 15695808 (00EF7FC0)  \n\nPartition 2 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nPartition 3 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nPartition 4 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nDrive 1 SanDisk Cruzer Micro USB Device is 8,036,285,440 bytes long (7.484GiB)   \n"
+    },
+    {
+      "id": "107153",
+      "timestamp": "2010-08-18T12:43:40+00:00",
+      "author": "Technotika",
+      "content": "Forget to mention something   \n\nBefore I did the tests I did some trial runs.   \n\nMy 8gb cruzor was working sweet - by accident I reloaded G4D when I was testing a 2 gb stick, I wanted to load g4d on the 2gb stick but the drive switched at the top in RMP and I reloaded g4d back on to the 8gb by accident.   \n\nI thought it wouoldnt matter as it was already g4d (and no formatting etc) - and I couldnt boot the PC back up again, flashing cursor again.   \n"
+    },
+    {
+      "id": "107154",
+      "timestamp": "2010-08-18T12:51:45+00:00",
+      "author": "steve6375",
+      "content": "Can you repeat that test again?  \n\nEither grub4dos doesn\u0027t like going on twice, or maybe when Windows see a grub4dos USB drive (plug in) it \u0027updates\u0027 the MBR for you ???  \n\n1. Restore 8GB pen back to working condition - do NOT test it yet orremove it from system.  \n2. Get USB Info  \n3. Run grub4dos on it   \n4. get USB Info  \n5. Unplug pen  \n6. Replug pen and get USB Info  \n7. Use pen to boot a system  \n8. Get USb Info again  \n\n\u003cbr /\u003e\n\nAnything change???   \n"
+    },
+    {
+      "id": "107156",
+      "timestamp": "2010-08-18T13:26:13+00:00",
+      "author": "Technotika",
+      "content": "\u003e 1. Restore 8GB pen back to working condition - do NOT test it yet orremove it from system.\n\nreimaged with RMPREP to known working condition from tested image - stayed in system - not ejected  \n\n\u003e 2. Get USB Info\n\n\u003cbr /\u003e\n\nRMPARTUSB v2.1.0 ©2008-10 RM Education plc \\[SSi\\]  \n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\nAccessing Drive 1 - SanDisk Cruzer Micro USB Device 8,036,285,440 bytes  \nUSB Sector 0  \n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d SECTOR DATA \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\n\u003cbr /\u003e\n\n\\[Sector 0\\] 0MB  \n0000 EB 5E 80 05 20 39 FF FF - 00 00 00 00 02 08 61 00 ë\\^€. 9ÿÿ ......a.  \n0010 02 00 00 00 00 F8 00 00 - 3F 00 FF 00 00 00 00 00 .....ø.. ?.ÿ.....  \n0020 81 DF EE 00 9B 3B 00 00 - 00 00 00 00 02 00 00 00 ßî.›;.. ........  \n0030 01 00 06 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0040 80 00 29 8F 5A 79 16 4E - 4F 20 4E 41 4D 45 20 20 €.)Zy\u0016N O NAME   \n0050 20 20 46 41 54 33 32 20 - 20 20 00 00 00 00 00 00 FAT32 ......  \n0060 E8 00 00 5B 81 EB 63 00 - C1 EB 04 8C C8 01 C3 8E è..\\[ëc. Áë.ŒÈ.ÃŽ  \n0070 DB 53 6A 75 CB F6 06 02 - 00 04 74 0F 31 C0 8E C0 ÛSjuËö.. ..t\u000f1ÀŽÀ  \n0080 BF FC 05 66 B8 44 55 43 - 45 66 AB 68 00 20 17 BC ¿ü.f¸DUC Ef\\\u003c\\\u003ch. \u0017¼  \n0090 00 90 31 C9 51 BA 80 00 - 52 B4 08 F9 CD 13 5A 58 .1ÉQº€. R´.ùÍ\u0013ZX  \n00A0 16 07 72 17 80 E1 3F F9 - 74 11 91 B4 02 89 C5 31 \u0016.r\u0017€á?ù t\u0011\u0027´.‰Å1  \n00B0 DB 41 52 F9 CD 13 5A 72 - 02 F6 DC 0E 1F 9C 31 F6 ÛARùÍ\u0013Zr .öÜ\u000e\u001fœ1ö  \n00C0 31 FF B9 DF 00 FC F3 A5 - BB FC 1F 66 B8 47 52 55 1ÿ¹ß.üó¥ \\\u003e\\\u003eü\u001ff¸GRU  \n00D0 AA 66 39 07 75 03 E8 EE - 1A EA DE 00 00 20 16 1F ªf9.u.èî \u001aêÞ.. \u0016\u001f  \n00E0 66 39 07 74 31 66 60 A1 - 18 00 83 F8 3F 77 20 3C f9.t1f\\`¡ \u0018.ƒø?w \\\u003c  \n00F0 10 72 1C 48 BF 03 00 B4 - 02 99 BB 00 02 B9 02 00 \u0010r\u001cH¿..´ .™\\\u003e\\\u003e..¹..  \n0100 60 CD 13 61 73 09 60 31 - C0 CD 13 61 4F 75 E8 66 \\`Í\u0013as.\\`1 ÀÍ\u0013aOuèf  \n0110 61 66 39 07 75 56 9D 72 - 3E 0E 1F AD 88 E6 AD 89 af9.uVr \\\u003e\u000e\u001fˆæ‰  \n0120 C1 24 3F 74 1F 29 E8 48 - F6 D8 BF 03 00 B4 02 68 Á$?t\u001f)èH öØ¿..´.h  \n0130 00 0D 07 31 DB 60 CD 13 - 61 73 0A 60 31 C0 CD 13 ...1Û\\`Í\u0013 as.\\`1ÀÍ\u0013  \n0140 61 4F 75 E9 F9 E8 30 11 - 0F 87 94 1A 83 C6 0C 81 aOuéùè0\u0011 \u000f‡\"\u001aƒÆ.  \n0150 FE FE 01 72 C4 77 15 BE - B2 31 B4 08 99 52 CD 13 þþ.rÄw\u0015¾ ²1´.™RÍ\u0013  \n0160 58 72 09 99 91 24 3F 74 - 03 41 EB BE BE 8F 01 E8 Xr.™\u0027$?t .Aë¾¾.è  \n0170 16 00 EB FE FA B8 00 20 - 8E D0 BC DC 8F FB 66 61 \u0016.ëþú¸. ŽÐ¼Üûfa  \n0180 07 1F EB C8 B4 0E CD 10 - 2E AC 3C 00 75 F6 C3 0D .\u001fëÈ´\u000eÍ\u0010 .¬\\\u003c.uöÃ.  \n0190 0A 4D 69 73 73 69 6E 67 - 20 4D 42 52 2D 68 65 6C .Missing MBR-hel  \n01A0 70 65 72 2E 00 00 00 00 - 00 00 00 00 00 00 00 00 per..... ........  \n01B0 00 00 00 00 00 00 00 00 - B0 03 D4 8D 00 00 80 01 ........ °.Ô..€.  \n01C0 01 00 0B FE FF AB 3F 00 - 00 00 6D 6C E6 00 00 00 ...þÿ\\\u003c\\\u003c?. ..mlæ...  \n01D0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n01E0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n01F0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 55 AA ........ ......Uª  \n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d END OF SECTOR DATA \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\n\u003cbr /\u003e\n\nPartition 1 (SIZE\u003d7373.553GiB) Type: 0B FAT32 (2047GB max) ACTIVE  \nSTART POS \u003d CYL:0 HD:1 SEC:1 END POS \u003d CYL:939 HD:254 SEC:63  \nSTART (LBA) \u003d 63 (0000003F) SIZE (LBA) \u003d 15101037 (00E66C6D)  \n\nPartition 2 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nPartition 3 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nPartition 4 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nDrive 1 SanDisk Cruzer Micro USB Device is 8,036,285,440 bytes long (7.484GiB)  \n\n\u003e 3. Run grub4dos on it\n\nDone!  \n\n\u003e 4. get USB Info\n\n\u003cbr /\u003e\n\nRMPARTUSB v2.1.0 ©2008-10 RM Education plc \\[SSi\\]  \n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\nAccessing Drive 1 - SanDisk Cruzer Micro USB Device 8,036,285,440 bytes  \nUSB Sector 0  \n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d SECTOR DATA \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\n\u003cbr /\u003e\n\n\\[Sector 0\\] 0MB  \n0000 EB 5E 80 05 20 39 FF FF - 00 00 00 00 00 00 00 00 ë\\^€. 9ÿÿ ........  \n0010 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0020 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0030 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0040 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0050 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0060 E8 00 00 5B 81 EB 63 00 - C1 EB 04 8C C8 01 C3 8E è..\\[ëc. Áë.ŒÈ.ÃŽ  \n0070 DB 53 6A 75 CB F6 06 02 - 00 04 74 0F 31 C0 8E C0 ÛSjuËö.. ..t\u000f1ÀŽÀ  \n0080 BF FC 05 66 B8 44 55 43 - 45 66 AB 68 00 20 17 BC ¿ü.f¸DUC Ef\\\u003c\\\u003ch. \u0017¼  \n0090 00 90 31 C9 51 BA 80 00 - 52 B4 08 F9 CD 13 5A 58 .1ÉQº€. R´.ùÍ\u0013ZX  \n00A0 16 07 72 17 80 E1 3F F9 - 74 11 91 B4 02 89 C5 31 \u0016.r\u0017€á?ù t\u0011\u0027´.‰Å1  \n00B0 DB 41 52 F9 CD 13 5A 72 - 02 F6 DC 0E 1F 9C 31 F6 ÛARùÍ\u0013Zr .öÜ\u000e\u001fœ1ö  \n00C0 31 FF B9 DF 00 FC F3 A5 - BB FC 1F 66 B8 47 52 55 1ÿ¹ß.üó¥ \\\u003e\\\u003eü\u001ff¸GRU  \n00D0 AA 66 39 07 75 03 E8 EE - 1A EA DE 00 00 20 16 1F ªf9.u.èî \u001aêÞ.. \u0016\u001f  \n00E0 66 39 07 74 31 66 60 A1 - 18 00 83 F8 3F 77 20 3C f9.t1f\\`¡ \u0018.ƒø?w \\\u003c  \n00F0 10 72 1C 48 BF 03 00 B4 - 02 99 BB 00 02 B9 02 00 \u0010r\u001cH¿..´ .™\\\u003e\\\u003e..¹..  \n0100 60 CD 13 61 73 09 60 31 - C0 CD 13 61 4F 75 E8 66 \\`Í\u0013as.\\`1 ÀÍ\u0013aOuèf  \n0110 61 66 39 07 75 56 9D 72 - 3E 0E 1F AD 88 E6 AD 89 af9.uVr \\\u003e\u000e\u001fˆæ‰  \n0120 C1 24 3F 74 1F 29 E8 48 - F6 D8 BF 03 00 B4 02 68 Á$?t\u001f)èH öØ¿..´.h  \n0130 00 0D 07 31 DB 60 CD 13 - 61 73 0A 60 31 C0 CD 13 ...1Û\\`Í\u0013 as.\\`1ÀÍ\u0013  \n0140 61 4F 75 E9 F9 E8 30 11 - 0F 87 94 1A 83 C6 0C 81 aOuéùè0\u0011 \u000f‡\"\u001aƒÆ.  \n0150 FE FE 01 72 C4 77 15 BE - B2 31 B4 08 99 52 CD 13 þþ.rÄw\u0015¾ ²1´.™RÍ\u0013  \n0160 58 72 09 99 91 24 3F 74 - 03 41 EB BE BE 8F 01 E8 Xr.™\u0027$?t .Aë¾¾.è  \n0170 16 00 EB FE FA B8 00 20 - 8E D0 BC DC 8F FB 66 61 \u0016.ëþú¸. ŽÐ¼Üûfa  \n0180 07 1F EB C8 B4 0E CD 10 - 2E AC 3C 00 75 F6 C3 0D .\u001fëÈ´\u000eÍ\u0010 .¬\\\u003c.uöÃ.  \n0190 0A 4D 69 73 73 69 6E 67 - 20 4D 42 52 2D 68 65 6C .Missing MBR-hel  \n01A0 70 65 72 2E 00 00 00 00 - 00 00 00 00 00 00 00 00 per..... ........  \n01B0 00 00 00 00 00 00 00 00 - B0 03 D4 8D 00 00 80 01 ........ °.Ô..€.  \n01C0 01 00 0B FE FF AB 3F 00 - 00 00 6D 6C E6 00 00 00 ...þÿ\\\u003c\\\u003c?. ..mlæ...  \n01D0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n01E0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n01F0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 55 AA ........ ......Uª  \n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d END OF SECTOR DATA \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\n\u003cbr /\u003e\n\nPartition 1 (SIZE\u003d7373.553GiB) Type: 0B FAT32 (2047GB max) ACTIVE  \nSTART POS \u003d CYL:0 HD:1 SEC:1 END POS \u003d CYL:939 HD:254 SEC:63  \nSTART (LBA) \u003d 63 (0000003F) SIZE (LBA) \u003d 15101037 (00E66C6D)  \n\nPartition 2 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nPartition 3 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nPartition 4 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nDrive 1 SanDisk Cruzer Micro USB Device is 8,036,285,440 bytes long (7.484GiB)  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003e 5. Unplug pen\n\nDone!  \n\n\u003e 6. Replug pen and get USB Info\n\n\u003cbr /\u003e\n\nRMPARTUSB v2.1.0 ©2008-10 RM Education plc \\[SSi\\]  \n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\nAccessing Drive 1 - SanDisk Cruzer Micro USB Device 8,036,285,440 bytes  \nUSB Sector 0  \n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d SECTOR DATA \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\n\u003cbr /\u003e\n\n\\[Sector 0\\] 0MB  \n0000 EB 5E 80 05 20 39 FF FF - 00 00 00 00 00 00 00 00 ë\\^€. 9ÿÿ ........  \n0010 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0020 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0030 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0040 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0050 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0060 E8 00 00 5B 81 EB 63 00 - C1 EB 04 8C C8 01 C3 8E è..\\[ëc. Áë.ŒÈ.ÃŽ  \n0070 DB 53 6A 75 CB F6 06 02 - 00 04 74 0F 31 C0 8E C0 ÛSjuËö.. ..t\u000f1ÀŽÀ  \n0080 BF FC 05 66 B8 44 55 43 - 45 66 AB 68 00 20 17 BC ¿ü.f¸DUC Ef\\\u003c\\\u003ch. \u0017¼  \n0090 00 90 31 C9 51 BA 80 00 - 52 B4 08 F9 CD 13 5A 58 .1ÉQº€. R´.ùÍ\u0013ZX  \n00A0 16 07 72 17 80 E1 3F F9 - 74 11 91 B4 02 89 C5 31 \u0016.r\u0017€á?ù t\u0011\u0027´.‰Å1  \n00B0 DB 41 52 F9 CD 13 5A 72 - 02 F6 DC 0E 1F 9C 31 F6 ÛARùÍ\u0013Zr .öÜ\u000e\u001fœ1ö  \n00C0 31 FF B9 DF 00 FC F3 A5 - BB FC 1F 66 B8 47 52 55 1ÿ¹ß.üó¥ \\\u003e\\\u003eü\u001ff¸GRU  \n00D0 AA 66 39 07 75 03 E8 EE - 1A EA DE 00 00 20 16 1F ªf9.u.èî \u001aêÞ.. \u0016\u001f  \n00E0 66 39 07 74 31 66 60 A1 - 18 00 83 F8 3F 77 20 3C f9.t1f\\`¡ \u0018.ƒø?w \\\u003c  \n00F0 10 72 1C 48 BF 03 00 B4 - 02 99 BB 00 02 B9 02 00 \u0010r\u001cH¿..´ .™\\\u003e\\\u003e..¹..  \n0100 60 CD 13 61 73 09 60 31 - C0 CD 13 61 4F 75 E8 66 \\`Í\u0013as.\\`1 ÀÍ\u0013aOuèf  \n0110 61 66 39 07 75 56 9D 72 - 3E 0E 1F AD 88 E6 AD 89 af9.uVr \\\u003e\u000e\u001fˆæ‰  \n0120 C1 24 3F 74 1F 29 E8 48 - F6 D8 BF 03 00 B4 02 68 Á$?t\u001f)èH öØ¿..´.h  \n0130 00 0D 07 31 DB 60 CD 13 - 61 73 0A 60 31 C0 CD 13 ...1Û\\`Í\u0013 as.\\`1ÀÍ\u0013  \n0140 61 4F 75 E9 F9 E8 30 11 - 0F 87 94 1A 83 C6 0C 81 aOuéùè0\u0011 \u000f‡\"\u001aƒÆ.  \n0150 FE FE 01 72 C4 77 15 BE - B2 31 B4 08 99 52 CD 13 þþ.rÄw\u0015¾ ²1´.™RÍ\u0013  \n0160 58 72 09 99 91 24 3F 74 - 03 41 EB BE BE 8F 01 E8 Xr.™\u0027$?t .Aë¾¾.è  \n0170 16 00 EB FE FA B8 00 20 - 8E D0 BC DC 8F FB 66 61 \u0016.ëþú¸. ŽÐ¼Üûfa  \n0180 07 1F EB C8 B4 0E CD 10 - 2E AC 3C 00 75 F6 C3 0D .\u001fëÈ´\u000eÍ\u0010 .¬\\\u003c.uöÃ.  \n0190 0A 4D 69 73 73 69 6E 67 - 20 4D 42 52 2D 68 65 6C .Missing MBR-hel  \n01A0 70 65 72 2E 00 00 00 00 - 00 00 00 00 00 00 00 00 per..... ........  \n01B0 00 00 00 00 00 00 00 00 - B0 03 D4 8D 00 00 80 01 ........ °.Ô..€.  \n01C0 01 00 0B FE FF AB 3F 00 - 00 00 6D 6C E6 00 00 00 ...þÿ\\\u003c\\\u003c?. ..mlæ...  \n01D0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n01E0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n01F0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 55 AA ........ ......Uª  \n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d END OF SECTOR DATA \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\n\u003cbr /\u003e\n\nPartition 1 (SIZE\u003d7373.553GiB) Type: 0B FAT32 (2047GB max) ACTIVE  \nSTART POS \u003d CYL:0 HD:1 SEC:1 END POS \u003d CYL:939 HD:254 SEC:63  \nSTART (LBA) \u003d 63 (0000003F) SIZE (LBA) \u003d 15101037 (00E66C6D)  \n\nPartition 2 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nPartition 3 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nPartition 4 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nDrive 1 SanDisk Cruzer Micro USB Device is 8,036,285,440 bytes long (7.484GiB)  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003e 7. Use pen to boot a system\n\nDone! (used a working system)  \nResults: booted  \n\n\u003e 8. Get USb Info again\n\n\u003cbr /\u003e\n\nRMPARTUSB v2.1.0 ©2008-10 RM Education plc \\[SSi\\]  \n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\nAccessing Drive 1 - SanDisk Cruzer Micro USB Device 8,036,285,440 bytes  \nUSB Sector 0  \n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d SECTOR DATA \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\n\u003cbr /\u003e\n\n\\[Sector 0\\] 0MB  \n0000 EB 5E 80 05 20 39 FF FF - 00 00 00 00 00 00 00 00 ë\\^€. 9ÿÿ ........  \n0010 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0020 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0030 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0040 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0050 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0060 E8 00 00 5B 81 EB 63 00 - C1 EB 04 8C C8 01 C3 8E è..\\[ëc. Áë.ŒÈ.ÃŽ  \n0070 DB 53 6A 75 CB F6 06 02 - 00 04 74 0F 31 C0 8E C0 ÛSjuËö.. ..t\u000f1ÀŽÀ  \n0080 BF FC 05 66 B8 44 55 43 - 45 66 AB 68 00 20 17 BC ¿ü.f¸DUC Ef\\\u003c\\\u003ch. \u0017¼  \n0090 00 90 31 C9 51 BA 80 00 - 52 B4 08 F9 CD 13 5A 58 .1ÉQº€. R´.ùÍ\u0013ZX  \n00A0 16 07 72 17 80 E1 3F F9 - 74 11 91 B4 02 89 C5 31 \u0016.r\u0017€á?ù t\u0011\u0027´.‰Å1  \n00B0 DB 41 52 F9 CD 13 5A 72 - 02 F6 DC 0E 1F 9C 31 F6 ÛARùÍ\u0013Zr .öÜ\u000e\u001fœ1ö  \n00C0 31 FF B9 DF 00 FC F3 A5 - BB FC 1F 66 B8 47 52 55 1ÿ¹ß.üó¥ \\\u003e\\\u003eü\u001ff¸GRU  \n00D0 AA 66 39 07 75 03 E8 EE - 1A EA DE 00 00 20 16 1F ªf9.u.èî \u001aêÞ.. \u0016\u001f  \n00E0 66 39 07 74 31 66 60 A1 - 18 00 83 F8 3F 77 20 3C f9.t1f\\`¡ \u0018.ƒø?w \\\u003c  \n00F0 10 72 1C 48 BF 03 00 B4 - 02 99 BB 00 02 B9 02 00 \u0010r\u001cH¿..´ .™\\\u003e\\\u003e..¹..  \n0100 60 CD 13 61 73 09 60 31 - C0 CD 13 61 4F 75 E8 66 \\`Í\u0013as.\\`1 ÀÍ\u0013aOuèf  \n0110 61 66 39 07 75 56 9D 72 - 3E 0E 1F AD 88 E6 AD 89 af9.uVr \\\u003e\u000e\u001fˆæ‰  \n0120 C1 24 3F 74 1F 29 E8 48 - F6 D8 BF 03 00 B4 02 68 Á$?t\u001f)èH öØ¿..´.h  \n0130 00 0D 07 31 DB 60 CD 13 - 61 73 0A 60 31 C0 CD 13 ...1Û\\`Í\u0013 as.\\`1ÀÍ\u0013  \n0140 61 4F 75 E9 F9 E8 30 11 - 0F 87 94 1A 83 C6 0C 81 aOuéùè0\u0011 \u000f‡\"\u001aƒÆ.  \n0150 FE FE 01 72 C4 77 15 BE - B2 31 B4 08 99 52 CD 13 þþ.rÄw\u0015¾ ²1´.™RÍ\u0013  \n0160 58 72 09 99 91 24 3F 74 - 03 41 EB BE BE 8F 01 E8 Xr.™\u0027$?t .Aë¾¾.è  \n0170 16 00 EB FE FA B8 00 20 - 8E D0 BC DC 8F FB 66 61 \u0016.ëþú¸. ŽÐ¼Üûfa  \n0180 07 1F EB C8 B4 0E CD 10 - 2E AC 3C 00 75 F6 C3 0D .\u001fëÈ´\u000eÍ\u0010 .¬\\\u003c.uöÃ.  \n0190 0A 4D 69 73 73 69 6E 67 - 20 4D 42 52 2D 68 65 6C .Missing MBR-hel  \n01A0 70 65 72 2E 00 00 00 00 - 00 00 00 00 00 00 00 00 per..... ........  \n01B0 00 00 00 00 00 00 00 00 - B0 03 D4 8D 00 00 80 01 ........ °.Ô..€.  \n01C0 01 00 0B FE FF AB 3F 00 - 00 00 6D 6C E6 00 00 00 ...þÿ\\\u003c\\\u003c?. ..mlæ...  \n01D0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n01E0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n01F0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 55 AA ........ ......Uª  \n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d END OF SECTOR DATA \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\n\u003cbr /\u003e\n\nPartition 1 (SIZE\u003d7373.553GiB) Type: 0B FAT32 (2047GB max) ACTIVE  \nSTART POS \u003d CYL:0 HD:1 SEC:1 END POS \u003d CYL:939 HD:254 SEC:63  \nSTART (LBA) \u003d 63 (0000003F) SIZE (LBA) \u003d 15101037 (00E66C6D)  \n\nPartition 2 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nPartition 3 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nPartition 4 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nDrive 1 SanDisk Cruzer Micro USB Device is 8,036,285,440 bytes long (7.484GiB)  \n\n####################################################################  \n\nedit: after this test tried trouble machine, same blinking cursor   \n"
+    },
+    {
+      "id": "107157",
+      "timestamp": "2010-08-18T13:57:03+00:00",
+      "author": "Wonko the Sane",
+      "content": "You are still panicking. ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)  \n\nThe files:  \nBS-PCDC800-NOTWORKING  \nMBR-PCDC800-NOTWORKING  \nare IDENTICAL and they are BOTH the MBR.  \n\nThe files:  \nBS-LT6910P-WORKING  \nMBR-LT6910P-WORKING  \nare also IDENTICAL, they are both the MBR AND they are also identical to the other two above.  \n\nI\u0027ll try to be more explicit.  \nUse Hdhacker and image once the first sector of the PhysicalDrive (the MBR) and once the first sector of LogicalDrive (first sector of the bootsector).  \n\n![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \nWonko   \n"
+    },
+    {
+      "id": "107161",
+      "timestamp": "2010-08-18T14:24:59+00:00",
+      "author": "Technotika",
+      "content": "[Mbr Tests Take II](http://dl.dropbox.com/u/6631636/mbr_tests_tika_takeII.7z \"External link\")  \n\nOk think I got it this time :-)  \n\nJust did rmprep only this time..... ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n"
+    },
+    {
+      "id": "107168",
+      "timestamp": "2010-08-18T15:03:22+00:00",
+      "author": "Wonko the Sane",
+      "content": "Sometimes it is so difficult to communicate...![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nHowever never mind.  \n\nThe drive is formatted FAT32 with partition ID 0C, which is correct (LBA mapping) but that probably is ignored by the stoopid BIOS of the dc7800, which most probably defaults to 240 heads instead of the standard 255.  \n\nThe bootsector is Vista/7 invoking BOOTMGR.  \n\n\u003cbr /\u003e\n\nThe good news are that you can try patching the bootsector according to this:  \n[http://www.911cd.net...o...1702\\\u0026st\u003d129](http://www.911cd.net/forums//index.php?showtopic\u003d21702\u0026st\u003d129 \"External link\")  \n[http://www.boot-land...?...\u003d8528\\\u0026st\u003d21](http://www.boot-land.net/forums/index.php?showtopic\u003d8528\u0026st\u003d21 \"External link\")  \n\n\u003cbr /\u003e\n\nThe bad news are that the exe\u0027s won\u0027t work as your bootsector is identified by MSDOS5.1 (Vista ![:(](http://reboot.pro/public/style_emoticons/default/sad.png) ? ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)) so you\u0027ll have to use a hex editor, Tiny Hexer is suggested:  \n[http://www.boot-land...?showtopic\u003d8734](http://www.boot-land.net/forums/index.php?showtopic\u003d8734 \"External link\")  \n\nBut since the code is different, we will need to find which bytes to actually patch....  \n\nCan you use for testing purpose a \"normal\" (2K/XP) bootsector invoking NTLDR?   \n\n![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)  \nWonko   \n"
+    },
+    {
+      "id": "107171",
+      "timestamp": "2010-08-18T15:23:40+00:00",
+      "author": "Technotika",
+      "content": "Sorry fella take 3 coming up\\\u003e\\\u003e\\\u003e\\\u003e\\\u003e[here](http://dl.dropbox.com/u/6631636/mbr_tests_tika_takeIII.7z \"External link\")  \n\nKind of worried about patching coz then wont the stick stop working in machines it\u0027s already working in,  \nand also still miffed about a certain image will make the stick work, but I\u0027m not panicing anymore.   \n"
+    },
+    {
+      "id": "107172",
+      "timestamp": "2010-08-18T15:29:03+00:00",
+      "author": "steve6375",
+      "content": "Just to make sure your test was valid...  \n\n\u003e 1. Restore 8GB pen back to working condition - do NOT test it yet orremove it from system.\n\\\u003e\\\u003e\\\u003ereimaged with RMPREP to known working condition from tested image - stayed in system - not ejected  \n\n\u003cbr /\u003e\n\nCan you repeat 1 and test the stick on problem system (twice in a row after cold off each time).  \n\nThen re-insert in RMPrep system and check USb info is same.  \n\nIn step 7 I meant boot from a problem system! There is no problem with a good system so why test it on a good system - it is the problem system we are trying to get to boot. It seems to me that the problem system only boots from a 240 hd geometry ptn table???  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nS   \n"
+    },
+    {
+      "id": "107174",
+      "timestamp": "2010-08-18T15:42:29+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Kind of worried about patching coz then wont the stick stop working in machines it\u0027s already working in,  \n\u003e and also still miffed about a certain image will make the stick work, but I\u0027m not panicing anymore.\nYes, you are.  \n\nYou evidently completely failed ***reading*** the given links and what I posted.  \n\nIn a nutshell:  \n\n* some bootsector CODEs do an additional UNNEEDED check on CHS values\n* this check can be removed since it is UNNEEDED\n* there is NOT a documented way (AFAIK) to remove this UNNEEDED check on your particular bootsector CODE\n\n\u003cbr /\u003e\n\nIn other words:  \n\n* you have a problem\n* there is a known, tested solution to solve THAT problem in similar situations\n* there is NOT a known tested solution to solve THAT problem in EXACTLY your situation\n\n\u003cbr /\u003e\n\nSo, if you want to solve your problem you will have to:  \n\n* experiment with a different bootsector CODE for which the solution exists (to verify that the solution actually works in your case and that your problem is actually the one that is connected to this CHS mapping)\n* find how to apply the same principles on a different CODE (the one you use)\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)  \nWonko   \n"
+    },
+    {
+      "id": "107195",
+      "timestamp": "2010-08-18T20:33:28+00:00",
+      "author": "Technotika",
+      "content": "I better get reading then, sorry for wasting everyone\u0027s time. I\u0027m sure I\u0027ll work it out. I\u0027ll keep you all posted ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n"
+    },
+    {
+      "id": "107206",
+      "timestamp": "2010-08-18T23:28:59+00:00",
+      "author": "ksanderash",
+      "content": "**Technotika**   \nHey, keep on fight ![Posted Image](http://s.rimg.info/7631865e5a0c883dbb209db3e014840b.gif) ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n\nYour tinkering about the lame hardware is kinda usable -- **steve** will be warned against such trouble cases. (If I got it right what is happening with your boot problems -- maybe RMprepUSB isn\u0027t blamed here whatsoever) ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n"
+    },
+    {
+      "id": "107219",
+      "timestamp": "2010-08-19T07:50:40+00:00",
+      "author": "Technotika",
+      "content": "@Steve - here is the USB info you asked for - stays the same after 2 cold reboots - and the cylinders are on 254, I think so it does boot even if not on 240 - this is \"the\" trouble machine.   \n\nRMPARTUSB v2.1.0 ©2008-10 RM Education plc \\[SSi\\]  \n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\nAccessing Drive 1 - SanDisk Cruzer Micro USB Device 8,036,285,440 bytes  \nUSB Sector 0  \n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d SECTOR DATA \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\n\u003cbr /\u003e\n\n\\[Sector 0\\] 0MB  \n0000 EB 5E 80 05 20 39 FF FF - 00 00 00 00 02 08 61 00 ë\\^€. 9ÿÿ ......a.  \n0010 02 00 00 00 00 F8 00 00 - 3F 00 FF 00 00 00 00 00 .....ø.. ?.ÿ.....  \n0020 81 DF EE 00 9B 3B 00 00 - 00 00 00 00 02 00 00 00 ßî.›;.. ........  \n0030 01 00 06 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0040 80 00 29 8F 5A 79 16 4E - 4F 20 4E 41 4D 45 20 20 €.)Zy\u0016N O NAME   \n0050 20 20 46 41 54 33 32 20 - 20 20 00 00 00 00 00 00 FAT32 ......  \n0060 E8 00 00 5B 81 EB 63 00 - C1 EB 04 8C C8 01 C3 8E è..\\[ëc. Áë.ŒÈ.ÃŽ  \n0070 DB 53 6A 75 CB F6 06 02 - 00 04 74 0F 31 C0 8E C0 ÛSjuËö.. ..t\u000f1ÀŽÀ  \n0080 BF FC 05 66 B8 44 55 43 - 45 66 AB 68 00 20 17 BC ¿ü.f¸DUC Ef\\\u003c\\\u003ch. \u0017¼  \n0090 00 90 31 C9 51 BA 80 00 - 52 B4 08 F9 CD 13 5A 58 .1ÉQº€. R´.ùÍ\u0013ZX  \n00A0 16 07 72 17 80 E1 3F F9 - 74 11 91 B4 02 89 C5 31 \u0016.r\u0017€á?ù t\u0011\u0027´.‰Å1  \n00B0 DB 41 52 F9 CD 13 5A 72 - 02 F6 DC 0E 1F 9C 31 F6 ÛARùÍ\u0013Zr .öÜ\u000e\u001fœ1ö  \n00C0 31 FF B9 DF 00 FC F3 A5 - BB FC 1F 66 B8 47 52 55 1ÿ¹ß.üó¥ \\\u003e\\\u003eü\u001ff¸GRU  \n00D0 AA 66 39 07 75 03 E8 EE - 1A EA DE 00 00 20 16 1F ªf9.u.èî \u001aêÞ.. \u0016\u001f  \n00E0 66 39 07 74 31 66 60 A1 - 18 00 83 F8 3F 77 20 3C f9.t1f\\`¡ \u0018.ƒø?w \\\u003c  \n00F0 10 72 1C 48 BF 03 00 B4 - 02 99 BB 00 02 B9 02 00 \u0010r\u001cH¿..´ .™\\\u003e\\\u003e..¹..  \n0100 60 CD 13 61 73 09 60 31 - C0 CD 13 61 4F 75 E8 66 \\`Í\u0013as.\\`1 ÀÍ\u0013aOuèf  \n0110 61 66 39 07 75 56 9D 72 - 3E 0E 1F AD 88 E6 AD 89 af9.uVr \\\u003e\u000e\u001fˆæ‰  \n0120 C1 24 3F 74 1F 29 E8 48 - F6 D8 BF 03 00 B4 02 68 Á$?t\u001f)èH öØ¿..´.h  \n0130 00 0D 07 31 DB 60 CD 13 - 61 73 0A 60 31 C0 CD 13 ...1Û\\`Í\u0013 as.\\`1ÀÍ\u0013  \n0140 61 4F 75 E9 F9 E8 30 11 - 0F 87 94 1A 83 C6 0C 81 aOuéùè0\u0011 \u000f‡\"\u001aƒÆ.  \n0150 FE FE 01 72 C4 77 15 BE - B2 31 B4 08 99 52 CD 13 þþ.rÄw\u0015¾ ²1´.™RÍ\u0013  \n0160 58 72 09 99 91 24 3F 74 - 03 41 EB BE BE 8F 01 E8 Xr.™\u0027$?t .Aë¾¾.è  \n0170 16 00 EB FE FA B8 00 20 - 8E D0 BC DC 8F FB 66 61 \u0016.ëþú¸. ŽÐ¼Üûfa  \n0180 07 1F EB C8 B4 0E CD 10 - 2E AC 3C 00 75 F6 C3 0D .\u001fëÈ´\u000eÍ\u0010 .¬\\\u003c.uöÃ.  \n0190 0A 4D 69 73 73 69 6E 67 - 20 4D 42 52 2D 68 65 6C .Missing MBR-hel  \n01A0 70 65 72 2E 00 00 00 00 - 00 00 00 00 00 00 00 00 per..... ........  \n01B0 00 00 00 00 00 00 00 00 - B0 03 D4 8D 00 00 80 01 ........ °.Ô..€.  \n01C0 01 00 0B FE FF AB 3F 00 - 00 00 6D 6C E6 00 00 00 ...þÿ\\\u003c\\\u003c?. ..mlæ...  \n01D0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n01E0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n01F0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 55 AA ........ ......Uª  \n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d END OF SECTOR DATA \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\n\u003cbr /\u003e\n\nPartition 1 (SIZE\u003d7373.553GiB) Type: 0B FAT32 (2047GB max) ACTIVE  \nSTART POS \u003d CYL:0 HD:1 SEC:1 END POS \u003d CYL:939 HD:254 SEC:63  \nSTART (LBA) \u003d 63 (0000003F) SIZE (LBA) \u003d 15101037 (00E66C6D)  \n\nPartition 2 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nPartition 3 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nPartition 4 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nDrive 1 SanDisk Cruzer Micro USB Device is 8,036,285,440 bytes long (7.484GiB)   \n"
+    },
+    {
+      "id": "107222",
+      "timestamp": "2010-08-19T08:17:25+00:00",
+      "author": "steve6375",
+      "content": "Thanks  \n\nDo you have an image with 240 hds (max head 239 in ptn table) and try this on the \u0027bad\u0027 system?  \n\nYou said the bad system had some BIOS options, what are they? Can you set the bad BIOS to LBA 255/63 ???  \n\nS   \n"
+    },
+    {
+      "id": "107227",
+      "timestamp": "2010-08-19T08:41:25+00:00",
+      "author": "ksanderash",
+      "content": "I wonder, maybe I\u0027m having something non-standard too, and don\u0027t know about this?  \nWhat are those compies, Technotika? And what are you trying to boot (GRUB, or what)? ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n"
+    },
+    {
+      "id": "107228",
+      "timestamp": "2010-08-19T08:46:15+00:00",
+      "author": "Technotika",
+      "content": "in the sata default values I can specify these settings  \n\nsata defaults  \n\nmultisector transfer  \ntransfer mode  \ntranslation mode - USER (where you can specify settings, I just reset)  \n\ncylinders 0  \nheads 16  \nsectors 63   \n"
+    },
+    {
+      "id": "107229",
+      "timestamp": "2010-08-19T08:53:12+00:00",
+      "author": "Technotika",
+      "content": "@voyajer  \ngrub4d  \n\nFunny thing is....  \n\nI can create a syslinux ready usb stick with rmprep and that boots fine on the HP DC7800, grub4d \u003dblinking cursor.  \nEven with other grub4d indtallers.   \n"
+    },
+    {
+      "id": "107239",
+      "timestamp": "2010-08-19T11:02:27+00:00",
+      "author": "Technotika",
+      "content": "just did a test and in the settings put the settings that came up from USB info  \n\nused a 2gb \"test stick\"  \n\ncylinders 245  \nheads 254  \nsectors 63  \n\ngrub4dos installed - blinking cursor still,   \n"
+    },
+    {
+      "id": "107241",
+      "timestamp": "2010-08-19T11:20:57+00:00",
+      "author": "steve6375",
+      "content": "Can you create a syslinux stick with RMPrepUSB and then click on the install grub4dos button - add a menu.lst and see if that boots?   \n"
+    },
+    {
+      "id": "107246",
+      "timestamp": "2010-08-19T11:47:35+00:00",
+      "author": "Technotika",
+      "content": "hey what a superb idea - i\u0027ll get right on it ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)   \n"
+    },
+    {
+      "id": "107253",
+      "timestamp": "2010-08-19T12:08:27+00:00",
+      "author": "Technotika",
+      "content": "dang it! Syslinux ok then grubbed - blinking cursor - doh!  \n\nhere is info when working with syslinux - below that is when G4D got put on and cursor blinked,  \nCould this be a freak machine that just doesnt play nice with G4D. But then of course I have that image with g4d that works, weird. :smile:   \n@ wonko (if you havent fallen asleep) not ignoring what you wrote just wanna see the tests through to the end with S ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)   \n\n\u003cbr /\u003e\n\nRMPARTUSB v2.1.0 ©2008-10 RM Education plc \\[SSi\\]  \n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\nAccessing Drive 1 - USB Flash Memory USB Device 2,026,372,608 bytes  \nUSB Sector 0  \n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d SECTOR DATA \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\n\u003cbr /\u003e\n\n\\[Sector 0\\] 0MB  \n0000 FA 31 C0 8E D8 8E D0 BC - 00 7C 89 E6 06 57 8E C0 ú1ÀŽØŽÐ¼ .\\|‰æ.WŽÀ  \n0010 FB FC BF 00 06 B9 00 01 - F3 A5 EA 1F 06 00 00 52 ûü¿..¹.. ó¥ê\u001f...R  \n0020 52 B4 41 BB AA 55 31 C9 - 30 F6 F9 CD 13 72 13 81 R´A\\\u003e\\\u003eªU1É 0öùÍ\u0013r\u0013  \n0030 FB 55 AA 75 0D D1 E9 73 - 09 66 C7 06 8D 06 B4 42 ûUªu.Ñés .fÇ..´B  \n0040 EB 15 5A B4 08 CD 13 83 - E1 3F 51 0F B6 C6 40 F7 ë\u0015Z´.Í\u0013ƒ á?Q\u000f¶Æ@÷  \n0050 E1 52 50 66 31 C0 66 99 - E8 66 00 E8 21 01 4D 69 áRPf1Àf™ èf.è!.Mi  \n0060 73 73 69 6E 67 20 6F 70 - 65 72 61 74 69 6E 67 20 ssing op erating   \n0070 73 79 73 74 65 6D 2E 0D - 0A 66 60 66 31 D2 BB 00 system.. .f\\`f1Ò\\\u003e\\\u003e.  \n0080 7C 66 52 66 50 06 53 6A - 01 6A 10 89 E6 66 F7 36 \\|fRfP.Sj .j\u0010‰æf÷6  \n0090 F4 7B C0 E4 06 88 E1 88 - C5 92 F6 36 F8 7B 88 C6 ô{Àä.ˆáˆ Å\u0027ö6ø{ˆÆ  \n00A0 08 E1 41 B8 01 02 8A 16 - FA 7B CD 13 8D 64 10 66 .áA¸..Š\u0016 ú{Í\u0013d\u0010f  \n00B0 61 C3 E8 C4 FF BE BE 7D - BF BE 07 B9 20 00 F3 A5 aÃèÄÿ¾¾} ¿¾.¹ .ó¥  \n00C0 C3 66 60 89 E5 BB BE 07 - B9 04 00 31 C0 53 51 F6 Ãf\\`‰å\\\u003e\\\u003e¾. ¹..1ÀSQö  \n00D0 07 80 74 03 40 89 DE 83 - C3 10 E2 F3 48 74 5B 79 .€t.@‰Þƒ Ã\u0010âóHt\\[y  \n00E0 39 59 5B 8A 47 04 3C 0F - 74 06 24 7F 3C 05 75 22 9Y\\[ŠG.\\\u003c\u000f t.$\\\u003c.u\"  \n00F0 66 8B 47 08 66 8B 56 14 - 66 01 D0 66 21 D2 75 03 f‹G.f‹V\u0014 f.Ðf!Òu.  \n0100 66 89 C2 E8 AC FF 72 03 - E8 B6 FF 66 8B 46 1C E8 f‰Âè¬ÿr. è¶ÿf‹F\u001cè  \n0110 A0 FF 83 C3 10 E2 CC 66 - 61 C3 E8 62 00 4D 75 6C ÿƒÃ\u0010âÌf aÃèb.Mul  \n0120 74 69 70 6C 65 20 61 63 - 74 69 76 65 20 70 61 72 tiple ac tive par  \n0130 74 69 74 69 6F 6E 73 2E - 0D 0A 66 8B 44 08 66 03 titions. ..f‹D.f.  \n0140 46 1C 66 89 44 08 E8 30 - FF 72 13 81 3E FE 7D 55 F\u001cf‰D.è0 ÿr\u0013\\\u003eþ}U  \n0150 AA 0F 85 06 FF BC FA 7B - 5A 5F 07 FA FF E4 E8 1E ª\u000f....ÿ¼ú{ Z_.úÿäè\u001e  \n0160 00 4F 70 65 72 61 74 69 - 6E 67 20 73 79 73 74 65 .Operati ng syste  \n0170 6D 20 6C 6F 61 64 20 65 - 72 72 6F 72 2E 0D 0A 5E m load e rror...\\^  \n0180 AC B4 0E 8A 3E 62 04 B3 - 07 CD 10 3C 0A 75 F1 CD ¬´\u000eŠ\\\u003eb.³ .Í\u0010\\\u003c.uñÍ  \n0190 18 F4 EB FD 00 00 00 00 - 00 00 00 00 00 00 00 00 \u0018ôëý.... ........  \n01A0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n01B0 00 00 00 00 00 00 00 00 - CB 4A 36 AA 00 00 80 01 ........ ËJ6ª..€.  \n01C0 01 00 0C FE 3F F5 3F 00 - 00 00 37 4D 3C 00 00 00 ...þ?õ?. ..7M\\\u003c...  \n01D0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n01E0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n01F0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 55 AA ........ ......Uª  \n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d END OF SECTOR DATA \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\n\u003cbr /\u003e\n\nPartition 1 (SIZE\u003d1929.652GiB) Type: 0C FAT32LBA (2047GB max) ACTIVE  \nSTART POS \u003d CYL:0 HD:1 SEC:1 END POS \u003d CYL:245 HD:254 SEC:63  \nSTART (LBA) \u003d 63 (0000003F) SIZE (LBA) \u003d 3951927 (003C4D37)  \n\nPartition 2 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nPartition 3 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nPartition 4 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nDrive 1 USB Flash Memory USB Device is 2,026,372,608 bytes long (1.887GiB)  \n\n\u003cbr /\u003e\n\n#######################################################################  \nafter g4d - blinking cursor  \n\n\u003cbr /\u003e\n\nRMPARTUSB v2.1.0 ©2008-10 RM Education plc \\[SSi\\]  \n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\nAccessing Drive 1 - USB Flash Memory USB Device 2,026,372,608 bytes  \nUSB Sector 0  \n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d SECTOR DATA \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\n\u003cbr /\u003e\n\n\\[Sector 0\\] 0MB  \n0000 EB 5E 80 05 20 39 FF FF - 00 00 00 00 00 00 00 00 ë\\^€. 9ÿÿ ........  \n0010 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0020 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0030 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0040 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0050 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n0060 E8 00 00 5B 81 EB 63 00 - C1 EB 04 8C C8 01 C3 8E è..\\[ëc. Áë.ŒÈ.ÃŽ  \n0070 DB 53 6A 75 CB F6 06 02 - 00 04 74 0F 31 C0 8E C0 ÛSjuËö.. ..t\u000f1ÀŽÀ  \n0080 BF FC 05 66 B8 44 55 43 - 45 66 AB 68 00 20 17 BC ¿ü.f¸DUC Ef\\\u003c\\\u003ch. \u0017¼  \n0090 00 90 31 C9 51 BA 80 00 - 52 B4 08 F9 CD 13 5A 58 .1ÉQº€. R´.ùÍ\u0013ZX  \n00A0 16 07 72 17 80 E1 3F F9 - 74 11 91 B4 02 89 C5 31 \u0016.r\u0017€á?ù t\u0011\u0027´.‰Å1  \n00B0 DB 41 52 F9 CD 13 5A 72 - 02 F6 DC 0E 1F 9C 31 F6 ÛARùÍ\u0013Zr .öÜ\u000e\u001fœ1ö  \n00C0 31 FF B9 DF 00 FC F3 A5 - BB FC 1F 66 B8 47 52 55 1ÿ¹ß.üó¥ \\\u003e\\\u003eü\u001ff¸GRU  \n00D0 AA 66 39 07 75 03 E8 EE - 1A EA DE 00 00 20 16 1F ªf9.u.èî \u001aêÞ.. \u0016\u001f  \n00E0 66 39 07 74 31 66 60 A1 - 18 00 83 F8 3F 77 20 3C f9.t1f\\`¡ \u0018.ƒø?w \\\u003c  \n00F0 10 72 1C 48 BF 03 00 B4 - 02 99 BB 00 02 B9 02 00 \u0010r\u001cH¿..´ .™\\\u003e\\\u003e..¹..  \n0100 60 CD 13 61 73 09 60 31 - C0 CD 13 61 4F 75 E8 66 \\`Í\u0013as.\\`1 ÀÍ\u0013aOuèf  \n0110 61 66 39 07 75 56 9D 72 - 3E 0E 1F AD 88 E6 AD 89 af9.uVr \\\u003e\u000e\u001fˆæ‰  \n0120 C1 24 3F 74 1F 29 E8 48 - F6 D8 BF 03 00 B4 02 68 Á$?t\u001f)èH öØ¿..´.h  \n0130 00 0D 07 31 DB 60 CD 13 - 61 73 0A 60 31 C0 CD 13 ...1Û\\`Í\u0013 as.\\`1ÀÍ\u0013  \n0140 61 4F 75 E9 F9 E8 30 11 - 0F 87 94 1A 83 C6 0C 81 aOuéùè0\u0011 \u000f‡\"\u001aƒÆ.  \n0150 FE FE 01 72 C4 77 15 BE - B2 31 B4 08 99 52 CD 13 þþ.rÄw\u0015¾ ²1´.™RÍ\u0013  \n0160 58 72 09 99 91 24 3F 74 - 03 41 EB BE BE 8F 01 E8 Xr.™\u0027$?t .Aë¾¾.è  \n0170 16 00 EB FE FA B8 00 20 - 8E D0 BC DC 8F FB 66 61 \u0016.ëþú¸. ŽÐ¼Üûfa  \n0180 07 1F EB C8 B4 0E CD 10 - 2E AC 3C 00 75 F6 C3 0D .\u001fëÈ´\u000eÍ\u0010 .¬\\\u003c.uöÃ.  \n0190 0A 4D 69 73 73 69 6E 67 - 20 4D 42 52 2D 68 65 6C .Missing MBR-hel  \n01A0 70 65 72 2E 00 00 00 00 - 00 00 00 00 00 00 00 00 per..... ........  \n01B0 00 00 00 00 00 00 00 00 - CB 4A 36 AA 00 00 80 01 ........ ËJ6ª..€.  \n01C0 01 00 0C FE 3F F5 3F 00 - 00 00 37 4D 3C 00 00 00 ...þ?õ?. ..7M\\\u003c...  \n01D0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n01E0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00 ........ ........  \n01F0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 55 AA ........ ......Uª  \n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d END OF SECTOR DATA \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\n\u003cbr /\u003e\n\nPartition 1 (SIZE\u003d1929.652GiB) Type: 0C FAT32LBA (2047GB max) ACTIVE  \nSTART POS \u003d CYL:0 HD:1 SEC:1 END POS \u003d CYL:245 HD:254 SEC:63  \nSTART (LBA) \u003d 63 (0000003F) SIZE (LBA) \u003d 3951927 (003C4D37)  \n\nPartition 2 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nPartition 3 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nPartition 4 (SIZE\u003d0GiB) Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nDrive 1 USB Flash Memory USB Device is 2,026,372,608 bytes long (1.887GiB)   \n"
+    },
+    {
+      "id": "107257",
+      "timestamp": "2010-08-19T12:19:26+00:00",
+      "author": "steve6375",
+      "content": "OK  \n\nnext idea...  \n\nWHen using RMPrepUSB it install grub4dos onto the MBR, but you can install it onto the partition boot sector using  \n\ngrubinst (hd1,0)  \n\nWARNING: This assues your USB drive is PhysicalDrive 1. You will need to change the 1 to match your USB drive number - don\u0027t use 0 or you will trash your HDD!  \n\nSo format using RMPrepUSB MS-DOS option, FAT32 - then go to command prompt and run grubinst from RMPrepUSb folder (as admin) using above command.  \n\nBe careful!   \n"
+    },
+    {
+      "id": "107261",
+      "timestamp": "2010-08-19T12:38:30+00:00",
+      "author": "Technotika",
+      "content": "just quick when selecting MS-DOS - shall leave the automatic override settings that get put in place or take them out so its purley FAT32 (no over rides)???  \n\n\u003cbr /\u003e\n\nUSB is physdisk 1 so OK with that command -:_00   \n"
+    },
+    {
+      "id": "107263",
+      "timestamp": "2010-08-19T12:42:43+00:00",
+      "author": "steve6375",
+      "content": "Take off FDD option, 64/32 won\u0027t hurt - but if it doesn\u0027t work try all checkboxes off and then try HDD option and then try ZIP option !!!!   \n"
+    },
+    {
+      "id": "107265",
+      "timestamp": "2010-08-19T13:03:43+00:00",
+      "author": "Technotika",
+      "content": "Do you think you handle this info?  \n\n1. Cleaned.  \n2. MSDOS prepared ( NO OVER-RIDES FIRST) was gonna add one back at a time \"if\" it failed (if? you mean......... :smile: ......)  \n3. Admin CMD, cd to my RMPREP folder, ran \"grubinst (hd1,0)\".  \n4. Made sure it had been taken with a qemu USB boot. G4D loaded OK.  \n\nand finally  \n\n5. Went to PROBLEM computer and \"We have a grub4dos\" menu!!  \n\nIt\u0027s booted off a stick. I am so chuffed. You legend! ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)   \n\nSo now going forward.....  \n\n1.) But what does this mean?  \n2.) If I made my sticks booting from the partition, should they still be compatible with others? Should have thought so.  \n3.) I think then my image that \"miraculously\" works could have been prepared using grubinst (GUI That I used to use) and I selected the partiton (PBR) instead of MBR. These are back in the day before I realized RMPREP was my one stop shop for all my booting needs.  \n\nI\u0027m so happy! Looking forward to your views on this headache cleansing REEEEEZULTAH!   \n"
+    },
+    {
+      "id": "107273",
+      "timestamp": "2010-08-19T15:14:21+00:00",
+      "author": "steve6375",
+      "content": "OK  \n\nNow try  \n\n1. Use RMPrepUSB to format as MS**DOS** as before  \n2. Use RMPrepUSB to install grub4**dos** (the clue is in the name)   \n"
+    },
+    {
+      "id": "107274",
+      "timestamp": "2010-08-19T15:24:45+00:00",
+      "author": "Technotika",
+      "content": "did that - this time back to BLINKING CURSOR   \n\nand also recleaned - added 64/32 override this time   \n\nand still BLINKING CURSOR   \n\nedit: blinking computers....they\u0027ll never catch on!  \n\n..... ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)   \n"
+    },
+    {
+      "id": "107275",
+      "timestamp": "2010-08-19T15:33:08+00:00",
+      "author": "steve6375",
+      "content": "Well, the choice to use the grubinst command in RMPrepUSB and to place grub code in MBR was**entirely arbitrary** ![:(](https://reboot.pro/public/style_emoticons/default/sad.png) on my part - I can easily modifiy grubinst command to make it install to the partition boot record.  \n\nI will do a new Beta tonight for you...  \n\nWhat if you RMPRep as WinPE v2 (bootmgr) and then use grubinst (hd1,0) command line (or does it have to be MSDOS format) ????   \n"
+    },
+    {
+      "id": "107278",
+      "timestamp": "2010-08-19T16:38:45+00:00",
+      "author": "Technotika",
+      "content": "no way my own personable RMPREP???, now I\u0027m stoked dude, can I have my name in the title bar? :smile:   \n\nJust got home so cant test the latest part, but will do it first thing.  \n\nDoes PBS grubinst, still offer good booting as opposed to MBR. i mean can some machines behave funny if G4D sits in the PBR  \nas opposed to the MBR. Just curious? ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)   \n"
+    },
+    {
+      "id": "107280",
+      "timestamp": "2010-08-19T16:49:48+00:00",
+      "author": "steve6375",
+      "content": "So am I! You have more experience than me in grub4dos booting now! I was thinking of making PBR install the standard in next version and that you would let me know if it worked on all systems or not??   \n"
+    },
+    {
+      "id": "107283",
+      "timestamp": "2010-08-19T17:14:05+00:00",
+      "author": "Technotika",
+      "content": "well perhaps have 2 buttons? PBR and MBR install?, give the user a recommended option (in the hint boxes) but then have the other for weirdness and troubleshooting like today. I will glady have this new test version and report back to base ![:(](https://reboot.pro/public/style_emoticons/default/sad.png) Wait for me to test the bootmgr thing tomorrow morning though......  \n\n\u003cbr /\u003e\n\nmaybe some should try and ask the grub4dos inventors aswell? who knows them/him/her?   \n"
+    },
+    {
+      "id": "107297",
+      "timestamp": "2010-08-19T20:04:58+00:00",
+      "author": "ksanderash",
+      "content": "[Them](http://www.boot-land.net/forums/index.php?showtopic\u003d11614 \"External link\") ![:smiling9:](https://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n"
+    },
+    {
+      "id": "107301",
+      "timestamp": "2010-08-19T22:57:28+00:00",
+      "author": "steve6375",
+      "content": "Hmmm - not as trivial as I thought!!! I am using Win 7 64-bit and logged in as Admin (to save UAC prompts).  \n\ngrubinst says it has worked when I launch the app from inside RMPrepUSB, but it does not actually write any sectors!!! The same command executed in a cmd shell window manually works fine. There is something going on with volume locking but I just cannot get it to work. I even created a .cmd file and then executed that by calling it from RMPrepUSB but even that does not work (though grubinst reports it did work!). ![:smiling9:](https://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n\nNo problem writing MBR as Win7/Vista lets anyone write to MBR (just not PBR or inside a volume!).  \n\nIs grubinst 1-1-2008 version the latest???  \n\nHave to get some shut-eye now. Maybe have more success at weekend...  \n\n\u003cbr /\u003e\n\nSteve   \n"
+    },
+    {
+      "id": "107313",
+      "timestamp": "2010-08-20T07:14:05+00:00",
+      "author": "Technotika",
+      "content": "Hi Steve,  \n\nI did the test and using the BOOTMGR option and writing the code to PBR also booted on the trouble machine!  \n\nI am on XP pro here at work (admin) and I had to run this twice before it took the g4d.....  \n\necho on  \n\nc:  \ncd C:\\\\BUILDS\\\\RMPREP  \npause  \ngrubinst (hd1,0)  \npause  \n\nedit seems like 01-01-2008 is latest?   \n"
+    },
+    {
+      "id": "107338",
+      "timestamp": "2010-08-20T14:30:42+00:00",
+      "author": "Technotika",
+      "content": "update   \n\non my 32 gb I just re made it (there\u0027s another prob I posted under tool thread unrelated to this though) I found more interesting info.  \n\nOn the problem machine my 32gb would hang the PC just before boot menu came up, I could then pull out the stick, wait a second, then the menu would appear, then I could plug USB back in then boot fine. A little quirk I could live with.   \n\nAs mentioned I just re made the 32gb stick; formatted, recopied the data and then made bootable with the command line in question at the mo; \"grubinst (hd1,0)\"  \n\nNow on the problem machine, no hanging of any description, boots perfectly now!   \n"
+    },
+    {
+      "id": "107356",
+      "timestamp": "2010-08-20T22:08:36+00:00",
+      "author": "steve6375",
+      "content": "v2.1.3 now on RMPrepUSB site with option for grub4dos to install to a partition. I used the touchdrv.exe app to fix the issue. If you tick the \u0027no user prompt\u0027 checkbox, then the grubinst button will default to whatever you last used. If using for the first time it defaults to MBR.  \n\nOnly issue is that grubinst does not seem to be able to update an NTFS PBR but can update FAT16/32 PBRs under Vista/Win7.   \n"
+    },
+    {
+      "id": "107357",
+      "timestamp": "2010-08-20T22:10:48+00:00",
+      "author": "Technotika",
+      "content": "Awesome work Steve, updating all versions now ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)   \n"
+    },
+    {
+      "id": "107360",
+      "timestamp": "2010-08-20T22:34:58+00:00",
+      "author": "Technotika",
+      "content": "just ran a test - I think my USB preparation ritual just got hard wired! cleaned, prepared and finally grinst\u0027d - thanks for adding this feature relly good, works first time too as opposed to 2 times running batch or from cmd - have a good sleep ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)   \n"
+    },
+    {
+      "id": "107378",
+      "timestamp": "2010-08-21T08:58:33+00:00",
+      "author": "steve6375",
+      "content": "v2.1.4 now added as beta - remembers drive selected after refresh or prepare command.   \n"
+    },
+    {
+      "id": "107542",
+      "timestamp": "2010-08-23T09:17:43+00:00",
+      "author": "Technotika",
+      "content": "I can also confirm that PBR install of grub4dos fixes (or gets round) another issue I had with a NC6120P Laptop. Installing to MBR, then booting from USB was fine on 8gb or smaller devices, but on larger USB sticks (32GB etc) I would get an error \"Missing -MBR Helper\". Now with a proper clean, format and install to PBR with RMPREP the 32GB now boots cleanly with no errors!!!!   \n"
+    }
+  ]
+}

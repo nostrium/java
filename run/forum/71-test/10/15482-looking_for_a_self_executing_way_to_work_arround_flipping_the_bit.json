@@ -1,0 +1,58 @@
+{
+  "id": "15482",
+  "title": "looking for a self executing way to work arround \"flipping the bit\"",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "138193",
+      "timestamp": "2011-09-20T21:07:43+00:00",
+      "author": "Zoso",
+      "content": "I cant seem to get my hands on a flash USB that has a flipable bit.  \nwhat I would like as a work arround is a self executing .exe that will enable windows to see the fashdrive as \"fixed\" without a restart.  \nits probably not possible for some reason but since it never hurts to ask..  \nI need a way for mulipartitioned usb flashdrives to show all partitions in other systems that I cant install software or reboot. as of now most systems only show the first partition.  \nI can no longer afford new flashdrives to experiment with and I also have more than I will ever need allready in my quest for finding one with a flipable bit. Im starting to think its a myth except for the CDFS type like U3 and such.  \ncan I hz a work arround please!  \nthanks   \n"
+    },
+    {
+      "id": "138195",
+      "timestamp": "2011-09-20T21:47:04+00:00",
+      "author": "MedEvil",
+      "content": "What sticks did you purchase?   \nCan\u0027t believe, that you had so much bad luck, to find all the ones, that can\u0027t be flipped.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "138222",
+      "timestamp": "2011-09-21T08:27:12+00:00",
+      "author": "ilko",
+      "content": "Get WinSetupFromUSB:  \n[http://www.datafileh...d-3c7ead6d.html](http://www.datafilehost.com/download-3c7ead6d.html \"External link\")  \n\nLook at \\\\files\\\\MULTIpartitionUSBstick folder.  \n\nThere are a few batch files which install and load dummydisk.sys:  \n[http://www.codeproje...ct_hooking.aspx](http://www.codeproject.com/KB/system/soviet_direct_hooking.aspx \"External link\")  \n\nNo restart is required upon loading, just need to replug the USB stick if it\u0027s already inserted.  \nRestart is required for unloading/removing, driver does not support unloading as far as I know.  \n\nConfirmed working with XP and 2003 32 bits versions. A few reports it works on 32 bit 7 too.  \nNo 64-bits support, I am not aware of 64 bits versions of dummydisk or cfadisk.   \n"
+    },
+    {
+      "id": "138228",
+      "timestamp": "2011-09-21T10:02:21+00:00",
+      "author": "MedEvil",
+      "content": "@ilko  \n\n\u003e I need a way for mulipartitioned usb flashdrives to show all partitions in other systems that I cant install software or reboot.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "138229",
+      "timestamp": "2011-09-21T10:07:47+00:00",
+      "author": "MedEvil",
+      "content": "@Zoso  \nThe only software i can think of, which could read your USB stick in a way windows can not, without installing any driver, would be a filemanager with build in support for what you want.  \n\nBut i imagine, that those, if they exist, would cost a pretty penny, since this sounds a lot like file recovery software to me.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "138245",
+      "timestamp": "2011-09-21T17:14:43+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Im starting to think its a myth except for the CDFS type like U3 and such.\nWhich nicely equates to affirm that **Wonko the Sane** (among others) is just a charlatan or plainly a lier. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)   \nThis saddens **Wonko the Sane.** ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "138314",
+      "timestamp": "2011-09-22T15:31:10+00:00",
+      "author": "Zoso",
+      "content": "MedEvil, right now I have 7 different vid/pid sticks the most promising seems to be A 1B1C/1AB1 which has this software available for modifications: [http://remontflash.r...ypage.tpl\\\u0026pop\u003d0](http://remontflash.ru/index.php/component/virtuemart/?page\u003dshop.product_details\u0026product_id\u003d359\u0026flypage\u003dflypage.tpl\u0026pop\u003d0 \"External link\") all the others that I have found software for, it doesnt show any sign/hint of flipping but the one linked above seems to indicate maybe but I cant find any solid documentation about it. it does show in the program that it can make a secure partition on the stick but Im still not sure how to try to do that yet and if that will help in any way my goal here. ilko, thanks for the suggestions. as MedEvil pointed out thats not exactly what Im looking for but they do help with understanding. Wonko, we obviously have different philosophies on what a \"myth\" is.. mine is that it cant be proven one way or the other, yours seems to be a myth is a lie. I have found evidence that there are indeed flipable bit flashdrives but Ive also found evidence that THOR exsists.. so until I can see beyond 3D or flip a bit its still all a myth.I havnt given up! but when I \"know\" from experience that a bit is flipable then it will be truth but until then it remains a myth. (from my perspective)thanks\\\u003c/p\\\u003e   \n"
+    },
+    {
+      "id": "138318",
+      "timestamp": "2011-09-22T16:14:37+00:00",
+      "author": "Wonko the Sane",
+      "content": "Very good.  \nLet\u0027s try shifting the point of view.  \n**Wonko** (the Sane) has flipped the bit on at lest 20 USB sticks out of 22 or 23 he could get his hands on.  \nThis attributes him points for EITHER luck ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) or competence at around 95%.  \nA myth is something that everyone else, including you, has never verified/documented.  \nIf anything that you did not (for whatever reason) personally and directly experienced is a myth, than there are thousands of myths according to you, man landing on the moon included. (and yes, it probably was a mock-up that tricked the whole world :wink:)  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    }
+  ]
+}

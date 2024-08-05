@@ -1,0 +1,16 @@
+{
+  "id": "16408",
+  "title": "Flashing via pxe",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "149317",
+      "timestamp": "2012-02-27T12:20:22+00:00",
+      "author": "screeble",
+      "content": "Greetings,  \n\nWe need to flash controller on the several servers with the same firmware and I have the dhcp server with tftp and pxe.  \nThe size of firmware is \\~4Mb and it can be executed only under dos.  \nThe bootable floppy was created. Its size is \\~50Mb. So, I have loaded with this floppy and executed afu.exe file but nothing has been done and the system was stopped.  \n\n[http://xmages.net/st...ad/7be73fae.jpg](http://xmages.net/storage/10/1/0/5/3/upload/7be73fae.jpg \"External link\")  \n\nDid someone has the same situation?  \n\n\u003cbr /\u003e\n\nThank you for your suggestions.   \n"
+    }
+  ]
+}

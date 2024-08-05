@@ -1,0 +1,46 @@
+{
+  "id": "20905",
+  "title": "How to Create Windows 7/8/10/2008/2012 All in One ISO",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "196923",
+      "timestamp": "2015-12-31T06:35:14+00:00",
+      "author": "FoxDie",
+      "content": "Is it possible to create all in one ISO for Windows 7/8/10/Server 2008/Server 2012 x86,x64.  \n\nI know I can use \"Easy2Boot MultiBoot\" for all my iso, but I want to create all in one of all my windows   \n\nversions in one installation ISO.  \n\n\u003cbr /\u003e\n\nIs there any steps that I can follow to create it.  \n\nI found these steps but unfortunately in French.  \n\n[http://www.hyperv.fr...2008-r2-usbdvd/](http://www.hyperv.fr/support-dinstallation-multi-windows-32-64bits-seven20082008-r2-usbdvd/ \"External link\")  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nThanks in advance...\n\n"
+    },
+    {
+      "id": "196924",
+      "timestamp": "2015-12-31T07:52:22+00:00",
+      "author": "TheHive",
+      "content": "Test out\n\nSharpBoot - utility for creating multiboot ISO files or bootable USB keys. It\u0027s another free and open-source alternative to Xboot\n\n[http://reboot.pro/to...0856-sharpboot/](http://reboot.pro/topic/20856-sharpboot/ \"\")\n\n"
+    },
+    {
+      "id": "196926",
+      "timestamp": "2015-12-31T08:12:51+00:00",
+      "author": "FoxDie",
+      "content": "I don\u0027t want to create a boot CD or USB, I want to create All in One (Combined) Windows 7/8/10/2008/2012 Installation disk.  \n\n"
+    },
+    {
+      "id": "196929",
+      "timestamp": "2015-12-31T08:25:33+00:00",
+      "author": "TheHive",
+      "content": "I see what you mean. You want an all OS in one package(ex. iso).\n\nMight be possible, Dont know how.\n\n"
+    },
+    {
+      "id": "196932",
+      "timestamp": "2015-12-31T09:56:18+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I found these steps but unfortunately in French.  \n\u003e\n\u003e [http://www.hyperv.fr...2008-r2-usbdvd/](http://www.hyperv.fr/support-dinstallation-multi-windows-32-64bits-seven20082008-r2-usbdvd/ \"External link\")  \n\nWell, those are not that bad even in google translate, but they are related to Vista/Windows 7 and Server 2008, etc, AND they are BIOS ONLY.\n\nIf you want to add 8 and later you most probably want also the UEFI versions, and this may result much more tricky (and as I see it it is simply not worth the time, even if maybe it is possible, since there are already possible solutions with Easy2Boot or possibly with WinsetupfromUSB):\n\n[http://www.msfn.org/...ws-aio-usb-key/](http://www.msfn.org/board/topic/174886-multiboot-windows-aio-usb-key/ \"External link\")\n\nAnyway, if you are determined to (senselessly) go ahead, you could start experimenting along the post by cdob ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif) here:\n\n[http://www.msfn.org/...making-aio-usb/](http://www.msfn.org/board/topic/174835-how-to-merge-all-windows-10-edditions-for-making-aio-usb/ \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "200324",
+      "timestamp": "2016-09-18T22:00:05+00:00",
+      "author": "Monsieur Z",
+      "content": "If you want I can translate that post to English.\n\n"
+    }
+  ]
+}

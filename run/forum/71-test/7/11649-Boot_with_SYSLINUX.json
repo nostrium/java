@@ -1,0 +1,70 @@
+{
+  "id": "11649",
+  "title": "Boot with SYSLINUX",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "101960",
+      "timestamp": "2010-06-09T05:46:13+00:00",
+      "author": "mrt_doulaty",
+      "content": "I\u0027ve a 100 MB FAT32 partition which is the first primary (and active) partition of my hard disk.  \nI\u0027ve installed SYSLINUX to that drive.  \nI\u0027ve another primary partition which I installed Windows XP to it.  \nI want to have a boot menu, so I used chain.c32 and menu.c32  \nMy syslinux.conf file is as below:  \n\n\\[codebox\\]LABEL WinXP  \nCOM32 chain.c32  \nAPPEND hd0 2 ntldr\u003dntldr\\[/codebox\\]  \n\nBut this does not work, failing with \"Failed to load the boot file\" error.  \n\nWhat is wrong?   \n"
+    },
+    {
+      "id": "101979",
+      "timestamp": "2010-06-09T12:17:00+00:00",
+      "author": "Sha0",
+      "content": "When you give the **ntldr\u003d** argument, **chain.c32** looks for the specified file on the Syslinux filesystem. So it\u0027s looking for **ntldr** on your **FAT32** filesystem (your first partition). If you don\u0027t wish to copy NTLDR there, simply chain the second partition\u0027s boot sector and forget about trying to chain NTLDR at all. It\u0027s the same with any other file specifiers. Remember that Syslinux would need filesystem drivers to be able to use files from other partitions than the one it\u0027s booted from. This is the case for Syslinux 4.xx (though there\u0027s no NTFS driver).   \n"
+    },
+    {
+      "id": "101990",
+      "timestamp": "2010-06-09T15:37:24+00:00",
+      "author": "mrt_doulaty",
+      "content": "\u003e When you give the **ntldr\u003d** argument, **chain.c32** looks for the specified file on the Syslinux filesystem. So it\u0027s looking for **ntldr** on your **FAT32** filesystem (your first partition). If you don\u0027t wish to copy NTLDR there, simply chain the second partition\u0027s boot sector and forget about trying to chain NTLDR at all. It\u0027s the same with any other file specifiers. Remember that Syslinux would need filesystem drivers to be able to use files from other partitions than the one it\u0027s booted from. This is the case for Syslinux 4.xx (though there\u0027s no NTFS driver).\nCopying ntldr to that partition did not solve the problem either. How would ntldr detect that it should continue boot process from next primary partition? (Which is NTFS)  \nRather than specifying ntldr option, just passing   \n\n```\nCOM32 chain.c32APPEND hd0 2\n```\n\nThis does not work either.  \n\nAs I mentioned, my second primary partition is NTFS, so how can load its driver so that syslinux can detect that partition?  \n\nThanks for your help!   \n"
+    },
+    {
+      "id": "101991",
+      "timestamp": "2010-06-09T15:55:32+00:00",
+      "author": "Sha0",
+      "content": "\u003e Copying ntldr to that partition did not solve the problem either.\nPlease report the error message that you see, with this new test.  \n\u003e How would ntldr detect that it should continue boot process from next primary partition? (Which is NTFS)\nYou did specify **hd0 2** , and there is a standard way of passing this information to boot-sector code or NTLDR, the same method that \"standard\" MBRs use. **chain.c32** uses this standard method.  \n\u003e Rather than specifying ntldr option, just passing   \n\u003e\n\u003e ```\n\u003e COM32 chain.c32APPEND hd0 2\n\u003e ```\n\u003e\n\u003e This does not work either.\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\nPlease report the error message that you see, with this new test.  \n\u003e As I mentioned, my second primary partition is NTFS, so how can load its driver so that syslinux can detect that partition?...\nI was saying that a future Syslinux version will be able to access files on filesystems *other than* the originally booted filesystem (your **FAT32** filesystem with **SYSLINUX** installed on it, in this particular case). This is in regards to the future, and does not apply to your situation.  \n\nYou also might consider reporting which Syslinux version you installed from, took **menu.c32** and **chain.c32** from.   \n"
+    },
+    {
+      "id": "102002",
+      "timestamp": "2010-06-09T19:27:35+00:00",
+      "author": "mrt_doulaty",
+      "content": "\u003e Please report the error message that you see, with this new test.  \n\u003e\n\u003e You did specify **hd0 2** , and there is a standard way of passing this information to boot-sector code or NTLDR, the same method that \"standard\" MBRs use. **chain.c32** uses this standard method.  \n\u003e\n\u003e Please report the error message that you see, with this new test.  \n\u003e\n\u003e I was saying that a future Syslinux version will be able to access files on filesystems *other than* the originally booted filesystem (your **FAT32** filesystem with **SYSLINUX** installed on it, in this particular case). This is in regards to the future, and does not apply to your situation.  \n\u003e\n\u003e You also might consider reporting which Syslinux version you installed from, took **menu.c32** and **chain.c32** from.\n\nI\u0027m using the latest stable version (3.86).  \nI\u0027ll check your solution and inform you.   \n"
+    },
+    {
+      "id": "102029",
+      "timestamp": "2010-06-10T07:35:02+00:00",
+      "author": "mrt_doulaty",
+      "content": "About copying ntldr to FAT32 boot partition (where SYSLINUX installed):  \nCOM32 chain.c32  \nAPPEND hd0 1  \nFails with this error:  \n\"Chainboot failed!\"  \n\nAbout this test:  \nCOM32 chain.c32  \nAPPEND hd0 2  \nFails with this error:  \n\"Chainboot failed!\"  \n\nAnd as I mentioned earlier, I\u0027m using the latest stable version (3.86), and I took chain.c32 from \"syslinux-3.86\\\\com32\\\\modules\" folder.   \n"
+    },
+    {
+      "id": "102043",
+      "timestamp": "2010-06-10T12:27:39+00:00",
+      "author": "Sha0",
+      "content": "\u003e \"Chainboot failed!\"\nSorry to be redundant when you\u0027ve already answered, but: Is the version of Syslinux that you installed on the FAT32 partition the same as **chain.c32** ? One must match **COMBOOT32** modules to the Syslinux version. Also: Could you please run **meminfo.c32** and post the output? If you have a serial connection to the computer, you could log the output that way, instead of typing it all in here. A clear photo would work, too.   \n"
+    },
+    {
+      "id": "102047",
+      "timestamp": "2010-06-10T12:47:00+00:00",
+      "author": "mrt_doulaty",
+      "content": "\u003e Sorry to be redundant when you\u0027ve already answered, but: Is the version of Syslinux that you installed on the FAT32 partition the same as **chain.c32** ? One must match **COMBOOT32** modules to the Syslinux version. Also: Could you please run **meminfo.c32** and post the output? If you have a serial connection to the computer, you could log the output that way, instead of typing it all in here. A clear photo would work, too.\n\nYes, it is the same version, I\u0027ve taken it from the same source code.  \nI\u0027m running all these tests on a virtual machine.  \nHere is the screenshot:  \n[http://www.mrt-web.c...lic/meminfo.jpg](http://www.mrt-web.com/public/meminfo.jpg \"External link\")   \n"
+    },
+    {
+      "id": "102064",
+      "timestamp": "2010-06-10T15:30:56+00:00",
+      "author": "Icecube",
+      "content": "Does the following work?  \n\n```\nLABEL Boot_MBR\n\nCOM32 chain.c32\n\nAPPEND hd0\n```\n\nIt should boot the MBR again (and then should load the Syslinux installed on your first partition).  \n\nCan you also run:  \n\n```\nLABEL disk_layout\n\nCOM32 disk.c32\n```\n\nAnd post the exact output?   \n"
+    },
+    {
+      "id": "102467",
+      "timestamp": "2010-06-16T07:04:55+00:00",
+      "author": "mrt_doulaty",
+      "content": "Thanks all!  \n\nThe problem is now solved, I\u0027ve just update my VMWare WorkStation, and this simple boot chain is now working as desired...   \n"
+    }
+  ]
+}

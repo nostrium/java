@@ -1,0 +1,82 @@
+{
+  "id": "10880",
+  "title": "Question about ntldr (XP/W2k3)",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "96152",
+      "timestamp": "2010-03-28T16:28:35+00:00",
+      "author": "MedEvil",
+      "content": "Is there a trick to tell ntldr to boot windows from the drive it itself is located, so that an image stays bootable regardless to where it is copied, without fixing boot.ini first?  \n\n@Wonko  \nYou\u0027ve got my special permission to also explain the how to! :smile: :smile:  \n\n\u003cbr /\u003e\n\n:smile:   \n"
+    },
+    {
+      "id": "96155",
+      "timestamp": "2010-03-28T16:42:29+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Is there a trick to tell ntldr to boot windows from the drive it itself is located, so that an image stays bootable regardless to where it is copied, without fixing boot.ini first?  \n\u003e\n\u003e @Wonko  \n\u003e You\u0027ve got my special permission to also explain the how to! :smile: :smile:\nYes/No. :smile:   \n\n\u003cbr /\u003e\n\n[http://www.imdb.com/...t0114814/quotes](http://www.imdb.com/title/tt0114814/quotes \"External link\")  \n\u003e The greatest trick the Devil ever pulled was convincing the world he didn\u0027t exist.\n\n\u003cbr /\u003e\n\n:smile:  \n\nA question:  \n\nWhat happens if you **REMOVE** BOOT.INI alltogether? :smile:  \n\n(and the drive is C:\\\\ - i.e. First Primary Active Partition, usually disk(0)rdisk(0)partition(1) AND the install dir is \"WINDOWS\" - or \"WINNT\" for NT4 and 2K)  \n\n[http://www.msfn.org/...howtopic\u003d129891](http://www.msfn.org/board/index.php?showtopic\u003d129891 \"External link\")  \n\n:smile:  \nWonko   \n"
+    },
+    {
+      "id": "96158",
+      "timestamp": "2010-03-28T17:13:50+00:00",
+      "author": "MedEvil",
+      "content": "I know this little trick. Unfortunately it isn\u0027t good enough.  \nActive primary partition, shouldn\u0027t be too much of a problem, unless it really needs to be the first. Only first HDD definitly is!  \n\nOther ideas?  \n\n:smile:   \n"
+    },
+    {
+      "id": "96159",
+      "timestamp": "2010-03-28T17:25:13+00:00",
+      "author": "MedEvil",
+      "content": "Do you know if the path needs to be:  \ndisk(0)rdisk(0)partition(1)\\\\WINDOWS  \nor  \nC:\\\\Windows  \nfor ntldr to work without boot.ini?  \n\n\u003cbr /\u003e\n\n:smile:   \n"
+    },
+    {
+      "id": "96162",
+      "timestamp": "2010-03-28T17:36:59+00:00",
+      "author": "was_JFX",
+      "content": "The second of course :smile:   \n\nNobody would harcode an ARC path as fallback solution.  \n\n:smile:   \n"
+    },
+    {
+      "id": "96169",
+      "timestamp": "2010-03-28T19:03:05+00:00",
+      "author": "MedEvil",
+      "content": "I though that the second would be easier to acomplish. See PE and using always drive Letter X:.  \nHowever the Driver Letters get assigned by the Kernel and the Kernel can not get loaded unless ntldr already knows from where to load the system. Sort of a catch 22.  \n\n\u003cbr /\u003e\n\n:smile:   \n"
+    },
+    {
+      "id": "96205",
+      "timestamp": "2010-03-29T08:17:32+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Do you know if the path needs to be:  \n\u003e disk(0)rdisk(0)partition(1)\\\\WINDOWS  \n\u003e or  \n\u003e C:\\\\Windows  \n\u003e for ntldr to work without boot.ini?\nLet\u0027s see.  \nThe error message that comes out is:  \n\n```\nInvalid BOOT.INI file.\n\nBooting from C\u0026#58;\\windows\\\n```\n\n\u003cbr /\u003e\n\nWould NTLDR actually mean:  \n\n```\nInvalid BOOT.INI file.\n\nBooting from multi\u0026#40;0\u0026#41;disk\u0026#40;0\u0026#41;rdisk\u0026#40;0\u0026#41;partition\u0026#40;1\u0026#41;\\WINDOWS\n```\n\n\u003cbr /\u003e\n\n:smile:  \n\nNormally yes :smile: , judging on how MS error messages are usually deceiving, but you need an exception from time to time to confirm the rule, don\u0027t you? :smile:  \n\n\u003cbr /\u003e\n\nAs often happens with **Medevil** \u0027s question/problems :smile: they are based on a number of infos that he keeps for himself.  \n\nSince if the \"image\" is not first active partition of first disk it won\u0027t boot anyway without using grub4dos or other bootmanager, I don\u0027t see why one can\u0027t use it to map \"properly\" the disk. (or correct on-the-fly the BOOT.INI)  \n\nHint:  \nThe C:\\\\ in \"C:\\\\Windows\\\\\" is the \"theoretical\" C:, i.e. first active primary on first disk ***while*** NTLDR is booting, i.e. as \"exposed\" by BIOS, and later it is actually the C: in Registry HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\MountedDevices.  \n\n\u003cbr /\u003e\n\n:smile:  \n\nWonko   \n"
+    },
+    {
+      "id": "96209",
+      "timestamp": "2010-03-29T09:41:33+00:00",
+      "author": "MedEvil",
+      "content": "\u003e As often happens with **Medevil** \u0027s question/problems :smile: they are based on a number of infos that he keeps for himself.\nI want the image to work regardless of location. What could i have missed to tell? :smile:  \n\n\u003e Since if the \"image\" is not first active partition of first disk it won\u0027t boot anyway without using grub4dos or other bootmanager, I don\u0027t see why one can\u0027t use it to map \"properly\" the disk. (or correct on-the-fly the BOOT.INI)\nI have more than 1 install on which neighter XP nor ntldr are on the first primary partition and boots just fine.  \nI think, that i also had XP run from a second HDD, but have no such setup at the moment to confirm.  \n\n\u003e Hint:  \n\u003e The C:\\\\ in \"C:\\\\Windows\\\\\" is the \"theoretical\" C:, i.e. first active primary on first disk ***while*** NTLDR is booting, i.e. as \"exposed\" by BIOS, and later it is actually the C: in Registry HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\MountedDevices.\nSo ntldr would try to boot from what BIOS considers to be C: not what XP considers to be C:, right?  \n\nSo we\u0027re back to square one.   \nHow to tell ntldr to look for XP on the same drive and partition he is on?  \n\n\u003cbr /\u003e\n\n:smile:   \n"
+    },
+    {
+      "id": "96213",
+      "timestamp": "2010-03-29T11:37:13+00:00",
+      "author": "Wonko the Sane",
+      "content": "You missed a lot of details.  \n\n\u003e I want the image to work regardless of location. What could i have missed to tell? :cool:\n\n\u003cbr /\u003e\n\nFirst thing, if I get it right, it is not anymore an image.  \nIt is an image restored to a physical partition.  \n\n\u003cbr /\u003e\n\n\u003e I have more than 1 install on which neighter XP nor ntldr are on the first primary partition and boots just fine.\nSecond thing, I am sure you have a lot of \"strange\" things, but if you describe them and HOW the HECK you make NTLDR boot from a non active partition, ***it may help***.  \n\n\u003e I think, that i also had XP run from a second HDD, but have no such setup at the moment to confirm.\n\nThird thing, NTLDR won\u0027t normally boot from non-first hard disk. This is when drive re-mapping with grub4dos is useful.  \n\n\u003cbr /\u003e\n\n\u003e So ntldr would try to boot from what BIOS considers to be C: not what XP considers to be C:, right?\nYep, but as soon as the \"protected mode\" kicks in, the drive letter is the one in Registry. :smile:  \n\n\u003cbr /\u003e\n\n\u003e So we\u0027re back to square one.\nNot really, ***you*** are at square one and probably doomed to remain there, me being on the same square it\u0027s a logical impossibility. :smile:  \nAnd yes, it is likely I am at square -1, but as long as they are different squares, that\u0027s allright. :smile:  \n\n\u003e How to tell ntldr to look for XP on the same drive and partition he is on?\nYou cannot \"tell ntldr to look for XP on the same drive and partition he is on\" , BUT if you rephrase as \"how can I boot a restored image, no matter on which disk/partition it has been restored to\", a few possible answers come out:  \n\n* if the partition is the active primary of first drive, you can remove BOOT.INI\n* if the partition is the active primary of ANY drive, you can re-map drives with grub4dos and remove BOOT.INI\n* if the partition is ANYWHERE you can edit BOOT.INI on-the-fly with grub4dos, or depending on your (undisclosed) setup use the partnew command, or use a set of NT boot floppies to choose among, or possibly even hexedit NTLDR on-the-fly.\n\n\u003cbr /\u003e\n\n:smile:  \nWonko  \n\nP.S.: A rhetorical question, should this have been posted where it is:  \nBoot Land \\\u003e Groups \\\u003e WinBuilder \\\u003e Support  \nor should have it been posted here? :smile::  \nBoot Land \\\u003e Groups \\\u003e Windows Support \\\u003e Windows 2K/XP/2003  \n[http://www.boot-land...hp?showforum\u003d15](http://www.boot-land.net/forums/index.php?showforum\u003d15 \"External link\")   \n"
+    },
+    {
+      "id": "96230",
+      "timestamp": "2010-03-29T16:38:36+00:00",
+      "author": "MedEvil",
+      "content": "\u003e First thing, if I get it right, it is not anymore an image.  \n\u003e It is an image restored to a physical partition.\nYes sorry. Of course what you\u0027ve said.  \n\n\u003e Second thing, I am sure you have a lot of \"strange\" things, but if you describe them and HOW the HECK you make NTLDR boot from a non active partition, ***it may help***.\nI didn\u0027t, it just wasn\u0027t always the first primary partition XP was on. On this machine XP is, for instance, on the 3rd primary partition.  \n\n\u003e You cannot \"tell ntldr to look for XP on the same drive and partition he is on\" , BUT if you rephrase as \"how can I boot a restored image, no matter on which disk/partition it has been restored to\", a few possible answers come out:  \n\u003e\n\u003e * if the partition is the active primary of first drive, you can remove BOOT.INI\n\u003e * if the partition is the active primary of ANY drive, you can re-map drives with grub4dos and remove BOOT.INI\n\u003e * if the partition is ANYWHERE you can edit BOOT.INI on-the-fly with grub4dos, or depending on your (undisclosed) setup use the partnew command, or use a set of NT boot floppies to choose among, or possibly even hexedit NTLDR on-the-fly.\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\nPoints 1 and 2 sound good enough for me, if grub4dos would be needed anyhow to boot from 2nd HD, as you said.  \nThanks!  \n\n\u003e P.S.: A rhetorical question, should this have been posted where it is:  \n\u003e Boot Land \\\u003e Groups \\\u003e WinBuilder \\\u003e Support  \n\u003e or should have it been posted here? :smile::  \n\u003e Boot Land \\\u003e Groups \\\u003e Windows Support \\\u003e Windows 2K/XP/2003  \n\u003e [http://www.boot-land...hp?showforum\u003d15](http://www.boot-land.net/forums/index.php?showforum\u003d15 \"External link\")\nYes would probably have been a better place.  \n\n:smile:   \n"
+    },
+    {
+      "id": "96232",
+      "timestamp": "2010-03-29T17:12:16+00:00",
+      "author": "Wonko the Sane",
+      "content": "You see :smile: , if you restore the image \"no matter where\" this trick cannot work properly.  \nIf you restore ONLY on a Primary Active, it may.  \n\n\u003e I didn\u0027t, it just wasn\u0027t always the first primary partition XP was on. On this machine XP is, for instance, on the 3rd primary partition.\nBut it is active, right?  \n\nI guess there was a misunderstanding. :smile:  \n\nSince there can be (or should be :smile:) only one Active partition on any disk, the term \"first active primary partition\" is redundant, it was meant as \"first active primary partition **found** while booting\" or \"Active partition on first BIOS disk\".  \n\nThen it will get C:\\\\ when booted (before if needed being re-named by the Registry).  \n\nYou can think at it in the following way, if you use \"normal\" MBR\u0027s and PBR\u0027s:  \nBIOS-\\\u003efirst hard disk-\\\u003eMBR-\\\u003ePartition table-\\\u003eActive Primary partition-\\\u003ebootsector of Active Primary paertition-\\\u003eNTLDR-\\\u003epartition is C:\\\\  \n\nThe naming convention for 2K (is the same for XP) is here:  \n[http://www.dewassoc....riveletters.htm](http://www.dewassoc.com/support/win2000/driveletters.htm \"External link\")  \n\nIf I am allowed the use of some not very accurate terms, the NTLDR has an internal \"DOS\", now which drive letter gets first active partition found in DOS?  \n[http://support.micro.../kb/51978/en-us](http://support.microsoft.com/kb/51978/en-us \"External link\")  \n\nSo, if you have an XP machine that boots like you ***now*** described :smile:, all you have to try is renaming the BOOT.INI on the (third) active partition and see if the machine boots the same or what happens.  \n\n:smile:  \nWonko   \n"
+    },
+    {
+      "id": "96257",
+      "timestamp": "2010-03-29T22:37:26+00:00",
+      "author": "MedEvil",
+      "content": "\u003e But it is active, right?  \n\u003e\n\u003e I guess there was a misunderstanding. :smile:\nYes, little misunderstanding.   \n\n:smile:   \n"
+    }
+  ]
+}

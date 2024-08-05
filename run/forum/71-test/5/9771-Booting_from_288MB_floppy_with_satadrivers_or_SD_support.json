@@ -1,0 +1,34 @@
+{
+  "id": "9771",
+  "title": "Booting from 2.88MB floppy with sata-drivers or SD support",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "84927",
+      "timestamp": "2009-11-21T16:54:10+00:00",
+      "author": "Vindicate",
+      "content": "This is a difficult one (at least for me). I have a Toshiba Portege R600 (but the same problem would go for almost any Toshiba model, at least those from the Portege series).   \n\nI have 4 boot options:  \n- boot from harddisk  \n- boot from USB  \n- boot from LAN  \n- boot from floppy image (max 2.88MB, must be named $tosfd00.vfd) on SD card  \n\nNow I have a new harddisk and the first option no longer works (a common known problem without solution, bad toshiba!). Since LAN-boot is not possible for me (often no direct internet connection) that leaves USB and SD boot.   \n\nI am now running Kubuntu 9.10 with /boot and GRUB on a usb stick and all works perfect. At least the booting part, in practice it is really not handy to run around with a usb-stick all the time. I could lose it, it could break off and damage the computer, and it occupies one USB-port (at least while plugged in).   \n\nHence I\u0027d like to turn to the SD option. I rarely use my SD slot otherwise, and it doesn\u0027t have any of the practical problems I mentioned. However, **GRUB+/boot does not fit on 2.88MB** . Sadly.  \n\nHence I\u0027m looking for alternatives. I was thinking of a small boot floppy image (max. 2.88MB) which has SD support (vfat file system) and would in that way be able to read the rest of the SD card to load proper SATA drivers etc. to boot into Kubuntu.  \n\nSo basicly it should go like this: BIOS reads floppy image ($tosfd00.vfd) from floppy, boots it, that image loads SD support, then loads the full grub+/boot from my SD card, which is able to see/read my harddisk and boot Kubuntu from it.   \n*If it would be possible to skip the SD part and directly load all SATA-drivers and grub and boot Kubuntu that\u0027d be fine too, but I doubt that is possible in 2.88MB.*   \n\nSo my question to you: would this be possible, and if so, which software should I use for this? Which bootloader, which (SD/SATA)drivers,...  \n\nThanks in advance!   \n"
+    },
+    {
+      "id": "84935",
+      "timestamp": "2009-11-21T18:33:03+00:00",
+      "author": "was_jaclaz",
+      "content": "Not an anwser (yet ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)) but quite a few questions.  \n\nIf the BIOS boots from the image on SD doesn\u0027t also give the support for the \"rest\" of the SD? ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nHow come that hard disk is not supported anymore?  \n\nAre you sure is not one of the geometry problems that one can find on some laptops?  \n\nWhat happens if you use a \"normal\" grub4dos floppy image and put it in the SD card as $tosfd00.vfd?  \n\nEasiest to create a grub4dos floppy is to get a grub4dos floppy :smile: which is inside grub4dos 0.4.2:  \n[http://nufans.net/gr...r_dos-0.4.2.zip](http://nufans.net/grub4dos/history/grub_for_dos-0.4.2.zip \"External link\")  \nand replace the grldr, grub.exe and menu.lst in it with the ones from latest 0.4.4:  \n[http://nufans.net/gr...-2009-10-16.zip](http://nufans.net/grub4dos/grub4dos-0.4.4-2009-10-16.zip \"External link\")  \n\nThere is some **unfinished** , partly related work done here:  \n[http://www.911cd.net...showtopic\u003d20314](http://www.911cd.net/forums//index.php?showtopic\u003d20314 \"External link\")  \n\nWhich drives you have available and visible in grub4dos (pressing \"c\" to access command line and issuing a command like):  \n\n```\nroot \u0026#40;\n\n\u0026#91;TAB\u0026#93;\n```\n\n? ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)  \n\nA suitable \"boot-floppy\", shouldn\u0027t grub4dos work fine, is kexec-loader:  \n[http://www.boot-land...?showtopic\u003d4636](http://www.boot-land.net/forums/index.php?showtopic\u003d4636 \"External link\")  \n[http://www.boot-land...?showtopic\u003d7124](http://www.boot-land.net/forums/index.php?showtopic\u003d7124 \"External link\")  \n[http://www.boot-land...?showtopic\u003d8592](http://www.boot-land.net/forums/index.php?showtopic\u003d8592 \"External link\")  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "85117",
+      "timestamp": "2009-11-24T15:19:14+00:00",
+      "author": "Vindicate",
+      "content": "Ok, some updates. There is major progress already.  \n\nGrub4dos 0.4.2 has a pre-made image fat12grldr.img which I put on my SD and after some work with it (thanks to the \"unfinished\" work you linked) I managed to boot my HD with it -- with many ugly workarounds.  \n\nWhat I did:   \n1) open fat12grldr.img in winimage and edit menu.lst: add the following lines above the other boot options:\n\n```\ntitle My Fancy Title\n\nkernel \u0026#40;hd1,0\u0026#41;/vmlinuz-2.6.31-14-generic root\u003dUUID\u003d346518cc-4a79-41e1-a258-e26db0b7d355 ro quiet splash\n\ninitrd \u0026#40;hd1,0\u0026#41;/initrd.img-2.6.31-14-generic\n```\n\n2) burn fat12grldr.img to my SD on another toshiba laptop with the SD boot utility (for future reference: maybe it works by just renaming, but I think not, since it\u0027s .img and it has to be name .vfd which I think is a slightly different format... finding a better image edit program than WinImage could provide a solution if you can\u0027t access any toshiba windows)  \n3) remove the UUID-line for my USB-stick from /etc/fstab on my SSD (so now it boots from there but does not mount /boot from there)  \n4) copy the whole contents from my usb to my sd, moving the contents of the /boot folder to the root of the SD (next to $tosfd00.vfd).  \n5) boot grub4dos and select the new option.  \n\nAnd this at least boots into Kubuntu. I haven\u0027t tested yet if everything works well, but my main concern now is: is it a problem that I removed the /boot line from fstab? Just replacing it with the UUID from the SD-card doesn\u0027t seem to work. Maybe I didn\u0027t determine the UUID correctly, I took the values in \"sudo blkid\" from the livecd.   \n"
+    },
+    {
+      "id": "85119",
+      "timestamp": "2009-11-24T16:26:16+00:00",
+      "author": "was_jaclaz",
+      "content": "Both .vfd and .img are just extensions.  \n\nThe actual format is \"RAW\" or \"dd-like\" a byte-by-byte copy of a floppy.  \n\nYou don\u0027t actually \"need\" Winimage, you can create a 2.88 floppy image from scratch and then install to it\u0027s bootsector the grub4dos bootsector, starting from the pre-made image in grub4dos 0.4.2 was just the \"easiest\" way.  \n\nCannot help you about the Kubuntu issue. :smile:  \n\njaclaz   \n"
+    }
+  ]
+}

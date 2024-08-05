@@ -1,0 +1,94 @@
+{
+  "id": "13053",
+  "title": "Cannot get my Win7 Rescue Discs on USB to work properly.",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "113943",
+      "timestamp": "2010-11-16T09:21:50+00:00",
+      "author": "HHawk",
+      "content": "Hi guys,  \n\nI am new to these forums, but already in some dire need of help. :wink:  \n...I hope I posted in the right forums, if not, I am sorry.  \n\nOkay the thing is, I wanted to create a multi boot USB stick, for trouble shooting etc.  \n\nAfter doing some searching on Google I found a thread, which explained on how to make such a USB stick, along with an \"useful\" application called MultiBootISO\u0027s. However I cannot get it work properly for some reason. Sigh.  \n\nThe main problem is; I need both versions (x86 \\\u0026 x64) of Windows 7 Repair Disc. I downloaded the ISO\u0027s and added them as described [here](http://www.sevenforums.com/tutorials/92177-boot-windows-7-system-repair-disc-usb-using-grub4dos.html \"External link\").  \n\nWell it sounded easy enough, but when I boot from the stick and I select one of the Windows 7 Repair Disc versions, it just hangs on \"Loading Windows Files\". De loading blocks keeps loading, but nothing happens. Even burning the W7 Repair Disc\u0027s result in faster use at the moment. Any idea what I am doing wrong here...?  \n\nThis is how my current menu.lst looks like:  \n\n\u003e \u003cbr /\u003e\n\u003e\n\u003e default 0  \n\u003e timeout 30  \n\u003e color NORMAL HIGHLIGHT HELPTEXT HEADING  \n\u003e splashimage\u003d/splash.xpm.gz  \n\u003e foreground\u003dFFFFFF  \n\u003e background\u003d000000  \n\u003e\n\u003e # Suggested by Erhan Sohail  \n\u003e title Boot First Hard Drive (HDD)  \n\u003e map (hd0) (hd1)  \n\u003e map (hd1) (hd0)  \n\u003e map --hook  \n\u003e chainloader (hd0)+1  \n\u003e rootnoverify (hd0)  \n\u003e\n\u003e title Restart  \n\u003e reboot  \n\u003e\n\u003e title Shutdown  \n\u003e halt  \n\u003e\n\u003e title --- Custom MultiBoot Entries ---  \n\u003e root  \n\u003e\n\u003e title Windows 7 x86 (32-bit) Repair  \n\u003e find --set-root /w7repairx86.iso  \n\u003e map /w7repairx86.iso (hd32)  \n\u003e map --hook  \n\u003e root (hd32)  \n\u003e chainloader (hd32)  \n\u003e\n\u003e title Windows 7 x64 (64-bit) Repair  \n\u003e find --set-root /w7repairx64.iso  \n\u003e map /w7repairx64.iso (hd32)  \n\u003e map --hook  \n\u003e root (hd32)  \n\u003e chainloader (hd32)  \n\u003e\n\u003e title System Rescue CD  \n\u003e find --set-root /systemrescuecd/isolinux/rescuecd  \n\u003e kernel /systemrescuecd/isolinux/rescuecd subdir\u003dsystemrescuecd setkmap\u003dus docache  \n\u003e initrd /systemrescuecd/isolinux/initram.igz  \n\u003e\n\u003e title Hiren\u0027s Boot CD v12  \n\u003e find --set-root /hirensbootcd12.iso  \n\u003e map /hirensbootcd12.iso (hd32)  \n\u003e map --hook  \n\u003e chainloader (hd32)  \n\u003e\n\u003e title Ultimate Boot CD  \n\u003e find --set-root /ubcd.iso  \n\u003e map /ubcd.iso (hd32)  \n\u003e map --hook  \n\u003e chainloader (hd32)  \n\u003e\n\u003e title Memtest86+  \n\u003e find --set-root /mt410.iso  \n\u003e map --mem /mt410.iso (hd32)  \n\u003e map --hook  \n\u003e root (hd32)  \n\u003e chainloader (hd32)  \n\nSome things do work, other don\u0027t. And I really do not understand what I am doing wrong here. :S  \nI would be grateful if someone could explain me what I did wrong?  \n\nThe reason I need both versions of the W7 Repair Disc; is that my system is 64-bit, however to update OCZ Solid State Disc\u0027s you need to boot to 32-bit, as the updater doesn\u0027t work in 64-bit mode (sigh).   \n"
+    },
+    {
+      "id": "113946",
+      "timestamp": "2010-11-16T10:21:09+00:00",
+      "author": "skyide",
+      "content": "First thing is first, you need to make sure you USB drive is bootable and have GRUB4DOS installed as a boot loader and based on what you\u0027ve written you have already done this. You can repeat the process by using tools such as **BOOTICE** or**grubinst_gui** . To get these tools simply search these forums or Google, e.g: **Bootice download boot-land.**   \n\nSecondly, so far as far as I know, there isn\u0027t a free tool advertised as \"**one fix for all** \". This means, a particular fix may work on most ISOs but not all and for the ones that won\u0027t work, you may be required to create a different solution. This is especially relevant when booting Linux live ISO. Many require you to extract the ISO contents and match the ISO\u0027s directory structure on your USB drive\u0027s dedicated partition for that live ISO. All you do then is map the ISO and boot it up. This does not work for all ISOs. Sometimes you may need to extract the ISO contents and convert commands from isolinux.cfg or syslinux.cfg to the GRUB4DOS equivalent and this is very easy.  \n\nThirdly, if you want to boot multiple Windows 7 PEs of the same **Removable USB Flash** drive, the only way for you to do this is if you use Win PE ISOs that copy their files to memory. This means the ISO has got a compressed WIM image in the sources directory. Using WinBuilder you can specify whether you want to create a Win 7 PE ISO in a WIM image format or have the files extracted within the ISO (so you have a Windows directory in the ISO). If you go with the second option, you can then grab this ISO and extract it to your USB drive\u0027s partition. After you do this, there is utility called USBBootWatcher that you need to run. If you are using a removable USB flash drive, you can only have one instance of this setup as Windows cannot see more than one **Removable USB Partition** partition by default. This means it will give you a blue screen if you boot of a second removable USB drive partition as it won\u0027t be able to find the files. However you should be able to do it on USB hard disk (have not tried it).  \n\nAnyway, based on what you have said, your best option is to use WinBuilder and select \"**In RAM** \" for build model under main configuration. I strongly suggest you check out and download the **Win7PE_SE** WinBuilder package. All you have to do is specify the Win7 sources directory and it just works :wink: By default, the build method is set to \"In RAM\" so something like the following will work:  \n\n```\ntitle Win 7 PE ISO Boot \u0026#40;To RAM\u0026#41;\n\nroot \u0026#40;hd0,0\u0026#41;\n\nmap /IMAGES/Win7Pe_x86.ISO \u0026#40;0xff\u0026#41; || map --mem /IMAGES/Win7Pe_x86.ISO \u0026#40;0xff\u0026#41;\n\nmap --hook\n\nchainloader \u0026#40;0xff\u0026#41;\n```\n\n\u003cbr /\u003e\n\nAssuming the Win7PE ISO is on the first partition of your USB flash drive. If you want to run a second WinPE ISO (considering the build model was set to RAM)  \n\n```\ntitle Win 7 Make-PE \u0026#40;To RAM\u0026#41;\n\nroot \u0026#40;hd0,0\u0026#41;\n\nmap /IMAGES/Win7Pe_MakePE.ISO \u0026#40;0xff\u0026#41; || map --mem /IMAGES/Win7Pe_MakePE.ISO \u0026#40;0xff\u0026#41;\n\nmap --hook\n\nchainloader \u0026#40;0xff\u0026#41;\n```\n\n\u003cbr /\u003e\n\nagain you will need to make sure you have the ISO copied in IMAGES on the first partition. You can also download Make-Pe from these forums. Make-Pe is less complex.  \n\nYou have to understand how things work and things can seem a bit complex when you first learn but it\u0027s not as complex as it may seem.  \n\nI have about 25 different operating systems on 23 **Removable USB Flash Drive** partitions on a 32GB USB drive and three of them are Windows 7 PE. One is extracted and two in a WIM format and have about 15GB of free unallocated space remaining. I ran out of drive letters so I have to mount new partitions in folders :wink:   \n\n**Edited by skyide, 16 November 2010 - 11:20 AM.**\n"
+    },
+    {
+      "id": "113949",
+      "timestamp": "2010-11-16T10:43:02+00:00",
+      "author": "steve6375",
+      "content": "\u003e I have about 25 different operating systems on 23 removable USB partitions on a 32GB USB drive and three of them are Windows 7 PE. One is extracted and two in a WIM format have about 17GB of free unallocated space remaining. I ran out of drive letters so I have to mount new partitions in folders :wink:\nCan you explain what you mean by \u0027removable partition\u0027 - how do you mount partitions in folder? Sounds useful?   \n"
+    },
+    {
+      "id": "113950",
+      "timestamp": "2010-11-16T10:51:50+00:00",
+      "author": "skyide",
+      "content": "I apologize I got my wording incorrect. I meant **\\[Removable USB Flash Drive\\]\u0027s** partitions - that is partitions created on a USB flash drive whose removable media bit is set to \"removable\" and not \"non-removable/fixed\" which is also known as a USB hard drive :wink:  \n\nIn relation to your second question, in \"Change Drive Letter\" option in Disk Management, you can tell Windows to attach the partition\u0027s file system to a folder which is exactly the same as when using the mount command on Linux.  \n\nSee this: [http://techopinion.n...ount_points.png](http://techopinion.net/mount_points.png \"External link\")   \n\n**Edited by skyide, 16 November 2010 - 10:53 AM.**\n"
+    },
+    {
+      "id": "113957",
+      "timestamp": "2010-11-16T11:30:44+00:00",
+      "author": "HHawk",
+      "content": "First thanks for taking the time to answer.  \n\nHowever I think you misread somewhere; I managed to get it booting without problems, I did exactly what was explained in the tutorial. All the applications work, but I cannot get the Windows 7 Repair Disc\u0027s x64 and x86 working.  \n\nI don\u0027t need a Windows PE (Preinstallation Environment), I just want to load the x64 and / or x86 Repair Disc.  \n\nCurrently it keeps stuck on \"Loading Windows Files\".   \n"
+    },
+    {
+      "id": "113960",
+      "timestamp": "2010-11-16T11:40:57+00:00",
+      "author": "skyide",
+      "content": "\u003e First thanks for taking the time to answer.  \n\u003e\n\u003e However I think you misread somewhere; I managed to get it booting without problems, I did exactly what was explained in the tutorial. All the applications work, but I cannot get the Windows 7 Repair Disc\u0027s x64 and x86 working.  \n\u003e\n\u003e I don\u0027t need a Windows PE (Preinstallation Environment), I just want to load the x64 and / or x86 Repair Disc.  \n\u003e\n\u003e Currently it keeps stuck on \"Loading Windows Files\".\n\nOh I see, I do apologize. I am fully 32-bit and have not played yet with 64-bit (I have a very good reason). Hmm I don\u0027t know. Is [this](http://www.sevenforums.com/tutorials/2083-system-repair-disc-create.html \"External link\") the method you used to create the repair disk? And it still won\u0027t work?   \n\nHave you tried burning the ISO and booting it and see if that works?  \n\nHow about you extract the WIM image on your first primary partition, use USBBootWatcher64 and boot up the thing via **chainloader (hd0,0)/bootmgr** . You may need to copy the BOOT folder of the ISO...A few things you can try. USBBootWatcher64 updates the registry so you don\u0027t get any blue screens.   \n\n**Edited by skyide, 16 November 2010 - 11:43 AM.**\n"
+    },
+    {
+      "id": "113963",
+      "timestamp": "2010-11-16T12:30:57+00:00",
+      "author": "steve6375",
+      "content": "What do you mean by \u0027Windows 7 Repair Disk\u0027? Is this a DVD that comes with a system which you can boot from and repair or install Windows 7 with? i.e. standard Win 7 Recovery DVD.   \n\nIf so - do you want to actually install Win 7 or just repair Win 7?  \n\nif not - can you give contents of DVD and details about who made it?   \n"
+    },
+    {
+      "id": "113965",
+      "timestamp": "2010-11-16T12:43:27+00:00",
+      "author": "HHawk",
+      "content": "Yes, I meant the Windows 7 Recovery Disc\u0027s.  \n\nI downloaded the 32-bit and 64-bit versions. Which I wanted to multiboot from my USB stick, so I wouldn\u0027t have to burn 2 different cd\u0027s and also it would load much faster.  \n\nThe problem is, when I add them, like stated in my original thread, I can select them from the option screen and it starts with \"Loading Windows Files\", but it seems to stay like that forever.  \n\nAnd like said before; I don\u0027t want to install Windows at all, just want to boot to the repair screen so I can update my OCZ SSD firmware (in 32-bit; 64-bit not supported by the updater) and put back Windows 7 images when something crashes (in 64-bit).  \n\nI already tried something different like the following:  \n\n\u003e title Windows 7 Repair x86  \n\u003e root (hd0,0)  \n\u003e chainloader (hd0,0)/w7_repair_x86/bootmgr  \n\u003e\n\u003e title Windows 7 Repair x64  \n\u003e root (hd0,0)  \n\u003e chainloader (hd0,0)/w7_repair_x64/bootmgr\n\nyesterday, but that didn\u0027t work. I was thinking placing them both in different directories I could make it work, but it said it couldn\u0027t find the files or something...  \n\nSorry about my English, it isn\u0027t my native language... :wink:   \n"
+    },
+    {
+      "id": "113966",
+      "timestamp": "2010-11-16T12:50:03+00:00",
+      "author": "al_jo",
+      "content": "\u003e Yes, I meant the Windows 7 Recovery Disc\u0027s.  \n\u003e\n\u003e I downloaded the 32-bit and 64-bit versions. Which I wanted to multiboot from my USB stick, so I wouldn\u0027t have to burn 2 different cd\u0027s and also it would load much faster.  \n\u003e\n\u003e The problem is, when I add them, like stated in my original thread, I can select them from the option screen and it starts with \"Loading Windows Files\", but it seems to stay like that forever.  \n\u003e\n\u003e And like said before; I don\u0027t want to install Windows at all, just want to boot to the repair screen so I can update my OCZ SSD firmware (in 32-bit; 64-bit not supported by the updater) and put back Windows 7 images when something crashes (in 64-bit).  \n\u003e\n\u003e I already tried something different like the following:  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e yesterday, but that didn\u0027t work. I was thinking placing them both in different directories I could make it work, but it said it couldn\u0027t find the files or something...  \n\u003e\n\u003e Sorry about my English, it isn\u0027t my native language... :wink:\n\nI\u0027ve just tried the two Iso\u0027s and using Sardu.  \nWorking without any problem! Try it!  \n[http://www.boot-land...p?showforum\u003d100](http://www.boot-land.net/forums/index.php?showforum\u003d100 \"External link\")   \n"
+    },
+    {
+      "id": "113967",
+      "timestamp": "2010-11-16T12:53:51+00:00",
+      "author": "steve6375",
+      "content": "OK - it is just that you can create a CD called a Windows Repair Disk from within Win 7 using recdisk.exe which is a WinRE disk.  \n\nEither way, as long as you don\u0027t want to actually install Windows (which won\u0027t work), you should be able to boot from the iso.  \n\nSee my post here [http://www.boot-land...?...ost\\\u0026p\u003d67168](http://www.boot-land.net/forums/index.php?s\u003d\u0026showtopic\u003d7916\u0026view\u003dfindpost\u0026p\u003d67168 \"External link\") and change the iso names to your iso\u0027s.   \n"
+    },
+    {
+      "id": "113968",
+      "timestamp": "2010-11-16T12:54:47+00:00",
+      "author": "HHawk",
+      "content": "@al_jo  \n\nThanks will give it a go and see if it works. Will report back either way.  \n\n// crosses fingers!   \n\n**Edited by HHawk, 16 November 2010 - 12:55 PM.**\n"
+    },
+    {
+      "id": "113969",
+      "timestamp": "2010-11-16T13:08:59+00:00",
+      "author": "HHawk",
+      "content": "Okay it seems indeed to work with Sardu, however I need to add 2 more applications. But they aren\u0027t in the list of compatible program\u0027s?  \n\nHow do I add those? It\u0027s similar to Ultimate Boot CD. :S  \nIs it possible?   \n"
+    },
+    {
+      "id": "113970",
+      "timestamp": "2010-11-16T13:14:13+00:00",
+      "author": "al_jo",
+      "content": "\u003e Okay it seems indeed to work with Sardu, however I need to add 2 more applications. But they aren\u0027t in the list of compatible program\u0027s?  \n\u003e\n\u003e How do I add those? It\u0027s similar to Ultimate Boot CD. :S  \n\u003e Is it possible?\nYou have to specify!  \nAnd also put the question in the Sardu forum!  \n:wink:   \n"
+    },
+    {
+      "id": "114001",
+      "timestamp": "2010-11-16T21:47:48+00:00",
+      "author": "skyide",
+      "content": "\u003e title Windows 7 Repair x86  \n\u003e root (hd0,0)  \n\u003e chainloader (hd0,0)/w7_repair_x86/bootmgr\n\nThat is **not** going to work. If you want to do it that way, the contents of **w7_repair_x86** must be on the root and not within a folder. Also these contents must be the same as the ones within the WIM image in the sources dir. This will give you a Windows dir, Program Files etc on the root of your partition. However, what you have done is the same as moving your exisiting Windows installation within a folder which of course will not work.   \n\nIf you going this route, the proper way is to move all your files to the root of your USB drive and then use **USBBootWatcher /prepare X:\\\\Windows\\\\System32** where X is the drive letter of your USB drive and change **chainloader (hd0,0)/w7_repair_x86/bootmgr** to **chainloader (hd0,0)/bootmgr** . When you boot this way, you will not get the **Windows is loading files** screen. Every file will be read from your USB drive for each operation instead of everything being copied to RAM.   \n\n**Edited by skyide, 16 November 2010 - 10:06 PM.**\n"
+    }
+  ]
+}

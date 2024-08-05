@@ -1,0 +1,28 @@
+{
+  "id": "17856",
+  "title": "Enhanced Write Filter (EWF) compatible with XP x64?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "163920",
+      "timestamp": "2012-12-06T19:09:27+00:00",
+      "author": "Zoso",
+      "content": "Ive been using ewf alot on 32bit XP sp2 \\\u00263 with good reults but now I have 64 bit XP sp2 able to boot from usb and by using the exact same proceedure to install EWF on the 64 bit XP it \"cannot find protected volume\"the boot ini is correct the arc path correct etc., etc. I have read that some people have EWF working on Vista and 7 x64 and have posted tutorials for that but I can not find any info for 64 bit XP.does anyone here know how to enable an EWF protected volume in XP64? or where I can find more info? I would really like to get it working so I can experiment with 64bit OS now.thanks   \n"
+    },
+    {
+      "id": "163965",
+      "timestamp": "2012-12-07T15:29:00+00:00",
+      "author": "Sha0",
+      "content": "You say that you are using a 64-bit XP. Ok. Where are you getting the **Enhanced Write Filter** driver from?   \n"
+    },
+    {
+      "id": "164017",
+      "timestamp": "2012-12-09T17:23:53+00:00",
+      "author": "Zoso",
+      "content": "hi Sha0, got it from a trial download of special feature pack 2007. the only place to get it that I am aware of. other issues Im having with getting x64 XP operable for me is that DriverPacks doesnt list x64 XP packs, only vista,7 x64. does this mean that I should use vista \\\u0026 7 x64 DriverPacks with XP x64?if this is the case then maybe the ewf tutorial on mp3car forum will also work on XP x64, yes? basically the author indicates that win7 needs a specific boot volume # added to enable ewf.I have win7 that came with my newest system but I never activated it, I may finally get to try it also since ewf can be used with it but I wanted to give XP x64 a go first.anyway, can anyone here please confirm if/that ewf works with x64?thanksthanks   \n"
+    }
+  ]
+}

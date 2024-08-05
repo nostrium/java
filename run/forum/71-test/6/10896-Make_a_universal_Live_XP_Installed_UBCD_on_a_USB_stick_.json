@@ -1,0 +1,34 @@
+{
+  "id": "10896",
+  "title": "Make a universal Live XP (Installed) / UBCD on a USB stick ?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "96298",
+      "timestamp": "2010-03-30T09:59:30+00:00",
+      "author": "Keyboarder",
+      "content": "Hi :smile:   \n\nMy project is to make a universal Live XP (Installed) / UBCD on a USB stick with multiboot (I use GRUB4DOS).  \n\nI already tried this method : [http://www.ngine.de/...jsp?pageid\u003d4176](http://www.ngine.de/index.jsp?pageid\u003d4176 \"External link\") but XP does not boot correctly (BSoD with 0x00000007B error).I can only boot the UBCD :smile:  \n\nCan you help me please ? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)   \n"
+    },
+    {
+      "id": "96307",
+      "timestamp": "2010-03-30T11:24:49+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Hi ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)   \n\u003e\n\u003e My project is to make a universal Live XP (Installed) / UBCD on a USB stick with multiboot (I use GRUB4DOS).  \n\u003e\n\u003e I already tried this method : [http://www.ngine.de/...jsp?pageid\u003d4176](http://www.ngine.de/index.jsp?pageid\u003d4176 \"External link\") but XP does not boot correctly (BSoD with 0x00000007B error).I can only boot the UBCD :smile:  \n\u003e\n\u003e Can you help me please ? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n#1 (easiest) Try the automated one:  \n[http://www.usboot.org/](http://www.usboot.org/ \"External link\")  \n\n#2 Verify, check and double check the actual registry modifications you made according to the ngine.de guide, the copy and paste from that site has been reported to fail.  \nAs clearly written on ***that*** tutorial, the support forum for ***that*** method is this one:  \n[http://forums.ngine....ewforum.php?f\u003d4](http://forums.ngine.de/viewforum.php?f\u003d4 \"External link\")  \n\nThere is a set of the files downloadable (without errors) posted on MSFN, which right now is unavailable, once it is back, check this thread:  \n[http://www.msfn.org/...howtopic\u003d119963](http://www.msfn.org/board/index.php?showtopic\u003d119963 \"External link\")  \nthere is a post in it where **jaclaz** :smile: posted the hopefully \"right\" set of files.  \n\n#3 Check also this:  \n[http://www.911cd.net...o...c\u003d22473\\\u0026hl\u003d](http://www.911cd.net/forums//index.php?showtopic\u003d22473\u0026hl\u003d \"External link\")  \n\n#4 FORGET about #1 and #2, and try this one:  \n[http://www.boot-land...?showtopic\u003d9830](http://www.boot-land.net/forums/index.php?showtopic\u003d9830 \"External link\")  \n\n![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)  \nWonko   \n"
+    },
+    {
+      "id": "96308",
+      "timestamp": "2010-03-30T11:32:45+00:00",
+      "author": "Keyboarder",
+      "content": "Thanks ! I will try that tonight :smile:   \n"
+    },
+    {
+      "id": "97979",
+      "timestamp": "2010-04-14T22:28:33+00:00",
+      "author": "Keyboarder",
+      "content": "I have tried the following tutorial to create an universal XP on USB stick : [http://www.boot-land...?showtopic\u003d9830](http://www.boot-land.net/forums/index.php?showtopic\u003d9830 \"External link\")  \n\nFrom :  \n\n2. Install of XP on USB-HDD  \n\n\\* Install Windows XP...  \n\nTo :  \n\nUse IMG_XP_Restore.exe to Restore XP on your USB-HDD using the just made HDD Image file  \n\n(Without these 2 steps :  \n\n# For booting from RAMDISK Install FiraDisk driver with R-mouse on firadisk.inf in IMG_XP\\\\makebt\\\\firadisk-driver-0.0.1.18 folder  \n\n# Install ImDisk driver using C:\\\\IMG_XP\\\\makebt\\\\imdiskinst.exe allows later to update Image file using IMG_XP_Update.exe)  \n\nBut \"IMG_XP_Restore.exe\" can\u0027t restore the image file on my USB stick :wink:  \n\n![Posted Image](http://img89.imageshack.us/img89/9554/errorvp.jpg)  \n\nShould I buy a bigger USB stick ? I don\u0027t understand :wink:   \n"
+    }
+  ]
+}

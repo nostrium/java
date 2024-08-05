@@ -1,0 +1,88 @@
+{
+  "id": "19162",
+  "title": "Easy2boot OEL or Centos 6.4 install error",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "179513",
+      "timestamp": "2013-11-13T17:27:29+00:00",
+      "author": "wanman",
+      "content": "During an installation of Oracle Enterprise Linux (OEL) or CentOS 6.4, I\u0027m receiving the error:\n\nExamining Storage Devices\n\nThe installation source given by device \\[\u0027/dev/sda4\u0027\\] could not be found. Please check your parameters and try again.\n\nI\u0027ve tried multiple .iso extensions all resulting in the same error.\n\nWe were able to find a work-around, however it reduces the usability of the drive to a single distro installation.\n\nExtracting from:\n\n[http://iniu.net/cont...econd-harddisk/](http://iniu.net/content/how-install-oracle-enterprise-linux-61-usb-second-harddisk/ \"External link\")  \nCopy the downloaded Oracle Enterprise linux ISO file to the USB flash  \nCopy the \u0027images\u0027 folder to the usb flash  \nCopy file \u0027initrd.img\u0027 and \u0027vmlinuz\u0027 (under the \u0027isolinux\u0027 folder) to the root of the usb flash\n\nThat means, I now have the iso on there twice and the other files, which are specific to that distro.\n\nIs this something solved by a custom menu or setting that I\u0027m missing?\n\nThanks\n\n**Edited by wanman, 13 November 2013 - 05:27 PM.**\n"
+    },
+    {
+      "id": "179515",
+      "timestamp": "2013-11-13T19:47:57+00:00",
+      "author": "steve6375",
+      "content": "Not sure why it can\u0027t find it on sda4. Must be the script/code...\n\nYou could always modify the ISO by deleting the image folder from the ISO?\n\n"
+    },
+    {
+      "id": "179535",
+      "timestamp": "2013-11-14T15:34:05+00:00",
+      "author": "wanman",
+      "content": "Modifying the ISO seems crud since we\u0027re talking about something as common as CentOS and OEL which are just dirivitives of RedHat.\n\nJust to clarify... on booting the USB, the ISO loads find, starts the install and one of the early questions is where to find the installation media. At that point, I get a standard list of all the identified partitions, and as recommended I pick /dev/sda4. All of the other partiions immediately fail, but sda4 proceeds with starting the installation. It\u0027s diring the installation is when it does the \u0027examining storage devices\u0027 that it decides it can no longer find the files it needs on sda4.\n\nThanks\n\n"
+    },
+    {
+      "id": "179539",
+      "timestamp": "2013-11-14T16:52:15+00:00",
+      "author": "steve6375",
+      "content": "Sure - the problem seems to be that it doesn\u0027t like sda4 at that point.\n\nIt was suggested to me that the network install ISO works if you add a repository to the USB drive (not sure if it works on an ntfs drive).\n\n"
+    },
+    {
+      "id": "179578",
+      "timestamp": "2013-11-15T21:23:03+00:00",
+      "author": "ilko",
+      "content": "I am typing this from fleshly installed CentOS 6.4 ([CentOS-6.4-i386-LiveCD.iso](http://mirror.its.sfu.ca/mirror/CentOS/6.4/isos/i386/CentOS-6.4-i386-LiveCD.iso \"External link\")), first used default boot option, booted to Live CD desktop, rebooted and selected \"Install\" option, that from NTFS formatted 32GB USB flash disk, using similar as easy2boot method. During partitioning screen deleted 3rd primary partition on the internal hard disk, made new primary partition there and set it for root mount point, all the rest were the default options.\n\nWanman, which exact ISO did you use for CentOS, with link please?\n\nWhat media are you installing from? What file system?\n\nHas the USB media been modified afterwards in any way?\n\nDid you use PLoP or grub4dos USB 2.0 driver?\n\nWhich boot option do you exactly use?\n\n"
+    },
+    {
+      "id": "179580",
+      "timestamp": "2013-11-15T21:30:56+00:00",
+      "author": "steve6375",
+      "content": "What do you mean using \u0027similar\u0027 to E2B method? What method exactly did you use please ilko?\n\n"
+    },
+    {
+      "id": "179581",
+      "timestamp": "2013-11-15T21:37:58+00:00",
+      "author": "ilko",
+      "content": "Used WinSetupFromUSB, no much difference in the menu I guess:\n\n```\ntitle CentOS-6.4-i386-LiveCD from partition 0\nmap --unmap\u003d0:0xff\nmap --unhook \u0026\u0026 map --rehook\nroot (hd0,0)\nset ISO\u003d/ISO/CentOS-6.4-i386-LiveCD.iso\nls %ISO% \u003e nul || find --set-root --devices\u003dhf /usbdrive.tag|| echo Error! Could not find usbdrive.tag \u0026\u0026 echo  \u0026\u0026 pause Press any key to return to the main menu \u0026\u0026 configfile /menu.lst\nls %ISO% \u003e nul || find --set-root --devices\u003dhf %ISO% || echo Error! Could not find %ISO% \u0026\u0026 echo  \u0026\u0026 pause Press any key to return to the main menu \u0026\u0026 configfile /menu.lst\nmap %ISO% (0xff) || map --heads\u003d0 --sectors-per-track\u003d0 %ISO% (0xff) || echo FATAL ERROR mapping %ISO%, please check if file is present and defragmented \u0026\u0026 pause Press any key to return to main menu \u0026\u0026 configfile /menu.lst\n#http://reboot.pro/topic/9916-grub4dos-isohybrided/page-2#entry88531\n#http://www.rmprepusb.com/tutorials/tails\ndebug 1\nparttype (hd0,3) | set check\u003d\ndebug off\nset check\u003d%check:~-5,4%\nif \"%check%\"\u003d\u003d\"0x00\" partnew (hd0,3) 0 0 0 \u0026\u0026 partnew (hd0,3) 0x00 %ISO%\nif not \"%check%\"\u003d\u003d\"0x00\" echo WARNING: PARTITION TABLE 4 IS ALREADY IN USE! \u0026\u0026 echo  \u0026\u0026 echo Will not map %ISO% to 4th partition entry \u0026\u0026 pause \u0026\u0026 configfile /menu.lst\nmap --hook\nroot (0xff)\nchainloader (0xff)\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "179584",
+      "timestamp": "2013-11-15T23:43:06+00:00",
+      "author": "steve6375",
+      "content": "That ISO seems to be OK, it is CentOS-6.4-x86_64-bin-DVD1.iso that seems to have a problem.\n\n"
+    },
+    {
+      "id": "179587",
+      "timestamp": "2013-11-16T00:13:00+00:00",
+      "author": "wanman",
+      "content": "Yes, correct in using the DVD iso. Minimal or netinstall works. I have not tried the netinstall to another location on the USB, but will shortly.\n\nThanks\n\n"
+    },
+    {
+      "id": "179589",
+      "timestamp": "2013-11-16T05:54:55+00:00",
+      "author": "ilko",
+      "content": "If using ext3/4 CentOS might work if you copy only the directory images, even only images.img and maybe TRANS.TBL from it inside the directory, holding the ISO file. At start of Anaconda, select the partition holding the ISO file and type in the field below the directory name holding the ISO image.\n\nRef:\n\n[https://fedoraprojec...naconda/Options](https://fedoraproject.org/wiki/Anaconda_Boot_Options?rd\u003dAnaconda/Options \"External link\")\n\n[http://fedoraproject...ckstart#install](http://fedoraproject.org/wiki/Anaconda/Kickstart#install \"External link\")\n\n[https://fedoraprojec...lation_problems](https://fedoraproject.org/wiki/How_to_debug_installation_problems \"External link\")\n\nNTFS seems not supported, that\u0027s quite rare for the end of year 2013, ISO is too big for FAT32.\n\nQuick glance at the log files, anaconda stage 1 finds and uses the isohybrid partition /dev/sdX4, stage 2 is where it fails.\n\nThere should be much better approach- netinst ISO and repos/images elsewhere, if netinst have the same functionality.\n\nTrying Oracle now, smaller ISO will fit on FAT32, will update posts with results.\n\n**Added:**\n\nOracle Linux did work. Using 6.4 i386 DVD (V37085-01.iso) on FAT32, images directory copied inside /ISO/ directory, where the ISO file is as well, at start of installer typed ISO and selected /dev/sda1. Currently it\u0027s at \\~60% of installing packages stage.\n\nDrawback- another ISO of this type must go in another directory, to be accompanied by different /images directory.\n\n"
+    },
+    {
+      "id": "179605",
+      "timestamp": "2013-11-16T19:09:17+00:00",
+      "author": "ilko",
+      "content": "A bit off-topic- digging a bit further about NTFS support during install- nothing, but the typical RedHat response attitude and speedy bugfixes...\n\n[https://bugzilla.red...g.cgi?id\u003d748780](https://bugzilla.redhat.com/show_bug.cgi?id\u003d748780 \"External link\")\n\n[https://bugzilla.red...g.cgi?id\u003d651534](https://bugzilla.redhat.com/show_bug.cgi?id\u003d651534 \"External link\")\n\nNot even closed yet...\n\nIt took them several years to fix critical bug in their Perl packages which severely affected any program which relies on Perl:\n\n[https://bugzilla.red...g.cgi?id\u003d379791](https://bugzilla.redhat.com/show_bug.cgi?id\u003d379791 \"External link\")\n\nReported: 2007-11-13 07:14\n\nLast Closed: 2009-01-20 16\n\n"
+    },
+    {
+      "id": "179735",
+      "timestamp": "2013-11-19T21:28:36+00:00",
+      "author": "nino",
+      "content": "Good night has all  \nI have a key USB Verbatine 32 GO  \nI have him format in NTFS sen no partition  \nI have instal grudd4dos with RMPREPUSB PUI I have copy Easy2Boot_v1.17  \nThen I have add in the file ISO / WINPE /  \nWinPEx86 bits, isope01  \nWINPE7X64 bits, isope01  \nI have them make with (Win7PE_SE_2013-10-03)  \nhere is my worry when I throw the demarrage Windows letter X but all takes up well that corresponds has Y no portable software and no pilot takes up resulta whom I have intergrer  \nhow would be possible - make me to make go up Y there  \nI have look at several tutos but I confess that I really do not include which file I doix to change I have try to change the unattend file, xml but anything has part that he re-initializes has every starting  \nMy CLE USB and admitted in the explorer Windows as one support of removable stocking  \nand my bios in detection AUTO  \nThanks for your assistant\n\n"
+    },
+    {
+      "id": "179740",
+      "timestamp": "2013-11-19T22:13:41+00:00",
+      "author": "steve6375",
+      "content": "If you are using a removable USB flash drive, when you boot to WinPE, you should see a blue console windows as [here](http://www.youtube.com/watch?v\u003dMBKh_jDyTmQ\u0026t\u003d9m51s \"External link\") (but there will be no repair option offered).\n\nIf you don\u0027t get see this window then the ISO will not be mounted as drive Y: (which is the default drive letter).\n\nThe console window runs due to wpeinit running. So you should check startnet.cmd runs wpeinit.\n\nThis thread is about CentOS. Can you start a new thread for this issue please under Easy2Boot and can you post in French because I cannot understand your English.\n\n"
+    }
+  ]
+}

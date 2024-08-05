@@ -1,0 +1,142 @@
+{
+  "id": "20353",
+  "title": "grub not detect hdd or usb",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "191033",
+      "timestamp": "2015-03-01T12:19:26+00:00",
+      "author": "alaki",
+      "content": "hi\n\nwhen boot grub4dos from hdd and i want to use some file from usb drive grub not detect hd1 as usb what can i do?\n\n(or if i use plpbt to boot from cd and then boot to usb (my pc not support to boot from usb!!) then i have hd0 as usb and not detect hd1 ad hard disk ??)\n\nsorry for bad english!!\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "191034",
+      "timestamp": "2015-03-01T12:36:42+00:00",
+      "author": "steve6375",
+      "content": "What is the problem? Are you using a grub4dos menu to boot something? If so, please give menu lines to us.\n\n"
+    },
+    {
+      "id": "191074",
+      "timestamp": "2015-03-02T06:36:24+00:00",
+      "author": "alaki",
+      "content": "no, i use command to boot but when i install grub to hard disk and boot and connect usb masstorage to pc grub not detect the usb\n\nwhen use find command, only show (hd0,0), (hd0,1), ... and i cant access to usb storage\n\n"
+    },
+    {
+      "id": "191076",
+      "timestamp": "2015-03-02T09:25:20+00:00",
+      "author": "steve6375",
+      "content": "grub4dos 0.4.5c does not contain any USB controller drivers.\n\nIf you boot from USB then BIOS uses its USB drivers and maps the USB drive as hd0.\n\nIf you boot from HDD then the BIOS does not map the USB drive at all and so the BIOS does not know of the USB drive.\n\nSo when you boot from HDD to grub4dos, there will be no USB devices.\n\nHowever, grub4dos 0.4.6a has a USB 2.0 driver.\n\n1. Download the latest version of 0.4.6a (2015-02-28) from [here](http://grub4dos.chenall.net/categories/downloads/ \"External link\")\n\n2. Copy the grldr file to your HDD and overwrite the one that is already there\n\n3. Boot to grub4dos from the HDD\n\n4. Connect USB drive to USB 2.0 port\n\n5. In grub4dos command shell type\n\n```\nfind\nusb --init\nfind\n```\n\nIf the grub4dos driver works, you should now have an accessible USB drive?\n\n"
+    },
+    {
+      "id": "191100",
+      "timestamp": "2015-03-03T12:12:52+00:00",
+      "author": "alaki",
+      "content": "hi\n\nbut on vmware error 81. no usb device found, show\n\n"
+    },
+    {
+      "id": "191101",
+      "timestamp": "2015-03-03T18:27:20+00:00",
+      "author": "alacran",
+      "content": "Forget vmware do what Steve6375 said in **your real machine** it has to work with your USB. Unless there is someting wrong with your USB device (try mother board USB ports first).\n\n"
+    },
+    {
+      "id": "191103",
+      "timestamp": "2015-03-03T18:42:38+00:00",
+      "author": "Ninho",
+      "content": "@Steve6375 : Hi ! I\u0027ve checked the very latest 0.4.6a binary and peeked inside\n\nsource code (asm.S where the - impressive - USB stuff resides) : unfortunately,\n\nit still assumes USB disk\u0027s sector size \u003d 512 bytes - that is hard coded :\u003d(\n\nAm i assumming right that you Steve are in contact with Chenall and/or Yaya (I think\n\nYaya is grub4dos\u0027s USB-man...) ?\n\nIFF you are able to contact someone there, would you please ask them the question\n\nabout if (and when) they are going to address this problem - i.e. process USB\n\n( and hopefully also other) disks having 4096 bytes per sector !\n\nSupport thereof has been badly wanted for several years now !\n\nThanks in advance !\n\n**Edited by Ninho, 03 March 2015 - 06:48 PM.**\n"
+    },
+    {
+      "id": "191104",
+      "timestamp": "2015-03-03T18:43:00+00:00",
+      "author": "Ninho",
+      "content": "Double-post, sorry - ignore !\n\n**Edited by Ninho, 03 March 2015 - 06:46 PM.**\n"
+    },
+    {
+      "id": "191105",
+      "timestamp": "2015-03-03T18:43:54+00:00",
+      "author": "Ninho",
+      "content": "Triple trouble- sorry. Ignore !\n\n**Edited by Ninho, 03 March 2015 - 06:47 PM.**\n"
+    },
+    {
+      "id": "191106",
+      "timestamp": "2015-03-03T18:54:06+00:00",
+      "author": "steve6375",
+      "content": "It has already been requested previously but most (all?) USB BIOSes don\u0027t support 4k USB disks, so you can\u0027t even boot to grub4dos anyway!\n\nSo the answer has been \u0027don\u0027t hold your breath!\u0027\n\nYou can log a request [here](https://github.com/chenall/grub4dos/issues?q\u003dis%3Aopen+is%3Aissue \"External link\") - ***if***you can specify a system/BIOS that supports int13h native 4k sector support...\n\n"
+    },
+    {
+      "id": "191107",
+      "timestamp": "2015-03-03T19:19:04+00:00",
+      "author": "Ninho",
+      "content": "thanks instant answer !\n\n\u003e \u003cbr /\u003e\n\u003e\n\u003e ***if*** you can specify a system/BIOS that supports int13h native 4k sector support..\n\nUh, no, USB support through BIOS is not what I\u0027m asking here,\n\nif BIOS could do it by itself Grub\u00274DOS support wouldn\u0027t be needed\n\n:\u003d)\n\nNew G4D version 0.4.6a has its *own* USB-EHCI mass-storage class - doesn\u0027t use\n\nthe BIOS, the sad fact is at the moment, for some odd reason they have hard-coded\n\nsector sizes to 512 bytes. The hard part is done - USB *is* hard! - I\u0027m confident\n\nit would not be extremely hard, in comparison, to add the 4K sector case\n\nfor them who know their code intimately...\n\nThen for boot support (chainloading) , it\u0027ll be trivial to load a 4K boot sector or MBR\n\nto memory at absolute 00007C00 and start execution there...\n\nAs another useful application, boot/chainload an OS from another disk\n\nbut keeping GRUB4DOS\u0027s EHCI driver *as the* USB BIOS...\n\n\u003e \u003cbr /\u003e\n\u003e\n\u003e You can log a request here...\n\nAye ! Good, I\u0027ll do that !\n\n**Edited by Ninho, 03 March 2015 - 07:21 PM.**\n"
+    },
+    {
+      "id": "191108",
+      "timestamp": "2015-03-03T19:21:40+00:00",
+      "author": "steve6375",
+      "content": "But how do you boot to grub4dos in the first place?\n\n"
+    },
+    {
+      "id": "191109",
+      "timestamp": "2015-03-03T19:33:51+00:00",
+      "author": "Ninho",
+      "content": "\\[q\\]But how do you boot to grub4dos in the first place?\\[/q\\]\n\nWell... from another, supported, disk that can boot the machine up to Grub4DOS, *of course...*\n\n"
+    },
+    {
+      "id": "191110",
+      "timestamp": "2015-03-03T19:46:37+00:00",
+      "author": "steve6375",
+      "content": "So you want to boot from an MBR-bootable 512 byte disk via BIOS int 13h to grub4dos - run the **usb --init**command to install the USB 2.0 grub4dos driver which can support 4K USB disks and then access those 4K disks from grub4dos?\n\nI guess that is possible, but the current USB drive is not very good. It only supports USB 2.0 controllers and does not work with as many different controllers as Plop does (though the grub4dos driver is rd/wr and not just read-only like Plop is).\n\n"
+    },
+    {
+      "id": "191111",
+      "timestamp": "2015-03-03T21:15:54+00:00",
+      "author": "Ninho",
+      "content": "\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003e So you want to boot from an MBR-bootable 512 byte disk via BIOS int 13h to grub4dos - run the **usb --init** command to install the USB 2.0 grub4dos driver which can support 4K USB disks and then access those 4K disks from grub4dos?\n\nRight!\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003e I guess that is possible, but the current USB drive is not very good. It only supports USB 2.0 controllers and does not work with as many different controllers as Plop does (though the grub4dos driver is rd/wr and not just read-only like Plop is).\n\nPlop\u0027s is not an option, at the moment, for 2 reasons : it\u0027s read only, and the \u0027experimental\u0027 4K support doesn\u0027t not work\n\nin addition, I think, Elmar lost interest / isn\u0027t working at it :\u003d(\n\n"
+    },
+    {
+      "id": "191320",
+      "timestamp": "2015-03-13T16:04:56+00:00",
+      "author": "Ninho",
+      "content": "\u003d Grub4DOS \" **usb -- init** \" does *not* detect tje USB-EHCI controller on a machine that has\n\na VIA USB2 PCI adapter :\u003d( .\n\nThat older Dell machine\u0027s native Intel chipset only does UHCI , i.e. USB1.1\n\nIs failure to detect EHCI add-on adapters expected ?\n\n\u003d I posted the previous request (about 4KByte sectors; upthread) to Chenal\u0027s Github\n\na week ago, but no sign of any activity there. Are you sure they check the log ?\n\nI\u0027d need to ping \"Yaya\" in particular, he\u0027s \"Mr USB\" I think, is there a\n\nway to get his (or Chenal\u0027s) attention ? Have an email ?\n\n**Edited by Ninho, 13 March 2015 - 04:13 PM.**\n"
+    },
+    {
+      "id": "191321",
+      "timestamp": "2015-03-13T17:03:40+00:00",
+      "author": "steve6375",
+      "content": "The USB controller detection is limited and only USB 2.0 adapters.\n\nYou can report it as an issue, but list PCI ID (use E2B - Utilities - Show Mass Storage Contoller PCI IDs.)\n\nThey do check the issues log daily. But of the request is difficult then they need time to study it. If it is easy to fix they will fix in a day or so.\n\nAs I said, the 4K sectors request has already been made previously and they said they don\u0027t currently intend to support it.\n\n"
+    },
+    {
+      "id": "191322",
+      "timestamp": "2015-03-13T17:33:14+00:00",
+      "author": "Ninho",
+      "content": "\u003e The USB controller detection is limited and only USB 2.0 adapters.\n\nYes i\u0027m aware Grub4dos does USB 2.0 only (EHCI). But i haven\u0027t read any indication that it would not\n\nwork with add-on PCI USB 2, have there been reports of not detected USB 2.0 ?\n\n\u003e They do check the issues log daily.\n\nAlright then, wait\u0027n\u0027see... I\u0027m going to add a log for the undetected VIA add-on board.\n\nThanks\n\n"
+    },
+    {
+      "id": "191323",
+      "timestamp": "2015-03-13T17:50:55+00:00",
+      "author": "steve6375",
+      "content": "As I said, the range of controllers that it works with is limited. Older USB 2 controllers may work, but Plop seems to work on some systems that grub4dos USB driver does not. Newer controllers don\u0027t seem to be detected. e.g. Haswell Z87.\n\n"
+    },
+    {
+      "id": "191464",
+      "timestamp": "2015-03-18T11:47:50+00:00",
+      "author": "Ninho",
+      "content": "Today\u0027s latest commit by Yaya2007 resolves the issue (#49) ! There\u0027s a man !\n\nNow if only he would look at the more important (in my opinion) issue of 4K-sectors !\n\nSteve, am I right assuming he, Mr. Yaya, is the same person, Yaya Diy, who gave us an upgraded\n\n\"Di1000dd.sys\" USB MSD driver for DOS systems ?\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "191465",
+      "timestamp": "2015-03-18T12:42:32+00:00",
+      "author": "steve6375",
+      "content": "I lose the USB keyboard after running usb --init with the new version of grub4dos on my Haswell Z87A - so not such a good bugfix...\n\n"
+    },
+    {
+      "id": "191469",
+      "timestamp": "2015-03-18T14:12:19+00:00",
+      "author": "Ninho",
+      "content": "\u003e I lose the USB keyboard after running usb --init with the new version of grub4dos on my Haswell Z87A - so not such a good bugfix...\n\nToo bad ! ~~Please report the bug there~~ I\u0027m seeing you reported the bug...\n\nMe, don\u0027t know, I\u0027m using PS2-port connected keyboards only.\n\n**Edited by Ninho, 18 March 2015 - 02:15 PM.**\n"
+    }
+  ]
+}

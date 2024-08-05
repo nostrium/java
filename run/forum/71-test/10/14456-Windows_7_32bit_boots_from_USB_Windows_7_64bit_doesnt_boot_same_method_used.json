@@ -1,0 +1,46 @@
+{
+  "id": "14456",
+  "title": "Windows 7 32bit boots from USB, Windows 7 64bit doesn\u0027t boot, same method used",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "128178",
+      "timestamp": "2011-05-07T15:32:12+00:00",
+      "author": "Hjanos95",
+      "content": "Hello all!  \n\nI would like to run Windows 7 from my USB-HDD.  \nWindows 7 32 bit boots fine, but Windows 7 64 bit doesn\u0027t boot.  \nI used the same method:  \n1. I installed Windows 7 to a VHD image in the local hard drive.  \n2. I applied set_7_usb_boot.cmd from [here](http://reboot.pro/14186/page__st__15 \"\")  \n3. I copied the VHD to my USB-HDD.  \n4. I made a bcd entry  \n5. I boot from USB-HDD  \n\nAny ideas what could I do to make this working?   \n"
+    },
+    {
+      "id": "128181",
+      "timestamp": "2011-05-07T15:46:43+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Windows 7 32 bit boots fine, but Windows 7 64 bit doesn\u0027t boot.  \n\"doesn\u0027t boot\" is not enough for anything. ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)  \nPlease describe what happens (like black screen, flashing cursor BSOD - whisch STOP ERROR if BSOD - etc.).  \n\nCan you try booting the .VHD from an \"internal\" HD; just to rule out the USB \"overlay\"?  \n\n![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \nWonko   \n"
+    },
+    {
+      "id": "128186",
+      "timestamp": "2011-05-07T16:15:28+00:00",
+      "author": "Hjanos95",
+      "content": "\u003e \"doesn\u0027t boot\" is not enough for anything. ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)  \n\u003e Please describe what happens (like black screen, flashing cursor BSOD - whisch STOP ERROR if BSOD - etc.).  \n\u003e\n\u003e Can you try booting the .VHD from an \"internal\" HD; just to rule out the USB \"overlay\"?  \n\u003e\n\u003e ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\u003e Wonko  \nThanks for your reply.  \nI found out the problem.  \nI used a SP1 integrated version for install.  \nWithout the SP1 it is working fine.  \nI will integrate SP1 again, I think something went bad through the integration of SP1, that cought the problem.   \n"
+    },
+    {
+      "id": "128201",
+      "timestamp": "2011-05-07T19:46:03+00:00",
+      "author": "Hjanos95",
+      "content": "I integrated SP1 to windows 7 64 bit setup with RT7Lite.  \nThen I installed and again I get BSOD 7b error.  \nWithout the Service Pack it worked fine.  \nAnd now how can I integrate SP1 without damaging USB boot functionality.   \n\n**Edited by Hjanos95, 07 May 2011 - 08:02 PM.**\n"
+    },
+    {
+      "id": "131806",
+      "timestamp": "2011-06-27T07:06:55+00:00",
+      "author": "health",
+      "content": "Dear Hjanos95 !  \n\nPlease explain in detail these items:  \n2. I applied set_7_usb_boot.cmd from here  \n4. I made a bcd entry  \n5. I boot from USB-HDD  \n\nThank You.  \n\n\u003e Hello all!  \n\u003e\n\u003e I would like to run Windows 7 from my USB-HDD.  \n\u003e Windows 7 32 bit boots fine, but Windows 7 64 bit doesn\u0027t boot.  \n\u003e I used the same method:  \n\u003e 1. I installed Windows 7 to a VHD image in the local hard drive.  \n\u003e 2. I applied set_7_usb_boot.cmd from [here](http://reboot.pro/14186/page__st__15 \"\")  \n\u003e 3. I copied the VHD to my USB-HDD.  \n\u003e 4. I made a bcd entry  \n\u003e 5. I boot from USB-HDD  \n\u003e\n\u003e Any ideas what could I do to make this working?  \n\n"
+    },
+    {
+      "id": "132543",
+      "timestamp": "2011-07-07T07:31:09+00:00",
+      "author": "Vladimir Izmalkov",
+      "content": "[How To Boot And Install Windows 7 From USB Flash Drive](http://maketecheasier.com/boot-and-install-windows-7-from-usb-flash-drive/2009/01/23 \"External link\")  \n![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)   \n\n**Edited by Vladimir Izmalkov, 07 July 2011 - 07:31 AM.**\n"
+    }
+  ]
+}

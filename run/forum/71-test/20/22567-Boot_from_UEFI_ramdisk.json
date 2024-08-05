@@ -1,0 +1,40 @@
+{
+  "id": "22567",
+  "title": "Boot from UEFI ramdisk",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "219771",
+      "timestamp": "2021-11-01T16:41:47+00:00",
+      "author": "nimue",
+      "content": "Anyone knows if it is possible to boot Windows from a UEFI ramdisk?\n\nAn example for Linux is given here: [https://www.intel.co...100f-820238.pdf](https://www.intel.com/content/dam/develop/external/us/en/documents/stts001-sf15-stts001-100f-820238.pdf \"External link\") (slide 35)\n\nFrom an UEFI shell you create a disk in memory, load the files there from the web or maybe physical disk/drive. Then boot the ramdisk from the efi shell.\n\nI\u0027m not sure if each modern UEFI Bios has to support this command. At least you can\u0027t find too much on it online.\n\nAnyone if it will work?\n\n**Edited by nimue, 01 November 2021 - 04:42 PM.**\n"
+    },
+    {
+      "id": "219772",
+      "timestamp": "2021-11-01T19:18:36+00:00",
+      "author": "Wonko the Sane",
+      "content": "More or less you are describing ramdisk booting, which is something that is usually done via grub2, grub4dos/grub4UEFI, agfm, etc. on both BIOS and UEFI.\n\nThen your image\\[1\\] (or whatever you load to the ramdisk\\[2\\]) needs to have (in the case of a Windows or similar) a suitable ramdisk driver installed, which right now is SVBUS (other drivers like WinVblock and Firadisk have issues with latest Windows versions).\n\nBut I am not sure to have understood what you are actually asking. i..e. whether you want to know about existing solutions to ramboot a windows or if the question is about not using any of the available tools. ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n\\[1\\] usually a VHD image is used, as it is the same as a RAW or dd-like one,\n\n\\[2\\] if you want to create a ramdisk and populate it with files, then you will need to create a volume and apply to it a filesystem to be able to copy files to it.\n\n"
+    },
+    {
+      "id": "219775",
+      "timestamp": "2021-11-02T11:29:11+00:00",
+      "author": "nimue",
+      "content": "I guess it is similar to what you can do with grub. But you can leave out the grub part (just use the efi shell) and I\u0027m not sure if you would require an additional driver.\n\nI didn\u0027t test it. The link just mentions fat32 so maybe it won\u0027t work with Windows+NTFS. But in case ntfs works would you need an additional driver? I guess the disk would just look like a normal ntfs disk to the OS, wouldn\u0027t it?\n\nThe question is not about the existing tools. It looks like they all use grub in some way. I was just wondering if anyone successfully used the UEFI-only ramdisk for booting Windows.\n\n"
+    },
+    {
+      "id": "219776",
+      "timestamp": "2021-11-02T12:44:05+00:00",
+      "author": "wimb",
+      "content": "[VHD_WIMBOOT_Trusted-63](https://github.com/wimbrts/VHD_WIMBOOT/releases \"External link\") and Win_Reduce_Trusted-45 and [SVBus_INST_Trusted-20](https://github.com/wimbrts/VHD_WIMBOOT/releases \"External link\") can be used\n\nto make Mini-10x64.vhd booting in UEFI mode from RAMDISK where Windows 10/11 UsedSize is about 2 GB\n\nInfo: [VHD_WIMBOOT.pd](https://github.com/wimbrts/VHD_WIMBOOT/releases \"External link\")f\n\n"
+    },
+    {
+      "id": "219777",
+      "timestamp": "2021-11-02T13:35:28+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I guess it is similar to what you can do with grub. But you can leave out the grub part (just use the efi shell) and I\u0027m not sure if you would require an additional driver.\n\u003e\n\u003e I didn\u0027t test it. The link just mentions fat32 so maybe it won\u0027t work with Windows+NTFS. But in case ntfs works would you need an additional driver? I guess the disk would just look like a normal ntfs disk to the OS, wouldn\u0027t it?\n\u003e\n\u003e The question is not about the existing tools. It looks like they all use grub in some way. I was just wondering if anyone successfully used the UEFI-only ramdisk for booting Windows.\n\nNo, this has nothing to do with the filesystem used by the ramdisk (though a filesystem on the ramdisk is needed to load files to it and of course the OS needs to be ale to access it).\n\nThe point is about the need of a ramdisk driver.\n\nWIndows (recent versions) has not one built-in apart the one used for .wim\u0027s (in PE\u0027s).\n\nSuch a driver is needed for windows to \"map\" an extent of ram as a disk, otherwise it won\u0027t ever boot, simply because it cannot find the device, typically halting with a 0x0000007b BSOD.\n\nThis is independent from the way you load the data to the ramdisk.\n\nIf you prefer, besides the way you \"prepare\" the ramdisk, the OS you copy there must be capable of booting from ramdisk.\n\nAnd to boot from UEFi (or BIOS) you need a OS loader, the only os loader that can load (recent) windows is bootmgr.efi (or BOOTMGR on BIOS), so what any of the existing working tools do, one way or the other, is to:\n\n1) prepare and/or map an image to and/or copy to the ramdisk the needed OS files\n\n2) chainload the osloader on it (bootmgr.efi or BOOTMGR)\n\nbefore and besides the above:\n\n3) the os on the ramdisk must have installed/available a driver to map the ramdisk as volume\n\nI don\u0027t see why (in theory) #1 and #2 should not be possible from EFI shell, though I am failing to see any particular advantage on not using an already tested and working solution, but #3 is a pre-requisite to boot a Windows from ramdisk.\n\nSaid the other way round, you\u0027d better first have a working ram booting Windows, and then attempt to create a ramdisk and booting from it via EFI shell.\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    }
+  ]
+}

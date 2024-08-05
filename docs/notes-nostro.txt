@@ -1,0 +1,32 @@
+
+Webservers available
+https://github.com/yegor256/takes
+https://undertow.io/
+
+
+Web clients
+https://square.github.io/okhttp/
+http://hc.apache.org/httpcomponents-client-4.5.x/index.html
+
+
+Adding SSL to Java webservers
+https://ordina-jworks.github.io/security/2019/08/14/Using-Lets-Encrypt-Certificates-In-Java.html
+
+
+Self-certifying SSL in Java:
+https://github.com/shred/acme4j
+https://github.com/KoosieDeMoer/DomainControlVerifier
+https://github.com/valb3r/letsencrypt-helper
+
+
+Convert HTML code to markdown
+https://github.com/vsch/flexmark-java
+
+IP.B convert 
+------------
+
+What is missing on migration:
++ Mark Best answer
++ Mark topic as pinned
++ Download attachments
+x convert HTML to markdown

@@ -1,0 +1,118 @@
+{
+  "id": "9002",
+  "title": "Problems of installing Windows 7 from USB.",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "77738",
+      "timestamp": "2009-09-09T10:00:34+00:00",
+      "author": "Angus",
+      "content": "Hi, I encountered problems of installing Windows 7 from USB. Let me describe my procedure to do that and show you what happens as follows.  \n\nProcedure to make a bootable USB for Windows 7:  \n1) Reference to \"**WAREZ** \" and do the same things step by step.  \n2) After installing Grub4Dos, Extract and copy all files from DVD ISO of Windows 7 to my USB stick.  \n3) Edit and add a title for menu.lst under the root of USB stick.  \ntitle Install Windows 7  \nfind --set-root /bootmgr  \nchainloader /bootmgr  \n\nAn error message is shwon after entering \"Install Windows 7\" in Grub4Dos:  \nWindows Boot Manager says Windows failed to start. A recent hardware or software change might be the cause etc, etc, then -\\\u003e  \nFile: \\\\Boot\\\\BCD  \nStatus: 0xc000000e  \nInfo: An error occurred while trying to read the boot configuration data.  \n\nDo I miss something to configure Grub4Dos or lacks of instructions to set the MBR of my USB stick? Need your kindly help, thanks a million!  \n\nP.S My USB stick works here as an USB-HDD for ASUS P4C800-E motherboard.   \n"
+    },
+    {
+      "id": "77743",
+      "timestamp": "2009-09-09T11:06:03+00:00",
+      "author": "maanu",
+      "content": "first of all , remove **any** reference to the **warez** .  \n\nplz check if u have **boot** folder at root of ur usb stick . what files u got there ?   \n"
+    },
+    {
+      "id": "77745",
+      "timestamp": "2009-09-09T11:29:53+00:00",
+      "author": "Angus",
+      "content": "Okay, here comes my USB directory structure and menu.lst.  \nPlease have a look at attachment!  \n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d menu.lst \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \ntimeout 60  \ndefault 3  \n\ntitle Boot from Hard Drive  \nrootnoverify (hd1,0)  \nchainloader (hd1,0)+1  \n\ntitle --------------------  \nroot  \n\ntitle Start WAREZ  \nfind --set-root /WAREZ/boot.gz  \nmap --mem /WAREZ/boot.gz (fd0)  \nmap --hook  \nchainloader (fd0)+1  \nrootnoverify (fd0)  \nmap --floppies\u003d1  \nboot  \n\ntitle WAREZ Windows Xp  \nfind --set-root /WAREZ/XPLOADER.BIN  \nchainloader /WAREZ/XPLOADER.BIN  \n\ntitle Install Windows 7  \nfind --set-root /bootmgr  \nchainloader /bootmgr   \n"
+    },
+    {
+      "id": "77746",
+      "timestamp": "2009-09-09T12:06:57+00:00",
+      "author": "maanu",
+      "content": "**warez** are not allowed here ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)   \n\nbut it seems you do not understand it , do you ?   \n\nsorry i cant help you unless you want me to..   \n"
+    },
+    {
+      "id": "77754",
+      "timestamp": "2009-09-09T13:13:17+00:00",
+      "author": "Angus",
+      "content": "Remove the link to **WAREZ** !   \n"
+    },
+    {
+      "id": "77755",
+      "timestamp": "2009-09-09T13:21:50+00:00",
+      "author": "was_jaclaz",
+      "content": "Please forget anything connected to the WAREZ you took as an example and to whatever else you may have read here and there.  \n\nIs your problem creating a Multiboot USB thingy, capable, among other things to install Windows 7?  \n\nIf yes, the answers are here:  \n[http://www.msfn.org/...p-usb-f157.html](http://www.msfn.org/board/install-xp-usb-f157.html \"External link\")  \n\nThe \"Install XP from USB\" methods allow also to install Vista or 7 from USB stick.  \n\njaclaz   \n"
+    },
+    {
+      "id": "77816",
+      "timestamp": "2009-09-10T07:15:01+00:00",
+      "author": "Angus",
+      "content": "Thanks jaclaz!  \n\nI read the link you provided, but is is useless to me so far.  \n\nWhen I boot my Lenovo Thinkpad R61 with this USB stick, it works fine and Windows 7 can be installed from USB. But it doesn\u0027t wrok for my desktop ASUS P4C800-E/Intel 875 chipset Motherboard!  \n\nAnyone knows why this situation aries? Does this problem come from BIOS? I am getting confused yet.  \n\n![:(](http://reboot.pro/public/style_emoticons/default/sad.png)   \n"
+    },
+    {
+      "id": "77821",
+      "timestamp": "2009-09-10T07:56:26+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I read the link you provided, but is is useless to me so far.\nNO you didn\u0027t. ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \nI gave you a link to a Forum (actually a sub-forum on MSFN). Reading it would take at least several days if not weeks.  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003e When I boot my Lenovo Thinkpad R61 with this USB stick, it works fine and Windows 7 can be installed from USB. But it doesn\u0027t wrok for my desktop ASUS P4C800-E/Intel 875 chipset Motherboard!\nGood, now we know what the problem is.  \n\n\u003e Anyone knows why this situation aries?\nYES. ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)   \n[http://homepages.tes...no-answers.html](http://homepages.tesco.net/J.deBoynePollard/FGA/questions-with-yes-or-no-answers.html \"External link\")  \n\n\u003e Does this problem come from BIOS?\nYES/NO. ![:(](http://reboot.pro/public/style_emoticons/default/sad.png) (see above)  \n\nIt is very likely that you partitioned/formatted the USB stick in such a way that it only works on the Lenovo.  \n\nLenovo\u0027s are reknown to have a \"quirk\", they use a geometry of nx240x63 as opposed to the usual nx255x63.  \n\nIf you use a CHS based kind of partition and/or a FAT32 filesystem, you may experience exactly that problem.  \n\nThe \"common\" problem is usually people that can boot anything BUT the Lenovo, you probably managed to get the \"reversed\" problem. ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n\nYou will need to read these:  \n[http://www.911cd.net...o...c\u003d21702\\\u0026hl\u003d](http://www.911cd.net/forums//index.php?showtopic\u003d21702\u0026hl\u003d \"External link\")  \n[http://www.911cd.net...o...1702\\\u0026st\u003d129](http://www.911cd.net/forums//index.php?showtopic\u003d21702\u0026st\u003d129 \"External link\")  \n[http://www.boot-land...?...\u003d8528\\\u0026st\u003d21](http://www.boot-land.net/forums/index.php?showtopic\u003d8528\u0026st\u003d21 \"External link\")  \n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "77874",
+      "timestamp": "2009-09-10T13:43:55+00:00",
+      "author": "Angus",
+      "content": "jaclaz sir, my C/H/S of USB stick is 1007/255/63 in FAT32.  \nAnd sector size is 512 bytes as usual.   \n"
+    },
+    {
+      "id": "77886",
+      "timestamp": "2009-09-10T15:10:59+00:00",
+      "author": "was_jaclaz",
+      "content": "So, it\u0027s not a geometry issue. ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n\n\u003e 2) After installing Grub4Dos, Extract and copy all files from DVD ISO of Windows 7 to my USB stick.\n\nAnd did you create/edit/modify the BCD?  \n:wink:  \n\nWhy don\u0027t you try the mapping to (hd32) of the actual .iso?  \nIt has been reported to work allright:  \n[http://www.boot-land...?showtopic\u003d5041](http://www.boot-land.net/forums/index.php?showtopic\u003d5041 \"External link\")  \n[http://www.boot-land...?...\u003d5041\\\u0026st\u003d26](http://www.boot-land.net/forums/index.php?showtopic\u003d5041\u0026st\u003d26 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "77888",
+      "timestamp": "2009-09-10T15:30:36+00:00",
+      "author": "Angus",
+      "content": "\u003e And did you create/edit/modify the BCD?  \n\u003e Why don\u0027t you try the mapping to (hd32) of the actual .iso?\n\nI did not create/edit/modify anything regarding the BCD before. If this problem could not be solved easily, I am considering to map actual DVD ISO for Grub4Dos.  \n\nOn the other hand, I am reading some articles of patching FAT32 boot sector... Even don\u0027t know what they can do for me!   \n"
+    },
+    {
+      "id": "77891",
+      "timestamp": "2009-09-10T15:38:24+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e On the other hand, I am reading some articles of patching FAT32 boot sector... Even don\u0027t know what they can do for me!\nNot any good. :wink:  \n\nIf you chainload bootmgr from grub4dos, you ***bypass*** the bootsector CODE, so even if it that CODE needs a patch when executed directly you won\u0027t have any advantage by fixing something that is NOT used... ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n\nAs i see it, you have three choices:  \n\n* Use one of the apps on the \"Install XP from USB\" Forum (easy :wink:)\n* Map the .iso (easy :wink:)\n* Try fixing the BCD/find whatever is wrong in your current method (not easy :wink:)\n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "78004",
+      "timestamp": "2009-09-11T11:05:51+00:00",
+      "author": "Pauly",
+      "content": "On my Gigabyte motherboard GA-P35-S3L, this method works well:  \n\n1. Extract BOOT, EFI, SOURCES directories and BOOTMGR to my UFD(USB-HDD mode);  \n\n2. change the PBR of the partition to \"BOOTMGR boot record\" using [BOOTICE](http://www.boot-land.net/forums/index.php?showtopic\u003d8986 \"External link\");  \n\n3. change the MBR to \"Grub for Dos\" using BOOTICE;  \n\n4. copy grldr to the root of this disk;  \n\n5. edit menu.lst, add an item like this:  \ntitle start windows 7 setup  \nfind --set-root /BOOTMGR  \nchainloader +1 \\\u0026\\\u0026 boot  \n\n6. reboot my computer from this UFD and choose \"start windows 7 setup\".   \n"
+    },
+    {
+      "id": "78007",
+      "timestamp": "2009-09-11T11:20:08+00:00",
+      "author": "maanu",
+      "content": "\u003e 5. edit menu.lst, add an item like this:  \n\u003e title start windows 7 setup  \n\u003e find --set-root /BOOTMGR  \n\u003e chainloader +1 \\\u0026\\\u0026 boot\n\nhi Pauly , don\u0027t you think that using **boot** is unnecessary without command line ?   \n\ni mean we use **boot** string at the end of one entry only at command line ?  \n\nbesides it is very nice method u explained above. ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)   \n"
+    },
+    {
+      "id": "78008",
+      "timestamp": "2009-09-11T11:24:34+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e 5. edit menu.lst, add an item like this:  \n\u003e title start windows 7 setup  \n\u003e find --set-root /BOOTMGR  \n\u003e chainloader +1 \\\u0026\\\u0026 boot\n\nFor the record you don\u0027t need a **boot** command in an entry in menu.lst, the **boot** command is implied when either another **title** is found or EOF is reached.  \n\nPlease also note that if you boot from that stick, it will already be **ROOT** .  \n\nIn other words your entry can be simply:  \n\n```\ntitle start windows 7 setup\n\n  chainloader +1\n```\n\nunless you are using a multiboot thingy and you may use other menu.lst entries that change ROOT.  \n\njaclaz   \n"
+    },
+    {
+      "id": "78009",
+      "timestamp": "2009-09-11T11:29:53+00:00",
+      "author": "Pauly",
+      "content": "You\u0027re right. No extra **boot** needed. ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)   \n"
+    },
+    {
+      "id": "78338",
+      "timestamp": "2009-09-14T02:18:05+00:00",
+      "author": "Angus",
+      "content": "Thanks to Pauly for your step-by-step BOOTICE! It cannot solve current problem too :smile:   \n\nPerhaps I met same problem of the discussion in [【讨论】PE3.0的0xc000000e问题](http://bbs.wuyou.com/viewthread.php?tid\u003d138697\u0026highlight\u003d0xc000000e \"External link\"). It\u0027s a Chinese forum that Pauly announces his latest version of BOOTICE. There are people falling in the trick of 0xc000000e and they may get old PCs of chipsets before i915 like i865. I think I am lucky to have this problem on my ASUS P4C800-E/i875 motherboard.  \n\nHere comes another experimentation. My USB stick can let my friend\u0027s ASUS U6S laptop install Windows 7 at bootup and works fine... :smile:  \n\nWell, it\u0027s time to end this topic. Thanks to everyone who ever gives me a hand.  \n\n:smile:   \n"
+    },
+    {
+      "id": "78769",
+      "timestamp": "2009-09-17T12:34:28+00:00",
+      "author": "was_jaclaz",
+      "content": "Not a solution, but possibly a workaround:  \n[http://www.911cd.net...o...39\\\u0026start\u003d16](http://www.911cd.net/forums//index.php?showtopic\u003d19439\u0026start\u003d16 \"External link\")  \n\njaclaz   \n"
+    }
+  ]
+}

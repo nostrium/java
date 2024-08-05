@@ -1,0 +1,70 @@
+{
+  "id": "13517",
+  "title": "How to Make USB Drive as Quick Heal Native Boot?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "118240",
+      "timestamp": "2011-01-01T05:06:28+00:00",
+      "author": "Ravindra Chauhan",
+      "content": "I use all method for Quick Heal Native Bootable Cd to boot usb drive, But no one success. So, Please any one can help me to make Quick Heal Native Boot CD to USB Bootable Drive?  \n\nIt always stuck on BSOD Screen when i make Native Boot CD to Boot From USB Drive.   \n\n**Edited by Ravindra Chauhan, 01 January 2011 - 05:09 AM.**\n"
+    },
+    {
+      "id": "118248",
+      "timestamp": "2011-01-01T09:52:21+00:00",
+      "author": "steve6375",
+      "content": "where would I be able to download this and try it?   \n"
+    },
+    {
+      "id": "118251",
+      "timestamp": "2011-01-01T10:42:03+00:00",
+      "author": "Ravindra Chauhan",
+      "content": "First of All Thank You For Your Help in This Post.  \n\nYou Can Download Quick Heal Total Security One Month Trial Edition From the Link Below:  \n\n[http://bitcast-b.bit...l/ts/QHTSFT.EXE](http://bitcast-b.bitgravity.com/quickheal/builds/2011/eval/ts/QHTSFT.EXE \"External link\")  \n\nOR  \n\n[http://download.quic...l/ts/QHTSFT.EXE](http://download.quickheal.com/builds/2011/eval/ts/QHTSFT.EXE \"External link\")  \n\nFirst Install It and after that open Quick Heal --\\\u003e Tools --\\\u003e Emergency CD --\\\u003e Create Emergency CD \\\u0026 Follow the Instructions.   \n"
+    },
+    {
+      "id": "118257",
+      "timestamp": "2011-01-01T12:14:39+00:00",
+      "author": "steve6375",
+      "content": "\u003e First of All Thank You For Your Help in This Post.  \n\u003e\n\u003e You Can Download Quick Heal Total Security One Month Trial Edition From the Link Below:  \n\u003e\n\u003e [http://bitcast-b.bit...l/ts/QHTSFT.EXE](http://bitcast-b.bitgravity.com/quickheal/builds/2011/eval/ts/QHTSFT.EXE \"External link\")  \n\u003e\n\u003e OR  \n\u003e\n\u003e [http://download.quic...l/ts/QHTSFT.EXE](http://download.quickheal.com/builds/2011/eval/ts/QHTSFT.EXE \"External link\")  \n\u003e\n\u003e First Install It and after that open Quick Heal --\\\u003e Tools --\\\u003e Emergency CD --\\\u003e Create Emergency CD \\\u0026 Follow the Instructions.  \nI tried this on my Win 7 64-bit system - the create emergency cd radio button is greyed out !!!  \n\nCan you list the contents of the emergency CD iso - it is probably WinPE/BartPE based, in which case you could use firadisk.gz  \n\ntitle WinPE CD  \nfind --set-root --ignore-floppies --ignore-cd /EBCD.iso  \nmap --mem /firadisk.gz (fd0)  \nmap --mem /EBCD.iso (0xff)  \nmap --hook  \nroot (0xff)  \nchainloader (0xff)   \n"
+    },
+    {
+      "id": "118259",
+      "timestamp": "2011-01-01T12:40:48+00:00",
+      "author": "Ravindra Chauhan",
+      "content": "First of all when U Create Emergency CD it ask for XP Bootable Cd for fetching Windows XP OS Files, So please install it on Windows XP SP2.  \n\nAnd Please Download Quick Heal Total Security 2010 One Month Trial Edition From the Link Below:  \n\n[http://download.quic...32/TSNT2010.EXE](http://download.quickheal.com/builds/2010/ts/32/TSNT2010.EXE \"External link\")  \n\nOR  \n\n[http://www.blogsolut...-download/4165/](http://www.blogsolute.com/quick-heal-2010-download/4165/ \"External link\")  \n\nThe Emergency CD is based on Windows XP Recovery Console CD. Means it boot like XP Bootable CD and when it prompt for Install or Repair Option, it Start automatically to scan system for viruses.  \n\nThanking You.   \n"
+    },
+    {
+      "id": "118262",
+      "timestamp": "2011-01-01T13:10:38+00:00",
+      "author": "steve6375",
+      "content": "\u003e First of all when U Create Emergency CD it ask for XP Bootable Cd for fetching Windows XP OS Files, So please install it on Windows XP SP2.  \n\u003e\n\u003e And Please Download Quick Heal Total Security 2010 One Month Trial Edition From the Link Below:  \n\u003e\n\u003e [http://download.quic...32/TSNT2010.EXE](http://download.quickheal.com/builds/2010/ts/32/TSNT2010.EXE \"External link\")  \n\u003e\n\u003e OR  \n\u003e\n\u003e [http://www.blogsolut...-download/4165/](http://www.blogsolute.com/quick-heal-2010-download/4165/ \"External link\")  \n\u003e\n\u003e The Emergency CD is based on Windows XP Recovery Console CD. Means it boot like XP Bootable CD and when it prompt for Install or Repair Option, it Start automatically to scan system for viruses.  \n\u003e\n\u003e Thanking You.  \n\nSorry, but I do not have XP installed so I cannot test. Can you try the solution I suggested and let me know the result pls?  \n\n1. Create bootable USB stick using RMPrepUSB  \n2. install grub4dos   \n3. Make a menu.lst file with contents a posted above  \n4. Copy ISO file to USB stick named EBCD.iso  \n5. Copy firadisk.gz to usb stick (see Beta downloads section of RMPrepUSB site for file)  \n6. Eject and try it!  \n\nIf this does not work, try changing ntdetect.com file as instructed [here](http://www.msfn.org/board/topic/112630-0x0000007b-blue-screen-error-during-text-setup/page__p__738009#entry738009 \"External link\")   \n"
+    },
+    {
+      "id": "118263",
+      "timestamp": "2011-01-01T13:22:21+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e If this does not work, try changing ntdetect.com file as instructed [here](http://www.msfn.org/board/topic/112630-0x0000007b-blue-screen-error-during-text-setup/page__p__738009#entry738009 \"External link\")  \n... or maybe MUCH more easily, here:  \n[http://www.911cd.net...c\u003d14181\\\u0026st\u003d1986](http://www.911cd.net/forums//index.php?showtopic\u003d14181\u0026st\u003d1986 \"External link\")  \n\n[http://www.megaupload.com/?d\u003dAEC0GAMM](http://www.megaupload.com/?d\u003dAEC0GAMM \"External link\")  \n\nObviously it also works to ONLY patch the NTDETECT.COM. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "118266",
+      "timestamp": "2011-01-01T14:14:28+00:00",
+      "author": "steve6375",
+      "content": "~~Or avoid ntdetect.com completely...\nFormat using RMPrepUSB (Boot as HDD)\nExtract iso contents to USB drive\ninstall grub4dos\nAdd menu.lst file and add the lines\n```\ntitle Boot XP via setupldr.bin\n\nfind --set-root /minint/setupldr.bin\n\nchainloader /minint/setupldr.bin\n\n```\n\u003cbr /\u003e\n(assuming setupldr.bin is located in minint folder).~~   \n\nSorry! - as Wonko says below, this does not avoid ntdetect.com!   \n"
+    },
+    {
+      "id": "118267",
+      "timestamp": "2011-01-01T14:42:00+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Or avoid ntdetect.com completely...  \nHOW? ![:happy_dance2:](http://reboot.pro/public/style_emoticons/default/celebrate3.gif)  \n\nLast time I checked SETUPLDR.BIN called NTDETECT.COM allright. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nOnly difference as I see it is that the \\\\minint\\\\NTDETECT.COM copy may be used ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "118269",
+      "timestamp": "2011-01-01T14:53:13+00:00",
+      "author": "steve6375",
+      "content": "\u003e HOW? ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\u003e\n\u003e Last time I checked SETUPLDR.BIN called NTDETECT.COM allright. ![:happy_dance2:](http://reboot.pro/public/style_emoticons/default/celebrate3.gif)  \n\u003e Only difference as I see it is that the \\\\minint\\\\NTDETECT.COM copy may be used ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\u003e Wonko  \nDoh! ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) yes, sorry, minint\\\\setupldr.bin does call \\\\ntdetect.com as well! Ignore my post above!   \n"
+    }
+  ]
+}

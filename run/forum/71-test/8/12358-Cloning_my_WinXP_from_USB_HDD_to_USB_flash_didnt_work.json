@@ -1,0 +1,88 @@
+{
+  "id": "12358",
+  "title": "Cloning my WinXP from USB HDD to USB flash didn\u0027t work?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "107628",
+      "timestamp": "2010-08-24T10:42:47+00:00",
+      "author": "jur",
+      "content": "I have a USB HDD running win XP on it, after using the ngine.de tutorial. Today I added the dummydisk driver to it, and performance improved - I can now move between different ports.  \n\nSo I copied the whole shebang while running from another OS (linux) from the USB HDD to a USB flash drive, that previously worked fine also booting into full XP, but has for reasons unknown stopped, giving me the BSOD. So I figured just copy everything across. It worked, kinda, no more BSOD, but now login fails - I get a message to the extent that the OS can\u0027t find the path to the account or something like that, and can\u0027t set up a temporary account either. It tries to log out, it fails and is stuck in this loop. I have to press power for 5s.  \n\nI have already searched high and low but am unable to find something as yet. I suppose cloning is not as simple as that... what else do I need to do?  \n\nHelp please?   \n"
+    },
+    {
+      "id": "107638",
+      "timestamp": "2010-08-24T11:48:22+00:00",
+      "author": "cdob",
+      "content": "\u003e but now login fails\nFirst suspect: Userinit.exe not found. [http://support.micro....com/kb/249321/](http://support.microsoft.com/kb/249321/ \"External link\")  \n\nWhich drive letter got your USB HDD at USB boot previously?  \nMap your MountedDevices: new USB flash has to get the same drive letter.  \nAdjust offline registry.   \nCompare, but adjust [http://support.microsoft.com/kb/223188](http://support.microsoft.com/kb/223188 \"External link\")   \n"
+    },
+    {
+      "id": "107680",
+      "timestamp": "2010-08-24T18:55:22+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e So I **copied** the whole shebang while running from another OS (linux) ....\nPlease define \"copied\".   \n\nDid you use dd or what ? :smile:  \n\n:smile:  \nWonko   \n"
+    },
+    {
+      "id": "107729",
+      "timestamp": "2010-08-25T13:58:21+00:00",
+      "author": "jur",
+      "content": "\u003e Please define \"copied\".   \n\u003e\n\u003e Did you use dd or what ? :smile:  \n\u003e\n\u003e :smile:  \n\u003e Wonko\nI used rox-filer in linux to drag-n-drop; windows, Docs\\\u0026Settings and Prog Files.   \n"
+    },
+    {
+      "id": "107733",
+      "timestamp": "2010-08-25T14:25:32+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I used rox-filer in linux to drag-n-drop; windows, Docs\\\u0026Settings and Prog Files.\n\nI am not familiar with rox-filer, but basically ANYTHING with drag-n-drop won\u0027t work.  \n\nYou need to replicate the Disk Signature (and starting offset) OR remove the entry for system drive (I presume C:\\\\ ) from the Registry\u0027s MountedDevices key.  \n\nSee these seemingly unrelated threads:  \n[http://www.911cd.net...showtopic\u003d19663](http://www.911cd.net/forums//index.php?showtopic\u003d19663 \"External link\")  \n[http://www.911cd.net...showtopic\u003d21682](http://www.911cd.net/forums//index.php?showtopic\u003d21682 \"External link\")  \n\nVery basically Windows assigns drive letters on the base of Disk Signature (for a partitioned Device seen as \"Fixed\"), but since you are also most probably \"shift\" from a \"fixed device\" to a \"removable\" one, replicating the disk signature won\u0027t work as well. :smile:  \n\nCannot say if there is anything running in Linux to edit the Registry. :smile:  \n\nThe \"solution\" given in the MS KB **cdob** pointed you to is an alternative way but it\u0027s about removing the \"absolute\" reference to C:\\\\ from an early starting file, this may allow to boot, but then a lot of apps that use the same kind of \"harcoded paths\" may (please read as \"will\") fail.  \n\n\u003cbr /\u003e\n\nAnd you have anyway to edit the Registry, so if I were you I would first try blanking the contents of the HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\MountedDevices key, which is known method to \"transfer\" an XP:  \n[http://www.boot-land...?...c\u003d9154\\\u0026st\u003d7](http://www.boot-land.net/forums/index.php?showtopic\u003d9154\u0026st\u003d7 \"External link\")  \nthough as said cannot say how it can be done from Linux. :smile:   \n\n:smile:  \nWonko   \n"
+    },
+    {
+      "id": "110768",
+      "timestamp": "2010-10-07T20:22:31+00:00",
+      "author": "ceehoppy",
+      "content": "As others have suggested, if you copied all apropriate system files to the UFD then you should try to change the registry drive assignments- with a twist.There are easier ways but this worked for me. I have found it (in some cases) helpful if XP \"sees\" the UFD as a fixed drive. So boot your system from the usb/hdd XP, then plug in the UFD. Apply the filter driver of choice (I like the tweaked Hitachi driver) \\\u0026 check the drive letter assigned by windows explorer (for example F: ).  \nNow open regedit (Start\\\\Run\\\\ type in \"regedit\"); go to HKLM\\\\System\\\\MountedDevices. Find the UFD drive letter(DosDevices\\\\F: ) \\\u0026 note/write down the string of 2-digit numbers. Close regedit \\\u0026 shut down pc. Reboot in linux, from usb/hdd copy Windows\\\\System32\\\\config\\\\system to ufd (replace \"system\" file on ufd with hdd version).  \nReboot from usb/hdd again \\\u0026 open regedit. Click HKLM then on the File tab 9at the top of the screen) \\\u0026 Load Hive. browse to \"system\" file on UFD \\\u0026 open - name it something - I use \"AAA\". Now go to HKLM\\\\AAA\\\\MountedDevices. Rename C: drive to Z: -or just delete that key. Rename the UFD ( F: ) to C: make sure the string of numbers is the same as before.   \nClick AAA - File tab\\\\Unload Hive. Close regedit \\\u0026 shutdown.   \nNow boot the UFD \\\u0026 everything should be good to go.  \nhope this helps   \n"
+    },
+    {
+      "id": "114572",
+      "timestamp": "2010-11-23T06:53:24+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "\u003e Apply the filter driver of choice (I like the tweaked Hitachi driver) \\\u0026 check the drive letter assigned by windows explorer (for example F: ).\n\nI assume that you are asking to apply the driver to USB-HDD XP. Am I right?  \n\nIf so, then don\u0027t we need to manually copy the driver to UFD XP too?   \n"
+    },
+    {
+      "id": "114708",
+      "timestamp": "2010-11-25T00:25:09+00:00",
+      "author": "ceehoppy",
+      "content": "I am saying to apply the driver to the usb hdd FOR the ufd. You want (the usb hdd) XP to:   \n1)see the ufd as a fixed (hitachi) disk.  \n2) have the correct mass storage drivers associated with the ufd.   \nThen copy the registry files to to the ufd as well as edit that registry copy so that ufd is C: drive for its own XP.  \nYou want to have a copy of the filter driver in the UFD system32 folder as well.   \nYMMV. terms \\\u0026 conditions apply. :smile:   \n\n**Edited by ceehoppy, 25 November 2010 - 12:28 AM.**\n"
+    },
+    {
+      "id": "114713",
+      "timestamp": "2010-11-25T06:35:18+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "\u003e You want to have a copy of the filter driver in the UFD system32 folder as well.\n\nThat\u0027s what I was asking. But why did u ask to  \n\u003e note/write down the string of 2-digit numbers.\n\n"
+    },
+    {
+      "id": "114735",
+      "timestamp": "2010-11-25T16:47:05+00:00",
+      "author": "ceehoppy",
+      "content": "I\u0027ve always made XP-ufd with filter in place during the build, so I ASSUME you need to have the driver present on your existing ufd build. I\u0027ve never copied it after the fact.  \nWhen I alter the mounted devices entry in the ufd registry, I want to be sure that the correct device is assigned as C: (I\u0027m a little OCD :smile: ) so I cross check the binary ID number as well as using the Windows drive letter.   \n"
+    },
+    {
+      "id": "114759",
+      "timestamp": "2010-11-26T01:44:12+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "\u003e ...........so I ASSUME you need to have the driver present on your existing ufd build. I\u0027ve never copied it after the fact.\n\nAlways keep in mind the red-lettered sentence in the following [post](http://www.boot-land.net/forums/index.php?showtopic\u003d4119\u0026st\u003d0 \"External link\").  \n\n\u003e **Don\u0027t assume people have the same knowledge as you**. Imagine having to write instructions on how to make a cup of tea for someone who has never used, or even seen a kettle before, \u0027boil kettle, add teabag, add milk\u0027 simply wouldn\u0027t work. You\u0027d have to tell them how to plug the kettle in, to fill it with water first, where the switch was to turn it on, etc.\n\n"
+    },
+    {
+      "id": "114765",
+      "timestamp": "2010-11-26T06:27:24+00:00",
+      "author": "ceehoppy",
+      "content": "I\u0027ll try to keep that in mind. It\u0027s just that I\u0027ve never tried to \"patch\" a ufd build the way you are doing. So my \"assumption\" is really a guess based on my limited understanding of how things like the hitachi driver works. My normal build procedure is to perform all tweaks to a \"host\" XP pc operating system. So everything is already present in the os before copying it over to ufd. (That \\\u0026 it has been over a year since I did this last.)  \nNow, as I remember, I placed the Hitachi driver files in Windows\\\\system32 folder so that they wouldn\u0027t get lost or deleted by accident.   \nI followed these tutorials :[Full XP on..UFD](http://www.boot-land.net/forums/index.php?showtopic\u003d7466 \"External link\") \\\u0026 [Fool Bios Booting..UFD](http://www.boot-land.net/forums/index.php?showtopic\u003d7512\u0026hl\u003d\\Format-it-\u0026amp;amp;-Forget-it\\+xp \"External link\")   \n"
+    },
+    {
+      "id": "114813",
+      "timestamp": "2010-11-26T19:13:52+00:00",
+      "author": "ceehoppy",
+      "content": "Something else to think about for this project. Many usb flash drives have pathetic random write speeds. That results in painfully slow xp operation. As in \"click on a tab, go get a drink \\\u0026 a snack, come back \\\u0026 the next screen might be opened\" :smile: . So either get a UFD that is FAST (I settled on a Kingspec usb ssd - OCZ also has some ufd that look good ); Or use a write filter, the \\[FULL XP on UFD\\] tutorial covers the Embedded Write Filter. It really improves system response, as all system \"write\" ops go to ram instead of the ufd, but that can (will) fill up ram (causing system freeze) \\\u0026 is incompatible with some software. A File Based Write Filter might work (all writes go to a file on the harddrive) but I haven\u0027t tried that.   \n"
+    }
+  ]
+}

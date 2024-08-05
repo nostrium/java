@@ -1,0 +1,76 @@
+{
+  "id": "4525",
+  "title": "USB Boot",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "34377",
+      "timestamp": "2008-04-28T21:21:45+00:00",
+      "author": "pscEx",
+      "content": "Since a while I\u0027m trying successless to boot my WinBuilder result from USB stick  \n\nAfter trying the sticks I have, I thought that they may be rather old and not suited for boot, and I bought a SanDisk Cruzer, which many times is reported as suitable.  \n\nBut I still do not have any success.  \n\nI do not want to tell all the trials I made wit the HP formatting utility, with PE2USB and PEToUSB etc.  \n\nI think that is a HW issue:  \n\nIn the event log there can be found:  \n\nDuring boot:  \n\nOnce:  \n\u003e Der Dienst \"NEC PCI to USB Enhanced Host Controller\" wurde aufgrund folgenden Fehlers nicht gestartet:   \n\u003e Der angegebene Dienst kann nicht gestartet werden. Er ist deaktiviert oder nicht mit aktivierten Geräten verbunden.\nEnglish like:  \n\u003e The service \"NEC PCI to USB Enhanced Host Controller\" has not been started because of the error: The service cannot be started. It is either not activated or bound to not activated devices\n\nAnd only is the stick plugged in (only during boot, never later) I get several errors:  \n\u003e Der Treiber hat einen Controllerfehler auf \\\\Device\\\\Harddisk0\\\\D gefunden.\nEnglish like:  \n\u003e The driver detected a controller failure on \\\\Device\\\\Harddisk0\\\\D\n\nAny opinion what\u0027s going wrong or what I can do?  \n\nPeter   \n"
+    },
+    {
+      "id": "34379",
+      "timestamp": "2008-04-28T21:47:51+00:00",
+      "author": "Rashed",
+      "content": "```\nMORE INFORMATION\n\nWhen your computer pages information to or from the disk, if a generic error occurs, it logs an Event ID 51event message. In a paging operation, the operating system either swaps a page of memory from memory to disk or retrieves a page of memory from disk to memory. It is part of the memory management of Microsoft Windows.\n\n\n\nHowever, the computer may log this event message when it loads images from a storage device, reads and writes to locally mapped files or to any file \u0026#40;as long as it is buffered I/O\u0026#41;. The computer does not log this event message when it performs non-buffered I/O. You can troubleshoot an Event ID 51 event message the same way as you troubleshoot Event ID 9 or 11 event messages. \n\n\n\nUnder certain circumstances, the system logs the following event ID 51 event message\u0026#58;\n\n\n\nAn error was detected on device \\Device\\DeviceName during a paging operation\n\nIn this case, no harmful affects are experienced. For example, event ID 51 is logged when blank media such as CDR, CDRW, DVDR, and so on, is inserted into a writable drive while a USB device is plugged in. The system logs the event even though the disc is writable, and the USB device is still usable. In these particular cases, you can safely ignore the log entries, and no additional action is required. \n\n\n\nFor more information, click the following article numbers to view the articles in the Microsoft Knowledge Base\u0026#58; \n\n154690 How to troubleshoot event ID 9, event ID 11, and event ID 15 error messages \n\n259237 Troubleshooting event ID 9, 11, and 15 on Cluster Servers \n\nYou can use the binary data that is associated with any \u0026#34;DISK\u0026#34; error \u0026#40;Event ID 7, 9, 11, 51, and others\u0026#41; to assist you in identifying the problem by decoding the data section. For more information about how to decode the data section, click the following article number to view the article in the Microsoft Knowledge Base\u0026#58; \n\n182335 Format of event log data created by ScsiPortLogError \n\n\n\nBack to the top\n\nBecause an Event ID 51 has an additional command descriptor block \u0026#40;CDB\u0026#41; box, you must take into account the following information when you are reviewing the data section of an Event ID 51 event message.\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "34380",
+      "timestamp": "2008-04-28T21:55:55+00:00",
+      "author": "pscEx",
+      "content": "Thanks Rashed.  \nyour post at least shows me that my issue is not unknown to the M$ world.  \n\nBut unfortunatelly, when the post is explaining something about my special 51 error, it is finished.  \n\nCan you post the URL of the original article?  \n\nThanks  \n\nPeter   \n"
+    },
+    {
+      "id": "34381",
+      "timestamp": "2008-04-28T22:00:55+00:00",
+      "author": "Rashed",
+      "content": "heres the link bro  \n\n[http://support.micro...kb/244780/en-us](http://support.microsoft.com/kb/244780/en-us \"External link\")  \n\ncheerz   \n"
+    },
+    {
+      "id": "34693",
+      "timestamp": "2008-05-02T20:39:57+00:00",
+      "author": "Sirquil",
+      "content": "Another method to making a USB device bootable.  \n\nI am using a SanDisk Cruzer 1.0 GB USB stick and booting with it to VistaPE. I used a program on SanDisk website \"launchpadremoveal,exe\" to remove U3.  \n\nThe method I have been using is to open the project.iso with UltraISO Premium and write the image directly to the USB device. Open UltraISO.EXE project.iso-\\\u003eBootable-\\\u003eWrite Disk Image... This will allow you to select USB-HDD, USB-ZIP, or USB-FDD types of writes. I have been using USB-HDD. ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)   \n\nI believe this feature is only available in the premium version; not 100% sure.  \n\nUltraISO website: [http://www.ezbsystems.com](http://www.ezbsystems.com \"External link\")   \n"
+    },
+    {
+      "id": "34940",
+      "timestamp": "2008-05-06T04:12:02+00:00",
+      "author": "Carlos Machado",
+      "content": "\u003e Another method to making a USB device bootable.  \n\u003e\n\u003e I am using a SanDisk Cruzer 1.0 GB USB stick and booting with it to VistaPE. I used a program on SanDisk website \"launchpadremoveal,exe\" to remove U3.  \n\u003e\n\u003e The method I have been using is to open the project.iso with UltraISO Premium and write the image directly to the USB device. Open UltraISO.EXE project.iso-\\\u003eBootable-\\\u003eWrite Disk Image... This will allow you to select USB-HDD, USB-ZIP, or USB-FDD types of writes. I have been using USB-HDD. ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)   \n\u003e\n\u003e I believe this feature is only available in the premium version; not 100% sure.  \n\u003e\n\u003e UltraISO website: [http://www.ezbsystems.com](http://www.ezbsystems.com \"External link\")\n\n\u003cbr /\u003e\n\nWitch Version of ultraiso do you use?   \nI install the ultra 9.0 and i dont se that option \"write Disk Image.   \n"
+    },
+    {
+      "id": "34941",
+      "timestamp": "2008-05-06T04:21:03+00:00",
+      "author": "TheHive",
+      "content": "I think one version up does it. I have to try that method as soon as I get a chance.  \n\n\u003e 56, **UltraISO Premium 9.12** (April 8, 2008)   \n\u003e\n\u003e +) New write disk image feature, can create bootable USB flash drive from floppy/disk images (\\*.IMA), bootable CD/DVD images (\\*.ISO) or files on local harddisk (MS-DOS, WinPE, or isolinux/syslinux based systems)   \n\u003e +) Can create new harddisk image (up to 16GB) and floppy image (up to 2GB) with custom size  \n\u003e +) Supports bootsector of DOS(MSDOS/PCDOS/FREEDOS), Windows NT and syslinux  \n\u003e +) Can freely change floppy/disk image size (F9)   \n\u003e +) Supports Japanese language   \n\u003e +) Supports detecting CD/DVD media capacity from drive  \n\u003e +) Can optimize files above 1GB large  \n\u003e +) Show folder size in ISO image  \n\u003e \\*) Some minor improvements and bug fixes\n\n"
+    },
+    {
+      "id": "34971",
+      "timestamp": "2008-05-06T12:11:43+00:00",
+      "author": "was_jaclaz",
+      "content": "@Sirquil  \n@Carlos Machado  \n@TheHive  \n\nHey guys, please try as much as possible to keep on topic.  \n\npsc has a problem in later stage of booting, nothing that yet another method of making a USB stick bootable can resolve, and if anyone needs help on the use of UltraIso, or its feature, it is beeter if a new thread is started.  \n\njaclaz   \n"
+    },
+    {
+      "id": "34975",
+      "timestamp": "2008-05-06T13:30:31+00:00",
+      "author": "Carlos Machado",
+      "content": "\u003e I think one version up does it. I have to try that method as soon as I get a chance.\n\n\u003cbr /\u003e\n\nWell i did try that version with one bartpe image, and it wont boot, i\u0027m using a kingston datatraveler disk 4gb.  \n\nI try make a USB-HDD and USB-Floppy.  \n\n:S  \n\nIf anybody have any solution it will be great.  \n\n\u003cbr /\u003e\n\n![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)   \n"
+    },
+    {
+      "id": "34980",
+      "timestamp": "2008-05-06T15:47:53+00:00",
+      "author": "MedEvil",
+      "content": "Just so that i might be able to help.  \nWhere exactly is the problem?  \n- you can\u0027t format the stick  \n- you can\u0027t boot from stick  \n- PE isn\u0027t working from stick  \n- did you try it on a different computer as well?  \n\n![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)   \n"
+    },
+    {
+      "id": "35189",
+      "timestamp": "2008-05-08T21:28:16+00:00",
+      "author": "ispy",
+      "content": "Hi Peter ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)   \n\nIt may, or it may not help!  \n\nSee here [http://www.boot-land...?showtopic\u003d4624](http://www.boot-land.net/forums/?showtopic\u003d4624 \"External link\")  \n\nCYA later!  \n\nispy ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n"
+    }
+  ]
+}

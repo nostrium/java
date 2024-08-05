@@ -1,0 +1,52 @@
+{
+  "id": "9701",
+  "title": "Problem with USB CD Drive",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "84218",
+      "timestamp": "2009-11-12T13:41:43+00:00",
+      "author": "PeterB",
+      "content": "Here\u0027s my scenario....  \n\nI\u0027ve got an old Dell Inspiron 1300 laptop with a broken internal CD-DVD drive. Given the age and spec of the machine I haven\u0027t bought (nor still want to) a replacement drive. The machine has been running horrifically slowly so I decided to reinstall XP back on to it. I\u0027ve borrowed a USB CD-DVD Drive and even after changing the boot sequence in BIOS I\u0027ve been unable to boot the laptop from the drive. The nearest I\u0027ve got has been to reinstall XP from within windows so I can\u0027t delete my C drive (no other partitions) to create a completely fresh install. The result has been to speed up Windows but it\u0027s still left tonnes of remnants of files and folders from my previous install. I\u0027ve tried this with both the shipped XP disc from Dell or a full M/S XP Disc. The machine however will recognise and try and boot from a USB memory stick if one is plugged in so BIOS and USB ports must be working just not with the USB CD/DVD drive.   \n\nDoes anyone have any suggestions to get me to a totally clean C drive install of windows XP?  \n\nAny help gratefully received  \n\nThanks  \n\nPeter   \n"
+    },
+    {
+      "id": "84234",
+      "timestamp": "2009-11-12T18:34:48+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Does anyone have any suggestions to get me to a totally clean C drive install of windows XP?  \n\u003e\n\u003e Any help gratefully received\n\nUse a USB stick or hard disk if the CD-Rom gives you problems?  \n\nHere:  \n[http://www.msfn.org/...s-usb-f157.html](http://www.msfn.org/board/install-windows-usb-f157.html \"External link\")  \n\nyou can find several methods to use a USB device (stick or Hard Disk) instead of the CD, listed in order of (my personal scale of) increasing complexity/increasing number of options:  \n[http://www.msfn.org/...32-t120444.html](http://www.msfn.org/board/32-t120444.html \"External link\")  \n[http://www.msfn.org/...sb-t111406.html](http://www.msfn.org/board/install-xp-usb-t111406.html \"External link\")  \n[http://www.msfn.org/.../2-t121446.html](http://www.msfn.org/board/2-t121446.html \"External link\")  \n\nIf you want to keep going on the CD route, it is possible that the BIOS of that DELL:  \n\n* doesn\u0027t allow booting from USB CD\n* doesn\u0027t allow booting from USB CD in no-emulation mode BUT allows booting in El-torito floppy emulation mode\n\n\u003cbr /\u003e\n\nIf #1 there is no way out.  \nIf #2 you can burn a \"special\" XP install disk, but of course it would be \"experimental\" (creating a floppy emulation image using as floppy image a grub4dos bootable floppy to pass control to the CD working around the BIOS)  \n\n![:drunk:](http://reboot.pro/public/style_emoticons/default/drunk.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "84239",
+      "timestamp": "2009-11-12T19:32:19+00:00",
+      "author": "Icecube",
+      "content": "You can also wait a bit and hope that the developer of PLoP Boot Manager has some spare time ![:drunk:](http://reboot.pro/public/style_emoticons/default/drunk.gif) :  \n\u003e Sat 07/Nov/2009  \n\u003e\n\u003e Today, I played around with the USB CDROM driver. Mostly it works and then it stopped working. I dont know why and how fast I can fix it.  \n\u003e Sun 25/Oct/2009  \n\u003e\n\u003e Currently I am writing the long awaited USB CDROM driver. First tests are looking really good. If there are no big troubles and I find enough time, then I will release a version next week. There will be 2 versions in the future. The USB CDROM boot manager will boot only USB CD drives (no USB pen drives/harddisks or IDE CDROM\u0027S).\n[http://www.plop.at/e...mngrusblog.html](http://www.plop.at/en/bootmngrusblog.html \"External link\")   \n"
+    },
+    {
+      "id": "84256",
+      "timestamp": "2009-11-13T00:27:41+00:00",
+      "author": "allanf",
+      "content": "Another alternative might be to boot Windows PE 2.1 from the HDD into RAM. This would require downloading MS\u0027s Windows Automated Installation Kit for Vist SP1 and Server 2008. The downloaded image would need to be mounted in a virtual CD/DVD drive in order to install the WAIK.  \n\nWhen WinPE is booted into RAM, it may be possibe to install XP from a USB Flash Drive using **wimb** \u0027s U_XP_SET, provided that all the required installation files are available on the HDD (or another UFD?).  \n\nTo boot WinPE 2.1 into RAM, it would be necessary to set up Vista\u0027s BOOTMGR, which can be used to dual-boot XP and Win PE 2.1. That might be the catch - setting up BOOTMGR on the HDD by using bcdedit and bootsect from an OS which is currently running on the HDD, i.e. your XP. From memory, bootsect states an error, but I\u0027m not sure whether it actually fails or not.  \n\nTo set up BOOTMGR, it would be normal practice to firstly boot WinPE 2.1 from an optical drive or external device. However, in that case, it wouldn\u0027t be necessary at all to boot WinPE 2.1 from the HDD - just stick to the external device.  \n\nDo you think you can boot from the USB stick? How much space on the HDD? How much RAM?  \n\nJust thought I\u0027d throw in an alternative idea.  \n\nRegards ![:drunk:](http://reboot.pro/public/style_emoticons/default/drunk.gif)   \n"
+    },
+    {
+      "id": "84267",
+      "timestamp": "2009-11-13T08:55:28+00:00",
+      "author": "Immortal",
+      "content": "\u003e Here\u0027s my scenario....  \n\u003e\n\u003e I\u0027ve got an old Dell Inspiron 1300 laptop with a broken internal CD-DVD drive.\n\nSome suggestions:  \n\n1. You can try to \"repair\" the drive by simply remove it and  \nuse some contact-spray and put it back .Think it\u0027s only one screw underneath.  \nThis \"job\" is done in under 10 minutes and if you are lucky you are lucky :-)  \n\n2. When you boot and press F2, what Boot Devices can you see? These?   \n•Internal HDD  \n•USB Storage Device  \n•CD/DVD/CD-RW drive  \n(NOTE: Only devices that are preceded by a number are bootable.)  \n\n3. Make sure that you turn off the power before attaching the  \nUSB CD-DVD Drive. Also make sure your source-disc is 100% ok  \nand bootable.  \nAlso: Remove any other USB-devices  \n\nGood Luck :-)   \n"
+    },
+    {
+      "id": "84300",
+      "timestamp": "2009-11-13T16:59:04+00:00",
+      "author": "PeterB",
+      "content": "Many thanks for the quick responses. I have to say the instructions for the install from a USB stick put me off totally so I was going to wait until the PLoP Boot Manager had been finally written and tested for USB CD/DVD Drives. I\u0027ve tried cleaning the contacts to no available. I didn\u0027t think that would work as I think the optics on the drive are the problem.  \n\nI\u0027ve now cheated (or at least done what I should have done in the first place) by replacing the internal DVD Drive with a spare one from work to get the XP install sorted. Thanks for your help anyway   \n"
+    },
+    {
+      "id": "84302",
+      "timestamp": "2009-11-13T17:01:49+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I have to say the instructions for the install from a USB stick put me off totally\n\nWHICH instructions?  \nRun a GUI tool, press a few buttons? :wink:  \n\nJust in case ![:drunk:](http://reboot.pro/public/style_emoticons/default/drunk.gif):  \n[http://ccollomb.free.fr/blog/?p\u003d59](http://ccollomb.free.fr/blog/?p\u003d59 \"External link\")  \n\njaclaz   \n"
+    }
+  ]
+}

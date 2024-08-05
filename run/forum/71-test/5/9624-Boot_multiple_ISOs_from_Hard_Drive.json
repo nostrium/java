@@ -1,0 +1,22 @@
+{
+  "id": "9624",
+  "title": "Boot multiple ISOs from Hard Drive",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "83510",
+      "timestamp": "2009-11-04T06:55:49+00:00",
+      "author": "Yoav",
+      "content": "Hi Guys,   \n\nI know this isn\u0027t really related to this forum but I\u0027m looking for a solution for a problem I have. I\u0027m a computer technician, and being one I go around installing CD\u0027s all the time. I have a pack of CD\u0027s with me, I usually carry discs like:  \n\n*Windows XP - Windows 2000 - Windows Vista (32/64 bit) - Windows Seven (32/64 bit) - Slax live linux - Ultimate Boot CD - Mac OSX 10.4 - Mac OSX 10.5 - Mac OSX 10.6*   \nand I\u0027d really love to STOP carrying these discs and instead put them all on my 500GB external USB hard drive.  \n\nI already have them on the drive as ISOs (for backup) but what I really want to do is just BOOT from the usb drive, and then get a menu that asks me which iso I want to boot from, I choose it and - TADAM! the computer boots from that ISO.  \n\nI already know there is no program that does this, but at this point I will **PAY GOOD MONEY** if somebody can do this for me.  \n\nIf it\u0027s not possible through a hard drive, I can also consider a solution that involves an SD Card reader and multiple micro SD cards (if that would be fast enough)  \n\nIf anybody wants to take on this project please e-mail me a quote to **INFO \\\u003cAT\\\u003e SPEEDGEEKNY \\\u003cDOT\\\u003e COM**   \n\nThank you!   \n"
+    },
+    {
+      "id": "83517",
+      "timestamp": "2009-11-04T09:47:04+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I already know there is no program that does this, but at this point I will **PAY GOOD MONEY** if somebody can do this for me.\n\nCompletely wrong approach. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nYou start with some presumptions:  \n\n* that such a program does not exist\n* that what you want to do is booting the .iso\u0027s (while what you REALLY want to do is to install different OS from an external USB device, which is NOT the same thing)\n* that the \"services\" of members are for hire\n\n\u003cbr /\u003e\n\nThere is a program (more than one actually) and it\u0027s free.  \n\nRead here:  \n[http://www.msfn.org/...s-usb-f157.html](http://www.msfn.org/board/install-windows-usb-f157.html \"External link\")  \n[http://www.msfn.org/...s...44.html\\\u0026hl\u003d](http://www.msfn.org/board/install-usb-winsetupfromusb-gui-t120444.html\u0026hl\u003d \"External link\")  \n\nSOME (NOT \"all\", NOT \"any\") .iso\u0027s can be chainloaded from hard disk:  \n[http://www.boot-land...?showtopic\u003d5041](http://www.boot-land.net/forums/index.php?showtopic\u003d5041 \"External link\")   \n\nRead attentively this:  \n[http://www.boot-land...?showtopic\u003d8944](http://www.boot-land.net/forums/index.php?showtopic\u003d8944 \"External link\")  \n\nThe above will cover anything but the Mac OS ones, or maybe even those, but there aren\u0027t reports AFAICR.  \n\n:smile:  \n\njaclaz  \n\nP.S.: I see that you have already been here, asking the same things more or less, and have been given the same answers more or less:  \n[http://www.boot-land...?...ic\u003d6715\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d6715\u0026hl\u003d \"External link\")  \nand then vanished. :wink:   \n"
+    }
+  ]
+}

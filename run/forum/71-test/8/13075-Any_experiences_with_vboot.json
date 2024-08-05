@@ -1,0 +1,130 @@
+{
+  "id": "13075",
+  "title": "Any experiences with vboot",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "114135",
+      "timestamp": "2010-11-18T20:24:48+00:00",
+      "author": "sebus",
+      "content": "Now that vboot was officially released, anybody has any experiences that wants to share?  \n\nI am happy, as I can boot my old Server 2003 on a laptop from VHD  \n\nsebus   \n"
+    },
+    {
+      "id": "114145",
+      "timestamp": "2010-11-18T22:13:24+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Now that vboot was officially released, anybody has any experiences that wants to share?  \n\u003e\n\u003e I am happy, as I can boot my old Server 2003 on a laptop from VHD  \n\u003e\n\u003e sebus\n\nAre we talking of this?  \n\n[http://www.vmlite.co.../products/vboot](http://www.vmlite.com/index.php/products/vboot \"External link\")  \n\nwhen/where it was released/is the release?  \n\nThis ***pre*** -release?:  \n[http://www.vmlite.co...-...\u003d6\\\u0026start\u003d96](http://www.vmlite.com/index.php/forums/17-vboot/2969-is-the-beta-release-of-vboot-delayed?limit\u003d6\u0026start\u003d96 \"External link\")  \n[http://www.vmlite.co...wnload/38-vboot](http://www.vmlite.com/index.php/download/38-vboot \"External link\")  \n\nDo not assume that people on boot-land are all mind readers or have good google-fu ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif), do post some references expecially when talking of official UNofficial things :wink:  \n\n\u003cbr /\u003e\n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "114149",
+      "timestamp": "2010-11-18T22:42:45+00:00",
+      "author": "steve6375",
+      "content": "\u003e I am happy, as I can boot my old Server 2003 on a laptop from VHD  \n\u003e\n\u003e sebus\nOK, so how about you starting off with your experiences?   \n"
+    },
+    {
+      "id": "114156",
+      "timestamp": "2010-11-18T23:42:06+00:00",
+      "author": "skyide",
+      "content": "I went to their web site and this is what they say:  \n\n\u003e VBoot allows you to boot a physical computer from a single virtual disk file in VHD format. Each file contains a single operating system. It supports Windows 2000, Windows XP, Vista, Windows 7, 2003 Server, 2008 Server and Linux 2.6, 32- and 64-bit. VBoot makes multiple boots extremly simple. You just simply copy a single file to a physical computer, and it can boot to the OS contained inside that file. VBoot provides native XP VHD boot, Vista VHD boot, Windows 7 VHD boot, Linux VHD boot, 2003 server VHD boot and 2008 server VHD boot.  \n\u003e\n\u003e You can use our MyOldPCs software to convert your XP machine to a VHD file, you can either run the VHD file as a virtual machine using VMLite Workstation, or use this same VHD file to boot your new physical PC directly to achieve even better performance.   \n\u003e\n\u003e [http://www.vmlite.co.../products/vboot](http://www.vmlite.com/index.php/products/vboot \"External link\")\n\n**Edited by skyide, 18 November 2010 - 11:42 PM.**\n"
+    },
+    {
+      "id": "114178",
+      "timestamp": "2010-11-19T06:53:26+00:00",
+      "author": "sebus",
+      "content": "[http://www.vmlite.co...wnload/38-vboot](http://www.vmlite.com/index.php/download/38-vboot \"External link\")  \n\nAs it is only 32-bit XP/2003 release, one can only try these 2 OS. And that is exactly what I needed to use my old 2003 setup. Works absolutely perfect with a single driver injected  \n\nAs easy (or even easier) then native Win7 VHD boot  \n\nsebus   \n"
+    },
+    {
+      "id": "114335",
+      "timestamp": "2010-11-20T17:41:18+00:00",
+      "author": "bilou_gateux",
+      "content": "\u003e OK, so how about you starting off with your experiences?\n\n[VMLite forums \\\u003e VMLite products \\\u003e VBoot](http://www.vmlite.com/index.php/forums/17-vboot \"External link\")  \n\n[VMLite products \\\u003e VBoot \\\u003e 2003 07B error (solved!!!)](http://www.vmlite.com/index.php/forums/17-vboot/4162-2003-07b-error-solved \"External link\")   \n"
+    },
+    {
+      "id": "114355",
+      "timestamp": "2010-11-20T22:22:59+00:00",
+      "author": "erwan.l",
+      "content": "Hi There,  \n\nI did give it a try.  \n\nIt is disk virtualisation and therefore very similar to what does winvblock and firadisk or boot manager from win7.  \n\nPros:  \nyou deal with vhd files which winvblock and firadisk cannot do  \nimage file does not have to be contiguous as with firadisk and winvblock  \nyou can use xp within your vhd which boot manager cannot (win7 / w2k8 only)  \nyou can install straight to a disk image which firadisk/winvblock wont do (you need to clone)  \n\ncons:  \nyou need grub (i chained it from grub4dos)  \nthe vboot driver is a bit difficult to install (i could not do it during install, had to inject it offline \\\u0026 manually)  \ni could not re use my old vhd\u0027s which means there might be some constraint on the vhd format / version  \nit handles \"only\" vhd file : handling other formats like img, vdi would be nice  \n\nMy conclusion : if you dont have win7 and/or if you have xp/w2k3 vhd\u0027s, this is a very nice tool to have.  \n\nRegards,  \nErwan.  \n\n![Posted Image](http://erwan.l.free.fr/tools/vboot.jpg)   \n"
+    },
+    {
+      "id": "114386",
+      "timestamp": "2010-11-21T11:07:05+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e i could not re use my old vhd\u0027s which means there might be some constraint on the vhd format / version  \n\u003e it handles \"only\" vhd file : handling other formats like img, vdi would be nice\nCan you check what type of VHD\u0027s it needs/uses?  \nIf the \"normal\" one (the .img wth appended the exceeding sector) I don\u0027t really see any problem, as I see it - maybe wrongly - that type of .vhd is already a .img, I see it as a plain .img with an unpartitioned space of one sector at the end, grub4dos will issue a warning, but that\u0027s all.  \n\nWould it work with MS trial/testing VHD\u0027s?  \nlike:  \n[http://technet.micro...s/bb738372.aspx](http://technet.microsoft.com/en-us/bb738372.aspx \"External link\")  \n[http://www.microsoft...;displaylang\u003den](http://www.microsoft.com/downloads/en/details.aspx?FamilyId\u003d21EABB90-958F-4B64-B5F1-73D0A413C8EF\u0026displaylang\u003den \"External link\")  \n\nIt seems that Virtualbox can run .vhd too:  \n[http://www.msfn.org/...howtopic\u003d122775](http://www.msfn.org/board/index.php?showtopic\u003d122775 \"External link\")  \n\n\u003cbr /\u003e\n\n![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif)  \nWonko   \n"
+    },
+    {
+      "id": "114387",
+      "timestamp": "2010-11-21T11:17:39+00:00",
+      "author": "erwan.l",
+      "content": "\u003e Can you chek what type of VHD\u0027s it needs/uses?  \n\u003e If the \"normal\" one (the .img wth appended the exceeding sector) I don\u0027t really see any problem, as I see it - maybe wrongly - that type of .vhd is already a .img, I see it as a plain .img with an unpartitioned space of one sector at the end, grub4dos will issue a warning, but that\u0027s all.  \n\u003e\n\u003e ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif)  \n\u003e Wonko\n\nHi Wonko,  \nMy image was a fixed size vhd file with a header (512 bytes) and a footer (512 bytes) working fine in virtual pc and virtual server.  \nAt the beginning of the file, right after the header was also a vhd structure containing the mapping of 2mb blocks within the file (mapping physical sectors to vhd sectors).  \n\nI removed the 512 header as a try but vboot complained then about disk geometry.  \n\nI\u0027ll dive more into the vhd version.  \n\nRegards,  \nErwan.  \n\nedit 1 : correction, looks like my \"old\" image was a dynamic size hence some troubles i guess...  \n\nedit 2 : the \"new\" vhd i use with vboot has been made by vmlite workstation (nice tool also by the way as it handles vmdk/vhd/vdi as disk image).  \nthe file has only a footer and looks like a plain img+footer (corrected : not header).  \nwhich brings me to my next idea : i should give vboot a try with a simple plain img disk file.  \n\nedit 3 : about vmlite workstation, this is is based on virtualbox.   \n"
+    },
+    {
+      "id": "114389",
+      "timestamp": "2010-11-21T11:33:51+00:00",
+      "author": "erwan.l",
+      "content": "Addition to my latest post : vboot seems to be able to boot plain img disk file fine.  \n\nThat is pretty handy as this is the only tool I know which is capable to install to and boot from a plain disk image file.  \n\nRegards,  \nErwan.   \n"
+    },
+    {
+      "id": "114395",
+      "timestamp": "2010-11-21T13:38:34+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e edit 2 : the \"new\" vhd i use with vboot has been made by vmlite workstation (nice tool also by the way as it handles vmdk/vhd/vdi as disk image).  \n\u003e the file has only a **footer** and looks like a plain img+**header**.  \n\u003e which brings me to my next idea : i should give vboot a try with a simple plain img disk file.\nYou mean plain img+**footer**, right? :wink:  \n\n\u003e which brings me to ***my next*** idea : i should give vboot a try with a simple plain img disk file.\nWell, NO.  \nThat\u0027s ***my past*** idea. ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif)  \n\n:smile:   \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "114437",
+      "timestamp": "2010-11-21T19:38:54+00:00",
+      "author": "sebus",
+      "content": "Dynamic disks boot fine.  \n\nYes, I have one image created from partition on physical hardware (that boot fine on this hardware), but can not get it working in vboot (always 07B BSoD)  \n\nWill have to debug this image to see what happens (probably some weird piece of software/driver installed that does not plays nicely with vboot)  \n\nsebus   \n"
+    },
+    {
+      "id": "114439",
+      "timestamp": "2010-11-21T19:45:19+00:00",
+      "author": "sebus",
+      "content": "\u003e Would it work with MS trial/testing VHD\u0027s?  \n\u003e like:  \n\u003e [http://technet.micro...s/bb738372.aspx](http://technet.microsoft.com/en-us/bb738372.aspx \"External link\")  \n\u003e [http://www.microsoft...;displaylang\u003den](http://www.microsoft.com/downloads/en/details.aspx?FamilyId\u003d21EABB90-958F-4B64-B5F1-73D0A413C8EF\u0026displaylang\u003den \"External link\")\n\nI do not see why not, but I have lots of troubles with running XPMode.vhd (offline editing of the image, so far)  \nHope these should be easier  \n\nsebus   \n"
+    },
+    {
+      "id": "117451",
+      "timestamp": "2010-12-21T16:28:26+00:00",
+      "author": "sambul61",
+      "content": "A few questions for someone who tested Vboot:  \n\n- can it boot native Win7 VHDs?  \n- does their MyOldPCs software allow to convert Win98 and old MacOS installs to bootable VHDs? If not, any other soft allows to boot Win98 and MacOS images, and how \\\u0026 in what format they must be prepared from a HD?  \n- can Grub2 be used directly with Vboot instead of chainloading Grub via Grub4DOS. Why Grub is required for Vboot?  \n- how Vboot compares to Grub4DOS in terms of booting VHD files: is that possible with Grub4DOS at all?   \n"
+    },
+    {
+      "id": "117456",
+      "timestamp": "2010-12-21T17:14:07+00:00",
+      "author": "Icecube",
+      "content": "\u003e - can Grub2 be used directly with Vboot instead of chainloading Grub via Grub4DOS. Why Grub is required for Vboot?  \nThe boot loader of Vboot is just grub2 with an additional module vhd.mod that can read vhd files:  \n\u003e 4.2.2 Configure grub.cfg  \n\u003e\n\u003e A sample grub.cfg file is placed in c:\\\\vboot\\\\grub directory (or d:\\\\vboot\\\\grub depending on where you have copied the files). This is the GRUB2 configuratrion file to load operating systems. Inside this file, the vhd file path is hard coded, and thus you have to modify it.  \n\u003e\n\u003e grub.cfg is a text file that you can use notepad to open and modify. The relevant portion is shown below:  \n\u003e\n\u003e menuentry \"VHD Mint 9, Linux 2.6.32-21-generic\" {  \n\u003e insmod vhd  \n\u003e vhd vhd0 (hd0,1)/mint-9/mint-9-gnome-i386.vhd --partitions  \n\u003e linux (vhd0,1)/boot/vmlinuz-2.6.32-21-generic root\u003d/dev/sda1 vloop\u003d/mint-9/mint-9-gnome-i386.vhd quiet splash  \n\u003e initrd (vhd0,1)/boot/initrd.img-2.6.32-21-generic  \n\u003e }  \n\u003e\n\u003e menuentry groups a specific operating system. The first line insmod vhd inserts our vhd.mod module to the boot loader. vhd.mod is a GRUB2 module that treats a vhd file as hard disk, and allows GRUB2 to read files from the vhd. For example, the Linux kernel and initrd are loaded from the vhd file, as configured above.\nhttp://www.vmlite.com/index.php/forums/17-vboot/2495-linux-mint-9-vhd-available-for-download   \n"
+    },
+    {
+      "id": "117460",
+      "timestamp": "2010-12-21T17:23:07+00:00",
+      "author": "sambul61",
+      "content": "Thanks. I was referring to \"cons\" in [*this*](http://reboot.pro/13075/page__view__findpost__p__114355 \"\") post with that particular question.   \n"
+    },
+    {
+      "id": "117467",
+      "timestamp": "2010-12-21T17:50:40+00:00",
+      "author": "Icecube",
+      "content": "You can also boot VHD files with **Plop VHD Loader** .  \n\u003e The Plop VHD Loader makes it possible to start an operating system from the VHD file without Windows. Only plpvhd.bin is required to load and boot the VHD file. No OS specific startup files (os loader, kernel, ...) must be stored on the real partition. The operating system on the VHD file must be Windows/Linux that is able to run native (without virtual machine) from a VHD file. DOS is able to run without modifications.\nhttp://www.plop.at/en/vhdloader.html  \n\nCurrently is only works for VHD files on primary FAT32 partitions, but on the other hand, it is only 2991 bytes in size.  \nIt is just a side project ATM for the developer, and I don\u0027t see a lot of response so it probably won\u0027t be improved (if needed), unless you try it and report back ![:fine:](http://reboot.pro/public/style_emoticons/default/ok.gif).   \n"
+    },
+    {
+      "id": "117471",
+      "timestamp": "2010-12-21T18:04:14+00:00",
+      "author": "Wonko the Sane",
+      "content": "If I may, the vboot is TWO different things together:  \n\n* a loader (seemingly GRUB2 based)\n* a service to access the image in windows NT based systems\n\nSince, as said before, a .VHD is nothing but a RAW image with appended a footer, ANY bootloader/bootmanager capable of mapping an image will work.  \nThen, you need a service in Windows to access the image (please read as Firadisk or WinVblock - or vbootdisk.sys ![:juggler:](http://reboot.pro/public/style_emoticons/default/sporty98.gif) )  \n\nIt is not at all clear how the \"package is put together, there is a GNU license, than their own license (which indirectly states that it is a time-limited trial for personal use only):  \n\u003e 1. LICENSE.  \n\u003e\n\u003e Remotesoft grants to you the license that allows each user to use   \n\u003e Only one copy of the SOFTWARE on a single computer at any one time.   \n\u003e You are not required to pay any fees for the SOFTWARE.  \n\u003e\n\u003e Under the terms of this license you may:  \n\u003e\n\u003e (1) Install and use the Software for Personal Use, Educational Use, or   \n\u003e Evaluation. \"Personal Use\" requires that you use the Software on   \n\u003e the same Host Computer where you installed it yourself and that   \n\u003e no more than one client connect to that Host Computer.   \n\u003e \"Educational use\" is any use in an academic institution (schools,   \n\u003e colleges and universities, by teachers and students).   \n\u003e \"Evaluation\" means testing the SOFTWARE for a reasonable period   \n\u003e (that is, normally for a month); after expiry of that term, you are   \n\u003e no longer permitted to evaluate the SOFTWARE.  \n\u003e\n\u003e All use of the SOFTWARE must be for you to perform your own   \n\u003e personal computer needs.  \n\u003e\n\u003e (2) **This trial version expires on Feb 15, 2011. After expiration, you won\u0027t\n\u003e be able to use the SOFTWARE to boot your physical computer, and a crash\n\u003e BSOD error will occur.**   \n\u003e\n\u003e The SOFTWARE is \"in use\" when you modify any of your files using   \n\u003e the SOFTWARE.   \n\u003e\n\u003e You shall not:  \n\u003e\n\u003e (1) Use the SOFTWARE to perform any tasks related to a company.  \n\u003e\n\u003e (2) Distribute or publish any part of the SOFTWARE (original or modified)   \n\u003e unless you have received a written permission from Remotesoft.  \n\u003e\n\u003e (3) You may not lend, give, rent, lease, sub-license and transfer the   \n\u003e SOFTWARE and related materials to other parties without the written  \n\u003e permission of Remotesoft.\n\nThen there are supposedly NON redistributable MS files (namely wimgapi.dll) ![:fine:](http://reboot.pro/public/style_emoticons/default/ok.gif)  \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "117489",
+      "timestamp": "2010-12-21T22:19:53+00:00",
+      "author": "sebus",
+      "content": "Yes, they do not have the licensing right in any way or form yet.  \n\nBut the product so far is fun  \n\nsebus   \n"
+    },
+    {
+      "id": "117495",
+      "timestamp": "2010-12-21T23:54:50+00:00",
+      "author": "sambul61",
+      "content": "\u003e You can also boot VHD files with **Plop VHD Loader** ...it probably won\u0027t be improved (if needed), unless you try it and report back ![:juggler:](http://reboot.pro/public/style_emoticons/default/sporty98.gif).\nHi Icecube,  \n\nI\u0027m glad if Elmar got a few ideas from our Plop release [*discussion*](http://reboot.pro/12781/page__p__111524__hl__plop__fromsearch__1#entry111524 \"\"). But he didn\u0027t ask me to test Plop VHD after that... ![:fine:](http://reboot.pro/public/style_emoticons/default/ok.gif) He\u0027s a reserved guy, nice to discuss matters with. Though, there were some reservations regarding Plop VHD usability in your intro thread.  \n\nFrom above discussion I understand, there is no reason to use any extra loaders with Vboot to boot VHD files. Also, Grub4DOS presently can\u0027t boot VHD files. Are these assertions correct?   \n\nAs well, is it possible to call Vboot as a menu item from Grub4DOS? How such menu section should look like?   \n"
+    }
+  ]
+}

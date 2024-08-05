@@ -1,0 +1,478 @@
+{
+  "id": "9371",
+  "title": "[Solved] Install XP from USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "41955",
+      "timestamp": "2008-08-13T22:19:42+00:00",
+      "author": "Myk3",
+      "content": "For some reason my USB installation will not detect my sata HDD.. I have prepped my XP install with DriverPacks BASE 8.05 / Chipset 8.03 / LAN 8.05.3 / MassStorage 8.05. When it boots it does see the USB drive but not the HDD.. I also used nlite to slipstream SP3 into my SP2 xp disk.. Is there anything that i missed??  \n\nEDIT: I just read this  \n\n\u003cbr /\u003e\n\n\u003e Supports the use of BTS DriverPacks located in OEM Folder on USB-Drive  \n\u003e [http://driverpacks.net/DriverPacks/](http://driverpacks.net/DriverPacks/ \"External link\")  \n\u003e For Install of XP on a modern system with SATA Drives it is needed to use DPsBase.exe  \n\u003e for Integrating in your XPSOURCE BTS DriverPack Massstorage with TXT Mode Enabled.\n\nDoes the Driver packs need to be extracted to the OEM folder? Also the OEM folder i see is location \"L:\\\\$WIN_NT$.\\~LS\\\\$OEM$\\\\$1\\\\Drivers\" Where L is my flash drive..   \n"
+    },
+    {
+      "id": "41966",
+      "timestamp": "2008-08-14T05:12:21+00:00",
+      "author": "wimb",
+      "content": "\u003e For some reason my USB installation will not detect my sata HDD.. I have prepped my XP install with DriverPacks BASE 8.05 / Chipset 8.03 / LAN 8.05.3 / MassStorage 8.05. When it boots it does see the USB drive but not the HDD.. I also used nlite to slipstream SP3 into my SP2 xp disk.. Is there anything that i missed??  \n\u003e\n\u003e Does the Driver packs need to be extracted to the OEM folder? Also the OEM folder i see is location \"L:\\\\$WIN_NT$.\\~LS\\\\$OEM$\\\\$1\\\\Drivers\" Where L is my flash drive..\nThe OEM folder must be located in the root of your USB-stick.  \n\nYou have got to use nLite before and NOT AFTER using DPsBase.exe  \nProbably nLite has moved the OEM folder to Drivers folder  \n\nUSB_MultiBoot_10.cmd copies OEM folder from XP Source to Root of USB-stick.   \n"
+    },
+    {
+      "id": "41999",
+      "timestamp": "2008-08-14T13:21:36+00:00",
+      "author": "Myk3",
+      "content": "I just found the SATA driver for my unit.. The instructions say i need to install it using the F6 menu on boot... But i am going to try and slipstream the driver into my build..   \n"
+    },
+    {
+      "id": "42026",
+      "timestamp": "2008-08-15T01:12:03+00:00",
+      "author": "Myk3",
+      "content": "well i was able to slipstream the driver into my build.. works great... I noticed the \"install\" \\\u0026\"Progs\" folder what are these for???   \n"
+    },
+    {
+      "id": "42032",
+      "timestamp": "2008-08-15T04:57:37+00:00",
+      "author": "wimb",
+      "content": "\u003e well i was able to slipstream the driver into my build.. works great... I noticed the \"install\" \\\u0026\"Progs\" folder what are these for???\nINSTALL_PRGS is meant for Programs which cannot be installed with WPI via INSTALL_PRGS_WPI  \nINSTALL_DRIVERS is meant for Post XP Setup Install of Drivers from DriverPacks  \n\nFor WPI config.js script is provided in usb_cfg_extra\\\\INSTALL_PRGS_WPI\\\\WPIScripts  \n\nYou can use them or remove them the way you like ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \n"
+    },
+    {
+      "id": "42111",
+      "timestamp": "2008-08-16T16:39:30+00:00",
+      "author": "Myk3",
+      "content": "Well i havent got any of the \"install\" progs working yet.. I was having problems using the dos based menu then i noticed i couldnt since i was using NTFS.. I then re-formated my drive into FAT32 and man is it slow installing XP.. Is there anyway to get the dos apps in ntfs?   \n"
+    },
+    {
+      "id": "42345",
+      "timestamp": "2008-08-20T15:53:20+00:00",
+      "author": "wimb",
+      "content": "\u003e Is there anyway to get the dos apps in ntfs?\nYes, use DOS Boot Floppy Images of 2880 kB made with WinImage to Inject App Files and booting via boot.ini Menu from GRUB4DOS menu.lst  \n\nMore Info on this in my Guide [http://www.911cd.net...showtopic\u003d20089](http://www.911cd.net/forums//index.php?showtopic\u003d20089 \"External link\")  \nand in folder **usb_cfg_extra** of USB_MultiBoot_10   \n"
+    },
+    {
+      "id": "42550",
+      "timestamp": "2008-08-23T17:22:27+00:00",
+      "author": "Myk3",
+      "content": "Is it possible to run the xp install from a multi partitioned disk??  \n\nI had the install on a drive with 1 partition and everything worked great..  \n\nI had the install on the 3rd partition and got the BSOD 0x0000007B error  \n\nI know have the install on the 1st partition of a the drive and getting BSOD 0x0000000D1  \n\nany thoughts? I believe i read somewhere if i was going to use a multipartitioned drive that the install needs to be on the first partition   \n"
+    },
+    {
+      "id": "42552",
+      "timestamp": "2008-08-23T17:36:43+00:00",
+      "author": "wimb",
+      "content": "\u003e Is it possible to run the xp install from a multi partitioned disk??\nYes, you can but it requires to select a proper boot.ini file using Option B  \nOr change boot.ini to your needs just before using the USB-stick for Install of XP.  \n\nFor Install on second partition you can use Part2_boot.ini from b_ini folder.  \n\nMore Info in Help_USB_MultiBoot.txt file Section C   \n"
+    },
+    {
+      "id": "42554",
+      "timestamp": "2008-08-23T18:26:55+00:00",
+      "author": "Myk3",
+      "content": "This kinda confuses me...   \n\nI get those errors on option 1 \"C:\\\\btsec\\\\XPSTP.bs\u003d\"  \n\nDoes the boot sector look at the HDD in option 2/3 during the initial boot phase when i am partitioning the drive?   \n"
+    },
+    {
+      "id": "42555",
+      "timestamp": "2008-08-23T18:48:38+00:00",
+      "author": "wimb",
+      "content": "\u003e This kinda confuses me...   \n\u003e\n\u003e I get those errors on option 1 \"C:\\\\btsec\\\\XPSTP.bs\u003d\"  \n\u003e\n\u003e Does the boot sector look at the HDD in option 2/3 during the initial boot phase when i am partitioning the drive?\nIt is possible to install on e.g. second partition,  \nbut you are right the errors that you get must have another origin.  \n\nFrom file Help_USB_MultiBoot.txt - Section A-7  \n\u003e 7. BSOD 0x0000007B during text mode of Setup.  \n\u003e On some motherboards USB booting is tricky, common example are many Dell systems.   \n\u003e\n\u003e You may try the modified ntdetect.com as mentioned here Or use File Hex_NTDETECT_COM.txt  \n\u003e [http://www.msfn.org/...-...0.html\\\u0026st\u003d3](http://www.msfn.org/board/0x0000007B-Blue-Screen-Error-Text-Setup-t112630.html\u0026st\u003d3 \"External link\")   \n\u003e Copy and paste all in Tiny Hexer (freeware), select HEX TEXT,   \n\u003e save as ntdetect.com and put it in USB stick root, filesize must become 47,596 bytes.  \n\u003e\n\u003e Enabling AHCI in a system BIOS will cause a 0x7B Blue Screen of Death STOP error (INACCESSIBLE_BOOT_DEVICE)  \n\u003e on installations of Windows XP where AHCI/RAID drivers for that system\u0027s chipset are not installed.  \n\u003e AHCI enables hot-plugging of SATA drives and requires for XP special drivers. Vista is AHCI compatible.  \n\u003e [http://en.wikipedia....oller_Interface](http://en.wikipedia.org/wiki/Advanced_Host_Controller_Interface \"External link\")  \n\u003e Solution: Before Install Change your SATA BIOS Setting from AHCI into IDE Controller or Compatibility  \n\u003e\n\u003e For Install of XP on a modern system with SATA Drives  \n\u003e it is needed to use DPsBase.exe [http://driverpacks.net/DriverPacks/](http://driverpacks.net/DriverPacks/ \"External link\")  \n\u003e for Integrating in your XPSOURCE BTS DriverPack Massstorage with TXT Mode Enabled.  \n\u003e In that case a lot of Extra RAID SCSI and SATA Drivers (about 120 extra) are Integrated which appear in the   \n\u003e $WIN_NT$.\\~BT XP BootFolder and can prevent a lot of XP Install Boot Problems\n\nIf you repartition the drive you have to reboot before selecting Install partition and go TWICE through first part of TXT-mode of Setup in order to get correct drive letters.  \n\nUsually you only Select partition for Install and do a Quick Format and continue with copy of files.   \n"
+    },
+    {
+      "id": "42556",
+      "timestamp": "2008-08-23T18:49:30+00:00",
+      "author": "Myk3",
+      "content": "\u003e I had the install on the 3rd partition and got the BSOD 0x0000007B error\n\nI tried the alternate NTDETECT.COM from [here](http://www.msfn.org/board/0x0000007B-Blue-Screen-Error-During-Text-Setup-t112630.html\u0026view\u003dfindpost\u0026p\u003d738009#entry738009 \"External link\")  \n\nI also have verified i installed the correct AHCI driver for my unit.. (I was able to install XP from a thumb drive with only 1 partition)  \n\nI\u0027m still confused on the BOOT.ini settings..   \n\nMy current setup is   \n\nPartition1 \u003d XP textmode installer  \nPartition2 \u003d DOS  \nPartition3 \u003d PE2.0  \nPartition4 \u003d Trinity rescue kit (linux disk)  \n\nPartition 2-4 work flawlessly... I just keep getting the BSOD on the XP text mode install  \n\nEDIT: you posted as i was posting.. I have also changed the AHCI setting in the BIOS to IDE mode instead of AHCI mode   \n"
+    },
+    {
+      "id": "42559",
+      "timestamp": "2008-08-23T20:24:39+00:00",
+      "author": "Myk3",
+      "content": "\u003e \u003cbr /\u003e\n\u003e\n\u003e \u003e QUOTE  \n\u003e \u003e I had the install on the 3rd partition and got the BSOD 0x0000007B error\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e I tried the alternate NTDETECT.COM from here\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nI was also getting this error as soon as the \"setup is loading windows appears\" I have now got past that and when i press enter to install XP i get the next error 0x000000D1 error ( right under this it says ntfs.sys with some errors next to it. )  \n\nI got this error with the original boot.ini (XP_Setup_boot.ini)  \n\nI am now trying with the (Part2_boot.ini)   \n"
+    },
+    {
+      "id": "42582",
+      "timestamp": "2008-08-24T04:49:23+00:00",
+      "author": "ktp",
+      "content": "\u003e Partition4 \u003d Trinity rescue kit (linux disk)\n\nThank you for mentioning this, I discover and add it to my multi-bootable tools.  \nFor your information, if you do not want to waste a partition, you can just copy the trk3 directory and the 2 files kernel.trk, initrd.trk  \nfrom the iso to the root of one existing partition (fat/fat32), The use the following code in your menu.lst:  \n\n```\ntitle Trinity Rescue Kit 3.3 build 318\n\nfind\t--set-root /trk3/initrd.trk\n\nkernel  /trk3/kernel.trk ramdisk_size\u003d49152 root\u003d/dev/ram0 vga\u003d788 splash\u003dverbose pci\u003dconf1 \n\ninitrd  /trk3/initrd.trk\n```\n\n\u003cbr /\u003e\n\nAfter got the command line, you can change the keyboard layout by running a built-in script (command) as indicated in:  \n[http://trinityhome.o...nt_id\u003d12\\\u0026wpid\u003d7](http://trinityhome.org/Home/index.php?front_id\u003d12\u0026wpid\u003d7 \"External link\")  \n\nFor example to change to French keyboard, just type \u0027fr\u0027.  \n\nYou can also add other entries by translating them from the isolinux.cfg from the iso.   \n"
+    },
+    {
+      "id": "42619",
+      "timestamp": "2008-08-24T13:52:25+00:00",
+      "author": "Myk3",
+      "content": "I don\u0027t think i can add mine like u have..I am not using GRub as my bootloader i am using spfdisk.. Unless i can launch it from dos then i could add it my dos menu?   \n"
+    },
+    {
+      "id": "42743",
+      "timestamp": "2008-08-25T17:23:55+00:00",
+      "author": "Myk3",
+      "content": "so does any one have any other ideas?   \n"
+    },
+    {
+      "id": "42747",
+      "timestamp": "2008-08-25T18:17:04+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e so does any one have any other ideas?\n\nWait a minute, *maybe* I am starting to understand why it does not work for you. ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\nThe general idea of the entire batch is to start from a newly formatted USB stick or HD, managed by \"default\" NTLDR+BOOT.INI and grub4dos.  \n\nYou should first thing try if on your particular board+USB device, the USB_Multiboot batches work, and only after it has proved to work, try introducing variations, like spfdisk or whatever.  \n\njaclaz   \n"
+    },
+    {
+      "id": "42754",
+      "timestamp": "2008-08-25T18:55:33+00:00",
+      "author": "Myk3",
+      "content": "Please note in one of my last messages... post #31  \n\n\u003e (I was able to install XP from a thumb drive with only 1 partition)\n\nI was able to use the batch files and everything works normal..   \n\nI will try to have Grub4Dos as the boot loader in the MBR but i don\u0027t think that is the problem since it does boot, It boots and loads all the way until the screen before it asks what HDD / Partition do i want to load Windows onto. this is where i get the BSOD 0x0000007B error. I have tried the new ntdetect.com. This did not fix it.. I also know i have the right AHCI driver as i had to slipstream that since the singal partition version did not see my HDD, until i loaded that driver.   \n"
+    },
+    {
+      "id": "42759",
+      "timestamp": "2008-08-25T19:18:06+00:00",
+      "author": "was_jaclaz",
+      "content": "I might have been not clear enough:  \n1) Fdisk/partition/format your drive so that you have just one primary partition and rest of space unallocated  \n2) run the USB_multiboot batches (without re-formatting)  \n3) after you have tested the XP install routine works, DO NOT TOUCH the first working partition, the MBR code, the bootsector  \n4) simply use your preferred partition tool to add, one by one, the other partitions, installing to them whatever you want and adding booting entries for them into the menu.lst on first partition  \n\nRemember that unless you want/need for any reason this first partition NTFS, you can have it FAT32 and well add to it the PE, DOS (7.x/8.0) and trinityhome.  \n\nOtherwise, I suggest you to use DOS from a disk image loaded via grub4dos, instead of swapping partitions, the PE can well be added to first partition as well even if NTFS, and since trinity appears to be working entirely from RAM, it may even work on NTFS ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif).  \n\njaclaz   \n"
+    },
+    {
+      "id": "42773",
+      "timestamp": "2008-08-25T21:57:10+00:00",
+      "author": "Myk3",
+      "content": "I will try this tonight.. I think i see what you are saying..   \n"
+    },
+    {
+      "id": "42863",
+      "timestamp": "2008-08-26T17:32:12+00:00",
+      "author": "Myk3",
+      "content": "For some reason i keep getting NTLDR not found.. I fdisked the MBR and then re-ran the scripts. NTDR is on the drive??? im not sure why this is happening..   \n\n\u003e I suggest you to use DOS from a disk image loaded via grub4dos\n\nAlso i need a separate DOS partition as i use about 100MB for BIOS updates and test tools. I would rather not go back and change all my batch files to single images..   \n"
+    },
+    {
+      "id": "42881",
+      "timestamp": "2008-08-27T00:15:49+00:00",
+      "author": "Myk3",
+      "content": "Ok I think i screwed something up when i used the spfdisk to load the mbr bootloader.. I formated the drive using the HP format utility.. I then made it a bootable DOS partition.. This boots normal.. I then ran the script to load the xp text installer.. I can get to the press enter to load xp screen (before the HDD / Partition selection) it then gives me the error of   \n\nBSOD 0x0000000D1 with a ntfs.sys error.  \n\nI\u0027m not why this is because the drives i am using worked normal. before using the spfdisk when i had only one partition using NTLDR and BOOT.ini..   \n\nI\u0027m not sure if this was the right thing to do, but i tried using mkbt to load the f16ntldr.bin to the mbr and it was saying it has a different files system type. So this did not load right.. Can i use mkbt with a good mbr to get this to work again?   \n\nI also was able to get another flash drive to work normal (this one has never been touched by spfdisk) using just the scripts.. So this kinda tells me the mbr maybe messed up on the other 2 drives.. However in windows the 2 drives appear to work normal as well as booting into DOS and not to the text mode install..   \n"
+    },
+    {
+      "id": "42900",
+      "timestamp": "2008-08-27T08:47:20+00:00",
+      "author": "was_jaclaz",
+      "content": "No problem, there should be not any \"permanent\" damage.  \n\nSimply zero out the first, say 100 sectors of the stick, using either a hex editor or dsfo+fsz from the DSFOK toolkit and re-format with the HP USB utility:  \n\n[http://www.boot-land...opic\u003d4015\\\u0026st\u003d21](http://www.boot-land.net/forums/?showtopic\u003d4015\u0026st\u003d21 \"External link\")  \n\n![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "42922",
+      "timestamp": "2008-08-27T13:21:21+00:00",
+      "author": "Myk3",
+      "content": "Do i need to format it using FAT32 or NTFS?   \n"
+    },
+    {
+      "id": "42924",
+      "timestamp": "2008-08-27T13:38:06+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Do i need to format it using FAT32 or NTFS?\n\nI suggest the \"usual\" order, see FAQ#10:  \n[http://home.graffiti...SB/USBfaqs.html](http://home.graffiti.net/jaclaz:graffiti.net/Projects/USB/USBfaqs.html \"External link\")  \nFAT16 CHS  \nFAT16 LBA  \nFAT32 CHS  \nFAT32 LBA  \n(depending on size of the stick FAT16 may not be an option, please note that the limit for FAT16 of 2Gb can be \"stretched\" to 4Gb using 64Kb clusters, but this is NOT recommended, as not fully compatible with every OS/utility and highly unefficient)  \n\nALWAYS, ALWAYS, ALWAYS try first if it works in normal DOS (exception made for the NTFS formatting of course ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)) and only later try the NTLDR bootsector.  \n\njaclaz   \n"
+    },
+    {
+      "id": "41955",
+      "timestamp": "2008-08-13T22:19:42+00:00",
+      "author": "Myk3",
+      "content": "For some reason my USB installation will not detect my sata HDD.. I have prepped my XP install with DriverPacks BASE 8.05 / Chipset 8.03 / LAN 8.05.3 / MassStorage 8.05. When it boots it does see the USB drive but not the HDD.. I also used nlite to slipstream SP3 into my SP2 xp disk.. Is there anything that i missed??  \n\nEDIT: I just read this  \n\n\u003cbr /\u003e\n\n\u003e Supports the use of BTS DriverPacks located in OEM Folder on USB-Drive  \n\u003e [http://driverpacks.net/DriverPacks/](http://driverpacks.net/DriverPacks/ \"External link\")  \n\u003e For Install of XP on a modern system with SATA Drives it is needed to use DPsBase.exe  \n\u003e for Integrating in your XPSOURCE BTS DriverPack Massstorage with TXT Mode Enabled.\n\nDoes the Driver packs need to be extracted to the OEM folder? Also the OEM folder i see is location \"L:\\\\$WIN_NT$.\\~LS\\\\$OEM$\\\\$1\\\\Drivers\" Where L is my flash drive..   \n"
+    },
+    {
+      "id": "41966",
+      "timestamp": "2008-08-14T05:12:21+00:00",
+      "author": "wimb",
+      "content": "\u003e For some reason my USB installation will not detect my sata HDD.. I have prepped my XP install with DriverPacks BASE 8.05 / Chipset 8.03 / LAN 8.05.3 / MassStorage 8.05. When it boots it does see the USB drive but not the HDD.. I also used nlite to slipstream SP3 into my SP2 xp disk.. Is there anything that i missed??  \n\u003e\n\u003e Does the Driver packs need to be extracted to the OEM folder? Also the OEM folder i see is location \"L:\\\\$WIN_NT$.\\~LS\\\\$OEM$\\\\$1\\\\Drivers\" Where L is my flash drive..\nThe OEM folder must be located in the root of your USB-stick.  \n\nYou have got to use nLite before and NOT AFTER using DPsBase.exe  \nProbably nLite has moved the OEM folder to Drivers folder  \n\nUSB_MultiBoot_10.cmd copies OEM folder from XP Source to Root of USB-stick.   \n"
+    },
+    {
+      "id": "41999",
+      "timestamp": "2008-08-14T13:21:36+00:00",
+      "author": "Myk3",
+      "content": "I just found the SATA driver for my unit.. The instructions say i need to install it using the F6 menu on boot... But i am going to try and slipstream the driver into my build..   \n"
+    },
+    {
+      "id": "42026",
+      "timestamp": "2008-08-15T01:12:03+00:00",
+      "author": "Myk3",
+      "content": "well i was able to slipstream the driver into my build.. works great... I noticed the \"install\" \\\u0026\"Progs\" folder what are these for???   \n"
+    },
+    {
+      "id": "42032",
+      "timestamp": "2008-08-15T04:57:37+00:00",
+      "author": "wimb",
+      "content": "\u003e well i was able to slipstream the driver into my build.. works great... I noticed the \"install\" \\\u0026\"Progs\" folder what are these for???\nINSTALL_PRGS is meant for Programs which cannot be installed with WPI via INSTALL_PRGS_WPI  \nINSTALL_DRIVERS is meant for Post XP Setup Install of Drivers from DriverPacks  \n\nFor WPI config.js script is provided in usb_cfg_extra\\\\INSTALL_PRGS_WPI\\\\WPIScripts  \n\nYou can use them or remove them the way you like ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \n"
+    },
+    {
+      "id": "42111",
+      "timestamp": "2008-08-16T16:39:30+00:00",
+      "author": "Myk3",
+      "content": "Well i havent got any of the \"install\" progs working yet.. I was having problems using the dos based menu then i noticed i couldnt since i was using NTFS.. I then re-formated my drive into FAT32 and man is it slow installing XP.. Is there anyway to get the dos apps in ntfs?   \n"
+    },
+    {
+      "id": "42345",
+      "timestamp": "2008-08-20T15:53:20+00:00",
+      "author": "wimb",
+      "content": "\u003e Is there anyway to get the dos apps in ntfs?\nYes, use DOS Boot Floppy Images of 2880 kB made with WinImage to Inject App Files and booting via boot.ini Menu from GRUB4DOS menu.lst  \n\nMore Info on this in my Guide [http://www.911cd.net...showtopic\u003d20089](http://www.911cd.net/forums//index.php?showtopic\u003d20089 \"External link\")  \nand in folder **usb_cfg_extra** of USB_MultiBoot_10   \n"
+    },
+    {
+      "id": "42550",
+      "timestamp": "2008-08-23T17:22:27+00:00",
+      "author": "Myk3",
+      "content": "Is it possible to run the xp install from a multi partitioned disk??  \n\nI had the install on a drive with 1 partition and everything worked great..  \n\nI had the install on the 3rd partition and got the BSOD 0x0000007B error  \n\nI know have the install on the 1st partition of a the drive and getting BSOD 0x0000000D1  \n\nany thoughts? I believe i read somewhere if i was going to use a multipartitioned drive that the install needs to be on the first partition   \n"
+    },
+    {
+      "id": "42552",
+      "timestamp": "2008-08-23T17:36:43+00:00",
+      "author": "wimb",
+      "content": "\u003e Is it possible to run the xp install from a multi partitioned disk??\nYes, you can but it requires to select a proper boot.ini file using Option B  \nOr change boot.ini to your needs just before using the USB-stick for Install of XP.  \n\nFor Install on second partition you can use Part2_boot.ini from b_ini folder.  \n\nMore Info in Help_USB_MultiBoot.txt file Section C   \n"
+    },
+    {
+      "id": "42554",
+      "timestamp": "2008-08-23T18:26:55+00:00",
+      "author": "Myk3",
+      "content": "This kinda confuses me...   \n\nI get those errors on option 1 \"C:\\\\btsec\\\\XPSTP.bs\u003d\"  \n\nDoes the boot sector look at the HDD in option 2/3 during the initial boot phase when i am partitioning the drive?   \n"
+    },
+    {
+      "id": "42555",
+      "timestamp": "2008-08-23T18:48:38+00:00",
+      "author": "wimb",
+      "content": "\u003e This kinda confuses me...   \n\u003e\n\u003e I get those errors on option 1 \"C:\\\\btsec\\\\XPSTP.bs\u003d\"  \n\u003e\n\u003e Does the boot sector look at the HDD in option 2/3 during the initial boot phase when i am partitioning the drive?\nIt is possible to install on e.g. second partition,  \nbut you are right the errors that you get must have another origin.  \n\nFrom file Help_USB_MultiBoot.txt - Section A-7  \n\u003e 7. BSOD 0x0000007B during text mode of Setup.  \n\u003e On some motherboards USB booting is tricky, common example are many Dell systems.   \n\u003e\n\u003e You may try the modified ntdetect.com as mentioned here Or use File Hex_NTDETECT_COM.txt  \n\u003e [http://www.msfn.org/...-...0.html\\\u0026st\u003d3](http://www.msfn.org/board/0x0000007B-Blue-Screen-Error-Text-Setup-t112630.html\u0026st\u003d3 \"External link\")   \n\u003e Copy and paste all in Tiny Hexer (freeware), select HEX TEXT,   \n\u003e save as ntdetect.com and put it in USB stick root, filesize must become 47,596 bytes.  \n\u003e\n\u003e Enabling AHCI in a system BIOS will cause a 0x7B Blue Screen of Death STOP error (INACCESSIBLE_BOOT_DEVICE)  \n\u003e on installations of Windows XP where AHCI/RAID drivers for that system\u0027s chipset are not installed.  \n\u003e AHCI enables hot-plugging of SATA drives and requires for XP special drivers. Vista is AHCI compatible.  \n\u003e [http://en.wikipedia....oller_Interface](http://en.wikipedia.org/wiki/Advanced_Host_Controller_Interface \"External link\")  \n\u003e Solution: Before Install Change your SATA BIOS Setting from AHCI into IDE Controller or Compatibility  \n\u003e\n\u003e For Install of XP on a modern system with SATA Drives  \n\u003e it is needed to use DPsBase.exe [http://driverpacks.net/DriverPacks/](http://driverpacks.net/DriverPacks/ \"External link\")  \n\u003e for Integrating in your XPSOURCE BTS DriverPack Massstorage with TXT Mode Enabled.  \n\u003e In that case a lot of Extra RAID SCSI and SATA Drivers (about 120 extra) are Integrated which appear in the   \n\u003e $WIN_NT$.\\~BT XP BootFolder and can prevent a lot of XP Install Boot Problems\n\nIf you repartition the drive you have to reboot before selecting Install partition and go TWICE through first part of TXT-mode of Setup in order to get correct drive letters.  \n\nUsually you only Select partition for Install and do a Quick Format and continue with copy of files.   \n"
+    },
+    {
+      "id": "42556",
+      "timestamp": "2008-08-23T18:49:30+00:00",
+      "author": "Myk3",
+      "content": "\u003e I had the install on the 3rd partition and got the BSOD 0x0000007B error\n\nI tried the alternate NTDETECT.COM from [here](http://www.msfn.org/board/0x0000007B-Blue-Screen-Error-During-Text-Setup-t112630.html\u0026view\u003dfindpost\u0026p\u003d738009#entry738009 \"External link\")  \n\nI also have verified i installed the correct AHCI driver for my unit.. (I was able to install XP from a thumb drive with only 1 partition)  \n\nI\u0027m still confused on the BOOT.ini settings..   \n\nMy current setup is   \n\nPartition1 \u003d XP textmode installer  \nPartition2 \u003d DOS  \nPartition3 \u003d PE2.0  \nPartition4 \u003d Trinity rescue kit (linux disk)  \n\nPartition 2-4 work flawlessly... I just keep getting the BSOD on the XP text mode install  \n\nEDIT: you posted as i was posting.. I have also changed the AHCI setting in the BIOS to IDE mode instead of AHCI mode   \n"
+    },
+    {
+      "id": "42559",
+      "timestamp": "2008-08-23T20:24:39+00:00",
+      "author": "Myk3",
+      "content": "\u003e \u003cbr /\u003e\n\u003e\n\u003e \u003e QUOTE  \n\u003e \u003e I had the install on the 3rd partition and got the BSOD 0x0000007B error\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e I tried the alternate NTDETECT.COM from here\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nI was also getting this error as soon as the \"setup is loading windows appears\" I have now got past that and when i press enter to install XP i get the next error 0x000000D1 error ( right under this it says ntfs.sys with some errors next to it. )  \n\nI got this error with the original boot.ini (XP_Setup_boot.ini)  \n\nI am now trying with the (Part2_boot.ini)   \n"
+    },
+    {
+      "id": "42582",
+      "timestamp": "2008-08-24T04:49:23+00:00",
+      "author": "ktp",
+      "content": "\u003e Partition4 \u003d Trinity rescue kit (linux disk)\n\nThank you for mentioning this, I discover and add it to my multi-bootable tools.  \nFor your information, if you do not want to waste a partition, you can just copy the trk3 directory and the 2 files kernel.trk, initrd.trk  \nfrom the iso to the root of one existing partition (fat/fat32), The use the following code in your menu.lst:  \n\n```\ntitle Trinity Rescue Kit 3.3 build 318\n\nfind\t--set-root /trk3/initrd.trk\n\nkernel  /trk3/kernel.trk ramdisk_size\u003d49152 root\u003d/dev/ram0 vga\u003d788 splash\u003dverbose pci\u003dconf1 \n\ninitrd  /trk3/initrd.trk\n```\n\n\u003cbr /\u003e\n\nAfter got the command line, you can change the keyboard layout by running a built-in script (command) as indicated in:  \n[http://trinityhome.o...nt_id\u003d12\\\u0026wpid\u003d7](http://trinityhome.org/Home/index.php?front_id\u003d12\u0026wpid\u003d7 \"External link\")  \n\nFor example to change to French keyboard, just type \u0027fr\u0027.  \n\nYou can also add other entries by translating them from the isolinux.cfg from the iso.   \n"
+    },
+    {
+      "id": "42619",
+      "timestamp": "2008-08-24T13:52:25+00:00",
+      "author": "Myk3",
+      "content": "I don\u0027t think i can add mine like u have..I am not using GRub as my bootloader i am using spfdisk.. Unless i can launch it from dos then i could add it my dos menu?   \n"
+    },
+    {
+      "id": "42743",
+      "timestamp": "2008-08-25T17:23:55+00:00",
+      "author": "Myk3",
+      "content": "so does any one have any other ideas?   \n"
+    },
+    {
+      "id": "42747",
+      "timestamp": "2008-08-25T18:17:04+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e so does any one have any other ideas?\n\nWait a minute, *maybe* I am starting to understand why it does not work for you. ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\nThe general idea of the entire batch is to start from a newly formatted USB stick or HD, managed by \"default\" NTLDR+BOOT.INI and grub4dos.  \n\nYou should first thing try if on your particular board+USB device, the USB_Multiboot batches work, and only after it has proved to work, try introducing variations, like spfdisk or whatever.  \n\njaclaz   \n"
+    },
+    {
+      "id": "42754",
+      "timestamp": "2008-08-25T18:55:33+00:00",
+      "author": "Myk3",
+      "content": "Please note in one of my last messages... post #31  \n\n\u003e (I was able to install XP from a thumb drive with only 1 partition)\n\nI was able to use the batch files and everything works normal..   \n\nI will try to have Grub4Dos as the boot loader in the MBR but i don\u0027t think that is the problem since it does boot, It boots and loads all the way until the screen before it asks what HDD / Partition do i want to load Windows onto. this is where i get the BSOD 0x0000007B error. I have tried the new ntdetect.com. This did not fix it.. I also know i have the right AHCI driver as i had to slipstream that since the singal partition version did not see my HDD, until i loaded that driver.   \n"
+    },
+    {
+      "id": "42759",
+      "timestamp": "2008-08-25T19:18:06+00:00",
+      "author": "was_jaclaz",
+      "content": "I might have been not clear enough:  \n1) Fdisk/partition/format your drive so that you have just one primary partition and rest of space unallocated  \n2) run the USB_multiboot batches (without re-formatting)  \n3) after you have tested the XP install routine works, DO NOT TOUCH the first working partition, the MBR code, the bootsector  \n4) simply use your preferred partition tool to add, one by one, the other partitions, installing to them whatever you want and adding booting entries for them into the menu.lst on first partition  \n\nRemember that unless you want/need for any reason this first partition NTFS, you can have it FAT32 and well add to it the PE, DOS (7.x/8.0) and trinityhome.  \n\nOtherwise, I suggest you to use DOS from a disk image loaded via grub4dos, instead of swapping partitions, the PE can well be added to first partition as well even if NTFS, and since trinity appears to be working entirely from RAM, it may even work on NTFS ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif).  \n\njaclaz   \n"
+    },
+    {
+      "id": "42773",
+      "timestamp": "2008-08-25T21:57:10+00:00",
+      "author": "Myk3",
+      "content": "I will try this tonight.. I think i see what you are saying..   \n"
+    },
+    {
+      "id": "42863",
+      "timestamp": "2008-08-26T17:32:12+00:00",
+      "author": "Myk3",
+      "content": "For some reason i keep getting NTLDR not found.. I fdisked the MBR and then re-ran the scripts. NTDR is on the drive??? im not sure why this is happening..   \n\n\u003e I suggest you to use DOS from a disk image loaded via grub4dos\n\nAlso i need a separate DOS partition as i use about 100MB for BIOS updates and test tools. I would rather not go back and change all my batch files to single images..   \n"
+    },
+    {
+      "id": "42881",
+      "timestamp": "2008-08-27T00:15:49+00:00",
+      "author": "Myk3",
+      "content": "Ok I think i screwed something up when i used the spfdisk to load the mbr bootloader.. I formated the drive using the HP format utility.. I then made it a bootable DOS partition.. This boots normal.. I then ran the script to load the xp text installer.. I can get to the press enter to load xp screen (before the HDD / Partition selection) it then gives me the error of   \n\nBSOD 0x0000000D1 with a ntfs.sys error.  \n\nI\u0027m not why this is because the drives i am using worked normal. before using the spfdisk when i had only one partition using NTLDR and BOOT.ini..   \n\nI\u0027m not sure if this was the right thing to do, but i tried using mkbt to load the f16ntldr.bin to the mbr and it was saying it has a different files system type. So this did not load right.. Can i use mkbt with a good mbr to get this to work again?   \n\nI also was able to get another flash drive to work normal (this one has never been touched by spfdisk) using just the scripts.. So this kinda tells me the mbr maybe messed up on the other 2 drives.. However in windows the 2 drives appear to work normal as well as booting into DOS and not to the text mode install..   \n"
+    },
+    {
+      "id": "42900",
+      "timestamp": "2008-08-27T08:47:20+00:00",
+      "author": "was_jaclaz",
+      "content": "No problem, there should be not any \"permanent\" damage.  \n\nSimply zero out the first, say 100 sectors of the stick, using either a hex editor or dsfo+fsz from the DSFOK toolkit and re-format with the HP USB utility:  \n\n[http://www.boot-land...opic\u003d4015\\\u0026st\u003d21](http://www.boot-land.net/forums/?showtopic\u003d4015\u0026st\u003d21 \"External link\")  \n\n![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "42922",
+      "timestamp": "2008-08-27T13:21:21+00:00",
+      "author": "Myk3",
+      "content": "Do i need to format it using FAT32 or NTFS?   \n"
+    },
+    {
+      "id": "42924",
+      "timestamp": "2008-08-27T13:38:06+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Do i need to format it using FAT32 or NTFS?\n\nI suggest the \"usual\" order, see FAQ#10:  \n[http://home.graffiti...SB/USBfaqs.html](http://home.graffiti.net/jaclaz:graffiti.net/Projects/USB/USBfaqs.html \"External link\")  \nFAT16 CHS  \nFAT16 LBA  \nFAT32 CHS  \nFAT32 LBA  \n(depending on size of the stick FAT16 may not be an option, please note that the limit for FAT16 of 2Gb can be \"stretched\" to 4Gb using 64Kb clusters, but this is NOT recommended, as not fully compatible with every OS/utility and highly unefficient)  \n\nALWAYS, ALWAYS, ALWAYS try first if it works in normal DOS (exception made for the NTFS formatting of course ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)) and only later try the NTLDR bootsector.  \n\njaclaz   \n"
+    },
+    {
+      "id": "42931",
+      "timestamp": "2008-08-27T15:01:01+00:00",
+      "author": "Myk3",
+      "content": "Ok i have made progress.. I think all my problems stem from a bad XP source.. I remade my source and i am now able to enter the HDD / Partition selection.   \n\nThis still kinda does not make sense as the iso i burnt from the old source works normal with all my slipstreams..   \n\nI will now try to re make my 2nd partition for my DOS partition.. I will post with my results   \n"
+    },
+    {
+      "id": "42946",
+      "timestamp": "2008-08-27T22:27:33+00:00",
+      "author": "Myk3",
+      "content": "Ok so everything is working normal.. can i boot to my 2nd partition using the grub4dos? This is a Dos partition..  \n\nCan i use the command  \n\n\u003cbr /\u003e\n\nroot (hd1,1)  \nchainloader (hd1,1)/io.sys  \n\nEDIT:  \n\nI got it working  \n\nroot (hd0,1)  \nchainloader (hd0,1)/io.sys   \n"
+    },
+    {
+      "id": "42948",
+      "timestamp": "2008-08-27T22:52:37+00:00",
+      "author": "Myk3",
+      "content": "Ok so i got everything working.. Thanks for all the help  \n\nNow is there a \"easy\" way to upgrade the install??? Like with added AHCI drivers or anything?   \n"
+    },
+    {
+      "id": "42950",
+      "timestamp": "2008-08-27T23:40:15+00:00",
+      "author": "Myk3",
+      "content": "Ok it works.. Is there anything specail that needs to be done to get the applications in the \"INSTALL_PRGS\" \\\u0026 \"INSTALL_PRGS_WPI\" to actually install?  \n\nAlso is there a way to make the boot.ini on the system not have the option for USB recovery console?   \n\nI changed the option in the scripts (Option R) to NO and it still applied the USB recovery on the client system on boot. I can manually change the BOOT.ini but if there is a easier way..   \n"
+    },
+    {
+      "id": "42956",
+      "timestamp": "2008-08-28T03:51:21+00:00",
+      "author": "wimb",
+      "content": "Nice to hear that you have everything working now.  \n\nJust launch WPI.hta manually After XP setup has completed.  \nJust edit boot.ini to remove USB-Repair Boot Option if you wish.   \n"
+    },
+    {
+      "id": "43103",
+      "timestamp": "2008-08-29T18:24:48+00:00",
+      "author": "Myk3",
+      "content": "Just wondering on my post.. #47  \n\n\u003e Ok so i got everything working.. Thanks for all the help  \n\u003e\n\u003e Now is there a \"easy\" way to upgrade the install??? Like with added AHCI drivers or anything?\n\nNo answers yet..   \n"
+    },
+    {
+      "id": "43107",
+      "timestamp": "2008-08-29T18:41:45+00:00",
+      "author": "wimb",
+      "content": "\u003e No answers yet..\nI have used Total Commander For Update of Existing USB-Drive with Updated XP Source.  \nTotal Commander Synchronize Dirs in Asymmetric mode is very useful and   \nis described in Help_TotalCom.txt file in Help_Info folder.  \n\nI don\u0027t know if that is what you mean ?   \n"
+    },
+    {
+      "id": "43119",
+      "timestamp": "2008-08-29T19:31:32+00:00",
+      "author": "Myk3",
+      "content": "\u003e I have used Total Commander For Update of Existing USB-Drive with Updated XP Source.  \n\u003e Total Commander Synchronize Dirs in Asymmetric mode is very useful and  \n\u003e is described in Help_TotalCom.txt file in Help_Info folder.  \n\u003e\n\u003e I don\u0027t know if that is what you mean ?\n\nI believe this is what Iwanted..   \n\nCould i use robocopy as another option as TC is not free?   \n"
+    },
+    {
+      "id": "43156",
+      "timestamp": "2008-08-30T07:18:22+00:00",
+      "author": "wimb",
+      "content": "\u003e Could i use robocopy as another option as TC is not free?\nYou can try this or Use KillCopy and copy YourSource\\\\I386(and AMD64 for x64) to   \nUSB disk\\\\$WIN_NT$.\\~LS\\\\ telling it to skip all existing files.  \n[http://killprog.naro.../killcopye.html](http://killprog.narod.ru/killcopye.html \"External link\")  \n\nYou can use KillCopy from R-mouse on Folder gives Context Menu   \n"
+    },
+    {
+      "id": "43926",
+      "timestamp": "2008-09-09T03:42:24+00:00",
+      "author": "Myk3",
+      "content": "I had a weired problem today.. I have a working thumbdrive and have successfully used it install xp on another unit.. now saying that i used it yesterday and i got a error when i went to pick the partition i was going to install to.. I don\u0027t have the exact error but the gist of it is..   \n\n\"This is not a valid partition to install xp to, please press enter to go back and pick a valid partition\"  \nNow this was a NTFS volume at 75GB. I booted from a .iso i made from the same source as my drive and it found it normal and worked normal.. I am not sure if anyone has seen this before or not..   \n"
+    },
+    {
+      "id": "44172",
+      "timestamp": "2008-09-11T10:39:55+00:00",
+      "author": "wimb",
+      "content": "\u003e \"This is not a valid partition to install xp to, please press enter to go back and pick a valid partition\"\nMost probably you tried to Install XP on a Logical Drive of the **Extended** Partition.  \nYou can only Install XP on a Active **Primary** Partition. ![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png)   \nHave a look first with XP Disk Manager (R-mouse on My Computer) and look at the Partition Properties.  \nYou can also launch XP Disk Manager by Start \\\u003e Run \\\u003e diskmgmt.msc   \n"
+    },
+    {
+      "id": "44237",
+      "timestamp": "2008-09-11T22:50:38+00:00",
+      "author": "Myk3",
+      "content": "But... I never changed the partitions using the disk.. I booted from the cd and it allowed me to use this partition..   \n\nIs it possible since my pc has multiple hdds?   \n"
+    },
+    {
+      "id": "44273",
+      "timestamp": "2008-09-12T09:35:03+00:00",
+      "author": "was_jaclaz",
+      "content": "@Myk3  \n\nPardon me, but you seem to be lacking the \"basic\" knowledge about type of partitions, you may want to read this:  \n[http://www.ranish.com/part/primer.htm](http://www.ranish.com/part/primer.htm \"External link\")  \nfirst thing.  \n\n![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png)  \n\njaclaz   \n"
+    },
+    {
+      "id": "44278",
+      "timestamp": "2008-09-12T10:53:58+00:00",
+      "author": "ktp",
+      "content": "\u003e You can only Install XP on a Active Primary Partition.\n\nJust to add that I can boot XP from logical partition using grub4dos, and I got C: as system drive without any problem.  \nThe logical partition has been restored from Acronis True Image that has an option to set the restored partition as logical or primary or primary active one, regardless the partition type of the original (backuped) partition.   \n"
+    },
+    {
+      "id": "44292",
+      "timestamp": "2008-09-12T13:34:28+00:00",
+      "author": "Myk3",
+      "content": "This makes no sense.. I never changed the partition layout from when trying to load xp from the thumb drive or from the CD. I got the error when trying from the thumb drive but not with the cd... This tells me my partitions were correct.. since they never changed between the 2 ways of trying to load the drive..   \n"
+    },
+    {
+      "id": "44305",
+      "timestamp": "2008-09-12T19:39:35+00:00",
+      "author": "wimb",
+      "content": "The difference between OK Install from CD and NO Install from USB-stick on the same partition is indeed strange.  \nCan you give a ScreenShot of the Partitioning of your harddisk as Viewed in Disk Manager.  \n\nWhat is the Drive Letter of the for Install of XP Selected Partition as Shown in the Partition List in TXT Mode Setup   \nfor both cases of Install of XP ?  \nAnd what was the Drive Letter of the USB-stick in TXT Mode Setup Partition List ?   \n"
+    },
+    {
+      "id": "44320",
+      "timestamp": "2008-09-13T03:28:49+00:00",
+      "author": "Myk3",
+      "content": "is there a way to take a screen shot? or will i need to use a camera?   \n"
+    },
+    {
+      "id": "44321",
+      "timestamp": "2008-09-13T05:37:34+00:00",
+      "author": "wimb",
+      "content": "* Boot as normal with XP\n* Launch XP Disk Manager by Start \\\u003e Run \\\u003e diskmgmt.msc\n* Enlarge Disk Manager Window sufficiently and Press \\[Alt\\]\\[Print Scrn\\]\n* Start \\\u003e All Programs \\\u003e Desk Accessories \\\u003e Paint\n* Paste your image in Paint and Save As FileType .jpg\n\n\u003cbr /\u003e\n\nFor the Partition List in TXT Mode Setup you can use a Digital Camera if available.  \n\nAlternatively you can also try to use **USB_XP_Setup.cmd** which is in my opinion a better approach,  \nis less sensitive to Errors and corresponds very well to Install of XP from CD.  \n[http://www.boot-land...?showtopic\u003d5306](http://www.boot-land.net/forums/?showtopic\u003d5306 \"External link\")   \n"
+    },
+    {
+      "id": "53458",
+      "timestamp": "2008-12-31T14:53:53+00:00",
+      "author": "Myk3",
+      "content": "I know you can use WPI to install apps.. Can you use runonce, via cmdlines.txt loading from usb flash?   \n"
+    },
+    {
+      "id": "53946",
+      "timestamp": "2009-01-05T14:31:03+00:00",
+      "author": "wimb",
+      "content": "$OEM$ Folder is used to specify UserAccounts and Registry Tweaks used during XP setup.  \n\nIf your XP Setup Source CD does NOT contain such $OEM$ Folder,  \nthen the in USB_MultiBoot_10 folder supplied $OEM$_UserXP Folder will be used,  \nunless you specify to Use All Setup Parameters from XPSOURCE (case of nLite),  \nand in that case $OEM$ path is SET to USB_MultiBoot_10\\\\$OEM$_X folder (which is Empty).  \n\nSo have first a look at what folders are present or absent in USB_MultiBoot_10   \n"
+    },
+    {
+      "id": "54172",
+      "timestamp": "2009-01-07T04:00:02+00:00",
+      "author": "Myk3",
+      "content": "So is it possible to use the cmdlines.txt in the $oem$ folder? I have my cd version setup to run the files from the CD, instead of copying them to the HDD before installing.. Can i keep this same method? or a similar method?  \n\nMyk3   \n"
+    },
+    {
+      "id": "54182",
+      "timestamp": "2009-01-07T08:01:53+00:00",
+      "author": "wimb",
+      "content": "\u003e I know you can use WPI to install apps.. Can you use runonce, via cmdlines.txt loading from usb flash?\nI am using WPI running direct from usb flash,  \nso that is OK, but I launch WPI manually after XP Setup has completed and missing Drivers are Installed.   \n"
+    },
+    {
+      "id": "54229",
+      "timestamp": "2009-01-07T16:04:45+00:00",
+      "author": "Myk3",
+      "content": "right I understand using WPI is possible (it is what i am currently using from the flash disk) But i wanna know can I install apps automatically via the runonce? So loading XP from CD ( there is a install of apps automatically) Can this be done using runonce from the flash disk? I know I can use the WPI.  \n\nJust for reference  \n\n[http://unattended.ms...xp/view/web/14/](http://unattended.msfn.org/unattended.xp/view/web/14/ \"External link\")   \n"
+    },
+    {
+      "id": "54236",
+      "timestamp": "2009-01-07T17:33:57+00:00",
+      "author": "wimb",
+      "content": "I cannot tell you ...  \n\nHave a try and tell us the result.   \n"
+    },
+    {
+      "id": "54254",
+      "timestamp": "2009-01-07T20:18:34+00:00",
+      "author": "Myk3",
+      "content": "I will see what I come up with and let you know..  \n\nMyk3   \n"
+    },
+    {
+      "id": "54806",
+      "timestamp": "2009-01-12T22:46:09+00:00",
+      "author": "Myk3",
+      "content": "Well good news... It does work... well i think it does... It starts to install but cant find the path.. I think i know what needs to be done but not sure how to do it..  \n\nI have this command on my cd to detect the correct CD and install the correct apps (I have a blank cd.txt on the root on the CD  \n\n```\nFOR %%i IN \u0026#40;D E F G H I J K L M N O P Q R S T U V W X Y Z\u0026#41; DO IF EXIST %%i\u0026#58;\\CD.txt SET CDROM\u003d%%i\u0026#58;\n```\n\n\u003cbr /\u003e\n\nIs there a way to do this inside windows? Or does the USB drive get mounted always as U: even if it is a Sata / IDE?  \n\nMyk3  \n\n\u003cbr /\u003e\n\nEDIT: This does work... I forgot to add the cd.txt and the install folder to my drive.. However when it installs the apps it now asks if i want to run the file... It does not do this when running from CD. Does anyone know how to turn this off?  \n\nMyk3   \n"
+    },
+    {
+      "id": "56276",
+      "timestamp": "2009-01-23T16:30:29+00:00",
+      "author": "Myk3",
+      "content": "Ok well i ran into my first real problem.. I am trying to install from usb thumb drive to a Acer Aspire One. At first boot it sees the thumb drive as the C: drive. I removed the current partitions on the HDD and then rebooted. It now sees the flash disk as D:. Ok so after i start the install when it reboots the first time after copying files to the HDD, it fails and says can\u0027t find the location of D:\\\\ .... for the requested files.   \n\nMyk3   \n"
+    },
+    {
+      "id": "56404",
+      "timestamp": "2009-01-24T15:59:41+00:00",
+      "author": "wimb",
+      "content": "In ScreenShot 14 you can click Yes so that your USB-stick will get Boot DrivLetter U:  \nby making **migrate.inf** file specific for your USB-stick  \n[http://www.911cd.net...o...20089\\\u0026st\u003d11](http://www.911cd.net/forums//index.php?showtopic\u003d20089\u0026st\u003d11 \"External link\")  \n\n\u003e Direct after Deleting and Creating New partitions, Quit XP Setup with F3   \n\u003e OR Switch OFF your Computer and Boot in any case from USB-Drive again and   \n\u003e Run 1. TXT Mode Setup again so that DriveLetters get their Correct Value  \n\u003e So in this case one Boots \\*\\* TWICE \\*\\* in the TXT-mode Setup\nThis means that directly After you Create the New Partition,  \nyou have to Reboot. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nNormally you should NOT Delete Partitions,   \nbut just Select the Install Partition when this has the correct DriveLetter C:   \nand then Select Quick Format with NTFS FileSystem.  \n\nIf you follow these rules then everything will work. :cool:   \n"
+    }
+  ]
+}

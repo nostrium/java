@@ -1,0 +1,88 @@
+{
+  "id": "19937",
+  "title": "Partition layout: MBR or GPT?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "185936",
+      "timestamp": "2014-07-19T09:04:01+00:00",
+      "author": "florin91",
+      "content": "So, what partitioning layout do you use?\n\nMBR is older and has it\u0027s limitation, while GPT is newer and solves some problems.\n\nIt is safe to convert an existing mbr to gpt or to format it and partition from the begining with GPT?\n\nThanks!\n\n"
+    },
+    {
+      "id": "185937",
+      "timestamp": "2014-07-19T09:32:54+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "I always find GPT to be a \"real pain in ...\". Never I have been able to successfully dual boot Windows 8.x with Ubuntu under GPT/UEFI configuration. Newer versions of Ubuntu (12.04 rev 2 onwards, if I can remember correctly) are said to support *SecureBoot* . But, with both *SecureBoot* turned ON/OFF, dual boot doesn\u0027t work. Mostly laptops ships with UEFI/GPT and Windows 8.x installed. If you install Ubuntu under this configuration, it\u0027ll install successfully. But, the post-installation reboot will straight boot the laptop into Windows 8. Ubuntu\u0027s built-in partition manager does not allow to revert the layout back to MBR. I used GParted Live image to wipe out GPT, initialize an MBR table and re-partitioned it with Legacy/BIOS mode turned on. I am keen to listen to a success story of dual booting Windows 8.x with Ubuntu under GPT/UEFI configuration.\n\n"
+    },
+    {
+      "id": "185938",
+      "timestamp": "2014-07-19T10:07:31+00:00",
+      "author": "florin91",
+      "content": "Just to state that I don\u0027t have UEFI compatible on the laptop I want to install, BUT I strongly want to use GPT instead of MBR for some benefits.\n\nHere is what I found: [http://www.sevenforu...-mbrs-duet.html](http://www.sevenforums.com/installation-setup/320700-boot-windows-7-8-gpt-bios-system-no-hybrid-mbrs-duet.html \"External link\")\n\n"
+    },
+    {
+      "id": "185959",
+      "timestamp": "2014-07-20T06:51:34+00:00",
+      "author": "cdob",
+      "content": "Which OS do you like to use?   \n"
+    },
+    {
+      "id": "185970",
+      "timestamp": "2014-07-20T12:43:27+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Just to state that I don\u0027t have UEFI compatible on the laptop I want to install, BUT I strongly want to use GPT instead of MBR for some benefits.\n\u003e\n\u003e Here is what I found: [http://www.sevenforu...-mbrs-duet.html](http://www.sevenforums.com/installation-setup/320700-boot-windows-7-8-gpt-bios-system-no-hybrid-mbrs-duet.html \"External link\")\n\nWell, that is not anything different from the good ol\u0027 NT boot disk concept, later ported to \"Vista boot floppy\": [http://www.multiboot....uk/floppy.html](http://www.multibooters.co.uk/floppy.html \"External link\") )\n\nBut of course you need a second boot device, this way.\n\nWhat you could try doing could be to use a \"\"Hah!IdontNeedEFI\" or \"BIOS boot partition\" (please read as GRUB2):\n\n[http://en.wikipedia...._Boot_partition](http://en.wikipedia.org/wiki/BIOS_Boot_partition \"External link\")\n\n[http://wiki.gentoo.o...R_or_BIOS.2FGPT](http://wiki.gentoo.org/wiki/GRUB2#BIOS.2FMBR_or_BIOS.2FGPT \"External link\")\n\nwith the same files (besides -if needed - GRUB2)\n\nthough I believe that the way it will work (or fail to work ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)) will depend also on the BIOS you have. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "185972",
+      "timestamp": "2014-07-20T13:43:01+00:00",
+      "author": "Blackcrack",
+      "content": "mbr for small disk\u0027s under 2 TB, GPT for Big Disk\u0027s over 2 TB..\n\nwhy: i whant diffrent Partitions on my Harddisk and want work with different Systems\n\non one Disk and want store per 4 Primary Partitions different things..\n\n4 primary partitions be more able recover as enhanced Partitions.\n\ni use GPT only if i use an full Partition on one Harddisk by servers or Raid Systems\n\nif MBR 255 Terrabyte or Petabyte or more modern supports, can i dispense gladly with GPT,\n\nbecause only one Partition.. and it is a must have different Hard disks .. noo, not really,\n\nI need only one or at most two disks for my computer but multiple partitions in order to remain flexible ..\n\nbest regards\n\nBlacky\n\n"
+    },
+    {
+      "id": "185990",
+      "timestamp": "2014-07-20T18:47:31+00:00",
+      "author": "florin91",
+      "content": "\u003e Which OS do you like to use?\n\nI would like to dual boot Microsoft Windows, possibly 7 or 8 and linux, possibly Arch Linux\n\nThe problem is that it requires multiple partitions: System, Recovery, Windows, Files (Windows), /home, /, /boot (Linux) and I thought it should be simpler with GPT. It remains to see.\n\n"
+    },
+    {
+      "id": "186000",
+      "timestamp": "2014-07-21T15:19:15+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e The problem is that it requires multiple partitions: System, Recovery, Windows, Files (Windows), /home, /, /boot (Linux) and I thought it should be simpler with GPT.\n\nThe problem has been resolved in a SIMPLE way SINCE NT 3.1 ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) by using Logical Volumes inside Extended.\n\nStrangely enough both NT based systems and Linux ones have been ***designed*** to reside on Logical Volumes inside Extended Partition, and you need a primary partition only for the boot volume (what the good MS guys call \"system\" :wink:)\n\nAs a matter of fact if you use as main bootmanager either grub/grub4dos or GRUB2 (or other bootmanager that installs in MBR+hidden sectors) you would probably need not even a single primary partition.\n\nThe exception may be the \"Recovery\" partition. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nIn any case the problem is not really a \"problem\" and has a \"simple\" solution in a conventional MBR disk (unless you are going to use a \"huge\" disk).\n\nIf the idea is to solve the problem through an overcomplex solution, or to *boldly boot what no man has booted before* , it is on the other hand a good exercise ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif).\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "186003",
+      "timestamp": "2014-07-21T15:42:05+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "\u003e I would like to dual boot Microsoft Windows, possibly 7 or 8 and linux, possibly Arch Linux\n\u003e\n\u003e The problem is that it requires multiple partitions: System, Recovery, Windows, Files (Windows), /home, /, /boot (Linux) and I thought it should be simpler with GPT. It remains to see.\n\nI have a dual boot system with Windows 7 and Ubuntu 14.04. For Linux, you don\u0027t need separate partition for all. Unlike Windows, Linux file system transparently spans across volumes, but giving an illusion of unified file system rooted at / (ROOT DIR). Even if you don\u0027t allocate separate logical volumes a.k.a. partitions for /home, /boot, root directory (/), they all will happily reside under the same partition, co-existing as directories. Only partition you may prefer to allocate separately is swap/virtual memory secondary storage which is as much like Windows pagefile.\n\n"
+    },
+    {
+      "id": "186004",
+      "timestamp": "2014-07-21T16:01:22+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Unlike Windows, ....\n\nTo be fair, quite a few tricks can be played with mountpoints in Windows too.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "186005",
+      "timestamp": "2014-07-21T16:05:52+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "\u003e To be fair, quite a few tricks can be played with mountpoints in Windows too.\n\nLike [this](http://en.wikipedia.org/wiki/Hard_link \"External link\"), or [this](http://en.wikipedia.org/wiki/NTFS_symbolic_link \"External link\") or even [this](http://en.wikipedia.org/wiki/NTFS_junction_point \"External link\").\n\n"
+    },
+    {
+      "id": "186007",
+      "timestamp": "2014-07-21T16:24:55+00:00",
+      "author": "Wonko the Sane",
+      "content": "Not exactly-exactly.\n\nThe equivalent of \"mount points\" in Linux:\n\n[http://en.wikipedia....int#MOUNT-POINT](http://en.wikipedia.org/wiki/Mount_point#MOUNT-POINT \"External link\")\n\n[http://www.linuxnix....-linuxunix.html](http://www.linuxnix.com/2013/09/what-is-a-mount-point-in-linuxunix.html \"External link\")\n\nare - *strangely enough* ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif) - called \"mount points\" in Windows:\n\n[http://en.wikipedia....me_mount_points](http://en.wikipedia.org/wiki/NTFS_reparse_point#Volume_mount_points \"External link\")\n\n[http://en.wikipedia....ume_mount_point](http://en.wikipedia.org/wiki/NTFS_volume_mount_point \"External link\")\n\n(they are Symbolic Links AND NOT hardlinks)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "186018",
+      "timestamp": "2014-07-21T19:16:35+00:00",
+      "author": "cdob",
+      "content": "\u003e I would like to dual boot Microsoft Windows, possibly 7 or 8 and linux, possibly Arch Linux  \n\u003e\n\u003e The problem is that it requires multiple partitions: System, Recovery, Windows, Files (Windows), /home, /, /boot (Linux) and I thought it should be simpler with GPT. It remains to see.\n\nIf need be, you may install Windows 8 to one partition:  \n\nBoot a Win 8.1 DVD, Shift F10:  \n\n```\ndiskpart.exe\nDISKPART\u003e sel disk 0\nDISKPART\u003e clean\nDISKPART\u003e create partition prim size\u003d32000\nDISKPART\u003e active\nDISKPART\u003e format fs ntfs quick label\u003dWin8\nDISKPART\u003e assign letter\u003dC\n\nDISM.exe /Apply-Image /ImageFile:f:\\sources\\install.wim /Index:2 /ApplyDir:C:\\\n\nbcdboot.exe c:\\windows /s c:\n```\n\nReboot to continue installation.  \n\nC:\\\\boot\\\\bcd contains a recovery entry \u0027device\u003d\\[C:\\]\\\\Recovery\\\\WindowsRE\\\\Winre.wim\u0027 by default.  \nIt\u0027s possible to boot to recovery environment.  \n\nThere are three MBR entries free still: /, /home and swap  \nAnd as indicated already, there are logical partitions.  \n\n\u003cbr /\u003e\n\nIf you like to continue GPT:  \n\nThere is a Technet article using gptgen to convert to a GPT partition.  \n[http://social.techne...on-to-uefi.aspx](http://social.technet.microsoft.com/wiki/contents/articles/14286.converting-windows-bios-installation-to-uefi.aspx \"External link\")  \n\nInstall Arch Linux with grub2 boot manager next.  \n\n\u003cbr /\u003e\n\nRandom idea:  \nMBR: a 100 MB partition and rest of hdd as GPT protected partition.  \nGPT: several partitions  \nWhat happens at Windows boot? What happens at Linux boot?  \n[http://www.rodsbooks...isk/hybrid.html](http://www.rodsbooks.com/gdisk/hybrid.html \"External link\")  \n\u003e When confronted with a hybrid MBR, Windows tries to treat the disk as an MBR disk, ignoring the GPT partitions completely. This limitation means that in a dual-boot environment, you must hybridize all of your Windows partitions, and none of those partitions should span the 2 TiB mark on the disk, if the disk is larger than that.\nDid anybody verify Windows 8 behaviour?   \n"
+    }
+  ]
+}

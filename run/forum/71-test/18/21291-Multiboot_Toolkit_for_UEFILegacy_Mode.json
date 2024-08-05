@@ -1,0 +1,100 @@
+{
+  "id": "21291",
+  "title": "Multiboot Toolkit for UEFI/Legacy Mode",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "200686",
+      "timestamp": "2016-11-02T03:13:48+00:00",
+      "author": "niemtin007",
+      "content": "Hi everyone,  \n\nMultibootUSB is my project to make USB become more multifunction. It is a gift for my friends. I was very happy when I received many good comments. Thank you for using this tool.  \n\nMultibootUSB is the open-source software, I use GNU license. You can download from my blog: [https://niemtin007.blogspot.com/](https://niemtin007.blogspot.com/ \"External link\")  \n\nThis tool supports for USB Flash Driver and External Portable Hard Drives. With USB, it will be deleted all partitions and create new. With HDD box, it will be resized and create new partitions, so it very safe for your data.  \n\nMultibootUSB supports many modules, you can open \".modules.xls\" to get the link to download. Copy all modules that you need in the root directory and run \".addmodules.bat\" to add the modules. You can use WinSetupFromUSB to add Windows Setup for both UEFI/Legacy mode and use Yumiboot to add more modules for legacy mode  \n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \nHow to install: [https://www.youtube....h?v\u003dxkRGUbzCJBA](https://www.youtube.com/watch?v\u003dxkRGUbzCJBA\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003dIf \"External link\")  \n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\nIf MultibootUSB does not work after installed on the External Portable Hard Drives. You can use the \"CleanMBR.bat\" to clean MBR on your drive. After run \"CleanMBR.bat\", your partitions will turn into unallocated, you need to use the recovery tool to recover all partition (trust me, your data will not be lost). You can use the recovery tools like AOMEI Partition or another software. Finally, remember to run \".fixboot.bat\" to fix boot for the bootloader.  \n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \nHow to Clean MBR: [https://www.youtube....h?v\u003dPIt_7ywfgCg](https://www.youtube.com/watch?v\u003dPIt_7ywfgCg\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d-----------------------------------------------------------------------------------------------------------Thank \"External link\")  \n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\n-----------------------------------------------------------------------------------------------------------  \nThank to Ha Son, Anhdv, lethimaivi, Hoang Duch2... to help me build this project.\n\n-----------------------------------------------------------------------------------------------------------  \n\n\u003cbr /\u003e\n\nI will be very grateful if I get your feedback to make this tool becomes more complete, thanks.\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n**Changelog MultibootUSB 1.0.5** : (31-10-2016)\n\n* Build new installer to install MultibootUSB for External Portable Hard Drives (HDD box) with 1 click (create boot without data loss - very safe for your data)\n* Add WinPE Sergei Strelec like a module (UEFI/Legacy)\n* Update Grub2, Clover bootloader\n* Fix boot error when booting to Syslinux bootloader\n* Fix boot AndroidOS, PhoenixOS, CubLinux\n* Add password recovery tool for web browsers and wifi\n* Build new script for update MultibootUSB manually\n* Add boot live ISO Caine OS (Grub2 UEFI/Legacy mode)\n\n![fshare.png](https://s26.postimg.org/la108a5bt/fshare.png)\n\n* MultibootUSB 1.0.5 ([download](http://www.fshare.vn/file/N5IVM6OMSTIQ \"External link\")) -- keep the original link if you want to share it, thanks!\n* Grub2 Themes for MultibootUSB ([download](http://www.fshare.vn/file/NEQAWF69IGK7 \"External link\"))\n* WinSetupFromUSB ([download](http://www.winsetupfromusb.com/downloads/ \"External link\"))\n* YUMI boot ([download](http://www.pendrivelinux.com/yumi-multiboot-usb-creator/ \"External link\")) - MultibootUSB does not support for UEFI YUMI\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nDEMO\n\n\u003cbr /\u003e\n\n**rEFInd boot manager - UEFI**\n\n[![niemtin007_2016.jpg](https://s26.postimg.org/ofpsmckxl/niemtin007_2016.jpg)](http://s26.postimg.org/ofpsmckxl/niemtin007_2016.jpg \"External link\")\n\n**UEFI mode - Grub2**\n\n[![niemtin007_2016.jpg](https://s26.postimg.org/ewkp6mmt5/niemtin007_2016.jpg)](http://s26.postimg.org/ewkp6mmt5/niemtin007_2016.jpg \"External link\")\n\n**Clover boot manager - UEFI**\n\n[![niemtin007_2016.jpg](https://s26.postimg.org/yfpafzlkp/niemtin007_2016.jpg)](http://s26.postimg.org/yfpafzlkp/niemtin007_2016.jpg \"External link\")\n\n**Xorboot boot manager - UEFI**\n\n[![niemtin007_2016.jpg](https://s26.postimg.org/76dx1hkhl/niemtin007_2016.jpg)](http://s26.postimg.org/76dx1hkhl/niemtin007_2016.jpg \"External link\")\n\n**Legacy mode - Grub2**\n\n[![niemtin007_2016.jpg](https://s26.postimg.org/jat6igxdl/niemtin007_2016.jpg)](http://s26.postimg.org/jat6igxdl/niemtin007_2016.jpg \"External link\")\n\n[![niemtin007_2016.jpg](https://s26.postimg.org/43d6y45ix/niemtin007_2016.jpg)](http://s26.postimg.org/43d6y45ix/niemtin007_2016.jpg \"External link\")\n\n**Legacy mode - Syslinux**\n\n[![niemtin007_2016.jpg](https://s26.postimg.org/hhq9u5c6x/niemtin007_2016.jpg)](http://s26.postimg.org/hhq9u5c6x/niemtin007_2016.jpg \"External link\")\n\n**Legacy mode - Grub4dos**\n\n[![niemtin007_2016.jpg](https://s26.postimg.org/w4r8btat5/niemtin007_2016.jpg)](http://s26.postimg.org/w4r8btat5/niemtin007_2016.jpg \"External link\")\n\n**Edited by niemtin007, 02 November 2016 - 03:47 AM.**\n"
+    },
+    {
+      "id": "200698",
+      "timestamp": "2016-11-04T03:49:49+00:00",
+      "author": "niemtin007",
+      "content": "Sorry, I don\u0027t know how to edit this topic (The edit function have seem disable to me)  \nHere is the another link to download Multiboot Toolkit 1.0.5 include Grub2 themes. Thanks for using.\n\n++**Mediafire**++ : [http://www.mediafire...clude_themes.7z](http://www.mediafire.com/file/29y8pt69229gmci/MultiBoot_Toolkit_1.0.5_include_themes.7z \"External link\")\n\n"
+    },
+    {
+      "id": "200717",
+      "timestamp": "2016-11-08T15:11:49+00:00",
+      "author": "f1ult23",
+      "content": "Thanks for your software.\n\n"
+    },
+    {
+      "id": "202127",
+      "timestamp": "2017-02-10T09:07:23+00:00",
+      "author": "f1ult23",
+      "content": "Changelog Multiboot Toolkit 2.0.0: (27-01-2017)  \n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\\* Fix to miss Grub4dos configuration files when installing Grub2 with new method  \n\\* Set Grub2 is the default legacy bootloader  \n\\* Support some special ISO run only with FAT32 format on the hide partition  \n(Bitdefender; Fedora; Network Security Toolkit...)  \n\\* Support script auto add some special ISO in the hide partition  \n\\* Fix and add much more the Grub2 themes  \n\\* Improved the script to keep the original name when adding modules to boot live ISO  \n\\* Support script to manually update the rEFInd boot manager and the Clover bootloader  \n\\* Build new script to install rEFInd/Clover to Internal Hard Drives, support for MultiOS  \n\\* Support edit mini Windows boot manager and WinSetup boot manager with bootice  \n\\* Support script auto add ISO extracted to multiboot drive  \n------------------------------------------------------------------------------\n\n[https://niemtin007.blogspot.com](https://niemtin007.blogspot.com \"External link\")\n\n"
+    },
+    {
+      "id": "202512",
+      "timestamp": "2017-03-01T17:12:29+00:00",
+      "author": "f1ult23",
+      "content": "**Changelog Multiboot Toolkit 2.0.1** : (28-02-2017)\n\n* Fix Windows format warning for USB (use bootice v1.3.3 instead bootice v1.3.4)\n* Add DLC boot menu from Grub2, fix WinPE Strelec menu in UEFI mode\n* Use Windows built-in chkdsk utility to check the partition before preparing  \n  the partition for HDD box. This method will help the data safety more\n* Update Grub2 bootloader 2.02 rc1 (thank to Hà Sơn)\n* Fix config for Clover bootloader to auto scan entries like rEFInd\n* Add new module boot live ISO: AiO-SRT (thank to kiet2507)\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "202794",
+      "timestamp": "2017-03-20T17:23:55+00:00",
+      "author": "f1ult23",
+      "content": "**Changelog Multiboot Toolkit 2.1.0** : (19-03-2017)\n\n* Improve modules script to prevent lost name file while running again\n* Improve multiboot_update script to auto update config for grub2\n* Add boot live ISO Wifislax64 (Grub2 UEFI/Legacy)\n* Fix multiboot_update script to keep the current grub2\u0027s theme setting\n* Loopback original config for some Linux distributions (need testing)\n* Fix missing Grub4dos config while installing WinSetupFromUSB (thanks to tayfun akkoyun)\n* Add many useful ISO tool on Grub4dos menu (thanks to tayfun akkoyun)\n* Make Grub4dos more powerful with auto menu (thanks to tayfun akkoyun and karadurak)\n* Add Wim method as an alternative to WinSetupFromUSB, saving more space  \n  (thanks to tayfun akkoyun, his friend Aşkın ÖZTAV and oguzhan43 from TNCTR)\n* Add ISO method as the other option to install Windows from original ISO  \n  (not support for modified ISO versions like Windows AIO - thanks to tayfun akkoyun)\n* Fix boot live ISO for Manjaro Linux 17 (Thanks to kainonergon)\n* Fix and Update the modules link\n\n**++DOWNLOAD :++**  \n\n* Multiboot Toolkit 2.1.0 ([download](https://goo.gl/3tb7QA \"External link\"))\n* WinSetupFromUSB ([download](http://www.winsetupfromusb.com/downloads/ \"External link\"))\n* YUMI boot ([download](http://www.pendrivelinux.com/yumi-multiboot-usb-creator/ \"External link\")) - Multiboot Toolkit does not support for UEFI YUMI  \n\n  Thanks you **Niemtin007**for the update.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "202834",
+      "timestamp": "2017-03-22T20:58:50+00:00",
+      "author": "juampa",
+      "content": "Hey man, thanks a lot for this awesome tool! I\u0027m using 1.0.5 version but when I try to update to the 2.1.0 the update says I need to execute the Installer but when I try to execute the partition program force close and the installer don\u0027t run.  \n\nAnother issue but not related to your tool is Kaspersky Rescue Disk and corrupt virus database, is any way to fix this?  \n\nThanks a lot!   \n"
+    },
+    {
+      "id": "202837",
+      "timestamp": "2017-03-22T22:11:55+00:00",
+      "author": "juampa",
+      "content": "\u003e Hey man, thanks a lot for this awesome tool! I\u0027m using 1.0.5 version but when I try to update to the 2.1.0 the update says I need to execute the Installer but when I try to execute the partition program force close and the installer don\u0027t run.  \n\u003e\n\u003e Another issue but not related to your tool is Kaspersky Rescue Disk and corrupt virus database, is any way to fix this?  \n\u003e\n\u003e Thanks a lot!\n\n![dKmfXW4.png](http://i.imgur.com/dKmfXW4.png)This is the error on Windows 7 x64\n\n"
+    },
+    {
+      "id": "202852",
+      "timestamp": "2017-03-23T14:33:41+00:00",
+      "author": "niemtin007",
+      "content": "Sorry I forgot this topic for too long. Thank @f1ult23 updated this topic. I am very thankful for that.  \n@juampa: in the new version, It has a cryptic bug. Multiboot_installer worked perfectly on Windows 10, but It has a problem with Widows XP, 7. I found the bug come from line 11. You can manually fix this by edit \\[ 01 \\] multiboot_installer.bat with notepad, delete line 11 and save it. Now, you can install multiboot with the last version.  \nFor Kaspersky Rescue Disk, I think this error occurs because it is not compatible with the NTFS format. I have a friend said: it just works well in the FAT32 format. In the next time, Kaspersky OS will be released. I think it will be the best choice to replace Kaspersky Rescue Disk. Now, you can use Eset, Avira or Bitdefender to replace it  \nThank you for using my tool :smile:\n\n"
+    },
+    {
+      "id": "202861",
+      "timestamp": "2017-03-23T20:50:30+00:00",
+      "author": "juampa",
+      "content": "\u003e Thank you for using my tool :smile:\nWorks Great!   \n\nLast question!  \nI\u0027m using a 16GB flash drive and the installer create a 9GB partition. Now I don\u0027t have enough space to add more tools.   \n\nCan I increase the size of the partition without breaking the tool?  \n\nThanks!!   \n\n**Edited by juampa, 23 March 2017 - 08:50 PM.**\n"
+    },
+    {
+      "id": "202864",
+      "timestamp": "2017-03-24T03:16:53+00:00",
+      "author": "niemtin007",
+      "content": "@**juampa**: you can do this\n\n**Step 1**: Open any partition tool (I use AOMEI Partition Assistant). You can see the multiboot\u0027s partitions\n\n![image.jpg](http://s26.postimg.org/5lzhsmyd5/image.jpg)\n\n**Step 2**: Decrease the ESP partition size to make the unallocated\n\n![image.jpg](http://s26.postimg.org/tr07acint/image.jpg)\n\n**Step 3** : Increase your data partition size  \n![image.jpg](http://s26.postimg.org/5bwkn194p/image.jpg)\n\nP/s: If you have any issue with multiboot unbootable on Legacy mode. Just run \\[ 03 \\] fixboot(YUMI-WINSETUP).bat to fix it. Have fun!\n\n"
+    },
+    {
+      "id": "203014",
+      "timestamp": "2017-03-30T16:13:41+00:00",
+      "author": "f1ult23",
+      "content": "**Changelog Multiboot Toolkit 2.1.1** : (29-03-2017)\n\n* Support Turkish Language (translate by tayfun akkoyun)\n* Improve Grub2 Config, more powerful with auto scan menu (thanks to aguslr)  \n  (fix boot for Wifislax64 or some particular ISO unbootable on a real machine)\n* Add NT6 method as a other option to install Windows (thanks to tayfun akkoyun)\n* Update WinSetup.ISO.Module, better than WIM method (update by tayfun akkoyun)\n* Add more options for XorBoot Boot Manager (UEFI mode)\n* Fix AOMEI Partition Assistant Warning in Windows XP, 7\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "203431",
+      "timestamp": "2017-04-27T16:03:22+00:00",
+      "author": "f1ult23",
+      "content": "**Changelog Multiboot Toolkit 2.1.2**: (28-04-2017)\n\n* Add Grub2 File Manager (thanks to karadurak, tayfun akkoyun)\n* Update Grub2 Bootloader 2.02 (thanks to tayfun akkoyun, Hà Sơn)\n* Convert more themes from Clover bootloader for rEFInd boot manager\n* Add script support to create config.plist for Clover (Hackintosh)\n* Fix script was not able to run in directory contain Unicode symbols or Whitespace\n* Support secure boot with original Microsoft UEFI boot files, only support for WIM format  \n  (Thanks to köylü, tayfun akkoyun from TNCTR forum)\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "203467",
+      "timestamp": "2017-05-02T19:58:57+00:00",
+      "author": "f1ult23",
+      "content": "**Changelog Multiboot Toolkit 2.1.3**: (03-05-2017)\n\n* Fixed bug scripts in the previous version, fixed bug for Windows 7\n* Added EasyUEFI Portable to edit UEFI boot entries for MultiOS\n* Supported script to change default bootloader/boot manager for UEFI mode\n* Updated new WinPE modules (thanks to Hoàng Khiển, anhdv, dinhphucIT)\n* Fixed boot Grub2, WinPE Boot Manager for UEFI 32bit (thanks to Ahmet Bulut)\n* Added WinPE Boot Manager \\\u0026 WinSetupFromUSB to Grub2 Menu in UEFI mode\n* Swapped files between ESP1 and ESP2 for compatibility with secure boot  \n  in some machine does not allow to choose boot option\n\n\u003c!-- --\u003e\n\n* Multiboot Toolkit 2.1.1 ([download](https://goo.gl/A7BFq7 \"External link\")) -- Stable Version\n* Multiboot Toolkit beta: [https://github.com/n...oolkit/releases](https://github.com/niemtin007/Multiboot-Toolkit/releases \"External link\")\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "203711",
+      "timestamp": "2017-05-29T15:47:45+00:00",
+      "author": "f1ult23",
+      "content": "**Changelog Multiboot Toolkit 2.2.0** : (28-05-2017)\n\n* Updated the AOMEI Partition Assistant (thanks to Hoàng Khiển, Krishna)\n* Changed partition method, increase read and write speeds for Multiboot device\n* Updated partition tools configuration for Grub2 (updated by Tayfun Akkoyun)\n* Allowed install on the Virtual Disk, support to test quickly a Multiboot device\n* Fixed Grub2 cannot be bootable in UEFI mode on the External Portable Hard Drives\n* Fixed DLC Boot cannot be bootable from Grub2 menu in Legacy mode on the  \n  External Portable Hard Drives (thanks to steve6375 from reboot.pro forum)\n* Supported Grub2 Menu with multi-language (Vietnam, English, Turkish languages)  \n  (Changed the script structure for easy translation into other languages)\n* Updated Windows Setup from Source module with both WIM and ISO method  \n  (updated by Tayfun Akkoyun)\n* Added timeout between the partition commands. It makes the installation slower  \n  but it makes the Multiboot Installer works well in the system has low performance\n* Fixed missing disk and partition number variables in Windows 7, it is the cause of  \n  can not run script install file in the hidden partitions\n\n\u003cbr /\u003e\n\n"
+    }
+  ]
+}

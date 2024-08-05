@@ -1,0 +1,40 @@
+{
+  "id": "2548",
+  "title": "USB Install XP (2 partitions)",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "16882",
+      "timestamp": "2007-07-05T18:01:41+00:00",
+      "author": "vrocco",
+      "content": "OK I know it has been covered over and over how to boot a WinPE from an external USB drive. Thanks to these forums, I got mine working.   \n\nHowever, I have a problem. I have a highly customized install DVD that we use for my workplace. After booting WinPE, it uses Ghost to lay down an image on the drive. The Ghost file (.gho) is about 4GB. This means it will not fit on my FAT partition which needs to be 2GB or less.   \n\nI was able to hard code the drive letters into the batch files to get it to run ghost from the second partition after booting WinPE, however, this is where I have a problem. Depending on which computer I plug into, WinPE seems to mount the USB drive partitions as different letters. So I need to go in each time and find out what the drive letter is for my econd partition and then re-edit the batch files to point to that drive letter.   \n\nIs there anyway to configure the WinPE so that the Ghost partition always mounts as a certain drive letter, or somehow set a variable like %TargetDrive% to that partition? That way, I can use the variable and not a drive letter.  \n\nAny help is appreciated.  \n\nVito   \n"
+    },
+    {
+      "id": "16884",
+      "timestamp": "2007-07-05T18:39:27+00:00",
+      "author": "MedEvil",
+      "content": "Here i described how one can get a fixed drive letter for partitions on an USB-Stick.  \n[http://www.boot-land...mp;hl\u003ddosdevice](http://www.boot-land.net/forums/index.php?...mp;hl\u003ddosdevice \"External link\")  \n\n![:1st:](http://reboot.pro/public/style_emoticons/default/1st.gif)   \n"
+    },
+    {
+      "id": "16888",
+      "timestamp": "2007-07-05T19:13:04+00:00",
+      "author": "was_jaclaz",
+      "content": "Or, the other way round, you could, INSTEAD of hardcoding the drive letter in the batch file, put together a routine that detects which letter it has been assigned to the GHOST partition, by means of checking all drive letters for a set \"tagfile\" and updating the info automatically.  \n\njaclaz  \n\nP.S.: what I am curious about is if you learned how to make your stick here on boot-land:  \n\u003e Thanks to these forums, I got mine working.\nor on MSFN:  \n[http://www.msfn.org/...opic\u003d100638\\\u0026hl\u003d](http://www.msfn.org/board/index.php?showtopic\u003d100638\u0026hl\u003d \"External link\")  \n![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n\n![:1st:](http://reboot.pro/public/style_emoticons/default/1st.gif)   \n"
+    },
+    {
+      "id": "16894",
+      "timestamp": "2007-07-05T23:40:12+00:00",
+      "author": "vrocco",
+      "content": "MedEvil - You are a freaking genius!! I bow before you. Had this posted on 3 different forums and this is the first good answer I got. Excatly what I needed. Worked like a charm!! Thanks!  \n\njaclaz - I actually did get the usb boot working with help from MSFN. I just posted this same message on 3 different sites without editing it. Also found some info on the 911 forum.  \n\nThanks!   \n"
+    },
+    {
+      "id": "16903",
+      "timestamp": "2007-07-06T07:01:06+00:00",
+      "author": "TheHive",
+      "content": "\u003e I actually did get the usb boot working with help from MSFN\nYou mind posting the link.   \n"
+    }
+  ]
+}

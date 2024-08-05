@@ -1,0 +1,100 @@
+{
+  "id": "10553",
+  "title": "bcdw boot vdi (virtualbox) disk image",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "92774",
+      "timestamp": "2010-02-28T12:22:45+00:00",
+      "author": "guimenez",
+      "content": "Hi  \n\nPlease can anyone help me on this.  \n\nI want to make bcdw boot a vdi image file.  \nBecause if i boot a vdi disk a don\u0027t need to have cdrom on dos (gcdrom sometimes doesn\u0027t  \ndetect some sata optial drives)  \n\nMany thanks   \n"
+    },
+    {
+      "id": "92787",
+      "timestamp": "2010-02-28T15:47:05+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Please can anyone help me on this.\nYes. ![:exclamation:](http://reboot.pro/public/style_emoticons/default/exclamation.gif)   \n[http://homepages.tes...no-answers.html](http://homepages.tesco.net/J.deBoynePollard/FGA/questions-with-yes-or-no-answers.html \"External link\")  \n\n\u003e I want to make bcdw boot a vdi image file.\nIt\u0027s not possible, mainly because .vdi is a custom format and BCDW was abandoned several years before Virtualbox came to life, and secondly because there is no such thing as \"an image\", compare with this:  \n[http://www.boot-land...?showtopic\u003d8944](http://www.boot-land.net/forums/index.php?showtopic\u003d8944 \"External link\")  \n\nSo, if you re-word your question to something like:  \n\u003e I would like to boot a HD image of DOS from a CD, how can I achieve this?\n\nYou may get an answer like:  \n\u003e It is possible to map and load a DOS image through grub4dos.\n\nOr one like:  \n\u003e It is possible to write a hard disk emulation kind of CD-rom, i.e. one where a HD image is used as boot device, thus overtaking the limits imposed by the common floppy emulation kind (a floppy image 1,44 or 2,88 Mb).\n\nBetter yet, if you would state your problem, like:  \n\u003e I have to access with xxxxx, and yyyyyyy, some machines that have problems detecting some sata optical drives, how can I solve this problem?\ni.e. if you ask what possible solutions there are to the problem you are having, as opposed to asking how to do something that you think may be the solution to your problem, you may have more answers/suggestions, try comparing with point f. of the \"common sense advice\" attached to Rules:  \n[http://www.boot-land...?showtopic\u003d9101](http://www.boot-land.net/forums/index.php?showtopic\u003d9101 \"External link\")  \n\n![:exclamation:](http://reboot.pro/public/style_emoticons/default/exclamation.gif)  \n\nWonko   \n"
+    },
+    {
+      "id": "92826",
+      "timestamp": "2010-02-28T20:06:45+00:00",
+      "author": "guimenez",
+      "content": "Many thanks for replying  \n\nCan i try it to boot with virtual pc (microsoft) disk (its older like bcdw)  \n\nI will try to make a better explanation:  \n\nI\u0027m using bcdw to boot from cd and open savepart image to restore to hd.  \nThe main problem its that some computers with sata optical drive the gcdrom.sys driver doesn\u0027t work and then i can\u0027t restore the image from cd.  \n\nI want to create a virtualpc(because virtualbox doesn\u0027t work) disk that as my image inside and then boot the virtual pc disk to restore the image.  \n\nI know that i can use grub4dos(excellent software), but grub4dos sometimes doesn\u0027t boot on some computers  \n\nmany thanks once again for your help   \n"
+    },
+    {
+      "id": "92830",
+      "timestamp": "2010-02-28T21:01:24+00:00",
+      "author": "Wonko the Sane",
+      "content": "And again VirtualPC does NOT use a \"standard\" image format, but a proprietary one, which format BTW has also changed over the years.  \n\nThe ONLY standard format is RAW or \"dd-like\".  \n\nI have never seen a machine that cannot boot grub4dos, but anyway you can boot grub4dos from BCDW, if BCDW boots everywhere:  \n[http://www.boot-land...?showtopic\u003d7173](http://www.boot-land.net/forums/index.php?showtopic\u003d7173 \"External link\")  \n\n\u003cbr /\u003e\n\nI cannot see the use of a Virtual Machine of some kind in the process, however use Qemu that can use RAW images allright, or VMware that can also use them with a .pln or .vmdk descriptor. Virtual PC, AFAIK cannot use RAW images, cannot really say about VirtualBox, being partially derived from Qemu, probablyu it can. ![:exclamation:](http://reboot.pro/public/style_emoticons/default/exclamation.gif)  \n\nBut still I am missing the general idea of the VM. ![:exclamation:](http://reboot.pro/public/style_emoticons/default/exclamation.gif)  \n\nBCDW can use allright \"larger\" \"super-floppy\" images:  \n[http://bootcd.narod...._e.htm#customfd](http://bootcd.narod.ru/bcdw_e.htm#customfd \"External link\")  \nor \"full HD images\" (RAW ones):  \n\u003e Example of \\\\BootCat.Ini   \n\u003e\n\u003e ; \\*\\*\\* The list of bootoptions  \n\u003e\n\u003e C:\\\\ ; Boot drive C: ; Boot harddisk.\\^   \n\u003e A:\\\\ ; Boot drive A: ; Boot floppy drive.\\^   \n\u003e \\\\BootCat2.Ini ; Submenu ; Another BootCat.Ini\\^   \n\u003e \\\\floppy.ima ; Boot with \\*.IMA from a floppy image (WinImage)   \n\u003e **\\\\logical.ima ; Boot with \\*.IMA from an image of a logical drive (WinImage)**  \n\u003e **\\\\hdd.img ; Boot an image of a harddisk (DskRead)**  \n\u003e \\\\acronis.wbt ; Boot an image with \\*.WBT (WinISO)   \n\u003e \\\\nt5boot.bin ; Boot the bootsector of Windows XP/2000/NT   \n\u003e \\\\i386\\\\setupldr.bin ; Start a setup routine of Windows XP/2000/NT   \n\u003e \\\\dos4bcdw.ima ; Volkov Commander ; note1 ; \\\\vc\\\\vc.com   \n\u003e \\\\dos4bcdw.ima ; Setup Windows 9x ; note1 ; \\\\win9x\\\\setup.exe   \n\u003e /isolinux.bin ; Load Linux kernel ; note2 ; /linux/kernel   \n\u003e /isolinux.bin ; Start memdisk ; note2 ; /memdisk /test.img   \n\u003e /cdsh/loader.bin ; CD Shell script ; note2 ; script /test.scr   \n\u003e /bscript/loader.bin ; BootScriptor script ; note2 ; script /test.ini   \n\u003e /diskem1x.bin ; diskem1x.bin script ; note2 ; batch test.cmd   \n\u003e :return ; Return from a submenu ; note3   \n\u003e :reboot ; Reboot PC ; note3   \n\u003e :restart ; Switch to English ; note4 ; \\\\BCDW\\\\bcdw_eng.ini\n\n![:exclamation:](http://reboot.pro/public/style_emoticons/default/exclamation.gif)  \n\nWonko   \n"
+    },
+    {
+      "id": "92844",
+      "timestamp": "2010-02-28T23:00:11+00:00",
+      "author": "guimenez",
+      "content": "thanks, now its all making sense ![:exclamation:](http://reboot.pro/public/style_emoticons/default/exclamation.gif)  \n\nok, i will use qemu to make an hdd(raw) with 700MB and then import to the raw disk the boot files. But now, how can i use  \nbcdw to boot the raw disk (i\u0027m searching but only found booting from ima images)  \n\nthanks   \n"
+    },
+    {
+      "id": "92877",
+      "timestamp": "2010-03-01T09:12:24+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e ok, i will use qemu to make an hdd(raw) with 700MB and then import to the raw disk the boot files.\nWell, you actually do not need to use Qemu if all you have to do is to create a RAW image, you can use MBRBATCH or the simplified HDDimage:  \n[http://www.boot-land...?...ic\u003d9033\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d9033\u0026hl\u003d \"External link\")  \n\nStill I am failing to see what use would a VM in this setup can you try describing your proposed \"course of action\"? ![:exclamation:](http://reboot.pro/public/style_emoticons/default/exclamation.gif)  \n\n\u003e But now, how can i use  \n\u003e bcdw to boot the raw disk (i\u0027m searching but only found booting from ima images)\nI don\u0027t see why you cannot use a super-floppy .ima image as outer container for the whatever you want to use ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif), but (taking spoon feeding to an entire new level ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)):  \n\n\u003e .....  \n\u003e or \"full HD images\" (RAW ones):  \n\u003e \u003e\n\u003e \u003e ....  \n\u003e \u003e \\\\logical.ima ; Boot with \\*.IMA from an image of a logical drive (WinImage)   \n\u003e \u003e **\\\\hdd.img ; Boot an image of a harddisk (DskRead)**   \n\u003e \u003e ....\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\nOf course you\u0027ll have to do your experiments.  \n\n![:exclamation:](http://reboot.pro/public/style_emoticons/default/exclamation.gif)  \n\nWionko   \n"
+    },
+    {
+      "id": "92879",
+      "timestamp": "2010-03-01T09:28:56+00:00",
+      "author": "guimenez",
+      "content": "I finally make it with your help ![:exclamation:](http://reboot.pro/public/style_emoticons/default/exclamation.gif)  \n\nI will explain what i did  \n\n1 - Create a 700mb raw disk with qemu  \n2 - make the raw disk bootable (important: format with fat16)  \n3 - put a backup image made it with savepart(623mb)  \n4 - use the command \"qemu-img -convert disk.raw disk.img\"  \n5 - in bcdw i\u0027ve put the line \"\\\\disk.img ; boot the img\"  \n\nDone  \n\nNow i boot my cd with and bcdw run the img and now i can restore the image without searching for cdrom driver (gcdrom) and now it works on every pc (IDE and SATA)  \n\nmany thanks once again  \n\nHope with this steps help someone else ![:exclamation:](http://reboot.pro/public/style_emoticons/default/exclamation.gif)   \n"
+    },
+    {
+      "id": "92885",
+      "timestamp": "2010-03-01T10:22:14+00:00",
+      "author": "Wonko the Sane",
+      "content": "Good. ![:(](http://reboot.pro/public/style_emoticons/default/sad.png), but I don\u0027t understand the step #4.  \n\nIf you created a RAW disk image, you do not need to convert it to anything, and BTW, \"qemu-img -convert disk.raw disk.img\" does NOT \"convert\" anything.  \nSyntax for qemu-img:  \n\\[codebox\\]qemu-img version 0.10.2, Copyright © 2004-2008 Fabrice Bellard usage: qemu-img command \\[command options\\] QEMU disk image utility Command syntax: create \\[-e\\] \\[-6\\] \\[-b base_image\\] \\[-f fmt\\] filename \\[size\\] commit \\[-f fmt\\] filename convert \\[-c\\] \\[-e\\] \\[-6\\] \\[-f fmt\\] \\[-O output_fmt\\] \\[-B output_base_image\\] filenam e \\[filename2 \\[...\\]\\] output_filename info \\[-f fmt\\] filename snapshot \\[-l \\| -a snapshot \\| -c snapshot \\| -d snapshot\\] filename Command parameters: \\\u0026#39;filename\\\u0026#39; is a disk image filename \\\u0026#39;base_image\\\u0026#39; is the read-only disk image which is used as base for a copy on write image; the copy on write image only stores the modified data \\\u0026#39;output_base_image\\\u0026#39; forces the output image to be created as a copy on write image of the specified base image; \\\u0026#39;output_base_image\\\u0026#39; should have the same content as the input\\\u0026#39;s base image, however the path, image format, etc may differ \\\u0026#39;fmt\\\u0026#39; is the disk image format. It is guessed automatically in most cases \\\u0026#39;size\\\u0026#39; is the disk image size in kilobytes. Optional suffixes \\\u0026#39;M\\\u0026#39; (megabyte, 1024 \\* 1024) and \\\u0026#39;G\\\u0026#39; (gigabyte, 1024 \\* 1024 \\* 1024) are supported any \\\u0026#39;k\\\u0026#39; or \\\u0026#39;K\\\u0026#39; is ignored \\\u0026#39;output_filename\\\u0026#39; is the destination disk image filename \\\u0026#39;output_fmt\\\u0026#39; is the destination format \\\u0026#39;-c\\\u0026#39; indicates that target image must be compressed (qcow format only) \\\u0026#39;-e\\\u0026#39; indicates that the target image must be encrypted (qcow format only) \\\u0026#39;-6\\\u0026#39; indicates that the target image must use compatibility level 6 (vmdk form at only) \\\u0026#39;-h\\\u0026#39; with or without a command shows this help and lists the supported formats Parameters to snapshot subcommand: \\\u0026#39;snapshot\\\u0026#39; is the name of the snapshot to create, apply or delete \\\u0026#39;-a\\\u0026#39; applies a snapshot (revert disk to saved state) \\\u0026#39;-c\\\u0026#39; creates a snapshot \\\u0026#39;-d\\\u0026#39; deletes a snapshot \\\u0026#39;-l\\\u0026#39; lists all snapshots in the given image Supported formats: nbd parallels qcow2 vvfat vpc bochs dmg cloop vmdk qcow host_ device raw \\[/codebox\\] The most you do with \"qemu-img -convert disk.raw disk.img\" is to create a duplicate file with a different file extension! :exclamation: Try running: \\[code\\]FC disk.raw disk.img\\[/code\\] :cheers: No, don\u0027t :exclamation: after a lot of mumbling you will get: \\[code\\]C\\\u0026#58;\\\\WINDOWS\\\u003efc disk.raw disk.img Comparing files disk.raw and disk.imgFC\\\u0026#58; no differences encountered\\[/code\\]  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nWonko   \n"
+    },
+    {
+      "id": "92904",
+      "timestamp": "2010-03-01T12:31:57+00:00",
+      "author": "guimenez",
+      "content": "hum, thats why i can\u0027t boot from bcdw, it start booting and then stop.  \n\nHow can i make the bcdw boot the raw disk?  \n\nthanks   \n"
+    },
+    {
+      "id": "92906",
+      "timestamp": "2010-03-01T17:34:36+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e hum, thats why i can\u0027t boot from bcdw, it start booting and then stop.  \n\u003e\n\u003e How can i make the bcdw boot the raw disk?\n\nWhat do you mean? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\nDid you have success with disk.img or not?  \n\n(please remember that you posted a report of success a few hours ago)  \n\nDid you try with disk.raw and it failed, instead?  \n\nHave you tried:  \n\u003e REN disk.raw disk.img\n\n![:exclamation:](http://reboot.pro/public/style_emoticons/default/exclamation.gif)  \n\nWonko   \n"
+    },
+    {
+      "id": "92909",
+      "timestamp": "2010-03-01T18:28:10+00:00",
+      "author": "guimenez",
+      "content": "Finnally found the problem.  \n\nI need to format the disk partition with fat16  \nand now its boot perfectly ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)![:exclamation:](http://reboot.pro/public/style_emoticons/default/exclamation.gif)  \n\nmany thanks for everthing, i will edit the last post  \n\nthanks once again   \n"
+    },
+    {
+      "id": "92922",
+      "timestamp": "2010-03-01T19:58:43+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e thanks once again\n\nYou are welcome. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\nBut now that you have succeeded, why not making the game more difficult (or easier ![:(](http://reboot.pro/public/style_emoticons/default/sad.png))?  \n\n\u003cbr /\u003e\n\nTry joining the dots ![:exclamation:](http://reboot.pro/public/style_emoticons/default/exclamation.gif):  \n[http://www.frontiern...\\~fys/mtools.htm](http://www.frontiernet.net/~fys/mtools.htm \"External link\")  \n\n[http://www.nu2.nu/mkbt/](http://www.nu2.nu/mkbt/ \"External link\")  \n\nMBRBATCH and MAKEBS (as examples where to get some code):  \n[http://www.boot-land...?showtopic\u003d3191](http://www.boot-land.net/forums/index.php?showtopic\u003d3191 \"External link\")  \n[http://www.boot-land...?showtopic\u003d2362](http://www.boot-land.net/forums/?showtopic\u003d2362 \"External link\")  \n\n![:exclamation:](http://reboot.pro/public/style_emoticons/default/exclamation.gif)  \n\nWonko  \n\nP.S.: another thing, about this:  \n[http://www.boot-land...?...\u003d10520\\\u0026st\u003d8](http://www.boot-land.net/forums/index.php?showtopic\u003d10520\u0026st\u003d8 \"External link\")  \nmaybe you could try a new attempt at the light of the new info you\u0027ve gathered here.....![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "94844",
+      "timestamp": "2010-03-16T10:51:11+00:00",
+      "author": "guimenez",
+      "content": "Hi again  \n\ni\u0027m trying something new, but i don\u0027t know if its possible or not.  \nis it possible to convert my hdd (raw) that i\u0027ve created before to a floppy image?  \n\nbecause every time i create a 500mb floppy disk and import the freedos boot sector, the bcdw or another boot software doesn\u0027t boot the floppy image.   \n\nthis is the specs of my floppy image:  \n\nWinImage  \nNew floppy image  \n(Select Custom Image):   \nFilesystem (FAT32) \\\u003c-or FAT16  \nSectors per cluster (4) \\\u003c- or choose among available sizes  \nTotal numbers of sectors (1060290)   \nMedia descriptor (240 \\\u003c-this means F0 hex (Floppy)  \nSectors per track (63)   \nHeads (255)   \nHidden Sectors (0)   \nPhysical Drive Number (00)  \n\nbut it doesn\u0027t boot ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\nif i could convert my hdd to a floppy maybe it will boot.  \nall this is because i need to have drive a:(in dos) and not drive c:  \n\nthanks again   \n"
+    },
+    {
+      "id": "94847",
+      "timestamp": "2010-03-16T12:04:21+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Hi again  \n\u003e .....  \n\u003e\n\u003e thanks again\n\nThanks for what? ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\nI am personally NOT going to do your homework anymore. ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n\nYou keep on going doing semi-random attempts WITHOUT providing ANY meaningful report, BTW quoting without reference a post from here:  \n[http://www.winimage.....php?f\u003d3\\\u0026t\u003d3404](http://www.winimage.info/forum/viewtopic.php?f\u003d3\u0026t\u003d3404 \"External link\")  \nwhere you completely failed to listen, try to understand and follow the advice you were given.  \n\n§@ç#ing **READ** :  \n[http://www.winimage.....php?f\u003d3\\\u0026t\u003d3404](http://www.winimage.info/forum/viewtopic.php?f\u003d3\u0026t\u003d3404 \"External link\")  \nand the suggested thread:  \n[http://www.winimage....c.php?f\u003d3\\\u0026t\u003d326](http://www.winimage.info/forum/viewtopic.php?f\u003d3\u0026t\u003d326 \"External link\")  \ntry understanding what is in it, ask ***related*** questions, provide **EXACT** feedback, ***do*** the experiments, report.  \n\nIf you ask for help, you should keep in mind the \"common sense advice\" attached to Rules of this board:  \n[http://www.boot-land...?showtopic\u003d9101](http://www.boot-land.net/forums/index.php?showtopic\u003d9101 \"External link\")  \n**READ** with particular attention points #f (all of them).  \n\nQuick sum up of the past:  \n\n* You asked a different question (\"how to make a floppy image\", which is different from \"how to make a **bootable** floppy image\") and BTW without giving enough details\n* I directed you to a thread where the problem was solved\n* You came back whining about not being able to replicate the first steps\n* I did your homework\n* You came back whining about not being able to have the image bootable\n* I suggested you AGAIN that the given thread was solved by using ***another*** method AND that since that thread ***another*** handy utility was available (IMDISK)\n* You disappeared\n\n\u003cbr /\u003e\n\nPlease also note how this thread is not titled \"Any question that crosses guimenez\u0027s mind or problem he has\", but \"bcdw boot vdi (virtualbox) disk image\" which has NOTHING to do with \"making a bootable floppy image\", and certainly NOT with \"making a bootable floppy image using Winimage only\"  \n\n![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\nWonko   \n"
+    },
+    {
+      "id": "94870",
+      "timestamp": "2010-03-16T15:17:27+00:00",
+      "author": "Formula84",
+      "content": "See [http://www.nullsessi...08-r2-from-usb/](http://www.nullsession.com/2009/09/25/running-hyper-v-server-2008-r2-from-usb/ \"External link\")  \n\nHere it is described how to boot a VHD from USB   \n"
+    }
+  ]
+}

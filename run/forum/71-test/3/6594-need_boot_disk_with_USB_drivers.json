@@ -1,0 +1,28 @@
+{
+  "id": "6594",
+  "title": "need boot disk with USB drivers",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "53381",
+      "timestamp": "2008-12-30T16:26:37+00:00",
+      "author": "70vette",
+      "content": "I have a fairly new COMPAQ laptop with VISTA on it. It won\u0027t boot; my daughter-in-law uses it during the day for homework and internet games, mostly games. I think it got a virus and ate the boot sector. Regardless, I just want to recover data and reformat, rebuild. Problem is that there is only one hard drive, no floppy, and several USB ports. I want to be able to boot with a boot disk and copy the data files I need to a flash drive.  \n\nI have been to bootdisk.com and several other places and downloaded ISOs and files and everything. I built boot disks. I have an old tower with floppy drive I am working on to build disks. Most work on the tower and recognize the USB. Only one boot disk will work on the laptop, a WIN98 DOS bootdisk that has READNTFS buried in the image. READNTFS reads the hard drive. I built an image from that that I added USB drivers to. It works on the tower, bit on the laptop tt boots, but hangs in the scanning USB devices section.   \n\nDoes anybody have a bootdisk image that will work with the \"newer\" hardware that will read USB ports so I can copy my data off the harddrive to a flash drive.  \n\nthx   \n"
+    },
+    {
+      "id": "53387",
+      "timestamp": "2008-12-30T17:20:15+00:00",
+      "author": "sanbarrow",
+      "content": "If you only need to recover some files every Knoppix-LiveCD should do the job   \n"
+    },
+    {
+      "id": "53390",
+      "timestamp": "2008-12-30T18:06:38+00:00",
+      "author": "JonF",
+      "content": "If it\u0027s a fairly new laptop it will probably boot from USB. I would try with VistaPE, since IMHO its support for USB booting is easier and better. And you don\u0027t have to have a Vista DVD to build it, you can use only the [WAIK](http://www.microsoft.com/downloads/details.aspx?FamilyID\u003dC7D4BC6D-15F3-4284-9123-679830D629F2\u0026displaylang\u003den \"External link\") as a source (although a real Vista DVD is preferable).   \n\nGet VistaPE from [here](http://www.vistape.net/download.html \"External link\"). Then get the latest WinBuilder.exe from [here](http://exec-se.de/WinBuilder/Downloads/NativeEx_barebone_075.zip \"External link\") (all you need is WinBuilder.exe).  \n\nYou may want to get my [MBRFix](http://www.boot-land.net/forums/index.php?autocom\u003dDownloads\u0026showfile\u003d252 \"External link\") script. Any MBR-fixing script that comes with VistaPE does not understand Vista MBRs.  \n\nThen after a successful build you can go into the Finalize/Create ISO script and use that to format and set up a flash drive for booting. Be sure to pick the format option the first time.  \n\nThen stick the Flash drive into the laptop (and any other USB storage you want attached) and press whatever key you need to for a boot menu (F12? F11?) at the very beginning of the boot. Some version of \"USB hard disk\" should show up; select that.  \n\nDon\u0027t expect any wireless network to work, but if you plug a cable into the Ethernet port before booting there\u0027s a good chance you can transfer your files over your network. I think there\u0027s a \"map network drive\" script included in VistaPE.   \n"
+    }
+  ]
+}

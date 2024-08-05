@@ -1,0 +1,64 @@
+{
+  "id": "5738",
+  "title": "This laptop drives me crazy!! No way to boot from USB!",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "44807",
+      "timestamp": "2008-09-18T15:19:13+00:00",
+      "author": "damlays",
+      "content": "I have sony vaio (vgn-a) laptop..I tried every possibility that I can with every way that I read from this forum and other sources..but no no and again no..I could never ever boot my laptop from usb..  \n\nI tried different usb sticks, I tried different partition quantities and formats, I tried different softwares like FlashBoot, Boot2Stick, HP Disk..Tool, I tried different boot systems like dor, freedor, windows boot images, BartPE, I even tried to connect my (XP - bootable) 5\u002725 inch harddisk (from my Desktop computer) via usb (with the help of usb harddisk box) but the result was same \u003d NO  \n\nIt is turned into a fight between my computer and me..it drives me crazy..PLEASE HELP!  \n\nWhere is the mistake? My BIOS has an option in boot menu as \"Removable\". I am trying to switch my boot device both choosing it with using \"ESC\" at startup or making it the first place to boot in my BIOS settings. At the end I removed other boot options from BIOS and left only \"boot from removable\"  \n\nBUT MY LAPTOP NEVER EVER SEEs USB AS BOOT PLACE. If it is not functional to boot from USB at this computer, then why did they but \"Boot from Removable\" option to BUOS. There must be something wrong.  \n\nWhat should I do?  \n\n\u003cbr /\u003e\n\nBy the way, my laptop has internal Memory Stick reader, so I tried every thing for that memory stick also beside of USB sticks, no boot was available from any removable memory device.   \n"
+    },
+    {
+      "id": "44824",
+      "timestamp": "2008-09-18T17:01:46+00:00",
+      "author": "ktp",
+      "content": "Did you try to develop in the BIOS the hard disk list (usually with a + sign)?. Then you should see you USB hard disk listed. Then you change the boot order priority to set the USB HDD on top of the list.  \n\nYour case could be the same as in this thread:  \n[http://www.boot-land...?showtopic\u003d5684](http://www.boot-land.net/forums/?showtopic\u003d5684 \"External link\")   \n"
+    },
+    {
+      "id": "44830",
+      "timestamp": "2008-09-18T18:01:10+00:00",
+      "author": "damlays",
+      "content": "I\u0027ve just tried it but unfortunately didn\u0027t work.. My BIOS don\u0027t see any other HD except its own HD with PM- prefix.   \n"
+    },
+    {
+      "id": "44832",
+      "timestamp": "2008-09-18T18:22:47+00:00",
+      "author": "ktp",
+      "content": "OK, sorry but just to be sure: you did plug the USB HDD first, then reboot the laptop, then go into BIOS, and it does not see any hard disk other than the PM (primary master) IDE one? What is the BIOS maker (AMI? Phoenix?).   \n"
+    },
+    {
+      "id": "44898",
+      "timestamp": "2008-09-19T15:57:54+00:00",
+      "author": "damlays",
+      "content": "\u003e OK, sorry but just to be sure: you did plug the USB HDD first, then reboot the laptop, then go into BIOS, and it does not see any hard disk other than the PM (primary master) IDE one? What is the BIOS maker (AMI? Phoenix?).\n\nSure, I plugged in first and then booted..It is is AMI. I\u0027ve both it tried with different USB Sticks and with internal memory stick but BIOS only sees \"PM-Toshiba....harddisk\" (laptop\u0027s HD)   \n"
+    },
+    {
+      "id": "44900",
+      "timestamp": "2008-09-19T16:20:51+00:00",
+      "author": "ktp",
+      "content": "OK I have AMI BIOS with one laptop, and there is a BIOS option : Legacy USB support. This has to be activated (even if you do not use legacy USB mouse, keyboard) in order that USB HDD to be recognized. So make sure that it is well enabled.  \n\nEdit: after some Google search, it seems effectively that VAIO notebooks cannot boot USB HDD! This is not acceptable!  \nIf this is true, then you have to use the PLoP bootmanager, boot PLoP from a CD first.  \n[http://www.plop.at/en/bootmanager.html](http://www.plop.at/en/bootmanager.html \"External link\")  \n[http://www.plop.at/e...tmanagerdl.html](http://www.plop.at/en/bootmanagerdl.html \"External link\")   \n"
+    },
+    {
+      "id": "45023",
+      "timestamp": "2008-09-21T08:11:29+00:00",
+      "author": "damlays",
+      "content": "\u003e OK I have AMI BIOS with one laptop, and there is a BIOS option : Legacy USB support. This has to be activated (even if you do not use legacy USB mouse, keyboard) in order that USB HDD to be recognized. So make sure that it is well enabled.  \n\u003e\n\u003e Edit: after some Google search, it seems effectively that VAIO notebooks cannot boot USB HDD! This is not acceptable!  \n\u003e If this is true, then you have to use the PLoP bootmanager, boot PLoP from a CD first.  \n\u003e [http://www.plop.at/en/bootmanager.html](http://www.plop.at/en/bootmanager.html \"External link\")  \n\u003e [http://www.plop.at/e...tmanagerdl.html](http://www.plop.at/en/bootmanagerdl.html \"External link\")\n\n\u003cbr /\u003e\n\nYou are great and master of this subject..this is working...  \n\nBut it is totally unbeliavable that my laptop (although it is an high configuration computer of 2007) doesn\u0027t support usb boot. Besides, BIOS has \"Removable\" option..Then it is over there because of just BIOS software, but unfunctional remaining part?  \n\nBy the way, I can share some other findings from my trials with Plop CD:  \nI was tesing with three sticks 1)4GB Sandisk, 2) 250MB Usb Stick 3)SD Card in a USB SD Card Reader  \nOnly number 1)4GB Sandisk (usb stick) is working. Number 2 cannot be seen in anyway   \nAnd with number 3 only \"card reader\" can be seen but SD card cannot be seen; it waits with a messafe \"looking for boot sector..\" like that  \n\nthanks for help..   \n"
+    },
+    {
+      "id": "45039",
+      "timestamp": "2008-09-21T13:27:53+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e By the way, I can share some other findings from my trials with Plop CD:  \n\u003e I was tesing with three sticks 1)4GB Sandisk, 2) 250MB Usb Stick 3)SD Card in a USB SD Card Reader  \n\u003e Only number 1)4GB Sandisk (usb stick) is working. Number 2 cannot be seen in anyway   \n\u003e And with number 3 only \"card reader\" can be seen but SD card cannot be seen; it waits with a messafe \"looking for boot sector..\" like that  \n\u003e\n\u003e thanks for help..\n\nMost probably items #2 and #3 have not been formatted properly, i.e. they are \"super-floppies\" instead of \"HD-like\", or however have improper partitioning data.  \n\nSearch on the board for posts by me \"jaclaz\" with keyword \"hdhacker\", to get the hang of it, then post the MBR and bootsectors of the media that do not work, and I\u0027ll have a look at it.  \n\nIn some cases (the card reader) it may be a hardware problem ![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png), but it should be well possible to make the 250 Mb stick bootable.  \n\njaclaz   \n"
+    },
+    {
+      "id": "45119",
+      "timestamp": "2008-09-22T06:53:42+00:00",
+      "author": "damlays",
+      "content": "\u003e Most probably items #2 and #3 have not been formatted properly, i.e. they are \"super-floppies\" instead of \"HD-like\", or however have improper partitioning data.  \n\u003e\n\u003e Search on the board for posts by me \"jaclaz\" with keyword \"hdhacker\", to get the hang of it, then post the MBR and bootsectors of the media that do not work, and I\u0027ll have a look at it.  \n\u003e\n\u003e In some cases (the card reader) it may be a hardware problem ![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png), but it should be well possible to make the 250 Mb stick bootable.  \n\u003e\n\u003e jaclaz\n\nIdon\u0027t know, I have both tried in FlashBoot program by using USD-HDD mode and USD-ZIP mode..but there was no responce. Besides, for SD card I\u0027ve changed the card reader but didn\u0027t work...   \n"
+    }
+  ]
+}

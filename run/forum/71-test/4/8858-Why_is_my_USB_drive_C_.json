@@ -1,0 +1,28 @@
+{
+  "id": "8858",
+  "title": "Why is my USB drive C:\\ ?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "76163",
+      "timestamp": "2009-08-27T20:08:32+00:00",
+      "author": "thebman",
+      "content": "I have a bootable usb drive with grub as my boot manager. I have two entries in grub; one to boot a .iso of a partition manager I use to kill partitions, and the other entry is a .iso of a PE 2.0 image used to connect to a server and download a new image on to the machine.  \n\nThe issue I am having is that in both of these programs my USB drive is being shown as the C:\\\\ drive; or primary drive. This is really causing me issues when booting to the PE 2.0 .iso as there is a script that runs and checks for the bootable drive, looks for the image, and if its not on the drive downloads it to the bootable drive. In my case its downloading it to my USB flash drive instead of the internal HDD.  \n\nI looked over the site for a possible resolution but there is so much information on here its hard to sort through it all! Hopefully some one can head me in the right direction, or tell me what I\u0027m doing wrong. Obviously if I boot the PC from a CD that these .iso\u0027s are based off of they work properly, so I know its not the application\u0027s its booting from the USB drive that is killing them.  \n\n\u003cbr /\u003e\n\nPlease help ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif) ,  \n- thebman   \n"
+    },
+    {
+      "id": "76165",
+      "timestamp": "2009-08-27T20:19:03+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I have a bootable usb drive with grub as my boot manager. I have two entries in grub; one to boot a .iso of a partition manager I use to kill partitions, and the other entry is a .iso of a PE 2.0 image used to connect to a server and download a new image on to the machine.  \n\u003e\n\u003e The issue I am having is that in both of these programs my USB drive is being shown as the C:\\\\ drive; or primary drive. This is really causing me issues when booting to the PE 2.0 .iso as there is a script that runs and checks for the bootable drive, looks for the image, and if its not on the drive downloads it to the bootable drive. In my case its downloading it to my USB flash drive instead of the internal HDD.  \n\u003e\n\u003e I looked over the site for a possible resolution but there is so much information on here its hard to sort through it all! Hopefully some one can head me in the right direction, or tell me what I\u0027m doing wrong. Obviously if I boot the PC from a CD that these .iso\u0027s are based off of they work properly, so I know its not the application\u0027s its booting from the USB drive that is killing them.  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e Please help ![:rofl:](http://reboot.pro/public/style_emoticons/default/roll1.gif) ,  \n\u003e - thebman\n\nI hope it is grub***4dos*** , not GRUB. ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)  \n\nRead here:  \n[http://www.boot-land...?...c\u003d2568\\\u0026st\u003d7](http://www.boot-land.net/forums/index.php?showtopic\u003d2568\u0026st\u003d7 \"External link\")  \n\nRe-map drives in grub***4dos*** .  \nIf you boot from USB, the USB is given by BIOS the 0x80 or (hd0) ID, you cannot do anything about it, if not re-map it exchanging drives.  \nDrive letter C:\\\\ is given by default to first active partition of first drive.  \nIf using a PE or NT based system, you can use MountedDevices key or migrate.inf to change this, manually assigning drive letters:  \n[http://www.911cd.net...showtopic\u003d19663](http://www.911cd.net/forums//index.php?showtopic\u003d19663 \"External link\")  \nbut exchanging drives in grub4dos (read at BIOS level) is the easiest.  \n\njaclaz   \n"
+    },
+    {
+      "id": "76166",
+      "timestamp": "2009-08-27T20:24:06+00:00",
+      "author": "thebman",
+      "content": "Yes I did mean grub4dos. I will look at the links you provided. Thanks   \n"
+    }
+  ]
+}

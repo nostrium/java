@@ -1,0 +1,118 @@
+{
+  "id": "18373",
+  "title": "Accidentally messed up boot order on my WXP machine(urgent)",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "170228",
+      "timestamp": "2013-03-27T20:07:41+00:00",
+      "author": "popov",
+      "content": "Well, I was toying with various linux installations and by accident while booting from USB stick ArchBang live i clicked install. Installer was like: do you want to install to this disk(my hdd), if yes press any key, if no press \\[x\\]. Default ArchBang GUI had no X\u0027es on windows, just dots so i took that as x on my keyboard. Guess what happend next ![:o](http://reboot.pro/public/style_emoticons/default/ohmy.png)  \n\nAnyway I have cancelled installation, but still I cannot boot to my WXP anymore. The message is error: no configuration file found No default or UI configuration directory found! boot:\n\nBasically I am using 160GB HDD partitioned into C(40gb fat32), D(40GB ntfs), E(40GB FAT32), F(40GB NTFS). WXP is located on D, I have previous, not working installation on F. This is my boot.ini from C: \\[boot loader\\]  \n\u003e timeout\u003d6  \n\u003e default\u003dmulti(0)disk(0)rdisk(0)partition(2)\\\\WINDOWS  \n\u003e \\[operating systems\\]  \n\u003e multi(0)disk(0)rdisk(0)partition(2)\\\\WINDOWS\u003d\"Microsoft Windows XP Professional (2)\" /noexecute\u003doptin /noexecute\u003dalwayson /fastdetect  \n\u003e multi(0)disk(0)rdisk(0)partition(4)\\\\WINDOWS\u003d\"Microsoft Windows XP Professional (4)\" /noexecute\u003doptin /fastdetect\n\nWHat I want to do, is to get rid of syslinux and roll back computer to previous state.   \n"
+    },
+    {
+      "id": "170231",
+      "timestamp": "2013-03-27T20:52:37+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e WHat I want to do, is to get rid of syslinux and roll back computer to previous state.\n\nBoot from a USB stick with grub4dos.\n\nAt the command prompt:\n\n```\nmap (hd0) (hd1)\nmap (hd1) (hd0)\nmap --hook\nfind --set-root /ntldr\nchainloader /ntldr\nboot\n```\n\nIf there are not any \"strange issues\" it should boot the XP normally.\n\nIf it does, we\u0027ll talk on how to fix the booting.\n\nIf it doesn\u0027t, post what happens.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170235",
+      "timestamp": "2013-03-27T21:05:39+00:00",
+      "author": "popov",
+      "content": "It worked, I could boot normally to Win XP just like before. Thanks.\n\nNow I need to make thing permanent ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\n**Edited by popov, 27 March 2013 - 09:14 PM.**\n"
+    },
+    {
+      "id": "170238",
+      "timestamp": "2013-03-27T21:31:25+00:00",
+      "author": "Motasem",
+      "content": "boot from windows xp cd and enter recovery console\n\n--\n\nBoot up with your CD in the CD ROM and when you presented with Windows Setup  \nOptions:  \n1- Install Windows  \n2- Repair existing copy  \n3- Quit\n\nPress R\n\nit will ask for administrator password ( enter ur password if you use one )\n\ntype this in command prompt\n\nbootcfg /rebuild\n\n\u003cbr /\u003e\n\nIt will scans all disks and says scan successful\n\n\u003cbr /\u003e\n\nWindow installs:1\n\n\u003cbr /\u003e\n\n\\[1\\] D:\\\\windows \\\u003c--- as you said D drive\n\n\u003cbr /\u003e\n\nIt asks: Add installation to boot list? (Y, N, All) Y\n\n\u003cbr /\u003e\n\nEnter load identifier: windows\n\n\u003cbr /\u003e\n\nEnter OS load options: answer \"just press enter\" leave it empty\n\nafter it done type EXIT pc will reboot and see if it works\n\nreport when done\n\n"
+    },
+    {
+      "id": "170239",
+      "timestamp": "2013-03-27T21:38:42+00:00",
+      "author": "popov",
+      "content": "Hmm.. is there any way of doing this without recovery console? Currently I have external access to those hard disks from another OS. If its not enough, then fine, but I will need to search for working CDROM first ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)\n\n"
+    },
+    {
+      "id": "170242",
+      "timestamp": "2013-03-27T22:01:30+00:00",
+      "author": "Motasem",
+      "content": "ok listen to me\n\nwrite to me all tools you have and i can make a way out for you\n\nexample [Wonko the Sane](http://reboot.pro/user/31904-wonko-the-sane/ \"\") told you to make g4d usb and you answer its working and booting means you have g4d usb ready right ?\n\n"
+    },
+    {
+      "id": "170243",
+      "timestamp": "2013-03-27T22:02:42+00:00",
+      "author": "Motasem",
+      "content": "ok listen to me\n\nwrite to me all tools you have and i can make a way out for you\n\nexample [Wonko the Sane](http://reboot.pro/user/31904-wonko-the-sane/ \"\") told you to make g4d usb and you answer its working and booting means you have g4d usb ready right ?\n\n"
+    },
+    {
+      "id": "170246",
+      "timestamp": "2013-03-27T22:13:41+00:00",
+      "author": "popov",
+      "content": "I am on persistent but outdated linux(slax modification) installation with rw access to all my hard disks. There are no windows tools here, but I might be able to install them. Easier way IMO is a fact that I have few formattable flash sticks, so I can get things like HirenCD on them easily. Also I got other fully working computers.\n\nWhat more to say? I can boot that Windows machine normally if I do it like Wonko said and it works perfectly fine. So maybe there\u0027s another simple way, like some native WXP tool?\n\n**Edited by popov, 27 March 2013 - 10:16 PM.**\n"
+    },
+    {
+      "id": "170252",
+      "timestamp": "2013-03-27T23:32:50+00:00",
+      "author": "Motasem",
+      "content": "hiren wont help you because you need to boot in winxp recovery console in order to use the command \"bootcfg /rebuild\"\n\ni have test this on hirens not working\n\nso there\u0027s 2 ways to do it\n\n1.boot from windows xp cd\n\n2.make a bootable g4d and boot from xp recovery\n\nso do you have xp cd with cd rom ? if not then lets you must follow this TUT\n\n[http://reboot.pro/to...-from-grub4dos/](http://reboot.pro/topic/12894-recovery-console-launch-from-grub4dos/ \"\")\n\ncareful to follow all steps from TTTThe FFFFinder ![:1st:](http://reboot.pro/public/style_emoticons/default/1st.gif)\n\n"
+    },
+    {
+      "id": "170254",
+      "timestamp": "2013-03-28T00:04:34+00:00",
+      "author": "steve6375",
+      "content": "Maybe you could download a Win 7 ISO, boot to Win 7 setup - press SHIFT+F10 to get to command console - then run\n\n**bootsect /nt52 c:** (where c: is drive letter of hard disk xp partition\n\n"
+    },
+    {
+      "id": "170255",
+      "timestamp": "2013-03-28T00:13:47+00:00",
+      "author": "popov",
+      "content": "Well, I was pissed that it took so long, so I\u0027ve grabbed CDROM from one of my other computers. Then in recovery console I just did \"fixboot\" and it works now. The whole situation was pretty stupid because I could normally log into that Windows XP installation with your trick, but I couldn\u0027t do what \"fixboot\" does from there. So this issue is solved, thank you both for help.   \n\n**Edited by popov, 28 March 2013 - 12:14 AM.**\n"
+    },
+    {
+      "id": "170256",
+      "timestamp": "2013-03-28T00:29:45+00:00",
+      "author": "Motasem",
+      "content": "You Are Welcome ![:clap:](http://reboot.pro/public/style_emoticons/default/clap.gif)\n\n"
+    },
+    {
+      "id": "170275",
+      "timestamp": "2013-03-28T08:58:17+00:00",
+      "author": "Wonko the Sane",
+      "content": "Hey, peeps, take it easy :smile:, no need to panic/get pissed off.\n\nIn case of need get MBRFIX:\n\n[http://www.sysint.no...ting/mbrfix.htm](http://www.sysint.no/nedlasting/mbrfix.htm \"External link\")\n\nThat has the functions needed to restore a MBR code.\n\nThen get either of bootpart or RMbootsect (part of RMprepUSB))to fix the bootsector code.\n\n[http://www.winimage.com/bootpart.htm](http://www.winimage.com/bootpart.htm \"External link\")\n\n[http://www.rmprepusb.com/](http://www.rmprepusb.com/ \"External link\")\n\nIt\u0027s strange how **Steve6375** did not suggest his nice little tool, though. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nAm I missing something? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170279",
+      "timestamp": "2013-03-28T09:23:27+00:00",
+      "author": "steve6375",
+      "content": "Could try it on C: volume\n\nIt is not part of RMPrepUSB any more and is not supported any more.\n\nIt\u0027s main use was to be able to boot to WinPE, create a formatted active FAT16 partition on the same hard disk using diskpart, convert it to MSDOS bootable using RMBootSect and then add MSDOS files so that on the next boot the system would boot to MSDOS, do DOS stuff (like flash BIOSes or run DOS h/w tests) and then make the WInPE partition active again so we could boot back to WinPE next time.\n\n"
+    },
+    {
+      "id": "170283",
+      "timestamp": "2013-03-28T10:11:09+00:00",
+      "author": "Wonko the Sane",
+      "content": "Hmmmm ![:(](http://reboot.pro/public/style_emoticons/default/sad.png).\n\nI re-checked and bootpart also seemingly does not support the NTFS bootsector ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif).\n\nWhile both tools would do in this case (where the user was smart enough to have the active partition FAT formatted ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)) they do not represent a \"generic\" solution.\n\nSo, unless I am forgetting something we don\u0027t have, short of bootsect.exe, \\*anything\\* capable of fixing a NTFS bootsector code froma \"normally booted\" 2K/XP? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n@steve6375\n\nYou could actually - I believe - re-vamp the thingy and add to it NTFS support, this way we would have a handy \"generic\" utility for those that not have an easy access to Vista ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif) or later (and/or to the correspondent WAIKs)\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170284",
+      "timestamp": "2013-03-28T10:15:09+00:00",
+      "author": "steve6375",
+      "content": "Actually, I just checked and I seem to have released the later version which does actually support NTFS even though the readme.txt says it doesn\u0027t! ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)\n\n"
+    },
+    {
+      "id": "170285",
+      "timestamp": "2013-03-28T10:32:21+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Actually, I just checked and I seem to have released the later version which does actually support NTFS even though the readme.txt says it doesn\u0027t! ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)\n\nVery good ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif), then you could give it some dignity, and - besides correcting the read-me txt, provide a page for it on your site and/or a new \"dedicated\" thread here on reboot.pro :smile:.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170293",
+      "timestamp": "2013-03-28T12:00:26+00:00",
+      "author": "Motasem",
+      "content": "![:dots:](http://reboot.pro/public/style_emoticons/default/dots.gif)\n\n"
+    }
+  ]
+}

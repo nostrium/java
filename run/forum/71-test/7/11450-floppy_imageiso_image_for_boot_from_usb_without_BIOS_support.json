@@ -1,0 +1,22 @@
+{
+  "id": "11450",
+  "title": "floppy image/iso image for boot from usb without BIOS support",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "100549",
+      "timestamp": "2010-05-19T14:51:51+00:00",
+      "author": "arquerox",
+      "content": "Hello from Spain !!  \n\nI would apreciate some help to boot from usb like torito driver to boot from cd from floppy boot. Thanks.   \n"
+    },
+    {
+      "id": "100559",
+      "timestamp": "2010-05-19T17:05:02+00:00",
+      "author": "Wonko the Sane",
+      "content": "PLoP ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png):  \n[http://www.plop.at/](http://www.plop.at/ \"External link\")  \n[http://www.plop.at/en/bootmanager.html](http://www.plop.at/en/bootmanager.html \"External link\")  \n[http://www.plop.at/e....html#noinstall](http://www.plop.at/en/bootmanager.html#noinstall \"External link\")  \n[http://www.plop.at/e...ger.html#runflp](http://www.plop.at/en/bootmanager.html#runflp \"External link\")  \n\n![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)  \nWonko   \n"
+    }
+  ]
+}

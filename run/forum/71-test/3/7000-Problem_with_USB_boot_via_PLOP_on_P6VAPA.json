@@ -1,0 +1,52 @@
+{
+  "id": "7000",
+  "title": "Problem with USB boot via PLOP on P6VAP-A+",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "58212",
+      "timestamp": "2009-02-06T10:47:08+00:00",
+      "author": "junksmi",
+      "content": "Hi all,  \n\nI am having a slight problem with PLOP, I hope I can get some help with it here ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nI want to boot a relatively old machine from a USB thumbdrive. The machine has a motherboard called P6VAP-A+ (or P6VAP-AP), and it doesn\u0027t support USB boot by default. So first I wanted to flash the BIOS - the latest seems to be released on 2003/03/28, and is given as version 1.5b here:   \n\n[http://www.ecs.com.t...s...\u003d82\\\u0026LanID\u003d0](http://www.ecs.com.tw/ECSWebSite/Downloads/ProductsDetail_Download.aspx?detailid\u003d117\u0026DetailName\u003dNew\u0026DetailDesc\u003dP6VAP-A+%20%20(V1.x)\u0026CategoryID\u003d1\u0026MenuID\u003d82\u0026LanID\u003d0 \"External link\")  \n\nIn order to flash the BIOS, I used PLOP v 5.0 in this manner:   \n\n* The harddisk boots into GRUB that is installed by Mandriva 2008.0 (this harddisk is btw faulty, and only the first sectors work properly - lucky for me, since the floppy does not work on this machine)\n* Grub then loads PLOP (plop is also on the harddisk)\n* In PLOP I choose a USB boot\n* The USB thumbdrive has GRUB4DOS as its bootmanager, which gets loaded by PLOP\n* Finally, from the thumbdrive\u0027s GRUB4DOS I load a floppy image of DOS in memory, which enabled me to flash the BIOS.\n\nOut of curiosity, I tried both YES and NO for \u0027force USB1.1\u0027 in the PLOP manager, and it didn\u0027t make a difference at that time - the thumbdrive still booted fine. The thumbdrive is a 128MB FAT32 formatted. (Another 4GB key that I had, couldn\u0027t be booted using PLOP on this machine - it would come to a \"Booting GRLDR...\" message, and it would freeze)  \n\nI also tried to backup the old BIOS when flashing, but that unfortunately failed - and I don\u0027t really know what was the old version.   \n\nAfter a couple of days since the BIOS update, I tried booting the same thumbdrive using the same procedure as above, and same machine - and.. BAD surprise - it does not work anymore (again, forcing USB 1.1 does not make a difference). PLOP, as a matter of fact, does find the USB key, and it does start to read from it (I can notice that by the blinking LED on the flash thumbdrive - and the system recognizing it as a \"try (hd0,0) .. FAT32\" drive), but then suddenly stops, with a blank black screen, and cursor blinking in the top left corner - short of showing the expected GRUB4DOS screen...   \n\nLogically, it is most likely the BIOS change that caused this, but still - the thumb is being found, the PC does read from it - it just doesn\u0027t complete the boot procedure.... I also tried PLOP v. 5.0.1 as well, same thing.   \n\nMy questions then are:   \n\n* Does anyone have any idea why this is happening?\n* Also, can anyone help me with how to troubleshoot this problem (are there any traces, printouts etc that I could use for debugging?) ...\n* Finally, is there any other tool besides PLOP that I could use for this purpose (I tried kexecloader, but that can\u0027t even figure out what that the master HD is formatted as EXT3 on this motherboard, let alone the format of the thumbdrive...)\n\n\u003cbr /\u003e\n\nWell, any help will be greatly appreciated,  \nThanks,   \nCheers !   \n"
+    },
+    {
+      "id": "58220",
+      "timestamp": "2009-02-06T11:36:52+00:00",
+      "author": "was_jaclaz",
+      "content": "No chances that anything modified the stick? ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nThe problems seems not from PLoP, but rather from grub4dos (or the BIOS or PLoP giving it \"false parameters\")  \n\nImage the stick.  \n\nRe-format it or however make it boot directly plain DOS, adding to it besides IO.SYS, MSDOS.SYS and COMMAND.COM, also grub.exe.  \nTry again.  \nIf it boots to DOS, try running grub.exe.  \n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "58224",
+      "timestamp": "2009-02-06T12:44:43+00:00",
+      "author": "junksmi",
+      "content": "Jaclaz,   \n\nThanks again for the prompt response !! ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\n\u003e No chances that anything modified the stick? :cool:\n\nIn fact, that is the only piece of information I left out, as I thought it irrelevant - after the flashing, and right before I tried booting for the first time after the flash, I in fact copied a single .exe file on the thumbdrive (as I wanted to check it on that machine). I had doubts that the copying procedure should\u0027ve changed anything related to boot sectors and such - but now I will most definitely try your advice... Don\u0027t have access to the machine right now, but as soon as I get to test in the next couple of days, I will write feedback.  \n\nThanks again - and cheers !!   \n"
+    },
+    {
+      "id": "58225",
+      "timestamp": "2009-02-06T12:55:26+00:00",
+      "author": "mr_",
+      "content": "I highly recommend you to do the BIOS update exactly like the manual wants. This means if the usual way is to use MS-DOS X.X and a legacy floppy then get MS-DOS X.X and a legacy floppy. If you follow this way you increase your chance the BIOS is working after update.   \n"
+    },
+    {
+      "id": "58226",
+      "timestamp": "2009-02-06T12:56:45+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e In fact, that is the only piece of information I left out, as I thought it irrelevant - after the flashing, and right before I tried booting for the first time after the flash, I in fact copied a single .exe file on the thumbdrive (as I wanted to check it on that machine). I had doubts that the copying procedure should\u0027ve changed anything related to boot sectors and such - but now I will most definitely try your advice...\n\nYep ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif),   \n[http://www.housemd-g.../houserules.php](http://www.housemd-guide.com/characters/houserules.php \"External link\")  \n\u003e \"I don\u0027t ask why patients lie, I just assume they all do.\"\n\nSeriously, it is possible that a number of things have gone wrong, from a \"premature\" disconnecting of the stick to a static electricity discharge, whatever. :cool:  \n\nThough flash device are very \"tough\", the connecting and disconnecting, expecially on a \"live\" system may cause problems.  \n\nJust yesterday I helped a guy who had a bootsector/filesystem problem that has no rational explanation, unless he also \"lied\" ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) - I actually have never seen any kind of Linux corrupting a filesystem \"by itself\" :  \n[http://www.forensicf...m...opic\\\u0026t\u003d3454](http://www.forensicfocus.com/index.php?name\u003dForums\u0026file\u003dviewtopic\u0026t\u003d3454 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "58229",
+      "timestamp": "2009-02-06T13:09:46+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I highly recommend you to do the BIOS update exactly like the manual wants. This means if the usual way is to use MS-DOS X.X and a legacy floppy then get MS-DOS X.X and a legacy floppy. If you follow this way you increase your chance the BIOS is working after update.\n\nSorry to say so ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif), but I recommend the exact opposite, given the poor quality of floppy media and floppy drives today, there are much ***bigger*** chances of having a bad flash if done from floppy then from a CD or USB stick, due to the current inferior reliability of floppies.  \n\n\u003cbr /\u003e\n\nWhat one shoud be VERY careful about are, as I see it, TWO things:  \n\n* use a CLEAN DOS, with no TSR of any kind, possibly even without autoexec.bat and config.sys, no keyb, etc.\n* don\u0027t ***even think*** of flashing a BIOS if the PC is not connected to a known-to-be-working UPS\n\nthe chances of a power surge during the few seconds it takes to do the flash is very, very low, but Murphy\u0027s Laws are always around, patiently waiting to prove themselves right once again. :cool:   \n\nThough most if not all modern BIOS (since several years, probably since 1998 or 1999) have the \"recovery block\", a failed flashing ***may*** still put you in a condition where further and possibly risky steps (\"hot swapping\" for example) may be needed for recovery.  \n\nBetter be safe than sorry. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "58237",
+      "timestamp": "2009-02-06T15:02:07+00:00",
+      "author": "mr_",
+      "content": "Afaik there is no total production stop of legacy floppy or floppydisk, I can still buy them as new in a real shop including guarantee. Quality should be fine if it\u0027s not to old.  \n\nIronically the recovery block also wants to boot from legacy floppy.  \n\nIf you BIOS can boot from USB and the manual says it\u0027s ok to boot from USB to flash the BIOS then it\u0027s ok. I think it\u0027s important that the makers of the BIOS update have thought about this approach and tested it their self.  \n\nLike you admit yourself the DOS should be clean and not even use a keyb TSR. PLoP is even worse then the simple keyb TSR. Did you try PLoP for DOS yourself? It\u0027s not working reliable, if you try to write you will crash DOS and if you try to start emm386 you will also crash DOS...  \n\nThat\u0027s why I suggested him not to experiment with it for this purpose.   \n"
+    }
+  ]
+}

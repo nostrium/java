@@ -1,0 +1,58 @@
+{
+  "id": "12152",
+  "title": "Multi Windows Intallation in 1 USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "105975",
+      "timestamp": "2010-08-02T07:00:08+00:00",
+      "author": "karamando",
+      "content": "How to make installation from USB Windows XP Home + Windows XP Pro and Windows 7  \n\n\u003cbr /\u003e\n\nthanks b4   \n"
+    },
+    {
+      "id": "105984",
+      "timestamp": "2010-08-02T08:44:11+00:00",
+      "author": "steve6375",
+      "content": "The way I use is this:  \n\n1. Boot to WinPE (v2 or v3)  \n2. Prepare HDD using Diskpart  \n3. Copy contents of XP CD from USB drive folder to HDD  \n4. Run winnt32.exe  \n5. Reboot and allow HDD to boot and continue XP setup  \n\nIf interested I can give more details.  \n\nYou will need to add i386\\\\unattend.txt to fully automate it.   \n"
+    },
+    {
+      "id": "106054",
+      "timestamp": "2010-08-03T10:01:00+00:00",
+      "author": "karamando",
+      "content": "\u003e The way I use is this:  \n\u003e\n\u003e 1. Boot to WinPE (v2 or v3)  \n\u003e 2. Prepare HDD using Diskpart  \n\u003e 3. Copy contents of XP CD from USB drive folder to HDD  \n\u003e 4. Run winnt32.exe  \n\u003e 5. Reboot and allow HDD to boot and continue XP setup  \n\u003e\n\u003e If interested I can give more details.  \n\u003e\n\u003e You will need to add i386\\\\unattend.txt to fully automate it.\n\n\u003cbr /\u003e\n\nthanks , iam interested please give me details   \n"
+    },
+    {
+      "id": "106055",
+      "timestamp": "2010-08-03T10:03:19+00:00",
+      "author": "steve6375",
+      "content": "See RMPrepUSB website  \n[https://sites.google...table-usb-drive](https://sites.google.com/site/rmprepusb/tutorials/how-to-install-windows-xp-from-a-bootable-usb-drive \"External link\")   \n"
+    },
+    {
+      "id": "106799",
+      "timestamp": "2010-08-13T23:19:31+00:00",
+      "author": "karamando",
+      "content": "\u003e See RMPrepUSB website  \n\u003e [https://sites.google...table-usb-drive](https://sites.google.com/site/rmprepusb/tutorials/how-to-install-windows-xp-from-a-bootable-usb-drive \"External link\")\n\nThanks Steve  \n\nI still do not understand the step : \"Now prepare a bootable USB drive using RMPrepUSB and using the C:\\\\MYXP folder\" I\u0027ve made a WinPE bootable USB drive (from a tutorial from you) and succes booting. because if I run RMPrepUSB again will remove bootable usb winpe  \n\nplease help me  \n\nPS :sory about my language   \n"
+    },
+    {
+      "id": "106810",
+      "timestamp": "2010-08-14T07:46:17+00:00",
+      "author": "steve6375",
+      "content": "There is no need to reformat using RMPrepUSB if you already have a bootable USB pen (that boots using bootmgr) - just copy the files over.   \n"
+    },
+    {
+      "id": "106878",
+      "timestamp": "2010-08-15T06:36:43+00:00",
+      "author": "karamando",
+      "content": "Thanks Steve , finally succes  \n\none more question possible combine with installation windows 7 ???   \n"
+    },
+    {
+      "id": "106881",
+      "timestamp": "2010-08-15T07:37:30+00:00",
+      "author": "steve6375",
+      "content": "[http://www.boot-land...?...ost\\\u0026p\u003d68050](http://www.boot-land.net/forums/index.php?s\u003d\u0026showtopic\u003d8043\u0026view\u003dfindpost\u0026p\u003d68050 \"External link\") - still not quite perfect but nearly there!  \n\nSee [https://sites.google...and-server-2008](https://sites.google.com/site/rmprepusb/tutorials/how-to-create-a-usb-drive-that-will-install-vista-win7-and-server-2008 \"External link\")   \n"
+    }
+  ]
+}

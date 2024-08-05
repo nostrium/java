@@ -1,0 +1,40 @@
+{
+  "id": "11965",
+  "title": "Iso to Usb (Without extracting .iso image)..?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "104471",
+      "timestamp": "2010-07-14T14:55:53+00:00",
+      "author": "bootable",
+      "content": "Is anybody knows; how to make a Usb stick bootable from iso image, \"wihtout exracting .iso image\"?  \nMake bootable USB and copy .iso image to usb directly, and boot?  \nIs it possible?  \n\nThanx...   \n"
+    },
+    {
+      "id": "104477",
+      "timestamp": "2010-07-14T16:17:55+00:00",
+      "author": "erwan.l",
+      "content": "Hi,  \n\ngrub4dos will do it for you.  \n\nRegards,  \nErwan.   \n"
+    },
+    {
+      "id": "104481",
+      "timestamp": "2010-07-14T16:30:22+00:00",
+      "author": "wimb",
+      "content": "You can use **BOOT_IMG.exe** of **U_XP_SET** package to Install your ISO files in grub4dos menu on existing bootable USB-stick.  \n\nOn the other hand you can use **Make_USB.exe** to create bootable USB-stick with grub4dos menu for your ISO files.  \n\n[http://www.911cd.net...showtopic\u003d21883](http://www.911cd.net/forums//index.php?showtopic\u003d21883 \"External link\")  \n\n![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n"
+    },
+    {
+      "id": "104484",
+      "timestamp": "2010-07-14T16:43:03+00:00",
+      "author": "Wonko the Sane",
+      "content": "Don\u0027t forget to read the stickies in the grub4dos forum:  \n[http://www.boot-land...hp?showforum\u003d66](http://www.boot-land.net/forums/index.php?showforum\u003d66 \"External link\")  \n\nPARTICULARLY these two:  \n[http://www.boot-land...?showtopic\u003d5041](http://www.boot-land.net/forums/index.php?showtopic\u003d5041 \"External link\")  \n[http://www.boot-land...?showtopic\u003d8944](http://www.boot-land.net/forums/index.php?showtopic\u003d8944 \"External link\")  \n\n![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \nWonko   \n"
+    },
+    {
+      "id": "104527",
+      "timestamp": "2010-07-14T21:03:03+00:00",
+      "author": "bootable",
+      "content": "Thanx for help. i hope, i can do it. ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n"
+    }
+  ]
+}

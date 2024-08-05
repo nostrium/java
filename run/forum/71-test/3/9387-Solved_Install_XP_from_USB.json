@@ -1,0 +1,16 @@
+{
+  "id": "9387",
+  "title": "[Solved] Install XP from USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "53785",
+      "timestamp": "2009-01-04T11:16:59+00:00",
+      "author": "Maksin",
+      "content": "Hi,  \n\nI\u0027m having problem while trying to install Win XP Pro SP3 on 2nd partition (D:) with Kingston usb stick on Acer Aspire One netbook. The hal.dll error is constantly appearing. I have followed the instruction in Duncan video and done everything the same, except I modify the boot.ini file in usb stick by changing the partition(1) to partition(2). The C: partition already has installed Acer factory Win XP HE SP3. Both partition (C: and D:) are basic and primary.  \n\nOn first boot I choose the option 1, it boot fine in Win XP installation screen, choose and format the partition D:, copy the Win XP installation files and after the first reboot the hal.dll message appears.  \n\nWhere is the problem and should I maybe change the C: letter drive in boot.ini to D:?  \n\n**Update:**   \nI finally got it work. The problem was about Acer hidden partition. Basically, C: drive is partition(2) and D: drive is partition(3). So quick edit of boot.ini and everything is working ok. But it is strange that in Duncan video it worked with partition(1). Maybe linux version of Acer Aspire One doesn\u0027t has hidden partition.  \n\nThanks for this great piece of software.  \n\nRegards. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    }
+  ]
+}

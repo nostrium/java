@@ -1,0 +1,400 @@
+{
+  "id": "17735",
+  "title": "Multiboot XP-Win7-Win8-Hiren Boot",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "162765",
+      "timestamp": "2012-11-06T04:48:36+00:00",
+      "author": "mada4max",
+      "content": "Hi all,  \n\nI want to get a multiboot USB with the following features  \n\nXP Pro SP3 installation  \nwindows 7 enterprise Installation  \nwindows 8 professional Installation  \nhirens boot cd  \n\n\u003cbr /\u003e\n\nI make this boot file  \n\nbut if windows 7 working  \n\nwindows 8 will not working  \n\nwhat software and guide I should follow, I would be extremely grateful!  \n\nMany thanks,   \n"
+    },
+    {
+      "id": "162768",
+      "timestamp": "2012-11-06T07:06:54+00:00",
+      "author": "wimb",
+      "content": "[http://www.msfn.org/...winntsetup-v23/](http://www.msfn.org/board/topic/149612-winntsetup-v23/ \"External link\")  \n\n[http://www.911cd.net...showtopic\u003d24424](http://www.911cd.net/forums//index.php?showtopic\u003d24424 \"External link\")  \n\nInstall of XP or Windows 7 from USB After Booting with 7 PE and  \nby using WinNTSetup2_x86.exe and Setup ISO file in Virtual drive  \n\nWinNTSetup2_x86.exe has support for Install of Win8  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "162771",
+      "timestamp": "2012-11-06T08:35:48+00:00",
+      "author": "mada4max",
+      "content": "I\u0027m sorry, but you did not understand my request  \nI want to make my usb multi bootable  \nSuch a topic www.rmprepusb.com/tutorials/firawiniso  \nBut when implemented steps  \nI found many mistakes  \n\nExample in windows 8  \n\nWindows cannot read the \\\u003cProductKey\\\u003e setting from the unattend answer file.  \n\nThen I checked this topic [http://reboot.pro/14...post__p__142622](http://reboot.pro/14593/page__view__findpost__p__142622 \"\")  \n\nAnd found the same error again  \n\nand in windows 7  \n\nwindows cannt find any image  \n\nor something like this  \n\nwhat should i do   \n"
+    },
+    {
+      "id": "162774",
+      "timestamp": "2012-11-06T09:09:22+00:00",
+      "author": "steve6375",
+      "content": "www.rmprepusb.com/tutorials/firawiniso - the tutorial clearly states that for WIn8 you need to **change the Product Key in the xml file** - did you do that? It has also been recently updated so that it will prompt the user for the product key - did you see the new menu for that?  \n\nre. Win7 - you must have done something wrong! Post your menu.lst for the Win7 install here and I will look at it.  \nMany people have this working, so if there is a problem it is 95% sure to be because you have not followed the instructions correctly!  \n\ncheers  \n\nSteve   \n"
+    },
+    {
+      "id": "162775",
+      "timestamp": "2012-11-06T09:24:15+00:00",
+      "author": "mada4max",
+      "content": "ok i will tray with wi 7 agin  \n\nbut the error in win 8  \n\ni sure i change the product key and i found same error  \n\ni can send you the product key  \n\nand names of my iso file\u0027s  \n\nand you create the file for me if you can please   \n"
+    },
+    {
+      "id": "162776",
+      "timestamp": "2012-11-06T09:27:48+00:00",
+      "author": "mada4max",
+      "content": "this menu.lst for win 7  \n\n```\ntitle Install Windows 7 32  Enterprise EditionnRun the Windows install DVD to install a copy of Windows to your hard disk\n\nfind --set-root /ImDisk/myiso.cmd\n\ndd if\u003d()/ImDisk/au.xml of\u003d()/AutoUnattend.xml\n\ndd if\u003d()/ImDisk/cr.txt of\u003d()/ImDisk/myiso.cmd\n\nwrite ()/ImDIsk/myiso.cmd SET MYISO\u003disoWindows_7.isorn\n\nmap /iso/Windows_7.iso (0xff)\n\nmap (hd0) (hd1)\n\nmap (hd1) (hd0)\n\nmap --hook\n\nchainloader (0xff)\n\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "162777",
+      "timestamp": "2012-11-06T09:29:24+00:00",
+      "author": "steve6375",
+      "content": "and what is the error message and where is the ISO file located and what is it called?   \n"
+    },
+    {
+      "id": "162778",
+      "timestamp": "2012-11-06T09:30:14+00:00",
+      "author": "steve6375",
+      "content": "What Windows 8 ISO are you using? Where did it come from?   \n"
+    },
+    {
+      "id": "162779",
+      "timestamp": "2012-11-06T09:34:21+00:00",
+      "author": "mada4max",
+      "content": "its Windows 8 Final Professional x86 Bit from microsoft msdn   \n"
+    },
+    {
+      "id": "162780",
+      "timestamp": "2012-11-06T09:39:46+00:00",
+      "author": "steve6375",
+      "content": "\u003e its Windows 8 Final Professional x86 Bit from microsoft msdn  \nWell you must use a Win 8 Professional Product Key - they can be purchased from Microsoft...   \n"
+    },
+    {
+      "id": "162781",
+      "timestamp": "2012-11-06T09:46:37+00:00",
+      "author": "steve6375",
+      "content": "I have not tried this, but if you edit and re-make the ISO file, then apparently you can prevent it from asking for a product key on installation by changing the EI.CFG file inside the ISO.  \n\nSee [http://forums.mydigi...ll\u003d1#post622398](http://forums.mydigitallife.info/threads/36343-Install-Windows-8-Core-and-Pro-RTM-from-MASD-without-any-key?p\u003d622398\u0026viewfull\u003d1#post622398 \"External link\")  \n\nand use UltraIso to edit each ISO as [here](http://forums.mydigitallife.info/threads/36343-Install-Windows-8-Core-and-Pro-RTM-from-MASD-without-any-key?p\u003d622492\u0026viewfull\u003d1#post622492 \"External link\")   \n"
+    },
+    {
+      "id": "162782",
+      "timestamp": "2012-11-06T09:58:07+00:00",
+      "author": "mada4max",
+      "content": "i not edit the iso file but i will search for this file  \nok  \nthe error in win 7  \ni add the windows 7 enterprise not aio  \nbut when boot from usb  \ni see this  \n![Posted Image](http://i45.tinypic.com/10serz7.jpg)  \n\nand when i change the code in menu.lst  \nmap (hd1) (hd0)  \nto   \nmap (hd0) (hd1)  \ni see this  \n![Posted Image](http://community.landesk.com/support/servlet/JiveServlet/downloadImage/2-67043-27240/450-193/ImageError.PNG)   \n"
+    },
+    {
+      "id": "162783",
+      "timestamp": "2012-11-06T10:03:08+00:00",
+      "author": "steve6375",
+      "content": "For Win7 iso:  \nDid you try on a **real** system?  \nAre you booting from a USB Flash drive and do you see the blue command console Windows which asks if you want to repair windows (See [Fig. 43.6.4](http://sites.google.com/a/rmprepusb.com/www/_/rsrc/1319967353807/tutorials/firawiniso/Winiso_firadiskconsole.JPG \"External link\") in Tutorial 43)?   \n"
+    },
+    {
+      "id": "162784",
+      "timestamp": "2012-11-06T10:09:17+00:00",
+      "author": "mada4max",
+      "content": "yes i try it in my real system  \nand i see the blue command console but its appeared and then disappeared   \n"
+    },
+    {
+      "id": "162786",
+      "timestamp": "2012-11-06T11:04:07+00:00",
+      "author": "steve6375",
+      "content": "When at the Install Windows screen as in your picture, can you press SHIFT+F10 to get a command console and then look for volumes by typing Notepad and then use File Menu to look at what drives you have? You should see the install.wim file is mounted as a virtual drive and it should have files in it???   \n"
+    },
+    {
+      "id": "162789",
+      "timestamp": "2012-11-06T12:54:10+00:00",
+      "author": "paraglider",
+      "content": "For windows 8 you do not need the product key to be preinstalled. Just create a ei.cfg in the sources folder that contains 2 lines:  \n\n\\[Channel\\]  \nRetail  \n\nThen you will get a list of windows 8 versions to choose from ( assuming your install.wim contains multiple versions ). This is the opposite to win7 where you delete ei.cfg.  \n\nIf you need to run a program or batch file mount iso\u0027s or to ensure the USB drive is available prior to running setup.exe use winpeshl.ini \\[LaunchApps\\].  \n\nThe above ei.cfg works for me in both the run iso from USB and using multiple bcd files ( bc0, bc1 etc ) approach. I find that booting the recovery environment does not work correctly if run from a iso on a USB drive ( the recovery environment never finds a windows installation to recover ).  \n\nBig problem I have with running windows installs from USB is file size on fat32. Fully patched windows 7 / 8 x64 / 2012 isos exceed 4GB in size.  \n\n.   \n"
+    },
+    {
+      "id": "162792",
+      "timestamp": "2012-11-06T13:14:16+00:00",
+      "author": "mada4max",
+      "content": "Sorry for the delay  \nI\u0027ve tested the EI.CFG file in windows 8  \nand its worked  \nWhen I came back to try windows 7  \nGave me this error  \n\nselected disk does not exist  \n\nBut when i try it on a real system  \nits Work again and gave me the first mistake that I mentioned to you before   \n"
+    },
+    {
+      "id": "162798",
+      "timestamp": "2012-11-06T15:24:06+00:00",
+      "author": "steve6375",
+      "content": "Sorry, but I don\u0027t understand why it shows an empty list - can you do the shift+f10 test that asked in a previous post pls?   \n"
+    },
+    {
+      "id": "162822",
+      "timestamp": "2012-11-06T20:35:51+00:00",
+      "author": "mada4max",
+      "content": "the command console get this code  \nx:sources\\\u003e  \njust this   \n"
+    },
+    {
+      "id": "162823",
+      "timestamp": "2012-11-06T21:02:25+00:00",
+      "author": "steve6375",
+      "content": "please see post 15.   \n"
+    },
+    {
+      "id": "162827",
+      "timestamp": "2012-11-07T02:48:18+00:00",
+      "author": "paraglider",
+      "content": "I sometimes find that when the first dialog appears that I have to unplug and replug the USB drive and wait a few seconds. Then the USB drive becomes available.   \n"
+    },
+    {
+      "id": "162879",
+      "timestamp": "2012-11-08T08:47:23+00:00",
+      "author": "mada4max",
+      "content": "hi steve I press SHIFT+F10 and typing Notepad and using File Menu and I see the virtual drive he have files in it but I searched for install.wim file it\u0027s not there   \n"
+    },
+    {
+      "id": "162880",
+      "timestamp": "2012-11-08T09:02:39+00:00",
+      "author": "steve6375",
+      "content": "Sorry, what I should have said was you should see **ISO** mounted as a virtual drive and it should have a sourcesinstall.wim file visible.  \nAlso check that you do not have any other volume (drive letter) that has a sourcesinstall.wim file - only the mounted virtual iso drive should have a sourcesinstall.wim.  \nIn a cmd prompt, try typing the USB flash drive letter followed by the command firdiskloadiso.cmd and see what happens - e.e.g type  \n**U:firadiskloadiso.cmd** and substitute U for the USB drive letter.  \ncheers  \nSteve   \n"
+    },
+    {
+      "id": "162881",
+      "timestamp": "2012-11-08T09:33:08+00:00",
+      "author": "mada4max",
+      "content": "sorry steve I tray again and researched for the install.wim file and I found it in the virtual drive and in the my usb drive and try the command findiso.cmd its open the blue command and its closed by her self   \n"
+    },
+    {
+      "id": "162882",
+      "timestamp": "2012-11-08T09:36:50+00:00",
+      "author": "mada4max",
+      "content": "this the menu.lst again if something wrong tell me\n\n```\ntitle Install Windows 7 32-bit Enterprise EditionnRun the Windows install DVD to install a copy of Windows to your hard disk\n\nfind --set-root /ImDisk/myiso.cmd\n\ndd if\u003d()/ImDisk/au.xml of\u003d()/AutoUnattend.xml\n\ndd if\u003d()/ImDisk/cr.txt of\u003d()/ImDisk/myiso.cmd\n\nwrite ()/ImDIsk/myiso.cmd SET MYISO\u003disowindows_7_enterprise_32.isorn\n\nmap /iso/windows_7_enterprise_32.iso (0xff)\n\nmap (hd0) (hd1)\n\nmap (hd1) (hd0)\n\nmap --hook\n\nchainloader (0xff)\n\ntitle Install Windows 7 64-bit Enterprise EditionnRun the Windows install DVD to install a copy of Windows to your hard disk\n\nfind --set-root /ImDisk/myiso.cmd\n\ndd if\u003d()/ImDisk/au.xml of\u003d()/AutoUnattend.xml\n\ndd if\u003d()/ImDisk/cr.txt of\u003d()/ImDisk/myiso.cmd\n\nwrite ()/ImDIsk/myiso.cmd SET MYISO\u003disowindows_7_enterprise_64.isorn\n\nmap /iso/windows_7_enterprise_64.iso (0xff)\n\nmap (hd0) (hd1)\n\nmap (hd1) (hd0)\n\nmap --hook\n\nchainloader (0xff)\n\ntitle Install Windows 8 32-bitnRun the Windows install DVD to install a copy of Windows to your hard disk\n\nfind --set-root /ImDisk/myiso.cmd\n\ndd if\u003d()/ImDisk/au.xml of\u003d()/AutoUnattend.xml\n\ndd if\u003d()/ImDisk/cr.txt of\u003d()/ImDisk/myiso.cmd\n\nwrite ()/ImDIsk/myiso.cmd SET MYISO\u003disoWin.8.Pro.x86.ISOrn\n\nmap /iso/Win.8.Pro.x86.ISO (0xff)\n\nmap (hd0) (hd1)\n\nmap (hd1) (hd0)\n\nmap --hook\n\nchainloader (0xff)\n\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "162765",
+      "timestamp": "2012-11-06T04:48:36+00:00",
+      "author": "mada4max",
+      "content": "Hi all,  \n\nI want to get a multiboot USB with the following features  \n\nXP Pro SP3 installation  \nwindows 7 enterprise Installation  \nwindows 8 professional Installation  \nhirens boot cd  \n\n\u003cbr /\u003e\n\nI make this boot file  \n\nbut if windows 7 working  \n\nwindows 8 will not working  \n\nwhat software and guide I should follow, I would be extremely grateful!  \n\nMany thanks,   \n"
+    },
+    {
+      "id": "162768",
+      "timestamp": "2012-11-06T07:06:54+00:00",
+      "author": "wimb",
+      "content": "[http://www.msfn.org/...winntsetup-v23/](http://www.msfn.org/board/topic/149612-winntsetup-v23/ \"External link\")  \n\n[http://www.911cd.net...showtopic\u003d24424](http://www.911cd.net/forums//index.php?showtopic\u003d24424 \"External link\")  \n\nInstall of XP or Windows 7 from USB After Booting with 7 PE and  \nby using WinNTSetup2_x86.exe and Setup ISO file in Virtual drive  \n\nWinNTSetup2_x86.exe has support for Install of Win8  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "162771",
+      "timestamp": "2012-11-06T08:35:48+00:00",
+      "author": "mada4max",
+      "content": "I\u0027m sorry, but you did not understand my request  \nI want to make my usb multi bootable  \nSuch a topic www.rmprepusb.com/tutorials/firawiniso  \nBut when implemented steps  \nI found many mistakes  \n\nExample in windows 8  \n\nWindows cannot read the \\\u003cProductKey\\\u003e setting from the unattend answer file.  \n\nThen I checked this topic [http://reboot.pro/14...post__p__142622](http://reboot.pro/14593/page__view__findpost__p__142622 \"\")  \n\nAnd found the same error again  \n\nand in windows 7  \n\nwindows cannt find any image  \n\nor something like this  \n\nwhat should i do   \n"
+    },
+    {
+      "id": "162774",
+      "timestamp": "2012-11-06T09:09:22+00:00",
+      "author": "steve6375",
+      "content": "www.rmprepusb.com/tutorials/firawiniso - the tutorial clearly states that for WIn8 you need to **change the Product Key in the xml file** - did you do that? It has also been recently updated so that it will prompt the user for the product key - did you see the new menu for that?  \n\nre. Win7 - you must have done something wrong! Post your menu.lst for the Win7 install here and I will look at it.  \nMany people have this working, so if there is a problem it is 95% sure to be because you have not followed the instructions correctly!  \n\ncheers  \n\nSteve   \n"
+    },
+    {
+      "id": "162775",
+      "timestamp": "2012-11-06T09:24:15+00:00",
+      "author": "mada4max",
+      "content": "ok i will tray with wi 7 agin  \n\nbut the error in win 8  \n\ni sure i change the product key and i found same error  \n\ni can send you the product key  \n\nand names of my iso file\u0027s  \n\nand you create the file for me if you can please   \n"
+    },
+    {
+      "id": "162776",
+      "timestamp": "2012-11-06T09:27:48+00:00",
+      "author": "mada4max",
+      "content": "this menu.lst for win 7  \n\n```\ntitle Install Windows 7 32  Enterprise EditionnRun the Windows install DVD to install a copy of Windows to your hard disk\n\nfind --set-root /ImDisk/myiso.cmd\n\ndd if\u003d()/ImDisk/au.xml of\u003d()/AutoUnattend.xml\n\ndd if\u003d()/ImDisk/cr.txt of\u003d()/ImDisk/myiso.cmd\n\nwrite ()/ImDIsk/myiso.cmd SET MYISO\u003disoWindows_7.isorn\n\nmap /iso/Windows_7.iso (0xff)\n\nmap (hd0) (hd1)\n\nmap (hd1) (hd0)\n\nmap --hook\n\nchainloader (0xff)\n\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "162777",
+      "timestamp": "2012-11-06T09:29:24+00:00",
+      "author": "steve6375",
+      "content": "and what is the error message and where is the ISO file located and what is it called?   \n"
+    },
+    {
+      "id": "162778",
+      "timestamp": "2012-11-06T09:30:14+00:00",
+      "author": "steve6375",
+      "content": "What Windows 8 ISO are you using? Where did it come from?   \n"
+    },
+    {
+      "id": "162779",
+      "timestamp": "2012-11-06T09:34:21+00:00",
+      "author": "mada4max",
+      "content": "its Windows 8 Final Professional x86 Bit from microsoft msdn   \n"
+    },
+    {
+      "id": "162780",
+      "timestamp": "2012-11-06T09:39:46+00:00",
+      "author": "steve6375",
+      "content": "\u003e its Windows 8 Final Professional x86 Bit from microsoft msdn  \nWell you must use a Win 8 Professional Product Key - they can be purchased from Microsoft...   \n"
+    },
+    {
+      "id": "162781",
+      "timestamp": "2012-11-06T09:46:37+00:00",
+      "author": "steve6375",
+      "content": "I have not tried this, but if you edit and re-make the ISO file, then apparently you can prevent it from asking for a product key on installation by changing the EI.CFG file inside the ISO.  \n\nSee [http://forums.mydigi...ll\u003d1#post622398](http://forums.mydigitallife.info/threads/36343-Install-Windows-8-Core-and-Pro-RTM-from-MASD-without-any-key?p\u003d622398\u0026viewfull\u003d1#post622398 \"External link\")  \n\nand use UltraIso to edit each ISO as [here](http://forums.mydigitallife.info/threads/36343-Install-Windows-8-Core-and-Pro-RTM-from-MASD-without-any-key?p\u003d622492\u0026viewfull\u003d1#post622492 \"External link\")   \n"
+    },
+    {
+      "id": "162782",
+      "timestamp": "2012-11-06T09:58:07+00:00",
+      "author": "mada4max",
+      "content": "i not edit the iso file but i will search for this file  \nok  \nthe error in win 7  \ni add the windows 7 enterprise not aio  \nbut when boot from usb  \ni see this  \n![Posted Image](http://i45.tinypic.com/10serz7.jpg)  \n\nand when i change the code in menu.lst  \nmap (hd1) (hd0)  \nto   \nmap (hd0) (hd1)  \ni see this  \n![Posted Image](http://community.landesk.com/support/servlet/JiveServlet/downloadImage/2-67043-27240/450-193/ImageError.PNG)   \n"
+    },
+    {
+      "id": "162783",
+      "timestamp": "2012-11-06T10:03:08+00:00",
+      "author": "steve6375",
+      "content": "For Win7 iso:  \nDid you try on a **real** system?  \nAre you booting from a USB Flash drive and do you see the blue command console Windows which asks if you want to repair windows (See [Fig. 43.6.4](http://sites.google.com/a/rmprepusb.com/www/_/rsrc/1319967353807/tutorials/firawiniso/Winiso_firadiskconsole.JPG \"External link\") in Tutorial 43)?   \n"
+    },
+    {
+      "id": "162784",
+      "timestamp": "2012-11-06T10:09:17+00:00",
+      "author": "mada4max",
+      "content": "yes i try it in my real system  \nand i see the blue command console but its appeared and then disappeared   \n"
+    },
+    {
+      "id": "162786",
+      "timestamp": "2012-11-06T11:04:07+00:00",
+      "author": "steve6375",
+      "content": "When at the Install Windows screen as in your picture, can you press SHIFT+F10 to get a command console and then look for volumes by typing Notepad and then use File Menu to look at what drives you have? You should see the install.wim file is mounted as a virtual drive and it should have files in it???   \n"
+    },
+    {
+      "id": "162789",
+      "timestamp": "2012-11-06T12:54:10+00:00",
+      "author": "paraglider",
+      "content": "For windows 8 you do not need the product key to be preinstalled. Just create a ei.cfg in the sources folder that contains 2 lines:  \n\n\\[Channel\\]  \nRetail  \n\nThen you will get a list of windows 8 versions to choose from ( assuming your install.wim contains multiple versions ). This is the opposite to win7 where you delete ei.cfg.  \n\nIf you need to run a program or batch file mount iso\u0027s or to ensure the USB drive is available prior to running setup.exe use winpeshl.ini \\[LaunchApps\\].  \n\nThe above ei.cfg works for me in both the run iso from USB and using multiple bcd files ( bc0, bc1 etc ) approach. I find that booting the recovery environment does not work correctly if run from a iso on a USB drive ( the recovery environment never finds a windows installation to recover ).  \n\nBig problem I have with running windows installs from USB is file size on fat32. Fully patched windows 7 / 8 x64 / 2012 isos exceed 4GB in size.  \n\n.   \n"
+    },
+    {
+      "id": "162792",
+      "timestamp": "2012-11-06T13:14:16+00:00",
+      "author": "mada4max",
+      "content": "Sorry for the delay  \nI\u0027ve tested the EI.CFG file in windows 8  \nand its worked  \nWhen I came back to try windows 7  \nGave me this error  \n\nselected disk does not exist  \n\nBut when i try it on a real system  \nits Work again and gave me the first mistake that I mentioned to you before   \n"
+    },
+    {
+      "id": "162798",
+      "timestamp": "2012-11-06T15:24:06+00:00",
+      "author": "steve6375",
+      "content": "Sorry, but I don\u0027t understand why it shows an empty list - can you do the shift+f10 test that asked in a previous post pls?   \n"
+    },
+    {
+      "id": "162822",
+      "timestamp": "2012-11-06T20:35:51+00:00",
+      "author": "mada4max",
+      "content": "the command console get this code  \nx:sources\\\u003e  \njust this   \n"
+    },
+    {
+      "id": "162823",
+      "timestamp": "2012-11-06T21:02:25+00:00",
+      "author": "steve6375",
+      "content": "please see post 15.   \n"
+    },
+    {
+      "id": "162827",
+      "timestamp": "2012-11-07T02:48:18+00:00",
+      "author": "paraglider",
+      "content": "I sometimes find that when the first dialog appears that I have to unplug and replug the USB drive and wait a few seconds. Then the USB drive becomes available.   \n"
+    },
+    {
+      "id": "162879",
+      "timestamp": "2012-11-08T08:47:23+00:00",
+      "author": "mada4max",
+      "content": "hi steve I press SHIFT+F10 and typing Notepad and using File Menu and I see the virtual drive he have files in it but I searched for install.wim file it\u0027s not there   \n"
+    },
+    {
+      "id": "162880",
+      "timestamp": "2012-11-08T09:02:39+00:00",
+      "author": "steve6375",
+      "content": "Sorry, what I should have said was you should see **ISO** mounted as a virtual drive and it should have a sourcesinstall.wim file visible.  \nAlso check that you do not have any other volume (drive letter) that has a sourcesinstall.wim file - only the mounted virtual iso drive should have a sourcesinstall.wim.  \nIn a cmd prompt, try typing the USB flash drive letter followed by the command firdiskloadiso.cmd and see what happens - e.e.g type  \n**U:firadiskloadiso.cmd** and substitute U for the USB drive letter.  \ncheers  \nSteve   \n"
+    },
+    {
+      "id": "162881",
+      "timestamp": "2012-11-08T09:33:08+00:00",
+      "author": "mada4max",
+      "content": "sorry steve I tray again and researched for the install.wim file and I found it in the virtual drive and in the my usb drive and try the command findiso.cmd its open the blue command and its closed by her self   \n"
+    },
+    {
+      "id": "162882",
+      "timestamp": "2012-11-08T09:36:50+00:00",
+      "author": "mada4max",
+      "content": "this the menu.lst again if something wrong tell me\n\n```\ntitle Install Windows 7 32-bit Enterprise EditionnRun the Windows install DVD to install a copy of Windows to your hard disk\n\nfind --set-root /ImDisk/myiso.cmd\n\ndd if\u003d()/ImDisk/au.xml of\u003d()/AutoUnattend.xml\n\ndd if\u003d()/ImDisk/cr.txt of\u003d()/ImDisk/myiso.cmd\n\nwrite ()/ImDIsk/myiso.cmd SET MYISO\u003disowindows_7_enterprise_32.isorn\n\nmap /iso/windows_7_enterprise_32.iso (0xff)\n\nmap (hd0) (hd1)\n\nmap (hd1) (hd0)\n\nmap --hook\n\nchainloader (0xff)\n\ntitle Install Windows 7 64-bit Enterprise EditionnRun the Windows install DVD to install a copy of Windows to your hard disk\n\nfind --set-root /ImDisk/myiso.cmd\n\ndd if\u003d()/ImDisk/au.xml of\u003d()/AutoUnattend.xml\n\ndd if\u003d()/ImDisk/cr.txt of\u003d()/ImDisk/myiso.cmd\n\nwrite ()/ImDIsk/myiso.cmd SET MYISO\u003disowindows_7_enterprise_64.isorn\n\nmap /iso/windows_7_enterprise_64.iso (0xff)\n\nmap (hd0) (hd1)\n\nmap (hd1) (hd0)\n\nmap --hook\n\nchainloader (0xff)\n\ntitle Install Windows 8 32-bitnRun the Windows install DVD to install a copy of Windows to your hard disk\n\nfind --set-root /ImDisk/myiso.cmd\n\ndd if\u003d()/ImDisk/au.xml of\u003d()/AutoUnattend.xml\n\ndd if\u003d()/ImDisk/cr.txt of\u003d()/ImDisk/myiso.cmd\n\nwrite ()/ImDIsk/myiso.cmd SET MYISO\u003disoWin.8.Pro.x86.ISOrn\n\nmap /iso/Win.8.Pro.x86.ISO (0xff)\n\nmap (hd0) (hd1)\n\nmap (hd1) (hd0)\n\nmap --hook\n\nchainloader (0xff)\n\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "162883",
+      "timestamp": "2012-11-08T09:48:23+00:00",
+      "author": "steve6375",
+      "content": "Well this does not seem to be using firadisk at all, just ImDisk. It does not look like the same tutorial 43 menu to me??  \nTry following Tutorial 43 EXACTLY. Once it is working then you can modify and experiment.  \n\n```\ntitle 1 INSTALL Windows 7 32-bit\\nThis will install any edition of Windows 32-bit to your hard disk\n\ndebug off\n\nset MYISO\u003dwin7.iso\n\n\n\ndd if\u003d()/firadisk/au.xml of\u003d()/AutoUnattend.xml\n\ndd if\u003d()/firadisk/spaces.txt of\u003d()/firadisk/ISONAME.CMD\n\nwrite ()/firadisk/ISONAME.CMD SET MYISO\u003d\\\\iso\\\\%MYISO%\\r\\n\n\nmap --mem (md)0x800+4 (99)\n\necho Mapping /ISO/%MYISO% as an optical drive...\n\nmap /ISO/%MYISO% (0xff)\n\nmap (hd0) (hd1)\n\nmap (hd1) (hd0)\n\nmap --hook\n\nwrite (99) [FiraDisk]\\nStartOptions\u003dcdrom,vmem\u003dfind:/ISO/%MYISO%;\\n\\0\n\nchainloader (0xff)/BOOTMGR || chainloader (0xff)\n\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "162884",
+      "timestamp": "2012-11-08T10:14:41+00:00",
+      "author": "mada4max",
+      "content": "I try it now and same the error the it\u0027s show empty list and when I press SHIFT+F10 and typing firdiskloadiso.cmd the blue cmd asked me if I want repair windows I tell now and its closed and nothing has changed   \n"
+    },
+    {
+      "id": "162885",
+      "timestamp": "2012-11-08T10:23:37+00:00",
+      "author": "steve6375",
+      "content": "So on first boot it does not ask you to repair windows, but when you run loadiso.cmd later, it does ask you to repair windows?  \nSo it does sound like a timing issue as suggested earlier. Can you use the BACK button to go back to the beginning of Setup and then try again with the Windows Setup GUI after you have manually run LOADISO.CMD?   \nI suspect a delay is needed after ImDisk loads the ISO - to test this please put a new line at the very end of the file firadiskIMDISK_instiso.cmd as shown in red below:  \n\n\u003cbr /\u003e\n\npushd \"%\\~dp0\"  \ncall %USBDRIVE%firadiskISONAME.cmd  \necho ISO is at %MYISO% - mounting ISO using ImDisk  \nimdisk -a -o rem -f %USBDRIVE%%MYISO% -m #:   \npopd  \n**pause**  \n\nand try booting from the USB drive again... wait a few seconds when you see the \u0027Press any key to continue\u0027 message and then press ENTER - now see if you have any Windows SKUs listed...   \n"
+    },
+    {
+      "id": "162886",
+      "timestamp": "2012-11-08T10:28:01+00:00",
+      "author": "mada4max",
+      "content": "no steve in the first bot asked me repair or no   \n\n**Edited by mada4max, 08 November 2012 - 10:28 AM.**\n"
+    },
+    {
+      "id": "162887",
+      "timestamp": "2012-11-08T10:33:57+00:00",
+      "author": "steve6375",
+      "content": "You said in a previous post... ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)  \n\n```\n\u0027and i see the blue command console but its appeared and then disappeared\u0027\n```\n\n\u003cbr /\u003e\n\nYou did not say that the Repair question was asked and that you had to type a response before the window disappeared. Please try to be **accurate**in your descriptions, it is hard to try to help if you misdirect us!  \n\nPlease follow Tutorial 43 EXACTLY and then report back. Use the same menu.lst as in the Tutorial 43 download (but change the ISO names as required, of course!) and use the download provided.   \n"
+    },
+    {
+      "id": "162888",
+      "timestamp": "2012-11-08T10:40:12+00:00",
+      "author": "mada4max",
+      "content": "I tell you first I try the Tutorial 43 now and its show same error to but the change is the blue cmd its asked me in the first boot if I want repair windows or not and after I press now its showing me empty menu and when I press shift+f10 and run loadiso.cmd its asked me again and the install.wim founded   \n"
+    },
+    {
+      "id": "163124",
+      "timestamp": "2012-11-19T04:05:55+00:00",
+      "author": "juandecerro",
+      "content": "\u003e For windows 8 you do not need the product key to be preinstalled. Just create a ei.cfg in the sources folder that contains 2 lines:  \n\u003e\n\u003e \\[Channel\\]  \n\u003e Retail  \n\u003e\n\u003e Then you will get a list of windows 8 versions to choose from ( assuming your install.wim contains multiple versions ). This is the opposite to win7 where you delete ei.cfg.  \n\u003e\n\u003e If you need to run a program or batch file mount iso\u0027s or to ensure the USB drive is available prior to running setup.exe use winpeshl.ini \\[LaunchApps\\].  \n\u003e\n\u003e The above ei.cfg works for me in both the run iso from USB and using multiple bcd files ( bc0, bc1 etc ) approach. I find that booting the recovery environment does not work correctly if run from a iso on a USB drive ( the recovery environment never finds a windows installation to recover ).  \n\u003e\n\u003e Big problem I have with running windows installs from USB is file size on fat32. Fully patched windows 7 / 8 x64 / 2012 isos exceed 4GB in size.  \n\u003e .  \n\nI have this problem too.. I do an AIO win 7 32/64 and win 8 32.. el file **INSTALL.WIM** have 5,1 Gbs and windows don\u0027t letme copy to the USB because it have format FAT32...  \nWhat I can do to solve???? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)   \n"
+    },
+    {
+      "id": "163130",
+      "timestamp": "2012-11-19T10:38:41+00:00",
+      "author": "steve6375",
+      "content": "Reformat the AIO as NTFS or make a 2nd partition and format that as NTFS.  \nEaseUS Home Partition Manager is free and can make multiple partitions. RMPrepUSB can be used to make any one partition accessible to Windows Explorer.   \n"
+    },
+    {
+      "id": "163139",
+      "timestamp": "2012-11-19T14:18:48+00:00",
+      "author": "juandecerro",
+      "content": "\u003e Reformat the AIO as NTFS or make a 2nd partition and format that as NTFS.  \n\u003e EaseUS Home Partition Manager is free and can make multiple partitions. RMPrepUSB can be used to make any one partition accessible to Windows Explorer.  \n\nbut what partition will be the \"master\" or the \"slave\" and how can bot it? I like the format FAT32 because it\u0027s more comun anda can be see by linux.... have you any tutto about all this??   \n"
+    },
+    {
+      "id": "163150",
+      "timestamp": "2012-11-19T16:19:26+00:00",
+      "author": "davidecosta",
+      "content": "\u003e Hi all,  \n\u003e\n\u003e I want to get a multiboot USB with the following features  \n\u003e\n\u003e XP Pro SP3 installation  \n\u003e windows 7 enterprise Installation  \n\u003e windows 8 professional Installation  \n\u003e hirens boot cd  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e I make this boot file  \n\u003e\n\u003e but if windows 7 working  \n\u003e\n\u003e windows 8 will not working  \n\u003e\n\u003e what software and guide I should follow, I would be extremely grateful!  \n\u003e\n\u003e Many thanks,  \n\nIf your install.wim is less large of 4 gb you can use SARDU with FAT32 and build your multiboot with all your requests without knowledge   \n"
+    },
+    {
+      "id": "163154",
+      "timestamp": "2012-11-19T16:32:46+00:00",
+      "author": "juandecerro",
+      "content": "\u003e Reformat the AIO as NTFS or make a 2nd partition and format that as NTFS.  \n\u003e EaseUS Home Partition Manager is free and can make multiple partitions. RMPrepUSB can be used to make any one partition accessible to Windows Explorer.  \nanother thing... with the new partition, how must wiil be my menu list for win8/7 setup?  \nbecasue the normal is to load the bootmgr but how the system will serch it in the other partition?   \n"
+    },
+    {
+      "id": "163156",
+      "timestamp": "2012-11-19T17:22:04+00:00",
+      "author": "steve6375",
+      "content": "Tut 43 has how to install from ISOs.  \nPut the menu.lst and grub4dos in your FAT ptn and add an entry like this  \n\n```\ntitle Windows Install (NTFS partition)\n\nroot (hd0,1)\n\nconfigfile /menu.lst\n```\n\nThen in the NTFS partition, put the menu.lst for the ISOs or your AIO flat files.  \nUse RMPrepUSB - Ctr-O to set the partition you want to access in Windows Explorer.  \nBefore you try the USB drive, set the first partition to be first in the table using Ctrl-O again.  \nAlternatively, you can add grldr and this to the NTFS menu.lst  \n\n```\ntitle Load FAT32 menu\n\nroot (hd0,1)\n\nconfigfile /menu.lst\n\n```\n\nSo whichever ptn is first in the table will still allow you to access the other ptn menu.  \nSee also Tut 77 about creating multiple partitions.   \n"
+    },
+    {
+      "id": "163157",
+      "timestamp": "2012-11-19T17:35:32+00:00",
+      "author": "juandecerro",
+      "content": "\u003e Tut 43 has how to install from ISOs.  \n\u003e Put the menu.lst and grub4dos in your FAT ptn and add an entry like this  \n\u003e\n\u003e ```\n\u003e title Windows Install (NTFS partition)\n\u003e\n\u003e root (hd0,1)\n\u003e\n\u003e configfile /menu.lst\n\u003e ```\n\u003e\n\u003e Then in the NTFS partition, put the menu.lst for the ISOs or your AIO flat files.  \n\u003e Use RMPrepUSB - Ctr-O to set the partition you want to access in Windows Explorer.  \n\u003e Before you try the USB drive, set the first partition to be first in the table using Ctrl-O again.  \n\u003e Alternatively, you can add grldr and this to the NTFS menu.lst  \n\u003e\n\u003e ```\n\u003e title Load FAT32 menu\n\u003e\n\u003e root (hd0,1)\n\u003e\n\u003e configfile /menu.lst\n\u003e\n\u003e ```\n\u003e\n\u003e So whichever ptn is first in the table will still allow you to access the other ptn menu.  \n\u003e See also Tut 77 about creating multiple partitions.  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nhere is my project.  \nI have an USB HDD 60gbs, I create a FAT32 with 50 gbs and the rest (6 gbs) are NTFS.. in the fat32 have al the other ISO and files (hiren, win xp, kaspersky, parted magic, etc.) and in the NTFS I put the win7/8 install files (not ISO)  \ni\u0027m gonna try your map  \n\n```\ntitle Windows Install (NTFS partition)\n\nroot (hd0,1)\n\nconfigfile /menu.lst\n\n```\n\n\u003cbr /\u003e\n\nthanks for answer  \n\n\u003cbr /\u003e\n\nPD: I tried but don\u0027t work.  \ngive me the error 17: Can\u0027t mount selectec partition   \n\n**Edited by juandecerro, 19 November 2012 - 05:46 PM.**\n"
+    },
+    {
+      "id": "163160",
+      "timestamp": "2012-11-19T19:19:04+00:00",
+      "author": "steve6375",
+      "content": "Can you press C for command console and type **find** and **ls (hd0,0)/** and **ls (hd0,1)/**   \nroot (hd0,1) should work if you have a correctly formatted 2nd partition...   \n"
+    },
+    {
+      "id": "163162",
+      "timestamp": "2012-11-19T19:53:31+00:00",
+      "author": "juandecerro",
+      "content": "\u003e Can you press C for command console and type **find** and **ls (hd0,0)** and **ls (hd0,1)**   \n\u003e root (hd0,1) should work if you have a correctly formatted 2nd partition...  \nI change the hd0,1 to hd0,2 and show an error with the text continous... i will defregat al the disc..  \n\nI open that partition with wincontig and it not show errors or parts fragment.. but in Defraggler show a fews... I will degrag with it   \n\n**Edited by juandecerro, 19 November 2012 - 07:56 PM.**\n"
+    }
+  ]
+}

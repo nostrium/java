@@ -1,0 +1,346 @@
+{
+  "id": "21085",
+  "title": "Make USB Boot First Regardless of BIOS Order",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "198659",
+      "timestamp": "2016-04-10T10:10:52+00:00",
+      "author": "Uneitohr",
+      "content": "I was thinking whether or not this is possible.\n\nConsidering the following situation, I have an old laptop that has the BIOS locked with a password and set to only boot from HDD (NO CD, NO USB). I know I could take out the HDD, install windows using imagex and then boot off it but I was thinking if it would be possible to boot from USB when the BIOS is set to boot only from HDD.\n\nIf at all possible, mind sharing your thoughts with me?\n\nThank you.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "198660",
+      "timestamp": "2016-04-10T10:37:59+00:00",
+      "author": "steve6375",
+      "content": "If you disconnected the internal HDD, it might boot from USB, then you could reconnect the internal HDD once booted from the USB drive?\n\n"
+    },
+    {
+      "id": "198661",
+      "timestamp": "2016-04-10T14:57:00+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, if it is \"old\" it has an IDE drive, and hot-pluggin a IDE drive is NOT a good idea.\n\nExactly because it is a \"Old\" it is possible that there is a way/method to find (or reset) the BIOS password, you should post (as always) EXACT information on the involved hardware, this would remove a lot of the guessing.\n\nIn any case you can (if the laptop now boots to a working OS) to install to it a recent grub4dos (which includes a \"own\" USB stack) and/or PLoP (if the laptop does not boot you need anyway to tae the hard disk out of it and connect it to another PC in order to make the install).\n\nIn any case, before anything else, some attempts to recover/reset the BIOS password is advised, on some models it is easy, in some it is complex but can be done, in some it is impossible or too costly to be worth it.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "198663",
+      "timestamp": "2016-04-10T18:57:26+00:00",
+      "author": "Uneitohr",
+      "content": "No, we\u0027re talking about laptops of year period 2007 - 2010. One model I\u0027m using for tests right now, a DELL Latitude 4310. These uses SATA drives so these are hot-pluggable.\n\n\u003e In any case you can (if the laptop now boots to a working OS) to install to it a recent grub4dos (which includes a \"own\" USB stack) and/or PLoP (if the laptop does not boot you need anyway to tae the hard disk out of it and connect it to another PC in order to make the install).\n\u003e\nGood idea. Boot to it, install plop and then boot to network or USB. This by far the fastest way.\n\nIf it the OS is severely damadged I\u0027ll have to take it out, of course.\n\n\u003e In any case, before anything else, some attempts to recover/reset the BIOS password is advised, on some models it is easy, in some it is complex but can be done, in some it is impossible or too costly to be worth it.\n\u003e\nI know there is a possibility of reset mostly the time spent is not worth it to just boot a disk.\n\n"
+    },
+    {
+      "id": "198665",
+      "timestamp": "2016-04-10T19:39:52+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I know there is a possibility of reset mostly the time spent is not worth it to just boot a disk.\n\nSure :smile:, but a \"locked\" set of BIOS settings may well make the use of the laptop sub-optimal, possibly not the specific case, but there are a lot of more recent laptops that need to have \"trusted Computing (or \\*whatever\\*) disabled to boot some OS that is not Windows 8.1, or maybe (this applies to old and new laptop as well, generically) there is the need to enable/disable \"Legacy USB\" in order to boot from USB, or maybe the current (locked) settings have disabled the serial or parallel port (or something else).\n\nIt would be like having a (second hand) car for which you were not given the key for the (locked) trunk and for the (unlocked) doors, you have just the ignition key, you can drive it fine and carry your family in it but the time when you will need to have some luggage with you or leave it on the road the missing keys may become of use.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "198716",
+      "timestamp": "2016-04-12T13:27:36+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e One model I\u0027m using for tests right now, a DELL Latitude 4310.\n\nTry here:\n\n[https://bios-pw.org/](https://bios-pw.org/ \"External link\")\n\nor contact DELL:  \n[http://www.dell.com/...en/19/604021/EN](http://www.dell.com/support/Article/us/en/19/604021/EN \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "198758",
+      "timestamp": "2016-04-15T04:31:45+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "This is only possible on some hardware, some machines will always seek to boot the internal HDD first regard of whether a USB is plugged in. On machines where it isn\u0027t possible you will simply have to either explicitly change the BIOS boot order, or remove the internal drive then hotplug it.\n\nMy friend\u0027s Toshiba laptop will only boot his internal even if he selects USB to boot, and this can only be overridden by setting USB as first in the order. He also has an an HDD in a optical caddy which cannot be made to boot first even by explicit selection, he has to physically swap it into the primary SATA port first. It seems his BIOS is hardcoded this way.\n\n"
+    },
+    {
+      "id": "198760",
+      "timestamp": "2016-04-15T07:53:32+00:00",
+      "author": "Uneitohr",
+      "content": "Isn\u0027t there some way to mask a USB device as an internal SATA hdd?\n\n"
+    },
+    {
+      "id": "200972",
+      "timestamp": "2016-12-03T05:38:27+00:00",
+      "author": "andykivo",
+      "content": "I have exact same problem but lil bit worse.  \nwe\u0027re in recycling business and recently we bought in a public auction 79 dell vostro 3400 i3 notebook.  \nhappen that theses system used to be from university located in florida and all of the notebook have a administrator password.We have access to the bios but only the time and date, hard drive and network can be enable disable.everything else is locked ( USB, CDROM, WIFI, Etc,etc ),I call the university IT department to see if may they tell me the password Info, and they said Nope, they don\u0027t give that info to no one. Then I\u0027d contact dell support and after 3 hours on the phone they provide me a very long master password for one system, I input more than 10 times and didn\u0027t worked, i called back and they told me that mother board have to be change with a cost near of $700. So i tried some conventional ways and many programs to reset bios with no luck.\n\nOn monday i\u0027ll flash the bios, not too sure but hopefully it do the job of resetting or delete the pass...\n\n**Edited by andykivo, 03 December 2016 - 05:39 AM.**\n"
+    },
+    {
+      "id": "200974",
+      "timestamp": "2016-12-03T07:29:44+00:00",
+      "author": "agni",
+      "content": "Does removing the BIOS battery trick work ? I am not sure if I am correct, but removing the bios battery for some time used to reset the BIOS password.\n\n[http://www.askvg.com...-cmos-password/](http://www.askvg.com/how-to-reset-remove-bypass-a-bios-or-cmos-password/ \"External link\")\n\n"
+    },
+    {
+      "id": "200975",
+      "timestamp": "2016-12-03T09:52:59+00:00",
+      "author": "steve6375",
+      "content": "Sometime flashing the BIOS will reset the BIOS defaults (there may be a command line version with parameters to clear passwords or set defaults.).\n\nI would suggest offering to pay the University technician some $$$.\n\nTake the 70 notebooks to the University plus a few charged batteries and get the technician to come out to your car during lunch and clear the BIOS password from all of them.\n\nModern notebooks and PCs store their password in EEPROM not CMOS these days. This makes it pretty secure.\n\n"
+    },
+    {
+      "id": "200976",
+      "timestamp": "2016-12-03T10:05:34+00:00",
+      "author": "steve6375",
+      "content": "P.S. If the BIOS is one that gives hints, see [http://rmprepusb.blo...hp-fujitsu.html](http://rmprepusb.blogspot.co.uk/2016/06/cracking-bios-passwords-dell-hp-fujitsu.html \"External link\")\n\nAlso, you can try contacting Dell with the Hint codes and they may be able to tell you the emergency codes.\n\nYou would need to prove ownership...\n\n[This site](http://pwd4bios.com/ \"External link\") may help?\n\n**Edited by steve6375, 03 December 2016 - 11:00 AM.**\n"
+    },
+    {
+      "id": "200979",
+      "timestamp": "2016-12-03T12:01:30+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Does removing the BIOS battery trick work ? I am not sure if I am correct, but removing the bios battery for some time used to reset the BIOS password.  \n\u003e\n\u003e [http://www.askvg.com...-cmos-password/](http://www.askvg.com/how-to-reset-remove-bypass-a-bios-or-cmos-password/ \"External link\")\nGenerally speaking no, that applied (and in some case still applies) to desktops and a few old laptops, modern laptops store it - usually - in non volatile memory.  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    },
+    {
+      "id": "200981",
+      "timestamp": "2016-12-03T12:21:04+00:00",
+      "author": "cdob",
+      "content": "This is a general statement, may match a dell vostro 3400:  \nOften Laptops store the BIOS password in a EEPROM. A CMOS reset dosn\u0027t clear this.  \n\nSometimes the password is stored in CMOS and EEPROM.  \nAt normal boot the password is read from CMOS and the machines coninues without user input.  \nThe EEPROM password is required, if you like to changes settings.  \nIf you clear the CMOS, then the laptop won\u0027t boot without user input.  \nHencefore a empty CMOS battery makes the laptop unbootable too.  \n\n\u003cbr /\u003e\n\n[http://icheckinu.blo...-page_4111.html](http://icheckinu.blogspot.com/p/blog-page_4111.html \"External link\")  \n\u003e DELL EEPROM/BIOS UNLOCK (Manually and Free)  \n\u003e \\*\\*\\*\\*\\*\\*AT YOUR OWN RISK\\*\\*\\*\\*\\*  \n\u003e\n\u003e To remove Dell Bios password manually:  \n\u003e Open the laptop, and find the EEPROM Chip, Generally it´s numbered 24C02, on the motherboard, and Short circuit the legs 3 and 6 during booting.\n\nLeg 3 seems to be connectoed to ground. The VGA Connector screw is grounded too,  \nInsert a srew to the VGA Connector, attach a cable to the screw and short connect leg 6 at boot.  \n\nOnce again:  \n\\*\\*\\*\\*\\*\\*AT YOUR OWN RISK\\*\\*\\*\\*\\*   \n"
+    },
+    {
+      "id": "201043",
+      "timestamp": "2016-12-09T17:50:21+00:00",
+      "author": "andykivo",
+      "content": "Hi,\n\nI flashed the eprom and still the same. The University IT department have 3 members and seems there not just technician, there are a big shot (Engineer or something) and they told me clear : \"We sell equipment AS IS, we don\u0027t know the password, but even if we know, we can\u0027t provide you!\". When i spoke with Dell i give then the ownership documents and didn\u0027t solved. As a matter of fact i spoke with 4 Support crew member and the girl who supply me the master password was so Rude that tempt me to speak with her supervisor (but i didn\u0027t, that\u0027s her job i guess) .\n\nI Saw a site with an advertising:  \n\"BIOS/CMOS Password Recovery Tool,\n\n100% Guaranteed Removal of BIOS/CMOS passwords\n\n*Problem:* You do not have access to change the settings in BIOS? . Have bought a laptop from the other people or Auction website, but they did not tell you the BIOS/CMOS password? Not a problem! Forgotten BIOS/CMOS passwords can be reset or removed in a matter of seconds.\"\n\n\u003cbr /\u003e\n\nI Purchased the piece of software and guess what?, They sent me a Administrator password removal for OS Windows, Not for the Bios,  \nPure scam!  \n\nWell guys, thank you so much!  \n\n\u003cbr /\u003e\n\nAndy  \nBest regards from Miami.   \n\nAnyway i think i have 2 more steps that haven\u0027t tried: The Pin 3 and 6 short circuit and the Debug Dos Command\n\n**Edited by andykivo, 09 December 2016 - 05:52 PM.**\n"
+    },
+    {
+      "id": "201044",
+      "timestamp": "2016-12-09T18:50:29+00:00",
+      "author": "Wonko the Sane",
+      "content": "What EXACT model is it?\n\nDoes it provide a \"challenge code\"?\n\n[http://dogber1.blogs...eered-bios.html](http://dogber1.blogspot.it/2009/05/table-of-reverse-engineered-bios.html \"External link\")\n\n[https://bios-pw.org/](https://bios-pw.org/ \"External link\")\n\nhas a provision for some Dell models, but maybe yours are newer. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "201045",
+      "timestamp": "2016-12-09T20:20:51+00:00",
+      "author": "andykivo",
+      "content": "Hi Wonko The Sane  \n\nthey are Dell i3 Vostro 3400 and on Service Tag it only display plain 7 digitsr, None of these model have the extra 4 digits/letter as Bios-pw.org suggest to enter in the box, e.i -595B, D35B, 2A7B, It just have 1234567 digits.\n\nWhen i type the Service Tag Numbers in the box, bios-pw generate a password and when i set the generated password in the bios and it won\u0027t change anything (password still active).\n\nThis model don\u0027t have a lil reset button on board,, disconnecting the battery for 3 days won\u0027t do nothing, short circuit battery connector pin1 and 2 won\u0027t do nothing as well. Yes, indeed i\u0027m a trouble :smile:\n\nAndy\n\nBest regards from Miami  \n\n\u003cbr /\u003e\n\n**Edited by andykivo, 09 December 2016 - 08:21 PM.**\n"
+    },
+    {
+      "id": "201046",
+      "timestamp": "2016-12-09T20:38:12+00:00",
+      "author": "Wonko the Sane",
+      "content": "I see, like this one?![dell-enter-system-password.jpg](http://www.biosremoval.com/images/dell-enter-system-password.jpg)\n\n[http://dell-service-...d.pwd4bios.com/](http://dell-service-tag-bios-password.pwd4bios.com/ \"External link\")\n\nPlease understand how I have no idea if the above is legit nor if it actually works or how much does it cost.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "201047",
+      "timestamp": "2016-12-09T20:58:40+00:00",
+      "author": "andykivo",
+      "content": "Hi Wonko the Sane,  \n\nI don\u0027t have a system with me but it doesn\u0027t look like that.the Bios setup Menu have like 5 or 6 tabs, the password is located on \"Security\" Tab.  \nCan\u0027t find a picture online, but By monday i\u0027ll take one and post it.\n\nThanks\n\nAndy\n\nBest Regards from Miami.\n\n"
+    },
+    {
+      "id": "201048",
+      "timestamp": "2016-12-09T22:00:59+00:00",
+      "author": "Uneitohr",
+      "content": "Can I assume the only *universal sollution* is to just take out the HDD, plug it into a SATA-to-USB adapter and use WinNTSetup to install Windows?\n\n"
+    },
+    {
+      "id": "201049",
+      "timestamp": "2016-12-09T22:14:10+00:00",
+      "author": "andykivo",
+      "content": "Hi Alexander Ceed,\n\nI thought about that, but problem is that we have 79 vostro, actually my main concern is to unlock the bios password because people whom will buy from us They will ask : \"hey, i want to be able to change the bios setting...\" ,.\n\nThank you\n\nAndy\n\nBest regards from Miami.\n\n"
+    },
+    {
+      "id": "201051",
+      "timestamp": "2016-12-10T09:57:48+00:00",
+      "author": "steve6375",
+      "content": "Did you try entering a BIOS password (any one) up to 10 times in one session?\n\nDid it give you any hint/message/text/form when you did this?\n\n"
+    },
+    {
+      "id": "201053",
+      "timestamp": "2016-12-10T10:36:33+00:00",
+      "author": "steve6375",
+      "content": "According to this page\n\n[http://pwd4bios.com/...s-password.html](http://pwd4bios.com/remove/index-of-remove-dell-vostro-3400-bios-password.html \"External link\")\n\nYou should see some sort of system disabled message??\n\nP.S. It may be worth downgrading the BIOs to an earlier version. Earlier versions may have less sophisticated password protection...\n\nFrom the code, it seems that one of these strings must be present (code may be case sensitive)...\n\n595B\n\nD35B\n\nA95B  \n2A7B\n\n**Edited by steve6375, 10 December 2016 - 11:29 AM.**\n"
+    },
+    {
+      "id": "201054",
+      "timestamp": "2016-12-10T11:09:04+00:00",
+      "author": "andykivo",
+      "content": "Hi Steve6375.\n\nYes, i entry password many times 15+ times and still remain the password.  \nBTW that page [http://pwd4bios...]( \"External link\")charge $20 bucks using Dogbert program (bios-pw) which is free to use.\n\nBios-pw is so good with dell as long the 7 digits Service Tag have the additional 4 digits e.i   \n1234567-595B  \n1234567-D35B  \n1234567-2A7B  \n1234567-1D3B  \n1234567-1F66  \n1234567-6FF1  \n\nThe Vostro 3400 have only seven digits.  \n\nThanks\n\nAndy\n\nBest Regards from Miami.\n\n"
+    },
+    {
+      "id": "201055",
+      "timestamp": "2016-12-10T11:34:13+00:00",
+      "author": "steve6375",
+      "content": "So the Dell will allow you to enter the wrong password 15 times in a row without giving you any error message or preventing you from re-trying?\n\nJust to be clear...\n\n1. You switch on Dell 3400\n2. Enter BIOS using F key\n3. You get prompted for BIOS password\n4. You enter FRED\n5. It says it is wrong so you enter FRED again\n6. It says it is wrong so you enter FRED again\n7. It says it is wrong so you enter FRED again\n8. It says it is wrong so you enter FRED again\n9. It says it is wrong so you enter FRED again\n10. It says it is wrong so you enter FRED again\n\netc.\n\n??? Is that correct?\n\nUsually BIOSs only allow 3-5 tries and then it locks you out.\n\nSo you get no lock-out message at all???\n\n"
+    },
+    {
+      "id": "198659",
+      "timestamp": "2016-04-10T10:10:52+00:00",
+      "author": "Uneitohr",
+      "content": "I was thinking whether or not this is possible.\n\nConsidering the following situation, I have an old laptop that has the BIOS locked with a password and set to only boot from HDD (NO CD, NO USB). I know I could take out the HDD, install windows using imagex and then boot off it but I was thinking if it would be possible to boot from USB when the BIOS is set to boot only from HDD.\n\nIf at all possible, mind sharing your thoughts with me?\n\nThank you.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "198660",
+      "timestamp": "2016-04-10T10:37:59+00:00",
+      "author": "steve6375",
+      "content": "If you disconnected the internal HDD, it might boot from USB, then you could reconnect the internal HDD once booted from the USB drive?\n\n"
+    },
+    {
+      "id": "198661",
+      "timestamp": "2016-04-10T14:57:00+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, if it is \"old\" it has an IDE drive, and hot-pluggin a IDE drive is NOT a good idea.\n\nExactly because it is a \"Old\" it is possible that there is a way/method to find (or reset) the BIOS password, you should post (as always) EXACT information on the involved hardware, this would remove a lot of the guessing.\n\nIn any case you can (if the laptop now boots to a working OS) to install to it a recent grub4dos (which includes a \"own\" USB stack) and/or PLoP (if the laptop does not boot you need anyway to tae the hard disk out of it and connect it to another PC in order to make the install).\n\nIn any case, before anything else, some attempts to recover/reset the BIOS password is advised, on some models it is easy, in some it is complex but can be done, in some it is impossible or too costly to be worth it.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "198663",
+      "timestamp": "2016-04-10T18:57:26+00:00",
+      "author": "Uneitohr",
+      "content": "No, we\u0027re talking about laptops of year period 2007 - 2010. One model I\u0027m using for tests right now, a DELL Latitude 4310. These uses SATA drives so these are hot-pluggable.\n\n\u003e In any case you can (if the laptop now boots to a working OS) to install to it a recent grub4dos (which includes a \"own\" USB stack) and/or PLoP (if the laptop does not boot you need anyway to tae the hard disk out of it and connect it to another PC in order to make the install).\n\u003e\nGood idea. Boot to it, install plop and then boot to network or USB. This by far the fastest way.\n\nIf it the OS is severely damadged I\u0027ll have to take it out, of course.\n\n\u003e In any case, before anything else, some attempts to recover/reset the BIOS password is advised, on some models it is easy, in some it is complex but can be done, in some it is impossible or too costly to be worth it.\n\u003e\nI know there is a possibility of reset mostly the time spent is not worth it to just boot a disk.\n\n"
+    },
+    {
+      "id": "198665",
+      "timestamp": "2016-04-10T19:39:52+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I know there is a possibility of reset mostly the time spent is not worth it to just boot a disk.\n\nSure :smile:, but a \"locked\" set of BIOS settings may well make the use of the laptop sub-optimal, possibly not the specific case, but there are a lot of more recent laptops that need to have \"trusted Computing (or \\*whatever\\*) disabled to boot some OS that is not Windows 8.1, or maybe (this applies to old and new laptop as well, generically) there is the need to enable/disable \"Legacy USB\" in order to boot from USB, or maybe the current (locked) settings have disabled the serial or parallel port (or something else).\n\nIt would be like having a (second hand) car for which you were not given the key for the (locked) trunk and for the (unlocked) doors, you have just the ignition key, you can drive it fine and carry your family in it but the time when you will need to have some luggage with you or leave it on the road the missing keys may become of use.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "198716",
+      "timestamp": "2016-04-12T13:27:36+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e One model I\u0027m using for tests right now, a DELL Latitude 4310.\n\nTry here:\n\n[https://bios-pw.org/](https://bios-pw.org/ \"External link\")\n\nor contact DELL:  \n[http://www.dell.com/...en/19/604021/EN](http://www.dell.com/support/Article/us/en/19/604021/EN \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "198758",
+      "timestamp": "2016-04-15T04:31:45+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "This is only possible on some hardware, some machines will always seek to boot the internal HDD first regard of whether a USB is plugged in. On machines where it isn\u0027t possible you will simply have to either explicitly change the BIOS boot order, or remove the internal drive then hotplug it.\n\nMy friend\u0027s Toshiba laptop will only boot his internal even if he selects USB to boot, and this can only be overridden by setting USB as first in the order. He also has an an HDD in a optical caddy which cannot be made to boot first even by explicit selection, he has to physically swap it into the primary SATA port first. It seems his BIOS is hardcoded this way.\n\n"
+    },
+    {
+      "id": "198760",
+      "timestamp": "2016-04-15T07:53:32+00:00",
+      "author": "Uneitohr",
+      "content": "Isn\u0027t there some way to mask a USB device as an internal SATA hdd?\n\n"
+    },
+    {
+      "id": "200972",
+      "timestamp": "2016-12-03T05:38:27+00:00",
+      "author": "andykivo",
+      "content": "I have exact same problem but lil bit worse.  \nwe\u0027re in recycling business and recently we bought in a public auction 79 dell vostro 3400 i3 notebook.  \nhappen that theses system used to be from university located in florida and all of the notebook have a administrator password.We have access to the bios but only the time and date, hard drive and network can be enable disable.everything else is locked ( USB, CDROM, WIFI, Etc,etc ),I call the university IT department to see if may they tell me the password Info, and they said Nope, they don\u0027t give that info to no one. Then I\u0027d contact dell support and after 3 hours on the phone they provide me a very long master password for one system, I input more than 10 times and didn\u0027t worked, i called back and they told me that mother board have to be change with a cost near of $700. So i tried some conventional ways and many programs to reset bios with no luck.\n\nOn monday i\u0027ll flash the bios, not too sure but hopefully it do the job of resetting or delete the pass...\n\n**Edited by andykivo, 03 December 2016 - 05:39 AM.**\n"
+    },
+    {
+      "id": "200974",
+      "timestamp": "2016-12-03T07:29:44+00:00",
+      "author": "agni",
+      "content": "Does removing the BIOS battery trick work ? I am not sure if I am correct, but removing the bios battery for some time used to reset the BIOS password.\n\n[http://www.askvg.com...-cmos-password/](http://www.askvg.com/how-to-reset-remove-bypass-a-bios-or-cmos-password/ \"External link\")\n\n"
+    },
+    {
+      "id": "200975",
+      "timestamp": "2016-12-03T09:52:59+00:00",
+      "author": "steve6375",
+      "content": "Sometime flashing the BIOS will reset the BIOS defaults (there may be a command line version with parameters to clear passwords or set defaults.).\n\nI would suggest offering to pay the University technician some $$$.\n\nTake the 70 notebooks to the University plus a few charged batteries and get the technician to come out to your car during lunch and clear the BIOS password from all of them.\n\nModern notebooks and PCs store their password in EEPROM not CMOS these days. This makes it pretty secure.\n\n"
+    },
+    {
+      "id": "200976",
+      "timestamp": "2016-12-03T10:05:34+00:00",
+      "author": "steve6375",
+      "content": "P.S. If the BIOS is one that gives hints, see [http://rmprepusb.blo...hp-fujitsu.html](http://rmprepusb.blogspot.co.uk/2016/06/cracking-bios-passwords-dell-hp-fujitsu.html \"External link\")\n\nAlso, you can try contacting Dell with the Hint codes and they may be able to tell you the emergency codes.\n\nYou would need to prove ownership...\n\n[This site](http://pwd4bios.com/ \"External link\") may help?\n\n**Edited by steve6375, 03 December 2016 - 11:00 AM.**\n"
+    },
+    {
+      "id": "200979",
+      "timestamp": "2016-12-03T12:01:30+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Does removing the BIOS battery trick work ? I am not sure if I am correct, but removing the bios battery for some time used to reset the BIOS password.  \n\u003e\n\u003e [http://www.askvg.com...-cmos-password/](http://www.askvg.com/how-to-reset-remove-bypass-a-bios-or-cmos-password/ \"External link\")\nGenerally speaking no, that applied (and in some case still applies) to desktops and a few old laptops, modern laptops store it - usually - in non volatile memory.  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    },
+    {
+      "id": "200981",
+      "timestamp": "2016-12-03T12:21:04+00:00",
+      "author": "cdob",
+      "content": "This is a general statement, may match a dell vostro 3400:  \nOften Laptops store the BIOS password in a EEPROM. A CMOS reset dosn\u0027t clear this.  \n\nSometimes the password is stored in CMOS and EEPROM.  \nAt normal boot the password is read from CMOS and the machines coninues without user input.  \nThe EEPROM password is required, if you like to changes settings.  \nIf you clear the CMOS, then the laptop won\u0027t boot without user input.  \nHencefore a empty CMOS battery makes the laptop unbootable too.  \n\n\u003cbr /\u003e\n\n[http://icheckinu.blo...-page_4111.html](http://icheckinu.blogspot.com/p/blog-page_4111.html \"External link\")  \n\u003e DELL EEPROM/BIOS UNLOCK (Manually and Free)  \n\u003e \\*\\*\\*\\*\\*\\*AT YOUR OWN RISK\\*\\*\\*\\*\\*  \n\u003e\n\u003e To remove Dell Bios password manually:  \n\u003e Open the laptop, and find the EEPROM Chip, Generally it´s numbered 24C02, on the motherboard, and Short circuit the legs 3 and 6 during booting.\n\nLeg 3 seems to be connectoed to ground. The VGA Connector screw is grounded too,  \nInsert a srew to the VGA Connector, attach a cable to the screw and short connect leg 6 at boot.  \n\nOnce again:  \n\\*\\*\\*\\*\\*\\*AT YOUR OWN RISK\\*\\*\\*\\*\\*   \n"
+    },
+    {
+      "id": "201043",
+      "timestamp": "2016-12-09T17:50:21+00:00",
+      "author": "andykivo",
+      "content": "Hi,\n\nI flashed the eprom and still the same. The University IT department have 3 members and seems there not just technician, there are a big shot (Engineer or something) and they told me clear : \"We sell equipment AS IS, we don\u0027t know the password, but even if we know, we can\u0027t provide you!\". When i spoke with Dell i give then the ownership documents and didn\u0027t solved. As a matter of fact i spoke with 4 Support crew member and the girl who supply me the master password was so Rude that tempt me to speak with her supervisor (but i didn\u0027t, that\u0027s her job i guess) .\n\nI Saw a site with an advertising:  \n\"BIOS/CMOS Password Recovery Tool,\n\n100% Guaranteed Removal of BIOS/CMOS passwords\n\n*Problem:* You do not have access to change the settings in BIOS? . Have bought a laptop from the other people or Auction website, but they did not tell you the BIOS/CMOS password? Not a problem! Forgotten BIOS/CMOS passwords can be reset or removed in a matter of seconds.\"\n\n\u003cbr /\u003e\n\nI Purchased the piece of software and guess what?, They sent me a Administrator password removal for OS Windows, Not for the Bios,  \nPure scam!  \n\nWell guys, thank you so much!  \n\n\u003cbr /\u003e\n\nAndy  \nBest regards from Miami.   \n\nAnyway i think i have 2 more steps that haven\u0027t tried: The Pin 3 and 6 short circuit and the Debug Dos Command\n\n**Edited by andykivo, 09 December 2016 - 05:52 PM.**\n"
+    },
+    {
+      "id": "201044",
+      "timestamp": "2016-12-09T18:50:29+00:00",
+      "author": "Wonko the Sane",
+      "content": "What EXACT model is it?\n\nDoes it provide a \"challenge code\"?\n\n[http://dogber1.blogs...eered-bios.html](http://dogber1.blogspot.it/2009/05/table-of-reverse-engineered-bios.html \"External link\")\n\n[https://bios-pw.org/](https://bios-pw.org/ \"External link\")\n\nhas a provision for some Dell models, but maybe yours are newer. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "201045",
+      "timestamp": "2016-12-09T20:20:51+00:00",
+      "author": "andykivo",
+      "content": "Hi Wonko The Sane  \n\nthey are Dell i3 Vostro 3400 and on Service Tag it only display plain 7 digitsr, None of these model have the extra 4 digits/letter as Bios-pw.org suggest to enter in the box, e.i -595B, D35B, 2A7B, It just have 1234567 digits.\n\nWhen i type the Service Tag Numbers in the box, bios-pw generate a password and when i set the generated password in the bios and it won\u0027t change anything (password still active).\n\nThis model don\u0027t have a lil reset button on board,, disconnecting the battery for 3 days won\u0027t do nothing, short circuit battery connector pin1 and 2 won\u0027t do nothing as well. Yes, indeed i\u0027m a trouble :smile:\n\nAndy\n\nBest regards from Miami  \n\n\u003cbr /\u003e\n\n**Edited by andykivo, 09 December 2016 - 08:21 PM.**\n"
+    },
+    {
+      "id": "201046",
+      "timestamp": "2016-12-09T20:38:12+00:00",
+      "author": "Wonko the Sane",
+      "content": "I see, like this one?![dell-enter-system-password.jpg](http://www.biosremoval.com/images/dell-enter-system-password.jpg)\n\n[http://dell-service-...d.pwd4bios.com/](http://dell-service-tag-bios-password.pwd4bios.com/ \"External link\")\n\nPlease understand how I have no idea if the above is legit nor if it actually works or how much does it cost.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "201047",
+      "timestamp": "2016-12-09T20:58:40+00:00",
+      "author": "andykivo",
+      "content": "Hi Wonko the Sane,  \n\nI don\u0027t have a system with me but it doesn\u0027t look like that.the Bios setup Menu have like 5 or 6 tabs, the password is located on \"Security\" Tab.  \nCan\u0027t find a picture online, but By monday i\u0027ll take one and post it.\n\nThanks\n\nAndy\n\nBest Regards from Miami.\n\n"
+    },
+    {
+      "id": "201048",
+      "timestamp": "2016-12-09T22:00:59+00:00",
+      "author": "Uneitohr",
+      "content": "Can I assume the only *universal sollution* is to just take out the HDD, plug it into a SATA-to-USB adapter and use WinNTSetup to install Windows?\n\n"
+    },
+    {
+      "id": "201049",
+      "timestamp": "2016-12-09T22:14:10+00:00",
+      "author": "andykivo",
+      "content": "Hi Alexander Ceed,\n\nI thought about that, but problem is that we have 79 vostro, actually my main concern is to unlock the bios password because people whom will buy from us They will ask : \"hey, i want to be able to change the bios setting...\" ,.\n\nThank you\n\nAndy\n\nBest regards from Miami.\n\n"
+    },
+    {
+      "id": "201051",
+      "timestamp": "2016-12-10T09:57:48+00:00",
+      "author": "steve6375",
+      "content": "Did you try entering a BIOS password (any one) up to 10 times in one session?\n\nDid it give you any hint/message/text/form when you did this?\n\n"
+    },
+    {
+      "id": "201053",
+      "timestamp": "2016-12-10T10:36:33+00:00",
+      "author": "steve6375",
+      "content": "According to this page\n\n[http://pwd4bios.com/...s-password.html](http://pwd4bios.com/remove/index-of-remove-dell-vostro-3400-bios-password.html \"External link\")\n\nYou should see some sort of system disabled message??\n\nP.S. It may be worth downgrading the BIOs to an earlier version. Earlier versions may have less sophisticated password protection...\n\nFrom the code, it seems that one of these strings must be present (code may be case sensitive)...\n\n595B\n\nD35B\n\nA95B  \n2A7B\n\n**Edited by steve6375, 10 December 2016 - 11:29 AM.**\n"
+    },
+    {
+      "id": "201054",
+      "timestamp": "2016-12-10T11:09:04+00:00",
+      "author": "andykivo",
+      "content": "Hi Steve6375.\n\nYes, i entry password many times 15+ times and still remain the password.  \nBTW that page [http://pwd4bios...]( \"External link\")charge $20 bucks using Dogbert program (bios-pw) which is free to use.\n\nBios-pw is so good with dell as long the 7 digits Service Tag have the additional 4 digits e.i   \n1234567-595B  \n1234567-D35B  \n1234567-2A7B  \n1234567-1D3B  \n1234567-1F66  \n1234567-6FF1  \n\nThe Vostro 3400 have only seven digits.  \n\nThanks\n\nAndy\n\nBest Regards from Miami.\n\n"
+    },
+    {
+      "id": "201055",
+      "timestamp": "2016-12-10T11:34:13+00:00",
+      "author": "steve6375",
+      "content": "So the Dell will allow you to enter the wrong password 15 times in a row without giving you any error message or preventing you from re-trying?\n\nJust to be clear...\n\n1. You switch on Dell 3400\n2. Enter BIOS using F key\n3. You get prompted for BIOS password\n4. You enter FRED\n5. It says it is wrong so you enter FRED again\n6. It says it is wrong so you enter FRED again\n7. It says it is wrong so you enter FRED again\n8. It says it is wrong so you enter FRED again\n9. It says it is wrong so you enter FRED again\n10. It says it is wrong so you enter FRED again\n\netc.\n\n??? Is that correct?\n\nUsually BIOSs only allow 3-5 tries and then it locks you out.\n\nSo you get no lock-out message at all???\n\n"
+    },
+    {
+      "id": "201056",
+      "timestamp": "2016-12-10T12:18:44+00:00",
+      "author": "andykivo",
+      "content": "Hi Steve6375,\n\nIt\u0027s correct, I Press F2, enter FRED 15+ Times and password remain.\n\ni can keep doing the same thing all day and vostro BIO\u0027S don\u0027t lockup at all.\n\nThanks\n\nAndy\n\n"
+    },
+    {
+      "id": "201057",
+      "timestamp": "2016-12-10T12:42:59+00:00",
+      "author": "steve6375",
+      "content": "That is not what should happen according to those websites!\n\nYou could try flashing on an old BIOS - but this could trash the mainboard as they mention \u0027corrupt NVRAM\u0027...\n\n"
+    },
+    {
+      "id": "201059",
+      "timestamp": "2016-12-10T13:16:18+00:00",
+      "author": "steve6375",
+      "content": "Can you send a screenshot of what you get? Rather than us trying to guess what you are seeing.\n\nWhat codes do you see? Service Tag? HDD number? System Number? FFID? Hint? etc.\n\nThis page has many examples\n\n[http://dell-vostro-b...vostro_323.html](http://dell-vostro-bios-password.blogspot.co.uk/2013/06/bios-password-removal-for-dell-vostro_323.html \"External link\")\n\nDo you have any of these?\n\nThis page is for 3400 (I don\u0027t know the company at all)\n\n[http://biospassword....-without-suffix](http://biospassword.eu/unlock_Vostro_3400/dell-without-suffix \"External link\")\n\n**Edited by steve6375, 10 December 2016 - 01:19 PM.**\n"
+    },
+    {
+      "id": "201060",
+      "timestamp": "2016-12-10T13:25:16+00:00",
+      "author": "steve6375",
+      "content": "It seems you can buy replacement chips\n\n[http://www.ebay.com/...d-/141591825586](http://www.ebay.com/itm/BIOS-CHIP-Dell-Vostro-2420-2421-2520-3300-3350-3400-3500-3550-3700-No-Password-/141591825586 \"External link\")\n\n"
+    },
+    {
+      "id": "201063",
+      "timestamp": "2016-12-10T18:10:17+00:00",
+      "author": "andykivo",
+      "content": "Hi steve6375\n\nMost of those website are using Dogbert program i already try with 6 vendor in ebay (the same guy same vendor with more than 10 listing and 10+ websites offering same service), and none solved. As i said : As long the Service tag have 7 digits + 4 digits mixed with letter) using dogbert program the password can be removed. I\u0027ll take screen shot and i\u0027ll post monday (i don\u0027t have a notebook with me)\n\nbtw the screen shot from [http://dell-vostro-b...vostro_323.html](http://dell-vostro-bios-password.blogspot.co.uk/2013/06/bios-password-removal-for-dell-vostro_323.html \"External link\") none of it are the same what i\u0027m getting., (i\u0027ll read these site from UK.)\n\nMy last step will be the eprom replacement.\n\nThanks\n\nAndy\n\n**Edited by andykivo, 10 December 2016 - 06:10 PM.**\n"
+    },
+    {
+      "id": "201071",
+      "timestamp": "2016-12-11T10:44:37+00:00",
+      "author": "steve6375",
+      "content": "OK, so what about other possibilities that were mentioned:\n\n1. Downgrade to early BIOS\n\n2. Short pins on SEEPROM chip\n\n3. You said you flashed the EEPROM - do you mean the NVRAM SEEPROM that stores the password, etc. or the BIOS EEPROM?\n\nIf you can replace SEEPROM chip, and you have a programmer, you could just buy one chip and then copy the contents to the others.\n\nP.S. re. Dell master pwd - presumably you were very careful about case-sensitive letters?\n\nI am surprised Dell gave you these - were they for one specific system or were they generic?\n\n"
+    }
+  ]
+}

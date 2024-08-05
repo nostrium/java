@@ -1,0 +1,28 @@
+{
+  "id": "20073",
+  "title": "UEFI grub and chainload to Syslinux",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "187825",
+      "timestamp": "2014-10-01T13:59:56+00:00",
+      "author": "Danixu",
+      "content": "Hi, first of all i\u0027m sorry for my english.\n\nMy question is about if there are any way to chainload to syslinux, using grub loaded in UEFI or if there are any way to load syslinux directly with UEFI.\n\nI\u0027ve tried to find something in google but no luck, and i\u0027\u0027ve tried to chainload to syslinux using the \"syslinux.bin\" file.\n\nI\u0027ve installed syslinux with \"bin\" file and here\u0027s the entry i\u0027m using:\n\n```\nmenuentry \"Start Syslinux\" {\n    chainloader /multiboot/syslinux.bin\n}\n```\n\nand i\u0027t works, it shows the menu with that entry but dont boot from syslinux, shows an error loading the file.\n\nThe pendrive has syslinux loader installed and works perfect on bios system, but i want to make it compatible with new UEFI systems.\n\nPlease, don\u0027t post any program to do it automatically. I want to learn how to do it manually, to use in a program in which I am working\n\nThanks!!\n\n"
+    },
+    {
+      "id": "187826",
+      "timestamp": "2014-10-01T14:36:06+00:00",
+      "author": "Wonko the Sane",
+      "content": "The point is not much about loading syslinux, but about loading the \"right\" version of Syslinux AND what is the final scope (i.e. what you are actually going to use syslinux for).  \n\nYou are likely ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif) to be falling for the XYZ fallacy ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif):  \n[http://homepage.ntlw...red-banana.html](http://homepage.ntlworld.com./jonathan.deboynepollard/FGA/put-down-the-chocolate-covered-banana.html \"External link\")  \n\nIn a nutshell:  \nSyslinux\u003dBIOS  \n\"special\", \"new\", \"experimental\", (still) \"buggy\" or however with a \"whole, long list\" of limitations syslinux**.efi**\u003dEFI/UEFI:  \n[https://wiki.archlin...ux#UEFI_Systems](https://wiki.archlinux.org/index.php/syslinux#UEFI_Systems \"External link\")  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "187828",
+      "timestamp": "2014-10-01T15:10:52+00:00",
+      "author": "Danixu",
+      "content": "i\u0027m trying to do a multiboot Pendrive, maybe i can migrate all to grub2 instead the use syslinux. I\u0027m using syslinux because is what i\u0027ve started to use, but if grub works better then i can try to migrate. Even i\u0027m using grub to load the XP ISO because there\u0027s no way to do it with syslinux...\n\nThanks for reply. I\u0027ll post with the results :wink:\n\n"
+    }
+  ]
+}

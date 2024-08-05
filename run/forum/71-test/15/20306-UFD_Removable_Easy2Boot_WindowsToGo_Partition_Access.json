@@ -1,0 +1,28 @@
+{
+  "id": "20306",
+  "title": "UFD \u0027Removable\u0027 Easy2Boot WindowsToGo Partition Access",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "190232",
+      "timestamp": "2015-01-30T16:40:44+00:00",
+      "author": "Noer5",
+      "content": "Added \u002723\u0027 to extension of main WTG image file to get WTG81u3.imgPTN23 .\n\nHad only PTN1 \\\u0026 PTN2, and PTN2 had the image files, so it shows PTN1 (CSM PTN1) and WTG image (CSM PTN2).\n\nAlso had WTG pared image \u0027WTG81u3\u0027 with no extension, so it also shows that image (CSM PTN3).\n\n[http://www33.speedys...2b-CSM-w-23.jpg](http://www33.speedyshare.com/Q9JXp/download/UFD-e2b-CSM-w-23.jpg \"External link\")\n\nor [http://www.speedysha...2b-CSM-w-23.jpg](http://www.speedyshare.com/Q9JXp/UFD-e2b-CSM-w-23.jpg \"External link\") **\\\u003c\\\u003c\\\u003c\\\u003c Use the Slow Download button.**\n\nPic is of Partition Wizard running on the WTG on this UFD.\n\nPic shows that the extra UFD partitions have no letter, and thus WTG cannot access their contents.\n\nBUT, Partition Wizard\u0027s Partition Explorer obviously DOES have access to those contents.\n\nWindow will allow only one visible partition on a UFD.\n\nTrying to assign a letter to any other partition on this UFD (via BootIce) results in loss of access to WTG \u003d blue screen.\n\nAny tricks to getting WTG to have this access to its other UFD partitions?\n\nAny successful filter driver application?  \nThanks\n\n"
+    },
+    {
+      "id": "190233",
+      "timestamp": "2015-01-30T17:36:57+00:00",
+      "author": "devdevadev",
+      "content": "Hi...  \nJust do following steps in order to install filter driver within your WTG in order to access all partition of Removable USB Drive within WTG -  \n1.Download attached **\u0027microdrive.7z\u0027**and extract it onto desktop of WTG.  \n2.Open Device manager (devmgmt.msc) and check for your USB drive in \"Disk Drives\".  \n3.Right click on the entry for your drive and select option to update driver.\n\n4.Don\u0027t use windows update. Instead click \"Browse my Computer...\"\n\n5.Let me pick from a list of device drivers on my computer  \n6.Have disk  \n7.Browse to location of downloaded cfadisk.inf  \n8.Update the driver and restart your PC and Boot from your Removable USB Drive into your WTG.  \nYour USB Flash Drive will be detected as a Fixed Disk within WTG and you can then access all partitions on your Removable USB Flash Drive.  \n**++Uninstall Hitachi Microdrive Filter Driver-++**  \nFollow steps 1 to 7.Then select Disk drive and update.Your USB Flash Drive will recognized correctly as Removable Media.It will no longer be disguised as a Fixed Drive.  \nCheers..  \n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003d8388b51ceaa021b4990ae80217ab3bbd\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d15363 \"Download attachment\") [**microdrive.7z**](http://reboot.pro/index.php?s\u003d8388b51ceaa021b4990ae80217ab3bbd\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d15363 \"Download attachment\") **9.92KB** 415 downloads\n\n"
+    },
+    {
+      "id": "190257",
+      "timestamp": "2015-01-31T22:09:03+00:00",
+      "author": "Noer5",
+      "content": "Fantastic ! Thanks devdevadev.  \nYour method worked like a charm. Didn\u0027t even have to edit the cfadisk.inf file.  \n\nI was thinking either Karyonix\u0027s Diskmod method or the Hitachi Microdrive cfadisk method.  \nHad read that Karyonix\u0027s Diskmod method was better, but some reported not even being able to boot.  \nSo was leaning toward the Hitachi Microdrive cfadisk method.  \nThanks for confirming that this works on WTG on removable.  \n\nFor others:  \nIn case not obvious, this is done from within WTG on the UFD.  \nStep 4 could be \u003d  \n4. Don\u0027t use windows update. Instead click \"Browse my Computer...\"  \n5. Could eliminate step 5 as it doesn\u0027t do any good to browse to the desktop twice. And could lead to wrong choice.  \n\nThanks again devdevadev !\n\n"
+    }
+  ]
+}

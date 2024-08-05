@@ -1,0 +1,82 @@
+{
+  "id": "22125",
+  "title": "Boot Parted-Magic.iso from usb with grub4dos \u0026 grub2",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "212505",
+      "timestamp": "2019-08-15T19:36:53+00:00",
+      "author": "sara - pmedia",
+      "content": "hello! ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)\n\nI\u0027m here again\n\nThanks for your help with Ubuntu  \nNow I\u0027m trying to boot Parted-Magic.iso with the same command and can\u0027t  \nIn Ubuntu, it works fine  \n**What am I missing?**  \n++**for mbr bios i use:**++  \ntitle Parted Magic 2019  \nset iso_path\u003d/images/pmagic_2019_01_03.iso  \nmap %iso_path% (0xff)  \nmap --hook  \nroot (0xff)  \nkernel /casper/vmlinuz file\u003d/cdrom/preseed/ubuntu.seed boot\u003dcasper iso-scan/filename\u003d%iso_path% quiet splash ---  \ninitrd /casper/initrd  \n++**for uefi i use:**++  \nif \\[ -e \"$iso_drive/images/pmagic_2019_01_03.iso\" \\]; then  \nmenuentry \"Parted Magic 2019\" {  \nset iso_path\u003d/images/pmagic_2019_01_03.iso  \nexport iso_path  \nloopback loop $iso_drive$iso_path  \nset root\u003d(loop)  \nconfigfile /boot/grub/loopback.cfg  \nloopback --delete loop}  \nfi\n\nAnyone who doesn\u0027t know  \nParted Magic has a powerful and effective tool for ssd  \n\"Secure Erase\"  \nThis little action takes 20 seconds and returns old ssd\u0027s performance to original speed  \n![3.jpg](https://lh3.googleusercontent.com/-klokANqz26w/XVW0L9nm1bI/AAAAAAAAGMk/sBWCxWWklsMslhfKHrP3t6FDBfeMEGHCgCLcBGAs/s0/3.jpg)  \nThank you for your help!!!  \n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "212506",
+      "timestamp": "2019-08-15T19:44:20+00:00",
+      "author": "steve6375",
+      "content": "The first menu appears to be grub4dos\n\nso see [https://www.rmprepus...partedmagiclive](https://www.rmprepusb.com/tutorials/128-partedmagiclive \"External link\")\n\nThe second menu appears to be a grub2 menu.\n\nI use this in Easy2Boot grub2 menu system, you will have to modify it\n\n```\n#WORKS L64 U64   PMAGIC.ISO\nif $BIT64; then\nif [ -e \"$isofpath/pmagic.iso\" ]; then\nmenuentry \u0027Boot Parted Magic 64\u0027 --unrestricted --class pmagic{\nset isoname\u003dpmagic.iso ; CHECK_MNU_FOLDER\necho \u0027Loading Parted Magic 64 live ISO...\u0027\n#set gfxpayload\u003dkeep\nset root\u003d$root2\nloopback loop $isofile\nlinux (loop)/pmagic/bzImage64 iso_filename\u003d$isofile edd\u003don vga\u003dnormal eject\u003dno load_ramdisk\u003d1\ninitrd (loop)/pmagic/initrd.img (loop)/pmagic/fu.img (loop)/pmagic/m64.img\nboot\n}\nfi\nfi\n\n\n#WORKS U32 L32\n# for 32-bit use bzImage and m32.img\nif $BIT32; then\nif [ -e \"$isofpath/pmagic.iso\" ]; then\nmenuentry \u0027Boot Parted Magic 32\u0027 --unrestricted --class pmagic{\nset isoname\u003dpmagic.iso ; CHECK_MNU_FOLDER\necho \u0027Loading Parted Magic 32 live ISO...\u0027\n#set gfxpayload\u003dkeep\nset root\u003d$root2\nloopback loop $isofile\n# linux (loop)/pmagic/bzImage iso_filename\u003d$isofile edd\u003don vga\u003dnormal boot\u003dlive eject\u003dno\nlinux (loop)/pmagic/bzImage iso_filename\u003d$isofile eject\u003dno load_ramdisk\u003d1\ninitrd (loop)/pmagic/initrd.img (loop)/pmagic/fu.img (loop)/pmagic/m32.img\nboot\n}\nfi\nfi\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "212507",
+      "timestamp": "2019-08-15T21:36:11+00:00",
+      "author": "sara - pmedia",
+      "content": "thank you ☺\n\nWith your advice I tried modify my menu\n\n**for grub4dos i use this but i get \"** Mounting the fu.sqfs failed\" **erorr during boot - [video](https://drive.google.com/open?id\u003d12qaEdAIwmSMs8j28EYBI37RkFRF-BIHo \"External link\")**\n\niftitle \\[if exist /images/pmagic_2019_01_03.iso\\] Parted Magic (2019)\\\\n Boot Parted Magic with Save Session option.  \nset ISO\u003d/images/pmagic_2019_01_03.iso  \nset LIVE\u003dboot\u003dlive  \nmap --read-only %ISO% (0xff) \\|\\| map --mem %ISO% (0xff)  \nmap --hook  \nroot (0xff)  \nset keymap\u003d  \n# For 1GiB+ 64-bit systems use:  \n#kernel /pmagic/bzImage64 iso_filename\u003d%ISO% eject\u003dno edd\u003don vga\u003dnormal %keymap% %LIVE%  \n#initrd /pmagic/initrd64.img  \nkernel /pmagic/bzImage iso_filename\u003d%ISO% eject\u003dno edd\u003don vga\u003dnormal vmalloc\u003d512MiB %keymap% %LIVE%  \ninitrd /pmagic/initrd.img  \nboot  \n**for UEFI i use this but i get**syntax error\n\nif \\[ -e \"$iso_drive/images/pmagic_2019_01_03.iso\" \\]; then  \nmenuentry \"pmagic_2019_01_03.iso\" {  \nset iso_path\u003d/images/pmagic_2019_01_03.iso  \nset isoname\u003dpmagic_2019_01_03.iso ; CHECK_MNU_FOLDER  \necho \u0027Loading Parted Magic 64 live ISO...\u0027  \n#set gfxpayload\u003dkeep  \nset root\u003d$root2  \nloopback loop $isofile  \nlinux (loop)/pmagic/bzImage64 iso_filename\u003d$isofile edd\u003don vga\u003dnormal eject\u003dno load_ramdisk\u003d1  \ninitrd (loop)/pmagic/initrd.img (loop)/pmagic/fu.img (loop)/pmagic/m64.img  \nboot  \n}  \nfi\n\n"
+    },
+    {
+      "id": "212511",
+      "timestamp": "2019-08-16T07:51:01+00:00",
+      "author": "steve6375",
+      "content": "compare my menu with yours! esp. the initrd line in the UEFI menu.\n\nYou should delete the CHECK_MNU_FOLDER and $root2 parts - they are probably not used in your menu system.\n\n"
+    },
+    {
+      "id": "212513",
+      "timestamp": "2019-08-16T12:29:44+00:00",
+      "author": "Wonko the Sane",
+      "content": "@sara - pmedia  \n\nThe grub4dos entrry is not providing the path to the second and third initrd images.  \n\nSince 2015 or 2016 (see the page by Steve):  \n[https://www.rmprepus...partedmagiclive](https://www.rmprepusb.com/tutorials/128-partedmagiclive \"External link\")  \npartedmagic is using multiple initrd images.  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    },
+    {
+      "id": "212517",
+      "timestamp": "2019-08-16T21:14:25+00:00",
+      "author": "alacran",
+      "content": "@sara - pmedia\n\nFor grub4dos menu (MBR boot) you may also use this (partnew) title (good for USB devices where fourth partition is not present)\n\n```\niftitle [if exist (hd0,0)/Images/pmagic_2019_01_03.iso] Boot pmagic_2019_01_03.iso from ISO on (hd0,0)/Images\nset ISO\u003dImages/pmagic_2019_01_03.iso\nparttype (hd0,3) | set check\u003d\nset check\u003d%check:~-5,4%\nif \"%check%\"\u003d\u003d\"0x00\" partnew (hd0,3) 0 0 0\nif not \"%check%\"\u003d\u003d\"0x00\" echo WARNING: PTN TABLE 4 IS ALREADY IN USE! \u0026\u0026 pause \u0026\u0026 configfile /menu.lst\nfind --set-root /%ISO%\nls (hd0,0)/%ISO% \u0026\u0026 partnew (hd0,3) 0x00 /%ISO%\nmap (hd0,0)/%ISO% (0xff)\necho -e \\r\\n\nmap --hook\nroot (0xff)\nchainloader (0xff)\n```\n\nTitle from **steve6375** [tutorial 93](https://www.rmprepusb.com/tutorials/tails \"External link\")\n\nFor additional info you may see this thread, it includes all references to partnew: [http://reboot.pro/to...artnew-command/](http://reboot.pro/topic/22086-need-help-to-boot-bliss-v119iso-with-grub4dos-solved-using-partnew-command/ \"\")\n\n\u003e 1 - File to boot from, must be contiguous (not fragmented).  \n\u003e\n\u003e 2 - Partnew is used mainly for Linux live Isos, but also WinPE Isos can be booted this way since I have already tested.\n\u003e\n\u003e IMHO, this makes Parnew booting method the more versatile.\n\nalacran\n\n"
+    },
+    {
+      "id": "212519",
+      "timestamp": "2019-08-16T23:37:55+00:00",
+      "author": "RoyM",
+      "content": "title ------- Pmagic 2018 -----------------------  \nroot  \n#  \ntitle Parted Magic Test, No \\*live\\* --\\\u003e kernel vga\u003d788 keymap\u003dus  \nusb --init  \nmap /pmagic/pmagic_2018_01_08.iso (hd32) \\|\\| map --mem /pmagic/pmagic_2018_01_08.iso (hd32)  \nmap --hook  \nroot (hd32)  \n# \\*\\*\\* NOT SURE I AM USING NOAPIC CORRECTLY, BEFORE OR AFTER INITRD.....\\*\\*\\* \\[APIC,X86\\] Advanced Programmable Interrupt Controller  \n# noapic initrd\u003d/pmagic/initrd root\u003d/dev/ram0 init\u003d/linuxrc ramdisk_size\u003d200000 pmodules\u003d/pmagic/pmodules squashfs\u003d/pmagic/pmagic keymap\u003dus livecd vga\u003d791 quiet toram  \n# kernel /pmagic/bzImage keymap\u003dus iso_location\u003d/pmagic/ iso_filename\u003d/pmagic/pmagic_2018_01_08.iso noapic load_ramdisk\u003d1 prompt_ramdisk\u003d0 rw vga\u003dnormal loglevel\u003d9 max_loop\u003d256 vmalloc\u003d256MiB  \n# kernel /pmagic/bzImage keymap\u003dus iso_location\u003d/pmagic/ iso_filename\u003d/pmagic/pmagic_2018_01_08.iso noapic load_ramdisk\u003d1 prompt_ramdisk\u003d0 rw vga\u003d788 loglevel\u003d9 max_loop\u003d256 vmalloc\u003d256MiB  \nkernel /pmagic/bzImage keymap\u003dus iso_location\u003d/pmagic/ iso_filename\u003d/pmagic/pmagic_2018_01_08.iso load_ramdisk\u003d1 prompt_ramdisk\u003d0 rw vga\u003d788 loglevel\u003d9 max_loop\u003d256 vmalloc\u003d256MiB\n\n# \\*\\*\\* Notice next line \\*\\*\\*\n\ninitrd /pmagic/initrd.img /pmagic/fu.img /pmagic/m32.img\n\n"
+    },
+    {
+      "id": "213264",
+      "timestamp": "2019-11-15T11:56:51+00:00",
+      "author": "sara - pmedia",
+      "content": "thank you! ![:rolleyes:](http://reboot.pro/public/style_emoticons/default/rolleyes.gif)\n\nFor **MBR**I finally succeeded with this code:  \n*iftitle \\[if exist /images/pmagic_2019_01_03.iso\\] Parted Magic 2019*  \n*set ISO\u003d/images/pmagic_2019_01_03.iso*  \n*set LIVE\u003dboot\u003dlive*  \n*map --read-only %ISO% (0xff) \\|\\| map --mem %ISO% (0xff)*  \n*map --hook*  \n*root (0xff)*  \n*set keymap\u003d*  \n*# For 1GiB+ 64-bit systems use:*  \n*#kernel /pmagic/bzImage64 iso_filename\u003d%ISO% eject\u003dno edd\u003don vga\u003dnormal %keymap% %LIVE%*  \n*#initrd /pmagic/initrd64.img**/pmagic/fu.img /pmagic/m64.img*  \n*kernel /pmagic/bzImage iso_filename\u003d%ISO% eject\u003dno edd\u003don vga\u003dnormal vmalloc\u003d512MiB %keymap% %LIVE%*  \n*initrd /pmagic/initrd.img /pmagic/fu.img /pmagic/m32.img*  \n*boot*  \nBut for UEFI - I can\u0027t find the right code  \nCan anyone convert for me?\n\n"
+    },
+    {
+      "id": "213265",
+      "timestamp": "2019-11-15T12:09:46+00:00",
+      "author": "steve6375",
+      "content": "```\nmenuentry \"pmagic_2019_01_03.iso\" {\nset iso_path\u003d/images/pmagic_2019_01_03.iso\necho \u0027Loading Parted Magic 64 live ISO...\u0027\nloopback loop $iso_path\nlinux (loop)/pmagic/bzImage64 iso_filename\u003d$iso_path edd\u003don vga\u003dnormal eject\u003dno load_ramdisk\u003d1\ninitrd (loop)/pmagic/initrd.img (loop)/pmagic/fu.img (loop)/pmagic/m64.img\nboot\n}\n```\n\nDoes this work?\n\n"
+    },
+    {
+      "id": "213266",
+      "timestamp": "2019-11-15T12:25:18+00:00",
+      "author": "sara - pmedia",
+      "content": "\u003e ```\n\u003e menuentry \"pmagic_2019_01_03.iso\" {\n\u003e set iso_path\u003d/images/pmagic_2019_01_03.iso\n\u003e echo \u0027Loading Parted Magic 64 live ISO...\u0027\n\u003e loopback loop $iso_path\n\u003e linux (loop)/pmagic/bzImage64 iso_filename\u003d$iso_path edd\u003don vga\u003dnormal eject\u003dno load_ramdisk\u003d1\n\u003e initrd (loop)/pmagic/initrd.img (loop)/pmagic/fu.img (loop)/pmagic/m64.img\n\u003e boot\n\u003e }\n\u003e ```\n\u003e\n\u003e Does this work?\n\u003e\nThank You Steve!! ![:cheerleader:](http://reboot.pro/public/style_emoticons/default/cheerleader.gif) ![:cheerleader:](http://reboot.pro/public/style_emoticons/default/cheerleader.gif)  \nYou are a genius ![:smart:](http://reboot.pro/public/style_emoticons/default/smart.gif)  \nyou helped me alot!! ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n1 more question  \nabout my MBR code  \nInstead of creating 2 separate titles (32/64 bit)  \nCan g4d automatic detect bit mode ?  \n\n"
+    },
+    {
+      "id": "213267",
+      "timestamp": "2019-11-15T12:29:27+00:00",
+      "author": "steve6375",
+      "content": "Sure use \u0027is64bit\u0027\n\nIts all on my site!\n\n[https://www.rmprepus...partedmagiclive](https://www.rmprepusb.com/tutorials/128-partedmagiclive \"External link\")\n\n"
+    },
+    {
+      "id": "213270",
+      "timestamp": "2019-11-15T12:43:13+00:00",
+      "author": "sara - pmedia",
+      "content": "I understood  \nThanks again so much ![:jump:](http://reboot.pro/public/style_emoticons/default/jump.gif)\n\n"
+    }
+  ]
+}

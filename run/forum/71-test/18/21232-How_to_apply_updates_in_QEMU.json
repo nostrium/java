@@ -1,0 +1,64 @@
+{
+  "id": "21232",
+  "title": "How to apply updates in QEMU",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "200113",
+      "timestamp": "2016-09-04T23:01:39+00:00",
+      "author": "ambralivio",
+      "content": "I\u0027m on the first steps of the learning curve for using Qemu within Windows and I started to use the last version of Qemu Manager (7.0).\n\nAt the same time, considering the old age of the qemu executables inside Qemu Manager, I\u0027d like to apply some update and so I\u0027ve downloaded the last binaries from Stefan Weil\u0027s page.\n\nThe point now is that I don\u0027t know how to apply these changes in Qemu Manager (changing its folder structure/content,and how?, what qemu.exe to use?, and so on).\n\nambralivio\n\n"
+    },
+    {
+      "id": "200115",
+      "timestamp": "2016-09-05T08:36:05+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, I believe you cannot. ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\n\nThe Qemu accompanying Qemu Manager is a \"special version\" (with the source modified and compiled in an unknown way), AFAIK/AFAICR a \"normal\" Qemu won\u0027t work under/inside Qemu Manager\".\n\nWhat you can do is to try using the Qemu Manager to generate the commands and then call an updated self-standing Qemu.exe with those commands (though I believe that a few need anyway to be checked/translated).\n\nThe Author of Qemu Manager (Dave Reynolds ) for a period of time did provide (on an \"unlisted\" \"update site\") new, updated Qemu Versions, (and so these were not cached by Wayback MAchine) then a few years ago, he moved from davereyn.co.uk to [http://www.sorted-sy...mu_manager.html](http://www.sorted-systems.com/qemu_manager.html \"External link\")and then simply disappeared from the \"scene\".\n\nThe only source code available is the Qemu Manager 6.0 version (not the 7.0):\n\n[https://web.archive....com/qmdown.html](https://web.archive.org/web/20140725054239/http://www.sorted-systems.com/qmdown.html \"External link\")\n\n[https://web.archive..../qem/source.zip](https://web.archive.org/web/20140725054239/http://www.davereyn.co.uk/qem/source.zip \"External link\")\n\nbut anyway doesn\u0027t AFAICT contain any info on how to modify/compile Qemu to work with Qemu Manager.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "200153",
+      "timestamp": "2016-09-07T20:50:24+00:00",
+      "author": "ambralivio",
+      "content": "\u003e What you can do is to try using the Qemu Manager to generate the commands and then call an updated self-standing Qemu.exe with those commands (though I believe that a few need anyway to be checked/translated).\n\nOK Wonko.\n\nI made several trials following your advices above and also by having a look to the multitude of options available in one of the lastly updated qemu version (Qemu for Windows from Stefan Weil) and by trying to apply translations between the two qemu executables.\n\nUnfortunately, as also you foresaw, none of the trials gave positive (nor partially positive) results, receiving many error notifications (mainly about incompatibility or unknown options/sub-options).\n\nConsidering all the above difficulties and the limitations of qemu as virtualizer (this last was one of my main aim), I think to give up the trials, looking elsewhere (for example, VirtualBox -based on qemu, though) for my final target.\n\nNevertheless, thanks again Wonko for your precious explanations/help.\n\nambralivio\n\n"
+    },
+    {
+      "id": "200161",
+      "timestamp": "2016-09-08T07:58:12+00:00",
+      "author": "Wonko the Sane",
+      "content": "What would be interesting - on the other hand - would be to know which problems (if any) have you found with the \"old\" qemu.exe coming with Qemu Manager.\n\nLatest I have is I believe the 0.13 version (specific for Qemu Manager).\n\nIf you want a copy of that one, just say so.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "200169",
+      "timestamp": "2016-09-08T20:51:57+00:00",
+      "author": "ambralivio",
+      "content": "Wonko,\n\nWell. I\u0027ll tell you the full story (and I beg your pardon for its length).  \nMy final target was to check \\\u0026 test the QEMU/VirtualBox-VMUB (Virtual Machine USB Boot, the DavidB\u0027s tool).  \nIt\u0027s worth saying here that the direct trials with the VirtualBox-VMUB combo went fine, just at first shot.  \nInstead, for the QEMU-VMUB case, before going directly with the combo trials, as an intermediate step I preferred to check (separately and independently) the QEMU Manager functionalities, since I\u0027d never used that tool.  \nUnfortunately (but only later I realized this was my innocent fault), the bootable UFD I used for the first trials was based on a WinPE for Windows 10 (64 bit) and so in no way I was able to boot that UFD.  \nIt was at this point that, having the feeling that the installed Qemu Manager was using a very old qemu.exe version (therefore, not compatible with the \"advanced\" WinPE), I decided to look for some updated executables and so I installed the last version of Qemu for Windows tool (from Stefan Weil Page).  \nBut, after several tests (with negative results) it was clear that I should have asked for some help to the Reboot experts, opening this thread.  \nThen, once I read your post, before proceding with your advices, I realized the idea about the \"too much advanced WinPE\" and therefore I built another bootable UFD (but based on a more \"standard\" WinPE 3.1). This time, QEMU Manager was able to boot the new UFD, even if very, very slowly...  \nFinally, hoping to improve/extend the capabilities of QEMU (in order to boot more advanced WinPEs), I followed your advices making the last tests and trying to extend/translate the commands from Qemu Manager to Qemu for Windows, but this is a well known story...(described in Post #3).  \nTherefore, to make the long story short, I\u0027d say that the main problem I had with the old qemu.exe (coming with Qemu Manager) seems to stay on its \"limited\" compatibility with \"newer\" WinPEs/OS.  \nRegarding the version of qemu, I was not able to determine it for the Qemu manager I have tested. What I can say is that the Qemu Manager version is the last official one (7.0) and the properties of qemu.exe are :  \nDimensions : 2.010.112 bytes  \nDate 28/3/2010  \nSHA-1: 5D07EABA89B2FD19E6EC7F86ED4DA21B5BCDF7E9  \nTherefore, if you think yours is newer, please send it to me, possibly together with some companion notes/documentation.  \nambralivio\n\n"
+    },
+    {
+      "id": "200174",
+      "timestamp": "2016-09-09T08:10:41+00:00",
+      "author": "Wonko the Sane",
+      "content": "Yep it depends on the actual version, but if you open the command prompt, navigate to where the qemu.exe is:\n\nqemu.exe -version\n\nIt should create a stdout.txt with contents:  \nQEMU PC emulator version 0.11.1, Copyright © 2003-2008 Fabrice Bellard\n\nIf you open Qemu Manager and go to Tools-\\\u003eQemu Version Management, you should find an entry to the same effect.\n\nYou should get the file linked below, then expand it making a directory (under the directory qemumanager.exe is, \\\\qmqemu0-13-0), of course you can change the name or move the directory where you prefer, then go to the Qemu Version Management, add an entry and configure it.\n\nEDIT: New file uploaded 19/12/2019 [http://www.filedropp...om/qmqemu0-13-0](http://www.filedropper.com/qmqemu0-13-0 \"External link\")\n\nOf course Qemu is very slow with \"heavy\" OS\u0027s or PE\u0027s.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "200176",
+      "timestamp": "2016-09-09T08:59:21+00:00",
+      "author": "ambralivio",
+      "content": "OK.\n\nI\u0027ve checked and mine is Version 0.11.1, dated March 2010, whilst the version you linked to is 0.13.0, dated November 2010, clearly not official (or even not documented).\n\nI have some doubt that in so few months there were so many improvements between the two versions.\n\nDo you have a ChangeLog file for the new version or, at least, do you remember what important changes were applied ?\n\nambralivio\n\n"
+    },
+    {
+      "id": "200177",
+      "timestamp": "2016-09-09T09:46:20+00:00",
+      "author": "Wonko the Sane",
+      "content": "No, no idea of what changed.\n\nI am not sure to understand the \"non-official\" note.\n\nA version 0.13 was released alright:\n\n[http://wiki.qemu.org/OlderNews](http://wiki.qemu.org/OlderNews \"External link\")\n\nAll QEMU builds for Windows are non-official as the Author only releases the source code, some people do port them and compile them on Windows, nicely making them available to people like you and me that don\u0027t want or cannot compile themselves:\n\n[http://wiki.qemu.org/Links](http://wiki.qemu.org/Links \"External link\")\n\nThe official-unofficial ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) 0.13 is available here:\n\n[http://takeda-toshiya.my.coocan.jp/](http://takeda-toshiya.my.coocan.jp/ \"External link\")\n\n[http://takeda-toshiy...3.0-windows.zip](http://takeda-toshiya.my.coocan.jp/qemu/qemu-0.13.0-windows.zip \"External link\")\n\nThe issue with Qemu Manager is that the Author made \"custom builds\" (most probably they are only a handful of little changes in the source) but never AFAIK documented the diffs/patches and/or the options used.\n\nMy *guess* is that a competent programmer can (with the source code of version 0.13 and the compiled binary from the above file), and with the known patches needed to compile in Windows find out what the differences/patches are needed to compile a newer version compatible with Qemu Manager.\n\nUnofrtunately it seems like noone is interested in this (or in making a new program similar to Qemu Manager capable of running a \"normal\" Windows port of Qemu) ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "200178",
+      "timestamp": "2016-09-09T11:33:19+00:00",
+      "author": "ambralivio",
+      "content": "OK, Good.\n\nFor official-non official I meant in the sense of Qemu manager port...\n\nAt the end, and following your guess can we agree saying that Qemu is a goof emulator till today but not as good as virtualizer ?\n\nambralivio\n\n"
+    }
+  ]
+}

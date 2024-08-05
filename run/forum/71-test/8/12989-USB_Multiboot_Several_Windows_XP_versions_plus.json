@@ -1,0 +1,112 @@
+{
+  "id": "12989",
+  "title": "USB Multiboot Several Windows XP versions plus",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "113240",
+      "timestamp": "2010-11-09T00:40:04+00:00",
+      "author": "darkman738",
+      "content": "Sorry if this has been asked, but I did not see this particular version of this question asked in the forums, although I could have missed it.  \n\nI am looking to create a multiboot USB where I can boot to and install multiple versions of Windows XP (i.e. Home SP1 \\\u0026 SP3, Pro SP1 \\\u0026 SP3, MCE SP1 \\\u0026 MCE SP3) and some additional ISO\u0027s that are linux based (i.e. gparted, Ophcrack ect). So no know asks, yes the redundancy is necessary, SP2 and up keys were changed, and any OEM sticker on a computer with a blue background (SP0/SP1) won\u0027t install with an SP2/SP3 disk.   \n\nAs far as I can tell this has a couple problems:  \n\n1) I can use syslinux and load the ISO\u0027s but this requires a FAT32 file system which is quite slow on the read/write, esp with multiple files. I am also getting an error with this, but I think I may have learned what the problem is here. I could extract and chainload the the install, but I think that there is a problem with not having the install files in the root dir of the drive, which can\u0027t happen with 6 versions of the same OS.  \n\n2) All the tutorials I find that allow for NTFS FS assume a single copy of Windows (i.e. Home SP3) with no way to add a additional version, and aren\u0027t MultiBoot  \n\nCurrently I have a working version loading everything I need except the Windows installers with a neat tool from [here](http://www.pendrivelinux.com/boot-multiple-iso-from-usb-multiboot-usb/ \"External link\").   \n\nMy ideal solution would be extracting the ISO\u0027s and loading them from a directory on the drive (/Windows_Installers/WinXP_Home_SP1/) To allow me to slipstream additional drivers, patches, and software on-the-fly, but I can just as well unpack and repack an ISO, just not in the field.  \n\nAnyone have a suggestion? Something I missed? The FS does matter as I am trying to reduce the amount of time I spend in front of the unit restoring.  \n\nThanks in advance.   \n\n**Edited by darkman738, 09 November 2010 - 12:40 AM.**\n"
+    },
+    {
+      "id": "113246",
+      "timestamp": "2010-11-09T05:38:10+00:00",
+      "author": "cdob",
+      "content": "[http://www.msfn.org/...ndows-from-usb/](http://www.msfn.org/board/forum/157-install-windows-from-usb/ \"External link\")  \n\n[http://www.msfn.org/...omusb-with-gui/](http://www.msfn.org/board/topic/120444-how-to-install-windows-from-usb-winsetupfromusb-with-gui/ \"External link\")  \n[http://www.msfn.org/...ll-xp-from-usb/](http://www.msfn.org/board/topic/111406-how-to-install-xp-from-usb/ \"External link\")  \n[http://www.msfn.org/...ly-about-500mb/](http://www.msfn.org/board/topic/140351-install-winxp-oem-vlk-and-rtl-using-only-about-500mb/ \"External link\")   \n"
+    },
+    {
+      "id": "113278",
+      "timestamp": "2010-11-09T12:35:12+00:00",
+      "author": "darkman738",
+      "content": "\u003e [http://www.msfn.org/...ndows-from-usb/](http://www.msfn.org/board/forum/157-install-windows-from-usb/ \"External link\")  \n\u003e\n\u003e [http://www.msfn.org/...omusb-with-gui/](http://www.msfn.org/board/topic/120444-how-to-install-windows-from-usb-winsetupfromusb-with-gui/ \"External link\")  \n\u003e [http://www.msfn.org/...ll-xp-from-usb/](http://www.msfn.org/board/topic/111406-how-to-install-xp-from-usb/ \"External link\")  \n\u003e [http://www.msfn.org/...ly-about-500mb/](http://www.msfn.org/board/topic/140351-install-winxp-oem-vlk-and-rtl-using-only-about-500mb/ \"External link\")\n\n\u003cbr /\u003e\n\nThanks for these links. I have glanced over them all, and have seen most of them. The last one seems most helpful, but it still looks like there is the limitation of a Fat32 FS as it is using G4D as its boot loader. Am I missing something? Again I just glanced before work, so I apologize if I missed something important, I will read deeper.   \n"
+    },
+    {
+      "id": "113279",
+      "timestamp": "2010-11-09T12:42:18+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e but it still looks like there is the limitation of a Fat32 FS ***as*** it is using G4D as its boot loader. Am I missing something? Again I just glanced before work, so I apologize if I missed something important, I will read deeper.\n\nWho told you that there is ANY problem \"between\" grub4dos and NTFS?  \n\n![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif)  \nWonko   \n"
+    },
+    {
+      "id": "113298",
+      "timestamp": "2010-11-09T14:35:33+00:00",
+      "author": "cdob",
+      "content": "\u003e but it still looks like there is the limitation of a Fat32 FS\nWhich XP installation approach is limited to FAT32?  \nAll sticky arroaches work at NTFS. [http://www.msfn.org/...ndows-from-usb/](http://www.msfn.org/board/forum/157-install-windows-from-usb/ \"External link\")  \n\n\u003e as it is using G4D\nWhat\u0027s G4D?  \nGrub4dos works fine at FAT12, FAT16, FAT32 and NTFS (up to windows 7).  \n\nUse a proper application to partition and format USB drive as you like.   \nAdd XP installation files.  \n\nSlow FAT32 has been reported years ago.  \n[http://www.msfn.org/...post__p__699197](http://www.msfn.org/board/topic/61384-how-to-bootinstall-from-usb-key/page__view__findpost__p__699197 \"External link\")  \n\nAuthors recommned NTFS instead of FAT32.  \nExample [http://www.msfn.org/...post__p__731488](http://www.msfn.org/board/topic/111406-how-to-install-xp-from-usb/page__view__findpost__p__731488 \"External link\")  \n\u003e - Format the USB-Drive with FAT or NTFS. Note: FAT32 is very SLOW for installing XP\n\nI prefer a ISO image file loaded to RAM.  \nThat\u0027s one continuous read from USB drive to RAM.   \nSingle files are copied from RAM to hard disk. File access time is very fast at RAM.   \n"
+    },
+    {
+      "id": "113311",
+      "timestamp": "2010-11-09T17:06:16+00:00",
+      "author": "darkman738",
+      "content": "\u003e Who told you that there is ANY problem \"between\" grub4dos and NTFS?  \n\u003e\n\u003e ![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif)  \n\u003e Wonko\n\nI was not aware that G4D would work on NTFS, this changes things a bit.   \n"
+    },
+    {
+      "id": "113316",
+      "timestamp": "2010-11-09T17:18:00+00:00",
+      "author": "darkman738",
+      "content": "\u003e Which XP installation approach is limited to FAT32?\n\nNone, I thought that grub4dos was limited.  \n\n\u003e What\u0027s G4D?\n\ngrub4dos  \n\n\u003e Use a proper application to partition and format USB drive as you like.   \n\u003e Add XP installation files.\n\nYes, but again my concern here is that I will be adding several versions of Windows XP (Home, Pro, MCE ect.) I am unclear on how to do this with multiple versions of Windows XP.  \n\n\u003e Slow FAT32 has been reported years ago.\n\nThis is why I wanted to use NTFS  \n\n\u003e I prefer a ISO image file loaded to RAM.  \n\u003e That\u0027s one continuous read from USB drive to RAM.   \n\u003e Single files are copied from RAM to hard disk. File access time is very fast at RAM.\n\nDo you mean an entire ISO or reduced loader as outlined [here](http://www.msfn.org/board/topic/140351-install-winxp-oem-vlk-and-rtl-using-only-about-500mb/ \"External link\")?   \n"
+    },
+    {
+      "id": "113325",
+      "timestamp": "2010-11-09T18:54:48+00:00",
+      "author": "evilgoat",
+      "content": "um, i\u0027ve asked this before and didn\u0027t get any response, searched around and didn\u0027t really find anything either: i have a partitioned usb stick, the first partition is fat32 and the second is ntfs and i put a windows xp setup on the second one but i can\u0027t seem to call it properly. when it was on the first partition it worked with this:  \n\nmenu.lst  \ntitle Install Windows XP  \nroot (hd0,0)  \nconfigfile /winsetup.lst  \nsavedefault  \n\nwinsetup.lst  \ntitle first part  \nroot (hd0,0)  \nchainloader (hd0,0)/$WIN_NT$.\\~BT/SETUPLDR.BIN  \nsavedefault 1  \n\ntitle second part  \nroot (hd0,0)  \nchainloader (hd0,0)/NTLDR  \nsavedefault  \n\n\u003cbr /\u003e\n\ni tried using (hd0,1) but all i get is errors.   \n"
+    },
+    {
+      "id": "113326",
+      "timestamp": "2010-11-09T19:13:53+00:00",
+      "author": "darkman738",
+      "content": "\u003e um, i\u0027ve asked this before and didn\u0027t get any response, searched around and didn\u0027t really find anything either: i have a partitioned usb stick, the first partition is fat32 and the second is ntfs and i put a windows xp setup on the second one but i can\u0027t seem to call it properly. when it was on the first partition it worked with this:  \n\u003e\n\u003e ...\n\nNo expert here but if you check the links on the first reply in this thread, one of the articles state that Windows is limited to the first partition.   \n\n**Edited by darkman738, 09 November 2010 - 07:14 PM.**\n"
+    },
+    {
+      "id": "113327",
+      "timestamp": "2010-11-09T19:25:09+00:00",
+      "author": "evilgoat",
+      "content": "as i understood that it was limited to be installed on the first partition of the target machine ... or did i read that wrong?   \n"
+    },
+    {
+      "id": "113329",
+      "timestamp": "2010-11-09T19:27:07+00:00",
+      "author": "darkman738",
+      "content": "\u003e as i understood that it was limited to be installed on the first partition of the target machine ... or did i read that wrong?\n\nI read it as the install files had to be on the first partition of the USB drive.   \n"
+    },
+    {
+      "id": "113331",
+      "timestamp": "2010-11-09T19:56:47+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I was not aware that G4D would work on NTFS, this changes things a bit.\nWell, no:  \n\u003e but it still looks like there is the limitation of a Fat32 FS ***as*** it is using G4D as its boot loader.\nmeans that you ASSUMED something ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png) (without any reason for it :smile:).  \n\nQuick reminder ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png):  \n[http://www.msfn.org/...o...7714\\\u0026st\u003d123](http://www.msfn.org/board/index.php?showtopic\u003d137714\u0026st\u003d123 \"External link\")   \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n@evilgoat  \nOWW come on! :smile:  \n\n\u003cbr /\u003e\n\nThis info is scatttered ALL over boot-land, 911CD and MSFN.  \n\nGoogle for \"filter driver\", \"cfadisk.sys\", \"dummydisk.sys\" or \"flipping the removable bit\".  \n\n(but you cannot until you know the above search terms :wink:)  \n\nMaybe:  \n[http://tinyurl.com/2fot393](http://tinyurl.com/2fot393 \"External link\")   \n\nYou may find a thread titled *casually* \"A Multiple Partition USB Stick with Multi Boot OS\" :smile::  \n[http://www.msfn.org/...showtopic\u003d69211](http://www.msfn.org/board/index.php?showtopic\u003d69211 \"External link\")   \n\n\u003cbr /\u003e\n\nIMNSHO, the fact that noone replied to you is not a valid reason for hijacking **darkman738** \u0027s thread.   \nEXPECIALLY because you NEVER started a NEW thread asking that question but you sneakingly asked in some other UNrelated thread:  \n[http://www.boot-land...showtopic\u003d12959](http://www.boot-land.net/forums/index.php?showtopic\u003d12959 \"External link\")  \n[http://www.boot-land...?...\u003d12959\\\u0026st\u003d3](http://www.boot-land.net/forums/index.php?showtopic\u003d12959\u0026st\u003d3 \"External link\")  \n\nAnd in that thread there was ALREADY a link to the MSFN Forum where the info you asked for (windows install from USB) is readily available.....  \n[http://www.msfn.org/...p?showforum\u003d157](http://www.msfn.org/board/index.php?showforum\u003d157 \"External link\")  \n\n![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif)  \nWonko   \n"
+    },
+    {
+      "id": "113334",
+      "timestamp": "2010-11-09T20:04:48+00:00",
+      "author": "darkman738",
+      "content": "\u003e Well, no:  \n\u003e\n\u003e means that you ASSUMED something ![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif) (without any reason for it :smile:).  \n\u003e\n\u003e Quick reminder ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png):  \n\u003e [http://www.msfn.org/...o...7714\\\u0026st\u003d123](http://www.msfn.org/board/index.php?showtopic\u003d137714\u0026st\u003d123 \"External link\")\n\nI did assume, that was my fault. But not without reason. Most of the tools I was using either implied that there was incompatibilities and almost all of them would ONLY format FAT32 or would only allow NTFS in a non-multiboot situation. I needed to RTFM, my sincerest apologizes to g4d, I did not mean to call you raciest!  \n\n\u003e Well, no:  \n\u003e @evilgoat  \n\u003e OWW come on! :wink:  \n\u003e ...  \n\u003e\n\u003e ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)  \n\u003e Wonko\n\n\u003cbr /\u003e\n\n!!!!! 9oihJRQ(H(\\*#H 93\\~\\~\\`  \n\nI LOLed!!!   \n"
+    },
+    {
+      "id": "113336",
+      "timestamp": "2010-11-09T20:14:11+00:00",
+      "author": "evilgoat",
+      "content": "how is this thread unrelated? ([http://www.boot-land...showtopic\u003d12959](http://www.boot-land.net/forums/index.php?showtopic\u003d12959 \"External link\")), the guy was doing exactly what i was doing, i explained to him how far i managed to get, which i presume was usefull information to him and at the and i also exposed where i got stuck. i was sort of hoping that him or maybe someone else would post some suggestions and we would manage to figure it out and we\u0027d both get our projects done.   \n\nand since this thread was also discussing making a stick with more then one installer of windows xp on it, booting one from a second partition of a usb stick (and if it works from a second, it will probabably from a third and forth and so on) was somewhat relevant to the discussion as well.  \n\nsorry, i didn\u0027t mean to hijack anything, but i felt that the first thread i asked in was quite to the point and starting a new thread asking the same question again would just be thick, thought a simple question in a thread discussing something similar would be more appropriate (especially that i presumed i was missing something really basic in the way i was trying to call win xp setup from the second partition and thought a one-liner answer was all it took)   \n\n**Edited by evilgoat, 09 November 2010 - 08:20 PM.**\n"
+    },
+    {
+      "id": "113337",
+      "timestamp": "2010-11-09T20:40:20+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e sorry, i didn\u0027t mean to hijack anything, but i felt that the first thread i asked in was quite to the point and starting a new thread asking the same question again would just be thick, thought a simple question in a thread discussing something similar would be more appropriate (especially that i presumed i was missing something really basic in the way i was trying to call win xp setup from the second partition and thought a one-liner answer was all it took)\nSure ![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif), but not AFTER a good ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png) pointer was given to the OP :smile:.  \n\nOP questions:  \n\u003e I want to create a usb drive with the instalation of windows 7 x86, x64 and xp.  \n\u003e\n\u003e Is this possible ?  \n\u003e\n\u003e Which tools should i use to make the multiboot menu ?\nALL replied to by the given links.  \n\nOP DID NOT ask about multiple partitions, BUT they are also discussed in the given links.  \n\nAS WELL **darkman738** didn\u0027t mention multipartitioning.  \n\n![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)  \nWonko   \n"
+    },
+    {
+      "id": "113454",
+      "timestamp": "2010-11-11T03:16:59+00:00",
+      "author": "darkman738",
+      "content": "Thanks for the suggestions all. While there is some great information about all of this, I still have not found a solution to my problem. All of these seem to involve mounting the entire ISO to memory which has an obvious problem, low memory computers. This seems like it will be a problem, as I need this solution to be as flexible as possible. Any further suggestions? Did I miss something? Anyone point out \"Hey, you apparently didn\u0027t see this post:\"  \n\nThanks   \n"
+    },
+    {
+      "id": "113501",
+      "timestamp": "2010-11-11T17:02:28+00:00",
+      "author": "cdob",
+      "content": "\u003e All of these seem to involve mounting the entire ISO to memory which has an obvious problem, low memory computers.\nHow much RAM pocess low memory computers?   \n\n\u003e Did I miss something?\nDid you read sticky at [http://www.msfn.org/...ndows-from-usb/](http://www.msfn.org/board/forum/157-install-windows-from-usb/ \"External link\") ?  \n\nUSB_MultiBoot.cmd dosn\u0027t mount a ISO at all.  \n\nWinSetupFromUSB mount a samll ISO file to RAM, size about 1mb.  \nCan you spare ONE mb to a RAM disk?  \n\nOr create a new ISO image, sort basic installation files in front.  \nRAM load part of a ISO image.   \n\nOr create a PE, use flat files.   \nBoot this PE. And install XP.   \n"
+    }
+  ]
+}

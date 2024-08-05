@@ -1,0 +1,22 @@
+{
+  "id": "5342",
+  "title": "Does HPUSBFW.exe have command line options?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "41038",
+      "timestamp": "2008-08-01T19:53:13+00:00",
+      "author": "pecd.net",
+      "content": "nightman uses \"hpusbfw.exe -f\" to format usb sticks (i believe the complete line is wrong)  \n\nShellExecute,Open,\"%basedir%\\\\Temp\\\\%ProjectName%\\\\usb\\\\HPUSBFW.exe\" -f,\"#$qg:\\\\ #$q\"  \n\nshould be (from WB help: ShellExecute,Action,\"Filename\",\"Parameters\",\"StartDir\")  \n\nShellExecute,Open,\"%basedir%\\\\Temp\\\\%ProjectName%\\\\usb\\\\HPUSBFW.exe\",\"-f\"  \n\nBut i believe the -f is a leftover from pe2usb which uses this syntax. I could nowhere find proof that hpusbfw.exe accepts any commandline arguments...  \n\nDoes anyone know more about this or can anyone confirm that nightmans original line is wrong?   \nThanks.   \n"
+    },
+    {
+      "id": "41067",
+      "timestamp": "2008-08-02T08:29:13+00:00",
+      "author": "was_jaclaz",
+      "content": "From memory I cannot recall, but I do not think it uses command line options. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nBut have you seen the newish batch by **fuwi** :  \n[http://www.911cd.net...showtopic\u003d21702](http://www.911cd.net/forums//index.php?showtopic\u003d21702 \"External link\")  \n\nIt uses NOT HPUSBF**W** .EXE, but rather the HPUSBF.EXE, i.e. the command line version.  \n\njaclaz   \n"
+    }
+  ]
+}

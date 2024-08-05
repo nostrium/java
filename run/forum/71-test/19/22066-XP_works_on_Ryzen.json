@@ -1,0 +1,88 @@
+{
+  "id": "22066",
+  "title": "XP works on Ryzen",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "211618",
+      "timestamp": "2019-06-14T17:21:38+00:00",
+      "author": "Dietmar",
+      "content": "[https://www.win-raid...1.html#msg80487](https://www.win-raid.com/t4035f45-Windows-XP-SP-bit-and-modern-PC-parts-51.html#msg80487 \"External link\")\n\nNice to hear from you\n\nDietmar\n\n"
+    },
+    {
+      "id": "211628",
+      "timestamp": "2019-06-14T20:02:57+00:00",
+      "author": "Blackcrack",
+      "content": "ohh crazy german..\n\nand, kommst Du ran an Großrechner von den rechenoperationen ?\n\nkeep it up !\n\nlooks interresting :smile:\n\nbest\n\nBlacky\n\n"
+    },
+    {
+      "id": "212152",
+      "timestamp": "2019-07-13T20:05:41+00:00",
+      "author": "Dietmar",
+      "content": "XP SP3 runs in full ACPI mode with nearly all drivers\n\non Ryzen 3700x\n\n[https://www.win-raid...8.html#msg82490](https://www.win-raid.com/t4035f45-Windows-XP-SP-bit-and-modern-PC-parts-68.html#msg82490 \"External link\")\n\nDietmar\n\n"
+    },
+    {
+      "id": "212224",
+      "timestamp": "2019-07-22T17:08:22+00:00",
+      "author": "Dietmar",
+      "content": "Yessssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaa, I got all USB 3.0 3.1 3.2 drivers to work under XP SP3 ![:party_time:](http://reboot.pro/public/style_emoticons/default/signsandflags30.gif) !!!!!\n\n[https://www.win-raid...2.html#msg83048](https://www.win-raid.com/t4035f45-Windows-XP-SP-bit-and-modern-PC-parts-72.html#msg83048 \"External link\")\n\n"
+    },
+    {
+      "id": "212225",
+      "timestamp": "2019-07-22T17:19:59+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Yessssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaa, I got all USB 3.0 3.1 3.2 drivers to work under XP SP3 ![:party_time:](http://reboot.pro/public/style_emoticons/default/signsandflags30.gif) !!!!!\n\u003e\n\u003e [https://www.win-raid...2.html#msg83048](https://www.win-raid.com/t4035f45-Windows-XP-SP-bit-and-modern-PC-parts-72.html#msg83048 \"External link\")\n\nGood :smile:, though it is not clear at all how exactly you did it.\n\nWhat is what, what is renamed what is the reference in .inf changed, etc.\n\nCould you please detail what you did in the end?\n\nAlso I cannot open the .rar attachment to your post with 7-zip, maybe it is a newer version of .rar, but cannot you use .zip or .7z so that also people without (last version of) WinRAR can open the file(s).\n\nI know I am a PITA with this, but the general idea of exchanging info is that the info exchanged is accessible to everyone or at least to most people.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "212226",
+      "timestamp": "2019-07-22T17:34:41+00:00",
+      "author": "Dietmar",
+      "content": "Hi jaclaz,\n\n**@canonkong has the idea,**\n\n**that the hardware ids VEN_\\\u0026DEV_**\n\n**for newer usb drivers are hardcoded in their xhci.sys file.**\n\n**In this morning I make a check of this with IDA pro and find, that this was true.**\n\n**From there it was only a small step:**\n\n**Just change an **VEN_\\\u0026DEV_ entry in xhci.sys****\n\n****against the generic one PCI\\\\CC_0C03****\n\n****After this, only one problem remains, that usbstor.sys was not loaded.****\n\n****And I found, that in its \\*.inf for Win7 it was named amdstor.sys.****\n\n****So renaming in that \\*.inf file at all places****\n\n****amdstor \u003d\\\u003e usbstor****\n\n****that all****\n\n****Dietmar****\n\n****PS: The best in this method is: It can be done in a lot of other drivers too.****\n\n****At once we have from today 22 July 2019 on all new compis drivers also for XP.****\n\n"
+    },
+    {
+      "id": "212227",
+      "timestamp": "2019-07-22T18:11:36+00:00",
+      "author": "Wonko the Sane",
+      "content": "Yep, now I *begin* to understand.\n\nClear is *++another++ thing* , but soon or later you will probably be able to provide some more exact details :smile:.\n\nits \\*.inf or that \\*.inf is not at all clear, do you mean usbstor.inf?\n\nor actually \\*.inf (that by convention means all files with extension .inf)\n\nor something else?\n\nIn the given thread it seems that you renamed amdstor.sys to usbstor.sys ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nIn the attached archive (which I am re-attaching as .zip so it becomes more accessible) there are a number of drivers (\\*.sys) and only one .inf (AMDXHCI.INF) and its corresponding CAT file (AMDXHCI.cat).\n\nYou clearly edited this AMDXHCI.INF, \"placing\" the usbstor.sys to BOTH %AMD_STOR (which I can understand) AND %AMD_UASP (which I cannot understand).\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko  \n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003dcd80d790d448898135322b1f0038ce32\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d16768 \"Download attachment\") [**AMD_USB_TEST_32BIT.zip**](http://reboot.pro/index.php?s\u003dcd80d790d448898135322b1f0038ce32\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d16768 \"Download attachment\") **121.98KB** 237 downloads\n\n"
+    },
+    {
+      "id": "212228",
+      "timestamp": "2019-07-22T18:38:22+00:00",
+      "author": "Dietmar",
+      "content": "Hi jaclaz,\n\nit is much more easy than anyone thought.\n\nAll usb drivers are the same.\n\nFor USB 2.0 manufactures always use the generic **now**\n\nCC_0C_0**3** Ven_DEV_ number, normal so that each device can be recogniced, just as nvme today.\n\nThis simple changes with the beginning of USB 3.0.\n\nWhat I did is just to put in again this generic value CC_0C_0**3**in xhci.sys\n\nDietmar\n\nPS: It is evel from manufactures, just for to kill XP. Now, this problem is gone.\n\nI never thought, that everybody can program its own Ven_DEV_ number in its xhci.sys file.\n\nBut exact this happens. Last (small) problem was, that usbstor.sys was not loaded,\n\nwhich I can see at Vid\\\u0026Pid 0000 0000.\n\nThen I come to the idea, that for some crazy reasons they rename usbstor.sys to amdstor.sys.\n\nIt is not enough just to rename those files, you also have to rename its whole surrounding.\n\nAnd I can see, that at every place usbstor \u003d\\\u003e amdstor, this I just reverted.\n\nUSB kill has been done for mouse, keyboard, sticks, harddisks, just crazy all.\n\n"
+    },
+    {
+      "id": "212229",
+      "timestamp": "2019-07-22T21:52:49+00:00",
+      "author": "Dietmar",
+      "content": "Not all USB3.0 USB3.1 drivers have hardcoded VEN_\\\u0026DEV_ numbers.\n\nAsmedia has, but VIA has not.\n\nSo, with the VIA driver it should be possible\n\nto generate a generic USB3.0 driver,\n\nwhich works everywhere\n\nDietmar\n\n"
+    },
+    {
+      "id": "212230",
+      "timestamp": "2019-07-23T05:23:58+00:00",
+      "author": "dencorso",
+      "content": "\u003e For USB 2.0 manufactures always use the generic **now**\n\u003e\n\u003e CC_0C_0**3** Ven_DEV_ number, normal so that each device can be recogniced, just as nvme today.\n\u003e\n\u003e This simple changes with the beginning of USB 3.0.\n\u003e\n\u003e What I did is just to put in again this generic value CC_0C_0**3**in xhci.sys\n\nIt should be CC_0C03, not CC_0C_03, just to avoid unnecessary head-scratching...\n\n0C03 is the Class Code for USB Controllers... :smile:\n\n\u003cbr /\u003e\n\n.  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "212232",
+      "timestamp": "2019-07-23T08:10:00+00:00",
+      "author": "Dietmar",
+      "content": "@dencorso\n\nIt was a mistype by me, you are right.\n\nYesterday was very late in night and whole day I work\n\nwith the USB controller\n\nDietmar\n\n"
+    },
+    {
+      "id": "212328",
+      "timestamp": "2019-08-01T23:49:23+00:00",
+      "author": "Dietmar",
+      "content": "Yesssaaaaaaaaaaaaaaaaaaaaaaaaaa USB3.0 on XP also for Intelchipset ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png) ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png) ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n[https://www.win-raid...2.html#msg83830](https://www.win-raid.com/t4035f45-Windows-XP-SP-bit-and-modern-PC-parts-82.html#msg83830 \"External link\")\n\nDietmar\n\n"
+    },
+    {
+      "id": "212363",
+      "timestamp": "2019-08-04T19:54:19+00:00",
+      "author": "Dietmar",
+      "content": "Yesssssssssssssssssssssaaaaaaaaaaaaaaaaaaa all USB3 on XP SP3 on Intel chipset on full ACPI Multiprocessor ![:cheerleader:](http://reboot.pro/public/style_emoticons/default/cheerleader.gif) ![:cheerleader:](http://reboot.pro/public/style_emoticons/default/cheerleader.gif) ![:cheerleader:](http://reboot.pro/public/style_emoticons/default/cheerleader.gif)\n\n[https://www.win-raid...6.html#msg84052](https://www.win-raid.com/t4035f45-Windows-XP-SP-bit-and-modern-PC-parts-86.html#msg84052 \"External link\")\n\nDietmar\n\n"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "12210",
+  "title": "Where can I find doc on what goes in boot.ini?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "106325",
+      "timestamp": "2010-08-06T23:50:08+00:00",
+      "author": "Fuzzy",
+      "content": "Making a Windows XP USB flash drive to install XP from.  \nI used usb_multiboot_10.cmd to create the USB flash drive.  \n\nI\u0027d like to make it so boot.ini\u0027s menu has text-mode startup so it acts mostly like   \nbooting from a cd. I\u0027d need an alternate option for booting from what the bios see\u0027s   \nas disk(0) if it isn\u0027t told to use a specific drive. Basically if user does nothing   \nboot to what ought to be c: (newly installed). Like what the cd does if you do nothing.  \n\nmy current boot.ini on the flash drive is:  \n\n\\[codebox\\] \\[Boot Loader\\] Timeout\u003d10 Default\u003dC:\\\\btsec\\\\XATSP.bs\u003d\"Attended Setup XP, Never unplug USB-Drive Until After Logon\" \\[Operating Systems\\] C:\\\\btsec\\\\XATSP.bs\u003d\"Attended Setup XP, Never unplug USB-Drive Until After Logon\" \\[/codebox\\] When I booted this by telling the BIOS to boot from the USB flash, I did get 2 entries \\[codebox\\] Attended Setup XP, Never unplug USB-Drive Until After Logon Windows \\[/codebox\\] When I chose the 1st, it did boot into the regular start of the XP installer. When I chose the 2nd it rebooted to the BIOS and eventually to the BIOS default OS. I\u0027m guessing the boot loader couldn\u0027t find windows and just gave up  \nwith a reboot?  \n\nIf C: (to the boot loader) is the boot drive, what is what the BIOS  \nwould have booted if not redirected by f12? disk(1)?  \n\n\u003cbr /\u003e\n\n\\[codebox\\]  \n\\[Boot Loader\\]  \nTimeout\u003d10  \nDefault\u003dC:\\\\btsec\\\\XATSP.bs\u003d\"Attended Setup XP, Never unplug USB-Drive Until After Logon\"  \n\\[Operating Systems\\]  \nC:\\\\btsec\\\\XATSP.bs\u003d\"Attended Setup XP, Never unplug USB-Drive Until After Logon\"  \nmulti(0)disk(1)rdisk(1)partition(1)\\\\WINDOWS\u003d\"Windows XP\"  \n\\[/codebox\\]  \n\nThanks   \n"
+    },
+    {
+      "id": "106341",
+      "timestamp": "2010-08-07T08:45:06+00:00",
+      "author": "Wonko the Sane",
+      "content": "You need some basics on BOOT.INI and arcpaths. ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \n\nStart here:  \n[http://mirror.href.c...mbr/bootini.htm](http://mirror.href.com/thestarman/asm/mbr/bootini.htm \"External link\")  \n[http://support.micro...kb/833721/en-us](http://support.microsoft.com/kb/833721/en-us \"External link\")  \n[http://support.micro...kb/102873/en-us](http://support.microsoft.com/kb/102873/en-us \"External link\")  \n\nThe \"Windows\" in your example is generated \"automagically\" by the NTLDR since in BOOT.INI you have just one entry which is NOT of the type:  \nmulti(***x*** )disk(***y*** )rdisk(***z*** )partition(***w*** )\\\\***\\\u003crelative path to windows\\\u003e***   \n\nIf there is no windows, it won\u0027t obviously boot. (the default for XP is C:\\\\Windows).  \n\nThe second is wrong since in multi() syntax:  \n\n* ***x*** is ALWAYS 0 (zero)\n* ***y*** is ALWAYS 0 (zero)\n* ***z*** is actual disk number (starts from 0)\n* ***w*** is actual partition number (start from 1)\n\n\u003cbr /\u003e\n\nExample:  \n[http://www.msfn.org/...showtopic\u003d25365](http://www.msfn.org/board/index.php?showtopic\u003d25365 \"External link\")  \n\n![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \nWonko   \n"
+    },
+    {
+      "id": "106362",
+      "timestamp": "2010-08-07T18:24:47+00:00",
+      "author": "Fuzzy",
+      "content": "Thank for the reference ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\nOk - I see that multi(0)disk(0)rdisk(0)partition(1) refers   \nto primary master on 1st ide controller. I thought it refered   \nto the boot drive. I guess when the boot loader is running   \nthe c: drive is the boot drive for syntax like:  \nC:\\\\btsec\\\\XATSP.bs but the full path still refers to   \nthe hardware address.  \n\nSo for my purposes, if I leave out the Windows entry   \ncompletely, NTLDR will add one pointing to c:\\\\WINDOWS  \nif there are no multi() entries.   \n\nSince the USB flash drive doesn\u0027t have a \\\\WINDOWS  \ndirectory NTLDR couldn\u0027t find windows to load.  \nIt returned to the BIOS and that booted normally  \nand reran NTLDR from multi(0)disk(0)rdisk(0)partition(1)  \nand that booted its default of rdisk(0)partition(1).  \n\nSo I should specify the multi(0)disk(0)rdisk(0)partition(1)  \nentry to provide a way to boot the newly installed XP.  \nIf I don\u0027t do anything the BIOS will boot to partiton(1)  \nand if I point to the USB drive, NTLDR will default to  \nmulti(0)disk(0)rdisk(0)partition(1) which is the right   \nthing to do. It should behave just like the install CD\u0027s  \nboot loader and default to do nothing and boot from the   \nhard drive.  \n\nFuz   \n"
+    },
+    {
+      "id": "106365",
+      "timestamp": "2010-08-07T19:21:11+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Ok - I see that multi(0)disk(0)rdisk(0)partition(1) refers   \n\u003e to primary master on 1st ide controller.\n\nNOT really.  \n\nIt refers to first partition on FIRST hard disk (which is normally the one you have first in boot sequence, i.e. in your case the bootable USB device).  \n\nYou need to exchange BIOS drives within grub4dos to have the IDE drive as first disk.  \n\nFor a number of strange reasons, a path like:  \n\u003e C:\\\\btsec\\\\XATSP.bs\nactually means \"\\\\btsec\\\\XATSP.bs\" on the SAME drive NTLDR and BOOT.INI are. (or if you prefer, a bootsector to be chainloaded from a BOOT.INI must reside on the same drive the BOOT.INI is, and since NTLDR loads only BOOT.INI from the same drive it is, this means that everything needs to be on the \"boot\" drive, i.e. FIRST BIOS drive, i.e. (hd0) in grub4dos).   \n\n![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \nWonko   \n"
+    },
+    {
+      "id": "106457",
+      "timestamp": "2010-08-09T18:05:19+00:00",
+      "author": "Fuzzy",
+      "content": "I follow the path C:\\\\btsec\\\\XATSP.bs meaning that. NTLDR has access  \nto its own drive so syntacticaly it\u0027s C:.   \n\nSo how I do figure out what the BIOS thinks the primary master drive is?   \n\nThat is, for boot.ini on the flash drive to correctly boot to the   \nnewly created C:\\\\WINDOWS on the primary master drive, do I tell it   \nmulti(0)disk(0)rdisk(1)partition(1), because while its still booting  \nfrom the USB that\u0027s rdrive(0), so the next in line should be the  \nfirst known bootable drive after the USB drive, yes? ![:mellow:](http://reboot.pro/public/style_emoticons/default/mellow.png)   \nI figured ntldr from the USB would load the windows from the   \nhard drive and get to the gui screens to finish installing?  \n\nThanks   \n"
+    },
+    {
+      "id": "106483",
+      "timestamp": "2010-08-10T08:30:06+00:00",
+      "author": "Wonko the Sane",
+      "content": "Yes :smile:, when you boot from USB a HD-like device, the USB (stick or HD) becomes FIRST disk (i.e. rdisk(0)) effectively \"shifting\" all other disks up one place.  \nSo FIRST internal hard disk becomes SECOND disk (i.e. rdisk(1)).  \n\nWhat the Windows Install from USB does (by using some smoke and a lot of mirrors ![:mellow:](http://reboot.pro/public/style_emoticons/default/mellow.png)) is to exchange positions of the drives through grub4dos:  \n\n```\nmap \u0026#40;hd0\u0026#41; \u0026#40;hd1\u0026#41;\n\nmap \u0026#40;hd1\u0026#41; \u0026#40;hd0\u0026#41;\n\nmap --hook\n```\n\n\u003cbr /\u003e\n\nas to put everything back in it\u0027s place.  \n\nIf you are making modifications to the way it works now, you should also read the historical thread where all this things have been tested/solved:  \n[http://www.msfn.org/...showtopic\u003d61384](http://www.msfn.org/board/index.php?showtopic\u003d61384 \"External link\")  \n\nNow, if you care to expand on this:  \n\u003e I\u0027d like to make it so boot.ini\u0027s menu has text-mode startup so it acts mostly like   \n\u003e booting from a cd. I\u0027d need an alternate option for booting from what the bios see\u0027s   \n\u003e as disk(0) if it isn\u0027t told to use a specific drive. Basically if user does nothing   \n\u003e boot to what ought to be c: (newly installed). Like what the cd does if you do nothing.\n\nthere may be ways to do everyting in grub4dos....  \n\n![:mellow:](http://reboot.pro/public/style_emoticons/default/mellow.png)  \nWonko   \n"
+    }
+  ]
+}

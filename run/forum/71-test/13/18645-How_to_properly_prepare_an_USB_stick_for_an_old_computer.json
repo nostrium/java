@@ -1,0 +1,34 @@
+{
+  "id": "18645",
+  "title": "How to properly prepare an USB stick for an old computer?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "173891",
+      "timestamp": "2013-06-21T08:03:23+00:00",
+      "author": "konstantin_hu",
+      "content": "Hi!  \n\nI have an old PC from 2002 (Kobian KT266a FDSX + Athlon XP 1.8 Ghz) it has no hard disk but I made a 16 GB USB stick with Arch Linux to use it somehow. The only problem is that my old motherboard doesn\u0027t want to boot from the USB stick. Theoretically it has the ability to boot from a wide range of USB devices, the options are available in the BIOS menus. Latest BIOS (2.2a) was installed years ago.  \n\nI tried several USB sticks (128 MB, 512 MB, 16 GB) with several boot managers/loaders (GRUB, Syslinux, Plop, PlopKExec, Smart Boot Manager) and I realized that the 128 MB USB stick works but only with Smart Boot Manager and only when the extended INT 13H BIOS functions are disabled in the Smart Boot Manager. Unfortunatley the loading of any operating system is still buggy, even DOS / Win 98 boot disk can not be loaded / booted. With the help of PlopKExec I managed to achieve that the computer boots from a CD and then the boot sequence are continued from the USB stick.  \n\nMaybe I have to properly prepare the USB stick eg. appropriate file system, FAT16 or FAT32 and partition table, custom MBR code, CHS mode, USB ZIP emulation?\n\nWhat tool(s) should I use for these purposes if I don\u0027t have Windows installed at all? (However I have installed\n\nFreeDos in the Virtualbox)\n\nHow can I test the booting quickly? Is there any Freedos/linux distro which can be quickly written to the USB stick to test if it can boot on my old computer?\n\n"
+    },
+    {
+      "id": "173896",
+      "timestamp": "2013-06-21T09:56:03+00:00",
+      "author": "steve6375",
+      "content": "Do you only have access to a linux system or do you also have access to a Windows computer?\n\n"
+    },
+    {
+      "id": "173908",
+      "timestamp": "2013-06-21T20:54:44+00:00",
+      "author": "Wonko the Sane",
+      "content": "UNfortunately there is not (in the case of \"pesky\" BIOSes) real \"one-size-fits-all\" solutions (but there are tests that can be made and various possible approaches).\n\nAs a \"rule of thumb\" you should go through the points in the FAQ#10 here:\n\n[http://jaclaz.alterv...SB/USBfaqs.html](http://jaclaz.altervista.org/Projects/USB/USBfaqs.html \"External link\")\n\nSince you have a 128 Mb USB stick, you can also check the old connected page \"numbers\" would apply \"as they are\":\n\n[http://jaclaz.alterv...B/USBstick.html](http://jaclaz.altervista.org/Projects/USB/USBstick.html \"External link\")\n\nbasically your note about int13h makes me think that the BIOS only boots in CHS mode.\n\nIf this is the case, only the 128 Mb and the 512 Mb will probably work and the 16 Gb won\u0027t ever work (unless you make a smaller volume in it).\n\nA thing that you can do is to make (on any stick) two partitions (one \"real\" and one \"fake\" as RMPREPUSB does or two \"real\" ones as in the mentioned page).\n\nNext attempt could be that of try using makebootfat (of which there is a windows and a linux version):\n\n[http://advancemame.s...oot-readme.html](http://advancemame.sourceforge.net/boot-readme.html \"External link\")\n\nA small howto/some detail (for the windows version but the linux one won\u0027t be much different) are here:\n\n[http://www.911cd.net...pic\u003d13784\\\u0026st\u003d44](http://www.911cd.net/forums//index.php?showtopic\u003d13784\u0026st\u003d44 \"External link\")\n\n[http://www.911cd.net...ic\u003d10806\\\u0026st\u003d134](http://www.911cd.net/forums//index.php?showtopic\u003d10806\u0026st\u003d134 \"External link\")\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "173919",
+      "timestamp": "2013-06-22T08:41:12+00:00",
+      "author": "konstantin_hu",
+      "content": "Thx, meanwhile I realized that Syslinux doesn\u0027t work on my old PC, but GRUB boots fine.\n\n"
+    }
+  ]
+}

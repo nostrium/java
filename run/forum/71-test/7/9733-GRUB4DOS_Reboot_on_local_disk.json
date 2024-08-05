@@ -1,0 +1,88 @@
+{
+  "id": "9733",
+  "title": "GRUB4DOS - Reboot on local disk",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "84497",
+      "timestamp": "2009-11-16T13:08:47+00:00",
+      "author": "kciope",
+      "content": "Hello,  \n\nI have a usb key wich boot an personnal PE, it\u0027s work. But i would like to add an option to boot on the local hard disk, and i didn\u0027t find the solution. I\u0027ve tested lot of things :  \n\n```\nmap \u0026#40;hd1\u0026#41; \u0026#40;hd0\u0026#41;\n\nchainloader \u0026#40;hd1,0\u0026#41;/ntldr\n\nrootnoverify \u0026#40;hd1\u0026#41;\n```\n\n\u003cbr /\u003e\n\nand also  \n\n```\nmap \u0026#40;hd1\u0026#41; \u0026#40;hd0\u0026#41;\n\nchainloader \u0026#40;hd0,0\u0026#41;/ntldr\n\nrootnoverify \u0026#40;hd0\u0026#41;\n```\n\n\u003cbr /\u003e\n\nand many things else but it\u0027s still doesn\u0027t work  \nHelp me please. ;)   \n\n\u003cbr /\u003e\n\nPs: Excuse me if i make mistake in my poor english. :(   \n"
+    },
+    {
+      "id": "84499",
+      "timestamp": "2009-11-16T13:18:14+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I have a usb key wich boot an personnal PE, it\u0027s work. But i would like to add an option to boot on the local hard disk, and i didn\u0027t find the solution. I\u0027ve tested lot of things :  \n\u003e ....\n\nMapping is quite pointless, if you don\u0027t **--hook** it, but you are also making a conceptual error, you don\u0027t **rootnoverify** unless there is a valid reason why **root** doesn\u0027t work, and you do not **root** or **rootnoverify** to the whole hard disk!  \n\nIf you boot from the USB stick, it will bacome (hd0), effectively \"shifting\" your internal hard disk to (hd1).  \nThus you need to exchange drive.  \n\nLearn to use Command Line when experimenting, inclding \\[TAB\\] autocompletion.  \n[http://diddy.boot-la...iles/basics.htm](http://diddy.boot-land.net/grub4dos/files/basics.htm \"External link\")  \n[http://diddy.boot-la...s/files/cli.htm](http://diddy.boot-land.net/grub4dos/files/cli.htm \"External link\")  \n\n\u003cbr /\u003e\n\nTry this:  \n\n```\nmap \u0026#40;hd0\u0026#41; \u0026#40;hd1\u0026#41;\n\nmap \u0026#40;hd1\u0026#41; \u0026#40;hd0\u0026#41;\n\nmap --hook\n```\n\nthe above exchanges drives.  \n\n```\nroot \u0026#40;hd0,0\u0026#41;\n```\n\nthis sets **root** to first hard disk partition  \n\n```\nchainloader +1\n\nboot\n```\n\nwill boot the partition bootrecord or PBR  \n\n**OR**   \n\n```\nchainloader /ntldr\n\nboot\n```\n\nwill boot a ntldr on first hard disk partition  \n\nRead the guide about mapping:  \n[http://diddy.boot-la...s/files/map.htm](http://diddy.boot-land.net/grub4dos/files/map.htm \"External link\")  \n(Disk Swapping)  \n\njaclaz   \n"
+    },
+    {
+      "id": "84507",
+      "timestamp": "2009-11-16T15:14:14+00:00",
+      "author": "kciope",
+      "content": "Now i try :  \n\n```\ntitle 01. Booter sur le disque dur\n\nmap \u0026#40;hd0\u0026#41; \u0026#40;hd1\u0026#41;\n\nmap \u0026#40;hd1\u0026#41; \u0026#40;hd0\u0026#41;\n\nmap --hook\n\nroot \u0026#40;hd0,0\u0026#41;\n\nchainloader /ntldr\n\nboot\n```\n\n\u003cbr /\u003e\n\nbut it still booting on my usb key. I don\u0027t understand.  \nI\u0027ll try to read and understand your links, but if you have any idea, it would be great.  \nthank\u0027s   \n"
+    },
+    {
+      "id": "84509",
+      "timestamp": "2009-11-16T15:38:10+00:00",
+      "author": "maanu",
+      "content": "check if you have \" boot.ini \" on your flash drive root .   \n\ntry the following ,  \n\ncheckrange 0x80 read 0x8280 \\\u0026\\\u0026 map (hd1) (hd0)  \ncheckrange 0x80 read 0x8280 \\\u0026\\\u0026 map --hook  \nchainloader (hd0)+1  \nboot  \n\ngive commands one by one.   \n"
+    },
+    {
+      "id": "84510",
+      "timestamp": "2009-11-16T15:45:46+00:00",
+      "author": "Arvy",
+      "content": "Try  \nchainloader (hd0,0)/ntldr   \n\nAlso, remember that grub4dos is case sensitive. NTLDR or ntldr?   \n"
+    },
+    {
+      "id": "84556",
+      "timestamp": "2009-11-17T06:42:27+00:00",
+      "author": "kciope",
+      "content": "\u003e check if you have \" boot.ini \" on your flash drive root .   \n\u003e\n\u003e try the following ,  \n\u003e\n\u003e checkrange 0x80 read 0x8280 \\\u0026\\\u0026 map (hd1) (hd0)  \n\u003e checkrange 0x80 read 0x8280 \\\u0026\\\u0026 map --hook  \n\u003e chainloader (hd0)+1  \n\u003e boot  \n\u003e\n\u003e give commands one by one.\nYesss! it\u0027s work thank you. But, for the moment i don\u0027t understand everything...   \n"
+    },
+    {
+      "id": "84559",
+      "timestamp": "2009-11-17T10:27:34+00:00",
+      "author": "maanu",
+      "content": "\u003e Yesss! it\u0027s work thank you. But, for the moment i don\u0027t understand everything...\n\nyou are welcome . you ll need some time to understand everything . in fact i dont know everything . but still i seek for it . and you should do the same . just stick around . search ,observe ,test and report back . thats it.   \n\nGood Luck .   \n"
+    },
+    {
+      "id": "84582",
+      "timestamp": "2009-11-17T16:45:12+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Try  \n\u003e chainloader (hd0,0)/ntldr   \n\u003e\n\u003e Also, remember that grub4dos is case sensitive. NTLDR or ntldr?\n\nJust for the record, **NO** , grub4dos is ***NOT*** case sensitive on:  \n\n* FAT12\n* FAT16\n* FAT32\n* NTFS\n\n\u003cbr /\u003e\n\nIt ***IS*** CaSe SeNsItIvE on CDFS and Ext2/Ext3FS:  \n[http://www.boot-land...?...\u003d7173\\\u0026st\u003d17](http://www.boot-land.net/forums/index.php?showtopic\u003d7173\u0026st\u003d17 \"External link\")  \n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "85014",
+      "timestamp": "2009-11-22T22:39:34+00:00",
+      "author": "Icecube",
+      "content": "Some explanation about the following code:  \n\n```\ncheckrange 0x80 read 0x8280 \u0026\u0026 map \u0026#40;hd1\u0026#41; \u0026#40;hd0\u0026#41;\n\ncheckrange 0x80 read 0x8280 \u0026\u0026 map --hook\n\nchainloader \u0026#40;hd0\u0026#41;+1\n\nboot\n```\n\n```\ncheckrange 0x80 read 0x8280\n```\n\nThis will compare the BIOS drive number of the boot device, which can be found at memory address 0x8280 with 0x80 (is the same drive as hd0).  \n\n```\n\u0026\u0026\n```\n\nOnly execute the command after \"\\\u0026\\\u0026\" if the command before \"\\\u0026\\\u0026\" succeeded.  \n\n```\ncheckrange 0x80 read 0x8280 \u0026\u0026 map \u0026#40;hd1\u0026#41; \u0026#40;hd0\u0026#41;\n\ncheckrange 0x80 read 0x8280 \u0026\u0026 map --hook\n```\n\nWhen the boot device is 0x80 (\u003dhd0), map drive (hd1) to (hd0), so the disk that contains Windows, is now available as (hd0).  \n\nWhen you boot from floppy or your USB stick is recognized as a (super)floppy, this mapping is not applied (BIOS drive number for floppy is: 0x00 or 0x01 if you have more floppy drives). The drive that contains Windows is already available as (hd0) in that case.   \n"
+    },
+    {
+      "id": "85148",
+      "timestamp": "2009-11-24T22:56:31+00:00",
+      "author": "Jack57",
+      "content": "Hello all  \n\ni\u0027ve got the same probléme but a little bit différent as above: i don\u0027t want to boot any partition on the 1st hard disk, i want to boot on the Master Boot Record of the 1st hard disk like a normal boot computeur  \ni tried the différents command but still don\u0027t work for me  \n\ndo you have an idea  \n\nthanks for help me  \n\n@++  \n\nJ@ck57   \n"
+    },
+    {
+      "id": "85149",
+      "timestamp": "2009-11-24T23:04:10+00:00",
+      "author": "Jack57",
+      "content": "This command   \n\n\\[codebox\\]title - Boot Sur Le 1er Disque Dur - map --hook\\[/codebox\\] give me Error 61: Refuse to hook int13 because of empty drive map table  \n\ni tried it in a vmware   \n"
+    },
+    {
+      "id": "85150",
+      "timestamp": "2009-11-24T23:08:47+00:00",
+      "author": "Jack57",
+      "content": "Sorry i found my way alone in this  \n\nMaster Boot Record (MBR)  \n\nThe Master Boot Record (or MBR) is always the first sector of a hard disk (sector 1). It contains the disks primary partition table, identifying which partition is marked as active (the active partition is the device boot partition). It is possible to boot a hard disk MBR by using the chainloader command. To boot the MBR of the first hard disk we would use the following command -  \n\n\\[codebox\\]title Boot MBR of First Hard Disk  \nchainloader (hd0)+1  \nrootnoverify (hd0)\\[/codebox\\]  \n\nWhere (hd0) is the whole of the first disk, (hd1) would be used to boot the MBR of the second hard disk, etc. The \"+\" symbol is used to specify a blocklist - in this case +1 is the first sector of the device (hd0). A block list is used for specifying a file that doesn\u0027t appear in the filesystem, like a chainloader.  \n\n@++  \n\nJ@ck   \n"
+    },
+    {
+      "id": "99084",
+      "timestamp": "2010-04-29T14:47:34+00:00",
+      "author": "soy",
+      "content": "\u003e Some explanation about the following code:  \n\u003e\n\u003e ```\n\u003e checkrange 0x80 read 0x8280 \u0026\u0026 map \u0026#40;hd1\u0026#41; \u0026#40;hd0\u0026#41;\n\u003e\n\u003e checkrange 0x80 read 0x8280 \u0026\u0026 map --hook\n\u003e\n\u003e chainloader \u0026#40;hd0\u0026#41;+1\n\u003e\n\u003e boot\n\u003e ```\n\u003e\n\u003e ```\n\u003e checkrange 0x80 read 0x8280\n\u003e ```\n\u003e\n\u003e This will compare the BIOS drive number of the boot device, which can be found at memory address 0x8280 with 0x80 (is the same drive as hd0).  \n\u003e\n\u003e ```\n\u003e \u0026\u0026\n\u003e ```\n\u003e\n\u003e Only execute the command after \"\\\u0026\\\u0026\" if the command before \"\\\u0026\\\u0026\" succeeded.  \n\u003e\n\u003e ```\n\u003e checkrange 0x80 read 0x8280 \u0026\u0026 map \u0026#40;hd1\u0026#41; \u0026#40;hd0\u0026#41;\n\u003e\n\u003e checkrange 0x80 read 0x8280 \u0026\u0026 map --hook\n\u003e ```\n\u003e\n\u003e When the boot device is 0x80 (\u003dhd0), map drive (hd1) to (hd0), so the disk that contains Windows, is now available as (hd0).  \n\u003e\n\u003e When you boot from floppy or your USB stick is recognized as a (super)floppy, this mapping is not applied (BIOS drive number for floppy is: 0x00 or 0x01 if you have more floppy drives). The drive that contains Windows is already available as (hd0) in that case.\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\nHot to use the code please? ![:mellow:](http://reboot.pro/public/style_emoticons/default/mellow.png)   \n"
+    }
+  ]
+}

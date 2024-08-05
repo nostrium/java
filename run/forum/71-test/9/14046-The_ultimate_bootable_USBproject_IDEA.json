@@ -1,0 +1,58 @@
+{
+  "id": "14046",
+  "title": "The ultimate bootable USB-project (IDEA)",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "124507",
+      "timestamp": "2011-03-10T12:22:41+00:00",
+      "author": "doestergaard",
+      "content": "Hi everyone!  \nThis will be my first post here, so I hope you will make me feel welcome. ![:rolleyes:](http://reboot.pro/public/style_emoticons/default/rolleyes.gif)  \n\nI have tried almost any USB-MultiBoot application out there, but all with the same result - NOT WORKING AS EXPECTED!  \n\nWhen it comes to install operating systems from USB, I came across, that Windows - especially XP, had problems with booting the Setup - causing a BSOD \"Blue Screen of Death\" after loading setup-files. I believe many have the same issue, if not lucky you ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nThis what i got in mind:  \n\nMaking a full capable MultiBoot USB with all the windows os installations. (ISO\u0027s or folder)  \n\nPossibility for a user to make his own menu.lts, with a step-by-step guide - making it more user-friendly  \n\nA full menu with all your OS/Tools/etc.  \n\nPossibility to add more OS/Tools/etc. when you need it.  \n\n\u003cbr /\u003e\n\nHope somebody will work with me on this. I know a little bit about coding, but I\u0027m not a master ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\nThanks in advance!  \n\nGreetings,  \nDaniel   \n"
+    },
+    {
+      "id": "124508",
+      "timestamp": "2011-03-10T12:25:41+00:00",
+      "author": "doestergaard",
+      "content": "EDIT: forgot to mention, that this of cause also can be possible installing other os, like linux, ubuntu. Short: All OS\u0027es should be capable.   \n"
+    },
+    {
+      "id": "124514",
+      "timestamp": "2011-03-10T13:05:17+00:00",
+      "author": "Brito",
+      "content": "Hi and welcome!  \n\nHow would this idea differ from tools already available here at reboot.pro such as:  \n\nSardu - \u003chttp://reboot.pro/forum/100/\u003e  \nXBOOT - \u003chttp://reboot.pro/forum/126/\u003e  \nLiLi - \u003chttp://reboot.pro/forum/127/\u003e  \n\nPerhaps you would be available to help these projects get better?  \n\n:smile:   \n"
+    },
+    {
+      "id": "124528",
+      "timestamp": "2011-03-10T16:00:27+00:00",
+      "author": "doestergaard",
+      "content": "Yes, until now I have been working on my own MultiBoot USB, knowing about Grub, menues and ISO support. Problem is, that the Grub bootloader doesn\u0027t work as expected, giving different erroes. That\u0027s what i wanna change. :smile:  \n\nI will post how far I am until now later.  \n\nThanks for reply  \n\n/ Daniel   \n"
+    },
+    {
+      "id": "127657",
+      "timestamp": "2011-04-29T22:18:00+00:00",
+      "author": "creno",
+      "content": "[USB CD Emulator](http://renosite.com \"External link\") - Mayby this is something you might want to check out. At least the code is open source and will save you having to start from scratch like I did when I started 2 years ago.  \n\nThere is some sourceforge links to the code repository in the sites forum.  \n\nThere are two projects, 1 - slow but cheep and 2 - fast but a little more work/money to get going.  \n\nWorks with every iso file I have used to date.   \n"
+    },
+    {
+      "id": "127664",
+      "timestamp": "2011-04-29T23:56:53+00:00",
+      "author": "statica",
+      "content": "Hi  \n\nI have made a multiboot USB with different Windows installations and other programs/tools which I use for my work as im an IT-Technician and it is nice to have 1 usb stick with all the tools you normally carry around on several dvds.  \n\nHere is a list of what is on my multiboot USB and all these are tested and working:  \n\nWindows 7 installation  \n\nXP Pro Installation  \n\nWin7PE  \n\nLiveXP  \n\nUltimate Boot CD 5.03  \n\nMemtest86+ 4.10  \n\nEaseus Disk Copy 2.3  \n\nF-Secure Rescue CD  \n\nKaspersky Rescue CD  \n\nBarts Disktool   \n\nWindows Password Remover  \n\nPartition Wizard 5  \n\n\u003cbr /\u003e\n\nAll this fits on a **EDIT:** 4GB and not 2GB USB stick and is tested but as there are some older computers which cant handle USB boot to well I have had 1-2 times where a program wouldnt work.  \n\n\u003cbr /\u003e\n\nSo if you need help with your project then I will help with my trial and error experience ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)   \n\n**Edited by statica, 29 April 2011 - 11:58 PM.**\n"
+    },
+    {
+      "id": "127665",
+      "timestamp": "2011-04-30T00:15:59+00:00",
+      "author": "L A M A",
+      "content": "This reminds me of that \"God on USB stick thread\" by OneRing2Rule ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n\n\u003chttp://reboot.pro/13293/\u003e   \n"
+    },
+    {
+      "id": "127756",
+      "timestamp": "2011-05-01T16:10:02+00:00",
+      "author": "steve6375",
+      "content": "You may find the tutorials on my website useful. Click on the link in my signature below.  \n\ne.g. tutorial 32 to install Windows 7 \\\u0026 Vista and SVR2K8 from same USB stick (with all files kept as unmodified iso files) + many others.   \n"
+    }
+  ]
+}

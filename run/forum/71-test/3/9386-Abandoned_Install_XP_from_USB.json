@@ -1,0 +1,22 @@
+{
+  "id": "9386",
+  "title": "[Abandoned] Install XP from USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "51562",
+      "timestamp": "2008-12-06T17:47:19+00:00",
+      "author": "LuigiL",
+      "content": "Please help, I am very new to all this but I was able to follow every step and get my usb to boot setup, but when I choose my C: drive i get this error message:  \n\n\u003cbr /\u003e\n\n\" The following value in the .SIF file used by setup is corrupted or missing:  \n\nValue 0 on the line in section \\[sourcedisksfiles\\] with key \"sp3.cab\"  \n\nSetup cannot continue. To quit setup press F3 \"  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nwhat should I do?   \n"
+    },
+    {
+      "id": "51565",
+      "timestamp": "2008-12-06T18:17:58+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Please help, I am very new to all this but I was able to follow every step and get my usb to boot setup, but when I choose my C: drive i get this error message:  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e \" The following value in the .SIF file used by setup is corrupted or missing:  \n\u003e\n\u003e Value 0 on the line in section \\[sourcedisksfiles\\] with key \"sp3.cab\"  \n\u003e\n\u003e Setup cannot continue. To quit setup press F3 \"  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e what should I do?\n\nI would suspect that you have value 0 in section \\[sourcediskfiles\\] with key \"sp3.cab\" either corrupted or missing. :smile:  \n\n\u003cbr /\u003e\n\nWhich source did you use?  \nHow did you slipstream SP3 to it?  \nWhich options did you choose when running USB_MultiBoot_10?  \netc., etc...  \n\nWhile pondering about the above questions, take some time reading Rules, \"Common Sense Advice\" within them, and expecially point #d:  \n[http://www.boot-land...?act\u003dboardrules](http://www.boot-land.net/forums/index.php?act\u003dboardrules \"External link\")  \n\nFor the moment, only possible reply is standard reply #32 ![:(](http://reboot.pro/public/style_emoticons/default/sad.png):  \n[http://www.boot-land...?showtopic\u003d2587](http://www.boot-land.net/forums/?showtopic\u003d2587 \"External link\")  \n\njaclaz   \n"
+    }
+  ]
+}

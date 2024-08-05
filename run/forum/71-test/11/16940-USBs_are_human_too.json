@@ -1,0 +1,40 @@
+{
+  "id": "16940",
+  "title": "USBs are human too.",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "155152",
+      "timestamp": "2012-05-24T11:41:14+00:00",
+      "author": "betrand",
+      "content": "I had a problem with a cruzer Swith 8gig stick.  \nmein grosse problem occured when I tried to backup some files (:/).  \nThe copying stopped.  \nA message appeared. (whatever)  \nI unplugged, replugged.  \nNew Usb device, 68MB! :smile:  \nAlso, it renamed.  \nGoogle.  \n[http://forums.sandis...ght/false#M2013](http://forums.sandisk.com/t5/All-SanDisk-USB-Flash-Drives/Cruzer-Blade-will-not-format/m-p/263749/highlight/false#M2013 \"External link\")  \n\nI opened in Hxd, to view the drive. 00. Zephir!  \n\nPhotorec and another recovery tool, nothing.  \n\nI left it. Came back today, :smile: the thing works. My files are still there, happily.  \n(The files are happy)  \nConclusion, If you ever have a similar problem, just let the Usb rest, it will be gratefull and work again.   \n"
+    },
+    {
+      "id": "155170",
+      "timestamp": "2012-05-24T16:04:37+00:00",
+      "author": "MedEvil",
+      "content": "Yes, USB-Stick now fight too, for a 40 hour work week. :wink:  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "155184",
+      "timestamp": "2012-05-24T20:07:03+00:00",
+      "author": "saddlejib",
+      "content": "Usb\u0027s sticks live a life of their own,  \nThey are perhaps the only free spirits left in this society,  \nThey\u0027ve ignored the the economic meltdown and many other things,  \nTheir obstinacy is legendary as HP and Steve 6\\*\\*\\* has found out, if the strick, bios or O\u0027S does\u0027nt screw it for you the stick will .  \nSadly their reign won\u0027t be forever someone will will tame them but meanwhile lets sleep easy in our beds   \n"
+    },
+    {
+      "id": "155185",
+      "timestamp": "2012-05-24T20:14:58+00:00",
+      "author": "pscEx",
+      "content": "![:1st:](http://reboot.pro/public/style_emoticons/default/1st.gif)  \n\nI needed many days and trials of several sticks to boot from my multiPE USB created stick!  \n\nPeter   \n"
+    },
+    {
+      "id": "155186",
+      "timestamp": "2012-05-24T21:37:15+00:00",
+      "author": "saddlejib",
+      "content": "This helps sometimes  \n\n[http://www.uwe-siebe...rivecleanup.zip](http://www.uwe-sieber.de/files/drivecleanup.zip \"External link\")  \n\nFrom here  \n\n[http://www.uwe-siebe...drivetools.html](http://www.uwe-sieber.de/drivetools.html \"External link\")  \n\nAlso but rarely a complete shutdown, power off, when testing.  \n\nAber alles,  \n**Zu viel Arbeit**   \n"
+    }
+  ]
+}

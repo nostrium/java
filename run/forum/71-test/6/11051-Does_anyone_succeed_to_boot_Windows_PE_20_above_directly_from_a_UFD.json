@@ -1,0 +1,46 @@
+{
+  "id": "11051",
+  "title": "Does anyone succeed to boot Windows PE (2.0 above) directly from a UFD?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "97375",
+      "timestamp": "2010-04-09T03:04:43+00:00",
+      "author": "yundm",
+      "content": "Hello, everyone:  \nI wan to boot Windows PE (2.0 above) directly from a UFD ,but fail.  \nAccording to PE (2.1) manual \"Create a Bootable Windows PE RAM Disk on Hard Disk\", in the end:  \n\n\"**You can also boot Windows PE directly from a CD-ROM or a UFD, not into memory (RAM).** This method requires that you make two changes to the current BCD sample. In Step 4, change both references from partition\u003dc: to partition\u003dboot. For a CD-ROM, you must still create an .iso file and then burn the image onto a CD-ROM. For a UFD, you can copy the source files directly to a UFD device. \"  \n\nBut it seems to be invalid.  \n\nDoes anyone succeed to boot Windows PE (2.0 above) directly from a UFD?  \n\nHow can I do?   \n"
+    },
+    {
+      "id": "97382",
+      "timestamp": "2010-04-09T04:34:09+00:00",
+      "author": "amalux",
+      "content": "Hi yundm ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nI am currently booting a Win7PE ISO from UFD (or HDD) by adding the following to my grub menu.lst:  \n\u003e title W7PEX - ISO  \n\u003e find --set-root --ignore-floppies --ignore-cd /W7PEX.ISO  \n\u003e uuid ()  \n\u003e map /W7PEX.ISO (0xff) \\|\\| map --mem /W7PEX.ISO (0xff)  \n\u003e map --hook  \n\u003e root (0xff)  \n\u003e chainloader (0xff) \\|\\| chainloader (0xff)/bootmgr\n\nHope that helps ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "97384",
+      "timestamp": "2010-04-09T05:00:36+00:00",
+      "author": "dera",
+      "content": "try  \nbcdedit.exe /store %TargetDir%\\\\boot\\\\bcd /set {default} device boot  \nbcdedit.exe /store %TargetDir%\\\\boot\\\\bcd /set {default} osdevice boot  \nand try [UsbBootWatcher](http://www.911cd.net/forums//index.php?showtopic\u003d22473 \"External link\")   \n"
+    },
+    {
+      "id": "97385",
+      "timestamp": "2010-04-09T05:00:42+00:00",
+      "author": "dera",
+      "content": "the following works for me:  \n\n1. format the UFD using [RMPrepUSB](http://www.boot-land.net/forums/index.php?showtopic\u003d7739 \"External link\"),   \nboot options: Vista/Win7 bootable (BOOTMGR)(CC4)  \nfilesystem: NTFS  \n\n2. copy the winpe files to the UFD (my UFD is drive letter h:)  \ncopy c:\\\\winpe_x86\\\\ISO\\\\bootmgr h: /y  \nxcopy c:\\\\winpe_x86\\\\ISO\\\\boot\\\\\\*.\\* h:\\\\boot\\\\ /e /f  \n\"c:\\\\Program Files\\\\Windows AIK\\\\Tools\\\\x86\\\\imagex.exe\" /apply c:\\\\winpe_x86\\\\ISO\\\\sources\\\\boot.wim 1 h:  \n\n3. create the new BCD (my UFD is drive letter h:)  \n\n```\nset path\u003dh:\\boot\\BCDdel %path%bcdedit.exe -createstore %path%bcdedit.exe -store %path% -create {bootmgr} /d \"Boot Manager\"bcdedit.exe -store %path% -set {bootmgr} device bootbcdedit.exe -store %path% -set {bootmgr} timeout 10for /f \"tokens\u003d3\" %%a in (\u0026#39;bcdedit.exe -store %path% -create /d \"WinPE\" -application osloader\u0026#39;) do set guid\u003d%%abcdedit.exe -store %path% -set %guid% osdevice bootbcdedit.exe -store %path% -set %guid% device bootbcdedit.exe -store %path% -set %guid% path \\windows\\system32\\boot\\winload.exe bcdedit.exe -store %path% -set %guid% systemroot \\Windowsbcdedit.exe -store %path% -set %guid% detecthal Yesbcdedit.exe -store %path% -set %guid% winpe Yesbcdedit.exe -store %path% -displayorder %guid% -addlastbcdedit.exe -store %path% -enum allpause\n```\n\n\u003cbr /\u003e\n\n4. download the tool [UsbBootWatcher](http://www.911cd.net/forums//index.php?showtopic\u003d22473\u0026view\u003dfindpost\u0026p\u003d152574 \"External link\")  \nmy UFD is drive letter h:  \nso i used this command:  \nusbbootwatcher.exe /prepare h:\\\\windows\\\\system32   \n\n**Edited by dera, 10 April 2010 - 11:20 AM.**\n"
+    },
+    {
+      "id": "97543",
+      "timestamp": "2010-04-10T15:23:18+00:00",
+      "author": "yundm",
+      "content": "Thanks everyone.  \n\n\"c:\\\\Program Files\\\\Windows AIK\\\\Tools\\\\x86\\\\imagex.exe\" /apply c:\\\\winpe_x86\\\\ISO\\\\sources\\\\boot.wim 1 h:  \n\nIt seems a RAMDisk PE with the file \"boot.wim\".  \n\nNow I think nobody can succeed to boot the PE above 2.0 direct from a UFD although I wish that I am mistaken.  \nOnly RamDisk mode of PE can be used for a UFD.  \n\nI notice that:  \nIn the manual of PE 2005 (2003 SP1), detailed way on Non-RamDisk of UFD was introduced.  \n\nAnd in the manual of PE 2.0 (Vista), \"microsoft\" mince their word.  \n\nAnd in the manual of PE 3.0 (Win7), there is no word about Non-RAMDisk mode of a UFD.  \n\nI really hope to make a Non-RamDisk PE 3.0 of a UFD (boot fast) because Embedded PC motherboard always has lower RAM that can\u0027t be added more RAM (hardware limit) and gathering hardware information of Embedded PC (Tap.exe) needed a PE rather than wasting a lot of time to install one operation system for every kind of motherbaord.  \n\nSo I have no way to use PE 2.0 above for Non-RamDisk of UFD.   \n"
+    },
+    {
+      "id": "97544",
+      "timestamp": "2010-04-10T15:53:42+00:00",
+      "author": "dera",
+      "content": "how do you [create a WinPE 2/3](http://technet.microsoft.com/en-us/library/dd744533%28WS.10%29.aspx \"External link\") ?  \nstep 1.: copype.cmd x86 c:\\\\winpe_x86  \nstep 2.: copy c:\\\\winpe_x86\\\\winpe.wim c:\\\\winpe_x86\\\\ISO\\\\sources\\\\boot.wim  \n\nso after this two steps you have \u0027c:\\\\winpe_x86\\\\ISO\\\\sources\\\\boot.wim\u0027,  \nand this boot.wim contains the WinPE files,  \n\nWhere does your WinPE files come from?  \n\n\"c:\\\\Program Files\\\\Windows AIK\\\\Tools\\\\x86\\\\imagex.exe\" /apply c:\\\\winpe_x86\\\\ISO\\\\sources\\\\boot.wim 1 h:  \nmeans that you extract the folders:  \nProgram Files  \nProgramData  \nUsers  \nWindows  \nfrom the boot.wim to the UFD (where h: is the drive letter assigned to my UFD)  \n\ndefinitely i can boot directly from UFD without using boot.wim, without boot into a RAM disk  \nthere is no boot.wim at all on my UFD   \n"
+    }
+  ]
+}

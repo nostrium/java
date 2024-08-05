@@ -1,0 +1,28 @@
+{
+  "id": "21784",
+  "title": "USB 3.0 boot XP SP3",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "206873",
+      "timestamp": "2018-06-03T18:16:12+00:00",
+      "author": "Dietmar",
+      "content": "Hi all,\n\ntoday I have a lot of fun with a Asus z87i-pro board. 3dmark 2001 shows 106000 points on a gtx 980.\n\nThis is a very nice board for xp . No yellow questionmark remains in device manager.\n\nBut the very best is: After making USB bootfriendly, the asmedia 3.0 driver with\n\nSystem Reserved and start 0 in registry for hub and also for the usb device,\n\nstarts full XP SP3 in 2(!) seconds.\n\nIt is unbelievable fast, boot device is a USB stick Sandisk Extreme pro Usb3.1, shows now with CrystalDismark5\n\n300 MByte/s,\n\nhave a nice day\n\nDietmar\n\n"
+    },
+    {
+      "id": "206874",
+      "timestamp": "2018-06-03T19:16:51+00:00",
+      "author": "Wonko the Sane",
+      "content": "Hi, Dietmar, good to see you around :smile: (and of course carrying good news).\n\n![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "206875",
+      "timestamp": "2018-06-03T22:38:29+00:00",
+      "author": "dencorso",
+      "content": "+1! :smile:\n\n"
+    }
+  ]
+}

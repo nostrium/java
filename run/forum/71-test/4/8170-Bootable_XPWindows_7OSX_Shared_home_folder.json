@@ -1,0 +1,34 @@
+{
+  "id": "8170",
+  "title": "Bootable XP/Windows 7/OSX: Shared home folder",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "69347",
+      "timestamp": "2009-06-10T11:29:25+00:00",
+      "author": "wrayal",
+      "content": "Hi everyone,  \n\nI have a rather ambitious project in mind, and was wondering if anyone here could help me? I\u0027m planning on building a USB stick with quite a few features. (incidentally, I\u0027m going to take notes on this online for anyone who might find it useful).   \n\nBut there is one trick I quite fancied that I\u0027m not entirely sure about: I was going to put bootable versions of 2K, XP, windows 7 and Mac OSX on the USB stick (Yep, there\u0027s enough space - using 32gb corsair). I currently have a computer with XP, ubuntu \\\u0026 OSX installed sharing a home folder (on a separate partition in fact) using HFS+ and [http://www.mediafour...ducts/macdrive/](http://www.mediafour.com/products/macdrive/ \"External link\"). I quite wanted to do the same thing on my USB Stick; I think I can do the same thing myself for the OSX partition, but could I for example use this method for producing XP on a stick:  \n\n[http://www.boot-land...?showtopic\u003d7466](http://www.boot-land.net/forums/index.php?showtopic\u003d7466 \"External link\")  \n\nAnd then have the home folder for my user on a separate (HFS) partition as I do on my laptop? The idea was to use the \"Format-it-\\\u0026-Boot-it\" method, putting XP on my third partition or whatever, and simply have all my useful data on the first partition, which I shall use as my \u0027my documents\u0027 folder.  \n\n(Also, I have seen mentions that one can simply install 2k to a USB drive and boot from it; is this truly possible?)  \n\nMany thanks,  \n\nWrayal   \n"
+    },
+    {
+      "id": "69464",
+      "timestamp": "2009-06-11T21:53:37+00:00",
+      "author": "online",
+      "content": "Just read, and just a preliminary remark: please note that if you want to share an existing folder on your 1st UFD-partition then it should have an hardcoded path (presumably in the registry), but your 1st partition could be change its drive letter under different machines (and/or with different drives).  \nFor this specific issue it will result (very) useful USBDLM (freeware) service [USB Drive Letter Manager](http://www.uwe-sieber.de/usbdlm_e.html \"External link\") that definitely set your (choosed) 1st USB-drive letter under any configuration.  \nLet me know about your further questions/issues about my tutorial: although I have no experience with Win7 and MacOSX I can say that with \"Multiple XP\" from your UFD what you want should be feasable.  \nThe \"standard\" suggestion is to proceed step-by-step starting from easier/sequential stuff until the job-completion: the first one should be to successfully boot from your UFD (I assume that you already succeed).  \nBy the way, I\u0027ve just noticed that all the screenshots in my mentioned thread are not displayed due to the hosting-server [http://www.hostanyimage.com/](http://www.hostanyimage.com/ \"External link\") hacking incident (I will retrieve those screenshots somewhere on my PC), but I can confirm that all described is smoothly working.  \nSo, start your project well and see how it behaves.   \n"
+    },
+    {
+      "id": "69509",
+      "timestamp": "2009-06-12T14:22:40+00:00",
+      "author": "wrayal",
+      "content": "Thank you; this is exactly what I had expected the problem might be, but I had not previously come across USBDLM. I\u0027ll keep you updated with how it\u0027s going!  \n\nWrayal   \n"
+    },
+    {
+      "id": "69588",
+      "timestamp": "2009-06-13T10:17:16+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e (Also, I have seen mentions that one can simply install 2k to a USB drive and boot from it; is this truly possible?)\n\nNo, 2K needs the same kind of modifications to the USBSTOR services as XP.  \n\nIn the original Dietmar\u0027s thread there are reports and steps to do that with Win2K.  \n\n[http://www.911cd.net...showtopic\u003d14181](http://www.911cd.net/forums/index.php?showtopic\u003d14181 \"External link\")  \n\nLooks for posts by **sisal** (if I remember correctly :wink:)  \n\njaclaz   \n"
+    }
+  ]
+}

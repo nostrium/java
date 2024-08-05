@@ -1,0 +1,58 @@
+{
+  "id": "20218",
+  "title": "Win7+WinXP+CrunchBang+GParted Live+Memtest86 on USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "189284",
+      "timestamp": "2014-12-19T00:47:13+00:00",
+      "author": "andoru",
+      "content": "New here, I had a few isos laying around and I thought I could place them all on a pendrive and be able to boot into them and install whatever I need on a PC that doesn\u0027t have any optical drives on it.\n\nIs it possible to do that from Linux? I don\u0027t have any Windows version installed.\n\nI tried [this guide](http://askubuntu.com/questions/116885/can-i-use-ubuntu-to-write-a-windows-7-iso-to-usb/363630#363630 \"External link\"), but grub wouldn\u0027t install properly on FAT32 here, so it wouldn\u0027t boot. Also tried [this guide](http://xmodulo.com/boot-iso-image-from-grub.html \"External link\"), but for some reason it says \"Cannot find the file specified\" or a similar error during boot when selecting Windows 7 (haven\u0027t tried it with WindowsXP iso yet as I don\u0027t know what arguments to add. After pressing enter, I get kicked back to the grub menu Strangely with the latter method GParted live boots with the specified arguments added to the menuentry, but also get the same error as above, just that when I press enter, it boots into the live session.\n\n**Edited by andoru, 19 December 2014 - 01:02 AM.**\n"
+    },
+    {
+      "id": "189288",
+      "timestamp": "2014-12-19T08:49:17+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, right idea :smile:, wrong tool ![:(](http://reboot.pro/public/style_emoticons/default/sad.png).\n\nYou want to explore the possibilities of grub4dos (which is not GRUB and is not GRUB2), the included bootlace.com doubles as DOS/Linux executable and will allow you to install it alright from Linux, then look into the available data for booting (when possible) from the MS based .iso\u0027s (and the little tricks needed, when needed), you want to start from here:\n\n\u003chttp://reboot.pro/topic/14-grub4dos/\u003e\n\n[http://reboot.pro/to...b4dos/?p\u003d186085](http://reboot.pro/topic/14-grub4dos/?p\u003d186085 \"\")\n\n[http://reboot.pro/to...about-grub4dos/](http://reboot.pro/topic/5041-post-here-anything-that-crosses-your-mind-about-grub4dos/ \"\")\n\n[http://reboot.pro/to...required-cddvd/](http://reboot.pro/topic/9076-the-mistery-of-windows-7-install-required-cddvd/ \"\")\n\nOldish \"general\" guide (current version that you should use is the latest: 0.4.5c, that has a number of added commands/possibilities), but the guide is still fine:\n\n[http://diddy.boot-la...os/Grub4dos.htm](http://diddy.boot-land.net/grub4dos/Grub4dos.htm \"External link\")\n\n[http://diddy.boot-la...inux.htm#linux4](http://diddy.boot-land.net/grub4dos/files/install_linux.htm#linux4 \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "189289",
+      "timestamp": "2014-12-19T09:08:41+00:00",
+      "author": "steve6375",
+      "content": "For Crunchbang ISO booting from grub4dos see [here](http://rmprepusb.blogspot.co.uk/search?q\u003dcrunchbang \"External link\")\n\nOf course, you can make an [Easy2Boot](http://www.easy2boot.com \"External link\") USB drive under linux or Windows and it will easily do all of the OS\u0027s you want just by adding the ISOs.\n\nI suggest you format your USB drive as FAT32 if you are using linux as grub4dos often requires or works better if the ISO files are contiguous and the linux defragfs utility does not work on ext2/3/4 or NTFS volumes.\n\n"
+    },
+    {
+      "id": "189319",
+      "timestamp": "2014-12-20T00:47:54+00:00",
+      "author": "andoru",
+      "content": "Thanks for your answers guys, I knew I came to the right place! ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)\n\nI went ahead with the Easy2Boot method, but unfortunately it doesn\u0027t seem to work. It gets stuck with \"Checking last sector is accessible...\" on screen, not doing anything (I\u0027ve left it on for over an hour).\n\nOn another PC I get this instead: [https://i.imgur.com/x2cK5Qn.jpg](https://i.imgur.com/x2cK5Qn.jpg \"External link\")\n\nOn the E2B site under Troubleshooting says that the former message should only stay on-screen for a few minutes and it usually happens only on NTFS partitions. The weird thing with both of the above is that the partition was formatted as FAT32. Anything to try out to fix this problem before I try a jab at grub4dos?\n\nSo far I tried following [this guide](http://rmprepusb.com/tutorials/114 \"External link\"), and afterwards I just ran the fmt.sh script and copied over the files, but got the same result.\n\n"
+    },
+    {
+      "id": "189320",
+      "timestamp": "2014-12-20T01:08:17+00:00",
+      "author": "steve6375",
+      "content": "Did you partition the drive using RMPrepUSB or use the Make_E2B_USB_Drive.cmd script like you are supposed to?\n\nIt is usually due to the last partition being too near to the end of the drive.\n\nTry just deleting the \\\\_ISO\\\\e2b\\\\grub\\\\CheckAccess.g4b file like it suggests... to remove the check.\n\n"
+    },
+    {
+      "id": "189354",
+      "timestamp": "2014-12-21T20:02:14+00:00",
+      "author": "andoru",
+      "content": "I couldn\u0027t use those tools since I only had Linux installed as I mentioned in the first post.\n\nBut I solved it by following the guide from scratch and unlike last time I didn\u0027t defragment the drive with MyDefrag. Last time I defragged even though the files were contiguous, just to make sure, so probably that\u0027s what screwed things up.\n\n"
+    },
+    {
+      "id": "189360",
+      "timestamp": "2014-12-22T09:16:58+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I couldn\u0027t use those tools since I only had Linux installed as I mentioned in the first post.\n\u003e\n\u003e But I solved it by following the guide from scratch and unlike last time I didn\u0027t defragment the drive with MyDefrag. Last time I defragged even though the files were contiguous, just to make sure, so probably that\u0027s what screwed things up.\n\nThis is an interesting point, isn\u0027t there a bash script (or \\*whatever\\*) in Linux to make a single file contiguous (like there is in windows contig.exe and wincontig.exe) on a FAT32?\n\nThe thingy of course if only needed when \"updating\" a USB stick, when you build from scratch and copy to it the .iso\u0027s/images they should come out normally contiguous.\n\nFrom here:\n\n[http://ubuntuforums....d.php?t\u003d2180790](http://ubuntuforums.org/showthread.php?t\u003d2180790 \"External link\")\n\nit seems like defragfs.pl works on FAT32, while it\u0027s Author denies it ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)\n\nAn attempt was made (abandoned) at the time using the FreeDOS defrag :\n\n[http://reboot.pro/to...-using-windows/](http://reboot.pro/topic/18187-defragging-fat32-without-using-windows/ \"\")\n\nmaybe you will be interested in it.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "189387",
+      "timestamp": "2014-12-22T23:35:05+00:00",
+      "author": "andoru",
+      "content": "Thanks Wonko, will check those lonks out :smile:\n\nTried everything I placed on the USB pendrive, each works like a charm ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)\n\n"
+    }
+  ]
+}

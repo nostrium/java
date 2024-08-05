@@ -1,0 +1,16 @@
+{
+  "id": "22304",
+  "title": "Kon-Boot v3.5 boots from large USB drives now",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "215055",
+      "timestamp": "2020-06-11T10:32:11+00:00",
+      "author": "steve6375",
+      "content": "Before now, Kon-Boot would only install onto \u0027small\u0027 USB drives of 16GB or less.\n\nThe new version 3.5 now allows us to install it onto large USB drives.\n\nThis means we can run Kon-Boot from a large multiboot USB drive (such as an [E2B USB drive](http://rmprepusb.blogspot.com/2020/06/kon-boot-v35-now-allows-us-to-use.html \"External link\")).\n\nThe UEFI file is locked to a specific licence number and the USB Vendor ID, Product ID and Serial number, so once it has been installed to a particular USB drive, it is locked to that USB drive. If the USB drive dies or is lost, you have also lost the licence too!\n\n\u003cbr /\u003e\n\n"
+    }
+  ]
+}

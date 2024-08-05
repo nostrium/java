@@ -1,0 +1,28 @@
+{
+  "id": "9768",
+  "title": "USB_MultiBoot_10 and HP Labtops",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "84902",
+      "timestamp": "2009-11-21T08:43:13+00:00",
+      "author": "Robekia",
+      "content": "Can you help me please?  \n\nI have HP labtop (HP530).  \nmy Stick (Kingston Data traveller 120) 8GB.  \nBooting through GRUB is OK.  \nchoose to go with Text Mode, gives Bank screen with Blinking Cursor on left top side ......   \n"
+    },
+    {
+      "id": "84904",
+      "timestamp": "2009-11-21T08:54:10+00:00",
+      "author": "Robekia",
+      "content": "I have HP530 Labtop.  \nI have Memory sticks (kingston 2GB and Kingston 8GB) used for tests.  \nI tried to install windows XP SP3 using CD (Success).  \nWhen i tried USB_MultiBoot_10 procedures using the mentioned Sticks, everything went fine and the labtop boots to Grub just fine.  \nI choose to go with the the TEXT mode from the options in Boot.ini, but unfortunately it gives Blank screen with Blinking Cursor at the left top side.  \n\nI tried the same Sticks with AsusEee (Success).  \nI tried the same Sticks with Acer5738 (Success).  \nI tried the same Sticks with Acer1640 (Success).  \n\nIs there any chance to success with this solution on HP labtops?   \n"
+    },
+    {
+      "id": "84906",
+      "timestamp": "2009-11-21T09:20:53+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Is there any chance to success with this solution on HP labtops?\n\nYes, and you have ALREADY been told how.  \n[http://www.msfn.org/...nt-t133086.html](http://www.msfn.org/board/solved-problem-hp-equipment-t133086.html \"External link\")  \n[http://www.msfn.org/...h...10.html\\\u0026hl\u003d](http://www.msfn.org/board/solved-problem-hp-equipment-t133086-page-10.html\u0026hl\u003d \"External link\")  \n\nDO NOT USE the HP Format tool!  \n\nUse RMPREPUSB or FBINST.  \n\nOR try using fuwi\u0027s tool.  \n\nAND STOP double posting, NOW! ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\njaclaz   \n"
+    }
+  ]
+}

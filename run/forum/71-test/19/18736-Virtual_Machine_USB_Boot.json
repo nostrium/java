@@ -1,0 +1,1222 @@
+{
+  "id": "18736",
+  "title": "Virtual Machine USB Boot",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "174939",
+      "timestamp": "2013-07-20T18:01:59+00:00",
+      "author": "DavidB",
+      "content": "![Posted Image](http://reboot.pro/index.php?app\u003ddownloads\u0026module\u003ddisplay\u0026section\u003dscreenshot\u0026id\u003d339)\n**File Name** : Virtual Machine USB Boot  \n**File Submitter** : [DavidB](http://reboot.pro/user/61891-davidb/ \"\")  \n**File Submitted** : 20 Jul 2013  \n**File Updated** : *18 Mar 2015*   \n**File Category** : [Boot tools](http://reboot.pro/files/category/7-boot-tools/ \"\")  \n\n**What it does:**   \n\nWith this application it\u0027s easy to add a real USB drive into a virtual machine (VirtualBox or QEMU) and boot from it.  \nIt will temporary separate the drive from the host OS (dismount it) and, after the virtual machine is closed, it will mount it back. This way it will prevent data loss and the changes made to the drive in the virtual machine will be visible in the host OS too.  \n\n![Posted Image](http://i57.tinypic.com/25j8utd.png)  \n\n**Requirements:**   \n\nHost OS: Windows XP/Vista/7/8/8.1  \nVirtualBox (installed not portable) and/or QEMU  \n\n**How you can use it:**   \n\nDownload and unzip the setup file or the portable version. Install the setup file and start it or just start the portable.  \nIf you have a limited user account on the host OS you need to start it as an administrator, because only this way it will properly check and use the real (USB) drive.  \nIn Windows 7/8/8.1 it will automatically start it as an administrator. In Windows XP and Vista it will have to be set manually:  \n\n![Posted Image](http://i58.tinypic.com/nnnqlc.png)  \n\nIf you intend to use the VirtualBox Manager in the same time with Virtual Machine USB Boot, I strongly suggest to set its exe file or shortcut to be started as an administrator too.  \n\n![Posted Image](http://i59.tinypic.com/wcbnll.png)  \n\nNow, in the main application\u0027s window, click on the Add button.  \nYou\u0027ll see this window:  \n\n![Posted Image](http://i62.tinypic.com/f3hqux.png)  \n\n![Posted Image](http://i59.tinypic.com/2zr2p7p.png)  \n\nHere you can set:  \n\n- the VM type (VirtualBox or QEMU);  \n- the name of the list entry;  \n- the way you can set the VirtualBox VM: by name, by path or by exe parameters;  \n- the drive to add and boot (usually a USB drive);  \n- a second drive (if you set \"Add second drive option\" in Options);  \n- for VirtualBox VMs: enable/disable/switch CPU virtualization;  \n- for QEMU VMs: memory size, a HDD image file, a CD/DVD device and a sound card;  \n- the state of the main window for VirtualBox/QEMU (minimized/normal/maximized/fullscreen/hidden);  \n- the CPU priority (BelowNormal/Normal/AboveNormal/High).  \n\nIf all is set you can click on Ok.  \n\nWhen you first use the application it\u0027s wise to set the options. So click on Options button.  \n\n![Posted Image](http://i61.tinypic.com/i736th.png)  \n\nHere you can set the wait time from the moment the application triggers the system data flush on the drive to the moment it actually dismounts it; usually 500 ms is enough but you can increase it on slower drive/OS/computer.  \nThe next option will set if the application will try to lock the volume(s) on the drive before dismounting it/them. This way you can be sure that all the system data was flushed and there are no processes accessing the drive. But sometimes it can be slow...  \nIf you wanna add a second drive to the virtual machine check the \"show a second drive option\".  \n\"Backup the old entries before saving the new ones\": it will save the old entries as \"Application_name.vml.bak\". Useful when you often have problems with the OS, the computer or electricity. If you don\u0027t have such problems you can uncheck it.  \n\"Don\u0027t warn when not able to save the configuration or the entries file\": you can uncheck it if you start VMUB from a read only medium or with 0% free space.  \nWhen you add a new entry, the VM type is VirtualBox by default but you can change it to QEMU if you like.  \nWith the next option only the USB drives are listed. If you uncheck it the internal HDDs (except the OS drive) and the mounted virtual HDDs will be listed too.  \nThe font size, name, style, color and script for the entries list can be changed to your liking.  \nBy default the Escape key pressed in the main window can close the entire application but now you can activate/deactivate it.  \nIn VirtualBox section, you can set the path to the VirtualBox exe (usually autodetected).  \nYou can choose the way the application will modify the VirtualBox machine:  \n- to try to autodetect the most appropriate for the given situation;  \n- calling VboxManage.exe a few times with specific parameters; this method is slow but you can keep VirtualBox Manager opened all the time if you want;  \n- modifying the virtual machine\u0027s configuration file (\\*.vbox) directly; it\u0027s faster but VirtualBox Manager must be closed; also, if you keep (re)starting the virtual machine very fast each time after you closed it then it will be a little less stable.  \nAlso you can set if the \"Enable VT-x/AMD-V\" option will be showed in the Add/Edit window and if the drive(s) should be removed when the VM is closed.  \nIn QEMU section, you can set the path to its exe (usually autodetected if QEMU was installed).  \nYou can set the default exe parameters that will appear in the Add window when you add a new QEMU entry.  \n\nIf all are set, click on the Start button and the virtual machine will be configured and started.  \n\n**Tips:**   \n\n1. When you first create the virtual machine in VirtualBox make sure there is a free port in the storage controller. This way the application will add the drive there.  \nAlso, if you want to boot from that drive, make sure the free port is positioned prior to other drives, because the VirtualBox VM will boot from the first drive in the storage controller(s).  \nYou can do that by starting the VirtualBox Manager, editing the VM\u0027s storage options and moving the other drive(s) into subsequent port(s).  \n2. Try to avoid using snapshots or saving state of the VM.  \n3. In the main window you can choose which columns you want to hide/show by right clicking on the columns and checking/uncheking them in the popup menu. Also you can modify their lengths.  \nYou can sort the entries by clicking on the header of each column.  \n4. The application will remember the position, the size and the maximized state of the main window. Also any column changes...  \n5. In the list you can right click on an entry and choose an action or use keyboard shortcuts (Insert, E, Return, +, Delete, Alt+Up, Alt+Down, Ctrl+P).  \n6. Usually it takes a few seconds to configure and load the VirtualBox VM but sometimes it will take a little longer, so don\u0027t be alarmed.  \n7. When you start the application or when you add or edit an entry, the application will generate a new ID/GUID for the drive. This is a unique number used internally in VirtualBox for identifying the drive.  \n8. The drive you choose in Add/Edit window will be later recognized and used even if you disconnect/connect other drives before using it again.  \n9. If you receive an warning or an error message from the application, please read the text thoroughly because it will help you solve the problem. The application is designed to deal and solve many problems but, like any computer program, it can\u0027t solve all of them. But I implemented helpful suggestions/informations in these messages so you can easily solve them.  \n10. Before saving the entries list (\\*.vml) the application will backup the previous file in \\*.vml.bak. If you made a change that you don\u0027t like or if the OS/computer malfunctioned and it did not properly saved the vml file then you can restore it by removing the .bak extension.  \nThese files are near the exe file in the portable version or in the \"C:\\\\Users\\\\UserName\\\\AppData\\\\Roaming\\\\Virtual Machine USB Boot folder\" (Windows Vista, 7, 8) in the installed version. In Windows XP they are in the \"C:\\\\Documents and Settings\\\\UserName\\\\Application Data\\\\Virtual Machine USB Boot\" folder. Normally these folders are hidden so you will need to unhide them or use a file manager set to see hidden files and folders.  \n11. The default exe parameters for QEMU are just a \"guideline/example\" on how to boot with QEMU x86/x64. But if you want to use/change other QEMU features you should add more parameters. Also, other QEMU versions may require additional parameters to boot. For example -kernel and -initrd.  \n12. QEMU usually shows 2 windows: one that displays text details about the VM and one with the VM. The \"Run\" option will change the state of the first window.  \n\n\u003cbr /\u003e\n\n**Changes in 1.51 version:**   \n\n1. The scan for (USB) disks is faster.  \n2. In the Add/Edit window the information about found disks and CDROM drives is shown on columns (name/size/volume letter(s)).  \n3. A few bugs solved.  \n4. Some small improvements to the language code.  \n5. Added german translation (lng file) sent by [Blackcrack](http://reboot.pro/user/43143-blackcrack/ \"\").  \n\n[Click here to download this file](http://reboot.pro/files/file/339-virtual-machine-usb-boot/ \"\")   \n"
+    },
+    {
+      "id": "174943",
+      "timestamp": "2013-07-20T19:29:51+00:00",
+      "author": "Zoso",
+      "content": "Thanks DavidB! this tool is very useful. I dont understand why the VB devs can not make their program with this function?  \n\nDoes it work with portable VirtualBox also?   \n"
+    },
+    {
+      "id": "174945",
+      "timestamp": "2013-07-20T21:35:44+00:00",
+      "author": "DavidB",
+      "content": "\u003e Thanks DavidB! this tool is very useful. I dont understand why the VB devs can not make their program with this function?\n\nI noticed in the last years they are trying to make VB work only with OS\u0027s installed inside the VM. So using a real drive is obviously not preferred.\n\nThey have their reasons for doing this, maybe they\u0027re not 100% bad reasons, but I can\u0027t say because they are not talking about that.\n\nIt\u0027s their right not to talk, of course, but it\u0027s not \"open source\"...\n\nMy personal opinion is: at some point in the future VirtualBox may not be free and open source anymore...\n\n\u003e Does it work with portable VirtualBox also?\n\nIt may not work because the installed version has a specific folder to store the configuration file: C:\\\\Users\\\\UserName\\\\.VirtualBox.\n\nIf the portable version is not using the same folder my application has no way to find the path to the VMs, their names, configuration and so on...\n\nBtw, I\u0027m a big fan of portable versions for any program, but, when I tried a portable VirtualBox version some time ago, I wasn\u0027t too pleased.\n\n2 reasons:\n\n1. VirtualBox is already \"lite\" so using a portable version does not lower the resources usage.\n\n2. the portable version is kinda limited...\n\nBut I\u0027m willing to give it a try...\n\nJust send me a link to your version so I can test it and make the appropriate modifications to VMUB (if necessary)...\n\n"
+    },
+    {
+      "id": "174946",
+      "timestamp": "2013-07-20T22:30:08+00:00",
+      "author": "Zoso",
+      "content": "currently Im not using the portable version, I tried it a while back with the bright idea that I could run my universal XP from another running system when rebooting was not an option. it seemed too buggy at the time but that was years ago.  \n\nI would still like to do that idea though and may tool around with it more when I get a few other projects sorted out.  \n\nhere is the most recent version (I think) and they are looking for developers also:  \n\n[http://www.vbox.me/](http://www.vbox.me/ \"External link\")   \n"
+    },
+    {
+      "id": "174951",
+      "timestamp": "2013-07-21T05:15:19+00:00",
+      "author": "Blackcrack",
+      "content": "apropos Installer, Portable and source, it\u0027s need only imo Portable, hold it portable like rufus if you can,\n\nor other ask, why a setup/installer if mus the User known what he does by use this program.\n\nso you can save you time for have a couple more lines of codes :wink: an Installer is not need..\n\n![:cheerleader:](https://reboot.pro/public/style_emoticons/default/cheerleader.gif) Thank you very much for his program ! ![:cheerleader:](https://reboot.pro/public/style_emoticons/default/cheerleader.gif)\n\nbest regards\n\nBlacky\n\n**Edited by Blackcrack, 21 July 2013 - 05:22 AM.**\n"
+    },
+    {
+      "id": "174952",
+      "timestamp": "2013-07-21T06:15:18+00:00",
+      "author": "DavidB",
+      "content": "\u003e currently Im not using the portable version, I tried it a while back with the bright idea that I could run my universal XP from another running system when rebooting was not an option. it seemed too buggy at the time but that was years ago.  \n\u003e\n\u003e I would still like to do that idea though and may tool around with it more when I get a few other projects sorted out.  \n\u003e\n\u003e here is the most recent version (I think) and they are looking for developers also:  \n\u003e\n\u003e [http://www.vbox.me/](http://www.vbox.me/ \"External link\")\n\nYes, I remember testing this version as well...  \nI tested again and I\u0027m not sure that VMUB is worth modifying to use it.  \nWhat I noticed:  \n1. The configuration file is indeed in another location: \"Portable-VirtualBox\\\\data\\\\.VirtualBox\". So I have to add a new edit box for this in Options. But that\u0027s not such a big problem...  \n2. It starts/closes much slower than the installed version, because in has to register/unregister some services. But VMUB already needs some time to configure and start the VM so this additional delay may be unacceptable for the user.  \n3. If Portable-VirtualBox.exe isn\u0027t loaded VirtualBox.exe and VboxManage.exe can\u0027t be used directly. So, VMUB has to start this exe, after a few seconds the VirtualBox Manager is opened, makes the modifications to the VM and starts it. But some users may not like that VBM must be opened each time.  \n\nMy opinion is most users won\u0027t like the additional delay and/or VBM must be opened.\n\n"
+    },
+    {
+      "id": "174953",
+      "timestamp": "2013-07-21T06:23:32+00:00",
+      "author": "DavidB",
+      "content": "\u003e apropos Installer, Portable and source, it\u0027s need only imo Portable, hold it portable like rufus if you can,\n\u003e\n\u003e or other ask, why a setup/installer if mus the User known what he does by use this program.\n\u003e\n\u003e so you can save you time for have a couple more lines of codes :wink: an Installer is not need..\n\u003e\n\u003e ![:cheerleader:](https://reboot.pro/public/style_emoticons/default/cheerleader.gif) Thank you very much for his program ! ![:cheerleader:](https://reboot.pro/public/style_emoticons/default/cheerleader.gif)\n\u003e\n\u003e best regards\n\u003e\n\u003e Blacky\n\nYou\u0027re welcome.\n\nPortable VMUB is good, yes, and it will be preferred but some users want the installed version as well. You can see that in the number of downloads for the previous versions.\n\nSince the difference in coding is insignificant I think is worth keeping the installed version as well...\n\n"
+    },
+    {
+      "id": "174954",
+      "timestamp": "2013-07-21T06:57:23+00:00",
+      "author": "Blackcrack",
+      "content": "\u003e You\u0027re welcome.\n\u003e\n\u003e Portable VMUB is good, yes, and it will be preferred but some users want the installed version. You can see that in the number of downloads for the previous versions.\n\u003e\n\u003e Since the difference in coding is insignificant I think is worth keeping the installed version as well...\n\nwell, we will see in the future on the download :smile:\n\n![:boo:](https://reboot.pro/public/style_emoticons/default/boo.gif) To speak again, only now, now it would be very good if we could have a patch or driver for WinXP and 7 now could run around this by USB :smile:\n\n( I think on ssd\u0027s on usb or harddrives in usb for boot on usb :wink: with regpatch and drivers for boot WinXP and Win7 .. specially for WinXP because the size of WinXP it\u0027s predestination for installing on USB\n\nMaybe someone like the VMUB would have something to give / donate for create usb-bootable WinXP/7 :smile:\n\nNow let\u0027s see how the story continues :smile: would be on top anyway, when suddenly a patch/drivers would appear in this Tread for XP/7 :smile:\n\nSo, keep it up ![:good:](https://reboot.pro/public/style_emoticons/default/good.gif) I look forward on it to continue to pursue this adventure ![:cheerleader:](https://reboot.pro/public/style_emoticons/default/cheerleader.gif) because, this have a mighty possibility\u0027s for all Systems\n\nthe sourcecode it is maybe not so badly, because maybe create anyone this one in Linux with/as an Linuxbinary :smile: the path/variable it\u0027s the same.. maybe in QT, as portable also .. and get it to you for put on your page for both systems..\n\nbest regards\n\nBlacky\n\n**Edited by Blackcrack, 21 July 2013 - 06:59 AM.**\n"
+    },
+    {
+      "id": "174962",
+      "timestamp": "2013-07-21T11:10:25+00:00",
+      "author": "VinylCyril",
+      "content": "Hi!\n\nThanks for the awesome program. But seems like I\u0027m clueless as how to actually get it working :smile:\n\nIs my [setup](https://docs.google.com/file/d/0B9IRAfwtQ-BXTXF2Q0ZPbDFkc0E/edit \"External link\") correct? On the USB stick, there\u0027s nothing but the Raspbian image.\n\nWhen I press \"Start\", a shell window flashes for half a second and vanishes.\n\nI guess I need something extra, but I don\u0027t know what. Most Qemu howtos don\u0027t deal with bootable USB\u0027s, so I\u0027m kind of in the dark...\n\n**Edited by VinylCyril, 21 July 2013 - 11:11 AM.**\n"
+    },
+    {
+      "id": "174964",
+      "timestamp": "2013-07-21T11:37:54+00:00",
+      "author": "DavidB",
+      "content": "Hi.\n\nSeems like a Qemu problem.\n\nWhich Qemu version are you using..?\n\nYou can try with this one: \u003chttp://reboot.pro/files/file/147-qemu/\u003e\n\n"
+    },
+    {
+      "id": "174966",
+      "timestamp": "2013-07-21T12:25:01+00:00",
+      "author": "VinylCyril",
+      "content": "That one works fine, but it only has executables for x64 and x86 (which worked fine with a i386 Debian img). I\u0027m trying to run Raspbian, which expects ARM.\n\nI know at this point my original question is essentially resolved and I shouldn\u0027t be bothering you, but the uploader (of the Qemu version that you suggested) is not active anymore. Maybe you know of any other working versions that would support ARM? The one I originally found (from omledom.com) is broken, apparently :smile:\n\nBig thanks already!\n\n"
+    },
+    {
+      "id": "174968",
+      "timestamp": "2013-07-21T13:08:53+00:00",
+      "author": "DavidB",
+      "content": "If you look in the folder with qemu-system-arm.exe you\u0027ll find a stderr.txt file with this text: \"Kernel image must be specified\"  \nYou can find more info here: [http://www.raspberry...\u003d3149\\\u0026start\u003d100](http://www.raspberrypi.org/phpBB3/viewtopic.php?f\u003d2\u0026t\u003d3149\u0026start\u003d100 \"External link\")\n\nOr here:[http://www.linuxques...tem-arm-898112/](http://www.linuxquestions.org/questions/linux-virtualization-and-cloud-90/error-kernel-image-must-be-specified-qemu-system-arm-898112/ \"External link\")\n\n"
+    },
+    {
+      "id": "174996",
+      "timestamp": "2013-07-22T15:09:42+00:00",
+      "author": "DavidB",
+      "content": "New version: 1.22\n\nChanges:\n\nImprovement: the \"Wait time to flush data\" option was moved from the Add/Edit window into the Options window.  \nImprovement: a VM image was added to the \"VM Name\" column.  \nBugfix: sometimes the context menu of the list had the MoveUp and MoveDown menu entries enabled when they should of been disabled.  \nImprovement: A few web links were implemented.  \nImprovement: the Qemu exe parameter for attaching the real drive is now added to the command line before the other parameters. This way it will be added before other drives.  \nImprovement: when Qemu fails to start the VM a message with useful informations is shown.  \nAnd some other minor code improvements...\n\nDownload [here](http://reboot.pro/files/file/339-virtual-machine-usb-boot/ \"\")\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "175045",
+      "timestamp": "2013-07-24T13:36:30+00:00",
+      "author": "VinylCyril",
+      "content": "Hello!\n\nI\u0027ve been learning a lot about Qemu during the past couple of days, so I hope I won\u0027t sound as stupid as before.\n\nDownloaded the kernel, read about Qemu command line parameters, etc.\n\nI have a strong-ish assumption that your program works great with 0.x versions, because they allow the format you use for the \"-drive\" parameter, unlike the newer builds of Qemu that I could find.\n\nSince Qemu 0.15 doesn\u0027t support arm1176, I had to use [lassauge\u0027s](http://lassauge.free.fr/qemu/ \"External link\") 1.5.x. They register an error in the log:\n\n```\nlass-151\\qemu-system-armw.exe: -drive file\u003d\\\\.\\PhysicalDrive1,if\u003dide,index\u003d0,media\u003ddisk,snapshot\u003doff: Block protocol \u0027host_device\u0027 doesn\u0027t support the option \u0027filename\u0027\nlass-151\\qemu-system-armw.exe: -drive file\u003d\\\\.\\PhysicalDrive1,if\u003dide,index\u003d0,media\u003ddisk,snapshot\u003doff: could not open disk image \\\\.\\PhysicalDrive1: Invalid argument\n```\n\nCould it be backslashes in system paths (\\\\\\\\.\\\\PhysicalDrive1) instead of forward-slashes?\n\nI updated to the latest version of your program, and the issue persists.\n\nP.S. I tried using your program with the 0.15 version of Qemu, having specified arm1136 instead of arm1176, it didn\u0027t go well, there\u0027s error messages like \"can\u0027t open root device sr0.\"\n\n"
+    },
+    {
+      "id": "175049",
+      "timestamp": "2013-07-24T16:11:47+00:00",
+      "author": "DavidB",
+      "content": "Yes, my program uses \"-drive file\u003d\\\\\\\\.\\\\PhysicalDrive\\[n\\],...\" to add the real drive.  \nSeems like in the newer version doesn\u0027t like it...\n\nI will investigate more and return with the results...\n\n"
+    },
+    {
+      "id": "175055",
+      "timestamp": "2013-07-24T18:20:10+00:00",
+      "author": "DavidB",
+      "content": "I looked in Qemu code: yes, it uses \"//./\" but also uses \"\\\\\\\\\\\\\\\\.\\\\\\\\\".\n\n```\n\nstatic int find_device_type(BlockDriverState *bs, const char *filename)\n{\n    BDRVRawState *s \u003d bs-\u003eopaque;\n    UINT type;\n    const char *p;\n\n    if (strstart(filename, \"\\\\\\\\.\\\\\", \u0026p) ||\n        strstart(filename, \"//./\", \u0026p)) {\n        if (stristart(p, \"PhysicalDrive\", NULL))\n            return FTYPE_HARDDISK;\n        snprintf(s-\u003edrive_path, sizeof(s-\u003edrive_path), \"%c:\\\\\", p[0]);\n        type \u003d GetDriveType(s-\u003edrive_path);\n        switch (type) {\n        case DRIVE_REMOVABLE:\n        case DRIVE_FIXED:\n            return FTYPE_HARDDISK;\n        case DRIVE_CDROM:\n            return FTYPE_CD;\n        default:\n            return FTYPE_FILE;\n        }\n    } else {\n        return FTYPE_FILE;\n    }\n}\n```\n\nBut \"\\\\\\\\.\\\\\" is also indirectly supported.\n\nAnyway I tried with both in a batch file but I got the same result. I even tried with a volume (//./d:) and with /dev/cdrom, still doesn\u0027t work.  \nIt seems that the problem could be somewhere in the Qemu code, since the error appears even when my program isn\u0027t used.  \n\nSo, for now, I advice you to use the older version.  \nAlso I think it\u0027s wise to test with a batch file first to be sure it will work.  \nYou say that you have an error. Could you please show me the parameters that you used...?\n\n"
+    },
+    {
+      "id": "175076",
+      "timestamp": "2013-07-25T15:55:09+00:00",
+      "author": "DavidB",
+      "content": "edited\n\n"
+    },
+    {
+      "id": "175080",
+      "timestamp": "2013-07-25T17:09:31+00:00",
+      "author": "Blackcrack",
+      "content": "wow crewl options dialog !! ![:cheerleader:](https://reboot.pro/public/style_emoticons/default/cheerleader.gif) keep it up! ![:good:](https://reboot.pro/public/style_emoticons/default/good.gif)\n\nmaby an 2nd drive selecting, if hang it on an isofile from vbox, shold be enabled to overtake the 2nd drive settings for independed configuration/hang in an other iso or unmount the iso for next boot , also not need to open the vbox-masterdialogbox finally .. i have at exemple 2 controler, once, the fisrt the ATA-Controler the 2nd it is an SATA where it is the CDRom/iso file on it.. so shold seach the controler and the end connections and make possible to change it.. ide-\\\u003e usb + other and sata iso/host-cdrom , i hope it\u0027s understandable the suggestion :smile:\n\nmaybe a optionsbox for qemu entrys also ? IT\u0027s certainly useful for qemu also :smile:\n\nbest regards\n\nBlacky\n\np.s.: slashes and backslashes comes from the linuxcode, mus be compatieble with linux also,\n\ntherefor use it slashes and backslashes :smile:\n\n**Edited by Blackcrack, 25 July 2013 - 05:20 PM.**\n"
+    },
+    {
+      "id": "175082",
+      "timestamp": "2013-07-25T18:30:33+00:00",
+      "author": "DavidB",
+      "content": "\u003e maby an 2nd drive selecting, if hang it on an isofile from vbox, shold be enabled to overtake the 2nd drive settings for independed configuration/hang in an other iso or unmount the iso for next boot , also not need to open the vbox-masterdialogbox finally .. i have at exemple 2 controler, once, the fisrt the ATA-Controler the 2nd it is an SATA where it is the CDRom/iso file on it.. so shold seach the controler and the end connections and make possible to change it.. ide-\\\u003e usb + other and sata iso/host-cdrom , i hope it\u0027s understandable the suggestion :smile:\n\nSorry, don\u0027t understand 100% ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)\n\n\u003e p.s.: slashes and backslashes comes from the linuxcode, mus be compatieble with linux also,\n\u003e\n\u003e therefor use it slashes and backslashes :smile:\n\nYes, I knew that, I\u0027m using Linux for years now...\n\n"
+    },
+    {
+      "id": "175090",
+      "timestamp": "2013-07-26T05:06:52+00:00",
+      "author": "Blackcrack",
+      "content": "no problem :smile: maybe comes by step to step developing from this programm by self, because it is a need in anyway to have an own config-dialog at last for all :wink: in any case it\u0027s a good way like it goes now.. keep it up :smile:\n\nConfig/optionswindow it\u0027s a need for both emulators in any case like i see it..\n\ntherewith it\u0027s this confgwindow \\^\\^ very good :smile:\n\nbest regards\n\nBlacky\n\n"
+    },
+    {
+      "id": "175145",
+      "timestamp": "2013-07-27T19:09:40+00:00",
+      "author": "DavidB",
+      "content": "Here is a little preview:  \n\n![ok0ry9.png](http://i40.tinypic.com/ok0ry9.png)\n\nAnd an exe to test it. It\u0027s just the interface (for now):  \n\n[![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003d426ac6a51084ce93b96eaafff47262a5\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14456 \"Download attachment\") [**Test.zip**](http://reboot.pro/index.php?s\u003d426ac6a51084ce93b96eaafff47262a5\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14456 \"Download attachment\") **309.51KB** 1115 downloads  \n\nWhat do you think..? Do you find it useful or useless...? And how can it be improved...?  \nI know that Blackcrack and maybe Steve will answer but I would appreciate feedback from more users. And not just \"it\u0027s fantastic, keep up the good work\" but some constructive criticism.  \nThank you.\n\n"
+    },
+    {
+      "id": "175146",
+      "timestamp": "2013-07-27T19:59:49+00:00",
+      "author": "Zoso",
+      "content": "more options is better!   \n\nI\u0027ll test when I get a chance but right now Im using 1.2 and I can not get a full boot up from a USB HDD with pos2009 (XP embedded with nt6).  \n\nthe same USB HDD boots perfectly in VMware with plop and directly on several machines. do you know how I can trouble shoot this?  \n\nit stops after the first stage drivers load. the stage that you see when you set the /sos option in the boot.ini  \nif I try a different kernl option it gets to the desktop but then I get a BSOD DRIVER_UNLOADED_WITHOUT_CANCELLING_PENDING_OPERATIONS crusoe.sys but I think that is only because Im using the wrong kernel and not related to the boot freeze when using the correct kernl, no certain though.  \n\nedit: I just remembered that I could not install pos2009 in VB because of lots of errors then I installed in VMware with no probelms so this is definately not an issue with your tool.  \n\nI tried to convert the vdmk to vhd after install and it still would not boot in VB. not sure whats going on with this.   \n"
+    },
+    {
+      "id": "175532",
+      "timestamp": "2013-08-06T14:48:39+00:00",
+      "author": "genetix",
+      "content": "Nice tool, damn, works quite well against real environment testing too. Comparing this against Plop CD/FLP -\\\u003e USB method or direct physical access to USB as HD this works 10 times faster.\n\n"
+    },
+    {
+      "id": "175533",
+      "timestamp": "2013-08-06T14:54:48+00:00",
+      "author": "Blackcrack",
+      "content": "youre right ! :smile:\n\n"
+    },
+    {
+      "id": "175663",
+      "timestamp": "2013-08-13T02:44:57+00:00",
+      "author": "totoblack100",
+      "content": "thx for the good work man!   \n"
+    },
+    {
+      "id": "174939",
+      "timestamp": "2013-07-20T18:01:59+00:00",
+      "author": "DavidB",
+      "content": "![Posted Image](http://reboot.pro/index.php?app\u003ddownloads\u0026module\u003ddisplay\u0026section\u003dscreenshot\u0026id\u003d339)\n**File Name** : Virtual Machine USB Boot  \n**File Submitter** : [DavidB](http://reboot.pro/user/61891-davidb/ \"\")  \n**File Submitted** : 20 Jul 2013  \n**File Updated** : *18 Mar 2015*   \n**File Category** : [Boot tools](http://reboot.pro/files/category/7-boot-tools/ \"\")  \n\n**What it does:**   \n\nWith this application it\u0027s easy to add a real USB drive into a virtual machine (VirtualBox or QEMU) and boot from it.  \nIt will temporary separate the drive from the host OS (dismount it) and, after the virtual machine is closed, it will mount it back. This way it will prevent data loss and the changes made to the drive in the virtual machine will be visible in the host OS too.  \n\n![Posted Image](http://i57.tinypic.com/25j8utd.png)  \n\n**Requirements:**   \n\nHost OS: Windows XP/Vista/7/8/8.1  \nVirtualBox (installed not portable) and/or QEMU  \n\n**How you can use it:**   \n\nDownload and unzip the setup file or the portable version. Install the setup file and start it or just start the portable.  \nIf you have a limited user account on the host OS you need to start it as an administrator, because only this way it will properly check and use the real (USB) drive.  \nIn Windows 7/8/8.1 it will automatically start it as an administrator. In Windows XP and Vista it will have to be set manually:  \n\n![Posted Image](http://i58.tinypic.com/nnnqlc.png)  \n\nIf you intend to use the VirtualBox Manager in the same time with Virtual Machine USB Boot, I strongly suggest to set its exe file or shortcut to be started as an administrator too.  \n\n![Posted Image](http://i59.tinypic.com/wcbnll.png)  \n\nNow, in the main application\u0027s window, click on the Add button.  \nYou\u0027ll see this window:  \n\n![Posted Image](http://i62.tinypic.com/f3hqux.png)  \n\n![Posted Image](http://i59.tinypic.com/2zr2p7p.png)  \n\nHere you can set:  \n\n- the VM type (VirtualBox or QEMU);  \n- the name of the list entry;  \n- the way you can set the VirtualBox VM: by name, by path or by exe parameters;  \n- the drive to add and boot (usually a USB drive);  \n- a second drive (if you set \"Add second drive option\" in Options);  \n- for VirtualBox VMs: enable/disable/switch CPU virtualization;  \n- for QEMU VMs: memory size, a HDD image file, a CD/DVD device and a sound card;  \n- the state of the main window for VirtualBox/QEMU (minimized/normal/maximized/fullscreen/hidden);  \n- the CPU priority (BelowNormal/Normal/AboveNormal/High).  \n\nIf all is set you can click on Ok.  \n\nWhen you first use the application it\u0027s wise to set the options. So click on Options button.  \n\n![Posted Image](http://i61.tinypic.com/i736th.png)  \n\nHere you can set the wait time from the moment the application triggers the system data flush on the drive to the moment it actually dismounts it; usually 500 ms is enough but you can increase it on slower drive/OS/computer.  \nThe next option will set if the application will try to lock the volume(s) on the drive before dismounting it/them. This way you can be sure that all the system data was flushed and there are no processes accessing the drive. But sometimes it can be slow...  \nIf you wanna add a second drive to the virtual machine check the \"show a second drive option\".  \n\"Backup the old entries before saving the new ones\": it will save the old entries as \"Application_name.vml.bak\". Useful when you often have problems with the OS, the computer or electricity. If you don\u0027t have such problems you can uncheck it.  \n\"Don\u0027t warn when not able to save the configuration or the entries file\": you can uncheck it if you start VMUB from a read only medium or with 0% free space.  \nWhen you add a new entry, the VM type is VirtualBox by default but you can change it to QEMU if you like.  \nWith the next option only the USB drives are listed. If you uncheck it the internal HDDs (except the OS drive) and the mounted virtual HDDs will be listed too.  \nThe font size, name, style, color and script for the entries list can be changed to your liking.  \nBy default the Escape key pressed in the main window can close the entire application but now you can activate/deactivate it.  \nIn VirtualBox section, you can set the path to the VirtualBox exe (usually autodetected).  \nYou can choose the way the application will modify the VirtualBox machine:  \n- to try to autodetect the most appropriate for the given situation;  \n- calling VboxManage.exe a few times with specific parameters; this method is slow but you can keep VirtualBox Manager opened all the time if you want;  \n- modifying the virtual machine\u0027s configuration file (\\*.vbox) directly; it\u0027s faster but VirtualBox Manager must be closed; also, if you keep (re)starting the virtual machine very fast each time after you closed it then it will be a little less stable.  \nAlso you can set if the \"Enable VT-x/AMD-V\" option will be showed in the Add/Edit window and if the drive(s) should be removed when the VM is closed.  \nIn QEMU section, you can set the path to its exe (usually autodetected if QEMU was installed).  \nYou can set the default exe parameters that will appear in the Add window when you add a new QEMU entry.  \n\nIf all are set, click on the Start button and the virtual machine will be configured and started.  \n\n**Tips:**   \n\n1. When you first create the virtual machine in VirtualBox make sure there is a free port in the storage controller. This way the application will add the drive there.  \nAlso, if you want to boot from that drive, make sure the free port is positioned prior to other drives, because the VirtualBox VM will boot from the first drive in the storage controller(s).  \nYou can do that by starting the VirtualBox Manager, editing the VM\u0027s storage options and moving the other drive(s) into subsequent port(s).  \n2. Try to avoid using snapshots or saving state of the VM.  \n3. In the main window you can choose which columns you want to hide/show by right clicking on the columns and checking/uncheking them in the popup menu. Also you can modify their lengths.  \nYou can sort the entries by clicking on the header of each column.  \n4. The application will remember the position, the size and the maximized state of the main window. Also any column changes...  \n5. In the list you can right click on an entry and choose an action or use keyboard shortcuts (Insert, E, Return, +, Delete, Alt+Up, Alt+Down, Ctrl+P).  \n6. Usually it takes a few seconds to configure and load the VirtualBox VM but sometimes it will take a little longer, so don\u0027t be alarmed.  \n7. When you start the application or when you add or edit an entry, the application will generate a new ID/GUID for the drive. This is a unique number used internally in VirtualBox for identifying the drive.  \n8. The drive you choose in Add/Edit window will be later recognized and used even if you disconnect/connect other drives before using it again.  \n9. If you receive an warning or an error message from the application, please read the text thoroughly because it will help you solve the problem. The application is designed to deal and solve many problems but, like any computer program, it can\u0027t solve all of them. But I implemented helpful suggestions/informations in these messages so you can easily solve them.  \n10. Before saving the entries list (\\*.vml) the application will backup the previous file in \\*.vml.bak. If you made a change that you don\u0027t like or if the OS/computer malfunctioned and it did not properly saved the vml file then you can restore it by removing the .bak extension.  \nThese files are near the exe file in the portable version or in the \"C:\\\\Users\\\\UserName\\\\AppData\\\\Roaming\\\\Virtual Machine USB Boot folder\" (Windows Vista, 7, 8) in the installed version. In Windows XP they are in the \"C:\\\\Documents and Settings\\\\UserName\\\\Application Data\\\\Virtual Machine USB Boot\" folder. Normally these folders are hidden so you will need to unhide them or use a file manager set to see hidden files and folders.  \n11. The default exe parameters for QEMU are just a \"guideline/example\" on how to boot with QEMU x86/x64. But if you want to use/change other QEMU features you should add more parameters. Also, other QEMU versions may require additional parameters to boot. For example -kernel and -initrd.  \n12. QEMU usually shows 2 windows: one that displays text details about the VM and one with the VM. The \"Run\" option will change the state of the first window.  \n\n\u003cbr /\u003e\n\n**Changes in 1.51 version:**   \n\n1. The scan for (USB) disks is faster.  \n2. In the Add/Edit window the information about found disks and CDROM drives is shown on columns (name/size/volume letter(s)).  \n3. A few bugs solved.  \n4. Some small improvements to the language code.  \n5. Added german translation (lng file) sent by [Blackcrack](http://reboot.pro/user/43143-blackcrack/ \"\").  \n\n[Click here to download this file](http://reboot.pro/files/file/339-virtual-machine-usb-boot/ \"\")   \n"
+    },
+    {
+      "id": "174943",
+      "timestamp": "2013-07-20T19:29:51+00:00",
+      "author": "Zoso",
+      "content": "Thanks DavidB! this tool is very useful. I dont understand why the VB devs can not make their program with this function?  \n\nDoes it work with portable VirtualBox also?   \n"
+    },
+    {
+      "id": "174945",
+      "timestamp": "2013-07-20T21:35:44+00:00",
+      "author": "DavidB",
+      "content": "\u003e Thanks DavidB! this tool is very useful. I dont understand why the VB devs can not make their program with this function?\n\nI noticed in the last years they are trying to make VB work only with OS\u0027s installed inside the VM. So using a real drive is obviously not preferred.\n\nThey have their reasons for doing this, maybe they\u0027re not 100% bad reasons, but I can\u0027t say because they are not talking about that.\n\nIt\u0027s their right not to talk, of course, but it\u0027s not \"open source\"...\n\nMy personal opinion is: at some point in the future VirtualBox may not be free and open source anymore...\n\n\u003e Does it work with portable VirtualBox also?\n\nIt may not work because the installed version has a specific folder to store the configuration file: C:\\\\Users\\\\UserName\\\\.VirtualBox.\n\nIf the portable version is not using the same folder my application has no way to find the path to the VMs, their names, configuration and so on...\n\nBtw, I\u0027m a big fan of portable versions for any program, but, when I tried a portable VirtualBox version some time ago, I wasn\u0027t too pleased.\n\n2 reasons:\n\n1. VirtualBox is already \"lite\" so using a portable version does not lower the resources usage.\n\n2. the portable version is kinda limited...\n\nBut I\u0027m willing to give it a try...\n\nJust send me a link to your version so I can test it and make the appropriate modifications to VMUB (if necessary)...\n\n"
+    },
+    {
+      "id": "174946",
+      "timestamp": "2013-07-20T22:30:08+00:00",
+      "author": "Zoso",
+      "content": "currently Im not using the portable version, I tried it a while back with the bright idea that I could run my universal XP from another running system when rebooting was not an option. it seemed too buggy at the time but that was years ago.  \n\nI would still like to do that idea though and may tool around with it more when I get a few other projects sorted out.  \n\nhere is the most recent version (I think) and they are looking for developers also:  \n\n[http://www.vbox.me/](http://www.vbox.me/ \"External link\")   \n"
+    },
+    {
+      "id": "174951",
+      "timestamp": "2013-07-21T05:15:19+00:00",
+      "author": "Blackcrack",
+      "content": "apropos Installer, Portable and source, it\u0027s need only imo Portable, hold it portable like rufus if you can,\n\nor other ask, why a setup/installer if mus the User known what he does by use this program.\n\nso you can save you time for have a couple more lines of codes :wink: an Installer is not need..\n\n![:cheerleader:](https://reboot.pro/public/style_emoticons/default/cheerleader.gif) Thank you very much for his program ! ![:cheerleader:](https://reboot.pro/public/style_emoticons/default/cheerleader.gif)\n\nbest regards\n\nBlacky\n\n**Edited by Blackcrack, 21 July 2013 - 05:22 AM.**\n"
+    },
+    {
+      "id": "174952",
+      "timestamp": "2013-07-21T06:15:18+00:00",
+      "author": "DavidB",
+      "content": "\u003e currently Im not using the portable version, I tried it a while back with the bright idea that I could run my universal XP from another running system when rebooting was not an option. it seemed too buggy at the time but that was years ago.  \n\u003e\n\u003e I would still like to do that idea though and may tool around with it more when I get a few other projects sorted out.  \n\u003e\n\u003e here is the most recent version (I think) and they are looking for developers also:  \n\u003e\n\u003e [http://www.vbox.me/](http://www.vbox.me/ \"External link\")\n\nYes, I remember testing this version as well...  \nI tested again and I\u0027m not sure that VMUB is worth modifying to use it.  \nWhat I noticed:  \n1. The configuration file is indeed in another location: \"Portable-VirtualBox\\\\data\\\\.VirtualBox\". So I have to add a new edit box for this in Options. But that\u0027s not such a big problem...  \n2. It starts/closes much slower than the installed version, because in has to register/unregister some services. But VMUB already needs some time to configure and start the VM so this additional delay may be unacceptable for the user.  \n3. If Portable-VirtualBox.exe isn\u0027t loaded VirtualBox.exe and VboxManage.exe can\u0027t be used directly. So, VMUB has to start this exe, after a few seconds the VirtualBox Manager is opened, makes the modifications to the VM and starts it. But some users may not like that VBM must be opened each time.  \n\nMy opinion is most users won\u0027t like the additional delay and/or VBM must be opened.\n\n"
+    },
+    {
+      "id": "174953",
+      "timestamp": "2013-07-21T06:23:32+00:00",
+      "author": "DavidB",
+      "content": "\u003e apropos Installer, Portable and source, it\u0027s need only imo Portable, hold it portable like rufus if you can,\n\u003e\n\u003e or other ask, why a setup/installer if mus the User known what he does by use this program.\n\u003e\n\u003e so you can save you time for have a couple more lines of codes :wink: an Installer is not need..\n\u003e\n\u003e ![:cheerleader:](https://reboot.pro/public/style_emoticons/default/cheerleader.gif) Thank you very much for his program ! ![:cheerleader:](https://reboot.pro/public/style_emoticons/default/cheerleader.gif)\n\u003e\n\u003e best regards\n\u003e\n\u003e Blacky\n\nYou\u0027re welcome.\n\nPortable VMUB is good, yes, and it will be preferred but some users want the installed version as well. You can see that in the number of downloads for the previous versions.\n\nSince the difference in coding is insignificant I think is worth keeping the installed version as well...\n\n"
+    },
+    {
+      "id": "174954",
+      "timestamp": "2013-07-21T06:57:23+00:00",
+      "author": "Blackcrack",
+      "content": "\u003e You\u0027re welcome.\n\u003e\n\u003e Portable VMUB is good, yes, and it will be preferred but some users want the installed version. You can see that in the number of downloads for the previous versions.\n\u003e\n\u003e Since the difference in coding is insignificant I think is worth keeping the installed version as well...\n\nwell, we will see in the future on the download :smile:\n\n![:boo:](https://reboot.pro/public/style_emoticons/default/boo.gif) To speak again, only now, now it would be very good if we could have a patch or driver for WinXP and 7 now could run around this by USB :smile:\n\n( I think on ssd\u0027s on usb or harddrives in usb for boot on usb :wink: with regpatch and drivers for boot WinXP and Win7 .. specially for WinXP because the size of WinXP it\u0027s predestination for installing on USB\n\nMaybe someone like the VMUB would have something to give / donate for create usb-bootable WinXP/7 :smile:\n\nNow let\u0027s see how the story continues :smile: would be on top anyway, when suddenly a patch/drivers would appear in this Tread for XP/7 :smile:\n\nSo, keep it up ![:good:](https://reboot.pro/public/style_emoticons/default/good.gif) I look forward on it to continue to pursue this adventure ![:cheerleader:](https://reboot.pro/public/style_emoticons/default/cheerleader.gif) because, this have a mighty possibility\u0027s for all Systems\n\nthe sourcecode it is maybe not so badly, because maybe create anyone this one in Linux with/as an Linuxbinary :smile: the path/variable it\u0027s the same.. maybe in QT, as portable also .. and get it to you for put on your page for both systems..\n\nbest regards\n\nBlacky\n\n**Edited by Blackcrack, 21 July 2013 - 06:59 AM.**\n"
+    },
+    {
+      "id": "174962",
+      "timestamp": "2013-07-21T11:10:25+00:00",
+      "author": "VinylCyril",
+      "content": "Hi!\n\nThanks for the awesome program. But seems like I\u0027m clueless as how to actually get it working :smile:\n\nIs my [setup](https://docs.google.com/file/d/0B9IRAfwtQ-BXTXF2Q0ZPbDFkc0E/edit \"External link\") correct? On the USB stick, there\u0027s nothing but the Raspbian image.\n\nWhen I press \"Start\", a shell window flashes for half a second and vanishes.\n\nI guess I need something extra, but I don\u0027t know what. Most Qemu howtos don\u0027t deal with bootable USB\u0027s, so I\u0027m kind of in the dark...\n\n**Edited by VinylCyril, 21 July 2013 - 11:11 AM.**\n"
+    },
+    {
+      "id": "174964",
+      "timestamp": "2013-07-21T11:37:54+00:00",
+      "author": "DavidB",
+      "content": "Hi.\n\nSeems like a Qemu problem.\n\nWhich Qemu version are you using..?\n\nYou can try with this one: \u003chttp://reboot.pro/files/file/147-qemu/\u003e\n\n"
+    },
+    {
+      "id": "174966",
+      "timestamp": "2013-07-21T12:25:01+00:00",
+      "author": "VinylCyril",
+      "content": "That one works fine, but it only has executables for x64 and x86 (which worked fine with a i386 Debian img). I\u0027m trying to run Raspbian, which expects ARM.\n\nI know at this point my original question is essentially resolved and I shouldn\u0027t be bothering you, but the uploader (of the Qemu version that you suggested) is not active anymore. Maybe you know of any other working versions that would support ARM? The one I originally found (from omledom.com) is broken, apparently :smile:\n\nBig thanks already!\n\n"
+    },
+    {
+      "id": "174968",
+      "timestamp": "2013-07-21T13:08:53+00:00",
+      "author": "DavidB",
+      "content": "If you look in the folder with qemu-system-arm.exe you\u0027ll find a stderr.txt file with this text: \"Kernel image must be specified\"  \nYou can find more info here: [http://www.raspberry...\u003d3149\\\u0026start\u003d100](http://www.raspberrypi.org/phpBB3/viewtopic.php?f\u003d2\u0026t\u003d3149\u0026start\u003d100 \"External link\")\n\nOr here:[http://www.linuxques...tem-arm-898112/](http://www.linuxquestions.org/questions/linux-virtualization-and-cloud-90/error-kernel-image-must-be-specified-qemu-system-arm-898112/ \"External link\")\n\n"
+    },
+    {
+      "id": "174996",
+      "timestamp": "2013-07-22T15:09:42+00:00",
+      "author": "DavidB",
+      "content": "New version: 1.22\n\nChanges:\n\nImprovement: the \"Wait time to flush data\" option was moved from the Add/Edit window into the Options window.  \nImprovement: a VM image was added to the \"VM Name\" column.  \nBugfix: sometimes the context menu of the list had the MoveUp and MoveDown menu entries enabled when they should of been disabled.  \nImprovement: A few web links were implemented.  \nImprovement: the Qemu exe parameter for attaching the real drive is now added to the command line before the other parameters. This way it will be added before other drives.  \nImprovement: when Qemu fails to start the VM a message with useful informations is shown.  \nAnd some other minor code improvements...\n\nDownload [here](http://reboot.pro/files/file/339-virtual-machine-usb-boot/ \"\")\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "175045",
+      "timestamp": "2013-07-24T13:36:30+00:00",
+      "author": "VinylCyril",
+      "content": "Hello!\n\nI\u0027ve been learning a lot about Qemu during the past couple of days, so I hope I won\u0027t sound as stupid as before.\n\nDownloaded the kernel, read about Qemu command line parameters, etc.\n\nI have a strong-ish assumption that your program works great with 0.x versions, because they allow the format you use for the \"-drive\" parameter, unlike the newer builds of Qemu that I could find.\n\nSince Qemu 0.15 doesn\u0027t support arm1176, I had to use [lassauge\u0027s](http://lassauge.free.fr/qemu/ \"External link\") 1.5.x. They register an error in the log:\n\n```\nlass-151\\qemu-system-armw.exe: -drive file\u003d\\\\.\\PhysicalDrive1,if\u003dide,index\u003d0,media\u003ddisk,snapshot\u003doff: Block protocol \u0027host_device\u0027 doesn\u0027t support the option \u0027filename\u0027\nlass-151\\qemu-system-armw.exe: -drive file\u003d\\\\.\\PhysicalDrive1,if\u003dide,index\u003d0,media\u003ddisk,snapshot\u003doff: could not open disk image \\\\.\\PhysicalDrive1: Invalid argument\n```\n\nCould it be backslashes in system paths (\\\\\\\\.\\\\PhysicalDrive1) instead of forward-slashes?\n\nI updated to the latest version of your program, and the issue persists.\n\nP.S. I tried using your program with the 0.15 version of Qemu, having specified arm1136 instead of arm1176, it didn\u0027t go well, there\u0027s error messages like \"can\u0027t open root device sr0.\"\n\n"
+    },
+    {
+      "id": "175049",
+      "timestamp": "2013-07-24T16:11:47+00:00",
+      "author": "DavidB",
+      "content": "Yes, my program uses \"-drive file\u003d\\\\\\\\.\\\\PhysicalDrive\\[n\\],...\" to add the real drive.  \nSeems like in the newer version doesn\u0027t like it...\n\nI will investigate more and return with the results...\n\n"
+    },
+    {
+      "id": "175055",
+      "timestamp": "2013-07-24T18:20:10+00:00",
+      "author": "DavidB",
+      "content": "I looked in Qemu code: yes, it uses \"//./\" but also uses \"\\\\\\\\\\\\\\\\.\\\\\\\\\".\n\n```\n\nstatic int find_device_type(BlockDriverState *bs, const char *filename)\n{\n    BDRVRawState *s \u003d bs-\u003eopaque;\n    UINT type;\n    const char *p;\n\n    if (strstart(filename, \"\\\\\\\\.\\\\\", \u0026p) ||\n        strstart(filename, \"//./\", \u0026p)) {\n        if (stristart(p, \"PhysicalDrive\", NULL))\n            return FTYPE_HARDDISK;\n        snprintf(s-\u003edrive_path, sizeof(s-\u003edrive_path), \"%c:\\\\\", p[0]);\n        type \u003d GetDriveType(s-\u003edrive_path);\n        switch (type) {\n        case DRIVE_REMOVABLE:\n        case DRIVE_FIXED:\n            return FTYPE_HARDDISK;\n        case DRIVE_CDROM:\n            return FTYPE_CD;\n        default:\n            return FTYPE_FILE;\n        }\n    } else {\n        return FTYPE_FILE;\n    }\n}\n```\n\nBut \"\\\\\\\\.\\\\\" is also indirectly supported.\n\nAnyway I tried with both in a batch file but I got the same result. I even tried with a volume (//./d:) and with /dev/cdrom, still doesn\u0027t work.  \nIt seems that the problem could be somewhere in the Qemu code, since the error appears even when my program isn\u0027t used.  \n\nSo, for now, I advice you to use the older version.  \nAlso I think it\u0027s wise to test with a batch file first to be sure it will work.  \nYou say that you have an error. Could you please show me the parameters that you used...?\n\n"
+    },
+    {
+      "id": "175076",
+      "timestamp": "2013-07-25T15:55:09+00:00",
+      "author": "DavidB",
+      "content": "edited\n\n"
+    },
+    {
+      "id": "175080",
+      "timestamp": "2013-07-25T17:09:31+00:00",
+      "author": "Blackcrack",
+      "content": "wow crewl options dialog !! ![:cheerleader:](https://reboot.pro/public/style_emoticons/default/cheerleader.gif) keep it up! ![:good:](https://reboot.pro/public/style_emoticons/default/good.gif)\n\nmaby an 2nd drive selecting, if hang it on an isofile from vbox, shold be enabled to overtake the 2nd drive settings for independed configuration/hang in an other iso or unmount the iso for next boot , also not need to open the vbox-masterdialogbox finally .. i have at exemple 2 controler, once, the fisrt the ATA-Controler the 2nd it is an SATA where it is the CDRom/iso file on it.. so shold seach the controler and the end connections and make possible to change it.. ide-\\\u003e usb + other and sata iso/host-cdrom , i hope it\u0027s understandable the suggestion :smile:\n\nmaybe a optionsbox for qemu entrys also ? IT\u0027s certainly useful for qemu also :smile:\n\nbest regards\n\nBlacky\n\np.s.: slashes and backslashes comes from the linuxcode, mus be compatieble with linux also,\n\ntherefor use it slashes and backslashes :smile:\n\n**Edited by Blackcrack, 25 July 2013 - 05:20 PM.**\n"
+    },
+    {
+      "id": "175082",
+      "timestamp": "2013-07-25T18:30:33+00:00",
+      "author": "DavidB",
+      "content": "\u003e maby an 2nd drive selecting, if hang it on an isofile from vbox, shold be enabled to overtake the 2nd drive settings for independed configuration/hang in an other iso or unmount the iso for next boot , also not need to open the vbox-masterdialogbox finally .. i have at exemple 2 controler, once, the fisrt the ATA-Controler the 2nd it is an SATA where it is the CDRom/iso file on it.. so shold seach the controler and the end connections and make possible to change it.. ide-\\\u003e usb + other and sata iso/host-cdrom , i hope it\u0027s understandable the suggestion :smile:\n\nSorry, don\u0027t understand 100% ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)\n\n\u003e p.s.: slashes and backslashes comes from the linuxcode, mus be compatieble with linux also,\n\u003e\n\u003e therefor use it slashes and backslashes :smile:\n\nYes, I knew that, I\u0027m using Linux for years now...\n\n"
+    },
+    {
+      "id": "175090",
+      "timestamp": "2013-07-26T05:06:52+00:00",
+      "author": "Blackcrack",
+      "content": "no problem :smile: maybe comes by step to step developing from this programm by self, because it is a need in anyway to have an own config-dialog at last for all :wink: in any case it\u0027s a good way like it goes now.. keep it up :smile:\n\nConfig/optionswindow it\u0027s a need for both emulators in any case like i see it..\n\ntherewith it\u0027s this confgwindow \\^\\^ very good :smile:\n\nbest regards\n\nBlacky\n\n"
+    },
+    {
+      "id": "175145",
+      "timestamp": "2013-07-27T19:09:40+00:00",
+      "author": "DavidB",
+      "content": "Here is a little preview:  \n\n![ok0ry9.png](http://i40.tinypic.com/ok0ry9.png)\n\nAnd an exe to test it. It\u0027s just the interface (for now):  \n\n[![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003dbf34e02832ca0abdc4859bb686ec975d\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14456 \"Download attachment\") [**Test.zip**](http://reboot.pro/index.php?s\u003dbf34e02832ca0abdc4859bb686ec975d\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14456 \"Download attachment\") **309.51KB** 1115 downloads  \n\nWhat do you think..? Do you find it useful or useless...? And how can it be improved...?  \nI know that Blackcrack and maybe Steve will answer but I would appreciate feedback from more users. And not just \"it\u0027s fantastic, keep up the good work\" but some constructive criticism.  \nThank you.\n\n"
+    },
+    {
+      "id": "175146",
+      "timestamp": "2013-07-27T19:59:49+00:00",
+      "author": "Zoso",
+      "content": "more options is better!   \n\nI\u0027ll test when I get a chance but right now Im using 1.2 and I can not get a full boot up from a USB HDD with pos2009 (XP embedded with nt6).  \n\nthe same USB HDD boots perfectly in VMware with plop and directly on several machines. do you know how I can trouble shoot this?  \n\nit stops after the first stage drivers load. the stage that you see when you set the /sos option in the boot.ini  \nif I try a different kernl option it gets to the desktop but then I get a BSOD DRIVER_UNLOADED_WITHOUT_CANCELLING_PENDING_OPERATIONS crusoe.sys but I think that is only because Im using the wrong kernel and not related to the boot freeze when using the correct kernl, no certain though.  \n\nedit: I just remembered that I could not install pos2009 in VB because of lots of errors then I installed in VMware with no probelms so this is definately not an issue with your tool.  \n\nI tried to convert the vdmk to vhd after install and it still would not boot in VB. not sure whats going on with this.   \n"
+    },
+    {
+      "id": "175532",
+      "timestamp": "2013-08-06T14:48:39+00:00",
+      "author": "genetix",
+      "content": "Nice tool, damn, works quite well against real environment testing too. Comparing this against Plop CD/FLP -\\\u003e USB method or direct physical access to USB as HD this works 10 times faster.\n\n"
+    },
+    {
+      "id": "175533",
+      "timestamp": "2013-08-06T14:54:48+00:00",
+      "author": "Blackcrack",
+      "content": "youre right ! :smile:\n\n"
+    },
+    {
+      "id": "175663",
+      "timestamp": "2013-08-13T02:44:57+00:00",
+      "author": "totoblack100",
+      "content": "thx for the good work man!   \n"
+    },
+    {
+      "id": "176573",
+      "timestamp": "2013-09-01T11:44:49+00:00",
+      "author": "DavidB",
+      "content": "New version: 1.25 Beta 1  \n\nWhat\u0027s changed:  \n\n- after checking the \"Show a second drive\" option, adding or editing a Qemu entry was problematic because the exe parameters edit area was too low positioned on window; also Qemu was not recognizing the second drive and refused to start. Both problems solved.  \n- most info/warning/error messages appear now in the middle of their parent window instead of the middle of the screen;  \n- the texts of some messages are improved to help the user more;  \n- each new entry will have \"USB Boot test\" as the default name but it will be selected so it can be easily changed;  \n- a few internal functions are optimized (faster and less CPU usage);  \n- the automatic search for the Qemu exe path is slightly improved;  \n- in Options:  \n- the \"Lock the volumes ...\" option is now checked by default when the application is freshly installed or when you delete the cfg file from the portable version;  \n- added \"Backup the old entries before saving the new ones\" option, checked by default; if you uncheck it, it will not save the old entries as \\*.vml.bak anymore. It is useful when you don\u0027t add/edit/delete entries often or you are sure there will be no problems during the save operation (for example OS, drive and/or electricity problems);  \n- added \"Don\u0027t warn when not able to save the configuration or the entries file (read only medium)\" option, unchecked by default; useful when you start the portable version with a fixed configuration and with fixed entry/es from a read-only medium or with 0% free space (CD, DVD, write-protected USB key/flash/stick, USB key/flash/stick filled with dummy files to prevent virus infection);  \n- the length of the text for all options is limited to reasonable values to prevent \"buffer overflow/overrun\" problems;  \n- in the previous version when pressing F1 was directly loading \"[http://reboot.pro/to...chine-usb-boot/](http://reboot.pro/topic/18736-virtual-machine-usb-boot/ \"\")\" in the default internet browser; also the last items from the context menu of the caption from the main window were directly loading their internet links. Now first checks for an internet connection, then tries if the default link works and, if not, tries a backup one. For example, the backup for F1 is \"[http://reboot.pro/in...showtopic\u003d18736](http://reboot.pro/index.php?showtopic\u003d18736 \"\")\". If one of them works then it will be started in the default internet browser.  \n\nEdited: links removed, you can find a better version in the next posts...\n\n"
+    },
+    {
+      "id": "176675",
+      "timestamp": "2013-09-03T06:31:21+00:00",
+      "author": "DavidB",
+      "content": "I reported the \"physical disk\" bug directly to the Qemu developers (at wiki.qemu.org) a while ago. They recently said that the problem was localized only to the Windows version of Qemu and it should be fixed now in the 1.6.0 version...  \n\nI\u0027m thinking about adding a few more predefined \"command lines\" for Qemu instead of just one. For example for VM\u0027s \\\u003c\\\u003e x86/x64. The user will choose each one with a checkbox in the Add/Edit window.  \nWhat do you think, guys, will it be useful...?\n\n"
+    },
+    {
+      "id": "176694",
+      "timestamp": "2013-09-03T16:35:44+00:00",
+      "author": "DavidB",
+      "content": "New version: 1.25 Beta 2  \n\nChanges:  \n- when \"use VBoxManage.exe command line (slower)\" option is checked, VMUB waited about 5 sec so the previous VM session would be fully closed. For those of you who doesn\u0027t know why is it doing this: when you close and restart VirtualBox very fast, sometimes is crashing (VirtualBox bug). Those 5 sec may be too less on some systems or too much on other. So I found a way to check if its closed so it will only wait the amount of time that it needs. More, now it will show a progress window where you can see how it goes and where you can even stop the waiting (well, at your own risk).  \n\nEdited: links removed, you can find a better version in the next posts...\n\n"
+    },
+    {
+      "id": "176740",
+      "timestamp": "2013-09-05T01:39:34+00:00",
+      "author": "DavidB",
+      "content": "1.25 final version released.\n\n[Click here to download this file](http://reboot.pro/files/file/339-virtual-machine-usb-boot/ \"\")  \n\nChanges from Beta 2: a small bug in the newly added code was fixed.  \n\nSince not every user needs the sources of this program, they were not included in the main download anymore.  \nBut you can download them from this link: (link removed, newer version in the next posts)\n\n"
+    },
+    {
+      "id": "176742",
+      "timestamp": "2013-09-05T09:07:36+00:00",
+      "author": "Blackcrack",
+      "content": "thaaank you ! ![:1st:](http://reboot.pro/public/style_emoticons/default/1st.gif) \\*jump\\* ![:clap:](http://reboot.pro/public/style_emoticons/default/clap.gif) ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)\n\nbest regards\n\nBlacky\n\n"
+    },
+    {
+      "id": "176863",
+      "timestamp": "2013-09-08T07:13:28+00:00",
+      "author": "DavidB",
+      "content": "VirtualBox 4.2.18 released 2 days ago.  \n\nIt\u0027s strange that it was released so close after VMUB 1.25. But it\u0027s probably just a coincidence...  \n\nIt\u0027s also strange that lately the update checker from VirtualBox Manager doesn\u0027t announce me about the new versions as soon as they are released. More, even if I try the main menu Help \\\u003e\\\u003e Check for updates still doesn\u0027t show a new version.  \nOn your computers does it \"behave\" the same way..? If yes, they should fix it. If not, it\u0027s probably just another coincidence that it happened only on my computer (so many times)...  \n\nPrior releasing VMUB 1.25 I tested it thoroughly with VB 4.2.16 and with 4.3.0 Beta 1. All was fine.  \nIt\u0027s again strange they suddenly decided to release VB 4.2.18 final even if the official Beta version was 4.3.0 Beta 1. But, again, that\u0027s probably just a coincidence.  \n\nAnyway, it seems that 4.2.18 has sometimes problems with the \"storageattach\" command, failing to detach the vmdk.  \nFor those of you who doesn\u0027t know, there is no detach command; \"VBoxManage.exe storageattach \\[GUID_of_the_VM\\] --storagectl IDE/SATA --port \\[n\\] --device \\[n\\] --medium none\" command is used to set the medium to none.  \nThe problem appears when the USB drive is changed with another but having the same \"physical drive number\" as the previous.  \nI will further investigate and come back with the results.  \n\nBTW, this problem doesn\u0027t appear when you use \"Method to update.. \\\u003e\\\u003e directly\" in Options, because this way it doesn\u0027t use vboxmanage commands. So, if you have VB 4.2.18 and often change the USB drive, I advice you to use the \"directly\" method for the time being.\n\n"
+    },
+    {
+      "id": "176891",
+      "timestamp": "2013-09-09T06:36:12+00:00",
+      "author": "Blackcrack",
+      "content": "humm.. maby have anyone with anyone an deal for not adding some fiture like you VMS share it ..  \ni bet was befor some jears possible.. but.. anyone whant not to be an System on USB ...  \nfor foreign booting with an usb-stick, take a look if have some Spy this possibility and can  \nboot an Mashin foreign have he full access with an USB-Boot possibility like an usb-Disk os an usb-stick ...  \nbut.... usb3 it is come anyway and it is 3times faster as sata .. or something.. so..  \nusb-boot it is come in anyway.. so.. then why not grab befor and create like you an  \npossibility for create an bootable usb or usb-harddisk bootable with an System .. i am not correct ? or i be wrong ?  \n\nThey peoples be really dumb if they not include it.. and they not include it , you have greate some possible now :smile:  \nnow they are in tight spot .. .. and to the others.. we are should spread this lil nice programm in all Freeware-Forums ..  \n\nbest regards  \nBlacky  \n\np.s.: postet on [essential-freebies.de](http://www.essential-freebies.de/board/viewtopic.php?f\u003d33\u0026t\u003d17242\u0026p\u003d126770#p126770 \"External link\")\n\n"
+    },
+    {
+      "id": "176926",
+      "timestamp": "2013-09-10T06:03:53+00:00",
+      "author": "DavidB",
+      "content": "Thank you Blackcrack.  \n\nWell, I came to the conclusion that the problem is not from my application and there isn\u0027t much I can do to avoid it.  \nWhen vboxmanage.exe is called many times at some point it will refuse to do the job. It will wait 30 seconds and it will autoclose with exit code 1. It resembles somehow with the VirtualBox fast restart problem.  \nThe problem exists in all VirtualBox versions but in those \\\u003c\\\u003e 4.2.18 it was, let\u0027s say, on an acceptable level. In 4.2.18 it does it more often...  \nWhen it works properly each job is done in about half a second. So I implemented a \"waiting time to finish\" of 15 seconds for each of them, which is enough even on slow computers.  \nIt\u0027s a little strange that they decided to set the autoclose time to 30 seconds. But, what is even more strange, the problem appears ONLY when vboxmanage.exe is called by another exe, not when it\u0027s started directly or from a batch file.\n\n"
+    },
+    {
+      "id": "176929",
+      "timestamp": "2013-09-10T06:50:15+00:00",
+      "author": "Blackcrack",
+      "content": "humm, maby the the type of call, in einer batchdatei via cmd and the one from the compiled programm\n\nin an other orogramming language.. look.. the command.com was writing in c and the cmd.exe like i know in c++\n\nand the batchfiles make not other for tell the cmd, call/start the programm, now we look on the programming language,\n\nhow the hack it is call an other executable file in an other programminglanguage ?\n\nThis it is the question like (like Juliet\\\u0026Romeo) but both use an other language , you see..\n\nJuliet speak Esperanto and Romeo Italiano .. but both loves, but dont relay understands..\n\nmaybe something like that .. both can kiss together, but can not really understand..\n\nand on longer sight ... gives truble \\*bg\\* is an funny comparison maybe, but ....\n\nWe should have someone who can read the code from virtualbox (because it\u0027s open Source)\n\nfor review and check out what\u0027s directly the problem .. so we need an Programmer who can be an helping hand..\n\nand i think, on this point want be go very interresting ..\n\nbest regards\n\nBlacky\n\n"
+    },
+    {
+      "id": "176930",
+      "timestamp": "2013-09-10T07:36:40+00:00",
+      "author": "DavidB",
+      "content": "It could be from Delphi \\\u003c\\\u003e C/C++ but I doubt it.\n\nI\u0027m using this Winapi function to start any exe: [CreateProcessW](http://msdn.microsoft.com/en-us/library/windows/desktop/ms682425(v\u003dvs.85).aspx \"External link\")\n\nI never had problems starting any other exe with it...\n\nAnd even for a experienced C/C++ programmer it\u0027s not that easy to find the problem in so many pages of VirtualBox code...\n\n"
+    },
+    {
+      "id": "176932",
+      "timestamp": "2013-09-10T08:44:49+00:00",
+      "author": "Blackcrack",
+      "content": "therefore i like nsa \\*bG\\* you see.. hihi ... humm.. therefor shold it really examine the code in individual \u0027s ,\n\nfor really knowing why it works well there and not well there ..\n\nbest regards\n\nBlacky\n\n"
+    },
+    {
+      "id": "176952",
+      "timestamp": "2013-09-11T06:13:18+00:00",
+      "author": "DavidB",
+      "content": "Well, the only good thing is that the problem appears when you restart VMUB a few times (fast) and start the VirtualBox VM as fast as possible. Or when you change the USB drive a few times very fast and click on Start button each time. This way you\u0027ll force VMUB to call vboxmanage.exe many times in a short amount of time and it will increase the chances that something would go wrong. But the regular users don\u0027t do that very often...  \nAnyway I advice you to use the \"method to update.. \\\u003e\\\u003e directly\" in Options and use the vboxmanage method only when is really necessary.\n\n"
+    },
+    {
+      "id": "177414",
+      "timestamp": "2013-09-23T16:55:09+00:00",
+      "author": "DavidB",
+      "content": "Looks like in the latest Qemu version (compiled on 2013/09/21) the problem with the PhysicalDrive parameter is solved.  \nIt can be downloaded from [here](http://qemu.weilnetz.de/w32/qemu-w32-setup-20130921.exe \"External link\")\n\n"
+    },
+    {
+      "id": "177507",
+      "timestamp": "2013-09-26T08:17:55+00:00",
+      "author": "DavidB",
+      "content": "New version: 1.26 Beta 1  \n\nChanges:  \n\n1. In Options: \\\u003c\\\u003cAdd \"Enable VT-x/AMD-V\" option to the Add/Edit window\"\\\u003e\\\u003e in VirtualBox section.  \nWhen it\u0027s checked it will add this option to the Add and Edit windows, with 4 states: Unchanged (default, it will not change the state of the option in the VirtualBox VM), On, Off and Switch. Switch will change the state (On to Off or Off to On) every time you (re)start the VM.  \n2. Some minor adjustments for VirtualBox 4.3.0 Beta 3.\n\nEdit: link removed, you can find a better version in the next posts.\n\n"
+    },
+    {
+      "id": "177707",
+      "timestamp": "2013-10-01T22:13:11+00:00",
+      "author": "DavidB",
+      "content": "New version: 1.26 Beta 2  \n\nChanges:  \n- for Qemu VMs now you can easily set a HDD image file as the internal HDD, memory size and a sound card (in the previous version(s) they could be set only with exe parameters).\n\n[![Clipboard01.png](http://reboot.pro/uploads/monthly_10_2013/post-61891-0-67300000-1380665472_thumb.png)](http://reboot.pro/uploads/monthly_10_2013/post-61891-0-67300000-1380665472.png \"Clipboard01.png - Size: 8.43KB\"){#ipb-attach-url-14552-0-44710100-1676066426}\n\nEdit: link removed, you can can find a better version in the next posts.\n\n"
+    },
+    {
+      "id": "177823",
+      "timestamp": "2013-10-04T10:11:15+00:00",
+      "author": "DavidB",
+      "content": "New version: 1.26 final.\n\nChanges (from Beta 2):\n\n1. The Memory edit box from the Add/Edit window (Qemu VM) was changed to a spin edit box.  \n2. Small improvements to the way the application handles the input errors (from the user and VirtualBox configuration files).\n\n[Click here to download this file](http://reboot.pro/files/file/339-virtual-machine-usb-boot/ \"\")\n\nSources: [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003d3dc27c746e6e5eddfccebd33e55941bf\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14584 \"Download attachment\") [**VMUB 1.26 sources.zip**](http://reboot.pro/index.php?s\u003d3dc27c746e6e5eddfccebd33e55941bf\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14584 \"Download attachment\") **250.95KB** 735 downloads\n\n"
+    },
+    {
+      "id": "178525",
+      "timestamp": "2013-10-16T02:19:43+00:00",
+      "author": "DavidB",
+      "content": "VirtualBox 4.3.0 was released, with a lot of improvements and bug fixes.  \nUnfortunately the VBoxManage.exe problem doesn\u0027t seem to be fixed, although it was reported some time ago...  \nAnd because the new version is slower (\\~ 2x) in closing its dependencies when the GUI is closed, looks like VMUB will have to wait a longer period of time to be fully closed. But this will affect the starting time only if the VM is (re)started right after closing it.\n\n"
+    },
+    {
+      "id": "178527",
+      "timestamp": "2013-10-16T04:01:39+00:00",
+      "author": "Blackcrack",
+      "content": "i think, it\u0027s not so bad, because, the possible exist for take an USB-Device and installing an System on it.\n\nand if some start slower by restart it\u0027s not so important, the main thing is, it is possible to make the most important ..\n\nand it is exist the possible :smile:\n\nDavidB, i bet with you, 5-7 years ago it would have been possible as USB boot to add to the VBOX,\n\nbut one (an anonym person/?s) want not, for add this gimmik into the VBox.\n\nAnd i think, it\u0027s the same reason why the VBoxManage.exe bug not be fix it ..\n\nbut it was able in this time to fix it .. like you have say it to was able ..(and into the new 4.3 version also)\n\nHow ever.. i see positive in the future, we have the new USB3 Standart and this Fiture\n\nmus comming in anyway :wink:\n\nyou have Show to be it is works on usb for using with an System and the download-numbers it prove that it is used.\n\n\u003cbr /\u003e\n\n\u003e \u003cbr /\u003e\n\u003e\n\u003e * **Submitted:** Jul 20 2013 08:01 PM\n\u003e * **Last Updated:** A week ago\n\u003e * **File Size:** 1.62MB\n\u003e * **Views:** 7302\n\u003e * **Downloads:** 4,793\n\nbest regards\n\nBlacky\n\n"
+    },
+    {
+      "id": "178771",
+      "timestamp": "2013-10-21T21:53:20+00:00",
+      "author": "sebretos",
+      "content": "Hi DavidB, im jut starting to use Virtual Box 4.3 on my windows 7.\n\ni want to try install another windows 7 by using USB boot for my lesson so i read your tutorial\n\ni tried your tutorial step by step :\n\n-\\\u003e set administrator in USB bot 1.26\n\n-\\\u003e set administrator in VB manager\n\n-\\\u003e make sure storage port available\n\nbut it keeps telling error message \"disk error.... press any key o restart\"\n\nany idea what i missed from this steps?\n\nneed help so much for this topic.. thanks before\n\n"
+    },
+    {
+      "id": "178772",
+      "timestamp": "2013-10-21T22:04:32+00:00",
+      "author": "steve6375",
+      "content": "Is the **first**disk storage port free?\n\n"
+    },
+    {
+      "id": "178773",
+      "timestamp": "2013-10-21T22:12:40+00:00",
+      "author": "DavidB",
+      "content": "Hi.\n\nIf VMUB is saying that then it could be a problem with VMUB. But I haven\u0027t implemented this error message...\n\nBut if VirtualBox is saying it, it could be a faulty MBR or even a VirtualBox virtualization bug. For example it said that when I used WinToFlash + Windows XP SP3 onto my USB flash/stick.\n\nSo, are you seeing the message in a small \"message box\" or in the VirtualBox VM window...?\n\nLater edit:\n\nFor example, this is what I see when I try to boot from my USB key/flash/stick after I used WinToFlash to add Windows XP SP3 on it:  \n\n[![VirtualBox.png](http://reboot.pro/uploads/monthly_10_2013/post-61891-0-40785600-1382678799_thumb.png)](http://reboot.pro/uploads/monthly_10_2013/post-61891-0-40785600-1382678799.png \"VirtualBox.png - Size: 9.46KB\"){#ipb-attach-url-14641-0-44734500-1676066426}   \n\nIt seems to be a virtualization bug...\n\n"
+    },
+    {
+      "id": "178895",
+      "timestamp": "2013-10-25T06:11:36+00:00",
+      "author": "cardex88",
+      "content": "hello DavidB,\n\ni\u0027ve some troubleshoot when running virtual machine usb boot with virtual box. can you point me out step by step?\n\nhere the screenshot of the error :\n\n\u003cbr /\u003e\n\nSpoiler  \n[![Troubleshoot_zps80b0831e.jpg](http://i228.photobucket.com/albums/ee279/cardex88/Troubleshoot_zps80b0831e.jpg)](http://s228.photobucket.com/user/cardex88/media/Troubleshoot_zps80b0831e.jpg.html \"External link\")\n\n\u003cbr /\u003e\n\ni would appreciate your help.\n\nthx before.\n\nregards\n\ncardex88\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "178896",
+      "timestamp": "2013-10-25T07:20:07+00:00",
+      "author": "DavidB",
+      "content": "The USB key/flash/stick is seen as a HDD when booting from a real or virtual computer.  \nIn most real computers you can select HDD boot order in Bios. Unfortunately in VirtualBox VM there isn\u0027t such an option.  \nSo you\u0027ll have to go into the VirtualBox\u0027s storage controller and set the HDD(s) from there (except VMUB\\*\\*\\*.vmdk, if you see one) to subsequent port(s). This way the VM will see the USB drive as the first HDD and it will boot from it.  \nI could of explained how to do that in that message you\u0027ve seen and/or in the VMUB presentation. I have chosen not to because this is a very important computer and VirtualBox knowledge and the best way to understand it is to search and solve it yourself, not just blindly follow my step by step instructions.  \nIn that message and in this one I have already gave you some pointers on how to (easily) solve it.  \nBut, since this is a forum where people are helped, if you (still) just want the step by step instructions, of course I\u0027ll help you with that.  \nJust let me know...\n\n"
+    },
+    {
+      "id": "179011",
+      "timestamp": "2013-10-29T08:04:48+00:00",
+      "author": "cardex88",
+      "content": "i\u0027d love to if you can give me step by step instructions. i\u0027m newbie in virtualization things. ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png) i\u0027m trying figure it out by myself but i\u0027m still stuck, cause i not familiar with the function of the menus in virtualbox.\n\nthx for your fast respond Davidb. i appreciate it.\n\n"
+    },
+    {
+      "id": "179015",
+      "timestamp": "2013-10-29T09:25:27+00:00",
+      "author": "DavidB",
+      "content": "Start Oracle VM VirtualBox Manager. In the left panel select the VM used for USB Boot. In the right panel click on Storage (with the blue HDD icon).  \nAny drive you see here (except VMUB\\*\\*\\*.vmdk) select it and look at Attributes in the right side. In the combobox (dropdown) you\u0027ll see the assigned port. Change it to a subsequent value; for example from IDE Primary Master to IDE Primary Slave or from SATA Port 0 to SATA Port 1.  \nThe idea is to free IDE Primary Master or SATA Port 0 for the USB drive...  \nIf you see a VMUB\\*\\*\\*.vmdk, assign the IDE Primary Master or SATA Port 0 to it.  \nClick on OK, close Oracle VM VirtualBox Manager, wait a few seconds and start the VMUB.  \n\nIf still you can\u0027t set it, please post a screenshot of those Storage options...\n\n"
+    },
+    {
+      "id": "179026",
+      "timestamp": "2013-10-30T05:23:16+00:00",
+      "author": "cardex88",
+      "content": "Here\u0027s the screenshot for my strage options :\n\n\u003cbr /\u003e\n\nSpoiler  \n[![bootimage_zps2a83d177.jpg](http://i228.photobucket.com/albums/ee279/cardex88/bootimage_zps2a83d177.jpg)](http://s228.photobucket.com/user/cardex88/media/bootimage_zps2a83d177.jpg.html \"External link\")\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nSpoiler  \n[![bootimage2_zps7906f617.jpg](http://i228.photobucket.com/albums/ee279/cardex88/bootimage2_zps7906f617.jpg)](http://s228.photobucket.com/user/cardex88/media/bootimage2_zps7906f617.jpg.html \"External link\")\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nSpoiler  \n[![bootimage3_zps81bc9b96.jpg](http://i228.photobucket.com/albums/ee279/cardex88/bootimage3_zps81bc9b96.jpg)](http://s228.photobucket.com/user/cardex88/media/bootimage3_zps81bc9b96.jpg.html \"External link\")\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nSpoiler  \n[![bootimage4_zpsb4b161ea.jpg](http://i228.photobucket.com/albums/ee279/cardex88/bootimage4_zpsb4b161ea.jpg)](http://s228.photobucket.com/user/cardex88/media/bootimage4_zpsb4b161ea.jpg.html \"External link\")\n\n\u003cbr /\u003e\n\nthe virtualbox still can\u0027t find my usb to boot.\n\ni\u0027m try assigned port with IDE master and Sata still no luck...when VMUB start the Oracle Virtualbox always show sytem halted.\n\n"
+    },
+    {
+      "id": "179027",
+      "timestamp": "2013-10-30T05:31:47+00:00",
+      "author": "DavidB",
+      "content": "Well, that seems to be a different problem.\n\nAre you sure that the USB drive is bootable...? I mean, can you boot from it in a real computer?\n\nWhich application have you used to make it bootable...?\n\n"
+    },
+    {
+      "id": "179028",
+      "timestamp": "2013-10-30T05:43:18+00:00",
+      "author": "Blackcrack",
+      "content": "ehh davidB,  \n\ntake a look on his explorer and the adressline .. it\u0027s an other folder than he use .. mus use on his stick ..  \n\ntake a look on his file-seach-adressline ..  \n\nbest regards  \nBlacky   \n"
+    },
+    {
+      "id": "179030",
+      "timestamp": "2013-10-30T07:50:18+00:00",
+      "author": "cardex88",
+      "content": "i\u0027m using RMPrepUSB to make my usb bootable.\n\nhere\u0027s screenshot booting the drive using Qemu on RMPrepUSB :\n\n\u003cbr /\u003e\n\nSpoiler  \n[![test_zps854c0b88.jpg](http://i228.photobucket.com/albums/ee279/cardex88/test_zps854c0b88.jpg)](http://s228.photobucket.com/user/cardex88/media/test_zps854c0b88.jpg.html \"External link\")\n\n\u003cbr /\u003e\n\ni\u0027ve try to boot my flashdrive on real system and it can boot and install WinXp succesfully.\n\n"
+    },
+    {
+      "id": "179031",
+      "timestamp": "2013-10-30T09:04:33+00:00",
+      "author": "steve6375",
+      "content": "Try deleting the SATA controller from the VM\n\n"
+    },
+    {
+      "id": "179033",
+      "timestamp": "2013-10-30T09:21:19+00:00",
+      "author": "DavidB",
+      "content": "I assume if you try now to start the VM directly in VirtualBox Manager it will still display the same message.  \nIf it starts with Qemu and on the real computer but not with VirtualBox, it could be a VirtualBox problem.  \nCould you please send me the Test.vbox file (the VirtualBox VM)..? Also could you please show me how you used RMPrepUSB so I can try to reproduce the problem on my USB drive...?\n\n"
+    },
+    {
+      "id": "179036",
+      "timestamp": "2013-10-30T10:49:27+00:00",
+      "author": "cardex88",
+      "content": "\u003e Try deleting the SATA controller from the VM\n\nalready try that and still no luck...![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)\n\u003e I assume if you try now to start the VM directly in VirtualBox Manager it will still display the same message.  \n\u003e If it starts with Qemu and on the real computer but not with VirtualBox, it could be a VirtualBox problem.  \n\u003e Could you please send me the Test.xml file (the VirtualBox VM)..? Also could you please show me how you used RMPrepUSB so I can try to reproduce the problem on my USB drive...?\n\ni\u0027m gonna try install VirtualBox on another computer with fresh windows. maybe my VirtualBox corrupt someway...i\u0027ll let you know soon. Anyway i\u0027m only found virtualbox.xml not Test.xml on my virtualbox folder (C:/Users/User/.Virtualbox/virtualbox,xml).\n\n"
+    },
+    {
+      "id": "179037",
+      "timestamp": "2013-10-30T10:54:28+00:00",
+      "author": "steve6375",
+      "content": "Did you try pressing F12 and choosing a boot device in VBox?\n\n"
+    },
+    {
+      "id": "179038",
+      "timestamp": "2013-10-30T11:14:31+00:00",
+      "author": "DavidB",
+      "content": "You will find the file in this folder if you open it directly..\n\n\u003e [![bootimage3_zps81bc9b96.jpg](http://i228.photobucket.com/albums/ee279/cardex88/bootimage3_zps81bc9b96.jpg)](http://s228.photobucket.com/user/cardex88/media/bootimage3_zps81bc9b96.jpg.html \"External link\")\n\u003e\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "179105",
+      "timestamp": "2013-11-01T03:24:01+00:00",
+      "author": "DavidB",
+      "content": "Meantime I was working on a new version (1.27)...  \n\n1.27 Beta 1:  \n\n1. You can now add a CD/DVD device (real, virtual or ISO file) to the Qemu VMs.  \n2. In the main window you can now sort the entries by type (Qemu/VirtualBox) clicking on the header of the first column.  \n3. It\u0027s easier now to debug Qemu start errors.  \n4. A few small optimizations to some portions of the code.  \n\nEdited: download link removed, you can find a better version in the next posts...\n\n"
+    },
+    {
+      "id": "179147",
+      "timestamp": "2013-11-02T11:56:45+00:00",
+      "author": "DavidB",
+      "content": "VirtualBox 4.3.2 is out.  \nSee [changelog](https://www.virtualbox.org/wiki/Changelog \"External link\").  \nDownload from [here](https://www.virtualbox.org/wiki/Downloads \"External link\").\n\n"
+    },
+    {
+      "id": "179160",
+      "timestamp": "2013-11-03T06:14:19+00:00",
+      "author": "DavidB",
+      "content": "1.27 Beta 2 version  \n\nChanges:  \n\n1. You can now set in Options the default VM type (VirtualBox or QEMU).  \n2. If you set the memory size of a QEMU VM higher than half of the total physical RAM size (available for Windows) VMUB will warn you (but you can still set it if you want).  \n3. A small GUI bug from the Beta 1 improvements was fixed.  \n\nEdited: download link removed, you can find a better version in the next posts...\n\n"
+    },
+    {
+      "id": "179243",
+      "timestamp": "2013-11-06T05:43:36+00:00",
+      "author": "DavidB",
+      "content": "New version: 1.27 final.\n\nChanges from Beta 2:  \n\n1. A small GUI change in the Options window;  \n2. A few improvements to the text of the warning and error messages.\n\nDownload from [here](http://reboot.pro/files/file/339-virtual-machine-usb-boot/ \"\").\n\nSources: [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003dd587de6e944de8a086f7c01d5ecb6b76\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14651 \"Download attachment\") [**VMUB 1.27 sources.zip**](http://reboot.pro/index.php?s\u003dd587de6e944de8a086f7c01d5ecb6b76\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14651 \"Download attachment\") **255.27KB** 697 downloads\n\n"
+    },
+    {
+      "id": "179288",
+      "timestamp": "2013-11-07T15:23:09+00:00",
+      "author": "Scooby",
+      "content": "This is a windows only program right?\n\nWould it be possible to compile it for Linux?\n\n"
+    },
+    {
+      "id": "179289",
+      "timestamp": "2013-11-07T15:51:14+00:00",
+      "author": "p0lychr0me",
+      "content": "Howdy.\n\n\u003e This is a windows only program right?\n\u003e\n\u003e Would it be possible to compile it for Linux?\n\nI am not answering, instead, I am posting a \"me too\". In other words, I came to this forum to look up information about using a USB key drive made bootable, to start a Vm (in VirtualBox), but on ***Linux*** . This was an entirely Windows-centric thread as far as i saw when I scanned it, and it amazes me how tech people sorts themselves into exclusive communities that do not even acknowledge other communities. For example, the original post by DavidB does not even show the term \"++*Windows*++\" until entry #9 under \"TIPS\". And nowhere does the term Linux appear in that top post.\n\nSo, it is a more than reasonable (set of) question(s). \"Can it run on Linux\"? \"Can the source code compile on other OSes\"?\n\nIt\u0027s jumping the gun for me to say so, but my response is (a guess, totally based on background knowledge) *No, this tool will not run on Linux* (not in any way shape or form, not Wine, whatever) and *no, it cannot be compiled for Linux* . USB **is system driver programming** , so if someone thinks it is just a trivial thing to make a Windows utility build and run right on the other kind of OS they are guessing out of basic ++*ignorance*++. The system level is where the OSes differ extremely from one another, in other words.\n\nit is only the rare project leader who seems brave enough to create a utility like that that is maintained for more than one platform. I do not blame DavidB if he isn\u0027t up to doing that.\n\nThe last time I checked, it was, by the way, very unworkable to try to boot a VirtualBox VM from a USB device on **Linux**. It just doesn\u0027t work right. While it might look like some pieces are there, extreme bugs were (as late as 6 months ago) apparent to a user like me who experimented with it. OTOH, the QEMU software was able to do it for me on Linux.\n\n"
+    },
+    {
+      "id": "179300",
+      "timestamp": "2013-11-07T19:57:28+00:00",
+      "author": "Wonko the Sane",
+      "content": "@p0lychr0me\n\nI am not sure to understand (actually I am sure that I don\u0027t understand) the sense of your post.\n\nUsing a physical drive or device in Virtualbox under Linux is fairly easy.:\n\n[https://www.virtualb...09.html#rawdisk](https://www.virtualbox.org/manual/ch09.html#rawdisk \"External link\")\n\nMaybe, if you start (not here, but rather here: [http://reboot.pro/fo...er-os-flavours/](http://reboot.pro/forum/70-boot-linux-and-other-os-flavours/ \"\") ) a new thread detailing what specific issues you are having, someone may help you.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "179305",
+      "timestamp": "2013-11-07T22:24:16+00:00",
+      "author": "DavidB",
+      "content": "Hi.  \n\nUnfortunately, yes, it is a Windows only program. And the sources cannot be compiled for Linux. Because it uses many Windows API functions and it\u0027s not that easy to find similar functions in Linux. For some of them it isn\u0027t possible so an workaround must be found.  \nI used Delphi 7 for Windows to create it. The problem is I can\u0027t find a decent version for Linux. Kylix is poor and too old. Lazarus is better but not by much. Sorry to say but it\u0027s buggy and not so \"user friendly\" as Delphi. I tried it a few months ago in my Linux. Even with the latest Lazarus build the application\u0027s GUI was slow and buggy.  \n\nYes, the previous VirtualBox versions were having problems booting from a USB drive in Linux but the latest version is booting ok:  \n\n[![Screenshot.png](http://reboot.pro/uploads/monthly_11_2013/post-61891-0-44911300-1383862675_thumb.png)](http://reboot.pro/uploads/monthly_11_2013/post-61891-0-44911300-1383862675.png \"Screenshot.png - Size: 541.99KB\"){#ipb-attach-url-14652-0-02336900-1676066427}\n\n"
+    },
+    {
+      "id": "179322",
+      "timestamp": "2013-11-08T13:15:40+00:00",
+      "author": "p0lychr0me",
+      "content": "In reply - following up:\n\n\u003e @p0lychr0me\n\u003e\n\u003e I am not sure to understand (actually I am sure that I don\u0027t understand) the sense of your post.\n\nThat\u0027s probably because I am a native English speaker and a highly literate one.\n\nI find that this is a problem on the Internet in modern times. It\u0027s not my problem, though. It\u0027s a problem other people are having. And I\u0027ve learned (over 50, here) to not automatically make other people\u0027s problems my own.\n\nSo, I think most readers can understand the meaning of my post pretty well, and if not, well, it\u0027s not because I did not try to write clearly, completely, and correctly. Actually the Internet is overbrimming with people of all nationalities who exhibit very serious cognitive disabilities, and it is not just a matter of lingistic educational background. These people\u0027s problems are not mine.\n\nI wrote:\n\u003e\n\u003e The last time I checked, it was, by the way, very unworkable to try to boot a VirtualBox VM from a USB device on **Linux**. It just doesn\u0027t work right. While it might look like some pieces are there, extreme bugs were (as late as 6 months ago) apparent to a user like me who experimented with it. OTOH, the QEMU software was able to do it for me on Linux.\n\nThat\u0027s what I said and I meant it. Funny, too that a fellow here (even from a country that speaks a language that is not English) confirms what I wrote:\n\n\u003e \\[ from DavidB - above \\]\n\u003e\n\u003e Yes, the previous VirtualBox versions were having problems booting from a USB drive in Linux but the latest version is booting ok\n\nHopefully that clarifies things for other readers who may come along. \"Some say that USB booting of virtual machines in Linux using VirtualBox from USB drives used to be unreliable\". More than one person in this thread reports it.\n\nIs it true right now? When I have some time I will look into it. I don\u0027t take for granted that what I read on forums is fully correct.\n\n\u003e Maybe, if you start (not here, but rather here: [http://reboot.pro/fo...er-os-flavours/](http://reboot.pro/forum/70-boot-linux-and-other-os-flavours/ \"\") ) a new thread detailing what specific issues you are having, someone may help you.\n\nWhen I have some time, I will look into it.\n\nWhy do I keep saying that? \"**When I have some time** ...\"?\n\nBecause there **is incredible amounts of bad information** being volunteered on the Internet. In forums just like this one. And all over.\n\nPeople seem to enjoy posting what they know. It clearly does not matter to some of them if they\u0027ve tried something out themselves or even thoroughly researched. But then if anyone contradicts them, very commonly, they go absolutely bonkers with taking offence. The net result is incredible amounts of time wasted. Wasted time with the occasional real expert replying to these gumbys. Wasted by learners who hope to get insight to how to solve a problem they want to solve, and get led to try something that was doomed, totally doomed, to fail, from the very start. Because some well-meaning person posted typical forum-style advice or comments in a typical forum way - usually in barely adequate English as well as not meeting the criteria for believable advice (**substantiation** **relevance detail** and **reference** ). I\u0027m always trying to catch up from the time people like this *make me waste*.\n\nI don\u0027t find your contradiction of what I wrote convincing, sorry. Go ballistic if you want. But you cited (\"Using a physical drive or device in Virtualbox under Linux is fairly easy.\") [https://www.virtualb...09.html#rawdisk](https://www.virtualbox.org/manual/ch09.html#rawdisk \"External link\") and I went there and thought \"Oh, I recognize this. Been here before.\"\n\nApparently *fairly easy* is an easygoing translation from: **Warning** *Raw hard disk access is for expert users only.* ![:superstition:](http://reboot.pro/public/style_emoticons/default/superstition.gif)\n\nEven at that, NOTE that nowhere in that section is USB specifically mentioned. I\u0027d love to see a complete and therefore convincing, useful blog-like article with step-by-step, maybe screenshots, snippets of code or configuration, etc., from someone who has actually made such a setup work (in VirtualBox, on Linux) - booting *from a USB drive*.\n\nSorry, this was all rather off the topic of the thread. I just put it here because I want to try not to waste other people\u0027s time even though other people seem extremely ready to waste *mine*. It\u0027s an old old ethical thing. \"Do unto others ...\". So readers can read it all here. And not waste their time.\n\nI will not reply here to further challenges on this matter. Ciao.\n\n"
+    },
+    {
+      "id": "179325",
+      "timestamp": "2013-11-08T13:36:19+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e That\u0027s probably because I am a native English speaker and a highly literate one.\n\nI thought it was instead because the immense size of your ego covered what you wrote. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\nSorry ![:(](http://reboot.pro/public/style_emoticons/default/sad.png) for having wasted even a little bit of your precious time.  \n\u003e Even at that, NOTE that nowhere in that section is USB specifically mentioned. I\u0027d love to see a complete and therefore convincing, useful blog-like article with step-by-step, maybe screenshots, snippets of code or configuration, etc., from someone who has actually made such a setup work (in VirtualBox, on Linux) - booting *from a USB drive*.\n\nThat\u0027s easy :smile:, here is one:  \n[http://www.twm-kd.co...sb-flash-drive/](http://www.twm-kd.com/software/boot-virtualbox-machine-from-a-usb-flash-drive/ \"External link\")  \nof course it\u0027s hard to say if it is \"complete\" and \"therefore able to convince\" *you* , this would be a very debatable matter. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)  \n\n\u003e I will not reply here to further challenges on this matter.\n\nThat\u0027s good ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif), so I won\u0027t waste my time with it.  \n\u003e Ciao.\n\nJFYI, to enlarge your linguistic capabilities beyond your native English and highly literate status, \"Ciao\" is Italian (of which I am a native speaker) and it is considered very unpolite to say \"Ciao\" to a stranger (on the Internet or in person), particularly if you are 50 or so and if the other one is fiftyish as well.  \nThe exception being if you say it to a friend of yours (I am not, and the probabilities to become one are very scarce).  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "179356",
+      "timestamp": "2013-11-09T09:53:15+00:00",
+      "author": "DavidB",
+      "content": "Well, since the number of potential VMUB Linux users has increased, I thought it\u0027s worth testing Lazarus again...  \nThe newest version is 1.2 RC1. Seems like the IDE was a little improved and they fixed some of the bugs.  \nBut I\u0027m not 100% sure that\u0027s enough...  \n\nHere is a test exe file (for Linux): [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003dd587de6e944de8a086f7c01d5ecb6b76\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14660 \"Download attachment\") [**vmub.7z**](http://reboot.pro/index.php?s\u003dd587de6e944de8a086f7c01d5ecb6b76\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14660 \"Download attachment\") **1.05MB** 749 downloads  \n\nIt\u0027s just the main window without the code.  \nLooks like the exe files generated by Lazarus aren\u0027t optimized for small size and low memory usage, even if I deactivate the debugger. But I don\u0027t think that\u0027s gonna be such a big problem on today\u0027s computers...\n\n![2ntyag4.png](http://i43.tinypic.com/2ntyag4.png)\n\nLater edit: I made some more tests on Lazarus and I found other bugs. Sorry, but it\u0027s still not worth using it now...\n\nMaybe in the future...\n\n"
+    },
+    {
+      "id": "179949",
+      "timestamp": "2013-11-24T05:17:57+00:00",
+      "author": "DavidB",
+      "content": "New QEMU version (binaries for Windows) at [http://qemu.weilnetz.de/](http://qemu.weilnetz.de/ \"External link\")\n\n**History**\n\n**2013-11-28** : New QEMU installers (1.7.0).  \n\n**2013-11-26**: New QEMU installers (1.7.0-rc2).\n\n**2013-11-21** : New QEMU installers (1.7.0-rc1). Removed compiler option -fstack-protector-all. This reduces the code size and might improve the performance a little bit.  \n\n**2013-11-18** : New QEMU installers (1.7.0-rc0). The system emulations now support curses. Keyboard input in GTK should be fixed.  \n\n**2013-08-17**: New QEMU installers. Added experimental system emulation for Raspberry Pi (based on code from Gregory Estrade)\n\n**2013-06-16** : New QEMU (1.5.50) installers. Known bugs: \\\\\\\\.\\\\PhysicalDrive0 does not work.  \n\n**2012-12-04** : New QEMU (1.3.50.0) installers.  \n\n**2012-11-25** : New QEMU (1.2.90.0) installers (32 and 64 bit).  \n\n**2011-11-19** : New QEMU (0.15.92.0) installer.  \n\n**2011-03-13**: New QEMU (0.14.50.0) installer (32 bit only).\n\n"
+    },
+    {
+      "id": "180073",
+      "timestamp": "2013-11-29T01:51:18+00:00",
+      "author": "Sha0",
+      "content": "\u003e **2013-06-16**: New QEMU (1.5.50) installers. Known bugs: \\\\\\\\.\\\\PhysicalDrive0 does not work.\n\nWhat about **\\\\\\\\\\\\\\\\.\\\\\\\\PhysicalDrive0** ?   \n"
+    },
+    {
+      "id": "180086",
+      "timestamp": "2013-11-29T10:47:32+00:00",
+      "author": "DavidB",
+      "content": "I wouldn\u0027t worry too much about that since usually PhysicalDrive0 is where Windows is installed and loaded from. So it\u0027s not a good idea to add it in a virtual machine (started in that Windows) and especially to boot from it...\n\n"
+    },
+    {
+      "id": "180097",
+      "timestamp": "2013-11-30T03:35:53+00:00",
+      "author": "DavidB",
+      "content": "new VirtualBox version: 4.3.4\n\n[Changelog](https://www.virtualbox.org/wiki/Changelog \"External link\")\n\n[Download](https://www.virtualbox.org/wiki/Downloads \"External link\")\n\n"
+    },
+    {
+      "id": "180167",
+      "timestamp": "2013-12-03T15:11:56+00:00",
+      "author": "steve6375",
+      "content": "YouTube video for VMUB\n\n[http://www.youtube.c...h?v\u003dmvYkujvUXhc](http://www.youtube.com/watch?v\u003dmvYkujvUXhc \"External link\")\n\n"
+    },
+    {
+      "id": "180173",
+      "timestamp": "2013-12-03T16:37:45+00:00",
+      "author": "DavidB",
+      "content": "Very nice video.\n\nThank you very much.\n\n"
+    },
+    {
+      "id": "180278",
+      "timestamp": "2013-12-06T16:19:05+00:00",
+      "author": "DavidB",
+      "content": "New version: 1.3 Beta 1  \n\nNow you can set VMUB to automatically remove the USB drive(s) from the VirtualBox VM after closing. This way it will not show you error if you physically remove the USB drive(s) and start the VirtualBox Manager.\n\n[![Options.png](http://reboot.pro/uploads/monthly_12_2013/post-61891-0-60763000-1386346646_thumb.png)](http://reboot.pro/uploads/monthly_12_2013/post-61891-0-60763000-1386346646.png \"Options.png - Size: 14.98KB\"){#ipb-attach-url-14704-0-94004700-1676066427}   \n\nDownload link: link removed, you can find a better version in the next posts...\n\n"
+    },
+    {
+      "id": "180282",
+      "timestamp": "2013-12-06T17:46:15+00:00",
+      "author": "steve6375",
+      "content": "If the VM is run from VBox manager, it will run in \u0027write-protect\u0027 mode with the volume still accessible to Windows - this is sometimes very useful (e.g. experimenting with grub4dos menus by overwriting the menu.lst file whilst the VM is running and then rebooting the VM).\n\n"
+    },
+    {
+      "id": "180284",
+      "timestamp": "2013-12-06T18:18:10+00:00",
+      "author": "DavidB",
+      "content": "The new option works only when is checked. It is unchecked by default.\n\n"
+    },
+    {
+      "id": "180292",
+      "timestamp": "2013-12-07T06:36:27+00:00",
+      "author": "DavidB",
+      "content": "Some time ago I said that the VBoxManage.exe problem appears only when it\u0027s called from another program using a Windows API function. Well, I found a way to duplicate the problem in a batch file:\n\n```\n\n@cls\n@:replay\n@echo Detaching the drive from the VM...\n\"C:\\Program Files\\Oracle\\VirtualBox\\VBoxManage.exe\" storageattach GUID_of_the_VM --storagectl IDE --port 0 --device 0 --type hdd --medium none\n@if errorlevel 1 pause\n@echo Removing the drive...\n\"C:\\Program Files\\Oracle\\VirtualBox\\VBoxManage.exe\" closemedium disk GUID_of_the_vmdk\n@if errorlevel 1 pause\n@echo Attaching the drive\n\"C:\\Program Files\\Oracle\\VirtualBox\\VBoxManage.exe\" storageattach GUID_of_the_VM --storagectl IDE --port 0 --device 0 --type hdd --medium \"VM_path\\VMUBDrive000.vmdk\"\n@if errorlevel 1 pause\n@echo _\n@echo Press any key for a new cycle...\n@pause \u003e nul\n@goto :replay\n```\n\nCreate a VM with an IDE controller. Leave the first port free.  \nRun VMUB once without checking the option to remove the drive after closing. This way VMUBDrive000.vmdk will be attached.  \nReplace GUID_of_the_VM, GUID_of_the_vmdk and VM_path in the text above, create a bat/cmd file, copy the text there and start it.  \nIt should start ok the first time. If not check those 3 mentioned above or the VBoxManage path. Or you were \"lucky\" to get the error from the first start... ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \nWhen it says \"Press any key for a new cycle...\" wait 5 sec .. 1 min and press a key. The tricky part is to get the right \"window\" of time (on my computer it works with 10 sec). If you find it, the attach command will wait about 30 sec and show you this error:  \n\nVBoxManage.exe: error: Failed to create the VirtualBox object!  \nVBoxManage.exe: error: Code CO_E_SERVER_EXEC_FAILURE (0x80080005) - Server execution failed (extended info not available)  \nVBoxManage.exe: error: Most likely, the VirtualBox COM server is not running or failed to start.\n\n"
+    },
+    {
+      "id": "180313",
+      "timestamp": "2013-12-08T12:40:36+00:00",
+      "author": "DavidB",
+      "content": "New version: 1.3 Beta 2.  \n\nChanges:  \n\n1. If VBoxManage.exe is having problems doing a job, the job is described with a suggestive name in the warning dialog.  \n2. Also the waiting time of 15 sec was reduced to 3 sec (silently, no progress window). Usually VBoxManage.exe takes about 0.5..1 sec to do the job so 3 sec is enough to know that something is wrong if it gets stuck.  \n3. The VBoxManage.exe usage in VMUB was decreased to minimum. So less chance for something to go wrong.\n\nDownload: link removed, you can find a better version in the next posts...\n\n"
+    },
+    {
+      "id": "180318",
+      "timestamp": "2013-12-08T17:49:50+00:00",
+      "author": "steve6375",
+      "content": "seems better ![:clap:](http://reboot.pro/public/style_emoticons/default/clap.gif)\n\n"
+    },
+    {
+      "id": "180319",
+      "timestamp": "2013-12-08T18:09:06+00:00",
+      "author": "DavidB",
+      "content": "Glad you like it :smile:\n\nNow I\u0027m thinking to try make it \"kill\" the VBoxManage.exe process and try again (all automatically). It closes itself in 30 sec but it\u0027s kinda too long...\n\nBut the tricky/difficult part is to find which VBoxSVC.exe process is from that VBoxManage.exe (not from VirtualBox.exe or from another VBoxManage.exe) and to \"kill\" it too...\n\nEdit: since \"killing\" a process is kinda messy, I tried to send a Ctrl+C/Ctrl+Break to the VBoxManage console instead, but no luck...\n\n"
+    },
+    {
+      "id": "180338",
+      "timestamp": "2013-12-09T11:15:04+00:00",
+      "author": "DavidB",
+      "content": "Steve, on your computer the vboxmanage problems appear if you keep the VirtualBox Manager opened all the time or only if it\u0027s closed...?\n\n"
+    },
+    {
+      "id": "180339",
+      "timestamp": "2013-12-09T11:38:17+00:00",
+      "author": "steve6375",
+      "content": "When I made the video, I used a different user account (normal one). Usually I use an Administrator account with disabled UAC.\n\nThe issue only seemed to occur when using the standard user account - are you testing as Admin?\n\n"
+    },
+    {
+      "id": "180340",
+      "timestamp": "2013-12-09T11:46:41+00:00",
+      "author": "DavidB",
+      "content": "I\u0027m using XP as an admin and having the problem. But, since VMUB is always started with administrative rights, it should be no difference.\n\nTo respond to my question: on my computer the vboxmanage.exe problem appears ONLY if VB Manager is closed.\n\n"
+    },
+    {
+      "id": "180342",
+      "timestamp": "2013-12-09T12:31:45+00:00",
+      "author": "DavidB",
+      "content": "A possible explanation (to why is not having problems when VB Manager is opened all the time):  \n\nI tested VMUB with VirtualBox 4.1.28 version: no vboxmanage problems.  \nAt some point Oracle implemented a feature in VirtualBox: the \"reuse\" of VBoxSVC.exe. If a VirtualBox.exe session (Manager or VM) is reopened before VBoxSVC of a previous session is automatically closed, it is \"reassigned\" to the new session. Seems a good idea because it will load faster and the memory will be less fragmented.  \nBut unfortunately this does not always function with VBoxManage.exe too. When VBoxSVC is about to be closed or it is closed, VBoxManage.exe sometimes does not load VBoxSVC and shows that error.  \nWhen VB Manager is opened all the time it keeps VBoxSVC opened as well and VBoxManage.exe can use it.\n\n"
+    },
+    {
+      "id": "180345",
+      "timestamp": "2013-12-09T13:36:53+00:00",
+      "author": "DavidB",
+      "content": "If this is the cause, unfortunately all I can do is to minimize the \"damage\" (like I did in 1.3 Beta 2). It\u0027s up to Oracle to fix this problem. I reported the bug twice but I got no reply from them each time.  \nMaybe if you guys will report the bug as well they will fix it...  \n\nUntil then I will set the \"direct update\" method to be the default and advice you to keep the VB Manager always opened or to install an old VirtualBox version if you choose to use VBoxManage.exe method.\n\n"
+    },
+    {
+      "id": "180387",
+      "timestamp": "2013-12-10T11:46:41+00:00",
+      "author": "DavidB",
+      "content": "New version: 1.3 Beta 3.  \n\nChange: when VBoxManage.exe update method is used, VMUB no longer waits for the previous VM session to be fully closed if it finds VB Manager opened (because it will have no problems with VBoxSVC.exe).  \n\nDownload: link removed, you can find a better version in the next posts...\n\n"
+    },
+    {
+      "id": "180401",
+      "timestamp": "2013-12-10T18:09:50+00:00",
+      "author": "DavidB",
+      "content": "Well, to continue my \"monologue\"... ![:rolleyes:](http://reboot.pro/public/style_emoticons/default/rolleyes.gif)   \n\nNew version: 1.3 Beta 4.  \n\nChange: new autodetect option in Options \\\u003e\\\u003e VirtualBox \\\u003e\\\u003e Method to update. Basically, when VMUB finds one or more VirtualBox.exe sessions (VB Manager and/or VM) opened, it uses VBoxManage.exe to update the VM configuration, otherwise it updates it directly.  \nSince it\u0027s the best choice, it\u0027s checked by default.  \n\nDownload: download link removed, a better version can be found in the next posts.\n\n"
+    },
+    {
+      "id": "180429",
+      "timestamp": "2013-12-11T13:15:54+00:00",
+      "author": "DavidB",
+      "content": "New version: 1.3 Beta 5  \n\nChanges: a few optimizations to the newly added option (autodetect).  \n\nDownload: link removed, you can find a better version in the next posts.\n\nLE: if this version works fine it will be the last Beta version.\n\n"
+    },
+    {
+      "id": "180443",
+      "timestamp": "2013-12-12T09:21:49+00:00",
+      "author": "DavidB",
+      "content": "New version: 1.3 final.\n\nChanges from Beta 5: some small fixes and improvements.\n\nDownload from [here](http://reboot.pro/files/file/339-virtual-machine-usb-boot/ \"\")\n\nSources: [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003df3ed227119abec13f7905a271e9009d6\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14712 \"Download attachment\") [**VMUB 1.3 sources.zip**](http://reboot.pro/index.php?s\u003df3ed227119abec13f7905a271e9009d6\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14712 \"Download attachment\") **259.11KB** 589 downloads\n\n"
+    },
+    {
+      "id": "180444",
+      "timestamp": "2013-12-12T09:21:54+00:00",
+      "author": "steve6375",
+      "content": "Hi David\n\nBTW\n\nI notice that often VMUB cannot dismount my USB flash drive and so fails to launch VBox quite often. This usually happened when I quickly restart VMUB after quitting a session. No other user app was running and simply waiting for 20-30 seconds and re-running VMUB worked.\n\nIt struck me that this might be caused by my installed AV solution. When VMUB runs and quits, it remounts the USB drive. This would cause the AV s/w to see a \u0027new\u0027 drive and scan it which presumably would lock the USB drive until it had finished scanning. I disabled my AV (Avast) and the problem went away. Not much you can do about this except maybe provide the option to force a dismount of the USB drive on request? Of course I could configure my AV to not scan USB devices too.\n\n"
+    },
+    {
+      "id": "180445",
+      "timestamp": "2013-12-12T09:29:49+00:00",
+      "author": "DavidB",
+      "content": "Hi, Steve.\n\n:smile:) You waited until I released the final version to report a problem...\n\nWell, joking aside:\n\nA question: what does VMUB say..? \"Unable to lock\", \"Unable to dismount\" or something else?\n\n"
+    },
+    {
+      "id": "180448",
+      "timestamp": "2013-12-12T12:02:32+00:00",
+      "author": "DavidB",
+      "content": "I use Avira and it\u0027s make no difference (for VMUB) if it\u0027s on or off.  \nAnyway, forcing an application to stop accessing the USB drive is not always a good idea. Forcing an antivirus is even less good...  \nI think it\u0027s wise to ask about that on the Avast forums too. Maybe they will have a good solution or at least some helpful ideas...\n\n"
+    },
+    {
+      "id": "180454",
+      "timestamp": "2013-12-12T14:58:45+00:00",
+      "author": "Wonko the Sane",
+      "content": "Personally (but I know how my ideas are often queer :wink:) I would make a popup window when the program is closed to the effect of:\n\u003e Hi, since some users have been ***whining*** about issues when re-starting this tool very quickly (in conjunction with the Avast antivirus, but it may happen with other ones too) this is a time out to prevent re-starting the app before 30 seconds have elapsed.\n\u003e\n\u003e This window will close itself in ...29 ...28 ...27\n\u003e\nEven \"Even electronic brain pancake crystal elderly\" ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) might do :wink::\n\n\u003cbr /\u003e\n\nSpoiler  \n![demotivational-posters-wait.jpg](http://2.bp.blogspot.com/_5hDFu2z_gtY/TRJc7o4L9vI/AAAAAAAAAU0/vHJv3Zddzr4/s1600/demotivational-posters-wait.jpg)\n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "180456",
+      "timestamp": "2013-12-12T17:52:20+00:00",
+      "author": "steve6375",
+      "content": "I can\u0027t seem to get my system to misbehave now - the only way I can repro it is to use a 32GB flash drive and select \u0027Scan removable media\u0027 in the AV GUI - then whilst it is scanning try to Start a VMUB VM and try to boot from it...\n\n"
+    },
+    {
+      "id": "180457",
+      "timestamp": "2013-12-12T18:10:02+00:00",
+      "author": "DavidB",
+      "content": "Not a bad idea Wonko, but it has a problem: the amount of time that is needed is software and hardware dependant. So, in some situations, those 30 sec may be too much, in other situations may be too less.  \n\nSteve, on your computer VMUB is set to lock the volumes before dismount...? If not, could you please check the option and see if the progress window appears and delays the dismount..?\n\n"
+    },
+    {
+      "id": "180461",
+      "timestamp": "2013-12-12T19:40:32+00:00",
+      "author": "steve6375",
+      "content": "yes, it was set to lock before dismount.\n\nDon\u0027t worry about it now. When I can reliably repro it and find out what is causing it I will let you know.\n\ncheers\n\nSteve\n\n"
+    },
+    {
+      "id": "180472",
+      "timestamp": "2013-12-13T03:11:30+00:00",
+      "author": "DavidB",
+      "content": "I was curious and I installed the newest Avast version.  \nI didn\u0027t have any problems with VMUB and my 2 USB drives. But I had problems with other programs and had to reinstall Avira...  \n\nOfftopic: I tested many VirtualBox versions and forgot to mention: the VBoxManage.exe problem seems to have appeared in 4.2.20 version. So versions \\\u003c\u003d 4.2.18 are safe to use...\n\n"
+    },
+    {
+      "id": "180515",
+      "timestamp": "2013-12-14T09:07:21+00:00",
+      "author": "steve6375",
+      "content": "I have noticed that on a fresh boot of my WIn7 64-bit systems (PC and Nbook) the very first time I try to run a VM from VMUB I always get an error \u0027Could not automatically add the drive(s) to the VirtualBox VM.\u0027 \u0027This is a virtual box bug.\u0027\n\nCould you not detect that this is the first time VMUB has been run and so delay a bit more or allow more time?\n\n"
+    },
+    {
+      "id": "180536",
+      "timestamp": "2013-12-14T15:11:52+00:00",
+      "author": "DavidB",
+      "content": "It\u0027s right after Windows start? So VB Manager was never started until then in that Windows \"session\"...?\n\nIf you delay manually it works afterwards...? If yes, how much time it has to wait...?\n\nLE: are you using the VBoxManage update method or the autodetect method...? The autodetect method is checked by default only if the cfg file is deleted...\n\n"
+    },
+    {
+      "id": "180539",
+      "timestamp": "2013-12-14T16:02:06+00:00",
+      "author": "steve6375",
+      "content": "Vboxmanage is ticked.\n\nThe length of time after booting does not matter.\n\n"
+    },
+    {
+      "id": "180540",
+      "timestamp": "2013-12-14T16:11:56+00:00",
+      "author": "DavidB",
+      "content": "Try \"autodetect\", it should work better.\n\nAnd if the length of time does not matter, a delay in VMUB won\u0027t solve the problem.\n\nI think I remember us talking about the same problem a few months ago...\n\n"
+    },
+    {
+      "id": "180541",
+      "timestamp": "2013-12-14T16:24:53+00:00",
+      "author": "steve6375",
+      "content": "It works if Vboxmanage is disabled.\n\nSo why can\u0027t you retry as it always works the 2nd time?\n\n"
+    },
+    {
+      "id": "180542",
+      "timestamp": "2013-12-14T16:56:24+00:00",
+      "author": "DavidB",
+      "content": "It looks that VBoxSVC.exe can\u0027t be started well the first time by VBoxManage.exe in your Win 7 x64.  \nYes, I can make it retry but only after at least 30 sec (when VBoxManage process \"kills\" itself). I tried to kill it with an [Api function](http://msdn.microsoft.com/en-us/library/windows/desktop/ms686714(v\u003dvs.85).aspx \"External link\") but it\u0027s not helping..\n\nLE: when you have some time to \"kill\" ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png) maybe you\u0027ll try to see if VBox 4.2.18 does the same...\n\n"
+    },
+    {
+      "id": "180543",
+      "timestamp": "2013-12-14T17:49:23+00:00",
+      "author": "steve6375",
+      "content": "I have two Win7-64 systems (PC and NB) - both show same behaviour.\n\nFor Info: The error message appears very quickly - within a 5 seconds after clicking Start - clicking on the Start button of VMUB again quickly after quickly cancelling, causes the VM to start up within 5 seconds.\n\n"
+    },
+    {
+      "id": "180547",
+      "timestamp": "2013-12-15T02:41:06+00:00",
+      "author": "DavidB",
+      "content": "Ok, I will install Win 7 x64 + Delphi on my computer too. I had it some time ago but I removed it because of the poor stability.  \n\nLE: I installed Win 7 Ultimate x64 SP1, VBox 4.3.4 and VMUB 1.3. I checked VBoxManage option and restarted Windows a few times. I didn\u0027t have any problems booting in VB VM with my USB drives (UAC on or off)...  \nMaybe it\u0027s from something your OSs have in common (application and/or setting).\n\n"
+    },
+    {
+      "id": "180560",
+      "timestamp": "2013-12-15T14:30:56+00:00",
+      "author": "DavidB",
+      "content": "You could try to see how a VBoxManage command is carried out in a cmd:\n\n```\n\n\n\n\"%VBOX_INSTALL_PATH%\\VBoxManage.exe\" modifyvm GUID_of_the_VM --hwvirtex off\n\"%VBOX_INSTALL_PATH%\\VBoxManage.exe\" modifyvm GUID_of_the_VM --hwvirtex on\npause\n```\n\nReplace GUID_of_the_VM and start it right after Windows start.\n\nYou can see if it fails or if it takes too much time to do the job...\n\n"
+    },
+    {
+      "id": "180585",
+      "timestamp": "2013-12-16T09:45:49+00:00",
+      "author": "DavidB",
+      "content": "I think I found the cause of VBoxManage working fine the second time you press the start button so fast.  \nThe old VBoxManage.exe session is still stuck in RAM, waiting for a valid VBoxSVC.exe session. If the new VBoxManage.exe session is started in a specific time interval it will start VboxSVC.exe and share it with the old session, which it will be unstuck, it will do its job and close.  \nThis could be a way to make VBoxManage automatically retry instead of just notifying the user that it failed.  \nBut there is a problem: that time interval is changing depending on hardware, software, VB version and RAM caching.  \nOn your computer you found it (because you start VMUB so many times) but a computer program can\u0027t be that smart.\n\n"
+    },
+    {
+      "id": "180587",
+      "timestamp": "2013-12-16T10:31:19+00:00",
+      "author": "steve6375",
+      "content": "Does that fit with my observation that it is only the first time that VMUB is run, that it fails?\n\ne.g.\n\nSetup VMUB for Flash drive boot and test (VBoxManage.exe ticked)\n\nRestart Win7\n\nRun VMUB - Start (don\u0027t use Edit or Options buttons) ---\\\u003e fails\n\nWait 10 minutes\n\nRun VMUB ---\\\u003e OK\n\n"
+    },
+    {
+      "id": "180589",
+      "timestamp": "2013-12-16T10:42:40+00:00",
+      "author": "DavidB",
+      "content": "I was talking about this:\n\n\u003e For Info: The error message appears very quickly - within a 5 seconds after clicking Start - clicking on the Start button of VMUB again quickly after quickly cancelling, causes the VM to start up within 5 seconds.\n\nBut, regarding this:\n\n\u003e Does that fit with my observation that it is only the first time that VMUB is run, that it fails?\n\u003e\n\u003e e.g.\n\u003e\n\u003e Setup VMUB for Flash drive boot and test (VBoxManage.exe ticked)\n\u003e\n\u003e Restart Win7\n\u003e\n\u003e Run VMUB - Start (don\u0027t use Edit or Options buttons) ---\\\u003e fails\n\u003e\n\u003e Wait 10 minutes\n\u003e\n\u003e Run VMUB ---\\\u003e OK\n\nIn this situation VBoxManage has time to \"kill\" itself and the next session starts fine, because it will somehow fix the loading of VBoxSVC. But exactly how it does it, only Oracle programmers know it...\n\nBTW, it \"kills\" itself in 30 sec so 45..60 sec of waiting should be more than enough.\n\n"
+    },
+    {
+      "id": "180590",
+      "timestamp": "2013-12-16T10:51:15+00:00",
+      "author": "DavidB",
+      "content": "Btw, I mentioned VBoxSVC.exe many times but here is how VirtualBoxSDK describes it:\n\n\u003e VirtualBox employs a client-server design, meaning that whenever any part of VirtualBox is running -- be it the Qt GUI, the VBoxManage command-line interface or any virtual machine --, a dedicated server process named VBoxSVC runs in the background. This allows multiple processes working with VirtualBox to cooperate without conflicts. These processes communicate to each other using inter-process communication facilities provided by the COM implementation of the host computer.\n\u003e\n\u003e On Windows platforms, the VirtualBox Main API uses Microsoft COM, a native COM implementation. On all other platforms, Mozilla XPCOM, an open-source COM implementation, is used.\n\n"
+    },
+    {
+      "id": "180595",
+      "timestamp": "2013-12-16T13:32:09+00:00",
+      "author": "DavidB",
+      "content": "Steve, I\u0027m curious, does the \"autodetect method\" option is better or worse for you than \"VBoxManage\" option (when you test Easy2Boot for example)...?  \nIf it\u0027s worse, why...?\n\n"
+    },
+    {
+      "id": "180609",
+      "timestamp": "2013-12-16T21:10:42+00:00",
+      "author": "steve6375",
+      "content": "I prefer to have VBox manager open so I can either run the VM from VBox manager (as r/o) or VMUB (as rd/wr) - however I get more problems with VBox mgr open.\n\nAlso, the .vmdk shows up as inaccessible in VBox mgr (as in the video) unless I login as user\u003dadmin so I can\u0027t run the VM from VBox in this mode.\n\n"
+    },
+    {
+      "id": "180612",
+      "timestamp": "2013-12-17T02:03:24+00:00",
+      "author": "DavidB",
+      "content": "\u003e I prefer to have VBox manager open so I can either run the VM from VBox manager (as r/o) or VMUB (as rd/wr) - however I get more problems with VBox mgr open.\n\nWell, if the autodetect method finds the VB Manager open it will \"switch\" internally to using VBoxManage.exe. If it will not find it, it will \"switch\" to updating directly, solving your problem.\n\nThe detection code is checking every time you click on the Start button, so it will adapt if you close or restart VB Manager.\n\nGive it a try... :smile:\n\n\u003e Also, the .vmdk shows up as inaccessible in VBox mgr (as in the video) unless I login as user\u003dadmin so I can\u0027t run the VM from VBox in this mode.\n\nA normal user can\u0027t access a real drive directly. That\u0027s why VB and VMUB have to be started as an administrator.\n\nUnfortunately I can\u0027t change this because Windows is made this way.\n\nBTW, Linux is even \"worst\" with this ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)\n\n"
+    },
+    {
+      "id": "180723",
+      "timestamp": "2013-12-19T16:33:37+00:00",
+      "author": "Wonko the Sane",
+      "content": "@DavidB\n\nFound this while looking for something else:\n\n[http://sourceforge.n.../vboxvmservice/](http://sourceforge.net/projects/vboxvmservice/ \"External link\")\n\nMaybe it is somehow useful for your tool ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "180738",
+      "timestamp": "2013-12-19T19:11:50+00:00",
+      "author": "DavidB",
+      "content": "Thank you, Wonko.  \n\nIt seems to be a way to run VirtualBox VMs like a Windows service, which is useful in some situations.  \nAnyway I couldn\u0027t start the VBoxVmService service on Windows XP, only in Vista\\\\7 or above. Which is a serious limitation...  \n\nAnother thing:  \nI\u0027m thinking to \"bypass\" the VBoxManage.exe by sending directly API commands to the VB Manager using the VirtualBox COM server (VBoxSVC.exe) and the commands from [VirtualBox 4.3.6 Software Developer Kit (SDK)](http://download.virtualbox.org/virtualbox/4.3.6/VirtualBoxSDK-4.3.6-91406.zip \"External link\")\n\nWhat I couldn\u0027t find (yet) is how to load the VBoxSVC.exe like VBoxManage.exe and VirtualBox.exe do (or perhaps even better if it\u0027s possible).  \n\nWhat do you think...?\n\n"
+    },
+    {
+      "id": "180739",
+      "timestamp": "2013-12-19T19:29:08+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e What do you think...?\n\nNO ideas. ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\n\nHowever that page says \"Supports XP, 2003, VISTA, Win7, 2008, Win8\" so maybe there is \\*something\\* on your XP machine that is missing/misconfigured. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nOr maybe that applied to earlier release of Vbox? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "180741",
+      "timestamp": "2013-12-19T21:09:29+00:00",
+      "author": "DavidB",
+      "content": "It works on XP too but in a strange way: when I activate or deactivate the service I have to try 2 times. One time with \"Protect my computer and data from unauthorized program activity\" from Run as checked, one time unchecked.  \nAnother curious thing: once the service is started, if you try to start the VBox Manager or a VB VM directly, they don\u0027t start saying (after 30 sec) \"VBox COM server failed to start\".  \nBut VBoxSVC.exe is loaded, I can see it in Processes. So, VirtualBox.exe crashes, VBoxSVC.exe needs to be closed manually and after that the service crashes too.  \nAnyway, using VmServiceControl.exe, I could start and close invisible VMs. That\u0027s all it can do...  \n\nIn this form is not of much use for VMUB.  \nBut it could be useful for others.  \n\nAnyway I think I can have a small chance with those API functions from VirtualBox SDK...  \nI will do some more \"digging\" in the documentation and on the internet.\n\n"
+    },
+    {
+      "id": "180974",
+      "timestamp": "2013-12-25T15:07:07+00:00",
+      "author": "DavidB",
+      "content": "Merry Christmas to everybody!  \n\nWell, I have discovered something interesting.  \n\nFirst, let\u0027s review a little: the VirtualBox COM server (VBoxSVC.exe) is started and used as (only) one instance by the VBox Manager (VirtualBox.exe), by the VBox VMs (VirtualBox.exe with parameter) and by the VBoxManage.exe.  \nWhen all VirtualBox.exe and VBoxManage.exe instances are closed, VBoxSVC.exe process is waiting about 6 sec, it\u0027s \"marked\" for closing and in about 12 sec is closed.  \nIf VirtualBox.exe or VBoxManage.exe instances are started in that 6..12 sec time interval, they will fail, because a new instance of the VBoxSVC.exe can\u0027t be created (as it is limited to only one) and the current one is closing.  \nThis is the bug they introduced in VBox 4.2.20, since in VBox \\\u003c\u003d 4.2.18 you could open more than one VBoxSVC.exe instances. More, they \"amplified\" the problem in VBox \\\u003e\u003d 4.3.0 by increasing the time interval VBoxSvc.exe is closing from 1..2 sec to 6..7 sec.  \n\nBut, if I kill the VBoxSVC.exe instance right after I use VirtualBox.exe or VBoxManage.exe (so before marking it for closing) and I start VBoxSVC.exe directly before using VirtualBox.exe or VBoxManage.exe again, there is no error anymore :smile:  \n\nI think it could also solve Steve\u0027s problem.  \nSteve, you could test it yourself by starting VBoxSVC.exe before using VMUB first time in that Windows session.  \n\nBut there is a problem: killing a process is not a good idea (for good reasons). And killing it every time you start a VM is even less...  \n\nWhat do you think about that...?\n\n"
+    },
+    {
+      "id": "180982",
+      "timestamp": "2013-12-26T12:35:07+00:00",
+      "author": "DavidB",
+      "content": "New version: 1.35 Beta 1  \n\nChanges:  \n1. Now it\u0027s adapting better to the small differences between VBox versions.  \n2. Before using VBoxManage.exe it waits for the current VBoxSVC.exe instance to close and it starts a new one. This way it will minimize the risk of VBoxManage.exe not doing its job.  \n\nUsing the autodetect update method in the 1.3 version solved the VBoxManage errors on my computer. But now I can\u0027t see any of them even when I use the VBoxManage.exe update method.\n\nBut if you still experience problems, please let me know so I can try to fix them...\n\nLE: download link removed, you can find a better version in the next posts\n\n"
+    },
+    {
+      "id": "181001",
+      "timestamp": "2013-12-27T16:44:11+00:00",
+      "author": "DavidB",
+      "content": "A little offtopic:  \nThat VirtualBox bug also affects the VBox Manager start and the VBox VM start. Basically, if you restart VirtualBox.exe in a 6..12 sec time interval, it will not say anything for 30 sec and then show you this error:  \n\n[![Screenshot.png](http://reboot.pro/uploads/monthly_12_2013/post-61891-0-55506300-1388162457_thumb.png)](http://reboot.pro/uploads/monthly_12_2013/post-61891-0-55506300-1388162457.png \"Screenshot.png - Size: 7.18KB\"){#ipb-attach-url-14724-0-16875300-1676066428}   \n\nBut, if you use this loader and restart VirtualBox.exe in that time interval, it will wait a few sec for VBoxSVC.exe to close and then it will start VirtualBox.exe.  \nIt will adapt to different VBox versions. Also you can start it with command line parameters, set it to run as an administrator, set the window to minimized/normal/maximized and so on.  \n\nI hope someone will find it useful.  \n\nHere it is: [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003d0e5d76c8a66f41be042902e603fb69ec\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14733 \"Download attachment\") [**VBStartFix.zip**](http://reboot.pro/index.php?s\u003d0e5d76c8a66f41be042902e603fb69ec\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14733 \"Download attachment\") **341.55KB** 707 downloads\n\nLE: a slightly better version was uploaded.\n\n"
+    },
+    {
+      "id": "181014",
+      "timestamp": "2013-12-28T16:17:17+00:00",
+      "author": "DavidB",
+      "content": "New version: 1.35 Beta 2  \n\nChanges:  \n1. Few optimizations to the newly added code;  \n2. The autodetection of the update method was improved for the code which removes the drive from the VM after close.  \n\nLE: download link removed, you can find a better version in the next posts.\n\n"
+    },
+    {
+      "id": "181026",
+      "timestamp": "2013-12-29T05:49:47+00:00",
+      "author": "DavidB",
+      "content": "If you still have problems with VBoxManage.exe, a common cause could be you started the VBox Manager as a normal user.  \nIn the VMUB description I included this for quite some time: \"If you intend to use VirtualBox Manager in the same time with Virtual Machine USB Boot, it\u0027s wise to set its exe file or shortcut to be started as an administrator too.\"  \nVBoxManage.exe and VBox Manager can\u0027t work \"together\" if they are started by different users.  \nThis is a limitation of VirtualBox (or maybe it was made this way intentionally, only Oracle knows).\n\n"
+    },
+    {
+      "id": "181060",
+      "timestamp": "2013-12-29T21:35:51+00:00",
+      "author": "DavidB",
+      "content": "New version: 1.35 final\n\nChanges from 1.35 Beta 2: small optimizations.\n\nDownload from [here](http://reboot.pro/files/file/339-virtual-machine-usb-boot/ \"\").\n\n"
+    },
+    {
+      "id": "181265",
+      "timestamp": "2014-01-07T02:41:07+00:00",
+      "author": "DavidB",
+      "content": "Well, as some of you may have noticed, in the last few days this topic was locked and I wasn\u0027t online.  \nBut before that I was the only one writing here in this topic lately so I guess it wasn\u0027t a big problem...  \nAnother reason is: in the latest VMUB version the VBoxManage.exe job errors are rarely seen now (on my computer are 0% in XP/7/8.1, admin or normal user). The only condition is to be PROPERLY used.  \nI\u0027m sorry Steve, but your video tutorial for VMUB is now outdated. If you can\u0027t make a new one I will try to do it. But it will be with no sound because: my spoken english is terrible + for medical reasons my voice is not so good lately + my microphone is low quality.  \nBut it is necessary because the users will think those VBoxManage job errors are still common in VMUB...  \n\nFor now I will lock the topic again and I will stop improving VMUB. But I will come back sometimes to adapt it to the new VBox/QEMU versions and/or to fix serious bugs.  \n\nThank you those who helped making VMUB better, especially to Steve.  \n\nBye everybody.\n\n"
+    },
+    {
+      "id": "181279",
+      "timestamp": "2014-01-07T09:31:45+00:00",
+      "author": "steve6375",
+      "content": "I have added a Note to my YouTube video now. Thanks for all your hard work on VMUB, it is a great utility and is so useful ![:clap:](http://reboot.pro/public/style_emoticons/default/clap.gif)\n\n"
+    },
+    {
+      "id": "184378",
+      "timestamp": "2014-05-16T22:38:42+00:00",
+      "author": "DavidB",
+      "content": "New version: 1.37 final  \n\nChanges from 1.35:  \n\nIt was adapted to the new VirtualBox 4.3.12 version. It seems they fixed the problem with the VirtualBox COM server (VBoxSVC.exe). So a new VBoxSVC session can be started without waiting for the previous to close.  \nAlso, they changed the environment variable \"VBOX_INSTALL_PATH\" to \"VBOX_MSI_INSTALL_PATH\". VMUB checks now for both when it starts.  \n\nDownload from [here](http://reboot.pro/files/file/339-virtual-machine-usb-boot/ \"\").  \n\nLE: source code removed, you can find newer version in the next posts.\n\n"
+    },
+    {
+      "id": "184379",
+      "timestamp": "2014-05-16T22:45:36+00:00",
+      "author": "steve6375",
+      "content": "The Setup version says it;s 1.35 when I run it???\n\n"
+    },
+    {
+      "id": "184380",
+      "timestamp": "2014-05-16T23:21:46+00:00",
+      "author": "DavidB",
+      "content": "Sorry, wrong file, corrected. Thank you.\n\nIt\u0027s 1 am, half asleep ![:sleeping:](http://reboot.pro/public/style_emoticons/default/sleeping.gif)\n\n"
+    },
+    {
+      "id": "184724",
+      "timestamp": "2014-06-09T17:11:53+00:00",
+      "author": "DavidB",
+      "content": "**New version: 1.4**\n\nWhat\u0027s changed:  \n\n1. The state of the drives (plugged/unplugged/mounted/unmounted) is now constantly monitored and displayed in each entry (the drive column). This can be done also manually by choosing Refresh in the context menu or by pressing F5.  \n2. Added an option to list only USB drives or to list all drives.  \n3. It detects now the drive ID change inside the VM and automatically updates its entry.  \n4. Added option to set the list font.\n\nDownload from [here](http://reboot.pro/files/file/339-virtual-machine-usb-boot/ \"\")\n\nEdit: attachment removed, you can find the sources in the download section.\n\n"
+    },
+    {
+      "id": "185134",
+      "timestamp": "2014-06-25T10:00:48+00:00",
+      "author": "DavidB",
+      "content": "**New version: 1.41**   \n\nChanges:  \n\nThe features implemented in the previous version were improved a bit. For example the drive detection is now faster and more accurate.  \nAdded an option to set if pressing the Escape key in the main window will close the application (default on).  \nAnd a lot of small tweaks...\n\nDownload from [here](http://reboot.pro/files/file/339-virtual-machine-usb-boot/ \"\")\n\n"
+    },
+    {
+      "id": "185135",
+      "timestamp": "2014-06-25T10:28:13+00:00",
+      "author": "steve6375",
+      "content": "Thanks! Will test soon (sorry for not responding before).\n\nP.S. When you run the Setup installer, after install it tries to run the app and under Win8 (+UAC) gives an error due to no admin rights which may be disconcerting to some users. Can you make it run with Admin elevation at end of install?\n\nMight be good to add a post install Info window to tell the user it must be run with Admin rights.\n\nIf you download the easy2boot MPI toolPack you can see VBS code to create Desktop shortcuts with Admin rights if the installer cannot do it.\n\n"
+    },
+    {
+      "id": "185145",
+      "timestamp": "2014-06-25T12:32:06+00:00",
+      "author": "DavidB",
+      "content": "It doesn\u0027t seem Inno setup can create such shortcut or modify the exe properties directly (using its commands/functions).  \nBut it can be done indirectly by adding this to the VMUB Inno script:  \n\n\\[Registry\\]  \nRoot: HKCU; Subkey: \"SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\AppCompatFlags\\\\Layers\\\\\"; ValueType: String; ValueName: \"{app}\\\\{#SetupSetting(\"AppName\")}.exe\"; ValueData: \"RUNASADMIN\"; Flags: uninsdeletekeyifempty uninsdeletevalue; MinVersion: 0,6.0  \n\nHowever the \"Launch Virtual Machine USB Boot\" option can start VMUB as admin only if the setup exe file was started as admin.  \nSo far I haven\u0027t found an workaround for this.\n\n"
+    },
+    {
+      "id": "185148",
+      "timestamp": "2014-06-25T14:52:48+00:00",
+      "author": "DavidB",
+      "content": "Found a better way.  \nI included this manifest into the exe file:  \n\n\\\u003c?xml version\u003d\"1.0\" encoding\u003d\"UTF-8\" standalone\u003d\"yes\"?\\\u003e  \n\\\u003cassembly xmlns\u003d\"urn:schemas-microsoft-com:asm.v1\" manifestVersion\u003d\"1.0\"\\\u003e  \n\\\u003cassemblyIdentity version\u003d\"1.1.1.1\"  \nprocessorArchitecture\u003d\"X86\"  \nname\u003d\"Virtual_Machine_USB_Boot.exe\"  \ntype\u003d\"win32\"/\\\u003e  \n\\\u003cdescription\\\u003eelevate execution level\\\u003c/description\\\u003e  \n\\\u003ctrustInfo xmlns\u003d\"urn:schemas-microsoft-com:asm.v2\"\\\u003e  \n\\\u003csecurity\\\u003e  \n\\\u003crequestedPrivileges\\\u003e  \n\\\u003crequestedExecutionLevel level\u003d\"requireAdministrator\" uiAccess\u003d\"false\"/\\\u003e  \n\\\u003c/requestedPrivileges\\\u003e  \n\\\u003c/security\\\u003e  \n\\\u003c/trustInfo\\\u003e  \n\\\u003c/assembly\\\u003e  \n\nThis way it will start the exe as admin no matter where you move it.  \nOn my computer works fine.  \n\nHowever the problem with \"Launch Virtual Machine USB Boot\" is still unsolved.  \n\nLater edit: links removed, you can find a better version in the next posts\n\n"
+    },
+    {
+      "id": "185190",
+      "timestamp": "2014-06-27T12:47:24+00:00",
+      "author": "DavidB",
+      "content": "There is a computer application which can create some special shortcuts.  \nWith such shortcuts you can open an application as admin but without the UAC prompt (even if UAC is on).  \nYou can find it here [http://winaero.com/c...omment.news.152](http://winaero.com/comment.php?comment.news.152 \"External link\")  \nIt\u0027s called \"elevated shortcut\".  \n\nBasically it will create a scheduled task (with \"run as admin\") and it will start it every time you use the shortcut.  \nIt\u0027s the only way to avoid that UAC prompt without deactivating the UAC.  \nThe downsides are:  \n1. it will start the application a little slower than usual;  \n2. it will not be focused.  \n3. the scheduled task needs to be changed every time you move the exe file in a different folder.\n\n"
+    },
+    {
+      "id": "185469",
+      "timestamp": "2014-07-06T13:39:48+00:00",
+      "author": "DavidB",
+      "content": "New version: 1.42 RC1.  \n\nImprovements from 1.41:  \n1. Drag\u0027n\u0027drop implemented in the main window, Options and the Add/Edit window. Unfortunately, when UAC is on, the application from where you drag the file/volume/drive needs to be started as administrator too (Windows limitation).  \n2. In Windows 7/8/8.1 you won\u0027t have to set it to \"Run as administrator\" because it will start as administrator by default.  \n3. Many small tweaks to the code and to the interface.  \n\nLater edit: links removed, you can find a better version in the next posts\n\n"
+    },
+    {
+      "id": "185497",
+      "timestamp": "2014-07-06T20:29:27+00:00",
+      "author": "smersh2",
+      "content": "When trying to download from page [http://reboot.pro/fi...chine-usb-boot/](http://reboot.pro/files/download/339-virtual-machine-usb-boot/ \"\") getting error\nSorry, we couldn\u0027t find that!   \n"
+    },
+    {
+      "id": "185498",
+      "timestamp": "2014-07-06T20:36:18+00:00",
+      "author": "DavidB",
+      "content": "[http://reboot.pro/to...ip/#entry185468](http://reboot.pro/topic/19902-lost-virtual-machine-usb-boot-141-setupzip/#entry185468 \"\")\n\nThat\u0027s why I released 1.42 RC1 in my previous post.\n\n"
+    },
+    {
+      "id": "185511",
+      "timestamp": "2014-07-07T15:40:28+00:00",
+      "author": "DavidB",
+      "content": "**New version: 1.42 final**   \n\n**Improvements from 1.41:**   \n1. Drag\u0027n\u0027drop implemented in the main window, Options and the Add/Edit window. Small problem: when UAC is on, the application from where you drag the file/volume/drive needs to be started as administrator too (Windows limitation).  \n2. In Windows 7/8/8.1 you won\u0027t have to set it to \"Run as administrator\" because it will start as an administrator by default.  \n3. Many small tweaks to the code and to the interface.  \n\nDownload from [here](http://reboot.pro/files/file/339-virtual-machine-usb-boot/ \"\")\n\n"
+    },
+    {
+      "id": "186889",
+      "timestamp": "2014-09-01T16:03:47+00:00",
+      "author": "DavidB",
+      "content": "**New version: 1.43**\n\nWhat\u0027s changed:\n\n1. The USB stick/flash/card could not be removed while VMUB was started. Fixed.  \n2. The progressbar shown when waiting is now filling a little smoother.  \n3. In some rare situations it was waiting for VBox Com Server to close even if it was not necessary for that VBox version. Fixed.  \n\nDownload from [here](http://reboot.pro/files/file/339-virtual-machine-usb-boot/ \"\")\n\n"
+    },
+    {
+      "id": "188593",
+      "timestamp": "2014-11-16T12:07:07+00:00",
+      "author": "DavidB",
+      "content": "**New version: 1.44**\n\nWhat\u0027s changed:\n\nBetter adaptation to the latest VirtualBox version.\n\nDownload from [here](http://reboot.pro/files/file/339-virtual-machine-usb-boot/ \"\")\n\n"
+    },
+    {
+      "id": "188732",
+      "timestamp": "2014-11-22T05:25:37+00:00",
+      "author": "DavidB",
+      "content": "Strange, the new VirtualBox version (4.3.20, released yesterday), fails to start any VM in my Windows XP SP3.  \n\n[![Clipboard02.png](http://reboot.pro/uploads/monthly_11_2014/post-61891-0-73107300-1416633862_thumb.png)](http://reboot.pro/uploads/monthly_11_2014/post-61891-0-73107300-1416633862.png \"Clipboard02.png - Size: 8.05KB\"){#ipb-attach-url-15141-0-44686500-1676066428} [![Clipboard03.png](http://reboot.pro/uploads/monthly_11_2014/post-61891-0-92803700-1416633862_thumb.png)](http://reboot.pro/uploads/monthly_11_2014/post-61891-0-92803700-1416633862.png \"Clipboard03.png - Size: 8KB\"){#ipb-attach-url-15142-0-44700400-1676066428}   \n\nHowever, in Windows 7 x64, it loads fine any VM.  \n\nCan anyone else confirm this...?\n\nLater edit: seems this problem appears when using some security solutions.\n\n[https://forums.virtu...php?f\u003d6\\\u0026t\u003d64777](https://forums.virtualbox.org/viewtopic.php?f\u003d6\u0026t\u003d64777 \"External link\")\n\n[https://forums.virtu...php?f\u003d6\\\u0026t\u003d64111](https://forums.virtualbox.org/viewtopic.php?f\u003d6\u0026t\u003d64111 \"External link\")\n\nFor now I downgraded to 4.3.18 and I don\u0027t see errors anymore.\n\n"
+    },
+    {
+      "id": "188920",
+      "timestamp": "2014-11-28T17:25:45+00:00",
+      "author": "DavidB",
+      "content": "**New version: 1.5 Beta 1**   \n\nWhat\u0027s changed:  \n\n1. Added support for multiple translations.  \nThe language files can be stored in a Languages folder near the exe file (for the portable version), in Application Data folder for the installed version or in the resources of the exe file.  \nThey are in fact XML files and can be edited using any XML editor.  \nIf you want to help by translating VMUB into your language you can use the english.lng file as template. Just rename the file and translate only the text values (not the names).  \n2. Some of the resources from the exe file could of been accessed only by OSs with a few codepages. Now they can be accessed by OSs with any codepage.  \n3. The exe file size was reduced by compressing the large icons.  \n4. Few small tweaks and optimizations.\n\nLE: attached files removed, newer version in the next posts.\n\n"
+    },
+    {
+      "id": "188961",
+      "timestamp": "2014-12-01T11:21:23+00:00",
+      "author": "DavidB",
+      "content": "**New version: 1.5 Beta 2**   \n\nWhat\u0027s changed: solved small bugs to the language code.  \n\nLE: attached files removed, you can find newer versions in the next posts.\n\n"
+    },
+    {
+      "id": "189118",
+      "timestamp": "2014-12-09T03:59:31+00:00",
+      "author": "DavidB",
+      "content": "**New version: 1.5 final**\n\nChanges from 1.5 Beta 2: the language code is now much stable and it requires less size in the exe file.\n\nDownload from [here](http://reboot.pro/files/file/339-virtual-machine-usb-boot/ \"\")\n\n"
+    },
+    {
+      "id": "189672",
+      "timestamp": "2015-01-05T06:54:39+00:00",
+      "author": "Blackcrack",
+      "content": "Hi DavidB,\n\nwhy upload you the sources not on GitHub ?\n\nbest regards\n\nBlacky\n\n"
+    },
+    {
+      "id": "189723",
+      "timestamp": "2015-01-07T17:50:37+00:00",
+      "author": "p060477",
+      "content": "Hi David!\n\nfirst so many thanks for yr tool!\n\napologize my very poor level and skill..\n\ni got this error:\n\n[http://postimg.org/image/6jdmjvh6d/](http://postimg.org/image/6jdmjvh6d/ \"External link\")\n\ni use yr 1.5 zip portable vers\n\nand the -portable vers- of virtualbox 4.3.20-96997 last vers\n\n[http://postimg.org/image/r8xpeaxi3/](http://postimg.org/image/r8xpeaxi3/ \"External link\")\n\ni got the same error trying with the 1st or the second virtual machine listed in my a/m screenshoot\n\nwhere am iwrong..??\n\ni\u0027ve understood that yr tool was usable also with virtualbox -portable-..am i wrong..??\n\nthanks so much again for yr kind patience!!\n\ncheers! :smile:\n\nPS..: i put a lot of smoke on my head..apologize me..now,only now, i\u0027ve read that yr tool works ONLY\n\nwith the -installed- virtualbox...\n\ni\u0027ve a -portable- vers dl from vbox.me......\n\nso there is really NO WAY to use yr tool and able to add an usb drive to my VM..??..\n\nhere is my vers.:\n\n[http://www.vbox.me/](http://www.vbox.me/ \"External link\")\n\nin a yr post you wrote..:\n\n\"But I\u0027m willing to give it a try...\n\nJust send me a link to your version so I can test it and make the appropriate modifications to VMUB (if necessary)...\"..\n\napologize me again and forever!!\n\nthanks so much for yr patience!!\n\n**Edited by p060477, 07 January 2015 - 06:14 PM.**\n"
+    },
+    {
+      "id": "190982",
+      "timestamp": "2015-02-26T08:09:06+00:00",
+      "author": "DavidB",
+      "content": "**New version** : 1.51 Beta 1  \n\n**Changes:**\n\n1. The scan for (USB) disks is faster.  \n2. In the Add/Edit window the information about found disks is shown on columns (name/size/volume letter(s)).  \n3. Some small improvements to the language code.  \n4. Added german translation (lng file) sent by Blackcrack. For now is in the Languages folder near the exe (portable) file but in the final version all the lng files will be added in the exe file resources.  \n\nLE: download links removed, you can find a better version in the next posts.\n\n"
+    },
+    {
+      "id": "191028",
+      "timestamp": "2015-03-01T10:51:29+00:00",
+      "author": "DavidB",
+      "content": "**New version**: 1.51 Beta 2\n\n**Changes**:\n\n1. A few adjustments to the latest modifications;  \n2. Some bugs solved.  \n\nThe scan for (USB) disks is now as fast as possible. But, if you have many disks connected and you notice a long delay in their scan, could be from the security solution. For example I noticed that Comodo Internet Security delays every access to each removable disk with a few hundred ms. It may not seem much, but when you have a few disks connected and VMUB accesses each of them 2..3 times (to get all their data), it will become noticeable (but not very annoying). I advise you to notify the security solution support so they can fix the problem.  \nJust so you know:  \n1. For most of the security solutions, deactivating it from its icon in tray won\u0027t help. For Comodo I had to uninstall it to get rid of the delay.  \n2. When the delay from the security solution is gone, VMUB accesses each disk in a matter of ms.\n\nLE: download links removed, you can find a better version in the next posts.\n\n"
+    },
+    {
+      "id": "191030",
+      "timestamp": "2015-03-01T11:00:53+00:00",
+      "author": "steve6375",
+      "content": "Just installed the Setup version\n\nI had already USB drive locked in QEMU with VMUB (old version used in RMPrepUSB) but...\n\nWhen it launched I noticed that no drives were green even though before one was (as locked by QEMU - so OK - expected).\n\nI edited a VM entry to add the USB drive that was already connected and then ran it.\n\nI got Internal Error Yes - No\n\nIf I click Yes then get VBOx error\n\nOK if I quit QEMU so drive no longer locked by VMUB.\n\nCan message box be improved?  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![CaptureVMUBIntError.JPG](http://reboot.pro/uploads/monthly_03_2015/post-17818-0-98759700-1425207615_thumb.jpg)](http://reboot.pro/uploads/monthly_03_2015/post-17818-0-98759700-1425207615.jpg \"CaptureVMUBIntError.JPG - Size: 14.69KB\"){#ipb-attach-url-15442-0-92859300-1676066428}\n* [![CaptureVMUBIntError2.JPG](http://reboot.pro/uploads/monthly_03_2015/post-17818-0-31093500-1425207622_thumb.jpg)](http://reboot.pro/uploads/monthly_03_2015/post-17818-0-31093500-1425207622.jpg \"CaptureVMUBIntError2.JPG - Size: 32.93KB\"){#ipb-attach-url-15443-0-92869100-1676066428}\n\n"
+    },
+    {
+      "id": "191038",
+      "timestamp": "2015-03-01T13:00:30+00:00",
+      "author": "DavidB",
+      "content": "If I understand correctly, the only problem here is the message \"Internal error\"?\n\n"
+    },
+    {
+      "id": "191039",
+      "timestamp": "2015-03-01T13:01:47+00:00",
+      "author": "steve6375",
+      "content": "Yes, sorry, I was not very clear (I didn\u0027t realise QEMU+VMUB was running at first!).\n\nIt\u0027s just the message and not knowing what Yes and No would do.\n\n"
+    },
+    {
+      "id": "191049",
+      "timestamp": "2015-03-01T13:48:06+00:00",
+      "author": "DavidB",
+      "content": "Found the problem.  \nLooks like I was too \"intoxicated\" with C ![:rolleyes:](http://reboot.pro/public/style_emoticons/default/rolleyes.gif)   \nIn C the format string functions accept %c for character and %s for string. In Delphi it\u0027s %s for both.  \n\nNow it\u0027s fixed:  \n\nThank you for reporting :smile:\n\nLE: download links removed, you can find a better version in the next posts.\n\n"
+    },
+    {
+      "id": "191242",
+      "timestamp": "2015-03-10T16:55:09+00:00",
+      "author": "DavidB",
+      "content": "**New version** : 1.51 final  \n\n**All changes:**   \n\n1. The scan for (USB) disks is faster.  \n2. In the Add/Edit window the information about found disks and CDROM drives is shown on columns (name/size/volume letter(s)).  \n3. A few bugs solved.  \n4. Some small improvements to the language code.  \n5. Added german translation (lng file) sent by [Blackcrack](http://reboot.pro/user/43143-blackcrack/ \"\").\n\nDownload from [here](http://reboot.pro/files/download/339-virtual-machine-usb-boot/ \"\")\n\n"
+    },
+    {
+      "id": "191819",
+      "timestamp": "2015-04-02T10:49:21+00:00",
+      "author": "steve6375",
+      "content": "P.S. Found a problem with VBox and .vmdk files\n\nIf using VBox to boot from grub4dos USB drive, when reading sectors from the end of the USB drive (flash removable USB 3.0 NTFS), it **returns all 00\u0027s** for the last 80 odd sectors and not the correct sectors.\n\nChanging the .vmdk file to make the drive bigger does not fix the problem. This is the one made by VMUB...\n\n```\n# Extent description\nRW 125045424 FLAT \"\\\\.\\PhysicalDrive2\" 0\n```\n\nThe problem occurs just under VBox (no VMUB used) as well as using VMUB+VBox.\n\nI put marker bytes in the last sectors so I could tell if the correct data was returned.\n\nUnder VBox+booting to WinPE however, a disk editor does return the correct data.\n\nUnder QEMU with grub4dos, the correct data **is**returned.\n\nSo maybe it is a Vbox-BIOS bug?\n\nTest grub4dos batch file was: (Last sector on drive is 0x7740AAF)\n\n```\n!BAT\n# DISK can be 0-9, A-F only\n# Returns: CAP \u003d Capacity of disk displayed in GB\nset DISK\u003d0\n# Get disk capacity\nwrite 0x60000 0x42\nwrite 0x60010 0 \u003e nul\n# get size of disk from INT 13h AH\u003d48 into memory at DS:DI+10h  - edx\u003d80h is hard disk 0, 81h would be hard disk 1\n/%grub%/bios int\u003d0x13 eax\u003d0x4800 edx\u003d0x8%DISK% ds\u003d0x6000 edi\u003d0x0 \u003e nul\nread 0x60010 \u003e nul\nset /A A\u003d%@retval% \u0026 0xffffffff \u003e nul\nset /a CAP\u003d%A%\u003e\u003e21\u00260xffffffff \u003e nul\n# Get most significant dword\nread 0x60014  \u003e nul\nset /A B\u003d%@retval% \u0026 0x1ffff \u003e nul\nset /a CAP\u003d%B% * 0x800 + %CAP% \u003e nul\necho DISK %DISK% \u003d %CAP%GiB (LS_DWORD\u003d%A% MS_DWORD\u003d%B%, TOTAL SECTORS\u003d%B%%%A:~2,999%)\nset /A LAST\u003d%A%-1\ncat --hex --length\u003d0x10 (hd%DISK%)%LAST%+1\ncat --hex --length\u003d0x10 (hd%DISK%)0x7740000+1\ncat --hex --length\u003d0x10 (hd%DISK%)0x7740800+1\ncat --hex --length\u003d0x10 (hd%DISK%)0x7740A00+1\ncat --hex --length\u003d0x10 (hd%DISK%)0x7740A40+1\ncat --hex --length\u003d0x10 (hd%DISK%)0x7740A50+1\ncat --hex --length\u003d0x10 (hd%DISK%)0x7740A5e+1\necho these return 00\u0027s\ncat --hex --length\u003d0x10 (hd%DISK%)0x7740A5f+1\ncat --hex --length\u003d0x10 (hd%DISK%)0x7740A60+1\ncat --hex --length\u003d0x10 (hd%DISK%)0x7740A80+1\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "191823",
+      "timestamp": "2015-04-02T12:19:19+00:00",
+      "author": "DavidB",
+      "content": "On my computer I use both real and virtual disks (vhds, mounted with vhdmount.exe from Microsoft Virtual Server) to test grubinst.  \nI created 2 virtual disks (2 and 9 GB), partitioned them NTFS and filled the last sector with 30\u0027s:  \n\n[![2 GB virtual.png](http://reboot.pro/uploads/monthly_04_2015/post-61891-0-50358500-1427976995_thumb.png)](http://reboot.pro/uploads/monthly_04_2015/post-61891-0-50358500-1427976995.png \"2 GB virtual.png - Size: 4.84KB\"){#ipb-attach-url-15543-0-92883600-1676066428}\n\n[![9 GB virtual.png](http://reboot.pro/uploads/monthly_04_2015/post-61891-0-71337900-1427976995_thumb.png)](http://reboot.pro/uploads/monthly_04_2015/post-61891-0-71337900-1427976995.png \"9 GB virtual.png - Size: 4.87KB\"){#ipb-attach-url-15544-0-92890500-1676066428}   \n\nI then used a real disk. The last sector had some data so I didn\u0027t have to fill it:\n\n[![real USB disk.png](http://reboot.pro/uploads/monthly_04_2015/post-61891-0-15156100-1427976995_thumb.png)](http://reboot.pro/uploads/monthly_04_2015/post-61891-0-15156100-1427976995.png \"real USB disk.png - Size: 5.32KB\"){#ipb-attach-url-15542-0-92875300-1676066428}   \n\nI got the same results in QEMU.\n\n"
+    },
+    {
+      "id": "191824",
+      "timestamp": "2015-04-02T12:37:36+00:00",
+      "author": "DavidB",
+      "content": "So I don\u0027t see any problems...\n\nOr should I test in a different way?\n\nWhich version of VirtualBox are you using?\n\n"
+    },
+    {
+      "id": "191825",
+      "timestamp": "2015-04-02T12:54:50+00:00",
+      "author": "steve6375",
+      "content": "I am using 4.3.26 r98988\n\nI tried a 8GB FAT32 USB drive as well - it returned data, but not the right sector.\n\nNo problems under QEMU.\n\nI tested with and without VMUB - both fail to return the right sector data\n\n**Edited by steve6375, 02 April 2015 - 12:55 PM.**\n"
+    },
+    {
+      "id": "191826",
+      "timestamp": "2015-04-02T13:01:26+00:00",
+      "author": "steve6375",
+      "content": "P.S. The partitions on the USB disks do not go right to the end, there is some \u0027unused\u0027 space at the end of the disk.\n\nNot sure if this matters...\n\nPartition 1 SIZE\u003d61050.676MiB Type: 07 NTFS \\*ACTIVE\\*  \nSTART POS \u003d CYL:0 HD:32 SEC:33 END POS \u003d CYL:1023 HD:254 SEC:63  \nSTART (LBA) \u003d 2,048 (00000800) SIZE (LBA) \u003d 125,031,784 (0773D568) \\[End\u003d125,033,831\\]\n\nPartition 2 SIZE\u003d0.031MiB Type: 21 Hidden(rsvd)   \nSTART POS \u003d CYL:1023 HD:254 SEC:63 END POS \u003d CYL:1023 HD:254 SEC:63  \nSTART (LBA) \u003d 125,033,832 (0773DD68) SIZE (LBA) \u003d 63 (0000003F) \\[End\u003d125,033,894\\]\n\nPartition 3 SIZE\u003d0MiB Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0\n\nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)\n\nPartition 4 SIZE\u003d0MiB Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)\n\nP1 Start\u003d2,048 (1,048,576 bytes) End\u003d125,033,831 (64,017,321,472 bytes)  \nP2 Start\u003d125,033,832 (64,017,321,984 bytes) End\u003d125,033,894 (64,017,353,728 bytes)\n\nDrive 2 SanDisk Extreme F/W Rev.\u003d0001 Serial No.\u003d \\[ bytes \u003d 00 00 00 00 00 00 00 00 \\]  \nReported size 64,023,257,088 bytes (59.6263GiB) Last LBA 125,045,423\n\n"
+    },
+    {
+      "id": "191827",
+      "timestamp": "2015-04-02T13:13:50+00:00",
+      "author": "steve6375",
+      "content": "P.S. I can also access sectors (presumably not real ones though?) past the end of the USB drive too!\n\n"
+    },
+    {
+      "id": "191828",
+      "timestamp": "2015-04-02T13:15:31+00:00",
+      "author": "DavidB",
+      "content": "\u003e I am using 4.3.26 r98988\n\nMe too.\n\n[![Clipboard02.png](http://reboot.pro/uploads/monthly_04_2015/post-61891-0-32694400-1427979977_thumb.png)](http://reboot.pro/uploads/monthly_04_2015/post-61891-0-32694400-1427979977.png \"Clipboard02.png - Size: 57.23KB\"){#ipb-attach-url-15545-0-92897000-1676066428}\n\n\u003e P.S. The partitions on the USB disks do not go right to the end, there is some \u0027unused\u0027 space at the end of the disk.\n\u003e\n\u003e Not sure if this matters...\n\nThe 2 and 9 GB disks have the same issue.\n\nThe real disk was partitioned \u0027till the end.\n\nHere is the 2 GB VHD: [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003de47f308e0b0e31d6af199632f6441f56\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d15546 \"Download attachment\") [**Test 2 GB vhd.7z**](http://reboot.pro/index.php?s\u003de47f308e0b0e31d6af199632f6441f56\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d15546 \"Download attachment\") **278.7KB** 601 downloads  \nDon\u0027t use it directly in VB; install a vhd mounting tool like WinVHD, mount the vhd on the real computer and then use it in VMUB just like a real disk.  \nLet\u0027s see if you get a different result...\n\n"
+    },
+    {
+      "id": "191833",
+      "timestamp": "2015-04-02T16:40:40+00:00",
+      "author": "steve6375",
+      "content": "Sorry for delay, some things came up and also I could not get WinVHD to work. It installed and I got systray, but right-click on VHD does not seem to show any menu item for it and I can\u0027t see how to add it using the app form itself???\n\nAnyway, I used Win DiskMangelement to attach the VHD and uses it as disk 1 with the E2B USB disk as disk 0.\n\nI get 00\u0027s\n\nIs it only me then?\n\n```\nP.S. OK found the problem with WinVHD - the help file says\n\u0027Also you can attach or detach your disk\u0027s at any time by right mouse button.\u0027\nActually it should say\n\u0027Also you can attach or detach your disk\u0027s by right mouse button WITHIN THE APPLICATION\u0027S FORM.\u0027 _ I thought it would add it to the right-click context menu!\n```\n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![Capturetest2VHD.JPG](http://reboot.pro/uploads/monthly_04_2015/post-17818-0-14220200-1427992815_thumb.jpg)](http://reboot.pro/uploads/monthly_04_2015/post-17818-0-14220200-1427992815.jpg \"Capturetest2VHD.JPG - Size: 120.62KB\"){#ipb-attach-url-15547-0-92912600-1676066428}\n\n**Edited by steve6375, 02 April 2015 - 05:23 PM.**\n"
+    },
+    {
+      "id": "191834",
+      "timestamp": "2015-04-02T16:51:59+00:00",
+      "author": "steve6375",
+      "content": "OK- it works if the disk controller is IDE - the problem occurs if the VM controller is SATA!\n\n"
+    },
+    {
+      "id": "191835",
+      "timestamp": "2015-04-02T17:41:50+00:00",
+      "author": "DavidB",
+      "content": "Yup, that\u0027s the \"trigger\".\n\nLooks like the vmdk+SATA implementation in VirtualBox is not 100% bug free...\n\n"
+    },
+    {
+      "id": "191836",
+      "timestamp": "2015-04-02T17:45:48+00:00",
+      "author": "steve6375",
+      "content": "[https://www.virtualb...rg/ticket/14021](https://www.virtualbox.org/ticket/14021 \"External link\")\n\n"
+    },
+    {
+      "id": "191837",
+      "timestamp": "2015-04-02T18:00:33+00:00",
+      "author": "DavidB",
+      "content": "Ok :smile:\n\nOnly one problem: the makers of VB are not too happy about VB been used for USB boot... ![:rolleyes:](http://reboot.pro/public/style_emoticons/default/rolleyes.gif)\n\nSo you should try to report without mentioning VMUB and/or USB boot - if you want the problem fixed fast...\n\n"
+    },
+    {
+      "id": "191838",
+      "timestamp": "2015-04-02T18:02:54+00:00",
+      "author": "steve6375",
+      "content": "too late! Why would they want to discourage people from using their software anyway (rhetorical Q!).\n\n"
+    },
+    {
+      "id": "191839",
+      "timestamp": "2015-04-02T18:08:44+00:00",
+      "author": "DavidB",
+      "content": "Don\u0027t know, but they were pretty \"mad\" about that on their forum...\n\n"
+    },
+    {
+      "id": "193080",
+      "timestamp": "2015-06-10T13:53:28+00:00",
+      "author": "trufo",
+      "content": "I know this thread is 2 month old now but I figured that since I found a solution to a problem others might have, better to post it here.\n\nWith version 1.51 (portable) and using vbox 4.3.28 I got the error \"VERR_ACCESS_DENIED\" just as vbox launched.\n\nAfter some research (mainly on vbox forum), it appears that some user had the same problem with post 4.3.12 versions.\n\nSo I installed vbox 4.3.12 and it worked.\n\nA little precision though... I restored a clean system via an acronis image beforehand.\n\nThis was in the context of testing imagix related stuff on some syspreped win7x64-pe usb-stick.\n\nI tried the createrawvmdk command before landing on this website and it also gave me an error of somekind but later (while windows was loading), even with vbox 4.3.12.\n\nAnyway thank You DavidB your app is excellent.\n\n"
+    },
+    {
+      "id": "194746",
+      "timestamp": "2015-08-17T02:50:44+00:00",
+      "author": "Zoso",
+      "content": "hi trufo, good info! using your recommendations (4.3.12) now. and yes, his program is excellent. hope your doing well DavidB  \n\nthanks   \n"
+    },
+    {
+      "id": "194748",
+      "timestamp": "2015-08-17T04:16:57+00:00",
+      "author": "Blackcrack",
+      "content": "\u003e Ok :smile:\n\u003e\n\u003e Only one problem: the makers of VB are not too happy about VB been used for USB boot... ![:rolleyes:](http://reboot.pro/public/style_emoticons/default/rolleyes.gif)\n\u003e\n\u003e So you should try to report without mentioning VMUB and/or USB boot - if you want the problem fixed fast...\n\nwell, it was my idea for include the support in the VBox for an USB-Device ..\n\nso, why not, i tell it you, they want not an System on usb like an Linuxderivat ..\n\nbecause with this stick it\u0027s so many possible, not only formating and partitioning (but about this i want not speak\\*g\\*)\n\nhow ever.. wth exist not more usb-stick systems, why it\u0027s not more support to make\n\nit able for all peoples to have his own system on an really fast usb-system,\n\n(why do they are not exist really fast usb-sticks like harddisks (although it would be possible) )\n\nwhy makes not more easy to create something and supporting something.. i say it to you..\n\nsome peoples want it not and want hold the System on spot and place (if i can say it like so)\n\nit\u0027s because danger of collusion or something, because it\u0027s easy to have his system on usb,\n\ncan you boot any computer with your system.. should i tell you more ?\n\nYou can put your system in your House and in your Car and can make many more with it..\n\nand some peoples want it easy not, they want hold it on place for more easy catching if some peoples it not want ..\n\nthis is why.. you see :smile:\n\nit is easy for build up an usb-stick for anybody, also for young and normal peoples it is really more hard for controlling it..\n\nthis only as side note .. why they are(or some peoples) it want not .. in clean words (take a look on VMware or other, there it s also impossible)\n\nbest regards\n\nBlacky\n\n"
+    },
+    {
+      "id": "194749",
+      "timestamp": "2015-08-17T04:50:04+00:00",
+      "author": "Zoso",
+      "content": "hi Blackcrack,  \n\n\"they\" dont want \"us\" to have this capability, youre right! another reason is tracking and control.  \n\none of the big deals with DavidB\u0027s creation here is that you can boot an install usb in VM to install a windows on another USB! all through VM and if configured tightly there will be no traces of the actual hardware these windows were installed on.   \n\nthis tool is superb but I dont think many realize just how superb it is.   \n"
+    },
+    {
+      "id": "194755",
+      "timestamp": "2015-08-17T10:15:36+00:00",
+      "author": "Blackcrack",
+      "content": "Hiho 7050 :wink: ,\n\nnope, they realize it not and all the \"normal\" Peoples (Users only) don\u0027t realize it also ..\n\nbecause they\u0027re are not so deep in the software technical ..\n\nthe want it easy use and should work on the easiest way ..\n\nand this want they (the VBox Dev\u0027s/Presi) don\u0027t do it because on one hand,\n\nthey become warning from different facility\u0027s in the background and publish the\n\n\"speak/information(do it not and prevent something like that of you become trouble)\" it not\n\nand on the other hand want they not go in some risk to make something more free as it need,\n\nbecause, it\u0027s not in the sense of the founder.. you know maybe something also.. .. i hate some adjusting..\n\nbecause, it\u0027s not really open and don\u0027t let make an really free way and try in one or other way ever to controlling it..\n\nbahh.. something it\u0027s not \"cosha\" and it contradicts the open source way .. imho ..\n\nand i wish, the usb-sticks should not orientating on commerce , should more orientate on the\n\ntechnical possible and should recycle the old sticks in which one they can send back to the\n\nProducers for make it more modern of the stand the technicals ..\n\n(this is my wish to Santa for have same fast usb-sticks like the hddisk\u0027s/ssd\\*g\\*)\n\nand the normal harddsisk\u0027s be never really interesting .. because any can take with his own harddisks on /as USB-Stick..\n\nthis would be the best .. I bet, it\u0027s comes, but behind the sdd\u0027s they want sell mass of hardware up to this possibility, i want bet.\n\nusb3 is there and sdd\u0027s comes now .. should i say more? ..\n\n( blabla \"it have to emulate and not make possible some things who works per hardware in an couple Years ..\" /\n\n\" we need in couple of years also some fitures to programming in\" \\\u003eblubbbb\\\u003c )\n\nbest regards\n\nBlacky\n\n"
+    },
+    {
+      "id": "198201",
+      "timestamp": "2016-03-01T19:00:45+00:00",
+      "author": "steve6375",
+      "content": "I have been using the latest version of VMUB for a while now with VBox.\n\nv1.6 has many improvements and there is also now a portable version for VBox too.\n\nOn the [GitHub site](https://github.com/DavidBrenner3/VMUB \"External link\") there is a link at the top of the page.\n\nLet me know if you find any problems.\n\n"
+    },
+    {
+      "id": "206406",
+      "timestamp": "2018-03-14T09:09:28+00:00",
+      "author": "steve6375",
+      "content": "[VMUB v1.7](https://github.com/DavidBrenner3/VMUB/releases \"External link\") now released.\n\n"
+    }
+  ]
+}

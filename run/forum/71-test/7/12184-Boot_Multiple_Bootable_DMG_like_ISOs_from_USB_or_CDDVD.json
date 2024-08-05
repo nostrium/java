@@ -1,0 +1,22 @@
+{
+  "id": "12184",
+  "title": "Boot Multiple Bootable .DMG like ISOs from USB? or CD/DVD",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "106137",
+      "timestamp": "2010-08-04T10:30:09+00:00",
+      "author": "crashnburn",
+      "content": "Boot Multiple Bootable .DMG like ISOs from USB? or CD/DVD  \n\nBoot Multiple Bootable .DMG from USB?  \n\nIs there something like this for the IntelMac/Apple world?   \n\nI have a Multi Boot CD/DVD that allows bootable Tools: Acronis, Partition Magic etc. I\u0027d like to create something like this for my Mac world with certain \"Bootable\" apps.   \ne.g. Super Duper, Disk Warrior, Drive Genius, Volume Works, iDefrag etc etc.   \n\nA simple example of the same is the following article where I can drop ISOs as they are into a USB pen drive thats been prepared to boot a menu which can choose which ISO to boot next.   \nIt would be great if I can dump all ISOs / DMGs into one USB pen drive / HDD but I\u0027d be okay with making a separate Mac \\\u0026 PC (Windows \\\u0026 Linux) Tool kit for booting.   \n\nBoot Multiple ISO from USB (MultiBoot USB  \n[http://www.pendrivel...-multiboot-usb/](http://www.pendrivelinux.com/boot-multiple-iso-from-usb-multiboot-usb/ \"External link\")  \n\nThoughts? Anyone create / try / look at such Boot tools.   \n"
+    },
+    {
+      "id": "106138",
+      "timestamp": "2010-08-04T10:39:18+00:00",
+      "author": "Wonko the Sane",
+      "content": "The problem is not in the \"initial\" part of the booting, grub4dos or Syslinux can manage that, the problem is what happens once the booting has been initiated.  \n\nJFYI:  \n[http://www.boot-land...?showtopic\u003d8944](http://www.boot-land.net/forums/index.php?showtopic\u003d8944 \"External link\")  \n\nand:  \n[http://www.boot-land...?showtopic\u003d8131](http://www.boot-land.net/forums/index.php?showtopic\u003d8131 \"External link\")  \n\n\u003cbr /\u003e\n\ngrub4dos cannot read HFS, afaik, maybe there is a patched version somwhere, but never happened to see it. ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \n\nBUT, check this also:  \n[http://www.boot-land...showtopic\u003d11769](http://www.boot-land.net/forums/index.php?showtopic\u003d11769 \"External link\")  \ncannot say if it applies. ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \n\n![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \nWonko   \n"
+    }
+  ]
+}

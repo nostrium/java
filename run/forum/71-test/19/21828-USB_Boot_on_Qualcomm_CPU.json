@@ -1,0 +1,400 @@
+{
+  "id": "21828",
+  "title": "USB Boot on Qualcomm CPU",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "207529",
+      "timestamp": "2018-08-15T18:36:36+00:00",
+      "author": "armixen",
+      "content": "Hi!\n\nDoes anyone know how to make a bootable USB device for ARM64 PCs?\n\nI am needing to make a bootable USB for the ASUS Nova TP370QL Qualcomm ARM64 CPU based PC...\n\nThank you,\n\n-Armixen\n\n"
+    },
+    {
+      "id": "207536",
+      "timestamp": "2018-08-15T20:12:30+00:00",
+      "author": "steve6375",
+      "content": "Does it have a UEFI BIOS?\n\n"
+    },
+    {
+      "id": "207537",
+      "timestamp": "2018-08-15T20:13:49+00:00",
+      "author": "armixen",
+      "content": "Yes, thank you.\n\n"
+    },
+    {
+      "id": "207538",
+      "timestamp": "2018-08-15T20:19:34+00:00",
+      "author": "steve6375",
+      "content": "Well, any UEFI BIOS should be capable of reading a FAT32 partition.\n\nSo can\u0027t you just copy the files to a FAT32 USB drive?\n\nThere will need to be a \\\\EFI\\\\BOOT\\\\BootAA64.EFI file present on the USB drive.\n\n"
+    },
+    {
+      "id": "207539",
+      "timestamp": "2018-08-15T20:22:50+00:00",
+      "author": "armixen",
+      "content": "Thank you.\n\nThat sounds like a great start - is there a batch file or similar that can do the necessary copying?\n\n(edit: for all necessary files\\\u0026materials)\n\nBonus question - how do I add x86 (WoW) support to my bootable Windows instance?\n\n**Edited by armixen, 15 August 2018 - 08:23 PM.**\n"
+    },
+    {
+      "id": "207540",
+      "timestamp": "2018-08-15T20:33:05+00:00",
+      "author": "steve6375",
+      "content": "Sorry, don\u0027t know anything about ARM Win10. Never seen it before!\n\nThese links may help...\n\n[https://winaero.com/...ws-10-arm-qemu/](https://winaero.com/blog/install-windows-10-arm-qemu/ \"External link\")\n\n[https://withinrafael...ows-10-in-qemu/](https://withinrafael.com/2018/02/11/boot-arm64-builds-of-windows-10-in-qemu/ \"External link\")\n\n"
+    },
+    {
+      "id": "207541",
+      "timestamp": "2018-08-15T20:43:09+00:00",
+      "author": "steve6375",
+      "content": "I havent tried it, but latest Windows ADK says it supports ARM64, so maybe it has .cmd scripts to make an ARM64 WinPE boot.wim, etc?\n\n[https://docs.microso...ted/adk-install](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install \"External link\")\n\n"
+    },
+    {
+      "id": "207544",
+      "timestamp": "2018-08-15T22:05:57+00:00",
+      "author": "armixen",
+      "content": "\u003e Sorry, don\u0027t know anything about ARM Win10. Never seen it before!\n\u003e\n\u003e These links may help...\n\u003e\n\u003e [https://winaero.com/...ws-10-arm-qemu/](https://winaero.com/blog/install-windows-10-arm-qemu/ \"External link\")\n\u003e\n\u003e [https://withinrafael...ows-10-in-qemu/](https://withinrafael.com/2018/02/11/boot-arm64-builds-of-windows-10-in-qemu/ \"External link\")\n\nIt would be insufferably slow on QEMU (as the article author notes as well).\n\n"
+    },
+    {
+      "id": "207545",
+      "timestamp": "2018-08-15T22:07:11+00:00",
+      "author": "armixen",
+      "content": "\u003e I havent tried it, but latest Windows ADK says it supports ARM64, so maybe it has .cmd scripts to make an ARM64 WinPE boot.wim, etc?\n\u003e\n\u003e [https://docs.microso...ted/adk-install](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install \"External link\")\n\nThat\u0027s a great start, thank you!\n\nDo you know of existing scripts to create WinRE/WinPE using the ADK for x86 and x64?\n\nI can check those locations for the ARM64 variants, I figure...\n\nAlso big bonus - how do I add x86 (WoW) support to a RE/PE instance?\n\n"
+    },
+    {
+      "id": "207553",
+      "timestamp": "2018-08-16T15:53:16+00:00",
+      "author": "armixen",
+      "content": "Sadly, the latest ADK does not support ARM64...\n\nDoes anyone know of a version that does?\n\n"
+    },
+    {
+      "id": "207554",
+      "timestamp": "2018-08-16T16:17:44+00:00",
+      "author": "Wonko the Sane",
+      "content": "Hmmm.  \n\n[https://docs.microso...-kits-and-tools](https://docs.microsoft.com/en-us/windows-hardware/get-started/what-s-new-in-kits-and-tools \"External link\")  \n\n\u003e What\u0027s new in the Windows ADK for Windows 10, version 1709  \n\u003e Support for ARM64 platforms\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    },
+    {
+      "id": "207555",
+      "timestamp": "2018-08-16T16:24:44+00:00",
+      "author": "armixen",
+      "content": "That\u0027s not the latest version though, that would be 1803.\n\nDo you think they added to 1709 and pulled from 1803?\n\nAny thoughts on how to Wow64-ify an existing RE image?\n\n"
+    },
+    {
+      "id": "207557",
+      "timestamp": "2018-08-16T16:38:58+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e That\u0027s not the latest version though, that would be 1803.\n\nI know.   \n\u003e Do you think they added to 1709 and pulled from 1803?\n\nNo ideas, only reporting what the good MS guys published.\n\nFor all it matters it wouldn\u0027t be the first time they published deceiving, wrong or plainly false information.  \nTry 1709, just in case.  \n\u003e Any thoughts on how to Wow64-ify an existing RE image?\n\nNo, but I suspect that the \"normal\" WOW64 layer (which is roughly a \"DLL translation layer\") is different from the ARM WOW64 (which is more an \"instruction translation layer\") so it is likely that what we do have (to add the WOW64 to x64 PE\u0027s) won\u0027t apply \"as is\" to the ARM WOW64 layer.  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "207558",
+      "timestamp": "2018-08-16T16:51:55+00:00",
+      "author": "armixen",
+      "content": "It seems complicated.\n\nFor example, there\u0027s no c:\\\\windows\\\\system32\\\\loadwow64.exe on the ARM64 PC. However, that file also doesn\u0027t exist on a regular AMD64 PC either. So that is why the PESE stuff probably needs to use the ISO, and cannot work with the installed OS files. But how does the native OS even load WOW then?\n\nAccording to this page:\n\n[https://docs.microso...ntation-details](https://docs.microsoft.com/en-us/windows/desktop/WinProg64/wow64-implementation-details \"External link\")\n\nIts just a couple of files that vary on the ARM64 architecture (the software emulator stuff). So it still might be mostly compatible with the existing process.\n\nI\u0027m trying to download an ARM ISO ATM to see where it leads, and also trying the 1709 ADK to see if I can build a PE USB stick with it.\n\nOn that note, are there any pre-existing PE packages for use with DISM to add x86 support to a PE ARM bootable USB? Something official from Microsoft or a third party?\n\nWhat a curious case, this ARM64...\n\n"
+    },
+    {
+      "id": "207559",
+      "timestamp": "2018-08-16T20:33:14+00:00",
+      "author": "armixen",
+      "content": "So I have been able to access Winre.wim in the r:\\\\recovery\\\\windowsre folder, finally.\n\nI believe I can also copy this file to my \\`real\\` PC where I can edit it and such.\n\nI also have these files, downloaded from the relevant places:\n\nMicrosoft-Windows-Client-Features-WOW64-Package.ESD  \nMicrosoft-Windows-EditionPack-Enterprise-WOW64-Package.ESD  \nMicrosoft-Windows-EditionSpecific-Enterprise-WOW64-Package.ESD  \nMicrosoft-Windows-RegulatedPackages-WOW64-Package.ESD\n\nI have a feeling if I can merge these ESD\u0027s with the Winre.wim file, I would be done, no?\n\nDoes anyone have any idea on how to do this merge?\n\nThanks all!\n\n"
+    },
+    {
+      "id": "207560",
+      "timestamp": "2018-08-17T00:43:49+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "Qualcomm CPU? Like what is used in many, if not most, Android phones? I have never heard of a PC that uses this brand of CPU, I think Intel and AMD have this market locked up tight.\n\n"
+    },
+    {
+      "id": "207561",
+      "timestamp": "2018-08-17T03:10:35+00:00",
+      "author": "armixen",
+      "content": "\u003e Qualcomm CPU? Like what is used in many, if not most, Android phones? I have never heard of a PC that uses this brand of CPU, I think Intel and AMD have this market locked up tight.\n\nAsus Nova something something is the brand/model...\n\n"
+    },
+    {
+      "id": "207562",
+      "timestamp": "2018-08-17T08:22:34+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Qualcomm CPU? Like what is used in many, if not most, Android phones? I have never heard of a PC that uses this brand of CPU, I think Intel and AMD have this market locked up tight.\n\nIt is the new kid on the block, at the moment there are just a few tablet/laptop devices using the Snapdragon 835 CPU, JFYI:\n\n[https://www.qualcomm...ile-pc-platform](https://www.qualcomm.com/products/snapdragon-835-mobile-pc-platform \"External link\")\n\n[https://www.qualcomm...ys-connected-pc](https://www.qualcomm.com/snapdragon/always-connected-pc \"External link\")\n\n(but they are already working with the newer (possibly 25-40% faster) 845 CPU)\n\nThe idea is that of an \"always on, always connected\" PC :\n\n[https://www.pcmag.co...-novago-tp370ql](https://www.pcmag.com/review/357774/asus-novago-tp370ql \"External link\")\n\n[https://www.pcmag.co...-snapdragon-835](https://www.pcmag.com/review/357758/hp-envy-x2-snapdragon-835 \"External link\")\n\nIn a nutshell, the good MS guys completely failed with the Surface and Windows RT, but since the idea was *soooo good* (according to them it is the customers that didn\u0027t understand it :wink: ) they are re-submitting the same thing, this time with (stupid) Windows 10 **S**, the OS that made some - little - sense for smartphones (you know the division they closed) but that doesn\u0027t make any sense on a PC.\n\nMy personal estimate is that - outside the corporate world where a dumbed down and locked-locked OS may have *some* uses - 99.99% of people will take the step to go for Windows 10 Pro.\n\nThe approach (and the low-low power hardware) is however interesting :smile: .\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "207563",
+      "timestamp": "2018-08-17T08:33:30+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e So I have been able to access Winre.wim in the r:\\\\recovery\\\\windowsre folder, finally.\n\u003e\n\u003e I believe I can also copy this file to my \\`real\\` PC where I can edit it and such.\n\u003e\n\u003e I also have these files, downloaded from the relevant places:\n\u003e\n\u003e Microsoft-Windows-Client-Features-WOW64-Package.ESD  \n\u003e Microsoft-Windows-EditionPack-Enterprise-WOW64-Package.ESD  \n\u003e Microsoft-Windows-EditionSpecific-Enterprise-WOW64-Package.ESD  \n\u003e Microsoft-Windows-RegulatedPackages-WOW64-Package.ESD\n\u003e\n\u003e I have a feeling if I can merge these ESD\u0027s with the Winre.wim file, I would be done, no?\n\u003e\n\u003e Does anyone have any idea on how to do this merge?\n\u003e\n\u003e Thanks all!\n\nAnd where would you do the merge, and how would you test if the merge is successful (without a VM to test it in)? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nThe ESD probably needs to be converted to .wim (the procedure shouldn\u0027t be different from this):\n\n[https://theitbros.co...ndows-wim-file/](https://theitbros.com/convert-windows-esd-file-to-windows-wim-file/ \"External link\")\n\nso that you can see what is inside them, I don\u0027t think you can apply the .esd directly. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "207564",
+      "timestamp": "2018-08-17T10:12:35+00:00",
+      "author": "armixen",
+      "content": "\u003e It is the new kid on the block, at the moment there are just a few tablet/laptop devices using the Snapdragon 835 CPU, JFYI:\n\u003e\n\u003e [https://www.qualcomm...ile-pc-platform](https://www.qualcomm.com/products/snapdragon-835-mobile-pc-platform \"External link\")\n\u003e\n\u003e [https://www.qualcomm...ys-connected-pc](https://www.qualcomm.com/snapdragon/always-connected-pc \"External link\")\n\u003e\n\u003e (but they are already working with the newer (possibly 25-40% faster) 845 CPU)\n\u003e\n\u003e The idea is that of an \"always on, always connected\" PC :\n\u003e\n\u003e [https://www.pcmag.co...-novago-tp370ql](https://www.pcmag.com/review/357774/asus-novago-tp370ql \"External link\")\n\u003e\n\u003e [https://www.pcmag.co...-snapdragon-835](https://www.pcmag.com/review/357758/hp-envy-x2-snapdragon-835 \"External link\")\n\u003e\n\u003e In a nutshell, the good MS guys completely failed with the Surface and Windows RT, but since the idea was *soooo good* (according to them it is the customers that didn\u0027t understand it :wink: ) they are re-submitting the same thing, this time with (stupid) Windows 10 **S**, the OS that made some - little - sense for smartphones (you know the division they closed) but that doesn\u0027t make any sense on a PC.\n\u003e\n\u003e My personal estimate is that - outside the corporate world where a dumbed down and locked-locked OS may have *some* uses - 99.99% of people will take the step to go for Windows 10 Pro.\n\u003e\n\u003e The approach (and the low-low power hardware) is however interesting :smile: .\n\u003e\n\u003e ![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\u003e\n\u003e Wonko\n\nWell, there is something of merit in this latest release...\n\nYou can switch to Pro mode from S, which I did, after all my efforts failed:\n\n- I tried to boot from Rufus created, freshly downloaded ARM 1803 Windows 10 ISO USB installer. This hung during the NTFS service initialization stage, even though it displayed aarm64 properly at the bootup stage. So I could not boot from USB. I was forced to use NTFS with Rufus, because the 1803 Windows 10 ISO ARM downloader actually created a WIM file larger than 4GB as part of its process.\n\n- I attempted to merge several ESD files into the Winre.WIM file that I extracted, even after manually converting them to CAB files; but these were rejected by DISM with error \"5\" (Access Denied) as they were somehow unqualified to be merged with the RE instance WIM.\n\nSo I bit the bullet and switched to Pro mode from S; it took just a second (or two). I don\u0027t know how they\u0027ve done it Wonko, but my favorite archiver (DiskZIP) even runs in this Pro mode successfully. While it would not compress my disk due to an error while trying to set up for reboot, the shell extensions worked - which was a surprise, to be sure. I know DiskZIP doesn\u0027t have ARM64 support - so how Microsoft got their shell extensions to work in an ARM64 compiled explorer.exe process is a mystery to me! The archives-as-folders feature did not work, but how is Microsoft supporting the other right-clicks? This is truly amazing.\n\n"
+    },
+    {
+      "id": "207565",
+      "timestamp": "2018-08-17T10:15:24+00:00",
+      "author": "armixen",
+      "content": "\u003e And where would you do the merge, and how would you test if the merge is successful (without a VM to test it in)? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\u003e\n\u003e The ESD probably needs to be converted to .wim (the procedure shouldn\u0027t be different from this):\n\u003e\n\u003e [https://theitbros.co...ndows-wim-file/](https://theitbros.com/convert-windows-esd-file-to-windows-wim-file/ \"External link\")\n\u003e\n\u003e so that you can see what is inside them, I don\u0027t think you can apply the .esd directly. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\u003e\n\u003e ![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\u003e\n\u003e Wonko\n\nIt was somewhat trivial to change the ESD file format to CAB (for some reason DiskZIP doesn\u0027t create CABs, but I was able to find a PowerShell function to create folder-based CABs preserving paths properly). But the merge is denied, and I am pretty sure there is no process to merge WIMs with WIMs - other than under a different index, which would defeat the purpose.\n\nOf course, all this I did on my \\`real\\` PC (including the ISO download process referenced above, which I was able to source from this very site).\n\n"
+    },
+    {
+      "id": "207566",
+      "timestamp": "2018-08-17T10:17:27+00:00",
+      "author": "steve6375",
+      "content": "[https://docs.microso...m-x86-emulation](https://docs.microsoft.com/en-us/windows/uwp/porting/apps-on-arm-x86-emulation \"External link\")\n\n"
+    },
+    {
+      "id": "207567",
+      "timestamp": "2018-08-17T10:23:55+00:00",
+      "author": "armixen",
+      "content": "\u003e [https://docs.microso...m-x86-emulation](https://docs.microsoft.com/en-us/windows/uwp/porting/apps-on-arm-x86-emulation \"External link\")\n\nYeeees, but this is very different from traditional WOW. On a 64-bit OS, for example, 32 bit shell extensions don\u0027t work - they will not be loaded into the explorer.exe process. I wonder what Microsoft have done different this time...this is a unique approach, and it is not documented online.\n\n"
+    },
+    {
+      "id": "207568",
+      "timestamp": "2018-08-17T10:26:29+00:00",
+      "author": "steve6375",
+      "content": "[https://www.zdnet.co...it-app-support/](https://www.zdnet.com/article/windows-10-on-arm-s-versus-pro-emulation-and-64-bit-app-support/ \"External link\")\n\n"
+    },
+    {
+      "id": "207569",
+      "timestamp": "2018-08-17T10:37:46+00:00",
+      "author": "armixen",
+      "content": "\u003e [https://www.zdnet.co...it-app-support/](https://www.zdnet.com/article/windows-10-on-arm-s-versus-pro-emulation-and-64-bit-app-support/ \"External link\")\n\nThank you, nice article.\n\nBut it still doesn\u0027t describe how the shell extension magic works...\n\nYou cannot normally load non-native DLLs into a native process, which is why shell extensions need to be native code.\n\nEven the way they are doing it betrays that something extra is going on; for example \"compress into \\\u003cselected file\\\u003e.some archive\" is what appears on native x86/x64 DiskZIP, but on this one it just says \"compress into.some archive\" - while still working properly!\n\nIt would be cool if other people checked other archives, and reported on how they are implemented...\n\n"
+    },
+    {
+      "id": "207529",
+      "timestamp": "2018-08-15T18:36:36+00:00",
+      "author": "armixen",
+      "content": "Hi!\n\nDoes anyone know how to make a bootable USB device for ARM64 PCs?\n\nI am needing to make a bootable USB for the ASUS Nova TP370QL Qualcomm ARM64 CPU based PC...\n\nThank you,\n\n-Armixen\n\n"
+    },
+    {
+      "id": "207536",
+      "timestamp": "2018-08-15T20:12:30+00:00",
+      "author": "steve6375",
+      "content": "Does it have a UEFI BIOS?\n\n"
+    },
+    {
+      "id": "207537",
+      "timestamp": "2018-08-15T20:13:49+00:00",
+      "author": "armixen",
+      "content": "Yes, thank you.\n\n"
+    },
+    {
+      "id": "207538",
+      "timestamp": "2018-08-15T20:19:34+00:00",
+      "author": "steve6375",
+      "content": "Well, any UEFI BIOS should be capable of reading a FAT32 partition.\n\nSo can\u0027t you just copy the files to a FAT32 USB drive?\n\nThere will need to be a \\\\EFI\\\\BOOT\\\\BootAA64.EFI file present on the USB drive.\n\n"
+    },
+    {
+      "id": "207539",
+      "timestamp": "2018-08-15T20:22:50+00:00",
+      "author": "armixen",
+      "content": "Thank you.\n\nThat sounds like a great start - is there a batch file or similar that can do the necessary copying?\n\n(edit: for all necessary files\\\u0026materials)\n\nBonus question - how do I add x86 (WoW) support to my bootable Windows instance?\n\n**Edited by armixen, 15 August 2018 - 08:23 PM.**\n"
+    },
+    {
+      "id": "207540",
+      "timestamp": "2018-08-15T20:33:05+00:00",
+      "author": "steve6375",
+      "content": "Sorry, don\u0027t know anything about ARM Win10. Never seen it before!\n\nThese links may help...\n\n[https://winaero.com/...ws-10-arm-qemu/](https://winaero.com/blog/install-windows-10-arm-qemu/ \"External link\")\n\n[https://withinrafael...ows-10-in-qemu/](https://withinrafael.com/2018/02/11/boot-arm64-builds-of-windows-10-in-qemu/ \"External link\")\n\n"
+    },
+    {
+      "id": "207541",
+      "timestamp": "2018-08-15T20:43:09+00:00",
+      "author": "steve6375",
+      "content": "I havent tried it, but latest Windows ADK says it supports ARM64, so maybe it has .cmd scripts to make an ARM64 WinPE boot.wim, etc?\n\n[https://docs.microso...ted/adk-install](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install \"External link\")\n\n"
+    },
+    {
+      "id": "207544",
+      "timestamp": "2018-08-15T22:05:57+00:00",
+      "author": "armixen",
+      "content": "\u003e Sorry, don\u0027t know anything about ARM Win10. Never seen it before!\n\u003e\n\u003e These links may help...\n\u003e\n\u003e [https://winaero.com/...ws-10-arm-qemu/](https://winaero.com/blog/install-windows-10-arm-qemu/ \"External link\")\n\u003e\n\u003e [https://withinrafael...ows-10-in-qemu/](https://withinrafael.com/2018/02/11/boot-arm64-builds-of-windows-10-in-qemu/ \"External link\")\n\nIt would be insufferably slow on QEMU (as the article author notes as well).\n\n"
+    },
+    {
+      "id": "207545",
+      "timestamp": "2018-08-15T22:07:11+00:00",
+      "author": "armixen",
+      "content": "\u003e I havent tried it, but latest Windows ADK says it supports ARM64, so maybe it has .cmd scripts to make an ARM64 WinPE boot.wim, etc?\n\u003e\n\u003e [https://docs.microso...ted/adk-install](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install \"External link\")\n\nThat\u0027s a great start, thank you!\n\nDo you know of existing scripts to create WinRE/WinPE using the ADK for x86 and x64?\n\nI can check those locations for the ARM64 variants, I figure...\n\nAlso big bonus - how do I add x86 (WoW) support to a RE/PE instance?\n\n"
+    },
+    {
+      "id": "207553",
+      "timestamp": "2018-08-16T15:53:16+00:00",
+      "author": "armixen",
+      "content": "Sadly, the latest ADK does not support ARM64...\n\nDoes anyone know of a version that does?\n\n"
+    },
+    {
+      "id": "207554",
+      "timestamp": "2018-08-16T16:17:44+00:00",
+      "author": "Wonko the Sane",
+      "content": "Hmmm.  \n\n[https://docs.microso...-kits-and-tools](https://docs.microsoft.com/en-us/windows-hardware/get-started/what-s-new-in-kits-and-tools \"External link\")  \n\n\u003e What\u0027s new in the Windows ADK for Windows 10, version 1709  \n\u003e Support for ARM64 platforms\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    },
+    {
+      "id": "207555",
+      "timestamp": "2018-08-16T16:24:44+00:00",
+      "author": "armixen",
+      "content": "That\u0027s not the latest version though, that would be 1803.\n\nDo you think they added to 1709 and pulled from 1803?\n\nAny thoughts on how to Wow64-ify an existing RE image?\n\n"
+    },
+    {
+      "id": "207557",
+      "timestamp": "2018-08-16T16:38:58+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e That\u0027s not the latest version though, that would be 1803.\n\nI know.   \n\u003e Do you think they added to 1709 and pulled from 1803?\n\nNo ideas, only reporting what the good MS guys published.\n\nFor all it matters it wouldn\u0027t be the first time they published deceiving, wrong or plainly false information.  \nTry 1709, just in case.  \n\u003e Any thoughts on how to Wow64-ify an existing RE image?\n\nNo, but I suspect that the \"normal\" WOW64 layer (which is roughly a \"DLL translation layer\") is different from the ARM WOW64 (which is more an \"instruction translation layer\") so it is likely that what we do have (to add the WOW64 to x64 PE\u0027s) won\u0027t apply \"as is\" to the ARM WOW64 layer.  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "207558",
+      "timestamp": "2018-08-16T16:51:55+00:00",
+      "author": "armixen",
+      "content": "It seems complicated.\n\nFor example, there\u0027s no c:\\\\windows\\\\system32\\\\loadwow64.exe on the ARM64 PC. However, that file also doesn\u0027t exist on a regular AMD64 PC either. So that is why the PESE stuff probably needs to use the ISO, and cannot work with the installed OS files. But how does the native OS even load WOW then?\n\nAccording to this page:\n\n[https://docs.microso...ntation-details](https://docs.microsoft.com/en-us/windows/desktop/WinProg64/wow64-implementation-details \"External link\")\n\nIts just a couple of files that vary on the ARM64 architecture (the software emulator stuff). So it still might be mostly compatible with the existing process.\n\nI\u0027m trying to download an ARM ISO ATM to see where it leads, and also trying the 1709 ADK to see if I can build a PE USB stick with it.\n\nOn that note, are there any pre-existing PE packages for use with DISM to add x86 support to a PE ARM bootable USB? Something official from Microsoft or a third party?\n\nWhat a curious case, this ARM64...\n\n"
+    },
+    {
+      "id": "207559",
+      "timestamp": "2018-08-16T20:33:14+00:00",
+      "author": "armixen",
+      "content": "So I have been able to access Winre.wim in the r:\\\\recovery\\\\windowsre folder, finally.\n\nI believe I can also copy this file to my \\`real\\` PC where I can edit it and such.\n\nI also have these files, downloaded from the relevant places:\n\nMicrosoft-Windows-Client-Features-WOW64-Package.ESD  \nMicrosoft-Windows-EditionPack-Enterprise-WOW64-Package.ESD  \nMicrosoft-Windows-EditionSpecific-Enterprise-WOW64-Package.ESD  \nMicrosoft-Windows-RegulatedPackages-WOW64-Package.ESD\n\nI have a feeling if I can merge these ESD\u0027s with the Winre.wim file, I would be done, no?\n\nDoes anyone have any idea on how to do this merge?\n\nThanks all!\n\n"
+    },
+    {
+      "id": "207560",
+      "timestamp": "2018-08-17T00:43:49+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "Qualcomm CPU? Like what is used in many, if not most, Android phones? I have never heard of a PC that uses this brand of CPU, I think Intel and AMD have this market locked up tight.\n\n"
+    },
+    {
+      "id": "207561",
+      "timestamp": "2018-08-17T03:10:35+00:00",
+      "author": "armixen",
+      "content": "\u003e Qualcomm CPU? Like what is used in many, if not most, Android phones? I have never heard of a PC that uses this brand of CPU, I think Intel and AMD have this market locked up tight.\n\nAsus Nova something something is the brand/model...\n\n"
+    },
+    {
+      "id": "207562",
+      "timestamp": "2018-08-17T08:22:34+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Qualcomm CPU? Like what is used in many, if not most, Android phones? I have never heard of a PC that uses this brand of CPU, I think Intel and AMD have this market locked up tight.\n\nIt is the new kid on the block, at the moment there are just a few tablet/laptop devices using the Snapdragon 835 CPU, JFYI:\n\n[https://www.qualcomm...ile-pc-platform](https://www.qualcomm.com/products/snapdragon-835-mobile-pc-platform \"External link\")\n\n[https://www.qualcomm...ys-connected-pc](https://www.qualcomm.com/snapdragon/always-connected-pc \"External link\")\n\n(but they are already working with the newer (possibly 25-40% faster) 845 CPU)\n\nThe idea is that of an \"always on, always connected\" PC :\n\n[https://www.pcmag.co...-novago-tp370ql](https://www.pcmag.com/review/357774/asus-novago-tp370ql \"External link\")\n\n[https://www.pcmag.co...-snapdragon-835](https://www.pcmag.com/review/357758/hp-envy-x2-snapdragon-835 \"External link\")\n\nIn a nutshell, the good MS guys completely failed with the Surface and Windows RT, but since the idea was *soooo good* (according to them it is the customers that didn\u0027t understand it :wink: ) they are re-submitting the same thing, this time with (stupid) Windows 10 **S**, the OS that made some - little - sense for smartphones (you know the division they closed) but that doesn\u0027t make any sense on a PC.\n\nMy personal estimate is that - outside the corporate world where a dumbed down and locked-locked OS may have *some* uses - 99.99% of people will take the step to go for Windows 10 Pro.\n\nThe approach (and the low-low power hardware) is however interesting :smile: .\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "207563",
+      "timestamp": "2018-08-17T08:33:30+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e So I have been able to access Winre.wim in the r:\\\\recovery\\\\windowsre folder, finally.\n\u003e\n\u003e I believe I can also copy this file to my \\`real\\` PC where I can edit it and such.\n\u003e\n\u003e I also have these files, downloaded from the relevant places:\n\u003e\n\u003e Microsoft-Windows-Client-Features-WOW64-Package.ESD  \n\u003e Microsoft-Windows-EditionPack-Enterprise-WOW64-Package.ESD  \n\u003e Microsoft-Windows-EditionSpecific-Enterprise-WOW64-Package.ESD  \n\u003e Microsoft-Windows-RegulatedPackages-WOW64-Package.ESD\n\u003e\n\u003e I have a feeling if I can merge these ESD\u0027s with the Winre.wim file, I would be done, no?\n\u003e\n\u003e Does anyone have any idea on how to do this merge?\n\u003e\n\u003e Thanks all!\n\nAnd where would you do the merge, and how would you test if the merge is successful (without a VM to test it in)? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nThe ESD probably needs to be converted to .wim (the procedure shouldn\u0027t be different from this):\n\n[https://theitbros.co...ndows-wim-file/](https://theitbros.com/convert-windows-esd-file-to-windows-wim-file/ \"External link\")\n\nso that you can see what is inside them, I don\u0027t think you can apply the .esd directly. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "207564",
+      "timestamp": "2018-08-17T10:12:35+00:00",
+      "author": "armixen",
+      "content": "\u003e It is the new kid on the block, at the moment there are just a few tablet/laptop devices using the Snapdragon 835 CPU, JFYI:\n\u003e\n\u003e [https://www.qualcomm...ile-pc-platform](https://www.qualcomm.com/products/snapdragon-835-mobile-pc-platform \"External link\")\n\u003e\n\u003e [https://www.qualcomm...ys-connected-pc](https://www.qualcomm.com/snapdragon/always-connected-pc \"External link\")\n\u003e\n\u003e (but they are already working with the newer (possibly 25-40% faster) 845 CPU)\n\u003e\n\u003e The idea is that of an \"always on, always connected\" PC :\n\u003e\n\u003e [https://www.pcmag.co...-novago-tp370ql](https://www.pcmag.com/review/357774/asus-novago-tp370ql \"External link\")\n\u003e\n\u003e [https://www.pcmag.co...-snapdragon-835](https://www.pcmag.com/review/357758/hp-envy-x2-snapdragon-835 \"External link\")\n\u003e\n\u003e In a nutshell, the good MS guys completely failed with the Surface and Windows RT, but since the idea was *soooo good* (according to them it is the customers that didn\u0027t understand it :wink: ) they are re-submitting the same thing, this time with (stupid) Windows 10 **S**, the OS that made some - little - sense for smartphones (you know the division they closed) but that doesn\u0027t make any sense on a PC.\n\u003e\n\u003e My personal estimate is that - outside the corporate world where a dumbed down and locked-locked OS may have *some* uses - 99.99% of people will take the step to go for Windows 10 Pro.\n\u003e\n\u003e The approach (and the low-low power hardware) is however interesting :smile: .\n\u003e\n\u003e ![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\u003e\n\u003e Wonko\n\nWell, there is something of merit in this latest release...\n\nYou can switch to Pro mode from S, which I did, after all my efforts failed:\n\n- I tried to boot from Rufus created, freshly downloaded ARM 1803 Windows 10 ISO USB installer. This hung during the NTFS service initialization stage, even though it displayed aarm64 properly at the bootup stage. So I could not boot from USB. I was forced to use NTFS with Rufus, because the 1803 Windows 10 ISO ARM downloader actually created a WIM file larger than 4GB as part of its process.\n\n- I attempted to merge several ESD files into the Winre.WIM file that I extracted, even after manually converting them to CAB files; but these were rejected by DISM with error \"5\" (Access Denied) as they were somehow unqualified to be merged with the RE instance WIM.\n\nSo I bit the bullet and switched to Pro mode from S; it took just a second (or two). I don\u0027t know how they\u0027ve done it Wonko, but my favorite archiver (DiskZIP) even runs in this Pro mode successfully. While it would not compress my disk due to an error while trying to set up for reboot, the shell extensions worked - which was a surprise, to be sure. I know DiskZIP doesn\u0027t have ARM64 support - so how Microsoft got their shell extensions to work in an ARM64 compiled explorer.exe process is a mystery to me! The archives-as-folders feature did not work, but how is Microsoft supporting the other right-clicks? This is truly amazing.\n\n"
+    },
+    {
+      "id": "207565",
+      "timestamp": "2018-08-17T10:15:24+00:00",
+      "author": "armixen",
+      "content": "\u003e And where would you do the merge, and how would you test if the merge is successful (without a VM to test it in)? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\u003e\n\u003e The ESD probably needs to be converted to .wim (the procedure shouldn\u0027t be different from this):\n\u003e\n\u003e [https://theitbros.co...ndows-wim-file/](https://theitbros.com/convert-windows-esd-file-to-windows-wim-file/ \"External link\")\n\u003e\n\u003e so that you can see what is inside them, I don\u0027t think you can apply the .esd directly. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\u003e\n\u003e ![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\u003e\n\u003e Wonko\n\nIt was somewhat trivial to change the ESD file format to CAB (for some reason DiskZIP doesn\u0027t create CABs, but I was able to find a PowerShell function to create folder-based CABs preserving paths properly). But the merge is denied, and I am pretty sure there is no process to merge WIMs with WIMs - other than under a different index, which would defeat the purpose.\n\nOf course, all this I did on my \\`real\\` PC (including the ISO download process referenced above, which I was able to source from this very site).\n\n"
+    },
+    {
+      "id": "207566",
+      "timestamp": "2018-08-17T10:17:27+00:00",
+      "author": "steve6375",
+      "content": "[https://docs.microso...m-x86-emulation](https://docs.microsoft.com/en-us/windows/uwp/porting/apps-on-arm-x86-emulation \"External link\")\n\n"
+    },
+    {
+      "id": "207567",
+      "timestamp": "2018-08-17T10:23:55+00:00",
+      "author": "armixen",
+      "content": "\u003e [https://docs.microso...m-x86-emulation](https://docs.microsoft.com/en-us/windows/uwp/porting/apps-on-arm-x86-emulation \"External link\")\n\nYeeees, but this is very different from traditional WOW. On a 64-bit OS, for example, 32 bit shell extensions don\u0027t work - they will not be loaded into the explorer.exe process. I wonder what Microsoft have done different this time...this is a unique approach, and it is not documented online.\n\n"
+    },
+    {
+      "id": "207568",
+      "timestamp": "2018-08-17T10:26:29+00:00",
+      "author": "steve6375",
+      "content": "[https://www.zdnet.co...it-app-support/](https://www.zdnet.com/article/windows-10-on-arm-s-versus-pro-emulation-and-64-bit-app-support/ \"External link\")\n\n"
+    },
+    {
+      "id": "207569",
+      "timestamp": "2018-08-17T10:37:46+00:00",
+      "author": "armixen",
+      "content": "\u003e [https://www.zdnet.co...it-app-support/](https://www.zdnet.com/article/windows-10-on-arm-s-versus-pro-emulation-and-64-bit-app-support/ \"External link\")\n\nThank you, nice article.\n\nBut it still doesn\u0027t describe how the shell extension magic works...\n\nYou cannot normally load non-native DLLs into a native process, which is why shell extensions need to be native code.\n\nEven the way they are doing it betrays that something extra is going on; for example \"compress into \\\u003cselected file\\\u003e.some archive\" is what appears on native x86/x64 DiskZIP, but on this one it just says \"compress into.some archive\" - while still working properly!\n\nIt would be cool if other people checked other archives, and reported on how they are implemented...\n\n"
+    },
+    {
+      "id": "207570",
+      "timestamp": "2018-08-17T10:41:07+00:00",
+      "author": "steve6375",
+      "content": "Have you heard of Google?\n\n[https://techreport.c...at-native-speed](https://techreport.com/news/31908/windows-10-on-arm-could-run-x86-apps-seamlessly-at-native-speed \"External link\")\n\nsee video\n\n"
+    },
+    {
+      "id": "207572",
+      "timestamp": "2018-08-17T14:55:45+00:00",
+      "author": "armixen",
+      "content": "\u003e Have you heard of Google?\n\u003e\n\u003e [https://techreport.c...at-native-speed](https://techreport.com/news/31908/windows-10-on-arm-could-run-x86-apps-seamlessly-at-native-speed \"External link\")\n\u003e\n\u003e see video\n\nTo be honest, this is the first time I\u0027ve heard of them!\n\nNo need to keep sending reports which don\u0027t remotely address the issue at hand, by the way.\n\nIf you use your favorite search engine, you\u0027ll find people reporting issues with things like Excel macros failing to simple games running too slow.\n\nI can see you are enamored with the literature you\u0027re digging up, but I\u0027m inquiring about something else entirely.\n\n"
+    },
+    {
+      "id": "207573",
+      "timestamp": "2018-08-17T15:07:24+00:00",
+      "author": "Brito",
+      "content": "I hadn\u0027t heard about the emulation on ARM too. These are really good news, and about time. If this had been available a few years ago, it would have given Microsoft a stronger chance on the mobile devices.\n\n"
+    },
+    {
+      "id": "207576",
+      "timestamp": "2018-08-17T15:24:36+00:00",
+      "author": "armixen",
+      "content": "\u003e I hadn\u0027t heard about the emulation on ARM too. These are really good news, and about time. If this had been available a few years ago, it would have given Microsoft a stronger chance on the mobile devices.\n\nSadly, it doesn\u0027t seem they are intent on bringing Windows Desktop back to mobile any time soon, if my feelers are any indication.\n\nMaybe they got burnt too badly by their Windows Phone experience and are still too traumatized to retry taking on Android/iOS.\n\nOn that note, they may have some work to do on the ARM64 front still. My device just died - barely after two days of use!\n\nNot a good start at all. I was just getting started researching the OS. It\u0027s already dead, kaput, like a brick. Wow!\n\n"
+    },
+    {
+      "id": "207577",
+      "timestamp": "2018-08-17T15:25:56+00:00",
+      "author": "cdob",
+      "content": "\u003e the 1803 Windows 10 ISO ARM downloader actually created a WIM file larger than 4GB\nThe Rufus NTFS driver dosn\u0027t support secure boot.  \n\nSupport UEFI secure boot.  \n\nWhich USB hardware do you use?  \nWindows 10 1703 and up supports several partitons at a USB flash drive.  \nCreate a 1 GB FAT32 partiton and a NTFS partition.  \nCopy all files and folders to the NTFS partiton.  \nCopy \\\\\\* files, \\\\boot\\\\, \\\\efi\\\\ and \\\\sources\\\\boot.wim to the FAT32 partition.  \nRead: \\\\sources\\\\install.wim is at the NTFS partiton, but not at the FAT32 partition.  \nUEFI secure boot should work.  \n\n\u003cbr /\u003e\n\nWell:  \nInterating x86 emulation is unknown to a PE currently.  \nWhat about a Windows 10 VHD at a USB hard disk like device?  \nx86 emulation is integrated already that way.   \n"
+    },
+    {
+      "id": "207578",
+      "timestamp": "2018-08-17T15:29:34+00:00",
+      "author": "armixen",
+      "content": "\u003e The Rufus NTFS driver dosn\u0027t support secure boot.  \n\u003e\n\u003e Support UEFI secure boot.  \n\u003e\n\u003e Which USB hardware do you use?  \n\u003e Windows 10 1703 and up supports several partitons at a USB flash drive.  \n\u003e Create a 1 GB FAT32 partiton and a NTFS partition.  \n\u003e Copy all files and folders to the NTFS partiton.  \n\u003e Copy \\\\\\* files, \\\\boot\\\\, \\\\efi\\\\ and \\\\sources\\\\boot.wim to the FAT32 partition.  \n\u003e Read: \\\\sources\\\\install.wim is at the NTFS partiton, but not at the FAT32 partition.  \n\u003e UEFI secure boot should work.  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e Well:  \n\u003e Interating x86 emulation is unknown to a PE currently.  \n\u003e What about a Windows 10 VHD at a USB hard disk like device?  \n\u003e x86 emulation is integrated already that way.\n\nIts Asus Nova Go something something...\n\nI did disable secure boot, IIRC. Sadly (see above), machine is already dead and prevents further R\\\u0026D.\n\nThank you for the ideas,\n\n"
+    },
+    {
+      "id": "207579",
+      "timestamp": "2018-08-17T15:35:09+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I hadn\u0027t heard about the emulation on ARM too. These are really good news, and about time. If this had been available a few years ago, it would have given Microsoft a stronger chance on the mobile devices.\nI believe that a few years ago the processors wouldn\u0027t have had the juice to run the emulation layer at an acceptable speed.  \n\nAnd now, for NO apparent reason, a random ARM emulation benchmarking reference:  \n[https://www.techspot...rm-performance/](https://www.techspot.com/review/1599-windows-on-arm-performance/ \"External link\")  \n\nA quick recap of MS long-planning strategy:  \n1) senselessly force everyone to use UEFI/GPT (whose main advantage is accessing more than 2 TB disks as boot device) shortly before anyone in his/her right mind got a smallish SSD as boot/system disk drive  \n2) deprecate each and everything 32 bit  \n3) provide a newish emulation system on newish processor ONLY capable of 32 bit emulation, right when all the software is becoming 64 bit only  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    },
+    {
+      "id": "207583",
+      "timestamp": "2018-08-17T17:08:29+00:00",
+      "author": "Brito",
+      "content": "They\u0027re very much off-tune with the market. First was that flop with the metro tiles, then the long time refusal of adding an app store or package management like Debian/Ubuntu had. Then the whole mobile affair and massive spying that is built-in to Windows 10.\n\nSad. Just sad.\n\n"
+    },
+    {
+      "id": "207590",
+      "timestamp": "2018-08-17T23:46:24+00:00",
+      "author": "armixen",
+      "content": "Hard to find fault with either of your arguments, really ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)\n\nI\u0027ll pick up this thread when my replacement Asus arrives...\n\nThe Snapdragon does have 8 cores...I have read that 3D sucks on it, but I hadn\u0027t even had the chance to run 3DMark06 on it yet!\n\n"
+    },
+    {
+      "id": "207613",
+      "timestamp": "2018-08-20T15:20:59+00:00",
+      "author": "wean_irdeh",
+      "content": "\u003e Hard to find fault with either of your arguments, really ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)\n\u003e\n\u003e I\u0027ll pick up this thread when my replacement Asus arrives...\n\u003e\n\u003e The Snapdragon does have 8 cores...I have read that 3D sucks on it, but I hadn\u0027t even had the chance to run 3DMark06 on it yet!\n\nReplacement? Are you giving up your Windows 10 ARM device?\n\n"
+    },
+    {
+      "id": "207614",
+      "timestamp": "2018-08-20T15:23:01+00:00",
+      "author": "armixen",
+      "content": "\u003e Replacement? Are you giving up your Windows 10 ARM device?\n\nYes, the device died after barely two days of use. I am waiting for its replacement.\n\n"
+    },
+    {
+      "id": "207617",
+      "timestamp": "2018-08-20T16:48:41+00:00",
+      "author": "wean_irdeh",
+      "content": "\u003e Yes, the device died after barely two days of use. I am waiting for its replacement.\n\nOh my. What a very sad state of Windows 10 ARM device.\n\n"
+    },
+    {
+      "id": "207618",
+      "timestamp": "2018-08-20T19:11:03+00:00",
+      "author": "armixen",
+      "content": "Folks, I would like to offer payment for the R\\\u0026D required to build a WinRE with x86 application emulation support.\n\nIn order to ensure this offends no one, and benefits both the buyer (me) and the seller (developer), I would like to ask here for a fair price?\n\nI think we can get the job done on upwork or a similar freelancer site (developer\u0027s choice would be fine, usually).\n\nSo is anybody interested? To clarify, what I need is:\n\n1) The list of files to add to a standard ARM WinRE image to get x86 app support\n\n2) The list of registry keys for the same\n\n"
+    },
+    {
+      "id": "207820",
+      "timestamp": "2018-09-28T04:15:02+00:00",
+      "author": "cdob",
+      "content": "\u003e Its Asus Nova Go something something...  \n\u003e\n\u003e I did disable secure boot, IIRC.\nDo you have a repaired machine in the meantime?  \n\nWindows 10 arm distributes BIOS boot files too. Is there even a BIOS emulation at the Nova Go?  \n\nThere is a 1809 (to be) arm64 esd file.  \nEsd files are not enrypted noadays. Dism can read, apply or export the files.  \n\n[http://fg.ds.b1.down...4f3624b519d.esd](http://fg.ds.b1.download.windowsupdate.com/c/Upgr/2018/09/17763.1.180914-1434.rs5_release_clientconsumer_ret_a64fre_en-us_271cffa11ed737a1dedf538cadb624f3624b519d.esd \"External link\")  \n\nThere are files \\\\Windows\\\\System32\\\\Recovery\\\\Winre.wim inside the esd file.  \n\n\u003cbr /\u003e\n\nTry a USB boot drive.  \n\n```\ndiskpart.exe\nsel disk N\nclean\ncreate par prim size\u003d100\nformat fs fat32\nassign letter\u003dS\ncreate par prim\nformat fs ntfs quick\nactive\nassign letter\u003dM\nexit\n\nset esd_file\u003d17763.1.180914-1434.rs5_release_clientconsumer_ret_a64fre_en-us_271cffa11ed737a1dedf538cadb624f3624b519d.esd\nDISM.exe /Get-WimInfo /WimFile:\"%esd_file%\" /English\nDism.exe /Apply-Image /ImageFile:\"%esd_file%\" /Index:1 /ApplyDir:M:\\\nDism.exe /Export-Image /SourceImageFile:\"%esd_file%\" /SourceIndex:3 /DestinationImageFile:M:\\sources\\boot.wim /Bootable /Compress:max\nfor /l %n in (4,1,10) do Dism.exe /Export-Image /SourceImageFile:\"%esd_file%\" /SourceIndex:%n /DestinationImageFile:M:\\sources\\install.esd\n\nxcopy.exe M:\\efi S:\\efi\\ /s\ncd /d S:\\efi\\microsoft\\boot\nbcdedit.exe /store bcd /set {7619dcc8-fafe-11d9-b411-000476eba25f} ramdisksdidevice partition\u003dm:\nbcdedit.exe /store bcd /set {default} device ramdisk\u003d[M:]\\sources\\boot.wim,{7619dcc8-fafe-11d9-b411-000476eba25f}\nbcdedit.exe /store bcd /set {default} osdevice ramdisk\u003d[M:]\\sources\\boot.wim,{7619dcc8-fafe-11d9-b411-000476eba25f}\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "207823",
+      "timestamp": "2018-09-28T11:02:13+00:00",
+      "author": "armixen",
+      "content": "Sorry for the absence. Yes, the repaired machine arrived over a week ago, and has been working well, thankfully!\n\nI eventually used the Windows 7 style Control Panel in the laptop to create a bootable USB recovery media. I haven\u0027t had to use it yet, fortunately.\n\nYour script above looks very nice, but is that the same as the default Windows RE instance already found inside the laptop recovery partition?\n\nIf so, it still wouldn\u0027t contain x86 emulation support, which is the issue I posted for help with here.\n\nBy the way, the Nova Go does not seem to offer a BIOS mode, it is UEFI only from what I can tell. Thank you!\n\n"
+    }
+  ]
+}

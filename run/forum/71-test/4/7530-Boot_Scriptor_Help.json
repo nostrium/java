@@ -1,0 +1,22 @@
+{
+  "id": "7530",
+  "title": "Boot Scriptor Help",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "63377",
+      "timestamp": "2009-03-27T02:36:31+00:00",
+      "author": "ronbeck",
+      "content": "Hi all,  \n\nI\u0027m new here and was wondering if anyone has much experience with Boot Scriptor? I am trying to get a boot CD that was created using it ported to a USB stick.  \n\nI can\u0027t even get boot scriptor scripts to run properly in the debugger.... possible Vista issue maybe?  \n\nI have been successful creating a Vista install stick, XP install stick, UBCD stick and a few of my own... but this Techie\u0027z Toolkit (with boot scriptor) has me stumped.   \n\nAny help would be greatly appreciated.  \n\nThanks in advance.  \n\nronbeck   \n"
+    },
+    {
+      "id": "63391",
+      "timestamp": "2009-03-27T09:02:17+00:00",
+      "author": "was_jaclaz",
+      "content": "Hmmm, ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)  \n\n...why do I have the feeling that \"Techie\u0027z\" rhymes with WAREZ? ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)  \n\nThe general idea about a section called \"tutorials\" is that people posts Tutorials in it, not asks help in it.  \n\nThread moved.  \n\n\u003cbr /\u003e\n\njaclaz   \n"
+    }
+  ]
+}

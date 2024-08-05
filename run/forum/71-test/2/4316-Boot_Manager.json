@@ -1,0 +1,100 @@
+{
+  "id": "4316",
+  "title": "Boot Manager",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "32403",
+      "timestamp": "2008-04-01T15:52:17+00:00",
+      "author": "pscEx",
+      "content": "Hi all,  \n\nYou know that my knowledge about boot menus, manager etc. is nearly zero.  \n\nThe daughter of a friend bought a new notebook and asked me to replace the preinstalled Vista by a usable OS (XP).  \n\nOption: Would be good if a boot manager allows the boot into Vista, too.  \n\nMy question to the forum:  \n\nCan you suggest a boot manager which  \n\n* can be used by a fool like me\n* reserves the Vista MBR\n\nThanks  \n\nPeter   \n"
+    },
+    {
+      "id": "32407",
+      "timestamp": "2008-04-01T16:30:57+00:00",
+      "author": "was_jaclaz",
+      "content": "VISTA MBR? ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)   \n\nor VISTA bootsector? ![:tabletalk:](http://reboot.pro/public/style_emoticons/default/tabletalk.gif)  \n\nHere is a (simple) tutorial by **spacesurfer** using grub4dos:  \n[http://www.msfn.org/...enu-t95537.html](http://www.msfn.org/board/Multiboot-Vista-XP-OSes-Grub4Dos-Menu-t95537.html \"External link\")  \nthat uses the \"renaming grldr\" trick to avoid editing the bootsector ***AND*** the MBR ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)....  \n\n....but do read the grub4dos readme.txt about renaming grldr.  \n\njaclaz   \n"
+    },
+    {
+      "id": "32408",
+      "timestamp": "2008-04-01T16:40:10+00:00",
+      "author": "pscEx",
+      "content": "\u003e VISTA MBR? ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)   \n\u003e\n\u003e or VISTA bootsector? ![:tabletalk:](http://reboot.pro/public/style_emoticons/default/tabletalk.gif)\nHere you have a proof of my knowledge.  \nAnd that was the reason to ask here.  \n\nI would prefer something like:  \n\n- download xyz  \n- install it  \n- install XP  \n- On boot you have the choice between Vista and XP  \n\nI remember something similar years ago when trying SUSE Linux as second OS  \n\nThanks for your link. I\u0027ll read.  \n\nPeter   \n"
+    },
+    {
+      "id": "32410",
+      "timestamp": "2008-04-01T17:15:50+00:00",
+      "author": "was_jaclaz",
+      "content": "The \"state of the art\" page to multiboot XP and Vista is this one:  \n[http://www.multibooters.co.uk/](http://www.multibooters.co.uk/ \"External link\")  \n\nYou can as well use VISTA bootloader to chainload a NTLDR, here the booting sequence is clearly illustrated:  \n[http://www.multiboot.../multiboot.html](http://www.multibooters.co.uk/multiboot.html \"External link\")  \n\nThis should be a step by step tutorial:  \n[http://www.syschat.c...ready-1946.html](http://www.syschat.com/dual-boot-vista-xp-vista-already-1946.html \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "32412",
+      "timestamp": "2008-04-01T17:25:34+00:00",
+      "author": "pscEx",
+      "content": "\u003e The \"state of the art\" page to multiboot XP and Vista is this one:  \n\u003e [http://www.multibooters.co.uk/](http://www.multibooters.co.uk/ \"External link\")  \n\u003e\n\u003e You can as well use VISTA bootloader to chainload a NTLDR, here the booting sequence is clearly illustrated:  \n\u003e [http://www.multiboot.../multiboot.html](http://www.multibooters.co.uk/multiboot.html \"External link\")  \n\u003e\n\u003e This should be a step by step tutorial:  \n\u003e [http://www.syschat.c...ready-1946.html](http://www.syschat.com/dual-boot-vista-xp-vista-already-1946.html \"External link\")  \n\u003e\n\u003e jaclaz\n\nThanks ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)   \n\nPeter   \n"
+    },
+    {
+      "id": "32438",
+      "timestamp": "2008-04-01T22:55:09+00:00",
+      "author": "ilko",
+      "content": "A quick note about easiest way for me, if XP is installed after Vista, which overwrites Vista\u0027s bootsector with such calling NTLDR.  \n\nSome wise, always helpful and famous guy, made a very handy script ![:tabletalk:](http://reboot.pro/public/style_emoticons/default/tabletalk.gif):  \n[http://www.boot-land...?showtopic\u003d2362](http://www.boot-land.net/forums/index.php?showtopic\u003d2362 \"External link\")  \n\nCopy Vista\u0027s bootmgr to VSLDR for example in C\\\\.  \nmakeBS c:\\\\VSLDR /a \"Start Vista\"  \n\nDone ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)   \n"
+    },
+    {
+      "id": "32445",
+      "timestamp": "2008-04-01T23:48:30+00:00",
+      "author": "paraglider",
+      "content": "I use boot-us to switch between vista32, vista64, xp, bartpe each of which is in its own primary partition:  \n\n[http://www.boot-us.com/](http://www.boot-us.com/ \"External link\")  \n\nIts not free but it has a nice graphical interface which you can run under any windows os to install the boot manager and configure the startup options.   \n"
+    },
+    {
+      "id": "32551",
+      "timestamp": "2008-04-03T10:29:51+00:00",
+      "author": "ktp",
+      "content": "I remember that Jaclaz mentioned this good boot manager (open source, only 446-bytes code entirely in MBR sector) :  \n[http://mbldr.sourceforge.net/](http://mbldr.sourceforge.net/ \"External link\")  \n\nI am using it. Note that it automatically hides other primary partitions in the boot selection though (could also be seen as a feature).  \n\nEdit: this is Jaclaz\u0027s topic :  \n[http://www.boot-land.../?showtopic\u003d334](http://www.boot-land.net/forums/?showtopic\u003d334 \"External link\")   \n"
+    },
+    {
+      "id": "32554",
+      "timestamp": "2008-04-03T11:10:28+00:00",
+      "author": "pscEx",
+      "content": "I used [VistBootPRO 3.3](http://www.pronetworks.org/index.php/software/detailed/vistabootpro_3/ \"External link\")  \n\nIt did everything I needed, including repair of Vista MBR / Bootsector (?) after installing XP.  \n\nPeter   \n"
+    },
+    {
+      "id": "32562",
+      "timestamp": "2008-04-03T11:47:56+00:00",
+      "author": "paraglider",
+      "content": "That is not a boot manager. Its an editor for the Vista bcd file. You can also use the MS bcdedit program to edit the bcd file although being a command line tool its somewhat complicated to use.   \n"
+    },
+    {
+      "id": "32563",
+      "timestamp": "2008-04-03T11:54:04+00:00",
+      "author": "Joshua",
+      "content": "\u003e Can you suggest a boot manager\n\nI always use WWBMU for that.  \nWorks with password protection, and is free!  \nAnd you can understand it, because it is in german !!! ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)   \n[http://www.lab1.de/C...em-Tools/WWBMU/](http://www.lab1.de/Central/Software/System-Tools/WWBMU/ \"External link\")  \n\nJoshua   \n"
+    },
+    {
+      "id": "32567",
+      "timestamp": "2008-04-03T12:22:01+00:00",
+      "author": "pscEx",
+      "content": "\u003e That is not a boot manager. Its an editor for the Vista bcd file. You can also use the MS bcdedit program to edit the bcd file although being a command line tool its somewhat complicated to use.\nIf it works with editing the built in Vista bcd:  \nWhat does a boot manager do different?  \n\nPeter   \n"
+    },
+    {
+      "id": "32662",
+      "timestamp": "2008-04-04T16:31:25+00:00",
+      "author": "paraglider",
+      "content": "A boot manager allows you to hide / unhide primary partitions at boot time so that you can select what primary partition to boot. It may also allow the disk numbers to be reordered so a second physical disk appears as the first disk. It will also do other things as well.If you want to boot a BartPE partition from the not first primary partition on a disk then you will need a boot manager.   \n"
+    },
+    {
+      "id": "32663",
+      "timestamp": "2008-04-04T16:40:20+00:00",
+      "author": "ktp",
+      "content": "And a boot manager should be OS-independent. An OS crash should not fail the boot manager. This is not the case of Vista bootmgr where if this file is missing/deleted, the file system is broken, partition not active etc... then you cannot boot other OSes including Vista itself.   \n"
+    },
+    {
+      "id": "39952",
+      "timestamp": "2008-07-18T07:21:51+00:00",
+      "author": "wendy",
+      "content": "Vista trashed my 2K boot-loader, so now i load vista through the 2k boot loader.  \n\nIt\u0027s simple.  \n\n1. use bootpart to create a boot-sector for Windows Vista  \n2. use bootpart to make the system boot to Windows XP  \n3. restore ntldr and ntdetect.com to the root directory   \n"
+    }
+  ]
+}

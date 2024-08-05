@@ -1,0 +1,64 @@
+{
+  "id": "12310",
+  "title": "Multi Boot from a hdd",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "107093",
+      "timestamp": "2010-08-17T20:03:43+00:00",
+      "author": "endlesslyonline",
+      "content": "\\*edit\\*  \noops, saw i posted this under hello world, can someone tell me the correct forum section where this will need to go ?   \n\\*edit\\*  \n\nHey there boot-land,  \n\nI need some help / info.  \n\nI have downloaded and installed a program to do sector-by-sector backup of my hard drive, and i have made the backup and everything works 100%.  \n\nSo, here is what i need help with, i want to to this procedure for computer labs that i look after, and each lab has about 30 - 60 computers in them, so when i do a restore (still faster than a complete reinstall) but walking to each pc with the boot disk can still be time consuming, so i thought f a solution.  \n\nMake 3 partitions,  \n1 - a boot partition  \n2 - the windows XP partition  \n3- a partition where i will leave the image.  \n\nNow what i want to do (and this is where i need some help) i want to dump the rescue cd contents to the 3rd partition as well, but how will i make that partition bootable ?  \n\nthe rest i will be abl to figure out, like the entries in the boot record, etc, but getting the boot sector from the cd to the partition is giving me a headache, i have been on google for days and cant find anything (maybe im searching wrong?)  \n\noh yea, the program that i want to use to make the images and deploy them back is EASUS todo backup, it is a free program for home and commercial use.  \n\nhope someone will be able to steer me in some direction here,  \n\nThanks   \n"
+    },
+    {
+      "id": "107130",
+      "timestamp": "2010-08-18T09:13:21+00:00",
+      "author": "Wonko the Sane",
+      "content": "If I get it right, you are trying to setup the third partition as \"recovery image\"?  \n\n![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \nWonko   \n"
+    },
+    {
+      "id": "107146",
+      "timestamp": "2010-08-18T11:05:07+00:00",
+      "author": "endlesslyonline",
+      "content": "yea, that\u0027s right, so i need to get the \"boot cd\" to boot from the hard drive.  \n\nany suggestions ?   \n"
+    },
+    {
+      "id": "107158",
+      "timestamp": "2010-08-18T14:06:14+00:00",
+      "author": "Wonko the Sane",
+      "content": "For the record, this is the first time you talked about a \"boot CD\".  \n\nWHICH is the \"I have downloaded and installed ***a*** program to do sector-by-sector backup of my hard drive, and i have made the backup and everything works 100%.\" actual program?  \n\nIf a sector-by-sector image fits on CD, it must be either:  \n\n* NOT a sector-by-sector image\n* NOT a CD\n* a very small partition\n\n\u003cbr /\u003e\n\nThere are two available freeware solutions for recovery partitions:  \nTerabyte Unlimited MBR:  \n[http://www.terabyteu...d.com/index.htm](http://www.terabyteunlimited.com/index.htm \"External link\")  \n[http://www.terabyteu...ee-software.htm](http://www.terabyteunlimited.com/downloads-free-software.htm \"External link\")  \n[http://www.terabyteu...wnloads/mbr.zip](http://www.terabyteunlimited.com/downloads/mbr.zip \"External link\")  \n\nmbldr:  \n[http://mbldr.sourceforge.net/](http://mbldr.sourceforge.net/ \"External link\")  \n\nbesides of course grub4dos:  \n[http://www.boot-land...hp?showforum\u003d66](http://www.boot-land.net/forums/index.php?showforum\u003d66 \"External link\")  \n\nWithout more details, size of the hard disk, size and filesystem of partitions, actual program used, etc., etc. it\u0027s not possible to point you to the best possible solution.  \n\n![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)  \nWonko   \n"
+    },
+    {
+      "id": "107183",
+      "timestamp": "2010-08-18T18:19:56+00:00",
+      "author": "endlesslyonline",
+      "content": "\u003e For the record, this is the first time you talked about a \"boot CD\".\n\u003e Now what i want to do (and this is where i need some help) i want to dump the rescue cd contents to the 3rd partition as well, but how will i make that partition bootable ?\nin my initial post, i said \"rescue CD\" all of the ghost\u0027s and other backup restore software that i have seen, talk about \"rescue CD\u0027s\", so that\u0027s why i thought that most people would know that a rescue CD is actually a boot CD, sorry for the wrongfull reference to a disc, next time i will dumb it down.  \n\noh wait and i see, i actualy did mention a boot cd  \n\n\u003e but walking to each pc with the boot disk can still be time consuming, so i thought f a solution.\n\u003e WHICH is the \"I have downloaded and installed a program to do sector-by-sector backup of my hard drive, and i have made the backup and everything works 100%.\" actual program?\nhmm, almost seems that you did not even read my post ....  \n\u003e the program that i want to use to make the images and deploy them back is EASUS todo backup, it is a free program for home and commercial use.\n\u003e If a sector-by-sector image fits on CD, it must be either:  \n\u003e\n\u003e •NOT a sector-by-sector image  \n\u003e •NOT a CD  \n\u003e •a very small partition\n•It was in actual fact a sector-by-sector image.  \n•The image itself was never saved on a CD, i never statedthat it was  \n•The partition is quite small, its just a Windows XP install, some small programs and the drivers  \n\n\u003e Without more details, size of the hard disk, size and filesystem of partitions, actual program used, etc., etc. it\u0027s not possible to point you to the best possible solution.\nI can furnish you with all the information, but i dont think you are getting what im trying to do,   \nI have already made the image.  \n\nI have already made the Rescue CD (Boot CD)  \n\nThen I have already made the 3 partitions on the Hard Drive  \n• 1st partition is empty  \n• 2nd partition is where XP is installed   \n• 3rd partition is where i want to copy the contents of the boot cd.  \n\nso what i want to know is how can i make the 3rd partition bootable ? so that i can choose to boot from it with a program like grub4dos, or something similiar.   \n"
+    },
+    {
+      "id": "107186",
+      "timestamp": "2010-08-18T18:43:18+00:00",
+      "author": "cdob",
+      "content": "\u003e I have already made the Rescue CD (Boot CD)\nWhich Rescue CD did you made?  \nHow did you do this?  \n\nAny one of this? [http://www.todo-back...tware-winpe.htm](http://www.todo-backup.com/products/features/free-backup-software-winpe.htm \"External link\")  \n\n\u003e so what i want to know is how can i make the 3rd partition bootable ?\nFormat partition at XP, use default XP tools.  \nPartition is bootable, read file ntldr is loaded.   \n"
+    },
+    {
+      "id": "107188",
+      "timestamp": "2010-08-18T19:14:57+00:00",
+      "author": "endlesslyonline",
+      "content": "cdob,   \n\nno i did not use the winPE rescue disc (that is only included in the full version, i used there own rescue disc  \n\n[http://www.todo-back...-bootableCD.htm](http://www.todo-backup.com/products/features/backup-bootableCD.htm \"External link\")   \n"
+    },
+    {
+      "id": "107191",
+      "timestamp": "2010-08-18T19:54:39+00:00",
+      "author": "cdob",
+      "content": "\u003e no i did not use the winPE rescue disc (that is only included in the full version\nSite offers a BartPE plugin todobackup.cab. You may create a own winPE and integrate this.  \n\n\u003e i used there own rescue disc\nThis use isolinux as boot loader.  \nDownload current syslinux package.   \nUse syslinux installer syslinux.exe.  \nIntegrate syslinux to partition boot code.  \nCopy files to hard disk, adjust syslinux configuration.  \n[http://www.boot-land...hp?showforum\u003d92](http://www.boot-land.net/forums/index.php?showforum\u003d92 \"External link\")  \n\nOr copy ISO file to partition and try ISO file mapping  \n[http://www.boot-land...hp?showforum\u003d66](http://www.boot-land.net/forums/index.php?showforum\u003d66 \"External link\")   \n"
+    },
+    {
+      "id": "107196",
+      "timestamp": "2010-08-18T20:43:49+00:00",
+      "author": "endlesslyonline",
+      "content": "cdob,  \n\nthanks, that looks like it can definately help me out.  \n\nwill test it out tomorow and report back,   \n\nthanks again for the time and help   \n"
+    }
+  ]
+}

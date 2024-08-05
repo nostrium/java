@@ -1,0 +1,322 @@
+{
+  "id": "3226",
+  "title": "Release candidate of plop with USB support",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "22026",
+      "timestamp": "2007-10-06T10:24:20+00:00",
+      "author": "was_jaclaz",
+      "content": "Finally it has been released ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) :  \n[http://www.911cd.net...showtopic\u003d20436](http://www.911cd.net/forums//index.php?showtopic\u003d20436 \"External link\")  \n\n[http://www.plop.at/d...mngrusblog.html](http://www.plop.at/de/bootmngrusblog.html \"External link\")  \n[http://www.plop.at/bootmanager_en.html](http://www.plop.at/bootmanager_en.html \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "22036",
+      "timestamp": "2007-10-06T12:12:12+00:00",
+      "author": "Brito",
+      "content": "What are the advantages of support to USB mass storage devices?  \n\nDoes this mean it can replace GRUB on a computer to recognize USB disks?  \n\nOr can it be installed on the USB disk itself?  \n\n\u003cbr /\u003e\n\n-------------  \n\nIt also seems to come included with an internal hex editor to modify MBR - nice for quick experiments. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "22047",
+      "timestamp": "2007-10-06T13:23:53+00:00",
+      "author": "was_jaclaz",
+      "content": "Theoretically it should provide from booting from USB devices even on machines which BIOS does not allow it.  \n\ni.e. it provides internally a USB stack/drivers, so that you do not need (like grub4dos or AFAIK any other bootloader) to rely on BIOS services.  \n\njaclaz   \n"
+    },
+    {
+      "id": "22147",
+      "timestamp": "2007-10-07T10:01:08+00:00",
+      "author": "ktp",
+      "content": "OK I play with it few minutes using QEMU/VMware.  \n\nIt is a boot manager, requiring to write to MBR of your hard disk.  \nOf course it is not useful to install it to USB key (I believe it refuses to by conception).  \nOnce installed (I guess, no real try) it can boot USB devices using built-in OHCI/UHCI (USB drivers), so effectively  \nit is useful for old BIOS that cannot directly boot from USB.  \n\nUnfortunately it requires an installation (write to MBR). I would prefer a solution like Smart Boot Manager  \nthat can be used \"on the fly\" (either from floppy, from diskette image, from ISO image or CD) without  \nrequiring installation. Smart Boot manager is useful previously to allow booting from CD (for old BIOSes not supporting this)  \nby booting first from diskette (or from diskette image, or of course from hard disk).   \n"
+    },
+    {
+      "id": "22149",
+      "timestamp": "2007-10-07T10:42:18+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e It is a boot manager, requiring to write to MBR of your hard disk.\n\nFor the record, it also writes to a number of hidden sectors, (i.e. code is not contained in 512 bytes).  \n\nBut the GOOD thing is that it provides a \"low-level\" USB stack, AFAIK it is the first of such code being around, the only meaningful test would be on real hardware without BIOS support for USB booting.  \n\nAnother interesting test could be to install it to a (very small) HD image, saved on main hard disk and chainloaded by grub4dos.  \n\nIf it works this way, you have a way to boot from USB on elder hardware without modifying the MBR of your \"normal\" hard disk.  \n\njaclaz   \n"
+    },
+    {
+      "id": "22185",
+      "timestamp": "2007-10-07T15:39:50+00:00",
+      "author": "Alexei",
+      "content": "I\u0027m rather ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \nIf BIOS can read MBR it can read USB.  \nIf BIOS can read USB, why use \"low-level\" USB stack?  \nIn fact I solved USB Booting problem a while ago, but documentation, diagnostic utility, and installer took some time.  \nThe last (rather serious things) are to make proper license agreement and find right e-business provider ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nI\u0027ll let you know when it becomes available ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nBTW (from [http://www.plop.at/d...mngrusblog.html](http://www.plop.at/de/bootmngrusblog.html \"External link\") ):  \n\u003e Bad news: Something stange happens while testing the USB device booting function. On desktop pc\u0027s it works but on laptops it doesn\u0027t work. I don\u0027t know whats wrong.\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \nAlexei   \n"
+    },
+    {
+      "id": "22197",
+      "timestamp": "2007-10-07T17:46:42+00:00",
+      "author": "ktp",
+      "content": "\u003e jaclaz  \n\u003e Another interesting test could be to install it to a (very small) HD image, saved on main hard disk and chainloaded by grub4dos.\n\nI am willing to try this. Could you post some details? fsz command, .pln content, ptedit32 HDD characteristics and the entry in menu.lst  \nto chainload the image from grub4dos.  \n\nI tried with a small HDD but I cannot make vdk mount it with partition, even after ptedit32/mbrfix. It still sees it as FLAT.  \n\nI already has an HDD image with plop installed, but it is big (2 GB). But what I miss is the menu.lst entry.   \n"
+    },
+    {
+      "id": "22202",
+      "timestamp": "2007-10-07T18:17:24+00:00",
+      "author": "was_jaclaz",
+      "content": "@Alexei  \n\nThe idea should be to install plop on the MBR and hidden sectors of the internal hard disk of a PC that has NO provisions in BIOS to boot from USB devices.  \n\nThe PC thus boots \"normally\", then through the use of plop internal \"stack\" or whatever, you should be able to chainload the MBR (or bootsector ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)) on the USB device.  \n\nAs ktp suggested, it should do for USB devices what Smart Boot Manager (and BCDL ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) )did for PC which BIOS did not support CD-ROMs.  \n\n@ktp  \nAs soon as I have some time I will post the minimum sizes for HD images to be mounted by VDK (I\u0027m working on this right now for my MKIMG feature of MBRbatch.cmd).  \n\njaclaz   \n"
+    },
+    {
+      "id": "22226",
+      "timestamp": "2007-10-07T23:13:44+00:00",
+      "author": "Alexei",
+      "content": "\u003e @Alexei  \n\u003e The idea should be to install plop on the MBR and hidden sectors of the internal hard disk of a PC that has NO provisions in BIOS to boot from USB devices.\nI see now, thanks. BTW, does it have an option to use floppy as \"initial boot device\".  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \nAlexei   \n"
+    },
+    {
+      "id": "22228",
+      "timestamp": "2007-10-07T23:17:03+00:00",
+      "author": "Alexei",
+      "content": "\u003e @Alexei  \n\u003e The idea should be to install plop on the MBR and hidden sectors of the internal hard disk of a PC that has NO provisions in BIOS to boot from USB devices.\nI see now, thanks. BTW, does it have an option to use floppy as \"initial boot device\".  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \nAlexei   \n"
+    },
+    {
+      "id": "22244",
+      "timestamp": "2007-10-08T08:03:42+00:00",
+      "author": "ktp",
+      "content": "Inacceptable! Grrr...  \n\nAs I said in previous post, I played around for few minutes with PLoP under QEMU.  \nIt does not offer on the fly function to boot from USB/CD/floppy (as Smart bootmanager allows for CD/floppy).  \nIt requires installation (on hard disk). So being a little impatient and having no news from jaclaz since yesterday for a small HDD image  \nto play with grub4dos, I decided to install on my real HDD. Then...  \n\nThe installation goes ok. After reboot it takes control and presents a menu. You press \u0027u\u0027 to boot from USB, \u0027f\u0027 to boot from floppy etc...  \nI pressed \u0027u\u0027, it presents a new screen but no USB drives seen (I did plug my USB key), and a error message error loading driver somhow.  \nOK, refer to Alexei\u0027s post earlier where USB on laptop could have problems.  \n\nNow it has an uninstall function, OK I executed it. It uninstall OK (it says so, successful).  \nI reboot and... direct boot to PXE !  \nBy experience I know this mean HDD boot failure so next boot on my BIOS is boot from network (PXE).  \nHmm... I plug my precious rescue/tools multi-boot USB key and run Partition Magic 8.05. As expected, my hard disk is unallocated  \n(MBR destroyed somehow). OK, I reboot with option UBCD4Win and get to the desktop where I run Total Commander then HDHacker.  \nI can see that the HDD MBR is all reset to 0, with only AA55 signature. This is not what I called a successful uninstall by PLoP  \n(it should restore the MBR exactly in the state before the install, with at least additional checkings like HDD geometry/model to be sure  \nto restore the MBR to the right HDD where it was backuped)!. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nOK as I have a backup MBR of my HDD, I put it back with HDHacker and reboot (without my USB key plugged). And of course  \nI got my usual XP desktop and all the data! A real relief ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nFor me it is unacceptable to call it PLop Bootmanager v5.0rc1.  \nIt must be labeled something as v0.01alpha1 !  \nOf course in the initial screen it said:  \n\"Use this bootmanager at your own risk. Its (sic) possible to loose your data!\"  \nOK, but this was not an user error, it is the uninstall function that really did not work!  \n\n\u003cbr /\u003e\n\nMorale: you play with fire, you know what to be careful about.   \n"
+    },
+    {
+      "id": "22250",
+      "timestamp": "2007-10-08T11:08:06+00:00",
+      "author": "was_jaclaz",
+      "content": "That\u0027s mainly why it is very convenient to have backups of at least MBR and Partition Tables and of each partition bootsector.  \n\nShould anyone have not used this precaution, and should disaster had happened, Testdisk:  \n[http://www.cgsecurit...g/wiki/TestDisk](http://www.cgsecurity.org/wiki/TestDisk \"External link\")  \nis capable to re-create/recover Partition Tables. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nPlease find attached a .xls file with the settings you required.  \n\nYou\u0027ll have to experiment with the different geometries untl you find one that Qemu will boot.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\njaclaz  \n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003dc19b88dfd4a054e6e2144c9d384ec6f8\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d3160 \"Download attachment\") [**smallimgs.zip**](http://reboot.pro/index.php?s\u003dc19b88dfd4a054e6e2144c9d384ec6f8\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d3160 \"Download attachment\") **3.97KB** 579 downloads\n\n"
+    },
+    {
+      "id": "22253",
+      "timestamp": "2007-10-08T12:07:08+00:00",
+      "author": "ktp",
+      "content": "@jaclaz  \nThe 2M and 16MB HDD do not boot under QEMU.  \nI will try other sizes. But the most important is how can I boot it under grub4dos?  \nDo you have a sample menu.lst please ?   \n"
+    },
+    {
+      "id": "22272",
+      "timestamp": "2007-10-08T15:33:04+00:00",
+      "author": "ktp",
+      "content": "After browsing another topic in grub4dos, I guess the menu.lst entry would looks like this:  \n\n```\ntitle boot HDD image\n\nmap --mem \u0026#40;hd0,0\u0026#41;/small_hdd.ima \u0026#40;hd0\u0026#41;\n\nmap --hook\n\nroot \u0026#40;hd0,0\u0026#41;\n\nchainloader +1\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "22273",
+      "timestamp": "2007-10-08T15:49:33+00:00",
+      "author": "pscEx",
+      "content": "\u003e That\u0027s mainly why it is very convenient to have backups of at least MBR and Partition Tables and of each partition bootsector.\n@Jaclaz  \nI\u0027m a developer, able to step through x86 Intel\u0027s and BG\u0027s machine code, but unfortunatelly I never did something with saving my MBR or partition tables (my degree of knowledge: I heard about them and have an idea what they are!)  \nIf I did (fortunatelly rather seldom) something wrong, I recovered from a \u0027complete\u0027 backup.  \n\nCan you give a tutorial with some links of suggested programs to save (and restore!) such voodoo similar elements?  \n\nPeter   \n"
+    },
+    {
+      "id": "22276",
+      "timestamp": "2007-10-08T16:34:02+00:00",
+      "author": "was_jaclaz",
+      "content": "@ktp  \nI have not a definite answer, a good entry is something like the one you posted, but not exactly that one (that one roots to hd0,0 and then chainloads first sector of it, i.e. the bootsector, by-passing the MBR)  \nI\u0027ll see if I can find one and post it.  \n\n\u003cbr /\u003e\n\n@psc  \nPartition tables are a part of the MBR, more exactly 4 entries, each 16 bytes, at offset 446 of first sector of each Hard Disk.  \nThe MBR is the entire first sector of each Hard Disk, so if you backup it you include the Partition Tables.  \n\nSince you definitely know your way with .cmd files ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif), if you check these two:  \n[http://www.boot-land...EASE-t2362.html](http://www.boot-land.net/forums/MakeBScmd-...EASE-t2362.html \"External link\")  \n[http://www.boot-land...LPHA-t3191.html](http://www.boot-land.net/forums/MBRBatch-0...LPHA-t3191.html \"External link\")  \nboth have, as \"side effect\" or feature, the ability to make a backup of HD sectors, respectively for bootsectors and MBR.  \n\nTo \"extract\" and adapt the code to your needs should be trivial.  \n\nBoth make use of **dsfo** /**dsfi** , part of the DSFOK toolkit.  \n\nReduced to the minimum terms:  \n\u003e dsfo \\\\\\\\.\\\\PHYSICALDRIVE***n*** 0 512 Disk***n***.MBR\nwill produce a backup file of the MBR of Hard Disk ***n*** (first disk is 0, second is 1, etc.)  \nand   \n\u003e dsfo \\\\\\\\.\\\\***x*** : 0 512 Drive***x***.bs\nwill produce a backup file of the bootsector of Drive (partition) ***x*** (drive/partition letters as you see them under 2K/XP)  \nfor FAT16 and FAT32 formatted drives/partitions.  \nFor NTFS partitions you need to do:  \n\u003e dsfo \\\\\\\\.\\\\***x*** : 0 8192 Drive***x***.bs\n\nTo make a \"real\" backup of the MBR, however, I suggest to change the length for MBR to include all first 63 hidden sectors (MBR+62):  \n\u003e dsfo \\\\\\\\.\\\\PHYSICALDRIVE***n*** 0 32256 Disk***n***.MBR\n\nIf you have volumes (partitions) without a letter assigned, you can use the **vlm** utility, also part of the pakage, to find their ID.  \n\nThere are of course a number of other utilities, some of them with GUI to do the same.  \n\njaclaz   \n"
+    },
+    {
+      "id": "22278",
+      "timestamp": "2007-10-08T16:42:47+00:00",
+      "author": "phox",
+      "content": "\u003e @Jaclaz  \n\u003e I\u0027m a developer, able to step through x86 Intel\u0027s and BG\u0027s machine code, but unfortunatelly I never did something with saving my MBR or partition tables (my degree of knowledge: I heard about them and have an idea what they are!)  \n\u003e If I did (fortunatelly rather seldom) something wrong, I recovered from a \u0027complete\u0027 backup.  \n\u003e\n\u003e Can you give a tutorial with some links of suggested programs to save (and restore!) such voodoo similar elements?  \n\u003e\n\u003e Peter\n\n\u003cbr /\u003e\n\nThis is simplest way to manipulate MBR: [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003dc19b88dfd4a054e6e2144c9d384ec6f8\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d3166 \"Download attachment\") [**MBRWiz.zip**](http://reboot.pro/index.php?s\u003dc19b88dfd4a054e6e2144c9d384ec6f8\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d3166 \"Download attachment\") **66.93KB** 646 downloads   \n"
+    },
+    {
+      "id": "22280",
+      "timestamp": "2007-10-08T16:55:51+00:00",
+      "author": "was_jaclaz",
+      "content": "@ktp  \n\nTry this:  \n\n```\ntitle boot HDD image\n\nmap --mem \u0026#40;hd0,0\u0026#41;/small_hdd.ima \u0026#40;hd0\u0026#41;\n\nmap --hook\n\nchainloader \u0026#40;hd0\u0026#41;+1\n\nrootnoverify \u0026#40;hd0\u0026#41;\n```\n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "22290",
+      "timestamp": "2007-10-08T20:01:25+00:00",
+      "author": "ktp",
+      "content": "@jaclaz  \n\nIn fact the four HDD models in the speadsheet work with QEMU. I first tested them with QEMU manager (GUI)  \nbut failed (no message, no VM started). But when I try with QEMU command line, it works. So the disk image is then used  \nusing the menu.lst given above and it works too, on both QEMU and on real machine.  \n\nThe test on real machine (laptop): USB key boots with grub4dos, invoking the small HDD image, PLoP is invoked,  \nI press \u0027u\u0027 to boot USB but then PLoP failed loading OHCD drivers, no devices found. It then tried to load UHCI drivers  \nbut then hang.  \n\nAnyhow for me it is interesting to know that I can boot HDD image with grub4dos. This would be useful in several circumstances  \n(no real situation found yet).   \n"
+    },
+    {
+      "id": "22323",
+      "timestamp": "2007-10-09T09:30:30+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e But when I try with QEMU command line, it works.\n\nGood! ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nCan you post the command line you used to start them in Qemu?  \n\nDid ALL images boot?  \n\nUsing grub4dos installed in the MBR of \"main\" virtual disk, right?  \n\nAlso, and for the record, a HD image mapped to memory won\u0027t actually boot a NT based system, only DOS/W9x/Me/Linux ones.  \n\njaclaz   \n"
+    },
+    {
+      "id": "22325",
+      "timestamp": "2007-10-09T10:11:57+00:00",
+      "author": "ktp",
+      "content": "\u003e Good! ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\u003e\n\u003e Can you post the command line you used to start them in Qemu?\n\n```\nqemu -M pc -fda plpbt50rc1.ima  -boot a -hda i\u0026#58;\\outputiso\\small_hdd.ima -m 256 -localtime -net nic -L .\n```\n\nThe above command allows booting from the plop diskette then install it on the hard disk small_hdd.ima  \nThen the following command (-fda removed) allows booting from the small_hdd and experiment with plop (MBR written):  \n\n```\nqemu -M pc -hda i\u0026#58;\\outputiso\\small_hdd.ima -m 256 -localtime -net nic -L .\n```\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003e Did ALL images boot?\nI did not experiment all of them, but I \"feel\" that they should all work. :-)  \n\n\u003e Using grub4dos installed in the MBR of \"main\" virtual disk, right?\nI did not remember exactly, but probably yes.  \n\n\u003e Also, and for the record, a HD image mapped to memory won\u0027t actually boot a NT based system, only DOS/W9x/Me/Linux ones.\nOK, but a HDD image \"normal\" map (no --mem option) works. The image need to be contiguous though.   \n"
+    },
+    {
+      "id": "22331",
+      "timestamp": "2007-10-09T11:36:53+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e OK, but a HDD image \"normal\" map (no --mem option) works. The image need to be contiguous though.\n\nAre you sure? ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nCan you post the entry you used and some more details?  \n\njaclaz   \n"
+    },
+    {
+      "id": "22335",
+      "timestamp": "2007-10-09T12:39:52+00:00",
+      "author": "ktp",
+      "content": "@jaclaz  \nHere it is:  \n\n```\nfsz i\u0026#58;\\outputiso\\hdd_img.img 740275200\n\n\n\nhdd_img.pln\u0026#58;\n\nDRIVETYPE\t ide\n\nCYLINDERS\t 90\n\nHEADS\t\t 255\n\nSECTORS\t   63\n\nACCESS\t\t\u0026#34;i\u0026#58;\\outputiso\\hdd_img.img\u0026#34; 0 1445850\n\n\n\nptedit32\n\n0b-80-0-1-1-89-254-63-63-1445787\n\n\n\nmenu.lst \u0026#40;booting the HDD image inside another hard disk\u0026#41;\u0026#58;\n\ntitle boot HDD image\n\nfind --set-root /grldr\n\nmap \u0026#40;hd0,0\u0026#41;/hdd_img.img \u0026#40;hd0\u0026#41;\n\nmap --hook\n\nchainloader \u0026#40;hd0\u0026#41;+1\n\nrootnoverify \u0026#40;hd0\u0026#41;\n```\n\n\u003cbr /\u003e\n\nNote: I used your spreadsheet smallimgs.xls to compute this HDD size around 705 MB.  \nI just retested once again under QEMU and all works perfectly.   \n"
+    },
+    {
+      "id": "22344",
+      "timestamp": "2007-10-09T14:58:57+00:00",
+      "author": "was_jaclaz",
+      "content": "Nice! ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nBut what I meant was did you managed to install and boot a 2K or XP system on that image?  \n\n(I would have sworn that one would get a BSOD when the NT based system starts booting)  \n\njaclaz   \n"
+    },
+    {
+      "id": "22346",
+      "timestamp": "2007-10-09T15:12:14+00:00",
+      "author": "ktp",
+      "content": "During my experimentation I put VistaPE on it and boots OK Vista OK until QEMU  \ncauses problem with ql40xx.sys (QLogic SCSI miniport). I know this is only a problem with Vista  \nbecause I cannot boot VistaPE under QEMU (but VistaPE under VirtualPC 2007 is OK, or under vmware).  \n\nNote: all that are done under simulation, I did try on real laptop but then get grub4dos Error 30 read error  \nat the line:  \nchainloader (hd0)+1  \n\nNo clue?  \n\nI then change to big floppy image format, and now it works. Refer to this topic:  \n[http://www.911cd.net...mp;#entry137275](http://www.911cd.net/forums//index.php?sho...mp;#entry137275 \"External link\")   \n"
+    },
+    {
+      "id": "22026",
+      "timestamp": "2007-10-06T10:24:20+00:00",
+      "author": "was_jaclaz",
+      "content": "Finally it has been released ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) :  \n[http://www.911cd.net...showtopic\u003d20436](http://www.911cd.net/forums//index.php?showtopic\u003d20436 \"External link\")  \n\n[http://www.plop.at/d...mngrusblog.html](http://www.plop.at/de/bootmngrusblog.html \"External link\")  \n[http://www.plop.at/bootmanager_en.html](http://www.plop.at/bootmanager_en.html \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "22036",
+      "timestamp": "2007-10-06T12:12:12+00:00",
+      "author": "Brito",
+      "content": "What are the advantages of support to USB mass storage devices?  \n\nDoes this mean it can replace GRUB on a computer to recognize USB disks?  \n\nOr can it be installed on the USB disk itself?  \n\n\u003cbr /\u003e\n\n-------------  \n\nIt also seems to come included with an internal hex editor to modify MBR - nice for quick experiments. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "22047",
+      "timestamp": "2007-10-06T13:23:53+00:00",
+      "author": "was_jaclaz",
+      "content": "Theoretically it should provide from booting from USB devices even on machines which BIOS does not allow it.  \n\ni.e. it provides internally a USB stack/drivers, so that you do not need (like grub4dos or AFAIK any other bootloader) to rely on BIOS services.  \n\njaclaz   \n"
+    },
+    {
+      "id": "22147",
+      "timestamp": "2007-10-07T10:01:08+00:00",
+      "author": "ktp",
+      "content": "OK I play with it few minutes using QEMU/VMware.  \n\nIt is a boot manager, requiring to write to MBR of your hard disk.  \nOf course it is not useful to install it to USB key (I believe it refuses to by conception).  \nOnce installed (I guess, no real try) it can boot USB devices using built-in OHCI/UHCI (USB drivers), so effectively  \nit is useful for old BIOS that cannot directly boot from USB.  \n\nUnfortunately it requires an installation (write to MBR). I would prefer a solution like Smart Boot Manager  \nthat can be used \"on the fly\" (either from floppy, from diskette image, from ISO image or CD) without  \nrequiring installation. Smart Boot manager is useful previously to allow booting from CD (for old BIOSes not supporting this)  \nby booting first from diskette (or from diskette image, or of course from hard disk).   \n"
+    },
+    {
+      "id": "22149",
+      "timestamp": "2007-10-07T10:42:18+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e It is a boot manager, requiring to write to MBR of your hard disk.\n\nFor the record, it also writes to a number of hidden sectors, (i.e. code is not contained in 512 bytes).  \n\nBut the GOOD thing is that it provides a \"low-level\" USB stack, AFAIK it is the first of such code being around, the only meaningful test would be on real hardware without BIOS support for USB booting.  \n\nAnother interesting test could be to install it to a (very small) HD image, saved on main hard disk and chainloaded by grub4dos.  \n\nIf it works this way, you have a way to boot from USB on elder hardware without modifying the MBR of your \"normal\" hard disk.  \n\njaclaz   \n"
+    },
+    {
+      "id": "22185",
+      "timestamp": "2007-10-07T15:39:50+00:00",
+      "author": "Alexei",
+      "content": "I\u0027m rather ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \nIf BIOS can read MBR it can read USB.  \nIf BIOS can read USB, why use \"low-level\" USB stack?  \nIn fact I solved USB Booting problem a while ago, but documentation, diagnostic utility, and installer took some time.  \nThe last (rather serious things) are to make proper license agreement and find right e-business provider ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nI\u0027ll let you know when it becomes available ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nBTW (from [http://www.plop.at/d...mngrusblog.html](http://www.plop.at/de/bootmngrusblog.html \"External link\") ):  \n\u003e Bad news: Something stange happens while testing the USB device booting function. On desktop pc\u0027s it works but on laptops it doesn\u0027t work. I don\u0027t know whats wrong.\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \nAlexei   \n"
+    },
+    {
+      "id": "22197",
+      "timestamp": "2007-10-07T17:46:42+00:00",
+      "author": "ktp",
+      "content": "\u003e jaclaz  \n\u003e Another interesting test could be to install it to a (very small) HD image, saved on main hard disk and chainloaded by grub4dos.\n\nI am willing to try this. Could you post some details? fsz command, .pln content, ptedit32 HDD characteristics and the entry in menu.lst  \nto chainload the image from grub4dos.  \n\nI tried with a small HDD but I cannot make vdk mount it with partition, even after ptedit32/mbrfix. It still sees it as FLAT.  \n\nI already has an HDD image with plop installed, but it is big (2 GB). But what I miss is the menu.lst entry.   \n"
+    },
+    {
+      "id": "22202",
+      "timestamp": "2007-10-07T18:17:24+00:00",
+      "author": "was_jaclaz",
+      "content": "@Alexei  \n\nThe idea should be to install plop on the MBR and hidden sectors of the internal hard disk of a PC that has NO provisions in BIOS to boot from USB devices.  \n\nThe PC thus boots \"normally\", then through the use of plop internal \"stack\" or whatever, you should be able to chainload the MBR (or bootsector ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)) on the USB device.  \n\nAs ktp suggested, it should do for USB devices what Smart Boot Manager (and BCDL ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) )did for PC which BIOS did not support CD-ROMs.  \n\n@ktp  \nAs soon as I have some time I will post the minimum sizes for HD images to be mounted by VDK (I\u0027m working on this right now for my MKIMG feature of MBRbatch.cmd).  \n\njaclaz   \n"
+    },
+    {
+      "id": "22226",
+      "timestamp": "2007-10-07T23:13:44+00:00",
+      "author": "Alexei",
+      "content": "\u003e @Alexei  \n\u003e The idea should be to install plop on the MBR and hidden sectors of the internal hard disk of a PC that has NO provisions in BIOS to boot from USB devices.\nI see now, thanks. BTW, does it have an option to use floppy as \"initial boot device\".  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \nAlexei   \n"
+    },
+    {
+      "id": "22228",
+      "timestamp": "2007-10-07T23:17:03+00:00",
+      "author": "Alexei",
+      "content": "\u003e @Alexei  \n\u003e The idea should be to install plop on the MBR and hidden sectors of the internal hard disk of a PC that has NO provisions in BIOS to boot from USB devices.\nI see now, thanks. BTW, does it have an option to use floppy as \"initial boot device\".  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \nAlexei   \n"
+    },
+    {
+      "id": "22244",
+      "timestamp": "2007-10-08T08:03:42+00:00",
+      "author": "ktp",
+      "content": "Inacceptable! Grrr...  \n\nAs I said in previous post, I played around for few minutes with PLoP under QEMU.  \nIt does not offer on the fly function to boot from USB/CD/floppy (as Smart bootmanager allows for CD/floppy).  \nIt requires installation (on hard disk). So being a little impatient and having no news from jaclaz since yesterday for a small HDD image  \nto play with grub4dos, I decided to install on my real HDD. Then...  \n\nThe installation goes ok. After reboot it takes control and presents a menu. You press \u0027u\u0027 to boot from USB, \u0027f\u0027 to boot from floppy etc...  \nI pressed \u0027u\u0027, it presents a new screen but no USB drives seen (I did plug my USB key), and a error message error loading driver somhow.  \nOK, refer to Alexei\u0027s post earlier where USB on laptop could have problems.  \n\nNow it has an uninstall function, OK I executed it. It uninstall OK (it says so, successful).  \nI reboot and... direct boot to PXE !  \nBy experience I know this mean HDD boot failure so next boot on my BIOS is boot from network (PXE).  \nHmm... I plug my precious rescue/tools multi-boot USB key and run Partition Magic 8.05. As expected, my hard disk is unallocated  \n(MBR destroyed somehow). OK, I reboot with option UBCD4Win and get to the desktop where I run Total Commander then HDHacker.  \nI can see that the HDD MBR is all reset to 0, with only AA55 signature. This is not what I called a successful uninstall by PLoP  \n(it should restore the MBR exactly in the state before the install, with at least additional checkings like HDD geometry/model to be sure  \nto restore the MBR to the right HDD where it was backuped)!. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nOK as I have a backup MBR of my HDD, I put it back with HDHacker and reboot (without my USB key plugged). And of course  \nI got my usual XP desktop and all the data! A real relief ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nFor me it is unacceptable to call it PLop Bootmanager v5.0rc1.  \nIt must be labeled something as v0.01alpha1 !  \nOf course in the initial screen it said:  \n\"Use this bootmanager at your own risk. Its (sic) possible to loose your data!\"  \nOK, but this was not an user error, it is the uninstall function that really did not work!  \n\n\u003cbr /\u003e\n\nMorale: you play with fire, you know what to be careful about.   \n"
+    },
+    {
+      "id": "22250",
+      "timestamp": "2007-10-08T11:08:06+00:00",
+      "author": "was_jaclaz",
+      "content": "That\u0027s mainly why it is very convenient to have backups of at least MBR and Partition Tables and of each partition bootsector.  \n\nShould anyone have not used this precaution, and should disaster had happened, Testdisk:  \n[http://www.cgsecurit...g/wiki/TestDisk](http://www.cgsecurity.org/wiki/TestDisk \"External link\")  \nis capable to re-create/recover Partition Tables. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nPlease find attached a .xls file with the settings you required.  \n\nYou\u0027ll have to experiment with the different geometries untl you find one that Qemu will boot.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\njaclaz  \n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003da8846a78e218c47b712770b7fbcee2d5\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d3160 \"Download attachment\") [**smallimgs.zip**](http://reboot.pro/index.php?s\u003da8846a78e218c47b712770b7fbcee2d5\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d3160 \"Download attachment\") **3.97KB** 579 downloads\n\n"
+    },
+    {
+      "id": "22253",
+      "timestamp": "2007-10-08T12:07:08+00:00",
+      "author": "ktp",
+      "content": "@jaclaz  \nThe 2M and 16MB HDD do not boot under QEMU.  \nI will try other sizes. But the most important is how can I boot it under grub4dos?  \nDo you have a sample menu.lst please ?   \n"
+    },
+    {
+      "id": "22272",
+      "timestamp": "2007-10-08T15:33:04+00:00",
+      "author": "ktp",
+      "content": "After browsing another topic in grub4dos, I guess the menu.lst entry would looks like this:  \n\n```\ntitle boot HDD image\n\nmap --mem \u0026#40;hd0,0\u0026#41;/small_hdd.ima \u0026#40;hd0\u0026#41;\n\nmap --hook\n\nroot \u0026#40;hd0,0\u0026#41;\n\nchainloader +1\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "22273",
+      "timestamp": "2007-10-08T15:49:33+00:00",
+      "author": "pscEx",
+      "content": "\u003e That\u0027s mainly why it is very convenient to have backups of at least MBR and Partition Tables and of each partition bootsector.\n@Jaclaz  \nI\u0027m a developer, able to step through x86 Intel\u0027s and BG\u0027s machine code, but unfortunatelly I never did something with saving my MBR or partition tables (my degree of knowledge: I heard about them and have an idea what they are!)  \nIf I did (fortunatelly rather seldom) something wrong, I recovered from a \u0027complete\u0027 backup.  \n\nCan you give a tutorial with some links of suggested programs to save (and restore!) such voodoo similar elements?  \n\nPeter   \n"
+    },
+    {
+      "id": "22276",
+      "timestamp": "2007-10-08T16:34:02+00:00",
+      "author": "was_jaclaz",
+      "content": "@ktp  \nI have not a definite answer, a good entry is something like the one you posted, but not exactly that one (that one roots to hd0,0 and then chainloads first sector of it, i.e. the bootsector, by-passing the MBR)  \nI\u0027ll see if I can find one and post it.  \n\n\u003cbr /\u003e\n\n@psc  \nPartition tables are a part of the MBR, more exactly 4 entries, each 16 bytes, at offset 446 of first sector of each Hard Disk.  \nThe MBR is the entire first sector of each Hard Disk, so if you backup it you include the Partition Tables.  \n\nSince you definitely know your way with .cmd files ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif), if you check these two:  \n[http://www.boot-land...EASE-t2362.html](http://www.boot-land.net/forums/MakeBScmd-...EASE-t2362.html \"External link\")  \n[http://www.boot-land...LPHA-t3191.html](http://www.boot-land.net/forums/MBRBatch-0...LPHA-t3191.html \"External link\")  \nboth have, as \"side effect\" or feature, the ability to make a backup of HD sectors, respectively for bootsectors and MBR.  \n\nTo \"extract\" and adapt the code to your needs should be trivial.  \n\nBoth make use of **dsfo** /**dsfi** , part of the DSFOK toolkit.  \n\nReduced to the minimum terms:  \n\u003e dsfo \\\\\\\\.\\\\PHYSICALDRIVE***n*** 0 512 Disk***n***.MBR\nwill produce a backup file of the MBR of Hard Disk ***n*** (first disk is 0, second is 1, etc.)  \nand   \n\u003e dsfo \\\\\\\\.\\\\***x*** : 0 512 Drive***x***.bs\nwill produce a backup file of the bootsector of Drive (partition) ***x*** (drive/partition letters as you see them under 2K/XP)  \nfor FAT16 and FAT32 formatted drives/partitions.  \nFor NTFS partitions you need to do:  \n\u003e dsfo \\\\\\\\.\\\\***x*** : 0 8192 Drive***x***.bs\n\nTo make a \"real\" backup of the MBR, however, I suggest to change the length for MBR to include all first 63 hidden sectors (MBR+62):  \n\u003e dsfo \\\\\\\\.\\\\PHYSICALDRIVE***n*** 0 32256 Disk***n***.MBR\n\nIf you have volumes (partitions) without a letter assigned, you can use the **vlm** utility, also part of the pakage, to find their ID.  \n\nThere are of course a number of other utilities, some of them with GUI to do the same.  \n\njaclaz   \n"
+    },
+    {
+      "id": "22278",
+      "timestamp": "2007-10-08T16:42:47+00:00",
+      "author": "phox",
+      "content": "\u003e @Jaclaz  \n\u003e I\u0027m a developer, able to step through x86 Intel\u0027s and BG\u0027s machine code, but unfortunatelly I never did something with saving my MBR or partition tables (my degree of knowledge: I heard about them and have an idea what they are!)  \n\u003e If I did (fortunatelly rather seldom) something wrong, I recovered from a \u0027complete\u0027 backup.  \n\u003e\n\u003e Can you give a tutorial with some links of suggested programs to save (and restore!) such voodoo similar elements?  \n\u003e\n\u003e Peter\n\n\u003cbr /\u003e\n\nThis is simplest way to manipulate MBR: [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003da8846a78e218c47b712770b7fbcee2d5\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d3166 \"Download attachment\") [**MBRWiz.zip**](http://reboot.pro/index.php?s\u003da8846a78e218c47b712770b7fbcee2d5\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d3166 \"Download attachment\") **66.93KB** 646 downloads   \n"
+    },
+    {
+      "id": "22280",
+      "timestamp": "2007-10-08T16:55:51+00:00",
+      "author": "was_jaclaz",
+      "content": "@ktp  \n\nTry this:  \n\n```\ntitle boot HDD image\n\nmap --mem \u0026#40;hd0,0\u0026#41;/small_hdd.ima \u0026#40;hd0\u0026#41;\n\nmap --hook\n\nchainloader \u0026#40;hd0\u0026#41;+1\n\nrootnoverify \u0026#40;hd0\u0026#41;\n```\n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "22290",
+      "timestamp": "2007-10-08T20:01:25+00:00",
+      "author": "ktp",
+      "content": "@jaclaz  \n\nIn fact the four HDD models in the speadsheet work with QEMU. I first tested them with QEMU manager (GUI)  \nbut failed (no message, no VM started). But when I try with QEMU command line, it works. So the disk image is then used  \nusing the menu.lst given above and it works too, on both QEMU and on real machine.  \n\nThe test on real machine (laptop): USB key boots with grub4dos, invoking the small HDD image, PLoP is invoked,  \nI press \u0027u\u0027 to boot USB but then PLoP failed loading OHCD drivers, no devices found. It then tried to load UHCI drivers  \nbut then hang.  \n\nAnyhow for me it is interesting to know that I can boot HDD image with grub4dos. This would be useful in several circumstances  \n(no real situation found yet).   \n"
+    },
+    {
+      "id": "22323",
+      "timestamp": "2007-10-09T09:30:30+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e But when I try with QEMU command line, it works.\n\nGood! ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nCan you post the command line you used to start them in Qemu?  \n\nDid ALL images boot?  \n\nUsing grub4dos installed in the MBR of \"main\" virtual disk, right?  \n\nAlso, and for the record, a HD image mapped to memory won\u0027t actually boot a NT based system, only DOS/W9x/Me/Linux ones.  \n\njaclaz   \n"
+    },
+    {
+      "id": "22325",
+      "timestamp": "2007-10-09T10:11:57+00:00",
+      "author": "ktp",
+      "content": "\u003e Good! ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\u003e\n\u003e Can you post the command line you used to start them in Qemu?\n\n```\nqemu -M pc -fda plpbt50rc1.ima  -boot a -hda i\u0026#58;\\outputiso\\small_hdd.ima -m 256 -localtime -net nic -L .\n```\n\nThe above command allows booting from the plop diskette then install it on the hard disk small_hdd.ima  \nThen the following command (-fda removed) allows booting from the small_hdd and experiment with plop (MBR written):  \n\n```\nqemu -M pc -hda i\u0026#58;\\outputiso\\small_hdd.ima -m 256 -localtime -net nic -L .\n```\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003e Did ALL images boot?\nI did not experiment all of them, but I \"feel\" that they should all work. :-)  \n\n\u003e Using grub4dos installed in the MBR of \"main\" virtual disk, right?\nI did not remember exactly, but probably yes.  \n\n\u003e Also, and for the record, a HD image mapped to memory won\u0027t actually boot a NT based system, only DOS/W9x/Me/Linux ones.\nOK, but a HDD image \"normal\" map (no --mem option) works. The image need to be contiguous though.   \n"
+    },
+    {
+      "id": "22331",
+      "timestamp": "2007-10-09T11:36:53+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e OK, but a HDD image \"normal\" map (no --mem option) works. The image need to be contiguous though.\n\nAre you sure? ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nCan you post the entry you used and some more details?  \n\njaclaz   \n"
+    },
+    {
+      "id": "22335",
+      "timestamp": "2007-10-09T12:39:52+00:00",
+      "author": "ktp",
+      "content": "@jaclaz  \nHere it is:  \n\n```\nfsz i\u0026#58;\\outputiso\\hdd_img.img 740275200\n\n\n\nhdd_img.pln\u0026#58;\n\nDRIVETYPE\t ide\n\nCYLINDERS\t 90\n\nHEADS\t\t 255\n\nSECTORS\t   63\n\nACCESS\t\t\u0026#34;i\u0026#58;\\outputiso\\hdd_img.img\u0026#34; 0 1445850\n\n\n\nptedit32\n\n0b-80-0-1-1-89-254-63-63-1445787\n\n\n\nmenu.lst \u0026#40;booting the HDD image inside another hard disk\u0026#41;\u0026#58;\n\ntitle boot HDD image\n\nfind --set-root /grldr\n\nmap \u0026#40;hd0,0\u0026#41;/hdd_img.img \u0026#40;hd0\u0026#41;\n\nmap --hook\n\nchainloader \u0026#40;hd0\u0026#41;+1\n\nrootnoverify \u0026#40;hd0\u0026#41;\n```\n\n\u003cbr /\u003e\n\nNote: I used your spreadsheet smallimgs.xls to compute this HDD size around 705 MB.  \nI just retested once again under QEMU and all works perfectly.   \n"
+    },
+    {
+      "id": "22344",
+      "timestamp": "2007-10-09T14:58:57+00:00",
+      "author": "was_jaclaz",
+      "content": "Nice! ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nBut what I meant was did you managed to install and boot a 2K or XP system on that image?  \n\n(I would have sworn that one would get a BSOD when the NT based system starts booting)  \n\njaclaz   \n"
+    },
+    {
+      "id": "22346",
+      "timestamp": "2007-10-09T15:12:14+00:00",
+      "author": "ktp",
+      "content": "During my experimentation I put VistaPE on it and boots OK Vista OK until QEMU  \ncauses problem with ql40xx.sys (QLogic SCSI miniport). I know this is only a problem with Vista  \nbecause I cannot boot VistaPE under QEMU (but VistaPE under VirtualPC 2007 is OK, or under vmware).  \n\nNote: all that are done under simulation, I did try on real laptop but then get grub4dos Error 30 read error  \nat the line:  \nchainloader (hd0)+1  \n\nNo clue?  \n\nI then change to big floppy image format, and now it works. Refer to this topic:  \n[http://www.911cd.net...mp;#entry137275](http://www.911cd.net/forums//index.php?sho...mp;#entry137275 \"External link\")   \n"
+    },
+    {
+      "id": "22356",
+      "timestamp": "2007-10-09T17:07:10+00:00",
+      "author": "was_jaclaz",
+      "content": "Yep, I saw it, but that is VISTA, that appears to have a rather different way of booting.  \n\nI was talking about 2K/XP/2003. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\njaclaz   \n"
+    },
+    {
+      "id": "22368",
+      "timestamp": "2007-10-09T18:09:05+00:00",
+      "author": "ktp",
+      "content": "@jaclaz  \n\nYou are right. I retried with BartPE and got BSOD 0x6b process1_initialization_failed.   \nBut could it be due to QEMU too, but I don\u0027t know how to test under VirtualPC2007 or VMware with diskimage.  \nI think I\u0027d rather stop experimenting for the moment on the subject booting hard disk image :-).   \n"
+    }
+  ]
+}

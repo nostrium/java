@@ -1,0 +1,40 @@
+{
+  "id": "19031",
+  "title": "Booting a 3tb WD external drive",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "178434",
+      "timestamp": "2013-10-14T15:13:12+00:00",
+      "author": "Leozack",
+      "content": "Hi all - I have a 3tb WD external drive (wdbaau0030hbk-01) and have been round the houses trying to either make it into a ghost boot disk (so it can see it\u0027s own images and create new ones on itself) or to make it viewable from usb sticks that are made ghost boot disks. So far it\u0027s never managed to be bootable even when partitioning off smaller areas like 30G rather than 3T, and it also isn\u0027t viewable without ghost when ghost booting off a USB. I\u0027ve tried DOS and WINPE environments without luck.  \nanyone have any advice for getting a 3TB external dive bootable? :/  \n\n"
+    },
+    {
+      "id": "178436",
+      "timestamp": "2013-10-14T15:21:19+00:00",
+      "author": "steve6375",
+      "content": "I think it uses 4K sectors. Did you try the format tool that comes with it - there is an \u0027XP\u0027 option....\n\n"
+    },
+    {
+      "id": "178437",
+      "timestamp": "2013-10-14T15:34:15+00:00",
+      "author": "Leozack",
+      "content": "Apparently no software came with it?\n\n"
+    },
+    {
+      "id": "178438",
+      "timestamp": "2013-10-14T15:42:44+00:00",
+      "author": "steve6375",
+      "content": "[http://wdc.custhelp....rch/1/a_id/3868](http://wdc.custhelp.com/app/answers/detail/search/1/a_id/3868 \"External link\")\n\n"
+    },
+    {
+      "id": "178440",
+      "timestamp": "2013-10-14T15:49:17+00:00",
+      "author": "Leozack",
+      "content": "Surely 1 partition (of 3TB size) is less likely to be viewable from a DOS environment booted via USB stick or less likely to be bootable itself in such an environment? Or does the WD software enable such booting natively? I\u0027ll get someone to look into it in the meantime\n\n"
+    }
+  ]
+}

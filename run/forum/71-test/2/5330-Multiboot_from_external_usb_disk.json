@@ -1,0 +1,22 @@
+{
+  "id": "5330",
+  "title": "Multiboot from external usb disk",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "40908",
+      "timestamp": "2008-07-31T15:29:04+00:00",
+      "author": "wago",
+      "content": "Hi everybody. My question goes like this: I had several .iso images (Hirens boot CD v9.5, Knoppix 5.1.1, Norton Ghost Rescue Disk and Windows XP USB Edition) and an external usb hard drive of 60 GB.  \nI would like to know is there is a way to put those .iso images in my external disk and boot from it. The idea is: once the external disk booted it should shows a menu in which I can choose one of the above mentioned .iso files to boot.  \nI had read some manuals but none explain what I want to do.  \nThanks in advance for the hand. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "40920",
+      "timestamp": "2008-07-31T16:50:47+00:00",
+      "author": "was_jaclaz",
+      "content": "This must be the most frequent asked question around! ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n1) Hiren\u0027s Boot CD is considered WAREZ and you will get NO support for it on this Forum.  \n2) Any form of XP/PE based .iso can ONLY be booted through RAMDISK booting, which requires some files from Server 2003 SP1 or R2 besides lots of RAM.  \nSince not building your own PE is as well considered illegal, and, while building, creating instead of the .iso a normal PE on HD is effortless, there should be reasons to want to boot a .iso, which is a bit more complex and needs additional files (and License)  \n3) Knoppix should be possible by extracting kernel and initrd and modifying some settings  \n4) There are several versions of \"Norton Ghost\" cannot say without more info  \n\nSearch and browse the board, there are several threads related to this, besides in the present \"Multibooting\" forum, in the grub4dos sub-forum too:  \n[http://www.boot-land...hp?showforum\u003d66](http://www.boot-land.net/forums/index.php?showforum\u003d66 \"External link\")  \n\njaclaz   \n"
+    }
+  ]
+}

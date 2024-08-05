@@ -1,0 +1,52 @@
+{
+  "id": "17290",
+  "title": "Want to Boot LiveXP/7 from 320GB usb 2.0 External HDD !!",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "158267",
+      "timestamp": "2012-07-26T10:00:48+00:00",
+      "author": "Uvais",
+      "content": "hello ppls..i want to make Bootable Partition OR Complete 320 GB External USB 2.0 hdd .can anyone guide me ?  \n\nThanks ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)   \n"
+    },
+    {
+      "id": "158268",
+      "timestamp": "2012-07-26T10:22:22+00:00",
+      "author": "steve6375",
+      "content": "[http://www.rmprepusb...rials/win7onusb](http://www.rmprepusb.com/tutorials/win7onusb \"External link\")   \n"
+    },
+    {
+      "id": "158274",
+      "timestamp": "2012-07-26T14:23:57+00:00",
+      "author": "Uvais",
+      "content": "Hello Steve;  \n\nI don\u0027t want to Complete format my hdd; and want to boot using .ISO...i have created a 6GB NTFS/Active/Primary Partition...and i want to use that partition as a bootable....  \n..my question is there any way to install Grub on 6GB partition and boot using .ISO ?  \n\nThanks   \n"
+    },
+    {
+      "id": "158276",
+      "timestamp": "2012-07-26T14:39:24+00:00",
+      "author": "steve6375",
+      "content": "Tutorial #47 does not say you have to completely format the hard disk.  \nIf you have a separate partition why does it have to be an ISO?  \nWhat ISO do you want to boot to (WinPE, full Windows - which flavour) ?  \n**Why** do you want to do this?   \n"
+    },
+    {
+      "id": "158277",
+      "timestamp": "2012-07-26T14:48:24+00:00",
+      "author": "Uvais",
+      "content": "Hello;  \n\nI want to boot from Win7PE_SE \\\u0026 LiveXP (using multiboot menu like Grub)   \n"
+    },
+    {
+      "id": "158283",
+      "timestamp": "2012-07-26T16:09:22+00:00",
+      "author": "steve6375",
+      "content": "Try Make_PE3 [http://www.rmprepusb...orials/make_pe3](http://www.rmprepusb.com/tutorials/make_pe3 \"External link\") to make an ISO file (you will need to add the folders to the drive to from the MULTI folder)   \n"
+    },
+    {
+      "id": "158299",
+      "timestamp": "2012-07-26T18:25:46+00:00",
+      "author": "Uvais",
+      "content": "**Topic Solved** ![:victory:](http://reboot.pro/public/style_emoticons/default/victory.gif) ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n\u003cbr /\u003e\n\n\u003e Try Make_PE3 [http://www.rmprepusb...orials/make_pe3](http://www.rmprepusb.com/tutorials/make_pe3 \"External link\") to make an ISO file (you will need to add the folders to the drive to from the MULTI folder)  \n\n\u003cbr /\u003e\n\nThanks for your Support ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)  \n\nI already makes my HDD\u0027s first partition bootable and added ISO\u0027s using Make USB..... ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif)  \n\nEverything is working like a charm ![:clap:](http://reboot.pro/public/style_emoticons/default/clap.gif)  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![boot.PNG](http://reboot.pro/uploads/monthly_07_2012/post-45477-0-96812700-1343327819_thumb.png)](http://reboot.pro/uploads/monthly_07_2012/post-45477-0-96812700-1343327819.png \"boot.PNG - Size: 132.82KB\"){#ipb-attach-url-13780-0-89715600-1676066565}\n\n"
+    }
+  ]
+}

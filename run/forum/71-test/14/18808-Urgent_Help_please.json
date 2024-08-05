@@ -1,0 +1,64 @@
+{
+  "id": "18808",
+  "title": "Urgent Help please",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "176103",
+      "timestamp": "2013-08-21T21:13:28+00:00",
+      "author": "blademaster",
+      "content": "Hey,\n\nLemme explain my situation....I have two computer on lan...so one pc\u0027s cd drive wasnt responding so i wanted to format that, hence form other pc I was using win2flash and my pc restarted and im getting error grldr error also its 230am in india and i need to make this pc proper by 8 am before this office starts....God help me plsssssss\n\n![:(](http://reboot.pro/public/style_emoticons/default/sad.png):(![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\n\nP.S I have Xp and One pc is working and i can slave the hdd and see the c partition only of the grubdos os\n\n"
+    },
+    {
+      "id": "176104",
+      "timestamp": "2013-08-21T21:18:15+00:00",
+      "author": "steve6375",
+      "content": "I don\u0027t think God posts here very often, but if you want help you will have to explain more clearly what you are trying to do. Is it install XP on a system, or clone an XP system, boot from USB to install XP, ??? or what???\n\n"
+    },
+    {
+      "id": "176107",
+      "timestamp": "2013-08-21T21:34:02+00:00",
+      "author": "blademaster",
+      "content": "Hey, Call the originally working HDD as HDD1 and other as HDD2\n\nSo I was trying to make a bootable usb **FOR**HDD2 from HDD1(both being connected on different PC) and I may have misclicked in win2flash somewhere....\n\nSo now my HDD2 is working as I borrowed my friends CD drive and Now on HDD1 Im getting that Error of no GRLDR and my all data is on HDD1 partition2....SO since my HDD2 is working i tried connecting HDD1 on slave on HDD2 and the sad part is I cant see the second partition.\n\nSo i don\u0027t know what to do...Im damn scared....pls advice or else my father will kill me in 5 hrs if he wont find his data...\n\n"
+    },
+    {
+      "id": "176108",
+      "timestamp": "2013-08-21T21:56:50+00:00",
+      "author": "0scar",
+      "content": "Try a free partition recovery:\n\n[http://www.bing.com/...\\\u0026sp\u003d-1\\\u0026qs\u003dn\\\u0026sk\u003d](http://www.bing.com/search?q\u003dpartition+recovery\u0026form\u003dTMXARH\u0026mkt\u003des-ar\u0026scope\u003d\u0026pq\u003dpartition+recovery\u0026sc\u003d4-18\u0026sp\u003d-1\u0026qs\u003dn\u0026sk\u003d \"External link\")\n\n"
+    },
+    {
+      "id": "176109",
+      "timestamp": "2013-08-21T21:58:07+00:00",
+      "author": "blademaster",
+      "content": "\u003e Try a free partition recovery:\n\u003e\n\u003e [http://www.bing.com/...\\\u0026sp\u003d-1\\\u0026qs\u003dn\\\u0026sk\u003d](http://www.bing.com/search?q\u003dpartition+recovery\u0026form\u003dTMXARH\u0026mkt\u003des-ar\u0026scope\u003d\u0026pq\u003dpartition+recovery\u0026sc\u003d4-18\u0026sp\u003d-1\u0026qs\u003dn\u0026sk\u003d \"External link\")\n\ncan u please elaborate\n\n"
+    },
+    {
+      "id": "176110",
+      "timestamp": "2013-08-21T22:26:10+00:00",
+      "author": "genetix",
+      "content": "Well, if you installed windows and it deleted the secondary partition you need some sort of recover tool to get it back, data is still there. In any case of direct USB installation of Windows OS, if there would be secondary partitions and you would format first partition all second partition infos will be cleaned out.\n\nFastest you get that information and you are able to recover would be some free recover tool (there are more advanced ones, but you probably won\u0027t need them on this situation). Something like Partition Wizard 8 would probably even do. Just install it under \u0027Wizard\u0027 \\\u003e \u0027Partition Recover Wizard\u0027 \\\u003e do a quick scan on about 20480 sectors after the space windows formatted and you most likely find the partition to recover which windows misplaced (Assuming my explained above case is correct). If not do quick scan on full drive until you find the partition(s) you\u0027ve lost (because there is backup mbr on end of drive, if the partition was on start of the drive and that table is corrupted or bad right now) .\n\n**Edited by genetix, 21 August 2013 - 10:35 PM.**\n"
+    },
+    {
+      "id": "176111",
+      "timestamp": "2013-08-21T22:34:03+00:00",
+      "author": "saddlejib",
+      "content": "Have\u0027nt seen god for a while \"But Hey\" ,\n\nCan\u0027t say no.\n\nUse partition or data recovery tools, don\u0027t forget the old \"maxim\" not from the drive your trying to recover.\n\n"
+    },
+    {
+      "id": "176112",
+      "timestamp": "2013-08-21T23:14:05+00:00",
+      "author": "blademaster",
+      "content": "Ok guys i edited the boot.ini in HDD1 and added default\u003dC:\\\\glrdr and booted the system voila... but now the biggest problem is I cant see my other partition which has my data...please advice...\n\nand also now whenever I boot my PC im booting through GRUB 0.4.4\n\n"
+    },
+    {
+      "id": "176118",
+      "timestamp": "2013-08-22T07:30:23+00:00",
+      "author": "steve6375",
+      "content": "see [http://www.cgsecurit...g/wiki/TestDisk](http://www.cgsecurity.org/wiki/TestDisk \"External link\")\n\nIf you can\u0027t recover the partition you will need to get the files off of it (copy onto a large USB HDD if you have one) - See [http://www.rmprepusb...s/file_recovery](http://www.rmprepusb.com/tutorials/file_recovery \"External link\")\n\nIt may be able to recover the partition but be careful and don\u0027t write anything to the disk/partition table unless you are sure it looks like it has correctly detected the deleted partition.\n\nIf in doubt, post back here.\n\n"
+    }
+  ]
+}

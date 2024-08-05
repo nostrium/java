@@ -1,0 +1,82 @@
+{
+  "id": "21802",
+  "title": "Issue Booting any ISO/DD on External USB SSD",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "207128",
+      "timestamp": "2018-07-06T18:22:01+00:00",
+      "author": "AlexW13",
+      "content": "Hey I am having an issue trying to Boot an Image/any image in this matter with Rufus onto my external USB SSD T5. When I boot up my PC from USB using Bios I get this error \"Selected boot device not available\".\n\nI have succefully Booted a different USB Device using the same Image on (DD Mode). I have also tested the SSD T5 on a different computer using the same method and it boots up no problem so its only this computer that it doesnt boot from.\n\nIt is acting like my Bios doesnt want to recognize this Drive for some reason (on Boot only) or rufus is possibly putting the Image on at a different location then my Other USB Device and bios cant find it.\n\nI have the latest Bios Version and have also re-installed it to make sure it wasnt corrupt or anything. I noticed when I Connected the SSD T5 to my computer it is reading it as a \"Disk Drive\" instead of \"Removable disk drive\" so I dont know if this has anything to do with it.\n\nCurrent Bios Settings:\n\nBoot Sequence Order: **1.** USB Device **2.** Onboard or USB Floppy Drive **3.** Onboard or USB CD-ROM Drive **4.** 01D00 LUNOATA SAMSUNG SSD\n\nSAS Controller: Enabled\n\nDiskette Drive: USB\n\nSATA Operation: AHCI\n\nSMART Reporting: Enabled\n\nUSB Controller: Enabled\n\nFastBoot: Disabled\n\nSamsung Portable SSD T5 USB Device (SSD)  \nManufacturer SAMSUNG  \nHeads 16  \nCylinders 121,601  \nTracks 31,008,255  \nSectors 1,953,520,065  \nSATA type SATA-III 6.0Gb/s  \nDevice type Fixed  \nATA Standard ACS2  \nSerial Number S3USNK0JA00631W  \nFirmware Version Number MVT41P1Q  \nLBA Size 48-bit LBA  \nPower On Count 254 times  \nPower On Time 16.8 days  \nSpeed Not used (SSD Drive)  \nFeatures S.M.A.R.T., NCQ, TRIM, SSD  \nMax. Transfer Mode SATA III 6.0Gb/s  \nUsed Transfer Mode SATA III 6.0Gb/s  \nInterface USB (SATA)  \nCapacity 931 GB  \nReal size 1,000,204,886,016 bytes  \nRAID Type None  \nComputer Info: Dell Precision T7500  \nMotherBoard: Dell Inc. 06FW8P  \nStorage: 238GB ATA SAMSUNG SSD PM81 SCSI Disk Device (SATA (SSD) (windows 7 installed currently)\n\n"
+    },
+    {
+      "id": "207129",
+      "timestamp": "2018-07-06T19:07:32+00:00",
+      "author": "steve6375",
+      "content": "Try connecting another bootable USB drive as well as the T5.\n\nThen boot to the other device to DOS or grub4dos for BIOS access.\n\ne.g.\n\nBoot to an Easy2Boot USB drive and use the Utilities Menu - \u0027List BIOS disks\u0027 to see if the BIOS recognises it.\n\n"
+    },
+    {
+      "id": "207130",
+      "timestamp": "2018-07-06T19:08:52+00:00",
+      "author": "steve6375",
+      "content": "The T5 user manual says\n\u003e The T5 was developed for use with Windows OS and Mac OS  \n\u003e PCs and mobile devices. When connected to devices other  \n\u003e than those, the T5 may not be recognized or use of its  \n\u003e features may be restricted depending on their level of  \n\u003e support.\n\n"
+    },
+    {
+      "id": "207132",
+      "timestamp": "2018-07-06T20:48:42+00:00",
+      "author": "AlexW13",
+      "content": "Thanks I will have to try that tonight and see if it recognises it. I am connected to a Windows OS PC (Windows 7). I cant even boot a windows 7 install disc from USB from the T5 on the Dell Precision T7500 but works fine on a MSI WT70 Laptop (Windows 7) using the T5. The Bios is newer on the WT70 so I am guessing this has something to do with it.\n\n"
+    },
+    {
+      "id": "207133",
+      "timestamp": "2018-07-06T21:02:22+00:00",
+      "author": "steve6375",
+      "content": "You have disabled secure boot and enabled CSM/Legacy BIOS?   \n"
+    },
+    {
+      "id": "207134",
+      "timestamp": "2018-07-06T21:20:02+00:00",
+      "author": "AlexW13",
+      "content": "I actually dont have those options in my Bios (Dell Bios A16) . The Bios doesnt support UEFI at all and there is no EFI setting I could find.\n\n**Edited by AlexW13, 06 July 2018 - 09:27 PM.**\n"
+    },
+    {
+      "id": "207135",
+      "timestamp": "2018-07-06T21:32:45+00:00",
+      "author": "steve6375",
+      "content": "The bios has Fastboot so it must be fairly recent. Does it MBR boot from other USB drives.   \n"
+    },
+    {
+      "id": "207136",
+      "timestamp": "2018-07-07T02:01:07+00:00",
+      "author": "AlexW13",
+      "content": "Ya I can MBR boot from another Usb flash drive with no issues. It\u0027s only the T5 device on the Dell Precision T7500 in which it won\u0027t boot from.\n\n**Edited by AlexW13, 07 July 2018 - 02:04 AM.**\n"
+    },
+    {
+      "id": "207142",
+      "timestamp": "2018-07-07T09:31:08+00:00",
+      "author": "Wonko the Sane",
+      "content": "Sometimes (not often but it is possible) it could be a timing error of sorts.\n\nIs the behaviour the same both on boot and on reboot (i.e. after the USB port has been powered up for some time)?\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "207152",
+      "timestamp": "2018-07-07T14:21:48+00:00",
+      "author": "AlexW13",
+      "content": "I have to completely turn the Pc off and then plug the Usb device in for it too boot. If I just restart it, it doesn\u0027t detect the device. Atleast this is how it is with the other working flash drives. there is a power delay on the T5 I noticed like 5 sec before the light turns on.\n\n"
+    },
+    {
+      "id": "207155",
+      "timestamp": "2018-07-07T17:08:43+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I have to completely turn the Pc off and then plug the Usb device in for it too boot. If I just restart it, it doesn\u0027t detect the device. Atleast this is how it is with the other working flash drives. there is a power delay on the T5 I noticed like 5 sec before the light turns on.\n\nI meant.\n\nPlug the USB disk in the PC.\n\nAttempt to boot from it.\\[1\\]\n\nIf failed (the device is not detected) instead of switching off the PC, try restarting it and attempt again booting from the disk.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n\\[1\\] this - on different BIOSes may mean BOTH change device boot order (setting the USB as first device) in BIOS settings OR press a \"hotkey\" (often F11 or F12) to change on-the-fly the device to boot from, and in some cases a same device works only in one way and not in the other\n\n"
+    },
+    {
+      "id": "207165",
+      "timestamp": "2018-07-08T08:45:14+00:00",
+      "author": "Blackcrack",
+      "content": "today have any bios a bootmenu where provide a Bootmenu from the drives where be detected.\n\nthis is in the manual of Bios descripted , enabling this menu and calling by the boot it is mostly abled in the bios, if not must be enabled in the bios (what it is normally writed in the biosmanual) so, if it is enable can you call the bootmenu via F8, F9 or F10,11 or 12,\n\nbut this is wrote in the biosmanual. If you have or be in able to call the Bootmenu, do you see your usb-disk too, if USB-Disk\u0027s supported (in mostly cases like the usb-stick\u0027s) and there it is also the possible for direct selecting to boot..\n\nif works not, it\u0027s there something wrong on the partition..\n\nbest regards\n\nBlacky\n\n"
+    }
+  ]
+}

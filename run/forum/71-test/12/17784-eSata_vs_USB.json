@@ -1,0 +1,28 @@
+{
+  "id": "17784",
+  "title": "eSata vs USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "163205",
+      "timestamp": "2012-11-21T07:12:06+00:00",
+      "author": "wildcaribou",
+      "content": "Hello Forum Experts,  \n\nI have a ISO that was made with Winbuilder. I have it booting from a external Hard drive that supports Esata and USB 2.0. It\u0027s able to boot fine when connected to the eSata port. However, when I try to boot it using the USB ports on my laptop I get the dreaded \"stop 7B BSOD\". I tried updating the Sata drivers but I still get the same 7B BSOD. Weird how it boots fine from eSata but not from USB. Has anybody ran into this problem before?  \n\nThanks!   \n"
+    },
+    {
+      "id": "163209",
+      "timestamp": "2012-11-21T08:42:21+00:00",
+      "author": "Sha0",
+      "content": "\u003e I have a ISO that was made with Winbuilder. I have it booting from a external Hard drive that supports Esata and USB 2.0. It\u0027s able to boot fine when connected to the eSata port. However, when I try to boot it using the USB ports on my laptop I get the dreaded \"stop 7B BSOD\". I tried updating the Sata drivers but I still get the same 7B BSOD. Weird how it boots fine from eSata but not from USB. Has anybody ran into this problem before?  \nIt\u0027s not weird at all. **Microsoft Windows** will use **SATA** drivers for SATA and **USB** drivers for USB. Updating SATA drivers will not affect your results if you are booting from USB. I\u0027d suggest creating **CriticalDeviceDatabase** entries for your USB hardware and finding out what USB drivers you need.  \n\nAlso, please specify what you are building with **WinBuilder** , including project name and operating system version.   \n"
+    },
+    {
+      "id": "163235",
+      "timestamp": "2012-11-22T02:20:45+00:00",
+      "author": "wildcaribou",
+      "content": "Thanks Sha0! I got it working by rebuilding Win7PE. I\u0027m not sure what happen the first time around. I appreciate your reply.   \n"
+    }
+  ]
+}

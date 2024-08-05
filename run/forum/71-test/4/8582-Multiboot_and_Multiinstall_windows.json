@@ -1,0 +1,46 @@
+{
+  "id": "8582",
+  "title": "Multiboot and Multi-install windows",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "73061",
+      "timestamp": "2009-07-30T03:56:15+00:00",
+      "author": "thinhinsight",
+      "content": "Well, I have been surfing around and look for way to make a multiboot and multi-install external HDD for use of repairing/backuping PC and laptops.  \n\n1. Is there any way to make a multi windows installations external HDD which I can boot from and choose what version of Windows I want to install? That is, can I prepare an external HDD with partitions for windows 98, xp, vista, 7 installations and somehow create a boot.ini file so that I can choose what version I would like to install?  \n\n2. Through some of the tutorials, I have been successfully installed and run my windows xp on my external HDD. Is there any way I can combine this with the one described in (1). That is I want an external HDD with one windows xp partition while at the same time contains multiple windows installations (on different partitions) so that I can choose which one to install or boot to xp.  \n\nIs it possible?  \n\nThanks for your help. ![:idea:](http://reboot.pro/public/style_emoticons/default/idea.gif)   \n"
+    },
+    {
+      "id": "73069",
+      "timestamp": "2009-07-30T07:44:08+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e 2. Through some of the tutorials, I have been successfully installed and run my windows xp on my external HDD. Is there any way I can combine this with the one described in (1). That is I want an external HDD with one windows xp partition while at the same time contains multiple windows installations (on different partitions) so that I can choose which one to install or boot to xp.  \n\u003e\n\u003e Is it possible?\n\nStart looking at the threads by **wimb** :  \n[http://www.msfn.org/...?\\\u0026showforum\u003d157](http://www.msfn.org/board/index.php?\u0026showforum\u003d157 \"External link\")  \n[http://www.msfn.org/...howtopic\u003d111406](http://www.msfn.org/board/index.php?showtopic\u003d111406 \"External link\")  \n[http://www.msfn.org/...howtopic\u003d121446](http://www.msfn.org/board/index.php?showtopic\u003d121446 \"External link\") \\\u003c-this one is the one that most likely is what you are looking for  \n\nLatter will bring you back here:  \n[http://www.boot-land...?showtopic\u003d5306](http://www.boot-land.net/forums/?showtopic\u003d5306 \"External link\")  \n\nTake your time, you need to adapt it to use, instead of the PE (LiveXP) used in the original project, your existing install of XP on the USB (or simply add anyway LiveXP or another PE to your USB device).  \n\njaclaz   \n"
+    },
+    {
+      "id": "73151",
+      "timestamp": "2009-07-30T17:44:47+00:00",
+      "author": "ktp",
+      "content": "Each of the following operations is already possible today as you should already know:  \n- Boot full XP from USB HDD (Dietmar\u0027s method, USBoot...)  \n- Boot full Vista from USB HDD (USBootwatcher)  \n- Boot full Windows 7 from USB HDD (USBootwatcher)  \n- Install XP from USB HDD (WinSetupFromUSB...)  \n- Install Vista from USB HDD (diskpart, or grub4dos iso emulation)  \n- Install Windows 7 from USB HDD (diskpart, or grub4dos iso emulation)  \n- Boot UBCD4Win/BartPE from USB HDD (/minint/setupldr.bin)  \n\nThe difficulty is to combine all of them on the same USB HDD, each item could even  \nbe with mulitple occurrences (e.g. several boot XP, install XP Home, XP Pro, 32-bit, 64-bit version, BartPE + UBCD4Win + XPE...),  \nThis is not a problem if a DVD is used (apart from space problem \\\u003c\u003d 4.7GB) using cdshell/bcdw/EasyBoot etc... (maybe Bluray disc could solve this in the future when all PCs will be equipped).  \n\nFor USB HDD, a solution appears naturally to me: grub4dos (note: maybe Syslinux could do this too).  \nMultiple Vista/Windows 7 installs does not cause a problem to grub4dos thanks to iso emulation (hd32) or (0xff).  \nMultiple XP installs are more problematic as far as I know due to directories name colliision like:  \n\\\\$WIN_NT$.\\~BT\\\\  \n\\\\$WIN_NT$.\\~LS\\\\  \nI can see a bypass: use Sysprep-ed disk images of each desired XP (you can use OfflineSysprep  \n[http://www.911cd.net...hp?showforum\u003d43](http://www.911cd.net/forums//index.php?showforum\u003d43 \"External link\") ).  \nthen restore the image first. Then on boot either with DevicePath set  \nto C:\\\\Drivers directories ( [http://www.vernalex....scn/index.shtml](http://www.vernalex.com/tools/spdrvscn/index.shtml \"External link\") ), or running automatically (RunOnceEx) some tools like DriverForge  \n[http://www.msfn.org/...er-t109019.html](http://www.msfn.org/board/Project-Driver-Installer-t109019.html \"External link\")  \nor DP_install_tool.cmd from DriverPacks  \n( [http://forum.driverp...id\u003d20159#p20159](http://forum.driverpacks.net/viewtopic.php?pid\u003d20159#p20159 \"External link\") )  \nCommon disk images could be done with Ghost, DriveSnapshot, DriveImage XML, Acronis True Image etc...  \n\nAn additional advantage using disk image is that it is much faster (about 10 min) than standard manual XP install (39 minutes). All the desired settings, fixpacks, hotfixes, additional applications (Office...) will be there after restoring the disk image. Each XP could be prepared using virtual machine like VMware.  \n\n\u003cbr /\u003e\n\nSample grub4dos menu.lst:  \n\n```\n#\n\ntitle BartPE/UBCD4Win \u0026#40;OfflineSysprep, backup/restore disk image...\u0026#41;\n\nfind --set-root --ignore-floppies --ignore-cd /minint/setupldr.bin\n\nchainloader /minint/setupldr.bin\n\n \n\n#\n\ntitle Boot full Windows XP\n\nfind --set-root --ignore-floppies --ignore-cd /ntldr\n\nchainloader /ntldr\n\n \n\n#\n\ntitle Boot Windows Vista\n\nfind --set-root --ignore-floppies --ignore-cd /bootmgr\n\nchainloader /bootmgr\n\n \n\n#\n\ntitle Windows 7\n\n# windows7.tag is a tag file to locate Windows 7 partition\n\nfind --set-root --ignore-floppies --ignore-cd /windows7.tag\n\nchainloader +1\n\n \n\n#\n\ntitle Install Windows XP - 1st/2nd part  \u0026#40;cf. WinSetupFromUSB\u0026#41;\n\nroot \u0026#40;hd0,0\u0026#41;\n\nconfigfile /winsetup.lst\n\nsavedefault\n\n \n\n#\n\ntitle Install Windows 7 \u0026#40;32-bit\u0026#41;\n\nfind --set-root --ignore-floppies --ignore-cd --ignore-floppies /iso/WindowsSeven_x86.iso\n\nmap /iso/WindowsSeven_x86.iso \u0026#40;hd32\u0026#41;\n\nmap --hook\n\nchainloader \u0026#40;hd32\u0026#41;\n\n \n\n#\n\ntitle Install Windows 7 \u0026#40;64-bit\u0026#41;\n\nfind --set-root --ignore-floppies --ignore-cd --ignore-floppies /iso/WindowsSeven_x64.iso\n\nmap /iso/WindowsSeven_x64.iso \u0026#40;hd32\u0026#41;\n\nmap --hook\n\nchainloader \u0026#40;hd32\u0026#41;\n\n \n\n#\n\ntitle Install Vista Home\n\nfind --set-root --ignore-floppies --ignore-cd --ignore-floppies /iso/VistaHome.iso\n\nmap /iso/VistaHome.iso \u0026#40;hd32\u0026#41;\n\nmap --hook\n\nchainloader \u0026#40;hd32\u0026#41;\n\n \n\n#\n\ntitle Install Vista Ultimate x64\n\nfind --set-root --ignore-floppies --ignore-cd --ignore-floppies /iso/VistaUltimate_x64.iso\n\nmap /iso/VistaUltimate_x64.iso \u0026#40;hd32\u0026#41;\n\nmap --hook\n\nchainloader \u0026#40;hd32\u0026#41;\n```\n\n\u003cbr /\u003e\n\nNotes :  \n- All iso files must be contiguous for use by grldr (use contig or WinContig to check/make contiguous).  \n- You need one NTFS logical partition for disk images and iso files (since they could be \\\u003e 4GB size, not supported by FAT32).  \n- You should cover every aspect about software licences.   \n"
+    },
+    {
+      "id": "73158",
+      "timestamp": "2009-07-30T18:24:18+00:00",
+      "author": "Scorpy",
+      "content": "HI   \n\nSorry if i did not get it right.  \n\n\u003cbr /\u003e\n\nIs this for your self ( your pc and laptops ) or is it to help someone els too.  \n\nif it is for your self.  \n\ninstall 1 os backit up remove os 1 install os 2 backit up and so on   \nAfterthat you can restor it whit the back up you have .  \n\nor am i thinking wrong.  \n\n\u003cbr /\u003e\n\nScorpy   \n"
+    },
+    {
+      "id": "73306",
+      "timestamp": "2009-08-01T01:59:36+00:00",
+      "author": "thinhinsight",
+      "content": "thank you all for your reply (esp. ktp - your post best fits my need). now i can get going.   \n"
+    },
+    {
+      "id": "73482",
+      "timestamp": "2009-08-03T00:38:06+00:00",
+      "author": "nagy elsonbaty",
+      "content": "thanks for your explain   \n"
+    }
+  ]
+}

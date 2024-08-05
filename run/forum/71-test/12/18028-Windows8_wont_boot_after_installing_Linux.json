@@ -1,0 +1,58 @@
+{
+  "id": "18028",
+  "title": "Windows-8 wont boot after installing Linux",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "166142",
+      "timestamp": "2013-01-19T05:57:39+00:00",
+      "author": "twohot",
+      "content": "**The Machine?:** Dell Inspiron (intel-i7) with 8GB RAM, 1TB HDD, GPT-partitioning, and UEFI boot\n\n**The Process?:** I installed Fedora Linux (version 18) from a non-EFI USB-drive hoping to achieve dual-booting between Win-8 and Fedora. I tried to preserve the original partitioning structure by squeezing the installation between the OS partition and the recovery partition. I ended up with the following GPT table:\n\n```\n[EFI system (FAT)]  [Another System Partition (FAT)]  [Microsoft Reserved Partition (Unknown)]  [Recovery Environment (NTFS)]  [Basic Data (actually Windows -- NTFS)]  [BIOS-boot (Unknown)]  [Linux (/home EXT4)]  [Fedora-18 (root  EXT4)]  [Linux (swap EXT4)]  [Windows Recovery Environment (NTFS)]\n```\n\n\u003cbr /\u003e\n\n**The result?:** Windows-8 does not show up on GRUB. The machine is essentially a Linux-only machine which wasn\u0027t the intention. However, contents of the above partitions are still intact. Linux boots only on Legacy BIOS mode. Once I set the BIOS to EFI nothing works. The Windows Boot Manager on the BIOS boot menu does nothing\n\n**The request:** How do I restore Windows Booting without reinstallation on this machine?. I would still like to dual-boot with Fedora-18. \\*NOTE: I backed up the recovery program from within Windows before embarking on this adventure. The resultant EFI USB from the backup utility doesn\u0027t help much to the best of my knowledge.\n\n"
+    },
+    {
+      "id": "166145",
+      "timestamp": "2013-01-19T08:23:21+00:00",
+      "author": "wimb",
+      "content": "Not a solution of your present problem, but here is some info on UEFI MultiBoot of Windows 8 and Linux.\n\nI used USB-harddisk with Standard MBR partition table and FAT32 Boot partition and NTFS System partition.\n\n**UEFI Multiboot USB - Windows 8 and Linux Parted Magic**   \n\n[http://reboot.pro/to...e-2#entry165182](http://reboot.pro/topic/17877-uefi-windows-8-bios-grub4dos-multiboot-usb-harddisk/page-2#entry165182 \"\")\n\n[http://reboot.pro/to...t-usb-harddisk/](http://reboot.pro/topic/17877-uefi-windows-8-bios-grub4dos-multiboot-usb-harddisk/ \"\")\n\n"
+    },
+    {
+      "id": "166180",
+      "timestamp": "2013-01-19T19:43:47+00:00",
+      "author": "Sha0",
+      "content": "\u003e **The Machine?:** Dell Inspiron (intel-i7) with 8GB RAM, 1TB HDD, GPT-partitioning, and UEFI boot\n\u003e\n\u003e **The Process?:** I installed Fedora Linux (version 18) from a non-EFI USB-drive\n\nI think you meant a non-**GPT** USB storage device. A USB storage device can be neither **BIOS** nor **(U)EFI**; it\u0027s not a computer.\n\n\u003e hoping to achieve dual-booting between Win-8 and Fedora. I tried to preserve the original partitioning structure by squeezing the installation between the OS partition and the recovery partition. I ended up with the following GPT table:\n\u003e\n\u003e ```\n\u003e [EFI system (FAT)]  [Another System Partition (FAT)]  [Microsoft Reserved Partition (Unknown)]  [Recovery Environment (NTFS)]  [Basic Data (actually Windows -- NTFS)]  [BIOS-boot (Unknown)]  [Linux (/home EXT4)]  [Fedora-18 (root  EXT4)]  [Linux (swap EXT4)]  [Windows Recovery Environment (NTFS)]\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e **The result?:** Windows-8 does not show up on GRUB. The machine is essentially a Linux-only machine which wasn\u0027t the intention. However, contents of the above partitions are still intact. Linux boots only on Legacy BIOS mode. Once I set the BIOS to EFI nothing works. The Windows Boot Manager on the BIOS boot menu does nothing\n\u003e\n\u003e **The request:** How do I restore Windows Booting without reinstallation on this machine?. I would still like to dual-boot with Fedora-18. \\*NOTE: I backed up the recovery program from within Windows before embarking on this adventure. The resultant EFI USB from the backup utility doesn\u0027t help much to the best of my knowledge.\n\nPlease use **gdisk** or another GPT partitioning tool to report here which partition is marked as active, if any. Please **mount** each **FAT** or EFI system partition and list the directory contents of each, possibly with:\n\n```\ncd /mnt/mountpoint \u0026\u0026 find .\n```\n\n**GRUB** will have placed itself as a file called **BOOT** *\\** **.EFI** in one of the FAT or system partitions. **BootMgr** will have done the same thing on one of the partitions, or GRUB might have overriden it. Reporting these directory contents here will probably reveal more information.\n\n"
+    },
+    {
+      "id": "166196",
+      "timestamp": "2013-01-19T22:23:14+00:00",
+      "author": "twohot",
+      "content": "Made Progress. I uninstalled Fedora (with Legacy BIOS Boot) and installed it with EFI-support. Now Grub lists Windows-8 on the boot menu. The only problem is that the Windows entry throws some errors:\n\n```\nerror: can\u0027t find command \u0027drivemap\u0027\nerror: invalid EFI File path\n\nPress any key to continue ....\n```\n\nThat\u0027s a pointer, I think. What next?\n\nI also have some partitioning details produced by bootinfoscript (sourceforge):\n\n[http://paste.stg.fed...roject.org/3312](http://paste.stg.fedoraproject.org/3312 \"External link\")\n\n"
+    },
+    {
+      "id": "166202",
+      "timestamp": "2013-01-20T04:16:32+00:00",
+      "author": "Sha0",
+      "content": "\u003e That\u0027s a pointer, I think. What next?\n\u003e\n\u003e I also have some partitioning details produced by bootinfoscript (sourceforge):\n\u003e\n\u003e [http://paste.stg.fed...roject.org/3312](http://paste.stg.fedoraproject.org/3312 \"External link\")\n\nThe **bootinfoscript** output is very useful for observing your partition layout, but how about the other suggestions?\n\n"
+    },
+    {
+      "id": "166204",
+      "timestamp": "2013-01-20T05:00:24+00:00",
+      "author": "twohot",
+      "content": "\u003cbr /\u003e\n\n\u003e cd /mnt/mountpoint \\\u0026\\\u0026 find .\n\n\u003cbr /\u003e\n\nIsn\u0027t something missing in that command? What is it finding?\n\n"
+    },
+    {
+      "id": "166241",
+      "timestamp": "2013-01-20T22:49:55+00:00",
+      "author": "twohot",
+      "content": "++**MORE PROGRESS:**++   \n\nBoth OSes now boot on the machine. Fedora boots fine via GRUB while Windows-8 boots fine via the Windows Boot Manager -- which is accessible by pressing F2 for \"boot options\" after powering-up. GRUB shows a Windows-8 entry but choosing that option throws the error message mentioned above and, of course, Windows Boot Manager doesnt even think fedora exists on the machine.  \n\n**The desired behaviour is for both OSes to be booted from the GRUB menu.**   \n\nAny ideas?\n\n"
+    },
+    {
+      "id": "166353",
+      "timestamp": "2013-01-22T04:17:12+00:00",
+      "author": "twohot",
+      "content": "This issue was conquered yesterday morning. **So, what was the fix?**  \n\n1. Discovered that the current version of os-prober (12.2) does not support chainloading of another EFI bootloader, therefore it was generating a faulty menu entry for Win-8. First step was to disable os-prober  \n\n   ```\n   echo GRUB_DISABLE_OS_PROBER\u003dtrue \u003e\u003e /etc/default/grub\n   ```\n\n2. Establish the EFI boot partition holding the Windows boot manager and probe it for string hints search parameter (in my case it was: \"/efi/Boot/bootx64.efi\". I found lots of examples pointing to \"/boot/efi/EFI/Microsoft/Boot/bootmgfw.efi\". Note that, in fedora, the command for this is **grub2-probe** . Many examples online had **grub-probe**. This was confusing at first.  \n\n   ```\n   grub2-probe --target\u003dhints_string  /efi/Boot/bootx64.efi\n   ```\n\n3. Create a custom menuentry for Win-8 UEFI-GPT system in \"/etc/grub.d/40_custom\" and add the results of the above command on the **search** line. It will look like the following:  \n\n   ```\n   menuentry \"Microsoft Windows x86_64 UEFI-GPT\" {\n       insmod part_gpt\n       insmod fat\n       insmod search_fs_uuid\n       insmod chain\n       search --fs-uuid --no-floppy --set\u003droot \u003cinsert ouput from grub2-probe here\u003e\n       chainloader /efi/Boot/bootx64.efi\n   }\n   ```\n\n4. Run **grub2-mkconfig**as root using the output to replace the current EFI grub.cfg. grub2-mkconfig uses the contents of \"/etc/default/grub\" and \"/etc/grub.d/40_custom\" to create a working GRUB menu list  \n\n   ```\n   # grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg\n   ```\n\n5. **Reboot and Enjoy**\n\n\u003cbr /\u003e\n\n"
+    }
+  ]
+}

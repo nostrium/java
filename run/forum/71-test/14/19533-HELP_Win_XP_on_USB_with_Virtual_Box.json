@@ -1,0 +1,64 @@
+{
+  "id": "19533",
+  "title": "[HELP] Win XP on USB with Virtual Box",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "181969",
+      "timestamp": "2014-02-01T14:30:27+00:00",
+      "author": "Akikako",
+      "content": "Hi, I\u0027m on Linux, but I need a Win system, so I trying to make a bootable VHD with Win XP on a external usb-drive with no success...\n\nHere my process:\n\n1- I started a virtual machine with Win XP on Virtual Box, this VM has 3 partition: **A** is that for Win XP system, **B** for the setup of the VHD and **C** for the VHD and the ISO of Win XP Setup disk.\n\n2- I run **VHD_XP_Create** and i set as boot drive **B** and as system drive **C**;\n\n3- I reboot the VM and I did all the process for the setup of Win XP on the WHD and it worked with no error;\n\n4- When the setup is finished, I copied the VHD on the USB drive and run USB_XP_Fix on the VHD copied and i set the boot drive as the USB drive, no error here.\n\n5- I reboot my real pc and I boot on USB.\n\n6- I load the VHD, but all I have is a black screen;\n\nI repeat the process **a lot** of times, but I have always the same result: a black screen.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "181972",
+      "timestamp": "2014-02-01T14:59:49+00:00",
+      "author": "wimb",
+      "content": "Is your USB-Stick already made bootable e.g. with Grub4dos Boot Menu or Boot Manager Menu ?\n\nIf the USB-Stick is already bootable with one of these menu\u0027s,\n\nthen you can use UEFI_MULTI.exe to make the USB-Stick bootable with your VHD copied already to USB.\n\nUEFI_MULTI will make the necessary entries for the boot menu\u0027s\n\n[http://reboot.pro/to...boot-usb-drive/](http://reboot.pro/topic/18182-uefi-multi-make-multi-boot-usb-drive/ \"\")\n\nOtherwise you must first use UFD_FORMAT.exe to make USB-Stick bootable with Grub4dos Menu\n\nand then copy your VHD again to USB and use UEFI_MULTI to make the boot menu entries.\n\n[http://reboot.pro/to...140-ufd-format/](http://reboot.pro/topic/19140-ufd-format/ \"\")\n\n[http://reboot.pro/to...ble-usb-drives/](http://reboot.pro/topic/14908-ufd-format-and-boot-usb-make-bootable-usb-drives/ \"\")\n\nUEFI_MULTI.exe and UFD_FORMAT.exe are programs that run in Windows OS.\n\nMaking Boot Manager menu requires Windows 7/8/7PE as OS. Grub4dos Menu is added also.\n\nIn other cases only Grub4dos Boot Menu is made.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\n"
+    },
+    {
+      "id": "181975",
+      "timestamp": "2014-02-01T15:39:32+00:00",
+      "author": "Akikako",
+      "content": "I think I have grun4dos\n\n![30ay.jpg](http://imagizer.imageshack.us/v2/320x240q90/703/30ay.jpg)\n\nAfter this I select the third row and I get this black screen\n\n![3m4c.jpg](http://imageshack.com/a/img845/1581/3m4c.jpg)\n\nNo cursor, nothing...\n\n"
+    },
+    {
+      "id": "181993",
+      "timestamp": "2014-02-02T07:26:52+00:00",
+      "author": "wimb",
+      "content": "OK, so your stick is booting with Grub4dos menu.  \nWhat happens if you select the fourth option that will load the VHD into RAMDISK and then boot from RAMDISK ?  \nYou have installed XP in VHD using a virtual machine (which is not advisable).  \nIn that case the drivers to boot XP from real machine might be missing or not yet installed.  \nHow did you prepare your XP Setup Source ?  \nIn any case Chipset and MassStorage DriverPacks must be integrated into your XP Setup CD ISO file,  \nso that the drivers for all real hardware can be used.  \nSection 2. How to prepare XP Setup Source ? - Prepare XP Setup ISO file with integrated UpdatePack and DriverPacks  \n[http://reboot.pro/to...hd/#entry172481](http://reboot.pro/topic/18547-vhd-xp-setup-install-xp-in-vhd/#entry172481 \"\")  \n\n\u003e Use DPsBase.exe to Integrate DriverPacks Chipset + Processor + MassStorage + LAN + WLAN DriverPacks  \n\u003e which will then be located in OEM Folder in your XPSOURCE folder.  \n\u003e (settings Disc - Method 2 - GuiRunOnce - Enable KTD for the DriverPacks I will Select)  \n\u003e\nIf you want to boot the XP VHD as FILEDISK then it is much better to use portable USB- harddisk instead of USB-Stick,  \nsince the speed and performance of running XP on USB-Stick is rather poor.\n\n"
+    },
+    {
+      "id": "182004",
+      "timestamp": "2014-02-02T19:26:25+00:00",
+      "author": "Akikako",
+      "content": "When i choose RamDisk, it happen the same thing: black screen.\n\nI use a prepared ISO with DriverPacks.\n\nI use a usb hard disk.\n\nOne another thing: when I launch in Safe Mode, the load stops at System32\\\\Drivers\\\\Mup.sys.\n\n"
+    },
+    {
+      "id": "182009",
+      "timestamp": "2014-02-02T20:29:07+00:00",
+      "author": "wimb",
+      "content": "Google gives a lot of info on mup.sys\n\nMost likely there is a problem with some USB-hardware e.g. mouse or keyboard or ....\n\nSolution: remove most USB-hardware if possible.\n\nRemove USB-keyboard after making selection in Grub4dos menu.\n\nAttach mouse and keyboard after booting when XP Desktop is present.\n\nIt takes some minues before all hardware is silently installed (see device manager)\n\n"
+    },
+    {
+      "id": "182038",
+      "timestamp": "2014-02-03T08:25:10+00:00",
+      "author": "wimb",
+      "content": "I followed your procedure and used Virtual Box.\n\nI can say that the transfer from Virtual Box hardware to real hardware is really troublesome.\n\nI can boot now to Desktop, but my PS2/USB mouse working in Virtual Box is not working on real hardware.\n\nAlso a BSOD occurred and then after reboot\n\nI connected another USB mouse and then I can see that most hardware is installed, but not all (HDD Audio conflict).\n\nSo my conclusion is that this is not the way to go :smile:\n\nVirtual Box is is introducing to many conflicts with real hardware.\n\nIt is strongly advised to use real hardware for Install of XP in VHD.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\n"
+    },
+    {
+      "id": "182039",
+      "timestamp": "2014-02-03T08:55:55+00:00",
+      "author": "steve6375",
+      "content": "If you run sysprep under the VM and then booted on a real system, would that fix the hardware detection (or would it break it?).\n\n"
+    },
+    {
+      "id": "182049",
+      "timestamp": "2014-02-03T11:39:45+00:00",
+      "author": "wimb",
+      "content": "\u003e If you run sysprep under the VM and then booted on a real system, would that fix the hardware detection (or would it break it?).\n\nSure it can be tried to use sysprep, but in fact USB_XP_Fix.exe includes most of what is done by sysprep.\n\nWhat I mean is that CriticalDeviceDatabase registry entries and Services are added for all drivers of MassStorage DriverPack.\n\nThe present problem is not in recognition of MassStorage.\n\nFor real hardware there are a lot of conflicts in HD Audio and USB introduced by Virtual Box.\n\n"
+    }
+  ]
+}

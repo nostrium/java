@@ -1,0 +1,22 @@
+{
+  "id": "5692",
+  "title": "Getting \"Disk Error\" when trying to boot LiveXP from USB flash drive",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "44299",
+      "timestamp": "2008-09-12T16:45:19+00:00",
+      "author": "FiZiX",
+      "content": "I\u0027ve installed LiveXP to my 1GB flash drive using the BootSDI method with WinBuilder 074 Beta 4. However, I\u0027m getting this error when trying to boot from the key:  \n\n```\nDisk Error\n\nPress any key to restart\n```\n\n\u003cbr /\u003e\n\nI believe this error is thrown by NTLDR so I\u0027m pretty sure it\u0027s getting that far. Does anyone know what might cause this? I\u0027ve attached my log.  \n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003d287063ddfc43ec39396f1bd8f9efce06\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d6291 \"Download attachment\") [**log.rar**](http://reboot.pro/index.php?s\u003d287063ddfc43ec39396f1bd8f9efce06\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d6291 \"Download attachment\") **71.84KB** 315 downloads\n\n"
+    },
+    {
+      "id": "44314",
+      "timestamp": "2008-09-12T21:06:14+00:00",
+      "author": "FiZiX",
+      "content": "\u003e I\u0027ve installed LiveXP to my 1GB flash drive using the BootSDI method with WinBuilder 074 Beta 4. However, I\u0027m getting this error when trying to boot from the key:  \n\u003e\n\u003e ```\n\u003e Disk Error\n\u003e\n\u003e Press any key to restart\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e I believe this error is thrown by NTLDR so I\u0027m pretty sure it\u0027s getting that far. Does anyone know what might cause this? I\u0027ve attached my log.\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nNevermind, I got it working by just using PEtoUSB.   \n"
+    }
+  ]
+}

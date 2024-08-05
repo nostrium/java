@@ -1,0 +1,70 @@
+{
+  "id": "16855",
+  "title": "Windows PXE install; Multi-OS W2K to W8 (WAIK independent)",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "154215",
+      "timestamp": "2012-05-11T13:07:19+00:00",
+      "author": "patpat",
+      "content": "Small windows app that automatically creates a menu of several Microsoft OSs for network (PXE) install.  \nIt network installs from Windows 2000 to Windows 8  \nIt runs from Windows 2000 to Windows 8  \n(WAIK independent)  \n\nread here:  \n[http://www.vercot.co...indowsPXE1.html](http://www.vercot.com/~serva/howto/WindowsPXE1.html \"External link\")  \n\ncheers...   \n"
+    },
+    {
+      "id": "154221",
+      "timestamp": "2012-05-11T13:32:28+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Small windows app that automatically creates a menu of several Microsoft OSs for network (PXE) install.  \n\u003e\nNIce :smile:.  \nNot only for the alternate BINL and DHCP/TFTP server, but for the simple, clean, clear explanation of the process ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\nIf I may, however, one thing is \"PXE booting\", another two are \"RIS install\" and \"WDS install\", \"PXE install\" is AFAIK a \"neologism\", maybe you should add to the page the \"keywords\" \"PXe booting\", \"Ris Install\" and \"WDS install\" to get more hits by the search engines ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png).  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "154232",
+      "timestamp": "2012-05-11T14:47:58+00:00",
+      "author": "steve6375",
+      "content": "I just tried this using a Win7 WDS install. I have a home router and I used the proxyDHCP and ticked the BINL box (which I found must be done to generate the folders).  \nThe app must be exited and then re-run - I found the terminology of \u0027restart\u0027 confusing as you normally stop and restart services not apps. Why not just say \u0027quit the app and restart it\u0027? Anyway it worked like a dream ![:clap:](http://reboot.pro/public/style_emoticons/default/clap.gif)  \n\nPlease can you explain:  \n1. How does proxyDHCP work (when my router is the DHCP server)  \n2. How do you generate the winpe wim file that it boots  \n\n\u003cbr /\u003e\n\nP.S. you have to answer \u0027YES\u0027 to stop Windows Firewall from blocking the app when it is first run on a Windows 7 system.  \nAlso you should make it clear that Serva is a Windows app and should be run on a Windows system.  \n\nWell done again! ![:1st:](http://reboot.pro/public/style_emoticons/default/1st.gif)   \n"
+    },
+    {
+      "id": "154246",
+      "timestamp": "2012-05-11T15:55:59+00:00",
+      "author": "patpat",
+      "content": "@Wonko  \nYou are probably right; I\u0027ll add those keywords you mention  \n\n@steve6375  \nI\u0027ve purposely used \u0027restart\u0027 on the documentation trying to make people think of Serva as a service with a GUI but I\u0027ll consider your input on this.  \n\nAbout your proxyDHCP question I think it is explained within the how-to, anyway basically the proxyDHCP announces itself when answering client\u0027s DHCP DISCOVERY packet. Then the client receives 2 OFFERS one from your DHCP and one from Serva as proxyDHCP from the first offer the client will continue DHCP regular process in order to take the assigned IP address and net mask, from the second offer after a unicast transaction to the proxyDHCP on port 4011 will get the TFTP/BINL server address and the name of the bootstrap loader. Let me know if you have any further doubt on this.  \n\nAbout the winpe I generate, well it is just a \"cold edited\" version of the original Boot.wim what creates ServaBoot.wim.  \n\"cold edited\" means that I edit the wim \"w/o mounting the wim\" nor requiring any WAIK dependant tool either; that\u0027s why you can run Serva even on W2000 and it\u0027ll be able to edit the wim w/o a hitch...  \nThe same for the creation of the bcd; it is also programmatically made w/o using WAIK tools nor registry mounting hive files or things like that.  \n\nSomething you guys probably did not notice yet is TFTP transfer speed for Vista SP1 and up..  \nServa implements a new TFTP negotiated parameter \"windowsize\" used by Microsoft what speed-up TFTP transfers dramatically  \nHere the IETF [TFTP Windowsize option](http://datatracker.ietf.org/doc/draft-masotta-tftpexts-windowsize-opt/ \"External link\") draft  \nHere the [TFTP windowsize explanation](http://www.vercot.com/~serva/advanced/TFTP.html \"External link\")  \n\nBest  \nPat   \n"
+    },
+    {
+      "id": "154248",
+      "timestamp": "2012-05-11T16:12:18+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e About the winpe I generate, well it is just a \"cold edited\" version of the original Boot.wim what creates ServaBoot.wim.  \n\u003e \"cold edited\" means that I edit the wim \"w/o mounting the wim\" nor requiring any WAIK dependant tool either; that\u0027s why you can run Serva even on W2000 and it\u0027ll be able to edit the wim w/o a hitch...  \n\u003e The same for the creation of the bcd; it is also programmatically made w/o using WAIK tools nor registry mounting hive files or things like that.  \n**Wonko** (the Sane) reads the above as ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif):  \nI have created two pieces of program that can access respectively read/write a .wim file and a Registry hive (the BCD) without mounting them and without using any OS tools/WAIK tools, i.e. probably **the two most useful** (for MS OS tweaakers) **pieces of software ever made** and I use it internally to my app only. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)  \n\n![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "154251",
+      "timestamp": "2012-05-11T16:21:56+00:00",
+      "author": "steve6375",
+      "content": "Could you explain about this cold editing? Is it just patching bytes and if so how do you do it? I am sure many of us would be fascinated to know...   \n"
+    },
+    {
+      "id": "154253",
+      "timestamp": "2012-05-11T16:24:59+00:00",
+      "author": "steve6375",
+      "content": "Is it possible to easily boot to grub4dos using this utility as a TFTP PXE server?   \n"
+    },
+    {
+      "id": "154259",
+      "timestamp": "2012-05-11T17:04:37+00:00",
+      "author": "patpat",
+      "content": "\u003e i.e. probably the two most useful (for MS OS tweaakers) pieces of software ever made and I use it internally to my app only.  \nPlease understand that Serva has been arround for 2 years now but Serva Binl (Serva 2.0.0) is 3 days old...  \nI\u0027ve been thinking of probably releasing tiny console apps for wim editing \\\u0026 bcd creation but nothing concrete on this yet...  \n\n\u003cbr /\u003e\n\n\u003e Could you explain about this cold editing? Is it just patching bytes and if so how do you do it? I am sure many of us would be fascinated to know...  \nWell the wim info is (with some errors) out there and there are a couple of projects that even when they do not quite well edit a wim they expose the wim structure pretty well... From a technical point of view it is kind of what you said, open the wim tables, load them in memory, parse the table structure then edit the table.  \n\n\u003e Is it possible to easily boot to grub4dos using this utility as a TFTP PXE server?  \nyou can boot to grub4dos; Serva is a PXE server...  \nBut you cannot boot to grub4dos as a BINL server, when you check the BINL option Serva takes controll of everything including the bootstrap loder used (PXELINUX derivative). I decided to go with SYSLINUX because I already made custom versions of it for Jeoss Linux and it never let me down.   \n"
+    },
+    {
+      "id": "154265",
+      "timestamp": "2012-05-11T18:05:55+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Please understand that Serva has been arround for 2 years now but Serva Binl (Serva 2.0.0) is 3 days old...  \nYou mean that you are **727** days *LATE* ? ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) :wink: :smile:  \n\n\u003e I\u0027ve been thinking of probably releasing tiny console apps for wim editing \\\u0026 bcd creation but nothing concrete on this yet...  \nYes, yes, yes, yes ![:yahoo:](http://reboot.pro/public/style_emoticons/default/yahoo.gif) please do so :smile: (btw you have all the time the world - though less than 3 years ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif) to put together the two apps)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "154303",
+      "timestamp": "2012-05-12T12:36:18+00:00",
+      "author": "patpat",
+      "content": "\u003e You mean that you are **727** days *LATE*?\nyou are right ;-) ... but as you can surely guess assembling all the different pieces that make Serva 2.0 was very time consuming..  \n\n\u003e Yes, yes, yes, yes ![:yahoo:](http://reboot.pro/public/style_emoticons/default/yahoo.gif) please do so :smile: (btw you have all the time the world - though less than 3 years ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif) to put together the two apps)\nI\u0027ll do my best   \n"
+    }
+  ]
+}

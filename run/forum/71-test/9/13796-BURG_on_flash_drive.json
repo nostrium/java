@@ -1,0 +1,100 @@
+{
+  "id": "13796",
+  "title": "BURG on flash drive",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "121626",
+      "timestamp": "2011-02-07T00:05:01+00:00",
+      "author": "tummychow",
+      "content": "I\u0027m curious about how to install BURG to a flash drive. An executable utility exists for installing it to a system drive on Windows, but I\u0027m reluctant to try it on my main computer, and I have no other boxes to spare. There does appear to be a compilation system for BURG (makes sense since it appears to be open source) but I don\u0027t think this is the answer either.  \nHas anyone managed to make a BURG install for flash drives? I have a bootable BURG command line flash drive, but the menu system etc seem to be beyond me at the moment. If you made it work, how?  \n\nEDIT: I have asked on the burgloader forums here earlier: [http://www.burgloade...php?topic\u003d206.0](http://www.burgloader.com/bbs/index.php?topic\u003d206.0 \"External link\")  \nHowever I haven\u0027t gotten any answers as of yet.   \n\n**Edited by tummychow, 07 February 2011 - 12:05 AM.**\n"
+    },
+    {
+      "id": "121632",
+      "timestamp": "2011-02-07T04:44:52+00:00",
+      "author": "sambul61",
+      "content": "Can you create an empty .raw drive image in QEMU, then mount it in Windows or QEMU with ImDisk, format and install Burg onto it? Then copy any service image to it (like Acronis), and try to boot from it in QEMU.   \n"
+    },
+    {
+      "id": "121647",
+      "timestamp": "2011-02-07T10:39:31+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Can you create an empty .raw drive image in QEMU, then mount it in Windows or QEMU with ImDisk, format and install Burg onto it? Then copy any service image to it (like Acronis), and try to boot from it in QEMU.  \nNo, he cannot. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)  \nNot because he cannot ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif), but because an image mounted with IMDISK won\u0027t allow installing anything to the MBR, for the simple reason that there won\u0027t be **ANY** of the hidden sectors in the mounted image.  \n\nJFYI (so maybe next time you will know what to suggest):  \n\u003chttp://reboot.pro/11642/page__st__14\u003e  \n\u003chttp://reboot.pro/11642/page__st__40\u003e  \n\nPlease note how this info has ALREADY been pointed out to you:  \n\u003chttp://reboot.pro/13624/\u003e  \n\u003chttp://reboot.pro/13624/page__st__10\u003e  \n\nIf there is any difficult part in it ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif), you are welcome to ask for clarifications :wink:, possibly BEFORE sending other peeps on a wild goose chase ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif).  \n\n![:doh7:](http://reboot.pro/public/style_emoticons/default/doh7.gif)  \nWonko   \n"
+    },
+    {
+      "id": "121691",
+      "timestamp": "2011-02-07T16:21:17+00:00",
+      "author": "sambul61",
+      "content": "Wonko  \n\nIt sounds you are not used to warming friends as they rightfully expect. Now, you added this Sig to express your sensitivity to how others address your multitude of weaknesses. And then how do you behave? I\u0027ll watch for now... ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif) :smile:   \n\nWould you suggest, what\u0027s the best way to add something to your posts that you missed? As soon as a poster gets friendly to you, you become aggressive. You never admit to have gaps in your knowledge or posts, despite any human being\u0027s knowledge is extremely limited. You never say \"Thanks\", \"I learned something new\", \"I appreciate your suggestion\", and something along these lines to ANYONE. Yet as soon as a poster responds to you in your own style, you become depressed and melancholic, loose sharpness of mind. So, how people can amend or correct your posts without traumatizing you beyond believe? Pls suggest... ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\n\u003e You are very welcome to, especially if you will provide some actual proof of the \"incorrect\"... But don\u0027t expect to be thanked for it.  \n\u003e\n\u003e I am - as summed up in your nice words, an ungrateful bastard, I see no reason to change this nature of mine.... I am unfriendly towards you, but this is \"by design\", so do not expect a change to this, or, even better do not expect anything from me.\nLook at this... Do you intend to say \"Grasias\" to ANYONE to show signs of adapting to others in a seemingly non-familiar territory? Such behavior is a sure indicator of extreme discomfort with your own being. Are you comfortable with yourself my dear? In any case, why select irrelevant forum medium to look for \"enemies\"? People just want to share knowledge and ideas here. Why others should suffer from your rude attitude aimed at improving lost self-esteem? May be you need to be quarantined until hopefully restore sense of reality? ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \n\nWould it be more rational (and polite, thus contributing to your Sig goal) to address the OP directly with some constructive brief comments complemented by your lovely links instead of attacking other posters? ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "121709",
+      "timestamp": "2011-02-07T17:30:14+00:00",
+      "author": "Wonko the Sane",
+      "content": "I wonder of which friends you are talking about. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)  \n\nIf you are referring to the OP, I don\u0027t know if it is better to send him ***friendly*** on a wrong track or if it is better to ***grumpily*** warn him that the direction suggested is a dead end. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\nAFAICR, **tummychow** was assisted nicely in his initial problems:  \n\u003chttp://reboot.pro/13462/\u003e  \nuntil someone ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif) pointed him to something VERY experimental:   \n\u003chttp://reboot.pro/13462/page__st__46\u003e  \nwith which the \"someone\" has seemingly very little experience.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "121715",
+      "timestamp": "2011-02-07T17:45:38+00:00",
+      "author": "sambul61",
+      "content": "Its not a dead end. Apparently you among others offered a nice batch to show some light? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif) That\u0027s exactly what OP was looking for. So, why attack others instead of showing the OP solution he would benefit from?  \n\nI\u0027d like to consider every forum member to be your friend, including imaginary ones listed only in *Total Visitors* column. Otherwise, why exchange ideas? ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \n"
+    },
+    {
+      "id": "121726",
+      "timestamp": "2011-02-07T18:54:46+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Its not a dead end.   \nGood ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png).  \nSince you assisted the OP why don\u0027t you continue guiding him until he finds the solution that suits him?  \n\n\u003e Apparently you among others offered a nice batch to show some light? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)   \nI offered several (nice :wink:) batches over the time, as you like to point out so often they are all unfinished or not properly documented, so I doubt they could be of any help to anyone, expecially a new user that is trying - with your assistance ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif) - to run before having learned to walk.  \n\n\u003e That\u0027s exactly what OP was looking for. So, why attack others instead of showing the OP solution he would benefit from?  \nI doubt it, if I had a solution handy I might have provided it.  \nI know very little about BURG, but I know enough about IMDISK to explain how the suggested approach won\u0027t possibly work.  \n\n\u003e I\u0027d like to consider every forum member to be your friend, including imaginary once listed only in *Total Visitors* column.   \nGood consideration. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nI reserve the right to consider friends to be my friends and people that are not my friends, \"not friends\", this is a typical defect of old people, drawing lines on sand, and the like, you know.  \n\n\u003cbr /\u003e\n\n:smile:  \nWonko   \n"
+    },
+    {
+      "id": "121782",
+      "timestamp": "2011-02-08T00:40:04+00:00",
+      "author": "tummychow",
+      "content": "I\u0027m not for all the arguing business, but in any case, I\u0027m mostly curious as to how to do it. Particularly for the loopback feature (which, as I understand, is available in GRUB2 for accessing menu options built into any grub2 compatible image). I\u0027ve gotten stuff to work in Grub4DOS so far (although I cleared it all off to try out BURG on my experimentation drive; as noted in another thread, I bricked a precious 16gb drive and I\u0027m more careful with it now).  \n\nAnyway, I\u0027m wondering about the bucfg archive provided in the precompiled BURG ([http://www.burgloade...php?topic\u003d101.0](http://www.burgloader.com/bbs/index.php?topic\u003d101.0 \"External link\") the top part is all chinese, but the bottom part is english, and attached are some precompiled BURG bits). I\u0027ve managed to install a working BURG command line to flash drive, but not an actual BURG boot menu etc. Part of the installation seems to be unpacking an fbinst archive, bucfg, to the hidden partition. What I want to do is... unpack it to the main partition, so I can examine its contents (perhaps the cfg files to configure burg are hiding in there?). Is this even possible? I\u0027m kinda hoping that this is the answer to my problem, but since I don\u0027t have any specifics, I do have my doubts.   \n\n**Edited by tummychow, 08 February 2011 - 12:40 AM.**\n"
+    },
+    {
+      "id": "121786",
+      "timestamp": "2011-02-08T02:15:02+00:00",
+      "author": "sambul61",
+      "content": "tummyshow  \n\nThere are very few people on this forum who actually shared here any experience of working with Burg. But it would greatly benefit this place, if *bean* can run a Burg thread here and participate regularly. It would also allow to start some transition to Burg for many.  \n\nIf you know Chinese and participate on that forum, may be you can ask *bean* to bring his expertise here? That would bring broader attention to his very important work as I see it.  \n\nCan you look at that archive content with Universal Extractor? Do you want to look through these links *Wonko* mentioned above among other \"wonderful\" stuff? ![:buehehe:](http://reboot.pro/public/style_emoticons/default/buehehe.gif) They suggest how to create and mount a correct disk image, which can be used to install Burg onto without risking your Thumb\u0027s health.   \n"
+    },
+    {
+      "id": "121812",
+      "timestamp": "2011-02-08T11:47:23+00:00",
+      "author": "Wonko the Sane",
+      "content": "@tummychow  \nThe point here is that BURG is VERY experimental, largely UNdocumented (or mis-documented) and it is NOT (at the current status) suitable to the less experienced members.  \n\nThe configuration file for BURG is /boot/burg/burg.cfg:  \n[http://code.google.c...i/ManualInstall](http://code.google.com/p/burg/wiki/ManualInstall \"External link\")  \n[http://code.google.c...rationVariables](http://code.google.com/p/burg/wiki/ConfigurationVariables \"External link\")  \n\nIt\u0027s syntax is anyway very complex (or at least more complex than \"normal\" grub4dos one and at least as complex as GRUB2 one).  \n\nSuggesting to a newbie, unaware of the \"basics\" is not - as I see it - the right way to go, right now if you use just grub4dos or Syslinux you have mostly the same possibilities as the ones BURG offers, at the most you may want to add to grub4dos or Syslinux GRUB2 (or grub24dos) chainloading.  \n\nIn my opinion, you simply haven\u0027t (yet :wink:) enough knowledge to be able to tackle this particuar bootloader directly, you need to take baby steps, and get familiar with the commonly used procedures and tools which are by now documented.  \n\nWhat right now you have is a \"fancy\" or \"curiosity\" towards BURG (which is a good thing in itself ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif) ) that you won\u0027t be able to satisfy until you go all the way through the learning process of simpler and better documented tools.  \n\n@sambul61  \nJFYI, ***bean*** is already member of this Forum, under the nick of **bean123** since 2008, and I am pretty sure that if he wants (and has the time) to post here, he can do it without anyone asking.  \nBURG has anyway it\u0027s own dedicated Forum, which does comprises an English section:  \n[http://www.burgloader.com/bbs/](http://www.burgloader.com/bbs/ \"External link\")  \nso, there is no need to know Chinese to post there, and I am pretty sure that that forum was created in order to have all BURG related things posted there.  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "121856",
+      "timestamp": "2011-02-08T16:06:41+00:00",
+      "author": "sambul61",
+      "content": "tummychow  \n\nIf you want to learn Burg and Grub2, definitely experiment with it NOW. :wink: There is nothing that can happen with your Thumb, if you use HD Image to install Burg (possibly inside a VM), and play with that image in QEMU, or boot it from Grub4DOS. Did you check existing Menu Generators and Manuals for Grub2? Also [Burg Manager](https://github.com/ingalex/burg-manager/tree/master/burg-manager-latest \"External link\") is a promising tool. ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n\nPls ask *bean* to pay attention to this forum, as he\u0027s not that active in any ENG forums, while IMHO it would benefit a lot to his program broader use, and result in faster development of \"convenience\" tools and Guides making Burg more accessible for newbies.   \n"
+    },
+    {
+      "id": "121889",
+      "timestamp": "2011-02-08T22:42:06+00:00",
+      "author": "tummychow",
+      "content": "\u003e he\u0027s not that active in any ENG forums\nAn unfortunate truth...  \nRegarding GRUB2, I wasn\u0027t aware that you could use GRUB2 to boot from a flash drive. I also thought it didn\u0027t have the map commands available in Grub4DOS that were ideal for booting from UFD. How would I use it on a flash drive? Chainload from grub4dos?   \n"
+    },
+    {
+      "id": "121899",
+      "timestamp": "2011-02-09T06:20:12+00:00",
+      "author": "sambul61",
+      "content": "What I mean, you can look through Grub2 docs to better understand its config and the ways \\\u0026 tools to generate \\\u0026 manipulate it, since Burg has a similar approach to config. What holds you from installing Burg onto a disk image saved on your HD or Thumb, once you understand how to get \\\u0026 change its config? Somehow ppl manage to learn dealing with Grub2 in Linux, nobody died yet. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\nLook also at *Firadisk* and *WinVBlock* drivers that extend Grub4DOS capabilities in booting images - that\u0027s another approach to bypass existing G4D limitations when you need to. *VMLite Vboot* bootloader manages to extend G4D features in its own unique way. These are alternative to Burg use in Windows, but since Grub2 is a mainstream for Linux, learning Burg seems to work for both worlds.   \n"
+    },
+    {
+      "id": "122996",
+      "timestamp": "2011-02-21T21:05:01+00:00",
+      "author": "pokemon1",
+      "content": "It can be done in USB stick but I have done it in Ubuntu OS. I am not aware of installing it via Windows.  \n\nSteps to install burg in Ubuntu: [http://code.google.c...i/InstallUbuntu](http://code.google.com/p/burg/wiki/InstallUbuntu \"External link\")  \n\nOnce BURG is installed in host machine plugin USB stick and follow these steps;  \n1.Open a terminal and type sudo su  \n2.Type fdisk -l (and note which device is your USB)  \n3.Type mkdir /mnt/USB \\\u0026\\\u0026 mount /dev/sdx1 /mnt/USB (replacing x with your actual usb device)  \n4.Type burg-install --force --no-floppy --root-directory\u003d/mnt/USB /dev/sdx (replacing x with your actual USB device)  \n\nCheers,   \n\n**Edited by pokemon1, 21 February 2011 - 09:05 PM.**\n"
+    },
+    {
+      "id": "123002",
+      "timestamp": "2011-02-21T21:54:51+00:00",
+      "author": "tummychow",
+      "content": "I actually kinda follow that, although unfortunately I\u0027m on windows. I will see about compiling BURG on my end in Windows using the instructions on its website.   \n"
+    }
+  ]
+}

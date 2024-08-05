@@ -1,0 +1,16 @@
+{
+  "id": "13296",
+  "title": "MOST compatible usb thumb drive.V2",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "116283",
+      "timestamp": "2010-12-11T07:13:16+00:00",
+      "author": "mateuszek",
+      "content": "So it is:  \nKINGSTON Data Traveler 2.0 2GB  \nwith chip SKYMEDI SK6281.  \nDownload this:  \n[http://flashboot.ru/...s-file-139.html](http://flashboot.ru/Files-file-139.html \"External link\")(I am not sure but probably this tool works only on XP)  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\ncreate one LUN (fixed disk) and one CDROM drive, as cdrom image use for example vistape, have on it plop, grub files and some other files for testing.  \n\nOn this fixed lun install grub4dos or fbinst.  \n\nMost computer in my work boot it - most boot USB-CDROM (vistape) and this fixed disk lun is visible in grub.  \nIt is bootable even by AWARD 2008, 2009 without problems.  \n\nOldest computer i had - Award bios 2002 boot it too but not as cdrom so it is not load vistape image but it boot this fixed lun drive so i can have vistape on this fixed lun or better livexp for that old hardware and run it.  \n\nUnfortunately plop does not allow to boot such cdrom from his cdrom. He says : no cd in drive, so plop can not see usb-cdrom.  \n\nBut this is most compatible pendrive ever - if wont boot usb-cdrom he will boot usb-hdd.  \nSo it is better than LEXAR so far, all 25 computers from year 2002 - 2010 in my work - booted fine.   \n\nIf i find not bootable - i will try to find this thread and write it here.  \n\nSo kingston has better compatible chip than sandisk cruzer titanium - when doing the same, exactly thing (cdrom and disk with gonzor customizer) - bios hangs and need to force reset.  \nKingston works , sandisk - does not.  \n\nUSBDEVVIEW:  \n\nPort_#0005.Hub_#0005 SKY USB USB Device Mass Storage Yes Yes No No E:, K: 899000000000000025795903 2010-12-10 12:01:28 2010-12-11 08:24:49 1516 1603 2.00 08 06 50 USBSTOR USB Mass Storage Driver USBSTOR.SYS USB @usbstor.inf,%generic.mfg%;Compatible USB storage device 100 mA USB Mass Storage Device 6.1.7600.16385   \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nDEVMANVIEW:  \n\nSKY USB USB Device (Standard disk drives) disk DiskDrive Disk drives USBSTOR\\\\Disk\\\u0026Ven_SKY\\\u0026Prod_USB\\\u0026Rev_1.00\\\\899000000000000025795903\\\u00260 0x00000010 0x00000000 No Yes 2010-12-11 08:24:49 Disk drive 6.1.7600.16385 disk.inf disk_install.NT 2006-06-21 2010-12-10 12:01:50   \n\n\u003cbr /\u003e\n\nSKY USB USB Device (Standard CD-ROM drives) cdrom CDROM DVD/CD-ROM drives USBSTOR\\\\CdRom\\\u0026Ven_SKY\\\u0026Prod_USB\\\u0026Rev_1.00\\\\899000000000000025795903\\\u00261 0x00000010 0x00000000 No Yes 2010-12-11 08:24:49 CD-ROM Drive 6.1.7600.16385 cdrom.inf cdrom_install 2006-06-21 2010-12-10 12:01:52   \n\n**Edited by mateuszek, 11 December 2010 - 07:34 AM.**\n"
+    }
+  ]
+}

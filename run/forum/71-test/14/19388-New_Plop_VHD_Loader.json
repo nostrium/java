@@ -1,0 +1,46 @@
+{
+  "id": "19388",
+  "title": "New! Plop VHD Loader",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "180477",
+      "timestamp": "2013-12-13T11:20:38+00:00",
+      "author": "MedEvil",
+      "content": "Just saw something exciting at plop.at.  \nThe new Plop VHD Loader!  \n\nVHD loading for Windows, Linux and even DOS.  \n\nAt the moment it\u0027s just beta software, but given enough demand, i\u0027m sure it will be developed further.  \n\nRead here: [http://www.plop.at/en/vhdloader.html](http://www.plop.at/en/vhdloader.html \"External link\")  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "180479",
+      "timestamp": "2013-12-13T11:30:43+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Just saw something exciting at plop.at.  \n\u003e The new Plop VHD Loader!\n\nIt\u0027s not really \"new\", [http://www.plop.at/en/vhdloader.html](http://www.plop.at/en/vhdloader.html \"External link\")\n\u003e page update: 02/Dec/2010\n\u003e\nand unfortunately Elmar doesn\u0027t seem like very willing to further develop it:\n\n[http://reboot.pro/to...lop-vhd-loader/](http://reboot.pro/topic/13180-plop-vhd-loader/ \"\")\n\n[http://reboot.pro/to...474-vhd-loader/](http://reboot.pro/topic/15474-vhd-loader/ \"\")\n\n[https://forum.plop.a...opic,448.0.html](https://forum.plop.at/index.php/topic,448.0.html \"External link\")\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "180481",
+      "timestamp": "2013-12-13T12:33:06+00:00",
+      "author": "MedEvil",
+      "content": "\u003e page update: 02/Dec/2010\nUps, my bad. I just read 02/Dec and assumed it was this year.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n"
+    },
+    {
+      "id": "180483",
+      "timestamp": "2013-12-13T13:21:18+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Ups, my bad. I just read 02/Dec and assumed it was this year. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nSure, it can happen to everyone :smile:.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "180564",
+      "timestamp": "2013-12-15T15:36:43+00:00",
+      "author": "Sha0",
+      "content": "In my recollection, \"**VHD** \" wasn\u0027t in common vocabulary around these parts until **Microsoft** allowed you to boot from them. It\u0027s too bad that most people started using it to mean a sector-by-sector disk image, instead of the actual fancier file-format which Microsoft allowed. ![:wheelchair:](http://reboot.pro/public/style_emoticons/default/wheelchair.gif)  \n\nBut anyway, the product discussed in this thread is actually using the fancier thing, which I think is worth mentioning. Otherwise, **GRUB4DOS** can already do the sector-by-sector disk image, as we all know. :smile:  \n\nI might add that my **WvBootDD** project (an **NTLDR NtBootDD** \"driver\") was actually started with this goal in mind but only for **Windows** , so this **PLoP** product is definitely cool!   \n"
+    },
+    {
+      "id": "180576",
+      "timestamp": "2013-12-15T19:15:49+00:00",
+      "author": "Rootman",
+      "content": "Too bad it only supports FAT32 drives too, this would limit your VHD\u0027s to less than 4GB.\n\n"
+    }
+  ]
+}

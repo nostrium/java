@@ -1,0 +1,58 @@
+{
+  "id": "18196",
+  "title": "USB 3.0 to SATA / IDE 2.5\" 3.5\" HDD Hard Disk Drive Adapter",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "168230",
+      "timestamp": "2013-02-21T10:34:11+00:00",
+      "author": "liukuohao",
+      "content": "Hi,\n\nCurrently, I have successfully created USB 3.0 32GB Window 7 mobile pen drive\n\nwhich can be booted and run Windows 7 on itself, using my motherboad\u0027s USB 2.0 port.\n\nBut I found that the transfer speed is quite slow but still bearable.\n\nI am wondering has anyone try this product:\n\n[http://www.ebay.com/...\u003ditem5d39b3730f](http://www.ebay.com/itm/USB-3-0-to-SATA-IDE-2-5-3-5-HDD-Hard-Disk-Drive-Adapter-Converter-OTB-Win7-New-/400400020239?pt\u003dUS_Drive_Cables_dapters\u0026hash\u003ditem5d39b3730f \"External link\")\n\nMy question is really......whether has anyone try the adapter above,\n\nplug into motherboard that still has IDE interface............................\n\nNext, plug in a USB 3.0 pen drive to the adapter and boot off Windows 7\n\nvia the motherboard\u0027s IDE bus. Rather than using USB 2.0 port which\n\nI am currently using? Would this work? If it does work, then would it be\n\nany faster?\n\nThanks.\n\nRegards,\n\nliukuohao\n\n"
+    },
+    {
+      "id": "168231",
+      "timestamp": "2013-02-21T10:39:02+00:00",
+      "author": "steve6375",
+      "content": "Isn\u0027t this the other way round?\n\nYou plug it into an existing USB port and then you can attach IDE and SATA drives to it?\n\n"
+    },
+    {
+      "id": "168232",
+      "timestamp": "2013-02-21T10:47:07+00:00",
+      "author": "liukuohao",
+      "content": "Hi steve6375,\n\u003e Isn\u0027t this the other way round?\n\u003e\n\u003e You plug it into an existing USB port and then you can attach IDE and SATA drives to it?\n\nWell....at first glance, it seems the adapter has NO problem of plugging into\n\nan IDE socket, so that is why I posted this question to forum members, to\n\nconfirm this.\n\nOr perhaps not worth of trying since the bottleneck is really the writing speed\n\non the USB3.0 is something like 30Mb/s only, that is why I feel like it is running\n\nslow when installing programs/drivers onto the USB 3.0 pen drive (as my C drive)\n\nin Windows 7?\n\n**Edited by liukuohao, 21 February 2013 - 10:49 AM.**\n"
+    },
+    {
+      "id": "168233",
+      "timestamp": "2013-02-21T10:51:26+00:00",
+      "author": "steve6375",
+      "content": "It says\n\nSupports all 2.5\"and 3.5\" IDE, SATA and SATA II mass storage **drive**.\n\n* IDE drive connector for all 2.5\"/3.5\" IDE **drives**.\n* SATA drive connector for 2.5\"/3.5\" ATA/SATA**hard drive**.\n\nan no IDE or SATA connector is provided as you just plug it into a drive directly.\n\n"
+    },
+    {
+      "id": "168234",
+      "timestamp": "2013-02-21T10:55:49+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Hi steve6375,\n\u003e\n\u003e Well....at first glance, it seems the adapter has NO problem of plugging into\n\u003e\n\u003e an IDE socket, so that is why I posted this question to forum members, to\n\u003e\n\u003e confirm this.\n\nOr debunk it. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) :wink:\n\n**No**, that thingy (like any number of similar USB 2.0 simialr boxes, quite popular) is intended to allow to (temporarily) attach an IDE (read ATA/PATA) or SATA drive to a computer USB port, see the description:\n\n\u003e Advance USB 3.0/2.0 adapter for converting all internal IDE drives and SATA drives into external drives.  \n\u003e Supports bi-synchronous mode for operation with both SATA and IDE device simultaneously.\n\nthe box contains an USB controller that can \"drive\" PATA and SATA drives.\n\n\u003e Or perhaps not worth of trying since the bottleneck is really the writing speed\n\u003e\n\u003e on the USB3.0 is something like 30Mb/s only, that is why I feel like it is running\n\u003e\n\u003e slow when installing programs/drivers onto the USB 3.0 pen drive (as my C drive)\n\u003e\n\u003e in Windows 7?\n\nThe bottleneck is most probably the USB 2.0 bus speed on your computer\u0027s side.\n\nYou can get a PCI to USB 3.0 card that will remove this bottleneck (and then the slower part will be your USB 3.0 stick write speed), but it depends, the PCI in itself is slowish and a PCI-e would be adviced (also post some data about your motherboard).\n\nAND post the make/model of the stick, maybe it has been properly benchmarked and IF it is one of the \"slow\" ones you won\u0027t have much betterings even on a USB 3.0 connection ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png).\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "168236",
+      "timestamp": "2013-02-21T11:08:19+00:00",
+      "author": "steve6375",
+      "content": "\u003e You can get a PCI to USB 3.0 card that will remove this bottleneck (and then the slower part will be your USB 3.0 stick write speed), but it depends, the PCI in itself is slowish and a PCI-e would be adviced (also post some data about your motherboard).\n\u003e\n\u003e AND post the make/model of the stick, maybe it has been properly benchmarked and IF it is one of the \"slow\" ones you won\u0027t have much betterings even on a USB 3.0 connection ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png).\n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\u003e\n\u003e Wonko\n\nI don\u0027t know of an add-in PCI card that also has a BIOS ROM extension chip so that it will allow you to boot from it\u0027s USB 3.0 ports???\n\nMost Add-in PCI USB 3 cards do not have this and therefore you cannot boot from their USB 3 ports.\n\n"
+    },
+    {
+      "id": "168237",
+      "timestamp": "2013-02-21T11:08:57+00:00",
+      "author": "liukuohao",
+      "content": "Hi Steve6375,\n\n\u003cbr /\u003e\n\n\u003e It says Supports all 2.5\"and 3.5\" IDE, SATA and SATA II mass storage drive. IDE drive connector for all 2.5\"/3.5\" IDE drives. SATA drive connector for 2.5\"/3.5\" ATA/SATA hard drive. an no IDE or SATA connector is provided as you just plug it into a drive directly.\n\n\u003cbr /\u003e\n\nOk, looks like you are right here. Hmm...\n\nHi The Finder\n\n\u003cbr /\u003e\n\n\u003e You can get a PCI to USB 3.0 card that will remove this bottleneck (and then the slower part will be your USB 3.0 stick write speed).\n\n\u003cbr /\u003e\n\nHmm.. what do you mean?\n\nBuy PCI card which USB 3.0 ports? Or it is actually PCI-E x1 card with USB3.0 port?\n\nCan you buy PCI card with USB3.0 ports? If such PCI card is available in the market,\n\nthen the next question does the BIOS on the motherboard detect the card and boot\n\nup from the pen drive which plugs into the USB 3.0 ports?\n\n"
+    },
+    {
+      "id": "168243",
+      "timestamp": "2013-02-21T12:04:05+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Can you buy PCI card with USB3.0 ports? If such PCI card is available in the market,\n\u003e\n\u003e then the next question does the BIOS on the motherboard detect the card and boot\n\u003e\n\u003e up from the pen drive which plugs into the USB 3.0 ports?\n\nYes (you can buy a PCI to USB 3.0 card):\n\n[http://www.addonics....ts/ad2u3pci.php](http://www.addonics.com/products/ad2u3pci.php \"External link\")\n\nWill it boot from BIOS?\n\nNo. (but an \"XP Kansas city shuffle\" ported to windows 7 would be most probably be possible)\n\nAnd anyway the speed of the port would be affected by the (lower speed) PCI bus.\n\nSame goes for PCI-e USB 3.0 cards, I don\u0027 t think there are any really available supporting BIOS extensions.\n\nBUT some may be able to EFI/UEFI boot.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    }
+  ]
+}

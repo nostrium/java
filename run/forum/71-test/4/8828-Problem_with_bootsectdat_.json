@@ -1,0 +1,16 @@
+{
+  "id": "8828",
+  "title": "Problem with bootsect.dat ?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "75860",
+      "timestamp": "2009-08-25T07:23:05+00:00",
+      "author": "Acris",
+      "content": "Hi everyone,   \n\nI installed the Recovery Console directly on the hard drive, but it does not work.  \nI have a SATA hard drive.  \nRecovery Console displays the following message: A DISK reader error occurred. :smile: ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n\nI \u0027ve modified TXTSETUP.SIF to add SATA DRIVERS. :smile:   \n\n\u003cbr /\u003e\n\nIaStor.sys  \n\n```\n\u0026#91;SourceDisksFiles\u0026#93;\n\niastor.cat \u003d 1,,,,,,,1,0,0\n\niastor.inf \u003d 1,,,,,,,1,0,0\n\niastor.sys \u003d 1,,,,,,4_,4,1,,,1,4\n\niastor.sys \u003d 1,,,,,,,1,0,0\n\niaahci.cat \u003d 1,,,,,,,1,0,0\n\niaahci.inf \u003d 1,,,,,,,1,0,0\n\n\n\n\n\n\u0026#91;HardwareIdsDatabase\u0026#93;\n\nPCI\\VEN_8086\u0026DEV_2922\u0026CC_0106 \u003d \u0026#34;iastor\u0026#34;\n\nPCI\\VEN_8086\u0026DEV_282A\u0026CC_0104 \u003d \u0026#34;iastor\u0026#34;\n\nPCI\\VEN_8086\u0026DEV_2829\u0026CC_0106 \u003d \u0026#34;iastor\u0026#34;\n\nPCI\\VEN_8086\u0026DEV_2822\u0026CC_0104 \u003d \u0026#34;iastor\u0026#34;\n\nPCI\\VEN_8086\u0026DEV_2821\u0026CC_0106 \u003d \u0026#34;iastor\u0026#34;\n\nPCI\\VEN_8086\u0026DEV_2682\u0026CC_0104 \u003d \u0026#34;iastor\u0026#34;\n\nPCI\\VEN_8086\u0026DEV_2681\u0026CC_0106 \u003d \u0026#34;iastor\u0026#34;\n\nPCI\\VEN_8086\u0026DEV_27C3\u0026CC_0104 \u003d \u0026#34;iastor\u0026#34;\n\nPCI\\VEN_8086\u0026DEV_27C6\u0026CC_0104 \u003d \u0026#34;iastor\u0026#34;\n\nPCI\\VEN_8086\u0026DEV_27C1\u0026CC_0106 \u003d \u0026#34;iastor\u0026#34;\n\nPCI\\VEN_8086\u0026DEV_27C5\u0026CC_0106 \u003d \u0026#34;iastor\u0026#34;\n\nPCI\\VEN_8086\u0026DEV_2653\u0026CC_0106 \u003d \u0026#34;iastor\u0026#34;\n\n\n\n\u0026#91;SCSI.Load\u0026#93;\n\niastor \u003d iastor.sys,4\n\n\n\n\u0026#91;FileFlags\u0026#93;\n\niastor.sys \u003d 16\n```\n\n\u003cbr /\u003e\n\nbut the recovery console doesn\u0027t work. I have the same message.  \n\nI think the problem may be bootsect.dat file, do you think?  \n\nCan you help me to RUN my recovery console?  \n\nBe a simple way to properly rebuild this file?  \nor replaced?  \n\n\u003cbr /\u003e\n\nThis file is a log forum my MBR DISK.  \n\n```\nMBRWiz - Version 2.0 **beta** for Windows XP/2K3/PE\t\t April 30, 2006\n\n   Copyright \u0026#40;c\u0026#41; 2002-2006 Roger Layton\t\t\t\t\thttp\u0026#58;//mbr.bigr.net\n\n\n\nDisk\u0026#58; 0   Size\u0026#58; 153G CHS\u0026#58; 19457 255 63\n\nPos MBRndx Type/Name  Size Active Hide Start Sector   Sectors\tDL Vol Label\n\n--- ------ ---------- ---- ------ ---- ------------ ------------ -- ----------\n\n  0\t0\t12-DIAG\t6.1G   No\tNo\t\t\t63   12,594,897 -- \u003cNone\u003e   \n\n  1\t1\t07-NTFS\t146G   Yes   No\t12,595,200  299,982,848 C\u0026#58; ACER\n```\n\n\u003cbr /\u003e\n\nThank a lot for your replies ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "id": "20730",
+  "title": "HDD won\u0027t boot unless an OS is installed",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "195391",
+      "timestamp": "2015-09-15T10:22:11+00:00",
+      "author": "Uneitohr",
+      "content": "I\u0027m having a strange issue at work and I want to understand why it behaves as it does.\n\nWe have some DELL and HP laptops that will not recognize their hdd drives unless an OS already exists on them.\n\nFor example if I take a machine, format it and reboot, it says it does not have an hdd installed. It is not listedin BIOS as well as any windows PE (install disk or otherwise), it is just not there.\n\nIt is seen correctly only on linux distros and applications based on them, such as clonezilla.\n\nIt is not tied to the bootable flag or partition table, I have tried that with gparted multiple times.\n\nI have also tried disabling UEFI in BIOS and no change.\n\nWhat could be causing this?\n\n"
+    },
+    {
+      "id": "195392",
+      "timestamp": "2015-09-15T10:51:33+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "I don\u0027t have the answer, but I did have the very same issue last year with an HP Pavilion 2325DX. If no OS was installed and my internal drives didn\u0027t have partitions/partition tables, the BIOS simply wouldn\u0027t see them at all. I posted [http://superuser.com...t1146932_862980](http://superuser.com/questions/862980/secondary-internal-hdd-vanishes-reappears-randomly-in-windows-8-1?noredirect\u003d1#comment1146932_862980 \"External link\"), which is somewhat unrelated, but it got alot of views/answers, you might find it interesting (or get some ideas there at least).\n\nI was never able to determine the root cause of any of this.\n\n"
+    },
+    {
+      "id": "195393",
+      "timestamp": "2015-09-15T10:54:13+00:00",
+      "author": "Uneitohr",
+      "content": "Thanks for the link. That power issue certainly fits the symptomps but doesn\u0027t explain why is it visible in linux. I can write to it, re-partition it and it works ok. Just not in windows.\n\n**Edited by Alexander Ceed, 15 September 2015 - 11:25 AM.**\n"
+    },
+    {
+      "id": "195395",
+      "timestamp": "2015-09-15T11:32:29+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "Are the disks visible when viewed from CMD in Windows Setup? At the main screen hit Shift+F10 to open a command console, type \u0027diskpart\u0027 then \u0027list disk\u0027, \u0027list vol\u0027, and \u0027list par\u0027 after selecting a disk. You say only Linuxes can see the disks, but didn\u0027t mention anything about Windows..........\n\nThe quickest way to get them seen is to just install whatever OS you want, in either UEFI or BIOS mode. This may just be a bug, sloppy BIOS coding, or perhaps it\u0027s just because your BIOS is coded to only see/list disks that have OSes on them (weird and unlikely but possible).\n\nWhat happens if you create an empty formatted partition on the disks (no OS and using whatever filesystem you want)? What about an empty, small FAT32 partition (EFI) at the beginning of the disk? Perhaps maybe install Windows bootcode to an empty NTFS partition (MBR only)? Are they still not listed?\n\n"
+    },
+    {
+      "id": "195396",
+      "timestamp": "2015-09-15T11:45:50+00:00",
+      "author": "Uneitohr",
+      "content": "They are not visible in diskpart. No program in windows detects it.\n\n\u003e The quickest way to get them seen is to just install whatever OS you want, in either UEFI or BIOS mode. This may just be a bug, sloppy BIOS coding, or perhaps it\u0027s just because your BIOS is coded to only see/list disks that have OSes on them (weird and unlikely but possible).\n\u003e\nSure but it takes time some time to deploy an OS. Maybe if we had something small like puppy linux fully unattended.\n\n\u003e What happens if you create an empty formatted partition on the disks (no OS and using whatever filesystem you want)? What about an empty, small FAT32 partition (EFI) at the beginning of the disk? Perhaps maybe install Windows bootcode to an empty NTFS partition (MBR only)? Are they still not listed?\n\u003e\nYes, I wrote that at the beginning of the post. It doesn\u0027t work unless a full OS is installed.\n\n**Edited by Alexander Ceed, 15 September 2015 - 11:46 AM.**\n"
+    },
+    {
+      "id": "195398",
+      "timestamp": "2015-09-15T12:09:58+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "Are the disks recognized only when Windows is installed? What about Linux/others? I ask because I used to have a notebook that would only boot Windows in UEFI mode, but not other OSes. It seems that it was either a BIOS bug, or it was intentionally coded to only recognize/boot MS\u0027s EFI loader files. Manually setting a default loader via efibootmgr or otherwise didn\u0027t help (GRUB2 in my case), it was simply ignored and booted Windows regardless. I had to work around this by renaming MS\u0027s EFI files (bootmgfw.EFI and bootx64.EFI), then replacing them with GRUB2\u0027s EFI loader file with the same name/location.\n\n"
+    },
+    {
+      "id": "195400",
+      "timestamp": "2015-09-15T13:34:24+00:00",
+      "author": "Uneitohr",
+      "content": "I only tried with windows and that was when I removed the drive from the original laptop.\n\n"
+    },
+    {
+      "id": "195401",
+      "timestamp": "2015-09-15T14:34:10+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "Now that I think about it, your topic needs a better title. I understand what your problem really is, but the topic title says \"HDD won\u0027t boot unless an OS is installed\". Of course it won\u0027t \\*boot\\* without an OS! It\u0027s just funny the way you worded it is all. A better title would have been \" BIOS not recognizing internal HDD when no OS is installed\". Hope you find the solution, in any case.\n\n"
+    },
+    {
+      "id": "195403",
+      "timestamp": "2015-09-15T16:26:39+00:00",
+      "author": "Uneitohr",
+      "content": "Yes but there must be something we missed.\n\nWhat I\u0027m doing now is to remove the drive and place it in another laptop (that works), install windows on it and when it finishes the deployment I shut it down (before it installs drivers and setups hardware settings). Then place the hdd again in the original laptop and continue the install. It works, but the amount of time and work...\n\n"
+    },
+    {
+      "id": "195408",
+      "timestamp": "2015-09-16T13:39:52+00:00",
+      "author": "Uneitohr",
+      "content": "Using gparted I have tried to:\n\n* change partition scheme mbr/gpt\n* format as ntfs/ext2,ext4\n* change partition scheme and leave unpartitioned\n* set active boot flag\n\n... and nothing. Why does it boot with an OS? The partition is empty but bootable.\n\nI know the BIOS chaninloads the bootloader off system drive. Based on that logic it should work.\n\n"
+    },
+    {
+      "id": "195411",
+      "timestamp": "2015-09-16T21:38:49+00:00",
+      "author": "Zoso",
+      "content": "hi Alexander Ceed,  \n\nIve seen similar behavior on dell laptops. would boot from certain USB sticks but only with internal HDD was connected. another would only boot from USB when the OEM HDD was present but not when the HDD was changed.  \n\ni think member/developer Steve675 (rmprepusb.com) made a tool that reads bios to usb communication in order to identify problematic usb booting. it may work on HDD also but I havnt used it, only remember seeing it mentioned here somewhere and thought it would be useful if I ever ran into the same problems so it might be worth looking for.  \n\none thing you might try is zeroing the problematic HDD and the re-initializing it from the OS that is working via a usb adapter then replace it and try re-install.   \n"
+    },
+    {
+      "id": "195414",
+      "timestamp": "2015-09-17T07:29:45+00:00",
+      "author": "Uneitohr",
+      "content": "\u003e one thing you might try is zeroing the problematic HDD and the re-initializing it from the OS that is working via a usb adapter then replace it and try re-install.\n\nI tried DBAN on it and nothing.\n\n"
+    },
+    {
+      "id": "195416",
+      "timestamp": "2015-09-17T09:11:17+00:00",
+      "author": "steve6375",
+      "content": "If the drive is not listed in the BIOS, then it is not going to boot.\n\nThe first step is to get it listed in the BIOS.\n\nIt may be a timing problem. Is there an option for a spin-up delay on the HDD settings or some other way of slowing down the BIOS (e.g. disable fast-boot or enable memory test on POST, etc.\n\nTry BIOS setup defaults.\n\nAlways switch **off** the system before attempting each test (don\u0027t reboot or ctrl-alt-del).\n\n"
+    },
+    {
+      "id": "195418",
+      "timestamp": "2015-09-17T10:45:50+00:00",
+      "author": "Uneitohr",
+      "content": "\u003e Always switch **off** the system before attempting each test (don\u0027t reboot or ctrl-alt-del).\n\u003e\nI already tried that, many times.\n\u003e\n\u003e It may be a timing problem. Is there an option for a spin-up delay on the HDD settings or some other way of slowing down the BIOS (e.g. disable fast-boot or enable memory test on POST, etc.\n\u003e\nI added a 60-sec delay and nothing.\n\n"
+    },
+    {
+      "id": "195426",
+      "timestamp": "2015-09-18T10:47:46+00:00",
+      "author": "Uneitohr",
+      "content": "Well I think I stumbled upon a solution but needs more testing.\n\nI used WinNTSetup, and installed Windows 8 on an external HDD. Booted off the external drive and entered in Disk Management, Initialized the disk in GPT and formatted it as normal. And it worked.\n\nMy theory is that you must initialize the disk with the same OS that you want to install (i.e 8 -\\\u003e 8, 8.1 -\\\u003e 8.1). Can anyone confirm this?\n\n"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "id": "16431",
+  "title": "bootabling above 8GB USB Flash ?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "149512",
+      "timestamp": "2012-03-01T08:23:13+00:00",
+      "author": "mbzadegan",
+      "content": "i have a 16GB flash usb disk and i formated it fat32.  \ni bootabled it with syslinux and when i booted from it and select may favorite menu it could not find my initramfs file !! ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)  \ni tried it with 8GB flash usb and booted without any error . :smile:  \nwhich bootloaders can supported above 8GB mass storage ? ( GRUB family , Syslinux , ... )   \n"
+    },
+    {
+      "id": "149516",
+      "timestamp": "2012-03-01T10:42:20+00:00",
+      "author": "steve6375",
+      "content": "First try booting using QEMU - install RMPrepUSB and click on QEMU button - does it boot? If so then your BIOS is at fault.  \nNext test your USB 16GB drive using RMPrepUSB - Quick Size Test (destroys all data but is quick) - or H2TESTW - which is much slower but doesn\u0027t test used portions.  \n\npls report back here...   \n"
+    },
+    {
+      "id": "149519",
+      "timestamp": "2012-03-01T11:47:44+00:00",
+      "author": "mbzadegan",
+      "content": "Well , :smile: when i bootabled my 16GB flashusb disk and test with qemu of RMPrepUSB , IT booted OK and run my USB Linux under QEMU window !!  \nRMPrepUSB quick size test PASSED OK and without any error .  \nHow could i bootabled it for PC not for QEMU ?  \nMy BIOS good worked for 8GB usb but for 16GB only appear my splash image and boot menu .   \n\n**Edited by mbzadegan, 01 March 2012 - 11:50 AM.**\n"
+    },
+    {
+      "id": "149521",
+      "timestamp": "2012-03-01T12:17:30+00:00",
+      "author": "steve6375",
+      "content": "Use Plop!  \nAdd a menu entry to grub4dos menu.lst to run plopbt.bin. Then use Plop to boot back to the USB drive again. Then choose the menu entry to boot to your linux.  \nSee [here](https://sites.google.com/a/rmprepusb.com/www/tutorials/plop \"External link\")for details - there is a section on how to autorun Plop (though Plop does not always work on some systems so I don\u0027t recommend that).  \n\nOR make sure the linux files are in the FIRST 8GB of the 16GB USB pen.   \n"
+    },
+    {
+      "id": "149522",
+      "timestamp": "2012-03-01T12:24:23+00:00",
+      "author": "mbzadegan",
+      "content": "very thanks for your guide ![:rolleyes:](http://reboot.pro/public/style_emoticons/default/rolleyes.gif) , i try with plop as soon as possible and report back to you ... ![:showoff:](http://reboot.pro/public/style_emoticons/default/showoff.gif)   \n"
+    },
+    {
+      "id": "149528",
+      "timestamp": "2012-03-01T14:03:12+00:00",
+      "author": "mbzadegan",
+      "content": "Excellent , ![:1st:](http://reboot.pro/public/style_emoticons/default/1st.gif)  \nI can bootabled my 16GB USB pen with PLOP ... ![:wub:](http://reboot.pro/public/style_emoticons/default/wub.png)  \nThanks very much   \n\n**Edited by mbzadegan, 01 March 2012 - 02:36 PM.**\n"
+    },
+    {
+      "id": "149539",
+      "timestamp": "2012-03-01T15:30:31+00:00",
+      "author": "steve6375",
+      "content": "![:good:](http://reboot.pro/public/style_emoticons/default/good.gif) ![:clap:](http://reboot.pro/public/style_emoticons/default/clap.gif)   \n"
+    },
+    {
+      "id": "149544",
+      "timestamp": "2012-03-01T15:59:06+00:00",
+      "author": "mbzadegan",
+      "content": "Another Surprising ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif) The PLOP has supported my 32GB Flash USB and bootabled it ![:clap:](http://reboot.pro/public/style_emoticons/default/clap.gif) ,   \n"
+    }
+  ]
+}

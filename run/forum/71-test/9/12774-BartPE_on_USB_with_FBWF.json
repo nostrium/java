@@ -1,0 +1,130 @@
+{
+  "id": "12774",
+  "title": "BartPE on USB with FBWF",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "111467",
+      "timestamp": "2010-10-19T09:27:53+00:00",
+      "author": "theshu",
+      "content": "Hello Community!  \n\nI hope this is the right section for this thread:  \n\nI\u0027m currently experimenting with my multiboot usb-stick. What I have this far:  \nActual Grub4Dos wich boots  \nPartedMagic, MemTest86+, Backtrack, Avira Recue CD, DBAN and some others.  \n+ BartPE with FBWF-filter  \n\nNow my question: All Applications work on CD / DVD without problems. (FBWF in BartPE is enabled and there is no need for a RAM-Drive anymore + virtual writing to CD / DVD)  \n\nWhen I\u0027m trying to get BartPE to work with my USB-flashdrive I have to rename \"i386\" to \"minint\" and copy \"SETUPLDR.BIN\" as \"NTLDR\" to root of the stick and copy \"ntdetect.com\" to root...  \nI think the error does not lie within these steps because BartPE is booting to desktop.  \n\nThe BartPE has XPE, Driverpacks and FBWF enabled. The Version of FBWF is 2.0.965.  \n\nThe Problem is that BartPE is booting up without the FBWF-driver enabled. (I want this feature to prevent wearout of my USB-drive)  \nInteresting is also that once loaded my BartPE doesnt recognise other Harddrives and \"compmgmt.msc\" wont start.  \n\nMy Plugin looks like this:  \n\n```\n;; File-Based Write Filter BartPE Plugin v3.x\n\n;; Thuun 02.07\n\n;; Palmer666 \u0026 Ceroni modified \u0026#40;Jun 2008\u0026#41;\n\n;; WolfWare modified 02.07.WW1a \u0026#40;Feb 2010\u0026#41;\n\n\n\n\u0026#91;Version\u0026#93;\n\nSignature\u003d \u0026#34;$Windows NT$\u0026#34;\n\n\n\n\u0026#91;PEBuilder\u0026#93;\n\nName\u003d\u0026#34;\u0026#91;TF\u0026#93; File-Based Write Filter\u0026#34;\n\nEnable\u003d1\n\n\n\n\u0026#91;SourceDisksFiles\u0026#93;\n\n;Use versions 2.00.0965.0 as recommended.\n\nfiles\\fbwf.sys\u003d4\n\nfiles\\fbwflib.dll\u003d2\n\n;version 5.1.2600.5512 \u0026#40;XP-SP3\u0026#41; seems stable.\n\nfiles\\fltlib.dll\u003d2\n\nfiles\\fltmgr.sys\u003d4\n\n\n\n\n\n;files\\autorun1fbwf.cmd\u003d2\n\n;files\\fbwfldr.exe\u003d2\n\n;fltmc.exe\u003d2\n\n;fltmgr.inf\u003d20\n\n\n\n\u0026#91;Strings\u0026#93;\n\nRamDiskDriveLetter\u003d\u0026#34;X\u0026#58;\u0026#34;\n\n\n\n\u0026#91;SetupReg.AddReg\u0026#93;\n\n; Add tmp and temp environment variable...\n\n0x2, \u0026#34;ControlSet001\\Control\\Session Manager\\Environment\u0026#34;, \u0026#34;temp\u0026#34;, \u0026#34;%RamDiskDriveLetter%\u0026#34;\n\n0x2, \u0026#34;ControlSet001\\Control\\Session Manager\\Environment\u0026#34;, \u0026#34;tmp\u0026#34;, \u0026#34;%RamDiskDriveLetter%\u0026#34;\n\n; Add ramdrv environment variable...\n\n0x2, \u0026#34;ControlSet001\\Control\\Session Manager\\Environment\u0026#34;, \u0026#34;ramdrv\u0026#34;, \u0026#34;%RamDiskDriveLetter%\u0026#34;\n\n\n\n\u0026#91;Software.AddReg\u0026#93;\n\n0x1,\u0026#34;Microsoft\\Windows\\CurrentVersion\\RunOnceEx\u0026#92;\u0026#48;01\u0026#34;,\u0026#34;001\u0026#34;,\u0026#34;||xpeinit.exe -s -m \u0026#34;\u0026#34;Starting File-Based Write Filter\u0026#34;\u0026#34; net start fbwf\u0026#34;\n\n\n\n;disable driver signing and *.pnf file creation, turn off the INF verifications\n\n;INFCACHE.1 verification is active still\n\n0x4, \u0026#34;Microsoft\\Windows\\CurrentVersion\\Setup\u0026#34;, \u0026#34;MinimizeFootprint\u0026#34;, 0x1\n\n\n\n\u0026#91;SetupReg.AddReg\u0026#93;\n\n;0x20 --\u003e 32MB max nutzbar als \u0026#34;RAMDrive\u0026#34; unter X\u0026#58;\n\n0x4,\u0026#34;ControlSet001\\Services\\FBWF\u0026#34;,\u0026#34;WinPECacheThreshold\u0026#34;, 0x20\n\n\n\n0x4,\u0026#34;ControlSet001\\Services\\FltMgr\u0026#34;,\u0026#34;AttachWhenLoaded\u0026#34;,0x0\n\n0x1,\u0026#34;ControlSet001\\Services\\FltMgr\u0026#34;,\u0026#34;Description\u0026#34;,\u0026#34;File System Filter Manager Driver\u0026#34;\n\n0x1,\u0026#34;ControlSet001\\Services\\FltMgr\u0026#34;,\u0026#34;DisplayName\u0026#34;,\u0026#34;FltMgr\u0026#34;\n\n0x4,\u0026#34;ControlSet001\\Services\\FltMgr\u0026#34;,\u0026#34;ErrorControl\u0026#34;,0x0000000\n\n0x2,\u0026#34;ControlSet001\\Services\\FltMgr\u0026#34;,\u0026#34;ImagePath\u0026#34;,\u0026#34;system32\\drivers\\fltmgr.sys\u0026#34;\n\n0x4,\u0026#34;ControlSet001\\Services\\FltMgr\u0026#34;,\u0026#34;Start\u0026#34;,0x0\n\n0x4,\u0026#34;ControlSet001\\Services\\FltMgr\u0026#34;,\u0026#34;Type\u0026#34;,0x2\n\n0x4,\u0026#34;ControlSet001\\Enum\\Root\\LEGACY_FLTMGR\u0026#34;,\u0026#34;NextInstance\u0026#34;,0x1\n\n0x1,\u0026#34;ControlSet001\\Enum\\Root\\LEGACY_FLTMGR\u0026#92;\u0026#48;000\u0026#34;,\u0026#34;Service\u0026#34;,\u0026#34;FltMgr\u0026#34;\n\n0x4,\u0026#34;ControlSet001\\Enum\\Root\\LEGACY_FLTMGR\u0026#92;\u0026#48;000\u0026#34;,\u0026#34;Legacy\u0026#34;,0x1\n\n0x4,\u0026#34;ControlSet001\\Enum\\Root\\LEGACY_FLTMGR\u0026#92;\u0026#48;000\u0026#34;,\u0026#34;ConfigFlags\u0026#34;,0x0\n\n0x1,\u0026#34;ControlSet001\\Enum\\Root\\LEGACY_FLTMGR\u0026#92;\u0026#48;000\u0026#34;,\u0026#34;Class\u0026#34;,\u0026#34;LegacyDriver\u0026#34;\n\n0x1,\u0026#34;ControlSet001\\Enum\\Root\\LEGACY_FLTMGR\u0026#92;\u0026#48;000\u0026#34;,\u0026#34;ClassGUID\u0026#34;,\u0026#34;{8ECC055D-047F-11D1-A537-0000F8753ED1}\u0026#34;\n\n0x1,\u0026#34;ControlSet001\\Enum\\Root\\LEGACY_FLTMGR\u0026#92;\u0026#48;000\u0026#34;,\u0026#34;DeviceDesc\u0026#34;,\u0026#34;FltMgr\u0026#34;\n\n\n\n;; 0x1 \u003d Dynamic\t\t\t\u0026#58; cache grows on demand up to the allocated size.\n\n;; 0x2 \u003d Dynamic Compressed \u0026#58; same as 0x1 with compression to maximise the memory allocated.\n\n;; 0x3 \u003d Pre-Allocated\t  \u0026#58; allocate full cache size from offset.\n\n;; FBWF Caching is set to \u0026#39;0x1\u0026#39; \u0026#40;dynamic\u0026#41;\n\n0x4,\u0026#34;ControlSet001\\Services\\FBWF\u0026#34;,\u0026#34;CacheType\u0026#34;, 0x1\n\n0x7,\u0026#34;ControlSet001\\Services\\FBWF\u0026#34;,\u0026#34;DependOnService\u0026#34;,\u0026#34;FltMgr\u0026#34;\n\n0x1,\u0026#34;ControlSet001\\Services\\FBWF\u0026#34;,\u0026#34;Description\u0026#34;,\u0026#34;File Based Write Filter Driver\u0026#34;\n\n0x1,\u0026#34;ControlSet001\\Services\\FBWF\u0026#34;,\u0026#34;DisplayName\u0026#34;,\u0026#34;FBWF\u0026#34;\n\n0x4,\u0026#34;ControlSet001\\Services\\FBWF\u0026#34;,\u0026#34;ErrorControl\u0026#34;,0x0000000\n\n0x2,\u0026#34;ControlSet001\\Services\\FBWF\u0026#34;,\u0026#34;ImagePath\u0026#34;,\u0026#34;system32\\drivers\\fbwf.sys\u0026#34;\n\n0x4,\u0026#34;ControlSet001\\Services\\FBWF\u0026#34;,\u0026#34;Start\u0026#34;,0x0\n\n0x4,\u0026#34;ControlSet001\\Services\\FBWF\u0026#34;,\u0026#34;Type\u0026#34;,0x2\n\n0x1,\u0026#34;ControlSet001\\Services\\FBWF\\Instances\u0026#34;,\u0026#34;DefaultInstance\u0026#34;,\u0026#34;Fbwf Instance\u0026#34;\n\n0x1,\u0026#34;ControlSet001\\Services\\FBWF\\Instances\\Fbwf Instance\u0026#34;,\u0026#34;Altitude\u0026#34;,\u0026#34;226000\u0026#34;\n\n0x4,\u0026#34;ControlSet001\\Services\\FBWF\\Instances\\Fbwf Instance\u0026#34;,\u0026#34;Flags\u0026#34;,0x0\n```\n\n\u003cbr /\u003e\n\nTo sum things up: FBWF works on CD but not on USB. Also other errors appear that won\u0027t on CD.  \nAs note: I want to boot BArtPE directly through Grub4DOS without mapping the whole PE into RAM...  \n\nI have found a similar thread somewhere over google but no reply this far...  \n\nRegards, theshu   \n"
+    },
+    {
+      "id": "111473",
+      "timestamp": "2010-10-19T12:21:42+00:00",
+      "author": "theshu",
+      "content": "As I am not able to edit my post I want to show you my Grub4DOS menu.lst:  \n\n```\ncolor white/black light-green/black white/black white/black\n\ntimeout 25\n\ndefault /2\n\n\n\ntitle WinNT 5.2\n\nfind --set-root /LiveCDIdentifier_aw2eg434\n\nchainloader /NTLDR\n```\n\n\u003cbr /\u003e\n\n\"LiveCDIdentifier_aw2eg434\" is on root of my USB-drive, also NTLDR is...   \n"
+    },
+    {
+      "id": "111487",
+      "timestamp": "2010-10-19T17:25:30+00:00",
+      "author": "Rajesh2010",
+      "content": "@theshu  \nwell if u r booting from usb u dont need FBWF  \nand you should disable that plugin and create a new plugin with just the following contents  \nwhich will use your usb drive as ramdrive.  \n\nnoramdisk.inf  \n\\[codebox\\]; PE Builder v3 plug-in INF ; Created by Rajesh2010 ; email :superjo2007@yahoo.co.in ;noramdisk.inf \\[Version\\] Signature\u003d \"$Windows NT$\" \\[PEBuilder\\] Name\u003d\"100 No Ramdisk\" Enable\u003d0 Help\u003d\" \\[WinntDirectories\\] a\u003d\"temp\",3 \\[SetupReg.AddReg\\] ; Add tmp and temp environment variable... ; 26-9-2003 14:52 Bart: Removed ending \\\u0026#39;\\\\\\\u0026#39; 0x2, \"ControlSet001\\\\Control\\\\Session Manager\\\\Environment\", \"temp\", \"%SystemDrive%\\\\temp\\\\\" 0x2, \"ControlSet001\\\\Control\\\\Session Manager\\\\Environment\", \"tmp\", \"%SystemDrive%\\\\temp\\\\\"  \n; Add ramdrv environment variable...  \n0x2, \"ControlSet001\\\\Control\\\\Session Manager\\\\Environment\", \"ramdrv\", \"%SystemDrive%\"  \n\n\\[/codebox\\]   \n"
+    },
+    {
+      "id": "111488",
+      "timestamp": "2010-10-19T17:33:54+00:00",
+      "author": "dera",
+      "content": "Hi  \n\u003e As note: I want to boot BArtPE directly through Grub4DOS without mapping the whole PE into RAM...\nin this case i do not understand why you need FBWF in your PE  \n\n\u003e (I want this feature to prevent wearout of my USB-drive)\nif this is the main reason, then i think there is no other way:  \nhave to load the whole iso into RAM  \n\nedit:  \natleast the above mentioned PE Builder plug-in is not suitable for Protect Volume,  \nthat plug-in is used to make writable the read-only CD   \n"
+    },
+    {
+      "id": "111496",
+      "timestamp": "2010-10-19T20:25:20+00:00",
+      "author": "Rui Paz",
+      "content": "Hi,  \n\nIn your case i would recommend to try the LiveXP project and the Wimboot option...  \nFor long time i also use BartPE+XPE+FBWF then i try LiveXP and found this is a very good project that builds a very fast and small XP LiveCD, using wimboot you don\u0027t need FBWF because the \"system drive\" will be writable.   \n"
+    },
+    {
+      "id": "111538",
+      "timestamp": "2010-10-20T11:01:42+00:00",
+      "author": "theshu",
+      "content": "Hey :-)  \n\nThanks for the hints. I\u0027m already familiar with WinBuilder and the LiveXP-Project.  \n\nUnfortunately it never suits my needs:  \nIt is neccessary for me to even boot the PE on machines with 64 to 128MB RAM (works with BartPE).  \nSo all known RAM-mapping methods will not be the solution. I have tested yesterday the latest WinBuilder with actual LiveXP(min 128MB), and also WimBoot.  \nAs far as I know WinVBlock can directly boot hdd-images without the need of huge RAM.  \nBut here it is also possible to \"wear out\" the usb-flashdrive.  \n\nAs already mentioned I want to protect my flashdrive with the FBWF-filter-driver.  \n--\\\u003e FBWF was originally intendet for exactly **THIS** case! (See Microsoft documentation)  \n[MSDN FBWF-ocumentation](http://msdn.microsoft.com/en-us/library/aa940926%28WinEmbedded.5%29.aspx \"External link\")  \n\u003e File-Based Write Filter (FBWF) allows Windows XP Embedded (XPe) to maintain the appearance of read and write access to **write sensitive** or read only storage. FBWF makes read and write access transparent to applications.\n\nWhat I want is that the systemdrive is **physically writeprotected** and **virtually writeable** .  \nIf there is a way to get this filter-driver to work on USB I can boot up low-end-machines and also protect my storage...  \n\nI think I\u0027m close to get this working. I\u0027m pretty shure there has to be a small change and FBWF will work...  \n\nThe \"easiest\" method would be to directly map the BartPE-ISO on the stick (**NON** RAM-mapping. But there is still no possibility yet to get this done due to lack of special driver. **Am I right?** )  \n\nI hope this get things straight.  \n![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)   \n"
+    },
+    {
+      "id": "111546",
+      "timestamp": "2010-10-20T12:03:57+00:00",
+      "author": "dera",
+      "content": "to allow the function \u0027Protect Volume\u0027 of FBWF  \ni think should to use the fbwfmgr.exe and the config file \u0027fbwf.cfg\u0027,  \nnevertheless if remember right in PE this .cfg does not work  \ndue to the switch \u0027/MININT\u0027 in the registry key \u0027HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\u0027 in the value \u0027SystemStartOptions\u0027   \n"
+    },
+    {
+      "id": "111611",
+      "timestamp": "2010-10-21T09:27:40+00:00",
+      "author": "theshu",
+      "content": "Hi  \n\nI downloaded fresh and plain BartPE with XPE + differnet FBWF-Plugins with all the same result:  \nIt simply doesnt work ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif)   \nWhen I try to run \"fbwfmgr.exe\" it says that it is unable to communicate with file-based write filter driver...  \nBut \"net start fbwf\" says the service/driver is active.  \n\nIt seems that as soons as \"minint\" method is used the driver wont work anymore.  \nDoes nobody has testet fbwf with bartpe on usb yet? (I dont think so because of all the recommendations I red in the internet about usb with fbwf-plugin...)  \n\nAny ideas? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)   \n"
+    },
+    {
+      "id": "111612",
+      "timestamp": "2010-10-21T09:38:03+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e It seems that as soons as \"minint\" method is used the driver wont work anymore.\nI don\u0027t think that it is connected. :wink: ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif)  \n\nHowever, and JFYI :wink::  \n\n* you don\u0027t \\*need\\* to rename SETUPLDR.BIN to NTLDR (you can chainload SETUPLDR.BIN from grub4dos allright)\n* you don\u0027t \\*need\\* to rename \\\\I386 to \\\\minint, BUT:  \n  [http://www.911cd.net...showtopic\u003d17504](http://www.911cd.net/forums//index.php?showtopic\u003d17504 \"External link\")\n\n\u003cbr /\u003e\n\n![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \nWonko   \n"
+    },
+    {
+      "id": "111614",
+      "timestamp": "2010-10-21T10:56:56+00:00",
+      "author": "theshu",
+      "content": "@Wonko the Sane thx for the hints!  \nI have deletet \"ntldr\" and it still boots. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)   \nUnfortunately renaming \"minint\" to \"i386\" wont help the FBWF-driver to start. There\u0027s still the same error.  \nI wish I had a write-protect switch on my stick to see if FBWF starts when the stick is not writeable. But I think this wont be the reason (see MS documentation...)  \n\nI have opened the \"fbwf.sys\" file with a disassembler to see if there have to be some preconditions for it to start but I haven\u0027t found anything. ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif)   \n(Does someone has experience with this?)   \n\n**Edited by theshu, 21 October 2010 - 10:58 AM.**\n"
+    },
+    {
+      "id": "111647",
+      "timestamp": "2010-10-21T19:02:35+00:00",
+      "author": "dera",
+      "content": "this is only an idea,  \nmyself never tried to make write protect my plain BartPE USB stick:  \n\ntry to pre create the fbwf.cfg not in the booted PE  \nbut in the real OS  \nsee [http://www.mp3car.co...ows-xp-pro.html](http://www.mp3car.com/vbulletin/winnt-based/121088-guide-using-fbwf-windows-xp-pro.html \"External link\"),  \nthen copy this .cfg to the USB root  \n(do not forget to use \u0027fbwfmgr /enable\u0027, this enables FBWF upon restarting your computer)  \n\nin the booted PE start the FBWF service manually  \nand before start the FBWF service remove the \u0027/MININT\u0027 switch  \n(see [this post](http://www.boot-land.net/forums/index.php?s\u003d\u0026showtopic\u003d5429\u0026view\u003dfindpost\u0026p\u003d46400 \"External link\")):  \nreg.exe ADD HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control /v SystemStartOptions /t REG_SZ /d \"/FASTDETECT\" /f  \nnet start fbwf   \n"
+    },
+    {
+      "id": "111701",
+      "timestamp": "2010-10-22T09:04:05+00:00",
+      "author": "dera",
+      "content": "\u003e Unfortunately renaming \"minint\" to \"i386\" wont help the FBWF-driver to start\nNo, the problem is not the folder name \u0027MININT\u0027 vs \u0027I386\u0027,  \nbut the \u0027/MININT\u0027 switch in the registry key \u0027HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\u0027 in the value \u0027SystemStartOptions\u0027  \nthis prevent fbwf to read the .cfg file   \n"
+    },
+    {
+      "id": "112083",
+      "timestamp": "2010-10-26T14:22:08+00:00",
+      "author": "theshu",
+      "content": "@dera  \nI have installed WinXP/Server2003 in Virtualbox and created the \"fbwf.cfg\" file. The protected Volume is shown in hexeditor as \"VolumeX\" where \"X\" is the number of the partition to be protected. (I tried with \"0\" and \"1\" since my usb-flashdrive is most of the time recognised as \"hd0\" in BIOS and Windows (when booting from stick).  \n\nBut the volume still is physically writeable. fbwfmgr.exe still \"cant communicate with the file-based write filter\".  \nI have also tried to use the registry settings of my VM with working filter driver but then the service won\u0027t even start. ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n\nMy drive is shown as \"removable drive\" in BartPE but I don\u0027t think that this has anything todo with it?  \n\nDoes nobody ever tried to protect his stick?  \nWhat are your experiences with non protected sticks and direct booting? How long will the stick survive? ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n"
+    },
+    {
+      "id": "112100",
+      "timestamp": "2010-10-26T18:10:29+00:00",
+      "author": "amalux",
+      "content": "\u003e Does nobody ever tried to protect his stick?\nThis is always good practice ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n\n\u003e ... How long will the stick survive? :smile:\nAbout as long as an unprotected stick at a feminist rally ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n\n[http://funnybackgrou...feminist-rally/](http://funnybackgroundpictures.com/2010/04/06/feminist-rally/ \"External link\")   \n"
+    },
+    {
+      "id": "112921",
+      "timestamp": "2010-11-04T07:57:26+00:00",
+      "author": "dera",
+      "content": "\u003e fbwfmgr.exe still \"cant communicate with the file-based write filter\"\ndo not know, for me in a plain BartPE the \u0027fbwfmgr.exe\u0027 works  \n\nneverthesess i add to my BartPE registry these registry keys too:  \n\\[HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\ControlSet001\\\\Services\\\\FBWF\\]  \n\"EnabledOnAllSkus\"\u003ddword:00000001  \n\n\\[HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\ControlSet001\\\\Services\\\\FBWF\\\\FBA\\]  \n\"EnablePostFBA\"\u003ddword:00000001  \n\nand in my PE registry in \u0027ControlSet001\\\\Services\\\\FBWF\u0027 there is no \u0027WinPECacheThreshold\u0027 nor \u0027CacheType\u0027 key at all  \n[![FBWFMGR.png](http://reboot.pro/uploads/monthly_11_2010/post-2603-1288865630_thumb.png)](http://reboot.pro/uploads/monthly_11_2010/post-2603-1288865630.png \"FBWFMGR.png - Size: 106.94KB\"){#ipb-attach-url-11435-0-79509800-1676066623}   \n"
+    },
+    {
+      "id": "112979",
+      "timestamp": "2010-11-04T21:10:32+00:00",
+      "author": "dera",
+      "content": "i have used a plain pebuilder3110a  \ndisabled the original QSoft \u0027RAMDisk\u0027 plugin and used [ImDisk plugin](http://www.911cd.net/forums//index.php?showtopic\u003d20203\u0026st\u003d0 \"External link\") instead  \nand used the attached fbwf plugin  \n[![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003d37943928d0557b52f93ffbd47573cec4\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d11439 \"Download attachment\") [**plugin.7z**](http://reboot.pro/index.php?s\u003d37943928d0557b52f93ffbd47573cec4\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d11439 \"Download attachment\") **153.52KB** 531 downloads   \n"
+    },
+    {
+      "id": "118314",
+      "timestamp": "2011-01-02T16:41:21+00:00",
+      "author": "theshu",
+      "content": "\u003e i have used a plain pebuilder3110a  \n\u003e disabled the original QSoft \u0027RAMDisk\u0027 plugin and used [ImDisk plugin](http://www.911cd.net/forums//index.php?showtopic\u003d20203\u0026st\u003d0 \"External link\") instead  \n\u003e and used the attached fbwf plugin  \n\u003e [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003d37943928d0557b52f93ffbd47573cec4\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d11439 \"Download attachment\") [**plugin.7z**](http://reboot.pro/index.php?s\u003d37943928d0557b52f93ffbd47573cec4\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d11439 \"Download attachment\") **153.52KB** 531 downloads  \n\n@dera: Thank you very very much!  \nWith your Plugin fbwf finally works! I will experiment a bit so I can completely disable the ramdrive and manually stop fbwf when writing to usb is needed...  \n\ndera you are my hero!   \n"
+    },
+    {
+      "id": "120378",
+      "timestamp": "2011-01-25T14:45:31+00:00",
+      "author": "theshu",
+      "content": "Ok, here\u0027s the next problem:  \n\nFBWF automatically writeprotects hd0.  \nBut on most systems hd0 is the internal hard-drive!  \n\nThis means I am not able to modify harddrive-contents and my stick is not protected.  \n\nDoes anyone have an idea how to tell FBWF to protect the STICK (wich is not always recognized with the same hd-number) and not hd0 or hd1... (depending on amount of hd\u0027s built in)?  \n\nHope someone have a working solution.   \n"
+    },
+    {
+      "id": "120384",
+      "timestamp": "2011-01-25T15:46:12+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Does anyone have an idea how to tell FBWF to protect the STICK (wich is not always recognized with the same hd-number) and not hd0 or hd1... (depending on amount of hd\u0027s built in)?  \nTry swapping hard disks in grub4dos.  \nSee:  \n\u003chttp://reboot.pro/2568/\u003e  \n\u003chttp://reboot.pro/12449/\u003e  \n\nMeet the FBWF manager:  \n[http://msdn.microsof...7(WinEmbedded.5](http://msdn.microsoft.com/en-us/library/aa940817(WinEmbedded.5 \"External link\")).aspx  \n\nThe combined effect of the stoopid MS addresses with the stoopid board software makes the above link not working when clicked, copy and paste:  \n\n```\nhttp://msdn.microsoft.com/en-us/library/aa940817(WinEmbedded.5).aspx\n```\n\n\u003cbr /\u003e\n\nSee if you can configure FBWF, now.  \n\n![:rofl:](http://reboot.pro/public/style_emoticons/default/roll1.gif)  \nWonko   \n"
+    },
+    {
+      "id": "120422",
+      "timestamp": "2011-01-25T23:58:21+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Ok, here\u0027s the next problem:  \n\u003e\n\u003e FBWF automatically writeprotects hd0.  \n\u003e But on most systems hd0 is the internal hard-drive!  \n\u003e\n\u003e Does anyone have an idea how to tell FBWF to protect the STICK?  \nWith the /MININT switch in the registry, the driver is instructed to read settings from registry, instead of cfg file and protect the systemdrive.  \n\nIt has worked flawlessly for me for CDVD, HDD, Flash Cards and even RAM-Drives.  \n\nSo i suspect, that it is the USB driver, which makes the trouble and causes the driver to pick the next drive, which uses the proper drivers, hd0.  \n\n\u003cbr /\u003e\n\n:smile:   \n"
+    }
+  ]
+}

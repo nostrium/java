@@ -1,0 +1,16 @@
+{
+  "id": "3561",
+  "title": "multiple boot on 1 cd/dvd/usb (ERD2005, UBCD4WIN, Hiren\u0027s, Acronis TrueImage)",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "25565",
+      "timestamp": "2007-11-28T16:21:57+00:00",
+      "author": "damasko",
+      "content": "Hello, I am novice on this field, so please be comprehensive ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nI\u0027d want to build a mutiboot cd/dvd/usb in which put every winpe/dos/linux live os.  \nI don\u0027t care if this could be done using ramdisk (I don\u0027t know what really it is) or not, or if ramdisk has limitations or incompatibilities using some live os build, for example usb hotplug.  \nFor sure, using usb flash device the best way is to mount images in ramdrive, due to low reading speed on many single files against one big one.  \nAnother approach is to use virtual machine, but how they interface with host system? I\u0027d need to work on host drives and os.  \nI\u0027m looking for some explanation, or even way to find them, about theese arguments ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nThanks in advance!   \n"
+    }
+  ]
+}

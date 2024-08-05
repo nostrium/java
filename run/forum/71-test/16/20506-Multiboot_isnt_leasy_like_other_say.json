@@ -1,0 +1,28 @@
+{
+  "id": "20506",
+  "title": "Multiboot isn\u0027t leasy like other say...",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "192852",
+      "timestamp": "2015-05-26T21:03:45+00:00",
+      "author": "drakan725",
+      "content": "Hellow evryone\n\nsince few weeks i try to make my multiboot, and all the time is something wrong.\n\nConcept:\n\n-HBCD 15.2\n\n- Win 7 multiversion\n\n- Win 8 multiversion\n\n-fedora\n\n-mint\n\n-and few my own programs to troulbleshooting PC under windows.\n\nthe problem is i can\u0027t make to cooperate windows togeether\n\ne. g\n\n-when i have booth windows maped i can turn up win setup and then: bla, bla no drivers bla, bla CD/DVD bla, bla ,bla (propobly it talk about SATA drivers,) i included few drivers and it doesn\u0027t help\n\n-partitionig pendrive... i don\u0027t want to even talk about, it was not work\n\n- pactched wim, with multi windows intalation, fat32 is to small for that big wims, HBCD have problems with NTFS, and it didn\u0027t even boot\n\nand i tryied few other things, the point is: anyone of you can help me with this pendrive? help with takiing optimal concept ?\n\nim out of ideas right now.\n\nP.S.\n\nSorry for my english, but i don\u0027t use it frequently\n\nP.S 2\n\nif something was on [http://rmprepusb.com/](http://rmprepusb.com/ \"External link\")i tryed to use it\n\nThanks for help ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)\n\n**Edited by drakan725, 26 May 2015 - 09:05 PM.**\n"
+    },
+    {
+      "id": "192853",
+      "timestamp": "2015-05-26T21:11:23+00:00",
+      "author": "steve6375",
+      "content": "[www.easy2boot.com](http://www.easy2boot.com \"External link\")\n\n"
+    },
+    {
+      "id": "192893",
+      "timestamp": "2015-05-29T20:40:58+00:00",
+      "author": "sbaeder",
+      "content": "I agree with Steve 100%. There are so many differences in the way things map to the USB drive, and this takes care of doing the heavy lifting.\n\n"
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "id": "18368",
+  "title": "Using Multiple NTFS Partitions on Zalman VE300",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "170129",
+      "timestamp": "2013-03-26T18:03:41+00:00",
+      "author": "TheArtfulDodger",
+      "content": "Hello:\n\nI have recently purchased one of these beauties and I am having a problem with it. I have a 750GB HDD in it that I have two Primary NTFS partitions on - first, active, with folder _iso for booting in ODD or Dual mode; second, inactive, that I want to use for system back-ups as a HDD.\n\nMy problem is that when I boot in either ODD or Dual mode, the unit boots fine but I cannot access the second partition as a HDD so I cannot save anything to it; the other partition shows up as another CD drive which, when I click it, asks me to mount a CD on it.\n\nDoes anyone have any idea how I can make this work this way? Or, is it possible that I got a dud?\n\nThanks in advance for your thoughts and help.\n\nSparky\n\n"
+    },
+    {
+      "id": "170130",
+      "timestamp": "2013-03-26T18:06:33+00:00",
+      "author": "steve6375",
+      "content": "boot to what OS?\n\n"
+    },
+    {
+      "id": "170131",
+      "timestamp": "2013-03-26T18:10:31+00:00",
+      "author": "TheArtfulDodger",
+      "content": "As ISOs I have Macrium Reflect (Windows PE), Ubuntu, and Windows 7 ISP Installation disk. It doesn\u0027t work with any of them!   \n"
+    },
+    {
+      "id": "170134",
+      "timestamp": "2013-03-26T18:48:36+00:00",
+      "author": "steve6375",
+      "content": "I have a VE200 with NTFS+FAT32+NTFS partitions, if booting to WinPE v2, I get the virtual CD and and three hard disk volumes as expected... ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\n"
+    },
+    {
+      "id": "170137",
+      "timestamp": "2013-03-26T20:19:27+00:00",
+      "author": "Rootman",
+      "content": "Not to hijack this thread - I see a lot of complaints about these devices cables getting flaky. How have your guys experience been with them? I\u0027d like to get one of these.\n\n"
+    },
+    {
+      "id": "170140",
+      "timestamp": "2013-03-26T20:59:02+00:00",
+      "author": "ambralivio",
+      "content": "\u003e Hello:\n\u003e\n\u003e I have recently purchased one of these beauties and I am having a problem with it. I have a 750GB HDD in it that I have two Primary NTFS partitions on - first, active, with folder _iso for booting in ODD or Dual mode; second, inactive, that I want to use for system back-ups as a HDD.\n\u003e\n\u003e My problem is that when I boot in either ODD or Dual mode, the unit boots fine but I cannot access the second partition as a HDD so I cannot save anything to it; the other partition shows up as another CD drive which, when I click it, asks me to mount a CD on it.\n\u003e\n\u003e Does anyone have any idea how I can make this work this way? Or, is it possible that I got a dud?\n\u003e\n\u003e Thanks in advance for your thoughts and help.\n\u003e\n\u003e Sparky\n\nStrange !!!!!\n\nMy Ve-300 has 2 partitions. When booting Macrium Reflect in ODD mode, also the other (no-active) partition is seen.\n\nMaybe did you use the firmware for FAT32 and your 2nd partition is NTFS ?\n\nPlease, double-check this.\n\n\u003e Not to hijack this thread - I see a lot of complaints about these devices cables getting flaky. How have your guys experience been with them? I\u0027d like to get one of these.\n\nI use the device with extreme care, even if, honestly, I can admit that the short USB cable can result a bit \"weak\".\n\nFor this reason, I use a more flexible male-female USB cable to connect the Zalman device to the computer.\n\nambralivio\n\n"
+    },
+    {
+      "id": "170141",
+      "timestamp": "2013-03-26T21:02:57+00:00",
+      "author": "steve6375",
+      "content": "I use a Y-cable on mine as power is the problem, particularly on notebook USB ports.\n\n"
+    },
+    {
+      "id": "170179",
+      "timestamp": "2013-03-27T12:31:29+00:00",
+      "author": "TheArtfulDodger",
+      "content": "Hello, Ambralivio:\n\nI have just checked the two partitions and some 298GB of unallocated space. The first partition is 200GB, NTFS, Primary, Active, and is where I have my ISOs. The second partition is also 200GB, also NTFS and Primary, Inactive, and is the drive I want to store my backups to.\n\nIs is possible that I might have a bad unit? Does my second partition need to be a Logical partition?\n\nTIA,\n\nSparky\n\n"
+    },
+    {
+      "id": "170181",
+      "timestamp": "2013-03-27T12:40:37+00:00",
+      "author": "ambralivio",
+      "content": "@ TheArtfulDodger,\n\ngood ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif) , but what about the firmware used for the Zalman device ?\n\nRead carefully my previous post !!!!!!!!\n\nambralivio\n\n"
+    },
+    {
+      "id": "170184",
+      "timestamp": "2013-03-27T13:00:07+00:00",
+      "author": "TheArtfulDodger",
+      "content": "Hello, again:\n\nI forgot to include the firmware in my previous post: From the unit: V300_011_1187N. The file I used was ZMVE-300_user_fw_writer_02(R1187N)_x86.\n\nThe only thing I don\u0027t understand is the _11 in the unit and the _02 in the file name.\n\nTIA,\n\nSparky\n\n"
+    },
+    {
+      "id": "170218",
+      "timestamp": "2013-03-27T18:07:34+00:00",
+      "author": "ambralivio",
+      "content": "OK for now, so as for now we are sure that also the firmware is dedicated to NTFS filesystem (N letter in the filename).\n\nDon\u0027t worry about the the two numbers (2 and 11) in the filename; I do suppose they are just related to the f/w release.\n\nComing back to your problem now, can you please explain how do you start the booting process from Zelman device ?\n\nJust to help you on solving your issues......by using a step-by-step process.\n\nambralivio\n\n"
+    },
+    {
+      "id": "170220",
+      "timestamp": "2013-03-27T18:33:16+00:00",
+      "author": "TheArtfulDodger",
+      "content": "Hello, again:\n\nStarting from power-up:\n\n1. I make sure the Zalman is in Dual mode, and Macrium Reflect is selected and mounted.\n\n2. Power up - I select F12 to get the boot menu.\n\n3. Once in the Boot menu, I select USB CD Drive.\n\n4. That\u0027s all - the machine goes to the Zalman, loads the s/w, eventually starts. The two CD drives are displayed, not one CD drive and one HDD drive.\n\nI am not sure what I can change but I sure will listen!\n\nTIA,\n\nSparky\n\n"
+    },
+    {
+      "id": "170241",
+      "timestamp": "2013-03-27T21:58:56+00:00",
+      "author": "ambralivio",
+      "content": "@ TheArtfulDodger  \n\nOK, the boot procedure is fine ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)  \n\nNow, in order to go forward I\u0027d advice to fix some points :  \n\n1. - Let\u0027s start using the ~~ODD~~ dual mode mode only (~~since the dual mode may have some additional problems~~) and Macrium Reflect iso  \n\n2. - During the booting (when you are in the boot menu) you should already see all the units available from Zalman device, so there is no need for now to finish the boot procedure\n\nOnce made the above, let us know what Zalman units appear in the boot menu.\n\nAnother point to know is ++whether you are using a laptop or a desktop++ with Zalman device.\n\nIn my case, I\u0027m still using the previous firmware version (R1115N), so that it is also possible that the last one (that you are using now) may have some bugs.....\n\nIn this case, should you have courage and be available to downgrade the firmware in your device ?\n\nPlease, **be aware and informed that changing the firmware version can be an operation with a very high risk.**\n\nambralivio\n\nP.S. - Sorry but I had to correct, since in the ODD mode it should be clear that you see the Zalman device only as a virtual CD !!!!\n\n"
+    },
+    {
+      "id": "170289",
+      "timestamp": "2013-03-28T11:33:57+00:00",
+      "author": "TheArtfulDodger",
+      "content": "Hello:\n\nFirst, I don\u0027t have a boot choice that lists any particular device, at least on the first boot menu. My BIOS is Award Modular BIOS v6.00PC. My M/B is Gigabyte 990FXA-UD3 F2.\n\nWhen I boot and hit F12, I bring up the Boot Menu. My choices are:\n\nLS120\n\n+ Hard Disk\n\nCDROM\n\nZIP\n\nUSB-FDD\n\nUSB-ZIP\n\nUSB-CDROM\n\nUSB-HDD\n\nLegacy Lan\n\nNormally I choose USB-CDROM and that will boot as before. This morning I tried + Hard Disk. This brought up a new panel I haven\u0027t seen before that listed the HDDs on the machine plus this entry:\n\nUSB-HDD1: ZALMAN External HDD\n\nBut, when I selected that, even with the Zalman set to Dual-mode and Macrium mounted, it said: \"BOOTMGR is missing\" - which I would expect since the Zalman is not set up with a MBR.\n\nSecond, I am using a desktop, as above.\n\nThird, I am not afraid of updating the firmware, but I don\u0027t know that I can find the earlier versions.\n\nAnother question, perhaps stupid, but can I load *both* NTFS and FAT firmware? Or, If I load the NTFS firmware, does that mean the first partition MUST be NTFS or can it be FAT? AL of these sorts of questions have come across the old brain in the last few days!!\n\nThanks again for your help.\n\nSparky\n\n"
+    },
+    {
+      "id": "170301",
+      "timestamp": "2013-03-28T13:11:51+00:00",
+      "author": "ambralivio",
+      "content": "\u003e Normally I choose USB-CDROM and that will boot as before. This morning I tried + Hard Disk. This brought up a new panel I haven\u0027t seen before that listed the HDDs on the machine plus this entry:\n\u003e\n\u003e USB-HDD1: ZALMAN External HDD\n\u003e\n\u003e But, when I selected that, even with the Zalman set to Dual-mode and Macrium mounted, it said: \"BOOTMGR is missing\" - which I would expect since the Zalman is not set up with a MBR.\n\nThis, at least, means that my advices above were useful and you learned that in dual mode the in-active partition is recognized. As a side note, booting from the choice + Hard Disk can give you additional possibilities for the Zalman to boot other virtual disks outside the _iso folder.\n\nAs per the \"BOOTMGR is missing\" issue, you already recognized that you cannot boot from an in-active partition......\n\nHaving said that, and considering that the in-active partition is rightly recognized by the BIOS, I\u0027m reinforcing my initial hypotesis about some bug in the new firmware.\n\nCould you please try to boot Macrium Reflect in dual-mode ? Is the in-active partition seen as a second CD ?\n\n\u003e Another question, perhaps stupid, but can I load *both* NTFS and FAT firmware? Or, If I load the NTFS firmware, does that mean the first partition MUST be NTFS or can it be FAT? AL of these sorts of questions have come across the old brain in the last few days!!\n\nUnfortunately NO, you can load only one firmware.\n\nambralivio\n\n"
+    },
+    {
+      "id": "170314",
+      "timestamp": "2013-03-28T16:23:39+00:00",
+      "author": "TheArtfulDodger",
+      "content": "Hello:\n\nI can\u0027t describe how appreciative I am that you are taking this much time to help me get this \\*\\\u0026\\\u0026\\^% thing going!\n\nCould you please try to boot Macrium Reflect in dual-mode ? Is the in-active partition seen as a second CD ?\n\nI booted in dual-mode and it shows two CDROMs. However, I also have two real CD/DVD drives so it is difficult to differentiate. But, I put in a DVD with some video on it into the first of my real CD/DVD drives and it appeared in Macrium as the second of the two CD drive. When I put the same DVD into the second real CD/DVD drive, it complained the DVD wasn\u0027t formatted correctly. So to my question from this:\n\nWhen you boot into Macrium, do you get all of your real CD/DVD drives, the partition on the Zalman with the isos on it, plus the partitions that you are treating as HDDs?\n\nI asm going to do an experiment - I\u0027m going to load Ubuntu from the Zalman to see what drives it picks up. I\u0027ll let you know how I do.\n\nThanks again.\n\nSparky\n\n"
+    },
+    {
+      "id": "170315",
+      "timestamp": "2013-03-28T16:51:37+00:00",
+      "author": "TheArtfulDodger",
+      "content": "Hurray:\n\nI think I have narrowed down my problem to either Windows PE or Macrium. When I \"tried\" (as opposed to installing it) Ubuntu 12.10, it \"found\" both the ISO partition and the backup (HDD) partition.\n\nWhich version of Macrium are you using? Mine is Macrium Reflect Free Edition (64bit) WindowsPE Version 5.1.5732.\n\nNow I will look for another program that I can use to clone my System SSD - any suggestions?\n\nAgain, I can\u0027t thank you enough for all of your help - I only hope some other lonely soul out there might read some of this and find as much help out of it as I did!!\n\nI will reply further to this thread when/if I find an alternate to the Macrium!\n\nKind regards,\n\nSparky\n\n"
+    },
+    {
+      "id": "170319",
+      "timestamp": "2013-03-28T17:51:30+00:00",
+      "author": "ambralivio",
+      "content": "\u003e Again, I can\u0027t thank you enough for all of your help - I only hope some other lonely soul out there might read some of this and find as much help out of it as I did!!\n\nWelcome to the board !!!!!!\n\nHelping people in solving his problems is one of the main aim of this forum.\n\nOn the other hand, I\u0027m very glad to have helped you, especially because you accepted and followed all the advices I gave you, without inventing or changing things. ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)\n\nThere are not so much people out of there \"judicious\", and having a cup in hand, as you seem to be.\n\nAnyway, as your concerns are not solved yet, I remain available to help you further; therefore, I\u0027ll respond to your questions above as soon as possible.\n\nambralivio\n\n"
+    },
+    {
+      "id": "170358",
+      "timestamp": "2013-03-29T11:29:27+00:00",
+      "author": "ambralivio",
+      "content": "@ TheArtfulDodger,  \n\nas promised, I am here again to respond your questions. I tried to post yesterday, but the site did not work well.  \n\nFirstly, I beg your pardon for having made some mess in one of my first post above (when I said to have successfully booted Macrium Reflect in dual-mode).  \nEffectively this result was true, but booting with another WinPE iso.  \n\nSorry again for the inconvenience, though.  \n\nNow, after having made (in a much more neat way) some more experimentation (staying always in dual-mode) with different WinPE-based and Linux-based ISOs, I can say :  \n\n- Macrium Reflect (I have the version 5.0.5154_64 bit) gave the same your results (that is, inactive partition no visible), so I think it was not the best choice for making these type of tests with Zalman device  \n- More importantly, booting other WinPEs (or Linux-based) ISOs, the results were good, giving a full visibility of the inactive partition  \n\nThis means that, probably, seeing/accessing or not all the Zalman partitions will depend on how the WinPE iso was created.  \n\nRegarding the last your question about \"cloning your system SSD\", please make a search in the forum; you should find some interesting and useful posts/advices (from Wonko The Sane) about (Dos, Win or Linux-based) free tools.\n\nPersonally, I do prefer to use reliable products for this \"***delicate***\" task (for example, the commercial products from Terabyte -BIBM or Image for Dos/Windows/Linux).  \n\n++**Anyway, before going to decide the right tool for you, please move with caution along these paths !!!!**++\n\n++**I do hope you\u0027ll going to better clarify your ideas/targets, gaining some more knowledge on the topic of cloning/imaging/backing-up, before to proceed.**++   \n\nambralivio\n\n"
+    },
+    {
+      "id": "170376",
+      "timestamp": "2013-03-29T17:33:32+00:00",
+      "author": "TheArtfulDodger",
+      "content": "Hello, Ambralivio:\n\nJust to update on my search - I\u0027ve tried a couple of other things I\u0027ve found (Acronis Backup \\\u0026 Recovery \\[booted fine, found all of the partitions, but it seemed to do nothing - I finally gave up!\\], Acronis TrueImage \\[also booted fine, also found all of the partitions, but when I attempted to clone the system drive, it reported that the trial edition (which I had downloaded) didn\u0027t have that option - so I don\u0027t know if it would actually work!\\], and Partition Wizard \\[again, it loaded fine, found the partitions OK, but I wasn\u0027t convinced that it would actually clone a partition - the jury is still out on that one!\\].\n\nRegarding your comments, first, thanks for all of the nice things you said - but you were the one that provided the help - and you had nothing to gain by helping me so I continue to thank you.\n\nThen, I could not find anything by Wonko that discussed free tools. I haven\u0027t had a chance to look at the ones you suggested, but I will.\n\nI think this would merit a short, Pinned discussion on the subject of cloning - everybody seems to have different ideas about it.\n\nI will trudge on.\n\nSparky\n\n"
+    },
+    {
+      "id": "170380",
+      "timestamp": "2013-03-29T18:19:26+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Then, I could not find anything by Wonko that discussed free tools.\nPossibly it may depend on where you looked for it. :wink:  \n\nThe main place where this kind of tools have been discussed is not on reboot.pro AFAICR.  \nPersonally (and I have my reasons for it)I don\u0027t use/like particularly Acronis products (generically) but there are several tools (free or Commercial) available, what is your actual scope?  \nSee here for quick (hopefully) disambiguation about copy/backup/clone/image that may be useful (jaclaz is the \"real\" me):  \n[http://www.msfn.org/...inside-windows/](http://www.msfn.org/board/topic/157634-hard-disk-cloningimaging-from-inside-windows/ \"External link\")  \n[http://www.msfn.org/...ost__p__1007158](http://www.msfn.org/board/topic/157634-hard-disk-cloningimaging-from-inside-windows/page__view__findpost__p__1007158 \"External link\")  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "170383",
+      "timestamp": "2013-03-29T19:01:04+00:00",
+      "author": "ambralivio",
+      "content": "@ TheArtfulDodger,\n\n\u003e Regarding the last your question about \"cloning your system SSD\", please make a search in the forum; you should find some interesting and useful posts/advices (from Wonko The Sane) about (Dos, Win or Linux-based) free tools.\n\u003e\n\u003e Personally, I do prefer to use reliable products for this \"***delicate***\" task (for example, the commercial products from Terabyte -BIBM or Image for Dos/Windows/Linux).\n\nsorry again.\n\nI thought the thread was published in this forum and instead it was on MSFN.\n\nRead carefully the posts 5 \\\u0026 15, even if I\u0027d advice \"to elaborately study\" the entire thread.\n\nambralivio\n\n"
+    },
+    {
+      "id": "170588",
+      "timestamp": "2013-04-03T17:23:37+00:00",
+      "author": "TheArtfulDodger",
+      "content": "Hello to All Who Replied:\n\nI have finally found an answer to my original question: How to use Multiple Partitions on the ZM300!! Thanks go out to all who passed on valuable information to me and I thought it only right to pass on what I\u0027ve learned to the forum.\n\nI read (and tried to digest) the material suggested by everyone plus some that I turned up accidentally myself. I kept coming back to two things that Ambralivio mentioned (probably in passing): \"When booting Macrium Reflect\" and \"booting with another WinPE iso\".\n\nSo, I wondered if, instead of Macrium being the problem, perhaps WinPE might be the culprit! So, I decided to boot the Macrium Reflect (Free) Rescue iso, from the Zalman again, but this time connected to a USB2.0 port. Lo and behold, but now Macrium worked properly, showing both the CD and the HDD partition!\n\nSo, now I needed to fix the WinPE. After doing more reading, I decided the easiest thing to try was to go out and get WinPE 4.0. That meant getting Windows Assessment \\\u0026 Deployment Kit, which I did. After installing it, I located the new WinPE.wim \\[Assessment \\\u0026 Deployment Kit\\\\Windows Preinstallation Environment\\\\amd64\\\\en-us\\\\winpe.wim\\]. Having this, I plugged it into the Macrium Wizard (Rebuild the environment...) and used this new winpe.wim as the custom base wim. That\u0027s all there was to it!\n\nSo, now it works like I wanted it to do lo these many weeks ago. My sincere thanks to all that provided assistance. I hope this might help someone else in the same (or similar) boat! Doesn\u0027t sound like much when you read it quickly!! ![:clap:](http://reboot.pro/public/style_emoticons/default/clap.gif)\n\nSparky (aka The Artful Dodger)\n\n"
+    }
+  ]
+}

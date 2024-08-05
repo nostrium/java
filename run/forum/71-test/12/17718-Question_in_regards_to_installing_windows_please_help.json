@@ -1,0 +1,412 @@
+{
+  "id": "17718",
+  "title": "Question in regards to installing windows please help.",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "162529",
+      "timestamp": "2012-10-31T05:58:01+00:00",
+      "author": "Junior C Hall",
+      "content": "I have a laptop that has no cd rom drive at all and I have no flash drive or usb stick or anything. My question is this. Can I use say parition magic and cut 5gb or so into a secondary parition and host the windows installion files on that parition and boot that parition to reinstall windows on the main parition? This laptop is using windows vista I am wanting to install windows 8 via a secondary parition on the hard drive. Is this possible? The windows 8 installion I have does boot and even has a auto run but am I really able to boot to the secondary parition and install windows 8 over the vista installion?   \n"
+    },
+    {
+      "id": "162536",
+      "timestamp": "2012-10-31T09:55:24+00:00",
+      "author": "steve6375",
+      "content": "I don\u0027t quite understand what you have in your possession and what you want to achieve? Do you want to clean install of Win8 and lose all your data on your Vista partition?  \nDo you have the Windows 8 install ISO or what is this \u0027Windows 8 installation\u0027 and how do you know it \u0027does boot\u0027 - boot from what?  \n\nI would recommend you go out and buy a 4GB USB Flash stick for $4 and copy the Windows 8 setup files to it and then boot from it. That way if anything goes wrong you will be able to recover and re-install.   \n"
+    },
+    {
+      "id": "162537",
+      "timestamp": "2012-10-31T10:00:51+00:00",
+      "author": "Junior C Hall",
+      "content": "The general idea is this. I want to fully reformat parition and install windows 8 over it. What I am asking is can I make a bootable partition much like a recovery partition and just place the files that is on the windows 8 installion disk onto that partition and boot to it and install windows 8 over vista using that method. Sorta like what dell does with a recovery boot just a windows 8 installion rather then a recovery. Btw yes I want to remove all data on that vista partition.   \n"
+    },
+    {
+      "id": "162538",
+      "timestamp": "2012-10-31T10:11:28+00:00",
+      "author": "steve6375",
+      "content": "So you have a win8 installation DVD?   \n"
+    },
+    {
+      "id": "162540",
+      "timestamp": "2012-10-31T10:27:26+00:00",
+      "author": "steve6375",
+      "content": "Assuming you have a WIn8 install DVD..  \n\n\u003cbr /\u003e\n\n1. Boot to Vista and make your new empty primary partition (Vista Disk Manager can shrink/extend ptns) - best to have it near the end (e.g. VISTA+dummy partition+4GB NTFS)  \n2. Copy the contents of the Win8 DVD to the new 4GB partition  \n3. Install grub4dos onto the hard disk MBR (you can do this easily by downloading RMPrepUSB, hit Ctrl+F5 and then click on the **Install grub4dos** button - hit Enter when prompted to copy over the grldr file)  \n4. Copy the C:grldr file to the new partition as well  \n5. Reboot the computer - it will leave you at the grub4dos command prompt  \n6. Now type **find** to see what partitions you have - we need to boot from the 4GB partition - let us assume this is (hd0,3) (the 4th primary partition)  \n7. at the grub4dos prompt, type  \n**root (hd0,3)\nchainloader /bootmgr\nboot**   \n8. This should now boot to the Win 8 installer - enter the product key and choose Custom install - delete the other partitions (not the 4GB one!) and tell it to install to the empty space (you may need to create a new partition first?).  \n9. At some point BEFORE the install actually starts, hit the **SHIFT+F10** keys to get to a Win8 command prompt. Then type **bootsect /nt60 ALL /mbr** - this will replace the grub4dos bootloader with the normal bootmgr bootloader. Type **exit** and proceed with the install.  \n\nP.S. Alternative is to skip step 9 and leave the grub4dos bootloader on. In that case make a menu.lst file like this:  \n\nD:menu.lst (on 4GB partition)  \n\n**timeout 3**   \n**default 0**   \n\n**title Boot Windows 8**   \n**root (hd0,0)**   \n**chainloader /bootmgr**   \n\n**title Boot Win8 Setup/Repair**   \n**root (hd0,1)**   \n**chainloader /bootmgr**   \n"
+    },
+    {
+      "id": "162541",
+      "timestamp": "2012-10-31T10:32:55+00:00",
+      "author": "Junior C Hall",
+      "content": "For the question asked yes I have a full 100% windows 8 installion disk. This disk is a bootable disk that I can pop into my cd rom drive and boot from it to install windows 8. Now as for the second part that you have stated is it possible to set the partition as a bootable partition using the windows dos based commands or am I forced to use the grub4dos ? I know how to create partitions and even how to format and partition the disk but I never have setup a partition to be used for installing windows. That is why I am asking this question. So to make it clear I create a new partition 4gb and make it a bootable partition and copy the windows 8 installion files from the dvd to the partition and when I reboot I boot into that partition and install windows on the partition that has vista on it right?   \n"
+    },
+    {
+      "id": "162542",
+      "timestamp": "2012-10-31T10:40:20+00:00",
+      "author": "steve6375",
+      "content": "If you don\u0027t want to use grub4dos then you could use EasyBCD to add a boot entry for the 4gb partition...   \n"
+    },
+    {
+      "id": "162543",
+      "timestamp": "2012-10-31T10:42:25+00:00",
+      "author": "Junior C Hall",
+      "content": "From other post I have read they said to run other dos based commands which would make the partition a bootable partition. That is what your talking about right? using the RMPrepUSB and making the menu list makes that partition bootable correct?   \n"
+    },
+    {
+      "id": "162544",
+      "timestamp": "2012-10-31T10:43:34+00:00",
+      "author": "Junior C Hall",
+      "content": "Ok now I understand what your saying. So I create a partition and use one of the two to set the partition to boot and reboot and do the installion.   \n"
+    },
+    {
+      "id": "162545",
+      "timestamp": "2012-10-31T10:43:39+00:00",
+      "author": "steve6375",
+      "content": "yes. grub4dos or EasyBCD will allow you to boot from the 4gb partition.   \n"
+    },
+    {
+      "id": "162546",
+      "timestamp": "2012-10-31T10:45:19+00:00",
+      "author": "Junior C Hall",
+      "content": "One last question will it hurt any thing at all if I leave the grub4dos bootloader and let it install windows rather then replace it with the win 8 dos prompt? Does it matter at all?   \n"
+    },
+    {
+      "id": "162547",
+      "timestamp": "2012-10-31T10:50:06+00:00",
+      "author": "Junior C Hall",
+      "content": "menu.lst file that you showed I am a bit confused with that. menu 1 title is windows 8 root is hd0,0 and the second is titled win8 repair/setup and its root is hd0,1 ? I am guessing that the root is the partition right? HD0 would mean hard drive and the ,0 or ,1 is the partition? 0 being first partition which will be the one that I will reformat and install win 8 on and 1 is the partition which has the installion files on correct?   \n"
+    },
+    {
+      "id": "162548",
+      "timestamp": "2012-10-31T10:51:39+00:00",
+      "author": "steve6375",
+      "content": "\u003e One last question will it hurt any thing at all if I leave the grub4dos bootloader and let it install windows rather then replace it with the win 8 dos prompt? Does it matter at all?  \nIf you leave it in place then it will boot to the grub4dos shell - that is why you would need to add a menu.lst file.   \n"
+    },
+    {
+      "id": "162549",
+      "timestamp": "2012-10-31T10:54:10+00:00",
+      "author": "Junior C Hall",
+      "content": "What I mean is in your post you said Alternative is to skip 9 and make a menu list. When windows 8 is fully installed on the new partition and is working will I be able to use the win 8 dos prompt or will grub4dos completely override it?   \n"
+    },
+    {
+      "id": "162550",
+      "timestamp": "2012-10-31T10:54:14+00:00",
+      "author": "steve6375",
+      "content": "\u003e menu.lst file that you showed I am a bit confused with that. menu 1 title is windows 8 root is hd0,0 and the second is titled win8 repair/setup and its root is hd0,1 ? I am guessing that the root is the partition right? HD0 would mean hard drive and the ,0 or ,1 is the partition? 0 being first partition which will be the one that I will reformat and install win 8 on and 1 is the partition which has the installion files on correct?  \nYes, I am assuming/guessing that the final ptn structure will be  \n\nhd0,0 Win8  \nhd0,1 4GB Setup files  \n\nWhat I am not sure about is if Win8 will also create a restore ptn if you delete all other partitions, in which case the setup files will be on (hd0,2) and the structure will be  \n\n(hd0,0) Win8 boot ptn  \n(hd0,1) Win8 System ptn  \n(hd0,2) 4GB Setup files   \n"
+    },
+    {
+      "id": "162551",
+      "timestamp": "2012-10-31T10:56:45+00:00",
+      "author": "Junior C Hall",
+      "content": "That I am unsure of as well. Should I after created the new partition and after all files are copied over including the grub4dos files reboot before I create a menu list and use the find command or should I add the menu list first?   \n"
+    },
+    {
+      "id": "162552",
+      "timestamp": "2012-10-31T10:57:02+00:00",
+      "author": "steve6375",
+      "content": "\u003e What I mean is in your post you said Alternative is to skip 9 and make a menu list. When windows 8 is fully installed on the new partition and is working will I be able to use the win 8 dos prompt or will grub4dos completely override it?  \nIf you have a menu.lst file and skip step 9, then you can boot to either Win8 or the 4GB WIn8 Setup ptn via grub4dos menu. If you need to change the menu, you can press c and enter the grub4dos shell and then manually type in your commands...   \n"
+    },
+    {
+      "id": "162553",
+      "timestamp": "2012-10-31T10:59:02+00:00",
+      "author": "steve6375",
+      "content": "\u003e That I am unsure of as well. Should I after created the new partition and after all files are copied over including the grub4dos files reboot before I create a menu list and use the find command or should I add the menu list first?  \nIf you skip step 9, then when you reboot it will boot to grub4dos - if there is no menu.lst then you will have to type in the commands manually, if you do have a menu.lst then you can use that. If the menu.lst does not work, just hit **c** to get to the grub4dos command shell and type in the commands manually.  \n\nP.S. that is why I, personally, prefer to install grub4dos. You get a command shell in case anything goes wrong. With EasyBcd you just have to hope it will boot to something on the next reboot...   \n"
+    },
+    {
+      "id": "162555",
+      "timestamp": "2012-10-31T11:09:43+00:00",
+      "author": "Junior C Hall",
+      "content": "ok that makes sence actually. I would rather have the option to manually fix it then to be screwed. So once the files are copied I reboot the pc no menu list and in the shell that shows up I type Find to find the partitions and btw this is on step 6 that you gave me. I make note of these and create the menu list using the partition list I am giving when using Find command correct?   \n"
+    },
+    {
+      "id": "162556",
+      "timestamp": "2012-10-31T11:11:55+00:00",
+      "author": "steve6375",
+      "content": "correct - though it does not hurt to make a menu.lst file and have a guess as to what will be in it.  \nYou can always edit it in Notepad using the Win8 shell just after you delete/create the partitions too (hit SHIFT+F10)!   \n"
+    },
+    {
+      "id": "162557",
+      "timestamp": "2012-10-31T11:13:26+00:00",
+      "author": "Junior C Hall",
+      "content": "Ok thank you that makes more sence now. After windows 8 is fully installed and working I am still able to use win 8 cmd as I wish right? the grub4dos is just for the installion part correct?   \n"
+    },
+    {
+      "id": "162558",
+      "timestamp": "2012-10-31T11:15:40+00:00",
+      "author": "steve6375",
+      "content": "\u003e Ok thank you that makes more sence now. After windows 8 is fully installed and working I am still able to use win 8 cmd as I wish right? the grub4dos is just for the installion part correct?  \nWhat do you mean? After the installation, you can either boot to Win8 or the 4GB Win8 Setup ptn again. From either you can get to Win8 command shell???   \n"
+    },
+    {
+      "id": "162559",
+      "timestamp": "2012-10-31T11:16:48+00:00",
+      "author": "Junior C Hall",
+      "content": "Ok I just wanted to make sure that the grub4dos does not remove the actual win 8 dos it self.   \n"
+    },
+    {
+      "id": "162560",
+      "timestamp": "2012-10-31T11:21:14+00:00",
+      "author": "steve6375",
+      "content": "grub4dos is a bootloader. Once installed on the Master Boot Record, it will always boot to grub4dos first. From grub4dos you can choose to boot to any partition. For instance, instead of using chainloader /bootmgr for the first Win8 partition, you could just tell grub4dos to load the partition boot code instead  \n\ntitle Boot from first partition (which should contain a bootloader that loads bootmgr that loads Win8)  \nroot (hd0,0)  \nchainloader (hd0,0)   \n"
+    },
+    {
+      "id": "162561",
+      "timestamp": "2012-10-31T11:26:31+00:00",
+      "author": "Junior C Hall",
+      "content": "That cleared it up thank you. You have been a big help and I already have the RMPrepUSB downloaded and I will give this a shot. It shouldnt be hard the steps are easy. Thank you for helping.   \n"
+    },
+    {
+      "id": "162529",
+      "timestamp": "2012-10-31T05:58:01+00:00",
+      "author": "Junior C Hall",
+      "content": "I have a laptop that has no cd rom drive at all and I have no flash drive or usb stick or anything. My question is this. Can I use say parition magic and cut 5gb or so into a secondary parition and host the windows installion files on that parition and boot that parition to reinstall windows on the main parition? This laptop is using windows vista I am wanting to install windows 8 via a secondary parition on the hard drive. Is this possible? The windows 8 installion I have does boot and even has a auto run but am I really able to boot to the secondary parition and install windows 8 over the vista installion?   \n"
+    },
+    {
+      "id": "162536",
+      "timestamp": "2012-10-31T09:55:24+00:00",
+      "author": "steve6375",
+      "content": "I don\u0027t quite understand what you have in your possession and what you want to achieve? Do you want to clean install of Win8 and lose all your data on your Vista partition?  \nDo you have the Windows 8 install ISO or what is this \u0027Windows 8 installation\u0027 and how do you know it \u0027does boot\u0027 - boot from what?  \n\nI would recommend you go out and buy a 4GB USB Flash stick for $4 and copy the Windows 8 setup files to it and then boot from it. That way if anything goes wrong you will be able to recover and re-install.   \n"
+    },
+    {
+      "id": "162537",
+      "timestamp": "2012-10-31T10:00:51+00:00",
+      "author": "Junior C Hall",
+      "content": "The general idea is this. I want to fully reformat parition and install windows 8 over it. What I am asking is can I make a bootable partition much like a recovery partition and just place the files that is on the windows 8 installion disk onto that partition and boot to it and install windows 8 over vista using that method. Sorta like what dell does with a recovery boot just a windows 8 installion rather then a recovery. Btw yes I want to remove all data on that vista partition.   \n"
+    },
+    {
+      "id": "162538",
+      "timestamp": "2012-10-31T10:11:28+00:00",
+      "author": "steve6375",
+      "content": "So you have a win8 installation DVD?   \n"
+    },
+    {
+      "id": "162540",
+      "timestamp": "2012-10-31T10:27:26+00:00",
+      "author": "steve6375",
+      "content": "Assuming you have a WIn8 install DVD..  \n\n\u003cbr /\u003e\n\n1. Boot to Vista and make your new empty primary partition (Vista Disk Manager can shrink/extend ptns) - best to have it near the end (e.g. VISTA+dummy partition+4GB NTFS)  \n2. Copy the contents of the Win8 DVD to the new 4GB partition  \n3. Install grub4dos onto the hard disk MBR (you can do this easily by downloading RMPrepUSB, hit Ctrl+F5 and then click on the **Install grub4dos** button - hit Enter when prompted to copy over the grldr file)  \n4. Copy the C:grldr file to the new partition as well  \n5. Reboot the computer - it will leave you at the grub4dos command prompt  \n6. Now type **find** to see what partitions you have - we need to boot from the 4GB partition - let us assume this is (hd0,3) (the 4th primary partition)  \n7. at the grub4dos prompt, type  \n**root (hd0,3)\nchainloader /bootmgr\nboot**   \n8. This should now boot to the Win 8 installer - enter the product key and choose Custom install - delete the other partitions (not the 4GB one!) and tell it to install to the empty space (you may need to create a new partition first?).  \n9. At some point BEFORE the install actually starts, hit the **SHIFT+F10** keys to get to a Win8 command prompt. Then type **bootsect /nt60 ALL /mbr** - this will replace the grub4dos bootloader with the normal bootmgr bootloader. Type **exit** and proceed with the install.  \n\nP.S. Alternative is to skip step 9 and leave the grub4dos bootloader on. In that case make a menu.lst file like this:  \n\nD:menu.lst (on 4GB partition)  \n\n**timeout 3**   \n**default 0**   \n\n**title Boot Windows 8**   \n**root (hd0,0)**   \n**chainloader /bootmgr**   \n\n**title Boot Win8 Setup/Repair**   \n**root (hd0,1)**   \n**chainloader /bootmgr**   \n"
+    },
+    {
+      "id": "162541",
+      "timestamp": "2012-10-31T10:32:55+00:00",
+      "author": "Junior C Hall",
+      "content": "For the question asked yes I have a full 100% windows 8 installion disk. This disk is a bootable disk that I can pop into my cd rom drive and boot from it to install windows 8. Now as for the second part that you have stated is it possible to set the partition as a bootable partition using the windows dos based commands or am I forced to use the grub4dos ? I know how to create partitions and even how to format and partition the disk but I never have setup a partition to be used for installing windows. That is why I am asking this question. So to make it clear I create a new partition 4gb and make it a bootable partition and copy the windows 8 installion files from the dvd to the partition and when I reboot I boot into that partition and install windows on the partition that has vista on it right?   \n"
+    },
+    {
+      "id": "162542",
+      "timestamp": "2012-10-31T10:40:20+00:00",
+      "author": "steve6375",
+      "content": "If you don\u0027t want to use grub4dos then you could use EasyBCD to add a boot entry for the 4gb partition...   \n"
+    },
+    {
+      "id": "162543",
+      "timestamp": "2012-10-31T10:42:25+00:00",
+      "author": "Junior C Hall",
+      "content": "From other post I have read they said to run other dos based commands which would make the partition a bootable partition. That is what your talking about right? using the RMPrepUSB and making the menu list makes that partition bootable correct?   \n"
+    },
+    {
+      "id": "162544",
+      "timestamp": "2012-10-31T10:43:34+00:00",
+      "author": "Junior C Hall",
+      "content": "Ok now I understand what your saying. So I create a partition and use one of the two to set the partition to boot and reboot and do the installion.   \n"
+    },
+    {
+      "id": "162545",
+      "timestamp": "2012-10-31T10:43:39+00:00",
+      "author": "steve6375",
+      "content": "yes. grub4dos or EasyBCD will allow you to boot from the 4gb partition.   \n"
+    },
+    {
+      "id": "162546",
+      "timestamp": "2012-10-31T10:45:19+00:00",
+      "author": "Junior C Hall",
+      "content": "One last question will it hurt any thing at all if I leave the grub4dos bootloader and let it install windows rather then replace it with the win 8 dos prompt? Does it matter at all?   \n"
+    },
+    {
+      "id": "162547",
+      "timestamp": "2012-10-31T10:50:06+00:00",
+      "author": "Junior C Hall",
+      "content": "menu.lst file that you showed I am a bit confused with that. menu 1 title is windows 8 root is hd0,0 and the second is titled win8 repair/setup and its root is hd0,1 ? I am guessing that the root is the partition right? HD0 would mean hard drive and the ,0 or ,1 is the partition? 0 being first partition which will be the one that I will reformat and install win 8 on and 1 is the partition which has the installion files on correct?   \n"
+    },
+    {
+      "id": "162548",
+      "timestamp": "2012-10-31T10:51:39+00:00",
+      "author": "steve6375",
+      "content": "\u003e One last question will it hurt any thing at all if I leave the grub4dos bootloader and let it install windows rather then replace it with the win 8 dos prompt? Does it matter at all?  \nIf you leave it in place then it will boot to the grub4dos shell - that is why you would need to add a menu.lst file.   \n"
+    },
+    {
+      "id": "162549",
+      "timestamp": "2012-10-31T10:54:10+00:00",
+      "author": "Junior C Hall",
+      "content": "What I mean is in your post you said Alternative is to skip 9 and make a menu list. When windows 8 is fully installed on the new partition and is working will I be able to use the win 8 dos prompt or will grub4dos completely override it?   \n"
+    },
+    {
+      "id": "162550",
+      "timestamp": "2012-10-31T10:54:14+00:00",
+      "author": "steve6375",
+      "content": "\u003e menu.lst file that you showed I am a bit confused with that. menu 1 title is windows 8 root is hd0,0 and the second is titled win8 repair/setup and its root is hd0,1 ? I am guessing that the root is the partition right? HD0 would mean hard drive and the ,0 or ,1 is the partition? 0 being first partition which will be the one that I will reformat and install win 8 on and 1 is the partition which has the installion files on correct?  \nYes, I am assuming/guessing that the final ptn structure will be  \n\nhd0,0 Win8  \nhd0,1 4GB Setup files  \n\nWhat I am not sure about is if Win8 will also create a restore ptn if you delete all other partitions, in which case the setup files will be on (hd0,2) and the structure will be  \n\n(hd0,0) Win8 boot ptn  \n(hd0,1) Win8 System ptn  \n(hd0,2) 4GB Setup files   \n"
+    },
+    {
+      "id": "162551",
+      "timestamp": "2012-10-31T10:56:45+00:00",
+      "author": "Junior C Hall",
+      "content": "That I am unsure of as well. Should I after created the new partition and after all files are copied over including the grub4dos files reboot before I create a menu list and use the find command or should I add the menu list first?   \n"
+    },
+    {
+      "id": "162552",
+      "timestamp": "2012-10-31T10:57:02+00:00",
+      "author": "steve6375",
+      "content": "\u003e What I mean is in your post you said Alternative is to skip 9 and make a menu list. When windows 8 is fully installed on the new partition and is working will I be able to use the win 8 dos prompt or will grub4dos completely override it?  \nIf you have a menu.lst file and skip step 9, then you can boot to either Win8 or the 4GB WIn8 Setup ptn via grub4dos menu. If you need to change the menu, you can press c and enter the grub4dos shell and then manually type in your commands...   \n"
+    },
+    {
+      "id": "162553",
+      "timestamp": "2012-10-31T10:59:02+00:00",
+      "author": "steve6375",
+      "content": "\u003e That I am unsure of as well. Should I after created the new partition and after all files are copied over including the grub4dos files reboot before I create a menu list and use the find command or should I add the menu list first?  \nIf you skip step 9, then when you reboot it will boot to grub4dos - if there is no menu.lst then you will have to type in the commands manually, if you do have a menu.lst then you can use that. If the menu.lst does not work, just hit **c** to get to the grub4dos command shell and type in the commands manually.  \n\nP.S. that is why I, personally, prefer to install grub4dos. You get a command shell in case anything goes wrong. With EasyBcd you just have to hope it will boot to something on the next reboot...   \n"
+    },
+    {
+      "id": "162555",
+      "timestamp": "2012-10-31T11:09:43+00:00",
+      "author": "Junior C Hall",
+      "content": "ok that makes sence actually. I would rather have the option to manually fix it then to be screwed. So once the files are copied I reboot the pc no menu list and in the shell that shows up I type Find to find the partitions and btw this is on step 6 that you gave me. I make note of these and create the menu list using the partition list I am giving when using Find command correct?   \n"
+    },
+    {
+      "id": "162556",
+      "timestamp": "2012-10-31T11:11:55+00:00",
+      "author": "steve6375",
+      "content": "correct - though it does not hurt to make a menu.lst file and have a guess as to what will be in it.  \nYou can always edit it in Notepad using the Win8 shell just after you delete/create the partitions too (hit SHIFT+F10)!   \n"
+    },
+    {
+      "id": "162557",
+      "timestamp": "2012-10-31T11:13:26+00:00",
+      "author": "Junior C Hall",
+      "content": "Ok thank you that makes more sence now. After windows 8 is fully installed and working I am still able to use win 8 cmd as I wish right? the grub4dos is just for the installion part correct?   \n"
+    },
+    {
+      "id": "162558",
+      "timestamp": "2012-10-31T11:15:40+00:00",
+      "author": "steve6375",
+      "content": "\u003e Ok thank you that makes more sence now. After windows 8 is fully installed and working I am still able to use win 8 cmd as I wish right? the grub4dos is just for the installion part correct?  \nWhat do you mean? After the installation, you can either boot to Win8 or the 4GB Win8 Setup ptn again. From either you can get to Win8 command shell???   \n"
+    },
+    {
+      "id": "162559",
+      "timestamp": "2012-10-31T11:16:48+00:00",
+      "author": "Junior C Hall",
+      "content": "Ok I just wanted to make sure that the grub4dos does not remove the actual win 8 dos it self.   \n"
+    },
+    {
+      "id": "162560",
+      "timestamp": "2012-10-31T11:21:14+00:00",
+      "author": "steve6375",
+      "content": "grub4dos is a bootloader. Once installed on the Master Boot Record, it will always boot to grub4dos first. From grub4dos you can choose to boot to any partition. For instance, instead of using chainloader /bootmgr for the first Win8 partition, you could just tell grub4dos to load the partition boot code instead  \n\ntitle Boot from first partition (which should contain a bootloader that loads bootmgr that loads Win8)  \nroot (hd0,0)  \nchainloader (hd0,0)   \n"
+    },
+    {
+      "id": "162561",
+      "timestamp": "2012-10-31T11:26:31+00:00",
+      "author": "Junior C Hall",
+      "content": "That cleared it up thank you. You have been a big help and I already have the RMPrepUSB downloaded and I will give this a shot. It shouldnt be hard the steps are easy. Thank you for helping.   \n"
+    },
+    {
+      "id": "162562",
+      "timestamp": "2012-10-31T11:29:44+00:00",
+      "author": "Junior C Hall",
+      "content": "When making the new partition does it matter what drive letter or volume name it is given?   \n"
+    },
+    {
+      "id": "162563",
+      "timestamp": "2012-10-31T11:29:54+00:00",
+      "author": "steve6375",
+      "content": "No problem. Hope you manage to scrape together $4 for a 4GB flash drive and then you can try loads of things out from reboot.pro and my website! ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)   \n"
+    },
+    {
+      "id": "162564",
+      "timestamp": "2012-10-31T11:30:35+00:00",
+      "author": "steve6375",
+      "content": "\u003e When making the new partition does it matter what drive letter or volume name it is given?  \nNo - all letters will be re-allocated when Win8 boots. Volume labels will not change though (but you can always change them later).   \n"
+    },
+    {
+      "id": "162565",
+      "timestamp": "2012-10-31T11:31:44+00:00",
+      "author": "Junior C Hall",
+      "content": "Awesome thank you much.   \n"
+    },
+    {
+      "id": "162566",
+      "timestamp": "2012-10-31T11:42:31+00:00",
+      "author": "steve6375",
+      "content": "Just tried this and Win8 seems to replace the grub4dos bootloader! So no need for step 9. It will just work!  \nOf course you will still have the 4gb ptn there which you can delete or re-install grub4dos or use EasyBcd to add it in as a boot option.   \n"
+    },
+    {
+      "id": "162567",
+      "timestamp": "2012-10-31T11:54:21+00:00",
+      "author": "Junior C Hall",
+      "content": "so do all other steps out side of step 9?   \n"
+    },
+    {
+      "id": "162569",
+      "timestamp": "2012-10-31T11:58:35+00:00",
+      "author": "steve6375",
+      "content": "yes, when win8 is installed it will just reboot back to win8 and the grub4dos will be gone.   \n"
+    },
+    {
+      "id": "162570",
+      "timestamp": "2012-10-31T11:59:34+00:00",
+      "author": "Junior C Hall",
+      "content": "thank you much man   \n"
+    },
+    {
+      "id": "162589",
+      "timestamp": "2012-10-31T19:19:50+00:00",
+      "author": "Junior C Hall",
+      "content": "Well I tested the laptop for windows 8 and it seems that it does not support it so I figured I would try this using a bootable windows vista with the same method as what you posted. I am now able to boot to the installion partition but I have this issue when trying to install vista. I get to the select the driver to be installed part of the installion and I am trying to get passed this required cd dvd error or this error saying missing driver or this error saying that there is no driver to update error. This will not allow me to continue installing vista. Any idea what I need to do? Should I open dos up and format the OS partition and then boot to the installer partition and go that way or what?   \n"
+    },
+    {
+      "id": "162590",
+      "timestamp": "2012-10-31T19:22:13+00:00",
+      "author": "steve6375",
+      "content": "Do you have a sourcesinstall.wim file present on the 4GB partition?  \nWhy wasn\u0027t Win8 compatible?   \n"
+    },
+    {
+      "id": "162591",
+      "timestamp": "2012-10-31T19:26:47+00:00",
+      "author": "Junior C Hall",
+      "content": "I can check to see if that file is there and It said that my processor can not handle the ordeal. I ran the program that checkes the system and it failed. Give me a sec to check on that file.   \n"
+    },
+    {
+      "id": "162592",
+      "timestamp": "2012-10-31T19:30:04+00:00",
+      "author": "Junior C Hall",
+      "content": "I just checked that file. I do have the install.wim file located in the folder sources. So yes that file is present.   \n"
+    },
+    {
+      "id": "162593",
+      "timestamp": "2012-10-31T19:33:54+00:00",
+      "author": "steve6375",
+      "content": "Well the \u0027driver\u0027 message usually means that the Setup program cannot find the sourcesinstall.wim and so it thinks you don\u0027t have the CDDVD driver installed.  \nDid you copy the whole Vista iso contents to a fresh, clean 4GB partition (no old win8 setup files on there?)   \n"
+    },
+    {
+      "id": "162611",
+      "timestamp": "2012-11-01T09:13:59+00:00",
+      "author": "coder",
+      "content": "how about avoiding bootloaders  \n[http://www.rmprepusb...tutorials/serva](http://www.rmprepusb.com/tutorials/serva \"External link\")  \n\nI\u0027ve tried with XP and recently with 8 and just works   \n"
+    },
+    {
+      "id": "162615",
+      "timestamp": "2012-11-01T14:48:19+00:00",
+      "author": "Junior C Hall",
+      "content": "see I would use that method but what happens when you have no money to get stuff like that? I liked the bootloader it worked out once I understand how it all works. At first trying anything is hard but once you get the hang of it then its easy.   \n"
+    },
+    {
+      "id": "162617",
+      "timestamp": "2012-11-01T16:06:36+00:00",
+      "author": "coder",
+      "content": "what money? so far I\u0027ve installed XP and 8 using the free version.  \nbut if you like installing bootloaders... ![:hyper:](http://reboot.pro/public/style_emoticons/default/hyper.gif)   \n"
+    },
+    {
+      "id": "162618",
+      "timestamp": "2012-11-01T16:57:20+00:00",
+      "author": "Junior C Hall",
+      "content": "I will admit that the bootloader worked fine and after vista was fully installed and working the bootloader was removed as steve said. It went back to using vista. Now if I need to reinstall vista again on that drive I can just install the loader once again boot to the partition and bingo. I think it was good learning for me. At least this way I have the installation files on that partition no real need for a cd no more. It was good learning. As for the method that you are talking about I would look into it but that would be only if I ever need to do this again. Shouldnt have to actually.   \n"
+    }
+  ]
+}

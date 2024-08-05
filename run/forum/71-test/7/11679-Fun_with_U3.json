@@ -1,0 +1,34 @@
+{
+  "id": "11679",
+  "title": "Fun with U3",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "102191",
+      "timestamp": "2010-06-12T17:05:59+00:00",
+      "author": "MedEvil",
+      "content": "Reading about the end of U3, got me curious to check it out before it is gone.  \n\nFirst thing i discovered was, that all my SanDisk sticks were able to be formatted as U3 drives, eventhough non hat it installed when bought or was sporting the logo.  \nSo give it a try, you might get lucky too.  \n\nSecond thing i discovered was, that U3 wasn\u0027t completely working, as i thought. The hardware part i did get right, but the software(Launchpad) worked way more stupid.  \n\nHardware:  \nBasicly a U3 drive presents itself as a USB-Hub, which has a USB-CDROM and a USB-Stick connected to it.  \n\nSoftware:  \nWhile Launchpad is installed in the write protected CDROM area, all other applications get installed into the writable area. Which makes \u0027sense\u0027, since it allows the apps to simply write things to the %ProgramDirectory%, instead of engineering them properly for use on a USB-Stick. :smile:  \nBut of course, this also leaves them vulnerable to any virus.  \n\nImo, while a U3 drive is a good idea, the U3 software should get replaced.  \n\n\u003cbr /\u003e\n\nHow to supercharge a U3-Stick?  \n\nOne creates a iso file that still fits on the stick, which contains a startmenu like PStart for instance and a whole bunch of software, which can handle running from the CDVD. (Best test this in a VM or with an image mounter.) Most, if not all, of the PortableApps.com can do that these days.  \n\nOnce done, the image need to get written to the U3 CDROM part.  \nI found two programs for that.   \nUniversal Customizer 1.0.0.8. is suppose to work on any model of U3-Stick, but formats sticks bigger than 4GB still as 4GB.  \nI\u0027ve read that there exists also a patched version, which works without this bug on bigger drives. I didn\u0027t test eighter.  \nSince both are hacked versions of a Memorex installer, no links here!  \n\nIf you own a SanDisk U3-Stick, you won\u0027t need it anyway. SanDisk was clever enough to integrate the functionality, to use a own iso, right into their installer.   \n\nGoto SanDisk.com and download the Launchpad installer and uninstaller.  \nUse winrar or 7zip to extract the selfextracting Launchpad installer archive to some folder.  \n\nNow add two files: Start_Install.cmd and qa.ini  \n\nStart_Install.cmd  \n\u003e @ECHO OFF  \n\u003e LPInstaller.exe local\n\nqa.ini  \n\u003e \\[QA\\]  \n\u003e LocalISOPath\u003d.\\\\NaughtyPE.iso\n\nand put your iso file in the same folder. Before you ask. Yes the iso needs to named NaughtyPE.iso! ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \n\nIn case there is already some iso installed on your stick, use the remove tool, before installing the new one and always unplug, after each program finished!  \n\n\u003cbr /\u003e\n\nLike the iso name in the qa.ini might already told you, this also works for PE BootCDs.  \nOne still needs to eighter make the PE USB bootable or ramboot the PE though, but there is no hassle with fixing the PE for USB anymore. Just put the CD on the stick and be done. ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \nBut best of all, be completely virus safe! ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n\nUnfortunately the U3 ISO trick didn\u0027t improve the chances of the stick to get booted on my older computers, which wouldn\u0027t boot from it before. :smile:  \n\n\u003cbr /\u003e\n\nService notice:  \nIn case, after you\u0027re done playing, you want to reinstall Launchpad.  \nDownload: [http://u3.sandisk.co...BFG-autorun.iso](http://u3.sandisk.com/download/apps/lpinstaller/isofiles/PelicanBFG-autorun.iso \"External link\")  \nand install it like the other image before. This will give you right away the latest version of Launchpad. If you do it the official way, you need to install twice, to get the latest version.  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n"
+    },
+    {
+      "id": "102584",
+      "timestamp": "2010-06-17T08:08:11+00:00",
+      "author": "mateuszek",
+      "content": "cdrom lun this u3 from sandisk is shit.  \n\nsome bioses hang up and can not boot from it, neither from second second (not cd rom) disk part.  \nmuch better is for example kingston data traveler 2gb - you can modify chipset with skymedi mpt and make cdrom on it and in that case - bios can see it and can boot.  \n\nSANDISK U3 \u003d SHIT.   \n"
+    },
+    {
+      "id": "102586",
+      "timestamp": "2010-06-17T08:26:18+00:00",
+      "author": "Rex2010",
+      "content": "i am now using prayaya V3, which is a very competitive rivalry of U3, it supports nearly alll software directly install, and you can install it on any removable device. and install and unintall it is just you are doing on a common softare.   \n"
+    },
+    {
+      "id": "102593",
+      "timestamp": "2010-06-17T10:38:42+00:00",
+      "author": "MedEvil",
+      "content": "\u003e much better is for example kingston data traveler 2gb\nCan you post some speedtest of it in the Benchmark thread? Cause from what i\u0027ve read, it\u0027s performance is abysmal.  \nRead: 6MB/s • Write: 3MB/s  \n\n\u003cbr /\u003e\n\n![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n"
+    }
+  ]
+}

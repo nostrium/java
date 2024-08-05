@@ -1,0 +1,22 @@
+{
+  "id": "14976",
+  "title": "Reflash/Lowlevel format Iomega eGo portable HDD",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "132983",
+      "timestamp": "2011-07-14T14:46:27+00:00",
+      "author": "Gregor1806",
+      "content": "Hi folks,  \n\nI got given a 500GB Iomega eGo USB3 portable HDD and it has a firmware on it that shows a spoofed CDROM drive when I plug it in. Just wondering if there\u0027s any way I can reflash this piece of junk to get rid of this extra CDROM drive, and turn this device back into a regular external HDD.  \n\nAny ideas?  \n\nThanks,  \n\nG   \n"
+    },
+    {
+      "id": "132987",
+      "timestamp": "2011-07-14T15:54:21+00:00",
+      "author": "Gregor1806",
+      "content": "Solution found here:  \n\n[https://iomega-eu-en...tail/a_id/24749](https://iomega-eu-en.custhelp.com/app/answers/detail/a_id/24749 \"External link\")  \n\nThanks for listening...   \n"
+    }
+  ]
+}

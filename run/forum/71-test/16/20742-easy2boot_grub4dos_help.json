@@ -1,0 +1,46 @@
+{
+  "id": "20742",
+  "title": "easy2boot grub4dos help",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "195457",
+      "timestamp": "2015-09-21T06:09:46+00:00",
+      "author": "RogueCraft",
+      "content": "I used easy2boot for the first time today in order to set up a multiboot tool for running diagnostics on windows machines (both legacy and uefi).\n\nI took an unallocated 128gb ssd and used RMPrepUSB to create a 16gb partition. Installed easy2boot \\\u0026 loaded up all the ISOs I wanted on there.\n\nThen I took another HDD that had two 20gb partitions on it. One has gnome-ubuntu 15.04 installed, the other has windows 7 installed. I used a partition cloning tool, and cloned those 2 partitions to the SSD. I also added a 1gb swap partition at the end. I extended the windows 20gb partition to 74.7gb to fill the rest of my space.\n\nSo my 128gb SSD has: 16gb easy2boot, 20gb gnome-ubuntu, 74gb windows 7, 1gb swap.\n\nMy question is, how can I add boot entries to easy2boot (which uses grub4dos) to boot the gnome-ubuntu (hd0,4) and windows 7 (hd0,5)?\n\nany help is appreciated.\n\n"
+    },
+    {
+      "id": "195459",
+      "timestamp": "2015-09-21T08:15:37+00:00",
+      "author": "steve6375",
+      "content": "You need to add .mnu files.\n\nIf the partitions still have valid boot code in them, you can boot to them just using chainloader\n\ne.g.\n\n```\ntitle Bootmgr\nchainloader (hd0,5)+1\n\ntitle Ubuntu\nchainloader (hd0,4)+1\n```\n\nor try\n\n```\ntitle Bootmgr\nfind --set-root /bootmgr\nchainloader /bootmgr\n```\n\nHowever, you have probably broken the boot code for Ubuntu by cloning it.\n\nIf so, you will need to re-install grub to the PBR (not grub4dos) to boot Ubuntu and then install grub4dos to the MBR if required.\n\nsee [http://www.rmprepusb...nload-syslinux](http://www.rmprepusb.com/tutorials/chainload-syslinux \"External link\")for more examples\n\nAlternatively, you could add a menu entry to boot ubuntu from grub4dos. Find the Ubuntu grub.cfg file and translate it into grub4dos kernel and initrd commands.\n\nOR you could try finding and loading grub like this\n\n```\ntitle Boot grub2 from partition hd0,4 \\n Boot to core.img\nroot (hd0,4)\nif exist /boot/grub/i386-pc/core.img kernel /boot/grub/i386-pc/core.img \u0026\u0026 boot\nif exist /boot/grub/core.img kernel /boot/grub/core.img \u0026\u0026 boot\nif exist /grub2/core.img kernel /grub2/core.img \u0026\u0026 boot\nif exist /boot/grub2/i386-pc/core.img kernel /boot/grub2/i386-pc/core.img \u0026\u0026 boot\n# grub - e.g. bitdefender\nif exist /boot/grubi386.pc kernel /boot/grubi386.pc \u0026\u0026 boot\nboot\n```\n\n\u003cbr /\u003e\n\n**Edited by steve6375, 21 September 2015 - 08:38 AM.**\n"
+    },
+    {
+      "id": "195495",
+      "timestamp": "2015-09-23T01:13:51+00:00",
+      "author": "RogueCraft",
+      "content": "Awesome the first option worked for windows and the last option worked for gnome (I reformated \\\u0026 reinstalled OS\u0027s directly to the ssd then reloaded everything).\n\nNow im showing 2 options in the menu for gnome and windows.\n\nI.e.\n\nGnome.mnu\n\nGnome.mnu\n\nBootmgr.mnu\n\nWindows.mnu\n\nany ideas?\n\n"
+    },
+    {
+      "id": "195499",
+      "timestamp": "2015-09-23T08:27:36+00:00",
+      "author": "steve6375",
+      "content": "I depends where you placed the .mnu files and what is in them.\n\nYou can hit the SPACEBAR during file enumeration to stop the display and view what files E2B has found to add to the menu.\n\n"
+    },
+    {
+      "id": "195526",
+      "timestamp": "2015-09-23T14:05:39+00:00",
+      "author": "RogueCraft",
+      "content": "i added both files to MAINMENU folder\n\ni created a Windows.mnu and it has:\n\ntitle Bootmgr  \nfind --set-root /bootmgr  \nchainloader /bootmgr\n\nthen i created Gnome.mnu:\n\ntitle Boot grub2 from partition hd0,5 \\\\n Boot to core.img  \nroot (hd0,5)  \nif exist /boot/grub/i386-pc/core.img kernel /boot/grub/i386-pc/core.img \\\u0026\\\u0026 boot  \nif exist /boot/grub/core.img kernel /boot/grub/core.img \\\u0026\\\u0026 boot  \nif exist /grub2/core.img kernel /grub2/core.img \\\u0026\\\u0026 boot  \nif exist /boot/grub2/i386-pc/core.img kernel /boot/grub2/i386-pc/core.img \\\u0026\\\u0026 boot  \n# grub - e.g. bitdefender  \nif exist /boot/grubi386.pc kernel /boot/grubi386.pc \\\u0026\\\u0026 boot  \nboot\n\n"
+    },
+    {
+      "id": "195527",
+      "timestamp": "2015-09-23T14:08:52+00:00",
+      "author": "steve6375",
+      "content": "Are you sure you don\u0027t have any more .mnu files - maybe in a sub-folder under \\\\_ISO\\\\MAINMENU ??\n\n"
+    }
+  ]
+}

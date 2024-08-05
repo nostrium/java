@@ -1,0 +1,424 @@
+{
+  "id": "18244",
+  "title": "Is there a way to boot an exfat formated USB drive?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "168630",
+      "timestamp": "2013-03-02T00:53:19+00:00",
+      "author": "alacran",
+      "content": "I was searching about this and I didn\u0027t find an answer, so my question is the one in topic title:\n\nIs there a way to boot an exfat formated USB drive?\n\nI mean with some loader like Grub, Grub4dos, Syslinux, or any other.\n\nThanks in advance\n\n"
+    },
+    {
+      "id": "168644",
+      "timestamp": "2013-03-02T18:09:07+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I was searching about this and I didn\u0027t find an answer, so my question is the one in topic title:\n\u003e\n\u003e Is there a way to boot an exfat formated USB drive?\n\u003e\n\u003e I mean with some loader like Grub, Grub4dos, Syslinux, or any other.\n\u003e\n\u003e Thanks in advance\n\nBoot WHAT?\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "168670",
+      "timestamp": "2013-03-03T02:19:10+00:00",
+      "author": "alacran",
+      "content": "Hi Wonko, nice to reed you\n\nThe usual tools we put in our USB sticks like Win7pe and wathever ISO you can boot with Grub4dos loader (the one I use) in FAT or NTFS partitions (file or RAM booting).\n\nAs far as I know XP can\u0027t boot in exfat even with the proper update it is only capable to read and write to it, ¿Are Win7 or Win8 capable to boot from exfat?\n\n¿Any other system is capable to boot from exfat?\n\nYou are the man with ALL the links for everyting, ¿Do you have any abut this? (Google did\u0027t help me very much)\n\nBest Regards\n\n"
+    },
+    {
+      "id": "168680",
+      "timestamp": "2013-03-03T11:28:49+00:00",
+      "author": "Wonko the Sane",
+      "content": "You\u0027ll have to do some experiments.\n\nThe good news are that grub4dos can read exFAT formatted volume:\n\n[http://reboot.pro/to...-exfat-volumes/](http://reboot.pro/topic/14673-accessing-exfat-volumes/ \"\")\n\nSo - theoretically - you can have the grub4dos \"installed\" to the MBR+hidden sectors, from it map a floppy (or the like) image residing in the exFAT volume (but formatted with FAT12/16 or NTFS) containing the Windows boot files and from it go on.\n\nNTLDR AFAIK does NOT support exFAT\n\nBOOTMGR (particularly the 7 or 8 ![:w00t:](https://reboot.pro/public/style_emoticons/default/w00t.gif)) versions ***may ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)***\n\nYou will need to go through this:\n\n[http://reboot.pro/to...s-also-logical/](http://reboot.pro/topic/17892-cloning-and-multibooting-several-win78-partitions-also-logical/ \"\")\n\nand IF BOOTMGR actually supports exFAT, then you may find a way to load XP (with KB955704 installed) through it.\n\nOf course any .iso or .img mapped to memory (and provided that the \\*whatever\\* inside the .iso can actually access exFAT) should work \"normally\".\n\nThe support to hard disk backed images (please read as Firadisk/Winvblock mounted) ***may*** also work ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "168723",
+      "timestamp": "2013-03-03T23:38:47+00:00",
+      "author": "alacran",
+      "content": "Wonko\n\nThanks for your info, I\u0027ll reed those links first then make some experiments.\n\nBest regards\n\n"
+    },
+    {
+      "id": "168728",
+      "timestamp": "2013-03-04T03:02:36+00:00",
+      "author": "alacran",
+      "content": "Every thing I booted worked just fine:\n\nPrepare media\n\n1.- 8 GB USB 2.0 stick formated using diskpart, one particion exfat format, set active \\\u0026 drive letter assigned.\n\n2.- Using RMPrepUSB v2.1.652, Grub4dos was installed to the MBR+hidden sectors, also grld added.\n\n3.-Copied some Isos: LiveXP, 7pe_x86, Acronis Disk Director and HDDR2011\n\n4.-Copied XP-1.vhd\n\n5.- Made menu.lst as usual\n\nBoot\n\nI) LiveXP - Only RAM booted \u003d booting fine (it can see all files in the USB stick exfat formated, tested reading menu.lst)\n\nII) 7pe_x86 - File and RAM booted \u003d booting fine (it can see all files in the USB stick exfat formated, tested reading menu.lst)\n\nIII) Acronis Disk Director (v10) - RAM booted \u003d booting fine (it can not see the USB stick)\n\nIV) HDDR2011 - RAM booted \u003d booting fine (I didn\u0027t go farter, just open it)\n\nV) XP-1.vhd (Winvblock) - File booted \u003d very slow booting (as expected from USB 2.0 stick) I usually run it from USB HDD (I didn\u0027t go farter, just open it)\n\nSo I can say Grub4dos works Great on exfat formated partitions.\n\nP.D. I checked the USB device with BOOTICE 1.03 and it has partition ID 07 (same as NTFS) but it certanly says it is exfat also Widows says it is exfat.\n\n![flvjnl.jpg](http://i50.tinypic.com/flvjnl.jpg)\n\nBest Regards\n\n**Edited by alacran, 04 March 2013 - 03:37 AM.**\n"
+    },
+    {
+      "id": "168741",
+      "timestamp": "2013-03-04T09:06:47+00:00",
+      "author": "Wonko the Sane",
+      "content": "Good :smile:.\n\nFor the record, there is a common misunderstanding (actually induced by a mass of \"wrong\" doocumentation, either provided by MS itself or produced by third parties) about the actual role of the Partition ID in a MBR DATA.\n\nJFYI:\n\n[http://homepage.ntlw...ystem-type.html](http://homepage.ntlworld.com./jonathan.deboynepollard/FGA/determining-filesystem-type.html \"External link\")\n\n\u003e **How partition types (do not) imply filesystem types**   \n\u003e\n\u003e Traditionally on PC operating systems, the partition type has been associated with one, and only one, filesystem type. However, this was never the intention, and in practice is true only for a limited number of partition types.  \n\u003e\n\u003e The intention of the partition type was to prevent operating systems from attempting to access, mount, write, or otherwise deal with partitions that they wouldn\u0027t know how to deal with (because they would exceed their preconceived notions of how large a disc volume could ever be, for example), or that would extend into areas of the disc that they wouldn\u0027t be able to access, or that simply weren\u0027t volumes containing files and directories at all.  \n\u003e\n\u003e The idea that the partition type implies the filesystem type is flawed in any case, for one very simple reason: Once a partition has been created with a disc partitioning utility, users can (and do) reformat it with any filesystem type that they like. Most volume formatting tools (i.e. \"high-level formatting\" tools --- mkfs and pals in Unix parlance) operate solely upon the contents of the disc slice concerned. They don\u0027t look for, and modify, the disc partition table to ensure that the partition type matches the new filesystem type.  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e What a partition type does is define which operating systems will attempt to access, mount, write or otherwise deal with the partition, and define the particular detection method that is to be used to determine what filesystem type the volume is actually formatted with.\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "168881",
+      "timestamp": "2013-03-06T13:37:41+00:00",
+      "author": "alacran",
+      "content": "Wonko\n\nThank to you for the info, and yes I had the wrong idea that partition ID \u003d partition type.\n\nNow I can put on a 16 or 32 GB USB 2.0 or 3.0 stick formated exFAT all my tools and have enough room for big files, even biger than 4 GB (FAT32 limit) like Ghost images, DVD Isos, VHD\u0027s, etc. without worry about excesive ware (time stamping every time you open a file in NTFS) and avoid carrying around a USB HDD.\n\nBy the way:\n\nDo you know Wich is the best alingment for exFAT formated partitions?\n\nDo you know another way to format exFAT whith MBR \\\u0026 255 H, 63 S?\n\nI mean some GUI program, or maybe I have to make a batch for Diskpart.\n\nBest Regards\n\n**Edited by alacran, 06 March 2013 - 02:30 PM.**\n"
+    },
+    {
+      "id": "168909",
+      "timestamp": "2013-03-06T20:35:15+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Do you know Wich is the best alingment for exFAT formated partitions?\n\nNo, I am not familiar with the exFAT structures, **BUT** , most probably, you don\u0027t want to actually align the Volume/partition ![:w00t:](https://reboot.pro/public/style_emoticons/default/w00t.gif), but rather align the filesystem area dedicated to storing data :wink:.\n\nSee this (AND links in it) to understand:\n\n[http://reboot.pro/to...-under-windows/](http://reboot.pro/topic/16775-discover-allocation-unit-and-other-information-of-ufd-under-windows/ \"\")\n\n[http://reboot.pro/to...ndows/?p\u003d153278](http://reboot.pro/topic/16775-discover-allocation-unit-and-other-information-of-ufd-under-windows/?p\u003d153278 \"\")\n\n[http://reboot.pro/to...-memory-drives/](http://reboot.pro/topic/16783-rmprepusb-faster-fat32-write-access-on-flash-memory-drives/ \"\")\n\n\u003e Do you know another way to format exFAT whith MBR \\\u0026 255 H, 63 S?\n\u003e\n\u003e I mean some GUI program, or maybe I have to make a batch for Diskpart.\n\nNo, but you can use \\*any\\* partitioning program (including my MBRBATCH) that allows \"fine-tuning\" and later use \"plain\" format.\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "168977",
+      "timestamp": "2013-03-07T21:10:36+00:00",
+      "author": "alacran",
+      "content": "I booted the USB drive using Grub4dos and started LiveXP.ISO file booting, it did not fully load (BSOD).\n\nI made another experiment:\n\nUsing same 8 GB USB 2.0 stick, I put in it the WIindows NT 6.x MBR using Bootice 1.03 also Boot Manager Boot Record in Partition Boot Record (this last one maybe unneeded), with out removing any thing, then I copy to the root of stick all files and folders from a Win8 x86 ISO, and using EasyBCD 2.2 loaded the BCD located on the USB device and added new entry NeoGrub boot loader then I put my previous menu.lst in folder NST, and edited Windows boot menu in order to make NeoGrub boot loader the default and Setup the second one, finaly deleted autorun.inf located in root of stick (to prevent starting the setup when the USB drive is conected to the CPU, I can run manually Setup from Windows running machine if I want to)\n\nNow I can use all my tools and also install Win8 from that USB stick, just tested booting from it and every thing is working great, including Win8 install, (LiveXP.ISO only boots in RAMdisk)\n\nNext step is experiment with Windows 7 Setup, I will tray it and report here.\n\n@ Wonko\n\nThank you, I\u0027m going to reed the info you kindly gave me.\n\nBest regards\n\n**Edited by alacran, 07 March 2013 - 09:40 PM.**\n"
+    },
+    {
+      "id": "168981",
+      "timestamp": "2013-03-08T01:16:49+00:00",
+      "author": "alacran",
+      "content": "I deleted all Win8 files and folders then copy all content from Win7 x86 ISO, ran EasyBCD 2.2 and made same procedure as I did in previous post.\n\nI can confirm Win 7 BOOTMGR does not run in exFAT. I didn\u0027t get BSOD, I got the black screen with message about need to repair install.\n\nI then deleted all about Win7 and went back to Win 8 install, and every thing worked fine again.\n\nBest Regards\n\n**Edited by alacran, 08 March 2013 - 01:17 AM.**\n"
+    },
+    {
+      "id": "170598",
+      "timestamp": "2013-04-04T04:56:49+00:00",
+      "author": "alacran",
+      "content": "I aded to last build WinNTSetup 2.3.4.0 and Win7 SP1 x86 ISO to the root of USB stick, so now Win7 can also be instaled from it, already tested and working flawlesly.\n\nNext trayed Win XP SP3 install from ISO using WinNTSetup 2.3.4.0 unfortunately it didn\u0027t work well, perhaps the problem is my ISO fully updated using nLite and with driver packs for Mass Storage, Chipset, Processor, Lan and Wlan drivers added with DPs_BASE. That ISO works pretty well when installing from CD to real hardware or from ISO to virtual machine also to VHD using IMG_XP, reading in WinNTSetup forum they say nLited ISO\u0027s don\u0027t work properly, but I can tell you when booting from the system HDD I pass text phase and when in GUI a file is not found, so we cuould assume ussing the proper ISO, Win XP can be installed from this USB exFAT formated device.\n\nBest Regards\n\n**Edited by alacran, 04 April 2013 - 05:05 AM.**\n"
+    },
+    {
+      "id": "171315",
+      "timestamp": "2013-04-21T02:27:57+00:00",
+      "author": "alacran",
+      "content": "Just to resume my findings:\n\n1.- Using Grub4dos and exFAT formated USB flash drives you can RAM boot anything on it as far as it can be booted with Grub4dos.\n\n2.- Win7PE can boot from file or RAM.\n\n3.- XP-1.vhd (Winvblock) - File booted fine, USB 3.0 recomeded for sticks or USB 2.0 HDD.\n\n4.- As far as your live or PE ISO can read exFAT you are able to access the USB exFAT formated device.\n\n5.- Win 7 boot manager don\u0027t boot from exFAT.\n\n6.- Win 8 boot manager can boot from exFAT and install Win 8 very well.\n\n7.- Any way using Live XP or Win7pe it is very easy to install win7 or Win8 with WinNTSetup.\n\nBest Regards\n\n"
+    },
+    {
+      "id": "171338",
+      "timestamp": "2013-04-21T16:32:19+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, if I may, you failed ![:w00t:](https://reboot.pro/public/style_emoticons/default/w00t.gif) to do (or report about) what would be IMHO the more \"useful\" test, using a \"mixed mode approach\" of using Windows 8 BOOTMGR (and \\\\boot\\\\BCD) with a \"plain\" or \"flat\" XP or Windows 7 install (of course with integrated/installed a exFAT driver).\n\nIf you prefer, is it \"enough\" an OS loader (BOOTMGR) capable of exFAT access or some other key boot components are needed? ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "171378",
+      "timestamp": "2013-04-23T00:59:28+00:00",
+      "author": "alacran",
+      "content": "\u003e Well, if I may, you failed ![:w00t:](https://reboot.pro/public/style_emoticons/default/w00t.gif) to do (or report about) what would be IMHO the more \"useful\" test, using a \"mixed mode approach\" of using Windows 8 BOOTMGR (and \\\\boot\\\\BCD) with a \"plain\" or \"flat\" XP or Windows 7 install (of course with integrated/installed a exFAT driver).\n\u003e\n\u003e If you prefer, is it \"enough\" an OS loader (BOOTMGR) capable of exFAT access or some other key boot components are needed? ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\u003e\n\u003e ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\u003e\n\u003e Wonko\n\nMy USB stick has Win NT 6.x MBR and PBR, and active single exFAT formated partition made in Win 7.\n\nIn post No. 10, I tested Win 8 install and reported it booted and let you select language and where to make your install as usual so I did\u0027nt go farter as rest is only expand the install.wim to the internal HDD.\n\nIn post No. 11, I tested Win 7 install and reported Win 7 Bootmanager problem, so concluded it can\u0027t read xeFAT.\n\nNow I copied full contend of Win 7 install DVD to USB stick but replacing only Bootmanager and Boot folder with the ones from Win 8, It booted very well and let me select language and where to install as when in Win 8 install.\n\nSo far YES only requirement is Bootmanager and Boot folder from Win 8.\n\nAbout XP if you make an install.wim from an already installed and syspreped system ussing imageX it is possible it may work too.\n\nBest Regards\n\n"
+    },
+    {
+      "id": "171379",
+      "timestamp": "2013-04-23T02:31:27+00:00",
+      "author": "alacran",
+      "content": "Sorry there is a typo on my last post, I copied to USB stick bootmanager and boot folder (not boot file) from Win 8 DVD.\n\nWhen I detected the typo there was no way to edit it any more.\n\nBest Regards\n\n**Edited by alacran, 23 April 2013 - 02:33 AM.**\n"
+    },
+    {
+      "id": "174445",
+      "timestamp": "2013-07-06T19:12:50+00:00",
+      "author": "saddlejib",
+      "content": "I have a Galaxy s4 (big data computer in pocket) which i rooted via twrp.\n\ntwrp has been updated since this post:Google it first.\n\n[http://galaxys4root....ng-twrp-method/](http://galaxys4root.com/galaxy-s4-root/how-to-root-galaxy-s4-using-twrp-method/ \"External link\")\n\nand used as a mass storage device courtesy of\n\n[http://forum.xda-dev...d.php?t\u003d2297888](http://forum.xda-developers.com/showthread.php?t\u003d2297888 \"External link\")\n\nand have booted in exfat with the same problems or not problems as to be anticipated file system and loader ntdetect so why not use the ext2fs rmbprep solution of steves to create a small fat 32 partition.\n\nno doubt i will be corrected but hey.\n\nThe future:\n\nI will boot my computer from my phone:\n\n\"Thin client\"\n\n"
+    },
+    {
+      "id": "174448",
+      "timestamp": "2013-07-06T19:40:26+00:00",
+      "author": "saddlejib",
+      "content": "Or to simplify what and when future bios\u0027s look for a nearby device and let you choose your nearby device to boot from.\n\nIts not complicated.\n\n"
+    },
+    {
+      "id": "174502",
+      "timestamp": "2013-07-07T18:54:50+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e no doubt i will be corrected but hey.\n\nCorrected for what? ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nPlease choose one:\n\n1. babbling senselessly about phones, ext2fs, rmprepusb, future BIOS\u0027s and the like\n2. babbling senselessly about phones, ext2fs, rmprepusb, future BIOS\u0027s and the like **AND** attempting to hijack this thread\n\n![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)\n\nJFYI, it seems to me like you rooted your phone, and then exposed it\u0027s internal SD-card as USB Mass Storage Device, maybe you would be interested to this :wink::\n\n[http://reboot.pro/to...ndroid-devices/](http://reboot.pro/topic/18074-new-app-for-pxe-booting-from-android-devices/ \"\")\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "174507",
+      "timestamp": "2013-07-07T20:26:21+00:00",
+      "author": "saddlejib",
+      "content": "@ Wonko\n\nSorry about the hijack. You are right on that one.\n\nThe future is here its in your pocket (i.e S4 big data gatherer for Google) so lets not babble lets look at a motherboard that looks for \u0027nearby device\u0027 not to frr fetched.\n\nAs the computer boots its your machine, all the boot problems can be resolved as you know, it finds your device (not necessarily phone) and boots into your world.\n\nThe 70\u0027s has gone.\n\nNot a babble but forward thinking.\n\n"
+    },
+    {
+      "id": "174509",
+      "timestamp": "2013-07-07T20:49:09+00:00",
+      "author": "saddlejib",
+      "content": "or do you really believe manufacturers of motherboards couldnt do what you guys do if they wanted.\n\nthey would be out of work.\n\nIt wouldnt be difficult to have or boot from i.e wifi or whatever.\n\nnot complicated for a belligerent rant.\n\nit doesnt make business sense thats why were not there yet\n\n"
+    },
+    {
+      "id": "174539",
+      "timestamp": "2013-07-08T20:34:23+00:00",
+      "author": "saddlejib",
+      "content": "@Wonko\n\nSorry for my rant (frustration).\n\nI was on the right thread but using my 64gb exfat (formatted by s4 galaxy) sd card on and from my phone as a mass storage boot device connected by usb using g4d and I still dont feel its an impossible situation once exfats nuances are overcome.\n\nSo I apologise it wasnt a hijack it was relevant i feel.\n\nThanks for the link it has great potential. guess you deduced where i was heading, just tried it and its nice...\n\n"
+    },
+    {
+      "id": "174614",
+      "timestamp": "2013-07-10T22:00:10+00:00",
+      "author": "saddlejib",
+      "content": "Whoops i\u0027m back here. Legitimately I hope.  \n\nThis time i\u0027ll explain the problem rather than ranting, (frustration and lack of knowledge, a suffusion of red.).  \n\nI\u0027ve been trying to boot (yes it is a boot problem in the spirit of the forum) my tools from g4d from my galaxy S4 phone via usb but have encountered several problems, I\u0027m nearly there as my phone can now see my sd card (cfadisk) first partition (the phone needs to see an exfat card or reports it as damaged) but the card also has a second fat 32 partition on it for live XP.  \n\nSo the question is:  \n\nHow do I now install g4d to the exfat partition manually (and yes Steve Ive tried RMPrep and all permutations ) it works on an untampered with sdcard but not my partitioned card. so ergo you know how too, so what am i missing.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "174627",
+      "timestamp": "2013-07-11T12:11:03+00:00",
+      "author": "steve6375",
+      "content": "I am not sure grubinst can install to exFAT - why don\u0027t you install to the MBR instead?\n\n"
+    },
+    {
+      "id": "174658",
+      "timestamp": "2013-07-11T18:44:36+00:00",
+      "author": "saddlejib",
+      "content": "A better description may be:\n\nCreate a sdcard with two partitions using microdrive.lz or whatever (open to ideas or solutions) which can boot using g4d with the first partition being exfat (main point) and the second partition, fat32 or ntfs whichever suits.\n\nso a live xp can live on the fat32 or ntfs partitition and can be seen.(no ntdetect problem) .\n\nsuffusion of red.\n\n"
+    },
+    {
+      "id": "168630",
+      "timestamp": "2013-03-02T00:53:19+00:00",
+      "author": "alacran",
+      "content": "I was searching about this and I didn\u0027t find an answer, so my question is the one in topic title:\n\nIs there a way to boot an exfat formated USB drive?\n\nI mean with some loader like Grub, Grub4dos, Syslinux, or any other.\n\nThanks in advance\n\n"
+    },
+    {
+      "id": "168644",
+      "timestamp": "2013-03-02T18:09:07+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I was searching about this and I didn\u0027t find an answer, so my question is the one in topic title:\n\u003e\n\u003e Is there a way to boot an exfat formated USB drive?\n\u003e\n\u003e I mean with some loader like Grub, Grub4dos, Syslinux, or any other.\n\u003e\n\u003e Thanks in advance\n\nBoot WHAT?\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "168670",
+      "timestamp": "2013-03-03T02:19:10+00:00",
+      "author": "alacran",
+      "content": "Hi Wonko, nice to reed you\n\nThe usual tools we put in our USB sticks like Win7pe and wathever ISO you can boot with Grub4dos loader (the one I use) in FAT or NTFS partitions (file or RAM booting).\n\nAs far as I know XP can\u0027t boot in exfat even with the proper update it is only capable to read and write to it, ¿Are Win7 or Win8 capable to boot from exfat?\n\n¿Any other system is capable to boot from exfat?\n\nYou are the man with ALL the links for everyting, ¿Do you have any abut this? (Google did\u0027t help me very much)\n\nBest Regards\n\n"
+    },
+    {
+      "id": "168680",
+      "timestamp": "2013-03-03T11:28:49+00:00",
+      "author": "Wonko the Sane",
+      "content": "You\u0027ll have to do some experiments.\n\nThe good news are that grub4dos can read exFAT formatted volume:\n\n[http://reboot.pro/to...-exfat-volumes/](http://reboot.pro/topic/14673-accessing-exfat-volumes/ \"\")\n\nSo - theoretically - you can have the grub4dos \"installed\" to the MBR+hidden sectors, from it map a floppy (or the like) image residing in the exFAT volume (but formatted with FAT12/16 or NTFS) containing the Windows boot files and from it go on.\n\nNTLDR AFAIK does NOT support exFAT\n\nBOOTMGR (particularly the 7 or 8 ![:w00t:](https://reboot.pro/public/style_emoticons/default/w00t.gif)) versions ***may ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)***\n\nYou will need to go through this:\n\n[http://reboot.pro/to...s-also-logical/](http://reboot.pro/topic/17892-cloning-and-multibooting-several-win78-partitions-also-logical/ \"\")\n\nand IF BOOTMGR actually supports exFAT, then you may find a way to load XP (with KB955704 installed) through it.\n\nOf course any .iso or .img mapped to memory (and provided that the \\*whatever\\* inside the .iso can actually access exFAT) should work \"normally\".\n\nThe support to hard disk backed images (please read as Firadisk/Winvblock mounted) ***may*** also work ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "168723",
+      "timestamp": "2013-03-03T23:38:47+00:00",
+      "author": "alacran",
+      "content": "Wonko\n\nThanks for your info, I\u0027ll reed those links first then make some experiments.\n\nBest regards\n\n"
+    },
+    {
+      "id": "168728",
+      "timestamp": "2013-03-04T03:02:36+00:00",
+      "author": "alacran",
+      "content": "Every thing I booted worked just fine:\n\nPrepare media\n\n1.- 8 GB USB 2.0 stick formated using diskpart, one particion exfat format, set active \\\u0026 drive letter assigned.\n\n2.- Using RMPrepUSB v2.1.652, Grub4dos was installed to the MBR+hidden sectors, also grld added.\n\n3.-Copied some Isos: LiveXP, 7pe_x86, Acronis Disk Director and HDDR2011\n\n4.-Copied XP-1.vhd\n\n5.- Made menu.lst as usual\n\nBoot\n\nI) LiveXP - Only RAM booted \u003d booting fine (it can see all files in the USB stick exfat formated, tested reading menu.lst)\n\nII) 7pe_x86 - File and RAM booted \u003d booting fine (it can see all files in the USB stick exfat formated, tested reading menu.lst)\n\nIII) Acronis Disk Director (v10) - RAM booted \u003d booting fine (it can not see the USB stick)\n\nIV) HDDR2011 - RAM booted \u003d booting fine (I didn\u0027t go farter, just open it)\n\nV) XP-1.vhd (Winvblock) - File booted \u003d very slow booting (as expected from USB 2.0 stick) I usually run it from USB HDD (I didn\u0027t go farter, just open it)\n\nSo I can say Grub4dos works Great on exfat formated partitions.\n\nP.D. I checked the USB device with BOOTICE 1.03 and it has partition ID 07 (same as NTFS) but it certanly says it is exfat also Widows says it is exfat.\n\n![flvjnl.jpg](http://i50.tinypic.com/flvjnl.jpg)\n\nBest Regards\n\n**Edited by alacran, 04 March 2013 - 03:37 AM.**\n"
+    },
+    {
+      "id": "168741",
+      "timestamp": "2013-03-04T09:06:47+00:00",
+      "author": "Wonko the Sane",
+      "content": "Good :smile:.\n\nFor the record, there is a common misunderstanding (actually induced by a mass of \"wrong\" doocumentation, either provided by MS itself or produced by third parties) about the actual role of the Partition ID in a MBR DATA.\n\nJFYI:\n\n[http://homepage.ntlw...ystem-type.html](http://homepage.ntlworld.com./jonathan.deboynepollard/FGA/determining-filesystem-type.html \"External link\")\n\n\u003e **How partition types (do not) imply filesystem types**   \n\u003e\n\u003e Traditionally on PC operating systems, the partition type has been associated with one, and only one, filesystem type. However, this was never the intention, and in practice is true only for a limited number of partition types.  \n\u003e\n\u003e The intention of the partition type was to prevent operating systems from attempting to access, mount, write, or otherwise deal with partitions that they wouldn\u0027t know how to deal with (because they would exceed their preconceived notions of how large a disc volume could ever be, for example), or that would extend into areas of the disc that they wouldn\u0027t be able to access, or that simply weren\u0027t volumes containing files and directories at all.  \n\u003e\n\u003e The idea that the partition type implies the filesystem type is flawed in any case, for one very simple reason: Once a partition has been created with a disc partitioning utility, users can (and do) reformat it with any filesystem type that they like. Most volume formatting tools (i.e. \"high-level formatting\" tools --- mkfs and pals in Unix parlance) operate solely upon the contents of the disc slice concerned. They don\u0027t look for, and modify, the disc partition table to ensure that the partition type matches the new filesystem type.  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e What a partition type does is define which operating systems will attempt to access, mount, write or otherwise deal with the partition, and define the particular detection method that is to be used to determine what filesystem type the volume is actually formatted with.\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "168881",
+      "timestamp": "2013-03-06T13:37:41+00:00",
+      "author": "alacran",
+      "content": "Wonko\n\nThank to you for the info, and yes I had the wrong idea that partition ID \u003d partition type.\n\nNow I can put on a 16 or 32 GB USB 2.0 or 3.0 stick formated exFAT all my tools and have enough room for big files, even biger than 4 GB (FAT32 limit) like Ghost images, DVD Isos, VHD\u0027s, etc. without worry about excesive ware (time stamping every time you open a file in NTFS) and avoid carrying around a USB HDD.\n\nBy the way:\n\nDo you know Wich is the best alingment for exFAT formated partitions?\n\nDo you know another way to format exFAT whith MBR \\\u0026 255 H, 63 S?\n\nI mean some GUI program, or maybe I have to make a batch for Diskpart.\n\nBest Regards\n\n**Edited by alacran, 06 March 2013 - 02:30 PM.**\n"
+    },
+    {
+      "id": "168909",
+      "timestamp": "2013-03-06T20:35:15+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Do you know Wich is the best alingment for exFAT formated partitions?\n\nNo, I am not familiar with the exFAT structures, **BUT** , most probably, you don\u0027t want to actually align the Volume/partition ![:w00t:](https://reboot.pro/public/style_emoticons/default/w00t.gif), but rather align the filesystem area dedicated to storing data :wink:.\n\nSee this (AND links in it) to understand:\n\n[http://reboot.pro/to...-under-windows/](http://reboot.pro/topic/16775-discover-allocation-unit-and-other-information-of-ufd-under-windows/ \"\")\n\n[http://reboot.pro/to...ndows/?p\u003d153278](http://reboot.pro/topic/16775-discover-allocation-unit-and-other-information-of-ufd-under-windows/?p\u003d153278 \"\")\n\n[http://reboot.pro/to...-memory-drives/](http://reboot.pro/topic/16783-rmprepusb-faster-fat32-write-access-on-flash-memory-drives/ \"\")\n\n\u003e Do you know another way to format exFAT whith MBR \\\u0026 255 H, 63 S?\n\u003e\n\u003e I mean some GUI program, or maybe I have to make a batch for Diskpart.\n\nNo, but you can use \\*any\\* partitioning program (including my MBRBATCH) that allows \"fine-tuning\" and later use \"plain\" format.\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "168977",
+      "timestamp": "2013-03-07T21:10:36+00:00",
+      "author": "alacran",
+      "content": "I booted the USB drive using Grub4dos and started LiveXP.ISO file booting, it did not fully load (BSOD).\n\nI made another experiment:\n\nUsing same 8 GB USB 2.0 stick, I put in it the WIindows NT 6.x MBR using Bootice 1.03 also Boot Manager Boot Record in Partition Boot Record (this last one maybe unneeded), with out removing any thing, then I copy to the root of stick all files and folders from a Win8 x86 ISO, and using EasyBCD 2.2 loaded the BCD located on the USB device and added new entry NeoGrub boot loader then I put my previous menu.lst in folder NST, and edited Windows boot menu in order to make NeoGrub boot loader the default and Setup the second one, finaly deleted autorun.inf located in root of stick (to prevent starting the setup when the USB drive is conected to the CPU, I can run manually Setup from Windows running machine if I want to)\n\nNow I can use all my tools and also install Win8 from that USB stick, just tested booting from it and every thing is working great, including Win8 install, (LiveXP.ISO only boots in RAMdisk)\n\nNext step is experiment with Windows 7 Setup, I will tray it and report here.\n\n@ Wonko\n\nThank you, I\u0027m going to reed the info you kindly gave me.\n\nBest regards\n\n**Edited by alacran, 07 March 2013 - 09:40 PM.**\n"
+    },
+    {
+      "id": "168981",
+      "timestamp": "2013-03-08T01:16:49+00:00",
+      "author": "alacran",
+      "content": "I deleted all Win8 files and folders then copy all content from Win7 x86 ISO, ran EasyBCD 2.2 and made same procedure as I did in previous post.\n\nI can confirm Win 7 BOOTMGR does not run in exFAT. I didn\u0027t get BSOD, I got the black screen with message about need to repair install.\n\nI then deleted all about Win7 and went back to Win 8 install, and every thing worked fine again.\n\nBest Regards\n\n**Edited by alacran, 08 March 2013 - 01:17 AM.**\n"
+    },
+    {
+      "id": "170598",
+      "timestamp": "2013-04-04T04:56:49+00:00",
+      "author": "alacran",
+      "content": "I aded to last build WinNTSetup 2.3.4.0 and Win7 SP1 x86 ISO to the root of USB stick, so now Win7 can also be instaled from it, already tested and working flawlesly.\n\nNext trayed Win XP SP3 install from ISO using WinNTSetup 2.3.4.0 unfortunately it didn\u0027t work well, perhaps the problem is my ISO fully updated using nLite and with driver packs for Mass Storage, Chipset, Processor, Lan and Wlan drivers added with DPs_BASE. That ISO works pretty well when installing from CD to real hardware or from ISO to virtual machine also to VHD using IMG_XP, reading in WinNTSetup forum they say nLited ISO\u0027s don\u0027t work properly, but I can tell you when booting from the system HDD I pass text phase and when in GUI a file is not found, so we cuould assume ussing the proper ISO, Win XP can be installed from this USB exFAT formated device.\n\nBest Regards\n\n**Edited by alacran, 04 April 2013 - 05:05 AM.**\n"
+    },
+    {
+      "id": "171315",
+      "timestamp": "2013-04-21T02:27:57+00:00",
+      "author": "alacran",
+      "content": "Just to resume my findings:\n\n1.- Using Grub4dos and exFAT formated USB flash drives you can RAM boot anything on it as far as it can be booted with Grub4dos.\n\n2.- Win7PE can boot from file or RAM.\n\n3.- XP-1.vhd (Winvblock) - File booted fine, USB 3.0 recomeded for sticks or USB 2.0 HDD.\n\n4.- As far as your live or PE ISO can read exFAT you are able to access the USB exFAT formated device.\n\n5.- Win 7 boot manager don\u0027t boot from exFAT.\n\n6.- Win 8 boot manager can boot from exFAT and install Win 8 very well.\n\n7.- Any way using Live XP or Win7pe it is very easy to install win7 or Win8 with WinNTSetup.\n\nBest Regards\n\n"
+    },
+    {
+      "id": "171338",
+      "timestamp": "2013-04-21T16:32:19+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, if I may, you failed ![:w00t:](https://reboot.pro/public/style_emoticons/default/w00t.gif) to do (or report about) what would be IMHO the more \"useful\" test, using a \"mixed mode approach\" of using Windows 8 BOOTMGR (and \\\\boot\\\\BCD) with a \"plain\" or \"flat\" XP or Windows 7 install (of course with integrated/installed a exFAT driver).\n\nIf you prefer, is it \"enough\" an OS loader (BOOTMGR) capable of exFAT access or some other key boot components are needed? ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "171378",
+      "timestamp": "2013-04-23T00:59:28+00:00",
+      "author": "alacran",
+      "content": "\u003e Well, if I may, you failed ![:w00t:](https://reboot.pro/public/style_emoticons/default/w00t.gif) to do (or report about) what would be IMHO the more \"useful\" test, using a \"mixed mode approach\" of using Windows 8 BOOTMGR (and \\\\boot\\\\BCD) with a \"plain\" or \"flat\" XP or Windows 7 install (of course with integrated/installed a exFAT driver).\n\u003e\n\u003e If you prefer, is it \"enough\" an OS loader (BOOTMGR) capable of exFAT access or some other key boot components are needed? ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\u003e\n\u003e ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\u003e\n\u003e Wonko\n\nMy USB stick has Win NT 6.x MBR and PBR, and active single exFAT formated partition made in Win 7.\n\nIn post No. 10, I tested Win 8 install and reported it booted and let you select language and where to make your install as usual so I did\u0027nt go farter as rest is only expand the install.wim to the internal HDD.\n\nIn post No. 11, I tested Win 7 install and reported Win 7 Bootmanager problem, so concluded it can\u0027t read xeFAT.\n\nNow I copied full contend of Win 7 install DVD to USB stick but replacing only Bootmanager and Boot folder with the ones from Win 8, It booted very well and let me select language and where to install as when in Win 8 install.\n\nSo far YES only requirement is Bootmanager and Boot folder from Win 8.\n\nAbout XP if you make an install.wim from an already installed and syspreped system ussing imageX it is possible it may work too.\n\nBest Regards\n\n"
+    },
+    {
+      "id": "171379",
+      "timestamp": "2013-04-23T02:31:27+00:00",
+      "author": "alacran",
+      "content": "Sorry there is a typo on my last post, I copied to USB stick bootmanager and boot folder (not boot file) from Win 8 DVD.\n\nWhen I detected the typo there was no way to edit it any more.\n\nBest Regards\n\n**Edited by alacran, 23 April 2013 - 02:33 AM.**\n"
+    },
+    {
+      "id": "174445",
+      "timestamp": "2013-07-06T19:12:50+00:00",
+      "author": "saddlejib",
+      "content": "I have a Galaxy s4 (big data computer in pocket) which i rooted via twrp.\n\ntwrp has been updated since this post:Google it first.\n\n[http://galaxys4root....ng-twrp-method/](http://galaxys4root.com/galaxy-s4-root/how-to-root-galaxy-s4-using-twrp-method/ \"External link\")\n\nand used as a mass storage device courtesy of\n\n[http://forum.xda-dev...d.php?t\u003d2297888](http://forum.xda-developers.com/showthread.php?t\u003d2297888 \"External link\")\n\nand have booted in exfat with the same problems or not problems as to be anticipated file system and loader ntdetect so why not use the ext2fs rmbprep solution of steves to create a small fat 32 partition.\n\nno doubt i will be corrected but hey.\n\nThe future:\n\nI will boot my computer from my phone:\n\n\"Thin client\"\n\n"
+    },
+    {
+      "id": "174448",
+      "timestamp": "2013-07-06T19:40:26+00:00",
+      "author": "saddlejib",
+      "content": "Or to simplify what and when future bios\u0027s look for a nearby device and let you choose your nearby device to boot from.\n\nIts not complicated.\n\n"
+    },
+    {
+      "id": "174502",
+      "timestamp": "2013-07-07T18:54:50+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e no doubt i will be corrected but hey.\n\nCorrected for what? ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nPlease choose one:\n\n1. babbling senselessly about phones, ext2fs, rmprepusb, future BIOS\u0027s and the like\n2. babbling senselessly about phones, ext2fs, rmprepusb, future BIOS\u0027s and the like **AND** attempting to hijack this thread\n\n![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png)\n\nJFYI, it seems to me like you rooted your phone, and then exposed it\u0027s internal SD-card as USB Mass Storage Device, maybe you would be interested to this :wink::\n\n[http://reboot.pro/to...ndroid-devices/](http://reboot.pro/topic/18074-new-app-for-pxe-booting-from-android-devices/ \"\")\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "174507",
+      "timestamp": "2013-07-07T20:26:21+00:00",
+      "author": "saddlejib",
+      "content": "@ Wonko\n\nSorry about the hijack. You are right on that one.\n\nThe future is here its in your pocket (i.e S4 big data gatherer for Google) so lets not babble lets look at a motherboard that looks for \u0027nearby device\u0027 not to frr fetched.\n\nAs the computer boots its your machine, all the boot problems can be resolved as you know, it finds your device (not necessarily phone) and boots into your world.\n\nThe 70\u0027s has gone.\n\nNot a babble but forward thinking.\n\n"
+    },
+    {
+      "id": "174509",
+      "timestamp": "2013-07-07T20:49:09+00:00",
+      "author": "saddlejib",
+      "content": "or do you really believe manufacturers of motherboards couldnt do what you guys do if they wanted.\n\nthey would be out of work.\n\nIt wouldnt be difficult to have or boot from i.e wifi or whatever.\n\nnot complicated for a belligerent rant.\n\nit doesnt make business sense thats why were not there yet\n\n"
+    },
+    {
+      "id": "174539",
+      "timestamp": "2013-07-08T20:34:23+00:00",
+      "author": "saddlejib",
+      "content": "@Wonko\n\nSorry for my rant (frustration).\n\nI was on the right thread but using my 64gb exfat (formatted by s4 galaxy) sd card on and from my phone as a mass storage boot device connected by usb using g4d and I still dont feel its an impossible situation once exfats nuances are overcome.\n\nSo I apologise it wasnt a hijack it was relevant i feel.\n\nThanks for the link it has great potential. guess you deduced where i was heading, just tried it and its nice...\n\n"
+    },
+    {
+      "id": "174614",
+      "timestamp": "2013-07-10T22:00:10+00:00",
+      "author": "saddlejib",
+      "content": "Whoops i\u0027m back here. Legitimately I hope.  \n\nThis time i\u0027ll explain the problem rather than ranting, (frustration and lack of knowledge, a suffusion of red.).  \n\nI\u0027ve been trying to boot (yes it is a boot problem in the spirit of the forum) my tools from g4d from my galaxy S4 phone via usb but have encountered several problems, I\u0027m nearly there as my phone can now see my sd card (cfadisk) first partition (the phone needs to see an exfat card or reports it as damaged) but the card also has a second fat 32 partition on it for live XP.  \n\nSo the question is:  \n\nHow do I now install g4d to the exfat partition manually (and yes Steve Ive tried RMPrep and all permutations ) it works on an untampered with sdcard but not my partitioned card. so ergo you know how too, so what am i missing.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "174627",
+      "timestamp": "2013-07-11T12:11:03+00:00",
+      "author": "steve6375",
+      "content": "I am not sure grubinst can install to exFAT - why don\u0027t you install to the MBR instead?\n\n"
+    },
+    {
+      "id": "174658",
+      "timestamp": "2013-07-11T18:44:36+00:00",
+      "author": "saddlejib",
+      "content": "A better description may be:\n\nCreate a sdcard with two partitions using microdrive.lz or whatever (open to ideas or solutions) which can boot using g4d with the first partition being exfat (main point) and the second partition, fat32 or ntfs whichever suits.\n\nso a live xp can live on the fat32 or ntfs partitition and can be seen.(no ntdetect problem) .\n\nsuffusion of red.\n\n"
+    },
+    {
+      "id": "174723",
+      "timestamp": "2013-07-13T05:27:21+00:00",
+      "author": "saddlejib",
+      "content": "Discovered the cause of my problem.\n\nThere is a change in the way grldr behaves from version grub4dos-0.4.5b-2011-06-02.7z to version grub4dos-0.4.5b-2011-06-05.7z as sourced from:\n\n[http://code.google.c.../downloads/list](http://code.google.com/p/grub4dos-chenall/downloads/list \"External link\")\n\n06-02 and prior versions look for menu.lst on the partition grldr resides and boots from\n\n06-05 and later versions do not.\n\nSo if you create a ufd device (only tried on sdcard not pendrive) with partitions of first partition exfat and second partition fat32, the later grldr looks elswhere for menu.lst in my case it was finding one of many scattered on my hard drives.\n\nYou can replicate this, tentative maybe, by creating the same scenario.\n\n\u0027Anyway of\u0027 forcing later grldr\u0027s to look on the partiton in resides in would be apreciated.\n\nScenario:\n\nsdcard mounted using microdrive.lz (gendisk) partitioned using minitool partition wizard creating two fat32 partions (it does\u0027nt support exfat) first partition then formatted using win7 exfat full format\n\ng4d installed to mbr initially using rmprep and later in testing mudcrab, sorry for doubting you steve but in the process of testing had to find the cause, grldr and menu.lst placed on (hd0,1) second partition fat32 with relevant files so I could boot livexp and first partitio exfat so the phone accepted it.\n\nHappy days, now working but would like to use latest grldr.\n\n@steve\n\nOn whole disk (no partitons) exfat rmprep works and boots using latest grldr.\n\n"
+    },
+    {
+      "id": "174734",
+      "timestamp": "2013-07-13T09:12:07+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e So if you create a ufd device (only tried on sdcard not pendrive) with partitions of first partition exfat and second partition fat32, the later grldr looks elswhere for menu.lst in my case it was finding one of many scattered on my hard drives.\n\nAllow me to doubt that ***any*** version of grub4dos does not \"look\" for menu.lst on the same drive it is booted from. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\nHowever:\n\u003e \u0027Anyway of\u0027 forcing later grldr\u0027s to look on the partiton in resides in would be apreciated.\n\nEdit the internal menu.lst of grub4dos. ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \nAnyway both those grub4dos versions you cited seem to me obsolete.  \nGet LATEST .0.4.5c marked as \"Featured\" on Chenall\u0027s page, right now grub4dos-0.4.5c-2013-03-03.7z   \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "190475",
+      "timestamp": "2015-02-10T09:34:37+00:00",
+      "author": "gyunter",
+      "content": "Greetings!\n\nPlease tell me how to make internal HDD formatted ExFAT(only possible FS due hardware damage) bootable from it or from another media(small hdd, floppy, flash, etc..) All XP system files except bootloader must be on this HDD and loads from it after getting control from bootloader.\n\n"
+    },
+    {
+      "id": "190477",
+      "timestamp": "2015-02-10T09:42:36+00:00",
+      "author": "steve6375",
+      "content": "XP does not support exFAT.\n\n"
+    },
+    {
+      "id": "190478",
+      "timestamp": "2015-02-10T10:30:35+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e XP does not support exFAT.\n\nProof/documentation/reference for such a ++flat++ statement? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nXP **does** support exFAT, if you have the right driver:\n\n[http://www.msfn.org/...d-on-usb-stick/](http://www.msfn.org/board/topic/125116-fat16-vs-fat32-vs-ntfs-speed-on-usb-stick/ \"External link\")\n\nabout booting an XP from exFAT, ++though not the easiest possible thing in the world++ , at first sight I cannot see why through a few tricks, namely something along the lines of the XP Kansas City Shuffle:  \n[http://www.911cd.net...showtopic\u003d24763](http://www.911cd.net/forums//index.php?showtopic\u003d24763 \"External link\")\n\nit would be not possible to boot it... ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png), a lot of time ago **cdob** ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif) left it as an unresolved problem:\n\n[http://reboot.pro/to...reator/?p\u003d57565](http://reboot.pro/topic/6672-idea-fake-signature-method-creator/?p\u003d57565 \"\")\n\nbut maybe if someone is really interested, the topic could be re-examined...\n\n@aaaa\n\nCan you **detail** the EXACT REASON why exFAT is (according to you) \"only possible FS due hardware damage\"?\n\nI wonder if you are not slipping on a chocolate covered banana ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif):\n\n[http://homepage.ntlw...red-banana.html](http://homepage.ntlworld.com./jonathan.deboynepollard/FGA/put-down-the-chocolate-covered-banana.html \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "190480",
+      "timestamp": "2015-02-10T13:00:24+00:00",
+      "author": "gyunter",
+      "content": "\u003e Proof/documentation/reference for such a ++flat++ statement? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\u003e\n\u003e XP **does** support exFAT, if you have the right driver:\n\u003e\n\u003e [http://www.msfn.org/...d-on-usb-stick/](http://www.msfn.org/board/topic/125116-fat16-vs-fat32-vs-ntfs-speed-on-usb-stick/ \"External link\")\n\u003e\n\u003e about booting an XP from exFAT, ++though not the easiest possible thing in the world++ , at first sight I cannot see why through a few tricks, namely something along the lines of the XP Kansas City Shuffle:  \n\u003e [http://www.911cd.net...showtopic\u003d24763](http://www.911cd.net/forums//index.php?showtopic\u003d24763 \"External link\")\n\u003e\n\u003e it would be not possible to boot it... ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png), a lot of time ago **cdob** ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif) left it as an unresolved problem:\n\u003e\n\u003e [http://reboot.pro/to...reator/?p\u003d57565](http://reboot.pro/topic/6672-idea-fake-signature-method-creator/?p\u003d57565 \"\")\n\u003e\n\u003e but maybe if someone is really interested, the topic could be re-examined...\n\u003e\n\u003e @aaaa\n\u003e\n\u003e Can you **detail** the EXACT REASON why exFAT is (according to you) \"only possible FS due hardware damage\"?\n\u003e\n\u003e I wonder if you are not slipping on a chocolate covered banana ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif):\n\u003e\n\u003e [http://homepage.ntlw...red-banana.html](http://homepage.ntlworld.com./jonathan.deboynepollard/FGA/put-down-the-chocolate-covered-banana.html \"External link\")\n\u003e\n\u003e ![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\u003e\n\u003e Wonko\n\nSo, it is not possible to redirect boot process to ExFat drive after all nessasary sturtup modules of OS(including ExFat XP driver) will be loaded from regular FS media?\n\nHalf of my HDD and \"boot sector\" unwritable(possible one dead head in device), and i can not format it in any FS different from ExFAT. Using it as secondary disk only has no sence because power, space and performance limitation of primary ancient HDD.\n\nYES I want strange, mostly from \"sport interest\" ![:air_fan:](http://reboot.pro/public/style_emoticons/default/sporty94.gif)\n\n**Edited by aaaaa, 10 February 2015 - 01:17 PM.**\n"
+    },
+    {
+      "id": "190481",
+      "timestamp": "2015-02-10T13:41:23+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e So, it is not possible to redirect boot process to ExFat drive after all nessasary sturtup modules of OS(including ExFat XP driver) will be loaded from regular FS media?\n\nAs posted, there was some previous tests made but they were never finalized, SURELY you need a \"XP Kansas City Shuffle\" (or \"Fake Signature Method\") approach to \"redirect boot process\", but that\u0027s all that can be said at the moment.  \n\u003e Half of my HDD and \"boot sector\" unwritable(possible one dead head in device), and i can not format it in any FS different from ExFAT. Using it as secondary disk only has no sence because power, space and performance limitation of primary ancient HDD.\n\nYour dictionary must be a different edition from the one I have handy ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif), on mine \"to detail\" means *\"to detail\"* :wink:, not \"re-iterating vague info and own assumptions\" ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif).\n\nI will surprise you ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) telling you how it exists NOT a \"bootsector\" on a HD, at the most it exists first absolute sector or LBA0 (i.e. where the MBR, NOT the \"bootsector\") is usually saved, and - still for the record - you DO NOT \"format\" a hard disk, you rather partition it and then you may format the partition(s) or volume(s) that you created through the partitioning.\n\nBesides the fact that it is foolish to attempt using a hard disk (or more generally hardware) that is defective and has been not properly and fully diagnosed, nothing prevents you to explore possible alternatives (that ***may*** be suggested to you IF you can DETAIL the issues) such as (example) using an image saved to the exFAT and/or finding a different partitioning scheme (if partitioning is possible) etc.  \n\u003e YES I want strange, mostly from \"sport interest\" ![:air_fan:](http://reboot.pro/public/style_emoticons/default/sporty94.gif)\n\nWhich is good, Wonko approves of this. ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "190483",
+      "timestamp": "2015-02-10T14:22:59+00:00",
+      "author": "gyunter",
+      "content": "\u003e I will surprise you ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) telling you how it exists NOT a \"bootsector\" on a HD, at the most it exists first absolute sector or LBA0 (i.e. where the MBR, NOT the \"bootsector\") is usually saved, and - still for the record - you DO NOT \"format\" a hard disk, you rather partition it and then you may format the partition(s) or volume(s) that you created through the partitioning.\n\nI meant the same when wrote \"\". However, boot area is damaged - when I partition, format and setup OS it failed to boot.\n\nOk, thx for help, will try other ways.\n\n"
+    },
+    {
+      "id": "190485",
+      "timestamp": "2015-02-10T14:55:34+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I meant the same when wrote \"\". However, boot area is damaged - when I partition, format and setup OS it failed to boot.\n\u003e\n\u003e Ok, thx for help, will try other ways.\n\nWell, then it would become unpartitioned media, something that Windows NT systems particularly dislike when it comes to booting, and I still fail to see how you can apply an exFAT filesystem on that device.\n\nI *tried* to convey to you the message that if you do not provide enough details you are unlikely to get any meaningful help/ideas/suggestions (besides making willing helping members of the board lose their time, my time in this case), I evidently failed ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif), or however you insist of providing meaningless, vague info such as \"boot area is damaged - when I partition, format and setup OS it failed to boot\".\n\nFor the record IF \"boot area\" (i.e. first absolute sector or LBA0) is damaged, you CANNOT partition, so that scarce info is additionally inaccurate. ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "190497",
+      "timestamp": "2015-02-11T09:38:16+00:00",
+      "author": "gyunter",
+      "content": "Sorry for misunderstanding, but for right results you could be say: get this... do that.1.2.3...send results...take solution. :tongue:\n\nWhat I did before with this fucking drive:\n\n1. Checks it with Victoria hdd test tool ang got large zones of bad sectors after every several gigs of media\n\n2. Tried to devide it with PQMagic to over +100500 partitions on good space.\n\n3. Sets up WinXP and gets broken partition table after writing boot info and during loading\n\n4. Creates one partition on whole disk, format it in ExFAT and have no problems at all(all data writes and reads) exept one lillte minus - absence of boot ability in FS. ![:sos:](http://reboot.pro/public/style_emoticons/default/help.gif)\n\n"
+    },
+    {
+      "id": "190504",
+      "timestamp": "2015-02-11T11:32:04+00:00",
+      "author": "Wonko the Sane",
+      "content": "No. ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\n\nMeaning that what you describe - while still missing the needed DETAILS - is *either* not accurate (because you are holding back relevant data) *or* not accurate because you have misinterpreted the results of your experiments. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)\n\nIf the first absolute sector or LBA0 is accessible and writable, you can partition the disk, at least in 4 primary partitions. (good :smile:)\n\nIf the first few following sectors, namely LBA1-17 are as well accessible and writable, you can install grldr.mbr to the disk, but you will need a small amount of good sectors, let\u0027s say 1000 of them to create a volume to host grldr OR if a few more following sectors, namely LBA 1-63 or better 1-127 are accessible and writable you can install the WEE to the disk.\n\nAnd the disk will become normally bootable (to grub4dos).\n\nThen you have \"holes\" (i.e. bad areas, not everywhere, but in spots :wink:) all over the rest of the disk.\n\nNow if sector (example) LBA 238975 is \"bad\" and cannot be read or written properly, it is \"bad\", and it remains \"bad\" NO matter which filesystem you are applying to the volume created on the disk that comprehends that specific bad sector.\n\nYou are seemingly telling me that you attempted making a huge volume covering the whole extents of the disk and by formatting it as ExFAT the filesystem automagically marked those holes as \"bad sectors\" (and of course - but you failed to specify this, the available space in this volume is much smaller than what is should be given it\u0027s size)? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\nAnd that you cannot obtain the same (or similar result ) through a full format and running CHKDSK /R on a NTFS partition? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nIF this is the case, and provided that your (unknown) disk is compatible, you may want to \\*try\\* this tool here:\n\n[http://files.hddguru...ftware/Makebad/](http://files.hddguru.com/download/Software/Makebad/ \"External link\")\n\non the disk, and hopefully obtain an unreliable, with a senselessly filled up $BadClus, but working NTFS filesystem.\n\nBut it is also possible that the volume cannot be actually properly formatted due to the default placement of the $MFT by the XP format tool, which depends on size of the volume and on it\u0027s extents.\n\nThe extents of the NTFS partition might be critical and in order to find the \"right\" placement/size of it some experiments will need to be carried as while there are a few tricks/possibilities to \"move\" the $MFT, WITHOUT an EXACT, DETAILED map of the disk, it is impossible to even give you valid practical suggestions.\n\nGenerically speaking, on a 512 bytes/sector device, the XP FORMAT tool will create a NTFS filesystem with 4096 bytes/sector clusters with the $MFT starting at cluster 786432 with a size proportional to the size of the volume, but there are also other files, like the $Boot record which is 16 sectors in size that have a fixed address at cluster 0 ( ++relative++ LBA0).\n\nThere is a trick that - within limits - allows to have the $MFT at a different location/having an initial reduced size, that may be useful in this case, see here:\n\n[http://reboot.pro/to...disk-emulation/](http://reboot.pro/topic/18022-error-60-file-for-disk-emulation/ \"\")\n\nbut again, without specific data I cannot say if it may work in your case.\n\nOtherwise - if you are really convinced that the exFAT is the way to go, you can have on it a XP inside an image (RAW or .vhd) that was already tested successfully by alacran (see previous posts) or experiment with the Windows 8 BOOTMGR (hints given before in this same thread) or - again as said - continue where the experiments with the XP Kansas city shuffle method were left, but you have to consider how all these are either very experimental or downright new/unexplored/undocumented approaches, in any case all of them rather complex (i.e. NOT of the do that 1,2,3 kind) and will need, besides some time and patience, to be first tested on some surely working hardware before being possible to hopefully replicate them to your half-botched disk/hardware.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "190507",
+      "timestamp": "2015-02-11T11:53:31+00:00",
+      "author": "gyunter",
+      "content": "Excellent!!! BIG thanks! Now I can continue to torture HDD with new tools, knowledges and hope to get additional info and results. ![:yahoo:](http://reboot.pro/public/style_emoticons/default/yahoo.gif)\n\n"
+    },
+    {
+      "id": "190511",
+      "timestamp": "2015-02-11T13:18:32+00:00",
+      "author": "njlyf2011",
+      "content": "Try to use GRUB4DOS or GRUB2 to boot from exfat.\n\nGood luck!\n\n"
+    },
+    {
+      "id": "190540",
+      "timestamp": "2015-02-11T18:05:46+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Try to use GRUB4DOS or GRUB2 to boot from exfat.\n\nWow, I must remember to tag this as \"news\" ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif).\n\nHadn\u0027t you noticed this thread ***is*** about booting from exFAT using grub4dos, and there are reports how this works nicely.\n\nThe issue may come depending on what OS specifically you want to boot ***from*** grub4dos (or GRUB2).\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "191299",
+      "timestamp": "2015-03-13T07:31:01+00:00",
+      "author": "alacran",
+      "content": "As said before: You can install Win8.x from a USB device exFAT formated (to a MBR/legacy partitioned HDD), also Win7 if you use Boot folder and bootmanager file from Win8.x; no need of Grubfordos, Grub2 or WinNTSetup.\n\nJust try to install Win8.1 Enterprice Eval. x86 on 50 GB second primary partition exFAT formated on my internal HDD (MBR/legacy) using BootIce to format and WinNTSetup to install (as Windows installer only give us NTFS option) and during first boot 8.1 failed to configure the system. It wasn\u0027t Wimboot mode.\n\nBest Regards\n\n"
+    },
+    {
+      "id": "191300",
+      "timestamp": "2015-03-13T09:04:23+00:00",
+      "author": "steve6375",
+      "content": "Did you try using a VHD?\n\n"
+    },
+    {
+      "id": "191326",
+      "timestamp": "2015-03-13T18:52:52+00:00",
+      "author": "alacran",
+      "content": "\u003e Did you try using a VHD?\n\nThanks to you Steve, you are right using a VHD we can boot almost any Windows, I have tested booting an XP-SP3 fixed size VHD (using Winvblock driver and Grubfordos to chainload to ntldr) and it boots fine [http://reboot.pro/to...ve/#entry171315](http://reboot.pro/topic/18244-is-there-a-way-to-boot-an-exfat-formated-usb-drive/#entry171315 \"\")\n\nI also tested Win7 booting directly on exFAT and it fail, But I never try to boot Win8.x directly on exFAT until now and let my tell you I was almost sure it was going to boot, I saw the logo and the circular dots and later a note saying failed to configure the system please reboot, and I just wanted to report my findings.\n\n"
+    },
+    {
+      "id": "191327",
+      "timestamp": "2015-03-13T18:56:16+00:00",
+      "author": "steve6375",
+      "content": "Was the Win 8.1 VHD on the internal HDD or external USB HDD or external Removable Flash drive or external Fixed-disk type of Flash drive?\n\n"
+    },
+    {
+      "id": "191329",
+      "timestamp": "2015-03-13T19:02:45+00:00",
+      "author": "alacran",
+      "content": "No VHD, it was directly installed on an exFAT partition on my internal HDD, if it were in a VHD I have no doubt it will boot.\n\n"
+    }
+  ]
+}

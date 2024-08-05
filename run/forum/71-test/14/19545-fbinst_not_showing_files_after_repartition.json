@@ -1,0 +1,52 @@
+{
+  "id": "19545",
+  "title": "fbinst not showing files after repartition",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "182069",
+      "timestamp": "2014-02-04T07:32:19+00:00",
+      "author": "Erez Sch",
+      "content": "i\u0027m created second partition FAT32, the first one is NTFS, and after that when I open fbinst to edit the title or fbinst menu I ca\u0027n see the 3 files that I see before, and can\u0027t edit the title before showing the grub4dos options.\n\nI have a screenshot of the screen that I see:\n\n[http://oi62.tinypic.com/6qzamx.jpg](http://oi62.tinypic.com/6qzamx.jpg \"External link\")\n\nhow to fix this issue without reformatting the usb stick?\n\nthanks.\n\n"
+    },
+    {
+      "id": "182100",
+      "timestamp": "2014-02-05T19:17:15+00:00",
+      "author": "ilko",
+      "content": "How did you create the second partition, using which tool, which settings?\n\nHow did you create the first one, how did it end up being NTFS?\n\nAre you using FBInst or FBInstTool?\n\n"
+    },
+    {
+      "id": "182134",
+      "timestamp": "2014-02-06T15:48:25+00:00",
+      "author": "Erez Sch",
+      "content": "i\u0027m using WinSetupFromUSB to create the multiboot usb, the first partition I choose autoformat with fbinst and choose ntfs partition, after that I created second fat32 primary partition with diskpart, and then I copied iso files to second partition also.\n\ni\u0027m booting ok with the usb, but the fbinst tool on the program not showing the files it should show to me.\n\n"
+    },
+    {
+      "id": "182135",
+      "timestamp": "2014-02-06T16:32:43+00:00",
+      "author": "ilko",
+      "content": "What commands did you use in diskpart?\n\nDoes fbinst list the files? Run this in cmd window from \\\u003cWinSetupfromUSB directory\\\u003e\\\\files\\\\tools\\\\ directory , change (hd1) to reflect your hard disk number or run \"fbinst -l\" to see all disks:\n\n```\nfbinst  (hd1) info\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "182155",
+      "timestamp": "2014-02-07T17:22:27+00:00",
+      "author": "Erez Sch",
+      "content": "with diskpart i\u0027m used with this guide:\n\n[http://www.sevenforu...create-new.html](http://www.sevenforums.com/tutorials/2674-partition-volume-create-new.html \"External link\")\n\nafter running the command above, i\u0027m getting the error \"fbinst: error: fb mbr not initialized\"\n\n"
+    },
+    {
+      "id": "182167",
+      "timestamp": "2014-02-08T00:15:26+00:00",
+      "author": "ilko",
+      "content": "I still can\u0027t understand what exactly you are doing, the link you posted is about initializing unallocated space. How do you get unallocated space on the USB disk, since WinSetupFromUSB uses all available space?\n\nDo you shrink partition beforehand? Using which tool?\n\nIn short- the steps you are doing are corrupting FBinst data. But you do need to say exactly what those steps are, so we can spot eventually what you are doing wrong.\n\nAlternatively, you can try to rewrite FBinst data back to disk, using fbinst or FBinstTool if FBinst space in the beginning of the disk is intact.\n\n```\nfbinst (hd1) restore\nfbinst (hd1) update\n```\n\nOr you can shrink the existing partition and utilise the unallocated space using another tool.\n\nOr you can avoid using FBinst auto format option and use BootIce for example, create the partitions as you like, install grub4dos MBR and let WinSetupFromUSB do the rest. When auto-format option is not checked, and there is grub4dos MBR it will not touch partitions and MBR.\n\n"
+    },
+    {
+      "id": "182172",
+      "timestamp": "2014-02-08T07:44:36+00:00",
+      "author": "Erez Sch",
+      "content": "i will explain again, my usb stick is recognized like local hard disk and not as removable media, so i create another partition with diskpart and format it as FAT32, and i set the size of the partition to 13000 (13GB) and now i have 16GB NTFS + 13GB FAT32 partitions, YES i shrinked the partition using diskpart command line and then created the second partition using same diskpart command line, i don\u0027t remember the exact commands that i used.\n\ni just try another tool to combine multiboot installations called YUMI, together with winsetupfromusb, and i think that the combination of both that\u0027s the reason for fb MBR corrupted.\n\ni hope that it can fixed without reformatting the drive, i try the commands that you give me and update the results later.\n\nedit: i run the first restore command and i get \"fbinst: error: can\u0027t find fb mbr\"\n\n**Edited by Erez Sch, 08 February 2014 - 07:48 AM.**\n"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "7479",
+  "title": "fast zero out drive",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "62856",
+      "timestamp": "2009-03-20T13:57:25+00:00",
+      "author": "mr_",
+      "content": "For my test USB drive I need some application to wipe it fast, wiping in sense of zeroing out everything.  \n\nI wish it to work as the following application flow sheet.  \n\n```\nRead sector -\u003e if not zero -\u003e write zero\n\n\t\t\t-\u003e if zero -\u003e write nothing, read next sector\n```\n\n\u003cbr /\u003e\n\nWhy? I guess it\u0027s faster then writing zero to somewhere where is already zero and I hope to see the device healthy for a longer time.  \n\nOr does the controller normally already filter out a write attempt to an empty sector if the new content would be also empty?   \n"
+    },
+    {
+      "id": "62879",
+      "timestamp": "2009-03-20T17:18:42+00:00",
+      "author": "was_jaclaz",
+      "content": "Interesting approach. ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)  \n\n\"normal\" work flow:  \n1. write a sector with 00\u0027s  \n2. go to next sector  \n3. loop to 1. until end of device  \n\n\"proposed\" workflow:  \n1. read a sector  \n2. check if it\u0027s already 00\u0027s  \n3. IF yes go to next sector, else goto 4.  \n4. write a sector with 00\u0027s  \n5. go to next sector until end of device  \n\nIn the first approach you have one WRITE operation for EACH sector on the device.  \n\nIn the second approach you have a READ operation for EACH sector on the device + a conditional check for EACH sector on the device + a WRITE operation for an UNKNOWN number of sectors.  \n\nMy ***guess*** is that speed may be greater ONLY if the amount of non 00\u0027s sectors on the device is ***very*** lmited. ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)  \n\nDefinitely first approach will use less \"processor resources\", anyway.  \n\n\u003e Or does the controller normally already filter out a write attempt to an empty sector if the new content would be also empty?\nNo, the drive controller writes whatever you tell it to write, it\u0027s a very subordinate and efficient little piece of hardware, with very little initiative....  \n\n![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)   \n\nMore generally and seriously, it is very rare to have a need to actually 00 out an entire device, once you have zeroed out relevant parts, (a bunch of sectors) it will be wiped for most practical uses.  \n\njaclaz   \n"
+    },
+    {
+      "id": "62880",
+      "timestamp": "2009-03-20T17:40:37+00:00",
+      "author": "mr_",
+      "content": "\u003e Interesting approach. ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)  \n\u003e\n\u003e \"normal\" work flow:  \n\u003e 1. write a sector with 00\u0027s  \n\u003e 2. go to next sector  \n\u003e 3. loop to 1. until end of device  \n\u003e\n\u003e \"proposed\" workflow:  \n\u003e 1. read a sector  \n\u003e 2. check if it\u0027s already 00\u0027s  \n\u003e 3. IF yes go to next sector, else goto 4.  \n\u003e 4. write a sector with 00\u0027s  \n\u003e 5. go to next sector until end of device\nThis way it\u0027s looking better.  \n\n\u003e In the first approach you have one WRITE operation for EACH sector on the device.  \n\u003e\n\u003e In the second approach you have a READ operation for EACH sector on the device + a conditional check for EACH sector on the device + a WRITE operation for an UNKNOWN number of sectors.  \n\u003e\n\u003e My ***guess*** is that speed may be greater ONLY if the amount of non 00\u0027s sectors on the device is ***very*** lmited. ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)\nI think that also.  \n\nYou are right, what I didn\u0027t state is that I assume that most sectors are already 00\u0027s.  \n\n\u003e Definitely first approach will use less \"processor resources\", anyway.\nYes, but a bit writing shouldn\u0027t matter at all. Even while shredding with random data the cpu usage is pretty acceptable.  \n\n\u003e No, the drive controller writes whatever you tell it to write, it\u0027s a very subordinate and efficient little piece of hardware, with very little initiative....  \n\u003e\n\u003e ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)   \n\u003e\n\u003e More generally and seriously \\[snip\\]\nAfter reading that I was not sure if the first sentence was serious or not.   \n"
+    },
+    {
+      "id": "62889",
+      "timestamp": "2009-03-20T18:34:20+00:00",
+      "author": "was_jaclaz",
+      "content": "Half-way. ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)  \n\nI mean, the ONLY need to completely wipe a drive with 00\u0027s is if and when you have privacy concerns of some kind, and you want to make ANY data irrecoverable ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)  \n\nIt looked to me a question like:  \n\u003e I need an intelligent, fast potato smasher, as I need to smash a few tons of potatoes.\n\nWhich is allright, of course ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png), but quite frankly overkill if all you need is a couple of pounds of smashed potatoes for dinner. ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)   \n\njaclaz   \n"
+    },
+    {
+      "id": "62893",
+      "timestamp": "2009-03-20T19:12:58+00:00",
+      "author": "mr_",
+      "content": "While the questions if a device refuses to write data which has already written is still open.  \n\nPerhaps it won\u0027t refuse to do so because otherwise it would internally read it itself before it finally executes the write command. From my rationale view, but I could be wrong and it could also vary from device to device.   \n"
+    },
+    {
+      "id": "62901",
+      "timestamp": "2009-03-20T19:43:17+00:00",
+      "author": "was_jaclaz",
+      "content": "NO, ***that*** answer is \"serious\".   \n\nIf you tell a controller to write something it ***will*** write what you told it, no questions answered, no doubts raised.  \n\njaclaz   \n"
+    }
+  ]
+}

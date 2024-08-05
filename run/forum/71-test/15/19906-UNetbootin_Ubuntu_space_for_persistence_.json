@@ -1,0 +1,22 @@
+{
+  "id": "19906",
+  "title": "UNetbootin Ubuntu space for persistence ??",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "185512",
+      "timestamp": "2014-07-07T16:10:03+00:00",
+      "author": "stevekramer99",
+      "content": "Hello,  \n\nI have a few questions please!  \n\nI am installing UBUNTU onto a USB drive, but I don\u0027t understand about the option for drive space for persistence. Can someone please explain what this does and how it could effect me? I remember setting up Ubuntu on USB before and this option was not there I think.\n\nOne other question - I have used UNetbootin once before on a USB drive with Linux but didn\u0027t understand how it worked - can someone please tell me, where does the UNetbootin OS save files? Is everything saved to the USB - ie. are you limited by the USB drive space? When a program saves any file, or you install any program, is everything saved to the USB drive only? Is it possible to access another drive for general use?\n\nthanks!  \nsteve\n\n**Edited by stevekramer99, 07 July 2014 - 04:41 PM.**\n"
+    },
+    {
+      "id": "185517",
+      "timestamp": "2014-07-08T01:55:18+00:00",
+      "author": "RoyM",
+      "content": "Hi stevekramer99, Welcome to reboot.  \nThe persistence file is used by newer linux\u0027s to save changes too.  \nIn simplified terms:  \nthe persistence file is overlayed onto the Linux OS\u0027s file system,  \nthus keeping any changes made, If you boot without the persistence file,  \nyou boot to a fresh unchanged OS, much like a \u0027true\u0027 PE would do.  \nMy favorite tool for troubleshooting PC\u0027s is a USB external HD.  \nI have several flavors of Linux running from .ISO\u0027s or \u0027Flat File Boots\u0027 via Grub4Dos,  \nUpon first use of these Linux\u0027s, I will usually supply a 1 to 2 Gig persistence file,  \nso as to allow for plenty of room for these OS\u0027s to change and grow.  \nMost Linux OS\u0027s require the persistence file to reside on a FAT/FAT32, EXT?, ExFat partition.  \nOnly a few Linux OS\u0027s that I\u0027ve played with will play nice with persistence file on NTFS, etc.  \nSome flavors of linux will allow the persistence file to reside elsewhere.  \nI have no experience with UNetbootin, but I would conjecture that it \u0027has\u0027 to save  \nany changes to itself/boot device, and so then yes, you would be limited by size of USB.  \nRegards  \nRoyM\n\n"
+    }
+  ]
+}

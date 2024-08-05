@@ -1,0 +1,142 @@
+{
+  "id": "17912",
+  "title": "Boot partition image",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "164688",
+      "timestamp": "2012-12-21T02:16:58+00:00",
+      "author": "favorinus",
+      "content": "Hi,\n\nI have a diskless atom motherboard and every boot I want to have exactly the same environment. I want thinking of install XP on a usb drive and tweaking it until it\u0027s perfect. Then make an image of the whole partition.\n\nThen with grub load the image into RAM ( I have 4 GB, and a image of 1 GB should be possible).\n\nwithout grub4dos I can load the image but booting results always in errors.\n\nWhat would be the grub4dos config for this setup?\n\nthanks in advance.\n\nMariano\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "164691",
+      "timestamp": "2012-12-21T03:12:08+00:00",
+      "author": "tinybit",
+      "content": "Try these:\n\nmap --mem (...)/Your_Partition_IMG (hdY)\n\nmap --hook\n\nchainloader (hdY)+1\n\nboot\n\nmap --mem (...)/Your_Partition_IMG (hdY)\n\nmap --hook\n\nchainloader (hdY,0)/ntldr\n\nboot\n\n"
+    },
+    {
+      "id": "164697",
+      "timestamp": "2012-12-21T07:30:06+00:00",
+      "author": "Sha0",
+      "content": "You\u0027ll also need a **GRUB4DOS** driver for the **Windows XP** , such as **WinVBlock** or **Firadisk** .   \n"
+    },
+    {
+      "id": "164713",
+      "timestamp": "2012-12-21T10:29:12+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I want thinking of install XP on a usb drive and tweaking it until it\u0027s perfect.\n\nSee if the project by Wimb suits you, it creates a \"portable\" image of an XP **install** :  \n[http://www.911cd.net...showtopic\u003d23553](http://www.911cd.net/forums//index.php?showtopic\u003d23553 \"External link\")  \n[http://reboot.pro/to...-and-windows-7/](http://reboot.pro/topic/9830-universal-hdd-image-files-for-xp-and-windows-7/ \"\")  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "165765",
+      "timestamp": "2013-01-13T04:55:31+00:00",
+      "author": "favorinus",
+      "content": "Thanks for the replies, but no luck.\n\nI want to boot XP on a diskless atom motherboard, it\u0027s all intel hardware.\n\nAfter all my tries II get a lot of 7B Stop errors and infinite xp loading bars.\n\nI like the idea of having a VHD image (with the IMG_XP_70 tutorial) as it is posible to load it into RAM (changes are lost after reboot) and to edit it when it\u0027s loading as a file?\n\nWhat I am doing wrong?\n\n"
+    },
+    {
+      "id": "165779",
+      "timestamp": "2013-01-13T16:00:25+00:00",
+      "author": "RoyM",
+      "content": "Hi favorinus  \nSounds like an interesting little project.  \nHow about some hardware specs.  \nHow is the USB set up and partitioned  \nYou may need some drivers for XP with a newer Mobo.\n\n"
+    },
+    {
+      "id": "165784",
+      "timestamp": "2013-01-13T17:22:11+00:00",
+      "author": "Sha0",
+      "content": "\u003e Thanks for the replies, but no luck.\n\u003e\n\u003e I want to boot XP on a diskless atom motherboard, it\u0027s all intel hardware.\n\u003e\n\u003e After all my tries II get a lot of 7B Stop errors and infinite xp loading bars.\n\nDid you read my last post, above?\n\n\u003e I like the idea of having a VHD image (with the IMG_XP_70 tutorial) as it is posible to load it into RAM (changes are lost after reboot) and to edit it when it\u0027s loading as a file?\n\nWas that a statement or a question?\n\n\u003e What I am doing wrong?\n\nWhat are you doing?\n\n"
+    },
+    {
+      "id": "165798",
+      "timestamp": "2013-01-13T21:12:03+00:00",
+      "author": "favorinus",
+      "content": "it\u0027s a statement and the question, it\u0027s possible to both boot it a a file (so that changes will be stored) and into ram so that changes will be lost. ? I need that.\n\nI have an 8 GB penstick and the motherboard is an intel d2550mud2  \n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \nPCI Devices  \n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \nPCI\\\\VEN_8086\\\u0026DEV_0BE2\\\u0026SUBSYS_20148086\\\u0026REV_0B\\\\3\\\u002611583659\\\u00260\\\u002610: Video Controller (VGA Compatible)  \nPCI\\\\VEN_8086\\\u0026DEV_0BF3\\\u0026SUBSYS_00000000\\\u0026REV_04\\\\3\\\u002611583659\\\u00260\\\u002600: PCI HOST Bridge  \nPCI\\\\VEN_8086\\\u0026DEV_10D3\\\u0026SUBSYS_20148086\\\u0026REV_00\\\\4\\\u0026335E5CC8\\\u00260\\\u002600E0: Ethernet Controller  \nPCI\\\\VEN_8086\\\u0026DEV_2448\\\u0026SUBSYS_00000000\\\u0026REV_E2\\\\3\\\u002611583659\\\u00260\\\u0026F0: PCI to PCI Bridge  \nPCI\\\\VEN_8086\\\u0026DEV_27BC\\\u0026SUBSYS_00000000\\\u0026REV_02\\\\3\\\u002611583659\\\u00260\\\u0026F8: PCI to ISA Bridge  \nPCI\\\\VEN_8086\\\u0026DEV_27C1\\\u0026SUBSYS_20148086\\\u0026REV_02\\\\3\\\u002611583659\\\u00260\\\u0026FA: PCI Device  \nPCI\\\\VEN_8086\\\u0026DEV_27C8\\\u0026SUBSYS_20148086\\\u0026REV_02\\\\3\\\u002611583659\\\u00260\\\u0026E8: Universal Serial Bus (USB) Controller  \nPCI\\\\VEN_8086\\\u0026DEV_27C9\\\u0026SUBSYS_20148086\\\u0026REV_02\\\\3\\\u002611583659\\\u00260\\\u0026E9: Universal Serial Bus (USB) Controller  \nPCI\\\\VEN_8086\\\u0026DEV_27CA\\\u0026SUBSYS_20148086\\\u0026REV_02\\\\3\\\u002611583659\\\u00260\\\u0026EA: Universal Serial Bus (USB) Controller  \nPCI\\\\VEN_8086\\\u0026DEV_27CB\\\u0026SUBSYS_20148086\\\u0026REV_02\\\\3\\\u002611583659\\\u00260\\\u0026EB: Universal Serial Bus (USB) Controller  \nPCI\\\\VEN_8086\\\u0026DEV_27CC\\\u0026SUBSYS_20148086\\\u0026REV_02\\\\3\\\u002611583659\\\u00260\\\u0026EF: Universal Serial Bus (USB) Controller  \nPCI\\\\VEN_8086\\\u0026DEV_27D0\\\u0026SUBSYS_00000000\\\u0026REV_02\\\\3\\\u002611583659\\\u00260\\\u0026E0: PCI to PCI Bridge  \nPCI\\\\VEN_8086\\\u0026DEV_27D8\\\u0026SUBSYS_20148086\\\u0026REV_02\\\\3\\\u002611583659\\\u00260\\\u0026D8: PCI Device  \nPCI\\\\VEN_8086\\\u0026DEV_27DA\\\u0026SUBSYS_20148086\\\u0026REV_02\\\\3\\\u002611583659\\\u00260\\\u0026FB: SM Bus Controller  \n14 matching device(s) found.  \n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \nUSB Devices  \n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \nUSB\\\\ROOT_HUB\\\\4\\\u002618CB3D74\\\u00260  \nUSB\\\\ROOT_HUB\\\\4\\\u0026234964B5\\\u00260  \nUSB\\\\ROOT_HUB\\\\4\\\u00262DC0ADC5\\\u00260  \nUSB\\\\ROOT_HUB\\\\4\\\u002635BF501\\\u00260  \nUSB\\\\ROOT_HUB20\\\\4\\\u002615810B8A\\\u00260  \nUSB\\\\VID_054C\\\u0026PID_0439\\\\7B3211204104000793 : Storage Media  \nUSBSTOR\\\\DISK\\\u0026VEN_SONY\\\u0026PROD_STORAGE_MEDIA\\\u0026REV_0100\\\\7B3211204104000793\\\u00260: Sony Storage Media USB Device  \n7 matching device(s) found.\n\nThe partition on the stick is NTFS but I have also tried FAT32.\n\nI have created the VHD file using the VHD_XP_Create.exe. and de first stage of the setup is without error.\n\nAfter rebooting there will be my 7B Stop.\n\n"
+    },
+    {
+      "id": "165801",
+      "timestamp": "2013-01-13T23:08:29+00:00",
+      "author": "Sha0",
+      "content": "What driver did you include for [post #3](http://reboot.pro/topic/17912-boot-partition-image/#entry164697 \"\")? Or does **VHD_XP_Create.exe** automatically include one?\n\n"
+    },
+    {
+      "id": "165804",
+      "timestamp": "2013-01-13T23:19:38+00:00",
+      "author": "favorinus",
+      "content": "Its creating a winvblock floppy disk which will load into memory through grub4dos. how can I manual add it, nlite \\`will crash when adding the winvblock driver\n\n"
+    },
+    {
+      "id": "165806",
+      "timestamp": "2013-01-14T00:25:36+00:00",
+      "author": "Sha0",
+      "content": "\u003e Its creating a winvblock floppy disk which will load into memory through grub4dos. how can I manual add it, nlite \\`will crash when adding the winvblock driver\n\nIf you\u0027re using a **WinVBlock** floppy disk image, then that\u0027s good. So when it crashes, do you see a message from WinVBlock on the blue screen? If not, what is your **GRUB4DOS** config-file that loads the floppy disk image? 2 questions.\n\n"
+    },
+    {
+      "id": "165808",
+      "timestamp": "2013-01-14T04:42:39+00:00",
+      "author": "favorinus",
+      "content": "The BSOD is always a 7B one. the grub4dos config generated by vhd_xp_create.exe is:\n\ntitle Continue GUI-mode XP Setup on XP-1.vhd - WinVBlock driver - 2000 MB  \nmap --mem /winvblock.ima (fd1)  \nmap --mem /winvblock.ima (fd0)  \nmap /XP-1.vhd (hd0)  \nmap --mem /xp.iso (0xff)  \nmap --hook  \nroot (hd0,0)  \nchainloader /ntldr  \n\ntitle Start - TXT-mode XP Setup on XP-1.vhd - WinVBlock driver - 2000 MB  \nmap --mem /winvblock.ima (fd1)  \nmap --mem /winvblock.ima (fd0)  \nmap /XP-1.vhd (hd0)  \nmap --mem /xp.iso (0xff)  \nmap --hook  \nchainloader (0xff)\n\n"
+    },
+    {
+      "id": "165811",
+      "timestamp": "2013-01-14T06:08:13+00:00",
+      "author": "Sha0",
+      "content": "\u003e The BSOD is always a 7B one.\n\nYou\u0027ve already explained that in the thread, so there\u0027s no need to repeat it. That is only a partial answer. My first question was:\n\n\u003e So when it crashes, do you see a message from WinVBlock on the blue screen?\n\n\u003e the grub4dos config generated by vhd_xp_create.exe is:\n\u003e\n\u003e title Continue GUI-mode XP Setup on XP-1.vhd - WinVBlock driver - 2000 MB  \n\u003e map --mem /winvblock.ima (fd1)  \n\u003e map --mem /winvblock.ima (fd0)  \n\u003e map /XP-1.vhd (hd0)  \n\u003e map --mem /xp.iso (0xff)  \n\u003e map --hook  \n\u003e root (hd0,0)  \n\u003e chainloader /ntldr  \n\u003e\n\u003e title Start - TXT-mode XP Setup on XP-1.vhd - WinVBlock driver - 2000 MB  \n\u003e map --mem /winvblock.ima (fd1)  \n\u003e map --mem /winvblock.ima (fd0)  \n\u003e map /XP-1.vhd (hd0)  \n\u003e map --mem /xp.iso (0xff)  \n\u003e map --hook  \n\u003e chainloader (0xff)\n\nThank you for this.\n\n"
+    },
+    {
+      "id": "165812",
+      "timestamp": "2013-01-14T06:14:49+00:00",
+      "author": "favorinus",
+      "content": "no there is no message from winvblock\n\n"
+    },
+    {
+      "id": "165813",
+      "timestamp": "2013-01-14T08:08:33+00:00",
+      "author": "Sha0",
+      "content": "\u003e no there is no message from winvblock\n\nThen it is not being loaded from the **F6** floppy, and explains your **STOP 0x0000007B** error.\n\n"
+    },
+    {
+      "id": "166064",
+      "timestamp": "2013-01-17T17:03:58+00:00",
+      "author": "favorinus",
+      "content": "In the first stage (txtsetup) I think the files are loaded, all the files are copied without errors into the VHD image.\n\nBut the second stage when the xp logo+ bar comes the winvblock drivers not loaded is your statement. How can I fix that?\n\n"
+    },
+    {
+      "id": "166067",
+      "timestamp": "2013-01-17T18:11:35+00:00",
+      "author": "Wonko the Sane",
+      "content": "Guys, can you temporary hold your horses? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\nQuestion (@favorinus):\n\nHave you used the suggested Wimb\u0027s thingy EXACTLY as per it\u0027s instruction and introducing NO variation whatever?\n\nIf yes, ask for help on the mentioned related thread:\n\n[http://reboot.pro/to...-and-windows-7/](http://reboot.pro/topic/9830-universal-hdd-image-files-for-xp-and-windows-7/ \"\")\n\nAFTER having spent some time reading the existing 37 pages of the thread, that may contain useful info.\n\nIf no, please try running it EXACTLY as per it\u0027s instructions, before anything else.\n\nThere are exactly 11 (eleven) numbered points in the \"base\" procedure, some of which allow \"forks\".\n\nDescribe EXACTLY what you have done (possibly using the SAME numbering scheme).\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "166103",
+      "timestamp": "2013-01-18T11:41:29+00:00",
+      "author": "favorinus",
+      "content": "Hi here is what I have done.\n\n1. copy content of xp sp3, with nlite integrated updatepack to e:\\\\XPSOURCE  \n2. integrate driverpack chipset 12.09 and driverpack mass storage into i386  \n3. create iso of e:\\\\XPSOURCE with nlite.  \n4. xp_vhd_create.exe --\\\u003e warning, boot problems may need to be solved first. (but it boots perfectly)  \n5. Reboot and boot from USB stick and chose txt setup.  \nI hit F6 and chose the 32 bit winvblock driver  \n6. Setup starts with an error: can\u0027t find WVBlk32.Sys, WinVBlk.Inf, WinVBlk.Cat\n\n7. Setup continues and in second stage there will be de 7B, because winvblock was not installed.\n\nis there a way to integrate the winvblock drivers into the ISO ?\n\n"
+    },
+    {
+      "id": "166113",
+      "timestamp": "2013-01-18T15:23:13+00:00",
+      "author": "Wonko the Sane",
+      "content": "Not enough data.\n\nCannot compute.\n\nHowever, this:\n\n\u003e 6. Setup starts with an error: can\u0027t find WVBlk32.Sys, WinVBlk.Inf, WinVBlk.Cat\n\nevidently means that for whatever reasons the Winvblock driver is NOT found even during Text Mode setup.\n\nTry booting from the USB device at the grub4dos menu press c to get to command line.\n\nType in it:\n\n```\n\nmap --mem /w\n```\n\npress \\[TAB\\]\n\nadd letters if needed and let it autocomplete untill you get to:\n\n```\n\nmap --mem /winvblock.ima\n```\n\ntype\n\n```\n\n(fd0)\n```\n\nso that the full line will look like:\n\n```\n\nmap --mem /winvblock.ima (fd0)\n```\n\npress \\[ENTER\\]\n\nType:\n\n```\n\nmap --hook\n```\n\n\\[ENTER\\]\n\n```\n\nroot (fd0)\n```\n\n\\[ENTER\\]\n\n```\n\nls\n```\n\n\\[ENTER\\]\n\nWhat do you see?\n\nAlternatively to the Wimb\u0027s tool (that BTW has worked and is working in thousands of cases or however does not normally create the issue you are reporting), you could use this other approach, making use of a Virtual Machine for the install:\n\n[http://www.linuxbyex...n-usb-disk.html](http://www.linuxbyexamples.net/2012/08/How-to-install-and-run-a-full-winxp-on-usb-disk.html \"External link\")\n\n(try making the .vhd as small as possible)\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "166133",
+      "timestamp": "2013-01-18T19:14:57+00:00",
+      "author": "favorinus",
+      "content": "then I see the content of the winvblock.ima .\n\ntxtsetup.oem of that image is loaded because I have changed all to lowercase. now the setup is asking for wvblk32.sys in lowercase. but not luck, it´s not found.\n\n"
+    },
+    {
+      "id": "166149",
+      "timestamp": "2013-01-19T11:42:10+00:00",
+      "author": "Wonko the Sane",
+      "content": "Hmmm.\n\nCaSe SeNsItIvEnEsS only applies to CDFS (not on \"normal\" FAT or NTFS).\n\nTry using a \"multiple choice\" F6 floppy:\n\n[http://www.rmprepusb...-xp-from-an-iso](http://www.rmprepusb.com/tutorials/install-xp-from-an-iso \"External link\")\n\n[http://reboot.pro/to...-plop/?p\u003d122941](http://reboot.pro/topic/13912-grub4dos-and-plop/?p\u003d122941 \"\")\n\n(by pressing \"S\" you should have more \"control\" or at least by-pass possible \"timing problems\")\n\nIt is possible that the \"modified\" source ISO is the issue, see:\n\n[http://www.rmprepusb...to-internal-hdd](http://www.rmprepusb.com/tutorials/install-xp-and-win7-to-internal-hdd \"External link\")\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "166181",
+      "timestamp": "2013-01-19T19:49:05+00:00",
+      "author": "Sha0",
+      "content": "\u003e The BSOD is always a 7B one. the grub4dos config generated by vhd_xp_create.exe is:\n\u003e\n\u003e title Continue GUI-mode XP Setup on XP-1.vhd - WinVBlock driver - 2000 MB  \n\u003e map --mem /winvblock.ima (fd1)  \n\u003e map --mem /winvblock.ima (fd0)  \n\u003e map /XP-1.vhd (hd0)  \n\u003e map --mem /xp.iso (0xff)  \n\u003e map --hook  \n\u003e root (hd0,0)  \n\u003e chainloader /ntldr  \n\u003e\n\u003e title Start - TXT-mode XP Setup on XP-1.vhd - WinVBlock driver - 2000 MB  \n\u003e map --mem /winvblock.ima (fd1)  \n\u003e map --mem /winvblock.ima (fd0)  \n\u003e map /XP-1.vhd (hd0)  \n\u003e map --mem /xp.iso (0xff)  \n\u003e map --hook  \n\u003e chainloader (0xff)\n\nCan you please change this to:\n\n```\n    title Continue GUI-mode XP Setup on XP-1.vhd - WinVBlock driver - 2000 MB\n    map --mem /winvblock.ima (fd1)\n    map --mem /winvblock.ima (fd0)\n    map /XP-1.vhd (hd0)\n    map --mem /xp.iso (0xff)\n    map --hook\n    root (hd0,0)\n    chainloader /ntldr\n    map --status\n    commandline\n\n    title Start - TXT-mode XP Setup on XP-1.vhd - WinVBlock driver - 2000 MB\n    map --mem /winvblock.ima (fd1)\n    map --mem /winvblock.ima (fd0)\n    map /XP-1.vhd (hd0)\n    map --mem /xp.iso (0xff)\n    map --hook\n    chainloader (0xff)\n    map --status\n    commandline\n\n```\n\nand report the output of **map --status** that appears?\n\n"
+    }
+  ]
+}

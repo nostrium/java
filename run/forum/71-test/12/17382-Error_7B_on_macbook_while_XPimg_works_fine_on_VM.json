@@ -1,0 +1,16 @@
+{
+  "id": "17382",
+  "title": "Error 7B on macbook while XP.img works fine on VM",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "159222",
+      "timestamp": "2012-08-13T22:49:21+00:00",
+      "author": "guylhem",
+      "content": "Hello  \n\nI have prepared an XP.img following the instructions posted on \u003chttp://reboot.pro/9830/\u003e  \n\nThe result works fine in a VM, works fine in a real PC, and works fine when copied on a macbook fixed drive (using syslinux on the MBR : syslinux-\\\u003egrub-\\\u003entldr) using the following menu.lst :  \n\ntitle XP-1.img - WinVBlock RAMDISK - 1639 MB  \nmap --mem (hd0,1)/XP-1.img (hd0)  \nmap --hook  \nroot (hd0,0)  \nchainloader /ntldr  \n\nHowever, while I can boot fine, on reboot all change to the filesystem are discarded - as if it was a RAM copy of the filesystem.  \n\nTrying to run with the \"FILEDISK\" option (ie map without --mem) brings a BSOD 7B.  \nTrying to install the image to the fixed drive from the RAMDISK option works fine, but then brings a BSOD 7B - even if following every step of the readme.  \n\n/sos ntldr boot flag does not give any clue. I can start in command line just fine. I can\u0027t start anything graphical including safe mode, which is offered on reboot since xp detects something is wrong (which lets me think FILEDISK mode can write to the XP-1.img, or it couldn\u0027t save the \"boot failed\" status)  \n\nSo far, the only hint I\u0027ve found is \u003chttp://reboot.pro/14130/page__st__150\u003e but it does not look like the same issue. I can edit the registry with chntpw (linux utility). I am just looking for a way to boot and be able to save modifications to the filesystem  \n\nMay I ask for any suggestion?   \n"
+    }
+  ]
+}

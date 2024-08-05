@@ -1,0 +1,40 @@
+{
+  "id": "21113",
+  "title": "E2B Win7 OEM recovery + Win10 clean installs. ISOs or imgPTNs?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "198931",
+      "timestamp": "2016-05-13T13:47:24+00:00",
+      "author": "tstaddon",
+      "content": "Hi,\n\nFirst of all, these tools are awesome, much respect to the developers and the community.\n\nI\u0027ve been using USB multiboot media for several years (a long time user of RMPREPUSB) but haven\u0027t done much with them for years; I used them quite a lot to provide XP-to-Win7 migration assistance and data recovery for family and friends.\n\nWith the deadline for the free upgrade to Windows 10 coming up, I want a USB drive that can either allow me to restore people\u0027s machines back to their original Win7/8/8.1 recovery media or just install Win10 from the 1511 (Nov 2015) ISO. Can I just put that ISO into the Win10 folder without any modification or do I need to inject anything to the ISO/image for it, like USB3 drivers?\n\nAlso - I\u0027ve never looked at the imgPTN option before so am a bit confused: should I be putting *both* media options on the drive, i.e. have a Win10_1511.iso and Win10_1511.imgPTN in the same folder?\n\nLikewise, with Win7/8 factory recovery media in ISO format, is there any benefit to converting those ISOs to imgPTN or should I leave them as ISOs and put them in the OS folder? Or should they go in the PE folder?\n\nSorry, I know these questions are dumb but the last time I was doing this I was still pratting about with driver packs on XP builds and OEM SLP preservations during migrations in Vista/Win7; I\u0027m quite rusty!\n\nThanks in advance\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "198932",
+      "timestamp": "2016-05-13T13:55:53+00:00",
+      "author": "Rootman",
+      "content": "You will need to use the .imgPTN so that the install can load the contents when booted via USB. I use Easy2Boot and I have PE ISOs of 7, 8.1 and 10 in both 32 and 64 bit flavors as well as .imgPTN\u0027s of 7 and 10 install media. Works like a charm is is very fast doing the installation.\n\n.imgPTN is also the only way you can load up via UEFI if you want to go that route, else you are stuck booting the install media via real mode, which will not allow installation of Windows via UEFI.\n\n"
+    },
+    {
+      "id": "198933",
+      "timestamp": "2016-05-13T14:55:17+00:00",
+      "author": "tstaddon",
+      "content": "Cheers.\n\nI had all sorts of fun with a Lenovo laptop this afternoon which wouldn\u0027t boot at all from any device other than the built-in OS which was broken, and eventually I solved it with a BIOS flash and a Win10 install from DVD.\n\nSo I\u0027m really trying to cover my bases; would you put the imgPTNs in the same folders as the corresponding ISOs?\n\n\\\u003caddendum\\\u003e Sodding Windows does not like me copying \\\u003e4gb files to USB drives unless I reboot into Safe Mode. Not sure what that\u0027s all about!\n\n**Edited by tstaddon, 13 May 2016 - 03:05 PM.**\n"
+    },
+    {
+      "id": "198934",
+      "timestamp": "2016-05-13T16:00:24+00:00",
+      "author": "tstaddon",
+      "content": "I must be doing something wrong; I can\u0027t seem get the Windows 10 ISO to boot as an .imgPTN file; E2B just tells me there\u0027s no menu option or something like that. Other .imgPTNs in the same folder work perfectly fine (for example Clonezilla).\n\n"
+    },
+    {
+      "id": "198942",
+      "timestamp": "2016-05-14T06:35:08+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "For most OEM recovery ISOs, PEs, and Windows install ISOs, you should probably use the .imgPTN option. Windows-based media doesn\u0027t seem to like being booted as an ISO. An .imgPTN will enable you to boot in either legacy or UEFI mode (must format as FAT32 for the latter), as long as the particular media supports both. You only need the .imgPTN files.\n\nOn the other hand, most live Linux distros can be booted fine as ISOs in most case, though you still must use .imgPTN if UEFI booting is desired.\n\nNot sure why your Lenovo can\u0027t boot a particular .imgPTN. Are you following the creation guide to the letter, paying attention at every step (especially the part about what to call the entry in E2B menu)? Are you making everything contiguous? Are you converting to .imgPTN from an ISO, or from a folder? Are you sure the intended media you\u0027re trying to create is meant to be bootable in the first place (i.e. not data-only)? Try mounting the .imgPTN with ImDisk after it is created, then marking the FAT32/NTFS partition where the boot contents are, as active/bootable.\n\nIt could also be that your Lenovo is picky about what it will boot, some PCs are quirky and bipolar like that.\n\n"
+    }
+  ]
+}

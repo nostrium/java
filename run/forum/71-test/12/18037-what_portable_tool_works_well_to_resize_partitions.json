@@ -1,0 +1,40 @@
+{
+  "id": "18037",
+  "title": "what portable tool works well to resize partitions?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "166349",
+      "timestamp": "2013-01-22T02:25:11+00:00",
+      "author": "Zoso",
+      "content": "I dont know if this is the best spot to ask but it is needed for a usb boot xp.  \n\nI need to be able to resize ntfs partitions from my usboot xp os.  \n\nwhat is a good free/shareware tool for this?  \n\nthanks   \n"
+    },
+    {
+      "id": "166352",
+      "timestamp": "2013-01-22T04:13:01+00:00",
+      "author": "Agent47",
+      "content": "Partition Wizard Home edition works fine in portable mode.Install it in a regular OS and then copy the installed directory to USB drive. Works fine for me.\n\n[http://www.partition...on-manager.html](http://www.partitionwizard.com/free-partition-manager.htmlhttp://www.partitionwizard.com/free-partition-manager.html \"External link\")\n\n"
+    },
+    {
+      "id": "166501",
+      "timestamp": "2013-01-23T23:35:10+00:00",
+      "author": "Zoso",
+      "content": "thanks, I tried it and it works but is very bloated. I found AOMEI Partition Assistant Home Edition and its much smaller.  \n\nIm still curious if there is a single self exicutable .exe that will work for resizing only?   \n"
+    },
+    {
+      "id": "166503",
+      "timestamp": "2013-01-24T01:35:45+00:00",
+      "author": "RoyM",
+      "content": "See this post by robertcollier4 for Partition Guru  \n[http://reboot.pro/to...tarting-sector/](http://reboot.pro/topic/17904-partitionguru-401-create-partitions-by-specify-starting-sector/ \"\")  \nI have been finding this a very useful tool.  \nThank You robertcollier4\n\n"
+    },
+    {
+      "id": "166524",
+      "timestamp": "2013-01-24T13:37:43+00:00",
+      "author": "Agent47",
+      "content": "Yes, PartitionGuru is a wonderful tool with so many features. There is a free version which can be run from dos and it\u0027s Windows part is also compatible to operate under Win7PE SE. Their paid version is the most complete partition tool i have ever seen.\n\n"
+    }
+  ]
+}

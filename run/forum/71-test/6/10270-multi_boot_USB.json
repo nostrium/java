@@ -1,0 +1,46 @@
+{
+  "id": "10270",
+  "title": "multi boot USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "89890",
+      "timestamp": "2010-01-28T13:55:59+00:00",
+      "author": "apemax",
+      "content": "I want to boot several operating systems off my usb stick but i do not know how or the best way to do it. the size of my USB stick is 4GB.   \n"
+    },
+    {
+      "id": "89891",
+      "timestamp": "2010-01-28T14:03:58+00:00",
+      "author": "iosha",
+      "content": "read tutorial in this forum..........! ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)   \n"
+    },
+    {
+      "id": "89892",
+      "timestamp": "2010-01-28T14:07:00+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I want to boot several operating systems off my usb stick but i do not know how or the best way to do it. the size of my USB stick is 4GB.\n\nIt\u0027s an interesting declaration of intents, which you may possibly reach by (in this order):  \n\n* reading the ***tens*** of threads on this board where people asked similar questions and reported success\n* understand that each and every OS may have different needs/way (compare with this, only seemingly unrelated)  \n  [http://www.boot-land...?showtopic\u003d8944](http://www.boot-land.net/forums/index.php?showtopic\u003d8944 \"External link\")\n* post some EXACT details, like a list of the OS you would like to multiboot and specific questions about the ones (and ONLY the ones) for which you could not find a solution (by reading and searching the board) or for which the found solution does not work for you\n\n\u003cbr /\u003e\n\nA good place to start is the Tutorials section:  \n[http://www.boot-land...hp?showforum\u003d31](http://www.boot-land.net/forums/index.php?showforum\u003d31 \"External link\")  \n\nThen, you can search the board for the specific OS/setups you wish to add, though most solutions are grub4dos based, there is a section for Syslinux/Memdisk, and nowadays the two loaders are pretty much interchangeable.  \n\n![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)  \n\nWonko   \n"
+    },
+    {
+      "id": "89936",
+      "timestamp": "2010-01-28T18:25:21+00:00",
+      "author": "apemax",
+      "content": "sorry. ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png) i want to boot DSL with grub4dos but when i used it with syslinx i had to put no acpi apic\u003doff in the prompt to boot or else it would freeze while booting. is there a way to do this with grub4dos?   \n"
+    },
+    {
+      "id": "89982",
+      "timestamp": "2010-01-29T08:58:29+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e sorry. :wink: i want to boot DSL with grub4dos but when i used it with syslinx i had to put no acpi apic\u003doff in the prompt to boot or else it would freeze while booting. is there a way to do this with grub4dos?\n\nYes and no. ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)  \n\nMeaning that the **apic\u003doff** is a \"cheatcode\" , thus, if it is needed, you can pass it to the kernel through either sylinux/isolinux or grub4dos, using the corresponding switch **noapic** (kernel parameter) on the loader\u0027s command line.  \n\nSee here for some previous experience:  \n[http://www.boot-land...?showtopic\u003d9391](http://www.boot-land.net/forums/index.php?showtopic\u003d9391 \"External link\")  \n\nWhich exact version of DSL (and release) are you trying to boot?  \nAre you using the \"treaditional\" or the \"iso mapping\" one?  \n\nWonko   \n"
+    },
+    {
+      "id": "90007",
+      "timestamp": "2010-01-29T14:47:27+00:00",
+      "author": "apemax",
+      "content": "I am using DSL 4.4.10 initrd and iso mapping.   \n"
+    }
+  ]
+}

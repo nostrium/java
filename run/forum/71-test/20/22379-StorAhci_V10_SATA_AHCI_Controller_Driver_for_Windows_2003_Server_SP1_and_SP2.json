@@ -1,0 +1,22 @@
+{
+  "id": "22379",
+  "title": "StorAhci V1.0 SATA AHCI Controller Driver for Windows 2003 Server SP1 and SP2",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "216358",
+      "timestamp": "2020-09-28T12:53:37+00:00",
+      "author": "schtrom",
+      "content": "Download-Link: [https://sourceforge....r-windows-2003/](https://sourceforge.net/projects/storahci-for-windows-2003/ \"External link\")\n\nToday we present the new SATA AHCI Controller driver StorAhci version 1.0. StorAhci is based on Microsoft\u0027s storahci sample driver for Windows 8 and was changed to support Windows Server 2003 SP1 and SP2 with out of the box storport.sys driver. In addition we added a txtsetup.oem file to load it from a driver floppy disk at the F6 text setup stage. StorAhci is a universal SATA AHCI Controller driver for use with AMD, Intel and any other chipsets.  \n\nA special thank goes out to Skulltrail192 for his One-Core-API storahci driver, which was an inspiration for me to port the driver to Windows Server 2003.  \n\n\u003cbr /\u003e\n\n++**How we build the StorAhci driver**++   \n\nWe use the source files from the original WDK 8 StorAhci driver sample, which is freely available from Microsoft. The include files are taken from WDK 8 version 8.59.29757. To compile the Windows 2003 compatible driver we use DDK version 7600.16385.1. Our intention was to apply the smallest possible changes to the original code to prevent bugs. We have changed the following things to make the driver work for Windows 2003 Server:\n\n* added INF and txtsetup.oem file to install the driver\n* added makefile and sources file to compile the driver\n* changed resource file\n* added StorPortPatch header and code file with a few necessary StorPort functions and replaced the function StorPortExtendedFunction\n* changed very important code sections like follows:\n* size of HW_INITIALIZATION_DATA corrected to comply with storport.sys\n* blocked read and write access beyond the end of the structure PORT_CONFIGURATION_INFORMATION\n* setup physical address for ReadLogExtPageDataPhysicalAddress correctly\n* PREfast and SAL (source code annotation language) changes to make the code compatible with the DDK version 7600.16385.1\n* fixed PREfast and SAL warnings and errors\n\n++**Which operating systems are supported?**++   \n\nStorAhci is build for Windows 2003 Server with Service Pack 1 and Service Pack 2 in both the x86 and the x64 editions. The driver does not work on Windows 2003 Server without Service Pack, because StorPortNotification inside storport.sys does not support the needed notification types. The driver was only tested on Windows 2003 Server with Service Pack 1 and 2, because starting with Windows Vista Microsoft includes a SATA AHCI driver on the installation media.  \n\nGreets  \nKai Schtrom  \n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "216442",
+      "timestamp": "2020-10-03T15:21:49+00:00",
+      "author": "danshin",
+      "content": "Hi,\n\nThank you very much for a proper porting of the Win8 AHCI driver.\n\nFor now, I\u0027ve tried your driver on VM only, works just fine. Will try it on real hardware soon.\n\nWhat is so special for the Win8 driver, that it needs your own AllocatePool / FreePool replacements? Even the Win7 ported storport.sys requires them. I\u0027m just curious about this.\n\nIf possible, could you please \"merge\" the InitializeTimer and FreeTimer found in storpor8.c of NTOSKRNL_Emu ([https://github.com/M...AD/NTOSKRNL_Emu](https://github.com/MovAX0xDEAD/NTOSKRNL_Emu \"External link\"))? Tried to do it myself, but is not easy as I\u0027m still learning.\n\n"
+    }
+  ]
+}

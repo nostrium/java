@@ -1,0 +1,112 @@
+{
+  "id": "19673",
+  "title": "Multiboot USB w/ Basic PE Image",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "183064",
+      "timestamp": "2014-03-27T20:30:51+00:00",
+      "author": "KP13",
+      "content": "So what I want to do is have a multiboot USB drive that contains a mixture of Linux boot disks as well as a basic x64 PE image that was created from the WAIK command line.  \nThe problem I\u0027m facing is that when the PE image is wrapped as an ISO file it cannot be booted to although when I just put the folder and files into the base of a USB drive it does. The folder structure is as follows:  \n-boot (Folder)  \n-efi (Folder)  \n-sources (Folder)  \n-bootmgr (File)  \n-bootmgr.efi (File)  \nFirst, is that at all possible given the circumstances? Second, what would the lines of code on the Grub4DOS or Syslinux menu be to make this happen?  \nThank you,  \n- KP\n\n"
+    },
+    {
+      "id": "183065",
+      "timestamp": "2014-03-27T20:35:50+00:00",
+      "author": "steve6375",
+      "content": "So does the \\\\sources folder have a boot.wim (i,e, WinPE loads as X: drive in RAM)?\n\nIf so, it should be easy to boot PE from the ISO.\n\ntitle Boot PE\n\nmap /MyPE.iso (0xff)\n\nmap --hook\n\nroot (0xff)\n\nchainloader /bootmgr\n\nMake sure the ISO is contiguous (use WinContig or RMPrepUSB and Ctrl+F2)\n\nOr just use Easy2Boot and copy the ISO files to the Easy2Boot USB drive?\n\n"
+    },
+    {
+      "id": "183068",
+      "timestamp": "2014-03-28T12:39:04+00:00",
+      "author": "KP13",
+      "content": "\u003e So does the \\\\sources folder have a boot.wim (i,e, WinPE loads as X: drive in RAM)?\n\u003e\n\u003e If so, it should be easy to boot PE from the ISO.\n\u003e\n\u003e title Boot PE\n\u003e\n\u003e map /MyPE.iso (0xff)\n\u003e\n\u003e map --hook\n\u003e\n\u003e root (0xff)\n\u003e\n\u003e chainloader /bootmgr\n\u003e\n\u003e Make sure the ISO is contiguous (use WinContig or RMPrepUSB and Ctrl+F2)\n\u003e\n\u003e Or just use Easy2Boot and copy the ISO files to the Easy2Boot USB drive?\n\nThe sources folder does have a boot.wim. I tried your code as well as running WinContig.\n\nI get the following error after choosing it from the Grub4Dos menu:\n\n![351x2jp.png](http://i59.tinypic.com/351x2jp.png)\n\n"
+    },
+    {
+      "id": "183069",
+      "timestamp": "2014-03-28T12:40:52+00:00",
+      "author": "steve6375",
+      "content": "can you go to the command prompt (type c)\n\nand do\n\nls (0xff)/\n\nwhat files do you see?\n\nP.S. What version of grub4dos are you using (date and version is at top of screen)\n\n"
+    },
+    {
+      "id": "183070",
+      "timestamp": "2014-03-28T12:42:52+00:00",
+      "author": "KP13",
+      "content": "Output is:\n\nError 21: Selected disk does not exist\n\n"
+    },
+    {
+      "id": "183082",
+      "timestamp": "2014-03-30T15:41:49+00:00",
+      "author": "alfreire",
+      "content": "Are you test boot in Virtual Machine without HDD...?\n\nRegards... ;-)\n\n"
+    },
+    {
+      "id": "183083",
+      "timestamp": "2014-03-30T15:48:25+00:00",
+      "author": "steve6375",
+      "content": "\u003e Output is:\n\u003e\n\u003e Error 21: Selected disk does not exist\n\nYou will need to type the map commands in as well in the grub4dos console\n\n```\nmap /MyPE.iso (0xff)\nmap --hook\nls (0xff)/\n```\n\nchange name and path of ISO to match your ISO file.\n\n"
+    },
+    {
+      "id": "183106",
+      "timestamp": "2014-04-01T14:58:52+00:00",
+      "author": "KP13",
+      "content": "Steve,\n\nI mapped the .ISO using the command line and it does list the files in the base but I still can\u0027t boot to it. Do I have to type another line into the GRUB command line?\n\n"
+    },
+    {
+      "id": "183111",
+      "timestamp": "2014-04-01T16:14:36+00:00",
+      "author": "cdob",
+      "content": "\u003e I mapped the .ISO using the command line and it does list the files in the base\nWhich files are listed? List the output.   \n"
+    },
+    {
+      "id": "183112",
+      "timestamp": "2014-04-01T16:18:34+00:00",
+      "author": "steve6375",
+      "content": "yes\n\nchainloader /bootmgr\n\nThe error you got implied that /bootmgr does not exist. Is it listed when you type:\n\nls /\n\nWhat files are listed?\n\n"
+    },
+    {
+      "id": "183114",
+      "timestamp": "2014-04-01T16:42:26+00:00",
+      "author": "KP13",
+      "content": "\u003e yes\n\u003e\n\u003e chainloader /bootmgr\n\u003e\n\u003e The error you got implied that /bootmgr does not exist. Is it listed when you type:\n\u003e\n\u003e ls /\n\u003e\n\u003e What files are listed?\n\n![24e9xls.png](http://i59.tinypic.com/24e9xls.png)\n\n"
+    },
+    {
+      "id": "183115",
+      "timestamp": "2014-04-01T16:47:25+00:00",
+      "author": "steve6375",
+      "content": "so do any of these work?\n\n```\nroot (0xff)\nchainloader /bootmgr\nboot\n```\n\nor\n\n```\nroot (0xff)\nchainloader /BOOTMGR\nboot\n```\n\nwork?\n\n"
+    },
+    {
+      "id": "183116",
+      "timestamp": "2014-04-01T17:17:09+00:00",
+      "author": "KP13",
+      "content": "AWESOME! It finally worked out! It was the case sensitivity that did it.\n\nroot (0xff)  \nchainloader /BOOTMGR  \nboot\n\nSo that seemed to work wonders. I appreciate all the help as always, you don\u0027t understand how annoying this problem has bugged me.\n\nThanks again,\n\n-KP\n\n"
+    },
+    {
+      "id": "183117",
+      "timestamp": "2014-04-01T17:32:51+00:00",
+      "author": "steve6375",
+      "content": "If the ISO is bootable then\n\n```\ntitle Boot PE\nmap /MyPE.iso (0xff)\nmap --hook\nrootnoverify (0xff)\nchainloader (0xff)\n```\n\nshould work for most ISOs.\n\nP.S. Have you tried Easy2Boot?\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "183118",
+      "timestamp": "2014-04-01T17:39:31+00:00",
+      "author": "KP13",
+      "content": "Excellent, I\u0027ll have to try it out. I have not tested out Easy2Boot yet but I was planning on doing it in the near future!\n\n"
+    },
+    {
+      "id": "183121",
+      "timestamp": "2014-04-02T02:07:30+00:00",
+      "author": "KP13",
+      "content": "Last question, is it possible to use this code as an appended config file for a Syslinux menu item?\n\n"
+    },
+    {
+      "id": "183123",
+      "timestamp": "2014-04-02T09:24:24+00:00",
+      "author": "steve6375",
+      "content": "should be fine.\n\n"
+    }
+  ]
+}

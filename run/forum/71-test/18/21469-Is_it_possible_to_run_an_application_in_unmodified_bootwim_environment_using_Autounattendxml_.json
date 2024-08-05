@@ -1,0 +1,58 @@
+{
+  "id": "21469",
+  "title": "Is it possible to run an application in unmodified \u0027boot.wim\u0027 environment using Autounattend.xml ?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "203024",
+      "timestamp": "2017-04-01T01:32:16+00:00",
+      "author": "devdevadev",
+      "content": "I want to run \u0027InstallWhim.exe\u0027 in the WinPE Startup. But I don\u0027t want to edit \u0027Winpeshl.ini\u0027 or \u0027startnet.cmd\u0027 to run an application. is it possible to run \u0027InstallWhim.exe\u0027 (which is located in the root of USB Drive) at the starting of \u0027boot.wim\u0027 environment using \u0027Autounattend.xmll\u0027 or \u0027unattend.xml\u0027 ?\n\n"
+    },
+    {
+      "id": "203030",
+      "timestamp": "2017-04-01T08:25:14+00:00",
+      "author": "steve6375",
+      "content": "Yes - but only if the USB drive is a removable drive and the WinPE that you are booting to runs WPEInit.exe (which vanilla MS boot.wims do).\n\n"
+    },
+    {
+      "id": "203031",
+      "timestamp": "2017-04-01T09:31:51+00:00",
+      "author": "devdevadev",
+      "content": "Any sample \u0027Autounattend.xml\u0027 to run \u0027USB:\\\\support\\\\InstallWhim.exe\u0027 in \u0027boot.wim\u0027 environment ?\n\nIs it must to use \u0027Winpeshl.ini\u0027 method if I want to run an application (located in USB) in \u0027boot.wim\u0027 environment ?\n\n"
+    },
+    {
+      "id": "203032",
+      "timestamp": "2017-04-01T09:36:10+00:00",
+      "author": "steve6375",
+      "content": "If you run Easy2Boot and a Windows 8/10 Install ISO - boot it to Setup and then look at the \\\\AutoUnattend.xml file on the E2B USB drive, you will see an example of how to run a .cmd file from an unmodified ISO/boot.wim.\n\n"
+    },
+    {
+      "id": "203058",
+      "timestamp": "2017-04-01T19:12:46+00:00",
+      "author": "genetix",
+      "content": "This sounds curious. You actually can run executable thru setup.exe or thru autounattended.xml?\n\n"
+    },
+    {
+      "id": "203059",
+      "timestamp": "2017-04-01T19:15:47+00:00",
+      "author": "steve6375",
+      "content": "WinPE runs WPEInit.exe which looks for a XML file on Removable media.\n\nIf you have the XML file on a Removable USB flash drive and it has the correct Run section, then you can make boot.wim run anything.\n\nSee [http://www.easy2boot.../how-e2b-works/](http://www.easy2boot.com/faq-/how-e2b-works/ \"External link\") and the Vista/7/8/10 section.\n\n"
+    },
+    {
+      "id": "203062",
+      "timestamp": "2017-04-01T19:18:40+00:00",
+      "author": "devdevadev",
+      "content": "\u003e WinPE runs WPEInit.exe which looks for a XML file on Removable media.\n\nDoes it only look for XML file with \u0027Autounattend.xml\u0027 name ?\n\n"
+    },
+    {
+      "id": "203063",
+      "timestamp": "2017-04-01T19:21:14+00:00",
+      "author": "genetix",
+      "content": "\u003e Does it only look for XML file with \u0027Autounattend.xml\u0027 name ?\n\nWell, according to microsoft it looks for \"Unattended.xml\" and \"Autounattended..xml\" (there\u0027s a media version xml also at windows 10 and some WDS xml from \"source\\\\\"-path).\n\n"
+    }
+  ]
+}

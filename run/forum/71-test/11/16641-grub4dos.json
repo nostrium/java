@@ -1,0 +1,76 @@
+{
+  "id": "16641",
+  "title": "grub4dos",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "151780",
+      "timestamp": "2012-04-01T09:40:39+00:00",
+      "author": "dencorso",
+      "content": "![Posted Image](http://reboot.pro/index.php?app\u003ddownloads\u0026module\u003ddisplay\u0026section\u003dscreenshot\u0026id\u003d175)\n**File Name** : grub4dos  \n**File Submitter** : [dencorso](http://reboot.pro/user/15622-dencorso/ \"\")  \n**File Submitted** : 31 Mar 2012  \n**File Category** : [Boot tools](http://reboot.pro/files/category/7-boot-tools/ \"\")  \n\nThis is the de-facto standard version of grub4dos (0.4.4-2009-10-16), which has become difficult to get after nufans.net demise.  \n\n[Click here to download this file](http://reboot.pro/files/file/175-grub4dos/ \"\")   \n"
+    },
+    {
+      "id": "151791",
+      "timestamp": "2012-04-01T11:27:14+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e This is the de-facto standard version of grub4dos, which has become difficult to get after nufans.net demise.  \n\u003e\nWell, not really.  \n\nIt is the only reliable version of 0.4.4, the 2009-10-16 ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif) (as opposed to the much more \"popular\" version 0.4.4 2009-03-29 which was buggy) .  \n\nNowadays latest 0.4.5 is advised.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "151839",
+      "timestamp": "2012-04-02T10:39:24+00:00",
+      "author": "steve6375",
+      "content": "The latest versions are here and are much better  \n[http://code.google.c.../downloads/list](http://code.google.com/p/grub4dos-chenall/downloads/list \"External link\")   \n"
+    },
+    {
+      "id": "151873",
+      "timestamp": "2012-04-02T22:32:10+00:00",
+      "author": "dencorso",
+      "content": "\u003e Well, not really.  \n\u003e\n\u003e It is the only reliable version of 0.4.4, the 2009-10-16 ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif) (as opposed to the much more \"popular\" version 0.4.4 2009-03-29 which was buggy) .  \n\u003e\n\u003e Nowadays latest 0.4.5 is advised.  \n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\u003e Wonko  \nI\u0027d have posted the source archive for it (*viz* . grub4dos-0.4.4-2009-10-16) too... But it turns out I don\u0027t have it anymore ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \nIf anyone has an archival copy of it and can be so kind as to post it here, I\u0027d appreciate it very much.   \n"
+    },
+    {
+      "id": "151884",
+      "timestamp": "2012-04-03T08:36:59+00:00",
+      "author": "steve6375",
+      "content": "Just curious - Why would you want a 2 year old version when chenall has latest version + source and it is much better and has more features and commands?   \n"
+    },
+    {
+      "id": "151885",
+      "timestamp": "2012-04-03T08:48:34+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I\u0027d have posted the source archive for it too... But it turns out I don\u0027t have it anymore ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n\u003e If anyone has an archival copy of it and can be so kind as to post it here, I\u0027d appreciate it very much.  \nSource of what? ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)  \nIt\u0027s a few years I am fighting this personal battle about ALWAYS specifying the version AND the date of ANY grub4dos reference, and this is what I get? \"it\" ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)  \n\n@steve6375  \nThe other battle that I fight (and that I evidently lose on a daily base ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)) is to try and explain people how \"latest\" not necessarily means \"better\" (and not in \\*every\\* context).  \nAs an example, the difference between 285507 and 237849 is 47658 bytes, there may be situations in which these few Kb make a difference.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "151888",
+      "timestamp": "2012-04-03T09:26:08+00:00",
+      "author": "steve6375",
+      "content": "\u003e As an example, the difference between 285507 and 237849 is 47658 bytes, there may be situations in which these few Kb make a difference.  \nA lot of bytes are taken up by the help text for all the new commands and features...   \n"
+    },
+    {
+      "id": "151890",
+      "timestamp": "2012-04-03T09:46:26+00:00",
+      "author": "dencorso",
+      "content": "\u003e Source of what? ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)  \n\u003e It\u0027s a few years I am fighting this personal battle about ALWAYS specifying the version AND the date of ANY grub4dos reference, and this is what I get? \"it\" ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)  \n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\u003e Wonko  \nSure! :smile: Fixed! ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n"
+    },
+    {
+      "id": "151893",
+      "timestamp": "2012-04-03T11:08:32+00:00",
+      "author": "ilko",
+      "content": "\u003e I\u0027d have posted the source archive for it (*viz* . grub4dos-0.4.4-2009-10-16) too... But it turns out I don\u0027t have it anymore ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n\u003e If anyone has an archival copy of it and can be so kind as to post it here, I\u0027d appreciate it very much.  \nhttp://www.datafilehost.com/download-3839c0ee.html  \n\nIn filesgrub4dos the version included is 0.4.4-2009-10-16 if you still need it.   \n"
+    },
+    {
+      "id": "151907",
+      "timestamp": "2012-04-03T18:49:45+00:00",
+      "author": "Wonko the Sane",
+      "content": "Low Google-Fu? ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)  \n[http://pkg.lml.suppo...bo-build-cache/](http://pkg.lml.support-netz.de/linbo-build-cache/ \"External link\")  \n[http://pkg.lml.suppo...9-10-16-src.zip](http://pkg.lml.support-netz.de/linbo-build-cache/grub4dos-0.4.4-2009-10-16-src.zip \"External link\")  \n\n![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n(attached, just in case :wink:)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nWonko  \n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003d2468d3f0ddd1e93a8ed1e0ae705522c1\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d13383 \"Download attachment\") [**grub4dos-0.4.4-2009-10-16-src.zip**](http://reboot.pro/index.php?s\u003d2468d3f0ddd1e93a8ed1e0ae705522c1\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d13383 \"Download attachment\") **1.43MB** 2142 downloads\n\n"
+    },
+    {
+      "id": "151914",
+      "timestamp": "2012-04-04T02:28:10+00:00",
+      "author": "dencorso",
+      "content": "Hey, thanks a lot! You do rock, Wonko and ilko! You both sure do! ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif)  \n\nAnd, BTW, very low Google-Fu, of course! :blush:   \n"
+    }
+  ]
+}

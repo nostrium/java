@@ -1,0 +1,22 @@
+{
+  "id": "5313",
+  "title": "Miltiple Windows versions with grub",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "40738",
+      "timestamp": "2008-07-30T06:59:27+00:00",
+      "author": "kokot-san",
+      "content": "Hi,  \n\nFirst I installed Windows XP on my local machine, then I installed Windows Server 2008 Standard and Windows 2008 Enterprise. At this point I could see all the Windows versions in Window\u0027s provided boot-loader. Then I installed Windows 2003 and obviously this version could not recognize the Windows 2008 versions. As a result, the 2003 boot-loader only shows Windows XP and Windows 2003.   \n\nThis led me to Grub and now I am able to boot all my versions, but somehow they appear in two groups and I have to boot them indirectly through the Windows boot-loader:  \n1) booting \"root (hd0,0)\" brings me to the Windows XP / Windows 2003 boot-loader  \n2) booting \"root (hd0,1)\" brings me to the Windows 2008 Standard and Enterprise Edition boot-loader  \n\nWhat I would like is to boot from Grub *directly* into Windows XP / 2003 / 2008. The problem is I have two install more versions of Windows and it will become too messy.  \n\nIs it possible to tell Grub to bypass the Windows boot-loader and directly boot Windows XP / 2003 / 2008?  \n\nCheers,  \nAndrej van der Zee   \n"
+    },
+    {
+      "id": "40742",
+      "timestamp": "2008-07-30T07:42:06+00:00",
+      "author": "was_jaclaz",
+      "content": "Are you using ***Grub*** or ***grub4dos*** , that can chainload directly NTLDR or BOOTMGR.  \n\nCheck the grub4dos guide and forum:  \n[http://www.boot-land...s/?showforum\u003d66](http://www.boot-land.net/forums/?showforum\u003d66 \"External link\")  \n[http://www.boot-land...?showtopic\u003d5187](http://www.boot-land.net/forums/index.php?showtopic\u003d5187 \"External link\")  \n\nHowever, you cannot \"bypass\" the Windows loader, what you can do is to have a number of windows loaders.  \n\nThis has been tested and works for NTLDR + BOOT.INI, but should work for BOOTMGR+BCD as well, with the needed adaptations.  \n\nFor NTLDR+BOOT.INI:  \nSolution 1):  \nCreate a number of floppy images, similar to the one detailed here:  \n[http://www.xxcopy.com/xxcopy33.htm](http://www.xxcopy.com/xxcopy33.htm \"External link\")  \neach with a NTLDR, NTDETECT.COM (optional NTBOOTDD.SYS) and BOOT.INI with just the entry pointing to the desired NT, 2K, XP or 2003 installs.  \nMap the image to floppy and boot from it.  \nSolution 2):  \nCreate a number of copies of NTLDR, renamed to something else, like OTLDR, PTLDR, RTLDR, etc. each hexedited to point to a renamed BOOT.INI, like COOT.INI, DOOT.INI, EOOT.INI, etc. pointing to the desired NT, 2k, XP, 2003 install.  \nChainload directly from grub4dos either NTLDR, OTLDR, PTLDR, etc.   \nThe two solutions may be \"combined\" having the multiple loaders on a floppy (or \"superfloppy\" image).  \n\n\u003cbr /\u003e\n\nFor BOOTMGR+BCD:  \nAs above, based on this:  \n[http://www.multiboot....uk/floppy.html](http://www.multibooters.co.uk/floppy.html \"External link\")  \n\njaclaz   \n"
+    }
+  ]
+}

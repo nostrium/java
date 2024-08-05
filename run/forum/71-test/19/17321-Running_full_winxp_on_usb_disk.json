@@ -1,0 +1,316 @@
+{
+  "id": "17321",
+  "title": "Running full winxp on usb disk.",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "158732",
+      "timestamp": "2012-08-02T08:23:08+00:00",
+      "author": "linuxbyexamples",
+      "content": "Hi guys,  \n\nIn this post, I\u0027ll show you how to make a full winxp running on usb disk. Hope it will make you love winxp for more ! :smile:  \n\nObjective :  \nTo make this works, you will need to put a full winxp (full or mini or lite is up to you) installed with winVblock driver in a vhd disk image. Then use grub4dos to boot the image.  \n\nTerminologies :  \nvhd (Virtual Hard Disk) : It looks like a file which contains a whole harddisk (and its partitions inside).  \nwinVblock : SCSI driver to make winxp read/write to vhd disk image. Many thanks to Sha0 for this.  \ngrub4dos : bootloader is used to load/map the vhd file.  \n\nPrimary steps :  \n**1. Create vhd disk image includes winxp (installed with winVblock)** :  \n+ Install VirtualBox ([http://www.virtualbox.org](http://www.virtualbox.org \"External link\")). We will use VirtualBox to make the vhd disk.  \n+ Create new virtual machine using vhd harddisk format, fixed-size. Notice the harddisk size need to be smaller than the usb size (2GB for example - full winxp).  \n+ Install winxp to the virtual machine as usual.  \n+ Disable page-file.  \n+ Update the IDE/ATAPI controller to use Standard driver. \u003d\\\u003e to boot to different machine.  \n+ Update the System Devices to use Standard driver.  \n+ Install winVblock driver.  \n+ Defragement the windows drive (c:)  \n\n**2. Make the usb disk bootable** :  \n+ Plug the usb disk to a real PC running winxp.  \n+ Format the usb with ntfs (backup it first !!!). Set it active.  \n+ Copy file ntldr, ntdetect.com, boot.ini to the root of usb disk.  \n+ Use \"bootsect.exe /nt52\" to place the ntloader bootcode to the boot sector of the usb disk.  \n+ Download grub4dos. Extract : grldr, grldr.mbr to the root of the usb drive.  \n+ Point the boot.ini file to load grldr.  \n+ Copy the vhd image (was created in step 1) to the usb disk.  \n\n**3. Boot the vhd image** :  \n+ Boot from usb disk. It will load ntldr, then load grldr. Chose command line.  \n+ Load the winxp by typing commands :  \n++ map (hd0,0)/winxpfull.vhd (hd0)  \n++ map --hook  \n++ chainloader (hd0,0)/ntldr  \n++ boot  \n+ It works !!!  \n+ Add menu.lst file to use menu instead of command line.  \n\nSteps in detail :  \nYou can see steps in more detail and screenshots here : [http://www.linuxbyex...nxp-on-usb-disk](http://www.linuxbyexamples.net/windows/Running-a-full-winxp-on-usb-disk \"External link\")  \n\nKnown issue :  \n+ Not contiguous image file : You need to defragement the image file before load it.  \n+ Boot hang on new machine with SATA/AHCI controllers : Enter BIOS and switch the SATA/AHCI controller to use Compatible/Legacy mode.  \n\nFeel free to feedback.  \nCheers !   \n"
+    },
+    {
+      "id": "158754",
+      "timestamp": "2012-08-02T14:46:05+00:00",
+      "author": "bee4u",
+      "content": "Nice method will try..:smile:   \n"
+    },
+    {
+      "id": "158827",
+      "timestamp": "2012-08-04T00:17:16+00:00",
+      "author": "linuxbyexamples",
+      "content": "Next post : Boot winxp from LAN (http server) into RAM.  \n\nUnder construction.  \n\nCheer !   \n"
+    },
+    {
+      "id": "159030",
+      "timestamp": "2012-08-08T20:58:05+00:00",
+      "author": "Michele13",
+      "content": "Would not be more simple to install Grub4Dos DIRECTLY to the MBR of the disk and load XP from there? :smile:   \n"
+    },
+    {
+      "id": "159038",
+      "timestamp": "2012-08-09T00:18:18+00:00",
+      "author": "linuxbyexamples",
+      "content": "I already tried to run bootlace.com in winxp to install grub4dos to MBR but it show me error (winxp does not allow for bootlace.com writing directly to the disk ! ).   \n\nSo, I switch to use NTloader as the first stage, than NTLoader will load grldr as the second stage.  \n\nCould you show me how to directly install grub4dos to MBR in winxp ? Very pleased with that !  \n\nThanks \\\u0026 BRs.   \n"
+    },
+    {
+      "id": "159040",
+      "timestamp": "2012-08-09T02:25:16+00:00",
+      "author": "bee4u",
+      "content": "bootlace.com will not work under windows .its Dos based tool you need to work with in Dos mode not the Dos in the windows.  \nyou can use grubinst_gui.exe to install grub4dos on usbdisk... :smile:   \n"
+    },
+    {
+      "id": "159041",
+      "timestamp": "2012-08-09T02:39:22+00:00",
+      "author": "linuxbyexamples",
+      "content": "So, we need another tool named grubinst_gui.exe for this. Awesome.  \n\nI\u0027ll try and update the post now.  \n\nCheers.   \n"
+    },
+    {
+      "id": "159045",
+      "timestamp": "2012-08-09T08:05:15+00:00",
+      "author": "Michele13",
+      "content": "Why don\u0027t you try [BootICE](http://www.pendriveapps.com/bootice-partition-flash-drive-edit-boot-sector/ \"External link\")? it is my favourite tool to make usb disks (but also hard disk) bootable. If you wish to install Grub4Dos to the MBR you only have to get the lastest package of grub [here](http://code.google.com/p/grub4dos-chenall/downloads/list?can\u003d3\u0026q\u003d\u0026colspec\u003dFilename+Summary+Uploaded+ReleaseDate+Size+DownloadCount \"External link\"), then extract the files grldr and default, this way you can also set a default OS if you want. eg. I have a multiboot system with ubuntu and windows if you write at the beginning of the file \"default/default\" instead of default 0 and add a savedefault at the end of every OS entry the last OS that you have booted will became the default selection next time you reboot; homeware extract these files at the root of your hardrive and make a menu.lst file then start BootICE and select your hardisk and select \"Process MBR\" then select Grub4Dos, click to install/config and then you can simply leave the default options and click directly to \"Save to Disk\" and on OK   \n"
+    },
+    {
+      "id": "159384",
+      "timestamp": "2012-08-20T02:40:54+00:00",
+      "author": "linuxbyexamples",
+      "content": "Hi,  \n\nI\u0027ve updated the post with a video show here :  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nCheers.   \n\n**Edited by linuxbyexamples, 20 August 2012 - 02:41 AM.**\n"
+    },
+    {
+      "id": "159726",
+      "timestamp": "2012-08-30T07:16:12+00:00",
+      "author": "TheHive",
+      "content": "Would there be another easier way to input those commands without having to remember them. Like an automatic way. The user would only have to choose a option from a list and then the step **3. Boot the vhd image** would be automatically done. Like the video.   \n"
+    },
+    {
+      "id": "159728",
+      "timestamp": "2012-08-30T07:26:30+00:00",
+      "author": "linuxbyexamples",
+      "content": "Yes. You can add a grub menu entry to **menu.lst** like this :  \n\n```\ntimeout 5\n\ndefault 0\n\n\n\ntitle Boot to Winxp.vhd\n\nmap (hd0,0)/winxpfull.vhd (hd0)\n\nmap --hook\n\nchainloader (hd0,0)/ntldr\n\n```\n\n\u003cbr /\u003e\n\nand it will appear a menu entry, users can select it to boot.  \n\nCheers.   \n\n**Edited by linuxbyexamples, 30 August 2012 - 07:28 AM.**\n"
+    },
+    {
+      "id": "159734",
+      "timestamp": "2012-08-30T07:51:51+00:00",
+      "author": "TheHive",
+      "content": "Thanks for the grub input!  \nCan you post the setting if you have in hand the settings for making it Liter. As commented here. \u003chttp://reboot.pro/17394/\u003e  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nYou dont happen to be creating a video with the steps .  \n\u003e **1. Create vhd disk image includes winxp (installed with winVblock)** :  \n\u003e + Install VirtualBox ([http://www.virtualbox.org](http://www.virtualbox.org/ \"External link\")). We will use VirtualBox to make the vhd disk.  \n\u003e + Create new virtual machine using vhd harddisk format, fixed-size. Notice the harddisk size need to be smaller than the usb size (2GB for example - full winxp).  \n\u003e + Install winxp to the virtual machine as usual.  \n\u003e + Disable page-file.  \n\u003e + Update the IDE/ATAPI controller to use Standard driver. \u003d\\\u003e to boot to different machine.  \n\u003e + Update the System Devices to use Standard driver.  \n\u003e + Install winVblock driver.  \n\u003e + Defragement the windows drive (c:)\n\n"
+    },
+    {
+      "id": "159737",
+      "timestamp": "2012-08-30T08:24:10+00:00",
+      "author": "linuxbyexamples",
+      "content": "Oops ! I did forget to save the setting file. But the hint is removing all components except for the **red** one. Screenshots is here : [http://www.linuxbyex...with-nlite.html](http://www.linuxbyexamples.net/2012/08/make-winxp-to-minimal-size-with-nlite.html \"External link\")  \n\n\u003e 1. Create vhd disk image includes winxp (installed with winVblock) :  \n\u003e + Install VirtualBox ([http://www.virtualbox.org](http://www.virtualbox.org/ \"External link\")). We will use VirtualBox to make the vhd disk.  \n\u003e + Create new virtual machine using vhd harddisk format, fixed-size. Notice the harddisk size need to be smaller than the usb size (2GB for example - full winxp).  \n\u003e + Install winxp to the virtual machine as usual.  \n\u003e + Disable page-file.  \n\u003e + Update the IDE/ATAPI controller to use Standard driver. \u003d\\\u003e to boot to different machine.  \n\u003e + Update the System Devices to use Standard driver.  \n\u003e + Install winVblock driver.  \n\u003e + Defragement the windows drive (c:)  \n\nThis step will take alot of time, so it\u0027s hard to make screencast video for it. You can see detail steps screenshot instead here : [http://www.linuxbyex...n-usb-disk.html](http://www.linuxbyexamples.net/2012/08/How-to-install-and-run-a-full-winxp-on-usb-disk.html \"External link\")  \n\nCheers.   \n"
+    },
+    {
+      "id": "176805",
+      "timestamp": "2013-09-06T02:57:44+00:00",
+      "author": "linuxbyexamples",
+      "content": "Update with the new domain : [http://www.tipstuff....n-usb-disk.html](http://www.tipstuff.org/2012/08/How-to-install-and-run-a-full-winxp-on-usb-disk.html \"External link\")\n\nCheers.\n\n"
+    },
+    {
+      "id": "210454",
+      "timestamp": "2019-04-05T01:19:37+00:00",
+      "author": "Gerolf",
+      "content": "Kidding? Following this tutorial, I get a Windows XP on VHD that is in fact bootable from a USB disk... inside a virtual machine, like Qemu when started from RMPrepUSB, so that the device is dismounted before. But when I plug the pendrive into a real machine that is switched to legacy IDE mode, it hangs with a 0x0000007B stop code and a blue screen of death. As expected, to be honest.\n\nGerolf\n\n"
+    },
+    {
+      "id": "210462",
+      "timestamp": "2019-04-05T09:53:57+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Kidding? Following this tutorial, I get a Windows XP on VHD that is in fact bootable from a USB disk... inside a virtual machine, like Qemu when started from RMPrepUSB, so that the device is dismounted before. But when I plug the pendrive into a real machine that is switched to legacy IDE mode, it hangs with a 0x0000007B stop code and a blue screen of death. As expected, to be honest.\n\u003e\n\u003e Gerolf\n\nMost probably the Winvblock driver doesn\u0027t work or was not properly installed.\n\nThe 0x0000007b error means inaccessible boot device, and in this case the boot device is the .vhd mapped in grub4dos that should be \"hooked\" by Winvblock.\n\nReview the verson and installing method of Winvblock:\n\n[http://reboot.pro/to...8168-winvblock/](http://reboot.pro/topic/8168-winvblock/ \"\")\n\nOr try using SVBUS instead:\n\n[http://reboot.pro/to...r-for-grub4dos/](http://reboot.pro/topic/21787-svbus-virtual-scsi-host-adapter-for-grub4dos/ \"\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "210473",
+      "timestamp": "2019-04-05T21:01:53+00:00",
+      "author": "Gerolf",
+      "content": "Thank you, Wonko, for pointing me to SVBUS, which I will definitively have a closer look at the next days! What I mean here: How could Windows XP be made bootable from USB, without running a tool like [USBoot](http://reboot.pro/topic/4309-usboot/ \"\") (which is currently down) or [USB_XP_Fix.exe](http://reboot.pro/files/file/315-vhd-xp-setup-install-xp-in-vhd/ \"\") (where Windows Defender gives false alert), if such a lot of drivers must be registered anew for this task?\n\nGerolf\n\n"
+    },
+    {
+      "id": "210503",
+      "timestamp": "2019-04-06T23:30:00+00:00",
+      "author": "Gerolf",
+      "content": "I repeated it. Following this tutorial (post #1, section 2), I ran \"bootsect.exe /nt52\" on a 8 GiB FAT32 superfloppy pendrive. I got an error message, and booting a real machine with it failed. So using RMPrepUSB, I created two partitions (NTFS and FAT) and let install NTLDR. I added GRLDR and GRLDR.MBR. In VirtualBox, I created a 2 GiB virtual disk on the pendrive named \\\\_SYS\\\\WNT510\\\\WNT510-C.VHD and installed Windows XP to it. I temporarily mounted that file as ImDisk Virtual Disk in Windows Explorer, and installed WinVBlock using the Add Hardware wizard. There was a reboot and a restart of the wizard. Afterwards Device Manager showed two instances of WinVBlock, the second one at fault, but the first one working.\n\nTo the pendrive\u0027s root folder, I copied BOOT.INI from VHD and added the line:\n\n```\nc:\\grldr\u003d\"Grub4DOS\"\n```\n\nFollowing [Shao\u0027s example](http://reboot.pro/topic/8168-winvblock/page-10#entry101891 \"\"), I created MENU.LST as follows:\n\n```\ntitle Windows NT 5.1\nmap (hd0,0)/_SYS/WNT510/WNT510-C.VHD (0x80)\nmap --hook\nmap --rd-size\u003d2048\nmap --mem (rd)+4 (0x55)\nmap --rehook\nwrite (0x55) #!GRUB4DOS\\x00v\u003d1\\x00_SYS/WNT510/WNT510-C.VHD\\x00\\x80\\x00\nrootnoverify (hd0,0)\nchainloader /ntldr\n```\n\nThen I replaced NTDETECT.COM in the root folder of both VHD and pendrive with [Dietmar\u0027s modified variant](http://reboot.pro/topic/14130-bsod-7b-finally-fixed-for-me-maybe-for-you-too/page-8#entry151788 \"\"), since you recommended it for ghostbusting 0x7B death screens, Wonko. I got it anyhow, though, when booting in Qemu, started from RMPrepUSB, whereas on the real machine, I got a 0x7E stop error on pci.sys. This is why I feel that this tutorial might be missing something important. User comments to [part 1](http://www.tipstuff.org/2012/08/How-to-install-and-run-a-full-winxp-on-usb-disk.html \"External link\") and [part 2](http://www.tipstuff.org/2013/08/how-to-install-and-run-full-winxp-on-usb-disk-part-2.html \"External link\") of the elaborated version also show some irritation.\n\nGerolf\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "210507",
+      "timestamp": "2019-04-07T09:33:38+00:00",
+      "author": "Wonko the Sane",
+      "content": "Gerolf,\n\nThe original way to install on USB (and run from) a \"full\" XP was \"invented\" by Dietmar in later 2005/early 2006, and - ++one way or the other++ - has always (*more or less*) worked.\n\nThe USBoot automates the needed Registry settings and adds a couple of services that help in some cases\\[1\\].\n\nWhat you are doing here is however yet a further step, it is running XP from a .vhd hosted on a USB, so there is an added complication.\n\nThe WimB\u0027s tool is AFAIK perfectly fine, like a lot of files containing AutoIt code it is periodically flagged by this (or that or that other) antivirus heuristics. that is unfortunately perfectly normal.\n\nIf you want to try but your stupid antivirus/whatever prevents you form downloading it and you cannot find a way to workaround this issue, say so and we will find a way for you to get it.\n\nNormally there is no need for the \"modified\" NTDETECT.COM, it is needed only in some particular setups/on some particular machine, but if it is needed and it works, it works.\n\nThis tutorial, like most other ones, is from someone that tried \\*something\\* and found that it worked for him (and we have no reason to doubt this) and **decided** (without further tests) that the same \\*something\\* would work for everyone on every machine, whilst as we have seen over the years, whilst the methods work for most machines/setups, in some cases additional/different settings/services/modified files/whatnot are needed to successfully boot.\n\nIMHO, you could stop insisting on this tutorial (that as said may work for someone and not work for someone else) and start fresh.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n\\[1\\] BTW only to say \"I told you\", as expected it is down (had to happen before or later) and thanks to the totally senseless two-way communication and \"challenge code\" it is dead (probably forever).\n\n"
+    },
+    {
+      "id": "210535",
+      "timestamp": "2019-04-07T22:34:30+00:00",
+      "author": "Gerolf",
+      "content": "As a workaround, I booted a virtual Puppy Linux machine in VBox, having mounted another VHD for file exchange, to download and extract [VHD_XP_Setup_85.exe](http://reboot.pro/files/file/315-vhd-xp-setup-install-xp-in-vhd/ \"\") that way. I got a directory with 444 files, 61 folders and 26.300.658 bytes. Windows Defender scanned 1015 files therein and had no objections this time. Could it be helpful to offer the download as a ZIP file to avoid this infamous rating as malware? Currently, there should be a comment to this problem at the download page. Without it, you cannot any longer write a tutorial advising a user to download a file that gets tested as containing \"Trojan:Win32/Tiggre!rfn\". I would also appreciate a direct link for USB_XP_Fix.exe as this seems to be an essential file needed for Steve\u0027s [XP-to-Go](https://www.rmprepusb.com/tutorials/110XPToGo \"External link\") tutorial.\n\nGerolf\n\n"
+    },
+    {
+      "id": "210546",
+      "timestamp": "2019-04-08T12:47:26+00:00",
+      "author": "Wonko the Sane",
+      "content": "Yep, good :smile:, though unfortunately (from past experience) it is not the .exe or .zip that make a difference, it is the actual heuristics of this (or that) antivirus that (randomly or periodically) flag a given file.\n\nMaybe Windows Defender can be tricked by the change of format, but I doubt it ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif).\n\nThe USB_XP_Fix.exe is only a compiled AutoIt script, it uses/needs a number of other files that are included in the \"whole\" VHD_XP_Setup_85.exe, of course it is possible to \"separate\" it with the needed files, but I would say that the best route would be to PM Wimb asking for it.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "210572",
+      "timestamp": "2019-04-09T15:33:51+00:00",
+      "author": "Gerolf",
+      "content": "Today I see that the malware alert problem in fact cannot be confined to the outer package: Windows Defender just found \"Trojan:Win32/Occamy.C\" in USB_XP_Fix.exe and VHD_XP_Create.exe, and \"Trojan:Win32/Bitrep.A\" in PS.exe.\n\nGerolf\n\n"
+    },
+    {
+      "id": "210575",
+      "timestamp": "2019-04-09T16:55:22+00:00",
+      "author": "wimb",
+      "content": "\u003e Today I see that the malware alert problem in fact cannot be confined to the outer package: Windows Defender just found \"Trojan:Win32/Occamy.C\" in USB_XP_Fix.exe and VHD_XP_Create.exe, and \"Trojan:Win32/Bitrep.A\" in PS.exe.\n\u003e\nThese are all false positive alerts that you can ignore.\n\nFor now just disable Defender temporarily ....\n\n"
+    },
+    {
+      "id": "210576",
+      "timestamp": "2019-04-09T16:56:50+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Today I see that the malware alert problem in fact cannot be confined to the outer package: Windows Defender just found \"Trojan:Win32/Occamy.C\" in USB_XP_Fix.exe and VHD_XP_Create.exe, and \"Trojan:Win32/Bitrep.A\" in PS.exe.\n\u003e\n\u003e Gerolf\n\u003e\nYep, as said the issue is a known one and it usually revolves (as in this case) around AutoIt compiled files.\n\nIlko_t (Author of WinsetupfromUSB) had a lot of issues with something similar if I recall correctly\n\nI have no idea if \"shipping\" the source .au3 (provided that wimb is fine with this idea) and a suitable AutoIt runtime making the final user run the script instead of the compiled tool would solve the problem, surely even if the script is compiled locally the stupid Wndows Defender (or whatever other antivirus in a \"bad day\") will flag the resulting .exe ![:(](http://reboot.pro/public/style_emoticons/default/sad.png).\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "210577",
+      "timestamp": "2019-04-09T17:00:31+00:00",
+      "author": "wimb",
+      "content": "I can fix it probably by recompiling the AutoIt code, as done already for some of my other programs.\n\nBut give me some time, since I need to test and have no environment ready for XP and I am rather busy just now ....\n\n"
+    },
+    {
+      "id": "158732",
+      "timestamp": "2012-08-02T08:23:08+00:00",
+      "author": "linuxbyexamples",
+      "content": "Hi guys,  \n\nIn this post, I\u0027ll show you how to make a full winxp running on usb disk. Hope it will make you love winxp for more ! :smile:  \n\nObjective :  \nTo make this works, you will need to put a full winxp (full or mini or lite is up to you) installed with winVblock driver in a vhd disk image. Then use grub4dos to boot the image.  \n\nTerminologies :  \nvhd (Virtual Hard Disk) : It looks like a file which contains a whole harddisk (and its partitions inside).  \nwinVblock : SCSI driver to make winxp read/write to vhd disk image. Many thanks to Sha0 for this.  \ngrub4dos : bootloader is used to load/map the vhd file.  \n\nPrimary steps :  \n**1. Create vhd disk image includes winxp (installed with winVblock)** :  \n+ Install VirtualBox ([http://www.virtualbox.org](http://www.virtualbox.org \"External link\")). We will use VirtualBox to make the vhd disk.  \n+ Create new virtual machine using vhd harddisk format, fixed-size. Notice the harddisk size need to be smaller than the usb size (2GB for example - full winxp).  \n+ Install winxp to the virtual machine as usual.  \n+ Disable page-file.  \n+ Update the IDE/ATAPI controller to use Standard driver. \u003d\\\u003e to boot to different machine.  \n+ Update the System Devices to use Standard driver.  \n+ Install winVblock driver.  \n+ Defragement the windows drive (c:)  \n\n**2. Make the usb disk bootable** :  \n+ Plug the usb disk to a real PC running winxp.  \n+ Format the usb with ntfs (backup it first !!!). Set it active.  \n+ Copy file ntldr, ntdetect.com, boot.ini to the root of usb disk.  \n+ Use \"bootsect.exe /nt52\" to place the ntloader bootcode to the boot sector of the usb disk.  \n+ Download grub4dos. Extract : grldr, grldr.mbr to the root of the usb drive.  \n+ Point the boot.ini file to load grldr.  \n+ Copy the vhd image (was created in step 1) to the usb disk.  \n\n**3. Boot the vhd image** :  \n+ Boot from usb disk. It will load ntldr, then load grldr. Chose command line.  \n+ Load the winxp by typing commands :  \n++ map (hd0,0)/winxpfull.vhd (hd0)  \n++ map --hook  \n++ chainloader (hd0,0)/ntldr  \n++ boot  \n+ It works !!!  \n+ Add menu.lst file to use menu instead of command line.  \n\nSteps in detail :  \nYou can see steps in more detail and screenshots here : [http://www.linuxbyex...nxp-on-usb-disk](http://www.linuxbyexamples.net/windows/Running-a-full-winxp-on-usb-disk \"External link\")  \n\nKnown issue :  \n+ Not contiguous image file : You need to defragement the image file before load it.  \n+ Boot hang on new machine with SATA/AHCI controllers : Enter BIOS and switch the SATA/AHCI controller to use Compatible/Legacy mode.  \n\nFeel free to feedback.  \nCheers !   \n"
+    },
+    {
+      "id": "158754",
+      "timestamp": "2012-08-02T14:46:05+00:00",
+      "author": "bee4u",
+      "content": "Nice method will try..:smile:   \n"
+    },
+    {
+      "id": "158827",
+      "timestamp": "2012-08-04T00:17:16+00:00",
+      "author": "linuxbyexamples",
+      "content": "Next post : Boot winxp from LAN (http server) into RAM.  \n\nUnder construction.  \n\nCheer !   \n"
+    },
+    {
+      "id": "159030",
+      "timestamp": "2012-08-08T20:58:05+00:00",
+      "author": "Michele13",
+      "content": "Would not be more simple to install Grub4Dos DIRECTLY to the MBR of the disk and load XP from there? :smile:   \n"
+    },
+    {
+      "id": "159038",
+      "timestamp": "2012-08-09T00:18:18+00:00",
+      "author": "linuxbyexamples",
+      "content": "I already tried to run bootlace.com in winxp to install grub4dos to MBR but it show me error (winxp does not allow for bootlace.com writing directly to the disk ! ).   \n\nSo, I switch to use NTloader as the first stage, than NTLoader will load grldr as the second stage.  \n\nCould you show me how to directly install grub4dos to MBR in winxp ? Very pleased with that !  \n\nThanks \\\u0026 BRs.   \n"
+    },
+    {
+      "id": "159040",
+      "timestamp": "2012-08-09T02:25:16+00:00",
+      "author": "bee4u",
+      "content": "bootlace.com will not work under windows .its Dos based tool you need to work with in Dos mode not the Dos in the windows.  \nyou can use grubinst_gui.exe to install grub4dos on usbdisk... :smile:   \n"
+    },
+    {
+      "id": "159041",
+      "timestamp": "2012-08-09T02:39:22+00:00",
+      "author": "linuxbyexamples",
+      "content": "So, we need another tool named grubinst_gui.exe for this. Awesome.  \n\nI\u0027ll try and update the post now.  \n\nCheers.   \n"
+    },
+    {
+      "id": "159045",
+      "timestamp": "2012-08-09T08:05:15+00:00",
+      "author": "Michele13",
+      "content": "Why don\u0027t you try [BootICE](http://www.pendriveapps.com/bootice-partition-flash-drive-edit-boot-sector/ \"External link\")? it is my favourite tool to make usb disks (but also hard disk) bootable. If you wish to install Grub4Dos to the MBR you only have to get the lastest package of grub [here](http://code.google.com/p/grub4dos-chenall/downloads/list?can\u003d3\u0026q\u003d\u0026colspec\u003dFilename+Summary+Uploaded+ReleaseDate+Size+DownloadCount \"External link\"), then extract the files grldr and default, this way you can also set a default OS if you want. eg. I have a multiboot system with ubuntu and windows if you write at the beginning of the file \"default/default\" instead of default 0 and add a savedefault at the end of every OS entry the last OS that you have booted will became the default selection next time you reboot; homeware extract these files at the root of your hardrive and make a menu.lst file then start BootICE and select your hardisk and select \"Process MBR\" then select Grub4Dos, click to install/config and then you can simply leave the default options and click directly to \"Save to Disk\" and on OK   \n"
+    },
+    {
+      "id": "159384",
+      "timestamp": "2012-08-20T02:40:54+00:00",
+      "author": "linuxbyexamples",
+      "content": "Hi,  \n\nI\u0027ve updated the post with a video show here :  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nCheers.   \n\n**Edited by linuxbyexamples, 20 August 2012 - 02:41 AM.**\n"
+    },
+    {
+      "id": "159726",
+      "timestamp": "2012-08-30T07:16:12+00:00",
+      "author": "TheHive",
+      "content": "Would there be another easier way to input those commands without having to remember them. Like an automatic way. The user would only have to choose a option from a list and then the step **3. Boot the vhd image** would be automatically done. Like the video.   \n"
+    },
+    {
+      "id": "159728",
+      "timestamp": "2012-08-30T07:26:30+00:00",
+      "author": "linuxbyexamples",
+      "content": "Yes. You can add a grub menu entry to **menu.lst** like this :  \n\n```\ntimeout 5\n\ndefault 0\n\n\n\ntitle Boot to Winxp.vhd\n\nmap (hd0,0)/winxpfull.vhd (hd0)\n\nmap --hook\n\nchainloader (hd0,0)/ntldr\n\n```\n\n\u003cbr /\u003e\n\nand it will appear a menu entry, users can select it to boot.  \n\nCheers.   \n\n**Edited by linuxbyexamples, 30 August 2012 - 07:28 AM.**\n"
+    },
+    {
+      "id": "159734",
+      "timestamp": "2012-08-30T07:51:51+00:00",
+      "author": "TheHive",
+      "content": "Thanks for the grub input!  \nCan you post the setting if you have in hand the settings for making it Liter. As commented here. \u003chttp://reboot.pro/17394/\u003e  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nYou dont happen to be creating a video with the steps .  \n\u003e **1. Create vhd disk image includes winxp (installed with winVblock)** :  \n\u003e + Install VirtualBox ([http://www.virtualbox.org](http://www.virtualbox.org/ \"External link\")). We will use VirtualBox to make the vhd disk.  \n\u003e + Create new virtual machine using vhd harddisk format, fixed-size. Notice the harddisk size need to be smaller than the usb size (2GB for example - full winxp).  \n\u003e + Install winxp to the virtual machine as usual.  \n\u003e + Disable page-file.  \n\u003e + Update the IDE/ATAPI controller to use Standard driver. \u003d\\\u003e to boot to different machine.  \n\u003e + Update the System Devices to use Standard driver.  \n\u003e + Install winVblock driver.  \n\u003e + Defragement the windows drive (c:)\n\n"
+    },
+    {
+      "id": "159737",
+      "timestamp": "2012-08-30T08:24:10+00:00",
+      "author": "linuxbyexamples",
+      "content": "Oops ! I did forget to save the setting file. But the hint is removing all components except for the **red** one. Screenshots is here : [http://www.linuxbyex...with-nlite.html](http://www.linuxbyexamples.net/2012/08/make-winxp-to-minimal-size-with-nlite.html \"External link\")  \n\n\u003e 1. Create vhd disk image includes winxp (installed with winVblock) :  \n\u003e + Install VirtualBox ([http://www.virtualbox.org](http://www.virtualbox.org/ \"External link\")). We will use VirtualBox to make the vhd disk.  \n\u003e + Create new virtual machine using vhd harddisk format, fixed-size. Notice the harddisk size need to be smaller than the usb size (2GB for example - full winxp).  \n\u003e + Install winxp to the virtual machine as usual.  \n\u003e + Disable page-file.  \n\u003e + Update the IDE/ATAPI controller to use Standard driver. \u003d\\\u003e to boot to different machine.  \n\u003e + Update the System Devices to use Standard driver.  \n\u003e + Install winVblock driver.  \n\u003e + Defragement the windows drive (c:)  \n\nThis step will take alot of time, so it\u0027s hard to make screencast video for it. You can see detail steps screenshot instead here : [http://www.linuxbyex...n-usb-disk.html](http://www.linuxbyexamples.net/2012/08/How-to-install-and-run-a-full-winxp-on-usb-disk.html \"External link\")  \n\nCheers.   \n"
+    },
+    {
+      "id": "176805",
+      "timestamp": "2013-09-06T02:57:44+00:00",
+      "author": "linuxbyexamples",
+      "content": "Update with the new domain : [http://www.tipstuff....n-usb-disk.html](http://www.tipstuff.org/2012/08/How-to-install-and-run-a-full-winxp-on-usb-disk.html \"External link\")\n\nCheers.\n\n"
+    },
+    {
+      "id": "210454",
+      "timestamp": "2019-04-05T01:19:37+00:00",
+      "author": "Gerolf",
+      "content": "Kidding? Following this tutorial, I get a Windows XP on VHD that is in fact bootable from a USB disk... inside a virtual machine, like Qemu when started from RMPrepUSB, so that the device is dismounted before. But when I plug the pendrive into a real machine that is switched to legacy IDE mode, it hangs with a 0x0000007B stop code and a blue screen of death. As expected, to be honest.\n\nGerolf\n\n"
+    },
+    {
+      "id": "210462",
+      "timestamp": "2019-04-05T09:53:57+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Kidding? Following this tutorial, I get a Windows XP on VHD that is in fact bootable from a USB disk... inside a virtual machine, like Qemu when started from RMPrepUSB, so that the device is dismounted before. But when I plug the pendrive into a real machine that is switched to legacy IDE mode, it hangs with a 0x0000007B stop code and a blue screen of death. As expected, to be honest.\n\u003e\n\u003e Gerolf\n\nMost probably the Winvblock driver doesn\u0027t work or was not properly installed.\n\nThe 0x0000007b error means inaccessible boot device, and in this case the boot device is the .vhd mapped in grub4dos that should be \"hooked\" by Winvblock.\n\nReview the verson and installing method of Winvblock:\n\n[http://reboot.pro/to...8168-winvblock/](http://reboot.pro/topic/8168-winvblock/ \"\")\n\nOr try using SVBUS instead:\n\n[http://reboot.pro/to...r-for-grub4dos/](http://reboot.pro/topic/21787-svbus-virtual-scsi-host-adapter-for-grub4dos/ \"\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "210473",
+      "timestamp": "2019-04-05T21:01:53+00:00",
+      "author": "Gerolf",
+      "content": "Thank you, Wonko, for pointing me to SVBUS, which I will definitively have a closer look at the next days! What I mean here: How could Windows XP be made bootable from USB, without running a tool like [USBoot](http://reboot.pro/topic/4309-usboot/ \"\") (which is currently down) or [USB_XP_Fix.exe](http://reboot.pro/files/file/315-vhd-xp-setup-install-xp-in-vhd/ \"\") (where Windows Defender gives false alert), if such a lot of drivers must be registered anew for this task?\n\nGerolf\n\n"
+    },
+    {
+      "id": "210503",
+      "timestamp": "2019-04-06T23:30:00+00:00",
+      "author": "Gerolf",
+      "content": "I repeated it. Following this tutorial (post #1, section 2), I ran \"bootsect.exe /nt52\" on a 8 GiB FAT32 superfloppy pendrive. I got an error message, and booting a real machine with it failed. So using RMPrepUSB, I created two partitions (NTFS and FAT) and let install NTLDR. I added GRLDR and GRLDR.MBR. In VirtualBox, I created a 2 GiB virtual disk on the pendrive named \\\\_SYS\\\\WNT510\\\\WNT510-C.VHD and installed Windows XP to it. I temporarily mounted that file as ImDisk Virtual Disk in Windows Explorer, and installed WinVBlock using the Add Hardware wizard. There was a reboot and a restart of the wizard. Afterwards Device Manager showed two instances of WinVBlock, the second one at fault, but the first one working.\n\nTo the pendrive\u0027s root folder, I copied BOOT.INI from VHD and added the line:\n\n```\nc:\\grldr\u003d\"Grub4DOS\"\n```\n\nFollowing [Shao\u0027s example](http://reboot.pro/topic/8168-winvblock/page-10#entry101891 \"\"), I created MENU.LST as follows:\n\n```\ntitle Windows NT 5.1\nmap (hd0,0)/_SYS/WNT510/WNT510-C.VHD (0x80)\nmap --hook\nmap --rd-size\u003d2048\nmap --mem (rd)+4 (0x55)\nmap --rehook\nwrite (0x55) #!GRUB4DOS\\x00v\u003d1\\x00_SYS/WNT510/WNT510-C.VHD\\x00\\x80\\x00\nrootnoverify (hd0,0)\nchainloader /ntldr\n```\n\nThen I replaced NTDETECT.COM in the root folder of both VHD and pendrive with [Dietmar\u0027s modified variant](http://reboot.pro/topic/14130-bsod-7b-finally-fixed-for-me-maybe-for-you-too/page-8#entry151788 \"\"), since you recommended it for ghostbusting 0x7B death screens, Wonko. I got it anyhow, though, when booting in Qemu, started from RMPrepUSB, whereas on the real machine, I got a 0x7E stop error on pci.sys. This is why I feel that this tutorial might be missing something important. User comments to [part 1](http://www.tipstuff.org/2012/08/How-to-install-and-run-a-full-winxp-on-usb-disk.html \"External link\") and [part 2](http://www.tipstuff.org/2013/08/how-to-install-and-run-full-winxp-on-usb-disk-part-2.html \"External link\") of the elaborated version also show some irritation.\n\nGerolf\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "210507",
+      "timestamp": "2019-04-07T09:33:38+00:00",
+      "author": "Wonko the Sane",
+      "content": "Gerolf,\n\nThe original way to install on USB (and run from) a \"full\" XP was \"invented\" by Dietmar in later 2005/early 2006, and - ++one way or the other++ - has always (*more or less*) worked.\n\nThe USBoot automates the needed Registry settings and adds a couple of services that help in some cases\\[1\\].\n\nWhat you are doing here is however yet a further step, it is running XP from a .vhd hosted on a USB, so there is an added complication.\n\nThe WimB\u0027s tool is AFAIK perfectly fine, like a lot of files containing AutoIt code it is periodically flagged by this (or that or that other) antivirus heuristics. that is unfortunately perfectly normal.\n\nIf you want to try but your stupid antivirus/whatever prevents you form downloading it and you cannot find a way to workaround this issue, say so and we will find a way for you to get it.\n\nNormally there is no need for the \"modified\" NTDETECT.COM, it is needed only in some particular setups/on some particular machine, but if it is needed and it works, it works.\n\nThis tutorial, like most other ones, is from someone that tried \\*something\\* and found that it worked for him (and we have no reason to doubt this) and **decided** (without further tests) that the same \\*something\\* would work for everyone on every machine, whilst as we have seen over the years, whilst the methods work for most machines/setups, in some cases additional/different settings/services/modified files/whatnot are needed to successfully boot.\n\nIMHO, you could stop insisting on this tutorial (that as said may work for someone and not work for someone else) and start fresh.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n\\[1\\] BTW only to say \"I told you\", as expected it is down (had to happen before or later) and thanks to the totally senseless two-way communication and \"challenge code\" it is dead (probably forever).\n\n"
+    },
+    {
+      "id": "210535",
+      "timestamp": "2019-04-07T22:34:30+00:00",
+      "author": "Gerolf",
+      "content": "As a workaround, I booted a virtual Puppy Linux machine in VBox, having mounted another VHD for file exchange, to download and extract [VHD_XP_Setup_85.exe](http://reboot.pro/files/file/315-vhd-xp-setup-install-xp-in-vhd/ \"\") that way. I got a directory with 444 files, 61 folders and 26.300.658 bytes. Windows Defender scanned 1015 files therein and had no objections this time. Could it be helpful to offer the download as a ZIP file to avoid this infamous rating as malware? Currently, there should be a comment to this problem at the download page. Without it, you cannot any longer write a tutorial advising a user to download a file that gets tested as containing \"Trojan:Win32/Tiggre!rfn\". I would also appreciate a direct link for USB_XP_Fix.exe as this seems to be an essential file needed for Steve\u0027s [XP-to-Go](https://www.rmprepusb.com/tutorials/110XPToGo \"External link\") tutorial.\n\nGerolf\n\n"
+    },
+    {
+      "id": "210546",
+      "timestamp": "2019-04-08T12:47:26+00:00",
+      "author": "Wonko the Sane",
+      "content": "Yep, good :smile:, though unfortunately (from past experience) it is not the .exe or .zip that make a difference, it is the actual heuristics of this (or that) antivirus that (randomly or periodically) flag a given file.\n\nMaybe Windows Defender can be tricked by the change of format, but I doubt it ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif).\n\nThe USB_XP_Fix.exe is only a compiled AutoIt script, it uses/needs a number of other files that are included in the \"whole\" VHD_XP_Setup_85.exe, of course it is possible to \"separate\" it with the needed files, but I would say that the best route would be to PM Wimb asking for it.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "210572",
+      "timestamp": "2019-04-09T15:33:51+00:00",
+      "author": "Gerolf",
+      "content": "Today I see that the malware alert problem in fact cannot be confined to the outer package: Windows Defender just found \"Trojan:Win32/Occamy.C\" in USB_XP_Fix.exe and VHD_XP_Create.exe, and \"Trojan:Win32/Bitrep.A\" in PS.exe.\n\nGerolf\n\n"
+    },
+    {
+      "id": "210575",
+      "timestamp": "2019-04-09T16:55:22+00:00",
+      "author": "wimb",
+      "content": "\u003e Today I see that the malware alert problem in fact cannot be confined to the outer package: Windows Defender just found \"Trojan:Win32/Occamy.C\" in USB_XP_Fix.exe and VHD_XP_Create.exe, and \"Trojan:Win32/Bitrep.A\" in PS.exe.\n\u003e\nThese are all false positive alerts that you can ignore.\n\nFor now just disable Defender temporarily ....\n\n"
+    },
+    {
+      "id": "210576",
+      "timestamp": "2019-04-09T16:56:50+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Today I see that the malware alert problem in fact cannot be confined to the outer package: Windows Defender just found \"Trojan:Win32/Occamy.C\" in USB_XP_Fix.exe and VHD_XP_Create.exe, and \"Trojan:Win32/Bitrep.A\" in PS.exe.\n\u003e\n\u003e Gerolf\n\u003e\nYep, as said the issue is a known one and it usually revolves (as in this case) around AutoIt compiled files.\n\nIlko_t (Author of WinsetupfromUSB) had a lot of issues with something similar if I recall correctly\n\nI have no idea if \"shipping\" the source .au3 (provided that wimb is fine with this idea) and a suitable AutoIt runtime making the final user run the script instead of the compiled tool would solve the problem, surely even if the script is compiled locally the stupid Wndows Defender (or whatever other antivirus in a \"bad day\") will flag the resulting .exe ![:(](http://reboot.pro/public/style_emoticons/default/sad.png).\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "210577",
+      "timestamp": "2019-04-09T17:00:31+00:00",
+      "author": "wimb",
+      "content": "I can fix it probably by recompiling the AutoIt code, as done already for some of my other programs.\n\nBut give me some time, since I need to test and have no environment ready for XP and I am rather busy just now ....\n\n"
+    },
+    {
+      "id": "210624",
+      "timestamp": "2019-04-11T10:32:27+00:00",
+      "author": "wimb",
+      "content": "**Download:** [VHD_XP_Setup](http://reboot.pro/files/file/315-vhd-xp-setup-install-xp-in-vhd/ \"\") - Version 87\n\nFalse Positive Alerts have been removed by recompiling the code.\n\nYou need to do fresh install of XP in VHD on real machine.\n\nThe drivers of Virtual Box do not work for real machine and will give BSOD 7B\n\n**How to prepare XP Setup Source ? - Prepare XP Setup ISO file with integrated DriverPacks**\n\nAt least you definitely need to Integrate in your XP-ISO file the DriverPack **MassStorage** with **TXT Mode** Enabled, otherwise you can get easily BSOD 7B  \n\nMore Info here: [http://reboot.pro/to...n-vhd/?p\u003d172481](http://reboot.pro/topic/18547-vhd-xp-setup-install-xp-in-vhd/?p\u003d172481 \"\")\n\nBoot with Windows and use **VHD_XP_Create**as follows:\n\n- Select USB 2.0 drive as Boot Drive and Create VHD on **internal MBR NTFS** drive selected as System Drive\n\n- Boot from USB via F8 menu and select in Grub4dos menu - Start - TXT-mode XP Setup and after loading drivers select XPSRC1.vhd and Install XP\n\n- ReBoot from USB via F8 menu and select in Grub4dos menu - Continue GUI-mode XP Setup  \n- ReBoot from USB via F8 menu and select in Grub4dos menu - Boot Windows XP from Image  \nBoot normal with other Windows OS and then:  \n- Copy the XP VHD as file XPW1.vhd to your **USB MBR NTFS Drive**  \n- Use USB_XP_Fix **with default settings** to make the VHD compatible for booting XP from USB 2.0  \n- Boot from USB via F8 menu and select in Grub4dos menu - XPW1.vhd - WinVBlock FILEDISK  \nYou need equipment with MBR partitioning that can boot in BIOS mode and supports booting of XP  \nUEFI booting, GPT partitioning, USB 3.0 and modern hardware without drivers for XP will **ALL FAIL !!!**\n\n"
+    }
+  ]
+}

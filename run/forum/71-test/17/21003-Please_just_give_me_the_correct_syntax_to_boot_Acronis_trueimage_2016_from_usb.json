@@ -1,0 +1,94 @@
+{
+  "id": "21003",
+  "title": "Please just give me the correct syntax to boot Acronis trueimage 2016 from usb",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "197879",
+      "timestamp": "2016-02-19T13:44:53+00:00",
+      "author": "livedude",
+      "content": "Hey Guys\n\nlong ago, i createt with some help from you guys the ultimate recover usb-stick /iso.\n\nnow it needs an update.\n\ni createt a boot iso from acronis trueimage 2016 and tried to start it from usb with the me known methods.\n\nit dosen t work.\n\ni only need the correct syntax to do this wich might be only a few lines.\n\nplease give me just the few lines.\n\nplease don t try to bludgeon me to learn basics and things i don t need.\n\ni only want update my usb stick and therefore i only need the few lines.\n\nhere is the content of my menu.lst.\n\nthere you see how i start things and have all the informations you need.\n\nso again, please give me only the correct syntax.\n\ndon t give me basic examples of how the wheel get inventet.\n\ni don t have the time for that and i don t want that.\n\ni only need the few lines with correct syntax to start acronis trueimage image recovery iso from usb, not more.\n\nif this thread is in the wrong section, i am sorry for that, then please move it to the correct section.\n\ni have no idea about all that.\n\ni only need the correct syntax.\n\nthanks in advance\n\n--------------------------------  \nsplashimage /Boot/face.gz  \ndefault 0  \ntitle Win7PE_SE (Windows7-Live-System/In Ram-Boot/Min. 800MB Ram!  \nmap /ISO/Win7PE_SE-wim.iso (hd32)  \nmap --hook  \nmap --heads\u003d0 --sectors-per-track\u003d0 /TrueImageHome2016.iso  \nchainloader (hd32)  \nboot  \ntitle TrueImageHome2012  \nmap /ISO/TrueImageHome2012.iso (hd32)  \nmap --hook  \nchainloader (hd32)  \nboot  \ntitle Acronis True Image Home 2016  \nmap /ISO/TrueImageHome2016.iso (hd32)  \nmap --hook  \nchainloader (hd32)  \nboot  \ntitle Redo-Backup-and-Recovery-1.0.1-stable  \nfind --set-root --ignore-floppies /ISO/Redo-Backup-and-Recovery-1.0.1-stable.iso  \nmap /ISO/Redo-Backup-and-Recovery-1.0.1-stable.iso (0xff) \\|\\| map --mem /ISO/Redo-Backup-and-Recovery-1.0.1-stable.iso (0xff)  \nmap --hook  \nroot (0xff)  \nkernel /casper/vmlinuz cdrom-detect/try-usb\u003dtrue noprompt floppy.allowed_drive_mask\u003d0 ignore_uuid boot\u003dcasper iso-scan/filename\u003d/ISO/Redo-Backup-and-Recovery-1.0.1-stable.iso vga\u003d791 locale\u003des_ES bootkbd\u003des console-setup/layoutcode\u003des quiet splash  \ninitrd /casper/initrd.gz  \ntitle Partition Wizzard  \nmap /ISO/PartitionWizzard.iso (hd32)  \nmap --hook  \nchainloader (hd32)  \nboot  \ntitle PartetMagic.27.2.2012  \nfind --set-root /pmagic/pmagic_2012_2_27.iso  \nmap --heads\u003d0 --sectors-per-track\u003d0 /pmagic/pmagic_2012_2_27.iso (hd32)  \nmap --hook  \nroot (hd32)  \nchainloader  \ntitle TestDisk-6-13-FreeDos-BootCD  \nmap /ISO/TestDisk-6-13-FreeDos-BootCD.iso (hd32)  \nmap --hook  \nchainloader (hd32)  \nboot  \ntitle MemTest86+ 4.20  \nkernel /ISO/MEMTEST.BIN  \nlock  \ntitle Plop Boot Manager  \nkernel /ISO/PLPBT.BIN  \nlock  \ntitle UBCD-FreeDosV.340  \nmap /ISO/UBCD-FreeDosV.340.iso (hd32)  \nmap --hook  \nchainloader (hd32)  \nboot  \ntitle Install Windows 7 (HP, PROF, \\\u0026 ULTIMATE 32 \\\u0026 64bit)\\\\nRun the Windows 7 install DVD ISO image  \nmap /ZISO/Windows7AIO.iso (0xff)  \nmap --hook  \nchainloader (0xff)  \ntitle Install Windows-Professional-SP3 Installation (Min 711MB Ram)  \nfind --set-root /ISO/firadisk.img  \nmap --mem /ISO/firadisk.img (fd0)  \nmap --mem /ISO/WindowsXP-Pro-SP3.iso (hd32)  \nmap --hook  \nroot (hd32)  \nchainloader  \ntitle Install Windows-XP-Home-SP3 Installation (Min 711MB Ram)  \nfind --set-root /ISO/firadisk.img  \nmap --mem /ISO/firadisk.img (fd0)  \nmap --mem /ISO/WindowsXP-Home-SP3.iso (hd32)  \nmap --hook  \nroot (hd32)  \nchainloader  \ntitle Find and Load Microsoft Windows Vista/Win7  \nroot (hd0,0)  \nchainloader (hd0,0)/bootmgr  \ntitle Find and Load NTLDR of Windows NT/2K/XP  \nfind --set-root /ntldr  \nchainloader /ntldr  \ntitle Find and Load CMLDR of Windows NT/2K/XP  \nfind --set-root /cmldr  \nchainloader /cmldr  \ntitle Find and Load Microsoft Windows Vista/Win7  \nmap (hd0) (hd1)  \nmap (hd1) (hd0)  \nmap --hook  \nrootnoverify (hd0)  \nchainloader +1  \ntitle Find and Load NTLDR of Windows NT/2K/XP  \nfind --set-root /ntldr  \nchainloader /ntldr  \ntitle Find and Load CMLDR of Windows NT/2K/XP  \nfind --set-root /cmldr  \nchainloader /cmldr  \ntitle find and load IO.SYS of Windows 9x/Me  \nfind --set-root /io.sys  \nchainloader /io.sys  \ntitle find and boot Linux with menu.lst already installed  \nfind --set-root /sbin/init  \nconfigfile /Boot/grub/menu.lst  \ntitle Floppy (fd0)  \nchainloader (fd0)+1  \nrootnoverify (fd0)  \ntitle CommandLine  \ncommandline  \ntitle Reboot  \nreboot  \ntitle Halt  \nhalt  \n-----------------------\n\n**Edited by livedude, 19 February 2016 - 01:45 PM.**\n"
+    },
+    {
+      "id": "197885",
+      "timestamp": "2016-02-19T16:41:39+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e i only need the correct syntax to do this wich might be only a few lines.  \n\u003e please give me just the few lines.  \n\u003e please don t try to bludgeon me to learn basics and things i don t need.  \n\u003e i only want update my usb stick and therefore i only need the few lines.\n\n\u003e so again, please give me only the correct syntax.  \n\u003e don t give me basic examples of how the wheel get inventet.  \n\u003e i don t have the time for that and i don t want that.  \n\u003e i only need the few lines with correct syntax to start acronis trueimage image recovery iso from usb, not more.\n\u003e if this thread is in the wrong section, i am sorry for that, then please move it to the correct section.  \n\u003e i have no idea about all that.  \n\u003e i only need the correct syntax.\n\nI guess that it is clear what you \\*want\\* or \\*need\\*.  \n\n\u003cbr /\u003e\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    },
+    {
+      "id": "197886",
+      "timestamp": "2016-02-19T17:26:01+00:00",
+      "author": "livedude",
+      "content": "yes, for everyone who can read it should be clear.\n\ni also repaetet it.\n\nso it should also be clear for you, therefore i wonder why you qutote me, without helping me...\n\n"
+    },
+    {
+      "id": "197887",
+      "timestamp": "2016-02-19T17:45:45+00:00",
+      "author": "Atari800XL",
+      "content": "\u003e yes, for everyone who can read it should be clear.\n\u003e\n\u003e i also repaetet it.\n\u003e\n\u003e so it should also be clear for you, therefore i wonder why you qutote me, without helping me...\n\nSweet talk won\u0027t help you.\n\nMaybe you could repaetetate it one more time?\n\n"
+    },
+    {
+      "id": "197888",
+      "timestamp": "2016-02-19T17:57:06+00:00",
+      "author": "livedude",
+      "content": "no one must help me, its all voluntary!\n\nbut then don t write such stupid commands wich are nether helpfull or constructive\n\njust don t help and go elswhere!\n\ni don t have time for such an childish acting.\n\ni think that the people who don t want to help me, are the same people, wich tried to enforce me learning basics and reading thousand things wich i don t need last time, instead just giveing me a few lines wich i need.\n\nenforceing people its against freedom. they try to enforce you their idelogy!\n\ni don t need this idelogy or whatever. just help me or let it be!\n\nreal help is always unconditional!\n\npeople who enforceing others to take their ideology or whatever condition bevor they help, don t have understund the meaning of help at! all!\n\nbut one thing should be clear: if you can help and don t do it, you will get bad karma!\n\ni also help others without enforecing them to what ever if i am able to help.\n\nbut, its your karma...\n\ngreetings to all correct, freedom and peace loveing and idelogy deprecateing humans out there!\n\n**Edited by livedude, 19 February 2016 - 06:24 PM.**\n"
+    },
+    {
+      "id": "197889",
+      "timestamp": "2016-02-19T18:23:44+00:00",
+      "author": "Wonko the Sane",
+      "content": "No ideology whatever enforced (not even an attempt to enforce it).\n\nA simple comment to highlight how the original message arrived strong and clear.\n\nNow, by threatening non-helpers with the fear of bad karma, you might actually limit their freedom, a nice CATCH 22. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nYou are *demanding* that that correct syntax is given to you (provided that it does exist and that someone knows it and is willing to provide it) and are *insisting on* it, I just underlined this aspect of your post.\n\nAnd I am now going elsewhere**^\\[1\\]^** ..., nice to have met you again, be well :smile:.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n**^\\[1\\]^**only to make this known - just in case - to the Entity assigning bad karma:\n\nit\u0027s not that I know the correct syntax *but* I won\u0027t provide it, actually I ++don\u0027t know++ the specific correct syntax *and thus* I *cannot* provide it.\n\n"
+    },
+    {
+      "id": "197890",
+      "timestamp": "2016-02-19T18:31:52+00:00",
+      "author": "livedude",
+      "content": "again you just wrote an unecesary unconstructive and not helpfull comment.\n\nalready you first command was only to provoke me, therefore my reaction.\n\ni am sure people understund the law of cause and effect (only in case of Atari800XL i am not sure)\n\nand you also do it.\n\nyou are acting like this advisedly.\n\nyou was one of the people i spoke in my executions of help and freedom.\n\ni also remember you.\n\nyes, please go elswhere! it was never your intent to help.\n\n**Edited by livedude, 19 February 2016 - 06:34 PM.**\n"
+    },
+    {
+      "id": "197892",
+      "timestamp": "2016-02-19T19:55:50+00:00",
+      "author": "livedude",
+      "content": "p.s.: only for clearyifying: the bad karma thing was never meaned as threat for anyone!\n\ni wrote this with an little smile not take it seriously and no one else should take it serious.\n\nnormaly that explain itself but there seem to be people wich try to understund things wrong.\n\ni wish everyone only the best no matter if i get help or not.\n\nhope this is clear now.\n\nand there is also one thing: i know, wonko likes to read what best fits in his mind, but not that what is reall written.\n\ni never, i repeat, i never demandet anything!\n\ni just ask for help.\n\nso all threads wich inculpate me for demanding will be ignored.\n\nall unconstructive, provokeing, stultify usw.. threads will also be ignored.\n\nhelp me or help me not, yes i repaet me, but for such an crap like the above, my time is to value for me then waste it with such things.\n\n"
+    },
+    {
+      "id": "197896",
+      "timestamp": "2016-02-19T23:46:18+00:00",
+      "author": "alacran",
+      "content": "If suggest you ask friendly and not demanding next time.\n\nI use this in my menu.lst, to boot from \"**Isos**\" folder on internal HDD (third partition), or from USB drive :\n\n```\ntitle Acronis Bootable Media 2016\\nRun AcronisBootableMedia2016.iso\n##ISO file must be contiguous on disk in this case, use Wincontig\nfind --set-root /Isos/AcronisBootableMedia2016.iso\nmap /Isos/AcronisBootableMedia2016.iso (0xFF)\nmap --hook\nchainloader (0xFF)\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "197897",
+      "timestamp": "2016-02-20T00:32:25+00:00",
+      "author": "livedude",
+      "content": "alacran:\n\n\u003e If suggest you ask friendly and not demanding next time.\n\ni wrote above:\n\n\u003e so all threads wich **inculpate me for demanding** will be ignored.\n\nnothing more to say...\n\nback to the term of this thread:\n\ni think i have found the solution by myself.\n\ni gave it a short try and it works:\n\n----------  \ntitle Acronis True Image Home 2016 ISO  \nfind --set-root /iso/TrueImageHome2016.iso  \nmap --heads\u003d0 --sectors-per-track\u003d0 /iso/TrueImageHome2016.iso (hd32)  \nmap --hook  \nroot (hd32)  \nchainloader  \n------------------  \ni hope this also helps others!  \nif it helps someone i am glad and i enforce no one to nothing to get help.  \nreal help must always be unconditional!\n\nso the proplem is solved, admin please close this thread.\n\n**Edited by livedude, 20 February 2016 - 12:38 AM.**\n"
+    },
+    {
+      "id": "197899",
+      "timestamp": "2016-02-20T11:24:46+00:00",
+      "author": "Wonko the Sane",
+      "content": "Hey, I am just back from elsewhere, it was nice (though a little bit cold and rainy).\n\nHappy :smile: to see that you solved by yourself your pro***p***lem.\n\n\u003e \u003e so all threads wich inculpate me for demanding will be ignored.\n\u003e\nWhat about posts (which are not threads) *nitpicking* on the meaning of \"post\" and of \"thread\"? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nThey will be probably also ignored.\n\nHowever , JFYI, threads that are \"solved\" are not usually closed, someone else may need - besides the info in the thread - to ask a new, related question, other people may want to add their comments, etc.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "197900",
+      "timestamp": "2016-02-20T12:49:45+00:00",
+      "author": "livedude",
+      "content": "\u003e Happy :smile: to see that you solved by yourself your pro***p*** lem.\n\nsure..i don t beliefe you, but whatever.\n\n\u003e What about posts (which are not threads) *nitpicking* on the meaning of \"post\" and of \"thread\"? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\u003e\n\u003e They will be probably also ignored.\n\nnice. you makeing fun of me becouse my bad english. what a nice person. i know my self that my english is horrible, so i made the mistake with posts and threads. i am sure you know that. but this is your kind....\n\n\u003e However , JFYI, threads that are \"solved\" are not usually closed\n\nthen let it open. but i am out. i have enough. i ask for help and i getting attacked by you with inculpate me for demanding and makeing fun of me becouse my bad english. i just asked for help i was never demanding anything.\n\nso i hope the information itself about starting trueimage from usb will help anyone.\n\nbut that was ist for me. i don t let me get attacked for things i don t said, becouse people don t read what i am written. i don t let make fun with me becouse my bad english.\n\nso life long and in prosper\n\ni am out, bye bye\n\n**Edited by livedude, 20 February 2016 - 12:50 PM.**\n"
+    },
+    {
+      "id": "197901",
+      "timestamp": "2016-02-20T15:53:08+00:00",
+      "author": "Atari800XL",
+      "content": "You are right, no need to write any more info in this thread.\n\nSo let\u0027s all sing: \"Sorry seems to be the hardest word\"...\n\n"
+    },
+    {
+      "id": "197903",
+      "timestamp": "2016-02-20T16:31:39+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e You are right, no need to write any more info in this thread.\n\u003e\n\u003e So let\u0027s all sing: \"Sorry seems to be the hardest word\"...\n\nI thought the leitmotiv was from Cat Steven\u0027s Wild World ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png):\n\n\u003e But if you wanna leave, take good care  \n\u003e I hope you make a lot of nice friends out there  \n\u003e But just remember there\u0027s a lot of bad and beware\n\u003e\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    }
+  ]
+}

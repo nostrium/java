@@ -1,0 +1,16 @@
+{
+  "id": "10087",
+  "title": "boot ubuntu ultimate edition from usb hdd poblem.........",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "87900",
+      "timestamp": "2009-12-27T10:11:49+00:00",
+      "author": "copain",
+      "content": "hi all   \ni wanna make a live usb persistent ue2.5...i have tried unetbootin and the inbuilt usb start up creator..by doing both ways only startup screen comes with different options and when i select the \u0027start or install\u0027 option,only a black screen with ue symbol globe rotating in the center comes and nothing else...  \nany solution ??  \nplz give ur advice.........   \n"
+    }
+  ]
+}

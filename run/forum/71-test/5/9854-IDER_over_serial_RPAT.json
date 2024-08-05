@@ -1,0 +1,40 @@
+{
+  "id": "9854",
+  "title": "IDE-R over serial RPAT",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "85598",
+      "timestamp": "2009-11-30T18:51:06+00:00",
+      "author": "Dr. Avery",
+      "content": "So I\u0027m trying to find an image that will remotely boot over an intel RPAT OOB session (serial over ethernet) to a strictly text based interface, and then successfully strap up to a GUI environment and a fully functional network (with access to installed NTFS drives).  \n\nThe problem I\u0027m running into, is that most boot images are too large for this technology. The ISO can be fairly large, but the bootable portion needs to be quite small.  \n\nAny ideas where I should start?   \n"
+    },
+    {
+      "id": "85603",
+      "timestamp": "2009-11-30T19:04:17+00:00",
+      "author": "pscEx",
+      "content": "\u003e So I\u0027m trying to find an image that will remotely boot over an intel RPAT OOB session (serial over ethernet) to a strictly text based interface, and then successfully strap up to a GUI environment and a fully functional network (with access to installed NTFS drives).  \n\u003e\n\u003e The problem I\u0027m running into, is that most boot images are too large for this technology. The ISO can be fairly large, but the bootable portion needs to be quite small.  \n\u003e\n\u003e Any ideas where I should start?\nAfter I \u0027welcomed\u0027 you some minutes ago: (That\u0027s a nicking reaction, but logically correct)  \nYes ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n\nPeter  \n\nBTW: I cannot help you here, because this is not my stuff, but I\u0027m sure that using the \u0027search\u0027 you\u0027ll find something.  \nAnd additionally I can tell you my experience: Learning to use this forum\u0027s search engine, is much more difficult than learning fishing ...   \n"
+    },
+    {
+      "id": "85606",
+      "timestamp": "2009-11-30T19:14:45+00:00",
+      "author": "maanu",
+      "content": "is it a PXE BOOT stuff ./ ?   \n\npersonally never tested this thing . but if it is PXE ,and you have linux knowledge , then i am sure a linux live cd can do this .   \n\notherwise of course you have \" made in home \" products , vista pe , win7 pe or live xp.  \n\nonly live xp can install additional network drivers while in pe mood. minimal size can be \\\u003c 50 MB if mass storage drivers are also included.   \n"
+    },
+    {
+      "id": "85609",
+      "timestamp": "2009-11-30T19:38:03+00:00",
+      "author": "MedEvil",
+      "content": "\u003e The problem I\u0027m running into, is that most boot images are too large for this technology. The ISO can be fairly large, but the bootable portion needs to be quite small.\nMaybe if you gave the size requirements, someone could help you. Just an idea.  \n\n![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n"
+    },
+    {
+      "id": "85637",
+      "timestamp": "2009-11-30T23:01:04+00:00",
+      "author": "Dr. Avery",
+      "content": "\u003e Maybe if you gave the size requirements, someone could help you. Just an idea.  \n\u003e\n\u003e ![:clap:](http://reboot.pro/public/style_emoticons/default/clap.gif)\n\nAlmost my exact words to the guy at Intel. Let\u0027s just say that they aren\u0027t being forthcoming with the requirements.  \n\nif it makes it easier, \u0027smallest\u0027 is a good place to start. IDE redirect is a bit picky. I\u0027ll be combing the archives for a few days. let me know if you come across anything.   \n"
+    }
+  ]
+}

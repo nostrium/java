@@ -1,0 +1,82 @@
+{
+  "id": "20251",
+  "title": "can i make 4 active partitions ?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "189680",
+      "timestamp": "2015-01-05T14:10:53+00:00",
+      "author": "Abdo Refky",
+      "content": "hi .\n\ni have made my flash memory read as a basic disk . and divided it into 4 primary partitions .\n\ni would like to set 4 bootable windows 7 isos . and because there is no programe do that (if there is please tell me )\n\ni have made the 4 partition , each partiton for 1 iso .\n\nnow i want to access any of the partitions from the boot menu .\n\n"
+    },
+    {
+      "id": "189681",
+      "timestamp": "2015-01-05T14:19:14+00:00",
+      "author": "steve6375",
+      "content": "4 partitions marked as Active makes no sense.\n\nNormally, only one is active.\n\nIf you had 4 marked as active - how do you expect to choose which one to boot from? There is no pre-boot manager.\n\nCan you explain by what you mean by \u0027flash memory\u0027 - is it a Removable USB flash drive or a Fixed-disk type?\n\nCan you explain what you mean by WIndows 7 isos - do you mean WIndows 7 INSTALL ISOs?\n\n"
+    },
+    {
+      "id": "189704",
+      "timestamp": "2015-01-06T15:02:43+00:00",
+      "author": "Abdo Refky",
+      "content": "thanks for answering and sorry for not being clear .  \n\ni have switched my Flash memory from removable to basic . ( my flash is basic disk now ) .  \ni do mean windows 7 and 8 install iso\u0027s .  \n\nmy problem is to create four windows 7 install iso\u0027s from the same flash memory ,, since windows install extract can only be 1 on the flash memory partition , so i thought to divide my flash memory into 4 partition and choose between them from the bios booting menu .  \n\ni have no idea if what i am asking for is hard or easy ,but the flipflop was very easy  \n[http://reboot.pro/to...ingstone-32-gb/](http://reboot.pro/topic/20235-flipflop-kingstone-32-gb/ \"\")  \n\nQuestion :  \ncan i install IPL (initial boot loader ) and link it to the PBR of each parition like the normal booting at this artical  \n[http://www.multiboot.../multiboot.html](http://www.multibooters.co.uk/multiboot.html \"External link\")  \n\nif there are any articals i should read please send me the links\n\n**Edited by Abdo Refky, 06 January 2015 - 03:34 PM.**\n"
+    },
+    {
+      "id": "189706",
+      "timestamp": "2015-01-06T16:09:23+00:00",
+      "author": "steve6375",
+      "content": "The way that Windows Install ISOs work is that they boot to WinPE and run Setup.exe\n\nSetup.exe then looks for a \\\\sources\\\\install.wim file. If the Install.wim file are inside an ISO, it will never be found and you will get a \u0027Windows CD\\\\DVD drive driver is missing\u0027 error.\n\nEven if you extracted all of the ISOs to separate partitions, there would still be a problem - no matter which partition you booted from, it will just find the first \\\\sources\\\\install.wim that it finds.\n\nI am not sure what you are trying to achieve or why - there are existing solutions like WinSetupFromUSB or my Easy2Boot project which will install multiple ISOs all from one partition - so why re-invent the wheel?\n\nIf you want to dabble, see [here](http://www.rmprepusb.com/tutorials/firawiniso \"External link\").\n\n"
+    },
+    {
+      "id": "189708",
+      "timestamp": "2015-01-06T16:39:17+00:00",
+      "author": "Wonko the Sane",
+      "content": "Abdo :smile:,\n\nunfortunately it seems like you slipped on a chocolate covered banana ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)\n\n[http://homepage.ntlw...red-banana.html](http://homepage.ntlworld.com./jonathan.deboynepollard/FGA/put-down-the-chocolate-covered-banana.html \"External link\")\n\nIf the \"final goal\" is having the possibility of installing four different versions of Windows 7/8/8.1 from \"standard\" .iso there is no particular advantage (but a couple of inconvenients) in having the flash stick as fixed (in other words for the specific goal, \"removable\" was better).\n\nThis said, as long as the idea is to install several versions of 7/8/8.1, not necessarily from .iso, it would probably make more sense (unless you want to revert the stick back to \"removable\" in order to better use one of the methods Steve6375 pointed you to) to create a PE and use from it the Winntsetup:\n\n[http://www.msfn.org/...inntsetup-v375/](http://www.msfn.org/board/topic/149612-winntsetup-v375/ \"External link\")\n\nThe tool is (JFYI) an evolution (updated and bettered) of this idea/approach (so that you can understand the basic idea underneath):\n\n[http://reboot.pro/to...external-drive/](http://reboot.pro/topic/10126-nt-6x-fast-installer-install-win7-directly-to-usb-external-drive/ \"\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "189711",
+      "timestamp": "2015-01-06T23:35:41+00:00",
+      "author": "Abdo Refky",
+      "content": "allright i am going to read those pages .\n\ni have also noticed that non of this links include ubuntu , **( mistake ,sorry . that link you gave me include ubuntu)**\n\ni am using Yumi multibooters for booting ubuntu and windows . but it allow me for\n\n(1 windows and many ubuntu (different names ) and 1 windows xp , 1 hiern . and other tools i dont know about :smile: . )\n\nthe ubuntu live cd is very usefull at the maintainance of computers .\n\n**Edited by Abdo Refky, 07 January 2015 - 12:02 AM.**\n"
+    },
+    {
+      "id": "189712",
+      "timestamp": "2015-01-06T23:55:56+00:00",
+      "author": "Abdo Refky",
+      "content": "\u003e 4 partitions marked as Active makes no sense.\n\u003e\n\u003e Normally, only one is active.\n\u003e\n\u003e If you had 4 marked as active - how do you expect to choose which one to boot from? There is no pre-boot manager.\n\u003e\n\u003e Can you explain by what you mean by \u0027flash memory\u0027 - is it a Removable USB flash drive or a Fixed-disk type?\n\u003e\n\u003e Can you explain what you mean by WIndows 7 isos - do you mean WIndows 7 INSTALL ISOs?\n\nsteve ,\n\nwhat do you mean by there is no pre-boot manager .\n\ni was thinking that by switching from removable to basic i will be able to do the following like my harddisk .\n\n1 : install windows on partiton 1\n\n2 : install ubuntu on parition 2\n\nthe ubuntu use grub4dos to detect windows and ubuntu , and ofcourse more others but thats i know so far .\n\nfrom here i thought if i can use the grub to be the boot loader for my flash .\n\n++so when i boot from bios to the flash memory the grubs load and allow me to choose which one from the flash partitions .++\n\nQuestion 2 .\n\ni dont know if the grub can be used to link programs like Yumi or the link that i am going to read now .\n\nbut is the Grub is capable of linking me to those loaders .\n\n3 . putting all windows bootable iso\u0027s like the link you gave me on partition 3\n\n4 . using the Yumi at partiton 4 .\n\nhere i said all my thoughts :smile:\n\n"
+    },
+    {
+      "id": "189713",
+      "timestamp": "2015-01-07T00:13:56+00:00",
+      "author": "steve6375",
+      "content": "Instead of YUMI, use WinSetupFromUSB or Easy2Boot.\n\nYou didn\u0027t mention grub or grub4dos or YUMI before - sorry I cannot read your mind!\n\nboot loaders/managers don\u0027t require all 4 partitions to be active - in many cases, no partitions need to be active!\n\ngrub\\\\grub4dos will boot to any partition - the partition does not need to be active.\n\nFI you want learn about grub4dos, there are many sites and YouTube videos (see my RMPrepUSB site).\n\n"
+    },
+    {
+      "id": "189714",
+      "timestamp": "2015-01-07T01:33:02+00:00",
+      "author": "Abdo Refky",
+      "content": "i am reading at RMprepUSB site .\n\n[http://www.rmprepusb...ials/firawiniso](http://www.rmprepusb.com/tutorials/firawiniso \"External link\")\n\nits very exciting ,\n\n"
+    },
+    {
+      "id": "189732",
+      "timestamp": "2015-01-08T12:39:40+00:00",
+      "author": "Abdo Refky",
+      "content": "Extract the contents of the Hirens iso to the root of the E2B drive using 7Zip.\n\nwhere is the root ?\n\nRead more: [http://www.easy2boot...es/hirens-isos/](http://www.easy2boot.com/add-payload-files/hirens-isos/?utm_source\u003dcopy\u0026utm_medium\u003dpaste\u0026utm_campaign\u003dcopypaste\u0026utm_content\u003dhttp%3A%2F%2Fwww.easy2boot.com%2Fadd-payload-files%2Fhirens-isos%2F \"External link\")\n\n**Edited by Abdo Refky, 08 January 2015 - 12:40 PM.**\n"
+    },
+    {
+      "id": "189733",
+      "timestamp": "2015-01-08T12:41:10+00:00",
+      "author": "steve6375",
+      "content": "[http://en.wikipedia..../Root_directory](http://en.wikipedia.org/wiki/Root_directory \"External link\")\n\n"
+    },
+    {
+      "id": "189784",
+      "timestamp": "2015-01-12T00:04:14+00:00",
+      "author": "Abdo Refky",
+      "content": "thanks for answering my noob question .\n\ni am reading now at : [http://www.easy2boot...-e2b/mye2b-cfg/](http://www.easy2boot.com/configuring-e2b/mye2b-cfg/ \"External link\")\n\nand watching your easy2boot videos at your youtube channel .\n\n"
+    }
+  ]
+}

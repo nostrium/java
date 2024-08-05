@@ -1,0 +1,16 @@
+{
+  "id": "19684",
+  "title": "Fatal Error",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "183138",
+      "timestamp": "2014-04-03T12:12:14+00:00",
+      "author": "hekick",
+      "content": "Fatal error occured in application.  \nPlease send developers the file \"error.log\".  \nCould not load file or assembly \u0027pgk.extension,version\u003d1.0.0.0,cluture\u003dneutral,publickeytoken\u003df93e897f802ddcb7\u0027 or one of its depedencies. Not find file.  \nERROR REPORT ( 04/03/2014 08:57:50 )  \nPlease submit this error report to developer.  \nOperating System version :Microsoft Windows NT 6.1.7601 Service Pack 1  \n.NET Framework version :4.0.30319.1008  \nError Message :  \nCould not load file or assembly \u0027PGK.Extensions, Version\u003d1.0.0.0, Culture\u003dneutral, PublicKeyToken\u003df93e897f802ddcb7\u0027 or one of its dependencies. O sistema não pode encontrar o arquivo especificado.  \nStackTrace :  \nat A.V.D()  \nat A.V.D(ImageItemBase , ProcessLog )  \nat A.KB.D()  \nat System.Threading.ThreadHelper.ThreadStart_Context(Object state)  \nat System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean ignoreSyncCtx)  \nat System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)  \nat System.Threading.ThreadHelper.ThreadStart()  \nERROR REPORT ( 04/03/2014 09:08:59 )  \nPlease submit this error report to developer.  \nOperating System version :Microsoft Windows NT 6.1.7601 Service Pack 1  \n.NET Framework version :4.0.30319.1008  \nError Message :  \nCould not load file or assembly \u0027PGK.Extensions, Version\u003d1.0.0.0, Culture\u003dneutral, PublicKeyToken\u003df93e897f802ddcb7\u0027 or one of its dependencies. O sistema não pode encontrar o arquivo especificado.  \nStackTrace :  \nat A.V.D()  \nat A.V.D(ImageItemBase , ProcessLog )  \nat A.KB.D()  \nat System.Threading.ThreadHelper.ThreadStart_Context(Object state)  \nat System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean ignoreSyncCtx)  \nat System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)  \nat System.Threading.ThreadHelper.ThreadStart()\n\n"
+    }
+  ]
+}

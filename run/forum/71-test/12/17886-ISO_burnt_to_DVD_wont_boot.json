@@ -1,0 +1,34 @@
+{
+  "id": "17886",
+  "title": "ISO burnt to DVD won\u0027t boot",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "164282",
+      "timestamp": "2012-12-14T21:04:07+00:00",
+      "author": "TheFog",
+      "content": "This is probably very simple to fix but I have spent several hours trying to solve my problem but can\u0027t.\n\nHope someone can help please.\n\nI have used SARDU to make a multiboot ISO to burn to DVD. I have added some extra progs to the menu and the final build works fine from QEMU. However, I wanted to customise the menu for personal easier navigation. So I extracted all files and folders from the ISO and then updated the isolinux.cfg menu file. Then I used IMGBURN to re-make the ISO but the ISO isn\u0027t bootable either in QEMU of from a DVD. I understand that in IMGBURN there is an advanced tab in the ISO build mode and under the advanced tab there is an option to make a bootable ISO but I just don\u0027t understand if this is what I must use.\n\nThere is nothing incorrect with my updated isolinux.cfg file as I have checked that it works by using the same changes with the syslinux.cfg file from a USB build.\n\n"
+    },
+    {
+      "id": "164283",
+      "timestamp": "2012-12-14T21:08:41+00:00",
+      "author": "Sha0",
+      "content": "\u003e Hope someone can help please.\n**Syslinux** documents how to build an **.ISO** with **mkisofs** in **doc/isolinux.txt** . I don\u0027t know about \"IMGBURN\".   \n"
+    },
+    {
+      "id": "164285",
+      "timestamp": "2012-12-14T21:34:04+00:00",
+      "author": "ady",
+      "content": "\u003e I understand that in IMGBURN there is an advanced tab in the ISO build mode and under the advanced tab there is an option to make a bootable ISO but I just don\u0027t understand if this is what I must use.\n\nYou probably need at least Joliet in addition to ISO9660, AND the advanced -\\\u003e Bootable Disc section too. Check \"Make Image Bootable\" and \"Patch Boot Information Table\" and then in \"Boot Image:\" select the folder where you have the extracted files (that would be part of the ISO image you want to build) and search in those folders for the \"isolinux.bin\" file. That\u0027s the expected \"Boot Image\". Without it, your ISO won\u0027t boot.  \n\nAll this info is already included in the IMGBURN guides.   \n"
+    },
+    {
+      "id": "164294",
+      "timestamp": "2012-12-15T00:11:36+00:00",
+      "author": "TheFog",
+      "content": "\u003e **Syslinux** documents how to build an **.ISO** with **mkisofs** in **doc/isolinux.txt**. I don\u0027t know about \"IMGBURN\".\n\nThe syslinux.org website was very informative. Thank you.\n\n\u003e You probably need at least Joliet in addition to ISO9660, AND the advanced -\\\u003e Bootable Disc section too. Check \"Make Image Bootable\" and \"Patch Boot Information Table\" and then in \"Boot Image:\" select the folder where you have the extracted files (that would be part of the ISO image you want to build) and search in those folders for the \"isolinux.bin\" file. That\u0027s the expected \"Boot Image\". Without it, your ISO won\u0027t boot.  \n\u003e\n\u003e All this info is already included in the IMGBURN guides.\n\nI had already ascertained that I would need Joliet as well and that is as far as I got. I followed your instrctions and my customised ISO now works. Thank you very much. I spent about two hours looking through the IMGBURN guides and didn\u0027t come across the instruction you have provided in a clear and succinct manner. I did try to figure this out for myself until I realised I wasn\u0027t going to be able to climb over the brick wall that I\u0027d hit.\n\n"
+    }
+  ]
+}

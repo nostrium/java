@@ -1,0 +1,22 @@
+{
+  "id": "21158",
+  "title": "UEFI W10 add another boot image",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "199303",
+      "timestamp": "2016-06-23T06:42:00+00:00",
+      "author": "mrapi",
+      "content": "Hi,  \nI have a UEFI usb created for W10 install and I want to add another boot image (ISO) [Sergei Strelec WinPE8.0 (x86/Native x86) WinPE10 (x64) English version](http://sergeistrelec.ru/winpe_10/56-winpe80-x86-native-x86-winpe10-sergei-strelec-x64-20160607-english-version.html \"External link\")  \nI was using it on the same bootable USB build for W8.1 setup (not UEFI): I\u0027ve installed grub with RMPrepUSB,then copy Sterec files,W8.1 files and a .mnu file,all worked great  \nhow to do trhe same but for UEFI?  \nthanks\n\n"
+    },
+    {
+      "id": "199338",
+      "timestamp": "2016-06-29T07:29:17+00:00",
+      "author": "mrapi",
+      "content": "as no answer,seems that is not possible\n\n"
+    }
+  ]
+}

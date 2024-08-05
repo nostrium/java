@@ -1,0 +1,34 @@
+{
+  "id": "10116",
+  "title": "PLoP Boot Manager 5.0.7 released.",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "88111",
+      "timestamp": "2009-12-31T00:19:31+00:00",
+      "author": "Icecube",
+      "content": "\u003e Mon 28/Dec/2009  \n\u003e\n\u003e PLoP Boot Manager 5.0.7 released. There was a bug in the 5.0.6 plpbt.bin  \n\u003e\n\u003e Thu 24/Dec/2009  \n\u003e\n\u003e 2 Installer updates:  \n\u003e Installing mbr loader, update and set textmode is now disabled if the boot manager is not detected.  \n\u003e If the installer was started under windows, then there comes an info message that it cannot run in a windows dos box.\n[http://www.plop.at/e...mngrusblog.html](http://www.plop.at/en/bootmngrusblog.html \"External link\")   \n"
+    },
+    {
+      "id": "88948",
+      "timestamp": "2010-01-17T12:55:58+00:00",
+      "author": "ktp",
+      "content": "Does anybody know how to select the USB port/hard disk to boot from when there are for example two USB hard disks plugged ? Pressing \"u\" at PLoP screen seems to select a random port to boot from.   \n"
+    },
+    {
+      "id": "88960",
+      "timestamp": "2010-01-17T14:43:32+00:00",
+      "author": "Icecube",
+      "content": "```\nu\t  Boot USB\n\n\tpress SHIFT to force USB 1.1\n\n\tpress CTRL to wait for a keypress before starting the operating system. You have here the option to press \u0026#34;n\u0026#34; \u0026#40;next\u0026#41; and continue the search for mass storage devices to boot from another usb device\n```\n\n[http://www.plop.at/e...er.html#hotkeys](http://www.plop.at/en/bootmanager.html#hotkeys \"External link\")   \n"
+    },
+    {
+      "id": "88968",
+      "timestamp": "2010-01-17T15:46:37+00:00",
+      "author": "ktp",
+      "content": "\u003e [http://www.plop.at/e...er.html#hotkeys](http://www.plop.at/en/bootmanager.html#hotkeys \"External link\")\n\nThank you.  \n\nI had problem since I used an external keyboard/mouse through an USB hub, which is not supported by PLoP. Otherwise even with the internal keyboard, I have to press \"Ctrl\" before pressing \u0027u\u0027 in order to get the prompt for pressing \"n\" for searching for USB device. It is weird since as if you have to press Ctrl-U. Afterwards the \u0027n\u0027 key works well, and from the USB device (manufacturer name) I can get to boot the correct USB key.  \n\nNote : this key is not detected by BIOS at boot time, so thanks to PLoP I can even boot from it, otherwise it would be impossible.   \n"
+    }
+  ]
+}

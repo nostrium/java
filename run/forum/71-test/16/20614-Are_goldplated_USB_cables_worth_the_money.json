@@ -1,0 +1,64 @@
+{
+  "id": "20614",
+  "title": "Are gold-plated USB cables worth the money?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "194031",
+      "timestamp": "2015-07-29T00:59:34+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "I ask this because I have had several USB cables \u0027burn out\u0027 on me in the past few months, and all were relatively new. Certainly there is some variation in the quality of cables by various manufacturers. I\u0027m specifically referring to USB 3.0 cables, since these can serve a dual purpose for use with my external drives, as well as charging my phones and letting me copy data from them to PC and vice versa.\n\nIt is common knowledge that gold is an excellent conductor of electricity, and I figure that it may also be better for maintaining a consistent and stable data transfer rates. Or is the qualiity of the cord itself (not the tip) the main factor, since that is where the data must \u0027flow\u0027?\n\nIf gold is indeed better, who are the best manufacturers/suppliers? 3 feet is the minumum I\u0027d need, but 5 feet is a better length.\n\n"
+    },
+    {
+      "id": "194032",
+      "timestamp": "2015-07-29T01:06:04+00:00",
+      "author": "mrreload",
+      "content": "No. USB is a digital connection which do not suffer from the same issues as analog connections do.   \nA USB cable does not burn out, it breaks internally.   \nI steer clear of gold plated anything these days and have had better luck with the bargain cables but Belkin usually has quality cables for a decent price.   \n\n\u003cbr /\u003e\n\nSent from my iPhone using Tapatalk   \n"
+    },
+    {
+      "id": "194033",
+      "timestamp": "2015-07-29T01:08:33+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "When I say \u0027burn out\u0027, I just meant that they stopped working after a short period of time. Thanks for the answer, now I wont be wasting a few extra dollars per cable on something that will bring no real benefits.\n\n"
+    },
+    {
+      "id": "194034",
+      "timestamp": "2015-07-29T01:25:04+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "It seems that every cable I connect to my PC/phone simply stops working after a short time. Maybe there is something wrong with my PC that is causing this\n\nI also use a custom kernel with my Note 3 (Yank555), it supports a feature called \u0027USB fast charge\u0027. Which means that my phone charges via USB at the same amperage/voltage/mAh as it would when charging via a wall outlet. I suspect this feature may be part of the problem, so I\u0027ve disabled it.\n\n"
+    },
+    {
+      "id": "194039",
+      "timestamp": "2015-07-29T06:50:19+00:00",
+      "author": "steve6375",
+      "content": "If a cable burned-out you would know about it! It would get hot, melt and smell! USB ports are current limited, so this should never happen.\n\nMany USB ports are fitted with a self-healing fuse. If you take too much current from the USB port, then the fuse will \u0027break\u0027 and the USB port will no longer supply current. Often one fuse is shared between 2 or more USB ports. If you remove the cable (stop taking excessive current), the fuse will \u0027heal\u0027 and after 5 - 30 minutes, it will be at it\u0027s normal low resistance again and will be fully \u0027healed\u0027.\n\nMaybe this is what is happening?\n\n"
+    },
+    {
+      "id": "194042",
+      "timestamp": "2015-07-29T10:41:22+00:00",
+      "author": "kvarkk",
+      "content": "Let me mention that so called \"gold-plated\" cables may not contain gold at all. Titanium nitride is widely used instead of gold.\n\n"
+    },
+    {
+      "id": "194044",
+      "timestamp": "2015-07-29T10:58:57+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "If they\u0027re using titanium nitride rather than gold, while calling their cables gold-plated, then that is blatant false advertising. In which case a lawsuit would be in order.\n\n"
+    },
+    {
+      "id": "194045",
+      "timestamp": "2015-07-29T12:04:00+00:00",
+      "author": "kvarkk",
+      "content": "That\u0027s true if you are talkng about branded cables. In case of noname ones... :smile:.\n\n"
+    },
+    {
+      "id": "194053",
+      "timestamp": "2015-07-29T16:57:35+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e No. USB is a digital connection which do not suffer from the same issues as analog connections do.\n\nYep :smile:, and anyway the issues with analog are BTW nothing that a good ol\u0027 coathanger cannot resolve... :whistle:\n\n[http://forums.audioh...ge-2#post-15412](http://forums.audioholics.com/forums/threads/speakers-when-is-good-enough-enough.2512/page-2#post-15412 \"External link\")\n\nNow maybe we could introduce the issue of high speed buses and shielding and cross talking, but then again it would revolve around quality of cables and not about them (actually their connectors) being gold (or Titanium nitride or \\*whatever\\*) coated.\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    }
+  ]
+}

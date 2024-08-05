@@ -1,0 +1,58 @@
+{
+  "id": "9376",
+  "title": "[Solved] Install XP from USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "80462",
+      "timestamp": "2009-09-30T20:21:29+00:00",
+      "author": "doveman",
+      "content": "Thanks for USB_Multiboot_10. It worked when every other method of installing XP that I\u0027d tried (including from CD!) had failed.  \n\nI was wondering if there\u0027s any way to start the install from Grub4Dos, either directly or by loading NTLDR/boot.ini. I just personally would prefer my USB stick to boot into Grub rather than boot.ini as most of the time I boot from my stick it\u0027s because I want to use one of the tools on it rather than install XP, which I would only do occasionally.  \n\nI\u0027ve tried using \"chainloader /ntldr\" from Grub which gets the boot.ini menu up, but from there I just get an error such as \"Missing helper\", no doubt for good reason which someone will kindly explain to me ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \n"
+    },
+    {
+      "id": "80586",
+      "timestamp": "2009-10-01T17:59:15+00:00",
+      "author": "wimb",
+      "content": "Anyway boot.ini menu provides with one click your grub4dos menu.  \n\nIn this way you have the best of both worlds available.   \n\n![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n"
+    },
+    {
+      "id": "80594",
+      "timestamp": "2009-10-01T19:23:19+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Anyway boot.ini menu provides with one click your grub4dos menu.  \n\u003e\n\u003e In this way you have the best of both worlds available.   \n\u003e\n\u003e ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)\n\nWhy does it sound so alike some marketing hype? ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \n\nHaving the best of both words is of course the \"best experience\", but what if one explicitly does NOT want it? ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \n\n@doveman  \nWhy don\u0027t you try the \"other\" way?  \nYou only boot a PE when you want to install Windows, with that method.  \n[http://www.msfn.org/...sb-t121446.html](http://www.msfn.org/board/install-xp-usb-after-booting-pe-hdd-usb-t121446.html \"External link\")  \n\n\u003cbr /\u003e\n\n:wink:  \n\njaclaz   \n"
+    },
+    {
+      "id": "80596",
+      "timestamp": "2009-10-01T19:42:04+00:00",
+      "author": "doveman",
+      "content": "\u003e Anyway boot.ini menu provides with one click your grub4dos menu.  \n\u003e\n\u003e In this way you have the best of both worlds available.   \n\u003e\n\u003e ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)\n\nI know but I\u0027m clumsy so it\u0027s easy for me to select the wrong option and start XP setup by mistake...or maybe I\u0027m just lazy ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n"
+    },
+    {
+      "id": "80598",
+      "timestamp": "2009-10-01T19:54:58+00:00",
+      "author": "doveman",
+      "content": "\u003e @doveman  \n\u003e Why don\u0027t you try the \"other\" way?  \n\u003e You only boot a PE when you want to install Windows, with that method.  \n\u003e [http://www.msfn.org/...sb-t121446.html](http://www.msfn.org/board/install-xp-usb-after-booting-pe-hdd-usb-t121446.html \"External link\")  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \n\u003e\n\u003e jaclaz\n\nYeah I might give that a go but PLOP doesn\u0027t currently work with my motherboard so booting the LiveXP from my USB stick is rather slow.  \n\nI\u0027m looking at maybe doing it from DOS instead along these lines:  \n[http://www.msfn.org/...cd-t130689.html](http://www.msfn.org/board/guide-install-winxp-hdd-usb-drive-cd-t130689.html \"External link\")  \nprobably zipping up the files on the CD to make it a bit quicker to copy them to the HD (hopefully the unzipping time won\u0027t cancel out the benefit!).  \n\n![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n"
+    },
+    {
+      "id": "80625",
+      "timestamp": "2009-10-02T06:11:41+00:00",
+      "author": "wimb",
+      "content": "\u003e Yeah I might give that a go but PLOP doesn\u0027t currently work with my motherboard so booting the LiveXP from my USB stick is rather slow.\nIn most cases you don\u0027t need to boot from USB-stick and can do Install XP from USB-stick prepared with **Make_USB.exe**   \nYou can use **BOOT_IMG.exe** to install LiveXP BootSDI.img as boot option on Harddisk and then boot in 30 sec in LiveXP PE environment running in RAMDISK.  \nThe nice thing is once PE is running in RAMDISK, you are allowed to format and prepare your harddisk for install of XP using **USB_XP_Setup.exe**   \n"
+    },
+    {
+      "id": "80657",
+      "timestamp": "2009-10-02T12:03:21+00:00",
+      "author": "doveman",
+      "content": "\u003e In most cases you don\u0027t need to boot from USB-stick and can do Install XP from USB-stick prepared with **Make_USB.exe**   \n\u003e You can use **BOOT_IMG.exe** to install LiveXP BootSDI.img as boot option on Harddisk and then boot in 30 sec in LiveXP PE environment running in RAMDISK.  \n\u003e The nice thing is once PE is running in RAMDISK, you are allowed to format and prepare your harddisk for install of XP using **USB_XP_Setup.exe**\n\nAh, good point. Obviously that way requires a working XP environment already on the HD, but as I always set up my PC\u0027s with dual (or more) boot, that wouldn\u0027t be a problem most of the time. Then again, it looks like I could skip Boot_IMG.exe and just use USB_XP_Setup.exe with dual boot. (Incidentally, why does Boot_IMG.exe need me to point it to the XP Setup Source Folder?)  \n\nI\u0027ll still need to be able to install from DOS/boot from USB when building a new PC or on someone else\u0027s PC where the only XP is no longer bootable, but those occasions are likely to be rare.   \n"
+    },
+    {
+      "id": "80664",
+      "timestamp": "2009-10-02T12:58:00+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I know but I\u0027m clumsy so it\u0027s easy for me to select the wrong option and start XP setup by mistake...or maybe I\u0027m just lazy ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)\n\nManually protect that entry with a password in grub4dos, unless besides \"clumsy\" you are also \"forgetful\" ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \n\nOr install grub4dos to the MBR and be done with it.  \n\nYou can use any numbers of disk images with NTLDR/BOOT.INI/NTDETECT.COM on them.  \n\n\u003cbr /\u003e\n\njaclaz   \n"
+    }
+  ]
+}

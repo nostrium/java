@@ -1,0 +1,64 @@
+{
+  "id": "18278",
+  "title": "VHD-Manager_basic",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "168907",
+      "timestamp": "2013-03-06T20:15:15+00:00",
+      "author": "Tokener",
+      "content": "![Posted Image](http://reboot.pro/index.php?app\u003ddownloads\u0026module\u003ddisplay\u0026section\u003dscreenshot\u0026id\u003d283)\n**File Name** : VHD-Manager_basic  \n**File Submitter** :   \n**File Submitted** : 06 Mar 2013  \n**File Updated** : *20 Mar 2013*   \n**File Category** : [Boot tools](http://reboot.pro/files/category/7-boot-tools/ \"\")  \n\nDear community  \nIf you are using VHD booting by Grub or Windows,  \nyou might need a tool to create and manage VHD files.  \nThe VHD-Manager is designed to do this job for you.  \n\nFields of application: (in short form)  \nCreate VHD.  \nCreate Partition.  \nMount VHD to edit.  \nMerge differencing VHD´s.  \nResize VHD.  \n\nAll VHD related processes should be handled.  \nThe VHD-Manager uses DISKPART commandline to get things done.  \n\nThe current version is tested on Win7x64 lang\u003dde.  \nIf you have success with other language, please leave a little comment.  \nT.  \n\n[Click here to download this file](http://reboot.pro/files/file/283-vhd-manager-basic/ \"\")   \n"
+    },
+    {
+      "id": "168913",
+      "timestamp": "2013-03-06T20:58:34+00:00",
+      "author": "steve6375",
+      "content": "Looks useful! ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)\n\nA few observations...\n\n\u0027Diskmanagement\u0027 would look better as \u0027Disk Management\u0027\n\nIn Create Partition, Compress is ticked by default, would grub4dos work if the VHD was made with Compress ticked? Better for default to be unticked?\n\nIn ReSize tab Disk has **li** in the first box. What does this mean? Also it says **Disk 0 Online 29** - what does 29 mean (disk is 298GB), Disk 1 (vhd) says **15** (disk created was 150MB)\n\nIf I select Disk 1 (the vhd) and click List Disk, disk 0 is listed.\n\n"
+    },
+    {
+      "id": "168915",
+      "timestamp": "2013-03-06T21:21:03+00:00",
+      "author": "Tokener",
+      "content": "Thank you steve6375\n\nCan you please quote dsk.txt and vol.txt, so I can adjust the program for other lang\n\nT.\n\n"
+    },
+    {
+      "id": "168916",
+      "timestamp": "2013-03-06T21:26:13+00:00",
+      "author": "steve6375",
+      "content": "Here is a screenshot  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![VHD.jpg](http://reboot.pro/uploads/monthly_03_2013/post-17818-0-37128800-1362605140_thumb.jpg)](http://reboot.pro/uploads/monthly_03_2013/post-17818-0-37128800-1362605140.jpg \"VHD.jpg - Size: 49.87KB\"){#ipb-attach-url-14183-0-36728000-1676066547}\n\n"
+    },
+    {
+      "id": "168918",
+      "timestamp": "2013-03-06T21:40:08+00:00",
+      "author": "Tokener",
+      "content": "TU steve6375\n\nsorry i had to edit my post in the meantime.\n\ncan you pls post dsk.txt to download?\n\nT.\n\n"
+    },
+    {
+      "id": "168919",
+      "timestamp": "2013-03-06T21:59:35+00:00",
+      "author": "steve6375",
+      "content": "Microsoft DiskPart version 6.1.7601  \nCopyright © 1999-2008 Microsoft Corporation.  \nOn computer: STEVE-PC  \nDisk ### Status Size Free Dyn Gpt  \n-------- ------------- ------- ------- --- ---  \nDisk 0 Online 298 GB 1024 KB  \nMicrosoft DiskPart version 6.1.7601  \nCopyright © 1999-2008 Microsoft Corporation.  \nOn computer: STEVE-PC  \nVolume ### Ltr Label Fs Type Size Status Info  \n---------- --- ----------- ----- ---------- ------- --------- --------  \nVolume 0 E DVD-ROM 0 B No Media  \nVolume 1 G DVD-ROM 0 B No Media  \nVolume 2 SYSTEM RESE NTFS Partition 100 MB Healthy System  \nVolume 3 C ACER NTFS Partition 247 GB Healthy Boot  \nVolume 4 D BACKUP NTFS Partition 39 GB Healthy  \nVolume 5 PQSERVICE NTFS Partition 11 GB Healthy Hidden  \n\nG: is virtual CD drive\n\n"
+    },
+    {
+      "id": "168932",
+      "timestamp": "2013-03-07T10:14:00+00:00",
+      "author": "Tokener",
+      "content": "thanks steve\n\nthis is an language issue, (diskpart output), I am working on a solution.\n\nT.\n\n"
+    },
+    {
+      "id": "168934",
+      "timestamp": "2013-03-07T10:35:52+00:00",
+      "author": "Wonko the Sane",
+      "content": "Besides the obvious usefulness for this nice utility ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif) I guess it should be specified somewhere how grub4dos does not support any kind of .vhd image which is not a \"static\" one i.e. a RAW image with the \"Connectix descriptive sector\" appended.\n\nIn other words, grub4dos supports only RAW images and coincidentally a \"static\" .vhd is actually a RAW image with a sector appended to it (which is ignored by grub4dos).\n\nTo easily convert between RAW disk image and .vhd \"static\" (if needed), there are a few tools on the board:\n\nClonedisk\n\n[http://reboot.pro/to...8480-clonedisk/](http://reboot.pro/topic/8480-clonedisk/ \"\")\n\nis a \"general\" tool to make images, copy disks/partitions, and a few other functions, including bi-directional RAW\\\u003c--\\\u003eVHD conversion.\n\nThis other command line tool:\n\nVHD2IMG\n\n[http://reboot.pro/to...mand-line-tool/](http://reboot.pro/topic/16035-vhd2img-command-line-tool/ \"\")\n\nallows to convert from \"static\" OR \"dinamic\" VHD to RAW.\n\nAnd this other command line tool:\n\nRAW2VHD\n\n[http://reboot.pro/to...ges/#entry83781](http://reboot.pro/topic/9715-firadisk-and-vhd-img-images/#entry83781 \"\")\n\nthat allows to convert from RAW to VHD (\"static\")\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "168952",
+      "timestamp": "2013-03-07T15:13:25+00:00",
+      "author": "Tokener",
+      "content": "Hi\n\nI recently updated to version 130307.\n\nRemoved obsolete controls.\n\nShould work language independent.\n\nThanks for suggestions.\n\nT.\n\n"
+    }
+  ]
+}

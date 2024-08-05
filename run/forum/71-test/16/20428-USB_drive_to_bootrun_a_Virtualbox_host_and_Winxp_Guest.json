@@ -1,0 +1,46 @@
+{
+  "id": "20428",
+  "title": "USB drive to boot/run a Virtualbox host and Winxp Guest",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "191879",
+      "timestamp": "2015-04-05T22:17:37+00:00",
+      "author": "old-baldy",
+      "content": "Hi all,\n\nAs the booting experts I am hoping I can use your expertise to find a simple, straightforward way to boot a usb drive that will give me a way to run a virtualbox host, that in turn will run a windows xp guest.\n\nI have tried a couple of linux distros (suse and Linux Mint) and have got no-where (Not enough linux knowledge).\n\nI have looked at hirens but can\u0027t figure out how to get it to run virtualbox as part of its minixp system.\n\nMy objective is to run a virualbox winxp guest from a self-contained, portable os running on a flash drive that will boot from pretty much any system that it is attached to.\n\nThe winxp guest works under virtualbox without any issues on winxp. Win7 and Win 8. It does not require internet access, so the problem of wi-fi\\\\lan drivers is reduced, but it would be an added bonus if it was available.\n\nI\u0027m not bothered what os is booted up as long as it will run the virtualbox host from a GUI\n\nThe software on the vbox guest will not run on anything newer the winxp SP2 and the connected peripherals are not supported on linux or newer windows systems (EOL Issues), but all work together inside the vbox.\n\nThis is intended to be an emergency stopgap\\\\backup solution for when the existing system falls over for the final time. Using hirens or other rescue software on the same flash drive (To be able to recover additional data, would be an added bonus).\n\nAny help would be greatly appreciated\n\n"
+    },
+    {
+      "id": "191880",
+      "timestamp": "2015-04-05T22:26:47+00:00",
+      "author": "steve6375",
+      "content": "Windows8ToGo will give you a bootable OS from a USB drive.\n\nSo you could install VBox and have a XP VHD which it will boot from.\n\nIf you use a USB 3 HDD and a USB 3 port, it shouldn\u0027t be too slow (depending on what system you boot it on).\n\n"
+    },
+    {
+      "id": "191881",
+      "timestamp": "2015-04-06T00:59:19+00:00",
+      "author": "Zoso",
+      "content": "hi old-baldy and welcome to reboot.pro!  \n\nI have done this myself by using usboot.org procedure on XP (both 32\\\u002664)  \n\ncheck it out. there is a learning curve with it but the forum at usboot.org is helpful for more info about it.  \n\n\u003cbr /\u003e\n\nthere may be other ways but I know you can do it this way successfully as I boot a universal XP that has several virtual machine softwares installed and working.   \n"
+    },
+    {
+      "id": "191885",
+      "timestamp": "2015-04-06T06:05:11+00:00",
+      "author": "cdob",
+      "content": "\u003e boot a usb drive that will give me a way to run a virtualbox host  \n\u003e\n\u003e I have tried a couple of linux distros (suse and Linux Mint) and have got no-where (Not enough linux knowledge).\n\nKnoppix 7.4.2 contains Virtualbox 4.3.14  \n[http://knopper.net/k...ppix742-en.html](http://knopper.net/knoppix/knoppix742-en.html \"External link\")  \n\nNo idea, if USB devices are supported out of the box.[https://www.virtualb...ntro-installing](https://www.virtualbox.org/manual/ch01.html#intro-installing \"External link\")   \n\n**Edited by cdob, 06 April 2015 - 06:11 AM.**\n"
+    },
+    {
+      "id": "191895",
+      "timestamp": "2015-04-06T17:34:20+00:00",
+      "author": "Rootman",
+      "content": "Like Steve suggested, I used [WintoUSB](http://www.easyuefi.com/wintousb/ \"External link\") to create an, ahem, quasi-legal Win2Go of my 64 bit Win 8.1 OS on a USB 3 drive. I also enabled Hyper-V on it and ran a VM that I migrated from VirtualBox.\n\nI see no reason why you could not install VirtualBox to the USB OS and run the VM from the same USB drive. It installed everything OK that I threw at it. Performance is pretty dismal even on a USB 3 drive and USB 3 port, but once it is going it seems to be OK.\n\nOne caveat - Windows 7 and 8(1) require re-activation if you switch the USB drive to another PC. If you keep the same drive on the same PC it will stay activated.\n\n"
+    },
+    {
+      "id": "191896",
+      "timestamp": "2015-04-06T18:36:38+00:00",
+      "author": "steve6375",
+      "content": "The thing about WinToGo is that it is likely to contain lots of drivers for both old and modern systems which means no matter what system you boot on, there is a good chance that the VM will work as long as the host does. 32-bit Win8.1 To Go should run on most platforms (but maybe not 512MB RAM ones...\n\nIf you want to activate it, you need a volume licence version and key in order to be able to move it to a different system because the Vol Licence version (e.g. Enterprise) is not hardware locked (but requires regular \u0027phone home\u0027 re-activation).\n\n"
+    }
+  ]
+}

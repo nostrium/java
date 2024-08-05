@@ -1,0 +1,40 @@
+{
+  "id": "10836",
+  "title": "HP Desktops \"Flashing Cursor\" won\u0027t boot USB drives",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "95613",
+      "timestamp": "2010-03-23T20:40:31+00:00",
+      "author": "chris_s",
+      "content": "I\u0027ve been working with VistaPE and now Win7Rescue for a year or two. I started off working with Dells and they have always performed great with bootable USB images. Recently we\u0027ve made the switch to HP desktops and now all my USB boot images don\u0027t boot. HP simply has a flashing cursor and won\u0027t do anything else. I tried searching the forums but didn\u0027t find much. Surely people must have run into this before? If burn the .iso output from winbuilder to a disk and boot the HP, it works fine. It seems like it\u0027s something with the disk formatting or grub4dos. Please if anyone can lend some advice, it would be very much appreciated.   \n"
+    },
+    {
+      "id": "95615",
+      "timestamp": "2010-03-23T20:49:52+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Surely people must have run into this before?\nSure they have.  \n\n* What are you using to partition/format the USB device?\n* Is it a stick, right?\n* Which filesystem are you using?\n\nThe flashing cursor is typical of unbalanced CHS/LBA, usually produced by the \"HP USB Format Tool\" or by other apps that behaves like that.  \n\nThere are a couple of possible fixes/workaround, mainly correct the CHS/LBA to balance them or (it depends on the cause) modifying the bootsector of the filesystem or (if you are using grub4dos) simply by-passing the latter.  \n\n![:wodoo:](http://reboot.pro/public/style_emoticons/default/wodoo.gif)  \nWonko   \n"
+    },
+    {
+      "id": "95717",
+      "timestamp": "2010-03-24T18:22:50+00:00",
+      "author": "chris_s",
+      "content": "\u003e \u003cbr /\u003e\n\u003e\n\u003e * What are you using to partition/format the USB device?\n\u003e * Is it a stick, right?\n\u003e * Which filesystem are you using?\n\u003e\n\u003e The flashing cursor is typical of unbalanced CHS/LBA, usually produced by the \"HP USB Format Tool\" or by other apps that behaves like that.  \n\u003e\n\u003e There are a couple of possible fixes/workaround, mainly correct the CHS/LBA to balance them or (it depends on the cause) modifying the bootsector of the filesystem or (if you are using grub4dos) simply by-passing the latter.\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\nI\u0027ve mainly been using PEtoUSB but have used the HP Format tool as well. We are using Fixed USB drives in enclosures. I\u0027ve tried different formats and file-systems to no luck. The PEtoUSB tool has a checkbox for CHS knockout punches. Is that what you are referring to?   \n"
+    },
+    {
+      "id": "95724",
+      "timestamp": "2010-03-24T18:49:49+00:00",
+      "author": "Randy Dale",
+      "content": "Go out and update the BIOS on the desktops. It is a known issue and was corrected with a BIOS udpate.  \n\n:smile:   \n"
+    },
+    {
+      "id": "95729",
+      "timestamp": "2010-03-24T19:07:20+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, I tried asking three questions, numbered from 1 to 3, why it is so difficult to have three answers, numbered as well from 1 to 3? :smile:  \n\nHowever, if the device(s) are external USB Hard Disk drives there is NO NEED whatsoever for any of the \"special\" utilities, XP Disk Management can partition and format them allright, as these devices are seen as \"Fixed\".  \n\nSame goes for Vista and Windows 7 (which can also partition and format \"Removable\" devices) BUT you may need to adjust the Registry to use the \"old\" convention on boundaries.  \n\nAs a retaliation for not having answered my questions I\u0027ll omit a link to the Registry fix, which I am sure you can find anyway.  \n\nIf you have used in the past either the HP USB Format Utility or PEtoUSB on external hard disks, it was perfectly unneeded, particularly being PEtoUSB limited by design to FAT16 it should have posed a serious limitation to the use of external HD. :smile:  \n\nThen, you may want to check if **for the specific** motherboards you have, there are similar reports, and check if an updated BIOS was issued to resolve this kind of problems.  \n\nI would like to congratulate with **Randy Dale** :smile: for having used his first post on the Board making a likely candidate for the 2010 award for \"The most generic and unreferenced/unbacked up suggestion\". :smile:  \n\n\u003cbr /\u003e\n\n:smile:  \nWonko   \n"
+    }
+  ]
+}

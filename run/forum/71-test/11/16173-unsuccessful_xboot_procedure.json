@@ -1,0 +1,22 @@
+{
+  "id": "16173",
+  "title": "unsuccessful xboot procedure.",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "146290",
+      "timestamp": "2012-01-12T16:31:24+00:00",
+      "author": "daps",
+      "content": "I was trying to make an xboot that can hold this installer:  \n\n1. windows 7 ultimate  \n2. windows vista ultimate  \n3. windows xp (sp3)  \n4. norton ghost  \n5. etc.  \n\nEventually i have made the xboot but i have found some errors:  \nUpon loading any OS installer particularly windows 7 or vista found this errors.  \n\na. slow loading the installer  \nb. the driver is missing after loading it since that the driver is not detecting upon the installation..  \n\nI already formatted the usb drive to fat32 but still the same.  \nNow i need help to fix it.  \nTell what to do and what procedure to make even what item to select.   \n"
+    },
+    {
+      "id": "146291",
+      "timestamp": "2012-01-12T16:39:18+00:00",
+      "author": "steve6375",
+      "content": "I am not sure XBOOT supports this. If you have a USB Flash drive see [http://www.rmprepusb...to-internal-hdd](http://www.rmprepusb.com/tutorials/install-xp-and-win7-to-internal-hdd \"External link\")  \nIf you have a USB Hard drive, you will need to modify the Win7 isos slightly, see Tut#43 Addendum for details.   \n"
+    }
+  ]
+}

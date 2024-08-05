@@ -1,0 +1,328 @@
+{
+  "id": "18157",
+  "title": "how to combine xp, 7, 8, etc into a bootable usb?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "167781",
+      "timestamp": "2013-02-13T06:38:19+00:00",
+      "author": "moklo",
+      "content": "how to combine xp, 7, 8, etc into a bootable usb? ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif) ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif) ![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif) ![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif)\n\n"
+    },
+    {
+      "id": "167787",
+      "timestamp": "2013-02-13T10:14:22+00:00",
+      "author": "steve6375",
+      "content": "Do you mean you want a bootable USB drive that will **install**XP or 7 or 8 onto another hard disk or do you mean you want a USB drive that you can boot directly to XP, 7 and 8 all from the USB drive?\n\n"
+    },
+    {
+      "id": "167812",
+      "timestamp": "2013-02-13T16:17:37+00:00",
+      "author": "totoblack100",
+      "content": "You can use xboot but sardu doesn\u0027t allow this!   \n"
+    },
+    {
+      "id": "167817",
+      "timestamp": "2013-02-13T19:14:35+00:00",
+      "author": "steve6375",
+      "content": "Or see [Tutorial 63](http://www.rmprepusb.com/tutorials/install-xp-and-win7-to-internal-hdd \"External link\") on my site - if you already have a grub4dos booting Flash drive, you can add the ISOs using this tutorial.\n\nYou can also install XP using WinToFlash - see [Tutorial 102](http://www.rmprepusb.com/tutorials/wintoflash \"External link\") on my site.\n\n"
+    },
+    {
+      "id": "167825",
+      "timestamp": "2013-02-13T21:59:02+00:00",
+      "author": "davidecosta",
+      "content": "\u003e You can use xboot but sardu doesn\u0027t allow this!\n\nExcuse me but this is false.  \nOnly SARDU at this moment can build automatically and whitout knowledge Windows XP, Vista **AND** Seven **AND** Eight from the sum USB whitout partitions\n\nxBoot don\u0027t support installer of Windows\n\nYumi support only Seven **OR** Eight\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "167843",
+      "timestamp": "2013-02-14T00:10:52+00:00",
+      "author": "moklo",
+      "content": "\u003e Do you mean you want a bootable USB drive that will **install**XP or 7 or 8 onto another hard disk or do you mean you want a USB drive that you can boot directly to XP, 7 and 8 all from the USB drive?\n\ni want the latter so I can choose what to install meaning Windows XP, Windows 7 and Windows 8 will be available on the list to be booted and installed. i also want to have live versions of them(portable ones) so i can carry them wherever i go. ![:happy_dance:](http://reboot.pro/public/style_emoticons/default/celebrate14.gif) ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)\n\n"
+    },
+    {
+      "id": "167845",
+      "timestamp": "2013-02-14T00:15:50+00:00",
+      "author": "moklo",
+      "content": "\u003e Or see [Tutorial 63](http://www.rmprepusb.com/tutorials/install-xp-and-win7-to-internal-hdd \"External link\") on my site - if you already have a grub4dos booting Flash drive, you can add the ISOs using this tutorial.\n\u003e\n\u003e You can also install XP using WinToFlash - see [Tutorial 102](http://www.rmprepusb.com/tutorials/wintoflash \"External link\") on my site.\n\nTYVM(thank you very much). I will try the tutorials. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\n"
+    },
+    {
+      "id": "167846",
+      "timestamp": "2013-02-14T00:26:30+00:00",
+      "author": "moklo",
+      "content": "\u003e Excuse me but this is false.  \n\u003e Only SARDU at this moment can build automatically and whitout knowledge Windows XP, Vista **AND** Seven **AND** Eight from the sum USB whitout partitions\n\u003e\n\u003e xBoot don\u0027t support installer of Windows\n\u003e\n\u003e Yumi support only Seven **OR** Eight\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\nWhat is SARDU? Can it combine XP, 7, and 8 al together to be booted and installed? or can it boot all bootable softwares? ![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif)\n\n"
+    },
+    {
+      "id": "167852",
+      "timestamp": "2013-02-14T04:09:34+00:00",
+      "author": "totoblack100",
+      "content": "@ Davide costa You see, when I put in a single partition my bartpe,win7pe, it does not work. I think that it is syslinux !syslinux used by sardu can boot the only systeme(bartpe or win7pe) Added in the first one! When I add bartpe in first time, bartpe work, but not win7pe!and vice-versa! Then I create 4 partition on my usb 8go, the 2nd with bartpe,slax, the 3th partition win7pe, and in the 4th partition:konboot,hdd regenerator, partition table doctor.! I don\u0027t know to setup a bootloader for all partition,then I use partition manager to boot The partition which I want to use. I don\u0027t use xboot because it doesn\u0027t allow to boot in other partition(2nd,3th...) bartpe with cfadisk   \n"
+    },
+    {
+      "id": "167854",
+      "timestamp": "2013-02-14T05:14:44+00:00",
+      "author": "totoblack100",
+      "content": "@mister Davide costa The problem is syslinux used by sardu to boot bartpe is syslinux3 and with win7pe sardu use syslinux4. Or in a single partition, There is only one syslinux to use to start booting bartpe and the win7pe . Thus, when I add win7pe first, it work fine, but bartpe don\u0027t boot.Because sardu use syslinux 4. And when I add bartpe first, it work fine, but win7pe don\u0027t boot.Because sardu use syslinux 3. Excuse me for my bad english ! ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n"
+    },
+    {
+      "id": "167858",
+      "timestamp": "2013-02-14T08:08:44+00:00",
+      "author": "davidecosta",
+      "content": "SARDU is one multiboot builder that can create one USB with single partition for install from the USB Windows XP, Windows Seven and Eight.  \nBuild one menu named windows for the choices.  \n\nLast SARDU use isolinux 4.x, today I release a new version (even syslinux 4.x), next week one version with both Syslinux 4.x than 5.x\n\nSARDU use only one partition\n\nNow I read that SARDU don\u0027t works fine and xBoot yes (build all windows)...if anyone can demonstrate this....\n\n"
+    },
+    {
+      "id": "167868",
+      "timestamp": "2013-02-14T11:55:18+00:00",
+      "author": "totoblack100",
+      "content": "if moklo want to setup xp, 7, 8, etc from usb, yes SARDU is one multiboot builder that can create one USB with single partition for install from the USB Windows XP, Windows Seven and Eight. But, if it is about bartpe, win7pe, win8pe, moklo must add her iso as a extra iso as makes it xboot! But this technic is only available with the primary partition of the usb. Bartpe.iso don\u0027t run with other partition on the usb!   \n"
+    },
+    {
+      "id": "167873",
+      "timestamp": "2013-02-14T12:29:19+00:00",
+      "author": "davidecosta",
+      "content": "Mmmm\n\nSARDU can build one USB with all theses without use extra functions  \n\n* LiveXP (Pe 1.x)\n* Windows PE (pebuilder PE 1.x)\n* UBCD4WIN(Pe 1.x)\n* WinXPE(Pe 1.x)\n* VistaPE (Pe2.x)\n* Win7peSE(Pe2.x)\n* Multi7PE se (Pe2.x)\n* Windows XP Home, Sp1, Sp2, Sp3\n* Windows XP Pro, Sp1, Sp2, Sp3\n* Windows XP64, Sp1, Sp2\n* Windows Vista\n* Windows Seven\n* Windows Eight\n\nI don\u0027t know why it says otherwise. At this moment only one software can build automatically one USB with one partition with all these ones installer: **SARDU**\n\n"
+    },
+    {
+      "id": "167882",
+      "timestamp": "2013-02-14T14:36:19+00:00",
+      "author": "moklo",
+      "content": "\u003e Mmmm\n\u003e\n\u003e SARDU can build one USB with all theses without use extra functions  \n\u003e\n\u003e * LiveXP (Pe 1.x)\n\u003e * Windows PE (pebuilder PE 1.x)\n\u003e * UBCD4WIN(Pe 1.x)\n\u003e * WinXPE(Pe 1.x)\n\u003e * VistaPE (Pe2.x)\n\u003e * Win7peSE(Pe2.x)\n\u003e * Multi7PE se (Pe2.x)\n\u003e * Windows XP Home, Sp1, Sp2, Sp3\n\u003e * Windows XP Pro, Sp1, Sp2, Sp3\n\u003e * Windows XP64, Sp1, Sp2\n\u003e * Windows Vista\n\u003e * Windows Seven\n\u003e * Windows Eight\n\u003e\n\u003e I don\u0027t know why it says otherwise. At this moment only one software can build automatically one USB with one partition with all these ones installer: **SARDU**\n\nokay, i will try SARDU to see to it. What I mean is can windows XP, Vista, Seven, Eight, etc. can be put together in a bootable usb so that i can choose any of them and install to the hard disk? TYVM\n\n**Edited by moklo, 14 February 2013 - 02:36 PM.**\n"
+    },
+    {
+      "id": "167884",
+      "timestamp": "2013-02-14T14:40:11+00:00",
+      "author": "Wonko the Sane",
+      "content": "Just for the record:\n\n* LiveXP (Pe 1.x) \\\u003c- Yes\n* Windows PE (pebuilder PE 1.x) \\\u003c- Yes and NO, it is a PE 1.x but Windows PE is NOT made by \"pebuilder\", a BartPE is made by Bart\u0027s PeBuilder, Windows PE 1.x was made by original MS procedure and only distributed/licensed/allowed to a restricted number of people OEM or \"partnering\" with MS.\n* UBCD4WIN(Pe 1.x) \\\u003c- Yes\n* WinXPE(Pe 1.x) \\\u003c- Yes\n* VistaPE (Pe2.x) \\\u003c- Yes\n* Win7peSE(Pe2.x) \\\u003c- **NO** , Pe**3**.x\n* Multi7PE se (Pe2.x) \\\u003c-**NO** , Pe**3**.x\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "167890",
+      "timestamp": "2013-02-14T14:51:18+00:00",
+      "author": "moklo",
+      "content": "\u003e Just for the record:\n\u003e\n\u003e * LiveXP (Pe 1.x) \\\u003c- Yes\n\u003e * Windows PE (pebuilder PE 1.x) \\\u003c- Yes and NO, it is a PE 1.x but Windows PE is NOT made by \"pebuilder\", a BartPE is made by Bart\u0027s PeBuilder, Windows PE 1.x was made by original MS procedure and only distributed/licensed/allowed to a restricted number of people OEM or \"partnering\" with MS.\n\u003e * UBCD4WIN(Pe 1.x) \\\u003c- Yes\n\u003e * WinXPE(Pe 1.x) \\\u003c- Yes\n\u003e * VistaPE (Pe2.x) \\\u003c- Yes\n\u003e * Win7peSE(Pe2.x) \\\u003c- **NO** , Pe**3**.x\n\u003e * Multi7PE se (Pe2.x) \\\u003c-**NO** , Pe**3**.x\n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\u003e Wonko\n\nwhere can i download these various PE\u0027s? could anyone give me the links, please?\n\n"
+    },
+    {
+      "id": "167892",
+      "timestamp": "2013-02-14T15:26:23+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e where can i download these various PE\u0027s? could anyone give me the links, please?\n\nYou do not \"download\" a PE.\n\nYou \"build\" one, starting from the corresponding OS install files (for which you have a proper license and/or that you can download directly from MS).\n\nThe whole idea behind non-redistributable fiiles is that you cannot re-distribute them.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "167898",
+      "timestamp": "2013-02-14T16:24:12+00:00",
+      "author": "davidecosta",
+      "content": ":smile:  \nI used copy and paste ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png) for write 2.x for all images ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)\n\nThanks to Wonko for revision\n\n"
+    },
+    {
+      "id": "167921",
+      "timestamp": "2013-02-14T23:23:50+00:00",
+      "author": "moklo",
+      "content": "\u003e You do not \"download\" a PE.\n\u003e\n\u003e You \"build\" one, starting from the corresponding OS install files (for which you have a proper license and/or that you can download directly from MS).\n\u003e\n\u003e The whole idea behind non-redistributable fiiles is that you cannot re-distribute them.\n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\u003e\n\u003e Wonko\n\nso, how can i build one? what program to use? what are the steps?\n\n"
+    },
+    {
+      "id": "167928",
+      "timestamp": "2013-02-15T03:43:56+00:00",
+      "author": "totoblack100",
+      "content": "ok mister Davide costa. I have tested the latest version 2.0.6 and it work fine with bartpe and win7pe in the same partition!  \nThe error came from the version which I used (version 2.0.3 of Sardu).this version cannot boot with both systems(bartpe and win7pe) in the same partition. But I like and I always use this version because it recognize all partition of my usb. Since version 2.0.4 to 2.0.6 Sardu Do not detect any more the other partitions on my usb. I don\u0027t understand why you dismiss the ability to recognize all partition of usb on the latest version of Sardu (2.0.4 to 2.0.6)?   \n\n**Edited by totoblack100, 15 February 2013 - 04:02 AM.**\n"
+    },
+    {
+      "id": "167935",
+      "timestamp": "2013-02-15T08:17:12+00:00",
+      "author": "davidecosta",
+      "content": "I dismis this for fully compatibility\n\n"
+    },
+    {
+      "id": "167936",
+      "timestamp": "2013-02-15T08:22:49+00:00",
+      "author": "moklo",
+      "content": "@ davide costa: does SARDU support pclinuxos?\n\n@ steve6375: how can i put pclinuxos .iso file to flash drive and boot it and save configurations like the Parted Magic?\n\nTYVM\n\n"
+    },
+    {
+      "id": "167939",
+      "timestamp": "2013-02-15T08:26:58+00:00",
+      "author": "davidecosta",
+      "content": "We are going OT.  \nFor question about SARDU there is the forum\n\npclinuxos isn\u0027t in my roundmap at this moment\n\n"
+    },
+    {
+      "id": "167945",
+      "timestamp": "2013-02-15T09:51:24+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e so, how can i build one? what program to use? what are the steps?\n\nAre you for real? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\nOne every three or four threads on this board is about PE building! ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)\n\nJust take some time looking around, google for the keywords in the posted list.\n\nRead here some (part of the) story:\n\n[http://reboot.pro/to...the-difference/](http://reboot.pro/topic/18084-whats-the-difference/ \"\")\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "167952",
+      "timestamp": "2013-02-15T14:06:06+00:00",
+      "author": "moklo",
+      "content": "okay. thanks a lot man.\n\n"
+    },
+    {
+      "id": "167781",
+      "timestamp": "2013-02-13T06:38:19+00:00",
+      "author": "moklo",
+      "content": "how to combine xp, 7, 8, etc into a bootable usb? ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif) ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif) ![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif) ![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif)\n\n"
+    },
+    {
+      "id": "167787",
+      "timestamp": "2013-02-13T10:14:22+00:00",
+      "author": "steve6375",
+      "content": "Do you mean you want a bootable USB drive that will **install**XP or 7 or 8 onto another hard disk or do you mean you want a USB drive that you can boot directly to XP, 7 and 8 all from the USB drive?\n\n"
+    },
+    {
+      "id": "167812",
+      "timestamp": "2013-02-13T16:17:37+00:00",
+      "author": "totoblack100",
+      "content": "You can use xboot but sardu doesn\u0027t allow this!   \n"
+    },
+    {
+      "id": "167817",
+      "timestamp": "2013-02-13T19:14:35+00:00",
+      "author": "steve6375",
+      "content": "Or see [Tutorial 63](http://www.rmprepusb.com/tutorials/install-xp-and-win7-to-internal-hdd \"External link\") on my site - if you already have a grub4dos booting Flash drive, you can add the ISOs using this tutorial.\n\nYou can also install XP using WinToFlash - see [Tutorial 102](http://www.rmprepusb.com/tutorials/wintoflash \"External link\") on my site.\n\n"
+    },
+    {
+      "id": "167825",
+      "timestamp": "2013-02-13T21:59:02+00:00",
+      "author": "davidecosta",
+      "content": "\u003e You can use xboot but sardu doesn\u0027t allow this!\n\nExcuse me but this is false.  \nOnly SARDU at this moment can build automatically and whitout knowledge Windows XP, Vista **AND** Seven **AND** Eight from the sum USB whitout partitions\n\nxBoot don\u0027t support installer of Windows\n\nYumi support only Seven **OR** Eight\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "167843",
+      "timestamp": "2013-02-14T00:10:52+00:00",
+      "author": "moklo",
+      "content": "\u003e Do you mean you want a bootable USB drive that will **install**XP or 7 or 8 onto another hard disk or do you mean you want a USB drive that you can boot directly to XP, 7 and 8 all from the USB drive?\n\ni want the latter so I can choose what to install meaning Windows XP, Windows 7 and Windows 8 will be available on the list to be booted and installed. i also want to have live versions of them(portable ones) so i can carry them wherever i go. ![:happy_dance:](http://reboot.pro/public/style_emoticons/default/celebrate14.gif) ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)\n\n"
+    },
+    {
+      "id": "167845",
+      "timestamp": "2013-02-14T00:15:50+00:00",
+      "author": "moklo",
+      "content": "\u003e Or see [Tutorial 63](http://www.rmprepusb.com/tutorials/install-xp-and-win7-to-internal-hdd \"External link\") on my site - if you already have a grub4dos booting Flash drive, you can add the ISOs using this tutorial.\n\u003e\n\u003e You can also install XP using WinToFlash - see [Tutorial 102](http://www.rmprepusb.com/tutorials/wintoflash \"External link\") on my site.\n\nTYVM(thank you very much). I will try the tutorials. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\n"
+    },
+    {
+      "id": "167846",
+      "timestamp": "2013-02-14T00:26:30+00:00",
+      "author": "moklo",
+      "content": "\u003e Excuse me but this is false.  \n\u003e Only SARDU at this moment can build automatically and whitout knowledge Windows XP, Vista **AND** Seven **AND** Eight from the sum USB whitout partitions\n\u003e\n\u003e xBoot don\u0027t support installer of Windows\n\u003e\n\u003e Yumi support only Seven **OR** Eight\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\nWhat is SARDU? Can it combine XP, 7, and 8 al together to be booted and installed? or can it boot all bootable softwares? ![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif)\n\n"
+    },
+    {
+      "id": "167852",
+      "timestamp": "2013-02-14T04:09:34+00:00",
+      "author": "totoblack100",
+      "content": "@ Davide costa You see, when I put in a single partition my bartpe,win7pe, it does not work. I think that it is syslinux !syslinux used by sardu can boot the only systeme(bartpe or win7pe) Added in the first one! When I add bartpe in first time, bartpe work, but not win7pe!and vice-versa! Then I create 4 partition on my usb 8go, the 2nd with bartpe,slax, the 3th partition win7pe, and in the 4th partition:konboot,hdd regenerator, partition table doctor.! I don\u0027t know to setup a bootloader for all partition,then I use partition manager to boot The partition which I want to use. I don\u0027t use xboot because it doesn\u0027t allow to boot in other partition(2nd,3th...) bartpe with cfadisk   \n"
+    },
+    {
+      "id": "167854",
+      "timestamp": "2013-02-14T05:14:44+00:00",
+      "author": "totoblack100",
+      "content": "@mister Davide costa The problem is syslinux used by sardu to boot bartpe is syslinux3 and with win7pe sardu use syslinux4. Or in a single partition, There is only one syslinux to use to start booting bartpe and the win7pe . Thus, when I add win7pe first, it work fine, but bartpe don\u0027t boot.Because sardu use syslinux 4. And when I add bartpe first, it work fine, but win7pe don\u0027t boot.Because sardu use syslinux 3. Excuse me for my bad english ! ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n"
+    },
+    {
+      "id": "167858",
+      "timestamp": "2013-02-14T08:08:44+00:00",
+      "author": "davidecosta",
+      "content": "SARDU is one multiboot builder that can create one USB with single partition for install from the USB Windows XP, Windows Seven and Eight.  \nBuild one menu named windows for the choices.  \n\nLast SARDU use isolinux 4.x, today I release a new version (even syslinux 4.x), next week one version with both Syslinux 4.x than 5.x\n\nSARDU use only one partition\n\nNow I read that SARDU don\u0027t works fine and xBoot yes (build all windows)...if anyone can demonstrate this....\n\n"
+    },
+    {
+      "id": "167868",
+      "timestamp": "2013-02-14T11:55:18+00:00",
+      "author": "totoblack100",
+      "content": "if moklo want to setup xp, 7, 8, etc from usb, yes SARDU is one multiboot builder that can create one USB with single partition for install from the USB Windows XP, Windows Seven and Eight. But, if it is about bartpe, win7pe, win8pe, moklo must add her iso as a extra iso as makes it xboot! But this technic is only available with the primary partition of the usb. Bartpe.iso don\u0027t run with other partition on the usb!   \n"
+    },
+    {
+      "id": "167873",
+      "timestamp": "2013-02-14T12:29:19+00:00",
+      "author": "davidecosta",
+      "content": "Mmmm\n\nSARDU can build one USB with all theses without use extra functions  \n\n* LiveXP (Pe 1.x)\n* Windows PE (pebuilder PE 1.x)\n* UBCD4WIN(Pe 1.x)\n* WinXPE(Pe 1.x)\n* VistaPE (Pe2.x)\n* Win7peSE(Pe2.x)\n* Multi7PE se (Pe2.x)\n* Windows XP Home, Sp1, Sp2, Sp3\n* Windows XP Pro, Sp1, Sp2, Sp3\n* Windows XP64, Sp1, Sp2\n* Windows Vista\n* Windows Seven\n* Windows Eight\n\nI don\u0027t know why it says otherwise. At this moment only one software can build automatically one USB with one partition with all these ones installer: **SARDU**\n\n"
+    },
+    {
+      "id": "167882",
+      "timestamp": "2013-02-14T14:36:19+00:00",
+      "author": "moklo",
+      "content": "\u003e Mmmm\n\u003e\n\u003e SARDU can build one USB with all theses without use extra functions  \n\u003e\n\u003e * LiveXP (Pe 1.x)\n\u003e * Windows PE (pebuilder PE 1.x)\n\u003e * UBCD4WIN(Pe 1.x)\n\u003e * WinXPE(Pe 1.x)\n\u003e * VistaPE (Pe2.x)\n\u003e * Win7peSE(Pe2.x)\n\u003e * Multi7PE se (Pe2.x)\n\u003e * Windows XP Home, Sp1, Sp2, Sp3\n\u003e * Windows XP Pro, Sp1, Sp2, Sp3\n\u003e * Windows XP64, Sp1, Sp2\n\u003e * Windows Vista\n\u003e * Windows Seven\n\u003e * Windows Eight\n\u003e\n\u003e I don\u0027t know why it says otherwise. At this moment only one software can build automatically one USB with one partition with all these ones installer: **SARDU**\n\nokay, i will try SARDU to see to it. What I mean is can windows XP, Vista, Seven, Eight, etc. can be put together in a bootable usb so that i can choose any of them and install to the hard disk? TYVM\n\n**Edited by moklo, 14 February 2013 - 02:36 PM.**\n"
+    },
+    {
+      "id": "167884",
+      "timestamp": "2013-02-14T14:40:11+00:00",
+      "author": "Wonko the Sane",
+      "content": "Just for the record:\n\n* LiveXP (Pe 1.x) \\\u003c- Yes\n* Windows PE (pebuilder PE 1.x) \\\u003c- Yes and NO, it is a PE 1.x but Windows PE is NOT made by \"pebuilder\", a BartPE is made by Bart\u0027s PeBuilder, Windows PE 1.x was made by original MS procedure and only distributed/licensed/allowed to a restricted number of people OEM or \"partnering\" with MS.\n* UBCD4WIN(Pe 1.x) \\\u003c- Yes\n* WinXPE(Pe 1.x) \\\u003c- Yes\n* VistaPE (Pe2.x) \\\u003c- Yes\n* Win7peSE(Pe2.x) \\\u003c- **NO** , Pe**3**.x\n* Multi7PE se (Pe2.x) \\\u003c-**NO** , Pe**3**.x\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "167890",
+      "timestamp": "2013-02-14T14:51:18+00:00",
+      "author": "moklo",
+      "content": "\u003e Just for the record:\n\u003e\n\u003e * LiveXP (Pe 1.x) \\\u003c- Yes\n\u003e * Windows PE (pebuilder PE 1.x) \\\u003c- Yes and NO, it is a PE 1.x but Windows PE is NOT made by \"pebuilder\", a BartPE is made by Bart\u0027s PeBuilder, Windows PE 1.x was made by original MS procedure and only distributed/licensed/allowed to a restricted number of people OEM or \"partnering\" with MS.\n\u003e * UBCD4WIN(Pe 1.x) \\\u003c- Yes\n\u003e * WinXPE(Pe 1.x) \\\u003c- Yes\n\u003e * VistaPE (Pe2.x) \\\u003c- Yes\n\u003e * Win7peSE(Pe2.x) \\\u003c- **NO** , Pe**3**.x\n\u003e * Multi7PE se (Pe2.x) \\\u003c-**NO** , Pe**3**.x\n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\u003e Wonko\n\nwhere can i download these various PE\u0027s? could anyone give me the links, please?\n\n"
+    },
+    {
+      "id": "167892",
+      "timestamp": "2013-02-14T15:26:23+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e where can i download these various PE\u0027s? could anyone give me the links, please?\n\nYou do not \"download\" a PE.\n\nYou \"build\" one, starting from the corresponding OS install files (for which you have a proper license and/or that you can download directly from MS).\n\nThe whole idea behind non-redistributable fiiles is that you cannot re-distribute them.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "167898",
+      "timestamp": "2013-02-14T16:24:12+00:00",
+      "author": "davidecosta",
+      "content": ":smile:  \nI used copy and paste ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png) for write 2.x for all images ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)\n\nThanks to Wonko for revision\n\n"
+    },
+    {
+      "id": "167921",
+      "timestamp": "2013-02-14T23:23:50+00:00",
+      "author": "moklo",
+      "content": "\u003e You do not \"download\" a PE.\n\u003e\n\u003e You \"build\" one, starting from the corresponding OS install files (for which you have a proper license and/or that you can download directly from MS).\n\u003e\n\u003e The whole idea behind non-redistributable fiiles is that you cannot re-distribute them.\n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\u003e\n\u003e Wonko\n\nso, how can i build one? what program to use? what are the steps?\n\n"
+    },
+    {
+      "id": "167928",
+      "timestamp": "2013-02-15T03:43:56+00:00",
+      "author": "totoblack100",
+      "content": "ok mister Davide costa. I have tested the latest version 2.0.6 and it work fine with bartpe and win7pe in the same partition!  \nThe error came from the version which I used (version 2.0.3 of Sardu).this version cannot boot with both systems(bartpe and win7pe) in the same partition. But I like and I always use this version because it recognize all partition of my usb. Since version 2.0.4 to 2.0.6 Sardu Do not detect any more the other partitions on my usb. I don\u0027t understand why you dismiss the ability to recognize all partition of usb on the latest version of Sardu (2.0.4 to 2.0.6)?   \n\n**Edited by totoblack100, 15 February 2013 - 04:02 AM.**\n"
+    },
+    {
+      "id": "167935",
+      "timestamp": "2013-02-15T08:17:12+00:00",
+      "author": "davidecosta",
+      "content": "I dismis this for fully compatibility\n\n"
+    },
+    {
+      "id": "167936",
+      "timestamp": "2013-02-15T08:22:49+00:00",
+      "author": "moklo",
+      "content": "@ davide costa: does SARDU support pclinuxos?\n\n@ steve6375: how can i put pclinuxos .iso file to flash drive and boot it and save configurations like the Parted Magic?\n\nTYVM\n\n"
+    },
+    {
+      "id": "167939",
+      "timestamp": "2013-02-15T08:26:58+00:00",
+      "author": "davidecosta",
+      "content": "We are going OT.  \nFor question about SARDU there is the forum\n\npclinuxos isn\u0027t in my roundmap at this moment\n\n"
+    },
+    {
+      "id": "167945",
+      "timestamp": "2013-02-15T09:51:24+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e so, how can i build one? what program to use? what are the steps?\n\nAre you for real? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\nOne every three or four threads on this board is about PE building! ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)\n\nJust take some time looking around, google for the keywords in the posted list.\n\nRead here some (part of the) story:\n\n[http://reboot.pro/to...the-difference/](http://reboot.pro/topic/18084-whats-the-difference/ \"\")\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "167952",
+      "timestamp": "2013-02-15T14:06:06+00:00",
+      "author": "moklo",
+      "content": "okay. thanks a lot man.\n\n"
+    },
+    {
+      "id": "172147",
+      "timestamp": "2013-05-07T16:06:18+00:00",
+      "author": "Shahzaib",
+      "content": "[http://www.rmprepusb...rials/win7onusb](http://www.rmprepusb.com/tutorials/win7onusb \"External link\") 100% work I include G-data+Hiren+Ubuntu+MAC too GUI I built with EZbootcd Software ,.I m not creator of this article that link,Thanks that person,.BCD and bootmagr use of Windows vista,.I modify XP with sysprep by easy sysprep capture it and convert it wim image with WDS,.\n\n"
+    },
+    {
+      "id": "172149",
+      "timestamp": "2013-05-07T16:10:09+00:00",
+      "author": "Shahzaib",
+      "content": "Use Ultra Iso to write usb,.\n\n"
+    },
+    {
+      "id": "172150",
+      "timestamp": "2013-05-07T16:12:05+00:00",
+      "author": "steve6375",
+      "content": "It is my tutorial, but I cannot take any credit for the script which based on fujianabc\u0027s Reboot.pro forum post \u0027NT 6.x fast installer: install Win7 directly to USB external drive\u0027. ![:clap:](http://reboot.pro/public/style_emoticons/default/clap.gif)\n\n"
+    }
+  ]
+}

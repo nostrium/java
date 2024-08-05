@@ -1,0 +1,16 @@
+{
+  "id": "11163",
+  "title": "PLoP Boot Manager 5.0.9 released",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "98485",
+      "timestamp": "2010-04-21T09:31:17+00:00",
+      "author": "BiTByte",
+      "content": "hi,  \nI fixed a small bug in the USB driver INT 13h/Function 8. You should update the boot manager if you use it to boot from usb.   \n\ninfo: [http://www.plop.at/e...mngrusblog.html](http://www.plop.at/en/bootmngrusblog.html \"External link\")  \ndownload: [http://www.plop.at/e...tmanagerdl.html](http://www.plop.at/en/bootmanagerdl.html \"External link\")  \n\nbest regards  \nelmar   \n"
+    }
+  ]
+}

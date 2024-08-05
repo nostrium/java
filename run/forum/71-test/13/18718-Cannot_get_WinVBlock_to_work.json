@@ -1,0 +1,88 @@
+{
+  "id": "18718",
+  "title": "Cannot get WinVBlock to work",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "174758",
+      "timestamp": "2013-07-13T19:30:45+00:00",
+      "author": "ShinIori319",
+      "content": "Hello there. I\u0027m new to these forums. I\u0027m not even sure if I\u0027m posting in the right part.\n\nAnyway, I\u0027ll get straight to the point.\n\nI\u0027m trying to install both Windows 2000 Professional and Windows XP (Fundamentals for Legacy PCs) on two virtual HDs, but I seem to be having a hard time getting both of them to work. Here\u0027s what happens.\n\n**Windows FLP**\n\nI have tried installing both through Virtual PC and the method described in [http://reboot.pro/to...ot-os-from-vhd/](http://reboot.pro/topic/15997-install-and-boot-unsupported-for-native-boot-os-from-vhd/ \"\") . When installing using the latter, the Setup program modifies my physical XP partition\u0027s boot loader (my HDD configuration is listed below). Other than that, the system seems to boot fine. But when I reach the boot screen, the system gets a BSoD (0x7B, I think). I have tried installing the WinVBlock driver in many ways. By using the \"F6\" disk image, through Virtual PC, and even tried installing it through a MS DaRT recovery disk. And none of these worked.\n\n**Windows 2000**\n\nThe problem is almost the same, except for one thing. When I try installing with the mounted ISO, the Setup program loads the WinVBlock driver. It recognizes the virtual HD disk, but won\u0027t recognize the partition already set in it, or even modify its contents. (It appears as an \"unpartitioned space\" and when I try to format it, the Setup program says the disk doesn\u0027t have a compatible partition for Windows 2000 or something.) My guess is the driver\u0027s not 100% compatible. Is there any alternative for using WinVBlock on Win2K?\n\nAny advice for these? Thanks in advance!\n\n**Edited by ShinIori319, 13 July 2013 - 07:34 PM.**\n"
+    },
+    {
+      "id": "174761",
+      "timestamp": "2013-07-13T20:20:19+00:00",
+      "author": "steve6375",
+      "content": "I have not played with Virtual PC much - have you tried Oracle Virtual Box?\n\n"
+    },
+    {
+      "id": "174763",
+      "timestamp": "2013-07-13T21:03:30+00:00",
+      "author": "ShinIori319",
+      "content": "\u003e I have not played with Virtual PC much - have you tried Oracle Virtual Box?\n\nYes. I use VBox for systems that won\u0027t work on Virtual PC. But I don\u0027t think the emulator matters much, as long as they both support VHD, which is the format for the images images I\u0027m trying to get to boot natively.\n\nAlso, here\u0027s how my menu.lst file on WinGRUB/NeoGRUB is set up, just in case there\u0027s something wrong:\n\n```\ntitle Install Microsoft Windows 2000 Professional (part 1)\nfind --set-root /BootImgs/Win2k.vhd\nmap /BootImgs/Win2k.vhd (hd0)\nfind --set-root /BootImgs/Win2k.iso\nmap /BootImgs/Win2k.iso (0xff)\nmap (hd0) (hd1)\nmap (hd1) (hd2)\nmap (hd2) (hd3)\nfind --set-root /BootImgs/WinVBlock.ima\nmap /BootImgs/WinVBlock.ima (fd0)\nmap /BootImgs/WinVBlock.ima (fd1)\nmap --rd-size\u003d2048\nmap --mem (rd)+4 (0x55)\nmap --hook\nwrite (0x55) #GRUB4DOS\\x00v\u003d1\\x00Win2k.vhd\\x00\\x80\\x00\nchainloader (0xff)\n\ntitle Install Microsoft Windows 2000 Professional (part 2)\nfind --set-root /BootImgs/Win2k.vhd\nmap /BootImgs/Win2k.vhd (hd0)\nfind --set-root /BootImgs/Win2k.iso\nmap /BootImgs/Win2k.iso (0xff)\nmap (hd0) (hd1)\nmap (hd1) (hd2)\nmap (hd2) (hd3)\nfind --set-root /BootImgs/WinVBlock.ima\nmap /BootImgs/WinVBlock.ima (fd0)\nmap /BootImgs/WinVBlock.ima (fd1)\nmap --rd-size\u003d2048\nmap --mem (rd)+4 (0x55)\nmap --hook\nwrite (0x55) #GRUB4DOS\\x00v\u003d1\\x00Win2k.vhd\\x00\\x80\\x00\nroot (hd0,0)\nchainloader /ntldr\n\ntitle Instal Microsoft Windows FLP (part 1)\nfind --set-root /BootImgs/WinFLP.vhd\nmap /BootImgs/WinFLP.vhd (hd0)\nfind --set-root /BootImgs/WinFLP.iso\nmap /BootImgs/WinFLP.iso (0xff)\nmap (hd0) (hd1)\nmap (hd1) (hd2)\nmap (hd2) (hd3)\nfind --set-root /BootImgs/WinVBlock.ima\nmap /BootImgs/WinVBlock.ima (fd0)\nmap /BootImgs/WinVBlock.ima (fd1)\nmap --rd-size\u003d2048\nmap --mem (rd)+4 (0x55)\nmap --hook\nwrite (0x55) #GRUB4DOS\\x00v\u003d1\\x00WinFLP.vhd\\x00\\x80\\x00\nchainloader (0xff)\n\ntitle Install Microsoft Windows FLP (part 2)\nfind --set-root /BootImgs/WinFLP.vhd\nmap /BootImgs/WinFLP.vhd (hd0)\nfind --set-root /BootImgs/WinFLP.iso\nmap /BootImgs/WinFLP.iso (0xff)\nmap (hd0) (hd1)\nmap (hd1) (hd2)\nmap (hd2) (hd3)\nfind --set-root /BootImgs/WinVBlock.ima\nmap /BootImgs/WinVBlock.ima (fd0)\nmap /BootImgs/WinVBlock.ima (fd1)\nmap --rd-size\u003d2048\nmap --mem (rd)+4 (0x55)\nmap --hook\nwrite (0x55) #GRUB4DOS\\x00v\u003d1\\x00WinFLP.vhd\\x00\\x80\\x00\nroot (hd0,0)\nchainloader /ntldr\n\ntitle Microsoft Windows 2000 Professional\nfind --set-root /BootImgs/Win2k.vhd\nmap /BootImgs/Win2k.vhd (hd0)\nmap (hd0) (hd1)\nmap (hd1) (hd2)\nmap (hd2) (hd3)\nmap --rd-size\u003d2048\nmap --mem (rd)+4 (0x55)\nmap --hook\nwrite (0x55) #GRUB4DOS\\x00v\u003d1\\x00Win2k.vhd\\x00\\x80\\x00\nroot (hd0,0)\nchainloader /ntldr\n\ntitle Microsoft Windows Fundamentals for Legacy PCs\nfind --set-root /BootImgs/WinFLP.vhd\nmap /BootImgs/WinFLP.vhd (hd0)\nmap (hd0) (hd1)\nmap (hd1) (hd2)\nmap (hd2) (hd3)\nmap --rd-size\u003d2048\nmap --mem (rd)+4 (0x55)\nmap --hook\nwrite (0x55) #GRUB4DOS\\x00v\u003d1\\x00WinFLP.vhd\\x00\\x80\\x00\nroot (hd0,0)\nchainloader +1\n```\n\n\u003cbr /\u003e\n\n**Edited by ShinIori319, 13 July 2013 - 09:47 PM.**\n"
+    },
+    {
+      "id": "174764",
+      "timestamp": "2013-07-13T21:55:21+00:00",
+      "author": "steve6375",
+      "content": "Shouldn\u0027t it be #!\n\n```\nwrite (0x55) #!GRUB4DOS\\x00v\u003d1\\x00Win2k.vhd\\x00\\x80\\x00\n```\n\nP.S. Also is the vhd in the root - if not then you have not specified a path??\n\n"
+    },
+    {
+      "id": "174765",
+      "timestamp": "2013-07-13T22:16:26+00:00",
+      "author": "ShinIori319",
+      "content": "Well, I\u0027m not sure how the write command works.\n\nBut yes, if you look at the file, the path was specified. I have all of my image files in a folder called \"BootImgs\".\n\nThe disks boot, but the OSes within crash with that dreaded blue screen.\n\n"
+    },
+    {
+      "id": "174766",
+      "timestamp": "2013-07-13T22:20:06+00:00",
+      "author": "steve6375",
+      "content": "I see no BootImgs path in the write command??\n\ntry using map --mem for the ISO\n\n```\nmap --mem /BootImgs/WinFLP.iso (0xff)\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "174767",
+      "timestamp": "2013-07-13T22:30:29+00:00",
+      "author": "ShinIori319",
+      "content": "Okay, I\u0027ll try that. If something comes up, I\u0027ll post it.\n\n"
+    },
+    {
+      "id": "174768",
+      "timestamp": "2013-07-13T23:01:15+00:00",
+      "author": "steve6375",
+      "content": "I just tried\n\n```\nwrite (0x55) #!GRUB4DOS\\x00v\u003d1\\x00WinFLP.vhd\\x00\\x80\\x00\n```\n\nwith WinFLP.vhd in the ROOT of my USB Hard disk (under VBox+VMStarter using E2B to install XP from ISO using --mem), and I got as far as being able to see and format the VHD in XP Setup. (I had already used Win 7 Disk Management to make, initialize and format as NTFS a 10GB VHD file).\n\nSo I would advise first putting the VHD in the root and trying the above command. Once that is working try adding a path - e.g.\n\n```\nwrite (0x55) #!GRUB4DOS\\x00v\u003d1\\x00BootImgs/WinFLP.vhd\\x00\\x80\\x00\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "174769",
+      "timestamp": "2013-07-13T23:11:06+00:00",
+      "author": "ilko",
+      "content": "\u003e ...  \n\u003e\n\u003e Also, here\u0027s how my menu.lst file on WinGRUB/NeoGRUB is set up...\n\nJust in case- are you using WinGRUB/NeoGRUB or grub4dos? I am not sure what grub4dos was used for the former, but would stick with latest 0.4.5c grub4dos:\n\n[http://code.google.c.../downloads/list](http://code.google.com/p/grub4dos-chenall/downloads/list \"External link\")\n\n"
+    },
+    {
+      "id": "174770",
+      "timestamp": "2013-07-13T23:13:29+00:00",
+      "author": "steve6375",
+      "content": "I used 10 July 2013 grub4dos 0.4.5c at link Ilko gave.\n\n"
+    },
+    {
+      "id": "174771",
+      "timestamp": "2013-07-13T23:43:23+00:00",
+      "author": "steve6375",
+      "content": "I think this is how it works...\n\nWhat we need to do is\n\n1. in grub4dos, set floppy 0 and 1 with an F6 floppy disk image which will cause XP to load WinVBlock as a driver when Setup starts\n\n2. Load the ISO into memory and map it to 0xff as a BIOS virtual CD (0xff)\n\n3. Map a false floppy disk (device 0x55) as a virtual device in memory and write bytes to the start of the \u0027floppy disk 0x55\u0027 with the path of the vhd and the type of disk to emulate (0x80\u003dHDD).\n\n4. Swap disks around so boot drive is not hd0 (or XP may modify boot sectors on that drive)\n\n5. Run XP ISO (chainloader command)\n\n6. XP Setup runs and detects the F6 floppy disks and thus loads the WinVBlock driver (set as default driver in the floppy image)\n\n7. WinVBlock driver searches floppy devices from 2 to 0x7f for a floppy that starts with #!GRUB4DOS\n\n8. WinVBlock driver finds our \u0027write\u0027 string at the start of the virtual floppy 0x55 and finds the path and name of the VHD file and the device ID to map it to\n\n9. WinVBlock searches all devices for the VHD file and mounts it as the device type specified (0x80\u003dHDD in this case, 0xff\u003dCD)\n\n10. Setup continues and lists all drives that it can see - this should include the VHD drive\n\nXP Part 2 is similar but we need to map the VHD as drive hd0 and boot from it - once XP switches to protected mode, winvblock should load the VHD file to allow XP to access the VHD and continue booting.\n\n"
+    },
+    {
+      "id": "174778",
+      "timestamp": "2013-07-14T08:32:57+00:00",
+      "author": "Wonko the Sane",
+      "content": "As a general rule of thumb BOTH VirtualPC and VirtualBox have \"non-standard\" virtual (simulated) devices that usually need specific drivers NOT included in \"default\" (oldish) install files.\n\nHence the 0x0000007b - Inaccessible Boot Device - normally caused by the lack of an appropriate mass strorage drivers.\n\nMore loosely, and in my personal experience, among all the VM available, Virtual PC is one of the less \"reliable\" when it comes to experimenting (which doesn\u0027t mean that it doesn\u0027t work allright once you have found how to install/run the whatever you are experimenting with), so yes, I would say that the specific VM does count.\n\nFor experiments it is always recommended (by me) to try using Qemu (+Qemu Manager) which unlike the above mentioned VM\u0027s does use \"standard\" virtual hardware (though it will be slower):\n\n[http://web.archive.o...uk/download.htm](http://web.archive.org/web/20120607071209/http://www.davereyn.co.uk/download.htm \"External link\")\n\n[http://web.archive.o...etupqemuk70.exe](http://web.archive.org/web/20120506095037/http://www.davereyn.co.uk/qem/setupqemuk70.exe \"External link\")\n\nAdditionally a .vhd (a normal .vhd, i.e. a \"static\" one, not a \"dynamic\" one) is nothing but a RAW disk image with a single sector appended to it.\n\nYou can convert back and forth static .vhd to RAW all the times you want, there are more than a few tools capable of doing that, most notably Clonedisk:\n\n[http://labalec.fr/erwan/?page_id\u003d42](http://labalec.fr/erwan/?page_id\u003d42 \"External link\")\n\n[http://reboot.pro/fi...e/24-clonedisk/](http://reboot.pro/files/file/24-clonedisk/ \"\")\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "175012",
+      "timestamp": "2013-07-23T05:22:35+00:00",
+      "author": "ShinIori319",
+      "content": "Okay, I have tried many things, without any success. Only thing I have left would be an offline installation of the driver. Only thing I have is the WinVBlock INF file, but I don\u0027t know what entries to add into the Registry. (I know how to edit an offline registry, though.)\n\n"
+    }
+  ]
+}

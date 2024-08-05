@@ -1,0 +1,34 @@
+{
+  "id": "21752",
+  "title": "Determine UEFI class/specifications version?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "206620",
+      "timestamp": "2018-04-02T23:19:00+00:00",
+      "author": "ndog37",
+      "content": "I\u0027m looking for a way to quickly determine which version of UEFI is on my system and others computers easily\n\nI\u0027ve used ipxe to load UEFI Interactive Shell v2.1 , which states with **ver** command\n\nUEFI Interactive Shell v2.1\n\nEDK II\n\nUEFI **v2.50** (HP, 0x00010009)\n\nHow can I determine this from windows, osx and linux?\n\nThanks\n\n"
+    },
+    {
+      "id": "206623",
+      "timestamp": "2018-04-04T15:21:29+00:00",
+      "author": "Wonko the Sane",
+      "content": "WMIC BIOS?\n\n[https://winaero.com/...ion-windows-10/](https://winaero.com/blog/find-bios-uefi-version-windows-10/ \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "206625",
+      "timestamp": "2018-04-05T00:27:05+00:00",
+      "author": "ndog37",
+      "content": "Hmm\n\nSMBIOS Version is 3.0 according to wmic and uefi shell. I guess its too low level to be seen by the OS?\n\nedit: this is a different machine than the original post - acer spin5, original was HP EliteBook x360 1030 G2, same EFI spec by looks of things\n\n[http://www.uefi.org/specifications](http://www.uefi.org/specifications \"External link\")\n\n![2018_04_05_12_23_34_Clipboard.png](https://preview.ibb.co/bBvVUx/2018_04_05_12_23_34_Clipboard.png)\n\n**Edited by ndog37, 05 April 2018 - 12:29 AM.**\n"
+    },
+    {
+      "id": "206626",
+      "timestamp": "2018-04-05T07:58:04+00:00",
+      "author": "Wonko the Sane",
+      "content": "I don\u0027t think it is too \"low-level\", most probably none of the *geniuses* at Intel and MS thought it was useful and didn\u0027t provide a \"handle\" or \"hook\" to get it.\n\nMy guess is that - like \\*anything\\* connected to the stupid EFI/UEFI - there is a mis-understanding/mis-definition (as it is \"normal\", noone in his/her right mind will ever read 2200 pages of specifications, and even if he/she does, succeed in making anything compliant, as the probabilities of a misunderstanding are very, very high), and BTW they cannot avoid making any number of updates/revisions:\n\n[http://www.uefi.org/specifications](http://www.uefi.org/specifications \"External link\")\n\nThe number that you are looking for and obtain with \"ver\" in the UEFI shell has seemingly nothing to do with the \"version\" that you can get via WMIC or similar, basically because (as per your screenshot) it is NOT called \"version\" but rather \"EFI Specification Revision\" (aptly called in the above official link \"UEFI specification version\".\n\nI expected that Windows Management Instrumentation had a field for that (at least on 8 and/or 10), but evidently there isnt one. ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\n\nMaybe - just maybe - there is something of use in the UEFI Test Tools (the thing that ***only one line below*** is renamed to \"Self Certification Test\")\n\n[http://uefi.org/specs/access](http://uefi.org/specs/access \"External link\")\n\n[http://www.uefi.org/..._SCT_2.3.1c.zip](http://www.uefi.org/sites/default/files/resources/UEFI_SCT_2.3.1c.zip \"External link\")\n\nUnder Linux, you may want to try/look for efivars/efivarfs, but again no idea if it exposes the specification (version or revision) as a variable:\n\n[https://firmware.int...ariables-linux](https://firmware.intel.com/blog/accessing-uefi-variables-linux%C2%A0 \"External link\")\n\nefivar -l\n\nshould list all variables available, but then most will need to be \"decoded\" in human readable form. ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    }
+  ]
+}

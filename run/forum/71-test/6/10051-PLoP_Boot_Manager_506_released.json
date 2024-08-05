@@ -1,0 +1,16 @@
+{
+  "id": "10051",
+  "title": "PLoP Boot Manager 5.0.6 released.",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "87581",
+      "timestamp": "2009-12-22T19:57:11+00:00",
+      "author": "Icecube",
+      "content": "\u003e Tue 22/Dec/2009  \n\u003e\n\u003e PLoP Boot Manager 5.0.6 released. I added a new feature for the binary version. You can activate a startup hotkey. You get the message to press CTRL-A to start the boot manager. If you don\u0027t press it, booting continues without the boot manager. This will be useful for CD\u0027s and ROM\u0027s. The ROM version had a problem with the ESC and continue booting. This is fixed now. I also updated the harddisk detection. It\u0027s only a cosmetic change and should change nothing about the boot manager behaivour.  \n\u003e\n\u003e plpcfgbt 0.7 released. Startup hotkey option added.  \n\u003e\n\u003e plpbtrom 0.3 released. grabid option updated. Rom filesize check updated.\n[http://www.plop.at/e...mngrusblog.html](http://www.plop.at/en/bootmngrusblog.html \"External link\")   \n"
+    }
+  ]
+}

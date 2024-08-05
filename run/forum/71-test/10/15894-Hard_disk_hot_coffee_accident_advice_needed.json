@@ -1,0 +1,40 @@
+{
+  "id": "15894",
+  "title": "Hard disk / hot coffee accident - advice needed",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "142785",
+      "timestamp": "2011-11-26T01:04:07+00:00",
+      "author": "dmtelf",
+      "content": "In the middle of setting up a bootable USB stick, I accidentally spilt about 1cm of hot sugary coffee into the trackpad of my Dell D620 which immediately powered itself down.  \n\nI immediately turned it upside down \\\u0026 removed the drive caddy. There wasn\u0027t any visible liquid on the surface of the HD label side.  \n\nTo be on the safe side, the caddy/drive was sandwiched between two very large bags of silica gel which went into a plastic bag for 1 week.  \n\nNow when I connect the HD to an external SATA cradle \\\u0026 power it on, Windows 7\u0027s Disk Manager crashes when loading. It recovers as soon as I turn off the cradle.  \n\nRight now I don\u0027t know the extent of the damage to the HD. I need some advice on the best way to progress - should I make a raw image of the HD using TestDisk or..?  \n\nThe drive\u0027s specs are as below \\\u0026 I have a separate HD for the raw image:  \n\nSeagate Momentus 7200.2 120Gb  \n\nModel number  \nST9120823AS  \n\n2 disks  \n3 heads  \n512 bytes/sector  \n16,383/16/63 logical CHS  \n\nThanks.  \n\nDMTelf   \n"
+    },
+    {
+      "id": "142796",
+      "timestamp": "2011-11-26T09:01:56+00:00",
+      "author": "steve6375",
+      "content": "Are you trying to boot from the hard disk via external SATA? This may not work if it is on a different controller unless you sysprep Windows first (which you cannot do!).  \nWhy do you think the hard disk was harmed in the first place?  \nWhy not just put the hard disk back where it was and see if it works?   \n"
+    },
+    {
+      "id": "142803",
+      "timestamp": "2011-11-26T12:05:13+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, to be on the safe side, you should (actually should have):\n\n* remove the PCB from the drive\n* wash it in mildly warm water with a neutral soap\n* rinse thouroughly in normal water\n* wash/rinse in distilled water\n* let it dry\n\n\u003cbr /\u003e\n\nI doubt that any coffee can have actually entered the hard disk mechanical part.  \n\nYou don\u0027t specify whether (without being connected to any PC, only powered) the drive spins up normally, any strange noise, etc.  \n\nSure, if the disk is functional (even if it has problems connecting it to a Windows 7 through SATA or e-sata) FIRST thing you should do is to image it in a forensic sound manner.  \nYou may want to use a USB connection (which is more \"forgiving\" generally speaking if the device has an issue) and a \"plainer\" Operating System than Windows7.  \nIf you manage to have it working (even if \"not recognised\" or \"need to be formatted\") under Windows, you should use Datarescuedd:  \n\u003chttp://reboot.pro/7783/\u003e  \nwith THIS approach:  \n\u003chttp://reboot.pro/15040/page__st__8\u003e  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "143337",
+      "timestamp": "2011-12-02T13:01:12+00:00",
+      "author": "dmtelf",
+      "content": "\u003e You don\u0027t specify whether (without being connected to any PC, only powered) the drive spins up normally, any strange noise, etc.  \n\u003e\n\u003e Sure, if the disk is functional (even if it has problems connecting it to a Windows 7 through SATA or e-sata) FIRST thing you should do is to image it in a forensic sound manner.  \n\u003e You may want to use a USB connection (which is more \"forgiving\" generally speaking if the device has an issue) and a \"plainer\" Operating System than Windows7.  \n\u003e If you manage to have it working (even if \"not recognised\" or \"need to be formatted\") under Windows, you should use Datarescuedd:  \n\u003e \u003chttp://reboot.pro/7783/\u003e  \n\u003e with THIS approach:  \n\u003e \u003chttp://reboot.pro/15040/page__st__8\u003e  \n\nThe disk spins up when connected to an external SATA \\\u003c-\\\u003e USB cradle (not connected to a PC) \\\u0026 a colleague has just told me there is a very quiet sequence of 1 beep/squeak, whir, click, repeat.  \n\nUnfortunately DataRescue DD does not find the drive. I tried testdisk 6.14 \\\u0026 created a log but it did not find the drive either ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n\nI looked at the testdisk log, and it found drive F which is a HP Tools partition. Drive G is the laptop\u0027s internal DVD drive.  \n\nWhat options do I have left with respect to attempting to make a forensic image?  \n\n\u003cbr /\u003e\n\nDMTelf  \n\n--\\\u003e  \n\nFri Dec 2 12:37:36 2011  \nCommand line: TestDisk  \n\nTestDisk 6.14-WIP, Data Recovery Utility, November 2011  \nChristophe GRENIER \\\u003cgrenier@cgsecurity.org\\\u003e  \n[http://www.cgsecurity.org](http://www.cgsecurity.org \"External link\")  \nOS: Windows 7 (7601) SP1  \nCompiler: GCC 4.3, Cygwin 1007.7  \nCompilation date: 2011-12-01T18:43:19  \next2fs lib: 1.41.8, ntfs lib: 10:0:0, reiserfs lib: 0.3.1-rc8, ewf lib: 20100226  \ndisk_get_size_win32 IOCTL_DISK_GET_LENGTH_INFO(/dev/sda)\u003d500107862016  \ndisk_get_size_win32 IOCTL_DISK_GET_LENGTH_INFO(\\\\\\\\.\\\\PhysicalDrive0)\u003d500107862016  \ndisk_get_size_win32 IOCTL_DISK_GET_LENGTH_INFO(\\\\\\\\.\\\\C:)\u003d481536507904  \nfilewin32_getfilesize(\\\\\\\\.\\\\D:) GetFileSize err Incorrect function.  \n\nfilewin32_setfilepointer(\\\\\\\\.\\\\D:) SetFilePointer err Incorrect function.  \n\nWarning: can\u0027t get size for \\\\\\\\.\\\\D:  \ndisk_get_size_win32 IOCTL_DISK_GET_LENGTH_INFO(\\\\\\\\.\\\\F:)\u003d2142240768  \nfilewin32_getfilesize(\\\\\\\\.\\\\G:) GetFileSize err Incorrect function.  \n\nfilewin32_setfilepointer(\\\\\\\\.\\\\G:) SetFilePointer err Incorrect function.  \n\nWarning: can\u0027t get size for \\\\\\\\.\\\\G:  \nfile_pread(4,1,buffer,976784129(60801/254/63)) lseek err Invalid argument  \nHard disk list  \nDisk /dev/sda - 500 GB / 465 GiB - CHS 60801 255 63, sector size\u003d512 - ST950042 0AS, S/N:V5AJD8QM, FW:0006  \n\nTestDisk exited normally.  \n\n--\\\u003e   \n"
+    },
+    {
+      "id": "143349",
+      "timestamp": "2011-12-02T14:16:15+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e a colleague has just told me there is a very quiet sequence of 1 beep/squeak, whir, click, repeat.  \nThis is NO good news. ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n\nYou should use anyway a \"more easy\" OS than WIndows 7 (namely a Linux) to make sure it is not any of the problems connected to the HAL/UAC/Administrator/whatever, but if the issue is the above, it won\u0027t make difference.  \n\nThe 7200.2 is a rather oldish drive and most probably you can find if not a donor board, an used disk with a suitable PCB.  \nThen you will have to swap the ROM chip, something that is NOT at normal DIY level. ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)  \nIF the swap is successful AND IF the ROM data is good, then you should be able to re-access the data.  \n\nThis is VERY risky, and there is the risk, by doing the procedure incorrectly, that you \"ruin\" the drive BEYOND any possible recovery attempt.  \n\nNOW would be the perfect time to decide if your data has a value of several hundreds dollars (the cost of a \"pro\" recovery) or if not (or you cannot afford anyway that kind of money).  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    }
+  ]
+}

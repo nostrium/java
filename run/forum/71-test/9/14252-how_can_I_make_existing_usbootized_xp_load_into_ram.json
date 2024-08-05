@@ -1,0 +1,106 @@
+{
+  "id": "14252",
+  "title": "how can I make existing usboot-ized xp load into ram?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "126438",
+      "timestamp": "2011-04-08T01:02:13+00:00",
+      "author": "Zoso",
+      "content": "hello everyone,   \n\nexsisting xp (prosp2) that I boot from usb with the usboot method..  \n\nI want to learn how I can make this load into ram. I think is is possible somehow, right?   \n\nthanks   \n"
+    },
+    {
+      "id": "126447",
+      "timestamp": "2011-04-08T06:55:14+00:00",
+      "author": "steve6375",
+      "content": "[http://sites.google....orials/ubcd4win](https://sites.google.com/site/rmprepusb/tutorials/ubcd4win \"External link\")   \n"
+    },
+    {
+      "id": "126503",
+      "timestamp": "2011-04-08T23:08:29+00:00",
+      "author": "Wonko the Sane",
+      "content": "...and I thought that UBCD4WIN was a PE 1.x (as opposed to a \"full\" XP)...![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n:smile:  \nWonko   \n"
+    },
+    {
+      "id": "126516",
+      "timestamp": "2011-04-09T08:19:34+00:00",
+      "author": "steve6375",
+      "content": "yes, it is PE1 of course, but a lot of XP components have been added back in, so I reckon it is nearer XP than PE1! If you removed all PE1 components you would still have a lot of unlicensed XP components left! The same tutorial principal can be applied to any XP OS. The Q was how to make it boot from RAM - whether the XP version will work or not will depend on how the XP image has been modified.   \n"
+    },
+    {
+      "id": "126525",
+      "timestamp": "2011-04-09T10:40:27+00:00",
+      "author": "doublesvsoop",
+      "content": "Hi  \n\nBooting Stripped version XP in ram is easy as for 3 steps  \n\n1- download Hiren BootCD  \n2- unzip it and use included HBCD Customizer 1.6 HBCDCustomizer.exe to remove all stuff except XP  \n3- flows this:  \n\n```\nhttp://www.hiren.info/pages/bootcd-on-usb-disk\n\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "126583",
+      "timestamp": "2011-04-11T01:28:02+00:00",
+      "author": "Zoso",
+      "content": "thanks steve. that link seems to indicate the way todo might be make an ISO of my XP then it might boot in RAM using firadisk. if this is correct then where can I learn to make an ISO of this exsisting XP I have?  \n\nwonko, no direct input from you? you dont know if it is possible or not?  \n\nthanks   \n"
+    },
+    {
+      "id": "126586",
+      "timestamp": "2011-04-11T05:05:57+00:00",
+      "author": "Sha0",
+      "content": "\u003e exsisting xp (prosp2) that I boot from usb with the usboot method..  \n\u003e\n\u003e I want to learn how I can make this load into ram. I think is is possible somehow, right?  \n\n* Install WinVBlock into your existing XP Pro SP2.\n* Shrink the partition to a size suitable for being loaded into the amount of RAM you have in mind.\n* Capture an image file containing the sectors from the beginning of the disk through to the end of the partition.\n* Put this image file anywhere you like and boot it as a RAM disk using either **MEMDISK** or GRUB4DOS\u0027 **map --mem**\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "126595",
+      "timestamp": "2011-04-11T08:07:09+00:00",
+      "author": "Doodoo",
+      "content": "\u003e Put this image file anywhere you like and boot it as a RAM disk using either **MEMDISK** or GRUB4DOS\u0027 **map --mem**\nActually Shao has just made a very good point: if you want to boot from RAM, **you don\u0027t need to use USBoot at all** .   \nBut if you really want to use USBoot, nothing stops you doing do.... Then it will work both from RAM, and direct from file-backed disk. I tried it a few weeks ago and it works fine.   \n"
+    },
+    {
+      "id": "126654",
+      "timestamp": "2011-04-12T17:57:14+00:00",
+      "author": "Zoso",
+      "content": "\u003e \u003cbr /\u003e\n\u003e\n\u003e * Install WinVBlock into your existing XP Pro SP2.\n\u003e * Shrink the partition to a size suitable for being loaded into the amount of RAM you have in mind.\n\u003e * Capture an image file containing the sectors from the beginning of the disk through to the end of the partition.\n\u003e * Put this image file anywhere you like and boot it as a RAM disk using either **MEMDISK** or GRUB4DOS\u0027 **map --mem**\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nso it is possible! thanks Sha0, I will go read info on WinVBlock. I can shrink the partition but I dont have much experience with image files so can you recommend a suitable program that you know will work for this? Im starting to become familiar with GRUB4DOS, I have booted a few .iso files but not image files as of yet so I will read up on that also.  \n\nthanks again  \n\n\u003e Actually Shao has just made a very good point: if you want to boot from RAM, **you don\u0027t need to use USBoot at all** .   \n\u003e But if you really want to use USBoot, nothing stops you doing do.... Then it will work both from RAM, and direct from file-backed disk. I tried it a few weeks ago and it works fine.  \n\nits not that I need the USBoot except that I have spent much time making this OS just what I need and it happens to be a USBoot prep\u0027d OS.  \n\nthanks   \n"
+    },
+    {
+      "id": "126669",
+      "timestamp": "2011-04-12T21:03:58+00:00",
+      "author": "Sha0",
+      "content": "\u003e ...recommend a suitable program that you know will work for this?  \nI enjoy **DD** . What you want is a \"raw\" (sector-by-sector) image file. DD from Linux works nicely. [DD for Windows](http://www.chrysocome.net/dd \"External link\") works too, but it\u0027s a Bad Idea to capture your image if you are booted from the disk you are capturing the image from. That is, it\u0027d be best to boot from some other Windows if you are going to use DD for Windows.  \n\n```\ndd if\u003d\\\\.\\PhysicalDrive1 of\u003dzoso_win.hdd --progress\n\n```\n\n\u003cbr /\u003e\n\nOther folks might have other suggestions; there are many options for capturing such an image file.  \n\n\u003e ...I have booted a few .iso files but not image files as of yet so I will read up on that also.  \nActually, an .ISO *is* an image file; a CD/DVD image file rather than an HDD image file. You can capture an .ISO from a CD using DD for Windows with:  \n\n```\ndd if\u003d\\\\.\\CdRom0 of\u003dsome.iso bs\u003d2048 --progress\n\n```\n\nAn .ISO can be as simple as an ISO9660 filesystem, or it can be a \"hybrid\" image with other filesystems, as well.   \n"
+    },
+    {
+      "id": "126750",
+      "timestamp": "2011-04-14T00:49:39+00:00",
+      "author": "Zoso",
+      "content": "Sha0, Im reading about WinVblock here \u003chttp://reboot.pro/8168/\u003e but I dont see any mention yet about how to install it in my exsisting XPPsp2 as you suggest. can you direct me to some instruction and also the latest version dload link?  \n\nDD looks great but I need something with GUI at this point but thanks for the suggestion and I hope to learn how to use it in the future.   \n"
+    },
+    {
+      "id": "126754",
+      "timestamp": "2011-04-14T04:17:50+00:00",
+      "author": "Sha0",
+      "content": "\u003e ...Im reading about WinVblock here \u003chttp://reboot.pro/8168/\u003e but I dont see any mention yet about how to install it in my exsisting XPPsp2 as you suggest. can you direct me to some instruction and also the latest version dload link?  \nGoto the [git repository](https://github.com/Sha0/winvblock/tree/master/bin \"External link\") and download each file. Read the **ReadMe.txt** file.   \n"
+    },
+    {
+      "id": "127063",
+      "timestamp": "2011-04-20T03:56:48+00:00",
+      "author": "Zoso",
+      "content": "\u003e Goto the [git repository](https://github.com/Sha0/winvblock/tree/master/bin \"External link\") and download each file. Read the **ReadMe.txt** file.  \n\n\u003cbr /\u003e\n\nthanks Sha0 but after reading the \"readme\" I see I am not advanced enough to use WinVblock. Im working on that but this is just a hobby among many other hobbies for me so I make progress very slowly. I found \"firadisk\" also and it seems a little bit less intimidating with the exstensive documentation so I may go that route.  \n\nI really want to find a way to do this.. it would make the OS faster and less wear on my flashdrive too.   \n"
+    },
+    {
+      "id": "127542",
+      "timestamp": "2011-04-27T23:29:17+00:00",
+      "author": "Zoso",
+      "content": "success! xpsp2/usboot/grub4dos/firadisk/imdisk by following diddy\u0027s lead here: [http://diddy.boot-la...adisk/index.htm](http://diddy.boot-land.net/firadisk/index.htm \"External link\")  \n\nreading on bootland was like trying to learn a different language when I started over a year ago but now its all coming together.. this is really cool!  \n\n\u003cbr /\u003e\n\nThanks Bootland/reboot and everyone involved! special thanks to diddy!   \n"
+    },
+    {
+      "id": "127546",
+      "timestamp": "2011-04-28T00:22:52+00:00",
+      "author": "Sha0",
+      "content": "\u003e thanks Sha0 but after reading the \"readme\" I see I am not advanced enough to use WinVblock.  \n\u003e ...  \n\u003e I found \"firadisk\" also and it seems a little bit less intimidating with the exstensive documentation so I may go that route.  \n\u003e Licensed under the GPL version 3 or later. Some code licensed under the  \n\u003e GPL version 2 or later. See GPL.TXT.  \n\u003e\n\u003e After starting each driver, you should use Device Manager or the Found  \n\u003e New Hardware wizard to update the drivers using the .INF files. Please  \n\u003e do this for the WinVBlock driver before installing and starting the  \n\u003e AoE and HTTPDisk drivers.  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e To install using WinVBlk.Exe:  \n\u003e \\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~  \n\u003e Copy whichever .Sys files (drivers) you require into the C:\\\\Windows\\\\System32\\\\Drivers\\\\ directory, then run:  \n\u003e\n\u003e winvblk.exe -cmd install -service xxxxbb  \n\u003e\n\u003e where xxxxbb is the filename of the driver to install. For example:  \n\u003e\n\u003e winvblk.exe -cmd install -service wvblk32  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e To install using SC.Exe:  \n\u003e \\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~  \n\u003e Copy whichever .Sys files (drivers) you require into the whatever directory you like, then run:  \n\u003e\n\u003e sc create WinVBlock binPath\u003d c:\\\\windows\\\\system32\\\\drivers\\\\wvblk32.sys type\u003d kernel start\u003d boot group\u003d \"SCSI miniport\"  \n\u003e\n\u003e where you should substitute the path you\u0027ve chosen. As another example, for the AoE driver, you could do:  \n\u003e\n\u003e sc create AoE binPath\u003d c:\\\\windows\\\\system32\\\\drivers\\\\aoe32.sys type\u003d kernel start\u003d boot group\u003d \"SCSI Class\"  \n\u003e\n\u003e As another example, for the HTTPDisk driver, you could do:  \n\u003e\n\u003e sc create HTTPDisk binPath\u003d c:\\\\windows\\\\system32\\\\drivers\\\\wvhttp32.sys type\u003d kernel start\u003d boot group\u003d \"SCSI Class\"  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e To start the services:  \n\u003e \\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~  \n\u003e You may use the Net.Exe command, as in:  \n\u003e\n\u003e net start winvblock  \n\u003e net start aoe  \n\u003e net start httpdisk  \nWell... Sorry about that. Glad you found something that works for you.   \n"
+    },
+    {
+      "id": "127549",
+      "timestamp": "2011-04-28T02:57:11+00:00",
+      "author": "Zoso",
+      "content": "hi Sha0, no need to be sorry.. your work is greatly apreciated! Im just not advanced enough yet with using CLI. I look forward to when I can try WinVblock  \n\nI dont know where or how to run those commands is the problem. I was trying today to configure bginfo.exe with CLI.. I just dont know how it works really. Ive been copying cmd.exe to the directory and folder I am working in.. sometimes it works that way.. I was able to use dsfok like that but I need more time to get the hang of it.   \n"
+    }
+  ]
+}

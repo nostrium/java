@@ -1,0 +1,16 @@
+{
+  "id": "10691",
+  "title": "installing xp from usb",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "94068",
+      "timestamp": "2010-03-11T17:20:14+00:00",
+      "author": "seyiisq",
+      "content": "Hi all,  \n\nI have a netbook without a cd drive which i am working on. I am trying to install winxp on it for the first time.  \n\nDuring installation, i did something silly by removing the usb flash drive mistakenly, while the setup was formatting the hard drive.   \n\nI tried to re-start the installation but now i am getting an \"error loading operating system\" message.  \n\nPls can anyone help.   \n"
+    }
+  ]
+}

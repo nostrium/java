@@ -1,0 +1,16 @@
+{
+  "id": "20319",
+  "title": "[question] Windows XP to Windows 7: Boot tracing without the Microsoft tooling",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "190417",
+      "timestamp": "2015-02-06T11:21:25+00:00",
+      "author": "Brito",
+      "content": "Hello,\n\nMicrosoft makes available some tooling to trace the boot process on Windows. One can use xbootmgr to get the information in regards to which services/drivers and autoruns get started. This permits to see which ones are taking a long time to load (usually some third-party driver). My goal is to create a time line of when each of these items got launched during the boot process.\n\nHowever, the Microsoft profile tools don\u0027t come as default with Windows and needs a separate download/install (similar style as we see with the WAIK). As before done for the WAIK, there is possibility of automating the download/install but this is a huge download (\\\u003e2Gb) just for installing something relatively small. Plus, I\u0027m not sure if this would comply with the Microsoft license terms.\n\nIdeally, is it possible to go around xbootmgr?\n\nPerhaps some way to access what xbootmgr does, or is it a specific driver that gets installed?\n\nAs reference on the matter, I found this post very useful:\n\n[http://www.msfn.org/...yresume-issues/](http://www.msfn.org/board/topic/140247-trace-windows-7-bootshutdownhibernatestandbyresume-issues/ \"External link\")\n\nThanks for helping.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\n"
+    }
+  ]
+}

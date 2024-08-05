@@ -1,0 +1,112 @@
+{
+  "id": "17708",
+  "title": "cfadisk assigns random GUID every boot, how to stop it?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "162468",
+      "timestamp": "2012-10-29T09:06:26+00:00",
+      "author": "kocoman",
+      "content": "cfadisk assigns random GUID every boot, how to stop it?  \n\nI am using XP boot usb. The boot drive/windows drive is U: (as removable)  \n\nI install Hitachi microdrive driver to make it fixed, after reboot its stuck at login screen.   \n\nI replace the sethc.exe file with cmd.exe, then press shift 5 times to get a command prompt, I noticed the drive is now C:  \n\nI run mountvol.exe, and notice the GUID is not the same on every boot, hence windows always assigns it as C:  \n\nis there any way to lock the driver so that it gives a fixed GUID, then I can swap the C: into U: and U: into C:?  \n\nthanks   \n"
+    },
+    {
+      "id": "162477",
+      "timestamp": "2012-10-29T12:55:48+00:00",
+      "author": "Wonko the Sane",
+      "content": "I really cannot get head or tail of your report.  \nCfadisk has nothing to do with GUID AFAICR.  \nThe drive letter is not really associated to the GUID, but to the Disk Signature (on \"fixed\" disks), see:  \n[http://www.911cd.net...showtopic\u003d19663](http://www.911cd.net/forums//index.php?showtopic\u003d19663 \"External link\")  \nMaybe the CFADISK is not installed properly ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png) or - for any reason - it doesn\u0027t work as it should.  \nYou can try as an experiment, either dummydisk.sys or diskmod:  \n[http://www.msfn.org/...os/page__st__54](http://www.msfn.org/board/topic/69211-a-multiple-partition-usb-stick-with-multi-boot-os/page__st__54 \"External link\")  \n[http://www.911cd.net...showtopic\u003d22795](http://www.911cd.net/forums//index.php?showtopic\u003d22795 \"External link\")  \n\u003chttp://reboot.pro/9461/\u003e  \n\nHow EXACTLY did you install CFADISK?  \nI mean, the \"old\" way, \"device specific\" or the \"new\" way, as USB\\\\Gendisk?  \nSee the above linked to threads and:  \n[http://www.msfn.org/...on/page__st__12](http://www.msfn.org/board/topic/126868-fixed-drive-usb-driver-integration/page__st__12 \"External link\")  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "162487",
+      "timestamp": "2012-10-29T19:03:39+00:00",
+      "author": "cdob",
+      "content": "\u003e The boot drive/windows drive is U: (as removable)  \n\u003e\n\u003e I noticed the drive is now C:\n\nHow to restore the system/boot drive letter in Windows  \n[http://support.micro...kb/223188/en-us](http://support.microsoft.com/kb/223188/en-us \"External link\")  \n\nDelete \"\\\\DosDevices\\\\U:\"  \nRename \"\\\\DosDevices\\\\C:\" to \"\\\\DosDevices\\\\U:\"   \n"
+    },
+    {
+      "id": "162603",
+      "timestamp": "2012-11-01T05:35:51+00:00",
+      "author": "kocoman",
+      "content": "I used the newer   \n\n%Microdrive_devdesc% \u003d cfadisk_install,USBSTORGenDisk  \n\nmethod  \n\nI tried dummydisk, but it gives me 7E bsod  \n\nI try to try diskmod, but I don\u0027t understand the 4 registry batch files.  \n\n* Run **UFDasHDD.bat** and replug your USB Flash Drive to make it appear as Fixed Disk\n* Run **UFDNormal.bat** and replug your USB Flash Drive to make it appear normally as Removable Media\n* Run **USBHDDasUFD.bat** and replug your USB Hard Disk to make it appear as Removable Media\n* Run **USBHDDnormal.bat** and replug your USB Hard Disk to make it appear normally as Fixed Disk.  \n  Read more: [http://agnipulse.com.../#ixzz2AwjltwK5](http://agnipulse.com/2012/03/filter-drivers-removable-media-fixed-disk-windows/#ixzz2AwjltwK5 \"External link\")\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "162614",
+      "timestamp": "2012-11-01T13:03:29+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I tried dummydisk, but it gives me 7E bsod  \nThat\u0027s strange, it has always worked for everyone.  \nMaybe you are starting from a (badly/heavily) modified source. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)  \n\nBut have you tried checking the settings as **cdob** suggested?  \nBetter still, can you post the contents of your HKEY_LOCAL_MACHINESYSTEMMountedDevicesDosDevices key?  \n\n\u003e I try to try diskmod, but I don\u0027t understand the 4 registry batch files.  \n\u003e\n\u003e * Run **UFDasHDD.bat** and replug your USB Flash Drive to make it appear as Fixed Disk\n\u003e * Run **UFDNormal.bat** and replug your USB Flash Drive to make it appear normally as Removable Media\n\u003e * Run **USBHDDasUFD.bat** and replug your USB Hard Disk to make it appear as Removable Media\n\u003e * Run **USBHDDnormal.bat** and replug your USB Hard Disk to make it appear normally as Fixed Disk.  \n\u003e   Read more: [http://agnipulse.com.../#ixzz2AwjltwK5](http://agnipulse.com/2012/03/filter-drivers-removable-media-fixed-disk-windows/#ixzz2AwjltwK5 \"External link\")\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\nYou don\u0027t actually need them, just follow the instructions on the original post:  \n\u003chttp://reboot.pro/9461/#entry86619\u003e  \nHowever there is nothing to understand, the only one you might be interested in is **UFDasHDD.bat** , which amounts to 1 (one) line:  \n\n```\nreg add hklmSYSTEMCurrentCOntrolSetServicesdiskmodParameters /v Removable /t REG_DWORD /d 0 /f\n```\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003e I am using XP boot usb. The boot drive/windows drive is U: (as removable)  \nCan you post a link to the exact method/tutorial/guide you used?  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "162616",
+      "timestamp": "2012-11-01T15:55:24+00:00",
+      "author": "kocoman",
+      "content": "I will take a look/retry the other two methods a bit later..  \n\nHere are the mountvol results and registry exports  \n\nAll working (but removable -- can\u0027t do windows updates..)  \n\nmountvol output  \n\n?Volume{46156f97-22d9-11e2-8d5f-806d6172696f}  \nU:  \n\n```\nWindows Registry Editor Version 5.00\n\n[HKEY_LOCAL_MACHINESYSTEMMountedDevices]\n\n\"DosDevicesU:\"\u003dhex:5c,00,3f,00,3f,00,5c,00,53,00,54,00,4f,00,52,00,41,00,\n\n  47,00,45,00,23,00,52,00,65,00,6d,00,6f,00,76,00,61,00,62,00,6c,00,65,00,4d,\n\n  00,65,00,64,00,69,00,61,00,23,00,37,00,26,00,33,00,37,00,32,00,66,00,36,00,\n\n  65,00,38,00,32,00,26,00,30,00,26,00,52,00,4d,00,23,00,7b,00,35,00,33,00,66,\n\n  00,35,00,36,00,33,00,30,00,64,00,2d,00,62,00,36,00,62,00,66,00,2d,00,31,00,\n\n  31,00,64,00,30,00,2d,00,39,00,34,00,66,00,32,00,2d,00,30,00,30,00,61,00,30,\n\n  00,63,00,39,00,31,00,65,00,66,00,62,00,38,00,62,00,7d,00\n\n\"DosDevicesV:\"\u003dhex:5c,00,3f,00,3f,00,5c,00,53,00,54,00,4f,00,52,00,41,00,\n\n  47,00,45,00,23,00,52,00,65,00,6d,00,6f,00,76,00,61,00,62,00,6c,00,65,00,4d,\n\n  00,65,00,64,00,69,00,61,00,23,00,36,00,26,00,33,00,37,00,32,00,66,00,36,00,\n\n  65,00,38,00,32,00,26,00,30,00,26,00,52,00,4d,00,23,00,7b,00,35,00,33,00,66,\n\n  00,35,00,36,00,33,00,30,00,64,00,2d,00,62,00,36,00,62,00,66,00,2d,00,31,00,\n\n  31,00,64,00,30,00,2d,00,39,00,34,00,66,00,32,00,2d,00,30,00,30,00,61,00,30,\n\n  00,63,00,39,00,31,00,65,00,66,00,62,00,38,00,62,00,7d,00\n\n\"DosDevicesW:\"\u003dhex:5c,00,3f,00,3f,00,5c,00,53,00,54,00,4f,00,52,00,41,00,\n\n  47,00,45,00,23,00,52,00,65,00,6d,00,6f,00,76,00,61,00,62,00,6c,00,65,00,4d,\n\n  00,65,00,64,00,69,00,61,00,23,00,38,00,26,00,33,00,37,00,32,00,66,00,36,00,\n\n  65,00,38,00,32,00,26,00,30,00,26,00,52,00,4d,00,23,00,7b,00,35,00,33,00,66,\n\n  00,35,00,36,00,33,00,30,00,64,00,2d,00,62,00,36,00,62,00,66,00,2d,00,31,00,\n\n  31,00,64,00,30,00,2d,00,39,00,34,00,66,00,32,00,2d,00,30,00,30,00,61,00,30,\n\n  00,63,00,39,00,31,00,65,00,66,00,62,00,38,00,62,00,7d,00\n\n\"??Volume{46156f97-22d9-11e2-8d5f-806d6172696f}\"\u003dhex:5c,00,3f,00,3f,00,5c,\n\n  00,53,00,54,00,4f,00,52,00,41,00,47,00,45,00,23,00,52,00,65,00,6d,00,6f,00,\n\n  76,00,61,00,62,00,6c,00,65,00,4d,00,65,00,64,00,69,00,61,00,23,00,37,00,26,\n\n  00,33,00,37,00,32,00,66,00,36,00,65,00,38,00,32,00,26,00,30,00,26,00,52,00,\n\n  4d,00,23,00,7b,00,35,00,33,00,66,00,35,00,36,00,33,00,30,00,64,00,2d,00,62,\n\n  00,36,00,62,00,66,00,2d,00,31,00,31,00,64,00,30,00,2d,00,39,00,34,00,66,00,\n\n  32,00,2d,00,30,00,30,00,61,00,30,00,63,00,39,00,31,00,65,00,66,00,62,00,38,\n\n  00,62,00,7d,00\n\n```\n\n\u003cbr /\u003e\n\n---  \nInstalled hitachi driver, rebooted  \nwindows stuck at the \"Windows XP\" login screen (its not showing \"Welcome\")  \nusing sethc.exe, got command prompt, run explorer.exe shows a C: (Fixed disk)  \n\nThe system now uses C:windowssystem32configsystemprofileDesktop as the \"Desktop\"  \n\nmountvol output  \n\n\u003cbr /\u003e\n\n?Volume{091e47fe-243a-11e2-8127-806d6172696f}  \nC:  \n\n```\nWindows Registry Editor Version 5.00\n\n[HKEY_LOCAL_MACHINESYSTEMMountedDevices]\n\n\"DosDevicesU:\"\u003dhex:5c,00,3f,00,3f,00,5c,00,53,00,54,00,4f,00,52,00,41,00,\n\n  47,00,45,00,23,00,52,00,65,00,6d,00,6f,00,76,00,61,00,62,00,6c,00,65,00,4d,\n\n  00,65,00,64,00,69,00,61,00,23,00,37,00,26,00,33,00,37,00,32,00,66,00,36,00,\n\n  65,00,38,00,32,00,26,00,30,00,26,00,52,00,4d,00,23,00,7b,00,35,00,33,00,66,\n\n  00,35,00,36,00,33,00,30,00,64,00,2d,00,62,00,36,00,62,00,66,00,2d,00,31,00,\n\n  31,00,64,00,30,00,2d,00,39,00,34,00,66,00,32,00,2d,00,30,00,30,00,61,00,30,\n\n  00,63,00,39,00,31,00,65,00,66,00,62,00,38,00,62,00,7d,00\n\n\"DosDevicesV:\"\u003dhex:5c,00,3f,00,3f,00,5c,00,53,00,54,00,4f,00,52,00,41,00,\n\n  47,00,45,00,23,00,52,00,65,00,6d,00,6f,00,76,00,61,00,62,00,6c,00,65,00,4d,\n\n  00,65,00,64,00,69,00,61,00,23,00,36,00,26,00,33,00,37,00,32,00,66,00,36,00,\n\n  65,00,38,00,32,00,26,00,30,00,26,00,52,00,4d,00,23,00,7b,00,35,00,33,00,66,\n\n  00,35,00,36,00,33,00,30,00,64,00,2d,00,62,00,36,00,62,00,66,00,2d,00,31,00,\n\n  31,00,64,00,30,00,2d,00,39,00,34,00,66,00,32,00,2d,00,30,00,30,00,61,00,30,\n\n  00,63,00,39,00,31,00,65,00,66,00,62,00,38,00,62,00,7d,00\n\n\"DosDevicesW:\"\u003dhex:5c,00,3f,00,3f,00,5c,00,53,00,54,00,4f,00,52,00,41,00,\n\n  47,00,45,00,23,00,52,00,65,00,6d,00,6f,00,76,00,61,00,62,00,6c,00,65,00,4d,\n\n  00,65,00,64,00,69,00,61,00,23,00,38,00,26,00,33,00,37,00,32,00,66,00,36,00,\n\n  65,00,38,00,32,00,26,00,30,00,26,00,52,00,4d,00,23,00,7b,00,35,00,33,00,66,\n\n  00,35,00,36,00,33,00,30,00,64,00,2d,00,62,00,36,00,62,00,66,00,2d,00,31,00,\n\n  31,00,64,00,30,00,2d,00,39,00,34,00,66,00,32,00,2d,00,30,00,30,00,61,00,30,\n\n  00,63,00,39,00,31,00,65,00,66,00,62,00,38,00,62,00,7d,00\n\n\"??Volume{46156f97-22d9-11e2-8d5f-806d6172696f}\"\u003dhex:5c,00,3f,00,3f,00,5c,\n\n  00,53,00,54,00,4f,00,52,00,41,00,47,00,45,00,23,00,52,00,65,00,6d,00,6f,00,\n\n  76,00,61,00,62,00,6c,00,65,00,4d,00,65,00,64,00,69,00,61,00,23,00,37,00,26,\n\n  00,33,00,37,00,32,00,66,00,36,00,65,00,38,00,32,00,26,00,30,00,26,00,52,00,\n\n  4d,00,23,00,7b,00,35,00,33,00,66,00,35,00,36,00,33,00,30,00,64,00,2d,00,62,\n\n  00,36,00,62,00,66,00,2d,00,31,00,31,00,64,00,30,00,2d,00,39,00,34,00,66,00,\n\n  32,00,2d,00,30,00,30,00,61,00,30,00,63,00,39,00,31,00,65,00,66,00,62,00,38,\n\n  00,62,00,7d,00\n\n\"??Volume{091e47fe-243a-11e2-8127-806d6172696f}\"\u003dhex:d7,f1,a0,e9,00,00,7e,\n\n  00,00,00,00,00\n\n\"DosDevicesC:\"\u003dhex:d7,f1,a0,e9,00,00,7e,00,00,00,00,00\n\n```\n\n\u003cbr /\u003e\n\n-----  \nDid a hard reboot...  \n\nmountvol...  \n\n?Volume{e2acdc7e-243a-11e2-9e70-806d6172696f}  \nC:  \n\n```\nWindows Registry Editor Version 5.00\n\n[HKEY_LOCAL_MACHINESYSTEMMountedDevices]\n\n\"DosDevicesU:\"\u003dhex:5c,00,3f,00,3f,00,5c,00,53,00,54,00,4f,00,52,00,41,00,\n\n  47,00,45,00,23,00,52,00,65,00,6d,00,6f,00,76,00,61,00,62,00,6c,00,65,00,4d,\n\n  00,65,00,64,00,69,00,61,00,23,00,37,00,26,00,33,00,37,00,32,00,66,00,36,00,\n\n  65,00,38,00,32,00,26,00,30,00,26,00,52,00,4d,00,23,00,7b,00,35,00,33,00,66,\n\n  00,35,00,36,00,33,00,30,00,64,00,2d,00,62,00,36,00,62,00,66,00,2d,00,31,00,\n\n  31,00,64,00,30,00,2d,00,39,00,34,00,66,00,32,00,2d,00,30,00,30,00,61,00,30,\n\n  00,63,00,39,00,31,00,65,00,66,00,62,00,38,00,62,00,7d,00\n\n\"DosDevicesV:\"\u003dhex:5c,00,3f,00,3f,00,5c,00,53,00,54,00,4f,00,52,00,41,00,\n\n  47,00,45,00,23,00,52,00,65,00,6d,00,6f,00,76,00,61,00,62,00,6c,00,65,00,4d,\n\n  00,65,00,64,00,69,00,61,00,23,00,36,00,26,00,33,00,37,00,32,00,66,00,36,00,\n\n  65,00,38,00,32,00,26,00,30,00,26,00,52,00,4d,00,23,00,7b,00,35,00,33,00,66,\n\n  00,35,00,36,00,33,00,30,00,64,00,2d,00,62,00,36,00,62,00,66,00,2d,00,31,00,\n\n  31,00,64,00,30,00,2d,00,39,00,34,00,66,00,32,00,2d,00,30,00,30,00,61,00,30,\n\n  00,63,00,39,00,31,00,65,00,66,00,62,00,38,00,62,00,7d,00\n\n\"DosDevicesW:\"\u003dhex:5c,00,3f,00,3f,00,5c,00,53,00,54,00,4f,00,52,00,41,00,\n\n  47,00,45,00,23,00,52,00,65,00,6d,00,6f,00,76,00,61,00,62,00,6c,00,65,00,4d,\n\n  00,65,00,64,00,69,00,61,00,23,00,38,00,26,00,33,00,37,00,32,00,66,00,36,00,\n\n  65,00,38,00,32,00,26,00,30,00,26,00,52,00,4d,00,23,00,7b,00,35,00,33,00,66,\n\n  00,35,00,36,00,33,00,30,00,64,00,2d,00,62,00,36,00,62,00,66,00,2d,00,31,00,\n\n  31,00,64,00,30,00,2d,00,39,00,34,00,66,00,32,00,2d,00,30,00,30,00,61,00,30,\n\n  00,63,00,39,00,31,00,65,00,66,00,62,00,38,00,62,00,7d,00\n\n\"??Volume{46156f97-22d9-11e2-8d5f-806d6172696f}\"\u003dhex:5c,00,3f,00,3f,00,5c,\n\n  00,53,00,54,00,4f,00,52,00,41,00,47,00,45,00,23,00,52,00,65,00,6d,00,6f,00,\n\n  76,00,61,00,62,00,6c,00,65,00,4d,00,65,00,64,00,69,00,61,00,23,00,37,00,26,\n\n  00,33,00,37,00,32,00,66,00,36,00,65,00,38,00,32,00,26,00,30,00,26,00,52,00,\n\n  4d,00,23,00,7b,00,35,00,33,00,66,00,35,00,36,00,33,00,30,00,64,00,2d,00,62,\n\n  00,36,00,62,00,66,00,2d,00,31,00,31,00,64,00,30,00,2d,00,39,00,34,00,66,00,\n\n  32,00,2d,00,30,00,30,00,61,00,30,00,63,00,39,00,31,00,65,00,66,00,62,00,38,\n\n  00,62,00,7d,00\n\n\"??Volume{e2acdc7e-243a-11e2-9e70-806d6172696f}\"\u003dhex:d7,f1,a0,e9,00,00,7e,\n\n  00,00,00,00,00\n\n\"DosDevicesC:\"\u003dhex:d7,f1,a0,e9,00,00,7e,00,00,00,00,00\n\n```\n\n\u003cbr /\u003e\n\nA swap between U: and C: does not work (I tried it) because the GUID of C: now is different every reboot.  \n\nthanks for any insight..   \n"
+    },
+    {
+      "id": "162634",
+      "timestamp": "2012-11-01T20:08:55+00:00",
+      "author": "wimb",
+      "content": "Slightly different, but it works ....  \n\nVHD_XP_Create.exe used for Install of XP in VHD - bootdrive is C:  \nIMG_XP_Restore.exe used for restore of VHD to USB-stick  \nBoot with XP from USB-stick - bootdrive is C: - Removable disk  \nInstall cfadisk.sys by driver update  \nReboot with XP from USB-stick - bootdrive is C: - Fixed disk  \n\n[![cfa_USB_Fixed_C.png](http://reboot.pro/uploads/monthly_11_2012/post-9517-0-53850200-1351800380_thumb.png)](http://reboot.pro/uploads/monthly_11_2012/post-9517-0-53850200-1351800380.png \"cfa_USB_Fixed_C.png - Size: 449.25KB\"){#ipb-attach-url-13971-0-29887500-1676066557}   \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "162636",
+      "timestamp": "2012-11-01T20:17:42+00:00",
+      "author": "kocoman",
+      "content": "I think I will try to find a way to make the install onto drive C:  \n\nI tried usb_xp_fix but it does not seem to load the waitbt correctly   \n"
+    },
+    {
+      "id": "162637",
+      "timestamp": "2012-11-01T21:02:45+00:00",
+      "author": "wimb",
+      "content": "No problem with waitbt I think ....  \n\n[![cfa_waitbt.png](http://reboot.pro/uploads/monthly_11_2012/post-9517-0-54220200-1351803737_thumb.png)](http://reboot.pro/uploads/monthly_11_2012/post-9517-0-54220200-1351803737.png \"cfa_waitbt.png - Size: 382.63KB\"){#ipb-attach-url-13972-0-29898600-1676066557}   \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "162639",
+      "timestamp": "2012-11-01T22:54:08+00:00",
+      "author": "kocoman",
+      "content": "I used winsetuptousb beta to do the text install, then ran USB xp fix on it in another computer, then added the /SOS to boot.ini, the waitbt is copied, but I could not find waitbt in the services registry   \n"
+    },
+    {
+      "id": "162643",
+      "timestamp": "2012-11-02T08:17:46+00:00",
+      "author": "wimb",
+      "content": "\u003e I used winsetuptousb beta to do the text install, then ran USB xp fix on it in another computer, then added the /SOS to boot.ini, the waitbt is copied, but I could not find waitbt in the services registry  \nWhen running USB_XP_Fix.exe what was the OS version (64-bits Win7 ?) that you used and was User Account Control switched OFF as needed ?  \n\n[http://www.911cd.net...showtopic\u003d23553](http://www.911cd.net/forums//index.php?showtopic\u003d23553 \"External link\")  \n\n\u003e In Win7 OS Set **User Account Control Off** and Reboot  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "162644",
+      "timestamp": "2012-11-02T09:18:06+00:00",
+      "author": "Wonko the Sane",
+      "content": "@Kocoman  \nI am not sure to understand the setup.  \nLeave alone for the moment mountvol and GUID\u0027s.  \nWhich device is the one that get C:  \n\"DosDevicesC:\"\u003dhex:d7,f1,a0,e9,00,00,7e,00,00,00,00,00  \nand has the d7f1a0e9 disk signature?  \nWhich disk signature does the USB stick have?  \nWhat are the V: and W: ? (they appear as \"remnants\").  \nWhat happens if (after having saved the contents as a backup) you completely empty the HKEY_LOCAL_MACHINESYSTEMMountedDevicesDosDevices and reboot?  \n\n\u003cbr /\u003e\n\n@Wimb what has waitbt with this? Kocoman has not any 0x0000007b error. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "162648",
+      "timestamp": "2012-11-02T12:34:36+00:00",
+      "author": "wimb",
+      "content": "waitbt has nothing to do with the present problem, but I just answered on the remark of **kocoman** regarding USB_XP_Fix.exe :smile:  \n\nXP installed in VHD booting with drive letter X: was used as source to make bootable USB-drive.  \nAfter booting USB-stick as Removable drive X: then as before I updated the driver for the USB disk by using cfadisk.inf  \nIn that case reboot fails (just stops before logon)  \n\nOffline I removed all entries in HKEY_LOCAL_MACHINESYSTEMMountedDevices  \nand created a new entry using the USB-stick DiskSignature C5 A2 C5 A2 found with TinyHexer at Offset 1B8 in sector 0  \n\n```\n[HKEY_LOCAL_MACHINESYSTEMMountedDevices]\n\n\"DosDevicesX:\"\u003dhex:c5,a2,c5,a2,00,7e,00,00,00,00,00,00\n\n```\n\n\u003cbr /\u003e\n\nThen Reboot is OK :smile:  \n\nSo **Wonko** is right that all remnants should be removed  \nand then you have to create New DosDevices entry for your drive letter U: and using the DiskSignature of your USB-stick  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n[![cfa_USB_Fixed_X.png](http://reboot.pro/uploads/monthly_11_2012/post-9517-0-33262300-1351859664_thumb.png)](http://reboot.pro/uploads/monthly_11_2012/post-9517-0-33262300-1351859664.png \"cfa_USB_Fixed_X.png - Size: 639.02KB\"){#ipb-attach-url-13973-0-29906400-1676066557}   \n"
+    },
+    {
+      "id": "162652",
+      "timestamp": "2012-11-02T13:50:28+00:00",
+      "author": "Wonko the Sane",
+      "content": "The details of the entry are described here (just in case):  \n[http://www.911cd.net...ndpost\\\u0026p\u003d130963](http://www.911cd.net/forums//index.php?s\u003d\u0026showtopic\u003d19663\u0026view\u003dfindpost\u0026p\u003d130963 \"External link\")  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "162664",
+      "timestamp": "2012-11-02T19:48:17+00:00",
+      "author": "ilko",
+      "content": "Have you tried WinSetupFromUSB 1.0 beta8 with \"Prepare Windows to be installed on USB\" in advanced options?  \nThis way you should be able to install XP from USB to USB disk, thanks to Sha0\u0027s WaitBT driver. If USB disk is removable, as yours seems, format it in the desired filesystem in advance, disconnect any other disks, in Text mode select same disk as destination, and leave file system as it is, do not format it.  \nYou may get rid of migrate.inf or rename it in WINSETUPXPpXXXI386 in advance, so USB disk gets C: drive letter and if you install later on cfadisk,dummydisk or diskmod it would remain C:.   \n"
+    },
+    {
+      "id": "162670",
+      "timestamp": "2012-11-02T21:23:56+00:00",
+      "author": "cdob",
+      "content": "\u003e A swap between U: and C: does not work (I tried it) because the GUID of C: now is different every reboot.\nThe GUID does not matter.  \n\nCompare \\\\\\\\DosDevices\\\\\\\\U: again.  \nBoot another windows, load offline registry.  \nDoes setting match parttion at fixed USB stick?  \nChange the setting, if required.  \n\nI\u0027ve a SystemDrive U: at a cfadisk USB stick:\n\n```\n[HKEY_LOCAL_MACHINE\\usb\\MountedDevices]\n\n\"\\\\DosDevices\\\\U:\"\u003dhex:40,b4,9d,7d,00,00,10,00,00,00,00,00\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "162676",
+      "timestamp": "2012-11-03T01:43:47+00:00",
+      "author": "kocoman",
+      "content": "I edited migrate.inf so that U: becomes C:, and installed as C: in text mode, then installed the filter driver (after the xp finished installing), now its working. I will try to investigate this problem more bit later. thanks   \n"
+    }
+  ]
+}

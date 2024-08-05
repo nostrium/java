@@ -1,0 +1,34 @@
+{
+  "id": "9383",
+  "title": "[Solved] Install XP from USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "64190",
+      "timestamp": "2009-04-06T19:03:55+00:00",
+      "author": "NicKMinD",
+      "content": "Hello all, Long time reader, first time poster. This is a great forum.  \n\nAnyways, I have a couple of questions/problems with installing Windows from a USB stick. First question, Can I use the link below to create a USB stick for installing Windows 2003 Server? Should I be able to install 64-bit versions of XP and 2003?  \n\n[http://www.boot-land...?showtopic\u003d4900](http://www.boot-land.net/forums/index.php?showtopic\u003d4900 \"External link\")  \n\nI\u0027m having a problem with BSOD in TXT mode right after \"Starting Windows\" message, but only when I install from a USB stick. If I use the CD that i used as the source for making the USB stick, i don\u0027t get the BSOD, with that CD. What is my problem? BTW, its a Dell Optiplex GX620.  \n\nSometimes I am only getting one installation from a USB stick, then I have to recreate the stick to work again. Why is this happening?  \n\nLast question, When the program asks me if I want to make the drive U:, i click yes, but when I go to install I still see the drive taking drive C: on new HDDs. How can I fix this?  \n\nThanks for your time and help.  \nNick   \n"
+    },
+    {
+      "id": "64195",
+      "timestamp": "2009-04-06T20:03:51+00:00",
+      "author": "wimb",
+      "content": "Hello **NicKMind**   \nMost of your questions are answered in the FAQs  \n[http://www.msfn.org/...howtopic\u003d116766](http://www.msfn.org/board/index.php?showtopic\u003d116766 \"External link\")  \n\n\u003e First question, Can I use the link below to create a USB stick for installing Windows 2003 Server? Should I be able to install 64-bit versions of XP and 2003?\nYes, see FAQ5  \n\n\u003e I\u0027m having a problem with BSOD in TXT mode right after \"Starting Windows\" message  \n\u003e BTW, its a Dell Optiplex GX620.\nEspecially for Dell computers you will need to use a modified NTDETECT.COM - See FAQ3  \n\n\u003e Sometimes I am only getting one installation from a USB stick, then I have to recreate the stick to work again. Why is this happening?\nSome files are deleted from stick in case of Windows 2003 - See FAQ5  \nYou don\u0027t have this problem if you make use of:  \n\n**Install XP from USB AFTER Booting with PE from HDD or USB**   \n[http://www.boot-land...?showtopic\u003d5306](http://www.boot-land.net/forums/index.php?showtopic\u003d5306 \"External link\")  \n\n\u003e Last question, When the program asks me if I want to make the drive U:, i click yes, but when I go to install I still see the drive taking drive C: on new HDDs. How can I fix this?\nFrom Tutorial:  \n\u003e New Harddisk and Creating Partitions after Booting from USB-Drive:  \n\u003e Direct after Deleting and Creating New partitions, Quit XP Setup with F3   \n\u003e OR Switch OFF your Computer and Boot in any case from USB-Drive again and   \n\u003e Run 1. TXT Mode Setup again so that DriveLetters get their **Correct Value**   \n\u003e So in this case one Boots \\*\\* **TWICE** \\*\\* in the TXT-mode Setup XP\n\n"
+    },
+    {
+      "id": "64199",
+      "timestamp": "2009-04-06T21:42:56+00:00",
+      "author": "NicKMinD",
+      "content": "\u003e From Tutorial:  \n\u003e\n\u003e **QUOTE**   \n\u003e New Harddisk and Creating Partitions after Booting from USB-Drive:  \n\u003e Direct after Deleting and Creating New partitions, Quit XP Setup with F3   \n\u003e OR Switch OFF your Computer and Boot in any case from USB-Drive again and   \n\u003e Run 1. TXT Mode Setup again so that DriveLetters get their Correct Value  \n\u003e So in this case one Boots \\*\\* TWICE \\*\\* in the TXT-mode Setup XP\n\nFirst, thanks wimb for your work on this thread and others. I see your username a lot on different forums. So Thanks.  \n\nI have read this tutorial completely. The English needs to be cleaned up a bit, but very good. But my problem/question is this, If we are saying \"yes\" to that question of making the drive U: . Then why do we have to boot Twice. Isn\u0027t the reason why we are being asked the question?  \n\nThanks for your quick reply.   \n"
+    },
+    {
+      "id": "64207",
+      "timestamp": "2009-04-07T04:42:01+00:00",
+      "author": "wimb",
+      "content": "\u003e If we are saying \"yes\" to that question of making the drive U: . Then why do we have to boot Twice. Isn\u0027t the reason why we are being asked the question?\nNo.  \nIn the case of Creating Partitions during XP Setup, you have to Boot TWICE with TXT-mode so that the Drive Letters of your **Harddisk** get their correct value. Initializing by BIOS and XP Setup is essential in this case.  \n\nThe Drive Letter U: refers to your **USB-stick** and takes care that your USB-stick is NOT Shifting the Drive Letters of additional Logical Drive partitions of your Harddisk.   \n"
+    }
+  ]
+}

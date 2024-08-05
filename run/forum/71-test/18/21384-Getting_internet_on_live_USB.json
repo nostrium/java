@@ -1,0 +1,28 @@
+{
+  "id": "21384",
+  "title": "Getting internet on live USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "201710",
+      "timestamp": "2017-01-18T20:21:05+00:00",
+      "author": "anonymous10",
+      "content": "I\u0027ve followed the instructions to get various antivirus on my e2b drive listed here:\n\n[http://www.easy2boot...-payload-files/](http://www.easy2boot.com/add-payload-files/list-of-tested-payload-files/ \"External link\")\n\nThe problem is I am haviong trouble getting internet. I\u0027ve been succesful at getting internet on bitdefender. It was downloading updates and suddenly stopped and now it says error -1009. I could not find anything on google.  \n\nNext I\u0027m having trouble getting internet period on the Avira and kaspersky disc.  \n\nSo this is what I have been doing. By default it starts up with a wired connection. I delete this and create a new connection under the wireless tab. When I do this, I select the security type and enter the password to it. I label the connection name, the name of the wifi network. I also put the name of it in the SSID box. I\u0027ve leave the BSSID blank. I click save.  \n\nOn bitdefender, it right clicked on the network computers on the bottom page and click disconect, then I reconnect, and thats when I noticed it working on bitdefender. When it comes to the other Antiviruses, following the same procedure does not work.\n\nSo in the end I\u0027m looking for a good way to get internet on all of these so I can download the latest updates.\n\n"
+    },
+    {
+      "id": "201734",
+      "timestamp": "2017-01-19T22:15:16+00:00",
+      "author": "steve6375",
+      "content": "Once you boot to an OS, any internet issues will be due to the OS, it\u0027s drivers and your internet connection.\n\nDifferent OS\u0027s will have different drivers.\n\nIf all these different OS\u0027s all give problems, then that may indicate that the problem is with your router or the system you are using, because 1000\u0027s of other people use these live CDs without any problem.\n\nSo try using a different system to boot with (or boot the USB using a VM such as Virtual Box + VMUB) or maybe Google to see if your particular hardware has known issues.\n\n"
+    },
+    {
+      "id": "201737",
+      "timestamp": "2017-01-19T23:57:59+00:00",
+      "author": "anonymous10",
+      "content": "Thanks for your response Steve. Yes I\u0027m assuming the problem is with me because of exactly what you said, Im sure 1000 people dont have a problem.\n\n"
+    }
+  ]
+}

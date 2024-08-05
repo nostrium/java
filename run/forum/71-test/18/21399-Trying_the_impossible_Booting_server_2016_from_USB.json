@@ -1,0 +1,52 @@
+{
+  "id": "21399",
+  "title": "Trying the impossible - Booting server 2016 from USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "201935",
+      "timestamp": "2017-02-02T13:30:18+00:00",
+      "author": "netlord",
+      "content": "Hi there\n\nI´m trying to use an Server2016 from an USB-Stick (or maybe USB-Drive)\n\nFirst I´ve installed Server2016 on an internal disk and changed some registry keys:\n\nin HKLM\\\\System\\\\Currentcontrolset\\\\ I´ve searched all usb-keys (usbohci usbxhci and so on) and changed the start to 0. Also I changed the usb-services to start at boot time (sc config usbxhci start\u003d boot)\n\nMy first idea was to capture the installed server to a wim an put this wim on an PE Boot stick\n\n(d:\\\\windows\\\\system32\\\\dism /capture-Image /imagefile:d:\\\\boot.wim /capturedir:d: /name:\"2016\")\n\nThis boots in a BSOD (c000017) Ramdisk device creation failed due to insufficient memory.\n\nThen I changed the swap-file to 512 mb fixed. Same BSOD.\n\nWhat else can I do?\n\nThanks\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "201938",
+      "timestamp": "2017-02-02T15:10:22+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "It\u0027s not impossible, but you\u0027ll be waiting a very, very long time. I think you\u0027ll have better luck booting Server 2016 from a USB HDD, rather than from a USB stick. I tried booting an installed Windows 10 from a PNY/Patriot 256GB 3.0 stick, an hour later it was still installing drivers and running through the initial setup. I never got anywhere close to a login screen, EULA, etc.\n\n"
+    },
+    {
+      "id": "201958",
+      "timestamp": "2017-02-03T08:55:56+00:00",
+      "author": "Wonko the Sane",
+      "content": "@netlord\n\nCheck IF Winntsetup is compatible with Server 2016:  \n[http://www.msfn.org/...inntsetup-v387/](http://www.msfn.org/board/topic/149612-winntsetup-v387/ \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "201960",
+      "timestamp": "2017-02-03T09:09:15+00:00",
+      "author": "steve6375",
+      "content": "Try using [WinToUSB](http://www.easyuefi.com/wintousb/ \"External link\").\n\nIf you are using a Removable type of USB drive (e.g. SanDisk Extreme **Flash** drive) then you must create a VHD.\n\nIf you attempt to flat-boot to Win8/10/2016 from a set of files on a Removable USB drive, it will not work.\n\nHowever, I do suggest you use a FAST USB drive (one that has good 4K Random-write Crystaldiskmark benchmark result of at least 5MB/s).\n\n"
+    },
+    {
+      "id": "201993",
+      "timestamp": "2017-02-04T01:55:21+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "@steve6375: He may or not have better luck with WinToUSB. I tried it, including with a VHD, same results. I think the common denominator may have been that maybe my flash drives just weren\u0027t fast enough. I figured that any USB 3.0 flash drive should be enough to do the trick. I simply don\u0027t understand why Linux, WinPEs, etc boot fine from these drives with good performance, but an installed Windows can\u0027t. Maybe Windows\u0027 system requirements are just too high, even with 10, whose requirements have been the lowest of any Windows edition since XP.\n\n"
+    },
+    {
+      "id": "201996",
+      "timestamp": "2017-02-04T09:51:21+00:00",
+      "author": "steve6375",
+      "content": "I used WinNTSetup.exe to install Server2016 to a USB 3.0 HDD (SSD, NTFS, single partition) because it seems you need to buy the Pro version of WinToUSB to use it with Server ISOs.\n\nIt worked fine.\n\nIf you are using a Removable USB drive then you should create a VHD and mount it in WInNTSetup and install to that.\n\nThe 4K Random Write benchmark is the essential figure for judging how WinToGo is going to perform on a USB drive.\n\nFor instance, the Lexar P20 is supposed to be a super-fast USb 3 flash drive, but it\u0027s 4K rand-wr benchmark stinks (0.01MB/s) - and it takes over 1 hour to boot to the Desktop. On the other hand, a Sandisk Extreme USB 3 flash drive (4K rand-wr \u003d 10MB/s) takes only a minute or so.\n\nSee my blog post [here](http://rmprepusb.blogspot.co.uk/2016/10/beware-of-this-fast-usb-30-flash-drive.html \"External link\") about Lexar P20.\n\nLinux and WinPE holds a great deal of the OS in RAM. Windows does not (even just the registry is huge!) and it uses a swap file, which is why the 4K write performance is so important.\n\nP.S. I just copied the flat-files on the USB HDD to a fixed .VHD file and added the .VHD file to my E2B Sandisk Extreme Pro USB drive. It boots to Server 2016 in less than 30 seconds.\n\n**Edited by steve6375, 04 February 2017 - 10:35 AM.**\n"
+    },
+    {
+      "id": "201998",
+      "timestamp": "2017-02-04T12:09:49+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e @netlord  \n\u003e Check IF Winntsetup is compatible with Server 2016:  \n\u003e [http://www.msfn.org/...inntsetup-v387/](http://www.msfn.org/board/topic/149612-winntsetup-v387/ \"External link\")\n\n\u003cbr /\u003e\n\n\u003e Try using [WinToUSB](http://www.easyuefi.com/wintousb/ \"External link\").\n\n\u003e I used WinNTSetup.exe to install Server2016 to a USB 3.0 HDD (SSD, NTFS, single partition) because it seems you need to buy the Pro version of WinToUSB to use it with Server ISOs.  \n\u003e It worked fine.\nGood. :wink:  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    }
+  ]
+}

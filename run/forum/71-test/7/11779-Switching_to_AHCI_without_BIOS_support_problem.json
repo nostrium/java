@@ -1,0 +1,58 @@
+{
+  "id": "11779",
+  "title": "Switching to AHCI without BIOS support problem",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "103089",
+      "timestamp": "2010-06-21T23:41:27+00:00",
+      "author": "gabiz_ro",
+      "content": "Hope is right section since I can\u0027t find other more related.  \n\nFirst let\u0027s explainf my problem.  \nDell Inspiron 9400 (similar with E1705 or M1710 or M90) doesn\u0027t have AHCI enabled,or other posibility to enable.  \nFirst I tried to load a custom option rom into bios who rewirite some chipset registers and switch controller from legacy to SATA AHCI but after that I can\u0027t boot anymore from internal disk.  \nMany tries many combination but same result.  \n\nBooting from usb to FreeDos (just one example) and using software like AHCCMDT - AHCI Command Test Program,Victoria or MHDD I can see hdd and test or whatever program does.  \nBooting from usb some linux distro or live windows was ok,controller was in SATA mode and I can gain access to files etc.  \nTried kexec-loader but got [errors](http://www.boot-land.net/forums/index.php?s\u003d\u0026showtopic\u003d10499\u0026view\u003dfindpost\u0026p\u003d98647 \"External link\")  \n\nSince I can\u0027t find one method to make BIOS to boot from internal hdd I tried other method.  \nWith some help from other person I modified my DSDT table in bios.  \nNow this work fine under linux but under windows I get BSOD with 0x0000007B that\u0027s because chipset switch from legacy to ahci in time of booting process.  \nAlso tried:  \n- xp setup but if I remember was some errors and can\u0027t reach at point to see partitions   \n- 7 setup can\u0027t find hdd  \nIs any possibility to make something to make windows to keep loading and pass this inaccessible boot device error?   \n"
+    },
+    {
+      "id": "103092",
+      "timestamp": "2010-06-22T00:15:19+00:00",
+      "author": "Sha0",
+      "content": "The Windows AHCI driver for your storage adapter needs to be loaded and invoked at boot time in order to avoid the **0x7B** error. Attaching **WinDbg** , obtaining the CLI once the bug-check occurs, then entering **!devnode 0 1** should reveal the status of each Windows device. Look for the storage adapter and find out what its trouble is. You might need to inject the driver into your OS installation, including **CriticalDeviceDatabase** entries for the corresponding PCI IDs.   \n"
+    },
+    {
+      "id": "103095",
+      "timestamp": "2010-06-22T00:41:11+00:00",
+      "author": "gabiz_ro",
+      "content": "I have tried,driver is installed,iastor is added to registry.  \nI think is need to trick windows about boot device.  \nICH7-M is switched to sata ahci in time of windows loading (when dsdt are loaded)  \nHow to tell .. until OS load DSDT nothing is changed. But windows is too problematic at boot devices.   \n"
+    },
+    {
+      "id": "103099",
+      "timestamp": "2010-06-22T00:57:13+00:00",
+      "author": "Sha0",
+      "content": "Are you saying that you are changing device details after **BIOS POST** ?! Are you changing any **VEN** dor and **DEV** ice IDs? Do those IDs have entries in the CriticalDeviceDatabase so that the *driver* is associated with the *device* ?   \n"
+    },
+    {
+      "id": "103164",
+      "timestamp": "2010-06-22T19:00:06+00:00",
+      "author": "gabiz_ro",
+      "content": "Switching from legacy to AHCI change from VEN_8086\\\u0026DEV_27C4 to VEN_8086\\\u0026DEV_27C5  \nI\u0027ll try again,maybe I do some misteke in adding entries in CriticalDeviceDatabase.   \n"
+    },
+    {
+      "id": "103300",
+      "timestamp": "2010-06-24T19:14:15+00:00",
+      "author": "gabiz_ro",
+      "content": "I think all I do is correct.  \nSince is the same disk just controller switched from legacy to sata in time of boot proccess is there an way to trick windows to bypass this error of inaccesible boot device?   \n"
+    },
+    {
+      "id": "103305",
+      "timestamp": "2010-06-24T21:34:20+00:00",
+      "author": "cdob",
+      "content": "\u003e ICH7-M is switched to sata ahci in time of windows loading (when dsdt are loaded)\nHow do you do this? Do you use a windows driver?  \n\n\u003e I think all I do is correct  \n\u003e Since is the same disk just controller\nAnother controller is a major difference.  \nDoes windows detect two different controllers?  \nWhich registry settings did you include?   \n"
+    },
+    {
+      "id": "103306",
+      "timestamp": "2010-06-24T21:43:44+00:00",
+      "author": "gabiz_ro",
+      "content": "I\u0027m using a modified DSDT which write one chipset register.  \n\nNo,windows detect only one controller.  \n\nAnd reg file  \n\n```\nWindows Registry Editor Version 5.00\n\n\n\n\u0026#91;HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Control\\CriticalDeviceDatabase\\pci#ven_8086\u0026dev_27c5\u0026cc_0106\u0026#93;\n\n\u0026#34;Service\u0026#34;\u003d\u0026#34;iaStor\u0026#34;\n\n\u0026#34;ClassGUID\u0026#34;\u003d\u0026#34;{4D36E96A-E325-11CE-BFC1-08002BE10318}\u0026#34;\n\n\n\n\u0026#91;HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\iaStor\u0026#93;\n\n\u0026#34;Type\u0026#34;\u003ddword\u0026#58;00000001\n\n\u0026#34;Start\u0026#34;\u003ddword\u0026#58;00000000\n\n\u0026#34;Group\u0026#34;\u003d\u0026#34;SCSI miniport\u0026#34;\n\n\u0026#34;ErrorControl\u0026#34;\u003ddword\u0026#58;00000001\n\n\u0026#34;ImagePath\u0026#34;\u003d\u0026#34;system32\\\\drivers\\\\iaStor.sys\u0026#34;\n\n\u0026#34;tag\u0026#34;\u003ddword\u0026#58;00000019\n\n\u0026#34;DisplayName\u0026#34;\u003d\u0026#34;Intel AHCI Controller\u0026#34;\n\n\n\n\u0026#91;HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\iaStor\\Parameters\u0026#93;\n\n\u0026#34;queuePriorityEnable\u0026#34;\u003ddword\u0026#58;00000000\n\n\n\n\u0026#91;HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\iaStor\\Enum\u0026#93;\n\n\u0026#34;0\u0026#34;\u003d\u0026#34;PCI\\\\VEN_8086\u0026DEV_27C5\u0026SUBSYS_01CD1028\u0026REV_01\u0026#34;\n\n\u0026#34;Count\u0026#34;\u003ddword\u0026#58;00000001\n\n\u0026#34;NextInstance\u0026#34;\u003ddword\u0026#58;00000001\n```\n\n\u003cbr /\u003e\n\n"
+    }
+  ]
+}

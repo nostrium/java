@@ -1,0 +1,34 @@
+{
+  "id": "6877",
+  "title": "Universal boot thumbnail ?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "56649",
+      "timestamp": "2009-01-26T18:00:52+00:00",
+      "author": "Lassar",
+      "content": "I was doing some research on booting from a thumb nail drive. It seems some computers can not boot from usb drives. Their bios does not support it.  \n\nFrom my research there seems to be a couple of options.  \n\nA u3 thumbnail OR grub4dos. Has anyone have any luck with these.  \n\nIf one was to use grub4dos; I think he would have to boot grub4dos from a CD before he could boot from the thumbnail.  \n\nWould have to be able to boot from a 64 bit computer  \n\nWould any other boot loaders work ?  \n\nHas anyone done it using au3 thumbnail ?  \n\nAny ideas on this ?   \n"
+    },
+    {
+      "id": "56652",
+      "timestamp": "2009-01-26T18:14:59+00:00",
+      "author": "was_jaclaz",
+      "content": "A quick *small* correction:  \na thumb***nail*** is a miniature picture  \na thumb***drive*** is a way to call USB Flash based mass storage devices, also \"pendrives\", \"USB sticks\", \"Flash Drives\", etc.:  \n[http://www.msfn.org/...showtopic\u003d98909](http://www.msfn.org/board/index.php?showtopic\u003d98909 \"External link\")  \n\nTwo quick *major* corrections:  \n\n* grub4dos has NOT an USB stack and won\u0027t help\n* a U3 stick won\u0027t help, as the problem is in the motherboard BIOS\n\n\u003cbr /\u003e\n\nThe only way you can try is using PLoP:  \n[http://www.plop.at/e...mngrusblog.html](http://www.plop.at/en/bootmngrusblog.html \"External link\")  \n[http://www.plop.at/e...tmanagerdl.html](http://www.plop.at/en/bootmanagerdl.html \"External link\")  \n\nAlone or in conjunction with grub4dos:  \n[http://www.boot-land...?showtopic\u003d6330](http://www.boot-land.net/forums/index.php?showtopic\u003d6330 \"External link\")  \n\n\u003cbr /\u003e\n\nOr using a \"kicker\" either on hard disk or CD (only for some Operating Systems). Please post details on what you actually need/want to boot.  \n\nA newish option, experimental and not for the \"newbie\" (no offence intended ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)) is using PLop on a network card extension ROM:  \n[http://www.911cd.net...showtopic\u003d22553](http://www.911cd.net/forums//index.php?showtopic\u003d22553 \"External link\")  \n\njaclaz  \n\nP.S.:  \nA typical thumbdrive:  \n\n![Posted Image](http://www.kahsoon.com/images/thumbdrive.jpg)  \n\n:cool:   \n"
+    },
+    {
+      "id": "59299",
+      "timestamp": "2009-02-15T16:03:16+00:00",
+      "author": "ktp",
+      "content": "@jaclaz  \nNice picture of thumbdrive ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n\nUSB stick, thumbdrive, USB key, keychain... It looks like there so many names for the same thing? Are there others?   \n"
+    },
+    {
+      "id": "59316",
+      "timestamp": "2009-02-15T18:20:26+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Are there others?\n\nWe have a \"catalog\" made for you on the referenced thread:  \n[http://www.msfn.org/...showtopic\u003d98909](http://www.msfn.org/board/index.php?showtopic\u003d98909 \"External link\")  \n\n![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\n![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\njaclaz   \n"
+    }
+  ]
+}

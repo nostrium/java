@@ -1,0 +1,40 @@
+{
+  "id": "22368",
+  "title": "USB flash drive not recognized",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "216176",
+      "timestamp": "2020-09-17T18:01:38+00:00",
+      "author": "Peter80",
+      "content": "I tried to create bootable usb using WinSetupFromUSB but i had to force close it because it stuck on defragmenting. After that the usb is not recognized by windows explorer, i am using Windows 10. Also, it is not recognized by WinSetupFromUSB or Easy2Boot.  \nThe strange thing is that diskpart recognizes the usb and i can successfully format and partition the drive with diskpart. Also, the usb drive is recognized by MiniTool Partition Wizard and i can format it successfully. But the usb drive is still not recognized by WinSetupFromUSB and Easy2Boot. Can this usb drive be repaired?\n\n"
+    },
+    {
+      "id": "216177",
+      "timestamp": "2020-09-17T18:05:39+00:00",
+      "author": "steve6375",
+      "content": "Try RMPrepUSB.exe - CLEAN\n\nThen try the Prepare Drive option (set 1-5 first)\n\nif it still fails\n\nTest using RMPrepUSB - Quick Size Test (destructive)\n\n"
+    },
+    {
+      "id": "216178",
+      "timestamp": "2020-09-17T20:00:12+00:00",
+      "author": "Peter80",
+      "content": "Thanks, but can you give a little more detailed instructions? I downloaded RMPrepUSB but i don\u0027t see CLEAN option.\n\n"
+    },
+    {
+      "id": "216180",
+      "timestamp": "2020-09-17T21:42:12+00:00",
+      "author": "steve6375",
+      "content": "It is the red button just above the Exit button - bottom-right of form.\n\n"
+    },
+    {
+      "id": "216181",
+      "timestamp": "2020-09-17T21:59:26+00:00",
+      "author": "Peter80",
+      "content": "I think i fixed it. For some reason Windows would not assign drive letter to the usb drive. I assigned drive letter manually and the usb drive now is recognized by Easy2Boot and WinSetupFromUSB.\n\n"
+    }
+  ]
+}

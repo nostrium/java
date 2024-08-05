@@ -1,0 +1,46 @@
+{
+  "id": "4368",
+  "title": "Bootloader to linux to windows without reset?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "32846",
+      "timestamp": "2008-04-07T17:42:02+00:00",
+      "author": "Serpreme",
+      "content": "I\u0027m currently looking into using kexec to hand off control of a linux kernel to windows or grub. That way i can load a script that checks an image server, returns a value, then moves onto the windows OS.  \n\nOr possible have that linux session modify the GRUB loader i am using, then have kexec load up GRUB again and have the settings take effect.  \n\nBasically i\u0027m trying to remove a step, which is rebooting after it loads the kernel.  \n\nIf i\u0027m not being very clear, sorry, i\u0027ll try to explain more so.   \n\nSo far havnt found any good sources of windows actually loading from linux or GRUB itself, but many people say its \"possible\".  \nThanks!   \n"
+    },
+    {
+      "id": "32849",
+      "timestamp": "2008-04-07T18:46:51+00:00",
+      "author": "Brito",
+      "content": "Hi Serpreme, welcome to our community.  \n\nPlease bear with answers as my personal linux experience is somewhat reduced but I\u0027ve been googling to find some possible solutions.  \n\nYou can try GRUB4DOS instead of regular GRUB to boot up windows.   \n\nLook here:   \n\u003e (1) Run GRUB.EXE at the DOS prompt or in AUTOEXEC.BAT  \n\u003e (2) In CONFIG.SYS of DOS/Windows9x, use DEVICE\u003dGRUB.EXE or INSTALL\u003dGRUB.EXE or SHELL\u003dGRUB.EXE  \n\u003e (3) In BOOT.INI of Windows NT/2K/XP, use C:\\\\GRLDR\u003d\"GRUB\" (there should be a backslash between C: and GRLDR)  \n\u003e **(4) Under Linux, use \"kexec -l grub.exe\" and then \"kexec -e\"**  \n\u003e (5) In syslinux.cfg, use \"kernel grub.exe\"  \n\u003e (6) Under GNU GRUB, use \"kernel (DEVICE)/PATH/grub.exe\"  \n\u003e (7) In lilo.conf, use \"image\u003d/boot/grub.exe\"\n[http://grub4dos.jot.com/WikiHome](http://grub4dos.jot.com/WikiHome \"External link\")  \n\n![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)   \n"
+    },
+    {
+      "id": "32854",
+      "timestamp": "2008-04-07T19:51:00+00:00",
+      "author": "Serpreme",
+      "content": "\u003e Hi Serpreme, welcome to our community.  \n\u003e\n\u003e Please bear with answers as my personal linux experience is somewhat reduced but I\u0027ve been googling to find some possible solutions.  \n\u003e\n\u003e You can try GRUB4DOS instead of regular GRUB to boot up windows.   \n\u003e\n\u003e Look here:   \n\u003e\n\u003e [http://grub4dos.jot.com/WikiHome](http://grub4dos.jot.com/WikiHome \"External link\")  \n\u003e\n\u003e ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)\nI think you might have something there. I\u0027ll need to fully digest this bit of information i overlooked many times.  \nThank ya buddy, much appreciated.   \n"
+    },
+    {
+      "id": "33256",
+      "timestamp": "2008-04-13T11:46:17+00:00",
+      "author": "mihi",
+      "content": "\u003e You can try GRUB4DOS instead of regular GRUB to boot up windows.\n\nHello Nuno, Hello Serpreme,  \n\nplease keep us updated how well this works.  \nAbout two years ago I hacked up some code to chainload a boot sector from kexec. In principle it works (especially if the chainloaded OS is Linux), but in practice (both with DOS and Windows) there were some problems:  \n\n* Some Linux drivers seem to map hardware address space over BIOS interrupts, so as soon as the loaded OS tries to call BIOS directly, it crashes\n* Some Windows drivers seem to expect a device which is in \"reset\" state and not all linux driver leave drives in this state when running kexec\n\n\u003cbr /\u003e\n\nAt that time, there were no plans to fix this, but since it is two years ago, it can surely be that it magically works now ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif) Or maybe Grub4Dos includes some quirks to remember the address space mapping when it is loaded first and restores it on kexec load?  \n\nSo, please keep up updated if you manage to load Windows from a regular (not extremely stripped down) Linux kernel, thank you ![:tabletalk:](http://reboot.pro/public/style_emoticons/default/tabletalk.gif)  \n\nmihi   \n"
+    },
+    {
+      "id": "33284",
+      "timestamp": "2008-04-13T18:35:26+00:00",
+      "author": "ilko",
+      "content": "Have a look at this thread too:  \n[http://www.boot-land...?showtopic\u003d4251](http://www.boot-land.net/forums/index.php?showtopic\u003d4251 \"External link\")  \n\nIt seems grub4dos grub.exe does have some issues when executed by kexec, or kernel/kexec version matter. I am eagerly awaiting tinybit\u0027s/windrv\u0027s response on this matter.  \n\nilko   \n"
+    },
+    {
+      "id": "33319",
+      "timestamp": "2008-04-14T17:38:13+00:00",
+      "author": "Serpreme",
+      "content": "\u003e Have a look at this thread too:  \n\u003e [http://www.boot-land...?showtopic\u003d4251](http://www.boot-land.net/forums/index.php?showtopic\u003d4251 \"External link\")  \n\u003e\n\u003e It seems grub4dos grub.exe does have some issues when executed by kexec, or kernel/kexec version matter. I am eagerly awaiting tinybit\u0027s/windrv\u0027s response on this matter.  \n\u003e\n\u003e ilko\nI am so inept with linux that i am having trouble installing grub4dos \u003dP  \nBut i will keep you all up to date.  \nSo far i\u0027ve run into the issue of vesafb locking video.  \nI can get the floppy img of grub to execute. But since the video locks up on me, i have to manually power down. When it loads up on next bootup, grub loads. Thats atleast good news. Since i dont have grub installed.  \nSo i\u0027m going to make a shell script that automatically launchs kexec, kexec -e and reboot -f  \nHopefully this will be more useful then what i currently have going.   \n"
+    }
+  ]
+}

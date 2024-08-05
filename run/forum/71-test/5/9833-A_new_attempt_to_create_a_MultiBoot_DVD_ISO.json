@@ -1,0 +1,58 @@
+{
+  "id": "9833",
+  "title": "A new attempt to create a Multi-Boot DVD / ISO",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "85364",
+      "timestamp": "2009-11-28T11:40:41+00:00",
+      "author": "Klaus21",
+      "content": "After my XP has suddenly passed and I barely was able to revive and reinstall I would like to continue working on my old Emergency Multiboot DVD / USB again.  \n\nMedium: 4 GB DVD / ISO  \n\nContents:   \n1 NotfallXP PE  \n2. Emergency Win7 PE  \n3. Utilitie CD Erdcommander 2005  \n__________  \n4. Linux (Puppy, Muppy or similar)  \n__________  \n5. Original XP ISO  \n6. Win7 Original ISO  \n__________  \n7. Reboot  \n\nIs it technically feasible to create such a DVD / ISO.  \nWhat lends itself to best: Gru4dos, Syslinux, ....  \nThe whole CD\u0027s I have as ISO\u0027s.  \nMy last project I tried involved with grub4dos was awarded as allerdimgs not Linux.  \n\nIt would be nice if I can help somebody something.  \n\nThanks Klaus  \n\nPS: Please do not be sore about my English (Google translator)   \n"
+    },
+    {
+      "id": "85367",
+      "timestamp": "2009-11-28T12:00:31+00:00",
+      "author": "maanu",
+      "content": "grub4dos is the answer for sure . you just need to chainload the kernel .  \n\nbut i need to know directory structure of your iso\u0027s , specially NT5 pe\u0027s .   \n\ni.e boot win7 pe iso like   \n\nmap /win.iso (0xff)  \nmap --hook  \nchainloader (0xff)  \n\nand so on . just keep posting what you want to add specifically . and i (we) will try to answer.   \n"
+    },
+    {
+      "id": "85374",
+      "timestamp": "2009-11-28T12:46:11+00:00",
+      "author": "Klaus21",
+      "content": "@ maanu  \nThanks for the quick response  \n\nStructure of Win7 RescuePE  \n\\[.\\] \\[..\\] \\[BOOT\\] BOOTMGR \\[PROGRAMS\\]  \nSETUP.EXE \\[SOURCES\\] WIN7PE.CD WIN7PE.CFG   \n\nStructure of XP PE:  \n\nDIR:  \nBCDW  \nBOOT.IMAGES  \nHBCD  \nIMAGES  \nMNPE  \nPROGRAMS  \nbootsect.bin, bootcat.ini, winbom.ini, autorun.inf, win51, win51IS, win51IP.sp2, win51IP, win51IP.sp1  \n\nStructure of XP Install:  \nDIR  \n$OEM$  \nACRONIS  \nBCDW  \nBOOT.IMAGES  \nI386  \nsetup.exe, bootfont.bin, autorun.inf, win51, win51ip, win51ip.sp3  \n\nStructure of Win7 Install:  \n\nDIR:  \nBOOT  \nEFI  \nSOURCES  \nSUPPORT  \nUPGRADE  \nautorun.inf, bootmgr, setup.exe  \n\nstructure of Muppy  \nBOOT.IMAGES  \nboot.cat, boot.msg, initrd.gz, isolinux, bin, isolinux.cfg, msy_084.sfs, vmlinuz, znsy_084.sfs  \n\nThe structure of the utilitie CD is very long .   \n"
+    },
+    {
+      "id": "85381",
+      "timestamp": "2009-11-28T14:16:07+00:00",
+      "author": "maanu",
+      "content": "WAREZ is involved . i am afraid that i am bound to stay silent here.   \n\nsorry   \n"
+    },
+    {
+      "id": "85392",
+      "timestamp": "2009-11-28T15:07:43+00:00",
+      "author": "Klaus21",
+      "content": "@ maanu  \n\nCan you tell me how I Original XP, Windows 7 and Linux include.  \nBecause the other thing it\u0027s probably better to build it with WinBuilder to a PE (LiveXP and WIN7PE).  \n\nI\u0027d be grateful if you could help me on legal channels.   \n"
+    },
+    {
+      "id": "85394",
+      "timestamp": "2009-11-28T15:15:31+00:00",
+      "author": "maanu",
+      "content": "( i suppose that you already have /know how to use grub4dos as dvd boot loader ) ,  \n\nmount windows 7 dvd , move/copy its contents as it is to root of dvd structure . same with xp .  \n\nnow use the following for booting both ,  \n\ntitle 7 install  \nchainloader /bootmgr  \n\ntitle xp install  \nchainloader /ntldr  \n\n\u003cbr /\u003e\n\npost isolinux.cfg of puppy linux in your next post.   \n"
+    },
+    {
+      "id": "85402",
+      "timestamp": "2009-11-28T16:06:52+00:00",
+      "author": "Klaus21",
+      "content": "@maanu  \nmany thanks for your further assistance  \n\n\" i suppose that you already have /know how to use grub4dos as dvd boot loader\"   \nNot really. So far I have always copy it and try to understand too much but try without it.  \n\nstructure of puppy  \npuppy-431-de  \n\n\\[.\\] BOOT.CAT INITRD.GZ LOGO.16   \n\\[..\\] BOOT.MSG ISOLINUX.BIN PUP_431.SFS   \nHELP.MSG ISOLINUX.CFG VMLINUZ   \n\ndefault puppy  \ndisplay boot.msg  \nprompt 1  \ntimeout 50  \n\nF1 boot.msg  \nF2 help.msg  \n\nlabel puppy  \nkernel vmlinuz  \nappend initrd\u003dinitrd.gz pmedia\u003dcd pfix\u003dcopy   \n\nKlaus   \n"
+    },
+    {
+      "id": "85409",
+      "timestamp": "2009-11-28T16:53:32+00:00",
+      "author": "was_jaclaz",
+      "content": "FYI:  \n\n[http://www.boot-land...?showtopic\u003d5845](http://www.boot-land.net/forums/index.php?showtopic\u003d5845 \"External link\")  \n\njaclaz   \n"
+    }
+  ]
+}

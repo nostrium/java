@@ -1,0 +1,82 @@
+{
+  "id": "7097",
+  "title": "Linux compiled as DOS executable",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "59216",
+      "timestamp": "2009-02-14T13:53:30+00:00",
+      "author": "mr_",
+      "content": "I wasn\u0027t sure whenever to post this in the Linux or DOS section.  \n\nHowever, the following [reference](http://sourceforge.net/forum/forum.php?forum_id\u003d873405 \"External link\") is link to a project about to compile the Linux kernel into a executable for DOS (real DOS, in sense of MS-DOS or FreeDOS).  \n\nThis project is pretty absorbing, it shows how flexible Linux is, it runs on different hardware architectures, together with NT-based Windows (CoLinux) and now also as exe in DOS.  \n\nCan this project be useful for anything related to \u0027boot anything from anywhere\u0027?  \n\nOne example I can think of is to boot from a BIOS-supported device, to load a DOS device driver (foe example DOS USB driver) and to start Linux from a DOS-(but not BIOS)-supported device. I would be interested to see a whole distro including gui based uppon Linux.exe.  \n\nAny other ideas for what Linux.exe could be useful?   \n"
+    },
+    {
+      "id": "60765",
+      "timestamp": "2009-02-27T11:35:46+00:00",
+      "author": "mr_",
+      "content": "New idea...  \n\nLinux.exe is theoretically quite handy. kexec can be used in order to fast reboot linux without going thought BIOS again. One limitation of kexec is that it can only chanboot other linux kernels but no other operating systems such as linux. On the other hand we have grub.exe and the possibility to start (almost?) any operating system from a bootable device supported by BIOS (or BIOS extender such as PLoP).  \n\nIf we can shutdown linux.exe and return to DOS this can be easy combined with starting grub.exe from DOS.  \n\nThe only technical unknown thing in this mulitbooting DOS, Windows, Linux scenario is to shutdown Windows and to return to grub.exe without going thought BIOS again. I think this hasn\u0027t been implemented yet.  \n\nYes, it\u0027s also already possible to use kexec to chainboot grub.exe directly, but this isn\u0027t working always [reliable](http://www.boot-land.net/forums/index.php?showtopic\u003d7217 \"External link\"). It\u0027s still questionable whenever it is more reliable to shutdown linux.exe and to start grub.exe from DOS compared to using kexec from linux directly. However, it will be more easy to debug grub.exe inside pure DOS compared to from kexec/linux?  \n\nSoon I will try to get my own linux.exe and tell you whenever I can chainboot grub.exe better then directly with kexec.  \n\n(I\u0027ve posted this already on the [kexec-mailing](http://lists.infradead.org/pipermail/kexec/2009-February/003223.html \"External link\") list without feedback.)   \n"
+    },
+    {
+      "id": "60769",
+      "timestamp": "2009-02-27T12:08:38+00:00",
+      "author": "was_jaclaz",
+      "content": "My guess about the supposed unreliability of kexec loading is that you had a problem with the specific Linux kernel in Ubuntu 8.04, possibly attempting to use in a console window with X running.  \nSame thing happens if you try loading grub.exe from a GUI booted Win9x:  \n\n```\n******************************************************************************\n\n***\t\t\t\t\t\t\t Known Problems\t\t\t\t\t\t\t ***\n\n******************************************************************************\n\n\n\n1.\tRunning GRUB.EXE from a DOS box of Windows 9x/Me could hang the\n\n\tmachine, especially for some systems with USB support. You may\n\n\tencounter the same problem when running GRUB.EXE through KEXEC under\n\n\tLinux.\n\n\n\nNote\u0026#58;\tYou don\u0026#39;t have to run GRUB.EXE from protected mode of Win9x, which\n\n\tcould hang the machine; Instead, you usually want to run GRUB.EXE\n\n\tafter you have done a \u0026#34;Restart the computer in MS-DOS mode\u0026#34;, which\n\n\tis safe enough.\n```\n\n\u003cbr /\u003e\n\nNot enough to mark kexec loading \"unreliable\", as I see it, simply non-working with some Linux kernels and/or some hardware and related drivers.  \n\nThe nice \"linuxware\" thingie appears to be something that can load a linux kernel from DOS.  \n\nFrom it you anyway need kexec to load grub.exe.  \n\nis \"shutting it\" and return to DOS possible at all? ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nThe original release post is here:  \n[http://lkml.org/lkml/2008/9/8/2](http://lkml.org/lkml/2008/9/8/2 \"External link\")  \n\nI seem not able to find even one single line of documentatin about it on \"home page\": ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n[http://www.wolfmountaingroup.org/](http://www.wolfmountaingroup.org/ \"External link\")  \n\n\u003cbr /\u003e\n\nCOMPLETELY off topic, but FYI:  \n[http://www.boot-land...?showtopic\u003d4643](http://www.boot-land.net/forums/index.php?showtopic\u003d4643 \"External link\")  \n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "60793",
+      "timestamp": "2009-02-27T15:27:37+00:00",
+      "author": "mr_",
+      "content": "\u003e is \"shutting it\" and return to DOS possible at all?\nYes... It\u0027s more then loadlin or LinLD...  \n\n[http://lkml.org/lkml/2008/9/14/56](http://lkml.org/lkml/2008/9/14/56 \"External link\")  \n\u003e Linux works just like it does normally, except you can quit Linux and exit back to DOS.\n\u003e One thing it does allow is Linux to call DOS interrupts  \n\u003e from protected mode and return.\n\n\u003e I seem not able to find even one single line of documentatin about it on \"home page\":\nMe nor neither.  \n\nOnly code and binary is online.  \n[ftp://ftp.wolfmountaingroup.org/pub/linuxware](ftp://ftp.wolfmountaingroup.org/pub/linuxware \"External link\")   \n"
+    },
+    {
+      "id": "60802",
+      "timestamp": "2009-02-27T16:01:22+00:00",
+      "author": "was_jaclaz",
+      "content": "If you manage to understand how to run the binaries, please post some basic instructions.   \n\njaclaz   \n"
+    },
+    {
+      "id": "60803",
+      "timestamp": "2009-02-27T16:11:22+00:00",
+      "author": "mr_",
+      "content": "Just out of interested, why are you interested now?   \n"
+    },
+    {
+      "id": "60806",
+      "timestamp": "2009-02-27T16:43:41+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Just out of interested, why are you interested now?\n\nWho told you I wasn\u0027t before? ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nHere is an actual diagram of my interest in it:  \n\n```\nY\n\n^\n\n|\n\n|\n\n|-------------------------------------------------------------------------\n\n|\n\n|\n\n|\n\n|\n\n|\n\n|__________________________________________________________________________ \u003e X\n```\n\n\u003cbr /\u003e\n\nThe good thing about it is that you can put the \"before\" and \"now\" wherever you like. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nAlso, being adimensional in the Y direction also, it won\u0027t reveal the \"level\" of my interest. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nWould my interest in it or a \"high level\" of interest in it change anything? ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "60807",
+      "timestamp": "2009-02-27T16:49:27+00:00",
+      "author": "mr_",
+      "content": "No, I am just curious.  \n\nI thought you had an idea to do with it something useful or cool or whatever.   \n"
+    },
+    {
+      "id": "60811",
+      "timestamp": "2009-02-27T17:11:19+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e No, I am just curious.  \n\u003e\n\u003e I thought you had an idea to do with it something useful or cool or whatever.\n\nI probably ***may*** ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) (not sure about something \"useful\" nor \"cool\", but you could bet for the \"whatever\" ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)), *IF* this thing works, and *IF* one could test it:   \nI simply hate solving puzzles to even start something, and expecially when I cannot see (at the moment) any use for it.  \n\nMind you, I am not saying that it cannot become useful ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif), only that right now I don\u0027t see an actual use for it ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif).  \n\nFor the record, nor for the kexec thing, call me old-fashioned, but I actually find a reboot the simplest thing to avoid \"leftovers\" from any \"other\" OS.  \n\nBut that doesn\u0027t mean that if a basic procedure for actually testing it is somewhere published, someone with more fantasy than I have could come up with a good ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif).  \n\nIf you prefer, I am not interested in the thingie itself, I am interested in the availability of the thingie....![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "65805",
+      "timestamp": "2009-04-24T07:58:57+00:00",
+      "author": "QBall",
+      "content": "\u003e Who told you I wasn\u0027t before? :smile:  \n\u003e\n\u003e Here is an actual diagram of my interest in it:  \n\u003e\n\u003e ```\n\u003e Y\n\u003e\n\u003e ^\n\u003e\n\u003e |\n\u003e\n\u003e |\n\u003e\n\u003e |-------------------------------------------------------------------------\n\u003e\n\u003e |\n\u003e\n\u003e |\n\u003e\n\u003e |\n\u003e\n\u003e |\n\u003e\n\u003e |\n\u003e\n\u003e |__________________________________________________________________________ \u003e X\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e The good thing about it is that you can put the \"before\" and \"now\" wherever you like. :smile:  \n\u003e\n\u003e Also, being adimensional in the Y direction also, it won\u0027t reveal the \"level\" of my interest. :smile:  \n\u003e\n\u003e Would my interest in it or a \"high level\" of interest in it change anything? :smile:  \n\u003e\n\u003e jaclaz\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\nLOL I really enjoyed your \u0027diagramical\u0027 humor, jaclaz! :smile:   \n\nEven not being real technically knowledgeable, I do not see any practical application for this either, as there are so many mini-Linux out there that run on Live-CD\u0027s and load to RAM where one can do whatever they want (even to remove the CD/DVD that loaded the Live-CD). I\u0027ve tried and ran quite a few mini-Linux distro\u0027s. Anything that one could do from building \\\u0026 running it, one can do from most all of the mini-Linux already out there! ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)   \n\nThanks for the laugh, jaclaz!! :smile:   \n"
+    },
+    {
+      "id": "65812",
+      "timestamp": "2009-04-24T08:47:13+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Even not being real technically knowledgeable, I do not see any practical application for this either, as there are so many mini-Linux out there that run on Live-CD\u0027s and load to RAM where one can do whatever they want (even to remove the CD/DVD that loaded the Live-CD). I\u0027ve tried and ran quite a few mini-Linux distro\u0027s. Anything that one could do from building \\\u0026 running it, one can do from most all of the mini-Linux already out there! :smile:\nYep, but you miss a lot of fun if you only use tested solutions:  \n\u003e Life is \"trying things to see if they work\"\n:smile:  \n\n\u003e Thanks for the laugh, jaclaz!! :smile:\n\nYou are welcome. :smile:   \n\n:smile:  \n\njaclaz   \n"
+    },
+    {
+      "id": "65893",
+      "timestamp": "2009-04-25T06:59:06+00:00",
+      "author": "QBall",
+      "content": "\u003e Yep, but you miss a lot of fun if you only use tested solutions:  \n\u003e\n\u003e :smile:\n\nLOL That is so VERY true! :smile:   \n\n\u003e You are welcome. :smile:   \n\u003e\n\u003e :smile:  \n\u003e\n\u003e jaclaz\n\nI sent a copy of that off to a friend and got a huge laugh in return! :smile:   \n"
+    }
+  ]
+}

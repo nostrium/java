@@ -1,0 +1,112 @@
+{
+  "id": "20921",
+  "title": "Make USB read-only",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "197130",
+      "timestamp": "2016-01-09T17:18:45+00:00",
+      "author": "Uneitohr",
+      "content": "I cannot buy a USB stick with read-only switch so I must come up with a software sollution for it. I have a usb device with portable programs and some files that I use. I will sometimes use this on infected systems. I need to make the USB read-only so that the only operation permitted is file copy. Nothing will be executed off the stick.\n\nI have learned, from [superuser.com](http://superuser.com/questions/818314/make-some-content-on-usb-drive-read-only \"External link\"), that  \n\u003e Any file/folder containing \\* in their name will be read-only in Windows.  \n\u003e\n\u003e Even admin can\u0027t delete or modify it. Remaing space is available for other use. Formting the device will delete it. As \\* is a invalid charactor for a file name you can\u0027t add it to a file name from Windows. In order the rename the file, boot into a linux OS and just rename it. Tested on Windows 7, from Ubuntu, NTFS formatted pen drive. FAT fs may not support.\n\u003e\nHowever, even if the files are read-only, the available free space of the drive is still writable. And even if that weren\u0027t a problem, a malware code might even infect the firmware. The desired sollution should allow me to make it read-only but also undo it in order to update the usb.\n\nI\u0027m seeking advice from you guys as the best possible sollution to my problem.\n\nThanks again guys.\n\n"
+    },
+    {
+      "id": "197131",
+      "timestamp": "2016-01-09T17:54:54+00:00",
+      "author": "steve6375",
+      "content": "Why not use a SD card + USB SD card reader (USB 3). Then you can use the WP tag on the SD card? These are not that fast though! Not all readers look at the switch though, so beware!\n\nZalman drive caddies have a write-protect switch at the top of the drive (VE200 does, not sure about later models?). I think the ISOStick has WP feature also??\n\nKanguru and some Netac drives (e.g. U335) have a WP switch - these are on Amazon.\n\nYou can write a script to fill the drive completely, thus preventing any s/w from adding or modifying files on it. Run a \u0027delete\u0027 script to remove the filler files when you need to modify it.\n\nYou can get USB devices which block writes to any USB device - see [video](https://www.youtube.com/watch?v\u003d5RdCyIRK1B8 \"External link\") - but expensive ($190 on Amazon)!\n\n"
+    },
+    {
+      "id": "197133",
+      "timestamp": "2016-01-09T18:16:31+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, get \\*any\\* USB stick with a dual LUN controller AND with the manufacturer utility to make one of the two LUN\u0027s a CD-like device.\n\nNot the easiest thing to do (to find a suitable USB stick) and not for the faintest of heart (to use an often under- or mis- documented Manufacturer Tool to set the device as CD).\n\nDepending on how much you want to spend, you can get a USB Write blocker.\n\nJFYI, that \"asterisk in the name\" thingy makes very little sense, it leverages on non-standard characters in file name on Windows, very likely it may work for the \"smart script kid\" batch file, but arguably for \"real\" malware.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "197134",
+      "timestamp": "2016-01-09T18:20:28+00:00",
+      "author": "Uneitohr",
+      "content": "\u003e You can write a script to fill the drive completely, thus preventing any s/w from adding or modifying files on it. Run a \u0027delete\u0027 script to remove the filler files when you need to modify it.\n\u003e\nYes, but that is not preventing the existing files to be infected. Any mallicious code will not be able to copy itself but will be able infect the existing ones.\n\n"
+    },
+    {
+      "id": "197135",
+      "timestamp": "2016-01-09T18:20:36+00:00",
+      "author": "Uneitohr",
+      "content": "So, in other words: there\u0027s nothing I can do except buying an USB device with a ReadOnly Switch?\n\n**Edited by Alexander Ceed, 09 January 2016 - 06:23 PM.**\n"
+    },
+    {
+      "id": "197136",
+      "timestamp": "2016-01-09T18:26:10+00:00",
+      "author": "steve6375",
+      "content": "\u003e Yes, but that is not preventing the existing files to be infected. Any mallicious code will not be able to copy itself but will be able infect the existing ones.\n\nMalware cannot re-write any file. It could byte-modify the drive sectors, but most malware doesn\u0027t work like that, it overwrites a file to patch/replace it - but this is not possible if the drive is absolutely full because no temporary file can be made first.\n\nAt least that is the theory!\n\n"
+    },
+    {
+      "id": "197137",
+      "timestamp": "2016-01-09T18:31:09+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e So, in other words: there\u0027s nothing I can do except buying an USB device with a ReadOnly Switch?\n\nIn other words you have been given *several alternative* options, which you decided to ignore.\n\nJust for the fun of it, I will add a link to an el-chapo DIY USB Write blocker, presented at BlackHat 2012:\n\n[http://dangerousprot...-write-blocker/](http://dangerousprototypes.com/2013/10/29/blackhat-euro-cheap-open-source-usb-drive-write-blocker/ \"External link\")\n\n[http://www.instructa...-Write-Blocker/](http://www.instructables.com/id/Cheap-and-Effective-USB-Write-Blocker/ \"External link\")\n\n[http://micsymposium....bmission_17.pdf](http://micsymposium.org/mics2012/submissions/mics2012_submission_17.pdf \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "197139",
+      "timestamp": "2016-01-09T20:46:01+00:00",
+      "author": "Uneitohr",
+      "content": "\u003e Why not use a SD card + USB SD card reader (USB 3). Then you can use the WP tag on the SD card? These are not that fast though! Not all readers look at the switch though, so beware!\n\u003e\nI cannot use an SD card because it is slow, and I use this usb for all my debugging purposes so I need it to be fast.\n\n\u003e Zalman drive caddies have a write-protect switch at the top of the drive (VE200 does, not sure about later models?). I think the ISOStick has WP feature also??\n\u003e\nI\u0027ll have to take a loot at ISOstick to see if it actually can do that.\n\n\u003e Kanguru and some Netac drives (e.g. U335) have a WP switch - these are on Amazon.\n\u003e\nI already have the usb sticks. In my current location, USBs with WP are very hard to come by and I\u0027ll have to buy them outside the country. The cost will greatly increase due to shipping... can\u0027t do that.\n\n\u003e You can write a script to fill the drive completely, thus preventing any s/w from adding or modifying files on it. Run a \u0027delete\u0027 script to remove the filler files when you need to modify it.\n\u003e\nYes, I was thinking about doing this.\n\n\u003e Well, get \\*any\\* USB stick with a dual LUN controller AND with the manufacturer utility to make one of the two LUN\u0027s a CD-like device.\n\u003e\n\u003e Not the easiest thing to do (to find a suitable USB stick) and not for the faintest of heart (to use an often under- or mis- documented Manufacturer Tool to set the device as CD).\n\u003e\nAnd this will work like an USB with two partitions? One readable and one writable?\n\n\u003e Depending on how much you want to spend, you can get a USB Write blocker.\n\u003e\nI\u0027m looking just for a software sollution --not hardware.\n\n"
+    },
+    {
+      "id": "197141",
+      "timestamp": "2016-01-09T21:52:33+00:00",
+      "author": "steve6375",
+      "content": "No non-hardware solution will prevent byte patching of sectors. I presume you don\u0027t want to install anything on the host system?\n\nDo you want protection from Windows *and*linux malware?\n\nThere are ways of preventing Windows from accessing some volumes, but that won\u0027t stop linux programs.\n\nIf you can afford an ISOStick, then why not buy Netac U335\u0027s which I thought would be cheaper.\n\nIf there was an easy, universal non-hardware solution then every one would be using it! So you need to define the usage precise conditions that you want/need. e.g. OS\u0027s, FAT32/NTFS/exFAT on USB drive, do you boot any type of software from the USB drive, etc.\n\n"
+    },
+    {
+      "id": "197142",
+      "timestamp": "2016-01-09T23:39:47+00:00",
+      "author": "Uneitohr",
+      "content": "\u003e So you need to define the usage precise conditions that you want/need. e.g. OS\u0027s, FAT32/NTFS/exFAT on USB drive, do you boot any type of software from the USB drive, etc.\n\u003e\nIt is an 64GB USB stick that I use for maintenance and debugging, it has grub4DOS configuration and will be used to boot images. On the same USB I also have lots of small portable applications that I usually run directly from the stick. On heavily infected system I just want to be able to copy the contents without actually allowing anything to edit the stick. The USB device uses only NTFS because I have files that exceed 4GB.\n\nSince it is a portable solution, there is no fixed host.\n\n\u003e Do you want protection from Windows *and* linux malware?\n\u003e\nJust Windows.\n\n"
+    },
+    {
+      "id": "197143",
+      "timestamp": "2016-01-10T02:28:14+00:00",
+      "author": "RoyM",
+      "content": "If you are only booting Windows OS\u0027s  \nyou may use the WProtect Tool from Colin Ramsdens  \nOriginaly written for Win7FE Boot disks.  \n[http://www.ramsdens....k/download.html](http://www.ramsdens.org.uk/download.html \"External link\")  \nRegards  \nRoyM\n\n"
+    },
+    {
+      "id": "197144",
+      "timestamp": "2016-01-10T03:59:40+00:00",
+      "author": "Agent47",
+      "content": "If you can\u0027t buy a flash stick with hardware write protection switch, i would suggest formatting the disk as NTFS and play with NTFS permissions to deny any write attempt to the file system. Yes, this is indeed not a false proof method. While theoretically a malware can bypass the NTFS permissions, it\u0027s very effective against common malwares which spreads through USB flash sticks - ie sality virus which modifies all exe files, viruses which makes all files/folders hidden, the one which creates \"new folder.exe\" etc.\n\nI would suggest using \"NTFS drive Protection\" which can do the necessary permission changes on a single click -\n\n[http://www.sordum.or...rotection-v1-4/](http://www.sordum.org/8117/ntfs-drive-protection-v1-4/ \"External link\")\n\nIn my practical tests, common USB malwares like folder virus and those who take advantages of \"autorun.inf\" totally failed to infect my protected drive. Sure, there may be high level malwares which can bypass permissions but something is better than nothing :smile: .\n\n"
+    },
+    {
+      "id": "197148",
+      "timestamp": "2016-01-10T09:33:43+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e And this will work like an USB with two partitions? One readable and one writable?\n\nYes and no, depending on the specific controller one of the two LUN\u0027s may emulate a \"CD-like\" device or a \"read only HD-like\" device, whilst the second will be a \"normal\" RW \"HD-like device.\n\nWhat you will see normally will not be two partitions on a same device, but rather two devices, just like you had inserted two disks, the LUN concept goes back to good ol\u0027 SCSI, a device will have a number, a normal stick has one, these sticks can have two.\n\nSee also:\n\n[http://www.msfn.org/...-cdfs/?p\u003d784641](http://www.msfn.org/board/topic/121199-formating-a-usb-stick-to-udf-or-cdfs/?p\u003d784641 \"External link\")\n\nAnd Steve6375\\*s example Tutorial:\n\n[http://www.rmprepusb...n-a-flash-drive](http://www.rmprepusb.com/tutorials/97---write-protect-or-make-a-cd-dvd-partition-on-a-flash-drive \"External link\")\n\nPlease note how that SMI tool is one of the easiest or more \"user friendly\" ones that you can find, most of the others are much more difficult to use and may well \"brick\" your stick if used improperly.\n\n@Agent47\n\nOww, comeon, if we are talking of protecting something from malware, we are talking of protecting it from most malware, to the best of our possibilties, not only from the common ones.\n\nThere is still however something that is \"not right\" in the sense that the usage paradigm of this stick is not at all clear (to me at least ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)).\n\nIf it is used as a \"recovery environment\" or \"malware removal/disinfectint\" then it is ONLY used as a boot device so there is no way it can be infected if not in the (now really rare) case of a virus/malware residing in BIOS/UEFI.\n\nIf it is used as a \"media to run some diagnostics programs\" on a supposedly infected system (Windows only) there are normally no issues to:\n\n* boot from the stick (as before)\n* verify that the machine is not infected and clean it if needed (as before)\n* copy to the infected machine\u0027s hard disk the (small) bunch of diagnostics utilities/whatever\n* remove the stick and boot the machine to the built-in (possibly still infected) OS and then run the fiagnostics/utilities/whatever\n\nThe risk is 99.9999% connected to inserting the stick to an already booted and running OS, so just don\u0027t and you will be fine.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "197158",
+      "timestamp": "2016-01-10T21:42:37+00:00",
+      "author": "Uneitohr",
+      "content": "\u003e The risk is 99.9999% connected to inserting the stick to an already booted and running OS, so just don\u0027t and you will be fine.\n\u003e\nYou are forgetting one thing: human error. I tend to forget when I am under pressure so that may and may not work.\n\nThe best course of action of course is to just buy an USB stick with a read/write switch. And I think I\u0027ll do just that, the money is worth it. As one final set of questions to you guys regarding these usb devices:\n\n1. Are they slower/faster than regular usb devices? Say one 128GB drive RW Switch vs 128GB Normal without RW switch.\n\nFor the sake of argument take these two\n\n[http://www.amazon.co...r voyager 128gb](http://www.amazon.com/Corsair-Flash-Voyager-128GB-CMFVYGT3B-128GB/dp/B00J29IJP8/ref\u003dsr_1_5?s\u003dpc\u0026ie\u003dUTF8\u0026qid\u003d1452461909\u0026sr\u003d1-5\u0026keywords\u003dcorsair+voyager+128gb \"External link\")\n\n[http://www.amazon.co...ction usb 128gb](http://www.amazon.com/Kanguru-Usb3-0-Physical-Protect-Switch/dp/B00URXYBD2/ref\u003dsr_1_19?s\u003dpc\u0026ie\u003dUTF8\u0026qid\u003d1452383031\u0026sr\u003d1-19\u0026keywords\u003dwrite+protection+usb+128gb \"External link\")\n\n2. What should I look for when choosing a hardware write protected usb? Any specifications I should be on the lookout for or anything will do?\n\nThanks for your valuable input guys.\n\n"
+    },
+    {
+      "id": "197164",
+      "timestamp": "2016-01-11T08:56:04+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e 1. Are they slower/faster than regular usb devices? Say one 128GB drive RW Switch vs 128GB Normal without RW switch.\n\u003e\n\u003e For the sake of argument take these two\n\u003e\n\u003e [http://www.amazon.co...r voyager 128gb](http://www.amazon.com/Corsair-Flash-Voyager-128GB-CMFVYGT3B-128GB/dp/B00J29IJP8/ref\u003dsr_1_5?s\u003dpc\u0026ie\u003dUTF8\u0026qid\u003d1452461909\u0026sr\u003d1-5\u0026keywords\u003dcorsair+voyager+128gb \"External link\")\n\u003e\n\u003e [http://www.amazon.co...ction usb 128gb](http://www.amazon.com/Kanguru-Usb3-0-Physical-Protect-Switch/dp/B00URXYBD2/ref\u003dsr_1_19?s\u003dpc\u0026ie\u003dUTF8\u0026qid\u003d1452383031\u0026sr\u003d1-19\u0026keywords\u003dwrite+protection+usb+128gb \"External link\")\n\u003e\nThere is no argument if you are even *thinking* to spend some 200 bucks for a stick.\n\nNoone \\*needs\\* 128 Gb on a single stick.\n\nEven if someone \\*needs\\* it, ++the same human error++ mentioned will have him/her lose it in no time.\n\nYou can get 15 (fifteen) of these:\n\n[http://www.amazon.co...00S83A8UI?psc\u003d1](http://www.amazon.com/dp/B00S83A8UI?psc\u003d1 \"External link\")\n\nfor the same money.\n\nAnyway, no, here is nothing \"different\" between a \"normal\" USB stick and a \"Write protected\" one, as a matter of fact, if you crack open a few \"normal\" sticks, it is likely that you will find one or more that already have on the PCB the provision to install the switch (at least this was accurate for some no-name USB sticks I happened to have).\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "197174",
+      "timestamp": "2016-01-11T18:09:15+00:00",
+      "author": "Hydranix",
+      "content": "Listed from easiest to hardest.\n\n\\* Modify firmware with manufacturer software. (easiest way by far)\n\n(Private message me and i can help you, i\u0027ve done this with hundreds of sticks. Some for the exact same intents you had. It is also possible to reserve a portion of the space on the flash drive as still-writable like normal, while the other portion is read-only and unable to be written to without using the manufacturer tool to reconfigure. \\[read: safe from malware, but not screwed if u forget something at last minute\\]) .You can even make the stick report your company/personal name on insert instead of Patriot or whatever.\n\n\\* Buy flash drive with write-protect switch pre-installed\n\n\\* Use sdcard reader with switch logic.\n\n\\* Buy flash drive and solder switch onto unpopulated leads.​\n\n\\* Use sdcard reader and create switchable circuit on write-protect lead on the microcontroller by referencing datasheet.\n\n\\* Spend $400von a huge flash drive which will just fizzle (out of warranty) long before it becomes worth a tenth of that cost.\n\n(You\u0027re better buying a handful of smaller drives, 32GB is more than enough for any use, especially recovery enviroments.)\n\nI have a 64GB stick which has the install.wim files for Windows 7 through Windows 10 (all versions, both 32 and 64 bit), a Windows 7 x86 PE, Windows 8.1 x86_64 PE (no wow64), Custom Linux environment, Linux device testing environment, 6 memory testing baremetal programs, and 4GB or tools nearing almost 1000 separate tools (versions for 32 and 64 bit.Windows), and everything which is bootable has botyh BIOS and UEFI boot options, has graphic boot menu and fallback Grub4Dos or Syslinux.\n\nThat stick is not at 50% used space yet... also has trouble on some older systems and some oddball BIOS versions on newer systems. No smaller sticks have ever had issues.\n\nI wouldn\u0027t dismiss Wonko\u0027s wisdom quite so quickly.\n\n**Edited by Hydranix, 11 January 2016 - 06:10 PM.**\n"
+    },
+    {
+      "id": "197225",
+      "timestamp": "2016-01-14T04:00:27+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "Find a way to boot the contents of your stick so that it is stored entirely in RAM, then unplug the USB once everything is fully loaded in. Any changes malware tries to make won\u0027t last beyond a reboot.\n\n"
+    }
+  ]
+}

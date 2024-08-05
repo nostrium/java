@@ -1,0 +1,112 @@
+{
+  "id": "22487",
+  "title": "Finding current drive for partnew",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "218617",
+      "timestamp": "2021-07-09T23:59:01+00:00",
+      "author": "Al Gorithm",
+      "content": "On one system, GRUB4DOS is installed on the second logical partition of the second hard drive (hd1,5). Given a menu entry such as this:\n\ntitle SystemRescueCD  \nset ISO\u003d/iso/systemrescue-8.03-amd64.iso  \nfind --set-root %ISO%  \nparttype (hd0,3) \\| set check\u003d  \nset check\u003d%check:\\~-5,4%  \nif %check%\u003d\u003d0x00 partnew (hd0,3) 0x00 %ISO%  \nif not %check%\u003d\u003d0x00 echo ERROR: Partition Table entry 4 already exists! \\\u0026\\\u0026 pause --wait\u003d3 \\\u0026\\\u0026 configfile /grub/menu.lst  \nmap %ISO% (0xff)  \nmap --hook  \nroot (0xff)  \nchainloader (0xff)  \n\nwhen the menu entry uses:\n\nparttype (hd0,3) \\| set check\u003d\n\nand  \npartnew (hd0,3) 0x00 filename\n\nthe error message is that the file must be on the same drive.\n\nUsing:\n\nparttype (hd1,3) \\| set check\u003d\n\nand  \npartnew (hd1,3) 0x00 filename\n\nsucceeds.\n\nThe question is: rather than hard-coding the drive number, how can G4D determine the current drive and use it in those two commands, so that the same menu entry can succeed when booted from different drive numbers (eg. on one system, G4D is on hd0, on another system G4D is on hd1, on another system it may booted from a USB which may be hd2, etc.)?\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "218618",
+      "timestamp": "2021-07-10T07:10:57+00:00",
+      "author": "steve6375",
+      "content": "If you don\u0027t mind the risk of changing the MBR partition table of any drive in the system, then after the find --set-root command you can %@root% to find the drive that the file was found on\n\nassuming no more than 10 drives in the system and assuming root was set to hd1 by the find command...\n\nset rd\u003d%@root:\\~1,3%\n\nwill give you rd\u003dhd1\n\nor\n\nset rd\u003d%@root:\\~3,1%\n\nwill give you rd\u003d1\n\nbear in mind that if the new partition at (hdx,3) is given a partition type number by the partnew command (not 0), the whole disk will no longer be UEFI-bootable because the partitions will be out-of-order!\n\nP.S. you could use this in case more than 10 drives\n\nset rd\u003d%@root:\\~3,1%\n\nif \"%@root:\\~5,1%\"\u003d\u003d\",\" set rd\u003d%@root:\\~3,2%\n\n"
+    },
+    {
+      "id": "218619",
+      "timestamp": "2021-07-10T07:29:48+00:00",
+      "author": "Wonko the Sane",
+      "content": "In the first part of your menu.lst entry you look for the %ISO% \\*everywhere\\* AND establish root to it:\n\nfind --set-root %ISO%\n\nAfter the root has been established, the:\n\nroot\n\ncommand will show current root (i.e., example, (hd1,5)).\n\nYou can get the output of the command and put it in a variable, then parse it, just like you do for the %check%, something like:\n\nroot \\| set myroot\u003d\n\nset mydisk\u003d(%myroot:\\~-1,3%)\n\nset mydisk\n\npause\n\nThe above is FAR from being \"perfect\" as it wont work for disks higher than (hd9) and it doesn\u0027t check that the device is actually a hard disk.\n\nThe latter can be easily \"fixed\" by using:\n\nfind --set-root --ignore-floppies --ignore-cd %ISO%\n\nthat will only look on hard disk like devices\n\nFor the former (though it is a rare case to have more than 10 disks on a system AND have the bootable .iso on one of them) you would need some more complex parsing/checking of the string.\n\nProbably a good method would be using call Fn.11 to get the position of the comma), i.e.:\n\ncall Fn.11 \"(hd0,0)\" \",\"\n\necho %@retval%\n\n3838064\n\ncall Fn.11 \"(hd10,0)\" \",\"\n\necho %@retval%\n\n3838065\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\nP.S.: Ooops, cross-posting with Steve, that was faster than myself and used more directly the @root built-in variable ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)\n\n"
+    },
+    {
+      "id": "218620",
+      "timestamp": "2021-07-10T19:00:47+00:00",
+      "author": "Al Gorithm",
+      "content": "Thank you both for your concise, helpful answers! I know that there are guys with servers having ten or more disks, but I\u0027ve not come across that in my personal experience. Still, I might just use the extra parsing for safety sake. And of course skip checking of CD\u0027s and floppies.\n\nIn my example above, I believe the partition type is being set to 0, so that it should not affect UEFI booting? And with the checking for in-use partition in place, I don\u0027t see too much risk in using the (empty) last MBR partition entry on any particular disk. Is that a reasonable assumption, or are there other caveats that I should be aware of?\n\n"
+    },
+    {
+      "id": "218621",
+      "timestamp": "2021-07-10T19:45:06+00:00",
+      "author": "steve6375",
+      "content": "0 means autodetect - if the file is an ISO then you should be safe.\n\nIf the file is an img or vhd then the type will probably be changed.\n\nof course the disk could be MBR or GPT...\n\n"
+    },
+    {
+      "id": "218622",
+      "timestamp": "2021-07-10T20:00:03+00:00",
+      "author": "Al Gorithm",
+      "content": "Okay, so here is the entry so far:\n\ntitle SystemRescueCD\\\\nSystemRescueCD 8.03.\\\\n\\\\n\\\\nPress arrows to highlight; ENTER or b to boot; e to edit; c for command-line.  \nset ISO\u003d/iso/systemrescue-8.03-amd64.iso  \nfind --set-root --ignore-cd --ignore-floppies %ISO%  \nset rd\u003d%@root:\\~1,3%  \nif \"%@root:\\~5,1%\"\u003d\u003d\",\" set rd\u003d%@root:\\~1,4%  \nparttype (%rd%,3) \\| set check\u003d  \nset check\u003d%check:\\~-5,4%  \nif %check%\u003d\u003d0x00 partnew (%rd%,3) 0x00 %ISO%  \nif not %check%\u003d\u003d0x00 echo ERROR: Partion Table entry four already exists! \\\u0026\\\u0026 pause --wait\u003d3 \\\u0026\\\u0026 configfile /grub/menu.lst  \nmap %ISO% (0xff)  \nmap --hook  \nroot (0xff)  \nchainloader (0xff)  \n\nThis should be fine as long as the disk is MBR, and the file is ISO? If the file is some other type, the partition type could be changed. In that case, it would be nice to set it back to 0 when done, but I doubt that that could be accomplished automatically?\n\nThe filename could be tested to see if it ends with \".iso\", but that doesn\u0027t necessarily mean that it *is* and ISO file; though the test might add some safety.\n\nIf the disk were GPT... well, I have no experience with such. Would the ISO still boot correctly? And if it did, and if we only allowed ISO files (meaning that the partition type would remain 0?), then it should be safe?\n\nOtherwise, is there a way to test, so that we only allow it to boot when the disk is MBR?\n\n"
+    },
+    {
+      "id": "218629",
+      "timestamp": "2021-07-11T07:58:08+00:00",
+      "author": "alacran",
+      "content": "On MBR environment there are usually no GPT partitions, (so they are an extremely rare exception).\n\nGPT partitions are present always on UEFI environments where booting from internal HD your grub4dos 0.46a by means of bootmanager + grld.mbr DO NOT work.\n\nSo all is safe and you should not worry.\n\nalacran\n\n"
+    },
+    {
+      "id": "218630",
+      "timestamp": "2021-07-11T08:06:43+00:00",
+      "author": "Wonko the Sane",
+      "content": "The point, as always, is about how much \"safe\" or \"foolproof\" you want the solution to be and what you actually want to achieve/your setup.\n\nBy definition:\n\n1) The MBR is the first absolute sector of a disk on BOTH MBR and GPT disks  \n2) For BIOS booting the MBR contains (usually) boot code (up to first 440 bytes), a disk signature, the 4-entry partition table and end with the \"magic bytes\" 55AA  \n3) For GPT disk, the MBR is a \"protective\" MBR, it contains no code (all 00\u0027s), the disk signature (on NT systems) the 4 entry partition table with only the first entry populated with partition type 0xEE and addresses spanning the WHOLE disk, and end with the \"magic bytes\" 55AA\n\nThis said, there can be a number of \"hybrid\" MBR/GPT setups (which if you think about it may include also a GPT disk modified to write in 4th entry a .iso address with partition type 0x00), as an example you can write some boot code to a GPT \"protective MBR\" (in order to have it boot on BIOS machines) and/or write an additional entry to the partitin table (besides the 0xEE one) to have it access (still on BIOS) a given extent (file or partition).\n\nSo, if all you need is to exclude GPT disks from being affected (when booting in BIOS) by the running of that menu.lst entry (even if inside one of the GPT partition there is a .iso file corresponding to the find --set-root name), you can simply check that the first entry in the MBR partition table is NOT of type 0xEE.\n\nparttype (hd0,0)\n\nYou will get something like:\n\nPartition type for (hd0,0) is 0xEE.\n\nThe output of the above command can be parsed the \"usual\" way, i.e.:\n\nparttype (hd0,0) \\| set mypt\u003d\n\nset myptype\u003d%mypt:\\~-5,4%\n\nCan GPT disks with one entry 0xEE that is not the first one?\n\nTheoretically, yes.\n\nSo you might want to check all 4 partition entries, to be on the safe side.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "218640",
+      "timestamp": "2021-07-11T21:14:46+00:00",
+      "author": "Al Gorithm",
+      "content": "Thank you both; that is very helpful. Earlier, I did investigate hybrid schemes, and decided against using them. As of now, I do not have any GPT systems, though I envision that in the future it will likely be required. So, the information you provided will help ensure that I don\u0027t trample on a GPT disk and make it unbootable.\n\n"
+    },
+    {
+      "id": "218642",
+      "timestamp": "2021-07-11T22:09:33+00:00",
+      "author": "alacran",
+      "content": "\u003e Thank you both; that is very helpful. Earlier, I did investigate hybrid schemes, and decided against using them. As of now, I do not have any GPT systems, though I envision that in the future it will likely be required. So, the information you provided will help ensure that I don\u0027t trample on a GPT disk and make it unbootable.\n\nIn the future all Mother Boards will be UEFI only with no option to boot as CSM/MBR, as they are now many new OEM PCs, so the hybrid boot will be useless.\n\nWhen the need arise it will be better to create with **USB_FORMAT** by wimb a USB device capable to boot on CSM/MBR and/or UEFI environments.\n\nOr use [Ventoy](https://www.ventoy.net/en/index.html \"External link\") to create a USB device capable to boot directly, (no partnew required), on MBR/CSM and/or UEFI, [hundreds of windows and Linux ISOs.](https://www.ventoy.net/en/isolist.html \"External link\") With the additional advantage that you do not need to create the config menus, it does all for you on the fly, creating a virtual CD/DVD device, and booting the selected ISO with the several preconfigured options.\n\nalacran\n\n"
+    },
+    {
+      "id": "218644",
+      "timestamp": "2021-07-12T00:19:24+00:00",
+      "author": "Al Gorithm",
+      "content": "Yes, agreed. Ventoy is excellent for a USB stick, and I have used and will use it when needed.\n\nUp to this point, most of my posts and questions have been to do with G4D on a local HDD/SSD, since neither Ventoy nor E2B are designed for that purpose. And most of my questions have been answered.\n\nOne funny little niggle: using GRUB4DOS 0.4.6a, has anyone else noticed that it will not display the color \u0027brown\u0027? Whether in the menu, or in the console, it always displays brown as red (without generating an error)! I\u0027ve just noticed this on one system; I will test it also on another computer.\n\n"
+    },
+    {
+      "id": "218645",
+      "timestamp": "2021-07-12T06:08:04+00:00",
+      "author": "steve6375",
+      "content": "How are you generating brown text?   \n"
+    },
+    {
+      "id": "218647",
+      "timestamp": "2021-07-12T11:44:45+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Al Gorithm, on 11 Jul 2021 - 11:14 PM, said:  \n\u003e Thank you both; that is very helpful. Earlier, I did investigate hybrid schemes, and decided against using them. As of now, I do not have any GPT systems, though I envision that in the future it will likely be required. So, the information you provided will help ensure that I don\u0027t trample on a GPT disk and make it unbootable.\n\nRelax, don\u0027t worry.  \nThe way UEFI works is the following (in theory) on GPT disks:  \n0) check if in the protective MBR there is one entry with type 0xEE starting on LBA 1  \nand/or:  \n1) check if on 2nd sector or LBA1 there is a GPT partition header  \nthen:  \n2) check partitions/volumes (in GPT all partitions are primary, so volume\u003dpartition is an almost completely true equivalence) in the GPT partition table (that starts on LBA2) until it finds a volume that has an UUID of C12A7328-F81F-11D2-BA4B-00A0C93EC93B (UEFI system partition)  \n3) find in it a suitable .efi bootloader/bootmanager (either with a pre-set name or getting it from NVRAM)  \n4) chainload this .efi bootloader/bootmanager  \n\nSo, as long as you do not delete the 0xEE partiton entry in the protective MBR the GPT disk will remain bootable under UEFI.  \n\nThis said, some firmwares (UEFI) when set with CSM enabled may switch to BIOS mode if they find something they don\u0027t like in the MBR, in these (I believe anyway extremely rare) cases the disk will fail boot because it is not booting in UEFI but rathewr attempting to boot in BIOS mode.  \n\nOnly for the record/FYI, there are a couple ways (that you won\u0027t like as they are relatively complex to implement) that allow to make a GPT disk (normally bootable in UEFI) also bootable under BIOS to grub4dos in such a way that it will be \"transparent\", i.e. the protective partition table in the MBR is left untouched (unlike other \"hybrid\" solutions).  \n\nOne way is the UMBR for grub4dos (that only writes some code to the code part of the MBR BUT that requires the grldr to be NOT moved in the filesystem) or my half-@§§ed \"underfloppy\" approach that writes both to the code part of the MBR and to the unused sectors before the first partition (placing there a copy of grldr).  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "218654",
+      "timestamp": "2021-07-12T19:46:21+00:00",
+      "author": "Al Gorithm",
+      "content": "\u003e How are you generating brown text?\n\nBoth in the menu.lst with, eg.\n\ncolor white/brown red/yellow brown/yellow brown/white  \nor at the console with, eg.\n\n\\\u003ecolor brown/black\n\nIn either case, no error is given, but everywhere where brown is expected, it is red instead. Also in either case, using one of the other standard colours (blue, cyan, green, etc.) results in the correct colour. Also, both the G4D guide and:\n\n\\\u003ehelp color\n\nlist brown as a valid colour.\n\nI have tried this on two different machines with the same results.\n\n"
+    },
+    {
+      "id": "218655",
+      "timestamp": "2021-07-12T19:53:06+00:00",
+      "author": "Al Gorithm",
+      "content": "\u003e One way is the UMBR for grub4dos (that only writes some code to the code part of the MBR BUT that requires the grldr to be NOT moved in the filesystem) or my half-@§§ed \"underfloppy\" approach that writes both to the code part of the MBR and to the unused sectors before the first partition (placing there a copy of grldr).  \n\nThat reminds me of some bootloaders that I have used in the past (long before UEFI).\n\nRight now, everything (that I so far have need of) is working fine with G4D and a common menu.lst, both from USB and from a local HDD/SSD across three systems. But looking toward the future, when my systems will be UEFI/GPT, what method can be used, in a similar manner, to boot ISO files from local HDD/SSD?\n\n"
+    },
+    {
+      "id": "218656",
+      "timestamp": "2021-07-12T19:57:35+00:00",
+      "author": "steve6375",
+      "content": "Brown is a difficult colour. It is a mixture of RGB. The result depends on the graphics adapter, it\u0027s DAC output and the display device.   \n"
+    },
+    {
+      "id": "218658",
+      "timestamp": "2021-07-13T07:57:27+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e That reminds me of some bootloaders that I have used in the past (long before UEFI).\n\u003e\n\u003e Right now, everything (that I so far have need of) is working fine with G4D and a common menu.lst, both from USB and from a local HDD/SSD across three systems. But looking toward the future, when my systems will be UEFI/GPT, what method can be used, in a similar manner, to boot ISO files from local HDD/SSD?\n\nIt makes very little sense to use a GPT disk on a BIOS system (though as said we do have a couple way outs for particular edge cases).\n\nWhen you will have commonly GPT disks you will also have UEFI, and as such you won\u0027t have grub4dos anymore (which is BIOS only) and you will have to shift to grub4EFI (which is the \"evolution\" of grub4dos compatibel with EFI) or GRUB2 (or some other UEFI based/compatible bootmanager/bootloader).\n\nAnd - as previously said elsewhere - a .iso does not \"qualify\" the \\*whatever\\* you want to boot:\n\n[http://reboot.pro/in...?showtopic\u003d8944](http://reboot.pro/index.php?showtopic\u003d8944 \"\")\n\nmost - if not all - Linux distro\u0027s/.iso\u0027s do have working \"cheat codes\" that allow to boot on BIOS with plainer grub4dos mapping and of course on EFI GRUB2 allows using the loopback device, and grub4efi and Ventoy have their own ways, so (hopefully) there will be no need of these partnew tricks.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    }
+  ]
+}

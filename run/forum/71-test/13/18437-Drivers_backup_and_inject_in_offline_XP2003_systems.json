@@ -1,0 +1,52 @@
+{
+  "id": "18437",
+  "title": "Drivers backup and inject in offline XP/2003 systems",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "171185",
+      "timestamp": "2013-04-17T12:21:35+00:00",
+      "author": "ZEE",
+      "content": "Hi ppl, long time no see... sorry!\n\nI wonder if anybody knows of a good utility to make a driver backup from a offline disk\n\nwindows XP/2003 or later and then a driver injection in a offline disk with...\n\nThe purpose is to backup all drivers of a offline disk (call it computer-A)\n\nand then inject them on a new offline disk already with XP/2003\n\nto put in computer-A and boot flawless\n\nI already done it by manually this way:\n\n. grab all driver files in %windir%\\\\system32, %windir%\\\\system32\\\\inf, %windir%\\\\system32\\\\drivers\n\nand put them in the new offline disk\n\n. retrieve registry HKLM-\\\u003eControlSetXXX, then inject in the destination registry hive offline\n\nand works ok, if you do not \\\u003c\\\u003cMISS\\\u003e\\\u003e a file... which is easy to do...\n\nI try 2 utilities to solve this manual work : DoubleDriver and DriverBackup\n\nAnd everything works ok... until the restore in the new offline disk!\n\nthe problem is that this utils do not have a process to restore drivers to a offline disk...\n\n?any ideas\n\n"
+    },
+    {
+      "id": "171191",
+      "timestamp": "2013-04-17T15:28:43+00:00",
+      "author": "Wonko the Sane",
+      "content": "**Siginet** has made something like that:  \n[http://reboot.pro/to...-drivergrabber/](http://reboot.pro/topic/17082-drivergrabber/ \"\")  \n[http://reboot.pro/to...-driver-backup/](http://reboot.pro/topic/17039-drivergrabber-20-one-click-driver-backup/ \"\")  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "171197",
+      "timestamp": "2013-04-17T20:07:40+00:00",
+      "author": "ZEE",
+      "content": "\u003e **Siginet** has made something like that:  \n\u003e [http://reboot.pro/to...-drivergrabber/](http://reboot.pro/topic/17082-drivergrabber/ \"\")  \n\u003e [http://reboot.pro/to...-driver-backup/](http://reboot.pro/topic/17039-drivergrabber-20-one-click-driver-backup/ \"\")  \n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\u003e Wonko\n\nI dude... thanks for your answer... ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)  \n-----  \nI say  \nDriverGrabber is an excelent little tool ![:victory:](http://reboot.pro/public/style_emoticons/default/victory.gif)  \nI just execute it and does the job required,  \nportable and easy, no interface just create the folder with the drivers  \nA really useful addition would be to save the drivers in the respective  \nfolders they exist in windows (so you can just copy them to %windir%) and  \ncreate a \\*.reg file with drivers definition so you could import to a  \noffline registry  \n-----  \nBut what I want is a tool that offline inject a choosen driver in a ![:swimmer:](http://reboot.pro/public/style_emoticons/default/sporty75.gif)  \noffline windows disk ![:hyper:](http://reboot.pro/public/style_emoticons/default/hyper.gif)\n\n\u003cbr /\u003e\n\n?Any wisdom someone can share about this ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)  \n\n"
+    },
+    {
+      "id": "171211",
+      "timestamp": "2013-04-18T09:02:23+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e -----  \n\u003e But what I want is a tool that offline inject a choosen driver in a ![:swimmer:](http://reboot.pro/public/style_emoticons/default/sporty75.gif)  \n\u003e offline windows disk ![:hyper:](http://reboot.pro/public/style_emoticons/default/hyper.gif)\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e ?Any wisdom someone can share about this ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)  \n\nNo, not something that I recall working for \\*all\\* drivers, though there are a couple of specific tools for Mass-Storage (and a generic approach to Offline Sysprepping - which I believe is what you are asking for) here:\n\n[http://www.911cd.net...hp?showforum\u003d43](http://www.911cd.net/forums//index.php?showforum\u003d43 \"External link\")\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "171295",
+      "timestamp": "2013-04-19T22:30:17+00:00",
+      "author": "ZEE",
+      "content": "The tool mentioned in that thread \"DriverInjection\" is great... ![:clap:](http://reboot.pro/public/style_emoticons/default/clap.gif)\n\nThe ideal would be update this tool to inject a set of drivers, located in a folder (created by DriverGrabber or DriverBackup), and inject this drivers in a offline disk or image... ![:hammer:](http://reboot.pro/public/style_emoticons/default/hammer.gif)\n\nThis will avoid SysPrep\u0027ing... ![:cold:](http://reboot.pro/public/style_emoticons/default/cold.gif)\n\nToo much problems I had SysPrep\u0027ing... time to start avoid them... ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\n"
+    },
+    {
+      "id": "171301",
+      "timestamp": "2013-04-20T10:05:43+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, Offline Sysprep has worked allright for thousands of people, so maybe something else is the issue in your case. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\nOf course everything is possible, and a man can dream :smile:, but I doubt that you are considering the complexity of a \"generic\" tool like the one you just depicted.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "171306",
+      "timestamp": "2013-04-20T16:59:50+00:00",
+      "author": "ZEE",
+      "content": "The issue is always the same...\n\nAs we know there are lots and lots os specific configurations done in system and users profiles that do not cope with a SysPrep\u0027ing...\n\n...\n\nI think i still be doing it manually for the time...\n\nThx for your help---\n\n![:1st:](http://reboot.pro/public/style_emoticons/default/1st.gif)\n\n"
+    }
+  ]
+}

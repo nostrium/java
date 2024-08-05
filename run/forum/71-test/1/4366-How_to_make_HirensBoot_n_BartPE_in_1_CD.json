@@ -1,0 +1,22 @@
+{
+  "id": "4366",
+  "title": "How to make Hiren\u0027sBoot n BartPE in 1 CD",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "32829",
+      "timestamp": "2008-04-07T12:20:38+00:00",
+      "author": "sparkieau",
+      "content": "I am quite appreciate on the Hiren\u0027s Boot CD and BartPE CD.  \nThey both have their own features. Whether can let them together  \nin 1 CD with Boot Menu to select on it.   \n"
+    },
+    {
+      "id": "32831",
+      "timestamp": "2008-04-07T12:40:40+00:00",
+      "author": "Brito",
+      "content": "Your best help is google.  \n\nTry learning how to use BCDW and this should be enough.  \n\n[http://www.wolfgang-...ownloads_e.html](http://www.wolfgang-brinkmann.de/bcdw/downloads_e.html \"External link\")  \n[http://bootcd.narod.ru/bcdw_e.htm](http://bootcd.narod.ru/bcdw_e.htm \"External link\")  \n\nUse Version 2.x and read the instructions and examples that come on the 1.5x package.  \n\nI\u0027ll be moving this thread to another location as it is not related to VistaPE.   \n"
+    }
+  ]
+}

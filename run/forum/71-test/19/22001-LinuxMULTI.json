@@ -1,0 +1,22 @@
+{
+  "id": "22001",
+  "title": "Linux_MULTI",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "210799",
+      "timestamp": "2019-04-22T08:43:41+00:00",
+      "author": "wimb",
+      "content": "![Posted Image](http://reboot.pro/index.php?app\u003ddownloads\u0026module\u003ddisplay\u0026section\u003dscreenshot\u0026id\u003d596)\n**File Name** : Linux_MULTI  \n**File Submitter** : [wimb](http://reboot.pro/user/9517-wimb/ \"\")  \n**File Submitted** : 22 Apr 2019  \n**File Updated** : *22 Apr 2019*   \n**File Category** : [Boot tools](http://reboot.pro/files/category/7-boot-tools/ \"\")  \n\n**How to Make Computer booting with Linux and Windows**   \n\nMore Info: and [UEFI_MULTI](http://reboot.pro/topic/18182-uefi-multi-make-multi-boot-usb-drive/page-5#entry209075 \"\")  \n-  \nGrub2 files of Linux Mint enable UEFI Secure Multi-Boot  \n\n[Click here to download this file](http://reboot.pro/files/file/596-linux-multi/ \"\")   \n"
+    },
+    {
+      "id": "210800",
+      "timestamp": "2019-04-22T08:44:59+00:00",
+      "author": "wimb",
+      "content": "[![Grub2_Linux_MULTI.png](http://reboot.pro/uploads/monthly_04_2019/post-9517-0-99120900-1555922682_thumb.png)](http://reboot.pro/uploads/monthly_04_2019/post-9517-0-99120900-1555922682.png \"Grub2_Linux_MULTI.png - Size: 567.41KB\"){#ipb-attach-url-16621-0-54303600-1676066404} \u003d\u003d [![UEFI_Grub2.png](https://reboot.pro/uploads/monthly_03_2019/post-9517-0-83599400-1551545933_thumb.png)](https://reboot.pro/uploads/monthly_03_2019/post-9517-0-83599400-1551545933.png \"UEFI_Grub2.png - Size: 130.9KB\"){#ipb-attach-url-16492-0-21117700-1676033291}\n\n**How to Make Computer booting with Linux and Windows**   \n\nMore Info: and [UEFI_MULTI](http://reboot.pro/topic/18182-uefi-multi-make-multi-boot-usb-drive/page-5#entry209075 \"\")\n\n-\n\nGrub2 files of Linux Mint enable UEFI Secure Multi-Boot\n\n"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "9377",
+  "title": "[Solved] Install XP from USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "68057",
+      "timestamp": "2009-05-21T20:31:19+00:00",
+      "author": "michdean",
+      "content": "I have extracted usb_multiboot_10.zip and ran the .cmd file.  \n\nHowever I seem to be missing the x_content folder.  \n\nI am on a vista machine if that makes any difference.  \n\nCan I have your help on this please.  \n\nI am new to this place and this is probably the most technical thing I have attempted so feed by spoon please.  \n\nThanks for for consideration, if I have done something stupid you have my apolgises in advance.   \n"
+    },
+    {
+      "id": "68059",
+      "timestamp": "2009-05-21T20:58:40+00:00",
+      "author": "michdean",
+      "content": "Damn my virus protection for protecting me from doing what I needed to do.  \n\nKnew it was something stupid   \n"
+    },
+    {
+      "id": "68077",
+      "timestamp": "2009-05-22T09:15:58+00:00",
+      "author": "was_jaclaz",
+      "content": "Yep. ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \n\nUnfortunately a number of Anti-virii tend to think that some AutoIt code is \"bad\". ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \n\n:wink:  \n\njaclaz   \n"
+    }
+  ]
+}

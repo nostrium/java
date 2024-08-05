@@ -1,0 +1,28 @@
+{
+  "id": "10353",
+  "title": "Booting from Acronis Secure Zone",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "90762",
+      "timestamp": "2010-02-08T04:50:37+00:00",
+      "author": "Frozen",
+      "content": "Hello ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)  \n\nI\u0027m playing around with Acronis True Image Home 2009 these days (Backup \\\u0026 Restore Partitions) and i saw that i can backup my OS to a hidden partition called Acronis Secure Zone which is actually just a FAT32 partition with type 0xBC. Acronis True Image is copied to the secure zone when a backup is done so that we can boot it from there without any OS or CD (Before build 9788).  \n\nSo, if i delete my main system partition, i still would be able to restore it without any CD/OS. What i can\u0027t do is doing some files management like copying data from my system partition before restoring it.  \n\nMy first idea is to put a LiveCD (LiveXP?) on the Secure Zone, but then can it boots from there ? (Remember partition type is not FAT32, only filesystem is).  \n\nVoilà. Do you got other ideas ? Is there other solutions ?  \nThank you :wink:   \n"
+    },
+    {
+      "id": "90776",
+      "timestamp": "2010-02-08T11:47:18+00:00",
+      "author": "Wonko the Sane",
+      "content": "Seemingly unrelated, but not much:  \n[http://www.boot-land...l\u003dshowdrive.exe](http://www.boot-land.net/forums/index.php?showtopic\u003d10169\u0026hl\u003dshowdrive.exe \"External link\")  \n\nCannot say if Acronis has any checksum or similar provision to avoid tampering with the \"secure\" partition, but you can use alternate MBR\u0027s to get the same result of a hidden partition that can be booted choosing a hot-key when booting, there is a free one from terabyte and a free open-source one, MBLDR, besides other ways using grub4dos.  \n\n[http://www.boot-land...?...c\u003d6830\\\u0026st\u003d8](http://www.boot-land.net/forums/index.php?showtopic\u003d6830\u0026st\u003d8 \"External link\")  \n[http://www.boot-land...p?showtopic\u003d334](http://www.boot-land.net/forums/index.php?showtopic\u003d334 \"External link\")  \n\n:wink:  \n\nWonko   \n"
+    },
+    {
+      "id": "91273",
+      "timestamp": "2010-02-12T17:24:59+00:00",
+      "author": "Jim Miller",
+      "content": "I played around with the Secure Zone awhile back, and found that they only look for 2 things : the partition type (0xBC) and the volume name (ACRONIS SZ). As long as these are in place Acronis will manage and continue to use it with their products.   \n\nIf you select to install the Acronis recovery manager they will stub in a bootable Linux environment, which can be accessed by pressing F11 at boot time. Theoretically, you should be able to create a Live OS and boot from this partition, as the changes they make to the MBR allow the system to boot from the 0xBC partition.   \n\nI am very interested in doing this as well. I will put this on my list of things to test... hopefully I can get around to it next week.  \n\n-James   \n"
+    }
+  ]
+}

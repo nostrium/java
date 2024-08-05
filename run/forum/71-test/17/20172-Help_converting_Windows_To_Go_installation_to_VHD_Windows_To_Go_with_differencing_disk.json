@@ -1,0 +1,94 @@
+{
+  "id": "20172",
+  "title": "Help converting Windows To Go installation to VHD Windows To Go with differencing disk",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "188583",
+      "timestamp": "2014-11-16T06:54:35+00:00",
+      "author": "Me Only",
+      "content": "I have a fully functional Windows to Go installation on a USB hard drive thanks to WinToUSB. I have configured the software on my Win2Go to my liking and don\u0027t want to redo everything to convert it to VHD. I was wondering what would be necessary to convert this installation to VHD on USB with a differencing VHD. I am unsure whether it is as easy as Disk2VHD, copying the BCD entries and changing some minor things. Can someone (like the ever-helpful and very knowledgeable Wonko the Sane) give me a step-by step tutorial? I really want to keep my Win2Go installation, but migrate it to a VHD or VHD with differencing disk (preferably the latter).  \n\nOn a closely related note, does a VHD file dynamically change in size as more content is added or files are deleted (I hope)?\n\n**Edited by Me Only, 16 November 2014 - 06:55 AM.**\n"
+    },
+    {
+      "id": "188589",
+      "timestamp": "2014-11-16T11:02:06+00:00",
+      "author": "Wonko the Sane",
+      "content": "I am not familiar (or familiar enough) with Windows 8 (or Windows 8 to go) to provide such a set of instructions.\n\nHowever generally speaking there are three .vhd formats:\n\n1. fixed/static/monolithic\n2. dynamic/growing\n3. differencing\n\nIMNSHO:\n\n#1 is simple, working, fail (and hopefully fool :wink:) proof.\n\n#2 is complex and offering no real world advantage (and it is called sometimes \"growing\" as it will ONLY grow and NEVER \"shrink\"), basically you have a little \"bomb\" on your system that may grow (because of \\*any\\* other issue/malfunctioning) until it completely fills your \"outer\" filesystem, potentially creating an unbootable and/or unrepairable situation\n\n#3 is complex, and may have it\u0027s uses, but the need for one should be attentively evaluated and - by their very nature - differencing images may be much less manageable than a simple, monolithic vhd\n\nConverting between a RAW image (i.e. one that you can make with dd or similar) and fixed vhd (and back) is trivial, there are several apps that can do that, among them Clonedisk (which will also be able to create the RAW image if needed):\n\n[http://reboot.pro/fi...e/24-clonedisk/](http://reboot.pro/files/file/24-clonedisk/ \"\")\n\nAdapting the \\\\boot\\\\BCD and more generally a USB stick to boot from a vhd should also be simple, a simple BCDboot command should do, see:\n\n[http://reboot.pro/to...-windows-to-go/](http://reboot.pro/topic/16557-vhd-based-windows-to-go/ \"\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "188597",
+      "timestamp": "2014-11-16T15:05:52+00:00",
+      "author": "Me Only",
+      "content": "I believe I understand the basics of what you\u0027re saying. Are you also saying that differencing disk cannot be a growing disk (the difference VHD growing)?  \n\nEDIT: I found out from elsewhere on this site that the differencing disks can have a parent dynamic disk.\n\n**Edited by Me Only, 16 November 2014 - 03:19 PM.**\n"
+    },
+    {
+      "id": "188599",
+      "timestamp": "2014-11-16T15:40:16+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Are you also saying that differencing disk cannot be a growing disk (the difference VHD growing)?\n\nNot at all.\n\nThe idea of a \"differencing disk\" is better understandable if you think of them as an extension/variation to \"Undo disks\", see:\n\n[http://technet.micro...1(v\u003dws.10).aspx](http://technet.microsoft.com/en-us/library/cc720381(v\u003dws.10).aspx \"External link\")\n\nthey are \"dynamic\" or \"growing\" by nature, as they are nothing but a database/set of \"different\" blocks (different from the parent), or if you prefer a \"differencing\" child disk of an UNmodified parent will be very small and will grow the more the more changes you make to the \"base\" or \"parent\" disk.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "188600",
+      "timestamp": "2014-11-16T17:38:04+00:00",
+      "author": "devdevadev",
+      "content": "I am currently using**\u0027WTG + VHDX + WIMBoot\u0027** configuration in my **\u0027Removable USB Drive\u0027 .**\n\nI am currently using \u0027Dynamically expanding VHDX\u0027 . Will it be useful to use \"differencing disk\" instead of \u0027Dynamically Expanding VHDX\u0027 ?\n\nIf \u0027Yes\u0027, then how to create \"differencing disk\" ? I think**\u0027WinNTSetup v.3.7.2\u0027**doesn\u0027t have any option to create \"differencing disk\" ??\n\nRegards....\n\n"
+    },
+    {
+      "id": "188601",
+      "timestamp": "2014-11-16T18:17:15+00:00",
+      "author": "Me Only",
+      "content": "\u003e I am currently using**\u0027WTG + VHDX + WIMBoot\u0027** configuration in my **\u0027Removable USB Drive\u0027 .**\n\u003e\n\u003e I am currently using \u0027Dynamically expanding VHDX\u0027 . Will it be useful to use \"differencing disk\" instead of \u0027Dynamically Expanding VHDX\u0027 ?\n\u003e\n\u003e If \u0027Yes\u0027, then how to create \"differencing disk\" ? I think**\u0027WinNTSetup v.3.7.2\u0027**doesn\u0027t have any option to create \"differencing disk\" ??\n\u003e\n\u003e Regards....\n\nAs I understand it, differencing disks create two useful functions, and probably not many more.  \n\n(1) Reversion. You can undo changes by simply removing a differencing disk. This can be very helpful if you want to try a software (say Adobe Photoshop Trial for 30 days) and then revert those changes very easily.  \n(2) Backup. For me, it\u0027s easier to back up a differenced disk than it is to back up my main VHD every time a small change occurs. My main VHD might be tens of gigabytes, but a difference disk might only be a few. It prevents a lot of wear and tear on my USB drive.  \n\nAs for How, it\u0027s actually VERY simple.  \nYou can read the long version here: [http://reboot.pro/to...ative-vhd-boot/](http://reboot.pro/topic/16598-vhd-differencing-disks-and-native-vhd-boot/ \"\")\n\nIt looks like it is as simple as\n\n```\ncreate vdisk file\u003dC:\\Differencing.vhd parent\u003dC:\\Parent.vhd\n```\n\nHowever, there is a warning about booting on that page, so I suggest you read it. I am unsure what\u0027s being said, but it appears you have to reference the differencing disk (aka Differencing.vhd) in your BCD.\n\n"
+    },
+    {
+      "id": "188603",
+      "timestamp": "2014-11-16T18:28:48+00:00",
+      "author": "Wonko the Sane",
+      "content": "Just for the record, VHD and VHDX are DIFFERENT formats, though most of their features are similar, they cannot liberally be exchanged, because they are NOT EXACTLY the same:\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "188607",
+      "timestamp": "2014-11-16T19:30:40+00:00",
+      "author": "devdevadev",
+      "content": "So,**AFAIU**, I should do following steps -\n\n**1-** First I will create a**C:\\\\Parent.vhdx\u0027** in my Hard Disk and mount it as **(Z:).**\n\n**2-** Copy**\u0027install.wim\u0027** file to my**Removable USB Drive** ( **U: )**\n\n**3-** In **\u0027WinNTSetup v.3.7.2\u0027** , I will choose Source **( U:\\\\install.wim )** , Boot Partition **( U: )** , Installation Partition **( Z: )**\n\n**4-** Check **\u0027WIMBoot\u0027** checkbox and press **\u0027Setup\u0027** button in order to start Windows Installation.\n\n**5-** After installing Windows into**\u0027C:\\\\Parent.vhdx\u0027** I will boot from my **\u0027Removable USB Drive\u0027**and continue Windows\n\nInstallation setup to complete ***(Boot to Desktop)***. Then restart and switch back to Main OS.\n\n**6-** Then I will copy **\u0027C:\\\\Parent.vhdx\u0027** to **U:\\\\** and will create **U:\\\\Differencing.vhd** pointed to **U:\\\\Parent.vhdx**\n\n**7-** Then I will change**\u0027Disk/Partition\u0027** from **C:** to **U:** and change **\u0027Boot File\u0027** from **\\\\Parent.vhdx** to **\\\\Differencing.vhd**\n\nin **BCD** Store.\n\n**8-** Then Boot from my USB Drive in order to load Windows within from **Differencing.vhd.**\n\n**9-** After installing Third Party software, If I want to reset Windows Installation then I will delete **Differencing.vhd**and\n\nwill create a new differencing disk **\u0027Differencing1.vhd\u0027** pointed to **U:\\\\Parent.vhd** and will also point BCD Store to\n\nnewly created **\u0027Differencing1.vhd\u0027.**\n\n**10-** DONE\n\nCould I understood correctly or not ? Is something is invalid in above steps ?\n\nWhat type of**\u0027Parent Virtual Disk\u0027** will be better for cme either **Fixed** or **Dynamically Expanding**?\n\nWhich format will be better for me either **VHD** or **VHDX**?\n\nRegards....\n\n"
+    },
+    {
+      "id": "188608",
+      "timestamp": "2014-11-16T19:38:00+00:00",
+      "author": "Me Only",
+      "content": "I am no expert, but that sounds about right. However, I don\u0027t believe you can mix vhd and vhdx, so you would want to use Differencing.vhdx  \n\nAs I understand your question about fixed or dynamically expanding VHDX parent, I believe you would want to use a dynamic parent. Your differencing vhdx will expand as necessary as you add more files. If you have a fixed parent, you\u0027d be wasting space on your USB drive, because it would always be the same maximum size you have chosen, while the new files would still be written to the differencing vhdx, expanding it.\n\n"
+    },
+    {
+      "id": "188610",
+      "timestamp": "2014-11-16T19:53:16+00:00",
+      "author": "devdevadev",
+      "content": "You mean **\u0027Parent.vhdx\u0027** and**\u0027Differencing.vhdx\u0027**will be best option in my case ?\n\n"
+    },
+    {
+      "id": "188611",
+      "timestamp": "2014-11-16T20:00:07+00:00",
+      "author": "Me Only",
+      "content": "\u003e You mean **\u0027Parent.vhdx\u0027** and**\u0027Differencing.vhdx\u0027**will be best option in my case ?\n\nWhat I mean is that you can\u0027t mix VHD and VHDX. It appeared that you were mixing the two in your pseudo-instructions. If you use Parent.vhd, then use Differencing.vhd. If you use Parent.vhdx, use Differencing.vhdx.  \n\nI really have no preference for one format over the other. VHDX is supposed to include error checking and larger sectors for better performance. The general consensus is that if you want your virtual hard drives to be future-proof, use VHDX. However, for tinkerers like us, it\u0027s unlikely that we will keep any of these formats more than a couple of years anyway. :wink:\n\n"
+    },
+    {
+      "id": "188621",
+      "timestamp": "2014-11-17T10:47:02+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e The general consensus is that if you want your virtual hard drives to be future-proof, use VHDX.\n\nThe general consensus by WHOM? ;![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif) ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "195794",
+      "timestamp": "2015-10-09T13:18:40+00:00",
+      "author": "crashnburn",
+      "content": "\u003e The general consensus by WHOM? ; ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif) ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)\n\u003e\n\u003e ![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\u003e\n\u003e Wonko\n\nI dont know about Future proofing.. MS says that VHDX has better reliability built in to the structure or so.\n\n"
+    },
+    {
+      "id": "195798",
+      "timestamp": "2015-10-09T14:29:54+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I dont know about Future proofing.. MS says that VHDX has better reliability built in to the structure or so.\n\n\u003cbr /\u003e\n\n"
+    }
+  ]
+}

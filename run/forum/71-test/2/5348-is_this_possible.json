@@ -1,0 +1,70 @@
+{
+  "id": "5348",
+  "title": "is this possible",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "41072",
+      "timestamp": "2008-08-02T11:01:01+00:00",
+      "author": "Dave H",
+      "content": "don\u0027t know if this has been done before basically i want to make multi ISO\\`s to boot from  \nit all seems to be based on usb devices but i looking at using the main hd for storage  \ni want to make a multi xp like one for games one for programing and one for modeling  \nand a few for running server images like 2000 advanced server  \n+ they have to right back info and be able to switch to the operating system i want to use  \nso if it is where do i start from  \nI\u0027m so confused  \ndo i use Linux or base it on one of the boot methods here basically i want to store the systems as ISO\\`s   \n"
+    },
+    {
+      "id": "41078",
+      "timestamp": "2008-08-02T12:20:05+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e so if it is where do i start from\n\nA good idea would be to start posting in the correct Forum. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nThis here is called \"Multiboot\", it seems more appropriate than \"LiveXP \\\u0026 NativeEx\" where you originally posted. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nAnyway, WELCOME! ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nIf I get it right, you want to have a number of different NT based operating systems stored in various \"self-contained\" .ISO files on your hard disk.  \n\nAm I correct? ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nIf yes:  \n\nShort answer:  \nIt is not possible.  \n\nLong answer:  \nIt is possible, but there are a NUMBER of drawbacks:  \n1) Booting NT based OS from .iso files is ONLY (yet ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)) possible using a RAMDISK approach, which needs files from Server 2003 SP1 or R2  \n2) Usually PE (NOT the \"full\" version) of the OS is used, though there is an exception (ETBOOT) that requires, additionally, files from XP embedded   \n3) The OS will be \"Read only\", ANY settings you will change will be reset at reboot  \n4) The procedure to make such a settings is to be considered \"advanced\", and needs a more than basic knowledge of the workings of NT based systems, you will need a lot of patience and time to get it working  \n\nSo, I guess that you should expand a bit on the reasons for which you \"need\" such a setting, there may be other (simpler) ways to fulfill your needs, if this is just \"having several independent booting NT based OS on the same HD\".  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "41083",
+      "timestamp": "2008-08-02T13:20:09+00:00",
+      "author": "Dave H",
+      "content": "see i was thinking more in the way if you have the system that way the images will expand the ones you use more instead of having set partitions you can have one\\`s that expand with use  \nbasically no set limits on how big they would become  \ni have use knopix and that can right back when your shutting down to save your settings  \ni have read some where you can do the same with a xp system  \nusing VMware player basically what Ive read about that its using a image and righting back to the image   \n"
+    },
+    {
+      "id": "41085",
+      "timestamp": "2008-08-02T13:32:23+00:00",
+      "author": "was_jaclaz",
+      "content": "Well, this is then an alltogether different question.  \n\nThe latter idea is to have a number of HD images (NOT .ISO ones), saved in a NTFS filesystem as \"sparse\" files (or VMware \"growable\" images), each one having a NT based install on it and booted through a Virtual Machine?  \n\nIf yes, this is not multibooting at all, it\u0027s about using Virtual Machines and is perfectly doable.  \n\nBut of course, you are going to experiment a sensible drop of speed/responsiveness, usually a system in a VM slows down to approximately 1/2 to 1/3 of \"normal\" speed.  \n\njaclaz   \n"
+    },
+    {
+      "id": "41087",
+      "timestamp": "2008-08-02T13:44:02+00:00",
+      "author": "Dave H",
+      "content": "see thats my point using VMware reduces performance so is there no way to run it of a ISO that rights back to a save point on the hd just like knopix can do basically save your settings for that ISO   \ni know there will be a draw back on a system crash you lose everything on that session  \ni know there a few experiments going on right now with vista system and using a usb to boot xp  \ni believe that is saving settings and you can install on so why not the hd its self   \n"
+    },
+    {
+      "id": "41089",
+      "timestamp": "2008-08-02T14:10:00+00:00",
+      "author": "was_jaclaz",
+      "content": "I don\u0027t get it.  \n\nKnoppix is a Linux based system, and probably in the configuration you used, it made use of UNIONFS or FUSE.  \n\nThere is not AFAIK a similar solution for NT based systems, there is something in the air, but nothing functional/tested:  \n[http://www.boot-land...?showtopic\u003d5116](http://www.boot-land.net/forums/?showtopic\u003d5116 \"External link\")  \n\nIf you know anything more:  \n\u003e i know there a few experiments going on right now with vista system and using a usb to boot xp  \n\u003e i believe that is saving settings and you can install on so why not the hd its self\nplease post some reference.  \n\nBooting from USB is working allright, but from a partition on the USB device, the point is that we don\u0027t have a bootable DISK-ON-FILE driver, see this:  \n[http://www.boot-land...?showtopic\u003d1507](http://www.boot-land.net/forums/?showtopic\u003d1507 \"External link\")  \n\nPlease, also, your posts are almost unreadable, do use commas, full stops and similar punctuation, they are free ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) and make easier for other people to read what you write.  \n\njaclaz   \n"
+    },
+    {
+      "id": "41091",
+      "timestamp": "2008-08-02T14:48:13+00:00",
+      "author": "Dave H",
+      "content": "\u003e Please, also, your posts are almost unreadable, do use commas, full stops and similar punctuation, they are free ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) and make easier for other people to read what you write.  \n\u003e\n\u003e jaclaz\nplease take into consideration i am dyslexic it take allot of effort for me to posts and also to read stuff thats why i have no commas but i have a good tool i use  \n[iespell](http://www.iespell.com/support.htm \"External link\")  \n\nIve picked it up wrong the xp usb method i thought it was of a image  \nso let me get it right you can boot a fixed ISO into ram so it would have to get everything   \ninstalled that i need ?   \n"
+    },
+    {
+      "id": "41100",
+      "timestamp": "2008-08-02T15:49:51+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e so let me get it right you can boot a fixed ISO into ram so it would have to get everything   \n\u003e installed that i need ?\n\nYes.  \nBut there are limits:  \n1) You need a few files from Server2003 SP1 or R2  \n2) You need as much RAM as the size of the image (and even more)  \n3) There is a limit with MS files at 512Mb in size  \n4) There are alternative RAMDISK drivers, a FREEWARE ONE:  \nGavotte\u0027s RAMDISK  \n[http://www.boot-land...?showtopic\u003d4064](http://www.boot-land.net/forums/index.php?showtopic\u003d4064 \"External link\")  \nand a COMMERCIAL one:  \n[http://www.disklessangel.com/](http://www.disklessangel.com/ \"External link\")  \nwith greater capacity, but still the amount of RAM must be adequate  \n5) Any settings you change won\u0027t be saved anywhere  \n\nIf you could forget for a moment your *obsession* ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) with .ISO images, you could work out some \"hybrid\" solution, where the \"core\" of the operating system is in RAM, loaded through RAMDISK from a .img (RAW partition image, thus modifiable) file, and the rest, like programs, data, etc. is on another .img loaded through IMDISK or VDK (image file drivers).  \nThis separation being needed to reduce the amount of RAM needed.  \nThere are several interesting findings on this by members **sanbarrow** , **pavel** and **Ferengi** , here or on the 911cd forum.   \n\nPossibly (mind you, at this stage just a ***guess*** by me) one could manage to find a way to image the currently running image in RAM to the image on disk at shutdown, thus saving the system settings for next boot.  \n\nThis theoretical approach should be fairly quick in loading, but the imaging will take a bit at shutdown, and a crash in this latter phase would probably make the image corrupted. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nUsing an app like DriveimageXL or SelfImage, that use the VSS services of XP/2003 this ***might*** be possible. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nDefinitely it won\u0027t work for NT and 2000, that do not have this feature.  \n\njaclaz   \n"
+    },
+    {
+      "id": "41105",
+      "timestamp": "2008-08-02T16:39:58+00:00",
+      "author": "Dave H",
+      "content": "Thanks for the help  \natleast now i know what direction to take   \n"
+    },
+    {
+      "id": "41120",
+      "timestamp": "2008-08-02T21:46:08+00:00",
+      "author": "Galapo",
+      "content": "\u003e Possibly (mind you, at this stage just a ***guess*** by me) one could manage to find a way to image the currently running image in RAM to the image on disk at shutdown, thus saving the system settings for next boot.\n\nNikzzzz\u0027s ImageCreator script implements something along these lines in conjunction with BootSDI. It is also now compatible with using WimPack in the sense that program\u0027s can be loaded into a separate image but changes there are also able to be committed for availability at next boot.  \n\nRegards,  \nGalapo.   \n"
+    }
+  ]
+}

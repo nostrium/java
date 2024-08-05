@@ -1,0 +1,1306 @@
+{
+  "id": "22232",
+  "title": "a1ive\u0027s grub2 and File Manager has great UEFI support!",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "213791",
+      "timestamp": "2020-01-13T18:30:14+00:00",
+      "author": "steve6375",
+      "content": "a1ive has enhanced grub2 and has added new commands such as map, partnew, dd, etc. for UEFI.\n\nHe has also created the grub2 File Manager scripts, which use these new grub2 features as well ipxe wimboot and chenall\u0027s NTBOOT to allow us to **DIRECTLY boot** from unaltered Windows Install ISOs (with ability to load an XML file), .WIM files and .VHD files for MBR\\\\Legacy **and UEFI64 and UEFI32** . We can also boot from just about any Linux ISO because **you can choose the \u0027EasyBoot\u0027 method of using \u0027partnew\u0027 even under UEFI**.\n\nI have also added a Secure Boot UEFI64 set of files, which should allow you to Secure UEFI boot to his grub2 (even though it is not signed). This allows us to run ALL grub2 commands without restriction.\n\nYou can also use the partnew command to boot from an [Ubuntu-based ISO with persistence](http://rmprepusb.blogspot.com/2020/01/a1ive-grub2-file-manager-menu-for.html \"External link\").\n\nFor more details, read the last weeks articles in [my blog](http://rmprepusb.blogspot.com/ \"External link\") starting with [this one](http://rmprepusb.blogspot.com/2020/01/mbr-boot-and-uefi-boot-almost-any-file.html \"External link\").\n\nIf you just want to try the FAT32 UEFI boot files - see [here](http://rmprepusb.blogspot.com/2020/01/e2b-uefi-version.html \"External link\") for a download.  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![grub2_menu.JPG](http://reboot.pro/uploads/monthly_01_2020/post-17818-0-46738400-1578940125_thumb.jpg)](http://reboot.pro/uploads/monthly_01_2020/post-17818-0-46738400-1578940125.jpg \"grub2_menu.JPG - Size: 44.32KB\"){#ipb-attach-url-16980-0-92861800-1676066379}\n\n"
+    },
+    {
+      "id": "213792",
+      "timestamp": "2020-01-13T18:47:18+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e **the \u0027EasyBoot\u0027 method of using \u0027partnew\u0027**\n\nHad to happen, before or later.\n\n[http://reboot.pro/to...brided/?p\u003d88531](http://reboot.pro/topic/9916-grub4dos-isohybrided/?p\u003d88531 \"\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "213793",
+      "timestamp": "2020-01-13T18:50:07+00:00",
+      "author": "steve6375",
+      "content": "A1ive\u0027s choice of terminology, not mine!\n\n"
+    },
+    {
+      "id": "213794",
+      "timestamp": "2020-01-13T19:00:50+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e A1ive\u0027s choice of terminology, not mine!\n\nWhoever is the author of the terminology is, it is not accurate, let alone correct, and you (not someone else) perfectly know that.\n\nWhoever did a foolish thing doesn\u0027t really matter, a slip of the fingers or a mistake, if it was a mistake, can happen to everyone, no problem, but - at least to those that read here - it is clear that it is foolish.\n\n[https://jdebp.eu/FGA...oolishness.html](https://jdebp.eu/FGA/dukhat-on-foolishness.html \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "213799",
+      "timestamp": "2020-01-15T01:53:59+00:00",
+      "author": "alacran",
+      "content": "@ steve6375\n\nMy PC is MBR dual booting Win7x64 + 10x64\n\nJust downloaded your Easy2Boot_v1.B8 + E2B UEFI File Manager v1.0 and following your [guide](http://www.easy2boot.com/uefi-mbr-a1ive-grub2-file-manager/ \"External link\")\n\nI made an E2B USB flash drive 4 GB just to test it, First primary Active partition is E2B NTFS (almost all drive) and second primary partition is FAT-32 100 MB only for E2B UEFI File Manager v1.0 files/folders, file grub_filemanager.mnu is on \\\\_ISO\\\\MAINMENU folder on the E2B partition as per your instructions, so it can be called from grub4dos main memu.\n\nThen for testing copied linuxmint-19.3-cinnamon-64bit.iso to E2B:\\\\_ISO\\\\LINUX and Win10XPE_x64.wim to E2B:\\\\_ISO\\\\WINPE.\n\nlinuxmint-19.3-cinnamon-64bit.iso boots fine from grub4dos, and also from grub2.\n\nWin10XPE_x64.wim boots fine from grub4dos, but not from grub2 (wimboot or 6.x NTFS, both don\u0027t boot), I got a message: bootmgr is corrupted\n\nIt seams to me bootmgr is not found by Grub2, Any ideas to fix this?\n\nalacran\n\n"
+    },
+    {
+      "id": "213800",
+      "timestamp": "2020-01-15T05:02:04+00:00",
+      "author": "steve6375",
+      "content": "You need approx 2GB of RAM or more. Are you testing on a real system or VM?\n\nCan you post screenshot showing error please.\n\n"
+    },
+    {
+      "id": "213804",
+      "timestamp": "2020-01-16T11:14:04+00:00",
+      "author": "steve6375",
+      "content": "I have added some more example grub2 menu files.\n\n[http://rmprepusb.blo...to-install.html](http://rmprepusb.blogspot.com/2020/01/grubfm-grub2-menus-to-install.html \"External link\")\n\nExamples:\n\nUbuntu ISO + persistence\n\nTails ISO\n\nWin10 Install ISO + XML file (grub2 .cfg file)\n\nWin10 Install ISO + XML file (grubfm file)\n\n"
+    },
+    {
+      "id": "213806",
+      "timestamp": "2020-01-16T20:39:04+00:00",
+      "author": "alacran",
+      "content": "\u003e You need approx 2GB of RAM or more. Are you testing on a real system or VM?\n\u003e\n\u003e Can you post screenshot showing error please.\n\nPC has 4 GB RAM, booting directly from the USB device on the PC, not on Virtual Machine, attached picture.  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![Bootmgr.jpg](http://reboot.pro/uploads/monthly_01_2020/post-26560-0-28788200-1579207136_thumb.jpg)](http://reboot.pro/uploads/monthly_01_2020/post-26560-0-28788200-1579207136.jpg \"Bootmgr.jpg - Size: 87.96KB\"){#ipb-attach-url-16984-0-92870400-1676066379}\n\n"
+    },
+    {
+      "id": "213807",
+      "timestamp": "2020-01-16T20:43:56+00:00",
+      "author": "steve6375",
+      "content": "I think bootmgr is inside a file which is inside the grubfm.iso - it is resident in memory and should be OK.\n\nI have not seen this issue before with wim files.\n\nDo all wim files do this?\n\n"
+    },
+    {
+      "id": "213809",
+      "timestamp": "2020-01-16T21:09:22+00:00",
+      "author": "alacran",
+      "content": "I assume it should be located on \\\\grubfm.iso\\\\NTBOOT.MOD\\\\ (as it is on E2B drive on \\\\_ISO\\\\e2b\\\\grub\\\\DPMS\\\\NTBOOT.MOD\\\\bootmgr), but it is not there.\n\n"
+    },
+    {
+      "id": "213810",
+      "timestamp": "2020-01-16T21:21:33+00:00",
+      "author": "steve6375",
+      "content": "It is inside NTBOOT.MOD which is a compressed file - then NTBOOT.NT6 which contains NTBOOT.img which contains bootmgr.\n\n"
+    },
+    {
+      "id": "213811",
+      "timestamp": "2020-01-16T22:50:34+00:00",
+      "author": "alacran",
+      "content": "I can\u0027t go farter than NTBOOT.img to check content (can\u0027t load the image or open it with 7-Zip).\n\nTested with some WinPE.iso files and boot fine from grub2.\n\nAs said before: Win10XPE_x64.wim 771 MB (file is contiguous) boots fine from grub4dos (so file is fine), but not from grub2 (wimboot or 6.x NTFS, both don\u0027t boot), message about Bootmgr image is corrupt.\n\n7pe_x86_E.wim 237 MB is fragmented (8 fragments, there is no CONTIG.ISO file to save espace), but boots fine from grub2 if selecting wimboot, but from grub2, as NT 6.x, it fails same as Win10XPE_x64.wim, with same message about Bootmgr image is corrupt.\n\n"
+    },
+    {
+      "id": "213813",
+      "timestamp": "2020-01-17T00:52:08+00:00",
+      "author": "steve6375",
+      "content": "NTBOOT.img can be opened using WinImage.\n\ngrub2 is actually calling grub4dos and NTBOOT. So all are using grub4dos.\n\nA different version of bootmgr is used in the NTBOOT.img (size 398356 bytes).\n\nbut the issue smells a bit like a memory address/map issue...\n\n"
+    },
+    {
+      "id": "213815",
+      "timestamp": "2020-01-17T10:52:20+00:00",
+      "author": "steve6375",
+      "content": "Is it possible to upload your .wim files and PM me with their location so I can download and test?\n\nI cannot reproduce any error with my hardware and wim files.\n\n"
+    },
+    {
+      "id": "213816",
+      "timestamp": "2020-01-17T11:54:25+00:00",
+      "author": "steve6375",
+      "content": "Note that the grub2 file manager is most useful for UEFI-booting of ISOs, WIMs and VHDs because this is something that is not possible by using grub4dos. Grub4dos does MBR-booting well and is now working very well so there is little need to test grub2 MBR booting.\n\n"
+    },
+    {
+      "id": "213820",
+      "timestamp": "2020-01-17T22:31:10+00:00",
+      "author": "alacran",
+      "content": "\u003e NTBOOT.img can be opened using WinImage.\n\u003e\n\u003e grub2 is actually calling grub4dos and NTBOOT. So all are using grub4dos.\n\u003e\n\u003e A different version of bootmgr is used in the NTBOOT.img (size 398356 bytes).\n\u003e\n\u003e but the issue smells a bit like a memory address/map issue...\n\nI don\u0027t have Winimage.  \nOk, so then when we run grub2 and try to boot a WIM we call again grub4dos, but from the grubfm.iso content.\n\nI rebuilded the USB stick and added (All of them contiguous):\n\n7pe_x86_E.wim\n\n7pe_amd64_E.wim\n\nChrisPE-8.1x64.wim\n\nWin10XPE_x64.wim\n\n7pe_x86_E.iso\n\nRebooted on another MBR PC 8 GB RAM, with exactly same results.\n\n\u003e Is it possible to upload your .wim files and PM me with their location so I can download and test?\n\u003e\n\u003e I cannot reproduce any error with my hardware and wim files.\n\nAll my WIM files boot fine from internal HDD or my UEFI_MULTI USB stick using Windows bootmanager and adding them to BCD with BootIce.\n\nThey also boot fine using AIO Boot from internal HDD or my USB stick using Windows bootmanager.\n\nThey also boot fine from E2B USB stick when using grub4dos.\n\nSo it seems to me the problem is on another place not in the WIM image files. Anyway I\u0027m uploading the smalest WIM file 7pe_x86_E.wim (237 MB) to let you test it, as you requested and I\u0027ll send you a PM when ready.\n\n\u003e Note that the grub2 file manager is most useful for UEFI-booting of ISOs, WIMs and VHDs because this is something that is not possible by using grub4dos. Grub4dos does MBR-booting well and is now working very well so there is little need to test grub2 MBR booting.\n\nI\u0027m agree with you there is little need to test grub2 MBR booting when grub4dos does it very fine, but if it is there as an option, it should work fine.\n\nI allready tested on another PC, now I will try another USB device (to exclude possible bad sectors) and report back my findings.\n\n"
+    },
+    {
+      "id": "213822",
+      "timestamp": "2020-01-18T08:42:32+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I\u0027m agree with you there is little need to test grub2 MBR booting when grub4dos does it very fine, but **if it is there as an option, it should work fine.**\n\u003e\n\u003e I allready tested on another PC, now I will try another USB device (to exclude possible bad sectors) and report back my findings.\n\nRight attitude ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif) .\n\nWonko approves of this.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "213823",
+      "timestamp": "2020-01-18T09:11:04+00:00",
+      "author": "steve6375",
+      "content": "Thanks for the wim file.\n\nIt seems to work OK on my Haswell Asus Z87-A and under VirtualBox + VMUB (set as ICH9, 5GB system, Ubuntu 64, 4 CPUs).\n\nYou say you tried it on two PCs. What exact make and models were these?\n\nAlso, in E2B, could you run **displaymem**in the grub4dos console and report the output for both systems (real PC boot, not VM).\n\nCan you try testing using VBox+VMUB set up as I decscribed above?\n\ncheers\n\nSteve  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![displaymem.JPG](http://reboot.pro/uploads/monthly_01_2020/post-17818-0-74498200-1579338654_thumb.jpg)](http://reboot.pro/uploads/monthly_01_2020/post-17818-0-74498200-1579338654.jpg \"displaymem.JPG - Size: 84.78KB\"){#ipb-attach-url-16990-0-92876200-1676066379}\n\n"
+    },
+    {
+      "id": "213825",
+      "timestamp": "2020-01-18T21:52:47+00:00",
+      "author": "alacran",
+      "content": "First PC is an Intel Ivy Bridge i3-3225, 3300 MHz, MB is Biostar H61MGV3 v7.7, and 4 GB DDR3 1333 MHZ RAM  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![PC-1.jpg](http://reboot.pro/uploads/monthly_01_2020/post-26560-0-31369200-1579384321_thumb.jpg)](http://reboot.pro/uploads/monthly_01_2020/post-26560-0-31369200-1579384321.jpg \"PC-1.jpg - Size: 234.73KB\"){#ipb-attach-url-16991-0-92881200-1676066379}\n\n"
+    },
+    {
+      "id": "213827",
+      "timestamp": "2020-01-20T10:20:42+00:00",
+      "author": "steve6375",
+      "content": "I found the issue! Do you have an animation running in E2B?\n\nI think the animation has set up a timer interrupt, so that when something is loaded by grub4dos, the interrupt is still going.\n\nPlease try this menu in E2B instead of the one you are using.\n\n```\nsplashimage --animated\u003d0\nmap --unmap\u003d0:0xff \u003e nul\nmap --unhook\nfind --set-root /grubfm.iso\nmap --mem /grubfm.iso (0xff)\nmap --hook\nchainloader (0xff)\nboot\n```\n\nP.S. Actually it is the unmap that fixes the issue! This also works...\n\n```\nmap --unmap\u003d0:0x03 \u003e nul\nmap --unhook\nfind --set-root /grubfm.iso\nmap --mem /grubfm.iso (0xff)\nmap --hook\nchainloader (0xff)\nboot\n```\n\n\u003cbr /\u003e\n\n**Edited by steve6375, 20 January 2020 - 10:53 AM.**\n"
+    },
+    {
+      "id": "213830",
+      "timestamp": "2020-01-20T11:27:58+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Actually it is the unmap that fixes the issue!\n\nWhy one is:\n\u003e\n\u003e splashimage --animated\u003d0  \n\u003e map --unmap\u003d0:**0xff** \\\u003e nul\n\nand the other is:\n\u003e\n\u003e map --unmap\u003d0:**0x03** \\\u003e nul\n\n![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "213831",
+      "timestamp": "2020-01-20T11:47:52+00:00",
+      "author": "steve6375",
+      "content": "It is to prove that it was the floppy device map (3) that was causing the issue.\n\n"
+    },
+    {
+      "id": "213832",
+      "timestamp": "2020-01-20T13:12:45+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e It is to prove that it was the floppy device map (3) that was causing the issue.\n\nSo, either of those work?\n\nBut who/where/when was a floppy device mapped to 0x03? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "213833",
+      "timestamp": "2020-01-20T13:40:42+00:00",
+      "author": "steve6375",
+      "content": "When Easy2Boot uses animation, it loads a floppy image file as FD3 and maps it to memory. All the animation images are thus fetched from memory for fast display of images.\n\nWhen NTBOOT is called, it loads a floppy image as FD0 into memory which contains bootmgr, boot.sdi and a BCD. For some reason, these two memory mapped floppy device seems to cause (fd0)\\\\bootmgr to be corrupt.\n\nI don\u0027t understand why. ![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png) But it could be to do with using grub4dos twice ??\n\ni.e.\n\ngrub4dos is loaded, E2B menu runs, FILE is loaded as --mem (fd3)\n\ngrub4dos loads grubfm.iso as (0xff) which runs grub2\n\ngrub2 menu runs xxx.wim which now runs grub.exe (grub4dos) which calls NTBOOT (grub4dos batch file) which loads its floppy image into memory as fd0 (actually the floppy file is NTBOOT.NT6 which is first mapped to (rd) and then later (rd) is mapped to (fd0)).\n\nChenalls NTBOOT batch file does contain a line\n\nmap --unmap\u003d0xfb,0xfc,0xfe,0xff,0xcd\n\nwhich implies he found some issues with (memory?) mapped drives.\n\nChanging this to:\n\nmap --unmap\u003d2,3,0xfb,0xfc,0xfe,0xff,0xcd\n\nor\n\nmap --unmap\u003d1:0xff\n\nfixes this problem\n\n**Edited by steve6375, 20 January 2020 - 01:45 PM.**\n"
+    },
+    {
+      "id": "213834",
+      "timestamp": "2020-01-20T14:17:02+00:00",
+      "author": "Wonko the Sane",
+      "content": "I see now :smile:\n\nMaybe it is something *loosely* like it happens (actually the contrary of it) in DOS (or FreeDos, cannot remember) that some floppies cannot be read/accessed but they can if mapped to B : \\\\ and a \"good\" floppy is in A : \\\\ and accessed before B : \\\\. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif), i.e. \\*something\\* remains \"sticky\".\n\nAre the two floppies (the one containing the animations/images and the NTBOOT.NT6 ) both \"normal\" floppies?\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "213791",
+      "timestamp": "2020-01-13T18:30:14+00:00",
+      "author": "steve6375",
+      "content": "a1ive has enhanced grub2 and has added new commands such as map, partnew, dd, etc. for UEFI.\n\nHe has also created the grub2 File Manager scripts, which use these new grub2 features as well ipxe wimboot and chenall\u0027s NTBOOT to allow us to **DIRECTLY boot** from unaltered Windows Install ISOs (with ability to load an XML file), .WIM files and .VHD files for MBR\\\\Legacy **and UEFI64 and UEFI32** . We can also boot from just about any Linux ISO because **you can choose the \u0027EasyBoot\u0027 method of using \u0027partnew\u0027 even under UEFI**.\n\nI have also added a Secure Boot UEFI64 set of files, which should allow you to Secure UEFI boot to his grub2 (even though it is not signed). This allows us to run ALL grub2 commands without restriction.\n\nYou can also use the partnew command to boot from an [Ubuntu-based ISO with persistence](http://rmprepusb.blogspot.com/2020/01/a1ive-grub2-file-manager-menu-for.html \"External link\").\n\nFor more details, read the last weeks articles in [my blog](http://rmprepusb.blogspot.com/ \"External link\") starting with [this one](http://rmprepusb.blogspot.com/2020/01/mbr-boot-and-uefi-boot-almost-any-file.html \"External link\").\n\nIf you just want to try the FAT32 UEFI boot files - see [here](http://rmprepusb.blogspot.com/2020/01/e2b-uefi-version.html \"External link\") for a download.  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![grub2_menu.JPG](http://reboot.pro/uploads/monthly_01_2020/post-17818-0-46738400-1578940125_thumb.jpg)](http://reboot.pro/uploads/monthly_01_2020/post-17818-0-46738400-1578940125.jpg \"grub2_menu.JPG - Size: 44.32KB\"){#ipb-attach-url-16980-0-06839900-1676066380}\n\n"
+    },
+    {
+      "id": "213792",
+      "timestamp": "2020-01-13T18:47:18+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e **the \u0027EasyBoot\u0027 method of using \u0027partnew\u0027**\n\nHad to happen, before or later.\n\n[http://reboot.pro/to...brided/?p\u003d88531](http://reboot.pro/topic/9916-grub4dos-isohybrided/?p\u003d88531 \"\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "213793",
+      "timestamp": "2020-01-13T18:50:07+00:00",
+      "author": "steve6375",
+      "content": "A1ive\u0027s choice of terminology, not mine!\n\n"
+    },
+    {
+      "id": "213794",
+      "timestamp": "2020-01-13T19:00:50+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e A1ive\u0027s choice of terminology, not mine!\n\nWhoever is the author of the terminology is, it is not accurate, let alone correct, and you (not someone else) perfectly know that.\n\nWhoever did a foolish thing doesn\u0027t really matter, a slip of the fingers or a mistake, if it was a mistake, can happen to everyone, no problem, but - at least to those that read here - it is clear that it is foolish.\n\n[https://jdebp.eu/FGA...oolishness.html](https://jdebp.eu/FGA/dukhat-on-foolishness.html \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "213799",
+      "timestamp": "2020-01-15T01:53:59+00:00",
+      "author": "alacran",
+      "content": "@ steve6375\n\nMy PC is MBR dual booting Win7x64 + 10x64\n\nJust downloaded your Easy2Boot_v1.B8 + E2B UEFI File Manager v1.0 and following your [guide](http://www.easy2boot.com/uefi-mbr-a1ive-grub2-file-manager/ \"External link\")\n\nI made an E2B USB flash drive 4 GB just to test it, First primary Active partition is E2B NTFS (almost all drive) and second primary partition is FAT-32 100 MB only for E2B UEFI File Manager v1.0 files/folders, file grub_filemanager.mnu is on \\\\_ISO\\\\MAINMENU folder on the E2B partition as per your instructions, so it can be called from grub4dos main memu.\n\nThen for testing copied linuxmint-19.3-cinnamon-64bit.iso to E2B:\\\\_ISO\\\\LINUX and Win10XPE_x64.wim to E2B:\\\\_ISO\\\\WINPE.\n\nlinuxmint-19.3-cinnamon-64bit.iso boots fine from grub4dos, and also from grub2.\n\nWin10XPE_x64.wim boots fine from grub4dos, but not from grub2 (wimboot or 6.x NTFS, both don\u0027t boot), I got a message: bootmgr is corrupted\n\nIt seams to me bootmgr is not found by Grub2, Any ideas to fix this?\n\nalacran\n\n"
+    },
+    {
+      "id": "213800",
+      "timestamp": "2020-01-15T05:02:04+00:00",
+      "author": "steve6375",
+      "content": "You need approx 2GB of RAM or more. Are you testing on a real system or VM?\n\nCan you post screenshot showing error please.\n\n"
+    },
+    {
+      "id": "213804",
+      "timestamp": "2020-01-16T11:14:04+00:00",
+      "author": "steve6375",
+      "content": "I have added some more example grub2 menu files.\n\n[http://rmprepusb.blo...to-install.html](http://rmprepusb.blogspot.com/2020/01/grubfm-grub2-menus-to-install.html \"External link\")\n\nExamples:\n\nUbuntu ISO + persistence\n\nTails ISO\n\nWin10 Install ISO + XML file (grub2 .cfg file)\n\nWin10 Install ISO + XML file (grubfm file)\n\n"
+    },
+    {
+      "id": "213806",
+      "timestamp": "2020-01-16T20:39:04+00:00",
+      "author": "alacran",
+      "content": "\u003e You need approx 2GB of RAM or more. Are you testing on a real system or VM?\n\u003e\n\u003e Can you post screenshot showing error please.\n\nPC has 4 GB RAM, booting directly from the USB device on the PC, not on Virtual Machine, attached picture.  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![Bootmgr.jpg](http://reboot.pro/uploads/monthly_01_2020/post-26560-0-28788200-1579207136_thumb.jpg)](http://reboot.pro/uploads/monthly_01_2020/post-26560-0-28788200-1579207136.jpg \"Bootmgr.jpg - Size: 87.96KB\"){#ipb-attach-url-16984-0-06851600-1676066380}\n\n"
+    },
+    {
+      "id": "213807",
+      "timestamp": "2020-01-16T20:43:56+00:00",
+      "author": "steve6375",
+      "content": "I think bootmgr is inside a file which is inside the grubfm.iso - it is resident in memory and should be OK.\n\nI have not seen this issue before with wim files.\n\nDo all wim files do this?\n\n"
+    },
+    {
+      "id": "213809",
+      "timestamp": "2020-01-16T21:09:22+00:00",
+      "author": "alacran",
+      "content": "I assume it should be located on \\\\grubfm.iso\\\\NTBOOT.MOD\\\\ (as it is on E2B drive on \\\\_ISO\\\\e2b\\\\grub\\\\DPMS\\\\NTBOOT.MOD\\\\bootmgr), but it is not there.\n\n"
+    },
+    {
+      "id": "213810",
+      "timestamp": "2020-01-16T21:21:33+00:00",
+      "author": "steve6375",
+      "content": "It is inside NTBOOT.MOD which is a compressed file - then NTBOOT.NT6 which contains NTBOOT.img which contains bootmgr.\n\n"
+    },
+    {
+      "id": "213811",
+      "timestamp": "2020-01-16T22:50:34+00:00",
+      "author": "alacran",
+      "content": "I can\u0027t go farter than NTBOOT.img to check content (can\u0027t load the image or open it with 7-Zip).\n\nTested with some WinPE.iso files and boot fine from grub2.\n\nAs said before: Win10XPE_x64.wim 771 MB (file is contiguous) boots fine from grub4dos (so file is fine), but not from grub2 (wimboot or 6.x NTFS, both don\u0027t boot), message about Bootmgr image is corrupt.\n\n7pe_x86_E.wim 237 MB is fragmented (8 fragments, there is no CONTIG.ISO file to save espace), but boots fine from grub2 if selecting wimboot, but from grub2, as NT 6.x, it fails same as Win10XPE_x64.wim, with same message about Bootmgr image is corrupt.\n\n"
+    },
+    {
+      "id": "213813",
+      "timestamp": "2020-01-17T00:52:08+00:00",
+      "author": "steve6375",
+      "content": "NTBOOT.img can be opened using WinImage.\n\ngrub2 is actually calling grub4dos and NTBOOT. So all are using grub4dos.\n\nA different version of bootmgr is used in the NTBOOT.img (size 398356 bytes).\n\nbut the issue smells a bit like a memory address/map issue...\n\n"
+    },
+    {
+      "id": "213815",
+      "timestamp": "2020-01-17T10:52:20+00:00",
+      "author": "steve6375",
+      "content": "Is it possible to upload your .wim files and PM me with their location so I can download and test?\n\nI cannot reproduce any error with my hardware and wim files.\n\n"
+    },
+    {
+      "id": "213816",
+      "timestamp": "2020-01-17T11:54:25+00:00",
+      "author": "steve6375",
+      "content": "Note that the grub2 file manager is most useful for UEFI-booting of ISOs, WIMs and VHDs because this is something that is not possible by using grub4dos. Grub4dos does MBR-booting well and is now working very well so there is little need to test grub2 MBR booting.\n\n"
+    },
+    {
+      "id": "213820",
+      "timestamp": "2020-01-17T22:31:10+00:00",
+      "author": "alacran",
+      "content": "\u003e NTBOOT.img can be opened using WinImage.\n\u003e\n\u003e grub2 is actually calling grub4dos and NTBOOT. So all are using grub4dos.\n\u003e\n\u003e A different version of bootmgr is used in the NTBOOT.img (size 398356 bytes).\n\u003e\n\u003e but the issue smells a bit like a memory address/map issue...\n\nI don\u0027t have Winimage.  \nOk, so then when we run grub2 and try to boot a WIM we call again grub4dos, but from the grubfm.iso content.\n\nI rebuilded the USB stick and added (All of them contiguous):\n\n7pe_x86_E.wim\n\n7pe_amd64_E.wim\n\nChrisPE-8.1x64.wim\n\nWin10XPE_x64.wim\n\n7pe_x86_E.iso\n\nRebooted on another MBR PC 8 GB RAM, with exactly same results.\n\n\u003e Is it possible to upload your .wim files and PM me with their location so I can download and test?\n\u003e\n\u003e I cannot reproduce any error with my hardware and wim files.\n\nAll my WIM files boot fine from internal HDD or my UEFI_MULTI USB stick using Windows bootmanager and adding them to BCD with BootIce.\n\nThey also boot fine using AIO Boot from internal HDD or my USB stick using Windows bootmanager.\n\nThey also boot fine from E2B USB stick when using grub4dos.\n\nSo it seems to me the problem is on another place not in the WIM image files. Anyway I\u0027m uploading the smalest WIM file 7pe_x86_E.wim (237 MB) to let you test it, as you requested and I\u0027ll send you a PM when ready.\n\n\u003e Note that the grub2 file manager is most useful for UEFI-booting of ISOs, WIMs and VHDs because this is something that is not possible by using grub4dos. Grub4dos does MBR-booting well and is now working very well so there is little need to test grub2 MBR booting.\n\nI\u0027m agree with you there is little need to test grub2 MBR booting when grub4dos does it very fine, but if it is there as an option, it should work fine.\n\nI allready tested on another PC, now I will try another USB device (to exclude possible bad sectors) and report back my findings.\n\n"
+    },
+    {
+      "id": "213822",
+      "timestamp": "2020-01-18T08:42:32+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I\u0027m agree with you there is little need to test grub2 MBR booting when grub4dos does it very fine, but **if it is there as an option, it should work fine.**\n\u003e\n\u003e I allready tested on another PC, now I will try another USB device (to exclude possible bad sectors) and report back my findings.\n\nRight attitude ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif) .\n\nWonko approves of this.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "213823",
+      "timestamp": "2020-01-18T09:11:04+00:00",
+      "author": "steve6375",
+      "content": "Thanks for the wim file.\n\nIt seems to work OK on my Haswell Asus Z87-A and under VirtualBox + VMUB (set as ICH9, 5GB system, Ubuntu 64, 4 CPUs).\n\nYou say you tried it on two PCs. What exact make and models were these?\n\nAlso, in E2B, could you run **displaymem**in the grub4dos console and report the output for both systems (real PC boot, not VM).\n\nCan you try testing using VBox+VMUB set up as I decscribed above?\n\ncheers\n\nSteve  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![displaymem.JPG](http://reboot.pro/uploads/monthly_01_2020/post-17818-0-74498200-1579338654_thumb.jpg)](http://reboot.pro/uploads/monthly_01_2020/post-17818-0-74498200-1579338654.jpg \"displaymem.JPG - Size: 84.78KB\"){#ipb-attach-url-16990-0-06859600-1676066380}\n\n"
+    },
+    {
+      "id": "213825",
+      "timestamp": "2020-01-18T21:52:47+00:00",
+      "author": "alacran",
+      "content": "First PC is an Intel Ivy Bridge i3-3225, 3300 MHz, MB is Biostar H61MGV3 v7.7, and 4 GB DDR3 1333 MHZ RAM  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![PC-1.jpg](http://reboot.pro/uploads/monthly_01_2020/post-26560-0-31369200-1579384321_thumb.jpg)](http://reboot.pro/uploads/monthly_01_2020/post-26560-0-31369200-1579384321.jpg \"PC-1.jpg - Size: 234.73KB\"){#ipb-attach-url-16991-0-06865700-1676066380}\n\n"
+    },
+    {
+      "id": "213827",
+      "timestamp": "2020-01-20T10:20:42+00:00",
+      "author": "steve6375",
+      "content": "I found the issue! Do you have an animation running in E2B?\n\nI think the animation has set up a timer interrupt, so that when something is loaded by grub4dos, the interrupt is still going.\n\nPlease try this menu in E2B instead of the one you are using.\n\n```\nsplashimage --animated\u003d0\nmap --unmap\u003d0:0xff \u003e nul\nmap --unhook\nfind --set-root /grubfm.iso\nmap --mem /grubfm.iso (0xff)\nmap --hook\nchainloader (0xff)\nboot\n```\n\nP.S. Actually it is the unmap that fixes the issue! This also works...\n\n```\nmap --unmap\u003d0:0x03 \u003e nul\nmap --unhook\nfind --set-root /grubfm.iso\nmap --mem /grubfm.iso (0xff)\nmap --hook\nchainloader (0xff)\nboot\n```\n\n\u003cbr /\u003e\n\n**Edited by steve6375, 20 January 2020 - 10:53 AM.**\n"
+    },
+    {
+      "id": "213830",
+      "timestamp": "2020-01-20T11:27:58+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Actually it is the unmap that fixes the issue!\n\nWhy one is:\n\u003e\n\u003e splashimage --animated\u003d0  \n\u003e map --unmap\u003d0:**0xff** \\\u003e nul\n\nand the other is:\n\u003e\n\u003e map --unmap\u003d0:**0x03** \\\u003e nul\n\n![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "213831",
+      "timestamp": "2020-01-20T11:47:52+00:00",
+      "author": "steve6375",
+      "content": "It is to prove that it was the floppy device map (3) that was causing the issue.\n\n"
+    },
+    {
+      "id": "213832",
+      "timestamp": "2020-01-20T13:12:45+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e It is to prove that it was the floppy device map (3) that was causing the issue.\n\nSo, either of those work?\n\nBut who/where/when was a floppy device mapped to 0x03? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "213833",
+      "timestamp": "2020-01-20T13:40:42+00:00",
+      "author": "steve6375",
+      "content": "When Easy2Boot uses animation, it loads a floppy image file as FD3 and maps it to memory. All the animation images are thus fetched from memory for fast display of images.\n\nWhen NTBOOT is called, it loads a floppy image as FD0 into memory which contains bootmgr, boot.sdi and a BCD. For some reason, these two memory mapped floppy device seems to cause (fd0)\\\\bootmgr to be corrupt.\n\nI don\u0027t understand why. ![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png) But it could be to do with using grub4dos twice ??\n\ni.e.\n\ngrub4dos is loaded, E2B menu runs, FILE is loaded as --mem (fd3)\n\ngrub4dos loads grubfm.iso as (0xff) which runs grub2\n\ngrub2 menu runs xxx.wim which now runs grub.exe (grub4dos) which calls NTBOOT (grub4dos batch file) which loads its floppy image into memory as fd0 (actually the floppy file is NTBOOT.NT6 which is first mapped to (rd) and then later (rd) is mapped to (fd0)).\n\nChenalls NTBOOT batch file does contain a line\n\nmap --unmap\u003d0xfb,0xfc,0xfe,0xff,0xcd\n\nwhich implies he found some issues with (memory?) mapped drives.\n\nChanging this to:\n\nmap --unmap\u003d2,3,0xfb,0xfc,0xfe,0xff,0xcd\n\nor\n\nmap --unmap\u003d1:0xff\n\nfixes this problem\n\n**Edited by steve6375, 20 January 2020 - 01:45 PM.**\n"
+    },
+    {
+      "id": "213834",
+      "timestamp": "2020-01-20T14:17:02+00:00",
+      "author": "Wonko the Sane",
+      "content": "I see now :smile:\n\nMaybe it is something *loosely* like it happens (actually the contrary of it) in DOS (or FreeDos, cannot remember) that some floppies cannot be read/accessed but they can if mapped to B : \\\\ and a \"good\" floppy is in A : \\\\ and accessed before B : \\\\. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif), i.e. \\*something\\* remains \"sticky\".\n\nAre the two floppies (the one containing the animations/images and the NTBOOT.NT6 ) both \"normal\" floppies?\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "213840",
+      "timestamp": "2020-01-21T09:25:55+00:00",
+      "author": "steve6375",
+      "content": "Both are valid floppy images AFAIK which can be loaded and changed in WinImage.\n\nI think the issue is because the (rd) device is mapped using NTBOOT and map --mem is used by E2B to map the floppy image containing the animation. Since grub4dos (grldr) is reloaded (grub.exe) I am not sure if the memory mapping is now lost with the new copy of grub4dos but the old fd4 floppy BIOS device is still mapped to a portion of memory? Maybe bootmgr checks all BIOS floppy devices (or all BIOS drives) when loaded and because the one device (fd4) is memory mapped but points to invalid memory now, it just reports this \u0027corrupt\u0027 message? It should be booting from bootmgr on fd0 in a memory drive...\n\n"
+    },
+    {
+      "id": "213841",
+      "timestamp": "2020-01-21T13:13:18+00:00",
+      "author": "Wonko the Sane",
+      "content": "Loadable and changeable in Winimage is good, but not necessarily means that the image is \"kosher\" as Winimage can read a number of \"queer\" or \"non-standard\" images, but what is puzzling me is that the error if an exchange or misaddressing or mis-mapping of the dloppy images happens, the error should be more \\*like\\* \"BOOTMGR not found\" (as opposed to BOOTMGR is corrupt\"), or if you prefer more like a filesystem derived error than the current that seems to be connected to the integrity of the file. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\nIt is good that you managed to find a quick fix/workaround :smile:, still the cause is not entirely clear (to me at least).\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "213843",
+      "timestamp": "2020-01-21T21:50:47+00:00",
+      "author": "steve6375",
+      "content": "Version 1.1 is now available which fixed a few issues (inc. the wim issue)\n\n[https://rmprepusb.bl...e2b-v11-no.html](https://rmprepusb.blogspot.com/2020/01/a1ive-grub2-file-manager-for-e2b-v11-no.html \"External link\")\n\nDoes anyone have any feedback? Anyone else tested it? If so with what payload and what boot type.\n\nSecure UEFI64, UEFI64, UEFI32, MBR\\\\Legacy? Windows PE, ISOs, WIM files, VHDs, etc?\n\n"
+    },
+    {
+      "id": "213844",
+      "timestamp": "2020-01-22T03:40:47+00:00",
+      "author": "alacran",
+      "content": "Good, v1.1 is working fine to boot from grub2 menu WIM files using NTFS 6.x option now on my MBR/CSM PCs.\n\n"
+    },
+    {
+      "id": "213846",
+      "timestamp": "2020-01-22T09:02:24+00:00",
+      "author": "steve6375",
+      "content": "re. .wim issue with bootmgr corruption.\n\nI think that that E2B sets up the fd4 BIOS device in memory using (rd).\n\nThen grub2 runs which reloads grub.exe\n\nThen NTBOOT sets up its boot floppy at fd0 in memory using (rd)\n\nBut because grub4dos has been reloaded and the grub4dos versions are very similar (both late 2019 0.4.6a) then fd0 uses the same memory location that fd4 was already mapped to. So fd4 is still pointing to the same or very similar area that is now used by fd0.\n\nNow if something (grub4dos, bootmgr?) now accesses fd4 (which is mapped to bootmgr as the original floppy containing animation graphics files has been overwritten by a different image) and writes to that memory area (*not quite sure why it would - repair - drive parameter table for cache, etc.?*) then the contents of the fd0 memory area will be corrupted.\n\n"
+    },
+    {
+      "id": "213861",
+      "timestamp": "2020-02-02T22:56:19+00:00",
+      "author": "steve6375",
+      "content": "The a1ive grub2 File Manager v1.4 is now available.\n\na1ive has improved the dd command so that it can write sectors (or bytes in a sector) even under UEFI.\n\nThis means that you can now UEFI-boot to agFM and select any .imgPTN file and switch it in and then UEFI-boot from the E2B drive.\n\nYou can also UEFI-boot to agFM and restore the E2B partition too and then select a different .imgPTN file.\n\nThis means you don\u0027t have to MBR-boot or boot to Windows or WinPE to select .imgPTN files.\n\n[https://www.easy2boo...2-file-manager/](https://www.easy2boot.com/uefi-mbr-a1ive-grub2-file-manager/ \"External link\")\n\na1ive grub2 command primer is [here](https://www.rmprepusb.com/tutorials/a1ive-grub2-notes \"External link\").\n\n"
+    },
+    {
+      "id": "213874",
+      "timestamp": "2020-02-10T16:54:24+00:00",
+      "author": "steve6375",
+      "content": "The latest version of agFM v1.7 now has support for switching in and out .imgPTN files under grub2 without needing to make a .cfg file,\n\nThis means you can easily make a Secure UEFI64 Easy2Boot USB drive which can be MBR or UEFI booted.\n\n[http://rmprepusb.blogspot.com/](http://rmprepusb.blogspot.com/ \"External link\")\n\n"
+    },
+    {
+      "id": "213875",
+      "timestamp": "2020-02-10T17:10:37+00:00",
+      "author": "Rootman",
+      "content": "Hey, I just updated by E2B and loaded agFM. This looks pretty cool.\n\nIs there any reason why we can\u0027t just use the ISO files from the FIRST E2B NTFS partition on the same USB drive?. I navigated to that partition and selected a few and it seems to work just fine.\n\nWhen I tried to boot to a WinRE .imgPTN23 it says \u0027Problem making backup to LBA30\u0027 , any clue as to why that is? I tried a few an all produced that error.\n\n"
+    },
+    {
+      "id": "213876",
+      "timestamp": "2020-02-10T17:15:09+00:00",
+      "author": "steve6375",
+      "content": "The idea is to use the same ISOs! Why would you have two copies?\n\nIf WinRE.imgPTN works from the E2B menu, then grub2 should work.\n\nCan you send me the RMPRepUSB - Drive Info - 30 output file if it still doesn\u0027t work,\n\n"
+    },
+    {
+      "id": "213878",
+      "timestamp": "2020-02-10T19:29:01+00:00",
+      "author": "Rootman",
+      "content": "OK, Info below. I booted to 2 of my drives via standard MBR to E2B, choose the .imgPTN23 and rebooted to it via EFI, they both worked fine. So the imgPTN23 is working OK. I tried several .imgPTN23 files. All were OK.\n\nI have the info below from 2 drives, the USB thumb drive I was using first, then a USB HDD that I tried the second time. Both produce the same error \u0027Problem making backup to LBA30\u0027 Both have been around the block a few times over the years too with various partition layouts as my E2B evolved. These two now are a NTFS first partition (size varies on media) , a 32 GB FAT 32 second partition type ( 0B on the HDD, 0C on the thumb) and the rest either a NTFS volume, or a RAW volume that is actually an encrypted partition. I added the partition info to the end of each from the RMPrep Disk Info output starting at sector 0.\n\nHDD:  \n\n```\nCOMMAND LINE: DRIVE\u003d2 USBINFO USBSTART\u003d30 SURE \n\n\nRMPARTUSB v2.1.747 (c)2019 RM Education plc [SSi]\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\n\nAccessing Drive 2 - \"WD My Passport 07A8\" (1,000,170,586,112 bytes)\n\n\nSector at LBA 30\n\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d SECTOR DATA \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\n\n\n\n[Sector 30]  0MB\n0000 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0010 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0020 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0030 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0040 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0050 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0060 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0070 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0080 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0090 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n00A0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n00B0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n00C0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n00D0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n00E0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n00F0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0100 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0110 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0120 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0130 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0140 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0150 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0160 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0170 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0180 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0190 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n01A0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n01B0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n01C0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n01D0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n01E0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n01F0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n\n\n[Sector 31]  0MB\n0200 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0210 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0220 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0230 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0240 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0250 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0260 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0270 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0280 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0290 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n02A0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n02B0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n02C0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n02D0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n02E0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n02F0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0300 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0310 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0320 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0330 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0340 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0350 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0360 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0370 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0380 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0390 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n03A0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n03B0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n03C0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n03D0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n03E0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n03F0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d END OF SECTOR DATA \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\n\n\n\nDrive 2  WD My Passport 07A8  F/W Rev.\u003d1049  Serial No.\u003d07A8WXQ1 [ bytes \u003d 30 37 41 38 57 58 51 31 ]\nReported size 1,000,170,586,112 bytes (931.4814GiB)  Last LBA 1,953,458,175\nRMPrepUSB Max 1,000,161,146,880 bytes (931.4726GiB)  Last LBA 1,953,439,739\n\n\nPartition Info\n\n\nDisk Signature bytes (1B8h-1BBh) \u003d 17 52 90 48\n\n\nPartition 1   SIZE\u003d61440MiB   Type: 07 NTFS\\exFAT  *ACTIVE*\nSTART POS   \u003d CYL:0 HD:32 SEC:33       END POS \u003d CYL:1023 HD:254 SEC:63\nSTART (LBA) \u003d 2,048 (00000800) SIZE (LBA) \u003d 125,829,120 (07800000) [End\u003d125,831,167]\n\n\nPartition 2   SIZE\u003d30442MiB   Type: 0B FAT32 (2047GB max)       \nSTART POS   \u003d CYL:1023 HD:254 SEC:63       END POS \u003d CYL:1023 HD:254 SEC:63\nSTART (LBA) \u003d 125,831,168 (07800800) SIZE (LBA) \u003d 62,345,216 (03B75000) [End\u003d188,176,383]\n\n\nPartition 3   SIZE\u003d861953MiB   Type: 07 NTFS\\exFAT       \nSTART POS   \u003d CYL:1023 HD:254 SEC:63       END POS \u003d CYL:1023 HD:254 SEC:63\nSTART (LBA) \u003d 188,176,384 (0B375800) SIZE (LBA) \u003d 1,765,279,744 (69380800) [End\u003d1,953,456,127]\n\n\nPartition 4   SIZE\u003d514.594MiB   Type: 00        \nSTART POS   \u003d CYL:1023 HD:117 SEC:32       END POS \u003d CYL:1023 HD:15 SEC:55\nSTART (LBA) \u003d 55,977,862 (03562786) SIZE (LBA) \u003d 1,053,888 (001014C0) [End\u003d57,031,749]\n\n\nP1   Start\u003d2,048 (1,048,576 bytes) End\u003d125,831,167 (64,425,557,504 bytes)\nP2   Start\u003d125,831,168 (64,425,558,016 bytes) End\u003d188,176,383 (96,346,308,096 bytes)\nP3   Start\u003d188,176,384 (96,346,308,608 bytes) End\u003d1,953,456,127 (1,000,169,537,024 bytes)\n\n\nDrive 2  WD My Passport 07A8  F/W Rev.\u003d1049  Serial No.\u003d07A8WXQ1 [ bytes \u003d 30 37 41 38 57 58 51 31 ]\nReported size 1,000,170,586,112 bytes (931.4814GiB)  Last LBA 1,953,458,175\nRMPrepUSB Max 1,000,161,146,880 bytes (931.4726GiB)  Last LBA 1,953,439,739\n```\n\nThumb:  \n\n```\nCOMMAND LINE: DRIVE\u003d2 USBINFO USBSTART\u003d30 SURE \n\n\nRMPARTUSB v2.1.747 (c)2019 RM Education plc [SSi]\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\n\nAccessing Drive 2 - \"SanDisk Extreme Pro\" (256,087,425,024 bytes)\n\n\nSector at LBA 30\n\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d SECTOR DATA \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\n\n\n\n[Sector 30]  0MB\n0000 33 C0 EB 5C 90 00 00 00 - 00 00 00 00 00 00 00 00  3Àë\\... ........\n0010 00 00 00 00 00 00 00 00 - 00 00 00 00 78 79 4E 00  ........ ....xyN.\n0020 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0030 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0040 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0050 00 00 00 00 00 00 00 00 - 00 00 80 00 20 39 FF FF  ........ ..€. 9ÿÿ\n0060 31 DB 8E D3 BC 80 05 E8 - 00 00 5B 81 EB 6A 00 C1  1ÛŽÓ¼€.è ..[ëj.Á\n0070 EB 04 8C C8 01 C3 53 68 - 7B 00 CB 68 00 20 17 BC  ë.ŒÈ.ÃSh {.Ëh. ¼\n0080 00 90 80 FA 00 74 02 B2 - 80 16 07 B0 10 30 F6 31  .€ú.t.² €.°0ö1\n0090 DB E8 C2 00 72 29 0E 1F - 31 F6 31 FF B9 DF 00 FC  ÛèÂ.r) 1ö1ÿ¹ß.ü\n00A0 F3 A5 BB FC 1F 66 B8 47 - 52 55 AA 66 39 07 75 03  ó¥»üf¸G RUªf9.u.\n00B0 E8 98 19 EA B8 00 00 20 - 16 1F 66 39 07 74 1F 80  è˜ê¸..  f9.t€\n00C0 F2 80 68 C0 07 07 B0 10 - 30 F6 31 DB E8 87 00 72  ò€hÀ..° 0ö1Ûè‡.r\n00D0 05 EA 00 00 C0 07 BE 92 - 01 E8 AF 00 EB FE BE BE  .ê..À.¾’ .è¯.ëþ¾¾\n00E0 01 E8 04 10 F6 06 A4 01 - 80 0F 84 6C 19 83 C6 0C  .è.ö.¤. €„lƒÆ.\n00F0 81 FE FE 01 72 EB 77 2D - F6 06 A7 01 01 0F 85 1E  þþ.rëw- ö.§..…\n0100 17 80 0E A7 01 01 F6 06 - A7 01 02 75 D4 68 00 0D  €§..ö. §..uÔh..\n0110 07 B0 04 31 D2 31 DB E8 - 3C 00 73 C2 BE AD 1C E8  .°.1Ò1Ûè \u003c.sÂ¾­è\n0120 69 00 E9 FA 16 F6 06 A7 - 01 01 0F 85 F1 16 80 0E  i.éúö.§ ..…ñ€\n0130 A7 01 01 E9 D2 16 1E 06 - 52 56 57 55 F9 CD 13 5D  §..éÒ. RVWUùÍ]\n0140 5F 5E 5A 07 1F C3 FA B8 - 00 20 8E D0 BC DC 8F FB  _^Z.Ãú¸ . ŽÐ¼Üû\n0150 66 61 07 1F EB 97 B4 02 - BF 03 00 B9 01 00 60 50  fa.ë—´. ¿..¹..`P\n0160 53 51 FE C8 00 C1 D0 E0 - 00 C7 B0 01 E8 C7 FF 59  SQþÈ.ÁÐà .Ç°.èÇÿY\n0170 5B 58 72 04 FE C8 75 E7 - 61 73 0B 60 31 C0 E8 B5  [Xr.þÈuç as.`1Àèµ\n0180 FF 61 4F 75 D9 F9 C3 B4 - 0E CD 10 2E AC 3C 00 75  ÿaOuÙùÃ´ Í.¬\u003c.u\n0190 F6 C3 0D 0A 4D 69 73 73 - 69 6E 67 20 68 65 6C 70  öÃ..Miss ing help\n01A0 65 72 2E 00 00 3F FF 00 - 00 00 00 00 00 00 00 00  er...?ÿ. ........\n01B0 00 00 00 00 00 00 00 00 - 91 48 24 EC 00 00 80 20  ........ ‘H$ì..€ \n01C0 21 00 07 FE FF FF 00 08 - 00 00 00 00 80 07 00 FE  !..þÿÿ.. ....€..þ\n01D0 FF FF 0C FE FF FF 00 08 - 80 07 00 D0 A8 03 00 FE  ÿÿ.þÿÿ.. €..Ð¨..þ\n01E0 FF FF 07 FE FF FF 00 D8 - 28 0B 00 28 A7 12 00 00  ÿÿ.þÿÿ.Ø (..(§..\n01F0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 55 AA  ........ ......Uª\n\n\n[Sector 31]  0MB\n0200 33 C0 EB 5C 90 00 00 00 - 00 00 00 00 00 00 00 00  3Àë\\... ........\n0210 00 00 00 00 00 00 00 00 - 00 00 00 00 78 79 4E 00  ........ ....xyN.\n0220 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0230 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0240 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ........ ........\n0250 00 00 00 00 00 00 00 00 - 00 00 80 00 20 39 FF FF  ........ ..€. 9ÿÿ\n0260 31 DB 8E D3 BC 80 05 E8 - 00 00 5B 81 EB 6A 00 C1  1ÛŽÓ¼€.è ..[ëj.Á\n0270 EB 04 8C C8 01 C3 53 68 - 7B 00 CB 68 00 20 17 BC  ë.ŒÈ.ÃSh {.Ëh. ¼\n0280 00 90 80 FA 00 74 02 B2 - 80 16 07 B0 10 30 F6 31  .€ú.t.² €.°0ö1\n0290 DB E8 C2 00 72 29 0E 1F - 31 F6 31 FF B9 DF 00 FC  ÛèÂ.r) 1ö1ÿ¹ß.ü\n02A0 F3 A5 BB FC 1F 66 B8 47 - 52 55 AA 66 39 07 75 03  ó¥»üf¸G RUªf9.u.\n02B0 E8 98 19 EA B8 00 00 20 - 16 1F 66 39 07 74 1F 80  è˜ê¸..  f9.t€\n02C0 F2 80 68 C0 07 07 B0 10 - 30 F6 31 DB E8 87 00 72  ò€hÀ..° 0ö1Ûè‡.r\n02D0 05 EA 00 00 C0 07 BE 92 - 01 E8 AF 00 EB FE BE BE  .ê..À.¾’ .è¯.ëþ¾¾\n02E0 01 E8 04 10 F6 06 A4 01 - 80 0F 84 6C 19 83 C6 0C  .è.ö.¤. €„lƒÆ.\n02F0 81 FE FE 01 72 EB 77 2D - F6 06 A7 01 01 0F 85 1E  þþ.rëw- ö.§..…\n0300 17 80 0E A7 01 01 F6 06 - A7 01 02 75 D4 68 00 0D  €§..ö. §..uÔh..\n0310 07 B0 04 31 D2 31 DB E8 - 3C 00 73 C2 BE AD 1C E8  .°.1Ò1Ûè \u003c.sÂ¾­è\n0320 69 00 E9 FA 16 F6 06 A7 - 01 01 0F 85 F1 16 80 0E  i.éúö.§ ..…ñ€\n0330 A7 01 01 E9 D2 16 1E 06 - 52 56 57 55 F9 CD 13 5D  §..éÒ. RVWUùÍ]\n0340 5F 5E 5A 07 1F C3 FA B8 - 00 20 8E D0 BC DC 8F FB  _^Z.Ãú¸ . ŽÐ¼Üû\n0350 66 61 07 1F EB 97 B4 02 - BF 03 00 B9 01 00 60 50  fa.ë—´. ¿..¹..`P\n0360 53 51 FE C8 00 C1 D0 E0 - 00 C7 B0 01 E8 C7 FF 59  SQþÈ.ÁÐà .Ç°.èÇÿY\n0370 5B 58 72 04 FE C8 75 E7 - 61 73 0B 60 31 C0 E8 B5  [Xr.þÈuç as.`1Àèµ\n0380 FF 61 4F 75 D9 F9 C3 B4 - 0E CD 10 2E AC 3C 00 75  ÿaOuÙùÃ´ Í.¬\u003c.u\n0390 F6 C3 0D 0A 4D 69 73 73 - 69 6E 67 20 68 65 6C 70  öÃ..Miss ing help\n03A0 65 72 2E 00 00 3F FF 00 - 00 00 00 00 00 00 00 00  er...?ÿ. ........\n03B0 00 00 00 00 00 00 00 00 - 48 90 BA 00 00 00 80 FE  ........ Hº...€þ\n03C0 FF FF 0C FE FF FF 48 90 - BA 00 76 B0 10 00 00 FE  ÿÿ.þÿÿH º.v°..þ\n03D0 FF FF 0C FE FF FF 00 08 - 80 07 00 D0 A8 03 00 FE  ÿÿ.þÿÿ.. €..Ð¨..þ\n03E0 FF FF 07 FE FF FF 00 D8 - 28 0B 00 28 A7 12 00 00  ÿÿ.þÿÿ.Ø (..(§..\n03F0 00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 55 AA  ........ ......Uª\n\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d END OF SECTOR DATA \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\n\n\n\nDrive 2  SanDisk Extreme Pro  F/W Rev.\u003d0  Serial No.\u003d [ bytes \u003d 00 00 00 00 00 00 00 00 ]\nReported size 256,087,425,024 bytes (238.5GiB)  Last LBA 500,170,751\nRMPrepUSB Max 256,077,642,240 bytes (238.4908GiB)  Last LBA 500,151,644\n\n\nPartition Info:\nDisk Signature bytes (1B8h-1BBh) \u003d 91 48 24 EC\n\n\nPartition 1   SIZE\u003d61440MiB   Type: 07 NTFS\\exFAT  *ACTIVE*\nSTART POS   \u003d CYL:0 HD:32 SEC:33       END POS \u003d CYL:1023 HD:254 SEC:63\nSTART (LBA) \u003d 2,048 (00000800) SIZE (LBA) \u003d 125,829,120 (07800000) [End\u003d125,831,167]\n\n\nPartition 2   SIZE\u003d29978MiB   Type: 0C FAT32LBA (2047GB max)       \nSTART POS   \u003d CYL:1023 HD:254 SEC:63       END POS \u003d CYL:1023 HD:254 SEC:63\nSTART (LBA) \u003d 125,831,168 (07800800) SIZE (LBA) \u003d 61,394,944 (03A8D000) [End\u003d187,226,111]\n\n\nPartition 3   SIZE\u003d152805MiB   Type: 07 NTFS\\exFAT       \nSTART POS   \u003d CYL:1023 HD:254 SEC:63       END POS \u003d CYL:1023 HD:254 SEC:63\nSTART (LBA) \u003d 187,226,112 (0B28D800) SIZE (LBA) \u003d 312,944,640 (12A72800) [End\u003d500,170,751]\n\n\nPartition 4   SIZE\u003d0MiB   Type: 00        \nSTART POS   \u003d CYL:0 HD:0 SEC:0       END POS \u003d CYL:0 HD:0 SEC:0\nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)\n\n\nP1   Start\u003d2,048 (1,048,576 bytes) End\u003d125,831,167 (64,425,557,504 bytes)\nP2   Start\u003d125,831,168 (64,425,558,016 bytes) End\u003d187,226,111 (95,859,768,832 bytes)\nP3   Start\u003d187,226,112 (95,859,769,344 bytes) End\u003d500,170,751 (256,087,424,512 bytes)\n\n\nDrive 2  SanDisk Extreme Pro  F/W Rev.\u003d0  Serial No.\u003d [ bytes \u003d 00 00 00 00 00 00 00 00 ]\nReported size 256,087,425,024 bytes (238.5GiB)  Last LBA 500,170,751\nRMPrepUSB Max 256,077,642,240 bytes (238.4908GiB)  Last LBA 500,151,644\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "213879",
+      "timestamp": "2020-02-10T19:57:50+00:00",
+      "author": "steve6375",
+      "content": "Looks fine. Can you download agFM v1.8 and extract the files to your FAT32 partition.\n\nI found a bug in grub2 which may have been causing a problem...\n\n"
+    },
+    {
+      "id": "213880",
+      "timestamp": "2020-02-10T20:08:40+00:00",
+      "author": "Rootman",
+      "content": "Will try, thanks!\n\n"
+    },
+    {
+      "id": "213881",
+      "timestamp": "2020-02-10T20:26:08+00:00",
+      "author": "Rootman",
+      "content": "I downloaded E2B UEFI File Manager v1.8.zip was that the right one?\n\nUnpacked it to the fat32 EFi partition and tried it, same \u0027Problem making backup to LBA30\u0027 error. Verified still worked in MBR E2B as well.\n\n"
+    },
+    {
+      "id": "213882",
+      "timestamp": "2020-02-10T20:33:03+00:00",
+      "author": "Rootman",
+      "content": "Sorry, a second question.\n\nI have 4 USB HDDs that are 4 TB in size, of course MBR E2B will not work on them. I setup the new agFM to it and it boots the ISO files fine, but when trying the .imgPTN23 files it too had the ame \u0027Problem making backup to LBA30\u0027 error, this time with an additional 3 lines before it \u0027Error: no server is specified\u0027 above that error.\n\nIs this because of the lack of E2B files?\n\nEven without .imgPTN issues it\u0027s not a big heartache. For any of my MBR E2B drives I can boot to them that way. Since the agFM works on many of the standard ISOs it makes nearly everything I typically use available with an .imgPTN file anyways.\n\n"
+    },
+    {
+      "id": "213883",
+      "timestamp": "2020-02-10T21:08:17+00:00",
+      "author": "steve6375",
+      "content": "Anything that uses partnew, like the grub2 \u0027easy2boot\u0027 option or \u0027partnew\u0027 option or .imgPTN files MUST be done on an **MBR**disk.\n\nSo you are UEFI64 booting to the agFM menu system and then selecting a .imgPTN23 file from the first E2B partition and you get this error?\n\nv1.8 is correct. Works OK for me!\n\nDo you see any messages? Like \u0027Backup made to LBA30\u0027 or \u0027Backup made to LBA60\u0027\n\nYou say you booted both drives and selected a .imgPTN file on both drives - but in that case LBA30 should not be all 00\u0027s as shown in one of your results???\n\nCode to check for the backup is ...\n\n```\nfunction check_mbr {\n# set USED to 0 if LBA is valid MBR with partition table\nset LBA\u003d${1}\nset USED\u003d1\n# if LBA already contains an MBR then it is OK to use\nhexdump -q -s 0x1fe -n 2 (${grubfm_disk})$LBA+1 x\nif [ \"$x\" \u003d \"\\x55\\xaa\" ] ; then\nhexdump -q -s 0x1c2 -n 1 (${grubfm_disk})$LBA+1 x\nif [ \"$x\" \u003d \"\\x07\" ] ; then\n  hexdump -q -s 0x1d2 -n 1 (${grubfm_disk})$LBA+1 x\n  if [ \"$x\" \u003d \"\\x0C\" -o \"$x\" \u003d \"\\x0B\" ] ; then\n   hexdump -q -s 0x1be -n 1 (${grubfm_disk})$LBA+1 x\n   if [ \"$x\" \u003d \"\\x00\" -o \"$x\" \u003d \"\\x80\" ] ; then\n    if [ -f (hd0,msdos1)/_ISO/e2b/grub/E2B.cfg ] ; then set USED\u003d0 ; fi\n   fi\n  fi\nfi\nfi\nunset x\nunset LBA\n}\n```\n\nOthers have reported it works, so I don\u0027t understand.\n\nYour E2B partition has been updated and does contain the all E2B files ?\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "213885",
+      "timestamp": "2020-02-10T21:46:29+00:00",
+      "author": "steve6375",
+      "content": "Can you please replace\n\n\\\\boot\\\\grubfm\\\\rules\\\\imgptn\\\\imgptn.sh with the attached version (after extracting it).\n\nIt has debug info in it.\n\nand then try selecting a .imgPTN23 file after UEFI64 booting to agFM.\n\nYou should see some info similar to attached screenshot...\n\nThanks\n\nSteve  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![pic_imgptn.JPG](http://reboot.pro/uploads/monthly_02_2020/post-17818-0-26787900-1581371137_thumb.jpg)](http://reboot.pro/uploads/monthly_02_2020/post-17818-0-26787900-1581371137.jpg \"pic_imgptn.JPG - Size: 48.68KB\"){#ipb-attach-url-16997-0-23348800-1676066380}  \n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003d4793785a609166e862e77e6e1665d089\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d16996 \"Download attachment\") [**imgptn.zip**](http://reboot.pro/index.php?s\u003d4793785a609166e862e77e6e1665d089\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d16996 \"Download attachment\") **1.72KB** 241 downloads\n\n"
+    },
+    {
+      "id": "213888",
+      "timestamp": "2020-02-11T12:56:30+00:00",
+      "author": "steve6375",
+      "content": "Latest agFM is now v1.9.\n\n"
+    },
+    {
+      "id": "213889",
+      "timestamp": "2020-02-11T13:38:28+00:00",
+      "author": "Rootman",
+      "content": "OK, I am not sure what\u0027s going on. I rebooted to the stick after coming back this morning, selected to boot to agFM and selected the .imgPTN23, this time no error, it created the sector 30 and 60 backups, prompted to select the partition number then rebooted selected it of the boot menu and came up fine. It worked this time. I tried another .imgPTN23 file and it too came up fine. So I don\u0027t know what the issue was, user error I suppose.\n\n**Question**: I have also put agFM on my 4 TB USB HDD. This drive will not of course run E2B because they are GPT formatted. I can boot to the ISO files fine from the agFM on the second FAT32 partition where I have a copy of the _ISO folder from my E2B drives. On these drives I have a tiny \u0027fake\u0027 8MB 1st partition, a 100 GB FAT32 second and the rest as NTFS DATA third. The NTFS first is just a dummy to make the drive letters line up to F:, G: and I: like the other MBR booted USB HDDs and USB sticks, I use a sync tool to keep them all up to date that way and just ignore the 1st partition on these GPT drives.\n\nWhen I boot to agFM on them I can boot the ISO files through agFM fine. This is really enough as I was previously WIM booting from the ISO files wim on these drives - so agFM is easier and the same environment is available without having to setup the wim boot. As you noted, it can\u0027t boot to the .imgPTN because they require a NTFS MBR 1st partition with E2B installed to boot from. **SO: If I jigger around the partitions to make enough room on the 1st partition and install E2B to it will this non bootable \u0027fake\u0027 E2B partition be enough to allow the agFM to boot to the.imgPTN23 files from these drives? Or does it truly have to be a workable bootable MBR partition**? I do get the same failure to write to sector 30 error as before as well as a SERVEr error. So is this a dead end? Can agFM not write to a GPT sector 30?\n\nIf I have time later I will experiment on one to find the answer.\n\nThanks for another cool utility. I was getting concerned when I started to get more and more computers in that only do EFI boot, legacy is no longer supported on many of them. This makes everything available on a quick menu once again - without messing around with wim boot and the BCD. I am anxious to see what improvements you make on this.\n\n"
+    },
+    {
+      "id": "213890",
+      "timestamp": "2020-02-11T13:42:11+00:00",
+      "author": "steve6375",
+      "content": "partnew and imgptn work by adding entries into the MBR partition table. Therefore the disk must have Legacy MBR partitions.\n\n"
+    },
+    {
+      "id": "213891",
+      "timestamp": "2020-02-11T14:15:56+00:00",
+      "author": "Rootman",
+      "content": "I thought so. As I said, I can now get access to most everything using afFM and the ISO files, so no big loss. I can still use the .imgPTNs under Easy2Boot and agFM on my other drives that are still MBR boot.\n\nThanks again for a superb tool As I said I am interested in seeing where this will go. If it\u0027s anything like what E2B evolved in to then it will be an exciting road.\n\n"
+    },
+    {
+      "id": "213898",
+      "timestamp": "2020-02-13T12:56:30+00:00",
+      "author": "Rootman",
+      "content": "Steve, the more I use agFM the more I like it. I was able to eliminate nearly all my .imgPTN files as this will allow booting of most of my ISO files directly. This is great.\n\nIs it possible to have a default boot choice and countdown for agFM? That would make it a tad easier to use. I know 90% of the time I boot to the same default winpe.iso file I have as my E2B default.\n\n"
+    },
+    {
+      "id": "213899",
+      "timestamp": "2020-02-13T15:10:26+00:00",
+      "author": "steve6375",
+      "content": "Just use E2B menu option 0 to set a default and timeout.\n\n"
+    },
+    {
+      "id": "213901",
+      "timestamp": "2020-02-13T17:07:20+00:00",
+      "author": "steve6375",
+      "content": ".imgPTN files are still needed for Secure UEFI64 boot to Windows 7/8/10 etc. Install ISOs.\n\nPlease let me know if any issues, etc. It is being continually improved/developed and any feedback would be great.\n\n"
+    },
+    {
+      "id": "213904",
+      "timestamp": "2020-02-13T19:17:13+00:00",
+      "author": "Rootman",
+      "content": "\u003e Just use E2B menu option 0 to set a default and timeout.\n\nNow I\u0027m confused, use the E2B menu option to set the default and timeout for agFM EFI boot? I\u0027m not seeing that as an option in agFM.\n\nSo far my company has not implemented secure boot, so the .imgPTN files being necessary for a secure boot aren\u0027t an issue - now - at least. I\u0027ll certainly have to use them, this will toss out all my GPT partitioned \\\u003e 2GB USB HDDs though. I can still boot to a stick and plug them in and then use them for storage for backups though.\n\n"
+    },
+    {
+      "id": "213905",
+      "timestamp": "2020-02-13T19:20:22+00:00",
+      "author": "steve6375",
+      "content": "I am confused too!\n\nIf you UEFI-boot, it immediately boots to the agFM File Manager.\n\n"
+    },
+    {
+      "id": "213906",
+      "timestamp": "2020-02-13T20:04:02+00:00",
+      "author": "Rootman",
+      "content": "\u003e I am confused too!\n\u003e\n\u003e If you UEFI-boot, it immediately boots to the agFM File Manager.\n\nYes, and I\u0027m asking is it possible to setup a default choice and timeout in agFM file manager to automate EFI booting? Like E2B, the default is XYZ.ISO in X seconds unless you navigate to another choice. Is this something that is possible to script? Or does it even support scripts at all?\n\n"
+    },
+    {
+      "id": "213907",
+      "timestamp": "2020-02-13T20:23:29+00:00",
+      "author": "steve6375",
+      "content": "Oh I see, you mean automatically select a payload...\n\nThe problem is the order that the files are listed in is \u0027random\u0027 - it depends on how they are enumerated by grub2.\n\nAdding or deleting files would change the order.\n\nagFM is NOT a menu system, it is a filesystem browser.\n\nYou would have to specify the exact partition, path and filename + timeout.\n\nI will suggest it to a1ive but he may just reject it as not appropriate.\n\nYou can place a .cfg file at the root of one (or both) partitions.\n\n**\\\\Windows 10.cfg**\n\n```\ngrubfm_open \"(hd0,msdos1)/_ISO/WINDOWS/WIN10/Windows10x64UK_Oct_2018.iso\"\n```\n\n1. UEFI-boot\n\n2. Select one of the USB partitions\n\n3. Select the Windows 10.cfg file\n\nYou can have multiple .cfg files as \u0027shortcuts\u0027 to other files or folders.\n\nOnce agFM has become more stable, I may develop a menu system for it (rather than a File Manager system) but that is a while away yet.\n\n"
+    },
+    {
+      "id": "213909",
+      "timestamp": "2020-02-14T14:26:26+00:00",
+      "author": "steve6375",
+      "content": "@Rootman agFM v1.11 may do what you want. See [https://rmprepusb.bl...-available.html](https://rmprepusb.blogspot.com/2020/02/agfm-v111-now-available.html \"External link\")\n\n"
+    },
+    {
+      "id": "213910",
+      "timestamp": "2020-02-14T15:03:01+00:00",
+      "author": "Rootman",
+      "content": "~~That\u0027ll work. I simply named it !!_Default_Boot.cfg so it appears closest to the top, saves a few clicks.~~\n\nI did the .cfg before I saw your post above about the new menu and timeout.\n\nI setup the startup_menu.txt and that\u0027s perfect! This is going to make it a whole lot more convenient. The menu is certainly going to make it easier for my guys to use who are a bit, well, technically challenged.\n\nagFM is an exciting development. With more and more EFI only devices appearing at my place I can easily boot to anything I need on them. With a combo of E2B and agFM I can boot damn near anything from CSM or EFI from the same stick using the same files in the same directory for either boot method.\n\nLooking forward to what you have in store for agFM in the future.\n\n"
+    },
+    {
+      "id": "213911",
+      "timestamp": "2020-02-14T19:51:46+00:00",
+      "author": "Rootman",
+      "content": "Steve6375,\n\nI have a question for you. So I got agFM all setup. I can MBR and EFI boot off the same ISO file. Superb! I deleted most all my .imgPTN files as it now will boot them right off the ISO. Including my Windows 10 installation .imgPTN file.\n\nI had an old XP machine sitting there ready do put in the trash. I just wanted to see if it would even boot to the USB via MBR. Surprisingly it did. This thing will not boot EFI at all, no BIOS entries for it, it\u0027s that old. Then on a lark I navigated to the \\\\_ISO\\\\WIN folder and selected my WIndows 10 1909 ISO. I knew that before I had to use the .imgPTN because the install could not read the ISO correctly to see the contents of the ISO.\n\nI was surprised when it DID. I had previously booted to this ISO using agFM as a test and dumped out of the installation.\n\nDid the agFM inject something into the ISO file to make it work under MBR boot and perform correctly as well? I thought all the stuff that flashed by when agFM booted it was being dynamically applied a it booted. Something somewhere altered this ISO file to allow it to be read and installed correctly when being MBR booted via E2B. I\u0027m at a loss as to what it was. Got any ideas?\n\nPerhaps it was something I had done and don\u0027t remember.\n\n"
+    },
+    {
+      "id": "213912",
+      "timestamp": "2020-02-14T19:59:35+00:00",
+      "author": "steve6375",
+      "content": "agFM does not alter the ISO.\n\nSecure Boot from a Windows (Microsoft) ISO wont work.\n\nAlso, a very recent Windows Update has black-listed the patch used by the agFM EFI boot files, so if your UEFI BIOS has had it\u0027s blacklist updated by a Windows Update **in the last few days**, you won\u0027t be able to Secure Boot to agFM and a .imgPTN23 file and then boot to a Window EFI boot file.\n\nIf you are not using Secure Boot, then standard Windows Install ISOs should work via MBR+agFM (but requires 2GB RAM or more for large boot.wim files - as in some WinPE ISOs).\n\n**Edited by steve6375, 14 February 2020 - 08:14 PM.**\n"
+    },
+    {
+      "id": "213913",
+      "timestamp": "2020-02-14T21:19:47+00:00",
+      "author": "Rootman",
+      "content": "Strange, I am not using secure boot. I dread the day that it\u0027s forced on me by my company, or is made standard by hardware.\n\nI jut now booting the ISO files via MBR off of Easy2Boot, not agFM. I HAD previously booted the ISO to agFM on a different PC on this drive as a test to make sure it worked, and it did. That\u0027s what made me think agFM injected something into the ISO.\n\nAs you know booting the install ISOs directly with Easy2Boot did not work, the install ISO would launch then halt stating it could not find the installation files. So I had previously use an img.PTN of them and then flipped to it in E2B and then rebooted it to EFI. At least this is the way I remember it happening.\n\nSo I did something, somehow, with something that injected some stuff into the ISO file that now allows it to boot via MBR under Easy2Boot and work properly. Cool for me, I\u0027d just like to know how I did it.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "213914",
+      "timestamp": "2020-02-14T21:24:10+00:00",
+      "author": "steve6375",
+      "content": "Sorry, I am confused. What did not work?\n\nMBR-boot to E2B menu using USB HDD and selecting a Microsoft Install ISO file?\n\nThis should work fine.\n\nOr is it some other scenario that does/did not work?\n\n"
+    },
+    {
+      "id": "213915",
+      "timestamp": "2020-02-15T14:49:20+00:00",
+      "author": "Rootman",
+      "content": "It\u0027s been years since I tried it, I\u0027ve always installed via EFI which required using an .imgPTN, I just remember they didn\u0027t used to work straight from the ISO with Easy2Boot.\n\nThis will be a rare occurrence for me, but I\u0027m glad they now work straight from the ISO via MBR via Easy2Boot. I was just surprised is all. Upon looking it looks like it does the WIM boot automatically now.\n\nI think maybe it\u0027s been 4 or 5 years perhaps since I\u0027ve tried the ISO boot.\n\n"
+    },
+    {
+      "id": "213916",
+      "timestamp": "2020-02-15T15:07:03+00:00",
+      "author": "steve6375",
+      "content": "ah- OK - yes - ipxe wimboot was added to E2B a while ago. It allows direct boot from an ISO and we can inject batch files and XML files into it as it boots. Very handy!\n\n"
+    },
+    {
+      "id": "213991",
+      "timestamp": "2020-02-27T18:42:52+00:00",
+      "author": "steve6375",
+      "content": "The grub2 used in agFM is now not case-sensitive to filenames on NTFS, exFAT and ISO9660 and UDF volumes.\n\nThis is really useful because different ISOs often use different capitalisation (e.g. \\\\Sources or \\\\Sources, or Boot.wim or BOOT.WIM, etc.)\n\nset grub_fs_case_sensitive to 1 to enable case-sensitive, other value or unset to make it case-insensitive.\n\nThere have been some great improvements to grub2 which make it 95% comparable with grub4dos but it also supports UEFI32 and UEFI64.\n\n[https://www.easy2boo...2-file-manager/](https://www.easy2boot.com/uefi-mbr-a1ive-grub2-file-manager/ \"External link\")\n\n"
+    },
+    {
+      "id": "213992",
+      "timestamp": "2020-02-27T20:33:10+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e The grub2 used in agFM is now not case-sensitive to filenames on NTFS, exFAT and ISO9660 and UDF volumes.\n\u003e\n\u003e This is really useful because different ISOs often use different capitalisation (e.g. \\\\Sources or \\\\Sources, or Boot.wim or BOOT.WIM, etc.)\n\u003e\n\u003e set grub_fs_case_sensitive to 1 to enable case-sensitive, other value or unset to make it case-insensitive.\n\u003e\n\u003e There have been some great improvements to grub2 which make it 95% comparable with grub4dos but it also supports UEFI32 and UEFI64.\n\u003e\n\u003e [https://www.easy2boo...2-file-manager/](https://www.easy2boot.com/uefi-mbr-a1ive-grub2-file-manager/ \"External link\")\n\nVery good news :smile:\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "213993",
+      "timestamp": "2020-02-28T04:47:46+00:00",
+      "author": "alacran",
+      "content": "@ steve6375\n\nJFYI\n\nJust downloaded last Easy2Boot_v1.B9j_Beta and I see it is using grub4dos 0.46a 2020-01-28.\n\nIn acordance with your issue report [https://github.com/c...4dos/issues/233](https://github.com/chenall/grub4dos/issues/233 \"External link\")\n\n\u003e 2019-08-09 OK  \n\u003e 2019-09-09 OK (E2B v1.B6)\n\u003e\n\u003e 2019-10-28 FAIL (E2B v1.B7)  \n\u003e 2019-12-30 FAIL  \n\u003e 2020-01-28 FAIL\n\nI didn\u0027t have any issues as all my files are contiguous, but as per your report it is a cause of issues on non contiguous files when booting by means of grub4dos. Just in case I replaced it manualy with v2019-09-09.\n\nalacran\n\n"
+    },
+    {
+      "id": "213994",
+      "timestamp": "2020-02-28T07:33:36+00:00",
+      "author": "steve6375",
+      "content": "Yes, the Beta is still using the buggy version of grub4dos because the new fixed version has not been released yet.\n\n"
+    },
+    {
+      "id": "214010",
+      "timestamp": "2020-03-04T12:18:40+00:00",
+      "author": "Rootman",
+      "content": "Will agFM ever support the .isoMEM extension? I\u0027ve got a couple of ISOs that I prefer boot that way. I know I could make the .imgPTN but I found it easier just to change the extension and be done with it.\n\n"
+    },
+    {
+      "id": "214011",
+      "timestamp": "2020-03-04T12:28:12+00:00",
+      "author": "steve6375",
+      "content": "You mean for UEFI booting or Legacy booting?\n\nagFM calls grub4dos for a few of it\u0027s Legacy boot functions, so I can easily implement .isomem for legacy.\n\nCan I download and try one or two of these ISOs?\n\n"
+    },
+    {
+      "id": "214012",
+      "timestamp": "2020-03-04T13:00:37+00:00",
+      "author": "Rootman",
+      "content": "The ISOs are for an expensive program that my company has. It\u0027s the recovery utility for it I need to boot to occasionally. It will EFI boot and I have it on DVDs now in order to run it on the PCs themselves. Goofing with it in E2B I found it would run fine from our USB drives if I used the .isomem extension. Before I get in dutch with my company for talking about company stuff I\u0027ll stop here.\n\nI\u0027ve fooled around with several OTHER ISOs with .isomem and found it works pretty well on a lot of them. It keeps me from having to rip parts of the ISO out and create menu files for them. The last one I was farting around with was Knoppix. it would boot and run fine via E2B as .isomem with no added menus or making it a .ingPTN. So I guess you could try that to experiment on. I was just messing with it. it really provided no benefits to me.\n\nIf agFM / GRUB2 has no ability to write the ISO to memory and boot from it I understand. So far the dedicated PCs I have to boot this particular ISO stil boot CSM / MBR. So it\u0027s not an issue now. I\u0027m supposed to use the DVD but I\u0027ve cheated and run the USB drive to run the .isomem version. DVDs get lost and scratched so easily. As always they are continually adding more machines and PCs with them. Sooner or later I\u0027m going to be forced to boot only via EFI when the PCs chipset dictates it.\n\n"
+    },
+    {
+      "id": "214013",
+      "timestamp": "2020-03-04T17:21:24+00:00",
+      "author": "steve6375",
+      "content": "So they are linux based ISOs or WinPE ISOs?\n\nAFAIK knoppix runs fine as .iso - why did you need to change the extension to .isomem - what kind of problem did you see with .iso?\n\nThere are usually several different options offered by agFM when you select an ISO,\n\n**partnew**\n\n**map**\n\n**loopback**\n\n**xxxxx** (where it has identified the ISO as a specific distro - e.g. Ubuntu or arch, etc.)\n\nDid you try all of these in MBR mode and UEFI mode with agFM (with the file named .iso) - if any work I can add a .isomem type to make it run the same way, but you will have to tell me which options worked.\n\nagFM is mainly for UEFI booting files since you can Legacy boot the same file using the E2B menu.\n\n"
+    },
+    {
+      "id": "214015",
+      "timestamp": "2020-03-04T20:29:25+00:00",
+      "author": "Rootman",
+      "content": "Knoppix was the only ISO I could remember doing it for, and it was an older version. It wouldn\u0027t find the stuff and stall if I remember right. The only ISO I have now I would really like to use via EFI boot is a costly app my company uses. It is Windows based and I could never get it to work in E2B without using .isomem. I can\u0027t share it and really or even talk about it.\n\nJust thought I\u0027d ask, because sooner or later a new PC for a machine will come in and it will boot to EFI only. I can just keep using the DVDs to do so but thought it would be nice to have it work inagFM. Hopefully the manufacturer will provide a way to do it. I would imagine they will have an expensive proprietary USB drive ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\n\nI tried every method agFM offered to boot it and it just stalls and produces a blinking line cursor in the upper left corner.\n\n"
+    },
+    {
+      "id": "214016",
+      "timestamp": "2020-03-04T20:57:27+00:00",
+      "author": "steve6375",
+      "content": "I am still not clear!\n\nYou said \u0027The only ISO I have now I would really like to use via EFI boot is a costly app my company uses. It is Windows based and I could never get it to work in E2B without using .isomem.\u0027\n\nBut E2B is a legacy boot tool - it does not support UEFI ????\n\nSo to get this straight.\n\nISO X can be both Legacy and UEFI64 booted as a DVD.\n\nYou have no problem MBR-booting ISO X - except you have to use isomem.\n\nYou would like to directly UEFI-boot ISO X as an ISO file using UEFI, but so far no method you have tried works.\n\nYou think that by loading the entire ISO into memory, it should UEFI-boot.\n\nIs that about it?\n\nPlease try agFM v1.26 and use an extension of .**isomem.**Test both MBR and UEFI64 using agFM and let me know.\n\nThanks\n\nS\n\n"
+    },
+    {
+      "id": "214017",
+      "timestamp": "2020-03-04T23:58:14+00:00",
+      "author": "Rootman",
+      "content": "Yeah that\u0027s it. I made an ISO of this goofy ass thing and tried a few different things, all but.isomem failed. isomem booted and loaded everything, so I stuck with that. So far ALL the PCs that need it legacy boot, I\u0027m afraid they\u0027re going to get one soon that may just EFI boot. THAT\u0027s when I will need to EFI boot the iso. This thing starts in what looks to be WinPE then loads a proprietary shell. The structure looks like WinPE.\n\nI tried the PLAIN ISO extension in agFM and it started to boot then failed. I was just curious if agFM supported .isomem. I can keep using the DVDs but would love to have it on the USB stick in my pocket thed having to fetch the DVD every time.\n\n"
+    },
+    {
+      "id": "214018",
+      "timestamp": "2020-03-05T00:29:41+00:00",
+      "author": "Rootman",
+      "content": "OK, downloaded and installed 1.26, renamed a WinPE ISO I use often to.isomem, booted via E2B and ran it - OK.. Rebooted to agFM on the same stick, choose the isomem file and it boots fine. Works great. If I remember correctly I tried it last week on an earlier version of agFM and it just sat there or threw an error. I\u0027ll test it on the ISO I want to use at work tomorrow.\n\nThanks again.\n\n"
+    },
+    {
+      "id": "214020",
+      "timestamp": "2020-03-05T11:50:33+00:00",
+      "author": "Rootman",
+      "content": "Checked out my ISO as ISOMEM and it works great. Nice to know I have this option withe the potential for EFI only boot computers on the horizon.\n\n"
+    },
+    {
+      "id": "214021",
+      "timestamp": "2020-03-05T11:51:55+00:00",
+      "author": "steve6375",
+      "content": "You mean UEFI64 booting and using .isomem works on your ISO X?\n\n"
+    },
+    {
+      "id": "214022",
+      "timestamp": "2020-03-05T15:59:12+00:00",
+      "author": "Rootman",
+      "content": "Yes, both MBR and EFI work.\n\n"
+    },
+    {
+      "id": "214023",
+      "timestamp": "2020-03-05T17:49:07+00:00",
+      "author": "alacran",
+      "content": "@ Rootman\n\nIf you follow the procedure on first post of this topic [http://reboot.pro/to...boot-optional/](http://reboot.pro/topic/22250-usb-30-combo-uefi-multi-wimboot-vhds-agfm-e2b-aio-boot-optional/%C2%A0 \"\")you will be able to also boot directly from Windows bootmanager your mentioned ISO as MBR (without need to load it in Ram first) and also as UEFI, and still keep E2B and agFM on your USB device.\n\nI think with the mentioned approach we may loose E2B .imgPART capability (I haven\u0027t verified), but if using agFM or WinNTSetup it will not be missed. And additional Wimboot VHD capability will be added:\n\nAllowing to diskboot Wimboot VHDs (on Bios + UEFI + UEFI with CSM mode active) or Ramboot Wimboot VHDs (on Bios + UEFI with CSM mode active).\n\nalacran\n\n"
+    },
+    {
+      "id": "214024",
+      "timestamp": "2020-03-05T19:30:26+00:00",
+      "author": "Rootman",
+      "content": "I have to say I\u0027ve read trough that post a few times and I am not sure what\u0027s it\u0027s doing exactly. I spend way to much time on this stuff as is. Although I\u0027d appreciate making it easier to boot either from one selection I don\u0027t quite grasp the fundamentals of what you are doing.\n\nIt works now and is the only ISO I have issue with so far.\n\nThanks for the suggestion.\n\n"
+    },
+    {
+      "id": "214031",
+      "timestamp": "2020-03-06T12:07:12+00:00",
+      "author": "Rootman",
+      "content": "Steve\n\nI\u0027ve noticed about 25% of the time when using the custom menu in agFM it will boot automatically immediately to the top selection without stopping to show the menu.\n\nIf what I want to boot to is not the top / default choice I have to reboot in order to get to it.\n\nGot any ideas? I have the timeout set to 6 seconds. It will instantly boot to the default. As I said, like maybe 20-25% of the time.\n\n"
+    },
+    {
+      "id": "214032",
+      "timestamp": "2020-03-06T12:12:24+00:00",
+      "author": "steve6375",
+      "content": "Are you sure you have not double-tapped then ENTER key when booting (maybe from a boot menu)?\n\nTry disabling the timeout (comment the timeout line out).\n\nThe only other thing I can think of is to put\n\n```\necho Press a key...\nread\n```\n\nat the top of the startup_menu.txt file to absorb any extra key press.\n\nLet me know what you find out.\n\n"
+    },
+    {
+      "id": "214035",
+      "timestamp": "2020-03-06T13:16:54+00:00",
+      "author": "Rootman",
+      "content": "I suspect that I was, so I tried again very carefully to only press ENTER once when selecting the EFI partition from the systems boot menu, and it still would happen once in a while.\n\nI added the pause, it works. I changed it to the below, as it appears it needs an ENTER key, not just ANY key.\n\n```\necho Press ENTER to start EFI boot menu...\nread\n```\n\nIt works with the pause. These are all Dell PCs by the way - not sure if that is a factor, and it\u0027s happened once in a while on on at least 10 laptops and PCs I\u0027ve tried it on. Not always, just once in a while. And once in a blue moon it will happen twice in a row despite my taking care to NOT double tap the enter. Weird.\n\n"
+    },
+    {
+      "id": "214037",
+      "timestamp": "2020-03-06T13:35:48+00:00",
+      "author": "steve6375",
+      "content": "So the ENTER key is the last key you hit before grub2 loads?\n\n"
+    },
+    {
+      "id": "214039",
+      "timestamp": "2020-03-06T13:39:11+00:00",
+      "author": "steve6375",
+      "content": "P.S. I presume this is only in EFI mode it works OK in CSM\\\\Legacy mode?\n\n**Edited by steve6375, 06 March 2020 - 01:42 PM.**\n"
+    },
+    {
+      "id": "214041",
+      "timestamp": "2020-03-06T15:40:03+00:00",
+      "author": "Rootman",
+      "content": "Yes, it only fails to pause for 6 seconds for the agFM menu in EFI mode, the same ISO file boots fine in E2B and the menu waits for the default 6 seconds as defined in E2B.\n\nThis has since you told me about the menu system in agFM. Without the startup_menu.txt agFM would just stop at the agFM dialog.\n\n"
+    },
+    {
+      "id": "214043",
+      "timestamp": "2020-03-06T18:22:48+00:00",
+      "author": "Rootman",
+      "content": "\u003e So the ENTER key is the last key you hit before grub2 loads?\n\nYes, when booting to it from the computers boot menu and selecting the EFI drive by pressing ENTER once. As I stated, maybe 20% of the time the boot whips right past the startup_menu.txt menu and boots the default choice. At first I thought I must have been double tapping enter, but careful examination proved otherwise. Just a single tape of the ENTER key to choose the boot method from the systems boot menu.\n\nAs a further test I also changed the boot order of devices on a PC this morning putting USB above the SSD so it required no user intervention to select the boot device - the boot method is set to EFI in the BIOS. A reboot and it automatically booted to the USB agFM EFI boot after turning the PC on. Out of 10 reboots it passed the menu without pausing twice for any amount of time, the default just booted straight away.\n\nIt does appear to do it LESS when doing a cold boot, a reboot from an OS or even WinPE from the stick seems to cause it more often.\n\nWhen I added the\n\n```\necho Press ENTER to start EFI boot menu...\nread\n```\n\nIt stops and pauses 100% of the time as it should. I tried pressing space or a character - nothing. it takes an enter keystroke to pass this pause - which is OK\n\n.\n\n"
+    },
+    {
+      "id": "214044",
+      "timestamp": "2020-03-06T18:26:18+00:00",
+      "author": "steve6375",
+      "content": "It sounds like a BIOS bug. Is there a later BIOS revision?\n\n"
+    },
+    {
+      "id": "214045",
+      "timestamp": "2020-03-06T18:50:47+00:00",
+      "author": "Rootman",
+      "content": "Nope, this particular laptop I\u0027m messing with now is all up to date. And like I said a ways back I\u0027ve tried it on at least 10 laptops or desktops. Probably more. I work in IT and use E2b (an now agFM as well) to boot to WinPE an dother ISO loads all the time. Sometimes to just run some cleanup tasks, other times to recover data from a hosed OS. I am just guessing at 10 laptops or desktops, It\u0027s likely more. All are up to date. I had just run Dell SupportAssist and updated the BIOS in all cases.\n\nI know on my 5 personal machine it\u0027s done it more than once on all of them.\n\nI forgot, SOME of the laptops are MS Surface 2 devices. They also barge past the agFM menu on occasion. These MS Surface laptops is what really pushed the need to have a simpler EFI boot system alongside E2B as the do not support legacy boot.\n\n"
+    },
+    {
+      "id": "214047",
+      "timestamp": "2020-03-06T19:07:09+00:00",
+      "author": "steve6375",
+      "content": "hmmm, it does seem like a strange bug in grub2 UEFI, but I can\u0027t figure out why no one else has come across it and fixed it before now. I have reported it to a1ive.\n\n"
+    },
+    {
+      "id": "214048",
+      "timestamp": "2020-03-06T19:12:59+00:00",
+      "author": "Rootman",
+      "content": "It\u0027s no biggie, and Like I said only happens maybe 20% of the time. It just seems to happen when I need it NOT too, like a user breathing down my neck to get something done. Most times what I have set for the default ISO I need anyway. Just odd.\n\n"
+    },
+    {
+      "id": "214049",
+      "timestamp": "2020-03-06T19:34:49+00:00",
+      "author": "steve6375",
+      "content": "If you feel like experimenting, can you copy \\\\grubfmx64.efi to \\\\EFI\\\\BOOT\\\\BOOTX64.EFI (make a backup of that file first so you can restore it later) and test it 10 times on a nonsecure UEFI64 system that shows the issue.\n\nThis is just so we can remove the EFI stubs and policy mods that it is currently doing.\n\nOnce tested, you can restore the original BOOTX64.EFI file.\n\nthanks!\n\n"
+    },
+    {
+      "id": "214050",
+      "timestamp": "2020-03-06T19:41:46+00:00",
+      "author": "steve6375",
+      "content": "P.S. Latest version 1.27 of agFM can now UEFI boot a few more ISOs (winPEs, etc,)\n\nSee the bottom of [this page](https://www.easy2boot.com/add-payload-files/list-of-tested-payload-files/ \"External link\") for the current \u0027tested\u0027 list. Most Linux LiveCD ISOs should work too.\n\n"
+    },
+    {
+      "id": "214065",
+      "timestamp": "2020-03-09T05:47:31+00:00",
+      "author": "wimb",
+      "content": "I did some testing on my ASUS Z170I PRO GAMING Mobo for UEFI Secure booting from Removable USB size 32 GB with agFM Grub2 File Manager.  \n1. Easy2Boot_v1.B9m_Beta.zip [as described here](https://www.easy2boot.com/uefi-mbr-a1ive-grub2-file-manager/ \"External link\") that uses the [sbpolicy to override security policy](https://github.com/a1ive/grub/blob/master/grub-core/commands/efi/sbpolicy.c \"External link\") FAILS with RED message: Secure Boot Violation  \n2. Super-UEFIinSecureBoot-Disk_minimal_v3.zip [Release](https://github.com/ValdikSS/Super-UEFIinSecureBoot-Disk/releases \"External link\") ([more Info here](https://habr.com/ru/post/446238/ \"External link\")) was used to modify USB drive prepared with [USB_FORMAT Tool](http://reboot.pro/files/file/618-usb-format-tool/ \"\")  \nIn that case [UEFI Secure booting of agFM from USB](http://reboot.pro/topic/22250-usb-30-combo-uefi-multi-wimboot-vhds-agfm-e2b-aio-boot-optional/?p\u003d214063 \"\") is supported after using MokManager to Add the Certificate to the Firmware.  \nAlso various Linux ISO files (Linux Mint, Ubuntu and Knoppix) as well as Windows 10 VHD and PE WIM are booting in UEFI Secure Mode.  \n3. The Grub2 files **bootx64.efi** and **grubx64.efi** date 15-05-2018 of Linux Mint linuxmint-19-cinnamon-64bit-v2.iso as used in [USB_FORMAT Tool](http://reboot.pro/files/file/618-usb-format-tool/ \"\")  \nallow UEFI Secure booting from USB for various Linux ISO files + Win10 VHD and PE Wim without the need to Add Certificate with MokManager or other way to override security policy.  \nBut in this case [agFM is Not supported since it gives boot failure](http://reboot.pro/topic/22250-usb-30-combo-uefi-multi-wimboot-vhds-agfm-e2b-aio-boot-optional/?p\u003d214055 \"\").\n\n"
+    },
+    {
+      "id": "214066",
+      "timestamp": "2020-03-09T09:15:19+00:00",
+      "author": "steve6375",
+      "content": "\u003e I did some testing on my ASUS Z170I PRO GAMING Mobo for UEFI Secure booting from Removable USB size 32 GB with agFM Grub2 File Manager.  \n\u003e 1. Easy2Boot_v1.B9m_Beta.zip [as described here](https://www.easy2boot.com/uefi-mbr-a1ive-grub2-file-manager/ \"External link\") that uses the [sbpolicy to override security policy](https://github.com/a1ive/grub/blob/master/grub-core/commands/efi/sbpolicy.c \"External link\") FAILS with RED message: Secure Boot Violation\n\u003e\nTry going into BIOS Setup and clear the DBx Blacklist.\n\n"
+    },
+    {
+      "id": "214068",
+      "timestamp": "2020-03-09T09:37:00+00:00",
+      "author": "wimb",
+      "content": "\u003e Try going into BIOS Setup and clear the DBx Blacklist.\n\nSure I might do that on my own PC, but the purpose of a Multi-Boot USB key is to use it on any equipment without changing BIOS Settings.\n\nPeople in general won\u0027t like it when I start changing the BIOS, when trying to help them in case of trouble ......\n\n"
+    },
+    {
+      "id": "214070",
+      "timestamp": "2020-03-09T10:56:20+00:00",
+      "author": "steve6375",
+      "content": "Well, it is called Secure Boot for a reason!\n\n"
+    },
+    {
+      "id": "214151",
+      "timestamp": "2020-03-25T12:03:20+00:00",
+      "author": "Rootman",
+      "content": "\u003e If you feel like experimenting, can you copy \\\\grubfmx64.efi to \\\\EFI\\\\BOOT\\\\BOOTX64.EFI (make a backup of that file first so you can restore it later) and test it 10 times on a nonsecure UEFI64 system that shows the issue.\n\u003e\n\u003e This is just so we can remove the EFI stubs and policy mods that it is currently doing.\n\u003e\n\u003e Once tested, you can restore the original BOOTX64.EFI file.\n\u003e\n\u003e thanks!\n\nHey sorry, this Covid 19 thing raised it\u0027s ugly head right when I posted last and suddenly everyone had to work from home, so some long hours and uncountable issues for me. Lukily no cases here . . . yet. Just a lot of changes.\n\nI was going to do as you suggest, but I noticed I was getting a lot of extra cruft on my agfm drive, so I pulled out my menu files and deleted the rest and copied the agfm files from the freshest ZIP file and put my menu files back, this appears to have fixed it, at least it didn\u0027t boot immediately to the default entry. Maybe there was something floating around form a previous version? Sounds unlikely but for now I am calling it solved.\n\nI just got your newest book on agfm and am looking forward to getting a chance to read through it. Again, thanks for the great utility. I use it daily.\n\n"
+    },
+    {
+      "id": "214152",
+      "timestamp": "2020-03-25T13:52:39+00:00",
+      "author": "ktp",
+      "content": "Hello you all,  \nFor your information :  \n1- From Secure Grub2 (v2.05), when I load AIOboot (its own grubx64.efi), then nothing is displayed after the message \"Welcome to AIOboot!\".  \nAfter several tests, I found that I have to put a keypress wait at start of grub.cfg (basic scren mode), then everything is OK afterwards (gfxterm mode).  \n2- After loading xorboot EFI with Grub2, I can boot some iso like Acronis True Image.  \nQuestion:  \nIn grub.cfg, I used the same splash image and unicode-small.pf2 font as AIO boot. But why there are no frame box characters around 4 sides of the Grub 2.05 menu, while there is no problem with AIO boot Grub2 2.02 menu?  \nThank you in advance.\n\n"
+    },
+    {
+      "id": "214153",
+      "timestamp": "2020-03-25T13:55:46+00:00",
+      "author": "steve6375",
+      "content": "Off Topic!\n\nThis thread is about a1ive agFM project. Please post as new thread with a suitable subject title.\n\n"
+    },
+    {
+      "id": "214154",
+      "timestamp": "2020-03-25T14:07:04+00:00",
+      "author": "ktp",
+      "content": "@steve6375\n\nOK sorry for the off topic. I thought that this thread has 2 parts, a1ive\u0027s Grub2 and file manager. I am using both parts and having problem with Grub2 (secure boot) part.\n\n"
+    },
+    {
+      "id": "214155",
+      "timestamp": "2020-03-25T14:11:30+00:00",
+      "author": "steve6375",
+      "content": "A1ive agFM must use a1ive\u0027s grub2. I see no mention of grubfm or agfm or a1ive in your post???\n\n"
+    },
+    {
+      "id": "214156",
+      "timestamp": "2020-03-25T14:17:27+00:00",
+      "author": "ktp",
+      "content": "It\u0027s my fault :-(. I am so deeply working with a1ive\u0027s grub2 and file manager that for me it is explicit (which are not for others). In fact I only mentioned Secure boot (this is the advantage of using a1ive\u0027s Grub2 and agfm) and its version (2.05, found from agFM_download_files and Super-UEFIinSecureBoot-Disk mentioned in other threads related to a1ive\u0027s work).\n\n"
+    },
+    {
+      "id": "214157",
+      "timestamp": "2020-03-25T14:19:58+00:00",
+      "author": "steve6375",
+      "content": "But what has that got to do with AIOBoot??? ![:questionmark:](https://reboot.pro/public/style_emoticons/default/questionmark.gif)\n\n"
+    },
+    {
+      "id": "214158",
+      "timestamp": "2020-03-25T14:22:12+00:00",
+      "author": "ktp",
+      "content": "Again it\u0027s my fault. Sorry! I should have post in this thread, where AIOboot is mentioned :\n\n[http://reboot.pro/to...-boot-optional/](http://reboot.pro/topic/22250-usb-30-combo-uefi-multi-wimboot-vhds-agfm-e2b-aio-boot-optional/ \"\")\n\n"
+    },
+    {
+      "id": "214167",
+      "timestamp": "2020-03-28T15:01:13+00:00",
+      "author": "ktp",
+      "content": "In the latest agFM_download_files.zip (version 1.33 2020-03-23), there is a new /efi/Clover directory to add Clover support (x86/x64), version 4458. This version is a little old, but it works, together with updated boot files (boot3, boot6, boot7). The new boot7 is excellent, it solves my previous black screen problem when starting Clover in CSM mode.  \nJust to mention that there is missing APFS driver for Clover, so after booting it does not recognize APFS volumes.  \nQuestion: where can I find in the zip the grubfmia32.efi? Only grubfmx64.efi is found.  \n\n"
+    },
+    {
+      "id": "214168",
+      "timestamp": "2020-03-28T15:02:39+00:00",
+      "author": "steve6375",
+      "content": "\\\\EFI\\\\boot\\\\bootia32.efi\n\n"
+    },
+    {
+      "id": "214170",
+      "timestamp": "2020-03-28T15:44:13+00:00",
+      "author": "ktp",
+      "content": "\\\\EFI\\\\boot\\\\bootia32.efi  \nI am sorry, but the /efi/boot/bootia32.efi (less than 1 MB) is in fact the 32-bit version of shim used in Super-UEFIinSecureBoot-Disk_v3.zip.  \nThe grubfmia32.efi file I currently use has about 6 MB-size.\n\n"
+    },
+    {
+      "id": "214171",
+      "timestamp": "2020-03-28T15:47:26+00:00",
+      "author": "steve6375",
+      "content": "Doh! Sorry - I meant\n\n\\\\EFI\\\\boot\\\\grubia32.efi\n\ni.e. the EFI file that has the same date as grubfmx64.efi!\n\n"
+    },
+    {
+      "id": "214189",
+      "timestamp": "2020-04-01T08:27:00+00:00",
+      "author": "ktp",
+      "content": "Just to share some information about detection of Secure Boot status (enabled or disabled) with GRUB2 UEFI.  \nI found this code in agFM \\\\boot\\\\grubfm\\\\init.sh:  \n\n```\nif [ \"${grub_platform}\" \u003d \"efi\" ];\nthen\n    search -s -f -q /efi/microsoft/boot/bootmgfw.efi;\n    if [ \"${grub_cpu}\" \u003d \"i386\" ];\n    then\n        search -s -f -q /efi/boot/bootia32.efi;\n    else\n        search -s -f -q /efi/boot/bootx64.efi;\n    fi;\n    efiload --nc ${prefix}/CrScreenshotDxe.efi;\n    getenv -t uint8 SecureBoot grub_secureboot;\n    if [ \"${grub_secureboot}\" \u003d \"1\" ];\n    then\n        export grub_secureboot\u003d\"Enabled\";\n    else\n        export grub_secureboot\u003d\"Disabled\";\n    fi;\nelse\n    search -s -f -q /fmldr;\n    export grub_secureboot\u003d\"Not available\";\nfi; \n```\n\nWhat is strange with GRUB2 : if Secure boot is disabled, the variable SecureBoot is not defined.  \n(getenv command failed, with message: \"error: no such variable\" \u003d\\\u003e no variable SecureBoot).  \nIf Secure boot is enabled, then the getenv command is OK, and SecureBoot variable is defined with value 1.  \nSo the question is: when SecureBoot variable can get 0 as value?\n\n"
+    },
+    {
+      "id": "214191",
+      "timestamp": "2020-04-01T09:01:01+00:00",
+      "author": "steve6375",
+      "content": "Why does it need to be 0?\n\nEither the EFI firmware variable exists and is 1, or it doesn\u0027t exist.\n\n"
+    },
+    {
+      "id": "214192",
+      "timestamp": "2020-04-01T09:11:58+00:00",
+      "author": "ktp",
+      "content": "Well, probably I am quite old-school: I am used to have boolean variable with value 0/1, yes/no, enabled/disabled :-).\n\n"
+    },
+    {
+      "id": "214454",
+      "timestamp": "2020-04-25T11:16:42+00:00",
+      "author": "steve6375",
+      "content": "The latest version of a1ive\u0027s [grub2](https://github.com/a1ive/grub \"External link\")and [agFM](https://github.com/a1ive/grub2-filemanager \"External link\")now *reliably*supports non-USA keyboards.\n\nThis is great improvement because previously the non-USA keyboard support in grub2 was not reliable.\n\nYou had to use the **terminal_input at_keyboard**command which is buggy and caused corruption within grub2 (menus don\u0027t work correctly, etc.)\n\n```\ninsmod at_keyboard\nterminal_input at_keyboard\nkeymap laptop\n```\n\nThe new method uses the \u0027setkey\u0027 module and can \u0027map\u0027 a new key code to an old key code in a very similar way to that used by grub4dos.\n\n```\nsetkey y z\n```\n\nwill map the bottom left key (z on a USA keyboard) to show y when pressed.\n\nShift and Alt key codes are also supported.\n\nHowever, the OEM7 key (called oem102 in grub4dos) is not supported. This is the extra key on 102-key keyboards between left-shift and Z.\n\nThe latest version of agFM (as used by Easy2Boot) contains the new module and key map files.\n\nAt last you can type \u0027easy2boot\u0027 on a German keyboard in grub2 and not get \u0027easz2boot\u0027 !\n\nSo now grub2 supports dd, partnew, setkey, map, hexdump, stat -c for a contiguous file test, stat -r to get the Total RAM size, etc. At last we have a UEFI bootloader\\\\manager that is almost as good as grub4dos is for Legacy systems!\n\n**Edited by steve6375, 25 April 2020 - 02:01 PM.**\n"
+    },
+    {
+      "id": "214455",
+      "timestamp": "2020-04-25T12:46:15+00:00",
+      "author": "paraglider",
+      "content": "Are there any versions of grub2 that allow you to copy files like bcd?\n\n"
+    },
+    {
+      "id": "214456",
+      "timestamp": "2020-04-25T13:27:25+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Are there any versions of grub2 that allow you to copy files like bcd?\n\nCopy from where to where?\n\nThe a1ive\u0027s version has a FAT FS module support:\n\n[https://translate.go...o/grub2_zh.html](https://translate.google.com/translate?hl\u003den\u0026tab\u003dwT\u0026sl\u003dzh-CN\u0026tl\u003den\u0026u\u003dhttps%3A%2F%2Fa1ive.github.io%2Fgrub2_zh.html \"External link\")\n\n[https://translate.go...2_fatfs_zh.html](https://translate.google.com/translate?hl\u003den\u0026sl\u003dzh-CN\u0026tl\u003den\u0026u\u003dhttps%3A%2F%2Fa1ive.github.io%2Fgrub2_fatfs_zh.html \"External link\")\n\n\u003e Copy file\n\u003e\n\u003e cp SRC_FILE DST_FILE\n\u003e\n\u003e The source file can be either a GRUB file path or a FatFs file path\n\u003e\n\u003e Example:\n\u003e\n\u003e cp 1:/foo/bar/sys.vhd 2:/boot.vhd\n\u003e\n\u003e cp (hd0,2)/foo/bar/sys.vhd 2:/boot.vhd\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "214457",
+      "timestamp": "2020-04-25T13:55:34+00:00",
+      "author": "steve6375",
+      "content": "You can mount up to 9 devices (1-9) and then use cp, ren etc.\n\n```\nmount hd0,2 9\nrename 9:/efi 9:/efiXXX\numount 9\n```\n\nonly on FAT flesystems though.\n\n"
+    },
+    {
+      "id": "214458",
+      "timestamp": "2020-04-25T13:58:34+00:00",
+      "author": "steve6375",
+      "content": "P.S. grubFM includes wimboot, so you can specify whatever BCD, boot.wim, bootmgr, bootfmw.efi etc you want. No need to copy files...\n\n"
+    },
+    {
+      "id": "214460",
+      "timestamp": "2020-04-25T14:56:06+00:00",
+      "author": "Rootman",
+      "content": "steve6375, thanks again for a cool utility. I can\u0027t count the times I;ve used E2B and now aGFM.\n\nI keep up to date with aGFM and download and install new versions when I see them.\n\nI have a couple of suggestions / request.\n\nCan you break out the USER portion of \u0027startup_menu.txt\u0027 into a separate file? When I get a new version of aGFM I have to transfer the menu entries I created to the new \u0027startup_menu.txt\u0027 file. I see you often make changes to it so I need to add my custom menu entries every time. If the \u0027startup_menu.txt\u0027 file called another file like \u0027custom-menu.txt\u0027 we wouldn\u0027t have to edit the \u0027startup_menu.txt\u0027 each time. Don\u0027t know if it\u0027s possible or not. Adding the default selection and timeout to this would also be nice.\n\nI make all my updates to both E2B and aGFM easy by fixing up ONE drive. I then back it up using a sync tool then restore both to the rest of my drives. I have both MBR and GPT based USB HDD disks. When I edit my \u0027startup_menu.txt\u0027 I have to go through it and change the menu entry line from msdos1 to gpt1 for the few of my GPT drives. Would it be possible to have this as a variable like the timeout and default entries are? And if possible split it out to the above mentioned \u0027custom-menu.txt\u0027 file? If it had a variable like \u0027DiskType\u003d\u0027 then only a single change would need to be made.\n\nI am really excited to see the way this is all going. It makes it so easy to have so many bootable ISOs, .imgPTNs and utilites in my pocket.\n\n"
+    },
+    {
+      "id": "214461",
+      "timestamp": "2020-04-25T15:06:53+00:00",
+      "author": "steve6375",
+      "content": "The download does not contain startup_menu.txt. It contains SAMPLE_startup_menu.txt.\n\nSo your startup_menu.txt will not change and should continue to work as before.\n\nIf you want any new entries in your startup_menu.txt, then use WinMerge to compare it with SAMPLE_startup_menu.txt. Using WinMerge makes it very easy to add in missing lines, etc. and compare the files.\n\nI didn\u0027t think anyone would be running this on GPT disks! It is not even considered and I have never tested it as it won\u0027t MBR boot to E2B. Also god knows what happens if you try to use .imgPTN files with it! Sorry, but I just can\u0027t support that usage.\n\nYou can try the format **(hd0,1)** instead of **(hd0,msdos1)** if that helps you.\n\n"
+    },
+    {
+      "id": "214463",
+      "timestamp": "2020-04-25T17:06:15+00:00",
+      "author": "Rootman",
+      "content": "\u003e The download does not contain startup_menu.txt. It contains SAMPLE_startup_menu.txt.\n\u003e\n\u003e So your startup_menu.txt will not change and should continue to work as before.\n\u003e\n\u003e If you want any new entries in your startup_menu.txt, then use WinMerge to compare it with SAMPLE_startup_menu.txt. Using WinMerge makes it very easy to add in missing lines, etc. and compare the files.\n\u003e\n\u003e I didn\u0027t think anyone would be running this on GPT disks! It is not even considered and I have never tested it as it won\u0027t MBR boot to E2B. Also god knows what happens if you try to use .imgPTN files with it! Sorry, but I just can\u0027t support that usage.\n\u003e\n\u003e You can try the format **(hd0,1)** instead of **(hd0,msdos1)** if that helps you.\n\nRight, but the SAMPLE_startup_menu.txt contains changes that are not in my older startup_menu.txt, so I need to make a new version to support whatever changes and features that were added by the latest upgrade. A while back a few things were not working that I had read about in your history notes for aGfm, the reason was my startup_menu.txt was from 3 or 4 versions back. It would be so much easier if the added menu entries were in a separate file or at least at the very top of the current one all the time. At one point the menu entries were towards the top, now they\u0027re about 60 lines down.  \nI\u0027ll try the hd0,1 designation, since all of my devices have that as the EFI boot partition regardless of partition layout. I do notice that variable (${bootdev} is used instead of hdo, should I just use (${bootdev},0) then?  \nI use GPT USB HDD drives just to get the greater than 2 TB for storage of backups. I use a sync utility to copy the E2B and aGFM files to ALL the drives no matter the partition type for simplicity sake I just realize that CSM and .imgPTN booting is not possible on the GPT drives. I use the GPT drives to boot to WinPE and utility ISOs on GPT only computers. When I really must have a CSM boot I use the pendrive in my pocket. My payload files are always in the same place regardless of drive type, the 1st partition for E2B.\n\n"
+    },
+    {
+      "id": "214464",
+      "timestamp": "2020-04-25T19:07:28+00:00",
+      "author": "steve6375",
+      "content": "OK, I will try to tidy up the SAMPLE_startup_menu.txt file for the next version of agFM.\n\nOf course, that means it is going to be even harder for you to work out what has changed next time ;-)\n\n"
+    },
+    {
+      "id": "214470",
+      "timestamp": "2020-04-26T12:07:54+00:00",
+      "author": "paraglider",
+      "content": "Wonko, So I can do something similar to grub:\n\ndd if\u003d()/boot/bcd.wdo32 of\u003d()/boot/bcd  \nfind --set-root /BOOTMGR  \nchainloader /BOOTMGR  \n\nThis is so I can avoid using windows boot manager text mode graphics menu on my USB drive when in uefi mode.\n\nProbably should not have asked the question in this thread.\n\n"
+    },
+    {
+      "id": "214471",
+      "timestamp": "2020-04-26T14:00:02+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Wonko, So I can do something similar to grub:\n\u003e\n\u003e dd if\u003d()/boot/bcd.wdo32 of\u003d()/boot/bcd  \n\u003e find --set-root /BOOTMGR  \n\u003e chainloader /BOOTMGR  \n\u003e\n\u003e This is so I can avoid using windows boot manager text mode graphics menu on my USB drive when in uefi mode.\n\u003e\n\u003e Probably should not have asked the question in this thread.\n\nYes and no.\n\nWith cp you are restricted to a FAT or exFAT target.\n\nIf you dd (and the target file already exists and the filesize is the same, as it would be needed in grub4dos to use dd) you can use the GRUB2 dd:\n\n[https://translate.go...o/grub2_zh.html](https://translate.google.com/translate?hl\u003den\u0026tab\u003dwT\u0026sl\u003dzh-CN\u0026tl\u003den\u0026u\u003dhttps%3A%2F%2Fa1ive.github.io%2Fgrub2_zh.html \"External link\")\n\n[https://translate.go...ub2_cmd_zh.html](https://translate.google.com/translate?depth\u003d1\u0026hl\u003den\u0026pto\u003daue\u0026rurl\u003dtranslate.google.com\u0026sl\u003dzh-CN\u0026sp\u003dnmt4\u0026tl\u003den\u0026u\u003dhttps://a1ive.github.io/grub2_cmd_zh.html \"External link\")\n\n\u003e **dd** OPTIONS\n\u003e\n\u003e Write file / string / hexadecimal number to file\n\u003e\n\u003e **Warning: This command will cause the loss of data**\n\u003e\n\u003e * --if \u003d FILE, -i specify input file\n\u003e * --str \u003d STRING, -s specify the input string\n\u003e * --hex \u003d HEX, -h specify input hexadecimal number\n\u003e * --of \u003d FILE, -o specify output file\n\u003e * --bs \u003d BYTES, -b specify block size\n\u003e * --count \u003d n, -c specify the number of blocks\n\u003e * --skip \u003d n Skip the first n blocks of input\n\u003e * --seek \u003d n Skip the first n blocks of output\n\nmost if not all the commands in this GRUB2 version are very similar to the grub4dos ones, including (possibly useful to check file size before using dd) blocklist.\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "214509",
+      "timestamp": "2020-05-04T21:20:20+00:00",
+      "author": "steve6375",
+      "content": "[agFM v1.49](http://rmprepusb.blogspot.com/2020/05/agfm-v149-and-e2b-v203c-are-now.html \"External link\") latest Beta now supports *direct*MBR and UEFI booting of WinPE ISOs such as Sergei Strelec, Bob Omb\u0027s, Medicat, DLCBoot (also requires a .cfg file), HBCDPe, Gandalf\u0027s PE. Just copy over the ISOs and UEFI64 Secure boot!\n\nSee my [blog](https://rmprepusb.blogspot.com/ \"External link\")for more articles on agFM.\n\n"
+    },
+    {
+      "id": "214511",
+      "timestamp": "2020-05-05T02:55:51+00:00",
+      "author": "paraglider",
+      "content": "I did experiment with the dd command. It was so slow its unusable. It copies the 24Kb BCD file at 200B/s taking over a minute.\n\n"
+    },
+    {
+      "id": "214515",
+      "timestamp": "2020-05-05T08:44:32+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I did experiment with the dd command. It was so slow its unusable. It copies the 24Kb BCD file at 200B/s taking over a minute.\n\nNever used this GRUB2 dd command, on grub4dos it is a tad bit slowish but more than bearable.\n\nHave you experimented with different block sizes?\n\nUsually (at least on other implementations of dd) the \"appropriate\" block size can speed up the transfer dramatically.\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "214517",
+      "timestamp": "2020-05-05T08:47:34+00:00",
+      "author": "steve6375",
+      "content": "Yes, you must use a blocksize, otherwise it is very slow. Max block size is 4096.\n\n"
+    },
+    {
+      "id": "214521",
+      "timestamp": "2020-05-05T11:46:58+00:00",
+      "author": "paraglider",
+      "content": "Thanks. That fixed it. Never would have guessed it defaulted to a very small block size.\n\n"
+    },
+    {
+      "id": "214573",
+      "timestamp": "2020-05-11T12:23:02+00:00",
+      "author": "Rootman",
+      "content": "steve6375 , I\u0027ve been off a few weeks. Wanted to say thanks for straitening out the starup_menu.txt. It makes it a lot easier to kep up to date having the user menu stuff right at the top. Weird how the other partition designation didn\u0027t work out. I just keep a file with my additions in it and copy the SAMPLE file over and edit it with my personal menu items then edit msdos to gpt for my gpt drives. Works great and I always have the latest startup_meu.txt with any changes that were made to the recent AGFM version too.\n\n"
+    },
+    {
+      "id": "214574",
+      "timestamp": "2020-05-11T12:46:55+00:00",
+      "author": "steve6375",
+      "content": "using (hd0,1) should be working now.\n\n"
+    },
+    {
+      "id": "214575",
+      "timestamp": "2020-05-11T12:51:25+00:00",
+      "author": "Rootman",
+      "content": "I\u0027ll give it a try, will it work with the ${bootdev\\] variable as well?\n\n"
+    },
+    {
+      "id": "214576",
+      "timestamp": "2020-05-11T13:21:11+00:00",
+      "author": "steve6375",
+      "content": "$bootdev is just an hd number - e.g. hd0 or hd1.\n\n"
+    },
+    {
+      "id": "214582",
+      "timestamp": "2020-05-11T15:02:40+00:00",
+      "author": "Rootman",
+      "content": "OK, tried it and it works for both MBR and GPT booting, makes it much simpler. Works with the variable as well, nice in case for some screwy reason the $bootdev is NOT hd0.\n\nThanks again.\n\n"
+    },
+    {
+      "id": "214607",
+      "timestamp": "2020-05-12T10:17:12+00:00",
+      "author": "a1ive",
+      "content": "grubfm+ventoy test version\n\nVentoy version: 1.0.09\n\ndownload: [https://github.com/a...mx64.efi.tar.gz](https://github.com/a1ive/grub2-filemanager/files/4614818/grubfmx64.efi.tar.gz \"External link\")\n\nknown bugs: [https://github.com/a...ager/issues/197](https://github.com/a1ive/grub2-filemanager/issues/197 \"External link\") (Chinese)\n\n![81672253-764f8580-947c-11ea-999a-8a1f4fc](https://user-images.githubusercontent.com/10670106/81672253-764f8580-947c-11ea-999a-8a1f4fcf0cef.png)\n\n"
+    },
+    {
+      "id": "214613",
+      "timestamp": "2020-05-12T11:53:28+00:00",
+      "author": "wimb",
+      "content": "\u003e grubfm+ventoy test version\n\u003e\n\u003e Ventoy version: 1.0.09\n\u003e\n\u003e download: [https://github.com/a...mx64.efi.tar.gz](https://github.com/a1ive/grub2-filemanager/files/4614818/grubfmx64.efi.tar.gz \"External link\")\n\u003e\n\u003e known bugs: [https://github.com/a...ager/issues/197](https://github.com/a1ive/grub2-filemanager/issues/197 \"External link\") (Chinese)\n\u003e\nBoot ISO (Ventoy) option was tested\n\nOK for Win10_1909_Dutch_x64.iso and Win10XPE_x64.ISO\n\nFAIL for ubuntu-19.10-desktop-amd64.iso and Fedora-Workstation-Live-x86_64-32-1.6.iso and runtimelivecd.iso\n\n"
+    },
+    {
+      "id": "214618",
+      "timestamp": "2020-05-12T12:24:18+00:00",
+      "author": "a1ive",
+      "content": "\u003e Boot ISO (Ventoy) option was tested\n\u003e\n\u003e OK for Win10_1909_Dutch_x64.iso and Win10XPE_x64.ISO\n\u003e\n\u003e FAIL for ubuntu-19.10-desktop-amd64.iso and Fedora-Workstation-Live-x86_64-32-1.6.iso and runtimelivecd.iso\n\nThanks for report.\n\nWhich filesystem and partition table do you use?\n\n"
+    },
+    {
+      "id": "214619",
+      "timestamp": "2020-05-12T12:31:06+00:00",
+      "author": "wimb",
+      "content": "\u003e Thanks for report.\n\u003e\n\u003e Which filesystem and partition table do you use?\n\n[USB_FORMAT](https://github.com/wimbrts/USB_FORMAT/releases \"External link\") plus addon-glim-agFM with Setting Other EFI Mgr was used to format USB with MBR and 2 partitions being active FAT32 + NTFS\n\nLinux ISOs were tested located on FAT32 and NTFS but all FAIL to boot with Boot ISO (Ventoy) option (mounting problem ....)\n\nThe Windows ISO files were located on NTFS partition\n\n"
+    },
+    {
+      "id": "214621",
+      "timestamp": "2020-05-12T12:41:08+00:00",
+      "author": "a1ive",
+      "content": "\u003e [USB_FORMAT](https://github.com/wimbrts/USB_FORMAT/releases \"External link\") plus addon-glim-agFM with Setting Other EFI Mgr was used to format USB with MBR and 2 partitions being active FAT32 + NTFS\n\u003e\n\u003e Linux ISOs were tested located on FAT32 and NTFS but all FAIL to boot with Boot ISO (Ventoy) option (mounting problem ....)\n\u003e\n\u003e The Windows ISO files were located on NTFS partition\n\npress \u0027c\u0027 to commandline and enter \"vtdebug on\" to enable debug output.\n\nthen press ESC and boot with \"Boot ISO (Ventoy)\" option. you will see some debug output like this:\n\n![20200512203647.png](https://i.postimg.cc/8cgXRq07/20200512203647.png)\n\n"
+    },
+    {
+      "id": "214624",
+      "timestamp": "2020-05-12T13:54:38+00:00",
+      "author": "wimb",
+      "content": "Linux ISO on FAT32**Portable SSD** partition Results:\n\nNothing special in Debug Info for:\n\nubuntu-19.10-desktop-amd64.iso - everything normal and boot menu is reached but ubuntu fails to boot at purple screen just before desktop\n\nand\n\nFedora-Workstation-Live-x86_64-32-1.6.iso - everything normal and boot menu is reached - booting FATAL Failed to mount block device of live image - wrong fs type\n\nDebug Info for runtimelivecd.iso everything OK until:\n\nFind boot file, now try to boot\n\n\\[VTOY\\] read iso sector several times OK but then Stop with -\n\nVentoy also is not capable to boot runtimelivecd.iso in UEFI mode and stops also with -\n\nEDIT:\n\nLinux ISO On FAT32 **USB-Stick** partition Results:\n\nRepeated experiments using as before [USB_FORMAT](https://github.com/wimbrts/USB_FORMAT/releases \"External link\") to make now **USB-Stick**instead of Portable SSD\n\nLinux ISO Ubuntu and Fedora located on 1st partition FAT32 now booting OK with a1ive Boot ISO (Ventoy) option.\n\nruntimelivecd.iso fails to boot with - as before\n\nThe three tested Linux ISO files located on FAT32 of USB-Stick Or on FAT32 of Portable SSD always boot OK using a1ive Boot from ISO option.\n\nIn recent versions a1ive option Ctrl + Alt + F12 to make Screenshots is missing. Why ? ![:rolleyes:](http://reboot.pro/public/style_emoticons/default/rolleyes.gif)\n\n"
+    },
+    {
+      "id": "214674",
+      "timestamp": "2020-05-14T00:26:15+00:00",
+      "author": "antonino61",
+      "content": "Excuse me, guys, I was suggested I try a1ive. I would like to, but I am not sure I know how to do it.\n\nhow would the following\n\ntitle vhd.vhd  \nnvme --set-drive\u003d0x80 --set-controller\u003d0 --showselected  \nmap --top --mem (hd0,0)/vhd.vhd (hd0)  \nmap --hook  \nnvme --uninit  \nroot (hd0,0)  \nchainloader /bootmgr  \nand  \ntitle vhd1.vhd - SVBus RAMDISK - 0.6 GB - map as (hd) for WIMBOOT  \nfind --set-root --ignore-floppies /vhd1.vhd  \nmap --top --mem /vhd1.vhd (hd)  \nmap --hook  \nroot (hd-1,0)  \nchainloader /bootmgr  \ntranslate into a1ive lingo for proper a1ive use?  \nThanx in advance\n\n"
+    },
+    {
+      "id": "214675",
+      "timestamp": "2020-05-14T06:16:17+00:00",
+      "author": "wimb",
+      "content": "\u003e Excuse me, guys, I was suggested I try a1ive. I would like to, but I am not sure I know how to do it.\n\u003e\n\u003e how would the following\n\u003e\nIn BIOS mode you can launch a1ive grubfm.iso from Grub4dos Menu.\n\nThe title\u0027s that you give are Grub4dos entries that can be launched straight from Grub4dos.\n\nThere is no advantage to launch first a1ive from Grub4dos and then through grub.exe return to Grub4dos to use your Grub4dos entries.\n\nInside a1ive Grub2 FileManager there is no replacement available for your specific Grub4dos entries.\n\n"
+    },
+    {
+      "id": "214676",
+      "timestamp": "2020-05-14T07:19:12+00:00",
+      "author": "antonino61",
+      "content": "so, if I have understood correctly, this software is of no advantage to me.\n\nor else, I can make use of a1live advantageously only if I become of another idea how to go about booting vhd\u0027s.\n\nin the latter case, I wonder why I was advised to give it a try.\n\n"
+    },
+    {
+      "id": "214678",
+      "timestamp": "2020-05-14T07:28:49+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e so, if I have understood correctly, this software is of no advantage to me.\n\u003e\n\u003e or else, I can make use of a1live advantageously only if I become of another idea how to go about booting vhd\u0027s.\n\u003e\n\u003e in the latter case, I wonder why I was advised to give it a try.\n\nLook, it is not difficult, quick check list/questionnaire:  \n1) Do I have BIOS and NOT UEFI and grub4dos can boot anything I am interested in? -\\\u003e I have no need for GRUB2  \n2) Do I have besides BIOS also UEFI machines AND I am interested in something that is UEFI only (or I simply want to try booting something in UEFI)? -\\\u003e I have a need for GRUB2  \n3) Do I have a need for GRUB2? -\\\u003e If yes, I want the most powerful/flexible version I can find (which is currently the newish A1ive\u0027s GRUB2+grubfm)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "214679",
+      "timestamp": "2020-05-14T07:57:25+00:00",
+      "author": "alacran",
+      "content": "@ Antonino61\n\nThis tool is mainly used for booting (on Bios and UEFI) from USB devices by means of Grub2, there is not any use for it on your Wimboot install on your PC.\n\nalacran\n\n"
+    },
+    {
+      "id": "214680",
+      "timestamp": "2020-05-14T08:24:48+00:00",
+      "author": "steve6375",
+      "content": "@wimb\n\nFrom FAQ\n\u003e Can I reformat the 1st partition ?  \n\u003e Yes. But you can only select exFAT filesystem with Cluster Size \\\u003e\u003d 2048\n\n"
+    },
+    {
+      "id": "214681",
+      "timestamp": "2020-05-14T08:39:08+00:00",
+      "author": "antonino61",
+      "content": "thank you ever so much. I will tell the one who advised I should try it.\n\n"
+    },
+    {
+      "id": "214689",
+      "timestamp": "2020-05-15T05:40:51+00:00",
+      "author": "wimb",
+      "content": "\u003e @wimb\n\u003e\n\u003e From FAQ\n\nYou mean [Ventoy FAQ](https://www.ventoy.net/en/faq.html \"External link\") ?\n\nYes I know that exFAT is the only supported FileSystem for Ventoy Drive.\n\nHowever in this case a1ive Grub2 FileManager is NOT so useful, since **exFAT** FileSystem [does NOT allow](http://reboot.pro/topic/22277-ventoy-open-source-usb-boot-utility-for-both-bios-and-uefi/page-3#entry214498 \"\") to boot a lot of [Boot Image files](http://reboot.pro/topic/22277-ventoy-open-source-usb-boot-utility-for-both-bios-and-uefi/?p\u003d214427 \"\").\n\nWhat you need is in fact [2 partitions for Boot Image Files](http://reboot.pro/topic/22277-ventoy-open-source-usb-boot-utility-for-both-bios-and-uefi/?p\u003d214448 \"\") on a MultiBoot USB Drive:\n\n1. FAT32 for Linux ISO Files (almost always less than 4 GB)\n\n2. NTFS for Windows VHD (System only boots when located on NTFS) and Windows Installation ISO files (size more than 4 GB)\n\nPE WIM or ISO files can be located on both types of partition\n\n"
+    },
+    {
+      "id": "214690",
+      "timestamp": "2020-05-15T08:49:26+00:00",
+      "author": "steve6375",
+      "content": "You say that if you have Ubuntu ISO on an exFAT volume and you boot to it using the a1ive grub2 (ventoy) boot entry - it does not boot?\n\nIs that correct?\n\nBut if you use a Ventoy drive which also has an exFAT volume and boot an Ubuntu ISO using Ventoy then it does boot OK.\n\nThis does not seem to make sense?\n\nAs I understand it (which is not very well because i have not yet seen a nice, top-level description of how exactly the ventoy Linux boot process works), the Ventoy technique for booting Linux relies on it using an exFAT filesystem driver to trick the linux boot process into loading a modified initrd. So it is essential that the ISO is on an exFAT volume for the Ventoy linux boot process to work.\n\n"
+    },
+    {
+      "id": "214691",
+      "timestamp": "2020-05-15T09:02:14+00:00",
+      "author": "a1ive",
+      "content": "\u003e In recent versions a1ive option Ctrl + Alt + F12 to make Screenshots is missing. Why ? ![:rolleyes:](http://reboot.pro/public/style_emoticons/default/rolleyes.gif)\n\n[https://github.com/a...ager/issues/200](https://github.com/a1ive/grub2-filemanager/issues/200 \"External link\")\n\n\u003e You say that if you have Ubuntu ISO on an exFAT volume and you boot to it using the a1ive grub2 (ventoy) boot entry - it does not boot?\n\u003e\n\u003e Is that correct?\n\u003e\n\u003e But if you use a Ventoy drive which also has an exFAT volume and boot an Ubuntu ISO using Ventoy then it does boot OK.\n\u003e\n\u003e This does not seem to make sense?\n\u003e\n\u003e As I understand it (which is not very well because i have not yet seen a nice, top-level description of how exactly the ventoy Linux boot process works), the Ventoy technique for booting Linux relies on it using an exFAT filesystem driver to trick the linux boot process into loading a modified initrd. So it is essential that the ISO is on an exFAT volume for the Ventoy linux boot process to work.\n\nyou got it.\n\nVentoy grub2 will pass blocklist to linux and then scripts in initrd will mount the iso file with device-mapper.\n\nVentoy only implemented fast blocklist for exFAT, other filesystems are not supported.\n\n"
+    },
+    {
+      "id": "214692",
+      "timestamp": "2020-05-15T09:16:52+00:00",
+      "author": "steve6375",
+      "content": "Thanks.\n\nre. CrScreenshotDxe.efi - you could add an F4 option to load the driver CrScreenshotDxe.efi ?? But I guess it would mean adding language translations for \u0027Enable/Disable Screenshot (Ctrl-Alt-F12)\u0027 which is a pain!\n\n"
+    },
+    {
+      "id": "214693",
+      "timestamp": "2020-05-15T09:35:58+00:00",
+      "author": "wimb",
+      "content": "\u003e You say that if you have Ubuntu ISO on an exFAT volume and you boot to it using the a1ive grub2 ~~(ventoy)~~ boot entry - it does not boot?\n\u003e\n\u003e Is that correct?\n\u003e\nYour remark is NOT correct.\n\n[At that time](http://reboot.pro/topic/22277-ventoy-open-source-usb-boot-utility-for-both-bios-and-uefi/page-3#entry214498 \"\") there was not yet the ventoy boot option available in a1ive.\n\nSo it means that using a1ive in Ventoy and then using in a1ive Boot from ISO then Ubuntu and Fedora FAIL to boot since they don\u0027t support exFAT FileSystem.\n\n@a1ive\n\nThanks for explanation why Screenshot option was removed from a1ive Grub2 FileManager ![:(](http://reboot.pro/public/style_emoticons/default/sad.png) but hopefully another solution will make it available again ...\n\n"
+    },
+    {
+      "id": "214694",
+      "timestamp": "2020-05-15T09:49:28+00:00",
+      "author": "steve6375",
+      "content": "@wimb - OK. that makes sense now. So using a1ive **partnew**would work even on exFAT.\n\nThat is why the partnew technique is so powerful and compatible. ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)\n\nUnfortunately, it requires a write-enabled MBR drive, a spare primary partition table entry and a contiguous file. ![:ermm:](http://reboot.pro/public/style_emoticons/default/ermm.gif)\n\n"
+    },
+    {
+      "id": "214696",
+      "timestamp": "2020-05-15T10:14:50+00:00",
+      "author": "a1ive",
+      "content": "In my version of grub2, I\u0027ve modified the source code of ventoy module, and it can be used in any filesystems. grubfm+ventoy ([https://github.com/a...ager/issues/197](https://github.com/a1ive/grub2-filemanager/issues/197 \"External link\")) should also work on ntfs / fat partitions.But ventoy\u0027s script in linux initrd may not work on non-exfat partitions.   \n\n**Edited by a1ive, 15 May 2020 - 10:16 AM.**\n"
+    },
+    {
+      "id": "214700",
+      "timestamp": "2020-05-15T13:19:31+00:00",
+      "author": "wimb",
+      "content": "\u003e In my version of grub2, I\u0027ve modified the source code of ventoy module, and it can be used in any filesystems. grubfm+ventoy ([https://github.com/a...ager/issues/197](https://github.com/a1ive/grub2-filemanager/issues/197 \"External link\")) should also work on ntfs / fat partitions.But ventoy\u0027s script in linux initrd may not work on non-exfat partitions.\n\n**a1ive Ventoy option** works for Boot Image located on FAT32 Or NTFS which is GREAT :smile: but [not yet in all cases](http://reboot.pro/topic/22232-a1ives-grub2-and-file-manager-has-great-uefi-support/?p\u003d214624 \"\") ....\n\nJust tested a1ive Ventoy option for Linux ISO located on **NTFS** partition of **USB Portable SSD** made with USB_FORMAT.\n\nUbuntu and Fedora and runtimelivecd.iso FAIL (the same as when located on FAT32 drive).\n\nJust tested a1ive Ventoy option for Linux ISO located on **NTFS** partition of **USB-Stick** made with USB_FORMAT.\n\nUbuntu and Fedora **boot OK** and runtimelivecd.iso FAILS (the same as when located on FAT32 drive).\n\n"
+    },
+    {
+      "id": "214722",
+      "timestamp": "2020-05-16T10:49:01+00:00",
+      "author": "devdevadev",
+      "content": "\\\\grubfmx64.efi -\\\u003e \\\\mods\\~\\\\boot\\\\grubfm\\\\distro\\\\win.sh  \nDoes \u0027win.sh\u0027 also used for booting of WinPE ?  \nIf so then \u0027grubfm_startbat\u0027 variable will also apply to WinPE which is not desirable. \u0027grubfm_startbat\u0027 variable should only used for \u0027boot.wim\u0027 where INDEX 2 is mounted as X:  \nIt will be nice if \u0027win.sh\u0027 will be used only for INDEX 2 of \u0027boot.wim\u0027 so that \u0027grubfm_startbat\u0027 will be apply only for Win ISO.  \nAnd WinPE should use a different .sh file that will not use \u0027grubfm_startbat\u0027...\n\n"
+    },
+    {
+      "id": "214723",
+      "timestamp": "2020-05-16T12:47:53+00:00",
+      "author": "a1ive",
+      "content": "\u003e \\\\grubfmx64.efi -\\\u003e \\\\mods\\~\\\\boot\\\\grubfm\\\\distro\\\\win.sh  \n\u003e Does \u0027win.sh\u0027 also used for booting of WinPE ?\n\u003e\nNo.See /boot/grubfm/rules/iso/winpe.lua.\n\n"
+    },
+    {
+      "id": "214732",
+      "timestamp": "2020-05-18T02:16:18+00:00",
+      "author": "ginzu",
+      "content": "Hi friends.  \n@steve6375 and @a1ive  \nMaybe not the right place, but I didn\u0027t bring up any new topics.  \n1-xp setup in vhd with grubfm is it possible?  \n2-xp (NT5) vhd boot with vboot not progressing.  \nFor 1-2 The files I\u0027ve edited below,may be incorrect but you\u0027ll understand the logic.+pictures.  \n3-Grubfm f6-halt do not work at legacy pc (freeze).At g4dos to work.This it\u0027s not a big deal,but keep it in mind.  \nMy english bad sorry.  \n[https://www.upload.e.../files.rar.html](https://www.upload.ee/files/11718400/files.rar.html \"External link\")\n\n**Edited by ginzu, 18 May 2020 - 02:18 AM.**\n"
+    },
+    {
+      "id": "214734",
+      "timestamp": "2020-05-18T09:02:49+00:00",
+      "author": "steve6375",
+      "content": "Maybe a useful option to select any VHD and map it as hdx as separate virtual disk - would this work?\n\n1. User selects VHD - choose \u0027mount\u0027 option - VHD is mounted as hdx\n\n2. User selects Install ISO (XP, Win7/8/10, Linux) - boot to OS and install to hdx\n\n"
+    },
+    {
+      "id": "214735",
+      "timestamp": "2020-05-18T09:48:11+00:00",
+      "author": "ginzu",
+      "content": "\u003e Maybe a useful option to select any VHD and map it as hdx as separate virtual disk - would this work?\n\u003e\n\u003e 1. User selects VHD - choose \u0027mount\u0027 option - VHD is mounted as hdx\n\u003e\n\u003e 2. User selects Install ISO (XP, Win7/8/10, Linux) - boot to OS and install to hdx\n\nHi steve.  \nI thought about that, but I said it would be more difficult.  \nIn older versions, we were able to mount ISO. I guess like this.better actually.  \nBut does xp also have problems during installation? And will vboot work?\n\n"
+    },
+    {
+      "id": "214736",
+      "timestamp": "2020-05-18T10:51:52+00:00",
+      "author": "a1ive",
+      "content": "\u003e Hi friends.  \n\u003e @steve6375 and @a1ive  \n\u003e Maybe not the right place, but I didn\u0027t bring up any new topics.  \n\u003e 1-xp setup in vhd with grubfm is it possible?\n\nThis is impossible in grubfm, but you can install XP to vhd with grub2.\n\n[http://www.vmlite.co...s.html#xp-to-vd](http://www.vmlite.com/vboot/instructions.html#xp-to-vd \"External link\")\n\u003e\n\u003e 2-xp (NT5) vhd boot with vboot not progressing.\n\nYou need to install vboot driver in VHD WinXP.\n\nWindows XP is toooooo old, I don\u0027t think it\u0027s worth the time to research into it.\n\n**Edited by a1ive, 18 May 2020 - 10:56 AM.**\n"
+    },
+    {
+      "id": "214737",
+      "timestamp": "2020-05-18T10:59:35+00:00",
+      "author": "a1ive",
+      "content": "\u003e @a1ive\n\u003e\nThanks for explanation why Screenshot option was removed from a1ive Grub2 FileManager ![:(](http://reboot.pro/public/style_emoticons/default/sad.png) but hopefully another solution will make it available again ...  \nNow you can download grub2 latest build and try the screenshot module.  \nExtract crscreenshot.mod from grub2-latest.tar.gz/x86_64-efi and copy it to usb disk.  \n\n```\ninsmod /crscreenshot.mod\n```\n\nEnter this command (use full path) in terminal to load it, then you can press \"LCtrl+LAlt+F12\" to capture screen.\n\n"
+    },
+    {
+      "id": "214738",
+      "timestamp": "2020-05-18T11:25:13+00:00",
+      "author": "ginzu",
+      "content": "@a1ive\n\nThis is impossible in grubfm, but you can install XP to vhd with grub2.\n\n[http: //www.vmlite.co...s.html#xp-to-vd](http://www.vmlite.com/vboot/instructions.html#xp-to-vd \"External link\")\n\nYou need to install vboot driver in VHD WinXP.\n\nWindows XP is toooooo old, I don\u0027t think it\u0027s worth the time to research into it.\n\n-----------------------------------------------------------------------------------------------------------\n\nHi @a1ive\n\nI\u0027m doing xp vhd by g4dos.Sometimes people around me want vhd xp as the second system.  \nVhd is more practical.Grubfm I wanted it to be complete.  \nLet me check if the vboot driver is installed. I\u0027ll adjust it.No problem.\n\n"
+    },
+    {
+      "id": "214739",
+      "timestamp": "2020-05-18T11:29:09+00:00",
+      "author": "ginzu",
+      "content": "\u003e Maybe a useful option to select any VHD and map it as hdx as separate virtual disk - would this work?\n\u003e\n\u003e 1. User selects VHD - choose \u0027mount\u0027 option - VHD is mounted as hdx\n\u003e\n2. User selects Install ISO (XP, Win7/8/10, Linux) - boot to OS and install to hdx  \nIt would be great if a vhd mount can be added for all windows versions as steve says.\n\n"
+    },
+    {
+      "id": "214740",
+      "timestamp": "2020-05-18T12:03:49+00:00",
+      "author": "a1ive",
+      "content": "\u003e Maybe a useful option to select any VHD and map it as hdx as separate virtual disk - would this work?\n\u003e\n\u003e 1. User selects VHD - choose \u0027mount\u0027 option - VHD is mounted as hdx\n\u003e\n\u003e 2. User selects Install ISO (XP, Win7/8/10, Linux) - boot to OS and install to hdx\n\nThis is impossible on BIOS.Now we use grub4dos to map iso/vhd, and can\u0027t return back to grub2.\n\n"
+    },
+    {
+      "id": "214741",
+      "timestamp": "2020-05-18T12:25:10+00:00",
+      "author": "wimb",
+      "content": "\u003e Now you can download grub2 latest build and try the screenshot module.  \n\u003e Extract crscreenshot.mod from grub2-latest.tar.gz/x86_64-efi and copy it to usb disk.  \n\u003e\n\u003e ```\n\u003e insmod /crscreenshot.mod\n\u003e ```\n\u003e\n\u003e Enter this command (use full path) in terminal to load it, then you can press \"LCtrl+LAlt+F12\" to capture screen.\n\u003e\nThank you, it is working OK in UEFI Secure mode and it is a nice enhancement :smile:\n\n[![a1ive_18141314.png](http://reboot.pro/uploads/monthly_05_2020/post-9517-0-32707100-1589804657_thumb.png)](http://reboot.pro/uploads/monthly_05_2020/post-9517-0-32707100-1589804657.png \"a1ive_18141314.png - Size: 477.01KB\"){#ipb-attach-url-17103-0-21128100-1676066381} \u003d\u003d [![a1ive_18141307.png](http://reboot.pro/uploads/monthly_05_2020/post-9517-0-55869100-1589804674_thumb.png)](http://reboot.pro/uploads/monthly_05_2020/post-9517-0-55869100-1589804674.png \"a1ive_18141307.png - Size: 1.74KB\"){#ipb-attach-url-17104-0-21139200-1676066381} \u003d\u003d [![a1ive_18141223.png](http://reboot.pro/uploads/monthly_05_2020/post-9517-0-27586700-1589804691_thumb.png)](http://reboot.pro/uploads/monthly_05_2020/post-9517-0-27586700-1589804691.png \"a1ive_18141223.png - Size: 343.17KB\"){#ipb-attach-url-17105-0-21147000-1676066381}\n\n"
+    },
+    {
+      "id": "214742",
+      "timestamp": "2020-05-18T16:51:02+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Enter this command (use full path) in terminal to load it, then you can press \"LCtrl+LAlt+F12\" to capture screen.\n\u003e\nNot to be - as can often happen - the usual critic, but isn\u0027t it possible to map that function to the PrintScreen key?\n\n[https://en.wikipedia...ki/Print_Screen](https://en.wikipedia.org/wiki/Print_Screen \"External link\")\n\n(it just seems to me more \"natural\" than a three keys combo)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "214743",
+      "timestamp": "2020-05-19T00:59:05+00:00",
+      "author": "a1ive",
+      "content": "\u003e Not to be - as can often happen - the usual critic, but isn\u0027t it possible to map that function to the PrintScreen key?\n\u003e\n\u003e [https://en.wikipedia...ki/Print_Screen](https://en.wikipedia.org/wiki/Print_Screen \"External link\")\n\u003e\n\u003e (it just seems to me more \"natural\" than a three keys combo)\n\u003e\n\u003e ![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\u003e\n\u003e Wonko\n\nMy laptop don\u0027t have PrintScreen key ![:(](http://reboot.pro/public/style_emoticons/default/sad.png), and I don\u0027t think this key is supported by UEFI firmware ([https://github.com/t...impleTextInEx.h](https://github.com/tianocore/edk2/blob/3806e1fd139775610d8f2e7541a916c3a91ad989/MdePkg/Include/Protocol/SimpleTextInEx.h \"External link\"))\n\n"
+    },
+    {
+      "id": "214746",
+      "timestamp": "2020-05-19T09:09:31+00:00",
+      "author": "Wonko the Sane",
+      "content": "I see. :smile:\n\nNever thought about those laptops :blush: , good point.\n\nI had a look around and it seems that each brand has its own exoteric way to use a (of course different) key combo as a replacement for \"missing keys\". ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)\n\nI find it fun however that there is seemingly support for keys F13-F24, which are very rare on keyboards, besides AS/400 ones. :wink:\n\nAnyway the U in UEFI seems everyday more short for \"Unlikely-better-than-BIOS\".\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "214747",
+      "timestamp": "2020-05-19T10:06:52+00:00",
+      "author": "antonino61",
+      "content": "Unlikely Exodus From b-I-os, meaning like hell I will relinquish BIOS if I have a choice.\n\n"
+    },
+    {
+      "id": "214771",
+      "timestamp": "2020-05-20T11:23:47+00:00",
+      "author": "antonino61",
+      "content": "Sorry to butt in again, I do not know how this is technically possible, but I came across my wife\u0027s asus transform 101, which is notoriously UEFI, and I see 2 g4d? entries. I remember managing to boot it thru bootice? (probably PBR?) but I do not think I am any longe able to configure it. so whatever changes I make will ultimately end up with the 2 names of vhd\u0027s i see on g4d menu at the outset to make sure whatever has been booted still is. I did take a look at bootice bcd entries - there is a plethoric list of them which I did not dare alter, lest it should not boot anymore, even though I conceptually think they, or at least most of them., are not doing anything to that booting. would anyone brief me on how to get hold of the booting alternatives back again or do u suggest I try A1ive, especially if it is faster? the menu appearance and the booting now are quite quick.\n\n"
+    },
+    {
+      "id": "214813",
+      "timestamp": "2020-05-25T04:32:47+00:00",
+      "author": "devdevadev",
+      "content": "Will be nice if Ventoy Boot Option uses Ventoy icon amd Partnew option uses E2B (or different) icon in Secondary Boot menu of agFM ?   \n"
+    },
+    {
+      "id": "214824",
+      "timestamp": "2020-05-26T15:52:02+00:00",
+      "author": "ms1304",
+      "content": "Hi, maybe someone has an answer for me:  \n\nI have tested some ISO with Ventoy 1.0.11  \nUEFI-booting under VMware OK, on a real system OK  \nAcronis_TI_2019_17750_x64_PE.iso  \nAcronis_TI_2020_25700_PE_X64.iso  \nParagon_Disc_Manager_17.13.1.iso  \nEASEUS_PART_MASTER_14_PE.iso  \npmagic_2020_05_20.iso  \nubuntu_20.04_x64.iso  \n\ngrubfm_multiarch.iso + ventoy:  \n\nUEFI-booting under VMware \\\u003e Boot ISO (Ventoy): all ISO OK, except Acronis ends with blue screen  \n(Error code: 0xc0000225, File:\\\\windows\\\\system32\\\\boot\\\\winload.efi)  \n\nUEFI-booting under real system \\\u003e Boot ISO (Ventoy): no ISO boots, system hangs in empty agFM window.  \nVentoy partition changed from exfat to NTFS but same result.  \nFor me grubfm_multiarch.iso + Ventoy does not work on real system.  \nIs it because of my system (AMD AM4 Socket, Summit Ridge)?  \n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "214825",
+      "timestamp": "2020-05-26T16:33:38+00:00",
+      "author": "steve6375",
+      "content": "The agFM window may be empty - but has the system actually hung?\n\nDid you look at the USB LED activity light? Maybe the video output has just gone to the wrong video port?\n\n"
+    },
+    {
+      "id": "214826",
+      "timestamp": "2020-05-26T16:45:57+00:00",
+      "author": "ms1304",
+      "content": "Yes, the system hangs devinitively. I waited two minutes,  \nthe Sandisk extreme LED does not flash and the system can only be restarted (reset).\n\n**Edited by ms1304, 26 May 2020 - 05:00 PM.**\n"
+    },
+    {
+      "id": "214827",
+      "timestamp": "2020-05-26T17:00:35+00:00",
+      "author": "ms1304",
+      "content": "I will test on a different AMD Ryzen system tomorrow.\n\n"
+    },
+    {
+      "id": "214841",
+      "timestamp": "2020-05-27T17:51:19+00:00",
+      "author": "ms1304",
+      "content": "\u003e I will test on a different AMD Ryzen system tomorrow.\n\nI tested on a different AMD Ryzen system today. Same result \\\u003e Boot ISO (Ventoy): no ISO starts, system hangs in empty agFM window. By the way, the same with Boot ISO (partnew) and Boot ISO (map). I have tested with 2 USB drives for safety.  \nI assume that grubfm_multiarch.iso does not work with AMD systems.  \n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "214842",
+      "timestamp": "2020-05-27T18:31:37+00:00",
+      "author": "steve6375",
+      "content": "Can you make an Easy2boot usb drive and try uefi64 boot to agFM on that?   \n"
+    },
+    {
+      "id": "214844",
+      "timestamp": "2020-05-28T06:55:37+00:00",
+      "author": "ms1304",
+      "content": "\u003e Can you make an Easy2boot usb drive and try uefi64 boot to agFM on that?\n\nE2B 2.01 / agFM 1.51v  \nUEFI boot agFM (Ptn 2) \\\u003e Boot ISO (Ventoy) works fine.\n\n"
+    },
+    {
+      "id": "214845",
+      "timestamp": "2020-05-28T07:46:46+00:00",
+      "author": "steve6375",
+      "content": "grubfm_multiarch.iso + Ventoy on real Intel system?\n\n"
+    },
+    {
+      "id": "214846",
+      "timestamp": "2020-05-28T08:03:04+00:00",
+      "author": "ms1304",
+      "content": "\u003e grubfm_multiarch.iso + Ventoy on real Intel system?\n\nNo, I don\u0027t have a UEFI Intel system\n\ngrubfm_multiarch.iso + Ventoy on real AMD system.\n\n"
+    },
+    {
+      "id": "214939",
+      "timestamp": "2020-06-02T02:32:20+00:00",
+      "author": "alacran",
+      "content": "I don\u0027t know if all of you are aware that agFM is capable to Ramboot your Wimboot VHDs, (see attached picture), unfortunately so far this is possible only if the coupled Wimboot VHD + the source WIM file are located on a internal HD.  \n\nIn my CSM/MBR PC having grubfm.iso on the root of the boot partition where all booting files and folders are, I can call grub4dos from Windows boot manager and from grub4dos load/boot on Ram grubfm.iso, with following entrie:  \n\niftitle \\[if exist (hd0,0)/grubfm.iso\\] Grub2 File Manager of a1ive - (hd0,0)/grubfm.iso  \nmap --mem (hd0,0)/grubfm.iso (0xff)  \nmap --hook  \nchainloader (0xff)  \n\nYou can do this manualy or by means of UEFI_MULTI from wimb.  \n\nThen from grubfm.iso loaded on Ram it is possible to select from our internal or external HD all the same kind of files we use to boot from our USB device.  \n\n**But it is also possible to Ramboot our Wimboot VHD files located on the internal HD.**   \n\n**NOTES:**   \n\n1 .- If booting from internal HD and the coupled Wimboot VHD + the source WIM file are located on a internal HD,**it boots fine.**   \n\n2.- If booting from internal HD and the coupled Wimboot VHD + the source WIM file are located on a USB device **it do not work this way.**   \n\n3.- If booting from a USB device and the coupled Wimboot VHD + the source WIM file are located on same USB device, some times the VHD boots (fine) directly and immediately as filedisk without giving us the booting options like on the attached picture, in some other cases it is allowed to select load the VHD to Ram but it fails during boot. Then for all practical effects **Rambooting a VHD do not work this way.**\n\n4.- If booting from a USB device and the coupled Wimboot VHD + the source WIM file are located on a internal HD, **it boots fine.** See: [http://reboot.pro/to...e-8#entry214948](http://reboot.pro/topic/22232-a1ives-grub2-and-file-manager-has-great-uefi-support/page-8#entry214948 \"\")\n\nI know we can live without a fix to this feature on agFM, and even Ramboot our Wimboot VHDs directly from grub4dos (wich is more direct and faster), but it will be good if Rambooting the Wimboot VHDs could be implemented on agFM also when booting from and having files on the USB device (as on No. 3).  \n\n**In order to Ramboot a VHD using grub4dos we have two different sets of commands:**  \n\n**- When the VHD + the source WIM file are located on a internal HD and booting from internal HD:**   \n\ntitle 10x64-WB.vhd - SVBus RAMDISK - 1536 MB - map for WIMBOOT as next to last hd KARYONIX  \nfind --set-root --ignore-floppies /10x64-WB.vhd  \n**map --top --mem /10x64-WB.vhd (hd)**  \nmap --hook  \nroot (hd-1,0)  \nchainloader /bootmgr  \n\n**Which has been already implemented and is working fine.**\n\n**- When the VHD + the source WIM file are located on a external (USB)device and booting from that external (USB) device:**   \n\niftitle \\[if exist (hd0,0)/10x64-WB.vhd\\] (hd0,0)/10x64-WB.vhd - SVBus RAMDISK - 2048 MB - map for WIMBOOT  \n**map --top --mem (hd0,0)/10x64-WB.vhd (hd-1)**  \nmap --hook  \nroot (hd-1,0)  \nchainloader /bootmgr  \n\n**Which is not implemented and not working.**   \n\n**The key difference is on the map --top --mem line where we are forced to use (hd) when VHD is on internal HD or (hd-1) when VHD is on external USB device.**\n\n**If not done as said on previous sentence there is no way to make it work in both cases when dealing with Wimboot VHDs, as the VHD is coupled to a WIM file it is the only way to let the VHD after loaded on RAM, to find its coupled WIM\u0027s location on the physical device during booting.**  \n\nalacran  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![VHD.jpg](http://reboot.pro/uploads/monthly_06_2020/post-26560-0-46142400-1591065128_thumb.jpg)](http://reboot.pro/uploads/monthly_06_2020/post-26560-0-46142400-1591065128.jpg \"VHD.jpg - Size: 99.24KB\"){#ipb-attach-url-17137-0-37650300-1676066381}\n\n**Edited by alacran, 03 June 2020 - 11:16 AM.**\n"
+    },
+    {
+      "id": "214948",
+      "timestamp": "2020-06-02T15:10:23+00:00",
+      "author": "alacran",
+      "content": "JFYI\n\nBooting again grubfm.iso from the USB device, tried booting other VHDs (+ the source WIM) located into internal HD, and they booted fine, strange thing is the first tested VHD that did not boot this way, booted fine when loading grubfm.iso from internal HD.\n\nPrevious post section Notes No. 4 was edited with new info, (to avoid confusion to future readers).\n\n\u003e 4.- If booting from a USB device and the coupled Wimboot VHD + the source WIM file are located on a internal HD it boots fine.\n\nSo with this new info we can say only when the VHD + his couple WIM file are on an external device the VHD can\u0027t boot from RAM.\n\nalacran\n\n"
+    },
+    {
+      "id": "214949",
+      "timestamp": "2020-06-02T15:21:15+00:00",
+      "author": "steve6375",
+      "content": "map --top --mem /10x64-WB.vhd (**hd**) - creates a new BIOS hd device and increments the number BIOS hard disks by one\n\nmap --top --mem (hd0,0)/10x64-WB.vhd (**hd-1**) - maps the last hard disk in the list as the vhd file - the number of hard disks stays the same.\n\n"
+    },
+    {
+      "id": "214951",
+      "timestamp": "2020-06-02T17:12:16+00:00",
+      "author": "alacran",
+      "content": "After testing with other VHDs I can confirm:\n\nIf booting from a USB device and the coupled Wimboot VHD + the source WIM file are located on same USB device, some times the VHD boots (fine) directly and immediately as filedisk without giving us the booting options like on the attached picture, in some other cases it is allowed to select load the VHD to Ram but it fails during boot. Then for all practical effects **Rambooting a VHD do not work this way.**\n\nThen previous Post No. 178 on Notes section 3 was edited in acordance with this, (to avoid confusion to future readers).\n\nalacran\n\n"
+    },
+    {
+      "id": "214962",
+      "timestamp": "2020-06-03T11:05:17+00:00",
+      "author": "alacran",
+      "content": "For all those that may not care about agFM capability to boot \"standard\" or Wimboot VHDs:\n\n* We all know best, easy and faster way to Fileboot a VHD is just by means of Windows bootmanager, (on CSM/MBR and UEFI/GPT).\n* Also we all know best, easy and faster way to Ramboot a VHD is just by means of grub4dos, (on CSM/MBR only).\n\nAnd of course if we have some VHDs on our machine it is reasonable to think we allready made the respective entries on our BCDs and/or menu.lst files, to have them ready when booting from the PC.  \n\nBut when booting from a USB device, agFM capability to boot \"standard\" or Wimboot VHDs from a internal HD, is very useful, since thanks to its graphycal interface we do not need to know in advance the VHDs files names and locations and also previously have the respective entries on our BCDs or menu.lst files. It is only a matter of browse into our internal HD to find a VHD and select it to boot.  \n\nalacran\n\n"
+    },
+    {
+      "id": "218095",
+      "timestamp": "2021-04-29T12:15:18+00:00",
+      "author": "Rootman",
+      "content": "It\u0027s me again, your least favorite pest. Last year due to a regular business decline and then the pandemic it was hard on me and my company. I was off over a month and we had NO computers come in. Many layoffs and surprisingly few PC issues. Things are looking OK now and I got 70 new PCs in.\n\nI am using various USB media with E2B 2.08 and AGFM 1.70. I\u0027ve booted via EFi to WinPE and a few other utilities. Of course the recent chips no longer will CSM boot. I\u0027ve EFI booted to my WinPE and a bunch of utilities via AGFM with no problem.\n\nI needed to boot to my Windows install ISOs via EFI so I booted to my USB drive, choose EFI and choose the device. AGFM booted up just as it should.\n\nI navigated to the \\\\_ISO\\\\WINDOWS\\\\WIN10 directory where I have 3 Win 10 install ISOS, Ent 1909, ENT 20H2 AND PRO 20H2. I do the first choice on the list, install with no autoattend.xml. When choosing any of them under AGFM I get this error:\n\n```\nerror: xz file corrupted or unsupported block options.\nAdd: (wimboot)/bootmggw.efi -\u003e boot.mgfw.efi\nAdd: (envblk)/null.cfg -? null.cfg\n```\n\nI seem to recall booting to the same ISOs last year and they worked fine. The SAME ISO files boot and work via CSM on another machine. I can also boot to them via VENTOY from AGFM by pressing the F5 key and choosing the file off the list. I assume this is still EFI????\n\nNot sure what I am doing wrong, I THOUGHT it used to work. That\u0027s been a few versions of AGFM ago though.\n\nAny ideas?\n\n"
+    },
+    {
+      "id": "218097",
+      "timestamp": "2021-04-29T12:38:43+00:00",
+      "author": "steve6375",
+      "content": "Works for me and no one else has complained.\n\nSo first try checking the file system on both partition 1 and partition 2 using Explorer - right-click - Properties - check\n\nNext overwrite the files on partition 2 with a fresh download of the agFM files.\n\n[https://easy2boot.we...nload_files.zip](https://easy2boot.webnode.com/_files/200003811-7d94f7d951/agFM_download_files.zip \"External link\")\n\nor just run Update E2B button from the E2B download folder.\n\nDid you test using a different system or VBox+VMUB?\n\n"
+    },
+    {
+      "id": "218098",
+      "timestamp": "2021-04-29T12:43:57+00:00",
+      "author": "wimb",
+      "content": "\u003e Any ideas?\n\nAfter booting with [Win10XPE](https://github.com/ChrisRfr/Win10XPE \"External link\") WIM then use [WinNTSetup](https://msfn.org/board/topic/149612-winntsetup-v461/ \"External link\") for Install of Win10x64\n\n"
+    },
+    {
+      "id": "218101",
+      "timestamp": "2021-04-29T18:24:53+00:00",
+      "author": "Rootman",
+      "content": "\u003e Works for me and no one else has complained.\n\u003e\n\u003e So first try checking the file system on both partition 1 and partition 2 using Explorer - right-click - Properties - check\n\u003e\n\u003e Next overwrite the files on partition 2 with a fresh download of the agFM files.\n\u003e\n\u003e [https://easy2boot.we...nload_files.zip](https://easy2boot.webnode.com/_files/200003811-7d94f7d951/agFM_download_files.zip \"External link\")\n\u003e\n\u003e or just run Update E2B button from the E2B download folder.\n\u003e\n\u003e Did you test using a different system or VBox+VMUB?\n\nOK, I figured out what was happening. The Windows install ISOs work for my smaller drives (\\\u003c2TB MBR). The drives I was using that would NOT boot right are 4TB GPT USB WD Passport drives. Even though I can\u0027t boot to it via MBR - because it\u0027s a GPT disk - I still have the Easy2Boot first partition and the AGFM second partition setup on it just like the rest of my drives. I did it that way just to make it easier to maintain as I updated payload files and E2B / AGFM I could simply copy the new files to each drive from a central repository. All my other types of ISO files boot from it fine, Linux distros, utilities, WinPE.\n\nThe 4TB drives never offer to boot the Windows install ISO as ISOWIN, Just ISODEF and ISOMEM, neither of which work. Is this perhaps because Grub4DOS is not actually installed on the drives itself? It won\u0027t install because it\u0027s GPT. I even tried to rename one ISO with an ISOWIN extension, it does not even see it in the AGFM file manager.\n\nIt just so happens I had grabbed 2 of the 4TB drives because I was backing up a lot of PCs to replace them. I had tried it on several PCs and with either of these drives.\n\nIs there a fix or do I simply need to go to Ventoy for these should I use the large drives? And is Ventoy still in EFI mode and will install Windows in a EFI configuration if I use it?\n\n"
+    },
+    {
+      "id": "218102",
+      "timestamp": "2021-04-30T08:10:10+00:00",
+      "author": "steve6375",
+      "content": "Yes - try Ventoy for Easy2Boot (F5 from agFM).\n\nNot sure why agFM is failing - could you try removing the \\\\boot\\\\grubfm\\\\config file and see if that helps.\n\nThe file name will need to use .iso.\n\n"
+    },
+    {
+      "id": "218103",
+      "timestamp": "2021-04-30T11:27:51+00:00",
+      "author": "paraglider",
+      "content": "Recent versions of Grub4dos do work on a GPT disk. You just have to work hard to install the boot loader into the boot sector. See this topic: [http://reboot.pro/to...nd-gpt-support/](http://reboot.pro/topic/21905-grub4dos-and-gpt-support/ \"\") I used the dd approach. It worked for me on a Sabrent 4TB external ssd drive.\n\n"
+    },
+    {
+      "id": "218104",
+      "timestamp": "2021-04-30T11:37:06+00:00",
+      "author": "Rootman",
+      "content": "\u003e Yes - try Ventoy for Easy2Boot (F5 from agFM).  \n\u003e Not sure why agFM is failing - could you try removing the \\\\boot\\\\grubfm\\\\config file and see if that helps.  \n\u003e The file name will need to use .iso.\n\nOk, removed the file, now the choices are different and it now says \u0027Boot Windows from ISO\u0027 and it now works via EFI from AGFM. This only affected my large GPT drives, everything other smaller MBR drive worked perfectly via CSM or EFI. I put the file back because it does goof up the menus, if I happen to grab a GPT disk to instlal Windows with I\u0027ll have to remember to use Ventoy.   \n\nThe extension is back to .iso after experimenting with .isowin.  \n\nThanks once again!\n\n"
+    },
+    {
+      "id": "218105",
+      "timestamp": "2021-04-30T12:29:58+00:00",
+      "author": "paraglider",
+      "content": "I prefer to boot wims directly from the drive so I use a1ive grub2 directly which can give a nice graphical menu. Also use it on my desktop pc to switch between the 2 windows installs so I can get a nice graphical menu instead of the horrible text mode windows boot menu.\n\n"
+    },
+    {
+      "id": "218551",
+      "timestamp": "2021-07-01T07:54:37+00:00",
+      "author": "steve6375",
+      "content": "Easy2Boot\u0027s latest Beta of **agFM**(grubfm) now allows you to add Ventoy partition images to your Easy2Boot USB drive.\n\nA .cmd file is provided which automatically downloads the latest version of Ventoy (whatever it is) and makes the new partition image files.\n\nThree different Ventoy images are made, the first two are the same as the two options you get when using the Ventoy maker tool - Secure with MokManager or non-secure. The third Ventoy image includes the Kaspersky shim so that you can Secure UEFI64-Boot to Ventoy without needing to use Mok Manager (as long as the Kaspersky shim is not blocked in the UEFI BIOS DBx blacklist).\n\n[https://easy2boot.xy...l-ventoy-image/](https://easy2boot.xyz/ventoy/official-ventoy-image/ \"External link\")\n\n"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "19962",
+  "title": "How to launch desktop from ubuntu usb install",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "186264",
+      "timestamp": "2014-07-31T15:15:31+00:00",
+      "author": "stevekramer99",
+      "content": "Hello,\n\nI installed ubuntu 12.04 on a usb flash drive using unetbootin but I don\u0027t get a desktop when it boots I get a linux terminal window - how do I launch the desktop?\n\nthanks!\n\nsteve\n\n"
+    }
+  ]
+}

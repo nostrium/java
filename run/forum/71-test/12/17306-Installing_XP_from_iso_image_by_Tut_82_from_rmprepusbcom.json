@@ -1,0 +1,358 @@
+{
+  "id": "17306",
+  "title": "Installing XP from iso image by Tut 82 from rmprepusb.com",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "158490",
+      "timestamp": "2012-07-29T11:31:56+00:00",
+      "author": "graffitikomp",
+      "content": "Hello,  \nI\u0027m trying to install XP from iso image on USB doing all instructions from tutorial 82 on rmprepusb.com .  \nEverything is right only to first restart after copying i386 to hard disk. I\u0027m testing on laptop which has not compatible/ide hdd option in bios so it works only on AHCI.  \nAfter first restart I\u0027ve got BSOD with code 07b - bootloader can\u0027t access to harddisk. I\u0027ve tried to mount winvblock.ima.gz and add these drivers by F6 - after it installation goes a step ahead but it can\u0027t copy ahci drivers to harddisk and after restart there\u0027s another 07b BSOD.  \nCan anybody help me how to manage it - I mean no integrating these drivers to iso image but adding them on start installation?   \n\n**Edited by graffitikomp, 29 July 2012 - 11:36 AM.**\n"
+    },
+    {
+      "id": "158495",
+      "timestamp": "2012-07-29T15:00:14+00:00",
+      "author": "steve6375",
+      "content": "You need to add a \\[MassStorageDrivers\\] and\\[OEMBootFIles\\] section to the answerfile with the correct drivers in one of the driver path folders. See  \n[http://www.msfn.org/...post__p__543073](http://www.msfn.org/board/topic/80061-sata-drivers-and-ris/page__view__findpost__p__543073 \"External link\")  \nThe files could be placed in drvstorage if you had this path in your OEMPnPDriversPath setting and in the $OEM$ textmode folder too.  \nSee also [http://www.deployvis...18/Default.aspx](http://www.deployvista.com/Blog/tabid/70/EntryID/18/Default.aspx \"External link\")   \n"
+    },
+    {
+      "id": "158531",
+      "timestamp": "2012-07-30T10:32:35+00:00",
+      "author": "graffitikomp",
+      "content": "I\u0027ve added everything correct :  \ndrivers in IMDISK/COPYFOLDER/ahci/$OEM$/$1/TEXTMODE folder  \nCF\u003dahci in menu.lst  \n\nIn answer file:  \nOemPnpDriversPath \u003d TEXTMODE  \n\n\\[MassStorageDrivers\\]  \n\"Intel® 82801GR/GH SATA RAID Controller (Desktop ICH7R/DH)\" \u003d \"OEM\"  \n\"Intel® 82801GR/GH SATA AHCI Controller (Desktop ICH7R/DH)\" \u003d \"OEM\"  \n\"Intel® 82801GBM SATA AHCI Controller (Mobile ICH7M)\" \u003d \"OEM\"  \n\"Intel® 82801FR SATA RAID Controller (Desktop ICH6R)\" \u003d \"OEM\"  \n\"Intel® 82801FR SATA AHCI Controller (Desktop ICH6R)\" \u003d \"OEM\"  \n\"Intel® 82801FBM SATA AHCI Controller (Mobile ICH6M)\" \u003d \"OEM\"  \n\"Intel® 82801ER SATA RAID Controller (Desktop ICH5R)\" \u003d \"OEM\"  \n\"Intel® 6300ESB SATA RAID Controller\" \u003d \"OEM\"  \n\n\\[OEMBootFiles\\]  \niaahci.cat  \niaahci.inf  \niastor.cat  \niastor.inf  \niastor.sys  \nIMSM_PRE.inf  \ntxtsetup.oem  \n\nBut installer stops at first file iaahci.cat - it can\u0027t find it. Script runwinnt.cmd copies these files to T:I386$OEM$$1TEXTMODE - why it didn\u0027t change $OEM$ and $1 ?   \n"
+    },
+    {
+      "id": "158532",
+      "timestamp": "2012-07-30T11:09:14+00:00",
+      "author": "steve6375",
+      "content": "Try putting files in $OEM$\\\\textmode as well as $oem$\\\\$1\\\\textmode  \n\n\u003e Selecting and Loading the Correct Mass-Storage Driver  \n\u003e If you are including new or updated drivers for mass-storage devices, you must add the new driver to **both** of these folders:  \n\u003e\n\u003e \\\\$OEM$\\\\Textmode  \n\u003e The location specified in the OemPnPDriversPath entry in the Unattend.txt file.  \n\u003e For example: \\\\$OEM$\\\\$1\\\\Pnpdrvrs\\\\storage\n\n"
+    },
+    {
+      "id": "158533",
+      "timestamp": "2012-07-30T11:33:39+00:00",
+      "author": "graffitikomp",
+      "content": "I\u0027ve copied TEXTMODE from $OEM$/$1 to $OEM$ , there is no error after running winnt32 from runwinnt.cmd but after restart there\u0027s still 07b stop error.   \n"
+    },
+    {
+      "id": "158538",
+      "timestamp": "2012-07-30T12:05:36+00:00",
+      "author": "steve6375",
+      "content": "Implies not correct driver. I might be quicker to test an XP install manually as in Tut #30. Do you know what the PCI ID is of the AHCI device?   \n"
+    },
+    {
+      "id": "158539",
+      "timestamp": "2012-07-30T12:17:43+00:00",
+      "author": "graffitikomp",
+      "content": "It\u0027s ICH8M , I\u0027ve tried tut 30, it works but I need alternative for low ram systems. Tut 30 needs to load whole iso to ram.   \n"
+    },
+    {
+      "id": "158540",
+      "timestamp": "2012-07-30T12:20:09+00:00",
+      "author": "steve6375",
+      "content": "Don\u0027t see ICH8M in your answer file??  \nDoes the PCI ID appear in the txtsetup.oem file?  \nIf not - you have the the wrong AHCI drivers (looks like an old one) - try the one in the Tut 30 download  \nadd  \n\"Intel(R ) ICH8M-E/M SATA AHCI Controller\"\u003d\"OEM\"  \n\n(check it matches *exactly* the text in the \\[scsi\\] section of txtsetup.oem)  \nto the list in the Mass Storage Drivers section - there should be no space after (R and before the ) but this forum mucks up text like ( R ) and changes it to ® and also changes t to TAB!  \n\nor use an F6 AHCI driver downloaded from the Intel site.   \n"
+    },
+    {
+      "id": "158588",
+      "timestamp": "2012-07-30T18:32:23+00:00",
+      "author": "graffitikomp",
+      "content": "My fault, I have had not correct answer file. Now it works. Thanks for your patience. And help of course.   \n"
+    },
+    {
+      "id": "158596",
+      "timestamp": "2012-07-30T19:34:26+00:00",
+      "author": "graffitikomp",
+      "content": "Now I\u0027ve got problem with xp installation with tut 30. The same laptop, ICH8M AHCI controller, WIndows loads drivers correctly by F6, then installation continues.  \nStep 2 starts from pendrive correctly, then continues in graphical mode: I put key, regional setting etc. Installation goes to the end and reboots computer.  \nAfter reboot I got 07b stop error. What to do?   \n\n**Edited by graffitikomp, 30 July 2012 - 07:50 PM.**\n"
+    },
+    {
+      "id": "158603",
+      "timestamp": "2012-07-30T20:06:48+00:00",
+      "author": "steve6375",
+      "content": "Not seen that before! Did you use both WinVBlock and Firadisk? Did you get the \u0027unsigned driver\u0027 prompts?  \nTry Tut 82 too?   \n"
+    },
+    {
+      "id": "158605",
+      "timestamp": "2012-07-30T20:21:32+00:00",
+      "author": "graffitikomp",
+      "content": "I tried Firadisk + ICH8M, didn\u0027t try WinVBlock + ICH8. I got unsigned driver prompts and accept them.  \nI told you before, tut82 works for me perfectly.   \n"
+    },
+    {
+      "id": "158606",
+      "timestamp": "2012-07-30T20:22:27+00:00",
+      "author": "steve6375",
+      "content": "If tut 82 works (not sure if you posted before it had fully completed), then must be a firadisk issue - try both firadisk and winvblock next time!   \n"
+    },
+    {
+      "id": "158607",
+      "timestamp": "2012-07-30T20:41:17+00:00",
+      "author": "graffitikomp",
+      "content": "You mean firadisk+winvblock+ich8 or only in pairs: firadisk+ich8(tested and unsuccessful) or winvblock+ich8?   \n"
+    },
+    {
+      "id": "158608",
+      "timestamp": "2012-07-30T20:48:59+00:00",
+      "author": "steve6375",
+      "content": "all 3 at same time or winvblock+ich8M - usually I just use all 3 (f+w+driver) if I want the best chance of it working!   \n"
+    },
+    {
+      "id": "158623",
+      "timestamp": "2012-07-31T08:18:09+00:00",
+      "author": "graffitikomp",
+      "content": "I\u0027ve loaded all 3 at same time. No success. 07b after restart.   \n"
+    },
+    {
+      "id": "158624",
+      "timestamp": "2012-07-31T08:52:10+00:00",
+      "author": "steve6375",
+      "content": "what is the PCI ID of the AHCI device? Is it in your INF files?  \n\nCheck log files setupact and setupapi...  \n\nXP creates the following log files:\n\n* setupact.log-This log file contains a list of actions in chronological order that occurred during the graphical installation phase, such as file copies and registry changes. The OS also stores setup error log entries in this file. XP writes the setupact.log file to the %systemroot% folder (e.g., c:windows).\n* setuperr.log-This log file contains a list of errors that occurred during installation and their severity (this log file should be 0 bytes in size if no errors occurred during installation). XP writes the setuperr.log file to the %systemroot% folder.\n* comsetup.log-This log file contains installation information about Optional Component Manager and COM+ components. XP writes the comsetup.log file to the %systemroot% folder.\n* setupapi.log-XP writes information to the setupapi.log file each time a .inf file executes, including any errors. XP writes the setupapi.log file to the %systemroot% folder.\n* netsetup.log-This log file contains information about workgroup and domain membership. XP writes the netsetup.log file to the %systemroot%debug folder.\n* setup.log-The Recovery Console (RC) uses the setup.log file to gain information about the Windows installation during repair operations. XP writes the setup.log file to the %systemroot%repair folder.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "158626",
+      "timestamp": "2012-07-31T08:57:07+00:00",
+      "author": "graffitikomp",
+      "content": "It\u0027s ICH8M, installer loads textmode drivers correctly, otherwise it can\u0027t see hdd. I mean installing with tutorial 30 - it\u0027s only iso file and winvblock image loaded before, no answer file so I don\u0027t need to set any path to drivers.  \n\nIn setupact.log there\u0027s an info about finishing installation in graphical mode, setuperr.log is empty, comsetup.log says that\u0027s setup finished, there\u0027s no error in setupapi.log, netsetup.log and setup.log.   \n\n**Edited by graffitikomp, 31 July 2012 - 09:04 AM.**\n"
+    },
+    {
+      "id": "158627",
+      "timestamp": "2012-07-31T09:00:16+00:00",
+      "author": "steve6375",
+      "content": "of course! Not had my coffee yet (just got up!)! I am not sure what is going on - try checking log files. If 82 works then manual method 30 should...   \n"
+    },
+    {
+      "id": "158628",
+      "timestamp": "2012-07-31T09:08:12+00:00",
+      "author": "graffitikomp",
+      "content": "It looks like installer loads drivers in textmode but doesn\u0027t copy them to windows and can\u0027t start from hdd. My question is why.  \nI tired to search all log files and find any ICH8 string there. No success. There\u0027s no any.   \n\n**Edited by graffitikomp, 31 July 2012 - 09:09 AM.**\n"
+    },
+    {
+      "id": "158629",
+      "timestamp": "2012-07-31T09:09:16+00:00",
+      "author": "steve6375",
+      "content": "Are they signed and with cat files - any clues in log files?   \n"
+    },
+    {
+      "id": "158630",
+      "timestamp": "2012-07-31T09:13:58+00:00",
+      "author": "steve6375",
+      "content": "Third time of asking - **what is the PCI ID** of the AHCI device (hint the answer should start with 8086!) and is the same PCI ID in the txtsetup.oem file against ICH8M?   \n"
+    },
+    {
+      "id": "158631",
+      "timestamp": "2012-07-31T09:47:10+00:00",
+      "author": "graffitikomp",
+      "content": "I\u0027ve got PCI ID 2829 \u003d \"Intel® ICH8M-E/M SATA AHCI Controller\".  \nIn setup.log I\u0027ve found that:  \nWINDOWSOemDiroemscs03.inf \u003d \"iaAHCI.inf\",\"8c72\",\"\",\"Intel® Rapid Storage Technology Driver\",\"iaStor.sys\"  \nWINDOWSsystem32driversiaStor.sys \u003d \"iaStor.sys\",\"7a09c\",\"\",\"Intel® Rapid Storage Technology Driver\",\"iaStor.sys\"  \nWINDOWSOemDiroemscs02.inf \u003d \"WinVBlk.Inf\",\"c080\",\"\",\"WinVBlock Driver Disk\",\"WinVBlk.inf\"  \nWINDOWSsystem32driversWVBlk32.Sys \u003d \"WVBlk32.Sys\",\"f368\",\"\",\"WinVBlock Driver Disk\",\"WinVBlk.inf\"  \nWINDOWSOemDiroemscs01.inf \u003d \"firadisk.inf\",\"db1f\",\"\",\"FiraDisk Installation Disk\",\"firadisk.inf\"  \nWINDOWSsystem32driversfiradisk.sys \u003d \"firadisk.sys\",\"cf69\",\"\",\"FiraDisk Installation Disk\",\"firadisk.inf\"   \n"
+    },
+    {
+      "id": "158658",
+      "timestamp": "2012-07-31T18:55:12+00:00",
+      "author": "graffitikomp",
+      "content": "So what should I do to make it work?   \n"
+    },
+    {
+      "id": "158659",
+      "timestamp": "2012-07-31T19:06:55+00:00",
+      "author": "steve6375",
+      "content": "How do you know it is 8086 2829 - did you run PCIID.ima.gz from Tutorial 30?  \nIf so, and the drivers and INF file are correct - then I don\u0027t know.   \n"
+    },
+    {
+      "id": "158490",
+      "timestamp": "2012-07-29T11:31:56+00:00",
+      "author": "graffitikomp",
+      "content": "Hello,  \nI\u0027m trying to install XP from iso image on USB doing all instructions from tutorial 82 on rmprepusb.com .  \nEverything is right only to first restart after copying i386 to hard disk. I\u0027m testing on laptop which has not compatible/ide hdd option in bios so it works only on AHCI.  \nAfter first restart I\u0027ve got BSOD with code 07b - bootloader can\u0027t access to harddisk. I\u0027ve tried to mount winvblock.ima.gz and add these drivers by F6 - after it installation goes a step ahead but it can\u0027t copy ahci drivers to harddisk and after restart there\u0027s another 07b BSOD.  \nCan anybody help me how to manage it - I mean no integrating these drivers to iso image but adding them on start installation?   \n\n**Edited by graffitikomp, 29 July 2012 - 11:36 AM.**\n"
+    },
+    {
+      "id": "158495",
+      "timestamp": "2012-07-29T15:00:14+00:00",
+      "author": "steve6375",
+      "content": "You need to add a \\[MassStorageDrivers\\] and\\[OEMBootFIles\\] section to the answerfile with the correct drivers in one of the driver path folders. See  \n[http://www.msfn.org/...post__p__543073](http://www.msfn.org/board/topic/80061-sata-drivers-and-ris/page__view__findpost__p__543073 \"External link\")  \nThe files could be placed in drvstorage if you had this path in your OEMPnPDriversPath setting and in the $OEM$ textmode folder too.  \nSee also [http://www.deployvis...18/Default.aspx](http://www.deployvista.com/Blog/tabid/70/EntryID/18/Default.aspx \"External link\")   \n"
+    },
+    {
+      "id": "158531",
+      "timestamp": "2012-07-30T10:32:35+00:00",
+      "author": "graffitikomp",
+      "content": "I\u0027ve added everything correct :  \ndrivers in IMDISK/COPYFOLDER/ahci/$OEM$/$1/TEXTMODE folder  \nCF\u003dahci in menu.lst  \n\nIn answer file:  \nOemPnpDriversPath \u003d TEXTMODE  \n\n\\[MassStorageDrivers\\]  \n\"Intel® 82801GR/GH SATA RAID Controller (Desktop ICH7R/DH)\" \u003d \"OEM\"  \n\"Intel® 82801GR/GH SATA AHCI Controller (Desktop ICH7R/DH)\" \u003d \"OEM\"  \n\"Intel® 82801GBM SATA AHCI Controller (Mobile ICH7M)\" \u003d \"OEM\"  \n\"Intel® 82801FR SATA RAID Controller (Desktop ICH6R)\" \u003d \"OEM\"  \n\"Intel® 82801FR SATA AHCI Controller (Desktop ICH6R)\" \u003d \"OEM\"  \n\"Intel® 82801FBM SATA AHCI Controller (Mobile ICH6M)\" \u003d \"OEM\"  \n\"Intel® 82801ER SATA RAID Controller (Desktop ICH5R)\" \u003d \"OEM\"  \n\"Intel® 6300ESB SATA RAID Controller\" \u003d \"OEM\"  \n\n\\[OEMBootFiles\\]  \niaahci.cat  \niaahci.inf  \niastor.cat  \niastor.inf  \niastor.sys  \nIMSM_PRE.inf  \ntxtsetup.oem  \n\nBut installer stops at first file iaahci.cat - it can\u0027t find it. Script runwinnt.cmd copies these files to T:I386$OEM$$1TEXTMODE - why it didn\u0027t change $OEM$ and $1 ?   \n"
+    },
+    {
+      "id": "158532",
+      "timestamp": "2012-07-30T11:09:14+00:00",
+      "author": "steve6375",
+      "content": "Try putting files in $OEM$\\\\textmode as well as $oem$\\\\$1\\\\textmode  \n\n\u003e Selecting and Loading the Correct Mass-Storage Driver  \n\u003e If you are including new or updated drivers for mass-storage devices, you must add the new driver to **both** of these folders:  \n\u003e\n\u003e \\\\$OEM$\\\\Textmode  \n\u003e The location specified in the OemPnPDriversPath entry in the Unattend.txt file.  \n\u003e For example: \\\\$OEM$\\\\$1\\\\Pnpdrvrs\\\\storage\n\n"
+    },
+    {
+      "id": "158533",
+      "timestamp": "2012-07-30T11:33:39+00:00",
+      "author": "graffitikomp",
+      "content": "I\u0027ve copied TEXTMODE from $OEM$/$1 to $OEM$ , there is no error after running winnt32 from runwinnt.cmd but after restart there\u0027s still 07b stop error.   \n"
+    },
+    {
+      "id": "158538",
+      "timestamp": "2012-07-30T12:05:36+00:00",
+      "author": "steve6375",
+      "content": "Implies not correct driver. I might be quicker to test an XP install manually as in Tut #30. Do you know what the PCI ID is of the AHCI device?   \n"
+    },
+    {
+      "id": "158539",
+      "timestamp": "2012-07-30T12:17:43+00:00",
+      "author": "graffitikomp",
+      "content": "It\u0027s ICH8M , I\u0027ve tried tut 30, it works but I need alternative for low ram systems. Tut 30 needs to load whole iso to ram.   \n"
+    },
+    {
+      "id": "158540",
+      "timestamp": "2012-07-30T12:20:09+00:00",
+      "author": "steve6375",
+      "content": "Don\u0027t see ICH8M in your answer file??  \nDoes the PCI ID appear in the txtsetup.oem file?  \nIf not - you have the the wrong AHCI drivers (looks like an old one) - try the one in the Tut 30 download  \nadd  \n\"Intel(R ) ICH8M-E/M SATA AHCI Controller\"\u003d\"OEM\"  \n\n(check it matches *exactly* the text in the \\[scsi\\] section of txtsetup.oem)  \nto the list in the Mass Storage Drivers section - there should be no space after (R and before the ) but this forum mucks up text like ( R ) and changes it to ® and also changes t to TAB!  \n\nor use an F6 AHCI driver downloaded from the Intel site.   \n"
+    },
+    {
+      "id": "158588",
+      "timestamp": "2012-07-30T18:32:23+00:00",
+      "author": "graffitikomp",
+      "content": "My fault, I have had not correct answer file. Now it works. Thanks for your patience. And help of course.   \n"
+    },
+    {
+      "id": "158596",
+      "timestamp": "2012-07-30T19:34:26+00:00",
+      "author": "graffitikomp",
+      "content": "Now I\u0027ve got problem with xp installation with tut 30. The same laptop, ICH8M AHCI controller, WIndows loads drivers correctly by F6, then installation continues.  \nStep 2 starts from pendrive correctly, then continues in graphical mode: I put key, regional setting etc. Installation goes to the end and reboots computer.  \nAfter reboot I got 07b stop error. What to do?   \n\n**Edited by graffitikomp, 30 July 2012 - 07:50 PM.**\n"
+    },
+    {
+      "id": "158603",
+      "timestamp": "2012-07-30T20:06:48+00:00",
+      "author": "steve6375",
+      "content": "Not seen that before! Did you use both WinVBlock and Firadisk? Did you get the \u0027unsigned driver\u0027 prompts?  \nTry Tut 82 too?   \n"
+    },
+    {
+      "id": "158605",
+      "timestamp": "2012-07-30T20:21:32+00:00",
+      "author": "graffitikomp",
+      "content": "I tried Firadisk + ICH8M, didn\u0027t try WinVBlock + ICH8. I got unsigned driver prompts and accept them.  \nI told you before, tut82 works for me perfectly.   \n"
+    },
+    {
+      "id": "158606",
+      "timestamp": "2012-07-30T20:22:27+00:00",
+      "author": "steve6375",
+      "content": "If tut 82 works (not sure if you posted before it had fully completed), then must be a firadisk issue - try both firadisk and winvblock next time!   \n"
+    },
+    {
+      "id": "158607",
+      "timestamp": "2012-07-30T20:41:17+00:00",
+      "author": "graffitikomp",
+      "content": "You mean firadisk+winvblock+ich8 or only in pairs: firadisk+ich8(tested and unsuccessful) or winvblock+ich8?   \n"
+    },
+    {
+      "id": "158608",
+      "timestamp": "2012-07-30T20:48:59+00:00",
+      "author": "steve6375",
+      "content": "all 3 at same time or winvblock+ich8M - usually I just use all 3 (f+w+driver) if I want the best chance of it working!   \n"
+    },
+    {
+      "id": "158623",
+      "timestamp": "2012-07-31T08:18:09+00:00",
+      "author": "graffitikomp",
+      "content": "I\u0027ve loaded all 3 at same time. No success. 07b after restart.   \n"
+    },
+    {
+      "id": "158624",
+      "timestamp": "2012-07-31T08:52:10+00:00",
+      "author": "steve6375",
+      "content": "what is the PCI ID of the AHCI device? Is it in your INF files?  \n\nCheck log files setupact and setupapi...  \n\nXP creates the following log files:\n\n* setupact.log-This log file contains a list of actions in chronological order that occurred during the graphical installation phase, such as file copies and registry changes. The OS also stores setup error log entries in this file. XP writes the setupact.log file to the %systemroot% folder (e.g., c:windows).\n* setuperr.log-This log file contains a list of errors that occurred during installation and their severity (this log file should be 0 bytes in size if no errors occurred during installation). XP writes the setuperr.log file to the %systemroot% folder.\n* comsetup.log-This log file contains installation information about Optional Component Manager and COM+ components. XP writes the comsetup.log file to the %systemroot% folder.\n* setupapi.log-XP writes information to the setupapi.log file each time a .inf file executes, including any errors. XP writes the setupapi.log file to the %systemroot% folder.\n* netsetup.log-This log file contains information about workgroup and domain membership. XP writes the netsetup.log file to the %systemroot%debug folder.\n* setup.log-The Recovery Console (RC) uses the setup.log file to gain information about the Windows installation during repair operations. XP writes the setup.log file to the %systemroot%repair folder.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "158626",
+      "timestamp": "2012-07-31T08:57:07+00:00",
+      "author": "graffitikomp",
+      "content": "It\u0027s ICH8M, installer loads textmode drivers correctly, otherwise it can\u0027t see hdd. I mean installing with tutorial 30 - it\u0027s only iso file and winvblock image loaded before, no answer file so I don\u0027t need to set any path to drivers.  \n\nIn setupact.log there\u0027s an info about finishing installation in graphical mode, setuperr.log is empty, comsetup.log says that\u0027s setup finished, there\u0027s no error in setupapi.log, netsetup.log and setup.log.   \n\n**Edited by graffitikomp, 31 July 2012 - 09:04 AM.**\n"
+    },
+    {
+      "id": "158627",
+      "timestamp": "2012-07-31T09:00:16+00:00",
+      "author": "steve6375",
+      "content": "of course! Not had my coffee yet (just got up!)! I am not sure what is going on - try checking log files. If 82 works then manual method 30 should...   \n"
+    },
+    {
+      "id": "158628",
+      "timestamp": "2012-07-31T09:08:12+00:00",
+      "author": "graffitikomp",
+      "content": "It looks like installer loads drivers in textmode but doesn\u0027t copy them to windows and can\u0027t start from hdd. My question is why.  \nI tired to search all log files and find any ICH8 string there. No success. There\u0027s no any.   \n\n**Edited by graffitikomp, 31 July 2012 - 09:09 AM.**\n"
+    },
+    {
+      "id": "158629",
+      "timestamp": "2012-07-31T09:09:16+00:00",
+      "author": "steve6375",
+      "content": "Are they signed and with cat files - any clues in log files?   \n"
+    },
+    {
+      "id": "158630",
+      "timestamp": "2012-07-31T09:13:58+00:00",
+      "author": "steve6375",
+      "content": "Third time of asking - **what is the PCI ID** of the AHCI device (hint the answer should start with 8086!) and is the same PCI ID in the txtsetup.oem file against ICH8M?   \n"
+    },
+    {
+      "id": "158631",
+      "timestamp": "2012-07-31T09:47:10+00:00",
+      "author": "graffitikomp",
+      "content": "I\u0027ve got PCI ID 2829 \u003d \"Intel® ICH8M-E/M SATA AHCI Controller\".  \nIn setup.log I\u0027ve found that:  \nWINDOWSOemDiroemscs03.inf \u003d \"iaAHCI.inf\",\"8c72\",\"\",\"Intel® Rapid Storage Technology Driver\",\"iaStor.sys\"  \nWINDOWSsystem32driversiaStor.sys \u003d \"iaStor.sys\",\"7a09c\",\"\",\"Intel® Rapid Storage Technology Driver\",\"iaStor.sys\"  \nWINDOWSOemDiroemscs02.inf \u003d \"WinVBlk.Inf\",\"c080\",\"\",\"WinVBlock Driver Disk\",\"WinVBlk.inf\"  \nWINDOWSsystem32driversWVBlk32.Sys \u003d \"WVBlk32.Sys\",\"f368\",\"\",\"WinVBlock Driver Disk\",\"WinVBlk.inf\"  \nWINDOWSOemDiroemscs01.inf \u003d \"firadisk.inf\",\"db1f\",\"\",\"FiraDisk Installation Disk\",\"firadisk.inf\"  \nWINDOWSsystem32driversfiradisk.sys \u003d \"firadisk.sys\",\"cf69\",\"\",\"FiraDisk Installation Disk\",\"firadisk.inf\"   \n"
+    },
+    {
+      "id": "158658",
+      "timestamp": "2012-07-31T18:55:12+00:00",
+      "author": "graffitikomp",
+      "content": "So what should I do to make it work?   \n"
+    },
+    {
+      "id": "158659",
+      "timestamp": "2012-07-31T19:06:55+00:00",
+      "author": "steve6375",
+      "content": "How do you know it is 8086 2829 - did you run PCIID.ima.gz from Tutorial 30?  \nIf so, and the drivers and INF file are correct - then I don\u0027t know.   \n"
+    },
+    {
+      "id": "158660",
+      "timestamp": "2012-07-31T19:11:59+00:00",
+      "author": "graffitikomp",
+      "content": "Yes, I ran PCIID.ima.gz from tutorial 30 and it works for textmode, installer can see hdd and install windows. After restart it can\u0027t.  \nYou told correct place: I didn\u0027t set place for them, they are on image of winvblock.   \n"
+    },
+    {
+      "id": "158661",
+      "timestamp": "2012-07-31T19:15:53+00:00",
+      "author": "steve6375",
+      "content": "Not sure what else to suggest other than check all log files to see if any clues...??   \n"
+    },
+    {
+      "id": "158669",
+      "timestamp": "2012-07-31T20:09:40+00:00",
+      "author": "graffitikomp",
+      "content": "ok, I\u0027ll check all log files an try to replace all ahci drivers in winvblcok.ima.gz with files downloaded from Intel site. Then I\u0027ll let you know about results.   \n"
+    },
+    {
+      "id": "158738",
+      "timestamp": "2012-08-02T11:10:08+00:00",
+      "author": "graffitikomp",
+      "content": "I\u0027ve replaced all ahci drivers in winvblock.ima.gz with files from Intel site. Everything is all right. End of topic.   \n"
+    },
+    {
+      "id": "158742",
+      "timestamp": "2012-08-02T11:39:07+00:00",
+      "author": "steve6375",
+      "content": "Well, not quite - what files did you replace (just the INF, SYS, CAT etc and not the txtsetup.oem???). It implies there is a problem in my download??? Can you attach your folder contents so I can test and compare?   \n"
+    },
+    {
+      "id": "158743",
+      "timestamp": "2012-08-02T11:42:28+00:00",
+      "author": "graffitikomp",
+      "content": "Heh, I\u0027ve replaced txtsetup.oem too and added winvblock \\\u0026 firadisk lines to the new txtsetup.oem. Simply replacing txtsetup.oem is causing that there\u0027s no firadisk \\\u0026 winvblock drivers in textmode after F6.   \n"
+    },
+    {
+      "id": "158744",
+      "timestamp": "2012-08-02T11:45:50+00:00",
+      "author": "steve6375",
+      "content": "You didn\u0027t use [winvblockJmicron_C600.ima.gz.gz](https://sites.google.com/a/rmprepusb.com/www/tutorials/install-xp-from-an-iso/winvblockJmicron_C600.ima.gz.gz?attredirects\u003d0 \"External link\") did you? That is only for jmicron or C600 systems - it won\u0027t work for other Intel chipsets.   \n"
+    },
+    {
+      "id": "158745",
+      "timestamp": "2012-08-02T11:48:55+00:00",
+      "author": "graffitikomp",
+      "content": "No, I did use winvblock.ima.gz - it works partially, installer can load the drivers but doesn\u0027t install them to Windows so there\u0027s an error after restart.   \n"
+    }
+  ]
+}

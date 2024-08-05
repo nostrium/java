@@ -1,0 +1,16 @@
+{
+  "id": "10241",
+  "title": "PoP Boot Manager 5.0.8 released",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "89509",
+      "timestamp": "2010-01-24T16:50:02+00:00",
+      "author": "ireneuszp",
+      "content": "\u003e Hello,  \n\u003e\n\u003e PoP Boot Manager 5.0.8 released, boot logical partitions added  \n\u003e\n\u003e [http://www.plop.at](http://www.plop.at \"External link\")  \n\u003e\n\u003e Best regards  \n\u003e Elmar Hanlhofer\n\n[http://download.plop...plpbt-5.0.8.zip](http://download.plop.at/files/bootmngr/plpbt-5.0.8.zip \"External link\")  \n\n\u003e Sat 23/Jan/2010  \n\u003e\n\u003e PLoP Boot Manager 5.0.8 released. From time to time, people ask to boot logical partitions. Now i added this feature. You can setup the logical partition in the profiles/linked partitions by pressing \"l\" key.\n\n![Posted Image](http://www.plop.at/images/plop_pagetop.gif)  \n\n![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \n"
+    }
+  ]
+}

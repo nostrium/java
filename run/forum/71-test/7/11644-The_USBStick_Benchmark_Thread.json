@@ -1,0 +1,448 @@
+{
+  "id": "11644",
+  "title": "The USB-Stick Benchmark Thread",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "101931",
+      "timestamp": "2010-06-08T17:30:02+00:00",
+      "author": "MedEvil",
+      "content": "USB-Sticks are a pain in the behind! :smile:  \n\nNot only, do most of them not feature any kind of useful technical data, on the shiping box, but the fact, that if one feature is in one stick better than in another, does not mean that this goes for all features.   \nSo instead of simply extrapolating from one known value, an actual test suite is needed, to get any idea, if the stick is any good for the intended purpose.  \n\nHere\u0027s were benchmark programs enter the picture.  \n\nA good benchmark program should be easy to use and easy to understand, yet give all the necessary informations.  \n\nFor this short review, i already eliminated all programs, which can test only a single feature or require expert knowledge to even set the test properly up.  \n\nThe survivors are:  \n- h2testw  \n- Atto Disk Benchmark  \n- Crystal Disk Mark  \n- AS SSD Benchmark  \n- HD Tune  \n\nh2testw  \n----------  \nh2testw is a very simple program. It just tests sequentiell read and write and creates an error log for the tested area.  \nValues shown are usually a bit lower than what other tools show.  \nVery easy to use and good enough for all, who move only big files. Though, where big begins, differs from stick to stick.  \n\n[![H2testw.gif](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016417_thumb.png)](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016417.gif \"H2testw.gif - Size: 12.79KB\"){#ipb-attach-url-10978-0-09112900-1676066647}   \n\nAtto Disk Benchmark  \n-------------------------  \nAtto Disk Benchmark is a very nice tool, as it shows the read and write rates for any number of different file sizes and thereby gives one a good idea, what performance to expect from the drive in any situation.  \nUnfortunately all values show sequentiell operations. Not a single random access test. Also no display of accesstimes.  \nBut if you use your stick solely for transporting files from her to there, this is the only tool you will ever need!  \n\n[![Atto.gif](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016399_thumb.png)](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016399.gif \"Atto.gif - Size: 29.62KB\"){#ipb-attach-url-10977-0-09084500-1676066647}   \n\nCrystal Disk Mark  \n---------------------  \nA very nice and simple interface, which gives you not the in depth view of Atto, but instead an overview of the usefulness of the stick in various usage scenarios.   \nOn top we see the top read and write speeds, which only big files will ever have.  \nThen we have the 4k and 512k random tests. Which show performance while reading or writing the usual small individual files, like pictures and documents.  \nAnd last a test, which is suppose to emulated the performance of the stick, when a program is directly run from it.  \n\n[![CrystalDM.jpg](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016456_thumb.jpg)](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016456.jpg \"CrystalDM.jpg - Size: 46.13KB\"){#ipb-attach-url-10980-0-09133200-1676066647}   \n\nAS SSD Benchmark  \n------------------------  \nIn essence a Crystal Disk Mark on steroids, with some major drawbacks, i don\u0027t want to keep from you.  \nA:) This is a .Net application, so imo not usable in a PE  \nB:) There is no way to select the size to be tested. It always uses 1GB, which means easily hours for the 4k tests.  \n\n[![ASSSD.gif](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016383_thumb.png)](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016383.gif \"ASSSD.gif - Size: 38.34KB\"){#ipb-attach-url-10976-0-09096500-1676066647} (Despite the picture, this comes also with an english interface!)  \n\nHD Tune  \n-----------  \nA classic. It gives top read speed and read access time. Equiped with those two and some experience on can easy guess the performance loss with smaller files. However the missing write tests, make it only useful for people, who hardly ever write to the stick, like for the use as a boot stick.  \n(Write tests are available in the buyware HD Tune Pro.)  \n\n[![HD_Tune.gif](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016433_thumb.png)](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016433.gif \"HD_Tune.gif - Size: 29.74KB\"){#ipb-attach-url-10979-0-09125200-1676066647}   \n\nLast, but not least two recommendations from me.  \n\nThe SanDisk Cruzer Micro Skin, is without a doubt the most sturdy USB-Stick, i have ever seen.  \nWhat makes this stick so sturdy is, the genius constructed shell. Instead of the usual, where the connector is just soldered to PCB and the PCB then put in two plastic shells, here the outer connector and the shell holding the PCB are **a single metal part** wrapped in a thin silicon skin.   \nA friend of mine managed, by accident, to lift his whole PC of the table by this stick.   \nThe HDD was toast afterwards, but the stick didn\u0027t even had a bend.  \n- top read speed 24MB/s   \n- top write speed 10MB/s   \n- price \\~16Euro for the 8GB version  \n\n[![SanDisk.jpg](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016491_thumb.jpg)](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016491.jpg \"SanDisk.jpg - Size: 5.02KB\"){#ipb-attach-url-10982-0-09147600-1676066647}   \n\nThe Supertalent Pico-?, deliver the best boot performance for the buck, but also have a lot of problems.  \nFor the Pico-C, SuperTalent seems to have reinvented the USB standard to their liking. Many people report, that the stick is about 0,5mm too thick and has to be forced into the port on first use. Once the port is widened, it works good.  \nTo give you an idea, what forcing in means, take this: More than one person has reported, that he actually broke the port while trying to get the stick in! :smile:  \nThe Pico-A line does not have this problem. The stick fits easily in the USB-Port and delivers even a bit better performance. (Since i only own this version, the swivel to be exact, i can only compare to what i\u0027ve read about the C.)  \nHOWEVER the stick is very thin and made from plastic. I would really think twice, before putting it into a port, while being angry. ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \n- top read speed 30MB/s   \n- top write speed 12MB/s   \n- price \\~18Euro for the 8GB version  \n\nIf you\u0027re looking for a stick with **any** higher write performance, you immediately double the price tag.  \n\n[![Pico_A.jpg](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016475_thumb.jpg)](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016475.jpg \"Pico_A.jpg - Size: 7.02KB\"){#ipb-attach-url-10981-0-09140500-1676066647}   \n\n\u003cbr /\u003e\n\nReviews and recommendationss for other good or even better benchmark programs and USB-Sticks are welcome. :smile:  \n\n\u003cbr /\u003e\n\n![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n"
+    },
+    {
+      "id": "101940",
+      "timestamp": "2010-06-08T19:36:14+00:00",
+      "author": "steve6375",
+      "content": "Hi  \nMay be useful for some people - RMPrepUSB now has a speed test function - it does a 60MiB read starting from Block 0 followed by a 60MiB write back. Takes just a few seconds and appends results to a .csv file so you can build up a results file. The test uses raw block writes and so the filesystem is irrelevant. This was done so I could compare UFDs just for raw speed.  \n\na .csv file is shown below:  \n\n**USB MODEL SIZE (MiB) Read/Write SPEED (MiB/S)**   \nVerbatim STORE N GO USB Device 7639 READ 29.8  \nVerbatim STORE N GO USB Device 7639 WRITE 9.2  \nHP v135w USB Device 15423 READ 26.2  \nHP v135w USB Device 15423 WRITE 10.3  \nUSB DISK Pro USB Device 990 READ 9.8  \nUSB DISK Pro USB Device 990 WRITE 8.5  \nTakeMS MEM-Drive Smart USB Device 7711 READ 33.1  \nTakeMS MEM-Drive Smart USB Device 7711 WRITE 6.1  \nLEXAR JD SECURE USB Device 489 READ 15.9  \nLEXAR JD SECURE USB Device 489 WRITE 3.8  \nSanDisk Cruzer USB Device 3835 READ 18.6  \nSanDisk Cruzer USB Device 3835 WRITE 4.6  \nKingston DataTraveler 2.0 USB Device 953 READ 14.6  \nKingston DataTraveler 2.0 USB Device 953 WRITE 5.8  \nGeneric USB Flash Disk USB Device 124 READ 5  \nGeneric USB Flash Disk USB Device 124 WRITE 0.9  \nLexar JD FireFly USB Device 7647 READ 21.7  \nLexar JD FireFly USB Device 7647 WRITE 7.1  \nPatriot Memory USB Device 7643 READ 31.9  \nPatriot Memory USB Device 7643 WRITE 7.7  \nLexar JD FireFly USB Device 15295 READ 22  \nLexar JD FireFly USB Device 15295 WRITE 10.1  \nHP v135w USB Device 3853 READ 22.2  \nHP v135w USB Device 3853 WRITE 4.7  \nNetac OnlyDisk USB Device 956 READ 14.7  \nNetac OnlyDisk USB Device 956 WRITE 3.3  \nUSB 2.0 USB Device 16383 READ 18.6  \nUSB 2.0 USB Device 16383 WRITE 3.5  \nIntenso Rainbow USB Device 15423 READ 32.9  \nIntenso Rainbow USB Device 15423 WRITE 6.1  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nComparing to CrystalMark for a few USB sticks...  \ne.g. RMPrepUSB result in () in MB (converted from MiB)  \n\nUnknown make 1 Seq Rd\u003d 9.69(10.27) Seq Wr\u003d8.52(8.91)  \nUSB Disk Pro Seq Rd\u003d19.32(19.39) Seq Wr\u003d3.41(3.57)  \nTakeMS MEM-Drive Smart USB Device Seq Rd\u003d34.24(34.7) Seq Wr\u003d6.26(6.40)  \n\nThe results are reasonably comparable to Crystal Mark.  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "101944",
+      "timestamp": "2010-06-08T20:59:25+00:00",
+      "author": "patsch",
+      "content": "@MedEvil: AS SSD Benchmark works in PE (win7 pe se and win7rescuepe) as seen in this thread:  \n[http://www.boot-land...?...ost\\\u0026p\u003d99997](http://www.boot-land.net/forums/index.php?showtopic\u003d11363\u0026view\u003dfindpost\u0026p\u003d99997 \"External link\")   \n"
+    },
+    {
+      "id": "101945",
+      "timestamp": "2010-06-08T21:04:12+00:00",
+      "author": "MedEvil",
+      "content": "Steve are you sure your testing algorythm is working right?  \nSome of the read speeds seem too high.  \n\n\u003e **USB MODEL SIZE (MiB) Read/Write SPEED (MiB/S)**   \n\u003e Verbatim STORE N GO USB Device 7639 READ 29.8  \n\u003e Verbatim STORE N GO USB Device 7639 WRITE 9.2  \n\u003e\n\u003e TakeMS MEM-Drive Smart USB Device 7711 READ 33.1  \n\u003e TakeMS MEM-Drive Smart USB Device 7711 WRITE 6.1  \n\u003e\n\u003e Intenso Rainbow USB Device 15423 READ 32.9  \n\u003e Intenso Rainbow USB Device 15423 WRITE 6.1\nI found the Intenso 8GB Rainbow listed with r:28 w6,5 at [Intensos site](http://intenso.de/produkte.php?kategorie\u003d23\u0026\u0026produkt\u003d1255722975 \"External link\"), would be a first to market a stick slower than it actually is.  \nAnd the Verbatim should have the speed of r:10 w:4 [acording to Verbatim](http://www.verbatim.de/de_7/product_store-n-go-usb-flash-drive-8gb_21019.html \"External link\").   \n\n\u003cbr /\u003e\n\n:smile:   \n"
+    },
+    {
+      "id": "101950",
+      "timestamp": "2010-06-08T22:08:30+00:00",
+      "author": "steve6375",
+      "content": "CrystalMark Sequential results in MB (with mine in (MB) )  \n\n\u003cbr /\u003e\n\nverbatim 26.1(29.8) 7.5(9.2) (AS SSD Benchmark rd\u003d25.5 wr\u003d8.95)  \nIntenso 22.1 (32.9) 4.36(6.1) (AS SSD Benchmark rd\u003d25.7 wr\u003d5.3)  \n\nI use API raw writes with no OS filesystem overhead and read/write an entire chunk of 60MB with one API call.  \n\nSo these figures are best possible case. You would be hard pressed to achieve these results through an OS filesystem and clusters.   \n"
+    },
+    {
+      "id": "101953",
+      "timestamp": "2010-06-08T22:44:02+00:00",
+      "author": "MedEvil",
+      "content": "\u003e @MedEvil: AS SSD Benchmark works in PE (win7 pe se and win7rescuepe) as seen in this thread:\nDidn\u0027t meant \u0027unusable\u0027 as in \u0027it will not work\u0027 but as in \u0027makes no sense sizewise\u0027. But for those, who have .net included in their PE anyway, surely a nice program.  \n\n:smile:   \n"
+    },
+    {
+      "id": "102263",
+      "timestamp": "2010-06-13T18:02:07+00:00",
+      "author": "MedEvil",
+      "content": "Had today to find out about the influence of the hostmachine on the Benchmarks. :smile:  \n\nWhile visiting a friend, i insisted on a retest of his brand new stick, since the values he told me, were way beyond the ones the manufacturers gave.  \n\nYet every tool confirmed the values and cache was indeed turned off.  \nSo we tested mine.   \nOn my computer it gives me: 12MB/s write- and 30MB/s readspeed.  \nOn his computer it gave: 7MB/s write- and 35MB/s readspeed.  \n\nNow curious, we went to his sons computer and my stick gave: 14MB/s write- and 34MB/s readspeed.  \n\n7MB difference writespeed that\u0027s almost twice what any nonamestick can deliver! :smile:  \n\n:smile:   \n"
+    },
+    {
+      "id": "102267",
+      "timestamp": "2010-06-13T18:21:46+00:00",
+      "author": "steve6375",
+      "content": "Which benchmarks and which OS\u0027s?  \n\n[http://www.tomshardw...et,1940-19.html](http://www.tomshardware.com/reviews/x48-790i-chipset,1940-19.html \"External link\")   \n"
+    },
+    {
+      "id": "102293",
+      "timestamp": "2010-06-13T20:31:15+00:00",
+      "author": "MedEvil",
+      "content": "Atto and Crystal. On mine it was XP, on the one of my friend, it was Vista and on the one of his son, it was Win7.  \n\n:smile:   \n"
+    },
+    {
+      "id": "102295",
+      "timestamp": "2010-06-13T20:46:04+00:00",
+      "author": "MedEvil",
+      "content": "Those Benchmark results look terrible. On my old P4, the USB HDD reached between 31 and 32 MB/s. (measured with HD-Tune)  \n\n:smile:   \n"
+    },
+    {
+      "id": "102306",
+      "timestamp": "2010-06-13T21:38:20+00:00",
+      "author": "MedEvil",
+      "content": "Tested all my USB-Sticks on all my computers. (just with Atto)  \nWorst and best values for any transfer size for a stick, does not vary more than 500KB/s.  \n\nFrom this tests i would say, that neighter CPU performance nor bus speed nor onboard or PCi card solution make any difference. The only possible difference left would be the OS. (All my machines run XP.)  \nBut seriously? :smile:  \n\n\u003cbr /\u003e\n\n:smile:   \n"
+    },
+    {
+      "id": "102307",
+      "timestamp": "2010-06-13T21:55:50+00:00",
+      "author": "MedEvil",
+      "content": "Little Warning!  \n\nDifferent HD-Tune versions measure different speed values on the same drive.   \nVersion 2.53 (included in NaughtyPE) measures consistently \\~4MB/s less then version 2.55, which is more in **tune** :smile: with results from other programs.  \n\n:smile:   \n"
+    },
+    {
+      "id": "102404",
+      "timestamp": "2010-06-15T10:59:29+00:00",
+      "author": "steve6375",
+      "content": "Feedback from Atto about their benchmark test:  \n\n\\\u003e\\\u003e\\\u003eOur Benchmark Tool uses the Windows CreateFile, ReadFile and WriteFile APIs. It creates a file on the drive, then goes through one pass to write the entire file to get the disk space allocated to the file, then it runs the tests. It does not do raw I/O because there is no raw I/O API that allows multiple outstanding requests at a time (queue depth).  \n\nSo any results would be dependant on the OS, filesystem, chipset and driver.   \n"
+    },
+    {
+      "id": "102414",
+      "timestamp": "2010-06-15T12:27:29+00:00",
+      "author": "MedEvil",
+      "content": "\u003e So any results would be dependant on the OS, filesystem, chipset and driver.\nSince USB drivers are always Windows default, have you ever seen a comparison of the performance of the different Windows in this regard?  \n\nMaybe running the tests again on those computers, but this time from a XP-PE, Vista-PE and a Win7-PE would be interesting?  \n\n\u003cbr /\u003e\n\n![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n"
+    },
+    {
+      "id": "102434",
+      "timestamp": "2010-06-15T18:01:20+00:00",
+      "author": "MedEvil",
+      "content": "Did a test on my new computer.  \nTested with Atto my little old stick, which i already used for the snapshots, because it is mostly empty these days.  \nWin 7 home premium 64Bit full install vs. NaughyPe 32Bit (XP)  \nNaughtyPE mostly brought the same speed, as my test on my WinbuilderPC. Was just between 500-800KB/s slower.  \nWin7 showed, though still on the same machine, even 1MB/s less. ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\nI would have sworn, that with the right chipset - and processor drivers, that Win7 should have had an advantage. Appearantly i was wrong.  \n**XP rulez!** :wink:  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "102514",
+      "timestamp": "2010-06-16T16:31:25+00:00",
+      "author": "MedEvil",
+      "content": "Technology is a wondrous thing.  \n\nRaced my stone age USB1.1 Stick against a USB2.0 one in Atto, both on a USB1.1 and a USB2.0 port.   \nGuess which won! Wrong! ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nWould you have guessed that a USB1.1-Stick can outperform a USB2.0-Stick?  \nAnd boy can it outperform!  \nOn the USB1.1 port, up to 16KB it writes more than twice as fast, to then with 32KB go for 50% faster and then settle for being 25% faster for the rest of the tests.  \nReadspeeds are consistently, but not significantly, always 1 to 5KB/s higher.  \n\nIf anyone can explain this, please don\u0027t hassitate! ;-)  \n\nOK, switch to the USB2.0 port. Stone age stick don\u0027t stand a chance here, right?  \nGuess what? Up to 16KB it again outperforms the faster stick in write speed, but then looses big time once the USB2.0 stick finally kicks into high gear.  \n\nYet interesting to notice is, that the old stick still more than doubles it top write speed and more than triples its read speed, against the USB1.1 port test.   \n\nI guess only the gods of USB-Sticks can explain, why a cheap USB1.1 stick has the ability to perform way better than 1.1 speed, while a brand USB2.0 stick can\u0027t even perform close to 2.0 speeds. ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "102542",
+      "timestamp": "2010-06-16T19:32:56+00:00",
+      "author": "steve6375",
+      "content": "Both sound slow to me, should be in MB/s not KB/s ?? ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n"
+    },
+    {
+      "id": "102554",
+      "timestamp": "2010-06-16T20:56:33+00:00",
+      "author": "eboyhan",
+      "content": "I got an email today from you guys about USB flash drive performance and referencing this thread. I recently went shopping for a largish high performance UFD to serve as a multi-os boot key. The drive that I came up with was the Corsair Flash Voyager GTR 32GB. MFR claims 34GB read 28 GB write. Benchmarks (there is a good recent one at hardwarecanucks.com) show that for large block sequential IO 34GB read 20GB write is probably closer to the mark. Just thought I\u0027d mention it here as I didn\u0027t see it mentioned in any of the tables. It is relatively new, and physically large (about the size of a Swiss army knife).  \n\nCheers,  \nEd Boyhan   \n"
+    },
+    {
+      "id": "102582",
+      "timestamp": "2010-06-17T07:02:37+00:00",
+      "author": "jfk001",
+      "content": "Hello!  \n\n```\nOCZ THROTTLE 32GB\u0026#58;\n\n-----------------------------------------------------------------------\n\nCrystalDiskMark 3.0 x64 \u0026#40;C\u0026#41; 2007-2010 hiyohiyo\n\n\t\t\t\t\t\t   Crystal Dew World \u0026#58; http\u0026#58;//crystalmark.info/\n\n-----------------------------------------------------------------------\n\n* MB/s \u003d 1,000,000 byte/s \u0026#91;SATA/300 \u003d 300,000,000 byte/s\u0026#93;\n\n\n\n\t\t   Sequential Read \u0026#58;\t29.751 MB/s\n\n\t\t  Sequential Write \u0026#58;\t24.400 MB/s\n\n\t\t Random Read 512KB \u0026#58;\t30.364 MB/s\n\n\t\tRandom Write 512KB \u0026#58;\t18.340 MB/s\n\n\tRandom Read 4KB \u0026#40;QD\u003d1\u0026#41; \u0026#58;\t 6.270 MB/s \u0026#91;  1530.8 IOPS\u0026#93;\n\n   Random Write 4KB \u0026#40;QD\u003d1\u0026#41; \u0026#58;\t 1.546 MB/s \u0026#91;   377.5 IOPS\u0026#93;\n\n   Random Read 4KB \u0026#40;QD\u003d32\u0026#41; \u0026#58;\t 7.195 MB/s \u0026#91;  1756.7 IOPS\u0026#93;\n\n  Random Write 4KB \u0026#40;QD\u003d32\u0026#41; \u0026#58;\t 1.504 MB/s \u0026#91;   367.2 IOPS\u0026#93;\n\n\n\n  Test \u0026#58; 100 MB \u0026#91;Z\u0026#58; 28.1% \u0026#40;8.4/30.1 GB\u0026#41;\u0026#93; \u0026#40;x1\u0026#41;\n\n  Date \u0026#58; 2010/06/17 8\u0026#58;47\u0026#58;33\n\n\tOS \u0026#58; Windows 7 Enterprise Edition \u0026#91;6.1 Build 7600\u0026#93; \u0026#40;x64\u0026#41;\n```\n\n\u003cbr /\u003e\n\n```\nCorsair VoyagerGT 8GB\u0026#58;\n\n-----------------------------------------------------------------------\n\nCrystalDiskMark 3.0 x64 \u0026#40;C\u0026#41; 2007-2010 hiyohiyo\n\n\t\t\t\t\t\t   Crystal Dew World \u0026#58; http\u0026#58;//crystalmark.info/\n\n-----------------------------------------------------------------------\n\n* MB/s \u003d 1,000,000 byte/s \u0026#91;SATA/300 \u003d 300,000,000 byte/s\u0026#93;\n\n\n\n\t\t   Sequential Read \u0026#58;\t23.614 MB/s\n\n\t\t  Sequential Write \u0026#58;\t17.833 MB/s\n\n\t\t Random Read 512KB \u0026#58;\t23.481 MB/s\n\n\t\tRandom Write 512KB \u0026#58;\t10.057 MB/s\n\n\tRandom Read 4KB \u0026#40;QD\u003d1\u0026#41; \u0026#58;\t 5.170 MB/s \u0026#91;  1262.3 IOPS\u0026#93;\n\n   Random Write 4KB \u0026#40;QD\u003d1\u0026#41; \u0026#58;\t 0.105 MB/s \u0026#91;\t25.6 IOPS\u0026#93;\n\n   Random Read 4KB \u0026#40;QD\u003d32\u0026#41; \u0026#58;\t 6.418 MB/s \u0026#91;  1566.9 IOPS\u0026#93;\n\n  Random Write 4KB \u0026#40;QD\u003d32\u0026#41; \u0026#58;\t 0.116 MB/s \u0026#91;\t28.2 IOPS\u0026#93;\n\n\n\n  Test \u0026#58; 100 MB \u0026#91;X\u0026#58; 58.7% \u0026#40;4638.7/7904.0 MB\u0026#41;\u0026#93; \u0026#40;x1\u0026#41;\n\n  Date \u0026#58; 2010/06/17 9\u0026#58;00\u0026#58;11\n\n\tOS \u0026#58; Windows 7 Enterprise Edition \u0026#91;6.1 Build 7600\u0026#93; \u0026#40;x64\u0026#41;\n```\n\n```\nCorsair Flash Voyager 32GB\u0026#58;\n\n-----------------------------------------------------------------------\n\nCrystalDiskMark 3.0 x64 \u0026#40;C\u0026#41; 2007-2010 hiyohiyo\n\n\t\t\t\t\t\t   Crystal Dew World \u0026#58; http\u0026#58;//crystalmark.info/\n\n-----------------------------------------------------------------------\n\n* MB/s \u003d 1,000,000 byte/s \u0026#91;SATA/300 \u003d 300,000,000 byte/s\u0026#93;\n\n\n\n\t\t   Sequential Read \u0026#58;\t23.289 MB/s\n\n\t\t  Sequential Write \u0026#58;\t12.421 MB/s\n\n\t\t Random Read 512KB \u0026#58;\t23.217 MB/s\n\n\t\tRandom Write 512KB \u0026#58;\t 0.915 MB/s\n\n\tRandom Read 4KB \u0026#40;QD\u003d1\u0026#41; \u0026#58;\t 5.048 MB/s \u0026#91;  1232.4 IOPS\u0026#93;\n\n   Random Write 4KB \u0026#40;QD\u003d1\u0026#41; \u0026#58;\t 0.007 MB/s \u0026#91;\t 1.7 IOPS\u0026#93;\n\n   Random Read 4KB \u0026#40;QD\u003d32\u0026#41; \u0026#58;\t 5.389 MB/s \u0026#91;  1315.7 IOPS\u0026#93;\n\n  Random Write 4KB \u0026#40;QD\u003d32\u0026#41; \u0026#58;\t 0.007 MB/s \u0026#91;\t 1.7 IOPS\u0026#93;\n\n\n\n  Test \u0026#58; 100 MB \u0026#91;Y\u0026#58; 22.0% \u0026#40;6.7/30.2 GB\u0026#41;\u0026#93; \u0026#40;x1\u0026#41;\n\n  Date \u0026#58; 2010/06/17 8\u0026#58;54\u0026#58;45\n\n\tOS \u0026#58; Windows 7 Enterprise Edition \u0026#91;6.1 Build 7600\u0026#93; \u0026#40;x64\u0026#41;\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "102591",
+      "timestamp": "2010-06-17T10:20:28+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Benchmarks (there is a good recent one at hardwarecanucks.com) show that for large block sequential IO 34GB read 20GB write is probably closer to the mark.\nI had a look at the review and i wouldn\u0027t trust their tests. I have several SanDisk Cruzer Micro and not one performs like their test show. They usually give between 22 and 24 MB/s not over 29MB/s as their test shows.  \n\nWhen you get it, maybe you can run a test and post here.  \n\n![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n"
+    },
+    {
+      "id": "102592",
+      "timestamp": "2010-06-17T10:25:08+00:00",
+      "author": "stressfreesoul",
+      "content": "I use both the new and old Transcend Jetflash 8Gb, Samsung chips (supposed to be fast)  \n\nNew - Write/8.4Mb Read/32.4Mb  \nOld - Write/12.5Mb Read/19.5Mb  \n\nFormatted in Fat32, both empty after a fresh format.  \nIt would seem they both have their advantages...  \n\nOn the subject of fast read/write, the Corsair Flash Voyager GTR 128Gb... are the chips arranged in RAID0 to attain such high writes?   \n"
+    },
+    {
+      "id": "102595",
+      "timestamp": "2010-06-17T10:49:29+00:00",
+      "author": "MedEvil",
+      "content": "\u003e On the subject of fast read/write, the Corsair Flash Voyager GTR 128Gb... are the chips arranged in RAID0 to attain such high writes?\nIt uses a quad channel controller.  \n\n![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n"
+    },
+    {
+      "id": "102636",
+      "timestamp": "2010-06-17T18:13:23+00:00",
+      "author": "mateuszek",
+      "content": "Kingston Data Traveler 2gb  \n\n-----------------------------------------------------------------------  \nCrystalDiskMark 3.0 © 2007-2010 hiyohiyo  \nCrystal Dew World : [http://crystalmark.info/](http://crystalmark.info/ \"External link\")  \n-----------------------------------------------------------------------  \n\\* MB/s \u003d 1,000,000 byte/s \\[SATA/300 \u003d 300,000,000 byte/s\\]  \n\nSequential Read : 19.955 MB/s  \nSequential Write : 8.065 MB/s  \nRandom Read 512KB : 19.903 MB/s  \nRandom Write 512KB : 2.337 MB/s  \nRandom Read 4KB (QD\u003d1) : 5.620 MB/s \\[ 1372.0 IOPS\\]  \nRandom Write 4KB (QD\u003d1) : 0.026 MB/s \\[ 6.4 IOPS\\]  \nRandom Read 4KB (QD\u003d32) : 6.034 MB/s \\[ 1473.1 IOPS\\]  \nRandom Write 4KB (QD\u003d32) : 0.033 MB/s \\[ 8.0 IOPS\\]  \n\nTest : 50 MB \\[N: 0.0% (0.0/1304.8 MB)\\] (x1)  \nDate : 2010/06/17 20:11:58  \nOS : Windows 7 Enterprise Edition \\[6.1 Build 7600\\] (x86)   \n"
+    },
+    {
+      "id": "102637",
+      "timestamp": "2010-06-17T18:17:03+00:00",
+      "author": "mateuszek",
+      "content": "Sandisk Cruzer Titanium 8gb  \n\n-----------------------------------------------------------------------  \nCrystalDiskMark 3.0 © 2007-2010 hiyohiyo  \nCrystal Dew World : [http://crystalmark.info/](http://crystalmark.info/ \"External link\")  \n-----------------------------------------------------------------------  \n\\* MB/s \u003d 1,000,000 byte/s \\[SATA/300 \u003d 300,000,000 byte/s\\]  \n\nSequential Read : 28.831 MB/s  \nSequential Write : 9.296 MB/s  \nRandom Read 512KB : 28.807 MB/s  \nRandom Write 512KB : 2.791 MB/s  \nRandom Read 4KB (QD\u003d1) : 5.555 MB/s \\[ 1356.2 IOPS\\]  \nRandom Write 4KB (QD\u003d1) : 0.033 MB/s \\[ 8.1 IOPS\\]  \nRandom Read 4KB (QD\u003d32) : 6.281 MB/s \\[ 1533.3 IOPS\\]  \nRandom Write 4KB (QD\u003d32) : 0.045 MB/s \\[ 11.1 IOPS\\]  \n\nTest : 50 MB \\[M: 17.8% (1364.7/7671.3 MB)\\] (x1)  \nDate : 2010/06/17 20:16:27  \nOS : Windows 7 Enterprise Edition \\[6.1 Build 7600\\] (x86)   \n"
+    },
+    {
+      "id": "102639",
+      "timestamp": "2010-06-17T18:21:47+00:00",
+      "author": "mateuszek",
+      "content": "Lexar retrax 16GB  \n\n-----------------------------------------------------------------------  \nCrystalDiskMark 3.0 © 2007-2010 hiyohiyo  \nCrystal Dew World : [http://crystalmark.info/](http://crystalmark.info/ \"External link\")  \n-----------------------------------------------------------------------  \n\\* MB/s \u003d 1,000,000 byte/s \\[SATA/300 \u003d 300,000,000 byte/s\\]  \n\nSequential Read : 17.996 MB/s  \nSequential Write : 8.375 MB/s  \nRandom Read 512KB : 17.924 MB/s  \nRandom Write 512KB : 1.514 MB/s  \nRandom Read 4KB (QD\u003d1) : 6.706 MB/s \\[ 1637.2 IOPS\\]  \nRandom Write 4KB (QD\u003d1) : 0.015 MB/s \\[ 3.7 IOPS\\]  \nRandom Read 4KB (QD\u003d32) : 7.985 MB/s \\[ 1949.5 IOPS\\]  \nRandom Write 4KB (QD\u003d32) : 0.020 MB/s \\[ 5.0 IOPS\\]  \n\nTest : 50 MB \\[M: 7.7% (1.0/13.4 GB)\\] (x1)  \nDate : 2010/06/17 20:21:07  \nOS : Windows 7 Enterprise Edition \\[6.1 Build 7600\\] (x86)   \n"
+    },
+    {
+      "id": "101931",
+      "timestamp": "2010-06-08T17:30:02+00:00",
+      "author": "MedEvil",
+      "content": "USB-Sticks are a pain in the behind! :smile:  \n\nNot only, do most of them not feature any kind of useful technical data, on the shiping box, but the fact, that if one feature is in one stick better than in another, does not mean that this goes for all features.   \nSo instead of simply extrapolating from one known value, an actual test suite is needed, to get any idea, if the stick is any good for the intended purpose.  \n\nHere\u0027s were benchmark programs enter the picture.  \n\nA good benchmark program should be easy to use and easy to understand, yet give all the necessary informations.  \n\nFor this short review, i already eliminated all programs, which can test only a single feature or require expert knowledge to even set the test properly up.  \n\nThe survivors are:  \n- h2testw  \n- Atto Disk Benchmark  \n- Crystal Disk Mark  \n- AS SSD Benchmark  \n- HD Tune  \n\nh2testw  \n----------  \nh2testw is a very simple program. It just tests sequentiell read and write and creates an error log for the tested area.  \nValues shown are usually a bit lower than what other tools show.  \nVery easy to use and good enough for all, who move only big files. Though, where big begins, differs from stick to stick.  \n\n[![H2testw.gif](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016417_thumb.png)](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016417.gif \"H2testw.gif - Size: 12.79KB\"){#ipb-attach-url-10978-0-03222200-1676066648}   \n\nAtto Disk Benchmark  \n-------------------------  \nAtto Disk Benchmark is a very nice tool, as it shows the read and write rates for any number of different file sizes and thereby gives one a good idea, what performance to expect from the drive in any situation.  \nUnfortunately all values show sequentiell operations. Not a single random access test. Also no display of accesstimes.  \nBut if you use your stick solely for transporting files from her to there, this is the only tool you will ever need!  \n\n[![Atto.gif](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016399_thumb.png)](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016399.gif \"Atto.gif - Size: 29.62KB\"){#ipb-attach-url-10977-0-03203800-1676066648}   \n\nCrystal Disk Mark  \n---------------------  \nA very nice and simple interface, which gives you not the in depth view of Atto, but instead an overview of the usefulness of the stick in various usage scenarios.   \nOn top we see the top read and write speeds, which only big files will ever have.  \nThen we have the 4k and 512k random tests. Which show performance while reading or writing the usual small individual files, like pictures and documents.  \nAnd last a test, which is suppose to emulated the performance of the stick, when a program is directly run from it.  \n\n[![CrystalDM.jpg](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016456_thumb.jpg)](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016456.jpg \"CrystalDM.jpg - Size: 46.13KB\"){#ipb-attach-url-10980-0-03238200-1676066648}   \n\nAS SSD Benchmark  \n------------------------  \nIn essence a Crystal Disk Mark on steroids, with some major drawbacks, i don\u0027t want to keep from you.  \nA:) This is a .Net application, so imo not usable in a PE  \nB:) There is no way to select the size to be tested. It always uses 1GB, which means easily hours for the 4k tests.  \n\n[![ASSSD.gif](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016383_thumb.png)](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016383.gif \"ASSSD.gif - Size: 38.34KB\"){#ipb-attach-url-10976-0-03214500-1676066648} (Despite the picture, this comes also with an english interface!)  \n\nHD Tune  \n-----------  \nA classic. It gives top read speed and read access time. Equiped with those two and some experience on can easy guess the performance loss with smaller files. However the missing write tests, make it only useful for people, who hardly ever write to the stick, like for the use as a boot stick.  \n(Write tests are available in the buyware HD Tune Pro.)  \n\n[![HD_Tune.gif](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016433_thumb.png)](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016433.gif \"HD_Tune.gif - Size: 29.74KB\"){#ipb-attach-url-10979-0-03230000-1676066648}   \n\nLast, but not least two recommendations from me.  \n\nThe SanDisk Cruzer Micro Skin, is without a doubt the most sturdy USB-Stick, i have ever seen.  \nWhat makes this stick so sturdy is, the genius constructed shell. Instead of the usual, where the connector is just soldered to PCB and the PCB then put in two plastic shells, here the outer connector and the shell holding the PCB are **a single metal part** wrapped in a thin silicon skin.   \nA friend of mine managed, by accident, to lift his whole PC of the table by this stick.   \nThe HDD was toast afterwards, but the stick didn\u0027t even had a bend.  \n- top read speed 24MB/s   \n- top write speed 10MB/s   \n- price \\~16Euro for the 8GB version  \n\n[![SanDisk.jpg](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016491_thumb.jpg)](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016491.jpg \"SanDisk.jpg - Size: 5.02KB\"){#ipb-attach-url-10982-0-03251600-1676066648}   \n\nThe Supertalent Pico-?, deliver the best boot performance for the buck, but also have a lot of problems.  \nFor the Pico-C, SuperTalent seems to have reinvented the USB standard to their liking. Many people report, that the stick is about 0,5mm too thick and has to be forced into the port on first use. Once the port is widened, it works good.  \nTo give you an idea, what forcing in means, take this: More than one person has reported, that he actually broke the port while trying to get the stick in! :smile:  \nThe Pico-A line does not have this problem. The stick fits easily in the USB-Port and delivers even a bit better performance. (Since i only own this version, the swivel to be exact, i can only compare to what i\u0027ve read about the C.)  \nHOWEVER the stick is very thin and made from plastic. I would really think twice, before putting it into a port, while being angry. ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \n- top read speed 30MB/s   \n- top write speed 12MB/s   \n- price \\~18Euro for the 8GB version  \n\nIf you\u0027re looking for a stick with **any** higher write performance, you immediately double the price tag.  \n\n[![Pico_A.jpg](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016475_thumb.jpg)](http://reboot.pro/uploads/monthly_06_2010/post-2192-1276016475.jpg \"Pico_A.jpg - Size: 7.02KB\"){#ipb-attach-url-10981-0-03245000-1676066648}   \n\n\u003cbr /\u003e\n\nReviews and recommendationss for other good or even better benchmark programs and USB-Sticks are welcome. :smile:  \n\n\u003cbr /\u003e\n\n![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n"
+    },
+    {
+      "id": "101940",
+      "timestamp": "2010-06-08T19:36:14+00:00",
+      "author": "steve6375",
+      "content": "Hi  \nMay be useful for some people - RMPrepUSB now has a speed test function - it does a 60MiB read starting from Block 0 followed by a 60MiB write back. Takes just a few seconds and appends results to a .csv file so you can build up a results file. The test uses raw block writes and so the filesystem is irrelevant. This was done so I could compare UFDs just for raw speed.  \n\na .csv file is shown below:  \n\n**USB MODEL SIZE (MiB) Read/Write SPEED (MiB/S)**   \nVerbatim STORE N GO USB Device 7639 READ 29.8  \nVerbatim STORE N GO USB Device 7639 WRITE 9.2  \nHP v135w USB Device 15423 READ 26.2  \nHP v135w USB Device 15423 WRITE 10.3  \nUSB DISK Pro USB Device 990 READ 9.8  \nUSB DISK Pro USB Device 990 WRITE 8.5  \nTakeMS MEM-Drive Smart USB Device 7711 READ 33.1  \nTakeMS MEM-Drive Smart USB Device 7711 WRITE 6.1  \nLEXAR JD SECURE USB Device 489 READ 15.9  \nLEXAR JD SECURE USB Device 489 WRITE 3.8  \nSanDisk Cruzer USB Device 3835 READ 18.6  \nSanDisk Cruzer USB Device 3835 WRITE 4.6  \nKingston DataTraveler 2.0 USB Device 953 READ 14.6  \nKingston DataTraveler 2.0 USB Device 953 WRITE 5.8  \nGeneric USB Flash Disk USB Device 124 READ 5  \nGeneric USB Flash Disk USB Device 124 WRITE 0.9  \nLexar JD FireFly USB Device 7647 READ 21.7  \nLexar JD FireFly USB Device 7647 WRITE 7.1  \nPatriot Memory USB Device 7643 READ 31.9  \nPatriot Memory USB Device 7643 WRITE 7.7  \nLexar JD FireFly USB Device 15295 READ 22  \nLexar JD FireFly USB Device 15295 WRITE 10.1  \nHP v135w USB Device 3853 READ 22.2  \nHP v135w USB Device 3853 WRITE 4.7  \nNetac OnlyDisk USB Device 956 READ 14.7  \nNetac OnlyDisk USB Device 956 WRITE 3.3  \nUSB 2.0 USB Device 16383 READ 18.6  \nUSB 2.0 USB Device 16383 WRITE 3.5  \nIntenso Rainbow USB Device 15423 READ 32.9  \nIntenso Rainbow USB Device 15423 WRITE 6.1  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nComparing to CrystalMark for a few USB sticks...  \ne.g. RMPrepUSB result in () in MB (converted from MiB)  \n\nUnknown make 1 Seq Rd\u003d 9.69(10.27) Seq Wr\u003d8.52(8.91)  \nUSB Disk Pro Seq Rd\u003d19.32(19.39) Seq Wr\u003d3.41(3.57)  \nTakeMS MEM-Drive Smart USB Device Seq Rd\u003d34.24(34.7) Seq Wr\u003d6.26(6.40)  \n\nThe results are reasonably comparable to Crystal Mark.  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "101944",
+      "timestamp": "2010-06-08T20:59:25+00:00",
+      "author": "patsch",
+      "content": "@MedEvil: AS SSD Benchmark works in PE (win7 pe se and win7rescuepe) as seen in this thread:  \n[http://www.boot-land...?...ost\\\u0026p\u003d99997](http://www.boot-land.net/forums/index.php?showtopic\u003d11363\u0026view\u003dfindpost\u0026p\u003d99997 \"External link\")   \n"
+    },
+    {
+      "id": "101945",
+      "timestamp": "2010-06-08T21:04:12+00:00",
+      "author": "MedEvil",
+      "content": "Steve are you sure your testing algorythm is working right?  \nSome of the read speeds seem too high.  \n\n\u003e **USB MODEL SIZE (MiB) Read/Write SPEED (MiB/S)**   \n\u003e Verbatim STORE N GO USB Device 7639 READ 29.8  \n\u003e Verbatim STORE N GO USB Device 7639 WRITE 9.2  \n\u003e\n\u003e TakeMS MEM-Drive Smart USB Device 7711 READ 33.1  \n\u003e TakeMS MEM-Drive Smart USB Device 7711 WRITE 6.1  \n\u003e\n\u003e Intenso Rainbow USB Device 15423 READ 32.9  \n\u003e Intenso Rainbow USB Device 15423 WRITE 6.1\nI found the Intenso 8GB Rainbow listed with r:28 w6,5 at [Intensos site](http://intenso.de/produkte.php?kategorie\u003d23\u0026\u0026produkt\u003d1255722975 \"External link\"), would be a first to market a stick slower than it actually is.  \nAnd the Verbatim should have the speed of r:10 w:4 [acording to Verbatim](http://www.verbatim.de/de_7/product_store-n-go-usb-flash-drive-8gb_21019.html \"External link\").   \n\n\u003cbr /\u003e\n\n:smile:   \n"
+    },
+    {
+      "id": "101950",
+      "timestamp": "2010-06-08T22:08:30+00:00",
+      "author": "steve6375",
+      "content": "CrystalMark Sequential results in MB (with mine in (MB) )  \n\n\u003cbr /\u003e\n\nverbatim 26.1(29.8) 7.5(9.2) (AS SSD Benchmark rd\u003d25.5 wr\u003d8.95)  \nIntenso 22.1 (32.9) 4.36(6.1) (AS SSD Benchmark rd\u003d25.7 wr\u003d5.3)  \n\nI use API raw writes with no OS filesystem overhead and read/write an entire chunk of 60MB with one API call.  \n\nSo these figures are best possible case. You would be hard pressed to achieve these results through an OS filesystem and clusters.   \n"
+    },
+    {
+      "id": "101953",
+      "timestamp": "2010-06-08T22:44:02+00:00",
+      "author": "MedEvil",
+      "content": "\u003e @MedEvil: AS SSD Benchmark works in PE (win7 pe se and win7rescuepe) as seen in this thread:\nDidn\u0027t meant \u0027unusable\u0027 as in \u0027it will not work\u0027 but as in \u0027makes no sense sizewise\u0027. But for those, who have .net included in their PE anyway, surely a nice program.  \n\n:smile:   \n"
+    },
+    {
+      "id": "102263",
+      "timestamp": "2010-06-13T18:02:07+00:00",
+      "author": "MedEvil",
+      "content": "Had today to find out about the influence of the hostmachine on the Benchmarks. :smile:  \n\nWhile visiting a friend, i insisted on a retest of his brand new stick, since the values he told me, were way beyond the ones the manufacturers gave.  \n\nYet every tool confirmed the values and cache was indeed turned off.  \nSo we tested mine.   \nOn my computer it gives me: 12MB/s write- and 30MB/s readspeed.  \nOn his computer it gave: 7MB/s write- and 35MB/s readspeed.  \n\nNow curious, we went to his sons computer and my stick gave: 14MB/s write- and 34MB/s readspeed.  \n\n7MB difference writespeed that\u0027s almost twice what any nonamestick can deliver! :smile:  \n\n:smile:   \n"
+    },
+    {
+      "id": "102267",
+      "timestamp": "2010-06-13T18:21:46+00:00",
+      "author": "steve6375",
+      "content": "Which benchmarks and which OS\u0027s?  \n\n[http://www.tomshardw...et,1940-19.html](http://www.tomshardware.com/reviews/x48-790i-chipset,1940-19.html \"External link\")   \n"
+    },
+    {
+      "id": "102293",
+      "timestamp": "2010-06-13T20:31:15+00:00",
+      "author": "MedEvil",
+      "content": "Atto and Crystal. On mine it was XP, on the one of my friend, it was Vista and on the one of his son, it was Win7.  \n\n:smile:   \n"
+    },
+    {
+      "id": "102295",
+      "timestamp": "2010-06-13T20:46:04+00:00",
+      "author": "MedEvil",
+      "content": "Those Benchmark results look terrible. On my old P4, the USB HDD reached between 31 and 32 MB/s. (measured with HD-Tune)  \n\n:smile:   \n"
+    },
+    {
+      "id": "102306",
+      "timestamp": "2010-06-13T21:38:20+00:00",
+      "author": "MedEvil",
+      "content": "Tested all my USB-Sticks on all my computers. (just with Atto)  \nWorst and best values for any transfer size for a stick, does not vary more than 500KB/s.  \n\nFrom this tests i would say, that neighter CPU performance nor bus speed nor onboard or PCi card solution make any difference. The only possible difference left would be the OS. (All my machines run XP.)  \nBut seriously? :smile:  \n\n\u003cbr /\u003e\n\n:smile:   \n"
+    },
+    {
+      "id": "102307",
+      "timestamp": "2010-06-13T21:55:50+00:00",
+      "author": "MedEvil",
+      "content": "Little Warning!  \n\nDifferent HD-Tune versions measure different speed values on the same drive.   \nVersion 2.53 (included in NaughtyPE) measures consistently \\~4MB/s less then version 2.55, which is more in **tune** :smile: with results from other programs.  \n\n:smile:   \n"
+    },
+    {
+      "id": "102404",
+      "timestamp": "2010-06-15T10:59:29+00:00",
+      "author": "steve6375",
+      "content": "Feedback from Atto about their benchmark test:  \n\n\\\u003e\\\u003e\\\u003eOur Benchmark Tool uses the Windows CreateFile, ReadFile and WriteFile APIs. It creates a file on the drive, then goes through one pass to write the entire file to get the disk space allocated to the file, then it runs the tests. It does not do raw I/O because there is no raw I/O API that allows multiple outstanding requests at a time (queue depth).  \n\nSo any results would be dependant on the OS, filesystem, chipset and driver.   \n"
+    },
+    {
+      "id": "102414",
+      "timestamp": "2010-06-15T12:27:29+00:00",
+      "author": "MedEvil",
+      "content": "\u003e So any results would be dependant on the OS, filesystem, chipset and driver.\nSince USB drivers are always Windows default, have you ever seen a comparison of the performance of the different Windows in this regard?  \n\nMaybe running the tests again on those computers, but this time from a XP-PE, Vista-PE and a Win7-PE would be interesting?  \n\n\u003cbr /\u003e\n\n![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n"
+    },
+    {
+      "id": "102434",
+      "timestamp": "2010-06-15T18:01:20+00:00",
+      "author": "MedEvil",
+      "content": "Did a test on my new computer.  \nTested with Atto my little old stick, which i already used for the snapshots, because it is mostly empty these days.  \nWin 7 home premium 64Bit full install vs. NaughyPe 32Bit (XP)  \nNaughtyPE mostly brought the same speed, as my test on my WinbuilderPC. Was just between 500-800KB/s slower.  \nWin7 showed, though still on the same machine, even 1MB/s less. ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\nI would have sworn, that with the right chipset - and processor drivers, that Win7 should have had an advantage. Appearantly i was wrong.  \n**XP rulez!** :wink:  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "102514",
+      "timestamp": "2010-06-16T16:31:25+00:00",
+      "author": "MedEvil",
+      "content": "Technology is a wondrous thing.  \n\nRaced my stone age USB1.1 Stick against a USB2.0 one in Atto, both on a USB1.1 and a USB2.0 port.   \nGuess which won! Wrong! ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nWould you have guessed that a USB1.1-Stick can outperform a USB2.0-Stick?  \nAnd boy can it outperform!  \nOn the USB1.1 port, up to 16KB it writes more than twice as fast, to then with 32KB go for 50% faster and then settle for being 25% faster for the rest of the tests.  \nReadspeeds are consistently, but not significantly, always 1 to 5KB/s higher.  \n\nIf anyone can explain this, please don\u0027t hassitate! ;-)  \n\nOK, switch to the USB2.0 port. Stone age stick don\u0027t stand a chance here, right?  \nGuess what? Up to 16KB it again outperforms the faster stick in write speed, but then looses big time once the USB2.0 stick finally kicks into high gear.  \n\nYet interesting to notice is, that the old stick still more than doubles it top write speed and more than triples its read speed, against the USB1.1 port test.   \n\nI guess only the gods of USB-Sticks can explain, why a cheap USB1.1 stick has the ability to perform way better than 1.1 speed, while a brand USB2.0 stick can\u0027t even perform close to 2.0 speeds. ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "102542",
+      "timestamp": "2010-06-16T19:32:56+00:00",
+      "author": "steve6375",
+      "content": "Both sound slow to me, should be in MB/s not KB/s ?? ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n"
+    },
+    {
+      "id": "102554",
+      "timestamp": "2010-06-16T20:56:33+00:00",
+      "author": "eboyhan",
+      "content": "I got an email today from you guys about USB flash drive performance and referencing this thread. I recently went shopping for a largish high performance UFD to serve as a multi-os boot key. The drive that I came up with was the Corsair Flash Voyager GTR 32GB. MFR claims 34GB read 28 GB write. Benchmarks (there is a good recent one at hardwarecanucks.com) show that for large block sequential IO 34GB read 20GB write is probably closer to the mark. Just thought I\u0027d mention it here as I didn\u0027t see it mentioned in any of the tables. It is relatively new, and physically large (about the size of a Swiss army knife).  \n\nCheers,  \nEd Boyhan   \n"
+    },
+    {
+      "id": "102582",
+      "timestamp": "2010-06-17T07:02:37+00:00",
+      "author": "jfk001",
+      "content": "Hello!  \n\n```\nOCZ THROTTLE 32GB\u0026#58;\n\n-----------------------------------------------------------------------\n\nCrystalDiskMark 3.0 x64 \u0026#40;C\u0026#41; 2007-2010 hiyohiyo\n\n\t\t\t\t\t\t   Crystal Dew World \u0026#58; http\u0026#58;//crystalmark.info/\n\n-----------------------------------------------------------------------\n\n* MB/s \u003d 1,000,000 byte/s \u0026#91;SATA/300 \u003d 300,000,000 byte/s\u0026#93;\n\n\n\n\t\t   Sequential Read \u0026#58;\t29.751 MB/s\n\n\t\t  Sequential Write \u0026#58;\t24.400 MB/s\n\n\t\t Random Read 512KB \u0026#58;\t30.364 MB/s\n\n\t\tRandom Write 512KB \u0026#58;\t18.340 MB/s\n\n\tRandom Read 4KB \u0026#40;QD\u003d1\u0026#41; \u0026#58;\t 6.270 MB/s \u0026#91;  1530.8 IOPS\u0026#93;\n\n   Random Write 4KB \u0026#40;QD\u003d1\u0026#41; \u0026#58;\t 1.546 MB/s \u0026#91;   377.5 IOPS\u0026#93;\n\n   Random Read 4KB \u0026#40;QD\u003d32\u0026#41; \u0026#58;\t 7.195 MB/s \u0026#91;  1756.7 IOPS\u0026#93;\n\n  Random Write 4KB \u0026#40;QD\u003d32\u0026#41; \u0026#58;\t 1.504 MB/s \u0026#91;   367.2 IOPS\u0026#93;\n\n\n\n  Test \u0026#58; 100 MB \u0026#91;Z\u0026#58; 28.1% \u0026#40;8.4/30.1 GB\u0026#41;\u0026#93; \u0026#40;x1\u0026#41;\n\n  Date \u0026#58; 2010/06/17 8\u0026#58;47\u0026#58;33\n\n\tOS \u0026#58; Windows 7 Enterprise Edition \u0026#91;6.1 Build 7600\u0026#93; \u0026#40;x64\u0026#41;\n```\n\n\u003cbr /\u003e\n\n```\nCorsair VoyagerGT 8GB\u0026#58;\n\n-----------------------------------------------------------------------\n\nCrystalDiskMark 3.0 x64 \u0026#40;C\u0026#41; 2007-2010 hiyohiyo\n\n\t\t\t\t\t\t   Crystal Dew World \u0026#58; http\u0026#58;//crystalmark.info/\n\n-----------------------------------------------------------------------\n\n* MB/s \u003d 1,000,000 byte/s \u0026#91;SATA/300 \u003d 300,000,000 byte/s\u0026#93;\n\n\n\n\t\t   Sequential Read \u0026#58;\t23.614 MB/s\n\n\t\t  Sequential Write \u0026#58;\t17.833 MB/s\n\n\t\t Random Read 512KB \u0026#58;\t23.481 MB/s\n\n\t\tRandom Write 512KB \u0026#58;\t10.057 MB/s\n\n\tRandom Read 4KB \u0026#40;QD\u003d1\u0026#41; \u0026#58;\t 5.170 MB/s \u0026#91;  1262.3 IOPS\u0026#93;\n\n   Random Write 4KB \u0026#40;QD\u003d1\u0026#41; \u0026#58;\t 0.105 MB/s \u0026#91;\t25.6 IOPS\u0026#93;\n\n   Random Read 4KB \u0026#40;QD\u003d32\u0026#41; \u0026#58;\t 6.418 MB/s \u0026#91;  1566.9 IOPS\u0026#93;\n\n  Random Write 4KB \u0026#40;QD\u003d32\u0026#41; \u0026#58;\t 0.116 MB/s \u0026#91;\t28.2 IOPS\u0026#93;\n\n\n\n  Test \u0026#58; 100 MB \u0026#91;X\u0026#58; 58.7% \u0026#40;4638.7/7904.0 MB\u0026#41;\u0026#93; \u0026#40;x1\u0026#41;\n\n  Date \u0026#58; 2010/06/17 9\u0026#58;00\u0026#58;11\n\n\tOS \u0026#58; Windows 7 Enterprise Edition \u0026#91;6.1 Build 7600\u0026#93; \u0026#40;x64\u0026#41;\n```\n\n```\nCorsair Flash Voyager 32GB\u0026#58;\n\n-----------------------------------------------------------------------\n\nCrystalDiskMark 3.0 x64 \u0026#40;C\u0026#41; 2007-2010 hiyohiyo\n\n\t\t\t\t\t\t   Crystal Dew World \u0026#58; http\u0026#58;//crystalmark.info/\n\n-----------------------------------------------------------------------\n\n* MB/s \u003d 1,000,000 byte/s \u0026#91;SATA/300 \u003d 300,000,000 byte/s\u0026#93;\n\n\n\n\t\t   Sequential Read \u0026#58;\t23.289 MB/s\n\n\t\t  Sequential Write \u0026#58;\t12.421 MB/s\n\n\t\t Random Read 512KB \u0026#58;\t23.217 MB/s\n\n\t\tRandom Write 512KB \u0026#58;\t 0.915 MB/s\n\n\tRandom Read 4KB \u0026#40;QD\u003d1\u0026#41; \u0026#58;\t 5.048 MB/s \u0026#91;  1232.4 IOPS\u0026#93;\n\n   Random Write 4KB \u0026#40;QD\u003d1\u0026#41; \u0026#58;\t 0.007 MB/s \u0026#91;\t 1.7 IOPS\u0026#93;\n\n   Random Read 4KB \u0026#40;QD\u003d32\u0026#41; \u0026#58;\t 5.389 MB/s \u0026#91;  1315.7 IOPS\u0026#93;\n\n  Random Write 4KB \u0026#40;QD\u003d32\u0026#41; \u0026#58;\t 0.007 MB/s \u0026#91;\t 1.7 IOPS\u0026#93;\n\n\n\n  Test \u0026#58; 100 MB \u0026#91;Y\u0026#58; 22.0% \u0026#40;6.7/30.2 GB\u0026#41;\u0026#93; \u0026#40;x1\u0026#41;\n\n  Date \u0026#58; 2010/06/17 8\u0026#58;54\u0026#58;45\n\n\tOS \u0026#58; Windows 7 Enterprise Edition \u0026#91;6.1 Build 7600\u0026#93; \u0026#40;x64\u0026#41;\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "102591",
+      "timestamp": "2010-06-17T10:20:28+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Benchmarks (there is a good recent one at hardwarecanucks.com) show that for large block sequential IO 34GB read 20GB write is probably closer to the mark.\nI had a look at the review and i wouldn\u0027t trust their tests. I have several SanDisk Cruzer Micro and not one performs like their test show. They usually give between 22 and 24 MB/s not over 29MB/s as their test shows.  \n\nWhen you get it, maybe you can run a test and post here.  \n\n![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n"
+    },
+    {
+      "id": "102592",
+      "timestamp": "2010-06-17T10:25:08+00:00",
+      "author": "stressfreesoul",
+      "content": "I use both the new and old Transcend Jetflash 8Gb, Samsung chips (supposed to be fast)  \n\nNew - Write/8.4Mb Read/32.4Mb  \nOld - Write/12.5Mb Read/19.5Mb  \n\nFormatted in Fat32, both empty after a fresh format.  \nIt would seem they both have their advantages...  \n\nOn the subject of fast read/write, the Corsair Flash Voyager GTR 128Gb... are the chips arranged in RAID0 to attain such high writes?   \n"
+    },
+    {
+      "id": "102595",
+      "timestamp": "2010-06-17T10:49:29+00:00",
+      "author": "MedEvil",
+      "content": "\u003e On the subject of fast read/write, the Corsair Flash Voyager GTR 128Gb... are the chips arranged in RAID0 to attain such high writes?\nIt uses a quad channel controller.  \n\n![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)   \n"
+    },
+    {
+      "id": "102636",
+      "timestamp": "2010-06-17T18:13:23+00:00",
+      "author": "mateuszek",
+      "content": "Kingston Data Traveler 2gb  \n\n-----------------------------------------------------------------------  \nCrystalDiskMark 3.0 © 2007-2010 hiyohiyo  \nCrystal Dew World : [http://crystalmark.info/](http://crystalmark.info/ \"External link\")  \n-----------------------------------------------------------------------  \n\\* MB/s \u003d 1,000,000 byte/s \\[SATA/300 \u003d 300,000,000 byte/s\\]  \n\nSequential Read : 19.955 MB/s  \nSequential Write : 8.065 MB/s  \nRandom Read 512KB : 19.903 MB/s  \nRandom Write 512KB : 2.337 MB/s  \nRandom Read 4KB (QD\u003d1) : 5.620 MB/s \\[ 1372.0 IOPS\\]  \nRandom Write 4KB (QD\u003d1) : 0.026 MB/s \\[ 6.4 IOPS\\]  \nRandom Read 4KB (QD\u003d32) : 6.034 MB/s \\[ 1473.1 IOPS\\]  \nRandom Write 4KB (QD\u003d32) : 0.033 MB/s \\[ 8.0 IOPS\\]  \n\nTest : 50 MB \\[N: 0.0% (0.0/1304.8 MB)\\] (x1)  \nDate : 2010/06/17 20:11:58  \nOS : Windows 7 Enterprise Edition \\[6.1 Build 7600\\] (x86)   \n"
+    },
+    {
+      "id": "102637",
+      "timestamp": "2010-06-17T18:17:03+00:00",
+      "author": "mateuszek",
+      "content": "Sandisk Cruzer Titanium 8gb  \n\n-----------------------------------------------------------------------  \nCrystalDiskMark 3.0 © 2007-2010 hiyohiyo  \nCrystal Dew World : [http://crystalmark.info/](http://crystalmark.info/ \"External link\")  \n-----------------------------------------------------------------------  \n\\* MB/s \u003d 1,000,000 byte/s \\[SATA/300 \u003d 300,000,000 byte/s\\]  \n\nSequential Read : 28.831 MB/s  \nSequential Write : 9.296 MB/s  \nRandom Read 512KB : 28.807 MB/s  \nRandom Write 512KB : 2.791 MB/s  \nRandom Read 4KB (QD\u003d1) : 5.555 MB/s \\[ 1356.2 IOPS\\]  \nRandom Write 4KB (QD\u003d1) : 0.033 MB/s \\[ 8.1 IOPS\\]  \nRandom Read 4KB (QD\u003d32) : 6.281 MB/s \\[ 1533.3 IOPS\\]  \nRandom Write 4KB (QD\u003d32) : 0.045 MB/s \\[ 11.1 IOPS\\]  \n\nTest : 50 MB \\[M: 17.8% (1364.7/7671.3 MB)\\] (x1)  \nDate : 2010/06/17 20:16:27  \nOS : Windows 7 Enterprise Edition \\[6.1 Build 7600\\] (x86)   \n"
+    },
+    {
+      "id": "102639",
+      "timestamp": "2010-06-17T18:21:47+00:00",
+      "author": "mateuszek",
+      "content": "Lexar retrax 16GB  \n\n-----------------------------------------------------------------------  \nCrystalDiskMark 3.0 © 2007-2010 hiyohiyo  \nCrystal Dew World : [http://crystalmark.info/](http://crystalmark.info/ \"External link\")  \n-----------------------------------------------------------------------  \n\\* MB/s \u003d 1,000,000 byte/s \\[SATA/300 \u003d 300,000,000 byte/s\\]  \n\nSequential Read : 17.996 MB/s  \nSequential Write : 8.375 MB/s  \nRandom Read 512KB : 17.924 MB/s  \nRandom Write 512KB : 1.514 MB/s  \nRandom Read 4KB (QD\u003d1) : 6.706 MB/s \\[ 1637.2 IOPS\\]  \nRandom Write 4KB (QD\u003d1) : 0.015 MB/s \\[ 3.7 IOPS\\]  \nRandom Read 4KB (QD\u003d32) : 7.985 MB/s \\[ 1949.5 IOPS\\]  \nRandom Write 4KB (QD\u003d32) : 0.020 MB/s \\[ 5.0 IOPS\\]  \n\nTest : 50 MB \\[M: 7.7% (1.0/13.4 GB)\\] (x1)  \nDate : 2010/06/17 20:21:07  \nOS : Windows 7 Enterprise Edition \\[6.1 Build 7600\\] (x86)   \n"
+    },
+    {
+      "id": "103142",
+      "timestamp": "2010-06-22T15:54:25+00:00",
+      "author": "MedEvil",
+      "content": "Ordered a bunch of USB-Stcks for my family.   \nThose sticks were mostly just bigger versions of sticks, everyone already had and liked, from the handling, the features, the performance.  \nI had to send back every single one, except my SanDisks. Because of the unbelievable poor performance compared to their older counterparts. Not just theoretical, but noticeable during use.  \n\nThe best one delivered just \\~60% of the performance of the older one, the worst only \\~40%!  \n\nTalking to the support of the later one, i got as a reply, that their drives are sold unrated and tolerances would be normal.  \n\nDoes anyone really consider 60% off, still a tolerance?  \n\nAnyway, watch out! Lot\u0027s of crap sold right now, it seems.  \n\n\u003cbr /\u003e\n\n![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)   \n"
+    },
+    {
+      "id": "103147",
+      "timestamp": "2010-06-22T16:24:16+00:00",
+      "author": "karyonix",
+      "content": "Verico VMSeries04LAU USB Device 8GB  \ncapacity 8069840896 bytes  \n\n-----------------------------------------------------------------------  \nCrystalDiskMark 3.0 x64 © 2007-2010 hiyohiyo  \nCrystal Dew World : [http://crystalmark.info/](http://crystalmark.info/ \"External link\")  \n-----------------------------------------------------------------------  \n\\* MB/s \u003d 1,000,000 byte/s \\[SATA/300 \u003d 300,000,000 byte/s\\]  \n\nSequential Read : 20.827 MB/s  \nSequential Write : 5.717 MB/s  \nRandom Read 512KB : 20.812 MB/s  \nRandom Write 512KB : 1.604 MB/s  \nRandom Read 4KB (QD\u003d1) : 6.324 MB/s \\[ 1543.8 IOPS\\]  \nRandom Write 4KB (QD\u003d1) : 0.020 MB/s \\[ 4.9 IOPS\\]  \nRandom Read 4KB (QD\u003d32) : 6.083 MB/s \\[ 1485.1 IOPS\\]  \nRandom Write 4KB (QD\u003d32) : 0.028 MB/s \\[ 6.8 IOPS\\]  \n\nTest : 50 MB \\[H: 0.0% (0.0/7676.9 MB)\\] (x1)  \nDate : 2010/06/22 23:17:36  \nOS : Windows 7 Ultimate Edition \\[6.1 Build 7600\\] (x64)   \n"
+    },
+    {
+      "id": "103155",
+      "timestamp": "2010-06-22T17:09:59+00:00",
+      "author": "steve6375",
+      "content": "\u003e Ordered a bunch of USB-Stcks for my family.   \n\u003e Those sticks were mostly just bigger versions of sticks, everyone already had and liked, from the handling, the features, the performance.  \n\u003e I had to send back every single one, except my SanDisks. Because of the unbelievable poor performance compared to their older counterparts. Not just theoretical, but noticeable during use.  \n\u003e\n\u003e The best one delivered just \\~60% of the performance of the older one, the worst only \\~40%!  \n\u003e\n\u003e Talking to the support of the later one, i got as a reply, that their drives are sold unrated and tolerances would be normal.  \n\u003e\n\u003e Does anyone really consider 60% off, still a tolerance?  \n\u003e\n\u003e Anyway, watch out! Lot\u0027s of crap sold right now, it seems.  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\nI had a similar issue with two 2GB Lexar Firefly Jumpdrives. Supposedly identical models (they looked identical) but the newer one was half the speed of the old one! I contacted Lexar to ask if it was a fake and they said it was not a fake and \u0027we don\u0027t give any spec for these drives and reserve the right to change them\u0027 - or words to that affect!  \n\nSo just because you benchmark one UFD now does not mean that someone else\u0027s \u0027identical model\u0027 UFD will give the same performance!   \n"
+    },
+    {
+      "id": "103160",
+      "timestamp": "2010-06-22T18:04:19+00:00",
+      "author": "MedEvil",
+      "content": "\u003e I had a similar issue with two 2GB Lexar Firefly Jumpdrives.\nFunny that you mention Lexar, as this was the company i was contacting too.  \n\n![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)   \n"
+    },
+    {
+      "id": "104258",
+      "timestamp": "2010-07-11T13:52:42+00:00",
+      "author": "Smith",
+      "content": "What matters is the brand-name and exact version of the UFD controller-chip and NAND-chips .  \nMany UFD-manufacturers will change one or both without notice, will use different components for  \nUFD\u0027s with the same model-name but different capacities etc etc ..  \nUnfortunately the only nearly 100% certain way to identify the parts used is to disassemble the UFD .  \n\nBTW : Some of those IOPS-results are just horrible ..   \nIn my experience that is more important than raw read/write speeds if you plan on running a full OS  \nfrom the UFD , ie, mediocre read/write speeds, but good IOPS-performance is better than good read/write but lousy IOPS ..  \nAnother often overlooked thing is that UFD\u0027s with SLC-NAND are a way better choice for hosting a OS as they generally give better real-life performance and for a longer time to ..   \n"
+    },
+    {
+      "id": "104260",
+      "timestamp": "2010-07-11T14:11:07+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Another often overlooked thing is that UFD\u0027s with SLC-NAND are a way better choice for hosting a OS as they generally give better real-life performance and for a longer time to ..\nBesides SLC based Sticks being way more expansive and belonging to a dying species, as most manufacturers are switching to MLC even for their top performance line.  \nWhat you say is only true, for running a OS straight of the Stick, probably complete with alowing the OS to write data to it.  \n\nMost people around here use RamBoot methodes, which only use the Stick to read one \u0027large\u0027 disk image into RAM upon boot.  \nFor this scenario, SLC based sticks do not present any advantage. Max. read speed, for a file measuring above 100MB, is the only thing that counts.  \n\n\u003cbr /\u003e\n\n:wink:   \n"
+    },
+    {
+      "id": "104263",
+      "timestamp": "2010-07-11T15:05:55+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Unfortunately the only nearly 100% certain way to identify the parts used is to disassemble the UFD .\n\nMe thinks that Chipgenius accuracy is enough when compared to actually needing to disassemble the thingy....:wink:  \n[http://www.boot-land...?showtopic\u003d4661](http://www.boot-land.net/forums/index.php?showtopic\u003d4661 \"External link\")  \n\n\u003cbr /\u003e\n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "105513",
+      "timestamp": "2010-07-27T06:06:46+00:00",
+      "author": "Lost",
+      "content": "Corsair Flash Voyager GT 16GB after reformatting with SMI Mass Production Tool:  \n\n```\n-----------------------------------------------------------------------CrystalDiskMark 3.0 © 2007-2010 hiyohiyo                           Crystal Dew World : [url\u003d\"http://crystalmark.info/\"]http://crystalmark.info/[/url]-----------------------------------------------------------------------* MB/s \u003d 1,000,000 byte/s [SATA/300 \u003d 300,000,000 byte/s]           Sequential Read :    30.624 MB/s          Sequential Write :    13.361 MB/s         Random Read 512KB :    30.477 MB/s        Random Write 512KB :     1.871 MB/s    Random Read 4KB (QD\u003d1) :     7.140 MB/s [  1743.1 IOPS]   Random Write 4KB (QD\u003d1) :     0.021 MB/s [     5.2 IOPS]   Random Read 4KB (QD\u003d32) :     8.069 MB/s [  1970.0 IOPS]  Random Write 4KB (QD\u003d32) :     0.033 MB/s [     8.0 IOPS]  Test : 100 MB [E: 57.9% (8.3/14.3 GB)] (x1)  Date : 2010/07/27 10:02:39    OS : Windows XP Professional SP3 [5.1 Build 2600] (x86)\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "105526",
+      "timestamp": "2010-07-27T10:31:40+00:00",
+      "author": "MedEvil",
+      "content": "Got myself a SanDisk Cruzer Contour mainly to transport 100MB+ files.  \nReally nifty design! ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n[![SD_C_Contour.jpg](http://reboot.pro/uploads/monthly_07_2010/post-2192-1280226254_thumb.jpg)](http://reboot.pro/uploads/monthly_07_2010/post-2192-1280226254.jpg \"SD_C_Contour.jpg - Size: 46.54KB\"){#ipb-attach-url-11079-0-33738100-1676066648}   \n\nAs you can see, it handles big files really well.  \nInterestingly, while the write performance is, even with small chunks, better than with its [cheaper cousin](http://www.boot-land.net/forums/index.php?s\u003d\u0026showtopic\u003d11644\u0026view\u003dfindpost\u0026p\u003d101931 \"External link\"), the read performance for small chunks is slightly worst.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "105610",
+      "timestamp": "2010-07-28T13:15:33+00:00",
+      "author": "Mike Austin",
+      "content": "\u003e I had a similar issue with two 2GB Lexar Firefly Jumpdrives. Supposedly identical models (they looked identical) but the newer one was half the speed of the old one! I contacted Lexar to ask if it was a fake and they said it was not a fake and \u0027we don\u0027t give any spec for these drives and reserve the right to change them\u0027 - or words to that affect!\nI have found other differences on two 4GB Lexar FireFlies, bought from the same shop (Staples) within a few days. The BootIt bit-flip does not work on one of them. I bought an 8GB Firefly at the same time. It works on that - as well as on two 16GB Fireflies. I used USBDeview.exe to inspect them. The one that is not bootable has a different device name - \"USB Flash Drive\" rather than \"JD FireFly\". On the cases of the 4GB drives, the bootable one is Rev AD and the unbootable one is Rev AJ. The cases are more or less identical, but I note some slight differences in the moulding of the word Lexar.  \nI am going back to the shop to rummage through their bin of 4GB Fireflies to see if I can visually match the bootable one.   \n"
+    },
+    {
+      "id": "105621",
+      "timestamp": "2010-07-28T15:10:01+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I have found other differences on two 4GB Lexar FireFlies, bought from the same shop (Staples) within a few days. The BootIt bit-flip does not work on one of them. I bought an 8GB Firefly at the same time. It works on that - as well as on two 16GB Fireflies. I used USBDeview.exe to inspect them. The one that is not bootable has a different device name - \"USB Flash Drive\" rather than \"JD FireFly\". On the cases of the 4GB drives, the bootable one is Rev AD and the unbootable one is Rev AJ. The cases are more or less identical, but I note some slight differences in the moulding of the word Lexar.  \n\u003e I am going back to the shop to rummage through their bin of 4GB Fireflies to see if I can visually match the bootable one.\n\nUse ChipGenius \\*instead\\* of USBDeview.exe:  \n[http://www.boot-land...?showtopic\u003d4661](http://www.boot-land.net/forums/index.php?showtopic\u003d4661 \"External link\")  \n\nIt is very probable that it can identify the chip and consequently we may be able to find the specific tool to \"flip the bit\"-  \n\n![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \nWonko   \n"
+    },
+    {
+      "id": "105623",
+      "timestamp": "2010-07-28T15:24:07+00:00",
+      "author": "Mike Austin",
+      "content": "\u003e Use ChipGenius \\*instead\\* of USBDeview.exe. It is very probable that it can identify the chip and consequently we may be able to find the specific tool to \"flip the bit\"\nThanks, but that did not identify the chip on either bootable or non-bootable drive (\"No match record\"). The difference between them is only in the Device ID and the Serial Number:  \n\nBootable:  \nPnP Device ID: VID \u003d 05DC PID \u003d A761  \nSerial Number: 5ZCGZ1TJEOO5BQUX0DCY  \n\nNon-bootable:  \nPnP Device ID: VID \u003d 05DC PID \u003d A810  \nSerial Number: AAJFDAUROYSC1GJ8  \n\nI note that all the other bootable Lexar FireFlies have a PID A7xx whereas the non-bootables have a PID of A8xx.   \n"
+    },
+    {
+      "id": "105625",
+      "timestamp": "2010-07-28T15:50:16+00:00",
+      "author": "Wonko the Sane",
+      "content": "The:  \n\u003e PnP Device ID: VID \u003d 05DC PID \u003d A761\ndefinitely uses an SMI chip (and Chipgenius \\*should\\* be able to detect them. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif))  \n[http://flashboot.ru/iflash.html](http://flashboot.ru/iflash.html \"External link\")  \n\nThe:  \n\u003e PnP Device ID: VID \u003d 05DC PID \u003d A810\nis seemingly unknown (yet :smile:)  \n\nBut what do you meean by \"bootable\" and \"not -bootable\" the difference should only be \"flippable bit\" with Lexar Utility or \"not-flippable bit\" with it.  \n\nJust for the record, the serial number means nothing, you can (with the appropriate utility) set it to whatever you want.  \n\nTraditionally Lexar uses SMI chips, but maybe this A810 is a newish/latest something.  \n\n![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)  \nWonko   \n"
+    },
+    {
+      "id": "105629",
+      "timestamp": "2010-07-28T16:09:45+00:00",
+      "author": "Mike Austin",
+      "content": "\u003e But what do you mean by \"bootable\" and \"not -bootable\" the difference should only be \"flippable bit\" with Lexar Utility or \"not-flippable bit\" with it.\nYes, that\u0027s what I mean. I was going to say \"make-bootable-able.\" I have also tried several other utilities to sort out this flippin\u0027 bit - not just BootIt.   \n"
+    },
+    {
+      "id": "105633",
+      "timestamp": "2010-07-28T17:33:29+00:00",
+      "author": "Mike Austin",
+      "content": "\u003e I am going back to the shop to rummage through their bin of 4GB Fireflies to see if I can visually match the bootable one.\nI have just been back to the shop and found two flippable 4GB Lexar FireFlies at the back of the display. The only way I could identify them without removing the packaging was by the indented word \"Lexar\". The older, flippable, ones have very slightly thinner text. These ones will flip with BootIt. The later, unflippable, ones will not. I took my two example drives in to compare because the differences are so slight.   \n"
+    },
+    {
+      "id": "105987",
+      "timestamp": "2010-08-02T09:24:47+00:00",
+      "author": "iburnell",
+      "content": "Mike Austin - spooky I\u0027m having EXACTLY the same problem  \n\nI brought two JD Firefly USB 4bg sticks from staples. I need to use them for my work to boot up and build machines. First worked great. Second didn\u0027t. I\u0027ve wasted so much time reformatting etc. etc. Took the \"faulty\" one back to Staples last weekend and had it replaced - same problem  \n\nAs you say I notice the text between the two sticks are very slightly different - also the \"good\" one is seen as a JD Jumpfly whereas the other simply lists as removable disk in Win 7  \n\nI wonder whether there\u0027s a firmware upgrade or anything - else I\u0027ll have to take it back and just buy a different model   \n"
+    },
+    {
+      "id": "105988",
+      "timestamp": "2010-08-02T09:34:27+00:00",
+      "author": "Mike Austin",
+      "content": "\u003e As you say I notice the text between the two sticks are very slightly different - also the \"good\" one is seen as a JD Jumpfly whereas the other simply lists as removable disk in Win 7\nI run WinXP, so I have to use a separate utility to make usb drives bootable. I understand Win7 has a built-in utility to make them bootable. Is this what you are using?  \nThe price of these 4GB Fireflies is good at £6.99 - maybe too good. Perhaps some of them are from a dodgy source?   \n"
+    },
+    {
+      "id": "105989",
+      "timestamp": "2010-08-02T09:39:50+00:00",
+      "author": "iburnell",
+      "content": "I\u0027m using diskpart to list and format the disk  \n1. Diskpart  \n2. List disk and check EXACTLY the correct disk number  \n3. Select disk 1 (or whatever)  \n4. Clean  \n5. Create partition primary  \n6. Select partition 1  \n7. Active  \n8. Format fs\u003dfat32 quick  \n9. Assign  \n10. Exit  \n\nI can only use Windows 7 for this since XP doesn\u0027t see the drive at all. AS I said one works great the other doesn\u0027t - I thought I was going mad until I saw your thread - its so annoying that supposedly identical products are actually different  \n\nI don\u0027t want to keep trawling back to Staples so I might get in touch with Lexar to see if they have a solution - if you have any thoughts let me know ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\n... one thought I did have was that it might need Vista - I haven\u0027t got a copy of Vista in front of me but that still doesn\u0027t excuse one working fine under win7 and the other not   \n"
+    },
+    {
+      "id": "105991",
+      "timestamp": "2010-08-02T09:53:48+00:00",
+      "author": "Mike Austin",
+      "content": "\u003e I\u0027m using diskpart to list and format the disk\nShouldn\u0027t there be a bootsect.exe here somewhere?  \n\n\u003e I thought I was going mad until I saw your thread\nMore than one person can be mad at the same time ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)   \n\n\u003e ... one thought I did have was that it might need Vista - I haven\u0027t got a copy of Vista in front of me but that still doesn\u0027t excuse one working fine under win7 and the other not\nI tried a friend\u0027s Vista, but it did not have all the commands I was looking for, and diskpart did not list this drive (although it was visible in Explorer)   \n"
+    },
+    {
+      "id": "106008",
+      "timestamp": "2010-08-02T15:15:19+00:00",
+      "author": "iburnell",
+      "content": "One other thing - the revision numbers are exactly the same as your post Rev AD works ok - Rev AJ does not; AD is listed as JD Firefly, AJ only listed as USB Flash Drive  \n\nI have sent email to Lexar support and received nondescript answer on how to format a USB device !!!  \n\nIn the end I\u0027ll just go back to Staples junk it an get another type of USB drive - perhaps a Kingston or HP or something - just didn\u0027t want to have to make a special trip again   \n"
+    },
+    {
+      "id": "106442",
+      "timestamp": "2010-08-09T12:18:43+00:00",
+      "author": "iburnell",
+      "content": "Just thought I\u0027d round this one off from my perspective. Had email conversations with Lexar Eurosupport and, as you would expect, they were completely unhelpful i.e. please format the USB disk first! - sort of thing. Anyway I asked for an explanation of the different revision numbers and did not get one so I said I would simply return the item to Staples and get a different brand and also update this Forum to advice people not to buy Lexar  \n\nOver the weekend I return the Lexar stick and purchased a Sandisk Cruzar which was £12 - worked perfectly first time !  \n\nI guess you get what you pay for ![:mellow:](http://reboot.pro/public/style_emoticons/default/mellow.png)   \n"
+    },
+    {
+      "id": "106450",
+      "timestamp": "2010-08-09T13:21:39+00:00",
+      "author": "steve6375",
+      "content": "Has anyone tried the new Intenso High Speed Line USB sticks yet? £45 for 16GB.  \n\nSpec: 30 MB/s (read) 24 MB/s (write)   \n"
+    },
+    {
+      "id": "106492",
+      "timestamp": "2010-08-10T11:12:13+00:00",
+      "author": "ksanderash",
+      "content": "\u003e Has anyone tried the new Intenso High Speed Line USB sticks yet? £45 for 16GB.  \n\u003e Spec: 30 MB/s (read) 24 MB/s (write)\n\nSome groundwork can be found at [Nirsoft](http://usbspeed.nirsoft.net/?g\u003d16gb \"External link\"). But who knows what you get at home, putting your hands on it in your favorite file manager. As the time goes by vendor can simplify design -- it can be spoiled by the cheap memory, not dual channel, another controller, etc.  \n\nI own two (well, plus [PQI U330](http://www.pqi.com.tw/product2.asp?cate1\u003d18\u0026proid\u003d8 \"External link\") with \\~15Mb/s linear write) realy fast flash drives Transcend branded: JetFlash 168 (the fastest series from Transcend, SLC -- phase out) 2Gb, and [JetFlash 600 16Gb](http://www.transcendusa.com/Products/ModDetail.asp?ModNo\u003d267 \"External link\"). JF168 is very fast, even on small blocks, but only 2Gb, so I bought JF600 16Gb for my GRUB-based recovery media (a lof of PEs, Linux, Win setup, etc).  \n\nTranscend JF600 16Gb  \n---------------------------------------------------------------  \nCrystalDiskMark 3.0 Beta1 © 2007-2009 hiyohiyo  \nCrystal Dew World : [http://crystalmark.info/](http://crystalmark.info/ \"External link\")  \n---------------------------------------------------------------  \nSequential Read : 34.982 MB/s  \nSequential Write : 19.001 MB/s  \nRandom Read 512KB : 34.139 MB/s  \nRandom Write 512KB : 1.470 MB/s  \nRandom Read 4KB (QD\u003d1) : 4.970 MB/s \\[ 1213.3 IOPS\\]  \nRandom Write 4KB (QD\u003d1) : 0.014 MB/s \\[ 3.4 IOPS\\]  \nRandom Read 4KB (QD\u003d32) : 5.042 MB/s \\[ 1230.9 IOPS\\]  \nRandom Write 4KB (QD\u003d32) : 0.027 MB/s \\[ 6.6 IOPS\\]  \n\nTest : 100 MB \\[H: Used 0.0% (0.0/15.0 GB)\\]  \nDate : 2010/06/04 20:24:06  \nOS : Windows 7 Ultimate Edition \\[6.1 Build 7600\\] (x86)  \n\n\u003cbr /\u003e\n\nTranscend JF600 16Gb also, but 1Gb test file use:  \n---------------------------------------------------------------  \nCrystalDiskMark 3.0 Beta1 © 2007-2009 hiyohiyo  \nCrystal Dew World : [http://crystalmark.info/](http://crystalmark.info/ \"External link\")  \n---------------------------------------------------------------  \nSequential Read : 36.541 MB/s  \nSequential Write : 21.314 MB/s  \nRandom Read 512KB : 35.718 MB/s  \nRandom Write 512KB : 1.399 MB/s  \nRandom Read 4KB (QD\u003d1) : 4.948 MB/s \\[ 1207.9 IOPS\\]  \nRandom Write 4KB (QD\u003d1) : 0.010 MB/s \\[ 2.5 IOPS\\]  \nRandom Read 4KB (QD\u003d32) : 5.012 MB/s \\[ 1223.7 IOPS\\]  \nRandom Write 4KB (QD\u003d32) : 0.011 MB/s \\[ 2.6 IOPS\\]  \n\nTest : 1000 MB \\[H: Used 0.0% (0.0/15.0 GB)\\]  \nDate : 2010/06/04 20:31:52  \nOS : Windows 7 Ultimate Edition \\[6.1 Build 7600\\] (x86)   \n"
+    }
+  ]
+}

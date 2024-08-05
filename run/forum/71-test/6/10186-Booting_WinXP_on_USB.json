@@ -1,0 +1,70 @@
+{
+  "id": "10186",
+  "title": "Booting WinXP on USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "88868",
+      "timestamp": "2010-01-16T10:20:11+00:00",
+      "author": "cXhristian",
+      "content": "Hi, this is my first post here so first I will like to say hello to you all.  \nIn the past week Ive tried to run WinXP from an USB.  \nAnd then I dont mean installing XP from an USB, but running the full os (or at least working os) from the USB.  \nI am not looking for a BartPE sollution, as I already have this.  \n\nIve tried different methods (more than once found out that its not installing XP on USB, but installing XP **from** USB) and I have also found a method which worked, kinda.  \nThe problem with the last method was that it would only boot with the same driver letter (in this case C:). Ive read something about migrate.inf(to make the drive letter \"static\"), but I didnt understand how it worked and neither did I get it to work.  \n\nAnd again, I am **not** looking for a BartPE sollution, but a full (or semifull) install of the OS.  \n\nAnd yeah... Since Im tired of looking, searching, googling, whatever I found out that I would post my problem at a forum.   \nAnd hopefully someone have got this working.. ![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif)  \n\nOh and please ask for more info if needed.  \nI have 3 usb removeables (2 gb, 4 gb, 16 gb) and a USB HD with 1 tb. I have also a 1 gb usb with BartPE on it.   \n"
+    },
+    {
+      "id": "88871",
+      "timestamp": "2010-01-16T10:50:44+00:00",
+      "author": "karyonix",
+      "content": "Welcome, cXhristian.  \n\nWhat is wrong with Windows having the same drive letter ?  \n\nWindows XP (on internal disk or on USB disk) does not work properly if you change its drive letter AFTER installation.   \nYou can change its drive letter during installation by using migrate.inf.  \n\nAn easy way to generate migrate.inf automatically.   \n- Attach your disk in another computer with Windows XP.   \n- Use disk management to assign drive letter for your disk partitions. (X: in this example)  \n- Use command prompt. Change directory to installation source (such as D:\\\\I386) and run winnt32  \nwinnt32.exe /dudisable /syspart:X /tempdrive:X /noreboot  \n- There will be X:\\\\$WIN_NT$.\\~BT\\\\migrate.inf.   \n- If you use X: to boot and install Windows to X:, the resulting drive letter will be X:.   \n"
+    },
+    {
+      "id": "88875",
+      "timestamp": "2010-01-16T14:09:26+00:00",
+      "author": "cXhristian",
+      "content": "Ah, I didnt explain mich about the drive letter problem.  \nYou see I want to use this USB with many different computers (of course).   \nBut the problem was that the USB got different drive letter from all the computers.   \nTherefore it only worked on the computer I first installed it on.  \nSo what I meant is that I want the drive to be static.  \n\nThe method I used which partly worked included using a modified WinXP install cd and installing on the usb.   \nIs it possible to add the migrate.inf to that cd (not the same cd, but another I will burn) which will give the USB drive a static letter on all machines when booting?  \n\nOr will it only work if I boot off from the the usb?  \n\nOh, and thanks for your quick answer. I wasnt so quick as you to see it. ![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif)   \n"
+    },
+    {
+      "id": "88882",
+      "timestamp": "2010-01-16T15:10:53+00:00",
+      "author": "karyonix",
+      "content": "\u003e But the problem was that the USB got different drive letter from all the computers.   \n\u003e Therefore it only worked on the computer I first installed it on.\nI think this is wrong.  \n\nHard disk partition drive letters are stored in registry key HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\MountedDevices of running Windows.   \nKnown partitions in boot disk always have the same drive letters unless you change or delete data from registry.   \nDrive letters used when Windows run from USB disk are independent from drive letters used in other Windows instance. Drive letters you see in other Windows installations do not matter. The difference should not be the reason why your Windows doesn\u0027t work.   \n\nTry post the exact procedure you use to install Windows in USB disk and the exact result of your test, so other user may find what is missing.   \nWhat is the problem on other computers ? What do you see on screen ?   \n"
+    },
+    {
+      "id": "88909",
+      "timestamp": "2010-01-16T22:05:57+00:00",
+      "author": "cXhristian",
+      "content": "Hi again.  \nHere: [http://www.ngine.de/article/id/8](http://www.ngine.de/article/id/8 \"External link\")  \n\nWhen I tried it on other computers I either got bsod or something like \"Could not boot\".   \nI cant remember the exact message.  \nBut it worked perfectly on the machine I installed it on.  \n\nIs there another way to do this?   \n"
+    },
+    {
+      "id": "88918",
+      "timestamp": "2010-01-16T23:32:59+00:00",
+      "author": "davlak",
+      "content": "it\u0027s not a problem concerning drive letters, anyway did you try this?  \n\n[http://www.usboot.or...p?page\u003dDownload](http://www.usboot.org/tiki-index.php?page\u003dDownload \"External link\")  \n\nif not: I used that method on a XP installation on SATA HD, and this one was made with an XP CD integrated with the full set of DRIVERPACKS (see www.driverpacks.net)  \n\nso:   \n1) have a \"normal\" cd of windows xp   \n2) integrate it with driverpacks (VERY IMPORTANT: MAKE SURE TO ACTIVATE KTD OPTION preparing the integration with the driverpack program (DPs_BASE.exe), so to obtain an XP SETUP CD that will install an universal HARDWARE XP COPY)  \n3) create an ISO (using nlite or other tools) burn it and launch setup from cd  \nOR   \nfollow [FIRADISK method](http://diddy.boot-land.net/firadisk/files/win_iso_install.htm \"External link\") for installing directly from iso on USB   \n4) once windows is installed on IDE\\\\SATA HD use USBoot 2.11 on it, clone the installation (ghost - drive image xml or similar) and restore the clone on an USB drive primary and active partition previously formatted and with a NT52 bootsector in the mbr (you can use bootsect.exe from vista or seven dvd).   \n"
+    },
+    {
+      "id": "88924",
+      "timestamp": "2010-01-17T00:59:58+00:00",
+      "author": "karyonix",
+      "content": "CriticalDeviceDatabase for moving USB boot disk to different USB port or different USB controller.   \nusbcddb.reg  \n\n```\nWindows Registry Editor Version 5.00\n\n\n\n\u0026#91;HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\CriticalDeviceDatabase\\PCI#CC_0C0300\u0026#93;\n\n\u0026#34;ClassGUID\u0026#34;\u003d\u0026#34;{36FC9E60-C465-11CF-8056-444553540000}\u0026#34;\n\n\u0026#34;Service\u0026#34;\u003d\u0026#34;usbuhci\u0026#34;\n\n\n\n\u0026#91;HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\CriticalDeviceDatabase\\PCI#CC_0C0310\u0026#93;\n\n\u0026#34;ClassGUID\u0026#34;\u003d\u0026#34;{36FC9E60-C465-11CF-8056-444553540000}\u0026#34;\n\n\u0026#34;Service\u0026#34;\u003d\u0026#34;usbohci\u0026#34;\n\n\n\n\u0026#91;HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\CriticalDeviceDatabase\\PCI#CC_0C0320\u0026#93;\n\n\u0026#34;ClassGUID\u0026#34;\u003d\u0026#34;{36FC9E60-C465-11CF-8056-444553540000}\u0026#34;\n\n\u0026#34;Service\u0026#34;\u003d\u0026#34;usbehci\u0026#34;\n\n\n\n\u0026#91;HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\CriticalDeviceDatabase\\USB#ROOT_HUB\u0026#93;\n\n\u0026#34;ClassGUID\u0026#34;\u003d\u0026#34;{36FC9E60-C465-11CF-8056-444553540000}\u0026#34;\n\n\u0026#34;Service\u0026#34;\u003d\u0026#34;usbhub\u0026#34;\n\n\n\n\u0026#91;HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\CriticalDeviceDatabase\\USB#ROOT_HUB20\u0026#93;\n\n\u0026#34;ClassGUID\u0026#34;\u003d\u0026#34;{36FC9E60-C465-11CF-8056-444553540000}\u0026#34;\n\n\u0026#34;Service\u0026#34;\u003d\u0026#34;usbhub\u0026#34;\n\n\n\n\u0026#91;HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\CriticalDeviceDatabase\\USB#Class_09\u0026#93;\n\n\u0026#34;ClassGUID\u0026#34;\u003d\u0026#34;{36FC9E60-C465-11CF-8056-444553540000}\u0026#34;\n\n\u0026#34;Service\u0026#34;\u003d\u0026#34;usbhub\u0026#34;\n\n\n\n\u0026#91;HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\CriticalDeviceDatabase\\USB#Class_08\u0026SubClass_02\u0026Prot_50\u0026#93;\n\n\u0026#34;ClassGUID\u0026#34;\u003d\u0026#34;{36FC9E60-C465-11CF-8056-444553540000}\u0026#34;\n\n\u0026#34;Service\u0026#34;\u003d\u0026#34;USBSTOR\u0026#34;\n\n\n\n\u0026#91;HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\CriticalDeviceDatabase\\USB#Class_08\u0026SubClass_05\u0026Prot_50\u0026#93;\n\n\u0026#34;ClassGUID\u0026#34;\u003d\u0026#34;{36FC9E60-C465-11CF-8056-444553540000}\u0026#34;\n\n\u0026#34;Service\u0026#34;\u003d\u0026#34;USBSTOR\u0026#34;\n\n\n\n\u0026#91;HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\CriticalDeviceDatabase\\USB#Class_08\u0026SubClass_06\u0026Prot_50\u0026#93;\n\n\u0026#34;ClassGUID\u0026#34;\u003d\u0026#34;{36FC9E60-C465-11CF-8056-444553540000}\u0026#34;\n\n\u0026#34;Service\u0026#34;\u003d\u0026#34;USBSTOR\u0026#34;\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "88939",
+      "timestamp": "2010-01-17T11:21:14+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e When I tried it on other computers I either got bsod or something like \"Could not boot\".   \n\u003e I cant remember the exact message.\n\nIt\u0027s important to know the exact messages, as it is possible that two differnt problems cause the two different errors (BSOD vs. \"Cannot boot\").  \n\nUsing the modified NTDETCT.COM may be able to solve some, and is anyway an attempt that costs nothing:  \n[http://www.911cd.net...o...\u003d20408\\\u0026st\u003d8](http://www.911cd.net/forums//index.php?showtopic\u003d20408\u0026st\u003d8 \"External link\")  \n\nWonko   \n"
+    },
+    {
+      "id": "88967",
+      "timestamp": "2010-01-17T15:34:02+00:00",
+      "author": "cXhristian",
+      "content": "I am going to try to install with the CD again now, to check which error I got.  \nAs far as I can remember it was something like \"bootmgr could not be found\".  \n\nHad some troubles with partitions on the usb, but Disk Management fixed it.  \n\nEdit: Would it be the same if I run the xp installer from a burned cd or from another usb?   \n"
+    },
+    {
+      "id": "88987",
+      "timestamp": "2010-01-17T19:36:50+00:00",
+      "author": "davlak",
+      "content": "\u003e \"bootmgr could not be found\".\n\nseems you have a NT60 bootcode in the master boot record  \n\nyou have to boot the DVD, accept international settings, and in the next screen open command prompt (shift f10) and use  \n\nbootsect /NT52 x: /mbr  \n\n(x must be changed with the actual letter of the drive)   \n"
+    }
+  ]
+}

@@ -1,0 +1,478 @@
+{
+  "id": "14947",
+  "title": "Fast ISO Booting of Win7PE",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "132720",
+      "timestamp": "2011-07-11T01:47:27+00:00",
+      "author": "gearmaker",
+      "content": "Hi all, I thought I would share something I came across while searching for the fastest way to boot iso file.  \nI use the tools and knowledge found here to help family and friends with their computers, just like many of you I\u0027m sure.  \nMy favorite winbuilder tool has been the LiveXP. I followed tutorial by amalux. It boots in 2min 30sec on cd. I\u0027ve used it   \nmany times. Then comes Windows 7. A new OS that I can still use LiveXP on for some things. Then add 64bit into the mix and   \nnew tools like MSDART to repair and recover Win7 installs, so now I add winbuilder Win7PE. I think it is called Win7PE SE   \nto be exact. Another great tool from the many talented people here. However, booting it from CD was taking over 5min.  \nI used default setting in winbuilder of in-ram bootwim and grub4dos bootloader.I guess I\u0027m impatient but watching that bar  \n\" windows is loading files . . . \" for 5min was driving me crazy!I tried stripped down lean versions of Win7PE but,  \nload times were always about the same.Then I read about the Zalman VE-200. I bought one and started putting all kinds  \nof iso tools on it and they booted!!! Programs too!!! I put the Win7PE iso on it and OH NOOO!! ![:pulpfiction:](http://reboot.pro/public/style_emoticons/default/what.gif) 7min and 38sec to boot!!  \nThis is getting longer than I thought so please forgive me. After much experimenting I set winbuilder to build using  \nnormal build (no in-ram bootwim) and normal bootmanager (no grub4dos).I put the resulting iso on the Zalman and I saw   \nthe loading screen and then BSOD. stop0000007b. Then I read this : [My link](http://reboot.pro/9196/page__st__45 \"\")  \n\nThis was from karyonix:  \n\nUse regedit (run as administrator) from other installed Windows.  \nOr boot Windows 7 DVD and press Shift+F10 to open cmd then type regedit.  \nSelect HKEY_LOCAL_MACHINE  \nClick menu File, Load Hive...  \nSelect (your USB drive)\\\\Windows\\\\system32\\\\config\\\\system file and Open it.  \nGive it a name sys.  \nBrowse to HKEY_LOCAL_MACHINE\\\\sys\\\\ControlSetxxx\\\\services\\\\usbehci. Make sure its Start value is 0.  \nDo the same for usbohci, usbuhci, usbhub, usbstor in all ControlSet\\*\\\\services key.  \nSelect HKEY_LOCAL_MACHINE\\\\sys  \nClick menu File, Unload Hive...  \n\nI made the changes as detailed to the iso, again saved it to the Zalman and it booted in 1min and 38sec!! ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \nTo me this was HUGE !!! I knew the stop was from inaccessible boot device and remembered reading about changing usb start   \nvalues to 0 from 3.  \nEverything works great and it boots sooooo fast!  \nAnyway, that\u0027s what worked for me, maybe for someone else also!!   \n"
+    },
+    {
+      "id": "132731",
+      "timestamp": "2011-07-11T09:25:09+00:00",
+      "author": "Brito",
+      "content": "Very good tip, thank you for sharing.  \n\nIt will be mentioned over the next weekly newsletter for sure!  \n\n\u003cbr /\u003e\n\n![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n"
+    },
+    {
+      "id": "132734",
+      "timestamp": "2011-07-11T11:31:33+00:00",
+      "author": "gearmaker",
+      "content": "I should also mention that this procedure worked on my thumbdrive also. Not as dramatic improvement as on the  \nZalman, but it still resulted in quicker boot time. I\u0027m sure that the brand of thumbdrive has a lot to do with  \nspeed as well.   \n"
+    },
+    {
+      "id": "132737",
+      "timestamp": "2011-07-11T12:14:00+00:00",
+      "author": "MedEvil",
+      "content": "Yes RAM booting has always been way slower, than direct booting, even when used with a CD.  \n\nIf you\u0027re looking for a challenge. ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)  \n\nThe fastest boot times i even managed to acomplish for my NaughtyPE (XP based, 230MB) are:  \n\n1 minute 20 seconds from start of windows boot process till end of disk activity with full hardware detect, directly booted from a DVD.  \n\naround 20 seconds from start of windows boot process till end of disk activity with full hardware detect, directly booted from USB-Stick.  \n\nCompared to that, my Win7PESE is really slugish, with a boot time of about 3:30 min.  \nI think the main reason the Win7PEs are so much slower, is that they do way more stuff during boot, instead of during build, compared to the XP based projects.  \n\n![:pulpfiction:](http://reboot.pro/public/style_emoticons/default/what.gif)   \n"
+    },
+    {
+      "id": "132739",
+      "timestamp": "2011-07-11T12:27:35+00:00",
+      "author": "pscEx",
+      "content": "\u003e I think the main reason the Win7PEs are so much slower, is that they do way more stuff during boot, instead of during build, compared to the XP based projects.  \nOr compared to the nativeEx_multiPE project having PEFactory ![:pulpfiction:](http://reboot.pro/public/style_emoticons/default/what.gif)  \n\nPeter ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n"
+    },
+    {
+      "id": "132748",
+      "timestamp": "2011-07-11T15:48:33+00:00",
+      "author": "al_jo",
+      "content": "Perhaps there is something \"wrong\" with my PC/UFD, because when using this project:  \n[http://al-jo.zxq.net...ll_and_quick.7z](http://al-jo.zxq.net/Win7PE_small_and_quick.7z \"External link\")  \nmy UFD boots the win7pe in about 30-40 sec.  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nPs. The above 7pe project builds in 4-5 minutes (one extra minute to make UFD ready)   \n"
+    },
+    {
+      "id": "132752",
+      "timestamp": "2011-07-11T16:36:23+00:00",
+      "author": "amalux",
+      "content": "I don\u0027t really understand the 5+ min. \u0027RAM booting\u0027 thing, it reminds me of the old **pre** RAM booting days of waiting for the CD to load files. I regularly boot large Win7PE_SE (400+ MB) images from UFD on modern laptops in 30-40 sec. (LiveXP even faster); is it because I format NTFS, grub menu configuration or some other variation? This seems like a mystery; I too would be very annoyed waiting more than a minute to boot from any medium.  \n\nOn older hardware, which can be quite slow booting from USB; I use the trick of adding ISO to internal hard drive (takes one time, 2 min. investment) which gets me back to very fast (30 sec.) boot times.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132756",
+      "timestamp": "2011-07-11T16:57:54+00:00",
+      "author": "MedEvil",
+      "content": "al-jos project is smaller and therefore boots faster by default. But it\u0027s not that much smaller. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nI think, instead of just talking absolute times, it would be better to talk about loading speeds of the wim, in addition to the total time.  \nThis way we could distinguish between faster hardware and better optimized PE.  \n\n@amalux  \nWhat Win7 PE do you use? 30-40 seconds loading time for the wim i have too on newer machines, but never ever 30-40 seconds for the whole boot process till disk access ends.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132759",
+      "timestamp": "2011-07-11T18:05:43+00:00",
+      "author": "amalux",
+      "content": "\u003e @amalux  \n\u003e What Win7 PE do you use? 30-40 seconds loading time for the wim i have too on newer machines, but never ever 30-40 seconds for the whole boot process till disk access ends.  \nI use many builds, always evolving, *mostly* based on ChrisR\u0027s Win7PE_SE and usually around 350-400 MB. Nine out of ten newer machines boot UFD to desktop in well under a minute, occasionally there will be an odd delay in loading RAM, with the loading bar *creeping* across the screen instead of zipping to completion in a few seconds as normal. I admit I don\u0027t understand this behavior, I assume it\u0027s some bottleneck in the system, RAM, ports, controller, drivers etc. I normally don\u0027t have time to investigate further and just pull the UFD, switching to other boot method.   \n\nOlder machines are definitely a problem booting to UFD/USB (especially USB-HD) so I know to avoid USB altogether on those. I think there are other considerations, UFD type/speed, formatting (not just NTFS vs. FAT), PE image type/configuration, grub/BCD setup etc. If I ever have time to fully investigate I\u0027ll be glad to report findings with details.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132762",
+      "timestamp": "2011-07-11T18:39:02+00:00",
+      "author": "al_jo",
+      "content": "Just tried with this little project:  \n[http://www.mediafire...1dsrs6c4ysyc8d4](http://www.mediafire.com/?1dsrs6c4ysyc8d4 \"External link\")  \nwith 120 app scripts. Final iso \u003d 306MB, Wim \u003d 290MB  \nBoot time \u003d 45 seconds \u003d full access to all hardware!  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nPs. Using fat32 on the ufd...  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![1.jpg](http://reboot.pro/uploads/monthly_07_2011/post-32393-0-78130000-1310409532_thumb.jpg)](http://reboot.pro/uploads/monthly_07_2011/post-32393-0-78130000-1310409532.jpg \"1.jpg - Size: 123.23KB\"){#ipb-attach-url-12384-0-52657000-1676066602}\n\n"
+    },
+    {
+      "id": "132763",
+      "timestamp": "2011-07-11T18:41:56+00:00",
+      "author": "Aye Htay",
+      "content": "I agree with amalux.  \nWhen I use Lenovo modern laptop, loading time is 16M/s.  \nUsing Kingston 16gb usb flash, it loads 1gb Mini8.img image within 1 min and 8 sec and boots up additional 10 sec with fully fuctional, such as networking + Video + Audio.  \nBut my old desktop, it took 25 min. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nregards,  \n\nah   \n"
+    },
+    {
+      "id": "132764",
+      "timestamp": "2011-07-11T19:24:00+00:00",
+      "author": "MedEvil",
+      "content": "Thanks al_jo, will test your linked project and see how fast it will go on my computers.  \nMaybe it will lead to pinpointing some troublesome features/scripts.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132768",
+      "timestamp": "2011-07-11T20:13:57+00:00",
+      "author": "pscEx",
+      "content": "@Al_jo!  \n\nYou are the best Joker I got to know in the past.  \n\nI downloaded your link, defined my source CD and started.  \n\nAfter about 12 minutes build time the project created an ISO (or at least processed a script \"4 - Create ISO\").  \n\nHow with this (virtual ?) ISO I can reach the phantastic UFD boot time of 45 seconds?  \nI did not find a script in your project to create the UFD ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nPeter   \n"
+    },
+    {
+      "id": "132769",
+      "timestamp": "2011-07-11T20:15:47+00:00",
+      "author": "pscEx",
+      "content": "EDIT: Sorry, duplicated entry again. Thanks forums\u0027s SW.  \nI cannot delete, only ovwerwrite with this text.  \nPeter   \n"
+    },
+    {
+      "id": "132770",
+      "timestamp": "2011-07-11T20:24:08+00:00",
+      "author": "amalux",
+      "content": "\u003e Just tried with this little project:  \n\u003e [http://www.mediafire...1dsrs6c4ysyc8d4](http://www.mediafire.com/?1dsrs6c4ysyc8d4 \"External link\")  \n\u003e with 120 app scripts. Final iso \u003d 306MB, Wim \u003d 290MB  \n\u003e Boot time \u003d 45 seconds \u003d full access to all hardware!  \n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\u003e\n\u003e Ps. Using fat32 on the ufd...  \nThanks al_jo for this nice project ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\n\u003cbr /\u003e\n\nI\u0027ll try it myself on a NTFS UFD, that is if I can figure out how to put it on a UFD ![:rofl:](http://reboot.pro/public/style_emoticons/default/roll1.gif)   \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132771",
+      "timestamp": "2011-07-11T20:31:05+00:00",
+      "author": "al_jo",
+      "content": "\u003e Thanks al_jo for this nice project ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e I\u0027ll try it myself on a NTFS UFD, that is if I can figure out how to put it on a UFD ![:rofl:](http://reboot.pro/public/style_emoticons/default/roll1.gif)   \n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n@Amalux \\\u0026 PscEx  \nSorry, I\u0027m almost always using Sardu to make the bootable ufd.  \nWill include \"USBDeviceBCD.script\" tomorrow.  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132772",
+      "timestamp": "2011-07-11T20:34:25+00:00",
+      "author": "pscEx",
+      "content": "\u003e @Amalux \\\u0026 PscEx  \n\u003e Sorry, I\u0027m almost always using Sardu to make the bootable ufd.  \n\u003e Will include \"USBDeviceBCD.script\" tomorrow.  \n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nPeter   \n"
+    },
+    {
+      "id": "132780",
+      "timestamp": "2011-07-11T22:20:35+00:00",
+      "author": "al_jo",
+      "content": "Well, maybe it\u0027s tomorrow now?  \nSo, new project with Usbdevicebcd included.  \nAnd some new scripts, not fully tested yet...  \n[http://www.mediafire...aws37p7qw7qe36o](http://www.mediafire.com/?aws37p7qw7qe36o \"External link\")  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132785",
+      "timestamp": "2011-07-12T01:01:19+00:00",
+      "author": "gearmaker",
+      "content": "al_jo , I tried your project as well with a load time of 5min. Maybe my mainboard is showing it\u0027s age. It is a 4yr  \nold DFI Infinity. I\u0027m wondering now if maybe my bios is not supporting USB 2.0 boot speed. The other reason I posted  \nis to find what others are experiencing.I have never seen a boot.wim load in under a minute.When my computer first  \nboots the post screen does show USB 2.0 EHCI. But whether it boots at that speed I don\u0027t know.Is there a test for   \nUSB 2.0 bootup? ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132789",
+      "timestamp": "2011-07-12T03:03:35+00:00",
+      "author": "allanf",
+      "content": ".   \n"
+    },
+    {
+      "id": "132794",
+      "timestamp": "2011-07-12T05:58:38+00:00",
+      "author": "al_jo",
+      "content": "@gearmaker  \nHere is what I do concerning booting a win7pe from ufd:  \n1. Make the iso with [winbuilder](http://www.mediafire.com/?3dse09q8vkcf6pm \"External link\")  \n2. Defrag the iso with [wincontig](http://wincontig.mdtzone.it/en/ \"External link\")  \n3. \"Install\" the iso to the ufd with [Sardu](http://www.sarducd.it/ \"External link\")  \nHere is a small \"movie\":  \n[http://46.194.143.24...src\u003dSAM\\\u0026speed\u003d1](http://46.194.143.249:86/flashvod.html?src\u003dSAM\u0026speed\u003d1 \"External link\")  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\n\u003cbr /\u003e\n\nPs. Sometimes choosing rear instead of front usb port can make some difference.  \nPs2. I\u0027m using a CBM 2GB wristwatch ufd ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![fragments.jpg](http://reboot.pro/uploads/monthly_07_2011/post-32393-0-44063700-1310450284_thumb.jpg)](http://reboot.pro/uploads/monthly_07_2011/post-32393-0-44063700-1310450284.jpg \"fragments.jpg - Size: 91.56KB\"){#ipb-attach-url-12385-0-52665600-1676066602}\n\n"
+    },
+    {
+      "id": "132813",
+      "timestamp": "2011-07-12T10:31:49+00:00",
+      "author": "MedEvil",
+      "content": "To test boot speed, just stop the time, it takes to load the wim ito RAM. Then devide the size of the wim by the seconds it took to load it.  \n\nAlso note, that the wim is loaded into memory not with a DMA mode, but a PIO mode, which puts a lot more stress on the CPU. So an older or slower CPU may prevent the USB port from reaching it\u0027s full potential.  \n\nWhen booting directly only the very first phase of the boot process uses PIO mode. As soon as the Windows Start screen appears, Windows drivers are used instead of BIOS calls, which means switching to DMA mode in most cases, which puts less strass on the CPU, so a higher speed can be reached with a slower CPU.  \nAlso with direct boot, no dead weight has to be moved. That helps speeding up too.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132835",
+      "timestamp": "2011-07-12T13:18:43+00:00",
+      "author": "wimb",
+      "content": "I tried the project of **al_jo** and used SARDU to make the USB-stick, but could not auto boot 7PE  \nI got a black screen where I could fill in boot options and it will boot, but it should work automatic.  \n\nI found that the pe.cfg file in folder SARDU on USB-stick had a wrong entry.  \n\nInstead of APPEND boot ntldr\u003d/bootmgr fs  \n\nit should read for automatic booting of 7 PE  \n\n```\nAPPEND boot ntldr\u003d/BOOTMGR\n\n```\n\nRemoval of fs solved already the problem.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132837",
+      "timestamp": "2011-07-12T13:53:41+00:00",
+      "author": "al_jo",
+      "content": "@Wimb  \nHi.  \nIf you don\u0027t want the boot menu from Sardu, there is an usb   \nscript named \"USBDeviceBCD\" for winbuilder.  \nI\u0027m using Sardu because of the option to add 10+ iso\u0027s...  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132844",
+      "timestamp": "2011-07-12T14:47:32+00:00",
+      "author": "wimb",
+      "content": "**@al_jo** Your script works, but unpacking the 7 PE ISO file is not needed and not desired by me.  \nI prefer to use **BOOT_USB.exe** where I can use the 7 PE ISO Boot Image file ***unchanged*** and can boot direct from Grub4dos Menu.  \n\n[http://www.911cd.net...showtopic\u003d24424](http://www.911cd.net/forums//index.php?showtopic\u003d24424 \"External link\")  \n\nIn this way I can combine many ISO files (also Linux e.g. PartedMagic) or IMG or VHD files.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132720",
+      "timestamp": "2011-07-11T01:47:27+00:00",
+      "author": "gearmaker",
+      "content": "Hi all, I thought I would share something I came across while searching for the fastest way to boot iso file.  \nI use the tools and knowledge found here to help family and friends with their computers, just like many of you I\u0027m sure.  \nMy favorite winbuilder tool has been the LiveXP. I followed tutorial by amalux. It boots in 2min 30sec on cd. I\u0027ve used it   \nmany times. Then comes Windows 7. A new OS that I can still use LiveXP on for some things. Then add 64bit into the mix and   \nnew tools like MSDART to repair and recover Win7 installs, so now I add winbuilder Win7PE. I think it is called Win7PE SE   \nto be exact. Another great tool from the many talented people here. However, booting it from CD was taking over 5min.  \nI used default setting in winbuilder of in-ram bootwim and grub4dos bootloader.I guess I\u0027m impatient but watching that bar  \n\" windows is loading files . . . \" for 5min was driving me crazy!I tried stripped down lean versions of Win7PE but,  \nload times were always about the same.Then I read about the Zalman VE-200. I bought one and started putting all kinds  \nof iso tools on it and they booted!!! Programs too!!! I put the Win7PE iso on it and OH NOOO!! ![:pulpfiction:](http://reboot.pro/public/style_emoticons/default/what.gif) 7min and 38sec to boot!!  \nThis is getting longer than I thought so please forgive me. After much experimenting I set winbuilder to build using  \nnormal build (no in-ram bootwim) and normal bootmanager (no grub4dos).I put the resulting iso on the Zalman and I saw   \nthe loading screen and then BSOD. stop0000007b. Then I read this : [My link](http://reboot.pro/9196/page__st__45 \"\")  \n\nThis was from karyonix:  \n\nUse regedit (run as administrator) from other installed Windows.  \nOr boot Windows 7 DVD and press Shift+F10 to open cmd then type regedit.  \nSelect HKEY_LOCAL_MACHINE  \nClick menu File, Load Hive...  \nSelect (your USB drive)\\\\Windows\\\\system32\\\\config\\\\system file and Open it.  \nGive it a name sys.  \nBrowse to HKEY_LOCAL_MACHINE\\\\sys\\\\ControlSetxxx\\\\services\\\\usbehci. Make sure its Start value is 0.  \nDo the same for usbohci, usbuhci, usbhub, usbstor in all ControlSet\\*\\\\services key.  \nSelect HKEY_LOCAL_MACHINE\\\\sys  \nClick menu File, Unload Hive...  \n\nI made the changes as detailed to the iso, again saved it to the Zalman and it booted in 1min and 38sec!! ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \nTo me this was HUGE !!! I knew the stop was from inaccessible boot device and remembered reading about changing usb start   \nvalues to 0 from 3.  \nEverything works great and it boots sooooo fast!  \nAnyway, that\u0027s what worked for me, maybe for someone else also!!   \n"
+    },
+    {
+      "id": "132731",
+      "timestamp": "2011-07-11T09:25:09+00:00",
+      "author": "Brito",
+      "content": "Very good tip, thank you for sharing.  \n\nIt will be mentioned over the next weekly newsletter for sure!  \n\n\u003cbr /\u003e\n\n![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n"
+    },
+    {
+      "id": "132734",
+      "timestamp": "2011-07-11T11:31:33+00:00",
+      "author": "gearmaker",
+      "content": "I should also mention that this procedure worked on my thumbdrive also. Not as dramatic improvement as on the  \nZalman, but it still resulted in quicker boot time. I\u0027m sure that the brand of thumbdrive has a lot to do with  \nspeed as well.   \n"
+    },
+    {
+      "id": "132737",
+      "timestamp": "2011-07-11T12:14:00+00:00",
+      "author": "MedEvil",
+      "content": "Yes RAM booting has always been way slower, than direct booting, even when used with a CD.  \n\nIf you\u0027re looking for a challenge. ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)  \n\nThe fastest boot times i even managed to acomplish for my NaughtyPE (XP based, 230MB) are:  \n\n1 minute 20 seconds from start of windows boot process till end of disk activity with full hardware detect, directly booted from a DVD.  \n\naround 20 seconds from start of windows boot process till end of disk activity with full hardware detect, directly booted from USB-Stick.  \n\nCompared to that, my Win7PESE is really slugish, with a boot time of about 3:30 min.  \nI think the main reason the Win7PEs are so much slower, is that they do way more stuff during boot, instead of during build, compared to the XP based projects.  \n\n![:pulpfiction:](http://reboot.pro/public/style_emoticons/default/what.gif)   \n"
+    },
+    {
+      "id": "132739",
+      "timestamp": "2011-07-11T12:27:35+00:00",
+      "author": "pscEx",
+      "content": "\u003e I think the main reason the Win7PEs are so much slower, is that they do way more stuff during boot, instead of during build, compared to the XP based projects.  \nOr compared to the nativeEx_multiPE project having PEFactory ![:pulpfiction:](http://reboot.pro/public/style_emoticons/default/what.gif)  \n\nPeter ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n"
+    },
+    {
+      "id": "132748",
+      "timestamp": "2011-07-11T15:48:33+00:00",
+      "author": "al_jo",
+      "content": "Perhaps there is something \"wrong\" with my PC/UFD, because when using this project:  \n[http://al-jo.zxq.net...ll_and_quick.7z](http://al-jo.zxq.net/Win7PE_small_and_quick.7z \"External link\")  \nmy UFD boots the win7pe in about 30-40 sec.  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nPs. The above 7pe project builds in 4-5 minutes (one extra minute to make UFD ready)   \n"
+    },
+    {
+      "id": "132752",
+      "timestamp": "2011-07-11T16:36:23+00:00",
+      "author": "amalux",
+      "content": "I don\u0027t really understand the 5+ min. \u0027RAM booting\u0027 thing, it reminds me of the old **pre** RAM booting days of waiting for the CD to load files. I regularly boot large Win7PE_SE (400+ MB) images from UFD on modern laptops in 30-40 sec. (LiveXP even faster); is it because I format NTFS, grub menu configuration or some other variation? This seems like a mystery; I too would be very annoyed waiting more than a minute to boot from any medium.  \n\nOn older hardware, which can be quite slow booting from USB; I use the trick of adding ISO to internal hard drive (takes one time, 2 min. investment) which gets me back to very fast (30 sec.) boot times.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132756",
+      "timestamp": "2011-07-11T16:57:54+00:00",
+      "author": "MedEvil",
+      "content": "al-jos project is smaller and therefore boots faster by default. But it\u0027s not that much smaller. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nI think, instead of just talking absolute times, it would be better to talk about loading speeds of the wim, in addition to the total time.  \nThis way we could distinguish between faster hardware and better optimized PE.  \n\n@amalux  \nWhat Win7 PE do you use? 30-40 seconds loading time for the wim i have too on newer machines, but never ever 30-40 seconds for the whole boot process till disk access ends.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132759",
+      "timestamp": "2011-07-11T18:05:43+00:00",
+      "author": "amalux",
+      "content": "\u003e @amalux  \n\u003e What Win7 PE do you use? 30-40 seconds loading time for the wim i have too on newer machines, but never ever 30-40 seconds for the whole boot process till disk access ends.  \nI use many builds, always evolving, *mostly* based on ChrisR\u0027s Win7PE_SE and usually around 350-400 MB. Nine out of ten newer machines boot UFD to desktop in well under a minute, occasionally there will be an odd delay in loading RAM, with the loading bar *creeping* across the screen instead of zipping to completion in a few seconds as normal. I admit I don\u0027t understand this behavior, I assume it\u0027s some bottleneck in the system, RAM, ports, controller, drivers etc. I normally don\u0027t have time to investigate further and just pull the UFD, switching to other boot method.   \n\nOlder machines are definitely a problem booting to UFD/USB (especially USB-HD) so I know to avoid USB altogether on those. I think there are other considerations, UFD type/speed, formatting (not just NTFS vs. FAT), PE image type/configuration, grub/BCD setup etc. If I ever have time to fully investigate I\u0027ll be glad to report findings with details.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132762",
+      "timestamp": "2011-07-11T18:39:02+00:00",
+      "author": "al_jo",
+      "content": "Just tried with this little project:  \n[http://www.mediafire...1dsrs6c4ysyc8d4](http://www.mediafire.com/?1dsrs6c4ysyc8d4 \"External link\")  \nwith 120 app scripts. Final iso \u003d 306MB, Wim \u003d 290MB  \nBoot time \u003d 45 seconds \u003d full access to all hardware!  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nPs. Using fat32 on the ufd...  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![1.jpg](http://reboot.pro/uploads/monthly_07_2011/post-32393-0-78130000-1310409532_thumb.jpg)](http://reboot.pro/uploads/monthly_07_2011/post-32393-0-78130000-1310409532.jpg \"1.jpg - Size: 123.23KB\"){#ipb-attach-url-12384-0-09167500-1676066603}\n\n"
+    },
+    {
+      "id": "132763",
+      "timestamp": "2011-07-11T18:41:56+00:00",
+      "author": "Aye Htay",
+      "content": "I agree with amalux.  \nWhen I use Lenovo modern laptop, loading time is 16M/s.  \nUsing Kingston 16gb usb flash, it loads 1gb Mini8.img image within 1 min and 8 sec and boots up additional 10 sec with fully fuctional, such as networking + Video + Audio.  \nBut my old desktop, it took 25 min. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nregards,  \n\nah   \n"
+    },
+    {
+      "id": "132764",
+      "timestamp": "2011-07-11T19:24:00+00:00",
+      "author": "MedEvil",
+      "content": "Thanks al_jo, will test your linked project and see how fast it will go on my computers.  \nMaybe it will lead to pinpointing some troublesome features/scripts.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132768",
+      "timestamp": "2011-07-11T20:13:57+00:00",
+      "author": "pscEx",
+      "content": "@Al_jo!  \n\nYou are the best Joker I got to know in the past.  \n\nI downloaded your link, defined my source CD and started.  \n\nAfter about 12 minutes build time the project created an ISO (or at least processed a script \"4 - Create ISO\").  \n\nHow with this (virtual ?) ISO I can reach the phantastic UFD boot time of 45 seconds?  \nI did not find a script in your project to create the UFD ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nPeter   \n"
+    },
+    {
+      "id": "132769",
+      "timestamp": "2011-07-11T20:15:47+00:00",
+      "author": "pscEx",
+      "content": "EDIT: Sorry, duplicated entry again. Thanks forums\u0027s SW.  \nI cannot delete, only ovwerwrite with this text.  \nPeter   \n"
+    },
+    {
+      "id": "132770",
+      "timestamp": "2011-07-11T20:24:08+00:00",
+      "author": "amalux",
+      "content": "\u003e Just tried with this little project:  \n\u003e [http://www.mediafire...1dsrs6c4ysyc8d4](http://www.mediafire.com/?1dsrs6c4ysyc8d4 \"External link\")  \n\u003e with 120 app scripts. Final iso \u003d 306MB, Wim \u003d 290MB  \n\u003e Boot time \u003d 45 seconds \u003d full access to all hardware!  \n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\u003e\n\u003e Ps. Using fat32 on the ufd...  \nThanks al_jo for this nice project ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\n\u003cbr /\u003e\n\nI\u0027ll try it myself on a NTFS UFD, that is if I can figure out how to put it on a UFD ![:rofl:](http://reboot.pro/public/style_emoticons/default/roll1.gif)   \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132771",
+      "timestamp": "2011-07-11T20:31:05+00:00",
+      "author": "al_jo",
+      "content": "\u003e Thanks al_jo for this nice project ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e I\u0027ll try it myself on a NTFS UFD, that is if I can figure out how to put it on a UFD ![:rofl:](http://reboot.pro/public/style_emoticons/default/roll1.gif)   \n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n@Amalux \\\u0026 PscEx  \nSorry, I\u0027m almost always using Sardu to make the bootable ufd.  \nWill include \"USBDeviceBCD.script\" tomorrow.  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132772",
+      "timestamp": "2011-07-11T20:34:25+00:00",
+      "author": "pscEx",
+      "content": "\u003e @Amalux \\\u0026 PscEx  \n\u003e Sorry, I\u0027m almost always using Sardu to make the bootable ufd.  \n\u003e Will include \"USBDeviceBCD.script\" tomorrow.  \n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nPeter   \n"
+    },
+    {
+      "id": "132780",
+      "timestamp": "2011-07-11T22:20:35+00:00",
+      "author": "al_jo",
+      "content": "Well, maybe it\u0027s tomorrow now?  \nSo, new project with Usbdevicebcd included.  \nAnd some new scripts, not fully tested yet...  \n[http://www.mediafire...aws37p7qw7qe36o](http://www.mediafire.com/?aws37p7qw7qe36o \"External link\")  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132785",
+      "timestamp": "2011-07-12T01:01:19+00:00",
+      "author": "gearmaker",
+      "content": "al_jo , I tried your project as well with a load time of 5min. Maybe my mainboard is showing it\u0027s age. It is a 4yr  \nold DFI Infinity. I\u0027m wondering now if maybe my bios is not supporting USB 2.0 boot speed. The other reason I posted  \nis to find what others are experiencing.I have never seen a boot.wim load in under a minute.When my computer first  \nboots the post screen does show USB 2.0 EHCI. But whether it boots at that speed I don\u0027t know.Is there a test for   \nUSB 2.0 bootup? ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132789",
+      "timestamp": "2011-07-12T03:03:35+00:00",
+      "author": "allanf",
+      "content": ".   \n"
+    },
+    {
+      "id": "132794",
+      "timestamp": "2011-07-12T05:58:38+00:00",
+      "author": "al_jo",
+      "content": "@gearmaker  \nHere is what I do concerning booting a win7pe from ufd:  \n1. Make the iso with [winbuilder](http://www.mediafire.com/?3dse09q8vkcf6pm \"External link\")  \n2. Defrag the iso with [wincontig](http://wincontig.mdtzone.it/en/ \"External link\")  \n3. \"Install\" the iso to the ufd with [Sardu](http://www.sarducd.it/ \"External link\")  \nHere is a small \"movie\":  \n[http://46.194.143.24...src\u003dSAM\\\u0026speed\u003d1](http://46.194.143.249:86/flashvod.html?src\u003dSAM\u0026speed\u003d1 \"External link\")  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\n\u003cbr /\u003e\n\nPs. Sometimes choosing rear instead of front usb port can make some difference.  \nPs2. I\u0027m using a CBM 2GB wristwatch ufd ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![fragments.jpg](http://reboot.pro/uploads/monthly_07_2011/post-32393-0-44063700-1310450284_thumb.jpg)](http://reboot.pro/uploads/monthly_07_2011/post-32393-0-44063700-1310450284.jpg \"fragments.jpg - Size: 91.56KB\"){#ipb-attach-url-12385-0-09176600-1676066603}\n\n"
+    },
+    {
+      "id": "132813",
+      "timestamp": "2011-07-12T10:31:49+00:00",
+      "author": "MedEvil",
+      "content": "To test boot speed, just stop the time, it takes to load the wim ito RAM. Then devide the size of the wim by the seconds it took to load it.  \n\nAlso note, that the wim is loaded into memory not with a DMA mode, but a PIO mode, which puts a lot more stress on the CPU. So an older or slower CPU may prevent the USB port from reaching it\u0027s full potential.  \n\nWhen booting directly only the very first phase of the boot process uses PIO mode. As soon as the Windows Start screen appears, Windows drivers are used instead of BIOS calls, which means switching to DMA mode in most cases, which puts less strass on the CPU, so a higher speed can be reached with a slower CPU.  \nAlso with direct boot, no dead weight has to be moved. That helps speeding up too.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132835",
+      "timestamp": "2011-07-12T13:18:43+00:00",
+      "author": "wimb",
+      "content": "I tried the project of **al_jo** and used SARDU to make the USB-stick, but could not auto boot 7PE  \nI got a black screen where I could fill in boot options and it will boot, but it should work automatic.  \n\nI found that the pe.cfg file in folder SARDU on USB-stick had a wrong entry.  \n\nInstead of APPEND boot ntldr\u003d/bootmgr fs  \n\nit should read for automatic booting of 7 PE  \n\n```\nAPPEND boot ntldr\u003d/BOOTMGR\n\n```\n\nRemoval of fs solved already the problem.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132837",
+      "timestamp": "2011-07-12T13:53:41+00:00",
+      "author": "al_jo",
+      "content": "@Wimb  \nHi.  \nIf you don\u0027t want the boot menu from Sardu, there is an usb   \nscript named \"USBDeviceBCD\" for winbuilder.  \nI\u0027m using Sardu because of the option to add 10+ iso\u0027s...  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132844",
+      "timestamp": "2011-07-12T14:47:32+00:00",
+      "author": "wimb",
+      "content": "**@al_jo** Your script works, but unpacking the 7 PE ISO file is not needed and not desired by me.  \nI prefer to use **BOOT_USB.exe** where I can use the 7 PE ISO Boot Image file ***unchanged*** and can boot direct from Grub4dos Menu.  \n\n[http://www.911cd.net...showtopic\u003d24424](http://www.911cd.net/forums//index.php?showtopic\u003d24424 \"External link\")  \n\nIn this way I can combine many ISO files (also Linux e.g. PartedMagic) or IMG or VHD files.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132848",
+      "timestamp": "2011-07-12T14:59:16+00:00",
+      "author": "al_jo",
+      "content": "\u003e **@al_jo** Your script works, but unpacking the 7 PE ISO file is not needed.  \n\u003e I prefer to use **BOOT_USB.exe** where I can use the 7 PE ISO Boot Image file ***unchanged*** and can boot direct from Grub4dos Menu.  \n\u003e\n\u003e [http://www.911cd.net...showtopic\u003d24424](http://www.911cd.net/forums//index.php?showtopic\u003d24424 \"External link\")  \n\u003e\n\u003e In this way I can combine many ISO files (also Linux e.g. PartedMagic) or IMG or VHD files.  \n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nNice project you have there ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \nQuestion: Using \"boot_usb.exe\" will speed up the win7pe booting time?  \nOr will it be the same?  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132850",
+      "timestamp": "2011-07-12T15:24:53+00:00",
+      "author": "wimb",
+      "content": "\u003e Nice project you have there ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n\u003e Question: Using \"boot_usb.exe\" will speed up the win7pe booting time?  \n\u003e Or will it be the same?  \n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nUSB-stick prepared with **BOOT_USB.exe** and using Grub4dos Menu and your Win7rescue.ISO file  \nhas the same boottime as compared to using your script and this is about 55 sec in total for my laptop.   \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132874",
+      "timestamp": "2011-07-13T01:54:37+00:00",
+      "author": "gearmaker",
+      "content": "@wimb  \n\nI use your make_USB.exe whenever I need to put a project on a flashdrive.I guess Boot_USB.exe must be the newest version.  \nThank you for these tools ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) . I noticed that the make_usb tool puts the plop boot manager on the stick when   \ngrub4dos is selected. If I understand what I\u0027ve been reading about plop, it allows USB 2.0 speed to be enabled at   \nbootup. This sounds like what I have been looking for. I loaded the iso from al_jo\u0027s project using make_usb and grub4dos. Here is menu.lst:  \n\n\u003cbr /\u003e\n\ntitle Boot Win7rescue.ISO - ISO from RAM  \nfind --set-root --ignore-floppies /Win7rescue.ISO  \nmap --mem /Win7rescue.ISO (0xff)  \nmap --hook  \nroot (0xff)  \nchainloader (0xff)  \n\ntitle PreLoad USB2.0 - via PLoP BootManager  \nroot (hd0,0)  \nkernel /plpbt.bin  \n\n\u003cbr /\u003e\n\nMaybe you could help me understand this. When I boot the stick I select PreLoad USB2.0 from menu. Then the plop menu comes up. Then I select USB from options. Then the first menu comes back with the Win7rescue.ISO and plop.  \nThis time I select \" Boot Win7rescue.ISO \" . It looks like it is doing something and then a black screen comes up   \nsaying \" finding upper memory \" . I think that is what I remember seeing. It just stays there and nothing happens.  \nMake_USB installed the iso and grub4dos and made the menu.lst. However plop doesn\u0027t appear to be working.I will read up on plop but if this is a problem you have come across I would welcome your help.  \n\nThank you all ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n"
+    },
+    {
+      "id": "132879",
+      "timestamp": "2011-07-13T06:30:40+00:00",
+      "author": "wimb",
+      "content": "**@gearmaker\nBOOT_USB.exe** is a modern and improved version of Make_USB.exe  \n\nMy use of and experience with PLoP is similar as yours.  \nPLoP does work only in few cases for me and is (not yet) implemented in BOOT_USB.exe  \n\n![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n"
+    },
+    {
+      "id": "132900",
+      "timestamp": "2011-07-13T11:24:55+00:00",
+      "author": "gearmaker",
+      "content": "@wimb  \n\n\u003cbr /\u003e\n\nI will try your new version and will also keep reading and hopefully learning ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n\nThank you again   \n"
+    },
+    {
+      "id": "132916",
+      "timestamp": "2011-07-13T15:21:23+00:00",
+      "author": "MedEvil",
+      "content": "I can confirm a boot time for al_jos project, from between 25 seconds and roughly 13 minutes, from the same SLC highspeed USB-Stick on different USB2.0 computers.  \n\nThough i really like the high number of included applications, i couldn\u0027t help but notice that the PE feels somewhat raw, like one of the early BartPE. The apps are included, but not integrated.  \nI guess some prefer this raw feeling for a PE, i prefer the more polished feel of a full blown Windows in a PE.  \n\n\u003cbr /\u003e\n\n![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n"
+    },
+    {
+      "id": "132927",
+      "timestamp": "2011-07-13T16:35:11+00:00",
+      "author": "al_jo",
+      "content": "\u003e I can confirm a boot time for al_jos project, from between 25 seconds and roughly 13 minutes, from the same SLC highspeed USB-Stick on different USB2.0 computers.  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e :wink:  \n\nThe 13 minutes PC is how old? 10 years? 96MB ram? 486 or 586?  \nCan you please give us the full spec from that computer?  \nOnly curious...  \n![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n"
+    },
+    {
+      "id": "132928",
+      "timestamp": "2011-07-13T18:04:19+00:00",
+      "author": "MedEvil",
+      "content": "The 13 minute PC is roughly 4 years old, has 2 GB RAM and a 3,2GHz Celeron D 352 CPU.  \n\n\u003cbr /\u003e\n\n![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n"
+    },
+    {
+      "id": "132936",
+      "timestamp": "2011-07-13T21:28:09+00:00",
+      "author": "al_jo",
+      "content": "\u003e The 13 minute PC is roughly 4 years old, has 2 GB RAM and a 3,2GHz Celeron D 352 CPU.  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)  \nNot so bad spec.  \nPerhaps something wrong with usbbus/chip/ports?  \nI would have tried a pci2usb2 card for about 10euro to see if it makes some changes.  \n:wink:  \n\nPs. Or perhaps that kind of adapter does not work while booting? (drivers)  \nThink I have one here somewhere, will try tomorrow...   \n"
+    },
+    {
+      "id": "132937",
+      "timestamp": "2011-07-13T22:53:15+00:00",
+      "author": "MedEvil",
+      "content": "USB ports work fine, when used from within installed XP or from within a PE. Only booting from USB is so slow.  \nInterestingly my 9 year old P4 boots a lot faster, with about 4 min.  \n\nAlso USB PCI cards arn\u0027t bootable. Or at least i havn\u0027t seen one that can.  \n\n![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n"
+    },
+    {
+      "id": "132957",
+      "timestamp": "2011-07-14T06:19:22+00:00",
+      "author": "al_jo",
+      "content": "Perhaps using PLoP Boot Manager could be an alternative?  \n[http://www.plop.at/en/bootmanager.html](http://www.plop.at/en/bootmanager.html \"External link\")  \nHas built in drivers. May also be useful on old systems.  \n\nFrom tsetya:  \n\"(PloP) Will provide USB 2.0 driver to BIOS.   \nUse PloP boot manager if you have   \nproblem booting from USB like this example:  \nVery slow Windows PE loading bar.  \nNormal loading bar but can not load Windows 7 PE Desktop (black screen)\"   \n"
+    },
+    {
+      "id": "132966",
+      "timestamp": "2011-07-14T10:12:27+00:00",
+      "author": "MedEvil",
+      "content": "I have tryed Plop in the past, it never did anything for me. Even using it on a computer, which can boot USB devices with a good speed, results in a slow down.  \nAs a rule of thumb, i discovered, Plop gives me USB1.1 speed on USB2.0 computers and absolutely unbelievable slow speeds in the \u0027bytes per second\u0027 range on USB1.1 computers.  \nOnly advantage of Plop, i can confirm so far, is that it allows to boot from add on cards. Still booting from a CD is way faster in all cases.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132969",
+      "timestamp": "2011-07-14T11:11:28+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I have tryed Plop in the past, it never did anything for me. Even using it on a computer, which can boot USB devices with a good speed, results in a slow down.  \n\u003e As a rule of thumb, i discovered, Plop gives me USB1.1 speed on USB2.0 computers and absolutely unbelievable slow speeds in the \u0027bytes per second\u0027 range on USB1.1 computers.  \n\u003e Only advantage of Plop, i can confirm so far, is that it allows to boot from add on cards. Still booting from a CD is way faster in all cases.  \n\nIt doesn\u0027t make sense. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)  \nThe intended use of PLoP for USB booting is on motherboards that EITHER:  \n\n* do not have USB boot capabilities in BIOS \\\u003c- and PLoP can sometimes provide it, with an increase of functionality of roughly ***tan Π %*** :wink:\n* have it but ONLY at USB 1.1 speed AND do have USB 2.0 capable speed (or in other words the actual USB bus is 2.0 capable BUT the BIOS has older 1.1 drivers for it)\\\u003c- and PLoP can sometimes provide USB 2.0 speed, with an increase of functionality up to roughly 400% ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nIn ALL other cases like motherboards that:  \n\n* have USB booting support in BIOS AND 1.1 chips\n* have USB booting support in BIOS AND 2.0 chips\n\nit is pointless to attempt using it, in most (please read as \"all\") cases the needingly \"wide range\" code of PLoP will be less suited (please read as \"slower\") than the built-in BIOS one.  \n\nAdditionally, PLoP is an ever changing project, far from stable/final, it is very likely that the specific version you tried \"in the past\" did not deliver what was expected from it on that particular motherboard (BTW I am NOT saying that current version will :wink:).  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "132972",
+      "timestamp": "2011-07-14T11:53:04+00:00",
+      "author": "MedEvil",
+      "content": "Yes i know what Plop is meant for. It just doesn\u0027t deliver for me, speed wise, on any machine i have tryed it on.  \nBut it does provide USB boot functionality on machines, that don\u0027t have it and from add on cards.  \nThe last i tested was version 5.08.  \nIf i remember right, the 6.xx versions are suppose to have redesigned drivers to give better speed.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "132977",
+      "timestamp": "2011-07-14T13:37:13+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e The last i tested was version 5.08.  \n\u003e If i remember right, the 6.xx versions are suppose to have redesigned drivers to give better speed.  \nThe good news ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) are that you are seemingly living in the future :wink::  \n[http://www.plop.at/e...ager.html#intro](http://www.plop.at/en/bootmanager.html#intro \"External link\")  \n\u003e The current version is plpbt-5.0.12.zip.\nThe bad ones are that you remember wrong. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \nThe 5.0.8 that you probably tried is a very old version, more than one year old, though of course if you don\u0027t have the \"right hardware for it\" a newer version won\u0027t make any difference.  \n\u003e Sat 23/Jan/2010  \n\u003e\n\u003e Plop Boot Manager 5.0.8 released. From time to time, people ask to boot logical partitions. Now I added this feature. You can setup the logical partition in the profiles/linked partitions by pressing \"l\" key.\n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "132984",
+      "timestamp": "2011-07-14T15:11:26+00:00",
+      "author": "MedEvil",
+      "content": "\u003e The good news ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) are that you are seemingly living in the future :wink::\nAhh, now i finally know, why you always seem to lack behind. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n\u003cbr /\u003e\n\n\u003e The 5.0.8 that you probably tried is a very old version, more than one year old,\nOne year ago, sounds about right.  \n\nBut i guess, that it was then not the 6.xx versions, but the 5.1.xx versions, which was suppose to get the improved drivers.  \n\n:wink:   \n"
+    },
+    {
+      "id": "132992",
+      "timestamp": "2011-07-14T17:21:54+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Ahh, now i finally know, why you always seem to lack behind. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n**Naah** , that is your subjective *perception* of it, you know, relativity theory, etc. :wink:.  \n\nSometimes I do wonder whether you live in a parallel uiverse instead ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) and we are able to communicate (sporadically :wink: ) on the board taking advantage of space/time tunnels... ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "133006",
+      "timestamp": "2011-07-14T19:12:43+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Sometimes I do wonder whether you live in a parallel uiverse instead ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)\nEasy way to check. I sport a beard, do you? [![SpockBeard2.jpg](http://reboot.pro/uploads/monthly_07_2011/post-2192-0-31643500-1310670672_thumb.jpg)](http://reboot.pro/uploads/monthly_07_2011/post-2192-0-31643500-1310670672.jpg \"SpockBeard2.jpg - Size: 4.38KB\"){#ipb-attach-url-12392-0-31298900-1676066603}   \n\n:smile:   \n"
+    },
+    {
+      "id": "133008",
+      "timestamp": "2011-07-14T19:22:19+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Easy way to check. I sport a beard, do you? [![SpockBeard2.jpg](http://reboot.pro/uploads/monthly_07_2011/post-2192-0-31643500-1310670672_thumb.jpg)](http://reboot.pro/uploads/monthly_07_2011/post-2192-0-31643500-1310670672.jpg \"SpockBeard2.jpg - Size: 4.38KB\"){#ipb-attach-url-12392-0-31298900-1676066603}   \nNaah, I mean not as a fictional character, here is a portrait of mine during an exchange of ideas with you :smile::  \nSpoiler  \n![Posted Image](http://images2.fanpop.com/images/photos/5000000/Inspirational-Poster-mr-spock-5068832-750-600.jpg)\n\n\u003cbr /\u003e\n\n![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)   \n...but as often happens we manage, one way or the other, to agree on something :smile::  \nSpoiler  \n![Posted Image](http://www.fanboy.com/wp-content/uploads/2010/02/spock-planning.jpg)\n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "133014",
+      "timestamp": "2011-07-14T21:30:22+00:00",
+      "author": "MedEvil",
+      "content": "Apropos planning. The whole Plop discussion made me think. Shouldn\u0027t it be possible to do the same thing Plop does, just with a better/different OS/drivers?  \n\nPlop is a bootmanager and supose to fit into the MBR.  \nFor our purposes, there is no such limit. We could do fine with a floppy sized solution.  \n\nUnfortunately i don\u0027t know, what requirement this OS would have to meet, that the loaded image could then be hooked?  \nDo you? (Please answer only with yes or no. ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif) )   \n\n:smile:   \n"
+    },
+    {
+      "id": "133023",
+      "timestamp": "2011-07-15T07:45:59+00:00",
+      "author": "Wonko the Sane",
+      "content": "Not really.  \nPLoP can also be chainloaded by grub4dos, as an example. (and also as - read only - DOS driver)  \n\nThe good thing about good ideas ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif) are that they happen to be often re-invented (by great minds) :smile:.  \n\nMaybe you are thinking of something like :smile::  \n[http://www.911cd.net...showtopic\u003d18650](http://www.911cd.net/forums//index.php?showtopic\u003d18650 \"External link\")  \n\nAnd, just for the record (just to show that it actually works somehow as a \"BIOS extender\"):  \n\u003chttp://reboot.pro/3890/page__st__46\u003e  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "133042",
+      "timestamp": "2011-07-15T14:31:59+00:00",
+      "author": "MedEvil",
+      "content": "Have not much time today. Can you tell me if those links link to solutions or just maybes?  \n\n![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)   \n"
+    },
+    {
+      "id": "133047",
+      "timestamp": "2011-07-15T15:40:47+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Have not much time today. Can you tell me if those links link to solutions or just maybes?  \n\nNeither.  \n\nYou shouldn\u0027t mix statements with questions this way. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\nYou posted a number of things:  \nThis is a seemingly rhetorical question:  \n\u003e Shouldn\u0027t it be possible to do the same thing Plop does, just with a better/different OS/drivers?  \nTo which my answer is \"yes, AFAIK\".  \n\nThis is a statement:  \n\u003e Plop is a bootmanager and supose to fit into the MBR.  \nthat is actually \"wrong\" ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif):  \n\u003e Not really.  \n\u003e PLoP can also be chainloaded by grub4dos, as an example. (and also as - read only - DOS driver)  \n\nThese are statements:  \n\u003e For our purposes, there is no such limit. We could do fine with a floppy sized solution.  \nWhich are \"correct\" ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif) and need not a reply.  \n\nThis, notwithstanding the final question mark:  \n\u003e Unfortunately i don\u0027t know, what requirement this OS would have to meet, that the loaded image could then be hooked?  \nappears as a statement, that I take for correct (in the sense that I am pretty sure you don\u0027t know about it ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)), and thus needs no reply.  \n\nThis, is a question:  \n\u003e Do you? (Please answer only with yes or no. )  \nthat makes no sense and that would be pointless to reply to, whether I know   \n\u003e what requirement this OS would have to meet, that the loaded image could then be hooked\n(whatever you mean by that ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)) or not it won\u0027t change anything.  \n\nThis is a statement:  \n\u003e Have not much time today.  \nAbout which I feel sorry ![:(](http://reboot.pro/public/style_emoticons/default/sad.png) for you and hope sincerely that tomorrow you will have more time ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif) .  \n\nFollowing this:  \n\u003e ***Maybe*** you are thinking of something like ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png):  \n\u003e [http://www.911cd.net...showtopic\u003d18650](http://www.911cd.net/forums//index.php?showtopic\u003d18650 \"External link\")  \n\nThis is an ***otiose*** question:  \n\u003e Can you tell me if those links link to solutions ***or just maybes*** ?  \n\n\u003cbr /\u003e\n\nThe essence of my previous post is, in 5 easy points:  \n\n* PLoP is not necessarily \"constrained\" to the MBR(+hidden sectors ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif) )\n* nice idea ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif) (from the very little I can understand of it ![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif) )\n* the same (maybe) idea already came out ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n* IF you could confirm that it is the same idea ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png), I would appreciate it as it would mean that I actually understood what yours was about (or please explain your idea in better detail)\n* Since I cannot understand exactly what you are asking about I cannot give you a \"yes or no\" answer, though any of them would be useless anyway.\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "133056",
+      "timestamp": "2011-07-15T17:55:12+00:00",
+      "author": "MedEvil",
+      "content": "I hate this stupid board software. What kind of madman though it would be a good idea, to censor posts befor allowing a reply?  \n\n\u003e This is a statement:  \n\u003e \u003e Plop is a bootmanager and supose to fit into the MBR.\n\u003e that is actually \"wrong\" ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\u003e \u003e Not really.   \n\u003e \u003e PLoP can also be chainloaded by grub4dos, as an example. (and also as - read only - DOS driver)\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\nYes, i\u0027m sure the creator of Plop has no idea, what he\u0027s talking about.  \nbzw. Which part of your reply is suppose to contradict that Plop was designed to fit into the MBR?  \n\n\u003e that makes no sense and that would be pointless to reply to, whether I know   \n\u003e \u003e what requirement this OS would have to meet, that the loaded image could then be hooked\n\u003e (whatever you mean by that ![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif)) or not it won\u0027t change anything.\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\nSo i can load an image into a ramdisk with any OS and then use the image to boot XP/Win7 from it? Didn\u0027t knew that. Thought this would only be possible under certain circumstances, guess i\u0027m wrong like usual.  \n\n\u003e # IF you could confirm that it is the same idea ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif), I would appreciate it as it would mean that I actually understood what yours was about (or please explain your idea in better detail)  \n\u003e # Since I cannot understand exactly what you are asking about I cannot give you a \"yes or no\" answer, though any of them would be useless anyway.\nSince i\u0027m sure that your english is sufficient for conversation and mine is too, i can only conclude that there must be cultiral differences that keep us from understanding eachother.  \nToo bad.  \n\nHave a nice day!   \n"
+    },
+    {
+      "id": "133325",
+      "timestamp": "2011-07-19T19:50:37+00:00",
+      "author": "slothman",
+      "content": "\u003e Apropos planning. The whole Plop discussion made me think. Shouldn\u0027t it be possible to do the same thing Plop does, just with a better/different OS/drivers?  \n\u003e\n\u003e Plop is a bootmanager and supose to fit into the MBR.  \n\u003e For our purposes, there is no such limit. We could do fine with a floppy sized solution.  \n\u003e\n\u003e Unfortunately i don\u0027t know, what requirement this OS would have to meet, that the loaded image could then be hooked?  \n\u003e Do you? (Please answer only with yes or no. :wink: )   \n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nWell I think kexec-loader is the only alternative I know of to Plop. You should be able to load memdisk as the kernel and whatever iso you want as the initrd. Keep in mind whenever I tried it it always hung on me for some reason with those stupid blinking lights on the keyboard. It probably needs to be updated.   \n"
+    },
+    {
+      "id": "133355",
+      "timestamp": "2011-07-20T01:58:44+00:00",
+      "author": "slothman",
+      "content": "Just tried kexec-loader again, was too intrigued by this alternative. It works great for linux kernels, but anything else will not work. It just prints cannot determine the filetype of /path/to/kernel  \n\nIf this problem can be somehow overcome, it will be an awesome alternative to plop and its inherent buginess I have myself seen on many systems.  \n\nOh and the reason it was always hanging is you absolutely need to give it a proper root before playing with any of the commands. That\u0027s why it was always barfing on me.   \n"
+    },
+    {
+      "id": "133364",
+      "timestamp": "2011-07-20T05:37:36+00:00",
+      "author": "slothman",
+      "content": "Well I\u0027ve been playing with it some more, and instead I\u0027ve taken to using the kexec in knoppix v6.4.4  \n\nMuch more flexibility when I can directly pass parameters to kexec.  \n\nStill doesn\u0027t make much of a difference.  \n\nI think the main problem is that the initrd has some kind of size limitation. It doesn\u0027t seem to load an initrd over a certain size. (I think sha0 had that problem with winkexec as well)  \n\nOk now if \\*that\\* problem can be overcome, we may be in business (I know, famous last words lol)  \n\nBecause it does load grub.exe without a problem, but then when I try to use cat --hex --locate to try and find some fragment of the initrd in memory, there is nothing...   \n"
+    },
+    {
+      "id": "133504",
+      "timestamp": "2011-07-21T21:53:41+00:00",
+      "author": "slothman",
+      "content": "Ok, final comment. Apparently it does work, I was trying to locate non-hex characters as hex...  \n\nBut it still is not enough.  \n\nWhen it kexec\u0027s grub4dos with an initrd, it hangs at the grub\\\u003e prompt, and will not do anything/go any further. Without an initrd, it runs fine, but thats kinda the whole point is to be able to load an initrd. Who knows exactly how many obstacles past this there are, but for the moment I give up. Kexec\u0027ing in general is just too unreliable imho.  \n\n\\*edit\\*  \n\nAlthough on some machines it does not hang and will work properly. I am still sticking with my previous statement though. If a solution does not work properly across all machines, it is no good for my purposes.   \n"
+    }
+  ]
+}

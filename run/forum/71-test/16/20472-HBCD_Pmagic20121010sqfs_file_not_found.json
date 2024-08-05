@@ -1,0 +1,22 @@
+{
+  "id": "20472",
+  "title": "HBCD Pmagic_2012_10_10.sqfs file not found",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "192441",
+      "timestamp": "2015-05-05T19:38:20+00:00",
+      "author": "lorimiller1235",
+      "content": "I downloaded an installed hbcd on my usb. The menu comes up but when i click default it ssearches than says Pmagic_2012_10_10.sqfs file not found but I do have this file I found it in the folders\n\n"
+    },
+    {
+      "id": "192579",
+      "timestamp": "2015-05-12T23:52:55+00:00",
+      "author": "sbaeder",
+      "content": "WHile Wonko alreaqdy scolded you on the double posting, the real answer (if you dig around here more) is that the way boot loader chain to one another and the unpacking of an ISO onto a USB \\*CAN\\* (and in this case DO) cause some issues where the second boot loader invoked (the one looking for the Pmagic squashed file system) can\u0027t find the file because access to the ISO was in some way being emulated by the original boot off the USB drive, and is no longer available to the second boot loaded file.\n\nSuch is life...Look around and try something like [http://www.easy2boot.com/](http://www.easy2boot.com/ \"External link\") (p.s. also search here for easy2boot, since there is a lot of good info.)\n\nScott\n\n"
+    }
+  ]
+}

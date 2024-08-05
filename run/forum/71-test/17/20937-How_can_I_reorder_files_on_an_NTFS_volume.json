@@ -1,0 +1,28 @@
+{
+  "id": "20937",
+  "title": "How can I re-order files on an NTFS volume?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "197318",
+      "timestamp": "2016-01-20T15:12:10+00:00",
+      "author": "steve6375",
+      "content": "I have two contiguous files on an NTFS USB drive - fileA and fileB.\n\nI need to ensure that the start address of fileA always precedes the start address of fileB.\n\nAny ideas on the best way to do this?\n\nIdeally, I don\u0027t want to affect the position of any other files already on the NTFS volume. It would also be nice to keep them contiguous too (but I can run WinContig afterwards if required).\n\nCurrently, I have a batch file which renames and copies fileB and then checks it\u0027s position. If it is not past fileA then I loop again and repeat the fileB copy process. If this does not work within 100 passes, I re-copy both files to the same volume and then run the fileB loop again.\n\nThis seems to work, but it is quite slow and disk intensive.\n\nP.S. fileA is usually quite large - e.g. 2GB-8GB, fileB is smaller, approx 40MB-200MB.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "197320",
+      "timestamp": "2016-01-20T18:13:26+00:00",
+      "author": "Wonko the Sane",
+      "content": "My guess is that the \"right\" way is to \\*somehow\\* interface with Ultradefrag:\n\n[http://ultradefrag.s...roup__Move.html](http://ultradefrag.sourceforge.net/doc/lib/udefrag/group__Move.html \"External link\")\n\nOr maybe easier find a way to use Mydefrag \"Zones\" and \"Placement\", see:\n\n[http://www.hofmannc....mdsc/howto.html](http://www.hofmannc.de/en/mdsc/howto.html \"External link\")\n\nThe web site for mydefrag is currently unavailable from here ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif):\n\n[http://www.mydefrag.com/](http://www.mydefrag.com/ \"External link\")\n\nWhat happens when a sparse file is created?\n\nMaybe one can create a few sparse files and then overwrite two of them (found in the \"right\" order) with the contents of \"fileA\" and \"fileB\". ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif) (but a subsequent \"contig\" operation may possibly change the initial position? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png))\n\nWhat I would try however (provided that the volume is \"new\" or \"built in the process\") would be:\n\n1. create a volume with just enough space on it to contain FileA\n\n2. copy to it FileA\n\n3. if needed defrag the volume/contig the file\n\n4. extend the volume size to \"full size\"\n\n5. copy to it FileB\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "197322",
+      "timestamp": "2016-01-20T20:44:45+00:00",
+      "author": "steve6375",
+      "content": "Thanks for the reply.\n\nThe volume is already created with files on it, so I cannot mess with resizing partitions, etc.\n\nNot to sure about the ultradefrag stuff... looks tricky.. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\n"
+    }
+  ]
+}

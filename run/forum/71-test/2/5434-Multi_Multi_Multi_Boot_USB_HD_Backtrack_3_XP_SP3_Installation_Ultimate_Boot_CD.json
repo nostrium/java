@@ -1,0 +1,46 @@
+{
+  "id": "5434",
+  "title": "Multi Multi Multi Boot USB HD , Backtrack 3 , XP SP3 Installation, Ultimate Boot CD..",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "41870",
+      "timestamp": "2008-08-12T12:50:26+00:00",
+      "author": "Mesh",
+      "content": "Hello there !   \n\ni began digging about the boot thingy since a week ago , i used , grub , smart boot manager , isoemu , i am sticking now with the best solution , GRUB4DOS.  \n\n\u003cbr /\u003e\n\ni Bought an external Hard disk : Segate Free Agent™Go 160 GB , seems to be SATA or maybe SCSI , i mix between them ( will be good if anyone explains ) but any how , the requirement was as follows :  \n\n\u003cbr /\u003e\n\nnote : i was thinking of booting iso files off the external hard disk , then i belived that sooner or later , the virtual CD will be lost when another kernal is loaded ( specially in case of windows installation )  \n\n\u003cbr /\u003e\n\ni format variant pc\u0027s alot , i have a much pc\u0027s with same brand and sepcs ( i will use ghost too) , so   \n\nREQUIREMENTS :  \n\na GRUB4DOS menu that provides :  \n\n1. Backtrack 3 to be run LIVE from the HD. ( if an installed version boots in any pc no problem) \\[50%\\]  \n\n2. i need an XP installation from the USB Ext. HD ( SP3 ISO Geniun i\u0027ve downloaded ) \\[Accomplished\\]  \n(i will tell how the trick works ( simple and easy ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif) )  \n\n3. **REMOVED**   \n\n4. Ultimate Boot CD ( 4.1.1 or 5 beta no matter ) \\[ 0%\\]  \n\n5. maybe an installed version of kubuntu or ubuntu to run from the HD \\[0%\\]  \n\n\u003cbr /\u003e\n\nso as GRUB4DOS is felixible enough , i guess no matter the partitioning architecture was , there is no problem ..  \n\nmy menu.lst was like   \n\n```\ntitle BackTrack\n\nroot \u0026#40;hd0,0\u0026#41;\n\nkernel /boot/vmlinuz max_loop\u003d255 initrd\u003dinitrd.gz init\u003dlinuxrc load_ramdisk\u003d1 prompt_ramdisk\u003d0 ramdisk_size\u003d6666 root\u003d/dev/ram0 rw\n\ninitrd /boot/initrd.gz\n\nboot\n\n\n\ntitle Windows XP Pro SP3 Setup\n\nroot \u0026#40;hd0,2\u0026#41;\n\nchainloader\u003d/$LDR$\n\nboot\n```\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nwhere :  \n\n1. grub4dos-0.4.4-2008-08-08.zip is intalled on the first primary FAT32 Partition ( i installed it using   \nbootlace.com through vmware)  \n\n2. Backtrack 3 has 2 folders (boot,BT3) are copied on the first primary FAT32 Partition  \n\n3. About XP Installation files , the smart trick i discovered was the following:  \n\nA. insert a XP CD in your computer , **run setup from windows** , choose new installation ,   \nin the options :  \ncheck the box which says ( let met choose the drive to install windows on ) and the copy i386 files   \nfrom/to check box.  \n\nB. enter the windows key you want, and start installation it will complete copying files , and count for   \nrestart with a red bar , press Esc to cancel the operation  \n\nC. you will finde 2 folders on C:\\\\ which are : $WIN_NT$.\\~BT and $WIN_NT$.\\~LS , i have copied them  \nto a second primary partition FAT32 , in addition to the following files located also on C:\\\\  \ntxtsetup.sif, ntldr, NTDETECT.COM, MSDOS.SYS, IO.SYS, CONFIG.SYS, AUTOEXEC.BAT, $LDR$  \nwhere $LDR$ will be the Loader for the installation the will initialize : inspecting your computer  \nhardware ..  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nRESULTS :  \n\n1.VMWARE : (VMware config was that i used the external harddisk as a SCSI physical Harddiskin the VM)  \nA. GRUB4DOS loaded successfully  \nB. Backtrack Loaded , but cannot access any partition of the external HD  \nC. Windows installtion begun , after loading files ,on starting windows , blue screen of death crashed.  \nD. **REMOVED**   \n\n2.My Laptop Dell inspiron 9300  \nA. GRUB4DOS loaded successfully  \nB. Backtrack Loaded , but cannot access any partition of the external HD  \nC.Windows Installation begun and i was able to get the windows partition manager and see my   \nExternal HD  \nD. **REMOVED**   \n\n3. Fujitsu Simens amilo Pi 1505 laptop  \nA. GRUB4DOS loaded in a strange way , before the menu appeares , it showed me that hd0,0 mounted   \nbut hd0,1 no exist , .. then menu loaded , when choosing any of these , it seemed like there is no   \npartitions , i went to the command line and typed find , it seems that the only detected harddisk is the   \nfixed one with the laptop , my External hardisk seemed like not detected , ALthough GRUB4DOS   \nAPPEARED !  \n\n\u003cbr /\u003e\n\nMy Quastions :  \n\n1. Backtrack 3 Final ( usb version or cd ) has a boot splash loader with many options ( using syslinux or   \nisolinux i dunt know the difference again lol ) , is there away to load that splash loader from grub4dos ?  \n\n2. Why the GRUB4DOS is loaded when i chose boot from USB Key in the Fujitsu simens laptop, but menu is not working , because partitions are not found , like the whol external harddisk is not detected , is that becasue the External USB harddisk is SCSI interface ? or SATA , is there any solution ? or just wait for GRUB4DOS to have a SCSI driver ??  \n\n3. is it possible have an already installed distro of linux on the harddisk and boot it from any pc in case of   \ncrashing windows ?  \n\nAny Recommendation About the Architecture of partitioning and the file systems for each partition ? to get the optimal performance knowing that  \nthe Hard disk real size is , 149.5   \nfirst partition is primary FAT32 1 GB,   \n2nd partition is primary FAT32 2 GB ( though 1 GB is enough too ) ,   \nthird partition is primary FAT32 512 MB,  \n\nthe rest space will be extended and logicals , a large NTFS partition maybe for ghost images , data back up and drivers.. ,   \n\nand in the end of the hard disk ,a linux SWAP of 1 GB.  \n\nplease advise.  \n\nEng. Mohannad Shaheen .  \n\n**EDITED by jaclaz:\nRemoved references to WAREZ.**   \n"
+    },
+    {
+      "id": "41984",
+      "timestamp": "2008-08-14T09:56:15+00:00",
+      "author": "Mesh",
+      "content": "Backtrack 3 was unable to access the same external harddisk because of wrong configuration   \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nthe wrong configuration of menu.lst for backtrack 3 sections was  \n\n```\ntitle BackTrack\n\nroot \u0026#40;hd0,0\u0026#41;\n\nkernel /boot/vmlinuz max_loop\u003d255 initrd\u003dinitrd.gz init\u003dlinuxrc load_ramdisk\u003d1 prompt_ramdisk\u003d0 ramdisk_size\u003d6666 root\u003d/dev/ram0 rw\n\ninitrd /boot/initrd.gz\n\nboot\n```\n\n\u003cbr /\u003e\n\nthe Correct configuration of menu.lst for backtrack 3 sections is   \n\n```\ntitle BT3 Graphics mode \u0026#40;KDE\u0026#41;\n\nroot \u0026#40;hd0,1\u0026#41;\n\nkernel\u003d /boot/vmlinuz ramdisk_size\u003d6666 root\u003d/dev/ram0 rw autoexec\u003dxconf;kdm APPEND vga\u003d0x317\n\ninitrd\u003d/boot/initrd.gz \n\nboot\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "41987",
+      "timestamp": "2008-08-14T10:01:46+00:00",
+      "author": "Mesh",
+      "content": "So , Any one for the Fujitsu Simens Amilo Pi 1505 Problem ??   \n"
+    },
+    {
+      "id": "41993",
+      "timestamp": "2008-08-14T10:57:18+00:00",
+      "author": "Mesh",
+      "content": "i\u0027ve noticed sth strange in the Fujitsu Siemens Amilo Pi 1505 Laptop , as i mentioned before the bios detected the usb external harddisk as declare it as disk0  \n, but when loaded menu.lsn , it didnt detect the partitions , and the (hd0,0 ) was the first partition in the internal harddisk of the laptop ,   \n\ni\u0027ve tried (hd0-20,0) with no action ( grub said hardisk does not exist )   \n\nso i was like , if External USB disk in bios was disk0 and internal HD was disk1  \nin gurub , internal was disk0 , so i tried in the command line grub4dos  \n\n```\nroot \u0026#40;hd-1,0\u0026#41;\n```\n\n\u003cbr /\u003e\n\nit gave me : a disk read error  \n\n?!?!?!??!?!?!?   \n"
+    },
+    {
+      "id": "42068",
+      "timestamp": "2008-08-15T14:20:19+00:00",
+      "author": "Mesh",
+      "content": "Hello , i intend as i said before , to load the UBCD menu from a grub4dos that i created is that possible ? loading menu from menu ???  \n\nany one reply please !!?!?!  \n\njaclaz please help ??!?!?!   \n"
+    },
+    {
+      "id": "42295",
+      "timestamp": "2008-08-19T18:13:52+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e So , Any one for the Fujitsu Simens Amilo Pi 1505 Problem ??\n\nProbably there is nothing to do, it seems like a \"bad\" BIOS.  \n\nYou can try using the Hp\u0027s utility (or however the Win2k/XP/2003 modified MBR):  \n[http://www.boot-land...opic\u003d2246\\\u0026st\u003d15](http://www.boot-land.net/forums/?showtopic\u003d2246\u0026st\u003d15 \"External link\")  \n[http://www.boot-land...?showtopic\u003d3191](http://www.boot-land.net/forums/?showtopic\u003d3191 \"External link\")  \nand load grldr through NTLDR/BOOT.INI  \n\nBut I do not think it will make a difference, it sounds like a BIOS mapping the external drive as non-HD device (maybe superfloppy? ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif))  \n\njaclaz   \n"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "14493",
+  "title": "gPXE Booting of Win PE 3.0 and BartPE",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "128544",
+      "timestamp": "2011-05-11T23:28:40+00:00",
+      "author": "Lewis",
+      "content": "Hi all,  \n\nI\u0027ve got a tftp server at work and I\u0027m trying to get away from TFTP as much as I can and pull the files over HTTP instead.  \n\nMy gPXE script looks like this (for Bart PE)  \n\necho Performing DHCP on first network interface  \ndhcp net0  \necho \\^\\^ If that step just failed it means gPXE doesn\u0027t know what your network adapter is! Run the compatible mode instead.  \nset 209:string pxelinux.cfg/default  \nset 210:string [http://10.111.65.134/pxe/](http://10.111.65.134/pxe/ \"External link\")  \ninitrd ${210:string}xp.iso  \nkernel ${210:string}grub.exe --config-file\u003d\"map (rd) (hd0); map --hook; root (hd0,0); chainloader +1; boot\"  \n\nBut it doesn\u0027t work. If I chainload pxeboot.n12 (for PE 3.0) then it tries to use TFTP to pull the files, and the HTTP redirection doesn\u0027t seem to work properly.  \n\nSorry if this is poorly explained. Any other information I will gladly provide, just want to start in the right direction :cool:   \n"
+    },
+    {
+      "id": "128577",
+      "timestamp": "2011-05-12T13:43:03+00:00",
+      "author": "Sha0",
+      "content": "\u003e ...  \n\u003e My gPXE script looks like this (for Bart PE)  \n\u003e\n\u003e echo Performing DHCP on first network interface  \n\u003e dhcp net0  \n\u003e echo \\^\\^ If that step just failed it means gPXE doesn\u0027t know what your network adapter is! Run the compatible mode instead.  \n\u003e set 209:string pxelinux.cfg/default  \n\u003e set 210:string [http://10.111.65.134/pxe/](http://10.111.65.134/pxe/ \"External link\")  \n\u003e initrd ${210:string}xp.iso  \n\u003e kernel ${210:string}grub.exe --config-file\u003d\"map (rd) (hd0); map --hook; root (hd0,0); chainloader +1; boot\"  \nI would take a guess that **xp.iso** is an **ISO9660** filesystem image (a CD/DVD image). If that\u0027s the case, why are you trying to map it as a virtual HDD? For example, **(hd0,0)** means \"first HDD, first partition.\" Does your CD/DVD image have a partition? I don\u0027t think so.  \n\n```\nkernel ${210:string}grub.exe --config-file\u003d\"map (rd) (hd32); map --hook; root (hd32); chainloader (hd32); boot\"\n\n```\n\n\u003cbr /\u003e\n\n\u003e But it doesn\u0027t work.  \nHow do you know it doesn\u0027t work? For example, what is it that you see, hear, feel, taste, or smell that lets you know that it doesn\u0027t work?  \n\nAlso: Does your **BartPE** have **WinVBlock** or **Firadisk** in it? Since your BartPE .ISO will be in RAM, you need such a RAM disc driver.   \n"
+    },
+    {
+      "id": "129087",
+      "timestamp": "2011-05-19T23:01:36+00:00",
+      "author": "Lewis",
+      "content": "Sorry let me explain a little better.  \n\nThe pxeboot.n12 is pulled over gPXE (which is good). But then the pxeboot.n12 tries to pull the xp ISO image over TFTP. This is bad and kind of sidesteps the gPXE HTTP loading.  \n\nIf I could load the XP iso directly without going through the Windows pxeboot.n12 I feel this would fix a lot of problems...... but I don\u0027t know how to do that.  \n\nI don\u0027t have WinVBlock or Firadisk in it. I thought bringing in the ramdisk from server 2003 sp1 did that?   \n"
+    },
+    {
+      "id": "129090",
+      "timestamp": "2011-05-20T00:01:28+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I don\u0027t have WinVBlock or Firadisk in it. I thought bringing in the ramdisk from server 2003 sp1 did that?  \nIf you are going to use the Server 2003 SP1 files, you may find of interest this seemingly unrelated tread AND links given in it ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif):  \n\u003chttp://reboot.pro/4952/\u003e  \n(and you won\u0027t \\*need\\* using grub4dos)  \n\nWhat **Sha0** was trying to tell you is that grub4dos devices (hd0) up to (hd31) represent Hard Disk-like devices, whilst devices (hd32) and up represent CD/DVD-like ones.  \nSince what you serve and should get into (rd) is a .iso (i.e. an image of an actual CD/DVD-like device) you cannot map it to a HD-like device.  \n\n\u003cbr /\u003e\n\n![:happy_dance:](http://reboot.pro/public/style_emoticons/default/celebrate14.gif)  \nWonko   \n"
+    }
+  ]
+}

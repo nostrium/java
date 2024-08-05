@@ -1,0 +1,22 @@
+{
+  "id": "17458",
+  "title": "Alternatives to \"IMG\" fixed size?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "159876",
+      "timestamp": "2012-09-02T13:05:47+00:00",
+      "author": "neopath",
+      "content": "Hey guys,  \n\nLong story short: I\u0027ve \"buit\" a bootable Win7 USB drive (using WinPE_SE and the \"copy to usb\" script included) with a bunch of tools for work and it got popular enough so that my colleagues want the thing on their USB thumb drives too. I have found a tool that let me create an \"IMG\" image of my thumb drive so I can copy it on other thumb drives and it work great. My problem, unless I\u0027m missing something, is that the IMG format is \"fixed\", meaning that if I make a copy of a 8G thumb drive, I need to copy it to another 8G unless I\u0027m ready to loose all that free space over 8G. Inversely, I cannot copy the IMG image to a smaller thumb drive even if the 8G image is 75% \"free space\". I\u0027m under the impression that the \"IMG\" format is the only one that permits me to copy everything including -most importantly- the boot sector/loader/whatever. Am I wrong? My ultimate goal is to make it easy for my colleagues to grab the bootable image and copy it to their drives without loosing the remaining free space on their thumb drives. I know that the ISO format won\u0027t let me grab everything (IE:the bootable part), So is the IMG format my only option? Thanks for any tips you guys can give me about this.   \n"
+    },
+    {
+      "id": "159890",
+      "timestamp": "2012-09-02T17:02:42+00:00",
+      "author": "steve6375",
+      "content": "RMPrepUSB will format a USB stick with a bootmgr bootsector (using any Windows NT+ PC). You can zip up the USB contents and then set the path to the zip file in option #5.  \nIf you want to distribute the whole \u0027kit\u0027 so that users just run a program, you can either user the \u0027User Configuration\u0027 feature in RMPrepUSB (see Tutorial #19 and the RMPRepUSB User Guide) or write a simple cmd script file which runs RMPartUSB to format the stick and then runs xcopy or 7zip to copy over the contents (see RMpartUSB FAQ page).  \nP.S. RMprepUSB and RMPartUSB are OK to distribute internally, but should not be distributed or sold to the public without purchasing a licence.   \n"
+    }
+  ]
+}

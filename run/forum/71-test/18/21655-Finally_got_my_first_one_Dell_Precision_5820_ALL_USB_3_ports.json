@@ -1,0 +1,52 @@
+{
+  "id": "21655",
+  "title": "Finally got my first one - Dell Precision 5820 - ALL USB 3 ports",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "205081",
+      "timestamp": "2017-12-11T12:39:17+00:00",
+      "author": "Rootman",
+      "content": "Well, it\u0027s finally happened. Got my first Dell that had ALL blue USB 3 SS ports front and back - and 2 USB C ports in the front. I need to image it with my USB drive and I can\u0027t boot to the drive in UEFI. I COULD boot to it in CSM (MBR) mode and install it as legacy, however I\u0027ve had 3 of these units (prior models with legacy USB ports) that just freeze at boot time when booting them as legacy. I reimage to EFI and they boot fine.\n\nSo, how does someone boot to a USB 3 WD Passport drive on a machine that only has USB SS ports? My, Passport drive has the EFI system files on it and boots fine to EFI on other systems that have older USB ports on them.\n\nEDIT: Well, I figured it out. I\u0027m using a Dell IMageassist drive to do the imaging and what I failed to realize is that you don\u0027t need to boot into EFI mode for it to install Windows as EFI. It HAS the EFI files and I booted to EFI with it on prior models that had USB legacy connectors. That was the first hurdle. The next was the fact that Windows 7 does not come with USB 3 drivers from the default instillation, and since all I had was USB 3 ports the USB mouse and keyboard would not work. Luckily this model still has a PS/2 connection on it. After I dug up a PS/2 KB 7 mouse I connected and installed the drivers that were needed for the USB 3 and NIC. After that it was a cinch.\n\n"
+    },
+    {
+      "id": "205082",
+      "timestamp": "2017-12-11T13:47:21+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Well, it\u0027s finally happened. Got my first Dell that had ALL blue USB 3 SS ports front and back - and 2 USB C ports in the front. I need to image it with my USB drive and I can\u0027t boot to the drive in UEFI. I COULD boot to it in CSM (MBR) mode and install it as legacy, however I\u0027ve had 3 of these units (prior models with legacy USB ports) that just freeze at boot time when booting them as legacy. I reimage to EFI and they boot fine.\n\u003e\n\u003e So, how does someone boot to a USB 3 WD Passport drive on a machine that only has USB SS ports? My, Passport drive has the EFI system files on it and boots fine to EFI on other systems that have older USB ports on them.\n\nCome on, Rootman :smile: you are not a first time poster, you should know how your post is missing each and every needed detail.\n\nWhat I can read in it is \"I tried something that didn\u0027t work on some device whilst trying something else on some other device worked, but not if I tried some other thing with some different settings\" ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif).\n\nWhat actually happens when you try to boot your new Dell from your WD usb disk drive?\n\nIs the disk listed in the ~~BIOS~~ UEFI?\n\nDo you have a blue screen of error?\n\nIf yes with which status code?\n\nIf not is it a ~~BIOS~~ UEFI error (usually white on black)?\n\netc., etc.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "205087",
+      "timestamp": "2017-12-11T15:14:14+00:00",
+      "author": "Rootman",
+      "content": "Sorry, was in a rush. All the USB A ports are the blue and labeled SS. There are 2 USB C ports too. I have not got a C drive or even an adapter. And the system will not boot to my image drive via EFI on any of them - it simply does not show as a device in the EFI list. There\u0027s even a USB port on the mobo that\u0027s black, it too will not allow the device to even be seen on the boot list. I\u0027ve used the same drive to image dozens (hundreds) of laptops and desktops prior to this and used EFI to boot from the same image drive.\n\nThe drive shows when I enable legacy mode and boot to it, however in doing so forces the Windows installs as legacy (MBR / CSM). The PC I\u0027m working on, a Dell Precision 5820 MUST be on EFI, I\u0027ve imaged prior versions (Precision 5810) and they will not boot worth crap when installed as MBR / CSM. The boot just freezes on a black screen most of the time. When reimaged to Windows via EFI boot, they boot every time. I can\u0027t get that far on this one because the USB A SS port with my USB 3 WD Passport drive won\u0027t even show on the EFI boot list. And there is no check box to allow USB in the device boot list (prior version of the last model 5810 DID). So I\u0027m getting nowhere.\n\nI even tried my USB thumb drive with a .IMGptn on it via Easy2boot, it too fails to show on the device EFI boot list.\n\nBy supervisor seems to think that if he sends me a USB C drive that it WILL show up in the EFI boot list and boot to it. I have my doubts.\n\nJust hoping someone has seen it and solved it before. I think I\u0027m going to have to setup a PXE boot server to do it. I am unsure how to boot to the Dell supplied company images though.\n\n"
+    },
+    {
+      "id": "205090",
+      "timestamp": "2017-12-11T17:24:31+00:00",
+      "author": "steve6375",
+      "content": "You can do a UEFI install by MBR-booting to PE and running WinNTSetup.\n\nYou will need to use diskpart or some other tool to GPT partition the drive first.\n\n"
+    },
+    {
+      "id": "205103",
+      "timestamp": "2017-12-11T20:38:09+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e By supervisor seems to think that if he sends me a USB C drive that it WILL show up in the EFI boot list and boot to it. I have my doubts. .\n\nMaybe not so absurd, USB-C, if I recall correctly, pre-dates USB 3.x/SS. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\nIt is possible that the stupid UEFI misses the (needed) UEFI drivers for the USB 3.x/SS bus (or the chipset/whatever)?\n\nOr maybe in the convoluted abysses of the stupid UEFI there is a setting - possibly marked as \"Disable non-legacy super-high speed inversion chipset access\" :wink: that actually means \"Enable §@ç#ing USB booting\" .... ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nI believe you can also install \"normally\" (of course the internal disk needs to be GPT) if you apply the .wim and then use the BCDBOOT with the /f UEFI or f/ ALL parameter, I was coincidentally looking at this just a few minutes ago:\n\n[https://docs.microso...ons-techref-di](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/bcdboot-command-line-options-techref-di%C2%A0 \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "205110",
+      "timestamp": "2017-12-11T21:06:26+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "@Rootman: I couldn\u0027t help but laugh at your topic title.....what\u0027s so special about a Dell that has all USB 3\u0027s and USB C?. I paid nearly 4K for my laptop, with 5 USB 3.1 ports (no 2.0) and 2 Thunderbolt/USB C ports. USB 3 is relatively old tech by now, Thunderbolt quite a bit newer.   \n"
+    },
+    {
+      "id": "205115",
+      "timestamp": "2017-12-11T22:49:27+00:00",
+      "author": "Uneitohr",
+      "content": "@IAmTheTrueMeaningOfCovfefe\n\nI don\u0027t like devices with only USB 3.0. There are times where you actually need an old USB 2.0 port.\n\n"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "21124",
+  "title": "Windows 8 Secure Boot signing with custom keys",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "199002",
+      "timestamp": "2016-05-23T13:58:46+00:00",
+      "author": "nist001",
+      "content": "Is there a way to run Windows 8 in UEFI Secure Boot with a custom signing key (ie delete the Microsoft keys from the key db)? I\u0027ve tried signing \"bootmgfw.efi\", \"bootmgr.efi\" and \"winload.efi\" but all it does is kick off the repair which replaces the original files. The end goal is to have a system which would only boot drives signed with custom keys.\n\n"
+    },
+    {
+      "id": "199005",
+      "timestamp": "2016-05-23T17:17:13+00:00",
+      "author": "Wonko the Sane",
+      "content": "How EXACTLY have you attempted signing those .efi files? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\nI don\u0027t think that you can sign MS executables anyway, most probably you want to use a SHIM, instead ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif) :\n\n[http://www.rodsbooks...secureboot.html](http://www.rodsbooks.com/efi-bootloaders/secureboot.html \"External link\")\n\nthe whole stuff is anyway AFAIK/AFAICU (little) very tricky matter:\n\n[http://www.rodsbooks...rolling-sb.html](http://www.rodsbooks.com/efi-bootloaders/controlling-sb.html \"External link\")\n\n[https://en.altlinux....Boot_mini-HOWTO](https://en.altlinux.org/UEFI_SecureBoot_mini-HOWTO \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "199007",
+      "timestamp": "2016-05-23T17:55:30+00:00",
+      "author": "nist001",
+      "content": "I have an HSM produced key and I signed the binaries with the signtool as described here:\n\n[https://technet.micr...y/dn747881.aspx](https://technet.microsoft.com/en-us/library/dn747881.aspx \"External link\")\n\nI know that the signing process works because I can boot Linux with a boot loader signed the same way just fine.\n\nI\u0027m looking into using a shim but the question is if I were to remove the Microsoft signature from the allowed db would bootmgfw.efi (still signed by Microsoft) still work? Do any of these boot components do some kind of self-verification (I mean how does it know to kick repair off)?\n\nThanks\n\n"
+    },
+    {
+      "id": "199010",
+      "timestamp": "2016-05-23T18:34:07+00:00",
+      "author": "Wonko the Sane",
+      "content": "AFAIK the whole idea is that the MS originated bootloader is signed and ONLY verifies with the MS issued signature, which is needed and that cannot be removed.\n\nThe general idea of Secure Boot is not about \"security\" (in the sense of \"limiting access\" or \"limiting execution to a given machine\" which is what I understand you are attempting to achieve ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)) , but more to only execute \"trusted and verified\" software), see:\n\n[https://technet.micr...y/dn747883.aspx](https://technet.microsoft.com/en-us/library/dn747883.aspx \"External link\")\n\u003e\n\u003e The Secure Boot process works as follows and as shown in Figure 1:\n\u003e\n\u003e 1. **Firmware Boot Components:** The firmware verifies the OS loader is trusted (Windows 8.1 or another trusted operating system.)  \n\u003e 2. **Windows boot components: BootMgr, WinLoad, Windows Kernel Startup.** Windows boot components verify the signature on each component. Any non-trusted components will not be loaded and instead will trigger Secure Boot remediation.\n\u003e    * **Antivirus and Antimalware Software initialization:** This software is checked for a special signature issued by Microsoft verifying that it is a trusted boot critical driver, and will launch early in the boot process.  \n\u003e    * **Boot Critical Driver initialization:** The signatures on all Boot-critical drivers are checked as part of Secure Boot verification in WinLoad.  \n\u003e 3. **Additional OS Initialization**   \n\u003e 4. **Windows Logon Screen**\n\nAs I see it (but I might be very wrong about it ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)) you need to \"insert\" something \"before\" the BOOTMGR is loaded and that file is what you can sign, then this (at the moment only hypothetical file, let\u0027s say it is a custom, modified, and self-signed version of GRUB2) would need to chainload the EFI BOOTMGR, with something \\*like\\*:\n\u003e\n\u003e menuentry \"Windows 8 UEFI\" {  \n\u003e insmod part_gpt  \n\u003e insmod fat  \n\u003e insmod search_fs_uuid  \n\u003e insmod chain  \n\u003e set root\u003d\u0027(hd0,gpt2)\u0027  \n\u003e search --fs-uuid --no-floppy --set\u003droot 3f85-acfe  \n\u003e chainloader (${root})/efi/Microsoft/Boot/bootmgfw.efi  \n\u003e }\n\nIF the Microsoft key is not found the BOOTMGR (AND the following files in the boot chain) will refuse to boot, but as well if \\*somehow\\* the MS EFI BOOTMGR is chainloaded without going through your \"authentication\" program it will boot fine (since the key for it exists), so all the security stands (not entirely unlike what used to be in good ol\u0027 BIOS) in locking the system in such a way that only the \"pre-bootmgr\" bootloader can be actually booted.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "199012",
+      "timestamp": "2016-05-23T19:10:45+00:00",
+      "author": "nist001",
+      "content": "The problem with the shim approach (or GRUB2), as I understand it, is that if one were to put a vanilla Windows 8 drive in, it would still boot fine because the Microsoft key is still in the allowed signatures database. If I were to remove it, would part 2 of the secure boot process (where Windows boot components verify each others signatures) still work? ie is this signature stored elsewhere on the system, outside of the UEFI allowed signatures database?\n\nThanks\n\n"
+    },
+    {
+      "id": "199013",
+      "timestamp": "2016-05-24T07:50:58+00:00",
+      "author": "Wonko the Sane",
+      "content": "Yes, that is the issue, AFAIK the boot chain verifies itself against keys stored in the firmware, not anywhere else.\n\nAs said it is like good ol\u0027 BIOS, you lock the booting to a given device and protect the BIOS access, an intruder would need to open the case and replace the hard disk in order to boot the machine (and - as an example - there used to be cases with an alarm connected to their opening, nothing that could not be worked around by a determined intruder anyway).\n\nIn theory-theory one could \\*somehow\\*:\n\n1) remove the MS key from firmware\n\n2) have the hypothetical pre-boot program re-add it before chainloading the EFI bootmgr\n\n3) as soon as the OS boots remove again the key from the firmware through another hypothetical program running in the OS\n\nBut locking the UEFI firmware would be anywyay needed to avoid that any other device could be booted, and the replacing of the boot device would still be possible.\n\nOf course the new, *stupid BTW*, EFI environment allows to write also very \"complex\" programs, BUT it it sane enough to separate the boot from the runtime processes, so AFAICU:\n\n[http://vzimmer.blogs...ing-system.html](http://vzimmer.blogspot.it/2012/12/accessing-uefi-form-operating-system.html \"External link\")\n\nyou cannot have #3 above, it is likely that you could have (still theory-theory) the MS key automatically removed at each boot by the same #2, but this makes m00t of the approach as \"at rest\" the system will have the key and thus it will be exposed to \"other boot device attack\".\n\nOne could mandate that instead of switching off the computer it should be rebooted into the hypothetical #1 and then switched off at the time the key is removed, still a determined attacker with physical access could still be able to (say) remove the disk device and image/clone it, etc.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199014",
+      "timestamp": "2016-05-24T14:34:16+00:00",
+      "author": "venerence",
+      "content": "I think you\u0027re trying to fundamentally avoid the whole purpose of secure boot.\n\nThe point of secure boot is that your boot loader and firmware is not being interfered by a rootkit or third party malware. It\u0027s a real great idea in theory, it\u0027s extremely anticompetitive in practice (which, I think, microsoft knows).\n\nWhat you are asking for is a way to make your own keys that will allow you to boot whatever you like and have the firmware be OK with it. That\u0027s really never going to happen. There are firmwares out there that allow installing custom keys, but there is not a standard implementation, and impractical besides.\n\nAt the moment, secure boot requires microsoft signed keys, and even that is usually ignored by the manufacturer. For example, HP theoretically supports the secure boot standard, but a microsoft signed grub loader \\*still\\* does not load properly. This is an improper implementation of secure boot, and HP doesn\u0027t give a shit.\n\nThe answer is to disable secure boot. It\u0027s not the ideal answer, it\u0027s not even the best practice answer, but that\u0027s the only way you\u0027re gonna get anything but microsoft to reliably load on a computer.\n\nFor the moment, I have never seen a computer that doesn\u0027t allow secure boot to be disabled. When it does happen, then we must start worrying, but I doubt that would be the case anytime soon.\n\n"
+    }
+  ]
+}

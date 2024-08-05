@@ -1,0 +1,52 @@
+{
+  "id": "8306",
+  "title": "makebootfat FAT32+MSDOS",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "70482",
+      "timestamp": "2009-06-25T03:20:57+00:00",
+      "author": "Anarchi",
+      "content": "I am trying to make my USB Flash Drive bootable with FAT32 and MSDOS (Win98 sys), **using only makebootfat.exe v1.4**   \nIf I use HP\u0027s USB Storage Tool, my FAT32 USB Drive boots successfully!  \n**WORKS: FreeDOS, 32MB USB Drive, FAT16**   \nmakebootfat -o usb -2 Freedos.bss -c COMMAND.COM -c KERNEL.SYS -v D:\\\\Dummy  \n**WORKS: FreeDOS, 1GB USB Drive, FAT32**   \nmakebootfat -o usb -3 FDFAT32.bin -c COMMAND.COM -c KERNEL.SYS -v D:\\\\Dummy  \n**WORKS! MSDOS (Win98 4.1), 32MB USB Drive, FAT16**   \nmakebootfat -o usb -b MSFAT16.bin -c COMMAND.COM -c MSDOS.SYS -c IO.SYS -v D:\\\\Dummy  \n**FAILS.... MSDOS (Win98 4.1), 1GB USB Drive, FAT32**   \nmakebootfat -o usb -3 FAT32USB.bin -c COMMAND.COM -c MSDOS.SYS -c IO.SYS -v D:\\\\Dummy  \n\n\u003cbr /\u003e\n\nmakebootfat creates the USB drive successfully, but when I try to boot, it just hangs with a flashing cursor.  \n\nI\u0027ve tried countless makebootfat parameters, such as -m mbrfat.bin, -F, -Z, -D, -P, -E  \nI\u0027ve tried different boot sector images, from a FAT32 HDD with Win98, from a FAT12 Floppy Disk, from a FAT32 USB Key that can boot (created by HP\u0027s tool), but nothing works ![:lol:](https://reboot.pro/public/style_emoticons/default/laugh.png)  \nI\u0027ve tried different command.com files, and even tried HP\u0027s system files.  \n\nNote that most boot sectors are 512bytes. But HP\u0027s built-in FAT32 boot sector is 1500Bytes!  \n\nWhen I try writing that 1500Byte sector using makebootfat, it only write 512bytes.  \nWhen I try writing that 1500Byte sector using HDHacker, the drive shows corrupted files and folders.  \n\n\u003cbr /\u003e\n\nSo my question is, how does HP write the 1500Byte boot sector? Is it writing an MBR with a partition table?  \n\nCan I force makebootfat to write the whole 1500bytes?  \n\nMaybe I need to use a different mbrfat.bin file?   \n"
+    },
+    {
+      "id": "70512",
+      "timestamp": "2009-06-25T15:59:05+00:00",
+      "author": "was_jaclaz",
+      "content": "ALL the \"DATA\" and the \"CODE\" in a FAT 12/16 bootsector is within one sector (bootsector)  \n\nALL the \"DATA\", but only most of the \"CODE\" in a FAT32 is within first sector.  \n\nAn actual \"complete\" bootsector for FAT32 is actually:  \n1st, 2nd and 3rd sector FAT32 DOS.  \n1st, 2nd and 12th sector FAT32 (2K/XP/2003, etc.)  \n1st, 2nd and 14th sector FAT32 (ReactOS)  \n\nCheck these:  \n[http://www.boot-land...?...\u003d7512\\\u0026st\u003d56](http://www.boot-land.net/forums/index.php?showtopic\u003d7512\u0026st\u003d56 \"External link\")  \n[http://www.boot-land...?...\u003d7739\\\u0026st\u003d89](http://www.boot-land.net/forums/index.php?showtopic\u003d7739\u0026st\u003d89 \"External link\")  \n\nAnd of course the \"base reference\":  \n[http://thestarman.pc...mbr/MSWIN41.htm](http://thestarman.pcministry.com/asm/mbr/MSWIN41.htm \"External link\")  \n\nOn a freshly formatted FAT32 volume \"default value\" of bytes on 2nd sector are (Absolute offsets from begiinning of first sector, hex):  \nat 0x0200:  \n\n```\n52 52 61 41\n```\n\nat 0x03E4:  \n\n```\n72 72 61 41\n```\n\nat 0x03E8:  \n\n```\nFF FF FF FF\n```\n\nat 0x03EC usually:  \n\n```\n02 00 00 00\n```\n\nat 0x03FE:  \n\n```\n55 AA\n```\n\n\u003cbr /\u003e\n\nThus:  \n1st sector contains both \"CODE\" (fixed) and \"DATA\" (variable)  \n2nd sector contains both \"CODE\" (fixed) and \"DATA\" (variable) but of which the \"standard values\" are known  \n3rd sector (as saind not necessarily the actual sector at offset 0x0400) contains only \"CODE\" (fixed)  \n\nIt\u0027s a long time I experimented with makebootfat, cannot remember details, you may find something of interest in this report:  \n[http://www.911cd.net...o...13784\\\u0026st\u003d44](http://www.911cd.net/forums//index.php?showtopic\u003d13784\u0026st\u003d44 \"External link\")  \n\nThe workaround was simply to run DOS 7.x/8.0 SYS.COM in a VM:  \n\u003e Please note that this option (FAT32 on a 512 Mb USB key) did NOT make a bootable volume. I suspect that there is something not right in the FAT32 identifier (hex 0b) and structure. By running (in Qemu) sys.com, it changed (between other things) the identifier to LBA mappped (hex 0c) and the volume booted.\n\nI guess that SYS.COM fixed, besides the Partition ID, the missing 2nd and 3rd sector. :wink:  \n\nSince the 2nd and 3rd sector are \"fixed\" (at least for a freshly formatted system they should work allright if copied to the stick with dsfo/dsfi (or HDhacker).  \n\nI.e.:  \n\n* let makebootfat partition/format the and write the 1st bootsector, including \"right\" \"fixed\" CODE and (hopefully) \"right\" DATA\n* duplicate if needed the first sector to 6th one\n* write \"pre-made\" \"fixed\" 2nd and 3rd sectors\n* write again same sectors to 7th and 8th sectors\n\n\u003cbr /\u003e\n\nLet me know how it goes....  \n\n![:lol:](https://reboot.pro/public/style_emoticons/default/laugh.png)  \n\njaclaz   \n"
+    },
+    {
+      "id": "70543",
+      "timestamp": "2009-06-25T22:44:31+00:00",
+      "author": "Anarchi",
+      "content": "Thank for the info jaclaz.  \n\nSo basically I need to write more than 512bytes, which is why HP\u0027s utility writes 1.5KB of sectors.  \n\nThe question is, can makebootfat v1.4 (latest) do this? or would it need to be updated?  \n\nOr would I need to use another tool?   \n"
+    },
+    {
+      "id": "70563",
+      "timestamp": "2009-06-26T08:19:34+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e So basically I need to write more than 512bytes, which is why HP\u0027s utility writes 1.5KB of sectors.\nYep. ![:lol:](https://reboot.pro/public/style_emoticons/default/laugh.png)  \n\n\u003e The question is, can makebootfat v1.4 (latest) do this? or would it need to be updated?\nIt seems to me that your experience, summed up to the one I did at the time (and it was ALREADY version 1.4) already produced an answer: it seems like NOT. :wink:  \nmakebootfat seems like a dead project, unfortunately. :wink:  \nWe would need a programmer to take the Source Code and fix/integrate/update it.  \n\n\u003cbr /\u003e\n\n\u003e Or would I need to use another tool?\nI guess you need one. :wink:  \n\nYou can use HDhacker:  \n[http://dimio.altervista.org/eng/](http://dimio.altervista.org/eng/ \"External link\")  \n\nto try ADDING the missing/wrong 2nd and \"3rd\" (beware of the placement of this last one as 12th sector for Windows 2K/XP/2003 and probably for Vista/2008/Windows7) as hinted above AFTER having used makebootfat to generate the 1st sector (and the other filesystem structure).  \n\nIf it works, you can then script it and use dsfo/dsfi to automate the process.  \n\nYou can take some examples of how to perform this kind of actions by reading the code of my small batches MBRBATCH/MKIMG:  \n[http://www.boot-land...?showtopic\u003d3191](http://www.boot-land.net/forums/?showtopic\u003d3191 \"External link\")  \n[http://www.boot-land...?showtopic\u003d5000](http://www.boot-land.net/forums/index.php?showtopic\u003d5000 \"External link\")  \n\n:wink:  \n\njaclaz   \n"
+    },
+    {
+      "id": "70716",
+      "timestamp": "2009-06-29T02:21:35+00:00",
+      "author": "Anarchi",
+      "content": "I had a look at your batch files and get the general idea, but its way beyond my knowledge of file systems ![:lol:](https://reboot.pro/public/style_emoticons/default/laugh.png) I\u0027ll need to read up on how boot sectors, FAT32, partition tables, etc.. work.  \n\nI know c++ so I can modify makebootfat, implementing the changes is the hard part. I\u0027ll have a look at the source when I get a chance.   \n"
+    },
+    {
+      "id": "70744",
+      "timestamp": "2009-06-29T14:17:58+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I\u0027ll need to read up on how boot sectors, FAT32, partition tables, etc.. work.\n\nStandard (GOOD :wink: ) reference:  \n[http://mirror.href.c.../mbr/index.html](http://mirror.href.com/thestarman/asm/mbr/index.html \"External link\")  \n[http://www.goodells.net/multiboot/](http://www.goodells.net/multiboot/ \"External link\")  \n[http://home.att.net/...ot/w95b_mbr.htm](http://home.att.net/~rayknights/pc_boot/w95b_mbr.htm \"External link\")  \n(several interestring pages on each of the above links)  \n\nAlso, check these::  \n[http://www.911cd.net...showtopic\u003d21914](http://www.911cd.net/forums//index.php?showtopic\u003d21914 \"External link\")  \n[http://www.911cd.net...o...1702\\\u0026st\u003d129](http://www.911cd.net/forums//index.php?showtopic\u003d21702\u0026st\u003d129 \"External link\")  \n\nAnd this:  \n[http://homepages.tes...name-field.html](http://homepages.tesco.net/J.deBoynePollard/FGA/volume-boot-block-oem-name-field.html \"External link\")  \n\n![:lol:](https://reboot.pro/public/style_emoticons/default/laugh.png)  \n\njaclaz   \n"
+    },
+    {
+      "id": "70983",
+      "timestamp": "2009-07-03T06:58:33+00:00",
+      "author": "Anarchi",
+      "content": "Thanks for the links ![:lol:](https://reboot.pro/public/style_emoticons/default/laugh.png)   \n"
+    }
+  ]
+}

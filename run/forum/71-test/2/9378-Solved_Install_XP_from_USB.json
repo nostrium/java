@@ -1,0 +1,64 @@
+{
+  "id": "9378",
+  "title": "[Solved] Install XP from USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "45827",
+      "timestamp": "2008-09-30T06:32:10+00:00",
+      "author": "aspiredOne",
+      "content": "Hi  \nI\u0027m trying to install xp and select the \"begin txt mode setup...\". I then get the blue Windows setup screen and it tells me that:  \n\n\"setup could not determine the type of computer you have, or you have chosen to manually specify the computer type. Select the computer form the following list....  \n\nIt offers me   \nstandard pc with C-Step i486 or  \nother  \n\nIf I chose other it says that it could not find a floppy drive to load OEM drivers .  \nIf I chose standard pc then i get \"session3_initialization_failed\".  \n\nAny ideas please?  \n\nthanks   \n"
+    },
+    {
+      "id": "45828",
+      "timestamp": "2008-09-30T06:43:53+00:00",
+      "author": "wimb",
+      "content": "Try to use Original XP CD and NOT to use nLite  \nCopy your XP CD to a harddisk folder (name without spaces e.g. XPCD)  \nIntegrate BTS DriverPack Massstorage with TXT Mode Enabled  \n\n\u003e Supports the use of BTS DriverPacks located in OEM Folder on USB-Drive  \n\u003e [http://driverpacks.net/DriverPacks/](http://driverpacks.net/DriverPacks/ \"External link\")   \n\u003e For Install of XP on a modern system with SATA Drives it is needed to use DPsBase.exe   \n\u003e for Integrating in your XPSOURCE BTS DriverPack Massstorage with TXT Mode Enabled.  \n\u003e In that case a lot of Extra RAID SCSI and SATA Drivers (about 120 extra) are Integrated which appear in the   \n\u003e XP Setup BootFolder $WIN_NT$.\\~BT on Install-Drive and can prevent a lot of XP Install Boot Problems.  \n\u003e First use RyanVM Integrator and then use DPsBase to Improve your XP-Source.\n\n"
+    },
+    {
+      "id": "45831",
+      "timestamp": "2008-09-30T07:17:19+00:00",
+      "author": "aspiredOne",
+      "content": "sorry to be a numpty but when i try to use DPsBase it says  \n\"there are not yet any slipstream modules for the selected platform\"   \n"
+    },
+    {
+      "id": "45833",
+      "timestamp": "2008-09-30T07:34:15+00:00",
+      "author": "aspiredOne",
+      "content": "As I don\u0027t have the knowledge required to understand all this, can I attach a USB cd drive and load xp from there or will the aspire fail to find the cd drive as it does not have a driver for it?  \nIn other words, can i avoid all the complexity by loading xp in the way that i would on a desktop?   \n"
+    },
+    {
+      "id": "45842",
+      "timestamp": "2008-09-30T11:43:46+00:00",
+      "author": "wimb",
+      "content": "\u003e sorry to be a numpty but when i try to use DPsBase it says  \n\u003e \"there are not yet any slipstream modules for the selected platform\"\nYou need to download also DriverPack MassStorage and put it in DriverPack folder.  \nInstead of Slipstream Button, you need first to use \\\u003e button to Select the folder on Harddisk,  \nwhere you copied your XP Source from CD,   \nand you need to Select DriverPack Massstorage with TXT Mode Enabled.  \nThen Slipstream in 1 minute ![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png)   \n"
+    },
+    {
+      "id": "46946",
+      "timestamp": "2008-10-13T17:33:06+00:00",
+      "author": "aspiredOne",
+      "content": "Ive got xp onto my aspire one but when i cannot get the wireless working. If I go to control panel/network connections then the folder is empty. If I go to system/device manager/harware then it says that the wireless adaptor is ok. I have tried re-installing the driver but cannot figure out how to set up a connection.   \nI wonder if when I installed xp i left part of the installation off that prevents me setting up a wireless connection.  \nAny ideas please?   \n"
+    },
+    {
+      "id": "46961",
+      "timestamp": "2008-10-13T19:53:27+00:00",
+      "author": "wimb",
+      "content": "What version is your XP Source ?  \n\nFirst Slipstream with SP2 to improve your XP Source,   \nthen use RyanVM Integrator with XP UpdatePack,  \nthen use DPsBase to Improve your XP-Source,  \nthen make USB-stick,  \nthen Install XP from USB   \n"
+    },
+    {
+      "id": "46969",
+      "timestamp": "2008-10-13T20:33:32+00:00",
+      "author": "aspiredOne",
+      "content": "hi   \n\nI have discovered that if i right click on my computer, then right click on services and applications, then click on services I then get a long list of services. If I then click on WZC and start it, and also click on network connections and start that service then I can see the LAN and wireless icons. However neither will connect.  \nThe LAN says \" acquiring network address\" but never achieves it and the wireless cannot see any wireless networks.  \n\nIf I then reboot the computer i have to go through it all again to get the network connection icons back.   \n"
+    },
+    {
+      "id": "48363",
+      "timestamp": "2008-10-27T16:18:21+00:00",
+      "author": "aspiredOne",
+      "content": "Hi  \n\nHaving finally got xp onto my aspire one, it is slow and as I am not savvy, I thought I might try to load either tinyXP or microXP onto a USB stick and load them. However this does not appear to work. Is it possible to use either and are there any guides on how to do it please?   \n"
+    }
+  ]
+}

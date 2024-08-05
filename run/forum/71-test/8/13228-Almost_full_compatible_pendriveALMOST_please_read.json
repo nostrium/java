@@ -1,0 +1,160 @@
+{
+  "id": "13228",
+  "title": "Almost full compatible pendrive,ALMOST - please read",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "115524",
+      "timestamp": "2010-12-03T15:32:08+00:00",
+      "author": "mateuszek",
+      "content": "So the most compatible pendrive ever i made:  \nlexar, modified firmware with smi chip utility, so it is visible as  \n1.FLOPPY drive\u003d(1)  \n2. As hdd drive\u003d(2)  \n\nOn floppy - installed PLOP boot manager.  \non second (2) - i can set is as fixed or removable drive, and install fbinst or rmprepusb.  \nnevermind now.  \nAlmost on every computer works like a charm.  \nBeautiful.  \nBut on AWARD with this menu screen:  \n[http://www.pendrivel...ot_harddisk.jpg](http://www.pendrivelinux.com/wp-content/uploads/boot_harddisk.jpg \"External link\")  \nNOT SO GOOD.  \n\nPlop is loaded (when i will select usb-fdd or usb hdd or anything does not matter, always loads boot from floppy device(1))  \nAnd when i try to tell plop to load boot from second device (2) this is the only thing i see:  \n................................................................................  \n.................................................................  \n..........................................................  \n\n\u003cbr /\u003e\n\nand have to reboot.hangs.  \nIt has to be plop because some older bioses does not allows to boot from usb2.0 so slow transfer and plop has own drivers so it is good and fast.  \n\nso if you know what i can do - please write. thanks ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif).  \nor maybe i can put on this 1.44mb fd device(2) selection - load grub or plop, it will go ?  \nhow to install grub and plop on fd (2)?   \n\n**Edited by mateuszek, 03 December 2010 - 03:36 PM.**\n"
+    },
+    {
+      "id": "115544",
+      "timestamp": "2010-12-03T18:29:28+00:00",
+      "author": "Wonko the Sane",
+      "content": "Interesting approach. ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif)   \n\nCan you try adding a grub4dos to (1) and see how it behaves?  \n\nI mean:  \nBIOS-\\\u003ePLoP-\\\u003egrub4dos on (1)-\\\u003eattempt booting from (2) - if needed exchanging BIOS drives  \n\n![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)  \n\nWonko   \n"
+    },
+    {
+      "id": "115581",
+      "timestamp": "2010-12-04T00:35:50+00:00",
+      "author": "sambul61",
+      "content": "\u003e So the most compatible pendrive ever i made:  \n\u003e lexar, modified firmware with smi chip utility, so it is visible as  \n\u003e 1.FLOPPY drive\u003d(1)  \n\u003e 2. As hdd drive\u003d(2)\nCould you explain what you said?  \n\n- does BIOS see 2 separate drives instead of 1 when you insert the Thumb?  \n- does Win Explorer see 2 separate drives or partitions?  \n- what does Win Disk Management Console show?  \n\nOR, the FDD is written to MBR of the Thumb HD drive?   \n"
+    },
+    {
+      "id": "115590",
+      "timestamp": "2010-12-04T06:44:15+00:00",
+      "author": "mateuszek",
+      "content": "\u003e Could you explain what you said?  \n\u003e\n\u003e - does BIOS see 2 separate drives instead of 1 when you insert the Thumb?  \n\u003e - does Win Explorer see 2 separate drives or partitions?  \n\u003e - what does Win Disk Management Console show?  \n\u003e\n\u003e OR, the FDD is written to MBR of the Thumb HD drive?\n\nafter buying   \n[http://www.pen-drive...trax-p-216.html](http://www.pen-drives.net/lexar-media-16gb-jumpdrive-retrax-p-216.html \"External link\")  \n\nmod it with  \n[http://flashboot.ru/...a...p\u003dcat\\\u0026id\u003d10](http://flashboot.ru/index.php?name\u003dFiles\u0026op\u003dcat\u0026id\u003d10 \"External link\")  \nand you will have  \n\n[![Posted Image](http://img340.imageshack.us/img340/9905/lex0.jpg)](http://img340.imageshack.us/i/lex0.jpg/ \"External link\")  \n\nyes, bios sees this pendrive as 2 devices.   \n"
+    },
+    {
+      "id": "115592",
+      "timestamp": "2010-12-04T06:53:53+00:00",
+      "author": "mateuszek",
+      "content": "\u003e Interesting approach. ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif)   \n\u003e\n\u003e Can you try adding a grub4dos to (1) and see how it behaves?  \n\u003e\n\u003e I mean:  \n\u003e BIOS-\\\u003ePLoP-\\\u003egrub4dos on (1)-\\\u003eattempt booting from (2) - if needed exchanging BIOS drives  \n\u003e\n\u003e ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)  \n\u003e\n\u003e Wonko\nyeah, but i have no idea how to chainload grub4dos from plop.  \n\nhow to make PLOP to run grub ?   \n"
+    },
+    {
+      "id": "115594",
+      "timestamp": "2010-12-04T07:17:44+00:00",
+      "author": "mateuszek",
+      "content": "+  \nin other bioses when plop is loaded, plop boot screen sees device (2) as hdb1 or smth like this, so he can boot (2).  \n\nbut in award bioses (as above) PLOP does NOT sees device (2). He only sees harddisk in computer, sata or ata, even if i will make (2) as removable or fixed. In award bios PLOP does not see (2) as hdb.   \n"
+    },
+    {
+      "id": "115596",
+      "timestamp": "2010-12-04T09:22:39+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e how to make PLOP to run grub ?\nIn this case by running a DOS on the floppy and running from it grub.exe.  \nBut if PLoP on that BIOS does NOT see (2) it is vain.  \nFrom your previous post I had gathered that PLoP \"saw\" (2) but couldn\u0027t boot from it.  \n\n@sambul16  \nEach USB stick has a controller.  \nDifferent makes/types of controlllers may have different capabilities.  \n99.99 % of sticks are sold set as single LUN (one device).  \nMost controllers can be set as two LUN\u0027s (two devices).  \nThese two devices can be (it depends on the contoller):  \n\n* hd (protected)+hd\n* fd+hd\n* cd+hd\n\n\u003cbr /\u003e\n\nTo change the controller settings so-called \"Mass Production Tools\" or \"Manufacturer\u0027s Utilities\" are used.  \nThese are usually COMPLETELY or nearly completely UNDOCUMENTED apps that operate at a very low level on the device.  \nThey are very usefule as they usually, apart the above settings can set/reset:  \n\n* the \"removable/fixed bit\"\n* the wear leveling/bad sectors mapping\n* device serial\n* device ID\n* device VID\n* device PID\n* etc.\n\nBesides formatting or reformatting the device at a low level that may be able to recover functionalitues of a \"dead\" stick.  \n\nObviously they are also VERY risky ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif) due to their undocumented status coupled with their great \"power\".  \n\nSee here for an example of how a tool like the one describes looks:  \n[http://www.msfn.org/...howtopic\u003d137990](http://www.msfn.org/board/index.php?showtopic\u003d137990 \"External link\")  \n\n\u003cbr /\u003e\n\n![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif)  \nWonko   \n"
+    },
+    {
+      "id": "115600",
+      "timestamp": "2010-12-04T10:53:49+00:00",
+      "author": "mateuszek",
+      "content": "Yes, PLOP sees USB devices he can boot usb, i can change mass stor dev for number 2 or 3 or 4 and so on, and this was what i mean on first post.  \nIf bios sees this modded pendrive as:  \nusb smi dev  \nand  \nusb smi dev  \n\nyes, bios sees it as 2 devices, in this screen where he shows drives information, devices, before loading boot)  \nplop should be able to see it too.  \nso making it to boot second mass store he should boot (2).  \nBut  \nHe can boot usb but all i can see is:  \n................................................................................  \n.........................................................................  \n........................  \n(dots).  \n\nBut in other bioses he also sees hdb and can boot it (2) without problems because it is seen as hdb.  \n\nI will check it more on monday.  \nthx.  \n\n\u003cbr /\u003e\n\nYEs, changing chip, controller is risky but you can always (almost always) restore by dismounting and putting needle or scalpel to make circuit on legs from microprocessor ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif)  \ndescribed here:  \n[http://flashboot.ru/...m...icle\\\u0026sid\u003d24](http://flashboot.ru/index.php?name\u003dNews\u0026op\u003darticle\u0026sid\u003d24 \"External link\")  \n\nso having usb seen as FD0 and having usb pendrive so compatible \u003d worth everything even messing with electronics ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif) ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)   \n\n**Edited by mateuszek, 04 December 2010 - 10:58 AM.**\n"
+    },
+    {
+      "id": "115602",
+      "timestamp": "2010-12-04T12:10:39+00:00",
+      "author": "mateuszek",
+      "content": "or i will install just grub4dos on fd dev (1) and check if it sees usb (2)..... maybe will not so all of this will not have any sense...   \n"
+    },
+    {
+      "id": "115623",
+      "timestamp": "2010-12-04T15:20:43+00:00",
+      "author": "sambul61",
+      "content": "**mateuszek**   \n\n- does Win Explorer see 2 separate drives or partitions when you connect the Thumb?  \n- what does Win Disk Management Console show when you insert the Thumb?  \n\nCan you show screenshots of the above?  \n\nOR, the FDD is in fact written to MBR of the Thumb HD drive? If not, what is written to MBR of the Thumb - Plop, which you now try to replace with Grub4DOS MBR? In that case, what was originally written to the Thumb\u0027s MBR after you formatted it with the above tool and installed OS?  \n\n--------------------------------------  \n\nAs to booting the Thumb HD after booting to its FDD (more accurately just launching Plop that way but not booting OS on the FDD), the Plop developer when [***asked***](http://www.boot-land.net/forums/index.php?showtopic\u003d12781 \"External link\") abundantly [***stressed***](http://www.boot-land.net/forums/index.php?showtopic\u003d12781\u0026view\u003dfindpost\u0026p\u003d111949 \"External link\") that when you use Plop HD Menu, Plop can ONLY boot the USB HD device selected as first boot device in BIOS, or you **must reconfigure** the Thumb HDD boot files properly, setting the Thumb\u0027s drive letter according to its current order in BIOS drive list. Editing boot.ini is not required, when booting same Thumb from Plop USB Menu.  \n\nAlso he [***said***](http://www.boot-land.net/forums/index.php?showtopic\u003d12781\u0026view\u003dfindpost\u0026p\u003d111852 \"External link\"), when you use **Plop HD Menu** items, BIOS routing is used to boot the item you selected (and it may fail to boot the USB HD Thumb). When you use **Plop USB Menu** item, Plop own routing and driver is used to boot the same item you selected (and it may also fail for a different reason, but offers yet another boot method). Which item from what Plop Menu did you use?  \n\nWonko suggested you to try chainloading Grub4DOS from Plop, or possibly installing Grub4DOS MBR to the Thumb FDD instead of Plop MBR. Have you done that? Try using *find --set root* method to avoid setting fixed Thumb HD volume number.  \n\nTry answering separately each question stated in this post (i.e. with a question mark \"?\"). Each post on this forum is not only a direct help to someone, but also educational experience for other forum participants. Your complete answers are valuable input for others. ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)   \n"
+    },
+    {
+      "id": "115688",
+      "timestamp": "2010-12-05T07:27:03+00:00",
+      "author": "mateuszek",
+      "content": "[![Posted Image](http://img151.imageshack.us/img151/1153/explorer0.jpg)](http://img151.imageshack.us/i/explorer0.jpg/ \"External link\")  \n\nwin 7 disk management shows only physical disks, not floppy.... so he shows only whole (2).   \n\n**Edited by mateuszek, 05 December 2010 - 07:27 AM.**\n"
+    },
+    {
+      "id": "115701",
+      "timestamp": "2010-12-05T12:05:25+00:00",
+      "author": "mateuszek",
+      "content": "i dont know what is on mbr of floppy after i formatted it, modded, probably nothing or some useless shit just like on new floppy from store.... :)   \n"
+    },
+    {
+      "id": "115704",
+      "timestamp": "2010-12-05T12:10:08+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e i dont know what is on mbr of floppy after i formatted it, modded, probably nothing or some useless shit just like on new floppy from store.... ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif)\nA floppy has ***NO*** MBR. (as it is NOT partitioned)  \nIt\u0027s first sector is the bootsector or PBR/VBR.  \nThe general idea of a ***Master*** Boot Record is to choose among various available Boot Records (i.e. various partitions, each starting with a Partition Boot Record or bootsector).  \n\n![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif)  \nWonko   \n"
+    },
+    {
+      "id": "115705",
+      "timestamp": "2010-12-05T12:12:09+00:00",
+      "author": "mateuszek",
+      "content": "yes, but answer would be in the same type.  \n\nhere is what nirsoft devmanview shows (i choosed LexarMN name for me):  \nTHIS IS ONE THUMB DRIVE but is seen as two separate devices.  \n\nLexarMN UsbMN USB Device (Standard disk drives) disk DiskDrive Disk drives USBSTOR\\\\Disk\\\u0026Ven_LexarMN\\\u0026Prod_UsbMN\\\u0026Rev_1100\\\\AA04012700007844\\\u00261 0x00000010 0x00000000 No Yes 2010-12-05 13:07:27 Disk drive 6.1.7600.16385 disk.inf disk_install.NT 2006-06-21 2010-08-22 13:26:24   \n\n\u003cbr /\u003e\n\nLexarMN UsbMN USB Device (Standard floppy disk drives) sfloppy FloppyDisk Floppy disk drives USBSTOR\\\\SFloppy\\\u0026Ven_LexarMN\\\u0026Prod_UsbMN\\\u0026Rev_1100\\\\AA04012700007844\\\u00260 0x00000010 0x00000000 No Yes 2010-12-05 13:07:27 USB FloppyDisk Drive 6.1.7600.16385 flpydisk.inf sfloppy_install.NT 2006-06-21 2010-08-22 13:26:23  \n\n\u003cbr /\u003e\n\nsambul61 did i give you full satisfaction now ?  \nor you want to know more, if so write and i will write too.   \n\n**Edited by mateuszek, 05 December 2010 - 12:14 PM.**\n"
+    },
+    {
+      "id": "115720",
+      "timestamp": "2010-12-05T14:37:50+00:00",
+      "author": "sambul61",
+      "content": "**mateuszek**   \n\nYou did great! Note, I asked you, what\u0027s written to the Thumb\u0027s MBR (not necessarily Floppy\u0027s, but possibly Thumb\u0027s HD, if partitioned with OS installed - otherwise what you were trying to boot anyway)? ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif)  \n\nReturning to business, now we need to look at your boot problem. I understand, your Thumb\u0027s Controller chip was configured to divide the whole Thumb\u0027s memory into 2 drives (they differ only by a \"removable\" bit and size) and control them separately: a Floppy and HD. Do you have any OS installed on the Thumb\u0027s Floppy? What OS did you try to boot from the Thumb\u0027s HD?  \n\nWhat tool did you use to boot that OS? If Plop, did you follow my [***above***](http://Do%20you%20have%20any%20OS%20installed%20on%20the%20Thumb%27s%20Floppy \"External link\") post? What happen?  \n\nIf you used Grub4DOS - where did you install it? Did you try to use it - with or without Plop? What happen? If you\u0027ve a problem with Grub4DOS, this [***Guide***](http://diddy.boot-land.net/grub4dos/Grub4dos.htm \"External link\") may help.   \n"
+    },
+    {
+      "id": "115722",
+      "timestamp": "2010-12-05T14:57:18+00:00",
+      "author": "Wonko the Sane",
+      "content": "This thread is gonna evolve in an interesting way. ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif)   \n\nRoles are well exchanged. ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif)  \n\n![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif)  \nWonko   \n"
+    },
+    {
+      "id": "115728",
+      "timestamp": "2010-12-05T15:25:54+00:00",
+      "author": "sambul61",
+      "content": "I found the approach of dividing a Thumb into two drives to improve compatibility with various BIOSes very interesting, thus requiring more generalized step-by-step description than an ordinary case (talking about case management ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif)) to be useful for many.  \n\nOn a flip side, I can\u0027t find similar utility for my Sandisk Cruiser Blade, and the chipset model used in it remains undiscovered by any means I tried. Its maker refused to reveal the secret as well: \"we don\u0027t disclose chipset models and neither provide reformatting tools to the public\". ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif) Any ideas - they would also help other readers of this thread?   \n"
+    },
+    {
+      "id": "115732",
+      "timestamp": "2010-12-05T15:30:24+00:00",
+      "author": "mateuszek",
+      "content": "On (2) - thumb hd i have grub4dos and menu.lst with my big shitload of stuff, backtrack etc etc, vistape multipe livexp and so on.... so main point is to boot grub4dos.  \nOn (1) -fd dev i now installed grub4dos, and previously there was PLOP.  \ni will check everything tomorrow in work - there i have access for computer with this award bios.  \nIn home - not.  \nI will try to make movie with detailed scenarios in few days, so check it later.  \nTHANKS !!!!  \n\n\u003cbr /\u003e\n\nUNFORTUNATELY Sandisk Cruiser Blade is not good- he can only be divided as far as i know checking my sandisk cruiser titanium - to one drive and CDROM lun device.  \nAND this is too not good because this dividing hangs up some ami bioses.  \n\nBut some 2gb kingston pendrives, divided to have lun cdrom and hdd - do not hang bioses.  \n\n\u003cbr /\u003e\n\nSO FAR - BEST ever is lexar. and i tried also kingston, transcend 2gb and sandisk cruzer titanium.   \n\n**Edited by mateuszek, 05 December 2010 - 03:33 PM.**\n"
+    },
+    {
+      "id": "115734",
+      "timestamp": "2010-12-05T15:34:20+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e On a flip side, I can\u0027t find similar utility for my Sandisk Cruiser Blade, and the chipset model used in it remains undiscovered by any means I tried. Its maker refused to reveal the secret as well: \"we don\u0027t disclose chipset models and neither provide reformatting tools to the public\". ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif) Any ideas - they would also help other readers of this thread?\n\nUsual anti-hijacking (or \"flip side\") advice:   \n\n* Open a ***new, dedicated thread*** for your Sandisk Cruiser Blade.\n* Post ***in it*** what ChipGenius says about it (at least VID \\\u0026 PID).  \n  [http://www.boot-land...?showtopic\u003d4661](http://www.boot-land.net/forums/index.php?showtopic\u003d4661 \"External link\")\n\n\u003cbr /\u003e\n\n![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif)  \nWonko   \n"
+    },
+    {
+      "id": "115736",
+      "timestamp": "2010-12-05T15:52:26+00:00",
+      "author": "sambul61",
+      "content": "**mateuszek**   \n\nThanks. If you\u0027re successful with using Grub4DOS on both Floppy and HD, it would be nice to see your movie. ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif)   \n\nOnce you\u0027re done with Grub4DOS experiments, can you go back in time, install Plop instead of Grub4DOS to your Floppy, and try to follow above instructions of Plop author to see, if you can boot your Thumb HD with Plop installed on Thumb Floppy (with or without Grub4DOS installed on Thumb HD)? Of course you\u0027d need some OS (like FreeDOS) installed on Thumb HD, so you can boot it without Grub4DOS.  \n\nTo deal with FreeDOS install onto a Thumb HD, you may want to take a look at [***this***](http://www.boot-land.net/forums/index.php?showtopic\u003d13171 \"External link\") Tutorial. ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif)   \n\nAs to issues with booting USB CD \\\u0026 HD combo, its a separate matter, and we can also talk about it in this thread as another example of the same approach of dividing a Thumb into 2 drives. Or you may want to open a new thread for this. Its quite possible, you used some boot techniques incorrectly, thus the result was discouraging. It may help me to divide my Cruiser as well.  \n\n**Wonko**   \n\nYour suggestion would be more feasible if ChipGenius said anything apart from its VID \\\u0026 PID. But I may try that - already did in another place without success.   \n"
+    },
+    {
+      "id": "115857",
+      "timestamp": "2010-12-06T10:53:46+00:00",
+      "author": "mateuszek",
+      "content": "I had time to do only quick experiment today.  \nSo here is symbolization:  \nfloppy device (1)  \nmass storage dev (previosly (2)) will now be -  \nas removable \u003d (2r)  \nas fixed (2f).  \n\nExperiment one:  \nAward bios 2008 year.  \nInsert pendrive - on (1) - plop, on (2r) vista pe.  \nselecting from f12 boot menu usb-hdd (only this one works, all others usb modes not, neither usb-zip neither usb-fdd)  \nso it loads plop, as in first post, and this plop can only boot system on internal drives, he can not boot vistape i had on (2r).  \nGoing into bios (del) and i wanted to change hard disk boot priority but there is nothing more than without thumb drive.  \nBios did not see (2r) as another hdd.  \n\nexperiment two:  \ninsert pendrive on (1) plop and now i changed (2r) to be (2f).  \nselect boot menu - usb hdd or any other - nothing, skipped, loaded windows on internal drivers.  \nSo i rebooted and go into bios menu (del) and now he could see (2f) as another drive, i changed boot priority and vistape loaded.  \n\nexperiment three:  \nI had to go to another computer because guy working on previous told me that he had to do something important.  \nSo i went to another room where i knew was award bios.  \nSo i started it with pendrive.  \nAND NOW LOOK AT THIS STUPID SHIT  \nAward 2009 (not 2008 but now new computer with new bios, award, BUT 2009) and THIS STUPID SHIT wont boot any of this thumb drives, but in menu bios (del) he saw (1) and (2f) and later (2r) as USB-HDD but when i changed boot priorities this SHIT TOLD ME THIS STUPID meaningless text:  \nDISK READ ERROR  \non every try, on (1) as first boot, (2f) as first boot and later on (2r) as first boot.  \n\nI was so disappointed i would like to kill everything with dban.   \n\nIf only bios firmware model mess everything there is no way to make 100% compatible thumb drive.  \n\nAnd this is bios thing.  \n\nI inserted another pendrive - transcend-  \n\n(so now i had connected to pendrives 1- transcend and second lexar with (1) and (2f))  \n\n-with only one device set as fixed disk, fbinst on it, run outer menu.lst, loaded command line grub switched root to (hd3,0) \u003d pendrive lexar with (1) and (2f) and normally loaded vistape.  \n\nSo having 2 pendrives - one normal and one modded is more compatible than having only 1 pendrive.  \nMaybe if i will have time i will do more experiments.   \n"
+    },
+    {
+      "id": "115882",
+      "timestamp": "2010-12-06T14:47:13+00:00",
+      "author": "sambul61",
+      "content": "So, the first 3 experiments you did with Plop installed on Floppy, and not using Grub4DOS at all? Of them 2 were successful with Award 2008, and the 3-d failed with Award 2009?  \n\nThe 4-th experiment you did with 2 Thumbs, without using Plop, but instead used Grub4DOS installed on USB Thumb Floppy, and used its command line to chainload VistaPE on Thumb HD? And it did work, because USB superfloppy place was occupied by Transcend, so in fact you had 2 USB Floppies recognized in the system.  \n\nSo, what is your next test plan?   \n"
+    },
+    {
+      "id": "115947",
+      "timestamp": "2010-12-07T11:06:03+00:00",
+      "author": "mateuszek",
+      "content": "continuation:  \naward 2008  \nthumb drive with (1) and (2r)  \non (1) - grub4dos and plpbt.bin  \n\nloaded grub4dos   \nroot ( +TAB   \nhe shows only physical drives inside computer and fd0 and rd  \nthis rd is certainly not (2r) because it exist even when booting from pendrive with only one device.  \n\nSo if bios does not see (2r) - nothing will,  \ni loaded plpbt.bin from grub:  \nroot(fd0)  \nkernel /plpbt.bin  \nboot  \nand plop as earlier did not see (2r).  \n\nSo if there are to devices as in this case (1) and (2r) and i will try to boot from it - award 2008 will block or not detect (2r) only allowing to boot from (1) and this is only thing i have access.  \n\n\u003cbr /\u003e\n\nbios award 2009 does not allow to BOOT anything what has 2devices \\[modded thumb drive - in my case LEXAR RETRAX\\] - disk read error.  \nshit.   \n"
+    },
+    {
+      "id": "115951",
+      "timestamp": "2010-12-07T12:44:24+00:00",
+      "author": "mateuszek",
+      "content": "so much from having FULL 100% existing bioses compatible pendrive thumb repairing universal tool with some WINPE.  \n\nOr maybe is there some 1.4mb full pnp detect able system which will override detecting hardware, detect all usb, and later will be able to load other boot loaders ? like chainload grub ?  \n\nFor example - maybe you know if there is system i could put on (1) and this system would load himself, detect all existing hardware or at least all usb just like windows or linux without using bios, and then load another boot sector or grub ?  \njust like PLOP only better - to be able to not use bios ?   \n"
+    },
+    {
+      "id": "115961",
+      "timestamp": "2010-12-07T15:14:56+00:00",
+      "author": "sambul61",
+      "content": "Plop developer said that when you use Plop USB Menu (instead of Plop HD Menu), it uses its own detection instead of BIOS detection. But Plop driver is not universal enough to boot any Thumb with any chipset, especially the latest ones. Also it attempts to recognize the Thumb\u0027s chipset limited number of times. That\u0027s why my Sandisk Blade at times booted with Plop and at times didn\u0027t.  \n\nThere is another option to boot a Floppy diskette first, and then boot your USB Thumb from that diskette. But I don\u0027t think, you\u0027re up-to it. Not clear so far, **what Plop Menu** you were using when booting the 2-nd drive: HD or USB?  \n\nYet another important factor, I mentioned in the above linked [***Tutorial***](http://www.boot-land.net/forums/index.php?showtopic\u003d13171 \"External link\"), is about Thumb geometry and *jaclaz* \u0027s paper on that topic - its right at the top of the Tutorial. So it may be wise for you to try this: wipe your Thumb, and then follow that paper to set correct Thumb geometry. Award 2009 BIOS may boot your Thumb after that. I guess, you used SMI Chip Utility to format the Thumb - now try other tools from that paper. It can make the difference you look for, and for starters you might not even need to divide the Thumb into 2 drives. ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif)  \n\nThe last thing to remember, there may be NO universal solution currently available, given key BIOS role in boot process, and great number of BIOS versions on the market. Not everything depends on the end user, no matter how hard you try. Not to discourage you, but a reality bit. ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif)   \n"
+    }
+  ]
+}

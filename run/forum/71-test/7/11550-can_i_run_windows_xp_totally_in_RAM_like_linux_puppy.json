@@ -1,0 +1,46 @@
+{
+  "id": "11550",
+  "title": "can i run windows xp totally in RAM like linux puppy?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "101213",
+      "timestamp": "2010-05-30T09:43:53+00:00",
+      "author": "Cybergrace",
+      "content": "I would like to know whether the following is possible ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif) :  \nmy requirements are:  \n1)to run windows XP totally in RAM(my system\u0027s ram is 4gb) and   \n2)have no OS(either windows or linux) anywhere in my harddisk  \n\nI have heard that puppy linux boots from cd,everything in the cd is   \nloaded to RAM and then the cd can be removed from the cd drive   \nwithout causing the OS to interrupt.Is it possible for \"damn small linux\"   \nto run from RAM similarly?  \nIf yes,can i run virtualbox in DSL(after remastering the DSL boot cd   \nwith virtualbox and harddisk image file which contains windows xp)   \nand ultimately run windows xp inside virtalbox?  \nFinally can i use grub4dos or some other bootloader to boot from the iso   \nfile(created from the remastered dsl boot cd) placed in the 1st partition   \nof the harddisk(so that i dont have to carry the cd with me all the time)?  \n\nthanks ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "101216",
+      "timestamp": "2010-05-30T11:14:17+00:00",
+      "author": "Wonko the Sane",
+      "content": "Yes, it is possible. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nIs it easy? NO.  \n\nWe have now two very good RAMDISK drivers (firadisk and WinVblock) that can \"hook\" a ramdisk presented by grub4dos or Syslinux.  \n\nActually building a \"real\" XP totally in RAM, while possible, as it has been demonstrated by Euhenio some time ago, is not very easy.  \n\nLuckily enough, there is now a partially automated builder:  \n[http://www.boot-land...?...ic\u003d9830\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d9830\u0026hl\u003d \"External link\")  \n\nStart from it, possibly using a USB stick as media, take your time to get the hang of it \"as-is\", before introducing variations you may need.  \n\n![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)  \nWonko   \n"
+    },
+    {
+      "id": "101242",
+      "timestamp": "2010-05-30T19:30:02+00:00",
+      "author": "Icecube",
+      "content": "\u003e We have now two very good RAMDISK drivers (firadisk and WinVblock) that can \"hook\" a ramdisk presented by grub4dos or ~~Syslinux~~ **MEMDISK**.\n![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)   \n"
+    },
+    {
+      "id": "101245",
+      "timestamp": "2010-05-30T19:57:45+00:00",
+      "author": "Wonko the Sane",
+      "content": "Sure ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) , go to it\u0027s homepage:  \nhttp:// ~~syslinux~~ **memdisk** .zytor.com/wiki/index.php/The_Syslinux_Project  \nor to it\u0027s supporting Forum:  \nBoot Land \\\u003e Groups \\\u003e Boot from USB / Boot anywhere \\\u003e The ~~Syslinux~~ **Memdisk** Project  \n[http://www.boot-land...hp?showforum\u003d92](http://www.boot-land.net/forums/index.php?showforum\u003d92 \"External link\")  \n\n![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)  \n\nI could settle for \"Syslinux\u0027s Memdisk\". ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "101246",
+      "timestamp": "2010-05-30T20:52:20+00:00",
+      "author": "Icecube",
+      "content": "It is not because MEMDISK is included in the Syslinux project, that you can say that Syslinux has ramdisk features.  \nMEMDISK doesn\u0027t need to be booted by a Syslinux like bootloader. Grub, grub4dos, grub2, gujin, lilo, ... can use MEMDISK too to emulate floppy disks, hard disks or CD disks.  \nThe Syslinux package for example also includes eltorito.sys (Dos CD-Rom device driver for use in making PC-bootable CD-Roms that (should) boot on any interface (Atapi and SCSI)), which doesn\"t necessary needs to be used in conjuction with ISOLINUX.  \n\u003e I could settle for \"Syslinux\u0027s Memdisk\". ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)   \n"
+    },
+    {
+      "id": "101262",
+      "timestamp": "2010-05-31T07:57:32+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e It is not because MEMDISK is included in the Syslinux project, that you can say that Syslinux has ramdisk features.\nWell ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif), with the same principle, I should say grub4dos\u0027 grldr or grub4dos\u0027 grub.exe, the latter can be run from dos or as a linux kernel, and, as thus booted by gujin, etc.  \n\nI was referring more to the tools contained in a project. ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)  \n\nFinal version:  \n\u003e mapping of images to ram with tools contained in projects grub4dos and Syslinux\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\n:wink:  \nWonko   \n"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "11397",
+  "title": "How to create a Bootable Partition on your PC/Laptop",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "100113",
+      "timestamp": "2010-05-14T15:04:55+00:00",
+      "author": "Uncle_HQ",
+      "content": "I have 2 separate questions and would appreciate your advice:  \n\n1) I have a bootable CD for Acronis Boot Agent. I want to create a bootable partition on my PC/Laptop, from a bootable CD (containing this Acronis Boot Agent). I am trying to achieve the following; When the bootloader / boot manager loads up, it should give me the options to (1) Boot from Windows 7 (2) Boot to Acronis Boot Agent  \n\nSo my question is, how can I setup a new partition on my hard drive which would contain the CD image of my Acronis Boot Agent, so that I no longer need to boot from my CD ? Also, how do I setup my loot loader/boot manager with this option to boot from this special bootable partition ? Which tool would support this and how would I set this up ?  \n\n\u003cbr /\u003e\n\n2) Also, does anyone know of a way to boot from an ISO image file stored on your hard drive ? Similar to question #1 above, except here I want my boot loader/boot manager/boot menu to give me the option to boot from an ISO image file stored on my hard drive. Again, is this possible ? Which tool would I need to use, and how would I achieve this ?   \n\nThanks for all your help !   \n"
+    },
+    {
+      "id": "100140",
+      "timestamp": "2010-05-14T18:46:05+00:00",
+      "author": "Wonko the Sane",
+      "content": "Both grub4dos and syslinux allow to boot some .iso images. (but NOT \"any\" or \"all\" of them).  \n\nSome Acronis products have been reported working with grub4dos mapping to (hd32), as an example \"rescue CD\" does:  \n[http://www.boot-land...?...8774\\\u0026st\u003d337](http://www.boot-land.net/forums/index.php?showtopic\u003d8774\u0026st\u003d337 \"External link\")  \nsome don\u0027t or may not, first thing specify exactly the .iso you want/need to boot and then try searching the board, here is a similar thread with some links to check:  \n[http://www.boot-land...showtopic\u003d11167](http://www.boot-land.net/forums/index.php?showtopic\u003d11167 \"External link\")  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "100142",
+      "timestamp": "2010-05-14T19:01:23+00:00",
+      "author": "stonesonnow",
+      "content": "can you put a good tutorial in one place so we understand how it works?instead of letting us jump here and there with your links and get nothing but confused? ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) we appreciate that..thanks. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "100149",
+      "timestamp": "2010-05-14T19:16:45+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e can you put a good tutorial in one place so we understand how it works?\nNO. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nYou see, the problem is that to do so I should:  \n\n* write a good tutorial\n* write the good tutorial for an app I don\u0027t use, I don\u0027t have, and probably will never need of which I know nothing ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\n\n\u003cbr /\u003e\n\nSorry for not being up to your expectations ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif), but the only thing you will probably learn from a tutorial is \"how to do it\", by following my semi-random ![:(](http://reboot.pro/public/style_emoticons/default/sad.png) links it is more probable that you learn \"how it works\", instead. (if you survive the experience, of course ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif))  \n\nGenerally this kind of tutorials, just like batches, are made to \"replicate\" things, whilst articles, manuals and threads are made to exchange ideas and info and ultimately to \"learn\" things, in other words with tutorials you usually learn \"what\" to do as opposed to \"why\" and \"how\" you need to do it.  \n\nIf you want to \\*learn\\* \"how it works\" read the guide:  \n[http://diddy.boot-la...os/Grub4dos.htm](http://diddy.boot-land.net/grub4dos/Grub4dos.htm \"External link\")  \nand the stickies in the grub4dos Forum:  \n[http://www.boot-land...hp?showforum\u003d66](http://www.boot-land.net/forums/index.php?showforum\u003d66 \"External link\")  \nthen experiment (and possibly report your experience)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "100151",
+      "timestamp": "2010-05-14T19:42:43+00:00",
+      "author": "stonesonnow",
+      "content": "![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) still not getting anywhere ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "100211",
+      "timestamp": "2010-05-15T11:18:55+00:00",
+      "author": "maanu",
+      "content": "answer the following questions and i ll try to write a small and simple HOW-TO tonight for both of you.  \n\n1. current OS (32bit or 64bit)  \n2. name iso files or tools (exact names that you have on your hdd) that you want to boot from recovery partition  \n3. current hdd setup . partitions etc .   \n"
+    }
+  ]
+}

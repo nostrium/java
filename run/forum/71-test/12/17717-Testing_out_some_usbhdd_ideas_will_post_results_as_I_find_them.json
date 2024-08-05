@@ -1,0 +1,64 @@
+{
+  "id": "17717",
+  "title": "Testing out some usb-hdd ideas, will post results as I find them.",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "162528",
+      "timestamp": "2012-10-31T05:34:59+00:00",
+      "author": "Sascha Elble",
+      "content": "So everyone is on the same page  \n\n```\n\"HP dv7\n\nIntel Core 2 Duo P7450 @2.13Ghz\n\n6gb ram\n\nNVIDIA 9600M GT (512 Ram)\n\n3 Harddrives (Dual bay, with another in the dvd bay)\n\n\n\n500gb usb hdd (with grub4dos (primary) and bootmgr (x32 and x64))\n\nISOs:\n\nlinux (ubuntu, backtrack5)\n\nwindows (win 7 rescue x32 and x64, also win 7 x32 and x64 installers)\"\n```\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nThis one is pretty interesting.  \nIT BOOTS IN SAFE MODE!!!! (Still complains that is cannot complete installation in safemode.  \n\n```\n\"Take your basic win 7 dvd, extract install.wim. and use bootmgr to boot it. Will crash with BSOD trap\".\n\n\n\n(Qemu) 0x0000000D — \"An exception not covered by some other exception; a protection fault that pertains to access violations for applications\"\n\n(Native) 0x0000007B (0x80786B58, 0xC00000034, 0X00000000, 0X00000000)\n\n\n\nAnswer: \"By bypassing the Win7 PE enviroment (Folder \"1\" of the boot.wim file)\n\nwhich loads the Win7 Installer enviroment (Folder \"2\" of the boot.wim file),\n\nthe proper MASS STORAGE section is missing from the sysprep section. So no storage drivers are loaded.\"\n\n\n\nNotes:\n\n\"Inside Boot.wim\n\nFolder \"1\" Win 7 PE enviroment which hosts \u003d\u003e\n\nFolder \"2\" which is the sysprep installer, which hosts \u003d\u003e\n\ninstall.wim, which is an image that is copied to your harddrive and \"syspreped\" by folder \"2\" of boot.wim\"\n\n```\n\n\u003cbr /\u003e\n\nThis website has special files created for \"usb cd/dvd\" problems. Caused when usb devices are re-enumerated, which makes xp setup loose the setup cd mapping [http://support.microsoft.com/kb/839210](http://support.microsoft.com/kb/839210 \"External link\")  \n\nBooting folder (1) or (2) causes a complaint about not expecting  \n$\\~Windows\\~$B (folder 1)  \n/Windows (folder 2)  \nto be located at /boot/Winxp/windows  \nDemands dism.exe to be run to correct paths before loading. Restarts.  \n\nAnother one: Pretty basic I guess. Loading the bootloader basically from the winxp iso  \n\n```\ntitle WinXPx32SP1 DOES SOMETHING ODD\n\nmap /boot/boot-isos/WinXPProSP3x32.iso (hd32)\n\nmap --hook\n\nrootnoverify (hd32)\n\nchainloader /I386/ntldr\n\nboot\n\n\n\n\"First a quck message about boot.ini being missing, then it flashes to:\"\n\n\"Windows could not start because the following file is missing or corrupt:\n\n\u003cWindows root\u003esystem32hal.dll.\n\nPlease re-install a copy of the above file.\"\n\n```\n\n\u003cbr /\u003e\n\n**Edited by Sascha Elble, 31 October 2012 - 06:25 AM.**\n"
+    },
+    {
+      "id": "162530",
+      "timestamp": "2012-10-31T06:41:32+00:00",
+      "author": "Sascha Elble",
+      "content": "Reserved I guess since I can\u0027t edit my main post all of a sudden....  \n\nAnyways... about a year ago i was able to boot the ubuntu/ win7 setup iso from grub4dos... (with no modifications to the iso...)  \n\nif only I could remember how i did it...  \n\nbeen thinking... create a VHD... with win 7 setup dvd extracted to it... load custom bootmgr on usb-hdd, and call the built in vhd loader...  \nhmmm   \n\n**Edited by Sascha Elble, 31 October 2012 - 06:46 AM.**\n"
+    },
+    {
+      "id": "162535",
+      "timestamp": "2012-10-31T09:53:40+00:00",
+      "author": "Wonko the Sane",
+      "content": "Interesting. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \nYou seemingly mistook the forum for either your block notes or for your blog. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)  \n\nAnyway, welcome to reboot.pro. :smile:  \n\nJFYI, you will need (cannot remember) 50 or 100 posts before you will be allowed to edit your previous posts.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "162582",
+      "timestamp": "2012-10-31T17:02:46+00:00",
+      "author": "Sascha Elble",
+      "content": "To be honest I wanted to share my ideas and thoughts with those on this forum, I\u0027ve been lurking for a bit and have decided to post failures and success ideas.  \n\nCurrently the whole load custom vhd from bootmgr is rather interesting... (load iso to vhd, give it bootmgr code, then add to bcd store, and redirect the bootmgr to boot from the bootmgr inside vhd) WIP  \n\n\u003cbr /\u003e\n\nbtw, I CANNOT find your forum rules... even tried search...  \n\nBtw, im a fan. The Finder. I even read the post where you got promoted to that high status! :wink:  \n\nEDIT: Thanks for the Forum Policies page. It appreas I am doing just fine then. Good to know.   \n\n**Edited by Sascha Elble, 31 October 2012 - 05:50 PM.**\n"
+    },
+    {
+      "id": "162585",
+      "timestamp": "2012-10-31T17:37:03+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e btw, I CANNOT find your forum rules... even tried search...  \n\u003e\nWhich Forum Rules? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)  \n\nWe have ***Policies*** now:  \n\u003chttp://reboot.pro/about/policies\u003e  \n\nThe old Rules have been unlinked (though they are stiil here for historical purposes - and voided of any relevance, the Policies above are in force):  \n\u003chttp://reboot.pro/82/\u003e  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "162597",
+      "timestamp": "2012-11-01T00:54:06+00:00",
+      "author": "Sascha Elble",
+      "content": "After several hours of trying this and trying that. I\u0027ve finnaly caused the bootmgr to show an \"unexpected\" error: 0xc0000225  \n\nFrom what I understand \"0xc\" is for errors when loading winload.exe I assume winload.exe throws errors back at the bootmgr, and this time it threw one it didnt expect... could be cause for a nice exploit since the bootmgr/bcd seems to be hackable.  \n\nmy setup that caused it:Entry #1  \n\n(Description) Name: win7 eer1 vhd installer dvd  \n(ApplicationDevice) Device: vhd\u003d\\[locate\\]bootLivew7x64repair.vhd  \n(Application Path) Bootloader Path: WindowsSystem32winload.exe  \n\n\\*Note that when the \"application path\" key does not exsist, bootmgr defaults to WindowsSystem32winload.exe HOWEVER creating this key and manually specifying EXACTLY the same string will cause this special error....   \n\n**Edited by Sascha Elble, 01 November 2012 - 01:19 AM.**\n"
+    },
+    {
+      "id": "162598",
+      "timestamp": "2012-11-01T01:34:46+00:00",
+      "author": "Sascha Elble",
+      "content": "Just remembered how I boot my iso\u0027s! Going to post on a clean thread to allow discussion, and maybe a bootable application to automate this.  \n\n\u003chttp://reboot.pro/17720/\u003e   \n\n**Edited by Sascha Elble, 01 November 2012 - 02:22 AM.**\n"
+    },
+    {
+      "id": "162601",
+      "timestamp": "2012-11-01T04:52:21+00:00",
+      "author": "Sha0",
+      "content": "\u003e After several hours of trying this and trying that. I\u0027ve finnaly caused the bootmgr to show an \"unexpected\" error: 0xc0000225  \n\u003e \u003cbr /\u003e\n\u003e\n\u003e ```\n\u003e 0:000\u003e !error 0xc0000225\n\u003e\n\u003e Error code: (NTSTATUS) 0xc0000225 (3221226021) - The object was not found.\n\u003e\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "162602",
+      "timestamp": "2012-11-01T05:10:15+00:00",
+      "author": "Sascha Elble",
+      "content": "\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nSha0, where do you get this information from? I still cant find a good reference online...  \n\nNevermind, I\u0027ve just downloaded my own copy of 408mbs! (not a typo)  \n\n[http://msdn.microsof...v\u003dprot.20).aspx](http://msdn.microsoft.com/en-us/library/cc231196%28v\u003dprot.20%29.aspx \"External link\")   \n\n**Edited by Sascha Elble, 01 November 2012 - 05:17 AM.**\n"
+    }
+  ]
+}

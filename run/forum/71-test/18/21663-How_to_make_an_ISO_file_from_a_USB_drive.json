@@ -1,0 +1,376 @@
+{
+  "id": "21663",
+  "title": "How to make an ISO file from a USB drive?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "205236",
+      "timestamp": "2017-12-22T14:50:03+00:00",
+      "author": "drpeppercan",
+      "content": "Hi all,\n\nI have this Recovery USB drive with Windows 10 from Acer that I want to include along other USB drive sources into one using YUMI Multiboot.\n\nThanks guys :smile:\n\n"
+    },
+    {
+      "id": "205237",
+      "timestamp": "2017-12-22T19:50:48+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, this won\u0027t likely actually \\*need\\* to become a ISO file ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\nCan you detail how/what it is?\n\nI.e. is it Acer that provided you with a USB key with already made \"recovery\"?\n\nOr did your Acer PC/tablet/whatever come with a tool that allowed you to save this \"recovery\" to aUSB stick you provided?\n\nWhat does the USB contain (list of files)?\n\nIs your PC/tablet/whatever using BIOS or UEFI? (or however does your current USB stick boot as BIOS or as UEFI)?\n\nMore or less - loosely - a \"recovery\" is made of:\n\n1) some booting files (either BOOTMGR or BOOTMGR.EFI + their BCD(s) and possibly a number of language files)\n\n2) a (largish) .wim file, called often boot.wim or recovery.wim\n\nin other words, it is - generally - a WinPE of some kind.\n\nSo in a multiboot USB stick, it is not usually added as .ISO (but there still may be reasons why this is \\*needed\\*), but rather added, directly or indirectly, to the bootmanager used as a .wim file.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "205238",
+      "timestamp": "2017-12-23T17:24:56+00:00",
+      "author": "erwan.l",
+      "content": "There is a tool called Acer eRecovery Management which is installed on many Acer devices (laptops, tablets, etc).\n\nI believe it creates a bootable media (++PE based++ I am 99% sure of it) on USB to restore your system (and datas?) in case of failure.\n\n"
+    },
+    {
+      "id": "205239",
+      "timestamp": "2017-12-23T23:55:00+00:00",
+      "author": "drpeppercan",
+      "content": "I found this tutorial called:\n\n\"[How to Convert a Bootable USB to an .iso File](https://timothy-quinn.com/how-to-convert-a-bootable-usb-to-an-iso-file \"External link\")\"\n\nOne can do it by using ImgBurn. It\u0027s not exactly obvious, at first look it seems ImgBurn can only work with discs, but as this tutorial shows one can actually use it to create an ISO file from a USB drive, just what I needed.\n\nNow I\u0027m using YUMI Multiboot to add it to my multiboot USB drive. It\u0027s still writing, once done I\u0027ll put it to the test and hope it\u0027ll work.\n\nThanks for your help guys :smile:\n\n"
+    },
+    {
+      "id": "205240",
+      "timestamp": "2017-12-24T11:16:59+00:00",
+      "author": "Wonko the Sane",
+      "content": "etfsboot.com is the common El-Torito No-emulation image for bootable CD/DVD\u0027s, that chainloads BOOTMGR.\n\nIn other words the .iso you can make that way will only be able to boot under BIOS (or UEFI+CSM) and not under \"pure\" UEFI, at least with direct mapping/chainloading, possibly the stick (and thus the .iso made with IMGBURN) will contain also the correspondent UEFI files (that may be chainloaded by the \"main\" boot manager YUMI uses) still it remains to be seen if the BCD will be compliant with booting from a .iso (very likely it is, but you cannot be sure).\n\nWhether this is the expected result is up to you and whether it will work, it depends on the specific machine and the way you set its firmware.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "205241",
+      "timestamp": "2017-12-24T14:34:58+00:00",
+      "author": "erwan.l",
+      "content": "Doing some publicity for CloneDisk... You can also make an iso file using the \"Make iso disk image feature\".\n\n![0D6BMLf.png?1](https://i.imgur.com/0D6BMLf.png?1)\n\n4 simple steps :\n\n1-Pick your source folder (can be a usb disk)\n\n2-Select your boot file (if you wish the image to be bootable) - can be MS etfsboot.com but also grldr or isolinux.bin\n\n3-Select your filesystem (select UDF for MS based images)\n\n4-Define your destination iso file\n\n"
+    },
+    {
+      "id": "205242",
+      "timestamp": "2017-12-24T20:16:55+00:00",
+      "author": "drpeppercan",
+      "content": "Thank you both for sharing this info guys.\n\nI\u0027m so glad I asked : )\n\nHappy holidays!\n\n"
+    },
+    {
+      "id": "205243",
+      "timestamp": "2017-12-25T17:31:39+00:00",
+      "author": "drpeppercan",
+      "content": "\u003e etfsboot.com is the common El-Torito No-emulation image for bootable CD/DVD\u0027s, that chainloads BOOTMGR....\n\u003e\n\u003e ....Whether this is the expected result is up to you and whether it will work, it depends on the specific machine and the way you set its firmware.\n\u003e\nNow I better understand what you were talking about Wonko!\n\nMy multiboot USB works just fine \"with the BIOS\" pc. But when I try with the newer pc with UEFI it only loads the Acer Recovery. There\u0027re still about 6 other things that failed to load.\n\nWould CloneDisk be able to make a multiboot for UEFI?\n\nIf so, hopefully without much tinkering...\n\n"
+    },
+    {
+      "id": "205244",
+      "timestamp": "2017-12-25T19:26:39+00:00",
+      "author": "drpeppercan",
+      "content": "Wait a second!...\n\nCome to think of this a bit longer, I guess I have to look into 2 separate issues to ensure that in the end the USB drive will boot correctly from a UEFI pc:\n\n**1. How the ISO file was made**. Assuming it was made like in my case: using a utility program like ImgBurn to extract the needed files from a Bootable USB key.\n\n2. And finally, **how the Multiboot USB key was put together**.\n\nThis being said, assuming I\u0027m right, what software would you recommend I use?\n\nThanks guys\n\n"
+    },
+    {
+      "id": "205245",
+      "timestamp": "2017-12-25T23:13:42+00:00",
+      "author": "sbaeder",
+      "content": "the issue is that any of the older recovery type things you might want to boot just aren\u0027t EFI compatible. This is why many laptops have to be set to compatible mode (not secure boot) to be able to use them.\n\nSo you are right, it is the #1 issue (above) that is more than likely the issue.\n\n"
+    },
+    {
+      "id": "205246",
+      "timestamp": "2017-12-26T02:21:26+00:00",
+      "author": "drpeppercan",
+      "content": "I am looking into this tutorial:\n\n[UEFI MULTI - Make Multi-Boot USB-Drive](http://reboot.pro/links/link/212-uefi-multi-make-multi-boot-usb-drive/ \"\")\n\n"
+    },
+    {
+      "id": "205247",
+      "timestamp": "2017-12-26T03:14:18+00:00",
+      "author": "drpeppercan",
+      "content": "Well, I didn\u0027t go very far with that tool ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\n\nIt had a Trojan virus!\n\nThen I found [Easy2Boot](http://easy2boot.com/ \"External link\"), except it seems that instead of being a tool, it\u0027s rather a gathering of many different tools that help you creating a multiboot USB drive. But to do it one has to read, and read, and read, and eventually get it done, if everything goes smoothly.\n\nIt\u0027s rather overwhelming, enough to put a rookie like me off.\n\nI\u0027m not too sure I want to do this anymore!\n\n"
+    },
+    {
+      "id": "205250",
+      "timestamp": "2017-12-26T10:14:15+00:00",
+      "author": "Wonko the Sane",
+      "content": "Sure :smile:, you can take either the blue pill or the red one:\n\n[http://www.imdb.com/...uotes/qt0324307](http://www.imdb.com/title/tt0133093/quotes/qt0324307 \"External link\")\n\nHowever EASY2Boot is pretty much straightforward - at least for such a basic usage - and Stee6375 has made quite a few tutorials and also videos illustrating it.\n\nBut, before that. and in a nutshell, a .iso is a \"container\" (as a matter of fact a byte-by-byte copy of an actual CD/DVD physical media).\n\nWhat actually boots and runs are the contents of that container.\n\nNow it makes a lot of sense, if you already have such a container, to devise a way to use that container unmodified inside another container (the USB stick and its filesystem).\n\nOn the other hand, if you don\u0027t have already such container it makes more sense to transfer its contents to the actual container (the USB stick and its filesystem).\n\nAnd in order to do so you will need to learn what these contents are and how they can be \"assembled\" in the new container.\n\nThere are however no Trojans in Wimb\u0027s excellent tool, most probably it is the usual false positive triggered by this or that utility.(most probably an AutoIt one, such as GetWaikTools, it is rather common or maybe by a combination with the 7-zip sfx ).\n\nSee here:\n\n[http://reboot.pro/to...drive/?p\u003d205248](http://reboot.pro/topic/18182-uefi-multi-make-multi-boot-usb-drive/?p\u003d205248 \"\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "205252",
+      "timestamp": "2017-12-26T11:33:57+00:00",
+      "author": "erwan.l",
+      "content": "\u003e Wait a second!...  \n\u003e Come to think of this a bit longer, I guess I have to look into 2 separate issues to ensure that in the end the USB drive will boot correctly from a UEFI pc:  \n\u003e\n\u003e **1. How the ISO file was made** . Assuming it was made like in my case: using a utility program like ImgBurn to extract the needed files from a Bootable USB key.  \n\u003e\n\u003e 2. And finally, **how the Multiboot USB key was put together** .  \n\u003e\n\u003e This being said, assuming I\u0027m right, what software would you recommend I use?  \n\u003e\n\u003e Thanks guys\n\nMake an iso that will boot both on bios or uefi is pretty straightforward : you can use mkisofs (command line tool) or a GUI (see below).  \nHowever, question is (as Sbaeder highlighted) : is your acer recoverry software EF compatible ?  \n\n![CSjT43k.png?1](https://i.imgur.com/CSjT43k.png?1)   \n"
+    },
+    {
+      "id": "205253",
+      "timestamp": "2017-12-26T11:39:11+00:00",
+      "author": "erwan.l",
+      "content": "\u003e Would CloneDisk be able to make a multiboot for UEFI?\n\u003e\n\u003e If so, hopefully without much tinkering...\n\nCloneDisk \u0027make iso\u0027 feature does not yet handle multiboot iso.\n\nThis is work in progress thus.\n\nIn the meantime look at my previous post (mkisofs).\n\n"
+    },
+    {
+      "id": "205255",
+      "timestamp": "2017-12-26T13:53:04+00:00",
+      "author": "wimb",
+      "content": "UEFI_MULTI_85.exe is reported as broken, since it would contain a Trojan virus ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)\n\nHowever, it is a false positive virus warning due to using a SFX Selfextractor !! ![:rolleyes:](http://reboot.pro/public/style_emoticons/default/rolleyes.gif)\n\nSo I removed the SFX Selfextractor and simply use zip compression so that the problem is gone. :cool:\n\nDownload UEFI_MULTI-85.zip from\n\n[https://1drv.ms/f/s!...na78xaVPrpcR2sA](https://1drv.ms/f/s!AqA1-Hg3ltssgbYna78xaVPrpcR2sA \"External link\")\n\n"
+    },
+    {
+      "id": "205258",
+      "timestamp": "2017-12-26T16:29:49+00:00",
+      "author": "drpeppercan",
+      "content": "\u003e Sure :smile:, you can take either the blue pill or the red one:\n\u003e\n\u003e [http://www.imdb.com/...uotes/qt0324307](http://www.imdb.com/title/tt0133093/quotes/qt0324307 \"External link\") ...\n\u003e\n\u003e ...There are however no Trojans in Wimb\u0027s excellent tool, most probably it is the usual false positive triggered by this or that utility.(most probably an AutoIt one, such as GetWaikTools, it is rather common or maybe by a combination with the 7-zip sfx ).\n\u003e\n\u003e See here:\n\u003e\n\u003e [http://reboot.pro/to...drive/?p\u003d205248](http://reboot.pro/topic/18182-uefi-multi-make-multi-boot-usb-drive/?p\u003d205248 \"\")\n\u003e\n\u003e ![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\u003e\n\u003e Wonko\n\nWonko, thanks a bunch for taking the time to explain all that. It helps very much.\n\nAnd sorry about the ranting ...\n\n"
+    },
+    {
+      "id": "205259",
+      "timestamp": "2017-12-26T16:31:02+00:00",
+      "author": "drpeppercan",
+      "content": "\u003e Make an iso that will boot both on bios or uefi is pretty straightforward : you can use mkisofs (command line tool) or a GUI (see below).  \n\u003e However, question is (as Sbaeder highlighted) : is your acer recoverry software EF compatible ?  \n\u003e\nerwan,\n\nThis is great, I see you made this one eh?\n\nThanks for sharing :smile:\n\n"
+    },
+    {
+      "id": "205260",
+      "timestamp": "2017-12-26T16:33:46+00:00",
+      "author": "drpeppercan",
+      "content": "\u003e UEFI_MULTI_85.exe is reported as broken, since it would contain a Trojan virus ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)\n\u003e\n\u003e However, it is a false positive virus warning due to using a SFX Selfextractor !! ![:rolleyes:](http://reboot.pro/public/style_emoticons/default/rolleyes.gif)\n\u003e\n\u003e So I removed the SFX Selfextractor and simply use zip compression so that the problem is gone. :cool:\n\u003e\n\u003e Download UEFI_MULTI-85.zip from\n\u003e\n\u003e [https://1drv.ms/f/s!...na78xaVPrpcR2sA](https://1drv.ms/f/s!AqA1-Hg3ltssgbYna78xaVPrpcR2sA \"External link\")\n\u003e\nNice!\n\nThank you for doing this wimb :smile:\n\nBtw, I still got many Trojan warnings for Tilden and Bitrep. But I guess I\u0027ll go ahead...\n\n"
+    },
+    {
+      "id": "205262",
+      "timestamp": "2017-12-26T18:18:00+00:00",
+      "author": "Wonko the Sane",
+      "content": "@erwan.l\n\nTo be *picky* (as I am :wink:) etfsboot.com \"will call BOOTMGR\" (that will use a \\\\boot\\\\BCD) whilst efisys.bin ***contains*** either a BOOTX64.EFI or a BOOTIA32.EFI (or both) that are called by the UEFI (and that will use a \\\\efi\\\\microsoft\\\\boot\\\\BCD).\n\nNo bootmgr.efi was used, let alone harmed in the making of ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif) .\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "205263",
+      "timestamp": "2017-12-26T20:10:01+00:00",
+      "author": "erwan.l",
+      "content": "\u003e @erwan.l\n\u003e\n\u003e To be *picky* (as I am :wink:) etfsboot.com \"will call BOOTMGR\" (that will use a \\\\boot\\\\BCD) whilst efisys.bin ***contains*** either a BOOTX64.EFI or a BOOTIA32.EFI (or both) that are called by the UEFI (and that will use a \\\\efi\\\\microsoft\\\\boot\\\\BCD).\n\u003e\n\u003e No bootmgr.efi was used, let alone harmed in the making of ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif) .\n\u003e\n\u003e ![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\u003e\n\u003e Wonko\n\nCorrect, sorry for being vague on that one.\n\nIndeed, there is no such thing as bootmgr.efi but rather bootx64.efi or bootia32.efi.\n\nAnd now, I realise I learn every day : by checking efisys.bin (1440k), I realise that indeed it does contain the whole bootmgr.\n\nHad never realised that !\n\nThanks for that :smile:\n\nUseful tip actually as I have some code out there possibly tricked by a bootsector that big...\n\n"
+    },
+    {
+      "id": "205265",
+      "timestamp": "2017-12-26T22:47:49+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e And now, I realise I learn every day : by checking efisys.bin (1440k), I realise that indeed it does contain the whole bootmgr.  \n\u003e Had never realised that !   \n\u003e Thanks for that :smile:  \n\u003e Useful tip actually as I have some code out there possibly tricked by a bootsector that big...\nYep but the efisys.bin is not at all\u0027 a bootsector it is just a FAT file system containing the \"default named\" bootloader , brought to you by the same people that has provided 3 mb boot.sdi\u0027s and has recycled DOS boot floppies with deleted files for years.   \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    },
+    {
+      "id": "205268",
+      "timestamp": "2017-12-27T20:10:46+00:00",
+      "author": "cdob",
+      "content": "\u003e I have this Recovery USB drive with Windows 10 from Acer\nDoes this recovery USB drive holds backup files too?  \nDoes this recovery USB drive reads data from a recovery partion at local hard disk?  \nWhich data size is occupied at the USB drive?  \n\nIf there are more than 1 GB data on the USB drive, then there are backup files too.  \nIn that case, there are two tasks: boot the new USB drive and the recovery routine has to find the backup files.  \nCan you show a file list? \u0027dir /s\u0027   \n"
+    },
+    {
+      "id": "205270",
+      "timestamp": "2017-12-27T21:32:35+00:00",
+      "author": "drpeppercan",
+      "content": "cdob,\n\nIt\u0027s a 16Gb drive, with 11Gb used.\n\nThis is some of its contents:\n\n![show.php?id\u003d121312](http://pasteall.org/pic/show.php?id\u003d121312)\n\n![show.php?id\u003d121313](http://pasteall.org/pic/show.php?id\u003d121313)\n\nI hope this tells you enough.\n\nSo I finally came around to disable the antivirus to run UEFI-Multi.\n\nWill I be able to add more ISO files to the same USB booting drive? Like YUMI?\n\n"
+    },
+    {
+      "id": "205271",
+      "timestamp": "2017-12-27T22:10:32+00:00",
+      "author": "drpeppercan",
+      "content": "I was just trying to add Ubuntu as the 2nd ISO, but it told me that the ISO type is incompatible ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\n\n"
+    },
+    {
+      "id": "205236",
+      "timestamp": "2017-12-22T14:50:03+00:00",
+      "author": "drpeppercan",
+      "content": "Hi all,\n\nI have this Recovery USB drive with Windows 10 from Acer that I want to include along other USB drive sources into one using YUMI Multiboot.\n\nThanks guys :smile:\n\n"
+    },
+    {
+      "id": "205237",
+      "timestamp": "2017-12-22T19:50:48+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, this won\u0027t likely actually \\*need\\* to become a ISO file ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\nCan you detail how/what it is?\n\nI.e. is it Acer that provided you with a USB key with already made \"recovery\"?\n\nOr did your Acer PC/tablet/whatever come with a tool that allowed you to save this \"recovery\" to aUSB stick you provided?\n\nWhat does the USB contain (list of files)?\n\nIs your PC/tablet/whatever using BIOS or UEFI? (or however does your current USB stick boot as BIOS or as UEFI)?\n\nMore or less - loosely - a \"recovery\" is made of:\n\n1) some booting files (either BOOTMGR or BOOTMGR.EFI + their BCD(s) and possibly a number of language files)\n\n2) a (largish) .wim file, called often boot.wim or recovery.wim\n\nin other words, it is - generally - a WinPE of some kind.\n\nSo in a multiboot USB stick, it is not usually added as .ISO (but there still may be reasons why this is \\*needed\\*), but rather added, directly or indirectly, to the bootmanager used as a .wim file.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "205238",
+      "timestamp": "2017-12-23T17:24:56+00:00",
+      "author": "erwan.l",
+      "content": "There is a tool called Acer eRecovery Management which is installed on many Acer devices (laptops, tablets, etc).\n\nI believe it creates a bootable media (++PE based++ I am 99% sure of it) on USB to restore your system (and datas?) in case of failure.\n\n"
+    },
+    {
+      "id": "205239",
+      "timestamp": "2017-12-23T23:55:00+00:00",
+      "author": "drpeppercan",
+      "content": "I found this tutorial called:\n\n\"[How to Convert a Bootable USB to an .iso File](https://timothy-quinn.com/how-to-convert-a-bootable-usb-to-an-iso-file \"External link\")\"\n\nOne can do it by using ImgBurn. It\u0027s not exactly obvious, at first look it seems ImgBurn can only work with discs, but as this tutorial shows one can actually use it to create an ISO file from a USB drive, just what I needed.\n\nNow I\u0027m using YUMI Multiboot to add it to my multiboot USB drive. It\u0027s still writing, once done I\u0027ll put it to the test and hope it\u0027ll work.\n\nThanks for your help guys :smile:\n\n"
+    },
+    {
+      "id": "205240",
+      "timestamp": "2017-12-24T11:16:59+00:00",
+      "author": "Wonko the Sane",
+      "content": "etfsboot.com is the common El-Torito No-emulation image for bootable CD/DVD\u0027s, that chainloads BOOTMGR.\n\nIn other words the .iso you can make that way will only be able to boot under BIOS (or UEFI+CSM) and not under \"pure\" UEFI, at least with direct mapping/chainloading, possibly the stick (and thus the .iso made with IMGBURN) will contain also the correspondent UEFI files (that may be chainloaded by the \"main\" boot manager YUMI uses) still it remains to be seen if the BCD will be compliant with booting from a .iso (very likely it is, but you cannot be sure).\n\nWhether this is the expected result is up to you and whether it will work, it depends on the specific machine and the way you set its firmware.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "205241",
+      "timestamp": "2017-12-24T14:34:58+00:00",
+      "author": "erwan.l",
+      "content": "Doing some publicity for CloneDisk... You can also make an iso file using the \"Make iso disk image feature\".\n\n![0D6BMLf.png?1](https://i.imgur.com/0D6BMLf.png?1)\n\n4 simple steps :\n\n1-Pick your source folder (can be a usb disk)\n\n2-Select your boot file (if you wish the image to be bootable) - can be MS etfsboot.com but also grldr or isolinux.bin\n\n3-Select your filesystem (select UDF for MS based images)\n\n4-Define your destination iso file\n\n"
+    },
+    {
+      "id": "205242",
+      "timestamp": "2017-12-24T20:16:55+00:00",
+      "author": "drpeppercan",
+      "content": "Thank you both for sharing this info guys.\n\nI\u0027m so glad I asked : )\n\nHappy holidays!\n\n"
+    },
+    {
+      "id": "205243",
+      "timestamp": "2017-12-25T17:31:39+00:00",
+      "author": "drpeppercan",
+      "content": "\u003e etfsboot.com is the common El-Torito No-emulation image for bootable CD/DVD\u0027s, that chainloads BOOTMGR....\n\u003e\n\u003e ....Whether this is the expected result is up to you and whether it will work, it depends on the specific machine and the way you set its firmware.\n\u003e\nNow I better understand what you were talking about Wonko!\n\nMy multiboot USB works just fine \"with the BIOS\" pc. But when I try with the newer pc with UEFI it only loads the Acer Recovery. There\u0027re still about 6 other things that failed to load.\n\nWould CloneDisk be able to make a multiboot for UEFI?\n\nIf so, hopefully without much tinkering...\n\n"
+    },
+    {
+      "id": "205244",
+      "timestamp": "2017-12-25T19:26:39+00:00",
+      "author": "drpeppercan",
+      "content": "Wait a second!...\n\nCome to think of this a bit longer, I guess I have to look into 2 separate issues to ensure that in the end the USB drive will boot correctly from a UEFI pc:\n\n**1. How the ISO file was made**. Assuming it was made like in my case: using a utility program like ImgBurn to extract the needed files from a Bootable USB key.\n\n2. And finally, **how the Multiboot USB key was put together**.\n\nThis being said, assuming I\u0027m right, what software would you recommend I use?\n\nThanks guys\n\n"
+    },
+    {
+      "id": "205245",
+      "timestamp": "2017-12-25T23:13:42+00:00",
+      "author": "sbaeder",
+      "content": "the issue is that any of the older recovery type things you might want to boot just aren\u0027t EFI compatible. This is why many laptops have to be set to compatible mode (not secure boot) to be able to use them.\n\nSo you are right, it is the #1 issue (above) that is more than likely the issue.\n\n"
+    },
+    {
+      "id": "205246",
+      "timestamp": "2017-12-26T02:21:26+00:00",
+      "author": "drpeppercan",
+      "content": "I am looking into this tutorial:\n\n[UEFI MULTI - Make Multi-Boot USB-Drive](http://reboot.pro/links/link/212-uefi-multi-make-multi-boot-usb-drive/ \"\")\n\n"
+    },
+    {
+      "id": "205247",
+      "timestamp": "2017-12-26T03:14:18+00:00",
+      "author": "drpeppercan",
+      "content": "Well, I didn\u0027t go very far with that tool ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\n\nIt had a Trojan virus!\n\nThen I found [Easy2Boot](http://easy2boot.com/ \"External link\"), except it seems that instead of being a tool, it\u0027s rather a gathering of many different tools that help you creating a multiboot USB drive. But to do it one has to read, and read, and read, and eventually get it done, if everything goes smoothly.\n\nIt\u0027s rather overwhelming, enough to put a rookie like me off.\n\nI\u0027m not too sure I want to do this anymore!\n\n"
+    },
+    {
+      "id": "205250",
+      "timestamp": "2017-12-26T10:14:15+00:00",
+      "author": "Wonko the Sane",
+      "content": "Sure :smile:, you can take either the blue pill or the red one:\n\n[http://www.imdb.com/...uotes/qt0324307](http://www.imdb.com/title/tt0133093/quotes/qt0324307 \"External link\")\n\nHowever EASY2Boot is pretty much straightforward - at least for such a basic usage - and Stee6375 has made quite a few tutorials and also videos illustrating it.\n\nBut, before that. and in a nutshell, a .iso is a \"container\" (as a matter of fact a byte-by-byte copy of an actual CD/DVD physical media).\n\nWhat actually boots and runs are the contents of that container.\n\nNow it makes a lot of sense, if you already have such a container, to devise a way to use that container unmodified inside another container (the USB stick and its filesystem).\n\nOn the other hand, if you don\u0027t have already such container it makes more sense to transfer its contents to the actual container (the USB stick and its filesystem).\n\nAnd in order to do so you will need to learn what these contents are and how they can be \"assembled\" in the new container.\n\nThere are however no Trojans in Wimb\u0027s excellent tool, most probably it is the usual false positive triggered by this or that utility.(most probably an AutoIt one, such as GetWaikTools, it is rather common or maybe by a combination with the 7-zip sfx ).\n\nSee here:\n\n[http://reboot.pro/to...drive/?p\u003d205248](http://reboot.pro/topic/18182-uefi-multi-make-multi-boot-usb-drive/?p\u003d205248 \"\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "205252",
+      "timestamp": "2017-12-26T11:33:57+00:00",
+      "author": "erwan.l",
+      "content": "\u003e Wait a second!...  \n\u003e Come to think of this a bit longer, I guess I have to look into 2 separate issues to ensure that in the end the USB drive will boot correctly from a UEFI pc:  \n\u003e\n\u003e **1. How the ISO file was made** . Assuming it was made like in my case: using a utility program like ImgBurn to extract the needed files from a Bootable USB key.  \n\u003e\n\u003e 2. And finally, **how the Multiboot USB key was put together** .  \n\u003e\n\u003e This being said, assuming I\u0027m right, what software would you recommend I use?  \n\u003e\n\u003e Thanks guys\n\nMake an iso that will boot both on bios or uefi is pretty straightforward : you can use mkisofs (command line tool) or a GUI (see below).  \nHowever, question is (as Sbaeder highlighted) : is your acer recoverry software EF compatible ?  \n\n![CSjT43k.png?1](https://i.imgur.com/CSjT43k.png?1)   \n"
+    },
+    {
+      "id": "205253",
+      "timestamp": "2017-12-26T11:39:11+00:00",
+      "author": "erwan.l",
+      "content": "\u003e Would CloneDisk be able to make a multiboot for UEFI?\n\u003e\n\u003e If so, hopefully without much tinkering...\n\nCloneDisk \u0027make iso\u0027 feature does not yet handle multiboot iso.\n\nThis is work in progress thus.\n\nIn the meantime look at my previous post (mkisofs).\n\n"
+    },
+    {
+      "id": "205255",
+      "timestamp": "2017-12-26T13:53:04+00:00",
+      "author": "wimb",
+      "content": "UEFI_MULTI_85.exe is reported as broken, since it would contain a Trojan virus ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)\n\nHowever, it is a false positive virus warning due to using a SFX Selfextractor !! ![:rolleyes:](http://reboot.pro/public/style_emoticons/default/rolleyes.gif)\n\nSo I removed the SFX Selfextractor and simply use zip compression so that the problem is gone. :cool:\n\nDownload UEFI_MULTI-85.zip from\n\n[https://1drv.ms/f/s!...na78xaVPrpcR2sA](https://1drv.ms/f/s!AqA1-Hg3ltssgbYna78xaVPrpcR2sA \"External link\")\n\n"
+    },
+    {
+      "id": "205258",
+      "timestamp": "2017-12-26T16:29:49+00:00",
+      "author": "drpeppercan",
+      "content": "\u003e Sure :smile:, you can take either the blue pill or the red one:\n\u003e\n\u003e [http://www.imdb.com/...uotes/qt0324307](http://www.imdb.com/title/tt0133093/quotes/qt0324307 \"External link\") ...\n\u003e\n\u003e ...There are however no Trojans in Wimb\u0027s excellent tool, most probably it is the usual false positive triggered by this or that utility.(most probably an AutoIt one, such as GetWaikTools, it is rather common or maybe by a combination with the 7-zip sfx ).\n\u003e\n\u003e See here:\n\u003e\n\u003e [http://reboot.pro/to...drive/?p\u003d205248](http://reboot.pro/topic/18182-uefi-multi-make-multi-boot-usb-drive/?p\u003d205248 \"\")\n\u003e\n\u003e ![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\u003e\n\u003e Wonko\n\nWonko, thanks a bunch for taking the time to explain all that. It helps very much.\n\nAnd sorry about the ranting ...\n\n"
+    },
+    {
+      "id": "205259",
+      "timestamp": "2017-12-26T16:31:02+00:00",
+      "author": "drpeppercan",
+      "content": "\u003e Make an iso that will boot both on bios or uefi is pretty straightforward : you can use mkisofs (command line tool) or a GUI (see below).  \n\u003e However, question is (as Sbaeder highlighted) : is your acer recoverry software EF compatible ?  \n\u003e\nerwan,\n\nThis is great, I see you made this one eh?\n\nThanks for sharing :smile:\n\n"
+    },
+    {
+      "id": "205260",
+      "timestamp": "2017-12-26T16:33:46+00:00",
+      "author": "drpeppercan",
+      "content": "\u003e UEFI_MULTI_85.exe is reported as broken, since it would contain a Trojan virus ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)\n\u003e\n\u003e However, it is a false positive virus warning due to using a SFX Selfextractor !! ![:rolleyes:](http://reboot.pro/public/style_emoticons/default/rolleyes.gif)\n\u003e\n\u003e So I removed the SFX Selfextractor and simply use zip compression so that the problem is gone. :cool:\n\u003e\n\u003e Download UEFI_MULTI-85.zip from\n\u003e\n\u003e [https://1drv.ms/f/s!...na78xaVPrpcR2sA](https://1drv.ms/f/s!AqA1-Hg3ltssgbYna78xaVPrpcR2sA \"External link\")\n\u003e\nNice!\n\nThank you for doing this wimb :smile:\n\nBtw, I still got many Trojan warnings for Tilden and Bitrep. But I guess I\u0027ll go ahead...\n\n"
+    },
+    {
+      "id": "205262",
+      "timestamp": "2017-12-26T18:18:00+00:00",
+      "author": "Wonko the Sane",
+      "content": "@erwan.l\n\nTo be *picky* (as I am :wink:) etfsboot.com \"will call BOOTMGR\" (that will use a \\\\boot\\\\BCD) whilst efisys.bin ***contains*** either a BOOTX64.EFI or a BOOTIA32.EFI (or both) that are called by the UEFI (and that will use a \\\\efi\\\\microsoft\\\\boot\\\\BCD).\n\nNo bootmgr.efi was used, let alone harmed in the making of ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif) .\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "205263",
+      "timestamp": "2017-12-26T20:10:01+00:00",
+      "author": "erwan.l",
+      "content": "\u003e @erwan.l\n\u003e\n\u003e To be *picky* (as I am :wink:) etfsboot.com \"will call BOOTMGR\" (that will use a \\\\boot\\\\BCD) whilst efisys.bin ***contains*** either a BOOTX64.EFI or a BOOTIA32.EFI (or both) that are called by the UEFI (and that will use a \\\\efi\\\\microsoft\\\\boot\\\\BCD).\n\u003e\n\u003e No bootmgr.efi was used, let alone harmed in the making of ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif) .\n\u003e\n\u003e ![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\u003e\n\u003e Wonko\n\nCorrect, sorry for being vague on that one.\n\nIndeed, there is no such thing as bootmgr.efi but rather bootx64.efi or bootia32.efi.\n\nAnd now, I realise I learn every day : by checking efisys.bin (1440k), I realise that indeed it does contain the whole bootmgr.\n\nHad never realised that !\n\nThanks for that :smile:\n\nUseful tip actually as I have some code out there possibly tricked by a bootsector that big...\n\n"
+    },
+    {
+      "id": "205265",
+      "timestamp": "2017-12-26T22:47:49+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e And now, I realise I learn every day : by checking efisys.bin (1440k), I realise that indeed it does contain the whole bootmgr.  \n\u003e Had never realised that !   \n\u003e Thanks for that :smile:  \n\u003e Useful tip actually as I have some code out there possibly tricked by a bootsector that big...\nYep but the efisys.bin is not at all\u0027 a bootsector it is just a FAT file system containing the \"default named\" bootloader , brought to you by the same people that has provided 3 mb boot.sdi\u0027s and has recycled DOS boot floppies with deleted files for years.   \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    },
+    {
+      "id": "205268",
+      "timestamp": "2017-12-27T20:10:46+00:00",
+      "author": "cdob",
+      "content": "\u003e I have this Recovery USB drive with Windows 10 from Acer\nDoes this recovery USB drive holds backup files too?  \nDoes this recovery USB drive reads data from a recovery partion at local hard disk?  \nWhich data size is occupied at the USB drive?  \n\nIf there are more than 1 GB data on the USB drive, then there are backup files too.  \nIn that case, there are two tasks: boot the new USB drive and the recovery routine has to find the backup files.  \nCan you show a file list? \u0027dir /s\u0027   \n"
+    },
+    {
+      "id": "205270",
+      "timestamp": "2017-12-27T21:32:35+00:00",
+      "author": "drpeppercan",
+      "content": "cdob,\n\nIt\u0027s a 16Gb drive, with 11Gb used.\n\nThis is some of its contents:\n\n![show.php?id\u003d121312](http://pasteall.org/pic/show.php?id\u003d121312)\n\n![show.php?id\u003d121313](http://pasteall.org/pic/show.php?id\u003d121313)\n\nI hope this tells you enough.\n\nSo I finally came around to disable the antivirus to run UEFI-Multi.\n\nWill I be able to add more ISO files to the same USB booting drive? Like YUMI?\n\n"
+    },
+    {
+      "id": "205271",
+      "timestamp": "2017-12-27T22:10:32+00:00",
+      "author": "drpeppercan",
+      "content": "I was just trying to add Ubuntu as the 2nd ISO, but it told me that the ISO type is incompatible ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\n\n"
+    },
+    {
+      "id": "205272",
+      "timestamp": "2017-12-28T10:49:08+00:00",
+      "author": "Wonko the Sane",
+      "content": "... and in \"sources\" there is a \"boot.wim\" file ...\n\nIt seems the structure of a \"recovery\" intended to be used from a hard disk partition or from a USB stick AND that can be burned to a set of DVD\u0027s.\n\nWhen run/executed the result is likely to be a \"factory reset\" device.\n\nPlease do follow cdob suggestion, now extended:\n\n1) open a command prompt\n\n2) in it type ~~dir /s D:~~ dir D: /s (and press \\[ENTER\\])\n\n3) you will see a list of files, including path and their sizes scrolling in the window\n\n4) when it is finished, type ~~dir /s D~~ : dir D: /s\\\u003eC:\\\\mydir.txt (and press \\[ENTER\\])\n\n5) in Explorer you will find in drive C: a new file called mydir.txt that will contain the listing\n\n6) upload this file as an attachment (or upload it to a free hosting site and provide a link to it)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\nEDIT: corrected wrong syntax of the dir command\n\n"
+    },
+    {
+      "id": "205273",
+      "timestamp": "2017-12-28T11:08:33+00:00",
+      "author": "cdob",
+      "content": "\u003e It\u0027s a 16Gb drive, with 11Gb used.  \n\u003e\n\u003e I hope this tells you enough.\nThere are manufacturer addons on the stick. Additional files at root and \\\\data\\\\ directory.  \nThis is a special case, I don\u0027t know which USB multi build tool supports this.  \nThe Recovery procedure rely on that files.  \nIf you wrap this to a ISO file, the recovery won\u0027t find \\\\data\\\\ inside the ISO image.  \nA USB multi build tool may extract the ISO image and copy single files.  \n\nThe Easy2Boot project may support the request.  \n\nAnother manual approach:  \nthere is a \\\\sources\\\\boot.wim. It\u0027s booting a PE.  \nSimplified, to get the idea: wrap all to a ISO image.  \nCopy \\\\sources\\\\boot.wim to USB drive \\\\sources\\\\recovry.wim  \nEdit recovry.wim, mount the ISO image to a virtual DVD drive at startup.  \nAnd continue the recovery.  \n\nIf you build a new Recovery USB drive, how to test this?  \nA virtual machine can help.  \nDo you have a spare hard disk, swap the hard disk and do test recovery?  \n\nOverall:  \nI would keep the existing Recovery USB drive.  \nAnd do multi USB with other hardware and other addons.   \n"
+    },
+    {
+      "id": "205277",
+      "timestamp": "2017-12-28T15:49:52+00:00",
+      "author": "drpeppercan",
+      "content": "Wonko,  \n\n```\nPS C:\\WINDOWS\\system32\u003e dir /s d:\ndir : Cannot find path \u0027C:\\s\u0027 because it does not exist.\nAt line:1 char:1\n+ dir /s d:\n+ ~~~~~~~~~\n    + CategoryInfo          : ObjectNotFound: (C:\\s:String) [Get-ChildItem]\n   , ItemNotFoundException\n    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.Ge\n   tChildItemCommand\n```\n\nI also ran this with a capital D, as you instructed, it made no difference.\n\ncdob\n\n\u003e Overall:  \n\u003e I would keep the existing Recovery USB drive.  \n\u003e And do multi USB with other hardware and other addons.\n\nI was starting to feel that way...\n\n"
+    },
+    {
+      "id": "205278",
+      "timestamp": "2017-12-28T16:38:49+00:00",
+      "author": "Wonko the Sane",
+      "content": "My bad :blush: , it is:\n\ndir D: /s\n\nand I forgot that you were on (stupid) Windows 10, in recent versions the command prompt is replaced by the powershell prompt:\n\n[https://support.micr...-command-prompt](https://support.microsoft.com/en-us/help/4027690/windows-powershell-is-replacing-command-prompt \"External link\")\n\n[http://www.thundercl...-the-winx-menu/](http://www.thundercloud.net/infoave/new/how-to-switch-between-command-prompt-and-powershell-on-the-winx-menu/ \"External link\")\n\nyou need a command (cmd.exe) prompt to run that command.\n\nOr you can try running from the PS prompt:\n\ncmd.exe /r dir D: /s\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "205294",
+      "timestamp": "2017-12-29T16:56:43+00:00",
+      "author": "ady",
+      "content": "FWIW and IMHO, instead of building an ISO image just to put its content (and booting methods) all in one \"multiboot\" USB device... Perhaps at some point it might be easier to just learn how to do it manually, adding it to your current YUMI-built USB device.  \n\nThe middle-step of building an ISO image just so it could be then extracted to some USB device sounds to me like: \"to the right side I have a neighbour I\u0027d like to visit, but I don\u0027t know how to turn to the right, so I\u0027m turning once to the left and I\u0027ll go around the whole globe\". Perhaps it would be simpler to just learn how to turn to the right?   \n"
+    },
+    {
+      "id": "205297",
+      "timestamp": "2017-12-29T18:02:34+00:00",
+      "author": "drpeppercan",
+      "content": "wonko,\n\nI did try to print the contents of d: to a TXT file, but the feedback was:\n\n\"**out-file : The media is write protected**\"\n\nady,\n\nYeap! Either that, or I could just leave it alone where it is in it\u0027s own USB key. Lets not forget that I am only doing this just so I could have it along with other ISOs in the same USB key, for CONVENIENCE. But if the process entails to go beyond practical and efficient then we go into wasting time issues. And time is not something I have a lot of.\n\n"
+    },
+    {
+      "id": "205298",
+      "timestamp": "2017-12-29T18:15:56+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e wonko,\n\u003e\n\u003e I did try to print the contents of d: to a TXT file, but the feedback was:\n\u003e\n\u003e \"**out-file : The media is write protected**\"\n\nThat still seems a PS error.\n\nWhich command did you issue?\n\nThere may be problems in the way redirector characters are parsed by the PowerShell. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\nDo open a \"real\" cmd.exe prompt, and see what happens in it.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "205299",
+      "timestamp": "2017-12-29T19:21:19+00:00",
+      "author": "drpeppercan",
+      "content": "Finally got it done by saving the txt file to an external HD  \n\"**D:\\\\\\\u003edir /s \\\u003e g:\\\\mydir.txt**\"  \nAnd here\u0027s the results: [http://pasteall.org/740640/text](http://pasteall.org/740640/text \"External link\")\n\n"
+    },
+    {
+      "id": "205300",
+      "timestamp": "2017-12-29T21:01:32+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Finally got it done by saving the txt file to an external HD  \n\u003e \"**D:\\\\\\\u003edir /s \\\u003e g:\\\\mydir.txt**\"  \n\u003e And here\u0027s the results: [http://pasteall.org/740640/text](http://pasteall.org/740640/text \"External link\")\n\u003e\nGood. :smile:\n\nAs cdob suspected is a \"peculiar\" setup.\n\nIt simply won\u0027t work as .iso.\n\nBut it seems like it contains a lot of \"redundant\" things, the several .iso\u0027s in the D:\\\\Data appear as being partly a (set of three) .iso\u0027s intended to be burned to DVD, \"artificially\" divided into files that can be burned and that can reside on a FAT32 partition.\n\nAnd the directory D:\\\\Data\\\\SCD_FD.DE3A0.019 seems like containing a PE (System CD or SCD as opposed to the above Recovery CD or RCD) containing drivers.\n\nContents of LPCD_FP.XENXP.164.iso are mysterious, a XEN setup for XP? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nIt is likely (but not given) that combining the contents of the 3 .iso\u0027s the result might be a huge .iso containing the whole set of needed files, but it is entirely possible that some further modifications are needed anyway.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "205301",
+      "timestamp": "2017-12-29T21:18:20+00:00",
+      "author": "drpeppercan",
+      "content": "So your findings support the idea of \"leaving it alone\"?\n\nAfter all, Acer sent me 2 of this.\n\n"
+    },
+    {
+      "id": "205302",
+      "timestamp": "2017-12-30T10:31:11+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e So your findings support the idea of \"leaving it alone\"?\n\u003e\n\u003e After all, Acer sent me 2 of this.\n\nI don\u0027t know. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)\n\nOn one hand it does seem like that it would be possible (with some work) to reduce the thingy to its \"core\" (as said most probably the three .iso\u0027s are all that is needed), on the other hand it seems to me that it is \"futile\" in the sense that from what I have seen the whole stuff is likely to be the \"normal\" recovery setup, which in itself represent one of the least useful things ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)\n\nWhat I mean is that the computer, once \"recovered\" through that procedure/files will probably be (completely or largely) \"factory reset\", i.e. you will probably lose most if not all your data and most probably will have to re-install each and every piece of software you installed after first switch on.\n\nSo, \"recovering\" is not something that you are likely to do often and certainly not \"litely\".\n\nPersonally, all these years, I never used any \"recovery disk\" if not, when the device is to be resold, to re-apply the \"factory image\" after having wiped the disk, so it is not something I would carry with me on a \"generic\" USB stick, it is IMHO something better suited to stay with the box of the device.\n\nI would rather have a minimal. confirmed to be working on the machine, small, PE, capable of booting the machine and retrieve some data in case of OS issues/corruption and of course (but again stored somewhere safe) some periodical backups of the data.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    }
+  ]
+}

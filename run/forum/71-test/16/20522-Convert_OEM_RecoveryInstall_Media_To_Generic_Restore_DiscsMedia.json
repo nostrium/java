@@ -1,0 +1,22 @@
+{
+  "id": "20522",
+  "title": "Convert OEM Recovery/Install Media To Generic Restore Discs/Media?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "193086",
+      "timestamp": "2015-06-11T01:02:55+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "I have a friend with a laptop identical to mine, and given that I\u0027ve had so many issues recently, I\u0027ve decided that when I get around to replacing my RAM/bad battery in a week or 2, I\u0027m probably better off just restoring from the official Dell recovery media, to have the most chance of a relatively issue-free PC. I have ripped his 2 restore discs, which I presume can be used on my hardware. But......It reinstalls the OS with a Recovery partition, and a main Windows partition. I wont need a recovery since I plan to do all my future restores/repairs from external media. And the recovery discs install the OS (Win7 Home Premium x64) in BIOS/MBR mode rather than my preferred UEFI/GPT.\n\nI\u0027m thinking that after the restore to my SSD is finished, I can simply resize the Recovery partition, format it as FAT32, mark it as active/bootable (necessary on my hardware, I think, from my experiences with UEFI DUET) then install the UEFI boot files there from any generic Win7 install DVD. As for the Windows partition, it might suffice to make a byte for byte clone of it, with CloneZilla or Drive Snapshot or whatever, then restore it into an empty Microsoft GPT data partition.\n\nWould this work? Or is there some other easier way to directly convert the OEM discs into a format which can be placed on USB, which can then be used to restore Dell\u0027s machine-customized Win7 onto my hardware in UEFI mode?\n\nI notice there are some WIM files on the discs, and various other file types, most EXEs and DLLs, so I figure a direct conversion is feasible.\n\nThanks for any advice!\n\n"
+    },
+    {
+      "id": "193444",
+      "timestamp": "2015-07-02T00:23:34+00:00",
+      "author": "sbaeder",
+      "content": "while it\u0027s been a while with no direct answer, and you have been asking similar questions, here is my take on it.\n\nI would clone your friends disk. Recovery disks MAY (or may not) have all the information you need to revert to \"factory\". But if they do, and they create a recovery partition, I would just keep it. It is going to be relatively small.\n\nBut \\*IF\\* you are \\*\\*DETERMINED\\*\\* to remove it, use the disk manage to find it - and make sure it is the recovery partition, and not one of the other partitions used to hold the efi and other boot files (in addition to the \"C:\" partition). They are really small and not worth the hassle of trying to recode the BCD and other boot configurations.\n\nThen you can reformat the partition, give it a drive letter, etc. OR you can delete it, and \"grow\" the \"C:\" drive. Most you will gain is maybe 7-8 GB (as I said above - hardly worth the effort).\n\nI just went through a whole lot of hassle where I had to rebuild the BCD info from a command prompt, since after the partition was blown away, machine wouldn\u0027t boot, and even automated recovery failed. Not something you want to hassle with if you don\u0027t have to.\n\nBest of luck\n\n"
+    }
+  ]
+}

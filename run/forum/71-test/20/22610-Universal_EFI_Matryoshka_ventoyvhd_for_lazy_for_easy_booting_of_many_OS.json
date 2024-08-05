@@ -1,0 +1,16 @@
+{
+  "id": "22610",
+  "title": "Universal EFI Matryoshka - ventoy.vhd - for lazy - for easy booting of many OS",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "220763",
+      "timestamp": "2022-02-09T18:46:42+00:00",
+      "author": "alex52",
+      "content": "[Universal EFI Matryoshka - ventoy.vhd - for lazy - for easy booting of many OS](http://forum.ru-board.com/topic.cgi?forum\u003d2\u0026topic\u003d5749\u0026start\u003d140#2 \"External link\")  \n\nPreviously, I skeptically referred to all loaders - add-ons over Grub. But was asked to boot ventoy from AIO.  \nI reviewed a bunch of sites - but nothing was found - other than the installation of ventoy on the entire disk with its formatting.  \n\nI \"booted\" ventoy with AIO. Long searching in the network - how to change the ventoy \"Standard Device\". Without this - ventoy does not open the download window.\n\nBut I have not found anything. There everything is - to install ventoy on the entire disk.  \n\nAnd a simple idea came - that I have not met in the network.  \nInstalling ventoy in ventoy.vhd, format in NTFS and the necessary plugins - and a universal bootloader without a flash drive - with fast booting from disk  \nWe load and boot the system from memory, or simply \"map ventoy.vhd hd\" and run the system from the disk without loading to memory  \n\nWe load ventoy.vhd to memory - as usual with Grub4dos_uefi\n\n```\ntitle map --mem --top *.vhd  \nset vhd\u003dventoy_3gb.vhd\nfind --set-root --devices\u003dh /%vhd%\necho \u003d\u003d\u003d %vhd%  will be loaded to RAM\nls dev\nmap --mem --top /%vhd% (hd)\nls dev\nchainloader (hd-1)\n```\n\nBut on my old 2010 computer Core i3 370 without EFI  \n0). EFI is loaded from files.  \n1). (hd-1) - does not work. I boot (hd1)+  \n(hd-1) \\~ good operates with a new disk, and (hdx) + must be pre-guess what you will have.\n\nHere [ventoy_3gb.vhd with w11Ent348Drey.vhd inside:](https://mega.nz/folder/C5FgyZ7S#vexqyMbfGOEsUzGPSCf1gg \"External link\")\n\n"
+    }
+  ]
+}

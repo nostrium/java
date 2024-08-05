@@ -1,0 +1,28 @@
+{
+  "id": "8823",
+  "title": "[ask] usb flash disk speed",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "75801",
+      "timestamp": "2009-08-24T12:14:41+00:00",
+      "author": "tsetya",
+      "content": "i have 2 usb flash disk, 8GB and 16GB, both ufd usb 2.0 (on product label and manufacture site)  \ni use my 16GbB ufd as my bootable ufd with grub4dos, some utilities and ubuntu.  \ni want to change my bootable ufd to 8GB ufd since it seems faster than 16GB ufd. Using benchmark in windows environment my 8GB ufd avrg 32MB/s read 12MB/s write, and 16GB ufd avrg only 18MB/s read 8MB/s write .  \nbut in bios menu my 8GB shows as usb 1.1 , also very slow to load every utilities in ufd (also took 3 hours to install ubuntu, while my 16GB ufd only need 30 mnts)  \n\nmy question:  \n1. is it possible ufd usb 2.0 seen as usb 1.1 by bios?  \n2. it it possible to force bios to use it as usb 2.0? (no setting in bios, also tried plop but no difference)  \n3. how to choose ufd that will seen as usb 2.0 by bios, since in produst label says usb 2.0?   \n"
+    },
+    {
+      "id": "75802",
+      "timestamp": "2009-08-24T12:30:24+00:00",
+      "author": "Icecube",
+      "content": "\u003e but in bios menu my 8GB shows as usb 1.1 , also very slow to load every utilities in ufd (also took 3 hours to install ubuntu, while my 16GB ufd only need 30 mnts)\nIt is almost impossible that it took 3 hours to install ubuntu. To start Ubuntu, only the kernel and initramfs need to be read from the disk, which aren\u0027t that big. If loading these files takes long (\\\u003e 15 minutes), your BIOS does read even at a lower speed than USB1.1 from this stick. After that, the Linux USB drivers are used to access the stick (with USB2.0 speed).  \n\nCan you try to do a speed test for the 8GB stick in Ubuntu?  \nAlso try to boot some other utilities from this stick with Grub4dos (to see how slow it is).   \n"
+    },
+    {
+      "id": "75837",
+      "timestamp": "2009-08-24T21:47:21+00:00",
+      "author": "tsetya",
+      "content": "i installed ubuntu using text installer (alternate install), it\u0027s very slow in \"unpacking\" process. didn\u0027t try install using livecd, but i believe it will be faster (as you said using linux driver).  \n\ntest booting some iso image no speed difference.  \ntest booting extracted iso (mostly AV live cd), almost twice slower than 16GB ufd (average). the longest time Kaspersky Live cd, 4 mnts.  \ntest booting ubuntu installed (not iso), still the same, twice slower than 16GB ufd. needs 2,5 mnts (still acceptable).   \n\nspeed test using ubuntu (from others ubuntu or ubuntu on ufd itself) all the same : 8Gb ufd\u003d32MB/s, 16GB ufd\u003d18MB/s. Also seek time still faster 8GB ufd.   \n\ni think it slow only in \"bios level\", so i did test using system speed test (UBCD), and i can see significant differences.  \n\n---------------------------!--- 8GB ---!--- 16GB-- !  \navrg seek time_____! 36 ms___! 3.6 ms !  \nrandom seek time__! 37 ms___! 4.1 ms !  \ntrack to track seek__! 34 ms ___! 3.7 ms !   \n"
+    }
+  ]
+}

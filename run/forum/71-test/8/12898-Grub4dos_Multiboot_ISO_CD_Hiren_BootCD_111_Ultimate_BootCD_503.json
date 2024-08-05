@@ -1,0 +1,34 @@
+{
+  "id": "12898",
+  "title": "Grub4dos Multiboot ISO CD, Hiren BootCD 11.1 \u0026 Ultimate BootCD 5.03",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "112638",
+      "timestamp": "2010-10-31T03:56:28+00:00",
+      "author": "jeffreytan",
+      "content": "I\u0027m new a this.  \n\nI need help in creating a multiboot iso CD to boot Hiren BootCD 11.1 \\\u0026 Ultimate BootCD 5.03.  \n\nBelow is the menu.lst but it does not work. Need help please.  \ntitle Hiren\u0027s BootCD v11.1  \nfind --set-root/ISO/hbcd111.iso  \nmap --mem/ISO/hbcd111.iso (hd32)  \nmap --hook  \nroot (hd32)  \nchainloader (hd32)  \n\ntitle Ultimate BootCD v5.03  \nfind --set-root/ISO/ubcd503.iso  \nmap --mem/ISO/ubcd503.iso (hd32)  \nmap --hook  \nroot (hd32)  \nchainloader (hd32)   \n"
+    },
+    {
+      "id": "112644",
+      "timestamp": "2010-10-31T06:30:31+00:00",
+      "author": "shamurshamur",
+      "content": "\u003e title Ultimate BootCD v5.03  \n\u003e find --set-root/ISO/ubcd503.iso  \n\u003e map --mem/ISO/ubcd503.iso (hd32)  \n\u003e map --hook  \n\u003e root (hd32)  \n\u003e chainloader (hd32)\n\nyou are not leaving any gap between **--set-root** and **/ISO/ubcd503.iso** .  \n\ntry this one.  \n\n\u003e title Ultimate BootCD v5.03  \n\u003e find --set-root /ISO/ubcd503.iso  \n\u003e map /ISO/ubcd503.iso (0xff) \\|\\| map --mem /ISO/ubcd503.iso (0xff)   \n\u003e map --hook  \n\u003e root (0xff)  \n\u003e chainloader (0xff)\n\nlook at some more examples here.  \n[http://www.boot-land...?showtopic\u003d5041](http://www.boot-land.net/forums/index.php?showtopic\u003d5041 \"External link\")   \n"
+    },
+    {
+      "id": "112831",
+      "timestamp": "2010-11-03T02:18:21+00:00",
+      "author": "shanming163",
+      "content": "That is correct！You need some gaps.And if your iso size is a littl big，you need wait one more minutes.![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "113674",
+      "timestamp": "2010-11-13T09:39:31+00:00",
+      "author": "jeffreytan",
+      "content": "Thank guys.  \n\nI\u0027ve sorted it out and it\u0027s working now.   \n"
+    }
+  ]
+}

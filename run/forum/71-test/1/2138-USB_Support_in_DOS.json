@@ -1,0 +1,34 @@
+{
+  "id": "2138",
+  "title": "USB Support in DOS",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "13793",
+      "timestamp": "2007-05-10T15:27:13+00:00",
+      "author": "ankur mathur",
+      "content": "I used Windows ME DOS Disk as my emergency disk for booting and repairing, i have a Transcend 512 MB USB FLASH Drive. When i boot using my ME Startup disk, i want to be able to access the USB disk like any other hard disk drive (Read/Write). My motherboard supports USB FUNCTION IN DOS. Is This Possible?   \n"
+    },
+    {
+      "id": "13795",
+      "timestamp": "2007-05-10T15:35:54+00:00",
+      "author": "Brito",
+      "content": "Yes, it is possible.  \n\nGoogle for the USB drivers created for FreeDos - maybe them even come included on their full distribution then you only need to adapt them to work with ME (never tested under ME myself, only using Freedos boot disks)  \n\nAn article here with some methods: [http://www.bootdisk.com/usb.htm](http://www.bootdisk.com/usb.htm \"External link\")  \n\nFrom FreeDOS:  \n[http://www.freedos.o...wsitem/149.html](http://www.freedos.org/freedos/news/newsitem/149.html \"External link\")  \n\nAnd lots of links to very interesting active developments for (Free)DOS: [http://www.freedos.org/freedos/links/](http://www.freedos.org/freedos/links/ \"External link\")  \n\n\u003cbr /\u003e\n\nGood luck! ![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif)   \n"
+    },
+    {
+      "id": "13796",
+      "timestamp": "2007-05-10T16:15:50+00:00",
+      "author": "was_jaclaz",
+      "content": "Actually, not to contradict Nuno, just to add some info, the \"reference\" boot disk should be this one:  \n[http://johnson.tmfc....dos/usbdrv.html](http://johnson.tmfc.net/dos/usbdrv.html \"External link\")  \n\nPlease also check this:  \n[http://www.911cd.net...o...\u003d18650\\\u0026st\u003d0](http://www.911cd.net/forums//index.php?sho...\u003d18650\u0026st\u003d0 \"External link\")  \n[http://www.911cd.net...o...18650\\\u0026st\u003d13](http://www.911cd.net/forums//index.php?sho...18650\u0026st\u003d13 \"External link\")  \nif you are using the DUSE drivers.  \n\nBut usually, say 95% of the times, the Panasonic \"Motto Hairu\" ones do work.  \n\nLook here for a couple interesting threads giving details of the sintax for them:  \n[http://www.computing...orum/13288.html](http://www.computing.net/dos/wwwboard/forum/13288.html \"External link\")  \n[http://www.computing...orum/13447.html](http://www.computing.net/dos/wwwboard/forum/13447.html \"External link\")  \n\nAlso, have a look at this:  \n[http://www.georgpott.../usb/dosusb.htm](http://www.georgpotthast.de/usb/dosusb.htm \"External link\")  \n(untested by me)  \n\njaclaz  \n\nP.S.: just for the record these drivers were NOT created for FREEDOS, they were developed from Panasonic and some other Japan companies to support their hardware devices under DOS   \n"
+    },
+    {
+      "id": "13797",
+      "timestamp": "2007-05-10T16:29:23+00:00",
+      "author": "Brito",
+      "content": "Actually, I don\u0027t really mind being contradicted by a true expert on the matter - also worth mentioning that the more information provided the better!  \n\nThanks for the detailed links - also learn from them.. ![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif)  \n\n![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif)   \n"
+    }
+  ]
+}

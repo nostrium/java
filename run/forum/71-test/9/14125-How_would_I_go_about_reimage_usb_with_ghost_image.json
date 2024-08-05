@@ -1,0 +1,34 @@
+{
+  "id": "14125",
+  "title": "How would I go about re-image usb with ghost image?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "125147",
+      "timestamp": "2011-03-20T01:13:51+00:00",
+      "author": "Underling",
+      "content": "Hello, first off I want to tell you that I have no experience in the field of disk management or creating bootable disks and etc...  \n\nMy delima is: I have a ghost image \"gho\" and I need to like image a usb....ufd so I can use the usb to boot an operating system right off of usb rather than a hard drive, simple to re-image a hdd and use it for my purposes, but, I work for Foxconn as hardware debug in repair and we have a ghost image with utilities and well we have re-imaged hdd and with good luck but unfortunately after a few times, depending on what problems the computers have we end up killing a hdd and they are expensive to use for just the purposes of that when in fact we have literally thousands of 2 gig usb flash disks at our disposal.  \n\nYes having usb boot server 2003 with debug utilities to use on the servers would come in handy.  \n\nHow would I go about doing this?  \n\nI have tried diskpart with no success in fat32 or ntfs and bootsect.exe  \nI have even found utility to update the driver embedded on usb to now it looks like a hard disk no matter how much I format the usb it still looks like a hard disk now on the computer.  \nI have tried hp usb format as well and every time I extract all files in the ghost image I get as far as server 2003 loading and then it reboots.  \n\nI am interested in the grub4dos but still I am unsure that it would boot the ghost image or actually imaging the usb to boot up the server 2003 or if it could boot it I would not know where to start in doing this, I have read over some of the manuals here but I am unsure I got the right info.  \n\nEven if the info I receive here is a way to format a usb to install an operating system on the usb and to boot that operating system on various machines that would be great, but I don\u0027t know where to start on that either.  \n\nPlease can somebody help, thanks.   \n"
+    },
+    {
+      "id": "125148",
+      "timestamp": "2011-03-20T01:58:11+00:00",
+      "author": "amalux",
+      "content": "This is really easy with Windows 7 (or Vista) using a patcher like [PWBoot](http://reboot.pro/6851/ \"\"); I\u0027m drawing a blank with Server 2003 but maybe something similar exists. With XP I\u0027ve used Dietmar\u0027s approach, described [here](http://webcache.googleusercontent.com/search?q\u003dcache:i91yGjr5QvEJ:www.911cd.net/forums//index.php%3Fshowtopic%3D21445+dietmar+tutorials+download\u0026cd\u003d1\u0026hl\u003den\u0026ct\u003dclnk\u0026gl\u003dus\u0026source\u003dwww.google.com \"External link\") and [USBoot](http://www.usboot.org/tiki-index.php \"External link\") etc. which might work for 2003 but that\u0027s only new installs, not restored images from host to USB like PWBoot. Hopefully someone knows a good solution for XP/2003, I\u0027d like to know myself.   \n"
+    },
+    {
+      "id": "125150",
+      "timestamp": "2011-03-20T02:22:04+00:00",
+      "author": "Underling",
+      "content": "I have just looked at USBoot but you need to be on one of the supporting OS in order for it to work such as xp or 2003, but not on Win7 which I am currently on.  \n\nI will look at the other suggestions, thanks.   \n"
+    },
+    {
+      "id": "125934",
+      "timestamp": "2011-03-30T05:08:18+00:00",
+      "author": "Underling",
+      "content": "Thanks, a friend used his computer and we got it going.   \n"
+    }
+  ]
+}

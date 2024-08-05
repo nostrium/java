@@ -1,0 +1,22 @@
+{
+  "id": "17572",
+  "title": "Mulitboot issues",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "160934",
+      "timestamp": "2012-09-30T00:53:43+00:00",
+      "author": "brenryan",
+      "content": "Possible noob question (Please don\u0027t flame me! You don\u0027t have to reply if you don\u0027t want to!)  \n\nHi all,  \n\nI have been having some issues creating a multiboot USB, namely XP and Win7 will not install. Also having trouble booting Backtrack5 in live mode.  \n\nOne of the problems is that there are just so many guides out there, I don\u0027t know where to begin! so hopefully somebody can point me in the right direction.  \n\nI want to get a multiboot USB with the following features  \n\nXP Pro SP3 installation  \nWin7 Installation  \nUbuntu live  \nKaspersky Rescue  \nClonezilla  \nSystem Rescue CD  \nBacktrack5  \nMy companys proprietary installation CD (.iso)  \nPartition Magic  \nAnd Active@ file recovery  \n\nI tried using several applications to do this, xboot, sardu and YUMI with no success, XP and Win7 will not install.  \n\nI would like to end up using xboot as I can easily change the menu background image, but whatever works would be fine.  \n\nIt\u0027s just that there are so many guides out there that I am having so much trouble. If somebody could please point me in the right direction and let me know what software and guide I should follow, I would be extremely grateful!  \n\nMany thanks,  \n\nAnd apologies for the noobish questions!!   \n"
+    },
+    {
+      "id": "160944",
+      "timestamp": "2012-09-30T08:10:00+00:00",
+      "author": "steve6375",
+      "content": "Hi  \nPlease have a look at my site at [www.rmprepusb.com](http://www.rmprepusb.com \"External link\") . Many of the tutorials are based on articles from reboot.pro and includes much work done by many of the contributors of reboot. You should find all that you need. All tutorials have been tested and should work. If not then post here any problems.   \n"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "id": "7381",
+  "title": "Boot Sector Virus",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "61966",
+      "timestamp": "2009-03-11T03:49:24+00:00",
+      "author": "thewhitrbbit",
+      "content": "I was talking to my boss last week about the use of flash drives vs. CD\u0027s and trying to understand their objections to flash drives and one point that was brought up was the danger of a boot sector virus being spread via flash drive.  \n\nAre there any strategies that can be employed to guard against this?   \n"
+    },
+    {
+      "id": "61971",
+      "timestamp": "2009-03-11T05:03:17+00:00",
+      "author": "Galapo",
+      "content": "See here: [http://www.boot-land...?showtopic\u003d4350](http://www.boot-land.net/forums/index.php?showtopic\u003d4350 \"External link\")  \n\nRegards,  \nGalapo.   \n"
+    },
+    {
+      "id": "61979",
+      "timestamp": "2009-03-11T08:45:58+00:00",
+      "author": "was_jaclaz",
+      "content": "Just to play devil\u0027s advocate ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) there is no problem in spreading a virus from a bootable or even non-bootable CD, with this regard I don\u0027t see the difference.  \n\nI mean, you either prohibit the connection of ANY device to a PC or you are open to possible infections, the particular kind of media is pretty much irrelevant.  \n\nA USB stick or hard disk may be MUCH \"more dangerous\" than a CD if we are talking of stealing info:  \n[http://www.zimbio.co...Using USB Drive](http://www.zimbio.com/Windows+XP/articles/1557/Hack+Passwords+Using+USB+Drive \"External link\")  \n[http://wiki.hak5.org...USB_Switchblade](http://wiki.hak5.org/wiki/USB_Switchblade \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "62062",
+      "timestamp": "2009-03-11T23:39:46+00:00",
+      "author": "Adam_W",
+      "content": "If you mean the MBR of the OS being infected because it has been read of a USB flash drive that is no longer an issue. Windows NT does not allow you to modify your volume and disables direct access to your HDD and therefore you are safe from \\*those type\\* of viruses infecting your computer.  \n\nHowever, being in a large organization where I work the main concerns with USB sticks usage is information risk... not just from the loss from theft because the data was not backed up.   \n"
+    },
+    {
+      "id": "62085",
+      "timestamp": "2009-03-12T09:33:49+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e If you mean the MBR of the OS being infected because it has been read of a USB flash drive that is no longer an issue. Windows NT does not allow you to modify your volume and disables direct access to your HDD and therefore you are safe from \\*those type\\* of viruses infecting your computer.\n\nYou joking right? ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nThere are common ways for a program to directly access the PHYSICALDRIVE (read MBR+hidden sectors).  \n\njaclaz   \n"
+    },
+    {
+      "id": "62098",
+      "timestamp": "2009-03-12T13:25:46+00:00",
+      "author": "Adam_W",
+      "content": "No joking , I thought mbr viruses were a thing of the past!  \n\n[http://www.symantec....nder.win.nt.pdf](http://www.symantec.com/avcenter/reference/virus.behavior.under.win.nt.pdf \"External link\")  \n[http://technet.micro...y/cc977223.aspx](http://technet.microsoft.com/en-us/library/cc977223.aspx \"External link\")  \n\n\"Windows 2000 is immune to viruses infecting these disk structures during normal operation, because it only accesses physical disks through protected mode disk drivers\"   \n"
+    },
+    {
+      "id": "62100",
+      "timestamp": "2009-03-12T13:46:23+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e No joking , I thought mbr viruses were a thing of the past!  \n\u003e\n\u003e [http://www.symantec....nder.win.nt.pdf](http://www.symantec.com/avcenter/reference/virus.behavior.under.win.nt.pdf \"External link\")  \n\u003e [http://technet.micro...y/cc977223.aspx](http://technet.microsoft.com/en-us/library/cc977223.aspx \"External link\")  \n\u003e\n\u003e \"Windows 2000 is immune to viruses infecting these disk structures during normal operation, because it only accesses physical disks through protected mode disk drivers\"\n\nYep, though \"normal operation\" does not apply to \"virus operation\". ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nPlay a bit with the dsfok toolkit:  \n[http://www.ozemail.c...eezip/freeware/](http://www.ozemail.com.au/~nulifetv/freezip/freeware/ \"External link\")  \nor with MBRWIX, MBRFIX and the like.  \n\nIt should be impossible to write to the MBR, right?  \n\nIf you read attentively (and between the lines) the .pdf you linked to:  \n\u003e **MBR Infection by Booting Off an Infected Floppy Diskette**   \n\u003e The Windows NT operating system is still susceptible to this type of infection. Since NT does not have control of  \n\u003e the computer during system boot-up, booting from an infected floppy diskette allows the virus to infect the MBR of  \n\u003e any of the physical drives on the system using the usual techniques. This vector of infection is quite common, and  \n\u003e we can expect to see more of the same.  \n\u003e\n\u003e **MBR Infection by Running a Dropper Program or Multipartite Virus**   \n\u003e Dropper programs and multipartite viruses infect the MBR of the hard drive by using BIOS or DOS services to write  \n\u003e directly to the hard drive. Since Windows NT prevents all such writes from within Windows NT DOS box, this type  \n\u003e of infection will be completely prevented while NT is running. However, if the computer in question also has the  \n\u003e ability to boot to DOS or Windows 95, then the user could boot to one of these operating systems and execute the  \n\u003e dropper program or multipartite virus normally.\n\n\u003cbr /\u003e\n\nFirst case is EXACTLY what a USB stick can cause (if you boot from it).  \nSecond case states (correctly) that you cannot anymore write to MBR using BIOS or DOS services, .... but you can use Windows NT ones allright....![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nOperating systems evolve, virii do the same...![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "80489",
+      "timestamp": "2009-10-01T05:30:46+00:00",
+      "author": "DaemonForce",
+      "content": "I have recently encountered a Boot Sector virus on a 1.68GB Quantum Fireball with crashing heads in NTFS. System boot freaks out, Partition magic freaks out, Ranish killed the disk no problem...Formatting is now impossible though.   \n"
+    },
+    {
+      "id": "80505",
+      "timestamp": "2009-10-01T08:16:48+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I have recently encountered a Boot Sector virus on a 1.68GB Quantum Fireball with crashing heads in NTFS. System boot freaks out, Partition magic freaks out, Ranish killed the disk no problem...Formatting is now impossible though.\n\nWe usually call them \"dead drives\" instead of \"Boot Sector viruses\", but that\u0027s allright.  \n\njaclaz   \n"
+    },
+    {
+      "id": "80602",
+      "timestamp": "2009-10-01T22:58:14+00:00",
+      "author": "DaemonForce",
+      "content": "\u003e We usually call them \"dead drives\" instead of \"Boot Sector viruses\"\nThese days they usually go hand in hand. ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n"
+    }
+  ]
+}

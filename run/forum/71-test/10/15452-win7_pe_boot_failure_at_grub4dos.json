@@ -1,0 +1,46 @@
+{
+  "id": "15452",
+  "title": "win7 pe boot failure at grub4dos",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "137896",
+      "timestamp": "2011-09-15T20:03:45+00:00",
+      "author": "bluespy",
+      "content": "I\u0027m trying to a bootable usb with ntfs + grub4dos + windows 7 pe + hirencd.  \n\nI formatted usb with ntfs, and changed mbr with \"grubinst_gui\".  \nI copied \"grldr.mbr\", \"grldr\", ad \"default\" from grub4dos-0.4.5b.  \n\nAnd from windows 7 pe, I copied every files and folders to \"%usb%/win7pe/\". Then I wrote \"menu.lst\" like this.  \n\ntitle 1. WinPE Tool \\\\n  \nfind --set-root /win7pe/BOOTMGR  \nchainloader /win7pe/BOOTMGR  \n\nAnd the result is here.  \n\n[![Posted Image](http://www.sevenforums.com/attachments/general-discussion/175280d1315978633t-win7-pe-boot-failure-grub-menu-pe_win7.jpg)](http://www.sevenforums.com/attachments/general-discussion/175280d1315978633-win7-pe-boot-failure-grub-menu-pe_win7.jpg \"External link\") [![Posted Image](http://www.sevenforums.com/attachments/general-discussion/175281d1315978633t-win7-pe-boot-failure-grub-menu-pe_win72.jpg)](http://www.sevenforums.com/attachments/general-discussion/175281d1315978633-win7-pe-boot-failure-grub-menu-pe_win72.jpg \"External link\")   \n\nWhat am I wrong?   \n"
+    },
+    {
+      "id": "137897",
+      "timestamp": "2011-09-15T20:15:51+00:00",
+      "author": "Rui Paz",
+      "content": "Hi,  \n\nI didn\u0027t try to do what you are trying to do but i know that the BCD needs to be on a folder called **Boot** located at the root folder of the drive like the error above show. The Boot folder reference is hard coded on several files.   \n"
+    },
+    {
+      "id": "137901",
+      "timestamp": "2011-09-15T21:43:40+00:00",
+      "author": "sambul61",
+      "content": "Why don\u0027t you just drop WinPE ISO onto the Thumb and boot it from the ISO with Grub4DOS?   \n"
+    },
+    {
+      "id": "137903",
+      "timestamp": "2011-09-15T22:21:45+00:00",
+      "author": "AMGunther",
+      "content": "I have also got a boot problem with GRUB4DOS - I have no clue how it happened, but my single partitioned laptop(Windows 7 64bit) has the following boot error message:  \n\nBooting \u0027Windows Vista\u0027  \nacpi  \nVista Loader 2.1.2  \nDone!  \nfallback 1  \nfind --set-root /bootmgr   \n\nError 17: File not found  \nBooting \u0027Windows NT/2000/XP\u0027  \n\nfallback 2  \nfind --set-root /ntldr   \n\nError 17: File not found  \nBooting \u0027Enter Command Line\u0027  \n\nBoot failed! Press any key to enter command line.  \n\n\u003cbr /\u003e\n\n- All very curious, I HAVE TRIED TO FOLLOW SOME OF THE EXISTING SCRIPTS/FORUMS ON \"REBOOT\" - but I get a few different replies while trying to solve the problem with GRUB4DOS.  \n\nWhen I type in the command line.  \n\ngrub\\\u003e root (  \n\\[TAB\\]  \nPossible disks are: hd0 rd cd  \n\n\\\u003e root (hd0,0)  \n\\[ENTER\\]  \nFilesystem type is ntfs, partition type 0x7  \n\n\\\u003e find /  \n\\[TAB\\]  \nError 2: Bad file or directory type   \n\nCAN ANYONE PLEASE CORRECT ME AND/OR GUIDE ME THROUGH THE REST OF THE STEPS I SHOULD FOLLOW TO BOOT MY LAPTOP INTO WINDOWS? I AM NOT EXPERIENCED WITH GRUB, THIS IS A FIRST, DON\u0027T EVEN KNOW WHY IT\u0027S ON MY LAPTOP...I AM ALSO NEW TO FORUMS - THE POSTING - PLEASE EXCUSE ME IF I AM FOLLOWING THE INCORRECT PROTOCOL AS THIS IS ALSO A FIRST.   \n"
+    },
+    {
+      "id": "137909",
+      "timestamp": "2011-09-16T02:19:16+00:00",
+      "author": "bluespy",
+      "content": "**sambul61/**   \n\nI want to modify some programs in PE, so I extracted files on usb.   \n\n**Edited by bluespy, 16 September 2011 - 03:13 AM.**\n"
+    },
+    {
+      "id": "137916",
+      "timestamp": "2011-09-16T06:18:09+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e CAN ANYONE PLEASE CORRECT ME AND/OR GUIDE ME THROUGH THE REST OF THE STEPS I SHOULD FOLLOW TO BOOT MY LAPTOP INTO WINDOWS? I AM NOT EXPERIENCED WITH GRUB, THIS IS A FIRST, DON\u0027T EVEN KNOW WHY IT\u0027S ON MY LAPTOP...I AM ALSO NEW TO FORUMS - THE POSTING - PLEASE EXCUSE ME IF I AM FOLLOWING THE INCORRECT PROTOCOL AS THIS IS ALSO A FIRST.  \nHmmm. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\nRead these two:  \n[http://www.boot-land...?showtopic\u003d3833](http://www.boot-land.net/forums/?showtopic\u003d3833 \"External link\")  \n\u003chttp://reboot.pro/5770/\u003e  \n\nDO NOT use WAREZ.  \nONLY use CAPITALS when really needed, it looks like you are shouting at us! ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    }
+  ]
+}

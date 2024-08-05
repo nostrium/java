@@ -1,0 +1,46 @@
+{
+  "id": "5484",
+  "title": "Help understanding XP SP3 Install boot process",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "42316",
+      "timestamp": "2008-08-20T07:11:28+00:00",
+      "author": "coldswitch",
+      "content": "Hello, this is my first post here and I would like to say that this website is a great source of information! Allso, thanks Jaclaz for all your work towards the better future!  \n\nMy project:  \n8GB Sandisk MicroSDHC chip inside very small USB-Reader making a fast and small keychain USB-stick (about 15MB/s read/write speeds)  \n\nincluding:  \nXP SP3 Setup \\[achieved\\]  \nUbuntu 8.04 Live \\[achieved\\]  \nUbuntu 8.04 Persistent \\[not started yet\\]  \nDOS \\[not started yet\\]  \n\nboot process:  \nNTLDR with boot.ini menu that has option to load GRUB4DOS (which loads Ubuntu)  \n\nProblem:  \nI have noticed that if I change the partitioning on the disk, I need to get new bootsector for xp-setup. The old XPSTP.bs wont do anymore. This is not needed for Ubuntu however as it seems to load whatever the partitioning might be. I need partitions for USB-stick so that I have some place to save info when working with live Ubuntu.  \n\n1. Any chance to load XP SP3 Setup from GRUB4DOS menu so that the setup starts, no matter what the partitioning on the usb-stick might be?  \n\n2. (A bit like question 1) Is it possible to use GRUB4DOS as the main bootloader and even start XP setup from there?  \n\nGoal:  \nI want a simple batch command to rebuild my stick with one-(double)click.  \n\n\u003cbr /\u003e\n\nThank you for your help ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \n"
+    },
+    {
+      "id": "42327",
+      "timestamp": "2008-08-20T09:37:06+00:00",
+      "author": "was_jaclaz",
+      "content": "1) Sure, instead of using XPSTP.bs directly chainload the setup loader.  \nSomething like this:  \n\n```\ntitle XPSTP\n\nfind --set-root /setupldr.bin\n\nchainloader setupldr.bin\n```\n\nwill do. (if you have renamed SETUPLDR.BIN to NTLDR, change it back)  \n\n2) Sure, simply use my Makebs batch to change the name of the invoked loader to GRLDR:  \n[http://www.boot-land...?showtopic\u003d2362](http://www.boot-land.net/forums/?showtopic\u003d2362 \"External link\")  \n\n\u003e Allso, thanks Jaclaz for all your work towards the better future!\nAm I contributing ANYTHING \"for a better future\"? ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\n:wink:   \n\n:wink:  \n\njaclaz   \n"
+    },
+    {
+      "id": "42335",
+      "timestamp": "2008-08-20T11:03:54+00:00",
+      "author": "coldswitch",
+      "content": "Thanks for your quick reply! And about the future part, just imagine how much time you can save when people finally find your tools/instructions and solutions for their problems so THEY can spend more time doing than thinking.  \n\nOne more thing tho, whats the thing about XPSETUP.bs being so specific? Why does it have to contain information about partition size where it seems that GRUB doesn\u0027t?   \n"
+    },
+    {
+      "id": "42343",
+      "timestamp": "2008-08-20T15:22:11+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e One more thing tho, whats the thing about XPSETUP.bs being so specific? Why does it have to contain information about partition size where it seems that GRUB doesn\u0027t?\n\nXPSETUP.bs is a copy of a bootsector.  \n\nThe traditional way booting is done on PC is basically the following:  \nBIOS-\\\u003eMBR-\\\u003ebootsector-\\\u003eSystem file or loader  \n\nBOTH the MBR and the bootsector are composed of two main parts:  \n1) CODE  \n2) DATA  \n\nThe CODE is the SAME for ANY hard disk (or stick) fdisked/formatted under the SAME Operating System, with SAME filesystem.  \n\nThe DATA is SPECIFIC for EACH single drive or volume/partition.  \n\nMain parts of MBR:  \n1) CODE that looks for Active Partition in Partition Table and chainloads it\u0027s bootsector  \n2) DATA, Partition table, containing four entries, SPECIFIC to the drive  \n3) DATA, MBR signature (win2K/XP/2003/VISTA), SPECIFIC to the drive  \n\nMain parts of bootsector:  \n1) CODE that chainloads the default OS bootloader, specific to each OS, INDEPENDENT from volume/partition  \n2) DATA, partition and filesystem data, SPECIFIC to each volume/partition  \n3) DATA, voòume label and serial, SPECIFIC to each volume/partition  \n\nWhat basically grub4dos does is to use it\u0027s own code, while using existing, SPECIFIC data taken from the MBR or bootsector. ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif) Thus it works on every volume, as long as the DATA in the MBR/bootsector is valid.  \n\njaclaz   \n"
+    },
+    {
+      "id": "42476",
+      "timestamp": "2008-08-22T06:05:01+00:00",
+      "author": "ktp",
+      "content": "Thanks to jaclaz for this excellent interesting summary.  \nI would add this (jaclaz please corrects me if something is wrong):  \n\ngrub4dos MBR code (when grub4dos installed in MBR using grubinst.exe, grubinst_gui.exe or bootlace.com)  \ndoes NOT search for active primary partition but it looks for presence of grldr file in the root of each partition  \n(grub4dos support FAT, FAT32, NTFS, ext2, ext3... file system). This feature is very interesting since it is   \nopen for multiboot (otherwise with the classic/standard MBR code it would only boot the single/unique existing active  \nprimary partition). Once the grldr file (called MBR-helper I believe) is found, grldr continues the boot by searching  \nfor file menu.lst in specific location on the partition (root, /grub, /boot/grub). If menu.lst cannot be found, grldr  \npresents a default menu or drops to grub4dos command prompt.   \n"
+    },
+    {
+      "id": "42482",
+      "timestamp": "2008-08-22T09:38:33+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e (jaclaz please corrects me if something is wrong):\n\nNothing wrong ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif).  \n\nBut the usual warning is needed:  \nthe grldr.mbr (the file that is installed on the MBR) occupies not only the MBR - i.e. first 512 bytes - but also a few more of the following hidden sectors  \nthus:  \n1) conflicts ***may*** arise when using some Commercial apps that manage partitions/disks (or other bootloaders) that have been reported to write data to the hidden sectors  \n2) when imaging/backing up disks, it is necessary to image not only the bootsector but also ALL the hidden sectors.  \n\nSome reference:  \n[http://www.boot-land...?showtopic\u003d3501](http://www.boot-land.net/forums/?showtopic\u003d3501 \"External link\")  \n[http://www.boot-land...opic\u003d3226\\\u0026st\u003d15](http://www.boot-land.net/forums/?showtopic\u003d3226\u0026st\u003d15 \"External link\")  \n\njaclaz   \n"
+    }
+  ]
+}

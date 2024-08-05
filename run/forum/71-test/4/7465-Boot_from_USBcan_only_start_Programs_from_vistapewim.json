@@ -1,0 +1,382 @@
+{
+  "id": "7465",
+  "title": "Boot from USB-can only start Programs from vistape.wim",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "62681",
+      "timestamp": "2009-03-18T15:47:19+00:00",
+      "author": "asker2",
+      "content": "I already tried GRUB and Syslinux, but both aren\u0027t working!  \nI want to get a Multiboot on my USB stick with the OS VistaPE, Gparted and some other Linux distributions.  \nI have installed Syslinux, but by booting there is written: no operating system  \nand GRUB I installed too by copying the stage files and then the grub command for install but then by booting nothing happened!  \nWhat is to do to make it working.  \n\n( it is a 8GB stick from sony with fat32 at the moment, and I already booted backtrack as single boot)   \n"
+    },
+    {
+      "id": "62734",
+      "timestamp": "2009-03-19T07:34:29+00:00",
+      "author": "was_jaclaz",
+      "content": "Try using fuwi\u0027s batch:  \n[http://www.911cd.net...showtopic\u003d21702](http://www.911cd.net/forums//index.php?showtopic\u003d21702 \"External link\")  \n\nRead this seemingly unrelated thread:  \n[http://www.911cd.net...showtopic\u003d21955](http://www.911cd.net/forums//index.php?showtopic\u003d21955 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "62742",
+      "timestamp": "2009-03-19T10:21:12+00:00",
+      "author": "asker2",
+      "content": "\u003e Try using fuwi\u0027s batch:  \n\u003e [http://www.911cd.net...showtopic\u003d21702](http://www.911cd.net/forums//index.php?showtopic\u003d21702 \"External link\")  \n\u003e\n\u003e Read this seemingly unrelated thread:  \n\u003e [http://www.911cd.net...showtopic\u003d21955](http://www.911cd.net/forums//index.php?showtopic\u003d21955 \"External link\")\n\n\u003cbr /\u003e\n\nThe fuwi batch:  \nThere is nothing written about Multiboot. What is then to do to make it multiboot.  \nI think with GRUB it would work, there is at least no error if I boot only a black screen.  \n\nI did this introduction:  \n[http://www.911cd.net...showtopic\u003d18846](http://www.911cd.net/forums//index.php?showtopic\u003d18846 \"External link\")  \n\nThen there is written Operating System not found.  \nI have included like in the introduction DSL and PuppyLinux but it is still not working I don\u0027t understand...   \n"
+    },
+    {
+      "id": "62748",
+      "timestamp": "2009-03-19T13:22:53+00:00",
+      "author": "was_jaclaz",
+      "content": "Look, it doesn\u0027t work like this. ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)   \n\nYou have a problem: the impossibility to make a booting stick.  \n\n\u003e I did this introduction:  \n\u003e [http://www.911cd.net...showtopic\u003d18846](http://www.911cd.net/forums//index.php?showtopic\u003d18846 \"External link\")\nNo you didn\u0027t. ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)  \n\nThat tutorial is an old one about a FAT16 system, you used FAT32 and BECAUSE of this you got:  \n\n\u003e Then there is written Operating System not found.  \n\u003e I have included like in the introduction DSL and PuppyLinux but it is still not working I don\u0027t understand...\n\nLet\u0027s try making it boot.  \n\nTry using fuwi\u0027s batch.  \n\nIf you had taken the time to read the given links, you would have found how booting from FAT32 is sometimes problematic when using the 2K/XP/2003 bootsector, and how the procedure by fuwi was devised to work around the problem.  \n\nIf it works we\u0027ll talk about multibooting.  \n\nFor the record, the original guide by **diddy** is actually TWO guides, one using syslinux and one using grub4dos, once you run succesfully fuwi\u0027s batch, you are in a situation similar to that in step 5, but with the grldr.mbr installed, useful to workaround the said bootsector problem by bypassing it and loading directly the OS kernel files.  \n\nIn other words, you should be in a situation with the grldr.mbr properly installed as in here:  \n[http://diddy.boot-la...ll.htm#method08](http://diddy.boot-land.net/grub4dos/files/install.htm#method08 \"External link\")  \nINSTEAD of being in the one here:  \n[http://diddy.boot-la...ll.htm#method05](http://diddy.boot-land.net/grub4dos/files/install.htm#method05 \"External link\")  \n\nGuess who, roughly 1 year and a half later, wrote the current grub4dos guide?:  \n[http://www.boot-land...?showtopic\u003d5187](http://www.boot-land.net/forums/index.php?showtopic\u003d5187 \"External link\")  \n\n![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "62754",
+      "timestamp": "2009-03-19T14:01:54+00:00",
+      "author": "asker2",
+      "content": "Thanks now it works Grub4dos is starting  \nNow I took your 2nd introduction and choose load via syslinux  \nI installed syslinux and add the grub4dos label to syslinux.cfg  \n\nWas that right?  \nTo which file have I now to add the OS to syslinux.cfg or do I have to create a menu.txt?   \n"
+    },
+    {
+      "id": "62758",
+      "timestamp": "2009-03-19T14:20:39+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Was that right?\n\nWho knows? ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)  \n\nYou have to make up your mind. ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)  \n\nAre you using syslinux OR grub4dos? ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)  \n\n(using both is actually pointless, but in any case you need to decide which one is the \"main\" loader)  \n\ngrub4dos can load syslinux as a bootsector:  \n[http://www.boot-land...?showtopic\u003d4486](http://www.boot-land.net/forums/?showtopic\u003d4486 \"External link\")  \n\n\u003cbr /\u003e\n\nsyslinux can load grub4dos:  \n\n```\nlabel GRUB4DOS\n\n\t\t   KERNEL grub.exe\n```\n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "62760",
+      "timestamp": "2009-03-19T14:29:44+00:00",
+      "author": "asker2",
+      "content": "I wrote a menu.lst and then Puppy Linux booted with Grub4dos.  \n![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)   \nCould you help me to write a menu.lst for Gparted or is there an introduction?   \n"
+    },
+    {
+      "id": "62770",
+      "timestamp": "2009-03-19T15:43:57+00:00",
+      "author": "Icecube",
+      "content": "You can also try Parted Magic instead of the Gparted liveCD.  \nParted Magic contains Gparted also and has already a menu.lst file for grub(4dos).   \n"
+    },
+    {
+      "id": "62772",
+      "timestamp": "2009-03-19T15:56:59+00:00",
+      "author": "asker2",
+      "content": "OK I will try it is really crazy   \nBackTrack and PuppyLinux work but Gparted not!  \nPMAGIC is not working too it can\u0027t mount any partition is written and GPARTED stops after mounting the USB stick partition  \n\nApart from this:  \nWhat is to do for adding VistaPE, because that was not mentioned.  \nI tried this:  \n\n\\[codebox\\]title VistaPE  \nchainloader /BOOTMGR  \n\\[/codebox\\]  \n\nthen there is the message ntrldr will be booted and nothing happens.   \n"
+    },
+    {
+      "id": "62802",
+      "timestamp": "2009-03-19T23:43:19+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I tried this:  \n\u003e\n\u003e ```\n\u003e title VistaPE\n\u003e\n\u003e chainloader /BOOTMGR\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e then there is the message ntrldr will be booted and nothing happens.\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nYou should ALWAYS **root** (or **rootnoverify** ) to the drive.  \n\nAre you using command line or adding entries in menu.lst? ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)  \n\nWhen you use command line (advised when testing), you need to enter a **boot** command as last line.  \n\nThis is NOT needed if you add entries in menu.lst.  \n\nAll the above info has been written ***n*** times, in the guide and in several threads, take a bit of time, do some browsing and searching on the forum, do not ask questions already answered several times, if you have an error or a problem do ask for help or advice, but post some details, nothing is tiring as doing guesswork.  \n\nTo clarify, this is NOT a report that anyone can give advice on:  \n\n\u003e I tried this:  \n\u003e\n\u003e ```\n\u003e title VistaPE\n\u003e\n\u003e chainloader /BOOTMGR\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e then there is the message ntrldr will be booted and nothing happens.\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nthis:  \n\u003e I tried this:  \n\u003e I installed grldr.mbr on a FAT32 formatted partition (first and only of a USB stick)  \n\u003e The key is booting and reading menu.lst allright.  \n\u003e I created a VistaPE by......  \n\u003e ....  \n\u003e I copied it to the USB stick by ......  \n\u003e\n\u003e I have this directory structure:  \n\u003e grldr  \n\u003e menu.lst  \n\u003e BOOTMGR  \n\u003e /boot/  \n\u003e /whatever/  \n\u003e ...  \n\u003e etc.  \n\u003e etc.  \n\u003e\n\u003e I tried adding this line to menu.lst:  \n\u003e\n\u003e ```\n\u003e title VistaPE\n\u003e\n\u003e chainloader /BOOTMGR\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e then there is the message \\\u003cplease insert here EXACT error message you get\\\u003e  \n\u003e ....  \n\u003e ....\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\n***may*** ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)  \n\nThis said, create a VistaPE .iso and boot it with (hd32) mapping ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png):  \n[http://www.boot-land...?...\u003d5041\\\u0026st\u003d14](http://www.boot-land.net/forums/index.php?showtopic\u003d5041\u0026st\u003d14 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "62858",
+      "timestamp": "2009-03-20T14:56:08+00:00",
+      "author": "asker2",
+      "content": "I added now to my USBSTICK F: with the menu.lst direct in F:\\\\ the following parameters.  \nHere you can see what is on the USBSTICK.  \n[![Posted Image](http://img14.imageshack.us/img14/1783/usbflash.th.jpg)](http://img14.imageshack.us/my.php?image\u003dusbflash.jpg \"External link\")  \n\n\u003cbr /\u003e\n\n```\ntitle Boot Windows PE 2.1 - ISO from HD into RAMDISKfind --set-root --ignore-floppies /VistaPEv12b3full.isomap /VistaPEv12b3full.iso (hd32)map --hookroot (hd32)chainloader /BOOTMGR\n```\n\nBut then I got this error:Autodetect number-of-heads failed. Use default value 255Autodetect sectors-per-track failed. Use default value 63I couldn\u0027t find a solution for this.  \nAnd to the GUI of Boot_Iso:  \nI can\u0027t press GO like you see in the attached picture.  \nIt says I should select all sources, but I have only this one.  \n\n[![Posted Image](http://img10.imageshack.us/img10/6596/bootiso.th.jpg)](http://img10.imageshack.us/my.php?image\u003dbootiso.jpg \"External link\")   \n"
+    },
+    {
+      "id": "62862",
+      "timestamp": "2009-03-20T15:44:09+00:00",
+      "author": "wimb",
+      "content": "**@asker2**   \n\nYour grldr is too old (18-10-2006)  \nIn U_XP_SET package you find grldr of 07-03-2009  \n\nYou need to Select XP Setup Source folder (or XP setup CD) in order to have the necessary XP BootFiles NTLDR, NTDETECT.COM and BOOTFONT.BIN available.   \n"
+    },
+    {
+      "id": "62863",
+      "timestamp": "2009-03-20T15:50:28+00:00",
+      "author": "asker2",
+      "content": "But if I use NTFS Linux will not work am I right?   \n"
+    },
+    {
+      "id": "62865",
+      "timestamp": "2009-03-20T15:55:09+00:00",
+      "author": "wimb",
+      "content": "\u003e But if I use NTFS Linux will not work am I right?\nYou are right, I was making already a correction.  \nSo keep first the stick as it is and Update grldr  \n\nBut Puppy Linux has Read/Write possibility with NTFS FileSystem.   \n"
+    },
+    {
+      "id": "62866",
+      "timestamp": "2009-03-20T15:59:33+00:00",
+      "author": "asker2",
+      "content": "OK I updated the grdlr and VistaPE is working good (very fast now).  \nBut now the other systems don\u0027t work. There is the error:  \npath or filename must be absolute error 1  \n\nWhat is to change?  \nDo I have to write:  \ninitrd\u003dF:\\\\initrd.gz  \n\nbefore I wrote only:  \n\\\\initrd.gz  \n\nCan I use always the .iso or only with VistaPE?   \n"
+    },
+    {
+      "id": "62867",
+      "timestamp": "2009-03-20T16:05:50+00:00",
+      "author": "wimb",
+      "content": "You need in menu.lst a forward slash instead of the backslash.  \n\nFor me is working:  \n\n```\ntitle 07 - Puppy Linux - NTFS Read / Write\n\nfind --set-root /grldr\n\nkernel /vmlinuz root\u003d/dev/ram0 initrd\u003dinitrd.gz PMEDIA\u003dusbflash PKEYS\u003duk\n\ninitrd /initrd.gz\n\n\n\ntitle 10 - Damn Small Linux  - NTFS Read Only - Knoppix\n\nfind --set-root /grldr\n\nkernel /linux24 ramdisk_size\u003d100000 init\u003d/etc/init lang\u003dus apm\u003dpower-off vga\u003d791 initrd\u003dminirt24.gz nomce noapic qemu quiet BOOT_IMAGE\u003dknoppix frugal\n\ninitrd /minirt24.gz\n```\n\n\u003cbr /\u003e\n\nEach entry consists of 4 rules.  \nThe kernel rule can be very long and can appear as two rules, but it is 1 rule  \n\nEDIT:  \nPuppy Linux contains GParted   \n"
+    },
+    {
+      "id": "62871",
+      "timestamp": "2009-03-20T16:29:25+00:00",
+      "author": "asker2",
+      "content": "Now it is working, BackTrack4.  \nBut parted magic doesn\u0027t find a partition to mount.  \nIt says: the media that contain PMAGIC.SQFS could not be found and then I come to the linux bash.  \nWhat is with the question about the .iso?  \nYes I know that there is in Gparted, but a extra Gparted would be better.   \n"
+    },
+    {
+      "id": "62873",
+      "timestamp": "2009-03-20T16:39:09+00:00",
+      "author": "wimb",
+      "content": "Puppy Linux contains GParted, so no need to add it separately.  \n\nBOOT_ISO.exe can add two different types of ISO  \n\nVistaPE and Windows PE 2.1 ISO are booting from GRUB4DOS menu.lst with chainloader /BOOTMGR  \n\nOther CD ISO like UBCD or Acronis can be Added as well   \nand get then chainloader (hd32)  \n\nSee preconfigured menu.lst in U_XP_SET package.   \n"
+    },
+    {
+      "id": "62875",
+      "timestamp": "2009-03-20T16:44:55+00:00",
+      "author": "asker2",
+      "content": "And other .iso like the one of OpenSuse will not work or?  \nPuppy Linux I will probably remove, but if I add OpenSuse I have Gparted again and OpenSuse I need.   \n"
+    },
+    {
+      "id": "62877",
+      "timestamp": "2009-03-20T17:05:53+00:00",
+      "author": "was_jaclaz",
+      "content": "asker2  \n\nReally, you need to READ the guide, **at least the basics** , then browse the Forum for already posted examples, instead of throwing \"random\" attemps with \"random\" syntax.  \n\nStickies are there to be READ **before** posting any question that crosses your mind.  \n\nPlease READ:  \n1) the guide:  \n[http://www.boot-land...?showtopic\u003d5187](http://www.boot-land.net/forums/index.php?showtopic\u003d5187 \"External link\")  \n[http://diddy.boot-la...os/Grub4dos.htm](http://diddy.boot-land.net/grub4dos/Grub4dos.htm \"External link\")  \n\n2) the whereto stickie:  \n[http://www.boot-land...hp?showtopic\u003d14](http://www.boot-land.net/forums/index.php?showtopic\u003d14 \"External link\")  \n\n3) the (hd32) mapping stickie:  \n[http://www.boot-land...?showtopic\u003d5041](http://www.boot-land.net/forums/index.php?showtopic\u003d5041 \"External link\")  \n\nBrowse the Forum:  \n[http://www.boot-land...hp?showforum\u003d66](http://www.boot-land.net/forums/index.php?showforum\u003d66 \"External link\")  \n\nParticularly, READ this ENTIRE thread:  \n[http://www.boot-land...?...ic\u003d4902\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d4902\u0026hl\u003d \"External link\")  \n\nLOTS of time has been spent on trying to document and explain what is possible, what is not and how to do what is possible, you cannot come here after all that work with a   \n\u003e Do I have to write:  \n\u003e initrd\u003dF:\\\\initrd.gz  \n\u003e\n\u003e before I wrote only:  \n\u003e \\\\initrd.gz\n\nkind of question, it is simply offensive to all the people who have contributed their time to the grub4dos forum and guide. ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)   \n\njaclaz   \n"
+    },
+    {
+      "id": "62878",
+      "timestamp": "2009-03-20T17:18:06+00:00",
+      "author": "asker2",
+      "content": "Now Parted Magic is working. That is very good!  \nThe links I will read.  \nIn OpenSuse I have a problem:  \nit says I should add a correct root\u003d option  \nI tried /dev/ram0 but that is unrecognized.  \nI also tried /dev/sdb1, hd0, hd1 it all isn\u0027t working.  \n\nHere the opensuse menu.lst data:  \n\n```\ntitle OpenSuse Netinstall\n\nroot \u0026#40;hd1,0\u0026#41;\n\nfind --set-root /grldr \n\nkernel /net/boot/i386/loader/linux initrd\u003dinitrd PMEDIA\u003dusbflash root\u003d\u0026#40;hd1,0\u0026#41;ramdisk_size\u003d512000 ramdisk_blocksize\u003d4096  initrd /net/boot/i386/loader/initrd\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "62958",
+      "timestamp": "2009-03-21T13:53:35+00:00",
+      "author": "asker2",
+      "content": "It works!  \nI copied OpenSuse 11.1 .iso to the stick and used mapping and it is starting.  \nIf I use --mem it should be quicker I think. The max size of .iso by memory mapping is limited throug RAM or? I have 2GB RAM, can I now use .iso with memory mappint until 2GB?   \n"
+    },
+    {
+      "id": "62960",
+      "timestamp": "2009-03-21T14:09:43+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I have 2GB RAM, can I now use .iso with memory mappint until 2GB?\n\nIf whatever you boot needs 0 bytes of RAM to run, yes.  \n\nOtherwise, you will need to subtract at least the minimum requirement for the particular OS you need to boot.  \n\nOf course it is plain counterproductive to limit RAM to the OS in order to load a larger image to RAM, and I doubt ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif) it will be faster when loading, though it may be faster when running ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png).  \n\njaclaz   \n"
+    },
+    {
+      "id": "62961",
+      "timestamp": "2009-03-21T14:15:54+00:00",
+      "author": "asker2",
+      "content": "\u003e If whatever you boot needs 0 bytes of RAM to run, yes.  \n\u003e\n\u003e Otherwise, you will need to subtract at least the minimum requirement for the particular OS you need to boot.  \n\u003e\n\u003e Of course it is plain counterproductive to limit RAM to the OS in order to load a larger image to RAM, and I doubt ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif) it will be faster when loading, though it may be faster when running ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png).  \n\u003e\n\u003e jaclaz\nI don\u0027t know if I understood right but I think you meant:  \nIt is not useful to use memory mapping because then only loading is faster and not the running OS. So I should use normal mapping?   \n"
+    },
+    {
+      "id": "62963",
+      "timestamp": "2009-03-21T14:36:08+00:00",
+      "author": "asker2",
+      "content": "OpenSuse starts and loads the Kernel but after choosing Start Live Installation it hangs.  \nIn console is written:  \ncouldn\u0027t find live configuration file.  \nBut why not?   \n"
+    },
+    {
+      "id": "62681",
+      "timestamp": "2009-03-18T15:47:19+00:00",
+      "author": "asker2",
+      "content": "I already tried GRUB and Syslinux, but both aren\u0027t working!  \nI want to get a Multiboot on my USB stick with the OS VistaPE, Gparted and some other Linux distributions.  \nI have installed Syslinux, but by booting there is written: no operating system  \nand GRUB I installed too by copying the stage files and then the grub command for install but then by booting nothing happened!  \nWhat is to do to make it working.  \n\n( it is a 8GB stick from sony with fat32 at the moment, and I already booted backtrack as single boot)   \n"
+    },
+    {
+      "id": "62734",
+      "timestamp": "2009-03-19T07:34:29+00:00",
+      "author": "was_jaclaz",
+      "content": "Try using fuwi\u0027s batch:  \n[http://www.911cd.net...showtopic\u003d21702](http://www.911cd.net/forums//index.php?showtopic\u003d21702 \"External link\")  \n\nRead this seemingly unrelated thread:  \n[http://www.911cd.net...showtopic\u003d21955](http://www.911cd.net/forums//index.php?showtopic\u003d21955 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "62742",
+      "timestamp": "2009-03-19T10:21:12+00:00",
+      "author": "asker2",
+      "content": "\u003e Try using fuwi\u0027s batch:  \n\u003e [http://www.911cd.net...showtopic\u003d21702](http://www.911cd.net/forums//index.php?showtopic\u003d21702 \"External link\")  \n\u003e\n\u003e Read this seemingly unrelated thread:  \n\u003e [http://www.911cd.net...showtopic\u003d21955](http://www.911cd.net/forums//index.php?showtopic\u003d21955 \"External link\")\n\n\u003cbr /\u003e\n\nThe fuwi batch:  \nThere is nothing written about Multiboot. What is then to do to make it multiboot.  \nI think with GRUB it would work, there is at least no error if I boot only a black screen.  \n\nI did this introduction:  \n[http://www.911cd.net...showtopic\u003d18846](http://www.911cd.net/forums//index.php?showtopic\u003d18846 \"External link\")  \n\nThen there is written Operating System not found.  \nI have included like in the introduction DSL and PuppyLinux but it is still not working I don\u0027t understand...   \n"
+    },
+    {
+      "id": "62748",
+      "timestamp": "2009-03-19T13:22:53+00:00",
+      "author": "was_jaclaz",
+      "content": "Look, it doesn\u0027t work like this. ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)   \n\nYou have a problem: the impossibility to make a booting stick.  \n\n\u003e I did this introduction:  \n\u003e [http://www.911cd.net...showtopic\u003d18846](http://www.911cd.net/forums//index.php?showtopic\u003d18846 \"External link\")\nNo you didn\u0027t. ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)  \n\nThat tutorial is an old one about a FAT16 system, you used FAT32 and BECAUSE of this you got:  \n\n\u003e Then there is written Operating System not found.  \n\u003e I have included like in the introduction DSL and PuppyLinux but it is still not working I don\u0027t understand...\n\nLet\u0027s try making it boot.  \n\nTry using fuwi\u0027s batch.  \n\nIf you had taken the time to read the given links, you would have found how booting from FAT32 is sometimes problematic when using the 2K/XP/2003 bootsector, and how the procedure by fuwi was devised to work around the problem.  \n\nIf it works we\u0027ll talk about multibooting.  \n\nFor the record, the original guide by **diddy** is actually TWO guides, one using syslinux and one using grub4dos, once you run succesfully fuwi\u0027s batch, you are in a situation similar to that in step 5, but with the grldr.mbr installed, useful to workaround the said bootsector problem by bypassing it and loading directly the OS kernel files.  \n\nIn other words, you should be in a situation with the grldr.mbr properly installed as in here:  \n[http://diddy.boot-la...ll.htm#method08](http://diddy.boot-land.net/grub4dos/files/install.htm#method08 \"External link\")  \nINSTEAD of being in the one here:  \n[http://diddy.boot-la...ll.htm#method05](http://diddy.boot-land.net/grub4dos/files/install.htm#method05 \"External link\")  \n\nGuess who, roughly 1 year and a half later, wrote the current grub4dos guide?:  \n[http://www.boot-land...?showtopic\u003d5187](http://www.boot-land.net/forums/index.php?showtopic\u003d5187 \"External link\")  \n\n![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "62754",
+      "timestamp": "2009-03-19T14:01:54+00:00",
+      "author": "asker2",
+      "content": "Thanks now it works Grub4dos is starting  \nNow I took your 2nd introduction and choose load via syslinux  \nI installed syslinux and add the grub4dos label to syslinux.cfg  \n\nWas that right?  \nTo which file have I now to add the OS to syslinux.cfg or do I have to create a menu.txt?   \n"
+    },
+    {
+      "id": "62758",
+      "timestamp": "2009-03-19T14:20:39+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Was that right?\n\nWho knows? ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)  \n\nYou have to make up your mind. ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)  \n\nAre you using syslinux OR grub4dos? ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)  \n\n(using both is actually pointless, but in any case you need to decide which one is the \"main\" loader)  \n\ngrub4dos can load syslinux as a bootsector:  \n[http://www.boot-land...?showtopic\u003d4486](http://www.boot-land.net/forums/?showtopic\u003d4486 \"External link\")  \n\n\u003cbr /\u003e\n\nsyslinux can load grub4dos:  \n\n```\nlabel GRUB4DOS\n\n\t\t   KERNEL grub.exe\n```\n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "62760",
+      "timestamp": "2009-03-19T14:29:44+00:00",
+      "author": "asker2",
+      "content": "I wrote a menu.lst and then Puppy Linux booted with Grub4dos.  \n![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)   \nCould you help me to write a menu.lst for Gparted or is there an introduction?   \n"
+    },
+    {
+      "id": "62770",
+      "timestamp": "2009-03-19T15:43:57+00:00",
+      "author": "Icecube",
+      "content": "You can also try Parted Magic instead of the Gparted liveCD.  \nParted Magic contains Gparted also and has already a menu.lst file for grub(4dos).   \n"
+    },
+    {
+      "id": "62772",
+      "timestamp": "2009-03-19T15:56:59+00:00",
+      "author": "asker2",
+      "content": "OK I will try it is really crazy   \nBackTrack and PuppyLinux work but Gparted not!  \nPMAGIC is not working too it can\u0027t mount any partition is written and GPARTED stops after mounting the USB stick partition  \n\nApart from this:  \nWhat is to do for adding VistaPE, because that was not mentioned.  \nI tried this:  \n\n\\[codebox\\]title VistaPE  \nchainloader /BOOTMGR  \n\\[/codebox\\]  \n\nthen there is the message ntrldr will be booted and nothing happens.   \n"
+    },
+    {
+      "id": "62802",
+      "timestamp": "2009-03-19T23:43:19+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I tried this:  \n\u003e\n\u003e ```\n\u003e title VistaPE\n\u003e\n\u003e chainloader /BOOTMGR\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e then there is the message ntrldr will be booted and nothing happens.\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nYou should ALWAYS **root** (or **rootnoverify** ) to the drive.  \n\nAre you using command line or adding entries in menu.lst? ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)  \n\nWhen you use command line (advised when testing), you need to enter a **boot** command as last line.  \n\nThis is NOT needed if you add entries in menu.lst.  \n\nAll the above info has been written ***n*** times, in the guide and in several threads, take a bit of time, do some browsing and searching on the forum, do not ask questions already answered several times, if you have an error or a problem do ask for help or advice, but post some details, nothing is tiring as doing guesswork.  \n\nTo clarify, this is NOT a report that anyone can give advice on:  \n\n\u003e I tried this:  \n\u003e\n\u003e ```\n\u003e title VistaPE\n\u003e\n\u003e chainloader /BOOTMGR\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e then there is the message ntrldr will be booted and nothing happens.\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nthis:  \n\u003e I tried this:  \n\u003e I installed grldr.mbr on a FAT32 formatted partition (first and only of a USB stick)  \n\u003e The key is booting and reading menu.lst allright.  \n\u003e I created a VistaPE by......  \n\u003e ....  \n\u003e I copied it to the USB stick by ......  \n\u003e\n\u003e I have this directory structure:  \n\u003e grldr  \n\u003e menu.lst  \n\u003e BOOTMGR  \n\u003e /boot/  \n\u003e /whatever/  \n\u003e ...  \n\u003e etc.  \n\u003e etc.  \n\u003e\n\u003e I tried adding this line to menu.lst:  \n\u003e\n\u003e ```\n\u003e title VistaPE\n\u003e\n\u003e chainloader /BOOTMGR\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e then there is the message \\\u003cplease insert here EXACT error message you get\\\u003e  \n\u003e ....  \n\u003e ....\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\n***may*** ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)  \n\nThis said, create a VistaPE .iso and boot it with (hd32) mapping ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png):  \n[http://www.boot-land...?...\u003d5041\\\u0026st\u003d14](http://www.boot-land.net/forums/index.php?showtopic\u003d5041\u0026st\u003d14 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "62858",
+      "timestamp": "2009-03-20T14:56:08+00:00",
+      "author": "asker2",
+      "content": "I added now to my USBSTICK F: with the menu.lst direct in F:\\\\ the following parameters.  \nHere you can see what is on the USBSTICK.  \n[![Posted Image](http://img14.imageshack.us/img14/1783/usbflash.th.jpg)](http://img14.imageshack.us/my.php?image\u003dusbflash.jpg \"External link\")  \n\n\u003cbr /\u003e\n\n```\ntitle Boot Windows PE 2.1 - ISO from HD into RAMDISKfind --set-root --ignore-floppies /VistaPEv12b3full.isomap /VistaPEv12b3full.iso (hd32)map --hookroot (hd32)chainloader /BOOTMGR\n```\n\nBut then I got this error:Autodetect number-of-heads failed. Use default value 255Autodetect sectors-per-track failed. Use default value 63I couldn\u0027t find a solution for this.  \nAnd to the GUI of Boot_Iso:  \nI can\u0027t press GO like you see in the attached picture.  \nIt says I should select all sources, but I have only this one.  \n\n[![Posted Image](http://img10.imageshack.us/img10/6596/bootiso.th.jpg)](http://img10.imageshack.us/my.php?image\u003dbootiso.jpg \"External link\")   \n"
+    },
+    {
+      "id": "62862",
+      "timestamp": "2009-03-20T15:44:09+00:00",
+      "author": "wimb",
+      "content": "**@asker2**   \n\nYour grldr is too old (18-10-2006)  \nIn U_XP_SET package you find grldr of 07-03-2009  \n\nYou need to Select XP Setup Source folder (or XP setup CD) in order to have the necessary XP BootFiles NTLDR, NTDETECT.COM and BOOTFONT.BIN available.   \n"
+    },
+    {
+      "id": "62863",
+      "timestamp": "2009-03-20T15:50:28+00:00",
+      "author": "asker2",
+      "content": "But if I use NTFS Linux will not work am I right?   \n"
+    },
+    {
+      "id": "62865",
+      "timestamp": "2009-03-20T15:55:09+00:00",
+      "author": "wimb",
+      "content": "\u003e But if I use NTFS Linux will not work am I right?\nYou are right, I was making already a correction.  \nSo keep first the stick as it is and Update grldr  \n\nBut Puppy Linux has Read/Write possibility with NTFS FileSystem.   \n"
+    },
+    {
+      "id": "62866",
+      "timestamp": "2009-03-20T15:59:33+00:00",
+      "author": "asker2",
+      "content": "OK I updated the grdlr and VistaPE is working good (very fast now).  \nBut now the other systems don\u0027t work. There is the error:  \npath or filename must be absolute error 1  \n\nWhat is to change?  \nDo I have to write:  \ninitrd\u003dF:\\\\initrd.gz  \n\nbefore I wrote only:  \n\\\\initrd.gz  \n\nCan I use always the .iso or only with VistaPE?   \n"
+    },
+    {
+      "id": "62867",
+      "timestamp": "2009-03-20T16:05:50+00:00",
+      "author": "wimb",
+      "content": "You need in menu.lst a forward slash instead of the backslash.  \n\nFor me is working:  \n\n```\ntitle 07 - Puppy Linux - NTFS Read / Write\n\nfind --set-root /grldr\n\nkernel /vmlinuz root\u003d/dev/ram0 initrd\u003dinitrd.gz PMEDIA\u003dusbflash PKEYS\u003duk\n\ninitrd /initrd.gz\n\n\n\ntitle 10 - Damn Small Linux  - NTFS Read Only - Knoppix\n\nfind --set-root /grldr\n\nkernel /linux24 ramdisk_size\u003d100000 init\u003d/etc/init lang\u003dus apm\u003dpower-off vga\u003d791 initrd\u003dminirt24.gz nomce noapic qemu quiet BOOT_IMAGE\u003dknoppix frugal\n\ninitrd /minirt24.gz\n```\n\n\u003cbr /\u003e\n\nEach entry consists of 4 rules.  \nThe kernel rule can be very long and can appear as two rules, but it is 1 rule  \n\nEDIT:  \nPuppy Linux contains GParted   \n"
+    },
+    {
+      "id": "62871",
+      "timestamp": "2009-03-20T16:29:25+00:00",
+      "author": "asker2",
+      "content": "Now it is working, BackTrack4.  \nBut parted magic doesn\u0027t find a partition to mount.  \nIt says: the media that contain PMAGIC.SQFS could not be found and then I come to the linux bash.  \nWhat is with the question about the .iso?  \nYes I know that there is in Gparted, but a extra Gparted would be better.   \n"
+    },
+    {
+      "id": "62873",
+      "timestamp": "2009-03-20T16:39:09+00:00",
+      "author": "wimb",
+      "content": "Puppy Linux contains GParted, so no need to add it separately.  \n\nBOOT_ISO.exe can add two different types of ISO  \n\nVistaPE and Windows PE 2.1 ISO are booting from GRUB4DOS menu.lst with chainloader /BOOTMGR  \n\nOther CD ISO like UBCD or Acronis can be Added as well   \nand get then chainloader (hd32)  \n\nSee preconfigured menu.lst in U_XP_SET package.   \n"
+    },
+    {
+      "id": "62875",
+      "timestamp": "2009-03-20T16:44:55+00:00",
+      "author": "asker2",
+      "content": "And other .iso like the one of OpenSuse will not work or?  \nPuppy Linux I will probably remove, but if I add OpenSuse I have Gparted again and OpenSuse I need.   \n"
+    },
+    {
+      "id": "62877",
+      "timestamp": "2009-03-20T17:05:53+00:00",
+      "author": "was_jaclaz",
+      "content": "asker2  \n\nReally, you need to READ the guide, **at least the basics** , then browse the Forum for already posted examples, instead of throwing \"random\" attemps with \"random\" syntax.  \n\nStickies are there to be READ **before** posting any question that crosses your mind.  \n\nPlease READ:  \n1) the guide:  \n[http://www.boot-land...?showtopic\u003d5187](http://www.boot-land.net/forums/index.php?showtopic\u003d5187 \"External link\")  \n[http://diddy.boot-la...os/Grub4dos.htm](http://diddy.boot-land.net/grub4dos/Grub4dos.htm \"External link\")  \n\n2) the whereto stickie:  \n[http://www.boot-land...hp?showtopic\u003d14](http://www.boot-land.net/forums/index.php?showtopic\u003d14 \"External link\")  \n\n3) the (hd32) mapping stickie:  \n[http://www.boot-land...?showtopic\u003d5041](http://www.boot-land.net/forums/index.php?showtopic\u003d5041 \"External link\")  \n\nBrowse the Forum:  \n[http://www.boot-land...hp?showforum\u003d66](http://www.boot-land.net/forums/index.php?showforum\u003d66 \"External link\")  \n\nParticularly, READ this ENTIRE thread:  \n[http://www.boot-land...?...ic\u003d4902\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d4902\u0026hl\u003d \"External link\")  \n\nLOTS of time has been spent on trying to document and explain what is possible, what is not and how to do what is possible, you cannot come here after all that work with a   \n\u003e Do I have to write:  \n\u003e initrd\u003dF:\\\\initrd.gz  \n\u003e\n\u003e before I wrote only:  \n\u003e \\\\initrd.gz\n\nkind of question, it is simply offensive to all the people who have contributed their time to the grub4dos forum and guide. ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)   \n\njaclaz   \n"
+    },
+    {
+      "id": "62878",
+      "timestamp": "2009-03-20T17:18:06+00:00",
+      "author": "asker2",
+      "content": "Now Parted Magic is working. That is very good!  \nThe links I will read.  \nIn OpenSuse I have a problem:  \nit says I should add a correct root\u003d option  \nI tried /dev/ram0 but that is unrecognized.  \nI also tried /dev/sdb1, hd0, hd1 it all isn\u0027t working.  \n\nHere the opensuse menu.lst data:  \n\n```\ntitle OpenSuse Netinstall\n\nroot \u0026#40;hd1,0\u0026#41;\n\nfind --set-root /grldr \n\nkernel /net/boot/i386/loader/linux initrd\u003dinitrd PMEDIA\u003dusbflash root\u003d\u0026#40;hd1,0\u0026#41;ramdisk_size\u003d512000 ramdisk_blocksize\u003d4096  initrd /net/boot/i386/loader/initrd\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "62958",
+      "timestamp": "2009-03-21T13:53:35+00:00",
+      "author": "asker2",
+      "content": "It works!  \nI copied OpenSuse 11.1 .iso to the stick and used mapping and it is starting.  \nIf I use --mem it should be quicker I think. The max size of .iso by memory mapping is limited throug RAM or? I have 2GB RAM, can I now use .iso with memory mappint until 2GB?   \n"
+    },
+    {
+      "id": "62960",
+      "timestamp": "2009-03-21T14:09:43+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I have 2GB RAM, can I now use .iso with memory mappint until 2GB?\n\nIf whatever you boot needs 0 bytes of RAM to run, yes.  \n\nOtherwise, you will need to subtract at least the minimum requirement for the particular OS you need to boot.  \n\nOf course it is plain counterproductive to limit RAM to the OS in order to load a larger image to RAM, and I doubt ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif) it will be faster when loading, though it may be faster when running ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png).  \n\njaclaz   \n"
+    },
+    {
+      "id": "62961",
+      "timestamp": "2009-03-21T14:15:54+00:00",
+      "author": "asker2",
+      "content": "\u003e If whatever you boot needs 0 bytes of RAM to run, yes.  \n\u003e\n\u003e Otherwise, you will need to subtract at least the minimum requirement for the particular OS you need to boot.  \n\u003e\n\u003e Of course it is plain counterproductive to limit RAM to the OS in order to load a larger image to RAM, and I doubt ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif) it will be faster when loading, though it may be faster when running ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png).  \n\u003e\n\u003e jaclaz\nI don\u0027t know if I understood right but I think you meant:  \nIt is not useful to use memory mapping because then only loading is faster and not the running OS. So I should use normal mapping?   \n"
+    },
+    {
+      "id": "62963",
+      "timestamp": "2009-03-21T14:36:08+00:00",
+      "author": "asker2",
+      "content": "OpenSuse starts and loads the Kernel but after choosing Start Live Installation it hangs.  \nIn console is written:  \ncouldn\u0027t find live configuration file.  \nBut why not?   \n"
+    },
+    {
+      "id": "62965",
+      "timestamp": "2009-03-21T15:04:30+00:00",
+      "author": "asker2",
+      "content": "I read about using isolinux.cfg and used this from opensuse:  \n\n```\nlabel openSUSE_Live_\u0026#40;GNOME\u0026#41;\n\n  kernel linux\n\n  append initrd\u003dinitrd ramdisk_size\u003d512000 ramdisk_blocksize\u003d4096 splash\u003dsilent showopts\n```\n\n\u003cbr /\u003e\n\nand converted to this menu.lst  \n\n```\ntitle openSUSE_Live_\u0026#40;GNOME\u0026#41;\n\nroot \u0026#40;hd0,0\u0026#41;\n\nfind --set-root /grldr\n\n  kernel /boot/i386/loader/linux ramdisk_size\u003d512000 ramdisk_blocksize\u003d4096 splash\u003dsilent showopts \n\n initrd /boot/i386/loader/initrd initrd\u003dinitrd\n```\n\n\u003cbr /\u003e\n\nDid I make any mistake?   \n"
+    },
+    {
+      "id": "62972",
+      "timestamp": "2009-03-21T18:20:29+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I don\u0027t know if I understood right but I think you meant:  \n\u003e It is not useful to use memory mapping because then only loading is faster and not the running OS. So I should use normal mapping?\nWhat I meant was something different.  \n\n***IF*** mapping to --mem occupies RAM you need to live some spare space for the OS to run. (this was just philosophy)  \n\nThere are three reasons AFAIK to use map to --mem instead of direct mapping:  \n1) no need for an unfragmented file  \n2) have a volatile write environment (which doesn\u0027t make any sense when mapping a .iso which is Read Only anyway)  \n3) if for whatever reason, direct mapping does not work  \n\nMy guess is that there isn\u0027t any differerence in speed using one or the other mapping method, but I can be proved wrong anytime, why don\u0027t you try the same (working) setup with both options and try comparing speed?  \n\n\u003e Did I make any mistake?\nYES. (If it does not work)  \n[http://homepages.tes...no-answers.html](http://homepages.tesco.net/J.deBoynePollard/FGA/questions-with-yes-or-no-answers.html \"External link\")  \n\n\u003cbr /\u003e\n\nMore generally, I understand that you like to use the monkey with typewriter (and infinite time) approach:  \n[http://en.wikipedia...._monkey_theorem](http://en.wikipedia.org/wiki/Infinite_monkey_theorem \"External link\")  \n\nThough an interesting one ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif), it usually gives results in longer period when compared to the normal \"learn and think before hitting keys randomly\" one ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png).   \n\nGood luck.  \n\n![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)  \n\njaclaz   \n"
+    },
+    {
+      "id": "63004",
+      "timestamp": "2009-03-22T09:59:20+00:00",
+      "author": "asker2",
+      "content": "No it isn\u0027t working.  \nI would ask a monkey, but the next zoo is too far away ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)  \nWhat did I wrong?  \n\n(The netinstall of OpenSuse is working, but the Live CD not, strange, I think that is related with the Live Config File)  \n\n[http://vavai.net/200...se-111-liveusb/](http://vavai.net/2009/01/02/how-to-make-opensuse-111-liveusb/ \"External link\")  \n\nProblem solved.  \nAfter replacing initrd, there was another error, but that could be fixed by replacing config.isoclient through config.gnome.isoclient  \n\nnow it starts and I can install ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)   \n\nThanks for all your help and patience!   \n"
+    },
+    {
+      "id": "63012",
+      "timestamp": "2009-03-22T12:05:48+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Thanks for all your help and patience!\n\nFor the record, there was very little help from me and almost no patience. ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)  \n\nHowever, since now you have something working, why don\u0027t you report what you did, and the final working setups, so that other people may make use of them? ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)  \n\njaclaz   \n"
+    },
+    {
+      "id": "63019",
+      "timestamp": "2009-03-22T13:32:38+00:00",
+      "author": "asker2",
+      "content": "\u003e However, since now you have something working, why don\u0027t you report what you did, and the final working setups, so that other people may make use of them? ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)  \n\u003e\n\u003e jaclaz\n\nDid you read my last post?  \nThere is the solution.   \n"
+    },
+    {
+      "id": "63021",
+      "timestamp": "2009-03-22T14:05:43+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Did you read my last post?  \n\u003e There is the solution.\n\nYes, I read it. ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)  \n\nBut ![^_^](http://reboot.pro/public/style_emoticons/default/happy.png) you announced the ***solutions*** to booting several different OS\u0027s.  \n\nAnd you duly posted every time the ***entries*** that ***did not*** work and later the ***news*** that you succeeded, but WITHOUT posting the actual \"right\" entry that worked for you.  \n\nWhat I proposed is that you could make a new post including all the entries that are working, in order to close this thread with something that may help other members that have the same problems you initially had.  \n\nIn other words, can you now post your \"final\" menu.lst?  \n\n![^_^](http://reboot.pro/public/style_emoticons/default/happy.png)  \n\njaclaz   \n"
+    },
+    {
+      "id": "63068",
+      "timestamp": "2009-03-23T13:17:52+00:00",
+      "author": "asker2",
+      "content": "\u003e In other words, can you now post your \"final\" menu.lst?\n\nOf course no problem.  \nThe entry was not really wrong, the files were \"wrong\". ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)  \n\n```\ntimeout\u003d5\n\n\n\n\n\ntitle BT4 Beta – Console\n\nroot \u0026#40;hd0,0\u0026#41;\n\n\tfind --set-root /grldr\n\n\t kernel /BT4boot/backtrackkernelvmlinuz root\u003d/dev/ram0\t initrd\u003dinitrd1.gz\t\t   PMEDIA\u003dusbflash \n\n\t initrd /BT4boot/initrd1.gz\n\n\n\ntitle PMAGIC Default settings \u0026#40;Runs from RAM\u0026#41;\n\nroot \u0026#40;hd0,0\u0026#41;\n\nfind --set-root /grldr\n\n\t kernel /pmagic/bzImage root\u003d/dev/ram0 initrd\u003d/pmagic/initrd\t\t   PMEDIA\u003dusbflash \n\n\t initrd /pmagic/initrd \n\n\n\ntitle Boot VISTAPEv12b3 - ISO from HD into RAMDISK\n\nfind --set-root --ignore-floppies /VistaPE.iso\n\nmap --mem /VISTAPE.iso \u0026#40;hd32\u0026#41;\n\nmap --hook\n\nroot \u0026#40;hd32\u0026#41;\n\nchainloader /BOOTMGR\n\n\n\ntitle  Opensuse  11.1 GNOME Live CD\n\nfind --set-root /grldr\n\n\t kernel /boot/i386/loader/linux root\u003d/dev/ram0 initrd\u003d/boot/i386/loader/initrd\t\t   PMEDIA\u003dusbflash \n\n\t initrd /boot/i386/loader/initrd \n\n\n\ntitle Opensuse 11.1 NetInstall\n\nmap /OPENSUSENETINSTALL.iso \u0026#40;hd32\u0026#41;\n\nmap --hook\n\nroot \u0026#40;hd32\u0026#41;\n\nchainloader \u0026#40;hd32\u0026#41;\n```\n\n\u003cbr /\u003e\n\nDie DVD Variante würde wahrscheinlich ähnlich wie die Netinstall funktioinieren.   \n"
+    },
+    {
+      "id": "63069",
+      "timestamp": "2009-03-23T13:54:22+00:00",
+      "author": "Icecube",
+      "content": "\u003e \u003cbr /\u003e\n\u003e\n\u003e ```\n\u003e title PMAGIC Default settings \u0026#40;Runs from RAM\u0026#41;\n\u003e\n\u003e root \u0026#40;hd0,0\u0026#41;\n\u003e\n\u003e find --set-root /grldr\n\u003e\n\u003e \t kernel /pmagic/bzImage root\u003d/dev/ram0 initrd\u003d/pmagic/initrd\t\t   PMEDIA\u003dusbflash \n\u003e\n\u003e \t initrd /pmagic/initrd\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\nThis isn\u0027t the default Parted Magic setting.  \nThe PMEDIA parameter isn\u0027t used in Parted Magic (Puppy linux uses it).  \nLook in the menu.lst or grub4dos.lst file in the iso of the Parted Magic version that you use, for the correct parameters.  \n\nAlso for the other entries:  \n**initrd\u003d** on the kernel line doesn\u0027t make any sense.  \n\nI severely doubt that the PMEDIA parameter makes any sense for OpenSUSE and Backtrack.  \nYou can\u0027t just assume that because Puppy Linux uses the PMEDIA option, that other distributions use it too and that it will magically solve all your problems.  \n\n**Always start from the isolinux.cfg file to make your grub4dos menu entries:**   \n\n* Copy the kernel line (if it starts with \u0027KERNEL\u0027, convert to lowercase \u0027kernel\u0027)\n* add everything on the \u0027APPEND\u0027 line in the isolinux.cfg to the kernel\u0027 line in the grub4dos config file, **except** for the **initrd\u003dblablabla** part\n* add a new line to your grub4dos config file to which you copy the **initrd\u003dblablabla** line of the isolinux.cfg file and replace the \u0027\u003d\u0027 with a \u0027 \u0027.\n\n\u003cbr /\u003e\n\nThe isolinux.cfg entry for Parted Magic 3.7:  \n\n```\nKERNEL /pmagic/bzImage\n\nAPPEND noapic initrd\u003d/pmagic/initrd root\u003d/dev/ram0 init\u003d/linuxrc vga\u003d791 sleep\u003d0 ramdisk_size\u003d25000 loglevel\u003d0 keymap\u003dus\n```\n\nbecomes this, in grub4dos style:  \n\n```\nkernel /pmagic/bzImage noapic root\u003d/dev/ram0 init\u003d/linuxrc vga\u003d791 sleep\u003d0 ramdisk_size\u003d25000 loglevel\u003d0 keymap\u003dus\n\ninitrd /pmagic/initrd\n```\n\n\u003cbr /\u003e\n\nThe Parted Magic entry is not complete, but it can be that it boots (parameters depend on the version).  \nI also don\u0027t know if the Backtrack entry has all parameters.  \n\n**A cleaned up config file:**   \n\n```\ntimeout\u003d5\n\n\n\n\n\ntitle BT4 Beta \u0026#8211; Console\n\nroot \u0026#40;hd0,0\u0026#41;\n\n\tfind --set-root /grldr\n\n\t kernel /BT4boot/backtrackkernelvmlinuz root\u003d/dev/ram0\n\n\t initrd /BT4boot/initrd1.gz\n\n\n\ntitle PMAGIC Default settings \u0026#40;Runs from RAM\u0026#41;\n\nroot \u0026#40;hd0,0\u0026#41;\n\nfind --set-root /grldr\n\n\t kernel /pmagic/bzImage root\u003d/dev/ram0\n\n\t initrd /pmagic/initrd\n\n\n\ntitle Boot VISTAPEv12b3 - ISO from HD into RAMDISK\n\nfind --set-root --ignore-floppies /VistaPE.iso\n\nmap --mem /VISTAPE.iso \u0026#40;hd32\u0026#41;\n\nmap --hook\n\nroot \u0026#40;hd32\u0026#41;\n\nchainloader /BOOTMGR\n\n\n\ntitle  Opensuse  11.1 GNOME Live CD\n\nfind --set-root /grldr\n\n\t kernel /boot/i386/loader/linux ramdisk_size\u003d512000 ramdisk_blocksize\u003d4096 splash\u003dsilent showopts\n\n\t initrd /boot/i386/loader/initrd\n\n\n\ntitle Opensuse 11.1 NetInstall\n\nmap /OPENSUSENETINSTALL.iso \u0026#40;hd32\u0026#41;\n\nmap --hook\n\nroot \u0026#40;hd32\u0026#41;\n\nchainloader \u0026#40;hd32\u0026#41;\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "63076",
+      "timestamp": "2009-03-23T18:25:45+00:00",
+      "author": "asker2",
+      "content": "OK  \nBut with my menu.lst it is working, too that is for me the mainthing.  \nThe glue with converting isolinux.cfg to menu.lst is good.  \nI think that I have understood quite well now. Is that working most time or just sometimes?   \n"
+    },
+    {
+      "id": "63077",
+      "timestamp": "2009-03-23T18:33:29+00:00",
+      "author": "Icecube",
+      "content": "Converting isolinux syntax to grub4dos synthax is always possible for linux based disks, which have a isolinux.cfg with something similar to:  \n\n```\nKERNEL /some/kernel\n\nAPPEND initrd\u003d/some/initrd parameter1 parameter2\n```\n\n\u003cbr /\u003e\n\nIf an entry in the isolinux.cfg file boots a .c32 file, the conversion to grub4dos syntax depends on how it is implemented in grub4dos.  \nYou can download UBCD50b12 for examples, if you want.   \n"
+    },
+    {
+      "id": "63155",
+      "timestamp": "2009-03-24T17:38:58+00:00",
+      "author": "asker2",
+      "content": "\u003e You can download UBCD50b12 for examples, if you want.\n\nMaybe later   \n"
+    },
+    {
+      "id": "64095",
+      "timestamp": "2009-04-05T16:20:38+00:00",
+      "author": "asker2",
+      "content": "Now I have the problem, that when I started VistaPE I can just run the programs from .wim  \nThe \"CD\" with the other program files is not shown.  \nWhat is to do to start them?   \n"
+    }
+  ]
+}

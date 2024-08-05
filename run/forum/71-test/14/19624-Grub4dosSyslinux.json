@@ -1,0 +1,40 @@
+{
+  "id": "19624",
+  "title": "Grub4dos/Syslinux",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "182765",
+      "timestamp": "2014-03-11T09:05:37+00:00",
+      "author": "Shahid",
+      "content": "Hi,  \nI am a computer technician and need to carry XP, Win 7-32 bit, Win 7-64 bit, Win 8 - 32 bit, Win 8 - 64 bit  \nCentOS live CD, CentOS Live DVD, Ubuntu DVD, Windows XP Live CD, Windows 7 LiveCD and I keep Backtrack Linux  \nfor my personal user as I am learning.  \nI need to install XP in user\u0027s system. SOme of them have 7 and some 8.  \nCurrently I have an HP v240 8gb Pen Drive so I have decided following multiboots due to 8gb limitation.  \nmemtest86  \nSeatools  \nWindows XP  \nWindows 7 - 32 Bit  \nWindows 7 - 64 bit  \nCentOS - LiveCD  \nWin 8 (32 \\\u0026 64) -\\\u003e this is optional right now due to space limitations but i need to do this in near future.  \nI tried Yumi but for some reason it is not accepting win 7. I have not tried Win 8.  \nAfter searching the net I found that there is a way I can create what I want manually through Grub4Dos/Syslinux.  \nI went through couple of sites to learn both of them and found it to be quite interesting, however,  \nI still have not clue how to put it all together.  \nCan anyone please help me ?  \nThis is how I would like to happen:  \nIn the root of USB I will create a folder multiboot (much like Yumi). In that folder I would like to create  \nfollowing subfolders: memtes86, winxp, win7_32, win7_64, centos, win8(when i will buy a new pen drive of 32gb)  \nFinally my USB root will look like following:  \nMULTIBOOT -\\\u003e for OS (ISO form prefered but extracted form also acceptable)  \nMYDATA -\\\u003e this is where I will keep my personal data  \nGRUB -\\\u003e for grub installation OR  \nSYSLINUX -\\\u003e for syslinux installation OR  \nBOOT -\\\u003e for both Syslinux and/or Grub4Dos  \nThis way it will look structured.  \nThanks in advance.  \nRegards  \nShahid\n\n"
+    },
+    {
+      "id": "182768",
+      "timestamp": "2014-03-11T10:21:54+00:00",
+      "author": "steve6375",
+      "content": "Plenty of articles on my site www.rmprepusb.com\n\nAlso why not use Easy2Boot and save having to make the USB stick manually?\n\n"
+    },
+    {
+      "id": "182778",
+      "timestamp": "2014-03-11T12:17:51+00:00",
+      "author": "Shahid",
+      "content": "Hi,\n\nThanks for the reply.\n\nI went through text tutorials (video blocked at office). Its wonderful. I never heard about Easy2Boot earlier.\n\nSurely I will give it a go. However, If if do it manually, I will learn something new.\n\nAnyway, I will try easy2boot and will revert.\n\n:smile: Thanks a lot\n\nRegards\n\nShahid\n\n"
+    },
+    {
+      "id": "182789",
+      "timestamp": "2014-03-12T07:08:16+00:00",
+      "author": "Shahid",
+      "content": "Hi Steve,\n\nThanks so much for such a wonderful solution. I followed the tutorials and succeeded.\n\nI used 8gb HP v240 pen drive with FAT32 partition. Single partition.\n\nIt booted fine and I tried memtest86. It is working perfectly. I have not tried booting any of the windows version but will do it soon.\n\nI have a query though. What if I do not want unattended installation for any version of the windows then what should I do?\n\nI will add CentOS Live CD also today. :smile:\n\nI am really thankful to you for the solution. In due course I will look forward to change the menu settings and splash image according to my taste which I do not have any clue of as to how to do that.\n\nThanks\n\nShahid\n\n"
+    },
+    {
+      "id": "182795",
+      "timestamp": "2014-03-12T10:31:15+00:00",
+      "author": "steve6375",
+      "content": "All details are now on [http://www.easy2boot.com](http://www.easy2boot.com \"External link\")\n\nWindows installs are not unattended (unless you use your own unattend.xml file). If you use the default xml files then all installs need user input (choose disk, partition, etc.).\n\nThe only exception is that I provide an XP unattend (XP_EeePC_Auto_UK.txt) file for use with \u0027Install XP using WinPE\u0027 menu option which will auto-install XP onto an Asus EeePC.\n\n"
+    }
+  ]
+}

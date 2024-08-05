@@ -1,0 +1,28 @@
+{
+  "id": "11279",
+  "title": "pdBIOS32",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "99293",
+      "timestamp": "2010-05-02T21:21:55+00:00",
+      "author": "Mike Gonta",
+      "content": "pdBIOS32 is a public domain 32 bit protected mode BIOS extender.  \nIt uses a simple software mode switching technique, is less than 2k  \nand does not write to or change the hard drive or the BIOS firmware.  \npdBIOS32 like the motherboard BIOS is file system independent.  \nIt is currently distributed as a fat12 floppy disk image.  \nThis image will boot and run from a USB flash drive as either floppy disk  \nor hard drive BIOS configuration.  \nAll source code is included and is written in 100% pure assembly  \nlanguage and can be assembled with either FASM or NASM.  \n\n[![Posted Image](http://mikegonta.com/images/pdBIOS32.png)](http://mikegonta.com/pdBIOS32 \"External link\")  \n\nOriginal code by Mike Gonta, Public Domain 2010  \n\n[pdBIOS32](http://mikegonta.com/pdBIOS32 \"External link\")  \n\n\u003cbr /\u003e\n\nMike Gonta  \nlook and see - many look but few see   \n"
+    },
+    {
+      "id": "99296",
+      "timestamp": "2010-05-02T22:12:10+00:00",
+      "author": "MedEvil",
+      "content": "What is it good for?  \n\n![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)   \n"
+    },
+    {
+      "id": "99452",
+      "timestamp": "2010-05-05T21:06:26+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e What is it good for?\n\nI presume it is an evolution/derivative of AEBIOS:  \n[http://aebios.com/](http://aebios.com/ \"External link\")  \n[http://www.911cd.net...o...21157\\\u0026st\u003d21](http://www.911cd.net/forums//index.php?showtopic\u003d21157\u0026st\u003d21 \"External link\")  \n[http://www.boot-land...?...\u003d4643\\\u0026st\u003d22](http://www.boot-land.net/forums/index.php?showtopic\u003d4643\u0026st\u003d22 \"External link\")  \n\n**Mike Gonta** (the Author ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)), like many good guys active in the \"Assembly Field\" ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) is (NOT surprisingly) ***as*** economical (please read as \"thrifty\" :tongue:) with words describing his creations ***as*** he is with actual bytes ... ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "id": "21672",
+  "title": "New bootable USB creator: Etcher",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "205478",
+      "timestamp": "2018-01-07T21:03:37+00:00",
+      "author": "Brito",
+      "content": "There is a relatively new tool for creating bootable media: [https://etcher.io/](https://etcher.io/ \"External link\")  \n\n\u003e Flash OS images to SD cards \\\u0026 USB drives, safely and easily.  \n\u003e\n\u003e Etcher is a powerful OS image flasher built with web technologies to ensure flashing an SDCard or USB drive is a pleasant and safe experience. It protects you from accidentally writing to your hard-drives, ensures every byte of data was written correctly and much more.\n\n![screenshot.gif](https://etcher.io/static/screenshot.gif)  \n\nI\u0027ve tried it out since this was the recommended way to install the Ubuntu .ISO from a USB drive. It has worked really good so far.  \n\nPlus points besides the easy interface is that it can be used across multiple operating systems.  \n\nThe tool is kind of ad-ware, since it will promote its pro edition after flashing the drive. Nevertheless, very well developed and worked as expected.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "205481",
+      "timestamp": "2018-01-07T21:45:51+00:00",
+      "author": "ambralivio",
+      "content": "@ Nuno\n\nNice finding.\n\nEven if it looks like Etcher works (out-o-the-box) only on \\*nix-based systems, not on Windows ones.\n\n"
+    },
+    {
+      "id": "205482",
+      "timestamp": "2018-01-07T21:52:14+00:00",
+      "author": "erwan.l",
+      "content": "@Nuno\n\nI used it a few times (for RPI images for example) : good looking, works smootly, very nice friendly interface.\n\nStill, when it comes to write an ISO to usb media, I cannot get away from Rufus from our good fellow Akeo :smile:\n\nStill, Etcher is probably simpler to use and it does handle SD cards (which I never tried with Rufus).\n\n"
+    },
+    {
+      "id": "205484",
+      "timestamp": "2018-01-08T10:41:11+00:00",
+      "author": "Wonko the Sane",
+      "content": "Yet another sign that I am getting old. ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\n\nThe Windows 32 bit version \"portable\" is 45 MB in size.\n\nI can have a decently complete DOS/Freedos ENTIRE operating system in that amount of bytes, or a mini-Linux or a minimal yet working XP install or a fairly decent PE1.x.\n\nThat someone uses that is OK, that Nuno might actually recommend it shows how detached I am from the rest of the world. ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)\n\nMy personal definition of a program that needs 45 MB for the function of writing a stupid SD or USB stick is obviously \"an inane amount of senseless bloat\", and any member of reboot.pro (including the owner :wink:) actually - directly or indirectly - promoting or supporting it (or even mentioning it) in a perfect world should be *ipso facto* sent to a re-education facility\\[1\\] for three months.\n\nThe CLI version (still 32 bit) is only 16 MB download, and it expands to a mere 55 MB.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n\\[1\\] where he/she will be given a ZX81 with a 64 Kb of RAM expansion (after all I am not that *mean* :wink: to force the use of devices with the standard 1 Kb) in order to have him/her re-learn the value of bytes.\n\n"
+    },
+    {
+      "id": "205485",
+      "timestamp": "2018-01-08T12:10:29+00:00",
+      "author": "Brito",
+      "content": "\u003e Yet another sign that I am getting old.\n\n![297.png](http://i1.kym-cdn.com/photos/images/newsfeed/001/044/247/297.png)\n\nI also remember fitting complete UI-based Windows operating systems under 40Mb and having some Mb\u0027s free for other software to be packed inside.. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\n"
+    },
+    {
+      "id": "205486",
+      "timestamp": "2018-01-08T12:26:58+00:00",
+      "author": "Wonko the Sane",
+      "content": "Yep :smile:, though it was more like:\n\n[https://tinyapps.org..._in_my_day.html](https://tinyapps.org/weblog/misc/200702250700_why_in_my_day.html \"External link\")\n\n... kids today ...\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "205487",
+      "timestamp": "2018-01-08T16:47:50+00:00",
+      "author": "steve6375",
+      "content": "@nuno (with apologies to Monty Python).\n\n40Mb? You were *lucky*!\n\nWe had to key in over 30 12-bit octal opcodes by hand using flip-switches into a PDP8e core memory.\n\nThat was the bootstrap code which then read in more opcodes into it\u0027s 4K 12-bit word memory from a paper tape reader.\n\n"
+    },
+    {
+      "id": "205488",
+      "timestamp": "2018-01-08T17:48:44+00:00",
+      "author": "misty",
+      "content": "\u003e ...40Mb? You were *lucky* !  \n\u003e\n\u003e We had to key in over 30 12-bit octal opcodes by hand using flip-switches into a PDP8e core memory.  \n\u003e That was the bootstrap code which then read in more opcodes into it\u0027s 4K 12-bit word memory from a paper tape reader.\nJust how old are you guys?   \n"
+    },
+    {
+      "id": "205489",
+      "timestamp": "2018-01-08T18:13:51+00:00",
+      "author": "Brito",
+      "content": "The oldest OS that I remember using is MSDOS 3.30 which seems to be dated from 1987: [http://vetusware.com...tions_/?id\u003d4206](http://vetusware.com/download/MS-DOS%203.30%20_with%20install%20instructions_/?id\u003d4206 \"External link\")\n\nAnyone around here got to use Xenix or older DOS versions? :smile:\n\n"
+    },
+    {
+      "id": "205490",
+      "timestamp": "2018-01-08T18:56:11+00:00",
+      "author": "erwan.l",
+      "content": "My first OS was \"Sinclair basic\" (Z81) back in 1981 :smile:\n\nThen TOS (Atari 520st).\n\nThen finally a few years later MSDOS (in the 90\u0027s).\n\nIt was quite a big shock (and disappointement) at first to move from TOS to Msdos.\n\nIt took a few years to finally get back to the same level of TOS...\n\nStill I am not old enough to remember \"paper tape reader\" !\n\nWhen I became an IT pro (end of the 90\u0027s), these were long gone.\n\nEDIT : now scratching my memory, I vaguely remember CP/M ?\n\nIs it possible that I encountered this OS on a 8080 proessor? in the mid 80\u0027s/early 90\u0027s?\n\n"
+    },
+    {
+      "id": "205491",
+      "timestamp": "2018-01-08T22:23:33+00:00",
+      "author": "Brito",
+      "content": "TOS sounds like being really ahead of its time. I just remember running the GEM desktop under a DOS machine and was so impressed at the time with its quality.\n\n"
+    },
+    {
+      "id": "205492",
+      "timestamp": "2018-01-08T22:30:56+00:00",
+      "author": "misty",
+      "content": "I\u0027m 44 and I don\u0027t remember half of this sh!t.  \n\nMy first computer was a ZX Spectrum. I didn\u0027t do any coding of any sort. Just played games. Which loaded via a tape and took about 5 minutes per game. That\u0027s five minutes to fill the 48k of RAM!!!!!  \n\nI must have been scarred by the whole experience as I didn\u0027t own another computer for about 15 years!  \n\nMisty  \n\nP.s. Pirated games circulated on 90 minute audio cassettes were always interesting. You never knew which game was next.   \n"
+    },
+    {
+      "id": "205493",
+      "timestamp": "2018-01-08T22:33:55+00:00",
+      "author": "Brito",
+      "content": "\u003e P.s. Pirated games circulated on 90 minute audio cassettes were always interesting. You never knew which game was next.\n\n![:rofl:](http://reboot.pro/public/style_emoticons/default/roll1.gif)\n\n"
+    },
+    {
+      "id": "205495",
+      "timestamp": "2018-01-09T11:56:36+00:00",
+      "author": "Wonko the Sane",
+      "content": "OT, but not much, the Apollo 11 Guidance Computer code:\n\n[https://github.com/c...garry/Apollo-11](https://github.com/chrislgarry/Apollo-11 \"External link\")\n\nthat stuff actually made the man land on the moon (and safely back).\n\nAnyway, and just for the record, not only it was common at university, up to the mid/late \u002770\u0027s, to manually punch cards, but you only had the computer available for a very limited time slot, so each bug would usually mean that you had next chance to run your program, hopefully corrected, \"next tuesday\":\n\n[https://en.wikipedia...unched_card_era](https://en.wikipedia.org/wiki/Computer_programming_in_the_punched_card_era \"External link\")\n\nBesides the claims (mostly for fun) of being old, I never had the occasion to work with those, though.\n\n@erwan.l\n\nAFAICR the CP/M was still in use in the first years of DOS on \"professional\" computers, typically accounting ones, as the PC (and hence DOS) was seen initially as a PC (Personal Computer) not something used in actual business, I wouldn\u0027t be surprised that a few of those survived through the \u002780\u0027s.\n\nReal anecdata:\n\nYear 1992 (or maybe 1993, not too sure), on the 6th or 7th of august (it was a friday) the (DOS, on PC) computer program that was used - experimentally - to keep the official accounting of a project site, reached and surpassed the amount of Lit. 9,999,999,999 (10 billions lire) and bombed out.\n\nThe programmers/software house that sold the program was immediately contacted (that was the last working friday before they closed three weeks) they said \"no problem, as soon as the programmer comes back from holidays on the 31th of August he will be able to solve the issue\". ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)\n\nEvery technician available (in the construction firm I was working with) was called to manually write the registries, some 10-15 people that worked practically non-stop for the whole weekend frantically writing down the data in order to be able to send/cash the progress report on next monday as expected.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "205496",
+      "timestamp": "2018-01-09T13:28:57+00:00",
+      "author": "ambralivio",
+      "content": "\u003e Anyway, and just for the record, not only it was common at university, up to the mid/late \u002770\u0027s, to manually punch cards, but you only had the computer available for a very limited time slot, so each bug would usually mean that you had next chance to run your program, hopefully corrected, \"next tuesday\":\n\u003e\n\u003e [https://en.wikipedia...unched_card_era](https://en.wikipedia.org/wiki/Computer_programming_in_the_punched_card_era \"External link\")\n\u003e\nI remember to have lived those circumstances/experience at the university...\n\n"
+    }
+  ]
+}

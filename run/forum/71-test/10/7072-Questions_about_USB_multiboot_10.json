@@ -1,0 +1,46 @@
+{
+  "id": "7072",
+  "title": "Questions about USB multi-boot 10",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "58984",
+      "timestamp": "2009-02-12T10:04:37+00:00",
+      "author": "spacepure",
+      "content": "After I installed the USB multi-boot 10, and lauch the file USB_MultiBoot_10.cmd, It says that \"ERROR File $OEM_X is missing\" and cannot proceed. Has anybody encounter the problem? and How to solve it? Should I copy some files to certain directories before ? Thanks for your help   \n"
+    },
+    {
+      "id": "59538",
+      "timestamp": "2009-02-17T05:51:17+00:00",
+      "author": "wimb",
+      "content": "\u003e After I installed the USB multi-boot 10, and lauch the file USB_MultiBoot_10.cmd, It says that \"ERROR File $OEM_X is missing\" and cannot proceed. Has anybody encounter the problem? and How to solve it? Should I copy some files to certain directories before ? Thanks for your help\n$OEM$_X Folder is an empty folder being part of the USB_MultiBoot_10.zip download.  \nSo I advice you to download again, may be there are more missing files in the archive that you are using now.  \nDownload Direct from CD Forum: [http://www.911cd.net...t...ost\\\u0026id\u003d1054](http://www.911cd.net/forums//index.php?act\u003dattach\u0026type\u003dpost\u0026id\u003d1054 \"External link\")   \n"
+    },
+    {
+      "id": "72863",
+      "timestamp": "2009-07-28T09:33:05+00:00",
+      "author": "elinap",
+      "content": "About usb_multiboot_10: (to WIMB - AUTHOR)  \nI am trying to create a bootable usb from a windows xp machine SP3.  \n\nThe problem I am finding is that the script does not show a list of the drives in the computer. What I get when running the script is at first is:  \n\nfind: 6.0.: No such file or directory  \nFIND: Windows NT: No such file or directory  \nFIND: invalid predicate \\`\u0027  \nPress any key to continue . . .  \n\nThen, the main screen appears. But, when I select option 2 to select the USB drive, it does not show a list of the drives.  \n\nI have tried another script (by the same author): DriveList_XV.cmd, and it works ok. Can not find what is the difference between them...  \n\nAny suggestion/help would be appreciated.  \n\nPlease cc replies to napchan@gmail.com  \nThanks.  \n\nEli   \n"
+    },
+    {
+      "id": "72982",
+      "timestamp": "2009-07-29T15:25:39+00:00",
+      "author": "wimb",
+      "content": "**@elinap**   \n\nStrange difference ....  \n\nCan you try FIXPATH.exe  \nMore Info: [http://www.msfn.org/...o...112627\\\u0026st\u003d2](http://www.msfn.org/board/index.php?showtopic\u003d112627\u0026st\u003d2 \"External link\")  \n\nWhat do you get when you open **cmd** window and give **VER** and then \\[Enter\\] key ?  \n\nAre **find.exe** and **findstr.exe** present in C:\\\\WINDOWS\\\\system32 folder ?   \n"
+    },
+    {
+      "id": "73023",
+      "timestamp": "2009-07-29T19:07:50+00:00",
+      "author": "elinap",
+      "content": "\u003e **@elinap**   \n\u003e\n\u003e Strange difference ....  \n\u003e\n\u003e Can you try FIXPATH.exe  \n\u003e More Info: [http://www.msfn.org/...o...112627\\\u0026st\u003d2](http://www.msfn.org/board/index.php?showtopic\u003d112627\u0026st\u003d2 \"External link\")  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e What do you get when you open **cmd** window and give **VER** and then \\[Enter\\] key ?  \n\u003e\n\u003e Are **find.exe** and **findstr.exe** present in C:\\\\WINDOWS\\\\system32 folder ?\n\n1. where is fixpath.exe and what is it for?  \n2. ver 5.1.2600  \n3. yes, both of them are present  \n\nI managed to sort out the problem by running the program in another xp sp3 machine.  \n\nThanks for the reply.   \n"
+    },
+    {
+      "id": "140689",
+      "timestamp": "2011-10-31T21:03:48+00:00",
+      "author": "zainka",
+      "content": "Hi, I know this is an old topic but here is the solution for why you have the problem elinap reported.  \ni.e.  \n\n```\n\n\n\n\nfind: 6.0.: No such file or directory\n\nFIND: Windows NT: No such file or directory\n\nFIND: invalid predicate `\u0027\n\nPress any key to continue . . .\n```\n\n\u003cbr /\u003e\n\nThis is due to the PATH variable been updated by programs installed which does not follow the rules and add them self in the beginning of the path variable, pushing the systemroot variables (i.e. c:windowssystem32 and such) further bach into the path variable list. This will effectively make some programs fail.  \n\nI know this to be true for WinAVR which puts refferences to itself in the beginning of the PATH variable. WinAVR does this cause it comes with certain replacements to standard windows apps like for example find ....  \n\nSo, if by running command \u0027echo %PATH%\u0027 in a command window does not show c:windowssystem32 in the first entries, you have troubles.  \n\nAnother solution would be for usb_multiboot to search for the windows path in a more direct and hardcoded way.  \n\n\u003cbr /\u003e\n\nBreg  \nVidar   \n\n**Edited by zainka, 31 October 2011 - 09:04 PM.**\n"
+    }
+  ]
+}

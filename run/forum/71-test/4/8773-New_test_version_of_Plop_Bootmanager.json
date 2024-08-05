@@ -1,0 +1,70 @@
+{
+  "id": "8773",
+  "title": "New test version of Plop Bootmanager",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "75209",
+      "timestamp": "2009-08-18T17:57:53+00:00",
+      "author": "Icecube",
+      "content": "\u003e **Tue 18/Aug/2009**   \n\u003e\n\u003e Here is a temporary test version. download now  \n\u003e\n\u003e Sometimes I am really wondering about some people. I mean some people that want to have the boot manager open source. I have no problem with this request, but mostly people that are booting Microsoft Windows over usb want the open source. I mean, they are using a none free and none open source operating system and dont understand that the boot manager is currently \"only\" freeware. Okay, they want that modified plop usb drivers will be integrated to other software like grub4dos. But simply making the drivers open source will not solve the problem to add usb support to grub4dos. Its much more difficult as they think. But who knows, maybe soon grub4dos has internal usb support. Maybe my boot manager became obsolete soon. Maybe the boot manager became open source. However, I will continue my work. I started the development, because I needed a boot manager that has the features I want. Years later I needed usb support and I added it. That was all for myself and it makes me happy to share the result of my work.  \n\u003e\n\u003e **Mon 17/Aug/2009**   \n\u003e\n\u003e Sorry, the new release is delayed. The EHCI driver hangs with VirtualBox. So I try to fix this and some other things.  \n\u003e\n\u003e **Sat 08/Aug/2009**   \n\u003e\n\u003e USB UHCI driver update: this week I bought a Compaq EVO DS 500. The UHCI driver was very slow on that machine. Sombody reported it in the forum (at page 3 you can see the pain and success message from me). Loading of zeroshell linux (grub, kernel and initrd) needed about 40 minutes or longer. Now I updated my driver with help of the real hardware and now grub, vmlinuz and initrd of zeroshell are loaded within 10 seconds! Yes, seconds and not minutes! Cool, or? :smile:  \n\u003e I tested the driver currently only on the Compaq pc. I hope the driver works with others too.  \n\u003e\n\u003e Plans for the next release: usb booting will not be limited to the first mass storage that is found. I plan to add some stuff that makes it possible to boot from the second, third,... mass storage device. But I have to kick out some things that are not really required (from my thinking).  \n\u003e The installer will be updated too. It gets a new option to setup text mode booting for harddisk installations. Sometimes there are troubles to init graphic mode on old machines.  \n\u003e\n\u003e **Tue 28/Jul/2009**   \n\u003e\n\u003e USB UHCI driver updated. Now its 2x faster. The driver update will be in the next release. You want to test the new driver? Then contact me.\n[http://www.plop.at/e...mngrusblog.html](http://www.plop.at/en/bootmngrusblog.html \"External link\")  \n\nSomeone (probably from this forum) seems to made him pissed ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif) . Don\u0027t do it again :wink: .   \n"
+    },
+    {
+      "id": "75214",
+      "timestamp": "2009-08-18T18:55:29+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Someone (probably from this forum) seems to made him pissed :wink: . Don\u0027t do it again ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif) .\n\nPossibly :smile: , unfortunately the \"common sense advice\", namely point #b. :  \n[http://www.boot-land...?act\u003dboardrules](http://www.boot-land.net/forums/index.php?act\u003dboardrules \"External link\")  \nis often ignored on the forum, let alone outside it.  \n\nBut in this particular case, I would guees that boot-land members are innocent ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif), the \"something\" that triggered the comment seems to come \"internally\" ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif):  \n[http://forum.plop.at...topic,20.0.html](http://forum.plop.at/index.php/topic,20.0.html \"External link\")  \n\nUsually this kind of requests come from people that assume that:  \n\n* the original Author, because decided to give away for free his work, forfeited his own rights of intellectual property on it, and that the app is somehow \"public\"\n* the \"other party\", namely grub4dos developers in this case are willing to include PLoP code into a new future release\n* the two sources are \"compatible\" and can be integrated by simply moving a couple of parenthesis and semi-colons\n* reading source code without having actually written it is something any programmer can do easily\n\n\u003cbr /\u003e\n\nA single assumption is often one too much, let alone more than one! :smile:  \n\n@Elmar  \nif you read this, don\u0027t worry, it\u0027s your creature :cool: , you can choose for it any kind of license/distribution limitations/whatever, as long as you make PLoP available for free you will have all our support! ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n:smile:  \n\njaclaz   \n"
+    },
+    {
+      "id": "75221",
+      "timestamp": "2009-08-18T19:39:05+00:00",
+      "author": "Icecube",
+      "content": "\u003e But in this particular case, I would guess that boot-land members are innocent ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif), the \"something\" that triggered the comment seems to come \"internally\" ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif):  \n\u003e [http://forum.plop.at...topic,20.0.html](http://forum.plop.at/index.php/topic,20.0.html \"External link\")\nIt doesn\u0027t mention grub4dos, so it has to be someone (a lot of people) else:  \n\u003e Do you have any plans on making this code open source/GPL compliant?  \n\u003e\n\u003e qiet72\nIt was probably send by email to him.  \n\nNot that it really matters, because it won\u0027t help the problem to go away if knew who did it :wink: .  \n\nI really would like to see the PloP developer working together with the guy that is writing new \u0027open source\u0027 USB drivers for dos (Plug and Play in dos for all USB devices: keyboards, printers, Hard drives, ...). But it probably won\u0027t happen (still keeping my dreams :smile: ):  \n[http://www.boot-land...?...ewpost\\\u0026f\u003d13](http://www.boot-land.net/forums/index.php?showtopic\u003d8353\u0026view\u003dgetnewpost\u0026f\u003d13 \"External link\")   \n"
+    },
+    {
+      "id": "75225",
+      "timestamp": "2009-08-18T20:22:31+00:00",
+      "author": "BiTByte",
+      "content": "hi,  \nI am Elmar, the developer of the PLoP Boot Manager.  \n\nI only want to say, the post on my page has nothing to do with the grub4dos developers, a posting here at boot-land or in my forum. There happen other (not public) things that moved me to write this. Meanwhile I was thinking \u0027never mind, dumbheads are all over the world, dont care about them\u0027 and I remove the text. But now I have seen this topic here. I would say forget it.   \n\n![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \nregards  \nElmar   \n"
+    },
+    {
+      "id": "75231",
+      "timestamp": "2009-08-18T21:01:29+00:00",
+      "author": "maanu",
+      "content": "\u003e hi,  \n\u003e I am Elmar, the developer of the PLoP Boot Manager.  \n\u003e\n\u003e I only want to say, the post on my page has nothing to do with the grub4dos developers, a posting here at boot-land or in my forum. There happen other (not public) things that moved me to write this. Meanwhile I was thinking \u0027never mind, dumbheads are all over the world, dont care about them\u0027 and I remove the text. But now I have seen this topic here. I would say forget it.   \n\u003e\n\u003e ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \n\u003e regards  \n\u003e Elmar\n\nHi Elmar , welcome to the bootland .   \n\nmay be u remember me or not , we had email conversation few months ago about syslinux and plop . it was completely different thing as of now being discussed . but i must say that u were very kind to my noobish approach and tried ur level best to guide me .   \n\n\u003cbr /\u003e\n\nwell anyways , GREAT work on usb side . i mean usb 2.0 speed stuff . it is a great add on .   \n\nand u just keep enjoying ur work , WHEN u feel that it is time to get involved with grub4dos (which is being used on 70% usb drives as main boot loader i guess) then talk to tinybit or bean (i know only these 2 persons) and they ll be MORE THEN HAPPY , coz as a matter of fact , both are chinese guys , and ur tool is extremely popular in chinese boards (znpc , wuyou etc ) .   \n\nso i\u0027d say ,just keep the great work going on and just chill . and plz stay at bootland . share ur knowledge and enjoy .  \n\nagain a very warm welcome...its very cool to have u here..   \n"
+    },
+    {
+      "id": "75235",
+      "timestamp": "2009-08-18T21:16:33+00:00",
+      "author": "BiTByte",
+      "content": "hi maanu,  \nyes, sure, i remember you ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\nregards  \nelmar   \n"
+    },
+    {
+      "id": "75265",
+      "timestamp": "2009-08-19T08:32:29+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e I would say forget it.\n\nWell, maybe at least it is useful to show how you have all our support whatever you come up with regarding PLoP and it\u0027s development/future. :wink:;)   \n\n![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "75706",
+      "timestamp": "2009-08-23T12:29:36+00:00",
+      "author": "Icecube",
+      "content": "Newer test version:  \n\u003e Thu 20/Aug/2009  \n\u003e\n\u003e Here is the second test version. download now\n\n"
+    },
+    {
+      "id": "75715",
+      "timestamp": "2009-08-23T14:58:40+00:00",
+      "author": "wimb",
+      "content": "I just tried the second test version of PLoP - 2009-08-20  \n\nRunning PLoP plpbt.bin from grub4dos menu allows to PreLoad USB 2.0 driver.  \nThen I can 5x faster load my LiveXP BootSDI.img from USB-stick into RAMDISK.  \n\nMy problem is still the same of having NO access to USB-drives in LiveXP when using first PLoP to PreLoad USB 2.0 driver.  \nDiscussion See : [http://www.boot-land...?...\u003d8605\\\u0026st\u003d40](http://www.boot-land.net/forums/index.php?showtopic\u003d8605\u0026st\u003d40 \"External link\")  \n\nIt is as though only my USB-stick is recognised for booting, but in general all USB-drives are invisible (e.g cardreader drives disappear and powerlight is switched off by PLoP USB 2.0 driver)   \n\n**@BiTByte**   \nIs there a solution to my problem or is it hardware specific ?   \n"
+    },
+    {
+      "id": "76628",
+      "timestamp": "2009-08-31T18:47:49+00:00",
+      "author": "Haiphong",
+      "content": "Hello All,  \n\nI do a try with \"Win7RescuePE\" on an Old Laptop \"HP Pavillon ZD8020EA\" and with \"PLoP Boot Manager With USB Mass Storage Support\". \"Win7RescuePE\" work like a Charm on an USB Key \"Verbatim Store \u0027n\u0027 Go 4 GB\" !!!   \n"
+    }
+  ]
+}

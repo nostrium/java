@@ -1,0 +1,46 @@
+{
+  "id": "20298",
+  "title": "Boot with portable HD -main partition E2B fat32+backup partition NTFS",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "190151",
+      "timestamp": "2015-01-26T23:55:40+00:00",
+      "author": "Vicrol123",
+      "content": "Hello my friends...\n\ni want the hard drive start from the first partition E2B is in fat32, and have another partition on the disk containing backups and programs.\n\ni tried first:\n\n1) create with rmprepusb max partition size and reduced with easeus partiton (create a logical partition with the free space)\n\n2) create a lot of partitions and easy2boot displayed (ptn3 and ptn4 are in use, delete it? ![:hammer:](http://reboot.pro/public/style_emoticons/default/hammer.gif))\n\nits a toshiba portable HD (shows as fixed disk in rmprepusb) 1Tb\n\ni want a fat32 in the beggining with iso\u0027s and imgPTN\n\nand another partition in NTFS with backup and .exe\u0027s\n\n![:crazyrocker:](http://reboot.pro/public/style_emoticons/default/crazyrocker.gif)\n\n*edit: i think, I need to create partitions (hd 1,5) how i do that?*\n\n**Edited by Vicrol123, 27 January 2015 - 12:06 AM.**\n"
+    },
+    {
+      "id": "190152",
+      "timestamp": "2015-01-27T00:08:27+00:00",
+      "author": "steve6375",
+      "content": "If you used RMPrepUSB and Boot as HDD (C: 2PTNS) then this creates a 2nd small hidden partition (this type 21h small partition is not used and not needed if you are going to create more partitions). Then if you add a logical partition it will create another partition entry.\n\nUse RMPrepUSB - Drive Info - 0 to see 4 primary partitions. Use Easeus Home Partition Master to erase the ones you don\u0027t want.\n\nYou can have one Primary partition + any number of Logical paritions. In the Partition Table you should see the 1st partition + one Type F extended partition, with ptn 3 and 4 empty.\n\nP.S. Why FAT32 for the E2B partition ?? This will restrict you to \\\u003c4GB .imgPTN files and \\\u003c4GB ISOs?\n\n"
+    },
+    {
+      "id": "190153",
+      "timestamp": "2015-01-27T00:44:14+00:00",
+      "author": "Vicrol123",
+      "content": "i tick boot as HDD, i need unticked?\n\ni tried with one .imgPTN and works with untick boot as HDD ![:clap:](http://reboot.pro/public/style_emoticons/default/clap.gif) drive info shows:\n\nPartition 1 SIZE\u003d33024,212MiB Type: 0B FAT32 (2047GB max) \\*ACTIVE\\*  \nSTART POS \u003d CYL:0 HD:1 SEC:1 END POS \u003d CYL:1023 HD:254 SEC:63  \nSTART (LBA) \u003d 63 (0000003F) SIZE (LBA) \u003d 67,633,587 (040801B3) \\[End\u003d67,633,649\\]  \n\nPartition 2 SIZE\u003d920842,976MiB Type: 0F EXTLBA   \nSTART POS \u003d CYL:1023 HD:254 SEC:63 END POS \u003d CYL:1023 HD:254 SEC:63  \nSTART (LBA) \u003d 67,633,650 (040801F2) SIZE (LBA) \u003d 1,885,886,415 (706857CF) \\[End\u003d1,953,520,064\\]  \n\nPartition 3 SIZE\u003d0MiB Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nPartition 4 SIZE\u003d0MiB Type: 00   \nSTART POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \nSTART (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\nP1 Start\u003d63 (32,256 bytes) End\u003d67,633,649 (34,628,428,288 bytes)  \nPEXT Start\u003d67,633,650 (34,628,428,800 bytes) End\u003d1,953,520,064 (1,000,202,272,768 bytes)\n\nany near problem formatting? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\ni use fat32 for compatibility with older machines to install windows xp\u0027s (amd socket 754) works perfect!\n\n![:crazyrocker:](http://reboot.pro/public/style_emoticons/default/crazyrocker.gif)\n\n"
+    },
+    {
+      "id": "190158",
+      "timestamp": "2015-01-27T09:16:30+00:00",
+      "author": "steve6375",
+      "content": "Good.\n\nI don\u0027t understand about older machines only working with FAT32?\n\nBIOS systems don\u0027t access the filesystem, they just boot the code in the MBR - so it does not matter what format the drive is (unless the BIOS is doing something weird!).\n\nCan you explain please?\n\n"
+    },
+    {
+      "id": "190163",
+      "timestamp": "2015-01-27T14:58:58+00:00",
+      "author": "Vicrol123",
+      "content": "There are many computers with limited bios (as VIT pc\u0027s for example) that come with Linux by default (and i dont know far as the features are restricted).\n\nand how to use various linux, windows and other .isos and following step by step guide rmprepusb (that says fat32 its more compatible with various os) i use fat32.\n\ni will try NTFS in the short term to test linux, windows and test hardware .isos\n\nregards! ![:crazyrocker:](http://reboot.pro/public/style_emoticons/default/crazyrocker.gif)\n\n"
+    },
+    {
+      "id": "190164",
+      "timestamp": "2015-01-27T15:11:52+00:00",
+      "author": "steve6375",
+      "content": "If you need FAT32 then there are many ways around it. e.g.\n\n1. Make a .img file which is a disk image formatted as FAT12/FAT16/FAT32 and mount that as a virtual BIOS disk . .e.g. DOS.ima and just copy the file to an E2B menu folder\n\n2. Add an extra FAT32 partition to the E2B USB drive, you can copy files to it and boot to the files from an E2B .mnu file\n\n3. Make an image partition file (.imgPTN) - e.g. if you have a working FAT32 USB flash drive, drag-and-drop the whole drive icon/letter onto the the MakePartImage MPI_FAT32 desktop shortcut to make a FAT32 image partition file and add it to your E2B USB drive - when you run this, it will replace the E2B NTFS partition with a FAT32 partition containing all your FAT32 files.\n\n"
+    }
+  ]
+}

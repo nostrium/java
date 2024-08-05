@@ -1,0 +1,70 @@
+{
+  "id": "21424",
+  "title": "usb flash drive as floppy disk or cd drive",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "202361",
+      "timestamp": "2017-02-20T20:24:59+00:00",
+      "author": "florin91",
+      "content": "Hello,   \n\nCan I make a usb flash be detected and act like a floppy in windows?  \n\nPossibly without grub4dos and more like dd, fdisk or rmprepusb tools.  \n\nI am certain this is possible in a hardware way by manipulating controller chip and rewrite its memory, and I wanted to know if it might be possible by software.  \n\nObviously, simply dd\u0027ing the floppy image to usb doesn\u0027t work.  \n\nYou might want to say to use a floppy disk. I know how a floppy disk looks, but given the notebook manufacturers consider it out of spec there might be some usb way, since we have usb ports.  \n\nYou might ask why I need this? For flashing bios recovery under dos. There is a recovery bios key combination\n\n```\n( fn +b + power)\n```\n\nwhich when pressed attempts to read for a floppy or usb containing the bios to write and other dos tools.   \n\nOne problem that I might be encountering is using 32 gb usb formated with a partition with 1 gb for using fat filesystem.   \n\nAnd I need to disassembly more the recovery part from the bios in order to find the filename...  \n\nThanks!   \n"
+    },
+    {
+      "id": "202362",
+      "timestamp": "2017-02-20T21:37:48+00:00",
+      "author": "steve6375",
+      "content": "Most BIOSes will access a FAT32 USB drive just fine.\n\nAre you encountering a problem?\n\n"
+    },
+    {
+      "id": "202367",
+      "timestamp": "2017-02-21T00:43:58+00:00",
+      "author": "florin91",
+      "content": "Yes. While pressing the combination for bios crisis recovery, it reboots, this means something with the flash is not right. Will try further. From this the ideea if I can make the flash detected as a floppy drive because I have a recovery floppy binary image. Or as a cd because when disassembling bios code I saw a bunch of ELTORITO specifications.  \n\nSo, can I plug a usb and the bios detect it as floppy?  \n\nWill recheck the stick creation.  \n\nEdit: Most bioses will access the usb just fine when running at full capacity and integrity. But IF this is a part from a bios ( from a bad bios flash), especcially the BIOS block which deals with a restrained system and offers small recovery procedure?  \n\nEdit2: The eltorito spec support floppy booting with cds...   \n"
+    },
+    {
+      "id": "202368",
+      "timestamp": "2017-02-21T03:44:14+00:00",
+      "author": "tinybit",
+      "content": "Basically you could not expect BIOS works for ever. The manufacturers are dropping BIOS support, using EFI instead.\n\n"
+    },
+    {
+      "id": "202371",
+      "timestamp": "2017-02-21T09:29:33+00:00",
+      "author": "steve6375",
+      "content": "You can try using RMPrepUSB to prepare the USB drive.\n\nUse\n\nSize 300\n\nMS-DOS\n\nFAT16\n\nBoot as FDD\n\nand place files on USB drive afterwards.\n\nIf that fails, try FAT32.\n\nAlso, use the smallest USB flash drive you can find !\n\n"
+    },
+    {
+      "id": "202427",
+      "timestamp": "2017-02-22T19:11:30+00:00",
+      "author": "florin91",
+      "content": "\u003e You can try using RMPrepUSB to prepare the USB drive.  \n\u003e Use   \n\u003e Size 300  \n\u003e MS-DOS  \n\u003e FAT16  \n\u003e Boot as FDD  \n\u003e\n\u003e and place files on USB drive afterwards.  \n\u003e\n\u003e If that fails, try FAT32.  \n\u003e Also, use the smallest USB flash drive you can find !\n\nHa ha smallest usb yes, I know!  \n\nIt is interesting how the smallest usb you can buy these days is 4 GB when I wanted 2 GB or less ... So I will try that! One can even host a contest - the smallest usb you can buy ...  \n\nNow I tried with 4gb and the WinCrisis phoenix tool. Didn\u0027t worked.  \nTo try next:  \n- Steve method: How can I flash custom boot sector.bin in RMPrepUSB? Wanted to try 300 size, FDD boot and a custom boot sector other than the ones listed? Maybe with DD too.  \n- create a virtual IMG file, mount as floppy, use WinCrisis app and then DD the image to usb  \n- using the previous image create an EL TORITO boot as FDD CD image to burn and try that instead ...  \n- disassembly more bios to see why it\u0027s not recognised ...  \n- buy a cheap eeprom programmer and use that since the BIOS chip is removable dip package yes.  \n\nAny thoughts?   \n"
+    },
+    {
+      "id": "202428",
+      "timestamp": "2017-02-22T19:35:56+00:00",
+      "author": "Wonko the Sane",
+      "content": "In some cases, historically a \"double way\" approach, i.e. something that is at the same time a super-floppy and a partitioned hd-like device worked around some BIOS issues (please read as makebootFAT), but if the issue is with the BIOS \"emergency block\" and somehow you need it to become \"drive A:\" it is entirely possible that an actual floppy (and nothing else, exception made for some - now not findable anymore - USB sticks, I seem to remember by Netac, Steve6375 used them, that had a physical switch to emulate a floppy) would do.  \nBut, usually, a USB floppy drive works, of course it depends on specific motherboards/BIOSes.  \n\nA floppy emulation El Torito also should get drive A:.  \n\nThe \"easiest\" (not necessarily the best) way to make such a CD from a floppy image is referenced here:  \n[http://reboot.pro/to...brided/?p\u003d86679](http://reboot.pro/topic/9916-grub4dos-isohybrided/?p\u003d86679 \"\")  \n[http://www.menuetos.net/cdboot.htm](http://www.menuetos.net/cdboot.htm \"External link\")  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    },
+    {
+      "id": "202429",
+      "timestamp": "2017-02-22T19:45:53+00:00",
+      "author": "florin91",
+      "content": "Thank you, will try!  \n\nI was thinking it would be easier if I use mkisofs from cdrtools.  \n\nSomething like this:  \n\n```\nmkisofs -r -b boot/boot.img -c boot/boot.catalog -o bootcd.iso .\n```\n\nThanks!  \n\nEdit: I am the only one this website seems to sign out? Whatever ...  \n\n[https://support.micr...bootable-cd-rom](https://support.microsoft.com/en-gb/help/167685/how-to-create-an-el-torito-bootable-cd-rom \"External link\")   \n"
+    },
+    {
+      "id": "202433",
+      "timestamp": "2017-02-22T22:58:50+00:00",
+      "author": "cdob",
+      "content": "\u003e Now I tried with 4gb and the WinCrisis phoenix tool. Didn\u0027t worked.\nA 2GB or less USB drive is recommended.  \n[http://forum.noteboo...s-flash.529859/](http://forum.notebookreview.com/threads/how-to-recover-the-m11x-from-a-bad-bios-flash.529859/ \"External link\")  \n\nDo you have a old MMC or SD card?  \nI\u0027m using a 16 MB MMC card and a USB card reader for booting DOS.   \n"
+    },
+    {
+      "id": "202434",
+      "timestamp": "2017-02-22T23:24:04+00:00",
+      "author": "florin91",
+      "content": "Unfortunately not, 4 GB usb and 4 GB micro SD card as well.  \n\nI don\u0027t understand why won\u0027t support bigger ones, if the first partition is small.  \n\nAnd regardless of size, when executing the correct jmp of instructions, it should try continuously reading the flash.   \n"
+    }
+  ]
+}

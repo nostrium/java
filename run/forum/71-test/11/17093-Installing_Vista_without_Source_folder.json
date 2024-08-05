@@ -1,0 +1,16 @@
+{
+  "id": "17093",
+  "title": "Installing Vista without Source folder",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "156604",
+      "timestamp": "2012-06-20T22:23:26+00:00",
+      "author": "ll1979",
+      "content": "I wrote this up after steve from rpmprepusb directed me here. I have been using a modified version of the tutorial here: [http://www.rmprepusb...and-server-2008](http://www.rmprepusb.com/tutorials/how-to-create-a-usb-drive-that-will-install-vista-win7-and-server-2008 \"External link\")  \n\nMy modifications include: boot.wim and install.wim in the same folder for each OS type as well as a merged x64 and x86 .wim file  \n\nThe issue i had with the guide was that it required the full \\\\sources folder from the Vista dvd to be copied over to the usb drive so I decided to fix that problem.  \n\nI read around a bit and eventually learned that the original vista install files did not have the ability to do so like the windows 7 did for whatever reason.  \n\nAfter a few hours of looking at the log files i found the problem was that vista was detecting the boot from usb as a \"media boot\" and when you run setup from the \\\\sources\\\\ directory it would detect it as a non-media boot. This was the only difference i could find between the two.  \n\nthe problem was that it was ignoring the /installfrom: switch when it was detected as being booted from media, the routine to detect the boot type is in winsetup.dll at offset 0xAA626 for 6 bytes  \n\nthe original (in the vista SP2 image) bytes are: 0F 85 EB 00 00 00  \n\nthis is just a conditional jump after a search to see if you are running setup from a ramdisk and if you are, it\u0027s a media boot, and it looks for the \\\\sources\\\\ directory on a cd/dvd-rom volume  \n\npatching this to E9 EC 00 00 00 90 causes it to jump every time, so it will accept the /installfrom: switch and process it.  \n\nAfter this patch the other modification that i had to do was copy an original boot.wim into the \\\\sources\\\\ directory of the 2nd image in the boot.wim  \n\nI am looking for a better solution for the boot.wim problem since it essentially doubles the size of the original but have not come up with anything yet.  \n\nHopefully this had the information for what people might need and wasn\u0027t too long winded, if you have any questions let me know.  \n\nI can write a patcher for it but will need to wait until i get some more time to test it more   \n"
+    }
+  ]
+}

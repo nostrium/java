@@ -1,0 +1,154 @@
+{
+  "id": "18971",
+  "title": "How to fix partition error on USB drive?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "177683",
+      "timestamp": "2013-10-01T08:06:03+00:00",
+      "author": "Peter80",
+      "content": "I have a Windows XP installation USB drive, 8GB, which i made with WinSetupFromUSB. It was working fine but yesterday when i plug in the usb Window 7 show error on file system. I ran chkdsk on the USB but it couldn\u0027t fix the error and sometimes Windows show message that i need to format the drive if i want to use it.\n\nThen i tried Testdisk and it is showing this error when i analyze the drive:  \nBad ending cylinder \\\u003cCHS and LBA don\u0027t match\\\u003e  \nI assume this is a partition error. My question is what does it mean and how to fix it?  \n\n[![83mn.png](http://img809.imageshack.us/img809/3953/83mn.png)](http://img809.imageshack.us/i/83mn.png/ \"External link\")  \n\n"
+    },
+    {
+      "id": "177684",
+      "timestamp": "2013-10-01T08:27:15+00:00",
+      "author": "Wonko the Sane",
+      "content": "The disk has been modified.\n\nLet me doubt that the one and only partition was an extended one and not bootable.\n\nThe CHS and LBA are of course not balanced (and also \"wrong\")\n\n(973+1)\\*(254+1)\\*63\u003d15647310\n\nI wonder what exactly could have led to the current situation. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\nAny \"bootable USB making tool\" will make at least one Primary partition and that partition will also be marked as \"active\" (or \"bootable\") in the partition table.\n\nIt seems like the \"whatever\" modified or created the partition also brought the end beyond the CHS addressable limit, i.e. it is well possible that the LBA is correct, BUT it doesn\u0027t match the cylinder boundary.\n\nThis is not an issue in theory (as long as the actual sectors are physically present on the device), but a number of BIOSes will not \"like\" it in practice.\n\nWhat do you want to do?\n\nThe easiest/faster would be to re-create the stick from scratch, though very likely it is possible to \"repair it\" manually.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "177687",
+      "timestamp": "2013-10-01T13:37:48+00:00",
+      "author": "Peter80",
+      "content": "I had other files on that usb along with the Windows XP installation files, which i deleted. I guess this might be the reason for this error to appear.  \n\nIf there is a way to fix this error without recreating the usb will be better, because if i create new installation usb and than copy or delete new files on the usb the same error may happen again.  \n\n"
+    },
+    {
+      "id": "177689",
+      "timestamp": "2013-10-01T14:01:38+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I had other files on that usb along with the Windows XP installation files, which i deleted. I guess this might be the reason for this error to appear.  \n\u003e\n\u003e If there is a way to fix this error without recreating the usb will be better, because if i create new installation usb and than copy or delete new files on the usb the same error may happen again.\n\nNo, adding or deleting file cannot cause this kind of issues, the only things that can cause something like this is the use of a program or an actual hardware issue on the USB stick controller (but this would be extremely strange) .\n\nThe \\*kind\\* of program that may cause this issue are partitioning or partition resizing programs, or however a program dealing with the MBR and/or \\\\\\\\.\\\\PhysicalDrive.\n\nAnyway, extract first 200 sectors from the stick, compress the result into a .zip or .7z file and upload it as attachment or post it on \\*any\\* free hosting site and post the link to it.\n\nA convenient way to save those sectors is by using dsfo from the DSFOK toolkit:\n\n[http://members.ozema...eezip/freeware/](http://members.ozemail.com.au/~nulifetv/freezip/freeware/ \"External link\")\n\u003e dsfo \\\\\\\\.\\\\PhysicalDrive***n*** 0 102400 C:\\\\first200.bin\n\u003e\nTo find out the actual physical drive number of the stick you can use Testdisk, if the situation has not changed from the above screenshot, you seemingly have an internal hard disk (that will be /dev/sda in TESTDISK and \\\\\\\\.\\\\PhysicalDrive0) and the USB stick, which is /dev/sdb and \\\\\\\\.\\\\Physicaldrive***1***.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "177691",
+      "timestamp": "2013-10-01T14:44:33+00:00",
+      "author": "Peter80",
+      "content": "I am entering this but it show error message:  \n\ndsfo \\\\\\\\.\\\\PhysicalDrive1 0 102400 C:\\\\first200.bin  \n\n[![jgeo.png](http://img844.imageshack.us/img844/2848/jgeo.png)](http://img844.imageshack.us/i/jgeo.png/ \"External link\")  \n\nI am not sure exactly how to use this program.  \n\n"
+    },
+    {
+      "id": "177693",
+      "timestamp": "2013-10-01T15:26:03+00:00",
+      "author": "Wonko the Sane",
+      "content": "Open a command prompt.\n\nNavigate to the directory (like C:\\\\dsfok\\\\) where you uncompressed the command line dsfo.exe file (NOT the one in the GUI subfolder) and issue the commands. (the GUI version does not support Physical devices, only files as source)\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "177694",
+      "timestamp": "2013-10-01T15:37:40+00:00",
+      "author": "Peter80",
+      "content": "This time i think i did it right. This is the link:\n\n[http://www.mediafire...1y8a4zcn49h712s](http://www.mediafire.com/?1y8a4zcn49h712s \"External link\")  \n\n"
+    },
+    {
+      "id": "177696",
+      "timestamp": "2013-10-01T16:48:21+00:00",
+      "author": "Wonko the Sane",
+      "content": "Yep, the file is ok (though you did not compress it to a .zip or 7z as asked), the real issue are it\u0027s contents.\n\nThere is a whole lot of (and I mean a lot) of MBR\u0027s one after the other each (excluded the first one) with active, Primary NTFS partition starting at CHS/LBA:\n\n1-0-63/16127 size 15630592\n\n1-0-62/16126 size 15630592\n\n....\n\n....\n\n1-0-1/16065 size 15630592\n\nThe actual MBR has (as TESTDISK reported a non-active 05 (Extended partition) starting at CHS/LBA:\n\n1-0-1/16065 size 15631245\n\nThe MBR code is not a \"common\" one, AFAIK, and after the last MBR there is a textual reference to grldr, grub.exe and plpbt.bin.\n\nIs it possible that the stick has been previously used with \\*any\\* number of less common \"partitioning programs\" (like - say, PLoP or FBINST)?\n\nIt is really strange that any of these may have not used at all the first cylinder (while respecting the beginning on CHS x/0/1). ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nAnyway, what we need now is to make sure of the offset of the actual NTFS bootsector.\n\nTry making another 200 sectors image, starting at sector 16000, i.e. run:\n\u003e dsfo \\\\\\\\.\\\\PhysicalDrive***n*** 8192000 102400 C:\\\\16000_200.bin\n\u003e\nand post this new image (possibly compressed into a .zip or .7z archive).\n\nThe actual NTFS bootsector should start at LBA 16128, but I want to check the size of the filesystem as declared in the bootsector, TESTDISK reports the whole device to have a total of 973 cylinders, and if this is the case, a CHS Cylynder value of 973 (which actually means 973+1\u003d974) would be invalid, this is probably the reason of the warning it throws.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "177697",
+      "timestamp": "2013-10-01T17:24:29+00:00",
+      "author": "Peter80",
+      "content": "This is the new file:\n\n[http://www.mediafire...w8xwaajjb6emz4l](http://www.mediafire.com/?w8xwaajjb6emz4l \"External link\")  \n\n"
+    },
+    {
+      "id": "177700",
+      "timestamp": "2013-10-01T19:38:45+00:00",
+      "author": "Wonko the Sane",
+      "content": "According to the data in the PBR/bootsecor (which is at 16,128 as expected :smile:), the NTFS filesystem is 15,630,591.  \nTo this you need to add 1 sector (the bootsector mirror), thus the size of the whole stick should be:  \n16,128+15,630,591+1\u003d15.646.720 sectors, which multiplied by 512 makes 8,011,120,640 bytes.  \nThe CHS corresponding to 16,128 is 1/1/1 (which is OK).  \nThe CHS corresponding to 15,646,720 is 973/245/40.  \n\nNow you should check the \"actual\" size of the stick by issuing the command:\n\n```\ndsfo \\\\.\\PhysicalDrive1 0 0 nul\n```\n\ndsfo will try to copy the whole stick to the nul device and after having finished will report the actual number of bytes transferred, as in here:\n\n[http://reboot.pro/to...-alpha/?p\u003d38197](http://reboot.pro/topic/5000-managing-mbrs-by-jaclaz-mbrbatch-release-001-alpha/?p\u003d38197 \"\")\n\nCheck that number and post it:\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "177705",
+      "timestamp": "2013-10-01T21:39:16+00:00",
+      "author": "eye0",
+      "content": "Hello people!  \nFirst question to Peter:  \nImportant to your data that you have on this partition?  \nIf not, you can use the program for low-level formatting.  \n[http://hddguru.com/s...el-Format-Tool/](http://hddguru.com/software/HDD-LLF-Low-Level-Format-Tool/ \"External link\")  \nAttention! All existing partitions will be lost! Will only unallocated space.  \nUtility to recover deleted files and partitions will be powerless!  \nIn the \"My Computer\" is also lost.  \nYou can then create a new partition.  \nTo do this, use any partition manager, such as, Partition Magic, or Paragon Partition Manager ETC.  \nThis option would help if there was no mechanical damage.  \n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "177713",
+      "timestamp": "2013-10-02T07:58:09+00:00",
+      "author": "Peter80",
+      "content": "This is the result of the scan, but i don\u0027t know if it is successful because it finished with error.  \n\n[![4cxm.png](http://img191.imageshack.us/img191/7341/4cxm.png)](http://img191.imageshack.us/i/4cxm.png/ \"External link\")  \n\n@eye0  \nI want to try to fix this error first, before recreating the usb.  \n\n"
+    },
+    {
+      "id": "177714",
+      "timestamp": "2013-10-02T08:49:25+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e This is the result of the scan, but i don\u0027t know if it is successful because it finished with error.\nYes, this is \"good enough\", the device seemingly has 8,011,120,640 bytes.  \n\n\u003cbr /\u003e\n\n\u003e @eye0  \n\u003e I want to try to fix this error first, before recreating the usb.\nWell, that makes no sense.  \nIf you want to fix the thingy, it is an idea, but only if you - for any reason - cannot re-build the thingy, to fix it to later wipe it and restart from scratch makes NO sense whatever. ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)  \n\nRight now, from what you posted the device is not bootable, but you can access it\u0027s contents alright.  \nThe suggestion - already made - was to wipe the thing ad start again from scratch, and then do not mess with it.  \nThis last point is the actually relevant one, to find what exactly messed the stick (besides how exactly you made it first time), from the data on the sectors you posted, it seems a lot like a number of \"queer\" progrmas have been run on the stick, as a further example all \"00\" sectors in the second file you posted have a \"progressive\" signature, 813E, 823E, 843E ... etc. which is something very uncommon.  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "177715",
+      "timestamp": "2013-10-02T09:11:17+00:00",
+      "author": "Peter80",
+      "content": "I mean if i can fix the error i will not recreate the usb. And the device is bootable, after restart it boots to the Windows XP installation. If nothing more can be done i will leave it like this, i assume this is not serious error.  \n\nI have used only WinSetupFromUSB on this USB considering that formating the device erases all traces of previously used programs.  \n\n"
+    },
+    {
+      "id": "177719",
+      "timestamp": "2013-10-02T11:58:51+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, the attached is a \"corrected\" MBR (with the \"right\" CHS/LBA addresses and the NTFS volume set as active ad Primary partition).  \nYou \"restore\" it to the USB stick by :\n\u003e dsf***i***\\\\\\\\.\\\\Physicaldrive1 0 512 C:\\\\dsfok\\\\MBRfixed.bin\n\u003e\n(then you remove the stick and re-insert it)\n\nTESTDISK should be OK with it and at the most you might be needing to re-install the MBR code (either the standard 2K/XP MBR - as an example using MBRFIX or re-installing grub4dos).\n\nStill, the partition location and a number of \"artifacts\" I found in the sectors you posted are NOT those expected when you start from scratch (wiped stick) and just run WinSetupFromUSB, \\*something else\\* has modified the stick, and from what I can see it is not a hardware issue in the controller or \"random\" corruption, but rather the effect(s) of one (or more than one) program(s) which definitely created a - if not meaningful, at least \"designed\" - pattern.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko  \n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003dc0725cf654639b19f45a59216bd46b51\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14559 \"Download attachment\") [**MBRfixed.zip**](http://reboot.pro/index.php?s\u003dc0725cf654639b19f45a59216bd46b51\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14559 \"Download attachment\") **539bytes** 394 downloads\n\n"
+    },
+    {
+      "id": "177736",
+      "timestamp": "2013-10-02T16:22:49+00:00",
+      "author": "Peter80",
+      "content": "I tried to execute the command but it give me error:  \n\n[![l6vi.png](http://img22.imageshack.us/img22/6830/l6vi.png)](http://img22.imageshack.us/i/l6vi.png/ \"External link\")  \n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "177742",
+      "timestamp": "2013-10-02T17:56:04+00:00",
+      "author": "Wonko the Sane",
+      "content": "Strange.\n\nYou are in the correct folder C:\\\\dsfok.\n\nYou are issuing the correct command (dsfi).\n\nI presume that the file C:\\\\dsfok\\\\MBRfixed.bin does exist as well as the C:\\\\dsfok\\\\dsfi.exe one.\n\nThe error you posted is like if you issue the command \"dsfok\" ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)\n\nAnyway, since it\u0027s just a matter of re-writing a single sector, you can use \\*any\\* hex/disk editor or (easier) HDhacker:\n\n[http://dimio.altervista.org/eng/](http://dimio.altervista.org/eng/ \"External link\")\n\nto \"restore\" the MBR (first sector of PhysicalDrive).\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "177744",
+      "timestamp": "2013-10-02T18:22:41+00:00",
+      "author": "cdob",
+      "content": "\u003e You are in the correct folder C:\\\\dsfok.\nAt a third glance it looks like calling dsfok at the root folder.  \n\u003e cd /  \n\u003e c:\\\\\\\u003edsfok\\\u003e\n\nWhat about  \n\n```\ncd /d C:\\dsfok\ndsfi \\\\.\\Physicaldrive1 0 512 MBRfixed.bin\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "177745",
+      "timestamp": "2013-10-02T18:28:39+00:00",
+      "author": "Peter80",
+      "content": "Yes, cd / was the problem first time.\n\nThe second try the command run successfully and in the end it showed \"OK, written 512 bytes at offset 0\".  \nBut when i run Testdisk it still showing the error.  \n\nI will leave the usb this why. This error doesn\u0027t seem serious.  \n\n"
+    },
+    {
+      "id": "177746",
+      "timestamp": "2013-10-02T18:34:47+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e But when i run Testdisk it still showing the error.\n\nNO. ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\n\nMeaning that it may provide ***a warning*** or ***an*** error, BUT NOT ***the*** error (i.e. the same ~~error~~ *warning* as before).\n\n@cdob\n\nGood catch ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif), I totally missed the added \"\\\u003e\" :blush:\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "177748",
+      "timestamp": "2013-10-02T19:12:25+00:00",
+      "author": "Peter80",
+      "content": "\u003e Meaning that it may provide ***a warning*** or ***an*** error, BUT NOT ***the*** error (i.e. the same ~~error~~ *warning* as before).\n\u003e\nIt is showing the same warning as from the screenshot from my first post.\n\n"
+    },
+    {
+      "id": "177749",
+      "timestamp": "2013-10-02T19:41:17+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e It is showing the same warning as from the screenshot from my first post.\n\nBut very possibly NOT the same addresses/sizes and partition ID\u0027s.\n\nOr \\*somehow\\* it didn\u0027t \"take\" the modifications.\n\nRecap:\n\nBEFORE you had:\n\na ID 05 Extended partition with a the CHS 973/254/63 that does NOT corresponds to the LBA ***containing***\n\na ID 07 Logical volume with the CHS 973/254/63 that does NOT corresponds to the LBA\n\nNOW: you should have only:\n\na ID 07 Primary partition (active) with a the CHS 973/245/40 that should correspond to the LBA (but TESTDISK may as well find an issue with it because it sees 973 and not 974 Cylinders)\n\nAt least BEFORE you had 2 (two) warnings, and now you have only 1 (one).\n\nPost againthe TESTDISK screenshot, or, much better, the TESTDISK log.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "177767",
+      "timestamp": "2013-10-03T08:00:57+00:00",
+      "author": "Peter80",
+      "content": "This is a screenshot and log file from Testdisk:  \n\n[![f2o.png](http://img89.imageshack.us/img89/5381/f2o.png)](http://img89.imageshack.us/i/f2o.png/ \"External link\")  \n\n\u003cbr /\u003e\n\n[http://www.mediafire...d6h8z2abu9wxtxz](http://www.mediafire.com/?d6h8z2abu9wxtxz \"External link\")  \n\n"
+    },
+    {
+      "id": "177841",
+      "timestamp": "2013-10-04T14:55:07+00:00",
+      "author": "Wonko the Sane",
+      "content": "Yes, as expected.\n\nYou may want to try using now \\*any\\* NTFS resizing tool to make the NTFS filesystem slightly smaller (and possibly also respect Cylinder boundary).\n\nThat would remove the \"warning\".\n\nYou should get to have the partition:\n\n1/1/1 - 972/254/63 (16128) 15615117\n\nIn this particular case, you can most probably manage to do it manually, by defragging the partition, making sure that the last few sectors are not used, and then correcting the values in the MBR and in the NTFS bootsector and then running CHKDISK to recreate the mirror bootsector.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    }
+  ]
+}

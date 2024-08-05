@@ -1,0 +1,28 @@
+{
+  "id": "21321",
+  "title": "Can I make a Easy2Boot .imgPTN file containing multiple partitions?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "200941",
+      "timestamp": "2016-12-02T04:24:06+00:00",
+      "author": "loveyoumario",
+      "content": "One of my friends offers me a method to boot Win7, Win8.1 and Win10 x64 from a removeable or fixed-disk drive which also supports UEFI-boot. The steps are:\n\n1. Use GImageX to combine the three \"install.wim\"s to a large install.wim(more than 10 GB)\n\n2. Create a FAT32 partition, put all files from the Win10 x64 .ISO into this partition without install.wim\n\n3. Create a NTFS partition, put all files from the Win10 x64 .ISO into this partition without install.wim, and then put the modified install.wim in step 1\n\n4. Use bootice to modify the BCD file in the FAT32 partition to link to the NTFS partition ←Maybe there is a better word to replace \"link to\"...\n\nSo I wonder can I make a .imgPTN file containing these 2 partitions?\n\n"
+    },
+    {
+      "id": "200942",
+      "timestamp": "2016-12-02T05:33:53+00:00",
+      "author": "devdevadev",
+      "content": "Had you not tried following tutorial ?\n\n[http://www.easy2boot...er-flash-drive/](http://www.easy2boot.com/add-payload-files/adding-windows-install-isos-without-needing-a-helper-flash-drive/ \"External link\")\n\n"
+    },
+    {
+      "id": "200943",
+      "timestamp": "2016-12-02T08:23:05+00:00",
+      "author": "loveyoumario",
+      "content": "\u003e Had you not tried following tutorial ?\n\u003e\n\u003e [http://www.easy2boot...er-flash-drive/](http://www.easy2boot.com/add-payload-files/adding-windows-install-isos-without-needing-a-helper-flash-drive/ \"External link\")\n\nThanks, I was confused by the title \"Adding \\\u003e4GB Windows Install ISOs using .imgPTN files\" and thought it was just about how to add the \\\u003e4GB ISO which contains \\\u003c4GB files...\n\n"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "id": "21093",
+  "title": "Windows XP ACPI BSOD On Newer PC",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "198764",
+      "timestamp": "2016-04-16T22:14:49+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "I recently tried to boot a friend\u0027s genuine XP SP3 (original, not burned) disc on my ASUS Zenbook UX305CA. I got an unexpected BSOD shortly into the boot phase, something related to ACPI and needing to press a Function key. It also mentioned changing ACPI settings in the BIOS, which aren\u0027t present in my BIOS. I have also tried turning on CSM/legacy mode. I also get an identical error when trying to boot Hirens Boot CD.\n\nWhat can be done about this and what might the cause be (other than booting on different hardware)?\n\n"
+    },
+    {
+      "id": "198769",
+      "timestamp": "2016-04-17T18:17:33+00:00",
+      "author": "alacran",
+      "content": "XP do not have drivers for SATA devices (or USB 3.0), you need to add the required drivers to your install media, try adding storage drivers, also HDD has to be MBR partitioned, NOT GPT, enable CSM/legacy mode and disable SecureBoot in Bios.\n\n"
+    },
+    {
+      "id": "198776",
+      "timestamp": "2016-04-18T08:37:01+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "@ alacran: I\u0027m not sure what my ACPI error has to do with SATA/AHCI/3.0. As stated, there are no ACPI options in my BIOS. I\u0027m not sure that adding the required drivers to my media will solve this. I may or may not install XP, I intend to use Hirens in live mode only. If anyone else can pitch in on this then it would be much appreciated.\n\n"
+    },
+    {
+      "id": "198817",
+      "timestamp": "2016-04-23T17:01:02+00:00",
+      "author": "Agent47",
+      "content": "Hi\n\nYou can always run HBCD tools from Win7 or 8 based PE - ie, \"Win7PE_SE\" or \"Make-PE3\". I have been using HBCD tools this way for a long time.\n\n"
+    },
+    {
+      "id": "198820",
+      "timestamp": "2016-04-23T19:38:22+00:00",
+      "author": "Zoso",
+      "content": "i seem to vaguely recall running across this problem before and it was something to do with the CDROM drivers. if you can, temp install older CDROM drive.   \n"
+    },
+    {
+      "id": "198835",
+      "timestamp": "2016-04-25T23:14:23+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "@ Zoso: I\u0027m booting XP/Hirens from USB, not CD/DVD/ISO. My laptop didnt come with a disc drive, and I dont have any external ones. Perhaps I need to find a way to add the disc drivers to the USB?\n\n"
+    },
+    {
+      "id": "198836",
+      "timestamp": "2016-04-26T00:15:46+00:00",
+      "author": "Zoso",
+      "content": "\u003e @ Zoso: I\u0027m booting XP/Hirens from USB, not CD/DVD/ISO. My laptop didnt come with a disc drive, and I dont have any external ones. Perhaps I need to find a way to add the disc drivers to the USB?\n\nis the first sentence in the your OP incorrect?   \n"
+    },
+    {
+      "id": "198837",
+      "timestamp": "2016-04-26T05:27:05+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "@ Zoso: The first sentence in my OP \\*IS\\* correct. I said that \\*I\\* don\u0027t have an external USB CD/DVD drive. I \\*NEVER\\* said my friend didn\u0027t have one that was borrowed by me.\n\nSorry, but I\u0027m just a very literal person.\n\n"
+    },
+    {
+      "id": "198841",
+      "timestamp": "2016-04-26T15:53:05+00:00",
+      "author": "Zoso",
+      "content": "\u003e Sorry, but I\u0027m just a very literal person.\n\nthen it seems your not very good at it since:  \n\n\u003e I recently tried to boot a friend\u0027s genuine XP SP3 (original, not burned) disc on my ASUS Zenbook UX305CA\n\nindicates that you booted from original install disc.  \n\n\u003e I\u0027m booting XP/Hirens from USB, not CD/DVD/ISO.\n\nbut this indicates \"not CD/DVD/ISO\" which would rule out \"genuine XP SP3 (original, not burned) disc\"  \n\n\u003cbr /\u003e\n\nso by the standard/common definition of \"literal\" then it seems you are not \"very\" enough.   \n"
+    },
+    {
+      "id": "198843",
+      "timestamp": "2016-04-26T18:33:35+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "@ Zoso: Your reading comprehension and written language interpretation skills are obviously lacking. There is nothing contradictory about my statements.\n\nI \\*SAID\\* that \"I recently tried to boot a friend\u0027s genuine XP SP3 (original, not burned) disc on my ASUS Zenbook UX305CA\" with \\*HIS\\* external disc drive. I dont see him often, and the disc drive isnt mine, I cant just use his property whenever I want. The disc appeared to be XP3 SP3 Pro VL, either direct from MSDN or from some other authorized source.He worked for several tech companies back in the early 2000s, so it is safe to assume that he had access to original Windows install discs. I took the liberty of ripping an ISO while he was around, with permission. Which is how I\u0027m now able to attempt to boot its\u0027 contents from USB, or from a burned disc if I had an external disc drive. Hirens is essentially a modded version of XP, it gives the same BSOD no matter how I try to boot it.\n\nI am requesting that you no longer post in my thread, your input is neither needed nor wanted. You make too many unnecessary and untrue assumptions based on what you would like to believe is true, rather than my actual statements, making yourself look like an idiot in the process of doing so. I mean, what kind of dumbass asks a question like \"What is the highest spec BIOS notebook (no UEFI)?\". Think about your own post and maybe you\u0027ll realize why it sounds ridiculous, and why I wouldnt waste my time responding.\n\n"
+    },
+    {
+      "id": "198844",
+      "timestamp": "2016-04-26T19:11:19+00:00",
+      "author": "Zoso",
+      "content": "your free to request and resort to childish insults all you want but you should know that that is non productive.  \n\nand mixing topics makes no sense either. post your insulting jibberish in the proper thread if your such a knowitall. go ahead smart guy.. instead of crossposting off topic, post your nonsense in the proper place. you dont seem to be able to figure out what that thread is about.  \n\n\u003e @ Zoso: Your reading comprehension and written language interpretation skills are obviously lacking. There is nothing contradictory about my statements.\n\nIm not the one who thinks he is \"a very literal person\" nor am i the one who resorts to insults when my programming is challenged. (mental programing)  \n\nyou are so predictable, it aint funny.   \n"
+    },
+    {
+      "id": "198849",
+      "timestamp": "2016-04-27T13:52:51+00:00",
+      "author": "pscEx",
+      "content": "I\u0027m in doubt whether the discussion is still kidding, or expanded to personal emotical behaviour.\n\nPlease have a look on that.\n\nPeter\n\n"
+    },
+    {
+      "id": "198853",
+      "timestamp": "2016-04-27T20:10:31+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "@ pscEx: The discussion is still serious, and back on topic, if Zoso has decided to dismiss himself from this thread. But I\u0027m also not afraid to tell him off. I\u0027m not afraid of a reprimand/ban/etc and will make no apologies to him.\n\n"
+    }
+  ]
+}

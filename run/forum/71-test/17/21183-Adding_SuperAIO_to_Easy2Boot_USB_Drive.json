@@ -1,0 +1,28 @@
+{
+  "id": "21183",
+  "title": "Adding SuperAIO to Easy2Boot USB Drive",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "199536",
+      "timestamp": "2016-07-13T15:40:24+00:00",
+      "author": "BenKell",
+      "content": "Hey Guys -\n\nRecently purchased a new 128gb USB 3.0 flash drive to carry on my keychain to replace my old one used to contain many utilities via Easy2Boot.\n\nOne ISO I frequently use is one I haven\u0027t ever gotten to work with Easy2Boot so thought I\u0027d post. It\u0027s a Windows \"SuperAIO v7\" which allows you to install 138 different Windows installations and MS boot utilities. Unlike prior SuperAIO versions, it doesn\u0027t boot to the standard WinPE GUI setup, but boots to a text-based WinPE where you make choices and initiate installation via text prompts.\n\nRight now, I\u0027m trying with the latest versions of the tools to create a .imgPTN file to see if it works as I haven\u0027t tried that before. As it weighs in at 30+gb, unfortunatly testing different methods isn\u0027t the fastest thing. Still trying to figure out if I drag the ISO to the desktop icon to create the file from a copy on the ISO on target flash drive or on HDD.\n\nAny suggestions for how best to implement this ISO?\n\nThanks\n\n"
+    },
+    {
+      "id": "199542",
+      "timestamp": "2016-07-13T18:21:03+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e It\u0027s a Windows \"SuperAIO v7\" which allows you to install 138 different Windows installations and MS boot utilities.\n\n\u003cbr /\u003e\n\nSeems legit.  \n[http://reboot.pro/to...ssion/?p\u003d184420](http://reboot.pro/topic/16429-easy2boot-development-discussion/?p\u003d184420 \"\")  \n\n\u003e I am currently using Windows SuperAIO v5 ISO to install various Windows OS\u0027s. It\u0027s hosted on torrent sites - but - the WIMs included are OEM, not pirated / preactivated, and I use my personally owned license keys (mostly from TechNet for labs) to activate the OS\u0027s.\n\nI still wonder why also this new version hasn\u0027t a home site and it can be found on places like \"thepiratebay\" or similar. ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)\n\n[http://reboot.pro/to...ssion/?p\u003d184422](http://reboot.pro/topic/16429-easy2boot-development-discussion/?p\u003d184422 \"\")  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "199582",
+      "timestamp": "2016-07-15T23:23:27+00:00",
+      "author": "steve6375",
+      "content": "When making large .imgPTN files, I always place the ISO on the fastest drive I have available (and has enough space). I have an SSD in my system, so I use that. The .imgPTN file will be made in the same folder as the ISO.\n\nOnce the .imgPTN file is made, you can copy it to the E2B drive and you will have a backup on your internal drive.\n\n\u003cbr /\u003e\n\n"
+    }
+  ]
+}

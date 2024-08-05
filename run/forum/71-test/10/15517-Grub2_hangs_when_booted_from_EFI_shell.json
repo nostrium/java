@@ -1,0 +1,16 @@
+{
+  "id": "15517",
+  "title": "Grub2 hangs when booted from EFI shell",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "138428",
+      "timestamp": "2011-09-24T15:40:43+00:00",
+      "author": "shareknw",
+      "content": "I would appreciate if someone would help me out to resolve this issue.  \n\nFrom the EFI shell, I am invoking Grub.efi which is stored on a USBdrive which acts as Fat32 EFI system partition. On the USB, I have stored all the grub modules, grub.efi,grub.cfg and also the kernel image to load. When I execute grub.efi, I get the grub menu on screen. When I select a menu entry, it gets hung.  \nThe below is the commands which i execute from the shell.  \nfs0:x86_64-boot\\\\x86_64-grub\\\\grub.efi  \n\nwhen I add debug\u003dall in the menu entry, at the end of logs, i get the following:  \n**GOP success and it hangs**   \n\nI tried adding set gfxpayload\u003d640x480 in menu entry but the behaviour remains the same.   \n"
+    }
+  ]
+}

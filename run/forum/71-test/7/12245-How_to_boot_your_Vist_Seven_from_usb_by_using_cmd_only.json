@@ -1,0 +1,28 @@
+{
+  "id": "12245",
+  "title": "How to boot your Vist \u0026 Seven from usb by using (( cmd )) only",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "106604",
+      "timestamp": "2010-08-11T19:57:09+00:00",
+      "author": "albarwn",
+      "content": "السلام عليكم ورحمة الله وبركاته   \n\npeace of Allah the lord upen you\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nTHE SUBJECT IS CLEAR\n\nyou will need (( usb flash or external harddisk 4 giga bait or more ))  \n\n\u003cbr /\u003e\n\nusb flash or external harddisk should be one partition  \n\n\u003cbr /\u003e\n\n![Posted Image](http://img839.imageshack.us/img839/6616/13063637.gif)  \n\n\u003cbr /\u003e\n\n(( cd of win vista or seven )) as you like ![:mellow:](http://reboot.pro/public/style_emoticons/default/mellow.png)   \n\n\u003cbr /\u003e\n\nthe prosses will take about 3 min to finish it ![:mellow:](http://reboot.pro/public/style_emoticons/default/mellow.png)   \n\n\u003cbr /\u003e\n\nok let,s start (( i will put pic to all thing be clear ))  \n\n\u003cbr /\u003e\n\nfrom -- start --- all Programs---- Accessories -- Command Prompt (( run as admin in win vista or seven ))  \n\n\u003cbr /\u003e\n\nor in run tape (( cmd ))  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n![Posted Image](http://img831.imageshack.us/img831/7854/53978442.gif)  \n\n\u003cbr /\u003e\n\nin first step will will format the usb and convert it to ntfs file system   \n\ntape this command (( look good there are slash and space ))  \n\n\u003cbr /\u003e\n\nconvert g: /fs:ntfs  \n\n\u003cbr /\u003e\n\n(( g is my flsh letter you must chang it ))  \n\n\u003cbr /\u003e\n\n![Posted Image](http://img839.imageshack.us/img839/6616/13063637.gif)  \n\n\u003cbr /\u003e\n\n(( you can pass this step by formating your flash with any format toll as hp flash tool ))  \n\n\u003cbr /\u003e\n\nif your flash not in ntfs file system you will have this window   \n\n\u003cbr /\u003e\n\n![Posted Image](http://img844.imageshack.us/img844/8259/79544807.gif)  \n\n\u003cbr /\u003e\n\nbut if it ntfs file system you will have this window   \n\n\u003cbr /\u003e\n\n![Posted Image](http://img839.imageshack.us/img839/1808/51413373.gif)  \n\n\u003cbr /\u003e\n\nnow we will run the disk part by taping this command   \n\n\u003cbr /\u003e\n\ndiskpart (( wiat about 5 sec it will run the toll ))  \n\n\u003cbr /\u003e\n\n![Posted Image](http://img688.imageshack.us/img688/2125/30896152.gif)  \n\n\u003cbr /\u003e\n\nnow tape this command   \n\n\u003cbr /\u003e\n\nlist disk  \n\n\u003cbr /\u003e\n\n![Posted Image](http://img839.imageshack.us/img839/2711/24886726.gif)  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nyou will see the drivers of your pc or lap top   \n\n\u003cbr /\u003e\n\nchooce your flash (( you will Recognition it by it size ))  \n\n\u003cbr /\u003e\n\nnow tape   \n\nselect disk\u003d1   \n\n(( 1 is your usb flash ))  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nnow tape  \n\nselect partition\u003d1  \n\n(( 1 is your usb flash ))  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n![Posted Image](http://img831.imageshack.us/img831/287/85994363.gif)  \n\n\u003cbr /\u003e\n\nnow tape  \n\n\u003cbr /\u003e\n\nactive   \n\n\u003cbr /\u003e\n\n![Posted Image](http://img444.imageshack.us/img444/4673/48149160.gif)  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nnow to exit from disk part   \n\n\u003cbr /\u003e\n\ntape (( exit ))  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n![Posted Image](http://img409.imageshack.us/img409/3247/91458187.gif)  \n\n\u003cbr /\u003e\n\ndont close the Command Prompt minimize it   \n\nthe last steps to make it ready   \n\n\u003cbr /\u003e\n\nopen the cd or the iso image of win seven or vista (( and copy all the file and paste it inside the usb flash ))  \n\n\u003cbr /\u003e\n\nnow open the Command Prompt   \n\n\u003cbr /\u003e\n\nwe gone to copy a file from win cd to in side the flash usb   \n\n\u003cbr /\u003e\n\ntape   \n\n\u003cbr /\u003e\n\n:h  \n\n\u003cbr /\u003e\n\nh is my win cd   \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n![Posted Image](http://img820.imageshack.us/img820/2673/012f.gif)  \n\nthan tape   \n\n\u003cbr /\u003e\n\ncd boot  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n![Posted Image](http://img409.imageshack.us/img409/4948/70861709.gif)  \n\n\u003cbr /\u003e\n\nthan tape   \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nbootsect.exe /nt60 :g   \n\n\u003cbr /\u003e\n\ng is my usb flash   \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n![Posted Image](http://img409.imageshack.us/img409/5562/67292619.gif)  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nwait for second  \n\n\u003cbr /\u003e\n\nif you have this massege   \n\n\u003cbr /\u003e\n\n![Posted Image](http://img844.imageshack.us/img844/1314/91950194.gif)  \n\n\u003cbr /\u003e\n\nall thing done in right way or back from the Beginning   \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\ni hope its Useful and easy way   \n\n\u003cbr /\u003e\n\nGod Bless you all  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nRegards ![:mellow:](http://reboot.pro/public/style_emoticons/default/mellow.png)   \n"
+    },
+    {
+      "id": "106619",
+      "timestamp": "2010-08-11T23:33:57+00:00",
+      "author": "maanu",
+      "content": "thank you for your efforts brother .   \n"
+    },
+    {
+      "id": "106620",
+      "timestamp": "2010-08-11T23:34:15+00:00",
+      "author": "maanu",
+      "content": "Wa Alikum Slaam .   \n\nthank you for your efforts brother .   \n"
+    }
+  ]
+}

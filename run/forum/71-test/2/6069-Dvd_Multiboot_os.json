@@ -1,0 +1,16 @@
+{
+  "id": "6069",
+  "title": "Dvd Multiboot os",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "48100",
+      "timestamp": "2008-10-24T21:19:39+00:00",
+      "author": "DLINUX",
+      "content": "Hi all  \n\n\u003cbr /\u003e\n\nI try Dvd Multi boot to Win2003 x32 and Win 2003 x64 with Grub4dos   \n\nmkisofs 2.01 (i686-pc-cygwin)  \n\n\u003cbr /\u003e\n\ntree folder:  \n\nGrub root  \n\ngrldr , menu.lst  \n\n\\\\boot  \n\nI try first test with:  \n\ncopy  \n\n\\\\i386 folder Win 2003 x32 adding setupldr.bin patch, creating iso, it work.  \n\ndelete i386 Win 2003 x32   \n\n\u003cbr /\u003e\n\nI try second test with:  \n\ncopy   \n\n\\\\i386 Win 2003 x64 adding setupldr.bin   \n\\\\AMD64   \n\ncreating iso, it work.  \n\nFinal test:  \n\nadding folder Win 2003 x32, rename NT_0, adding patch setupldr.bin and txtsetup.sif modifing  \n\ncreating iso. Work only Win 2003 x64.  \n\nWhen launch Win 2003 x32 with Vmware appears error with number and symbol.  \n\n\u003cbr /\u003e\n\nWhere is the error?  \n\nThanks  \n\nRegards  \n\n\u003cbr /\u003e\n\nz900   \n"
+    }
+  ]
+}

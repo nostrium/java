@@ -1,0 +1,16 @@
+{
+  "id": "7760",
+  "title": "Help - Recovery DVD With Disk Image restore in single click",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "65053",
+      "timestamp": "2009-04-17T12:14:02+00:00",
+      "author": "Kishore",
+      "content": "Please help me,  \n\nI am prepared disk image of my OS partition(XP). I would like to create a restore disk which is having only 2 selections.   \n\n1. Install Fresh Windows XP (This Installs Windows XP)  \n\n2. Restore Windows XP. (This will Restore My created disk Image gho\\\\perfect image image files to my C Drive).  \n\nI can create the first option. but i need help in second selection.  \n\nPlease help me. sorry for my bad english   \n"
+    }
+  ]
+}

@@ -1,0 +1,328 @@
+{
+  "id": "15773",
+  "title": "Creating a BootSDI.Img for LiveXP",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "141159",
+      "timestamp": "2011-11-08T12:01:00+00:00",
+      "author": "Deepan Patel",
+      "content": "Hello,  \n\nI really need some help and I would be grateful if I could get help. I have installed and downloaded the LiveXP files necessary for Winbuilder. I have a custom made XP bootable from usb from someone however I would like to create my own so that I can choose what apps to put in. The file, i.e which boots using a filename \"BootSDI.img\", I believe I need to create is my problem. I have followed several steps from this forum as well as other means, however I cannot create a bootsdi.img in winbuilder, even though I have (Drivers - 5)firadisk, selecting grub4dos in (Build)definebootsector and bootsdi (Create Image), enabled.  \n\nIf you need more information, please let me know.  \n\nThank You in advance.   \n"
+    },
+    {
+      "id": "141166",
+      "timestamp": "2011-11-08T13:32:16+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e If you need more information, please let me know.  \nWe do. ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\nPost EXACT links to WHAT you have and to WHAT (exactly) you have attempted doing.  \nWhat you posted is in carpenters comparison:  \nHi peeps I just got some wood, it is pine wood, I have read somewhere that I have to make planks of it, but with \\*some tool\\* and following \\*some instructions\\* I got from \\*somewhere\\* or using the advice that \\*some friend of mine\\* gave me I cannot. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)  \n\nJust in case, standard litany:  \n[http://homepages.tes...ard-litany.html](http://homepages.tesco.net/J.deBoynePollard/FGA/problem-report-standard-litany.html \"External link\")  \n\n\u003cbr /\u003e\n\n**OR** (advised ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)) forget (temporarily :wink:) ANYTHNG you have done and read and downloaded till now, and start again from scratch using THIS (and ONLY THIS) \"frozen\" Amalux\u0027s build and his excellent tutorial for beginners:  \n\u003chttp://reboot.pro/4111/\u003e  \n\nFollow it TO THE LETTER, introducing NO variations of ANY kind.  \n\nOnce you will have:\n\n* a working build\n* familiarized yourself with the tool(s)\n\nwe\u0027ll talk about variations/changes/mods/whatever.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "141170",
+      "timestamp": "2011-11-08T13:50:56+00:00",
+      "author": "Deepan Patel",
+      "content": "Giving this a go now... Thanks for replying...   \n\nWill let you know when I have a working build. I however want this build to be on USB not on CD...  \n\nOnce I have created the ISO, not sure where I go from here and how I can load it onto a usb and make the usb bootable...   \n\nIf you wish to make a comment on this while I create a build :smile:..  \n\nDips   \n"
+    },
+    {
+      "id": "141171",
+      "timestamp": "2011-11-08T14:05:15+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Giving this a go now... Thanks for replying...  \n\u003e\n\u003e Will let you know when I have a working build. I however want this build to be on USB not on CD...  \n\u003e\nGuess **WHAT** the chapter *casually* titled:  \n\u003chttp://reboot.pro/4111/\u003e  \n\u003e **Advanced Options: Booting your PE from USB**\nis about? :wink:  \n\n\u003cbr /\u003e\n\nAnd WHAT possibly may be this:  \n\u003e **Mini-Tutorial: Booting PE from Hard Drive or UFD.**\nrelated to? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "141172",
+      "timestamp": "2011-11-08T14:43:38+00:00",
+      "author": "Deepan Patel",
+      "content": "That is some brilliant advice... :smile:  \n\nI am unable to move forward, the Winbuilder can\u0027t see my XP files folder, even though I have it loaded into a CD drive, or ISO, or files. :S...   \n\nRealised what the problem was, it was checked in the rules tab that it should search for i386/setupreg.hiv and this file does not exist. therefore I unchecked this and it has started to build.   \n"
+    },
+    {
+      "id": "141175",
+      "timestamp": "2011-11-08T15:02:24+00:00",
+      "author": "Deepan Patel",
+      "content": "Hi Wonko,  \n\nI get an error message during build and it says the path specified as my windows files source is not valid. Please select a valid source dir in the paths window to run this script.. It stopped at copy and expand files.  \n\nWhat would be my options as this is a sp2 xp CD.  \n\nThanks  \n\nDips   \n"
+    },
+    {
+      "id": "141176",
+      "timestamp": "2011-11-08T15:07:39+00:00",
+      "author": "Deepan Patel",
+      "content": "If possible I would like to have a skype chat setup which might help me. if you are happy to do that? Skype Name: patel.deepan   \n"
+    },
+    {
+      "id": "141190",
+      "timestamp": "2011-11-08T16:57:44+00:00",
+      "author": "amalux",
+      "content": "\u003e I am unable to move forward, the Winbuilder can\u0027t see my XP files folder, even though I have it loaded into a CD drive, or ISO, or files. :S...  \n\u003e\n\u003e Realised what the problem was, it was checked in the rules tab that it should search for i386/setupreg.hiv and this file does not exist. therefore I unchecked this and it has started to build.  \nWhat is meant by \u0027Winbuilder can\u0027t **see** \u0027 XP source folder? You browse to it from Source tab; what happens when you select it? Always best to copy entire CD/ISO contents to hard drive folder at root of drive e.g. E:XPSP2x86.  \n\nIs this source 32 or 64 bit? If x86, there must be i386/setupreg.hiv or it\u0027s not a valid source; if 64 bit, look to AMD64 folder for file. Is this install disc/image retail or OEM (came with computer)? OEM is known to have issues, try to track down unmodified, M$ source image.  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003e If possible I would like to have a skype chat setup which might help me...\nBetter to keep the discussion in the open to help others as well :wink:   \n"
+    },
+    {
+      "id": "141191",
+      "timestamp": "2011-11-08T17:00:55+00:00",
+      "author": "pscEx",
+      "content": "\u003e Realised what the problem was, it was checked in the rules tab that it should search for i386/setupreg.hiv and this file does not exist.  \nEvery XP install CD (independent from SP) has the file i386setupreg.hiv  \n\nIf your CD does not have it, it is no original M$ install CD. Maybe it is \"Lited\" or similar.  \n\nPeter   \n"
+    },
+    {
+      "id": "141194",
+      "timestamp": "2011-11-08T17:14:02+00:00",
+      "author": "Deepan Patel",
+      "content": "Hi Peter,  \n\nI have found an original XP disc and I successfully completed a build, however the tutorial says to copy hddboot folder created by Winbuilder and copy onto NTFS USB drive which is partition active. This loads the ramdisk image however shows up with an error. Am I missing something here?  \n\nDeepan   \n"
+    },
+    {
+      "id": "141195",
+      "timestamp": "2011-11-08T17:18:58+00:00",
+      "author": "pscEx",
+      "content": "Sorry, I was able to help with a \"general XP source CD\" issue. But I\u0027m not familar with the tutorial. Here Amalux surely can give you more hints.  \nBTW: He gave (crossing posts) a logically identical answer.  \n\nPeter   \n"
+    },
+    {
+      "id": "141196",
+      "timestamp": "2011-11-08T17:27:28+00:00",
+      "author": "amalux",
+      "content": "\u003e I have found an original XP disc and I successfully completed a build...\nGood :smile:  \n\n\u003cbr /\u003e\n\n\u003e ... however the tutorial says to copy hddboot folder created by Winbuilder and copy onto NTFS USB drive which is partition active. This loads the ramdisk image however shows up with an error. Am I missing something here?  \nYes. What is the error and be precise what you\u0027re trying to do.   \n\nYou have a working ISO, you want to boot that from USB thumb drive (UFD) or use the hddboot files to setup USB hard drive?   \n"
+    },
+    {
+      "id": "141199",
+      "timestamp": "2011-11-08T17:40:17+00:00",
+      "author": "Deepan Patel",
+      "content": "\u003e What is meant by \u0027Winbuilder can\u0027t **see** \u0027 XP source folder? You browse to it from Source tab; what happens when you select it? Always best to copy entire CD/ISO contents to hard drive folder at root of drive e.g. E:XPSP2x86.  \n\u003e\n\u003e Is this source 32 or 64 bit? If x86, there must be i386/setupreg.hiv or it\u0027s not a valid source; if 64 bit, look to AMD64 folder for file. Is this install disc/image retail or OEM (came with computer)? OEM is known to have issues, try to track down unmodified, M$ source image.  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e Better to keep the discussion in the open to help others as well :wink:  \n\nThanks Amalux,  \n\nThe CD is x86. This time it was able to sucessfully complete the build. The error message was that it couldn\u0027t load a .sys file and error code 14.  \n\n\u003cbr /\u003e\n\n\u003e Yes. What is the error and be precise what you\u0027re trying to do.\n\n\u003cbr /\u003e\n\nI am trying to boot the build from a USB thumb drive (UFD).  \n\nI am trying the MAKE_USB.exe tool and following those steps. Will let you know how I get on.  \n\nDeepan   \n"
+    },
+    {
+      "id": "141201",
+      "timestamp": "2011-11-08T18:05:26+00:00",
+      "author": "Deepan Patel",
+      "content": "Amalux,  \n\nI have followed the tutorial and tried to use the MAKE_USB.exe tool. It is successful, however when trying to load onto a machine, it just shows the cursor and does nothing else. What could I be doing wrong?  \n\nThanks  \n\nDeepan   \n"
+    },
+    {
+      "id": "141204",
+      "timestamp": "2011-11-08T18:11:06+00:00",
+      "author": "amalux",
+      "content": "\u003e The CD is x86. This time it was able to sucessfully complete the build. The error message was that it couldn\u0027t load a .sys file and error code 14.  \nProbably running out of memory somewhere, have you added large scripts to the build? Is this real hardware or virtual, how much memory is available?  \n\n\u003cbr /\u003e\n\n\u003e I am trying to boot the build from a USB thumb drive (UFD).  \n\u003e\n\u003e I am trying the MAKE_USB.exe tool and following those steps.  \nOnce you\u0027ve tested the ISO, working from virtual or CD boot; run MAKE_USB with your UFD plugged in to PC. Select your ISO as Boot Image File and browse to UFD under Target USB Drive section (see screen shot in tutorial). You can uncheck other settings and additional sources; you don\u0027t need HP Format tool or PeToUSB options. Leave other settings as they default, select NTFS under Target USB Drive and click on Format Stick - **NOTE! ALL DATA WILL BE ERASED FROM YOUR USB DRIVE!**   \n"
+    },
+    {
+      "id": "141205",
+      "timestamp": "2011-11-08T18:13:22+00:00",
+      "author": "amalux",
+      "content": "\u003e I have followed the tutorial and tried to use the MAKE_USB.exe tool. It is successful, however when trying to load onto a machine, it just shows the cursor and does nothing else. What could I be doing wrong?  \nPlease confirm this ISO boots normally from CD or virtual machine.   \n"
+    },
+    {
+      "id": "141207",
+      "timestamp": "2011-11-08T18:26:37+00:00",
+      "author": "Deepan Patel",
+      "content": "Hi,  \n\nAmalux,  \n\nTried to load the iso file in virtual box and I have error INF file txtsetup.sif is corrupt or missing.   \n"
+    },
+    {
+      "id": "141209",
+      "timestamp": "2011-11-08T18:30:04+00:00",
+      "author": "Deepan Patel",
+      "content": "Also to add... It says Status 2 at the end of the error line.  \n\nApologises for missing that one out... ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)   \n"
+    },
+    {
+      "id": "141212",
+      "timestamp": "2011-11-08T18:38:56+00:00",
+      "author": "amalux",
+      "content": "\u003e Tried to load the iso file in virtual box and I have error INF file txtsetup.sif is corrupt or missing.  \nOK, let\u0027s focus on getting a working ISO before attempting USB booting. Please zip your log.html and upload to some free hosting site (MediaFire etc.) and post a link here.   \n"
+    },
+    {
+      "id": "141215",
+      "timestamp": "2011-11-08T19:49:52+00:00",
+      "author": "Deepan Patel",
+      "content": "okay...  \n\n\u003cbr /\u003e\n\nhere is the log.  \n\n[http://www.mediafire...s4zts3ib7l3je1w](http://www.mediafire.com/?s4zts3ib7l3je1w \"External link\")   \n"
+    },
+    {
+      "id": "141218",
+      "timestamp": "2011-11-08T21:38:29+00:00",
+      "author": "Deepan Patel",
+      "content": "Hi Amalux,  \n\nI have been continuing to do it, and you are the only person who is keeping me in not giving up.. I have now a different error code which is code 18, saying couldn\u0027t load setupdd.sys...  \n\nThis was after creating a new build...   \n"
+    },
+    {
+      "id": "141220",
+      "timestamp": "2011-11-08T21:48:23+00:00",
+      "author": "amalux",
+      "content": "No errors in log but some things to consider; this is a big build, \\~170MB+ image requires, at least, 500MB avail. RAM (real or virtual). Check to see how much memory is allotted in VirtualBox, bet it\u0027s less than that. this alone will cause errors like you have seen.  \n\nConsider starting off with the LX project for testing; basically the same project but much smaller and faster to build for testing. If it works, all you need to do is select more scripts until you have everything you need. If you don\u0027t need all programs loading on every boot (slower and requires more memory), consider using portables instead of selecting scripts. Programs work the same in PE but only load up when needed.  \n\nKeep your build directory at root of drive, e.g. \"C:LXC.102011\" instead of \"C:UsersDeepan PatelDesktopBootLXC.102011\"; running in user profile folders has its own problems, especially in Windows 7. Don\u0027t run projects from Desktop or other special folder locations.  \n\nCopy the entire contents of CD/ISO to root folder so that your source directory looks like \"D:XPSP2x86I386\" instead of \"D:I386\".  \n\nSee if that helps and let us know :wink:   \n"
+    },
+    {
+      "id": "141225",
+      "timestamp": "2011-11-08T22:39:37+00:00",
+      "author": "Deepan Patel",
+      "content": "Amalux,  \n\nGreat news!!  \n\nI have sucessfully built the lite version and it boots perfect in virtual box.  \n\n\u003e No errors in log but some things to consider; this is a big build, \\~170MB+ image requires, at least, 500MB avail. RAM (real or virtual). Check to see how much memory is allotted in VirtualBox, bet it\u0027s less than that. this alone will cause errors like you have seen.\n\nI noticed that virtual box has a low RAM mem, therefore I did make it bigger, not sure why I was getting an error message.  \n\n\u003cbr /\u003e\n\n\u003e Keep your build directory at root of drive, e.g. \"C:LXC.102011\" instead of \"C:UsersDeepan PatelDesktopBootLXC.102011\"; running in user profile folders has its own problems, especially in Windows 7. Don\u0027t run projects from Desktop or other special folder locations.\n\nI ran everything from the C Drive and didn\u0027t point to any folder apart from what Winbuilder had set i.e. \"basedir\" for the ISO file.  \n\n\u003cbr /\u003e\n\n\u003e See if that helps and let us know\n\nYou have been a very helpful and patient person towards me and I am greatful. ![:1st:](http://reboot.pro/public/style_emoticons/default/1st.gif)  \n\nOne question however, do I need to limit what I load into the ISO, even though say I set the RAM size to 1GB?  \n\nAlso is there a way for me to load multibootable ISO\u0027s so that I can select which ISO I can load in a usb?  \n\nThank you so much, this has been giving me since Sunday! ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)  \n\nDeepan   \n"
+    },
+    {
+      "id": "141226",
+      "timestamp": "2011-11-08T22:53:14+00:00",
+      "author": "amalux",
+      "content": "Happy to help :smile: Glad it\u0027s working well for you!  \n\n\u003cbr /\u003e\n\n\u003e I noticed that virtual box has a low RAM mem, therefore I did make it bigger, not sure why I was getting an error message.  \nWhen you run out of space, files can\u0027t be copied and errors result.  \n\n\u003cbr /\u003e\n\n\u003e One question however, do I need to limit what I load into the ISO, even though say I set the RAM size to 1GB?  \nNo, as long as you have enough memory available, it should work; just slower to load up.  \n\n\u003cbr /\u003e\n\n\u003e Also is there a way for me to load multibootable ISO\u0027s so that I can select which ISO I can load in a usb?  \nAbsolutely, the easiest is with grub4dos boot menu. This setup is explained in the tutorial, just ask if you have questions :wink:   \n"
+    },
+    {
+      "id": "141231",
+      "timestamp": "2011-11-09T00:00:05+00:00",
+      "author": "Deepan Patel",
+      "content": "\u003e No, as long as you have enough memory available, it should work; just slower to load up.\n\nI have also complete build of LiveXP and that now also works. It looks like it might have something to do with me pointing to a different folder than the basedir.  \n\nfor grub4dos,  \n\nitle LiveXP RAM  \nfind --set-root --ignore-floppies /LiveXP_WIM**.iso**   \nmap /LiveXP_WIM**.iso** (0xff)  \nmap --hook  \nroot (0xff)  \nchainloader (0xff)  \n\ntitle W7PEX RAM  \nfind --set-root --ignore-floppies --ignore-cd /Win7PE_x86**.ISO**   \nuuid ()  \nmap /Win7PE_x86**.ISO** (0xff)  \nmap --hook  \nroot (0xff)  \nchainloader (0xff)  \n\nHow would I create the menu.lst... I am planning to put a compelte LiveXP and a Win7PE which are ISOs and they are confirmed via virtualbox and working. The location by this as an example I could use possible would need to be put into a folder called map?  \n\nThanks  \n\nDeepan   \n"
+    },
+    {
+      "id": "141159",
+      "timestamp": "2011-11-08T12:01:00+00:00",
+      "author": "Deepan Patel",
+      "content": "Hello,  \n\nI really need some help and I would be grateful if I could get help. I have installed and downloaded the LiveXP files necessary for Winbuilder. I have a custom made XP bootable from usb from someone however I would like to create my own so that I can choose what apps to put in. The file, i.e which boots using a filename \"BootSDI.img\", I believe I need to create is my problem. I have followed several steps from this forum as well as other means, however I cannot create a bootsdi.img in winbuilder, even though I have (Drivers - 5)firadisk, selecting grub4dos in (Build)definebootsector and bootsdi (Create Image), enabled.  \n\nIf you need more information, please let me know.  \n\nThank You in advance.   \n"
+    },
+    {
+      "id": "141166",
+      "timestamp": "2011-11-08T13:32:16+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e If you need more information, please let me know.  \nWe do. ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\nPost EXACT links to WHAT you have and to WHAT (exactly) you have attempted doing.  \nWhat you posted is in carpenters comparison:  \nHi peeps I just got some wood, it is pine wood, I have read somewhere that I have to make planks of it, but with \\*some tool\\* and following \\*some instructions\\* I got from \\*somewhere\\* or using the advice that \\*some friend of mine\\* gave me I cannot. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)  \n\nJust in case, standard litany:  \n[http://homepages.tes...ard-litany.html](http://homepages.tesco.net/J.deBoynePollard/FGA/problem-report-standard-litany.html \"External link\")  \n\n\u003cbr /\u003e\n\n**OR** (advised ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)) forget (temporarily :wink:) ANYTHNG you have done and read and downloaded till now, and start again from scratch using THIS (and ONLY THIS) \"frozen\" Amalux\u0027s build and his excellent tutorial for beginners:  \n\u003chttp://reboot.pro/4111/\u003e  \n\nFollow it TO THE LETTER, introducing NO variations of ANY kind.  \n\nOnce you will have:\n\n* a working build\n* familiarized yourself with the tool(s)\n\nwe\u0027ll talk about variations/changes/mods/whatever.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "141170",
+      "timestamp": "2011-11-08T13:50:56+00:00",
+      "author": "Deepan Patel",
+      "content": "Giving this a go now... Thanks for replying...   \n\nWill let you know when I have a working build. I however want this build to be on USB not on CD...  \n\nOnce I have created the ISO, not sure where I go from here and how I can load it onto a usb and make the usb bootable...   \n\nIf you wish to make a comment on this while I create a build :smile:..  \n\nDips   \n"
+    },
+    {
+      "id": "141171",
+      "timestamp": "2011-11-08T14:05:15+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Giving this a go now... Thanks for replying...  \n\u003e\n\u003e Will let you know when I have a working build. I however want this build to be on USB not on CD...  \n\u003e\nGuess **WHAT** the chapter *casually* titled:  \n\u003chttp://reboot.pro/4111/\u003e  \n\u003e **Advanced Options: Booting your PE from USB**\nis about? :wink:  \n\n\u003cbr /\u003e\n\nAnd WHAT possibly may be this:  \n\u003e **Mini-Tutorial: Booting PE from Hard Drive or UFD.**\nrelated to? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "141172",
+      "timestamp": "2011-11-08T14:43:38+00:00",
+      "author": "Deepan Patel",
+      "content": "That is some brilliant advice... :smile:  \n\nI am unable to move forward, the Winbuilder can\u0027t see my XP files folder, even though I have it loaded into a CD drive, or ISO, or files. :S...   \n\nRealised what the problem was, it was checked in the rules tab that it should search for i386/setupreg.hiv and this file does not exist. therefore I unchecked this and it has started to build.   \n"
+    },
+    {
+      "id": "141175",
+      "timestamp": "2011-11-08T15:02:24+00:00",
+      "author": "Deepan Patel",
+      "content": "Hi Wonko,  \n\nI get an error message during build and it says the path specified as my windows files source is not valid. Please select a valid source dir in the paths window to run this script.. It stopped at copy and expand files.  \n\nWhat would be my options as this is a sp2 xp CD.  \n\nThanks  \n\nDips   \n"
+    },
+    {
+      "id": "141176",
+      "timestamp": "2011-11-08T15:07:39+00:00",
+      "author": "Deepan Patel",
+      "content": "If possible I would like to have a skype chat setup which might help me. if you are happy to do that? Skype Name: patel.deepan   \n"
+    },
+    {
+      "id": "141190",
+      "timestamp": "2011-11-08T16:57:44+00:00",
+      "author": "amalux",
+      "content": "\u003e I am unable to move forward, the Winbuilder can\u0027t see my XP files folder, even though I have it loaded into a CD drive, or ISO, or files. :S...  \n\u003e\n\u003e Realised what the problem was, it was checked in the rules tab that it should search for i386/setupreg.hiv and this file does not exist. therefore I unchecked this and it has started to build.  \nWhat is meant by \u0027Winbuilder can\u0027t **see** \u0027 XP source folder? You browse to it from Source tab; what happens when you select it? Always best to copy entire CD/ISO contents to hard drive folder at root of drive e.g. E:XPSP2x86.  \n\nIs this source 32 or 64 bit? If x86, there must be i386/setupreg.hiv or it\u0027s not a valid source; if 64 bit, look to AMD64 folder for file. Is this install disc/image retail or OEM (came with computer)? OEM is known to have issues, try to track down unmodified, M$ source image.  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003e If possible I would like to have a skype chat setup which might help me...\nBetter to keep the discussion in the open to help others as well :wink:   \n"
+    },
+    {
+      "id": "141191",
+      "timestamp": "2011-11-08T17:00:55+00:00",
+      "author": "pscEx",
+      "content": "\u003e Realised what the problem was, it was checked in the rules tab that it should search for i386/setupreg.hiv and this file does not exist.  \nEvery XP install CD (independent from SP) has the file i386setupreg.hiv  \n\nIf your CD does not have it, it is no original M$ install CD. Maybe it is \"Lited\" or similar.  \n\nPeter   \n"
+    },
+    {
+      "id": "141194",
+      "timestamp": "2011-11-08T17:14:02+00:00",
+      "author": "Deepan Patel",
+      "content": "Hi Peter,  \n\nI have found an original XP disc and I successfully completed a build, however the tutorial says to copy hddboot folder created by Winbuilder and copy onto NTFS USB drive which is partition active. This loads the ramdisk image however shows up with an error. Am I missing something here?  \n\nDeepan   \n"
+    },
+    {
+      "id": "141195",
+      "timestamp": "2011-11-08T17:18:58+00:00",
+      "author": "pscEx",
+      "content": "Sorry, I was able to help with a \"general XP source CD\" issue. But I\u0027m not familar with the tutorial. Here Amalux surely can give you more hints.  \nBTW: He gave (crossing posts) a logically identical answer.  \n\nPeter   \n"
+    },
+    {
+      "id": "141196",
+      "timestamp": "2011-11-08T17:27:28+00:00",
+      "author": "amalux",
+      "content": "\u003e I have found an original XP disc and I successfully completed a build...\nGood :smile:  \n\n\u003cbr /\u003e\n\n\u003e ... however the tutorial says to copy hddboot folder created by Winbuilder and copy onto NTFS USB drive which is partition active. This loads the ramdisk image however shows up with an error. Am I missing something here?  \nYes. What is the error and be precise what you\u0027re trying to do.   \n\nYou have a working ISO, you want to boot that from USB thumb drive (UFD) or use the hddboot files to setup USB hard drive?   \n"
+    },
+    {
+      "id": "141199",
+      "timestamp": "2011-11-08T17:40:17+00:00",
+      "author": "Deepan Patel",
+      "content": "\u003e What is meant by \u0027Winbuilder can\u0027t **see** \u0027 XP source folder? You browse to it from Source tab; what happens when you select it? Always best to copy entire CD/ISO contents to hard drive folder at root of drive e.g. E:XPSP2x86.  \n\u003e\n\u003e Is this source 32 or 64 bit? If x86, there must be i386/setupreg.hiv or it\u0027s not a valid source; if 64 bit, look to AMD64 folder for file. Is this install disc/image retail or OEM (came with computer)? OEM is known to have issues, try to track down unmodified, M$ source image.  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e Better to keep the discussion in the open to help others as well :wink:  \n\nThanks Amalux,  \n\nThe CD is x86. This time it was able to sucessfully complete the build. The error message was that it couldn\u0027t load a .sys file and error code 14.  \n\n\u003cbr /\u003e\n\n\u003e Yes. What is the error and be precise what you\u0027re trying to do.\n\n\u003cbr /\u003e\n\nI am trying to boot the build from a USB thumb drive (UFD).  \n\nI am trying the MAKE_USB.exe tool and following those steps. Will let you know how I get on.  \n\nDeepan   \n"
+    },
+    {
+      "id": "141201",
+      "timestamp": "2011-11-08T18:05:26+00:00",
+      "author": "Deepan Patel",
+      "content": "Amalux,  \n\nI have followed the tutorial and tried to use the MAKE_USB.exe tool. It is successful, however when trying to load onto a machine, it just shows the cursor and does nothing else. What could I be doing wrong?  \n\nThanks  \n\nDeepan   \n"
+    },
+    {
+      "id": "141204",
+      "timestamp": "2011-11-08T18:11:06+00:00",
+      "author": "amalux",
+      "content": "\u003e The CD is x86. This time it was able to sucessfully complete the build. The error message was that it couldn\u0027t load a .sys file and error code 14.  \nProbably running out of memory somewhere, have you added large scripts to the build? Is this real hardware or virtual, how much memory is available?  \n\n\u003cbr /\u003e\n\n\u003e I am trying to boot the build from a USB thumb drive (UFD).  \n\u003e\n\u003e I am trying the MAKE_USB.exe tool and following those steps.  \nOnce you\u0027ve tested the ISO, working from virtual or CD boot; run MAKE_USB with your UFD plugged in to PC. Select your ISO as Boot Image File and browse to UFD under Target USB Drive section (see screen shot in tutorial). You can uncheck other settings and additional sources; you don\u0027t need HP Format tool or PeToUSB options. Leave other settings as they default, select NTFS under Target USB Drive and click on Format Stick - **NOTE! ALL DATA WILL BE ERASED FROM YOUR USB DRIVE!**   \n"
+    },
+    {
+      "id": "141205",
+      "timestamp": "2011-11-08T18:13:22+00:00",
+      "author": "amalux",
+      "content": "\u003e I have followed the tutorial and tried to use the MAKE_USB.exe tool. It is successful, however when trying to load onto a machine, it just shows the cursor and does nothing else. What could I be doing wrong?  \nPlease confirm this ISO boots normally from CD or virtual machine.   \n"
+    },
+    {
+      "id": "141207",
+      "timestamp": "2011-11-08T18:26:37+00:00",
+      "author": "Deepan Patel",
+      "content": "Hi,  \n\nAmalux,  \n\nTried to load the iso file in virtual box and I have error INF file txtsetup.sif is corrupt or missing.   \n"
+    },
+    {
+      "id": "141209",
+      "timestamp": "2011-11-08T18:30:04+00:00",
+      "author": "Deepan Patel",
+      "content": "Also to add... It says Status 2 at the end of the error line.  \n\nApologises for missing that one out... ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)   \n"
+    },
+    {
+      "id": "141212",
+      "timestamp": "2011-11-08T18:38:56+00:00",
+      "author": "amalux",
+      "content": "\u003e Tried to load the iso file in virtual box and I have error INF file txtsetup.sif is corrupt or missing.  \nOK, let\u0027s focus on getting a working ISO before attempting USB booting. Please zip your log.html and upload to some free hosting site (MediaFire etc.) and post a link here.   \n"
+    },
+    {
+      "id": "141215",
+      "timestamp": "2011-11-08T19:49:52+00:00",
+      "author": "Deepan Patel",
+      "content": "okay...  \n\n\u003cbr /\u003e\n\nhere is the log.  \n\n[http://www.mediafire...s4zts3ib7l3je1w](http://www.mediafire.com/?s4zts3ib7l3je1w \"External link\")   \n"
+    },
+    {
+      "id": "141218",
+      "timestamp": "2011-11-08T21:38:29+00:00",
+      "author": "Deepan Patel",
+      "content": "Hi Amalux,  \n\nI have been continuing to do it, and you are the only person who is keeping me in not giving up.. I have now a different error code which is code 18, saying couldn\u0027t load setupdd.sys...  \n\nThis was after creating a new build...   \n"
+    },
+    {
+      "id": "141220",
+      "timestamp": "2011-11-08T21:48:23+00:00",
+      "author": "amalux",
+      "content": "No errors in log but some things to consider; this is a big build, \\~170MB+ image requires, at least, 500MB avail. RAM (real or virtual). Check to see how much memory is allotted in VirtualBox, bet it\u0027s less than that. this alone will cause errors like you have seen.  \n\nConsider starting off with the LX project for testing; basically the same project but much smaller and faster to build for testing. If it works, all you need to do is select more scripts until you have everything you need. If you don\u0027t need all programs loading on every boot (slower and requires more memory), consider using portables instead of selecting scripts. Programs work the same in PE but only load up when needed.  \n\nKeep your build directory at root of drive, e.g. \"C:LXC.102011\" instead of \"C:UsersDeepan PatelDesktopBootLXC.102011\"; running in user profile folders has its own problems, especially in Windows 7. Don\u0027t run projects from Desktop or other special folder locations.  \n\nCopy the entire contents of CD/ISO to root folder so that your source directory looks like \"D:XPSP2x86I386\" instead of \"D:I386\".  \n\nSee if that helps and let us know :wink:   \n"
+    },
+    {
+      "id": "141225",
+      "timestamp": "2011-11-08T22:39:37+00:00",
+      "author": "Deepan Patel",
+      "content": "Amalux,  \n\nGreat news!!  \n\nI have sucessfully built the lite version and it boots perfect in virtual box.  \n\n\u003e No errors in log but some things to consider; this is a big build, \\~170MB+ image requires, at least, 500MB avail. RAM (real or virtual). Check to see how much memory is allotted in VirtualBox, bet it\u0027s less than that. this alone will cause errors like you have seen.\n\nI noticed that virtual box has a low RAM mem, therefore I did make it bigger, not sure why I was getting an error message.  \n\n\u003cbr /\u003e\n\n\u003e Keep your build directory at root of drive, e.g. \"C:LXC.102011\" instead of \"C:UsersDeepan PatelDesktopBootLXC.102011\"; running in user profile folders has its own problems, especially in Windows 7. Don\u0027t run projects from Desktop or other special folder locations.\n\nI ran everything from the C Drive and didn\u0027t point to any folder apart from what Winbuilder had set i.e. \"basedir\" for the ISO file.  \n\n\u003cbr /\u003e\n\n\u003e See if that helps and let us know\n\nYou have been a very helpful and patient person towards me and I am greatful. ![:1st:](http://reboot.pro/public/style_emoticons/default/1st.gif)  \n\nOne question however, do I need to limit what I load into the ISO, even though say I set the RAM size to 1GB?  \n\nAlso is there a way for me to load multibootable ISO\u0027s so that I can select which ISO I can load in a usb?  \n\nThank you so much, this has been giving me since Sunday! ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)  \n\nDeepan   \n"
+    },
+    {
+      "id": "141226",
+      "timestamp": "2011-11-08T22:53:14+00:00",
+      "author": "amalux",
+      "content": "Happy to help :smile: Glad it\u0027s working well for you!  \n\n\u003cbr /\u003e\n\n\u003e I noticed that virtual box has a low RAM mem, therefore I did make it bigger, not sure why I was getting an error message.  \nWhen you run out of space, files can\u0027t be copied and errors result.  \n\n\u003cbr /\u003e\n\n\u003e One question however, do I need to limit what I load into the ISO, even though say I set the RAM size to 1GB?  \nNo, as long as you have enough memory available, it should work; just slower to load up.  \n\n\u003cbr /\u003e\n\n\u003e Also is there a way for me to load multibootable ISO\u0027s so that I can select which ISO I can load in a usb?  \nAbsolutely, the easiest is with grub4dos boot menu. This setup is explained in the tutorial, just ask if you have questions :wink:   \n"
+    },
+    {
+      "id": "141231",
+      "timestamp": "2011-11-09T00:00:05+00:00",
+      "author": "Deepan Patel",
+      "content": "\u003e No, as long as you have enough memory available, it should work; just slower to load up.\n\nI have also complete build of LiveXP and that now also works. It looks like it might have something to do with me pointing to a different folder than the basedir.  \n\nfor grub4dos,  \n\nitle LiveXP RAM  \nfind --set-root --ignore-floppies /LiveXP_WIM**.iso**   \nmap /LiveXP_WIM**.iso** (0xff)  \nmap --hook  \nroot (0xff)  \nchainloader (0xff)  \n\ntitle W7PEX RAM  \nfind --set-root --ignore-floppies --ignore-cd /Win7PE_x86**.ISO**   \nuuid ()  \nmap /Win7PE_x86**.ISO** (0xff)  \nmap --hook  \nroot (0xff)  \nchainloader (0xff)  \n\nHow would I create the menu.lst... I am planning to put a compelte LiveXP and a Win7PE which are ISOs and they are confirmed via virtualbox and working. The location by this as an example I could use possible would need to be put into a folder called map?  \n\nThanks  \n\nDeepan   \n"
+    },
+    {
+      "id": "141232",
+      "timestamp": "2011-11-09T00:05:46+00:00",
+      "author": "Deepan Patel",
+      "content": "\u003e The location by this as an example I could use possible would need to be put into a folder called map?\n\nSorry, I think i\u0027ve figured out my own answer. It maps the file which is in the root of the loader.   \n"
+    },
+    {
+      "id": "141233",
+      "timestamp": "2011-11-09T00:44:16+00:00",
+      "author": "amalux",
+      "content": "No problem, all you need in menu.lst is the following:  \n\n\u003e color blue/black yellow/black white/black black/magenta  \n\u003e timeout 10  \n\u003e default 0  \n\u003e\n\u003e title LiveXP_WIM Rescue  \n\u003e find --set-root /XPE/LiveXP_WIM.ISO  \n\u003e map /XPE/LiveXP_WIM.ISO (0xff)  \n\u003e map --hook  \n\u003e root (0xff)  \n\u003e chainloader (0xff)  \n\u003e\n\u003e title Win7PE_SE Rescue  \n\u003e find --set-root /XPE/Win7PE_x86.ISO  \n\u003e map /XPE/Win7PE_x86.ISO (0xff)  \n\u003e map --hook  \n\u003e root (0xff)  \n\u003e chainloader (0xff)\nThe top 3 lines are to set text colors and time it waits till default load (10 sec.). The rest is for your ISOs, here in a folder at root named XPE to keep it tidy but if ISOs are located at root, just remove /XPE part.  \n\n\u003cbr /\u003e\n\nBtw, good resource here: \u003chttp://reboot.pro/5041/\u003e for more working setups.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "141279",
+      "timestamp": "2011-11-09T17:08:07+00:00",
+      "author": "pscEx",
+      "content": "\u003e Hello,  \n\u003e\n\u003e I really need some help and I would be grateful if I could get help. I have installed and downloaded the LiveXP files necessary for Winbuilder. I have a custom made XP bootable from usb from someone however I would like to create my own so that I can choose what apps to put in. The file, i.e which boots using a filename \"BootSDI.img\", I believe I need to create is my problem. I have followed several steps from this forum as well as other means, however I cannot create a bootsdi.img in winbuilder, even though I have (Drivers - 5)firadisk, selecting grub4dos in (Build)definebootsector and bootsdi (Create Image), enabled.  \n\u003e\n\u003e If you need more information, please let me know.  \n\u003e\n\u003e Thank You in advance.  \n\nMaybe you have a look at the [multiPE project](http://reboot.pro/files/file/61-multipe/ \"\") as alternity.  \n\nPeter   \n"
+    }
+  ]
+}

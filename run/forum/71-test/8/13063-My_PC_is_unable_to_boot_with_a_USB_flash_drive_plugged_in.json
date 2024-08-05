@@ -1,0 +1,70 @@
+{
+  "id": "13063",
+  "title": "My PC is unable to boot with a USB flash drive plugged in",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "114060",
+      "timestamp": "2010-11-17T15:07:26+00:00",
+      "author": "oddui",
+      "content": "I am trying to make a bootable USB drive which I can use to install windows 7 on pc.  \n\nI copied windows 7 DVD contents to the USB flash drive,  \nused grubinst.exe to install grub4dos boot code to MBR of the flash drive,  \nthen chainload bootmgr.  \n\nI can boot into grub4dos, and i can locate bootmgr from the flash drive((hd0,0) in grub4dos).  \nBut after I type in grub4dos command line  \n\n```\nchainloader \u0026#40;hd,0,0\u0026#41;/bootmgr\n\nboot\n```\n\nthen the PC hangs.  \n\nAfter some experimenting, I found that my PC is unable to boot with that USB flash drive plugged in.  \nWhen I boot Windwos 7 on my hard drive, it hangs when i get \"Starting Windows\" message on screen, the Windows logo won\u0027t come up.  \nWhen I boot Linux on the same hard drive, it hangs when i get the message \"Probing EDD (edd\u003doff to disable)...  \n\nWindows 7 recognize the flash drive as a normal removable disk, with the name \"CHIPSBNK v3.3.9.7-7\"  \n\nWhy is the PC unable to boot with the USB flash drive plugged in?  \nIs there any way that I can use the flash drive to install Windows?   \n"
+    },
+    {
+      "id": "114065",
+      "timestamp": "2010-11-17T16:15:36+00:00",
+      "author": "steve6375",
+      "content": "I assume you can boot from the DVD OK?  \n\nDoes the BIOS have any boot menu settings at all?  \n\nTry RMPrepUSB and use the \u0027WinPE v2(bootmgr)\u0027 option + NTFS + HDD.  \nSet the source files folder to the DVD drive letter and tick the Copy Files and then click Prepare Drive.  \n\nIf this works, try the Install grub4dos button and the add your menu.lst file and try again.  \n\nHTH   \n"
+    },
+    {
+      "id": "114090",
+      "timestamp": "2010-11-18T02:09:36+00:00",
+      "author": "oddui",
+      "content": "\u003e I assume you can boot from the DVD OK?\nYes, I can.  \n\n\u003e Does the BIOS have any boot menu settings at all?\nYes, it is a HP notebook, there are Optical drive, Notebook Hard Drive, USB Hard Drive, and Network options in the boot list.  \nI set it to USB Hard Drive.  \nthen it successfully boots into grub4dos.   \nIn grub4dos command line, I can set root, find any files on the flash drive(hd0,0) and on the main hard drive(hd1).  \n\nThe problem is that **with that USB flash drive plugged in** I cannot boot into any OSs(Windows, Linux on hard drive or the windows installation environment on that USB flash drive). When booting linux, it hangs at \"Probing EDD (edd\u003d off to disable)...\". Normally, it should be \"Probing EDD(edd\u003doff to disable)...OK\", then it continues in less than a second.  \n\n\u003e Try RMPrepUSB and use the \u0027WinPE v2(bootmgr)\u0027 option + NTFS + HDD.  \n\u003e Set the source files folder to the DVD drive letter and tick the Copy Files and then click Prepare Drive.\nI will try it sometime later.   \n"
+    },
+    {
+      "id": "114091",
+      "timestamp": "2010-11-18T02:16:08+00:00",
+      "author": "skyide",
+      "content": "Sometimes I have similar problems but only when booting operating systems installed on the USB drive itself. In my case, reformatting the USB partition always fixes the problems. Yours looks like a different case.   \n\n**Edited by skyide, 18 November 2010 - 02:21 AM.**\n"
+    },
+    {
+      "id": "114098",
+      "timestamp": "2010-11-18T05:53:56+00:00",
+      "author": "Sha0",
+      "content": "If you boot from your USB storage device, BIOS will likely assign it drive number **0x80** . If you then attempt to boot any OS on an internal HDD, the internal HDD drive number has been \"bumped\" by BIOS to **0x81** , so you probably will want to swap their numbers if you are booting the internal HDD. You can do this in **GRUB4DOS** .  \n\n```\nmap \u0026#40;hd1\u0026#41; \u0026#40;hd0\u0026#41;\n\nmap \u0026#40;hd0\u0026#41; \u0026#40;hd1\u0026#41;\n\nmap --hook\n\nroot \u0026#40;hd0,0\u0026#41;\n\nchainloader /bootmgr\n```\n\nWhen you boot without the USB storage device plugged in, the internal HDD will likely get drive number **0x80** .  \n\nAn OS likely expects to boot from drive number **0x80** .   \n"
+    },
+    {
+      "id": "114111",
+      "timestamp": "2010-11-18T10:00:08+00:00",
+      "author": "oddui",
+      "content": "\u003e If you boot from your USB storage device, BIOS will likely assign it drive number **0x80** . If you then attempt to boot any OS on an internal HDD, the internal HDD drive number has been \"bumped\" by BIOS to **0x81** , so you probably will want to swap their numbers if you are booting the internal HDD. You can do this in **GRUB4DOS** .  \n\u003e\n\u003e ```\n\u003e map \u0026#40;hd1\u0026#41; \u0026#40;hd0\u0026#41;\n\u003e\n\u003e map \u0026#40;hd0\u0026#41; \u0026#40;hd1\u0026#41;\n\u003e\n\u003e map --hook\n\u003e\n\u003e root \u0026#40;hd0,0\u0026#41;\n\u003e\n\u003e chainloader /bootmgr\n\u003e ```\n\u003e\n\u003e When you boot without the USB storage device plugged in, the internal HDD will likely get drive number **0x80** .  \n\u003e\n\u003e An OS likely expects to boot from drive number **0x80** .\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\nHi Sha0, thanks for your reply.  \n\nSorry for my pour English, i think i should describe the situation again.  \nI have a HP notebook and a EMC usb flash drive.  \nThe notebook\u0027s hard drive uses grub4dos to boot windows and linux.  \nThe usb flash drive uses grub4dos to boot windows 7 installation environment.  \n\n* If I plug in the USB flash drive and set to boot from USB drive, it won\u0027t load the windows installation env.\n* If I just plug in the USB flash drive, and boot my notebook directly from the internal hard drive( I can see in grub4dos command line that the internal hard drive is (hd0).), the OSs won\u0027t boot correctly as i described before.\n* If I don\u0027t plug in the USB flash drive, I can boot into both windows and linux on the internal hard drive successfully.\n\nI think it is not a problem of the boot manager. OSs just won\u0027t start with the flash drive plugged in.  \n\nHope my English is understandable.   \n\n**Edited by oddui, 18 November 2010 - 10:12 AM.**\n"
+    },
+    {
+      "id": "114113",
+      "timestamp": "2010-11-18T10:49:19+00:00",
+      "author": "steve6375",
+      "content": "What if you have a blank unformatted USB drive (use RMPrepUSb Clean) - can you then boot from HDD?   \n"
+    },
+    {
+      "id": "114162",
+      "timestamp": "2010-11-19T02:25:14+00:00",
+      "author": "oddui",
+      "content": "\u003e What if you have a blank unformatted USB drive (use RMPrepUSb Clean) - can you then boot from HDD?\nI used RMPrebUSB Clean, but i still can\u0027t boot into os on HDD.   \n"
+    },
+    {
+      "id": "114171",
+      "timestamp": "2010-11-19T05:06:32+00:00",
+      "author": "ceehoppy",
+      "content": "Would RPMPrep remove the usb stick\u0027s MBR? If that\u0027s still there \\\u0026 boot order is usb is before internal hdd, then bios will always try to boot from the usb stick when it\u0027s plugged in-period.   \n"
+    },
+    {
+      "id": "114182",
+      "timestamp": "2010-11-19T07:49:52+00:00",
+      "author": "steve6375",
+      "content": "yes, MBR is 00\u0027s after Clean. Also you can partition and format with an inactive partition so it will not boot even if there is a partition present.  \n\nCan you find a BIOS update for your PC?   \n"
+    }
+  ]
+}

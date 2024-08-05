@@ -1,0 +1,34 @@
+{
+  "id": "16915",
+  "title": "BOOTMGR Recompiler",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "154899",
+      "timestamp": "2012-05-20T20:55:06+00:00",
+      "author": "joakim",
+      "content": "![Posted Image](http://reboot.pro/index.php?app\u003ddownloads\u0026module\u003ddisplay\u0026section\u003dscreenshot\u0026id\u003d188)\n**File Name** : BOOTMGR Recompiler  \n**File Submitter** : [joakim](http://reboot.pro/user/14583-joakim/ \"\")  \n**File Submitted** : 20 May 2012  \n**File Category** : [Boot tools](http://reboot.pro/files/category/7-boot-tools/ \"\")  \n\n**BOOTMGR Recompiler**   \nThis tool takes bootmgr.exe and creates bootmgr ready for booting. You can choose between compression method LZNT1 and XpressHuffman. You can also choose which library to use for the compression, either MSCompression.dll an excellent library by Jeffrey Bush, or the Windows shipped ntdll.dll. Note that ntdll.dll supports LZNT1 on any Windows version, whereas XpressHuffman support is only present on ntdll.dll on Windows 8. You can however copy ntdll.dll from Windows 8 and to XP/Vista etc (to same directory as this tool), to overcome this. The MSCompression.dll library supports both methods, and is included in this download. But currently I had some issues with the 32-bit compiled version of this library, so the option on x86 arch OS is to use ntdll.dll. The tool also performs some basic PE testing, and for instance optionally corrects the PE checksum if found incorrect. It does not matter which version of bootmgr.exe you choose or compression method. All generated bootmgr combinations should work fine. The XpressHuffman compressed ones, are much smaller in size than the LZNT1 ones, because of better compression ratio.  \n\n**Structure of BOOTMGR**   \n1. 16-bit stub with code to unpack, evaluate and execute the compressed part. About 2x KB.  \n2. A 16 byte section with some information that the 16-bit stub evaluates.  \n3. A tiny 8192 byte PE image, with unknown function. It\u0027s content is not evaluated.  \n4. The compressed 32-bit executable bootmgr.exe  \n\n**The 16 byte section** contains these values:  \nbyte 1-4: a signature.  \nbyte 5-8: the compressed size of bootmgr.exe.  \nbyte 9-12: the uncompressed size of bootmgr.exe.  \nbyte 13-16: the relative offset to the compressed data calculated from the start of this section (ie the signature).  \n\nMore detailed information connected to this topic that you may find useful:  \n\u003chttp://reboot.pro/16824/\u003e  \n[http://reboot.pro/fi...ls-bootmgrntfs/](http://reboot.pro/files/file/121-lznt1-tools-bootmgrntfs/ \"\")  \n[http://www.sevenforu...indows-7-a.html](http://www.sevenforums.com/customization/106861-how-change-boot-animation-windows-7-a.html \"External link\")  \n\n**MSCompression**   \n[https://github.com/c...ife/ms-compress](https://github.com/coderforlife/ms-compress \"External link\")  \nThe included program is a frontend for the library, and strictly not used with the above application. I just included it, since the library is included, in case someone needed it. It\u0027s a commandline compressor/decompressor supporting. The library supports these compression methods;  \n\n```\nCOMPRESSION_NONE \u003d 0\n\nCOMPRESSION_LZX \u003d 1\n\nCOMPRESSION_LZNT1 \u003d 2\n\nCOMPRESSION_XPRESS \u003d 3\n\nCOMPRESSION_XPRESS_HUFF \u003d 4\n\n```\n\n\u003cbr /\u003e\n\nThe MSCompression library has a slightly better compression ratio than ntdll.dll when using XpressHuffman.  \n\n[Click here to download this file](http://reboot.pro/files/file/188-bootmgr-recompiler/ \"\")   \n"
+    },
+    {
+      "id": "154922",
+      "timestamp": "2012-05-21T13:45:10+00:00",
+      "author": "MedEvil",
+      "content": "Sorry, joakim. But what is the intended purpose of your tool?  \nIs it just a technology demonstration or does it have a real worl application as well?  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "154925",
+      "timestamp": "2012-05-21T15:00:04+00:00",
+      "author": "Icecube",
+      "content": "\u003e Sorry, joakim. But what is the intended purpose of your tool?  \n\u003e Is it just a technology demonstration or does it have a real worl application as well?  \n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nI guess you can now easily modify BootMGR (e.g. change some strings to BCD store) and rebuild the modified version.   \n"
+    },
+    {
+      "id": "154947",
+      "timestamp": "2012-05-21T18:47:36+00:00",
+      "author": "joakim",
+      "content": "I thought about including a \"what for\" or \"why bother\" section in the documentation, but decided not to. Lets just say that if you are not sure you need this tool, then you definetely don\u0027t need it.  \n\nIn short, the tool will aid you when you found out that you for whatever reason needed to modify bootmgr. String manipulation is one example. Displaying bitmaps or logos is another. Or you simply just want to tweak and customize it because you can and have nothing better to do. And so on.. :smile:  \n\nFor those that by accident ended up here, and are not familiar with PE editors and hex editors, you may not waste your time here, and leave right away.   \n"
+    }
+  ]
+}

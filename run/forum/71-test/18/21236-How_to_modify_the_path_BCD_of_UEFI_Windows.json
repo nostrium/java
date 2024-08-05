@@ -1,0 +1,40 @@
+{
+  "id": "21236",
+  "title": "How to modify the path BCD of UEFI Windows",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "200172",
+      "timestamp": "2016-09-09T03:45:57+00:00",
+      "author": "meoit",
+      "content": "Hello all!  \n\nI have problem about modifing the path BCD of Windows (UEFI)  \n\nNormal, UEFI BCD located in C:\\\\EFI\\\\Microsoft\\\\Boot\\\\BCD  \nI want to change this path to C:\\\\EFI\\\\MyPath\\\\MyBoot\\\\BCD  \n\nSomeone help me with Tool !  \n\nTHANKS ALL.\n\n"
+    },
+    {
+      "id": "200173",
+      "timestamp": "2016-09-09T04:08:51+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "Hmm...........how about with.......oh, I don\u0027t know.........BCDEdit?!\n\n"
+    },
+    {
+      "id": "200175",
+      "timestamp": "2016-09-09T08:27:54+00:00",
+      "author": "Wonko the Sane",
+      "content": "NIcely symmetrical with this one:\n\n[http://reboot.pro/to...-in-windows-xp/](http://reboot.pro/topic/21234-how-to-change-the-path-bootini-of-ntldr-in-windows-xp/ \"\")\n\nwith the added complication that BOOTMGR, besides checksummed is also compressed.\n\nThere are several threads about this.\n\n[http://reboot.pro/to...usb-sub-folder/](http://reboot.pro/topic/8043-booting-vista2008w7-from-usb-sub-folder/ \"\")\n\n[http://reboot.pro/to...ffset-question/](http://reboot.pro/topic/16069-bootmgr-offset-question/ \"\")\n\n[http://reboot.pro/to...r-of-windows-8/](http://reboot.pro/topic/16824-how-to-modify-bootmgr-of-windows-8/ \"\")\n\nThere is a nifty program for that in the above thread, here:  \n[http://reboot.pro/to...ows-8/?p\u003d195982](http://reboot.pro/topic/16824-how-to-modify-bootmgr-of-windows-8/?p\u003d195982 \"\")\n\nsee if it works on UEFI (never tested it, but I believe it is for the BIOS path only, i.e. it edits the BOOTMGR and not the BOOTMGR.EFI, but cannot really say)\n\nThe (Russian) topic is here:  \n[http://www.usbtor.ru...topic.php?t\u003d562](http://www.usbtor.ru/viewtopic.php?t\u003d562 \"External link\")\n\nversion 1.34 right now.\n\n@TheAntiFinder\n\nJFYI BCDEdit edits the BCD, not it\u0027s location/path/name, which is hardcoded to \\\\boot\\\\BCD (on BIOS) and \\\\EFI\\\\Microsoft\\\\Boot\\\\BCD (on EFI/UEFI)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "200193",
+      "timestamp": "2016-09-10T02:03:49+00:00",
+      "author": "meoit",
+      "content": "THANKS WONKO!\n\nCONTY9 BMPLUS V1.3.4 only can modify LEGACY WinNT6.x LOADERs (as BootMGR), it not support for UEFI.\n\n"
+    },
+    {
+      "id": "200300",
+      "timestamp": "2016-09-16T02:49:05+00:00",
+      "author": "meoit",
+      "content": "Final, I hexed \\*.efi by using HexEdit. Load very OK. :smile:\n\n"
+    }
+  ]
+}

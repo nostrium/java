@@ -1,0 +1,28 @@
+{
+  "id": "22175",
+  "title": "Windows 10 Uefi and Windows 7 Bios Dualboot",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "213064",
+      "timestamp": "2019-10-16T08:40:29+00:00",
+      "author": "nierewa",
+      "content": "Hi,\n\nI have a Notebook here with two HDDs. First with Win10 installed (GPT).\n\nNow I add Windows 7 (MBR) on second HDD and on Windows 10 I add a new bootentry with Bootice\n\nI give the right Partition, Bootfile is: \\\\windows\\\\system32\\\\winload.exe as and \\\\Windows as Sys root.  \n\nIf I boot now I get an 0xc000000e error.  \nI tried to rebuild BCD but the only effect is that Windows 7 would load with winefi and not with winload,  \nbut the error is still the same.\n\nAnyone an suggestion or solution for me?\n\nThanks\n\n**Edited by nierewa, 16 October 2019 - 08:49 AM.**\n"
+    },
+    {
+      "id": "213065",
+      "timestamp": "2019-10-16T10:20:33+00:00",
+      "author": "alacran",
+      "content": "The recommended order to install is older OS first,\n\n1.- Or disconnect the Newer OS system disk before make your install on the second disk an older OS, remembering to first disable secure boot and enable CSM or CSM + UEFI on the Bios, usually there is a fast Key (F7, F8, F12, etc) to let you select from what disk you want to boot,\n\n2.- To boot Win 7 to 10 from a MBR disk it needs usually an **active** (System Reserved) NTFS partition with the bootmanager and **Boot** folder/files where the BCD (for MBR) is, you can use also a Fat-32 **active** partition with mentioned files and folder.\n\n3.- If you use a Fat-32 **active** (as System Reserved) partition on a MBR disk it is capable to boot a MBR install + also capable to boot an UEFI system.\n\nIf you have a System Reserved partition on your MBR disk you could format it as Fat-32 and make it active, and run the command suggested on No. 4 and maybe adding all required to boot the 10 UEFI, as the EFI folder and editing the BCD (for UEFI) located into EFI\\\\Microsoft\\\\Boot after copy it and all needed from Win10 disk to this location. Don\u0027t forget to also open your Bios and select this disk as the first option to boot, disable secure boot and enable CSM or CSM + UEFI on the Bios, usually there is a fast Key (F7, F8, F12, etc) to let you select from what disk you want to boot, if you want to boot 10 directly.\n\nIf that don\u0027t work you need to follow what said on No. 1.\n\n**4.- Useful info to create all boot files/folders:**\n\nBoot from a WimPE, format the System Reserved partition with the required format and run in a command promt (on each disk having the other disconnected) to create the boot files/folders:\n\n(Recomment to read carefully the info on the link first: [https://docs.microso...ons-techref-di)](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/bcdboot-command-line-options-techref-di) \"External link\")\n\nbcdboot C:\\\\Windows /s S: /f ALL  \n\nC:\\\\Windows \u003d Where Win is installed (just change S: for the letter where Windows is located as seen on the WinPE)\n\n/s S:: \u003d Where the boot files/folders will be installed (just change S: for the letter of your System Reserved partition as seen on the WinPE)  \n\n/f ALL \u003d Installs MBR + UEFI boot files/folders (can be omited if not required and only those that apply will be installed automaticaly)  \n\nalacran\n\n"
+    },
+    {
+      "id": "213066",
+      "timestamp": "2019-10-16T11:52:56+00:00",
+      "author": "nierewa",
+      "content": "\u003e 1.- Or disconnect the Newer OS system disk before make your install on the second disk an older OS, remembering to first disable secure boot and enable CSM or CSM + UEFI on the Bios, usually there is a fast Key (F7, F8, F12, etc) to let you select from what disk you want to boot,\n\nThis is what I made.\n\nIn the meantime I tried many times to rebuild bcd like in this tutorial: Youtube - How to fix Error Code 0x0c000000e  \nSuddenly, after some tries, it worked ![:questionmark:](http://reboot.pro/public/style_emoticons/default/questionmark.gif)\n\nSo thanks for your great explaining above\n\n"
+    }
+  ]
+}

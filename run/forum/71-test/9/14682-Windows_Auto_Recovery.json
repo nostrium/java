@@ -1,0 +1,52 @@
+{
+  "id": "14682",
+  "title": "Windows Auto Recovery",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "130264",
+      "timestamp": "2011-06-07T03:08:23+00:00",
+      "author": "s-m-i",
+      "content": "Hi Guys,  \n\nI have following tasks in front of me and I am hoping to get some input from experts. I need to build boot problem detection and autorecovery without user interaction. For expample if Windows fails to boot let say 3 times, the boot loader should redirect load to recovery partition and from there it should just reimage the drive. We have the environment where due to power loss the main drive can get corrupted and I am looking for the options on how I can autorecover it.  \n\nThanks for the help.   \n"
+    },
+    {
+      "id": "130271",
+      "timestamp": "2011-06-07T07:01:33+00:00",
+      "author": "steve6375",
+      "content": "This would mean that all data on the OS partition would automatically be destroyed with the user having no choice? - is this OK in your scenario?  \nWin 7 has built in autorecovery/repair (but a manual image recovery process).   \n"
+    },
+    {
+      "id": "130272",
+      "timestamp": "2011-06-07T07:01:47+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Hi Guys,  \n\u003e\n\u003e I have following tasks in front of me and I am hoping to get some input from experts. I need to build boot problem detection and autorecovery without user interaction. For expample if Windows fails to boot let say 3 times, the boot loader should redirect load to recovery partition and from there it should just reimage the drive. We have the environment where due to power loss the main drive can get corrupted and I am looking for the options on how I can autorecover it.  \n\u003e\n\u003e Thanks for the help.  \n\nIf you can use grub4dos it is possible to add a command to an entry in it\u0027s menu.lst that writes \\*something\\* to a file.  \nAs well you can add a command to read/check what has been written and trigger \\*whatever\\* action.  \n\n**BUT** , with all due respect ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif), the plan doesn\u0027t seem to me that good. ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n\nBasically you are saying that due to possible black outs, it can happen that the HD gets corrupted.  \nThis should mean that these power shortages are rather common or frequent.  \nThe *normal* solution is an UPS. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \nYou see, you have NO way to establish whether the effect of the blackout (corruption of the hard disk ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)) will affect just some stoopid Windows files or if it will affect anything connected to the \"failure detection system\" or to the \"recovery/reimaging\".  \nMore than that, re-imaging/restoring is something that takes ***TIME*** (let\u0027s say anything between half an hour and several hours), what if another power shortage happens during this time? :smile:  \n\nAnyway, if you are willing to take this path, post and we\u0027ll talk of the possible ways to let grub4dos do this for you.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "130375",
+      "timestamp": "2011-06-08T02:21:03+00:00",
+      "author": "s-m-i",
+      "content": "\u003e This would mean that all data on the OS partition would automatically be destroyed with the user having no choice? - is this OK in your scenario?  \n\u003e Win 7 has built in autorecovery/repair (but a manual image recovery process).  \n\nYes, loosing all data is ok as it can be auto restored from server.   \n"
+    },
+    {
+      "id": "130376",
+      "timestamp": "2011-06-08T02:43:46+00:00",
+      "author": "s-m-i",
+      "content": "\u003e If you can use grub4dos it is possible to add a command to an entry in it\u0027s menu.lst that writes \\*something\\* to a file.  \n\u003e As well you can add a command to read/check what has been written and trigger \\*whatever\\* action.  \n\u003e\n\u003e **BUT** , with all due respect ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif), the plan doesn\u0027t seem to me that good. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\u003e\n\u003e Basically you are saying that due to possible black outs, it can happen that the HD gets corrupted.  \n\u003e This should mean that these power shortages are rather common or frequent.  \n\u003e The *normal* solution is an UPS. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\u003e You see, you have NO way to establish whether the effect of the blackout (corruption of the hard disk ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)) will affect just some stoopid Windows files or if it will affect anything connected to the \"failure detection system\" or to the \"recovery/reimaging\".  \n\u003e More than that, re-imaging/restoring is something that takes ***TIME*** (let\u0027s say anything between half an hour and several hours), what if another power shortage happens during this time? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)  \n\u003e\n\u003e Anyway, if you are willing to take this path, post and we\u0027ll talk of the possible ways to let grub4dos do this for you.  \n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\u003e Wonko  \n\nThanks Wonko,  \n\nThat sounds very interesting. Basically withoug going into much detail, those units are mobile units and they always have power, but seems to me due to brown outs or improper maintanance the power could be lost. it is something outside of our control. I want to ensure that if this happens system has some auto recovery options, maybe even boot from wifi network to autorecover main drive. So the first step is detection of problem and if so redirection of control...  \n\nHere are some questions that come to mind on grub4dos.  \n\n1. Can you point me on direction on how to write file?  \n2. is it possible to use fixed sector / address of drive\u0027s partition instead? to avoid possible corruption to drive allocation table.  \n3. is it possible to send some commands over RS232 or other ports within grub4dos?  \n4. is there other storage except drive where I can put those flags? I know it depends on PC hardware but I am thinking maybe BIOS space.   \n"
+    },
+    {
+      "id": "130381",
+      "timestamp": "2011-06-08T08:36:39+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e 1. Can you point me on direction on how to write file?  \n\u003e 2. is it possible to use fixed sector / address of drive\u0027s partition instead? to avoid possible corruption to drive allocation table.  \n\u003e 3. is it possible to send some commands over RS232 or other ports within grub4dos?  \n\u003e 4. is there other storage except drive where I can put those flags? I know it depends on PC hardware but I am thinking maybe BIOS space.  \n\n1.+ 2. There are two main commands in grub4dos, that can write:  \n\n* write ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n* dd\n\nboth can write to a file (ONLY if already existing) or to \\*any\\* accessible RAM location or disk/mass storage device connected (of course target needs to be \"writable\"). It is quite common in documented \"advanced\" methods to write to a hard disk sector, as an example.  \n\n3. yes/no, see terminal/terminfo commands (never explored/tested them ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif))  \n\n4. See 1+2, afaik \"BIOS space\" is not writable (what normally is written/modified by grub4dos is the RAM image of the \"BIOS space\").  \n\nA rather complex (for people not yet familiar with the tool) and NOT \"exactly what you need\" thread, nonetheless interesting and containing most of the needed info (if you can read \"between the lines\") is here:  \n\u003chttp://reboot.pro/7138/\u003e  \ntake some time on it, you should get a possible \"idea\", of course to be further \"customized\" to your needs.  \n\n![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)  \nWonko   \n"
+    },
+    {
+      "id": "130418",
+      "timestamp": "2011-06-08T17:02:36+00:00",
+      "author": "s-m-i",
+      "content": "Thanks! this gives me good starting point. I will give it a try.   \n"
+    }
+  ]
+}

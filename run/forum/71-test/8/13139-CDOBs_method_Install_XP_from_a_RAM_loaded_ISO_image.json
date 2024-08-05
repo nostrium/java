@@ -1,0 +1,130 @@
+{
+  "id": "13139",
+  "title": "CDOB\u0027s method - Install XP from a RAM loaded ISO image",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "114660",
+      "timestamp": "2010-11-24T03:13:05+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "I created a bootable USB stick following [**cdob\u0027s method**](http://www.msfn.org/board/topic/137714-install-xp-from-a-ram-loaded-iso-image/ \"External link\"). Everything went fine when tested on VMware Workstation 7, but on real hardware platform, it failed. I used a couple of LENOVO laptops for experiment. One is armed with 4GB DDR3 RAM \\\u0026 Phoneix BIOS where as the other is equipped with 2GB DDR3 RAM \\\u0026 Insyde BIOS. There is 500GB internal HD in both the laptops. On both the machines, the RAM loading completed, setup started as usual till   \n\n\u003e Setup is staring Windows\n\nbut, it was supposed to display the list of available drives detected.  \n\nAfter that, the screen got blank without any error message. The UFD activity also stopped. I tried another 5/6 times with the following variations:  \n\n* Uncommenting the line in menu.lst  \n\n  ```\n  map --mem /Inst/XP_INST.IMA \u0026#40;fd1\u0026#41;\n  ```\n\n  which has been told as a workaround for some buggy BIOSes.\n* Changing the SATA mode to both AHCI \\\u0026 COMPATIBILITY in the BIOS.\n\n\u003cbr /\u003e\n\nWorth mentioning that the XP source I\u0027ve used is nLited with AHCI drivers needed for the laptop \\\u0026 works perfectly fine when comes to installing XP from CD itself instead of the image.   \n"
+    },
+    {
+      "id": "114712",
+      "timestamp": "2010-11-25T03:33:12+00:00",
+      "author": "ilko",
+      "content": "This looks exactly as this one:  \n[http://www.msfn.org/...all-iso-method/](http://www.msfn.org/board/topic/147681-issues-on-some-machines-with-small-iso-method/ \"External link\")  \n\nDoes the \\~BT \\\u0026 \\~LS (used in WinSetupFromUSB 0.2.3 and USB _multiboot) method work on them?  \nDoes WinSetupFromUSB 1.0 beta6 created USB stick fail the same way?  \n\nCan you test and report?   \n"
+    },
+    {
+      "id": "114714",
+      "timestamp": "2010-11-25T06:39:54+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "\u003e This looks exactly as this one:  \n\u003e [http://www.msfn.org/...all-iso-method/](http://www.msfn.org/board/topic/147681-issues-on-some-machines-with-small-iso-method/ \"External link\")\n\nIn that case, the computer was restarting. But, in my case, it hangs even before it restarts.  \n\n\u003e Does the \\~BT \\\u0026 \\~LS (used in WinSetupFromUSB 0.2.3 and USB _multiboot) method work on them?  \n\u003e Does WinSetupFromUSB 1.0 beta6 created USB stick fail the same way?\n\nI haven\u0027t tried that.  \n\n\u003e Can you test and report?\n\nSure, I\u0027ll try \\\u0026 let u know.   \n"
+    },
+    {
+      "id": "114715",
+      "timestamp": "2010-11-25T06:45:06+00:00",
+      "author": "ilko",
+      "content": "\u003e In that case, the computer was restarting. But, in my case, it hangs even before it restarts.\nNope, it hangs the same way with black blank screen, just the first post is a bit misleading.   \n"
+    },
+    {
+      "id": "114717",
+      "timestamp": "2010-11-25T06:58:53+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "\u003e Nope, it hangs the same way with black blank screen, just the first post is a bit misleading.\n\nYes, it is.   \n"
+    },
+    {
+      "id": "114718",
+      "timestamp": "2010-11-25T07:05:06+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "Oh, I forgot to report that in my case also, the USB light stopped flashing while the HDD light did. Looks almost same reported by **ilko** in the referenced thread at Post #14  \n\n\u003e In AHCI only the USB light flashes, in IDE only the HDD light.\n\n"
+    },
+    {
+      "id": "114839",
+      "timestamp": "2010-11-27T06:54:14+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "@ilko  \n\nI\u0027ve prepared an USB stick with WinSetupFromUSB 1.0 beta6 in the following manner:  \n\n1. Selected the USB stick from the drop down menu.  \n2. Checked the checkbox beside Windows 2000/XP/2003 Setup.  \n3. Browsed the WinXP SP3 folder extracted on my HDD.  \n4. Clicked on GO button.  \n\nAn UFD prepared this way produces BSOD on VMWare \\\u0026 EXACTLY the same output on my physical machine.  \n\nAny suggestion or any other method/option to try out \\\u0026 report?   \n"
+    },
+    {
+      "id": "114841",
+      "timestamp": "2010-11-27T07:43:09+00:00",
+      "author": "ilko",
+      "content": "I\u0027d try WinSetupFromUSB 0.2.3, my guess is that it\u0027s going to work just fine on the real hardware. May need the modified ntdetect.com if bluescreens with 0x7B:  \n[http://www.msfn.org/...mp;#entry738009](http://www.msfn.org/board/index.php?showtopic\u003d112630\u0026st\u003d0\u0026p\u003d738009\u0026#entry738009 \"External link\")  \n[http://www.datafileh...d-dfc48473.html](http://www.datafilehost.com/download-dfc48473.html \"External link\")  \n\nTry on the real hardware please.   \n"
+    },
+    {
+      "id": "114843",
+      "timestamp": "2010-11-27T08:01:00+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "\u003e Try on the real hardware please.\n\nSorry **ilko** , you didn\u0027t notice the last part of my post.  \n\n\u003e An UFD prepared this way produces BSOD on VMWare \\\u0026 **EXACTLY the same output on my physical machine.**\n\nWith the**BOLD** -ed part , I tried to mean that the UFD, prepared with **WinsetupfromUSB** , also produced **EXACTLY SAME** results as it was with **cdob** \u0027s method (stated in Post #1), i.e. the screen went blank after \"**Setup is starting Windows** \", UFD light turned off \\\u0026 HDD light was blinking showing high HD activity.   \n"
+    },
+    {
+      "id": "114844",
+      "timestamp": "2010-11-27T08:10:48+00:00",
+      "author": "ilko",
+      "content": "I\u0027ve read it :smile:  \n\n1.0 beta versions and 0.X.X of WinSetupFromUSB use completely different method. That\u0027s why I am asking you to try 0.2.3, which uses default, supported by MS method.  \n\nThe results on VMWare would be irrelevant, we need to figure out what is going on on some, I guess, newer machines.   \n"
+    },
+    {
+      "id": "114847",
+      "timestamp": "2010-11-27T08:49:02+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "Thank u a lot **ilko** , seems that 0.2.3 has done the impossible :smile: . Though u were not interested in knowing the result on VMWare, I tested on it. It BSOD-ed. But fortunately, on real machine, now it presented the **partition selection** \\\u0026 **F8 EULA agreement** screen. As I can\u0027t tamper with the XP \\\u0026 7 installation of my laptop @ this moment, I didn\u0027t proceed with the installation further. But as my college project is over \\\u0026 the laptop becomes free for the experiment, I\u0027ll give a try for a complete install. At this time, I\u0027ve certain questions in mind:  \n\n* Why didn\u0027t u incorporate both the methods used in older \\\u0026 newer version of WinSetupFromUSB in the newest version? Because for such erratic/queer BIOSes like mine, the previous version proved better than the newer. May we expect to have a combined version in near future?\n* Can u please outline the techniques u are using in 0.2.3 \\\u0026 1.0 beta versions of the utility?\n* What modification does **modified NTDETECT.COM** have?\n* If u have time \\\u0026 feel it to be worth spending time, can u please investigate why the test ended up with BSOD on VMWare?\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "114911",
+      "timestamp": "2010-11-28T01:56:42+00:00",
+      "author": "ilko",
+      "content": "I think I\u0027ve found a workaround, at least with small ISO method and WinSetupFromUSB 1.0 versions.  \n[http://www.msfn.org/...post__p__947272](http://www.msfn.org/board/topic/147681-issues-on-some-machines-with-small-iso-method/page__view__findpost__p__947272 \"External link\")  \n\nFor now with firadisk method I have no clues, since firadisk driver still needs memory mapped image.  \n\nCan you test WinSetupFromUSB 1.0 beta6, editing winsetup.lst and removing --mem option?  \n\n```\n...\n\ntitle First part of Windows XP Professional SP2 setup from partition 0\n\nmap --unmap\u003d0\u0026#58;0xff\n\nmap --unhook\n\nfind --set-root --ignore-cd /WINSETUP/XPpSP2.ISO\n\nmap /WINSETUP/XPpSP2.ISO \u0026#40;0xff\u0026#41;\n\n...\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "114918",
+      "timestamp": "2010-11-28T10:14:29+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e For now with firadisk method I have no clues, since firadisk driver still needs memory mapped image.\nNot really-really.  \nExperimental support for non-mem mapped image is present.  \n\n:smile:  \nWonko   \n"
+    },
+    {
+      "id": "114953",
+      "timestamp": "2010-11-28T18:27:11+00:00",
+      "author": "L A M A",
+      "content": "ok, this maybe odd but i see all dudes (devz) online today in this topic, Sha0, karyonix, erwan.l, wimb, (and obviously Wonko as everyday ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png) )   \n"
+    },
+    {
+      "id": "114996",
+      "timestamp": "2010-11-29T01:51:04+00:00",
+      "author": "ilko",
+      "content": "\u003e Not really-really.  \n\u003e Experimental support for non-mem mapped image is present.  \n\u003e\n\u003e ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \n\u003e Wonko\nCan you provide more information? Couldn\u0027t find anything in version history or the last few pages of the firadisk topic.  \nTried firadisk 0.0.1.24 and no --mem mapping with XP SP3 ISO and this results in BSOD 0x7B as expected.  \n\nFor the record- UBCD4Win iso image based on XP SP3 and firadisk on the same computer worked just fine.   \n"
+    },
+    {
+      "id": "114998",
+      "timestamp": "2010-11-29T03:04:02+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "\u003e Can you test WinSetupFromUSB 1.0 beta6, editing winsetup.lst and removing --mem option?\n\nI\u0027ll try it today.   \n"
+    },
+    {
+      "id": "115014",
+      "timestamp": "2010-11-29T09:43:52+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Can you provide more information? Couldn\u0027t find anything in version history or the last few pages of the firadisk topic.  \n\u003e Tried firadisk 0.0.1.24 and no --mem mapping with XP SP3 ISO and this results in BSOD 0x7B as expected.  \n\u003e\n\u003e For the record- UBCD4Win iso image based on XP SP3 and firadisk on the same computer worked just fine.\n\nStart from here:  \n[http://www.boot-land...?...8804\\\u0026st\u003d246](http://www.boot-land.net/forums/index.php?showtopic\u003d8804\u0026st\u003d246 \"External link\")  \n\nSame has been added to WinVblock:  \n[http://www.boot-land...?...8168\\\u0026st\u003d207](http://www.boot-land.net/forums/index.php?showtopic\u003d8168\u0026st\u003d207 \"External link\")  \n\nBut I was talking of .img not .iso.  \n\n![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \nWonko   \n"
+    },
+    {
+      "id": "115147",
+      "timestamp": "2010-11-29T23:30:41+00:00",
+      "author": "cdob",
+      "content": "[http://www.boot-land...?...st\\\u0026p\u003d102765](http://www.boot-land.net/forums/index.php?s\u003d\u0026showtopic\u003d8804\u0026view\u003dfindpost\u0026p\u003d102765 \"External link\")  \n\u003e Windows in disk image must know the partition inside disk image. Don\u0027t change MBR signature of disk image, or partition start, partition length of Windows partition inside disk image.  \n\u003e ...  \n\u003e It probably will not work with PE or Windows setup.\nI understand:  \nsome USB drive relating settings are missing at default installation media.  \nIt may be possible to add this settings to a XP installation media.  \nHowever this XP installation media would match this USB drive only.  \nDetails are misssing.  \n\n\u003cbr /\u003e\n\nThere is another approach nowadays.  \n[http://www.vmlite.co...;start\u003d108#4149](http://www.vmlite.com/index.php/forums/17-vboot/2969-is-the-beta-release-of-vboot-delayed?limit\u003d6\u0026start\u003d108#4149 \"External link\")  \n\u003e You can use VBoot to install an OS to the real harddisk. This way, you can boot from an ISO file, instead of using a real cdrom.  \n\u003e\n\u003e vboot cdrom\u003d(hd0,1)/winxp-sp2.iso floppy\u003d(hd0,1)/vboot.img boot\u003dcdrom\nBooting does work at QEMU, no BSOD 0x7B.   \n"
+    },
+    {
+      "id": "115163",
+      "timestamp": "2010-11-30T00:53:11+00:00",
+      "author": "ilko",
+      "content": "\u003e ...  \n\u003e There is another approach nowadays.  \n\u003e [http://www.vmlite.co...;start\u003d108#4149](http://www.vmlite.com/index.php/forums/17-vboot/2969-is-the-beta-release-of-vboot-delayed?limit\u003d6\u0026start\u003d108#4149 \"External link\")  \n\u003e Booting does work at QEMU, no BSOD 0x7B.\nVery nice find, thanks.   \n"
+    },
+    {
+      "id": "115165",
+      "timestamp": "2010-11-30T01:39:22+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "\u003e Can you test WinSetupFromUSB 1.0 beta6, editing winsetup.lst and removing --mem option?  \n\u003e\n\u003e \\[code\u003dauto:0\\]\nU were right. It worked. I guess that it\u0027s a problem with Grub4DOS memory mapping for some BIOSes. If it can be resolved, then **cdob** \u0027s method can also be get to work.   \n"
+    }
+  ]
+}

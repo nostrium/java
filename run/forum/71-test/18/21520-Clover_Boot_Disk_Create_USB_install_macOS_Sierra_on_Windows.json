@@ -1,0 +1,40 @@
+{
+  "id": "21520",
+  "title": "Clover Boot Disk - Create USB install macOS Sierra on Windows",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "203570",
+      "timestamp": "2017-05-19T23:20:12+00:00",
+      "author": "nguyentu",
+      "content": "Clover Boot Disk includes tools to help you create a USB install MacOS Sierra on Windows. You can create a USB install MacOS on just a few clicks.\n\n![Clover-Boot-Disk.jpg](https://static.sitecuatui.com/wp-content/uploads/2017/05/Clover-Boot-Disk.jpg)\n\n**Download:**\n\n[Clover Boot Disk](https://www.sitecuatui.com/clover-boot-disk/ \"External link\") includes 3 files.\n\n1. PartIMGMapper.exe\n2. Clover.img  \n   This is a partition image of Clover.\n3. OSX_10.12.5_Installer.hfs  \n   This is a partition image of MacOS Sierra installer.\n\nDownload all the files at **[OneDrive](https://www.sitecuatui.com/out/CloverBootDisk \"External link\")**.\n\n**Creating a USB install MacOS**  \n1. Format USB to NTFS.\n   1. Because the image of the install MacOS partition size larger than 4GB, you can not contain it on a FAT32 partition.\n   2. If you are using NTFS partitions, skip this step.\n2. Copy the two files **Clover.img** and **OSX_10.12.5_Installer.hfs** to the NTFS partition above. You will need a USB least 8GB to store these files.\n3. Running **PartIMGMapper.exe** and select the following:  \n   ![tao-USB-cai-macOS-tren-Windows.jpg](https://static.sitecuatui.com/wp-content/uploads/2017/05/tao-USB-cai-macOS-tren-Windows.jpg)\n   1. Select **Clover.img** at 1, Type is **FAT32**.\n   2. Select **OSX_10.12.5_Installer.hfs** at 2, Type is **HFS/HFS+**.\n   3. Check **Clover** to enable booting Clover in Legacy BIOS mode.\n      4. Click the button **MAP**.  \n      Note: If an error occurs when selecting the file, please defrag for the file first and then try again.\n4. After clicking the MAP button, the tool will set up the new partition on the USB and create a backup file with the **.MBR** extension.\n5. If you want to restore USB as before, run **PartIMGMapper.exe** , click on **UNMAP** and select the previously **.MBR** file that was backed up.  \nNow you will see the Clover partition, you can copy KEXT to the **/EFI/CLOVER/kexts/Other** directory and edit the Clover configuration in **/EFI/CLOVER/config.plist**.  \n**Links**  \n\n* [RehabMan Kext](https://bitbucket.org/RehabMan/ \"External link\")\n* [Clover Wiki](https://clover-wiki.zetam.org/Home \"External link\")\n* [Sierra MBR Patch](http://www.insanelymac.com/forum/files/file/563-sierra-mbr-patch/ \"External link\")\n* [HP ProBook/EliteBook/Zbook using Clover UEFI hotpatch (10.11)](https://www.tonymacx86.com/threads/guide-hp-probook-elitebook-zbook-using-clover-uefi-hotpatch-10-11.189416/ \"External link\")\n  * Read and write HFS+ on Ubuntu Linux.  \n\n  ```\n  sudo apt-get install hfsprogs\n  ```\n\n\u003cbr /\u003e\n\n**Edited by nguyentu, 19 May 2017 - 11:26 PM.**\n"
+    },
+    {
+      "id": "203585",
+      "timestamp": "2017-05-21T03:17:22+00:00",
+      "author": "devdevadev",
+      "content": "\u003e 1. After clicking the MAP button, the tool will set up the new partition on the USB and create a backup file with the **.MBR** extension.\n\nWill **\u0027PartIMGMapper.exe\u0027** save backup file with the **.MBR** extension within newly created **FAT32 Clover Partition** ?\n\n"
+    },
+    {
+      "id": "203586",
+      "timestamp": "2017-05-21T04:16:10+00:00",
+      "author": "nguyentu",
+      "content": "Will **\u0027PartIMGMapper.exe\u0027** save backup file with the **.MBR** extension within newly created **FAT32 Clover Partition** ?  \nThe backup file will be located in the same directory as PartIMGMapper.exe. You can move it where you want.\n\n"
+    },
+    {
+      "id": "203587",
+      "timestamp": "2017-05-21T05:12:58+00:00",
+      "author": "devdevadev",
+      "content": "\u003e The backup file will be located in the same directory as PartIMGMapper.exe. You can move it where you want.\n\u003e\nYou mean \u0027PartIMGMapper.exe\u0027 should be outside of USB Drive we are dealing with ? It will be nice if \u0027PartIMGMapper\u0027 can also save the current MBR of USB Drive to LBA 30 before switching to CLOVER and SIERRA Partition Image ? It will help in case of damage of .MBR backup file ?\n\nCan above CLOVER setup also boot in UEFI+GPT based Official MacBook Pro/Air ?\n\nFrom where you got \u0027**OSX_10.12.5_Installer.hfs\u0027** ? I have **\u0027Install macOS Sierra.app\u0027** in my Windows system which I copied from a Mac. How I can get \u0027**OSX_10.12.5_Installer.hfs\u0027** from **\u0027Install macOS Sierra.app\u0027** ? I also have \u0027macOS Sierra 10.12.3.dmg\u0027 file.\n\nI am looking for **\u0027PartIMGCreator.exe\u0027** within AIOBoot but unable to find it with \u0027AIOBoot\u0027 folder ? Where it is ?\n\n"
+    },
+    {
+      "id": "203589",
+      "timestamp": "2017-05-21T07:27:11+00:00",
+      "author": "nguyentu",
+      "content": "Sorry, but if I back up the MBR to the 30th sector or otherwise, it could also be corrupted because the user would probably install other bootloaders. Grub2 is usually larger than 63 sectors.  \nI don\u0027t have a MacBook Pro/Air to try, but it works for Hackintosh.  \nAfter you have created the installer using Disk Utility on macOS, or in any way, back up the partition containing the installer to a file. I named it \"**OSX_10.12.5_Installer.hfs**\".  \n**PartIMGCreator.exe** has been removed in recent versions. You can run **AIOCreator.exe** and switch to the **PartIMG \\\u0026 VHD** tab.\n\n"
+    }
+  ]
+}

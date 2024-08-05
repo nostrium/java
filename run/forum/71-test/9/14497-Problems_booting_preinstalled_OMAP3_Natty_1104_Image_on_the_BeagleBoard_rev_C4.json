@@ -1,0 +1,82 @@
+{
+  "id": "14497",
+  "title": "Problems booting preinstalled OMAP3 Natty (11.04) Image on the BeagleBoard rev C4",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "128580",
+      "timestamp": "2011-05-12T14:21:31+00:00",
+      "author": "Marietto",
+      "content": "Hello,  \n\nI\u0027m trying to install Ubuntu Natty on the beagle board rev c4. What\u0027s a beagle board (from the official page : www.beagleboard.org) :  \n\nThe USB-powered BeagleBoard is a low-cost, fan-less single board computer that unleashes laptop-like performance and expandability without the bulk, expense, or noise of typical desktop machines.  \n\nOMAP3530 processor highlights:  \n\nOver 1,200 Dhrystone MIPS using the superscalar ARM Cortex-A8 with highly accurate branch prediction and 256KB L2 cache running at up to 600MHz  \nOpenGL© ES 2.0 capable 2D/3D graphics accelerator capable of rendering 10 million polygons per second  \nHD video capable TMS320C64x+ DSP for versatile signal processing at up to 430MHz  \nUSB power via complete chip-set with minimal additional power-consuming logic  \n\nExpansion capability and power options to satisfy your imagination:  \n\nDVI-D for connecting digital computer monitors  \nCompatibility with a huge collection of USB peripherals including hubs, keyboards, mice, WiFi, Bluetooth, web cameras, and much more  \nMMC+/SD/SDIO interface for memory or wireless connectivity  \nS-Video out for connecting your NTSC or PAL television or wearable visor  \nStereo audio in and out for a microphone and headphones or speakers  \nPower via typical USB chargers for cell phones from your laptop, from an automobile adapter, from batteries, or even from a solar backpack  \n\nThese are the steps followed :  \n\n0.Got the Ubuntu Natty image from : [http://cdimage.ubunt...mel omap.img.gz](http://cdimage.ubuntu.com/releases/11.04/release/ubuntu-11.04-preinstalled-netbook-armel+omap.img.gz \"External link\")  \n1.Inserted the SD card in my host computer\u0027s SD card reader.   \n2.Identified the correct device name.   \n3.Ran the following command to write it:  \n\nsudo sh -c \u0027zcat ubuntu-11.04-preinstalled-netbook-armel+omap.img.gz \\\u003e /dev/sdc\u0027  \nsync  \n\n4.Ran Putty on the host computer (running on Ubuntu 10.10 x86) using these parameters :  \n\na) Set the serial port to /dev/ttyS0.  \nb) Set the communications settings to 115200 8N1.   \nc) Turned Hardware Flow Control off.   \nd) Set the Software Flow Control off.  \ne) Turned on the Beagle Board and followed the instructions explained at the bottom of this page : [https://wiki.ubuntu....HeadlessInstall](https://wiki.ubuntu.com/ARM/OMAPHeadlessInstall \"External link\")  \n\nOn omap3 systems with a modified NAND (i.e. beaglebord C series) done the following:   \n\nOn a serial console connected to the system, halted the autoboot script and typed :  \n\nsetenv bootcmd \u0027mmc init;fatload mmc 0 0x82000000 boot.scr;source 0x82000000\u0027; setenv autostart yes; saveenv; boot  \n\nThe screenshot attached explains what happened.  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![Schermata.png](http://reboot.pro/uploads/monthly_05_2011/post-27738-0-79962300-1305210259_thumb.png)](http://reboot.pro/uploads/monthly_05_2011/post-27738-0-79962300-1305210259.png \"Schermata.png - Size: 346.09KB\"){#ipb-attach-url-12164-0-67122100-1676066607}\n\n"
+    },
+    {
+      "id": "128584",
+      "timestamp": "2011-05-12T15:42:49+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e sudo sh -c \u0027zcat ubuntu-11.04-preinstalled-headless-armel+\\\u003comap image\\\u003e.img.gz \\\u003e /dev/\\\u003cdevice name\\\u003e\u0027  \nWhat EXACTLY did you type?  \nI don\u0027t think you actually typed:  \n\u003e \\\u003comap image\\\u003e\nor  \n\u003e \\\u003cdevice name\\\u003e\n\n:smile:  \nWonko   \n"
+    },
+    {
+      "id": "128586",
+      "timestamp": "2011-05-12T15:51:34+00:00",
+      "author": "Marietto",
+      "content": "sudo sh -c \u0027zcat ubuntu-11.04-preinstalled-netbook-armel+omap.img.gz \\\u003e /dev/sdc\u0027   \n"
+    },
+    {
+      "id": "128587",
+      "timestamp": "2011-05-12T16:00:57+00:00",
+      "author": "Wonko the Sane",
+      "content": "Then, if the dev is actually /dev/sdc and the image is actually ubuntu-11.04-preinstalled-netbook-armel+omap.img.gz  \n\nYou can only try the alternate command:  \n\n```\ngunzip -c ubuntu-11.04-preinstalled-netbook-armel+omap.img.gz | sudo dd bs\u003d4M of\u003d/dev/sdc\n\nsync\n\n```\n\n\u003cbr /\u003e\n\nAnd/or verify the MD5 of the image and of the actual SD-Card once the image has been transferred.  \n\nIsn\u0027t your board normally booting from SD card?  \nAs in:  \n\u003e (note that this step is only necessary if you have a NAND and the system does not default to reading boot.scr from SD)\n\n:smile:  \nWonko   \n"
+    },
+    {
+      "id": "128590",
+      "timestamp": "2011-05-12T16:23:23+00:00",
+      "author": "Marietto",
+      "content": "I\u0027ve checked the MD5,it\u0027s ok.  \n\nyou say : Isn\u0027t your board normally booting from SD card ?  \n\nHow can I have this information ? Right now I\u0027ve tried to boot the BeagleBoard using one only kind of tutorial.  \n\nAnyway,maybe I found the solution. This is could be a bug. I\u0027m reading here :  \n\n[https://bugs.launchp...aro/ bug/750415](https://bugs.launchpad.net/u-boot-linaro/+bug/750415 \"External link\")  \n\nthis is related to linaro distro,but could happens with the Ubuntu for ARM.  \n\nthis could be the fix :  \n\n[https://bugs.launchp...d-env-fix.patch](https://bugs.launchpad.net/u-boot-linaro/+bug/750415/+attachment/1978159/+files/beagleboard-env-fix.patch \"External link\")   \n"
+    },
+    {
+      "id": "128594",
+      "timestamp": "2011-05-12T16:32:33+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e you say : Isn\u0027t your board normally booting from SD card ?  \n\u003e\n\u003e How can I have this information ? Right now I\u0027ve tried to boot the BeagleBoard using one only kind of tutorial.  \nRTFM?  \n\nwww.beagleboard.org  \nPossibly inside this: ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n[http://beagleboard.o...BSRM_latest.pdf](http://beagleboard.org/static/BBSRM_latest.pdf \"External link\")  \n\n\u003cbr /\u003e\n\nAnd no, I won\u0027t download a 10 Mb manual and read it :wink: , but the capability of booting from SD shoould be in the specifications of your specific motherboard manual.  \nOr maybe in the firmware release. :smile:  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "128598",
+      "timestamp": "2011-05-12T17:24:32+00:00",
+      "author": "Marietto",
+      "content": "I\u0027ve bought the old and standard version of Beagle Board,I think that it\u0027s able to make the boot. Now I would like to apply that patch,but before to do it,I have to find more informations about how to do.   \n"
+    },
+    {
+      "id": "128599",
+      "timestamp": "2011-05-12T18:22:02+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I\u0027ve bought the old and standard version of Beagle Board,I think that it\u0027s able to make the boot. Now I would like to apply that patch,but before to do it,I have to find more informations about how to do.  \nSure :smile:, but then why don\u0027t you simply try booting from the SD card, WITHOUT the:  \n\u003e On a serial console connected to the system, halt any autoboot script and type   \n\u003e setenv bootcmd \u0027mmc init;fatload mmc 0 0x82000000 boot.scr;source 0x82000000\u0027; setenv autostart yes; saveenv; boot\n\n:wink:  \n\nFrom what I can understand the patch is NOT actually \\*needed\\*.  \nThe issue should be here:  \n[https://bugs.launchp...ols/ bug/707127](https://bugs.launchpad.net/linaro-image-tools/+bug/707127 \"External link\")  \nand a fix is specified:  \n\u003e When upgrading your beagle board to using a version of uboot later or equal to U-Boot 2010.12 (Jan 11 2011 - 04:46:52), you may encounter a problem that manifests itself with system being unable to boot from SD and exhibits an error of the form:  \n\u003e\n\u003e MMC: block number 0x1 exceeds max(0x0)  \n\u003e \\*\\* Can\u0027t read from device 0 \\*\\*  \n\u003e\n\u003e \\*\\* Unable to use mmc 0:1 for fatload \\*\\*  \n\u003e Wrong Image Format for bootm command  \n\u003e ERROR: can\u0027t get kernel image!  \n\u003e\n\u003e If this occurs you likely need to update your uboot environment variables. These variables are examined with printenv.  \n\u003e\n\u003e Look specifically for something of the form:  \n\u003e\n\u003e bootcmd\u003dif mmc init 0 ; then if run loadbootscript; then run bootscript; else if run loaduimage; then run mmcboot; else run nandboot; fi; fi; else run nandboot; fi  \n\u003e\n\u003e This command needs to be updated to:  \n\u003e\n\u003e setenv bootcmd \"if mmc rescan 0 ; then if run loadbootscript; then run bootscript; else if run loaduimage; then run mmcboot; else run nandboot; fi; fi; else run nandboot; fi\"  \n\u003e saveenv  \n\u003e\n\u003e Instances of mmc init 0, should be changed to mmc rescan 0\n\nHave you tried it?  \n\n![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \nWonko   \n"
+    },
+    {
+      "id": "128604",
+      "timestamp": "2011-05-12T20:39:00+00:00",
+      "author": "Marietto",
+      "content": "Yes. On the console I see this message :  \n\nUncompressing Linux...Done. Booting the kernel.  \non the screen the Ubuntu splash screen is freezed.  \nUnder the splash screen there is this message : creating bootloader configuration.   \n"
+    },
+    {
+      "id": "128618",
+      "timestamp": "2011-05-13T07:08:41+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Yes. On the console I see this message :  \n\u003e\n\u003e Uncompressing Linux...Done. Booting the kernel.  \n\u003e on the screen the Ubuntu splash screen is freezed.  \n\u003e Under the splash screen there is this message : creating bootloader configuration.  \nThis should mean that you are \"past\" the previous booting issue, and now \\*something\\* else is the problem. :smile:  \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "128626",
+      "timestamp": "2011-05-13T08:47:46+00:00",
+      "author": "Marietto",
+      "content": "someone told to me to give these commands :  \n\nmmc part 0  \nboot  \n\nit worked,but as soon as ubuntu makes the boot,the busybox console appears on the screen. Is this right ? what\u0027s the next step to do,then ?   \n"
+    },
+    {
+      "id": "130070",
+      "timestamp": "2011-06-02T17:19:01+00:00",
+      "author": "Marietto",
+      "content": "Fixed with these steps :  \n\nwget [http://rcn-ee.net/de...al-armel.tar.xz](http://rcn-ee.net/deb/rootfs/natty/ubuntu-11.04-r0-minimal-armel.tar.xz \"External link\")  \ntar xJf ubuntu-11.04-r0-minimal-armel.tar.xz  \ncd ubuntu-11.04-r0-minimal-armel  \nsudo ./setup_sdcard.sh --mmc /dev/sdX --uboot beagle   \n"
+    }
+  ]
+}

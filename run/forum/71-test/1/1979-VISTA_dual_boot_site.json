@@ -1,0 +1,16 @@
+{
+  "id": "1979",
+  "title": "VISTA dual boot site",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "12412",
+      "timestamp": "2007-04-18T18:09:51+00:00",
+      "author": "was_jaclaz",
+      "content": "LOTS, and I mean LOTS of interesting info on BCD/BCDEDIT and, more generally Vista booting:  \n[http://www.multibooters.co.uk/](http://www.multibooters.co.uk/ \"External link\")  \nincluding the \"cloning\" trick:  \n[http://www.multiboot...uk/cloning.html](http://www.multibooters.co.uk/cloning.html \"External link\")  \n\njaclaz   \n"
+    }
+  ]
+}

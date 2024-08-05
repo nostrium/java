@@ -1,0 +1,16 @@
+{
+  "id": "17317",
+  "title": "Hirens 15.1 DLC and 14.1 - boot from USB FAT/NTFS",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "158664",
+      "timestamp": "2012-07-31T19:40:08+00:00",
+      "author": "graffitikomp",
+      "content": "Hirens 14.1 - works from CD, works from USB with partition FAT32. On NTFS works Mini Windows XP, DOS programs don\u0027t work.  \nHirens 15.1 DLC - works from CD, from USB partition FAT32 works only mini WinXP, DOS programs and Mini Win7 don\u0027t work. On NTFS the same, only Mini XP.  \nCan somebody tell me why?  \n\nMore details:  \nDOS programs don\u0027t works \u003d hirens is trying to load first CDROM driver, unsuccessful. Then it tries all others and finally tells that no HBCD/DLC1 folder.  \nMini Win7 doesn\u0027t work \u003d  \nWindows failed to start. A recent hardware or software change might be the cause. To fix the problem:  \n1. Insert your Windows installation disc and restart your computer  \n2. Choose your language settings and then press Next  \n3. Click Repair your computer  \n\nIf you don\u0027t have this disc, contact your system administrator or computer manufacturer for assistance.  \n\nFile: BootBC5  \n\nStatus: 0xc000000f  \n\nInfo: an error occured while attempting to read the boot configuration data   \n\n**Edited by graffitikomp, 31 July 2012 - 08:33 PM.**\n"
+    }
+  ]
+}

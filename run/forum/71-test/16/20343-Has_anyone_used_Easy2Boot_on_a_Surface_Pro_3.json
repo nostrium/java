@@ -1,0 +1,58 @@
+{
+  "id": "20343",
+  "title": "Has anyone used Easy2Boot on a Surface Pro 3?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "190826",
+      "timestamp": "2015-02-18T16:12:26+00:00",
+      "author": "kelemvor33",
+      "content": "I can\u0027t get it to work. It doesn\u0027t recognize that the drive is even there. It sees it inside of Windows just fine, but when I try to boot from the USB drive it jsut skips it and goes into Windows normally. Don\u0027t know if it\u0027s just me or what.\n\n"
+    },
+    {
+      "id": "190828",
+      "timestamp": "2015-02-18T16:38:35+00:00",
+      "author": "steve6375",
+      "content": "If it is UEFI, then you may need to disable secure boot and enable Legacy CSM mode.\n\n"
+    },
+    {
+      "id": "190829",
+      "timestamp": "2015-02-18T16:53:26+00:00",
+      "author": "kelemvor33",
+      "content": "I turned off Secure Boot Control and TPM but still the same results.\n\nSome info and a screenshot are here. There\u0027s not much in the Bios/Firmware that is editable.\n\n[http://winsupersite....access-firmware](http://winsupersite.com/mobile-devices/surface-pro-3-tip-access-firmware \"External link\")\n\n"
+    },
+    {
+      "id": "190830",
+      "timestamp": "2015-02-18T17:02:43+00:00",
+      "author": "steve6375",
+      "content": "May be UEFI only so it cannot boot non-UEFI payloads - e.g. latest clonezilla\u0027s contain 32-bit and 64-bit UEFI boot files.\n\nYou can make a .imgPTN file from this and add the .imgPTN file to the E2B file. Then boot it using QEMU or VBox or on a Legacy system and select the Clonezilla .imgPTN menu to get to the CSM menu. Then unplug it and try to boot it from your Surface Pro..\n\n"
+    },
+    {
+      "id": "190848",
+      "timestamp": "2015-02-18T20:28:29+00:00",
+      "author": "Rootman",
+      "content": "I have not done it on a Surface Pro but DID use it on a Dell Venue Pro. What Steve said about UEFI is probably true. The Dell had the typical Secure Boot / Legacy Boot choices. It also had a ENABLE USB BOOT or some such choice as well. I had to enable that to get to the boot as it did the same thing your Surface Pro did, never detected the USB drive as a bootable media.\n\n"
+    },
+    {
+      "id": "190852",
+      "timestamp": "2015-02-18T22:32:13+00:00",
+      "author": "steve6375",
+      "content": "[http://windowsitpro....s-7-surface-pro](http://windowsitpro.com/microsoft-surface/can-i-install-windows-7-surface-pro \"External link\")\n\n"
+    },
+    {
+      "id": "190854",
+      "timestamp": "2015-02-19T01:18:39+00:00",
+      "author": "Rootman",
+      "content": "\u003e [http://windowsitpro....s-7-surface-pro](http://windowsitpro.com/microsoft-surface/can-i-install-windows-7-surface-pro \"External link\")\n\nThat seems par for the course for a piece of MS hardware to drop all support for legacy and make things a total PITA. I\u0027m going to have to make an .imgPTN of my 64 bit PE ISOs in case I run into one of these devices that just won\u0027t do CSM at all.\n\nCuriously the article states that Windows 7 is not UEFI compatible, I\u0027ve installed it via UEFI quite a few times. I\u0027ve also noticed that at least the Win 7 64 ISO I have lacks the proper \\\\efi\\\\boot\\\\bootx64.efi file so I borrowed one from a Windows 8.1 OS ISO and inserted it into the ISO. I do see little benefit of the UEFI boot method on a PC with a drive less than 2 TB though and normally just use MBR.\n\n"
+    },
+    {
+      "id": "193259",
+      "timestamp": "2015-06-22T08:08:11+00:00",
+      "author": "crashnburn",
+      "content": "\u003e I turned off Secure Boot Control and TPM but still the same results.\n\u003e\n\u003e Some info and a screenshot are here. There\u0027s not much in the Bios/Firmware that is editable.\n\u003e\n\u003e [http://winsupersite....access-firmware](http://winsupersite.com/mobile-devices/surface-pro-3-tip-access-firmware \"External link\")\n\nSo what did you end up doing?\n\n"
+    }
+  ]
+}

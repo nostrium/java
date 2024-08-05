@@ -1,0 +1,34 @@
+{
+  "id": "16287",
+  "title": "Pwboot boot error",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "147629",
+      "timestamp": "2012-02-03T16:34:36+00:00",
+      "author": "windowsfaq",
+      "content": "I downloaded pwboot to put windows 7 ultimate os on usb 16gb usb 2.0.  \nBut when its completly the installation i tested out but then comes a error \u0027\u0027error loading operatingsystem_ \u0027\u0027  \nI\u0027m thinking WTF?  \nwhat is this and why goes it wrong while the program says it finished? ![:cold:](http://reboot.pro/public/style_emoticons/default/cold.gif)  \n\nCan anyone helps me??   \n"
+    },
+    {
+      "id": "147668",
+      "timestamp": "2012-02-04T04:52:00+00:00",
+      "author": "amalux",
+      "content": "I assume you\u0027re installing Windows 7 via pwboot\u0027s install option e.g. installing direct to USB drive; I have had issues with this myself. The easiest way I\u0027ve been able to successfully \u0027install\u0027 Windows 7 to USB is by creating a backup image from a host and restoring that image (untouched) to an external drive. This works every time, regardless of Windows version or architecture (SP0-1, 32-64bit); there\u0027s no opening of enclosures or switching cables and the patching can be done on host or USB. If this is an option for you I can give more details.  \n\nThe other option that works is to remove the drive from the USB case and connect it as an internal drive in your host machine; install Windows 7 normally (confirm working) and return it to the external case. Again, you can patch it internally or externally, it makes no difference.   \n"
+    },
+    {
+      "id": "147682",
+      "timestamp": "2012-02-04T11:25:08+00:00",
+      "author": "windowsfaq",
+      "content": "is there a tutorial of it? or a video ?   \n"
+    },
+    {
+      "id": "147733",
+      "timestamp": "2012-02-05T01:29:56+00:00",
+      "author": "amalux",
+      "content": "Not that I\u0027m aware of. The image restore to USB is very easy, almost fool-proof. The other requires a bit of work but if you know how to switch out a hard drive, still pretty strait forward. I\u0027m happy to answer your questions if you get stuck.   \n"
+    }
+  ]
+}

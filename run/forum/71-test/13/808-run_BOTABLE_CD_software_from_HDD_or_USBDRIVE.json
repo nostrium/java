@@ -1,0 +1,46 @@
+{
+  "id": "808",
+  "title": "run BOTABLE CD software from HDD or USB-DRIVE",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "6410",
+      "timestamp": "2006-12-23T08:07:11+00:00",
+      "author": "Revolter",
+      "content": "Hi there.  \n\nI have a few spare HDD and USB drives and I am trying to figure way how to put some of my bootable software CDs on HD, separate partition or USB drive and when I need that particular software just load it like a bootable hard disk, either by using boot manager or changing BIOS settings to boot from the drive containing needed software orginally on CD. For example lets say it is Norton Recovery CD or bootable CD from my motherboard manufacturer with recovery software, booth of them are no emulation bootable CD, I already know how to make bootable disc with bootable Cds which use flloppy emulation, I just use the files from bootdisk.img file with flash boot wizzard ([http://www.prime-exp...hboot/index.php](http://www.prime-expert.com/flashboot/index.php \"External link\")) for example and it works, but not so with no emulation CDs, can someone post a tutorial or ideas how to make it work ?   \n"
+    },
+    {
+      "id": "6416",
+      "timestamp": "2006-12-23T09:24:48+00:00",
+      "author": "was_jaclaz",
+      "content": "The problem can be solved by using some kind of bootloader.  \nThe two most featured are Grub4dos and AVLGOMGR.  \n\nHere is the Grub4dos \"WHERETO\":  \n[http://www.boot-land...hp?showtopic\u003d14](http://www.boot-land.net/forums/index.php?showtopic\u003d14 \"External link\")  \ndo always use LATEST \"night-build\" version (the one with more recent date), only if it does not work for your specific need, use the latest pre-release version.  \nDO NOT use \"stable\" version (as it misses at the moment some features).  \nDO NOT use Wingrub, as it has very old Grub code.  \nParticularly, do not mix releases after 0.4.2pre10 with older ones.  \n\nAVLGOMGR is here:  \n[http://www.znpc.net/...vlgomgr_Eng.zip](http://www.znpc.net/avlgo/Avlgomgr_Eng.zip \"External link\")  \n\nBesides the help files, you should search on the 911CD forums for posts with string \"Grub4dos\", a good start point is here:  \n[http://www.911cd.net...showtopic\u003d18966](http://www.911cd.net/forums//index.php?showtopic\u003d18966 \"External link\")  \n(and linked threads)  \n\nMost of the possibilities are covered, in one thread or another, unfortunately it does not exist a \"one-size-fits-all\" solution.  \n\nThe situation as I see it is as follows:  \n1) ANY DOS/WIN9.x based .iso can be booted from Grub4DOS (one way or the other),  \npossibly by using SHSUCDHD and related programs  \n[http://www.geocities...jadoxa/shsucdx/](http://www.geocities.com/jadoxa/shsucdx/ \"External link\")  \n2) ANY Linux based .iso can be booted from Grub4DOS (one way or the other) or through Syslinux/Pxelinux/Isolinux  \n3) SOME NT/2K/XP/PE based .iso, if you have enough RAM (or the .iso image is relatively small), can be booted by Grub4DOS using the RAMdisk feature of Windows 2003 SP1+  \n4) SOME not NT/2K/XP/PE based .isos can be booted with AVLGOMGR orwith the (elder) isoemu:  \n[http://sysoft.zdwx.com/isoemu/bin/](http://sysoft.zdwx.com/isoemu/bin/ \"External link\")  \n\nI have no real experience with AVLGOMGR, but if you need some support with Grub4dos, I can probably help you, feel free to ask questions, AFTER having read the references above.(which I know are a lot of info, but also what you want to achieve is not a common task)  \n\nSince I will be away for a few days for Christmas holidays, you could experiment a bit in the meantime, if you have problems, post questions here or on the 911CD forum, I\u0027ll try to answer them when I willl come back, around the 5th of january.  \n\njaclaz   \n"
+    },
+    {
+      "id": "6419",
+      "timestamp": "2006-12-23T16:08:18+00:00",
+      "author": "linuxer",
+      "content": "Don\u0027t know if I am wrong but I think \u0027EasyBoot\u0027 may be what you are looking for.  \n\n\u003cbr /\u003e\n\nCheers!  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nlinuxer   \n"
+    },
+    {
+      "id": "6423",
+      "timestamp": "2006-12-23T22:12:22+00:00",
+      "author": "Revolter",
+      "content": "thanks for responses guys, I will dig into info provided . I also have limit of time I can kill with this issue as I am married and often away for days or whole week without PC ...   \n\nI am playing with idea how nice it would be if I can dedicate say some 200Gb HDD to carry all my software on CDs (kinda working on it now) where I would put it into external USB/Firewire box and whenewer I need something out of the CD I don\u0027t have to dig that up , put in drive and so on..., this is however kind of easy task using ISO images and freeware ISO loader (I\u0027m using MagicISO and it is daBest !) but I also would like it to be bootable with option to boot some of my bootables CD, like specialized homebrew CD or likewise to qickly fix whatewer ails my boxed buddy.  \n\nThe EasyBoot is indeed a probablity, I have played with it but unfortunately I wasn\u0027t able to figure out how to make multiboot images properly and eventually how to put one of those images on disk in bootable form(USB drive would be the best destination), so I need to refresh my experiences as I am kinda ,like a comet - my interest comes arround something once a while then it goes away to next thing :tongue:  \n\nWith Grub4dos and AVLGOMGR I have no experience at all so I am gonna work on this for now.   \n"
+    },
+    {
+      "id": "6440",
+      "timestamp": "2006-12-24T17:55:37+00:00",
+      "author": "was_jaclaz",
+      "content": "Well, actually Easyboot is a COMMERCIAL software that helps in making multiboot CD/DVDs, nothing that actually is connected to booting from a .iso residing on a Mass Stirage Device.  \n\nAnd there are equally valid multibooting solutions for CD/DVD either Opensource or Freeware, among them, Grub4dos, BCDL/BCDW, CD-Shell, ISOlinux.  \n\njaclaz   \n"
+    },
+    {
+      "id": "169325",
+      "timestamp": "2013-03-14T02:32:52+00:00",
+      "author": "imran361",
+      "content": "Very nice, but I want to change the booting screen permanently.\n\nI want there two options\n\n1. start window\n\n2. mount ghost image\n\nkindly help me\n\n"
+    }
+  ]
+}

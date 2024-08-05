@@ -1,0 +1,28 @@
+{
+  "id": "20404",
+  "title": "YUMI and customized iso",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "191626",
+      "timestamp": "2015-03-26T07:33:19+00:00",
+      "author": "Balubeto Balubeto",
+      "content": "Hi\n\nI created two customized iso of Windows 8.1 Update.\n\nWith YUMI 2.0.1.6 for Windows, how do I create a bootable USB stick that allows to choose (via the initial boot menu) one of these iso so that I can install on some computers with the BIOS or UEFI?\n\nAlso, how do I change the boot menu item and change the label volume of this USB stick?\n\nThanks\n\nBye\n\n"
+    },
+    {
+      "id": "191631",
+      "timestamp": "2015-03-26T17:20:43+00:00",
+      "author": "Balubeto Balubeto",
+      "content": "Since the customized iso of Windows 8.1 Update have the same directories, I thought to use the Diskpart utility to create two partitions on a USB stick.  \n\nAfter, always with this utility, I hide the first partition and using YUMI, I insert my first iso in the second partition.  \n\nLater, I hide the second partition and insert in the first partition my second iso always using YUMI.  \n\nFinally, I would like to install a boot manager in the MBR of the USB drive to make it bootable, and be able to select the operating system to start.  \n\nMy idea can work? If so, someone could write the proper procedure to do this?\n\nThanks\n\nBye\n\n"
+    },
+    {
+      "id": "191646",
+      "timestamp": "2015-03-28T10:37:30+00:00",
+      "author": "steve6375",
+      "content": "YUMI does not support UEFI\n\nWindows will only see the first partition on a Removable USB drive\n\nWhy not use WinSetupFromUSB or Easy2Boot?\n\n"
+    }
+  ]
+}

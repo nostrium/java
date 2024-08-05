@@ -1,0 +1,58 @@
+{
+  "id": "18129",
+  "title": "back.xpm.gz",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "167427",
+      "timestamp": "2013-02-08T08:00:14+00:00",
+      "author": "cangrejero",
+      "content": "How do I replace the image inside of back.xpm.gz? The girl looks nice but my wife doesn\u0027t like her. Like we are going on a date!\n\n"
+    },
+    {
+      "id": "167428",
+      "timestamp": "2013-02-08T08:51:00+00:00",
+      "author": "steve6375",
+      "content": "See the grub4dos tutorial [here](http://www.rmprepusb.com/tutorials/grub4dos#TOC-Make-a-high-resolution-splashimage-file \"External link\").\n\nLoad the menu.lst file (press F4 in RMPRepUSB), find the line that loads the image and replace it with, for example\n\n```\n#for an 800 x 600 24 bit colour background\ngraphicsmode   -1   800 100:1000   24\nsplashimage /nice800.bmp.gz || splashimage /nice800.bmp\n```\n\nwhere nice800.bmp is your 800x600 bitmap (or you can compress it using 7Zip to a gz file.)  \nPlace the nice800.bmp file on your USB drive.  \nTest by pressing F11 in RMPrepUSB.  \n\n"
+    },
+    {
+      "id": "167434",
+      "timestamp": "2013-02-08T11:43:06+00:00",
+      "author": "Wonko the Sane",
+      "content": "See if this other picture fits :wink: ![:devil:](http://reboot.pro/public/style_emoticons/default/devil.gif) (only 640x480)\n\n[http://www.911cd.net...showtopic\u003d19666](http://www.911cd.net/forums//index.php?showtopic\u003d19666 \"External link\")\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "167438",
+      "timestamp": "2013-02-08T13:19:20+00:00",
+      "author": "steve6375",
+      "content": "So your wife doesn\u0027t let you watch Star Trek either ??? (T\u0027Pol \u003d [Jolene Blalock](http://en.wikipedia.org/wiki/Jolene_Blalock \"External link\")).\n\n"
+    },
+    {
+      "id": "167439",
+      "timestamp": "2013-02-08T13:51:33+00:00",
+      "author": "Wonko the Sane",
+      "content": "OT ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif), but not much :wink:, ***green*** is not an easy colour....\n\n\u003cbr /\u003e\n\nSpoiler  \n![demot-green.jpg](http://vulcanstev.files.wordpress.com/2011/11/demot-green.jpg)\n\n\u003cbr /\u003e\n\nJust for cangrejero\u0027s wife :wink::\n\n\u003cbr /\u003e\n\nSpoiler  \n![funny_demotivational_posters_15.jpg](http://4.bp.blogspot.com/_mmBw3uzPnJI/TQICOxhkG6I/AAAAAAABzso/ZJdob83d_qc/s400/funny_demotivational_posters_15.jpg)\n\n\u003cbr /\u003e\n\n![:rofl:](http://reboot.pro/public/style_emoticons/default/roll1.gif)\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "167455",
+      "timestamp": "2013-02-08T19:32:51+00:00",
+      "author": "cangrejero",
+      "content": "Nice, Guys! Now she\u0027ll block all my sites except Pokemon\u0027s.\n\nPS: Don\u0027t tell but, I like [this](http://imageshack.us/photo/my-images/42/30114010151195910102534.jpg/ \"External link\") one!\n\n"
+    },
+    {
+      "id": "167459",
+      "timestamp": "2013-02-08T19:58:17+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, but you can always tell her how this won\u0027t in the least affect your...  \nSpoiler  \n![mydemotivation.JPG](http://cdn.ebaumsworld.com/picture/mike1981/mydemotivation.JPG)\n\n\u003cbr /\u003e\n\n![:blink:](http://reboot.pro/public/style_emoticons/default/blink.png)\n\n![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "167476",
+      "timestamp": "2013-02-08T23:26:03+00:00",
+      "author": "steve6375",
+      "content": "\u003e PS: Don\u0027t tell but, I like [this](http://imageshack.us/photo/my-images/42/30114010151195910102534.jpg/ \"External link\") one!\n\nWell buy it for her!\n\n"
+    }
+  ]
+}

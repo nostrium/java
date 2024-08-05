@@ -1,0 +1,322 @@
+{
+  "id": "17897",
+  "title": "Issue with launching floppy image from grub4dos chainload",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "164415",
+      "timestamp": "2012-12-16T21:14:34+00:00",
+      "author": "TheFog",
+      "content": "I have a .img floppy image - Eurosoft\u0027s Pc-Check Hardware Diagnostics Program.\n\nI am using SARDU to create a mulitboot DVD and want to add the above program to the main menu.\n\nI have tried using MEMDISK to launch the floppy but for some reason the image wont boot for the program to launch. I know that my code in the .cfg is correct as I can launch other .img files successfully.\n\nSo... I tried making a grub4dos USB build to launch the floppy image and it works :-)\n\nBut for my purposes I need to use a DVD so I have tried to chainload grub4dos from the isolinux.cfg\n\nMy isolinux.cfg file reads:\n\n\u003e LABEL pccheck  \n\u003e MENU LABEL pccheck  \n\u003e BOOT /grldr\n\nI have copied the grldr, menu.lst \\\u0026 floppy image files to the root folder of my DVD build\n\nMy menu.list file reads:\n\n\u003e title pccheck  \n\u003e find --set-root /pccheck.img  \n\u003e map /pccheck.img (fd0)  \n\u003e map --hook  \n\u003e chainloader (fd0)+1  \n\u003e rootnoverify (fd0)  \n\u003e map --floppies\u003d1\n\nI then built my ISO (to be burnt to DVD) and tested it in QEMU. The grub4dos menu chainloads successfully but when I attempt to launch the Pc-Check program the following error appears in QEMU:\n\n\u003e Booting pccheck\n\u003e\n\u003e find --set-root /pccheck.img\n\u003e\n\u003e Error: 15: File not found\n\u003e\n\u003e Press any key to continue...\n\nThis doesn\u0027t make any sense at all to me as the filepath is all correct. I have been reading grub4dos tutuorials and the syslinux.org tutorials for several hours trying to figure out why MEMDISK doesn\u0027t work and why my chainload isn\u0027t working either. I have tried my best to solve this myself but can\u0027t so I am hoping someone here can help me out please?\n\nEDIT: I intend to set the timeout on the menu.list to 0 so that the program will start automatically from the isolinux.cfg\n\n**Edited by TheFog, 16 December 2012 - 09:19 PM.**\n"
+    },
+    {
+      "id": "164422",
+      "timestamp": "2012-12-16T22:47:34+00:00",
+      "author": "steve6375",
+      "content": "set the timeout to 5 and then press C to get to the grub4dos command prompt. Then type\n\n**ls /**\n\nand\n\n**find**\n\nthen\n\n**cdrom --init**\n\n**find**\n\nand report back...\n\n"
+    },
+    {
+      "id": "164425",
+      "timestamp": "2012-12-16T23:02:49+00:00",
+      "author": "TheFog",
+      "content": "Thanks Steve. I found your grub4dos tutorial on your website very helpful and used your code to make my menu.lst file.\n\nI have followed your advice and after typing in the final \"find\" command QEMU reads:\n\ngrub\\\u003e _\n\n"
+    },
+    {
+      "id": "164429",
+      "timestamp": "2012-12-16T23:54:16+00:00",
+      "author": "steve6375",
+      "content": "weird. I have seen strange behaviour when you chainload grldr from isolinux/syslinux. Why not just make a grub4dos ISO rather than a isolinux ISO?\n\n"
+    },
+    {
+      "id": "164430",
+      "timestamp": "2012-12-17T00:00:47+00:00",
+      "author": "Sha0",
+      "content": "\u003e I have a .img floppy image - Eurosoft\u0027s Pc-Check Hardware Diagnostics Program.  \n\u003e\n\u003e I am using SARDU to create a mulitboot DVD and want to add the above program to the main menu.  \n\u003e\n\u003e I have tried using MEMDISK to launch the floppy but for some reason the image wont boot for the program to launch. I know that my code in the .cfg is correct as I can launch other .img files successfully.\n**MEMDISK** accepts the **raw** , **bigraw** , **int** and **safeint** arguments. Did you try any of those?  \n\n\u003e So... I tried making a grub4dos USB build to launch the floppy image and it works :-)  \n\u003e\n\u003e But for my purposes I need to use a DVD so I have tried to chainload grub4dos from the isolinux.cfg  \n\u003e\n\u003e My isolinux.cfg file reads: LABEL pccheck  \n\u003e \u003e MENU LABEL pccheck  \n\u003e \u003e BOOT /grldr\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n**BOOT** is usually used for a 512-byte file. Instead, you might try:\n\n```\nLABEL pccheck\n  MENU LABEL PC Check (via GRUB4DOS)\n  KERNEL grub.exe\n```\n\nBut hopefully one of the MEMDISK options works for you.   \n"
+    },
+    {
+      "id": "164438",
+      "timestamp": "2012-12-17T01:01:42+00:00",
+      "author": "TheFog",
+      "content": "\u003e weird. I have seen strange behaviour when you chainload grldr from isolinux/syslinux. Why not just make a grub4dos ISO rather than a isolinux ISO?\n\nEven as a noob I thought that this was weird. Unfortunately programming my menu with all images is going to be too tough for me I think as I was a complete noob to all this about a month ago.\n\n\u003e **MEMDISK** accepts the **raw** , **bigraw** , **int** and **safeint** arguments. Did you try any of those?  \n\u003e\n\u003e **BOOT** is usually used for a 512-byte file. Instead, you might try:\n\u003e\n\u003e ```\n\u003e LABEL pccheck\n\u003e   MENU LABEL PC Check (via GRUB4DOS)\n\u003e   KERNEL grub.exe\n\u003e ```\n\n\u003e But hopefully one of the MEMDISK options works for you.\n\nThanks Sha0. I have used all memdisk arguments and it still won\u0027t boot. Also your chainloader tip just leads to the grub command prompt.\n\n"
+    },
+    {
+      "id": "164443",
+      "timestamp": "2012-12-17T03:34:44+00:00",
+      "author": "Sha0",
+      "content": "\u003e Thanks Sha0. I have used all memdisk arguments and it still won\u0027t boot. Also your chainloader tip just leads to the grub command prompt.\nThat would seem to indicate that your **grub.exe** is choosing not to find the **menu.lst** file. You can override that behaviour:\n\n```\nLABEL pccheck\n  MENU LABEL PC Check (via GRUB4DOS)\n  KERNEL grub.exe\n  APPEND --config-file\u003d\"find --set-root /menu.lst; configfile /menu.lst\"\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "164451",
+      "timestamp": "2012-12-17T07:46:31+00:00",
+      "author": "tinybit",
+      "content": "```\n@Sha0\n\n\u003e\u003e\u003e find --set-root menu.lst\n```\n\nit is wrong. it should be:\n\n```\nfind --set-root /menu.lst\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "164453",
+      "timestamp": "2012-12-17T08:20:38+00:00",
+      "author": "TheFog",
+      "content": "\u003e That would seem to indicate that your **grub.exe** is choosing not to find the **menu.lst** file. You can override that behaviour:\n\u003e\n\u003e ```\n\u003e LABEL pccheck\n\u003e   MENU LABEL PC Check (via GRUB4DOS)\n\u003e   KERNEL grub.exe\n\u003e   APPEND --config-file\u003d\"find --set-root /menu.lst; configfile /menu.lst\"\n\u003e ```\n\nOnce again, thanks! Unfortunately it just leads to the grub command prompt again.\n\n"
+    },
+    {
+      "id": "164457",
+      "timestamp": "2012-12-17T09:48:41+00:00",
+      "author": "steve6375",
+      "content": "If **find** does not list any devices even after **cdrom --init** command, try\n\n**map (**(and then hit the TAB key to get a list of possible devices).\n\nhave you tried a real system (IDE or SATA?) as well as QEMU to test the ISO with?\n\n"
+    },
+    {
+      "id": "164463",
+      "timestamp": "2012-12-17T11:23:42+00:00",
+      "author": "Wonko the Sane",
+      "content": "Hey guys, let\u0027s start from the beginning, OK? :smile:\n\nThe PC-Check uses it\u0027s own \"flavour\" of DOS, particularly picky, that could well be the reason why memdisk is not working.\n\n**TheFog** omitted some piece of info (needed).\n\nHow EXACTLY was the .iso made?\n\nWhat is the output in QEMU, and once to the grub4dos command line of the following commands?\n\n```\n\nroot (\n```\n\n\\[TAB\\]\n\nOnce root has been established to the right device (EXAMPLE):\n\n```\n\nroot (cd)\n```\n\n\\[ENTER\\]\n\nWhat is the output of:\n\n```\n\nls\n```\n\n\\[ENTER\\]\n\nis the wanted file listed?\n\nRemember that on CDFS grub4dos is CaSe SeNsItIvE.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "164502",
+      "timestamp": "2012-12-17T18:14:19+00:00",
+      "author": "TheFog",
+      "content": "Thank you everyone for your advice and input, it is greatly appreciated. I followed Wonko the Sane\u0027s final piece of advice and further progress has been made which I will elucidate to shortly.\n\n\u003e [steve6375](http://reboot.pro/user/17818-steve6375/ \"\")\n\u003e\n\u003e If **find** does not list any devices even after **cdrom --init** command, try\n\u003e\n\u003e **map (**(and then hit the TAB key to get a list of possible devices).\n\u003e\n\u003e have you tried a real system (IDE or SATA?) as well as QEMU to test the ISO with?\n\nJust to recapitulate; my ISOLINUX.CFG lines with respect to the floppy image and the whole of my MENU.LST are as follows\n\n\u003e **ISOLINUX.CFG:**\n\u003e\n\u003e LABEL pccheck  \n\u003e MENU LABEL PC Check (via GRUB4DOS)  \n\u003e KERNEL grub.exe  \n\u003e APPEND --config-file\u003d\"find --set-root /menu.lst; configfile /menu.lst\"\n\n\u003e **MENU.LST:**\n\u003e\n\u003e timeout 10  \n\u003e\n\u003e title pccheck  \n\u003e find --set-root /PCCHECK.IMG  \n\u003e map /PCCHECK.IMG (fd0)  \n\u003e map --hook  \n\u003e chainloader (fd0)+1  \n\u003e rootnoverify (fd0)  \n\u003e map --floppies\u003d1\n\nThe grub4dos menu launches successfully from the isolinux menu. Pressing the c key from the grub4dos menu and then typing the following commands produces the following results:\n\ngrub\\\u003e find\n\n(cd)\n\ngrub\\\u003e ls\n\nPCCHECK.IMG (as well as a bunch of other files found within the folder from the extracted sardu.iso)\n\nFollowing Wonko the Sane\u0027s advice I renamed the floppy image from \u0027pccheck.img\u0027 to \u0027PCCHECK.IMG\u0027 as you can see above in the menu.lst file. When I now attempt to launch the program from the grub4dos menu, instead of the file not found error I now receive:\n\n\u003e Booting pccheck\n\u003e\n\u003e (cd)\n\u003e\n\u003e FAT12 BPB found with 0xEB (jmp) leading the boot sector.\n\u003e\n\u003e probed C/H/S \u003d 80/2/18, probed total sectors \u003d 2880\n\u003e\n\u003e floppies_orig\u003d0, harddrives_orig\u003d0, floppies_curr\u003d1, harddrives_curr\u003d0\n\u003e\n\u003e _\n\nQEMU hangs at the static cursor and the program fails to launch.\n\n\u003e [Wonko the Sane](http://reboot.pro/user/31904-wonko-the-sane/ \"\")\n\u003e\n\u003e Hey guys, let\u0027s start from the beginning, OK? :smile:\n\u003e\n\u003e The PC-Check uses it\u0027s own \"flavour\" of DOS, particularly picky, that could well be the reason why memdisk is not working.\n\nOK :smile: I was going to post today that the company - Eurosoft - that created the program does use it\u0027s own custom DOS (EuroDOS.sys)\n\n\u003e [Wonko the Sane](http://reboot.pro/user/31904-wonko-the-sane/ \"\")\n\u003e\n\u003e TheFog omitted some piece of info (needed).  \n\u003e How EXACTLY was the .iso made?\n\nAs I have mentioned I am using SARDU to make my multiboot DVD. I didn\u0027t enable any of the default ISO\u0027s to be added to the SARDU build. However I did add an extra ISO from the \u0027Extra\u0027 menu \\\u003e Add Extra ISO (GRUB) so that when I built my ISO then grub.exe would be included in the final ISO build. It is irelevant what this \u0027Extra ISO\u0027 is as it\u0027s purpose is to simply add grub.exe to the final ISO build. From the built SARDU ISO I extracted all files.\n\nI then updated the isolinux.cfg file and copied into the folder my successful menu.lst file from the USB build that did work and also the PCCHECK.IMG floppy image.\n\nI then used ImgBurn to rebuild the ISO from the extracted SARDU ISO folder. From the Build menu I selected the default settings of:\n\nData Type: MODE1/2048\n\nFile System: ISO9660 + UDF (I have also tried ISO9660 + Joliet)\n\nFrom the Advanced \\\u003e Bootable Disc \\\u003e Options tab, I selected:\n\nMake Image Bootable (tickbox ticked)\n\nEmulation Type: None (Custom)\n\nBoot Image: %extracted ISO folder% \\\\ isolinux.bin\n\nPatch Boot Information Table (tickbox ticked)\n\n----\n\nOh, by the way, Steve I will be trying it to a burnt cd later to see if it works from there.\n\n**Edited by TheFog, 17 December 2012 - 06:16 PM.**\n"
+    },
+    {
+      "id": "164509",
+      "timestamp": "2012-12-17T19:00:32+00:00",
+      "author": "Wonko the Sane",
+      "content": "You don\u0027t want UDF, you want ISO9660 (and possibly Joliet) and more likely then not Rockridge and EXCLUSIVELY mkisofs should be used to make the .iso.\n\nNot that IMGBURN is not a very good application, but with mkisofs you have better control on the settings.\n\nI am sure **Sha0** will be able to give you appropriate mkisofs parameters for use with Isolinux, cannot say if SARDU uses mkisofs to buid the CD, if it does, you might be lucky and get the proper switches using this:\n\n[http://reboot.pro/to...ting-iso-files/](http://reboot.pro/topic/12406-editing-iso-files/ \"\")\n\nThe idea with grub4dos is ++**to do tests in command line**++ (interactive) mode, and later try to re-cap the hopefully successful experience into a menu.lst.  \n\nGet to command prompt.  \nType:  \nfind --set-root /PCCHECK.IMG\n\n\\[ENTER\\]\n\nroot\n\n\\[ENTER\\]\n\nmap --mem /PCCHECK.IMG (fd0)\n\n\\[ENTER\\]\n\nmap --hook\n\n\\[ENTER\\]\n\nNow you should be able to plainly root to the device:\n\nroot (fd0)\n\n\\[ENTER\\]\n\nand list it\u0027s contents:\n\nls\n\n\\[ENTER\\]\n\nnow try:\n\nchainloader +1\n\n\\[ENTER\\]\n\ndo you have any error here?\n\nthen try:\n\nboot\n\n\\[ENTER\\]\n\nIt is well possible that Eurodos or it\u0027s bootsector don\u0027t like (like they seemingly don\u0027t like MEMDISK) the grub4dos mapping to memory, you can then try again with \"direct mapping\" (but this is what you were using and that failed ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)).\n\nSince the .IMA (by convention floppy images use the .ima extension and partitioned images use the .IMG one, but of course you are perfectly free to give them \\*any\\* extension) is on a CD it should be contiguous.\n\nThere was another related topic here:\n\n[http://www.911cd.net...showtopic\u003d23953](http://www.911cd.net/forums//index.php?showtopic\u003d23953 \"External link\")\n\nbut it seems to me like OP there had not issues with Eurodos ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "164523",
+      "timestamp": "2012-12-17T22:10:59+00:00",
+      "author": "TheFog",
+      "content": "\u003e You don\u0027t want UDF, you want ISO9660 (and possibly Joliet) and more likely then not Rockridge and EXCLUSIVELY mkisofs should be used to make the .iso.\n\u003e\n\u003e Not that IMGBURN is not a very good application, but with mkisofs you have better control on the settings.\n\u003e\n\u003e I am sure **Sha0** will be able to give you appropriate mkisofs parameters for use with Isolinux, cannot say if SARDU uses mkisofs to buid the CD, if it does, you might be lucky and get the proper switches using this:\n\u003e\n\u003e [http://reboot.pro/to...ting-iso-files/](http://reboot.pro/topic/12406-editing-iso-files/ \"\")\n\u003e\n\u003e The idea with grub4dos is ++**to do tests in command line**++ (interactive) mode, and later try to re-cap the hopefully successful experience into a menu.lst.  \n\u003e\n\u003e Get to command prompt.  \n\u003e Type:  \n\u003e find --set-root /PCCHECK.IMG\n\u003e\n\u003e \\[ENTER\\]\n\u003e\n\u003e root\n\u003e\n\u003e \\[ENTER\\]\n\u003e\n\u003e map --mem /PCCHECK.IMG (fd0)\n\u003e\n\u003e \\[ENTER\\]\n\u003e\n\u003e map --hook\n\u003e\n\u003e \\[ENTER\\]\n\u003e\n\u003e Now you should be able to plainly root to the device:\n\u003e\n\u003e root (fd0)\n\u003e\n\u003e \\[ENTER\\]\n\u003e\n\u003e and list it\u0027s contents:\n\u003e\n\u003e ls\n\u003e\n\u003e \\[ENTER\\]\n\u003e\n\u003e now try:\n\u003e\n\u003e chainloader +1\n\u003e\n\u003e \\[ENTER\\]\n\u003e\n\u003e do you have any error here?\n\u003e\n\u003e then try:\n\u003e\n\u003e boot\n\u003e\n\u003e \\[ENTER\\]\n\u003e\n\u003e It is well possible that Eurodos or it\u0027s bootsector don\u0027t like (like they seemingly don\u0027t like MEMDISK) the grub4dos mapping to memory, you can then try again with \"direct mapping\" (but this is what you were using and that failed ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)).\n\u003e\n\u003e Since the .IMA (by convention floppy images use the .ima extension and partitioned images use the .IMG one, but of course you are perfectly free to give them \\*any\\* extension) is on a CD it should be contiguous.\n\u003e\n\u003e There was another related topic here:\n\u003e\n\u003e [http://www.911cd.net...showtopic\u003d23953](http://www.911cd.net/forums//index.php?showtopic\u003d23953 \"External link\")\n\u003e\n\u003e but it seems to me like OP there had not issues with Eurodos ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\u003e\n\u003e Wonko\n\nThanks a lot for the tips. I did get to chainloader +1 without any errors but it just hangs at the cursor after BOOT. With regards to the link my USB build works fine also, just won\u0027t work for an ISO.\n\nI burnt the ISO as Steve suggested in case it was an issue with QEMU and still no joy.\n\nI did an experiment and tried what Steve suggested and tried to run it straight from grub4dos instead of chainloading grub4dos from isolinux. Same problem ):\n\nI used HBCD customizer to extract the HBCD ISO. I then updated the menu.lst with my code and added the floopy image and then used the customizer to rebuild the ISO using grub4dos as bootloader.\n\n"
+    },
+    {
+      "id": "164529",
+      "timestamp": "2012-12-17T23:03:44+00:00",
+      "author": "steve6375",
+      "content": "Maybe you could chainload the bootloader file directly. You need to look for a .sys file in the EuroSoft image and then use\n\nchainloader /xxxxxx.sys\n\ninstead of\n\nchainloader (fd0)+1\n\nwhere xxxxx.sys is the file inside the image.\n\n"
+    },
+    {
+      "id": "164530",
+      "timestamp": "2012-12-17T23:16:26+00:00",
+      "author": "TheFog",
+      "content": "\u003e Maybe you could chainload the bootloader file directly. You need to look for a .sys file in the EuroSoft image and then use\n\u003e\n\u003e chainloader /xxxxxx.sys\n\u003e\n\u003e instead of\n\u003e\n\u003e chainloader (fd0)+1\n\u003e\n\u003e where xxxxx.sys is the file inside the image.\n\nYippee I have got the floppy program to load using grub4dos. The ISO I made using the HBCD customizer had the incorrect filepath in the menu.lst\n\nI did try chainloader /EuroDOS.sys and that didn\u0027t work using ImgBurn - I found that from your grub4dos tutorial.\n\nThe HBCD customizer does use mkisofs.exe to rebuild the ISO so I made an ISO with isolinux as bootlaoder and again I tried to chainload grub4dos but yet again it hangs at the boot command from a cd. Strangely QEMU just crashes with this new ISO build using HBCD instead of ImgBurn.\n\nI shall now try your chainloader tip with the HBCD ISO builder Steve instead of ImgBurn and see if that works..............\n\n"
+    },
+    {
+      "id": "164602",
+      "timestamp": "2012-12-18T23:39:33+00:00",
+      "author": "TheFog",
+      "content": "\u003e I am sure **Sha0** will be able to give you appropriate mkisofs parameters for use with Isolinux\n\nThe HBCD ISO creator uses these parameters below from the \u0027Make ISO\u0027 batch file. I don\u0027t know if anyone can make any sense of it. The HBCD ISO reacts differently to the ImgBurn ISO. All of this is completely new to me...\n\n\"mkisofs.exe\" -R -D -J -l -joliet-long -duplicates-once -o MyHBCD.iso -b HBCD/grldr -c HBCD/boot.cat -hide-joliet HBCD/boot.cat -hide HBCD/boot.cat -no-emul-boot -N -boot-info-table -V HirensBootCD -boot-load-size 4 CD\n\n**Edited by TheFog, 18 December 2012 - 11:39 PM.**\n"
+    },
+    {
+      "id": "164604",
+      "timestamp": "2012-12-19T00:25:38+00:00",
+      "author": "Sha0",
+      "content": "\u003e The HBCD ISO creator uses these parameters below from the \u0027Make ISO\u0027 batch file. I don\u0027t know if anyone can make any sense of it. The HBCD ISO reacts differently to the ImgBurn ISO. All of this is completely new to me...  \n\u003e\n\u003e \"mkisofs.exe\" -R -D -J -l -joliet-long -duplicates-once -o MyHBCD.iso -b HBCD/grldr -c HBCD/boot.cat -hide-joliet HBCD/boot.cat -hide HBCD/boot.cat -no-emul-boot -N -boot-info-table -V HirensBootCD -boot-load-size 4 CD\nThis is quite topical for **GRUB4DOS** , as this **mkisofs** invocation produces a GRUB4DOS-booting **.ISO** .  \n\nFor **ISOLINUX** , it\u0027d be a bit different, and probably more appropriate in the **Syslinux** forum. (So no comment. :wink: )   \n"
+    },
+    {
+      "id": "164607",
+      "timestamp": "2012-12-19T08:24:45+00:00",
+      "author": "TheFog",
+      "content": "\u003e This is quite topical for **GRUB4DOS** , as this **mkisofs** invocation produces a GRUB4DOS-booting **.ISO** .  \n\u003e\n\u003e For **ISOLINUX** , it\u0027d be a bit different, and probably more appropriate in the **Syslinux** forum. (So no comment. :wink: )\n\nWell then all I can do is apologise for starting a thread in the wrong sub-forum.\n\n"
+    },
+    {
+      "id": "164609",
+      "timestamp": "2012-12-19T08:57:59+00:00",
+      "author": "Sha0",
+      "content": "\u003e Well then all I can do is apologise for starting a thread in the wrong sub-forum.\nPlease: No apology. I was not complaining, nor even suggesting that this was in the wrong forum. As a matter of fact, I\u0027d misread the very top and thought this was in the **GRUB4DOS** forum, so I was suggesting that it was in the correct forum as a GRUB4DOS-related subject. Sorry for the misunderstanding. :smile:   \n"
+    },
+    {
+      "id": "164620",
+      "timestamp": "2012-12-19T18:10:07+00:00",
+      "author": "TheFog",
+      "content": "No worries my friend! I did find it interesting that the batch file only had settings for grub4dos and not for isolinux even though the HBCD ISO builder gives the option to choose either grub4dos or isolinux as boot loader. It looks like I am going to have to use a grub4dos bootloader if I wish to include this program. Steve\u0027s tutorial on making a custom grub4dos menu is very comprehensive and I\u0027m sure I can figure out any code I need to write for launching my tools (with maybe a little help from you guys if I hit any brick walls). I am very appreciative of all help so far.   \n"
+    },
+    {
+      "id": "165833",
+      "timestamp": "2013-01-14T13:59:38+00:00",
+      "author": "deaks",
+      "content": "Hi Fog\n\nJust seen that you got PC Check running from your bootdvd, Im having the same problem that you had trying to get it work but mine if from a debian PXE boot server. I was wondering if any chance you could tell me how you did it if you dont mine.\n\nRegards\n\nDeaks\n\n"
+    },
+    {
+      "id": "165991",
+      "timestamp": "2013-01-16T23:30:10+00:00",
+      "author": "TheFog",
+      "content": "\u003e Hi Fog\n\u003e\n\u003e Just seen that you got PC Check running from your bootdvd, Im having the same problem that you had trying to get it work but mine if from a debian PXE boot server. I was wondering if any chance you could tell me how you did it if you dont mine.\n\u003e\n\u003e Regards\n\u003e\n\u003e Deaks\n\nI wanted to chainload grub4dos from isolinux but it doesn\u0027t work. I had to boot it from grub4dos. However, grub4dos successfully chainloads from syslinux to boot the floppy image\n\n"
+    },
+    {
+      "id": "166003",
+      "timestamp": "2013-01-17T08:42:37+00:00",
+      "author": "Sha0",
+      "content": "\u003e I wanted to chainload grub4dos from isolinux but it doesn\u0027t work. I had to boot it from grub4dos. However, grub4dos successfully chainloads from syslinux to boot the floppy image\n\nWhat do you mean \"it doesn\u0027t work\"? **GRUB4DOS** should be possible to load and execute from **ISOLINUX**. Do you have some observations to share?\n\n"
+    },
+    {
+      "id": "166065",
+      "timestamp": "2013-01-17T17:07:04+00:00",
+      "author": "TheFog",
+      "content": "\u003e What do you mean \"it doesn\u0027t work\"? **GRUB4DOS** should be possible to load and execute from **ISOLINUX**. Do you have some observations to share?\n\nSorry. What I meant to say was if I try to boot the floppy image chainloading grub4dos from isolinux on a DVD it fails to boot the floppy image, hence this thread.   \n\nThe chainload does work though using syslinux and a pen drive.   \n\nAlso Sha0 I haven\u0027t returned your pm yet for a reason but will do so in due course. Cheers!   \n"
+    },
+    {
+      "id": "164415",
+      "timestamp": "2012-12-16T21:14:34+00:00",
+      "author": "TheFog",
+      "content": "I have a .img floppy image - Eurosoft\u0027s Pc-Check Hardware Diagnostics Program.\n\nI am using SARDU to create a mulitboot DVD and want to add the above program to the main menu.\n\nI have tried using MEMDISK to launch the floppy but for some reason the image wont boot for the program to launch. I know that my code in the .cfg is correct as I can launch other .img files successfully.\n\nSo... I tried making a grub4dos USB build to launch the floppy image and it works :-)\n\nBut for my purposes I need to use a DVD so I have tried to chainload grub4dos from the isolinux.cfg\n\nMy isolinux.cfg file reads:\n\n\u003e LABEL pccheck  \n\u003e MENU LABEL pccheck  \n\u003e BOOT /grldr\n\nI have copied the grldr, menu.lst \\\u0026 floppy image files to the root folder of my DVD build\n\nMy menu.list file reads:\n\n\u003e title pccheck  \n\u003e find --set-root /pccheck.img  \n\u003e map /pccheck.img (fd0)  \n\u003e map --hook  \n\u003e chainloader (fd0)+1  \n\u003e rootnoverify (fd0)  \n\u003e map --floppies\u003d1\n\nI then built my ISO (to be burnt to DVD) and tested it in QEMU. The grub4dos menu chainloads successfully but when I attempt to launch the Pc-Check program the following error appears in QEMU:\n\n\u003e Booting pccheck\n\u003e\n\u003e find --set-root /pccheck.img\n\u003e\n\u003e Error: 15: File not found\n\u003e\n\u003e Press any key to continue...\n\nThis doesn\u0027t make any sense at all to me as the filepath is all correct. I have been reading grub4dos tutuorials and the syslinux.org tutorials for several hours trying to figure out why MEMDISK doesn\u0027t work and why my chainload isn\u0027t working either. I have tried my best to solve this myself but can\u0027t so I am hoping someone here can help me out please?\n\nEDIT: I intend to set the timeout on the menu.list to 0 so that the program will start automatically from the isolinux.cfg\n\n**Edited by TheFog, 16 December 2012 - 09:19 PM.**\n"
+    },
+    {
+      "id": "164422",
+      "timestamp": "2012-12-16T22:47:34+00:00",
+      "author": "steve6375",
+      "content": "set the timeout to 5 and then press C to get to the grub4dos command prompt. Then type\n\n**ls /**\n\nand\n\n**find**\n\nthen\n\n**cdrom --init**\n\n**find**\n\nand report back...\n\n"
+    },
+    {
+      "id": "164425",
+      "timestamp": "2012-12-16T23:02:49+00:00",
+      "author": "TheFog",
+      "content": "Thanks Steve. I found your grub4dos tutorial on your website very helpful and used your code to make my menu.lst file.\n\nI have followed your advice and after typing in the final \"find\" command QEMU reads:\n\ngrub\\\u003e _\n\n"
+    },
+    {
+      "id": "164429",
+      "timestamp": "2012-12-16T23:54:16+00:00",
+      "author": "steve6375",
+      "content": "weird. I have seen strange behaviour when you chainload grldr from isolinux/syslinux. Why not just make a grub4dos ISO rather than a isolinux ISO?\n\n"
+    },
+    {
+      "id": "164430",
+      "timestamp": "2012-12-17T00:00:47+00:00",
+      "author": "Sha0",
+      "content": "\u003e I have a .img floppy image - Eurosoft\u0027s Pc-Check Hardware Diagnostics Program.  \n\u003e\n\u003e I am using SARDU to create a mulitboot DVD and want to add the above program to the main menu.  \n\u003e\n\u003e I have tried using MEMDISK to launch the floppy but for some reason the image wont boot for the program to launch. I know that my code in the .cfg is correct as I can launch other .img files successfully.\n**MEMDISK** accepts the **raw** , **bigraw** , **int** and **safeint** arguments. Did you try any of those?  \n\n\u003e So... I tried making a grub4dos USB build to launch the floppy image and it works :-)  \n\u003e\n\u003e But for my purposes I need to use a DVD so I have tried to chainload grub4dos from the isolinux.cfg  \n\u003e\n\u003e My isolinux.cfg file reads: LABEL pccheck  \n\u003e \u003e MENU LABEL pccheck  \n\u003e \u003e BOOT /grldr\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n**BOOT** is usually used for a 512-byte file. Instead, you might try:\n\n```\nLABEL pccheck\n  MENU LABEL PC Check (via GRUB4DOS)\n  KERNEL grub.exe\n```\n\nBut hopefully one of the MEMDISK options works for you.   \n"
+    },
+    {
+      "id": "164438",
+      "timestamp": "2012-12-17T01:01:42+00:00",
+      "author": "TheFog",
+      "content": "\u003e weird. I have seen strange behaviour when you chainload grldr from isolinux/syslinux. Why not just make a grub4dos ISO rather than a isolinux ISO?\n\nEven as a noob I thought that this was weird. Unfortunately programming my menu with all images is going to be too tough for me I think as I was a complete noob to all this about a month ago.\n\n\u003e **MEMDISK** accepts the **raw** , **bigraw** , **int** and **safeint** arguments. Did you try any of those?  \n\u003e\n\u003e **BOOT** is usually used for a 512-byte file. Instead, you might try:\n\u003e\n\u003e ```\n\u003e LABEL pccheck\n\u003e   MENU LABEL PC Check (via GRUB4DOS)\n\u003e   KERNEL grub.exe\n\u003e ```\n\n\u003e But hopefully one of the MEMDISK options works for you.\n\nThanks Sha0. I have used all memdisk arguments and it still won\u0027t boot. Also your chainloader tip just leads to the grub command prompt.\n\n"
+    },
+    {
+      "id": "164443",
+      "timestamp": "2012-12-17T03:34:44+00:00",
+      "author": "Sha0",
+      "content": "\u003e Thanks Sha0. I have used all memdisk arguments and it still won\u0027t boot. Also your chainloader tip just leads to the grub command prompt.\nThat would seem to indicate that your **grub.exe** is choosing not to find the **menu.lst** file. You can override that behaviour:\n\n```\nLABEL pccheck\n  MENU LABEL PC Check (via GRUB4DOS)\n  KERNEL grub.exe\n  APPEND --config-file\u003d\"find --set-root /menu.lst; configfile /menu.lst\"\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "164451",
+      "timestamp": "2012-12-17T07:46:31+00:00",
+      "author": "tinybit",
+      "content": "```\n@Sha0\n\n\u003e\u003e\u003e find --set-root menu.lst\n```\n\nit is wrong. it should be:\n\n```\nfind --set-root /menu.lst\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "164453",
+      "timestamp": "2012-12-17T08:20:38+00:00",
+      "author": "TheFog",
+      "content": "\u003e That would seem to indicate that your **grub.exe** is choosing not to find the **menu.lst** file. You can override that behaviour:\n\u003e\n\u003e ```\n\u003e LABEL pccheck\n\u003e   MENU LABEL PC Check (via GRUB4DOS)\n\u003e   KERNEL grub.exe\n\u003e   APPEND --config-file\u003d\"find --set-root /menu.lst; configfile /menu.lst\"\n\u003e ```\n\nOnce again, thanks! Unfortunately it just leads to the grub command prompt again.\n\n"
+    },
+    {
+      "id": "164457",
+      "timestamp": "2012-12-17T09:48:41+00:00",
+      "author": "steve6375",
+      "content": "If **find** does not list any devices even after **cdrom --init** command, try\n\n**map (**(and then hit the TAB key to get a list of possible devices).\n\nhave you tried a real system (IDE or SATA?) as well as QEMU to test the ISO with?\n\n"
+    },
+    {
+      "id": "164463",
+      "timestamp": "2012-12-17T11:23:42+00:00",
+      "author": "Wonko the Sane",
+      "content": "Hey guys, let\u0027s start from the beginning, OK? :smile:\n\nThe PC-Check uses it\u0027s own \"flavour\" of DOS, particularly picky, that could well be the reason why memdisk is not working.\n\n**TheFog** omitted some piece of info (needed).\n\nHow EXACTLY was the .iso made?\n\nWhat is the output in QEMU, and once to the grub4dos command line of the following commands?\n\n```\n\nroot (\n```\n\n\\[TAB\\]\n\nOnce root has been established to the right device (EXAMPLE):\n\n```\n\nroot (cd)\n```\n\n\\[ENTER\\]\n\nWhat is the output of:\n\n```\n\nls\n```\n\n\\[ENTER\\]\n\nis the wanted file listed?\n\nRemember that on CDFS grub4dos is CaSe SeNsItIvE.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "164502",
+      "timestamp": "2012-12-17T18:14:19+00:00",
+      "author": "TheFog",
+      "content": "Thank you everyone for your advice and input, it is greatly appreciated. I followed Wonko the Sane\u0027s final piece of advice and further progress has been made which I will elucidate to shortly.\n\n\u003e [steve6375](http://reboot.pro/user/17818-steve6375/ \"\")\n\u003e\n\u003e If **find** does not list any devices even after **cdrom --init** command, try\n\u003e\n\u003e **map (**(and then hit the TAB key to get a list of possible devices).\n\u003e\n\u003e have you tried a real system (IDE or SATA?) as well as QEMU to test the ISO with?\n\nJust to recapitulate; my ISOLINUX.CFG lines with respect to the floppy image and the whole of my MENU.LST are as follows\n\n\u003e **ISOLINUX.CFG:**\n\u003e\n\u003e LABEL pccheck  \n\u003e MENU LABEL PC Check (via GRUB4DOS)  \n\u003e KERNEL grub.exe  \n\u003e APPEND --config-file\u003d\"find --set-root /menu.lst; configfile /menu.lst\"\n\n\u003e **MENU.LST:**\n\u003e\n\u003e timeout 10  \n\u003e\n\u003e title pccheck  \n\u003e find --set-root /PCCHECK.IMG  \n\u003e map /PCCHECK.IMG (fd0)  \n\u003e map --hook  \n\u003e chainloader (fd0)+1  \n\u003e rootnoverify (fd0)  \n\u003e map --floppies\u003d1\n\nThe grub4dos menu launches successfully from the isolinux menu. Pressing the c key from the grub4dos menu and then typing the following commands produces the following results:\n\ngrub\\\u003e find\n\n(cd)\n\ngrub\\\u003e ls\n\nPCCHECK.IMG (as well as a bunch of other files found within the folder from the extracted sardu.iso)\n\nFollowing Wonko the Sane\u0027s advice I renamed the floppy image from \u0027pccheck.img\u0027 to \u0027PCCHECK.IMG\u0027 as you can see above in the menu.lst file. When I now attempt to launch the program from the grub4dos menu, instead of the file not found error I now receive:\n\n\u003e Booting pccheck\n\u003e\n\u003e (cd)\n\u003e\n\u003e FAT12 BPB found with 0xEB (jmp) leading the boot sector.\n\u003e\n\u003e probed C/H/S \u003d 80/2/18, probed total sectors \u003d 2880\n\u003e\n\u003e floppies_orig\u003d0, harddrives_orig\u003d0, floppies_curr\u003d1, harddrives_curr\u003d0\n\u003e\n\u003e _\n\nQEMU hangs at the static cursor and the program fails to launch.\n\n\u003e [Wonko the Sane](http://reboot.pro/user/31904-wonko-the-sane/ \"\")\n\u003e\n\u003e Hey guys, let\u0027s start from the beginning, OK? :smile:\n\u003e\n\u003e The PC-Check uses it\u0027s own \"flavour\" of DOS, particularly picky, that could well be the reason why memdisk is not working.\n\nOK :smile: I was going to post today that the company - Eurosoft - that created the program does use it\u0027s own custom DOS (EuroDOS.sys)\n\n\u003e [Wonko the Sane](http://reboot.pro/user/31904-wonko-the-sane/ \"\")\n\u003e\n\u003e TheFog omitted some piece of info (needed).  \n\u003e How EXACTLY was the .iso made?\n\nAs I have mentioned I am using SARDU to make my multiboot DVD. I didn\u0027t enable any of the default ISO\u0027s to be added to the SARDU build. However I did add an extra ISO from the \u0027Extra\u0027 menu \\\u003e Add Extra ISO (GRUB) so that when I built my ISO then grub.exe would be included in the final ISO build. It is irelevant what this \u0027Extra ISO\u0027 is as it\u0027s purpose is to simply add grub.exe to the final ISO build. From the built SARDU ISO I extracted all files.\n\nI then updated the isolinux.cfg file and copied into the folder my successful menu.lst file from the USB build that did work and also the PCCHECK.IMG floppy image.\n\nI then used ImgBurn to rebuild the ISO from the extracted SARDU ISO folder. From the Build menu I selected the default settings of:\n\nData Type: MODE1/2048\n\nFile System: ISO9660 + UDF (I have also tried ISO9660 + Joliet)\n\nFrom the Advanced \\\u003e Bootable Disc \\\u003e Options tab, I selected:\n\nMake Image Bootable (tickbox ticked)\n\nEmulation Type: None (Custom)\n\nBoot Image: %extracted ISO folder% \\\\ isolinux.bin\n\nPatch Boot Information Table (tickbox ticked)\n\n----\n\nOh, by the way, Steve I will be trying it to a burnt cd later to see if it works from there.\n\n**Edited by TheFog, 17 December 2012 - 06:16 PM.**\n"
+    },
+    {
+      "id": "164509",
+      "timestamp": "2012-12-17T19:00:32+00:00",
+      "author": "Wonko the Sane",
+      "content": "You don\u0027t want UDF, you want ISO9660 (and possibly Joliet) and more likely then not Rockridge and EXCLUSIVELY mkisofs should be used to make the .iso.\n\nNot that IMGBURN is not a very good application, but with mkisofs you have better control on the settings.\n\nI am sure **Sha0** will be able to give you appropriate mkisofs parameters for use with Isolinux, cannot say if SARDU uses mkisofs to buid the CD, if it does, you might be lucky and get the proper switches using this:\n\n[http://reboot.pro/to...ting-iso-files/](http://reboot.pro/topic/12406-editing-iso-files/ \"\")\n\nThe idea with grub4dos is ++**to do tests in command line**++ (interactive) mode, and later try to re-cap the hopefully successful experience into a menu.lst.  \n\nGet to command prompt.  \nType:  \nfind --set-root /PCCHECK.IMG\n\n\\[ENTER\\]\n\nroot\n\n\\[ENTER\\]\n\nmap --mem /PCCHECK.IMG (fd0)\n\n\\[ENTER\\]\n\nmap --hook\n\n\\[ENTER\\]\n\nNow you should be able to plainly root to the device:\n\nroot (fd0)\n\n\\[ENTER\\]\n\nand list it\u0027s contents:\n\nls\n\n\\[ENTER\\]\n\nnow try:\n\nchainloader +1\n\n\\[ENTER\\]\n\ndo you have any error here?\n\nthen try:\n\nboot\n\n\\[ENTER\\]\n\nIt is well possible that Eurodos or it\u0027s bootsector don\u0027t like (like they seemingly don\u0027t like MEMDISK) the grub4dos mapping to memory, you can then try again with \"direct mapping\" (but this is what you were using and that failed ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)).\n\nSince the .IMA (by convention floppy images use the .ima extension and partitioned images use the .IMG one, but of course you are perfectly free to give them \\*any\\* extension) is on a CD it should be contiguous.\n\nThere was another related topic here:\n\n[http://www.911cd.net...showtopic\u003d23953](http://www.911cd.net/forums//index.php?showtopic\u003d23953 \"External link\")\n\nbut it seems to me like OP there had not issues with Eurodos ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "164523",
+      "timestamp": "2012-12-17T22:10:59+00:00",
+      "author": "TheFog",
+      "content": "\u003e You don\u0027t want UDF, you want ISO9660 (and possibly Joliet) and more likely then not Rockridge and EXCLUSIVELY mkisofs should be used to make the .iso.\n\u003e\n\u003e Not that IMGBURN is not a very good application, but with mkisofs you have better control on the settings.\n\u003e\n\u003e I am sure **Sha0** will be able to give you appropriate mkisofs parameters for use with Isolinux, cannot say if SARDU uses mkisofs to buid the CD, if it does, you might be lucky and get the proper switches using this:\n\u003e\n\u003e [http://reboot.pro/to...ting-iso-files/](http://reboot.pro/topic/12406-editing-iso-files/ \"\")\n\u003e\n\u003e The idea with grub4dos is ++**to do tests in command line**++ (interactive) mode, and later try to re-cap the hopefully successful experience into a menu.lst.  \n\u003e\n\u003e Get to command prompt.  \n\u003e Type:  \n\u003e find --set-root /PCCHECK.IMG\n\u003e\n\u003e \\[ENTER\\]\n\u003e\n\u003e root\n\u003e\n\u003e \\[ENTER\\]\n\u003e\n\u003e map --mem /PCCHECK.IMG (fd0)\n\u003e\n\u003e \\[ENTER\\]\n\u003e\n\u003e map --hook\n\u003e\n\u003e \\[ENTER\\]\n\u003e\n\u003e Now you should be able to plainly root to the device:\n\u003e\n\u003e root (fd0)\n\u003e\n\u003e \\[ENTER\\]\n\u003e\n\u003e and list it\u0027s contents:\n\u003e\n\u003e ls\n\u003e\n\u003e \\[ENTER\\]\n\u003e\n\u003e now try:\n\u003e\n\u003e chainloader +1\n\u003e\n\u003e \\[ENTER\\]\n\u003e\n\u003e do you have any error here?\n\u003e\n\u003e then try:\n\u003e\n\u003e boot\n\u003e\n\u003e \\[ENTER\\]\n\u003e\n\u003e It is well possible that Eurodos or it\u0027s bootsector don\u0027t like (like they seemingly don\u0027t like MEMDISK) the grub4dos mapping to memory, you can then try again with \"direct mapping\" (but this is what you were using and that failed ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)).\n\u003e\n\u003e Since the .IMA (by convention floppy images use the .ima extension and partitioned images use the .IMG one, but of course you are perfectly free to give them \\*any\\* extension) is on a CD it should be contiguous.\n\u003e\n\u003e There was another related topic here:\n\u003e\n\u003e [http://www.911cd.net...showtopic\u003d23953](http://www.911cd.net/forums//index.php?showtopic\u003d23953 \"External link\")\n\u003e\n\u003e but it seems to me like OP there had not issues with Eurodos ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\u003e\n\u003e Wonko\n\nThanks a lot for the tips. I did get to chainloader +1 without any errors but it just hangs at the cursor after BOOT. With regards to the link my USB build works fine also, just won\u0027t work for an ISO.\n\nI burnt the ISO as Steve suggested in case it was an issue with QEMU and still no joy.\n\nI did an experiment and tried what Steve suggested and tried to run it straight from grub4dos instead of chainloading grub4dos from isolinux. Same problem ):\n\nI used HBCD customizer to extract the HBCD ISO. I then updated the menu.lst with my code and added the floopy image and then used the customizer to rebuild the ISO using grub4dos as bootloader.\n\n"
+    },
+    {
+      "id": "164529",
+      "timestamp": "2012-12-17T23:03:44+00:00",
+      "author": "steve6375",
+      "content": "Maybe you could chainload the bootloader file directly. You need to look for a .sys file in the EuroSoft image and then use\n\nchainloader /xxxxxx.sys\n\ninstead of\n\nchainloader (fd0)+1\n\nwhere xxxxx.sys is the file inside the image.\n\n"
+    },
+    {
+      "id": "164530",
+      "timestamp": "2012-12-17T23:16:26+00:00",
+      "author": "TheFog",
+      "content": "\u003e Maybe you could chainload the bootloader file directly. You need to look for a .sys file in the EuroSoft image and then use\n\u003e\n\u003e chainloader /xxxxxx.sys\n\u003e\n\u003e instead of\n\u003e\n\u003e chainloader (fd0)+1\n\u003e\n\u003e where xxxxx.sys is the file inside the image.\n\nYippee I have got the floppy program to load using grub4dos. The ISO I made using the HBCD customizer had the incorrect filepath in the menu.lst\n\nI did try chainloader /EuroDOS.sys and that didn\u0027t work using ImgBurn - I found that from your grub4dos tutorial.\n\nThe HBCD customizer does use mkisofs.exe to rebuild the ISO so I made an ISO with isolinux as bootlaoder and again I tried to chainload grub4dos but yet again it hangs at the boot command from a cd. Strangely QEMU just crashes with this new ISO build using HBCD instead of ImgBurn.\n\nI shall now try your chainloader tip with the HBCD ISO builder Steve instead of ImgBurn and see if that works..............\n\n"
+    },
+    {
+      "id": "164602",
+      "timestamp": "2012-12-18T23:39:33+00:00",
+      "author": "TheFog",
+      "content": "\u003e I am sure **Sha0** will be able to give you appropriate mkisofs parameters for use with Isolinux\n\nThe HBCD ISO creator uses these parameters below from the \u0027Make ISO\u0027 batch file. I don\u0027t know if anyone can make any sense of it. The HBCD ISO reacts differently to the ImgBurn ISO. All of this is completely new to me...\n\n\"mkisofs.exe\" -R -D -J -l -joliet-long -duplicates-once -o MyHBCD.iso -b HBCD/grldr -c HBCD/boot.cat -hide-joliet HBCD/boot.cat -hide HBCD/boot.cat -no-emul-boot -N -boot-info-table -V HirensBootCD -boot-load-size 4 CD\n\n**Edited by TheFog, 18 December 2012 - 11:39 PM.**\n"
+    },
+    {
+      "id": "164604",
+      "timestamp": "2012-12-19T00:25:38+00:00",
+      "author": "Sha0",
+      "content": "\u003e The HBCD ISO creator uses these parameters below from the \u0027Make ISO\u0027 batch file. I don\u0027t know if anyone can make any sense of it. The HBCD ISO reacts differently to the ImgBurn ISO. All of this is completely new to me...  \n\u003e\n\u003e \"mkisofs.exe\" -R -D -J -l -joliet-long -duplicates-once -o MyHBCD.iso -b HBCD/grldr -c HBCD/boot.cat -hide-joliet HBCD/boot.cat -hide HBCD/boot.cat -no-emul-boot -N -boot-info-table -V HirensBootCD -boot-load-size 4 CD\nThis is quite topical for **GRUB4DOS** , as this **mkisofs** invocation produces a GRUB4DOS-booting **.ISO** .  \n\nFor **ISOLINUX** , it\u0027d be a bit different, and probably more appropriate in the **Syslinux** forum. (So no comment. :wink: )   \n"
+    },
+    {
+      "id": "164607",
+      "timestamp": "2012-12-19T08:24:45+00:00",
+      "author": "TheFog",
+      "content": "\u003e This is quite topical for **GRUB4DOS** , as this **mkisofs** invocation produces a GRUB4DOS-booting **.ISO** .  \n\u003e\n\u003e For **ISOLINUX** , it\u0027d be a bit different, and probably more appropriate in the **Syslinux** forum. (So no comment. :wink: )\n\nWell then all I can do is apologise for starting a thread in the wrong sub-forum.\n\n"
+    },
+    {
+      "id": "164609",
+      "timestamp": "2012-12-19T08:57:59+00:00",
+      "author": "Sha0",
+      "content": "\u003e Well then all I can do is apologise for starting a thread in the wrong sub-forum.\nPlease: No apology. I was not complaining, nor even suggesting that this was in the wrong forum. As a matter of fact, I\u0027d misread the very top and thought this was in the **GRUB4DOS** forum, so I was suggesting that it was in the correct forum as a GRUB4DOS-related subject. Sorry for the misunderstanding. :smile:   \n"
+    },
+    {
+      "id": "164620",
+      "timestamp": "2012-12-19T18:10:07+00:00",
+      "author": "TheFog",
+      "content": "No worries my friend! I did find it interesting that the batch file only had settings for grub4dos and not for isolinux even though the HBCD ISO builder gives the option to choose either grub4dos or isolinux as boot loader. It looks like I am going to have to use a grub4dos bootloader if I wish to include this program. Steve\u0027s tutorial on making a custom grub4dos menu is very comprehensive and I\u0027m sure I can figure out any code I need to write for launching my tools (with maybe a little help from you guys if I hit any brick walls). I am very appreciative of all help so far.   \n"
+    },
+    {
+      "id": "165833",
+      "timestamp": "2013-01-14T13:59:38+00:00",
+      "author": "deaks",
+      "content": "Hi Fog\n\nJust seen that you got PC Check running from your bootdvd, Im having the same problem that you had trying to get it work but mine if from a debian PXE boot server. I was wondering if any chance you could tell me how you did it if you dont mine.\n\nRegards\n\nDeaks\n\n"
+    },
+    {
+      "id": "165991",
+      "timestamp": "2013-01-16T23:30:10+00:00",
+      "author": "TheFog",
+      "content": "\u003e Hi Fog\n\u003e\n\u003e Just seen that you got PC Check running from your bootdvd, Im having the same problem that you had trying to get it work but mine if from a debian PXE boot server. I was wondering if any chance you could tell me how you did it if you dont mine.\n\u003e\n\u003e Regards\n\u003e\n\u003e Deaks\n\nI wanted to chainload grub4dos from isolinux but it doesn\u0027t work. I had to boot it from grub4dos. However, grub4dos successfully chainloads from syslinux to boot the floppy image\n\n"
+    },
+    {
+      "id": "166003",
+      "timestamp": "2013-01-17T08:42:37+00:00",
+      "author": "Sha0",
+      "content": "\u003e I wanted to chainload grub4dos from isolinux but it doesn\u0027t work. I had to boot it from grub4dos. However, grub4dos successfully chainloads from syslinux to boot the floppy image\n\nWhat do you mean \"it doesn\u0027t work\"? **GRUB4DOS** should be possible to load and execute from **ISOLINUX**. Do you have some observations to share?\n\n"
+    },
+    {
+      "id": "166065",
+      "timestamp": "2013-01-17T17:07:04+00:00",
+      "author": "TheFog",
+      "content": "\u003e What do you mean \"it doesn\u0027t work\"? **GRUB4DOS** should be possible to load and execute from **ISOLINUX**. Do you have some observations to share?\n\nSorry. What I meant to say was if I try to boot the floppy image chainloading grub4dos from isolinux on a DVD it fails to boot the floppy image, hence this thread.   \n\nThe chainload does work though using syslinux and a pen drive.   \n\nAlso Sha0 I haven\u0027t returned your pm yet for a reason but will do so in due course. Cheers!   \n"
+    },
+    {
+      "id": "166066",
+      "timestamp": "2013-01-17T18:00:34+00:00",
+      "author": "Wonko the Sane",
+      "content": "TheFog\n\nMaybe it is time to recap.\n\nYou posted:\n\u003e Yippee I have got the floppy program to load using grub4dos. The ISO I made using the HBCD customizer had the incorrect filepath in the menu.lst\n\u003e\n\u003e I did try chainloader /EuroDOS.sys and that didn\u0027t work using ImgBurn - I found that from your grub4dos tutorial.\n\nWhat is still NOT at all clear, is WHAT works WHERE, and HOW (i.e. EVERYTHING).\n\nI mean, if you are burning a CD/ISO, you need to specifiy what program you are using (should be mkisofs.exe) and which EXACT command line are you using with it.\n\nThen you need to specify WHICH speciifc menu.lst entry (or set of commands) do work (if they work) and which do not (if they do not).\n\nThen you need to specify WHICH speciifc isolinux and/or syslinux .cfg entry (or set of commands) do work (if they work) and which do not (if they do not).\n\nAlso specify the EXACT version of BOTH the grub4dos and Syslinux/Isolinux/memdisk you tried.\n\nA report like this:\n\u003e Sorry. What I meant to say was if I try to boot the floppy image **chainloading grub4dos from isolinux on a DVD** it fails to boot the floppy image, hence this thread. The chainload does work though using syslinux and a pen drive. Also Sha0 I haven\u0027t returned your pm yet for a reason but will do so in due course. Cheers!\n\nis of NO use ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif) unless you specify in the uttermost DETAIL HOW EXACTLY you are carrying the action that fails (or viceversa the one that succeeds).\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "166080",
+      "timestamp": "2013-01-17T22:37:30+00:00",
+      "author": "TheFog",
+      "content": "To Wonko I have recapitulated as you have asked. You are right Deaks did ask \u0027how\u0027 I did it. At the moment I\u0027m working 18 hours a day and made my last two posts on my telephone when I had a few minutes to spare. I have some well deserved rest at the weekend due at the end of this week and am happy to oblige to your requests.   \n"
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "id": "22387",
+  "title": "BootConfigComperator",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "216584",
+      "timestamp": "2020-10-09T09:33:33+00:00",
+      "author": "Tokener",
+      "content": "![Posted Image](http://reboot.pro/index.php?app\u003ddownloads\u0026module\u003ddisplay\u0026section\u003dscreenshot\u0026id\u003d622)\n**File Name** : BootConfigComperator  \n**File Submitter** : [ReTokener](http://reboot.pro/user/21675-retokener/ \"\")  \n**File Submitted** : 09 Oct 2020  \n**File Updated** : *26 Oct 2020*   \n**File Category** : [Boot tools](http://reboot.pro/files/category/7-boot-tools/ \"\")  \n\nAssumption:  \nYou have two different Operating Systems (Windows).  \nOne of them is booting well - the other does not (maybe BlueScreen).  \nYou suspect a missing or incorrect configured boot driver service.  \n\nUse BootConfigComperator to compare these startup configurations.  \n\n- Make shure you can access the non-booting Windows system.  \n- Start BootConfigComperator as Administrator. (Win8 and beyond)  \nReference \u0027CurrentControlSet\u0027 of your booting system is set to first Input.  \n- Select \\[Edit\\]-\\[Offline Windows\\]  \n- Navigate and select \u0027Offline Windows\u0027 directory.  \nActive \u0027ControlSet000n\u0027 of remote Windows system is set to second Input.  \n- Click \\[Read/Compare/Edit\\] to see values-table. Look for \u0027Diverse\u003d1\u0027.  \n- Select mis-configured boot driver (if any) from the table and press \\[Run User Func\\].  \n- Set new valuename (REG-DWORD) to match correct one.  \n- Click \\[OK\\] to write to Registry.  \n- Click \\[Cancel\\] to open Registry and edit manually.  \n\nIf any mis-configured driver was the reason for non booting system your problem might be fixed.  \n\nSpecial Features:  \n- to filter the \u0027usual suspects\u0027 e.g. disk drivers, provide a file with a list,  \nname it BootConfigComperator.ini to be auto-recognized by the program at start.  \n- there is a chance to install a sample file \\[Help\\]-\\[Install Config Sample\\].  \n- use any config-file of this kind as parameter, e.g. \u0027BootConfigComperator.exe B:\\\\myConfig.ini\u0027.  \n- if filter is loaded, it is indicated in the GUI.  \n- use \\[Help\\]-\\[Debug Mode\\] to display error messages when loading offline Registry fails.  \n- to edit \u0027CurrentControlSet\u0027 leave empty second Input.  \n\n\u003cbr /\u003e\n\nHope this helps to get some non booting system started.  \n\nRegards T.  \n\nThe password for the file is: **bcc**  \n\n[Click here to download this file](http://reboot.pro/files/file/622-bootconfigcomperator/ \"\")   \n"
+    },
+    {
+      "id": "216585",
+      "timestamp": "2020-10-09T09:41:31+00:00",
+      "author": "antonino61",
+      "content": "password?\n\n"
+    },
+    {
+      "id": "216586",
+      "timestamp": "2020-10-09T09:44:58+00:00",
+      "author": "Tokener",
+      "content": "Thank you\n\nthe password is **bcc**\n\n"
+    },
+    {
+      "id": "216587",
+      "timestamp": "2020-10-09T09:52:58+00:00",
+      "author": "antonino61",
+      "content": "sorry, i did not see it in the first post\n\n"
+    },
+    {
+      "id": "216589",
+      "timestamp": "2020-10-09T10:05:17+00:00",
+      "author": "Tokener",
+      "content": "My fault\n\nIt was added when you pointed me to the missing password.\n\nThanks again. T.\n\n"
+    },
+    {
+      "id": "216592",
+      "timestamp": "2020-10-09T12:48:52+00:00",
+      "author": "wimb",
+      "content": "Thanks for this Quite Interesting App :smile:\n\nIt will be better when BootConfigComperator_x64.exe is Auto launched as Administrator, which is required to make Offline Windows Selection valid.\n\nThis can be simply achieved by using in AutoIt3 code e.g. as first line\n\n```\n#RequireAdmin\n```\n\nWith this line added to the AutoIt3 code the program is always launched as Administrator\n\nJust did some preliminary test and I think the program can be quite useful. :smile:\n\nIn my case the Running OS has a lot of Services that do not occur in the Offline Windows.\n\nThat is not a problem, but Diverse gives Notification 1 which might indicate a problem.\n\nMay be the Diverse Notifications can be further refined as e.g.\n\n1 \u003d Service Start value is different, which might indicate a problem\n\n2 \u003d Service does Not exist in Offline Windows\n\n3 \u003d Service does Not exist in Running OS\n\nYour 32-bits program is Not considered as a Virus,\n\nwhereas my AutoIt3 32-bits programs mostly are in conflict with Windows Defender and are Blocked at First Sight.\n\nDo you have any idea How to solve this problem in my case ?\n\n"
+    },
+    {
+      "id": "216593",
+      "timestamp": "2020-10-09T13:42:05+00:00",
+      "author": "Tokener",
+      "content": "Dear wimb,\n\nthank you for the hint, update is available.\n\n[Click here to download this file](http://reboot.pro/files/file/622-bootconfigcomperator/ \"\")\n\nRegards T.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "216594",
+      "timestamp": "2020-10-09T13:45:53+00:00",
+      "author": "Tokener",
+      "content": "\u003e In my case the Running OS has a lot of Services that do not occur in the Offline Windows.\n\u003e\n\u003e That is not a problem, but Diverse gives Notification 1 which might indicate a problem.\n\u003e\n\u003e May be the Notifications can be further refined as e.g. 1 or 2 or ...\n\nOK, this will be fixed in a latter update.\n\nRegards T.\n\n"
+    },
+    {
+      "id": "216595",
+      "timestamp": "2020-10-09T13:46:56+00:00",
+      "author": "Wonko the Sane",
+      "content": "Comperator?\n\nMaybe Comp**a**rator?\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "216597",
+      "timestamp": "2020-10-09T15:25:39+00:00",
+      "author": "Tokener",
+      "content": "Hi Wonko\n\u003e\n\u003e Maybe Comp**a**rator?\n\nNope ... ![:pulpfiction:](https://reboot.pro/public/style_emoticons/default/what.gif)\n\nT.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "216598",
+      "timestamp": "2020-10-09T16:39:54+00:00",
+      "author": "antonino61",
+      "content": "well, ... retokener retokened it\n\n"
+    },
+    {
+      "id": "216599",
+      "timestamp": "2020-10-09T16:43:35+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, your tool, your name. :smile:\n\nIt is however not so obvious that a tool that is used to comp**a** re and that you actually tagged \"comp**a** rison\" should be called comp**e** rator, a word that AFAIK doesn\u0027t exist (while *comp**a**rator* does and actually represents something doing comp**a** risons) ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif).\n\nIf there is a witty play on words I failed to get it. ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)\n\nAnyway:\n\n[https://www.imdb.com...uotes/qt0484647](https://www.imdb.com/title/tt0072431/quotes/qt0484647 \"External link\")\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "216600",
+      "timestamp": "2020-10-09T17:06:07+00:00",
+      "author": "Tokener",
+      "content": "Dear Wonko,\n\nyou are (as most of the time) on the right track.\n\nThere is a play on words: ***comperator*** is mix of two words.\n\nI give you a hint: both of \u0027em come from Latin.\n\nAnd yes, the name is a shameless exaggeration given the simplicity of the program.\n\nBest regards T.  \n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "216603",
+      "timestamp": "2020-10-09T17:25:19+00:00",
+      "author": "antonino61",
+      "content": "paronomasia, or pun, as u like it.\n\n"
+    },
+    {
+      "id": "216604",
+      "timestamp": "2020-10-09T17:31:12+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, to an Italian it still sounds like it serves to buy something as comprare o comperare means to buy.\n\n(while comparare means to compare).\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "216605",
+      "timestamp": "2020-10-09T17:57:44+00:00",
+      "author": "Tokener",
+      "content": "An updated version of the file is available here:\n\n[http://reboot.pro/fi...nfigcomperator/](http://reboot.pro/files/file/622-bootconfigcomperator/ \"\")\n\nA little clarification of the riddle:  \nSince I couldn\u0027t find Comparator in my dictionary (my fault), I used a name that sounded more expressive in my ears.\n\nI hope you like it anyway. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nRegards T.\n\n"
+    },
+    {
+      "id": "216607",
+      "timestamp": "2020-10-09T18:07:53+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Since I couldn\u0027t find Comparator in my dictionary (my fault), I used a name that sounded more expressive in my ears.\n\u003e\n\u003e I hope you like it anyway. ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\u003e\n\u003e Regards T.\n\nStill, you owe me 20 bucks ![:jaclaz:](https://reboot.pro/public/style_emoticons/default/jaclaz.gif).\n\n[http://www.marriedto.../dictionary.gif](http://www.marriedtothesea.com/030807/dictionary.gif \"External link\")\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "216608",
+      "timestamp": "2020-10-09T18:58:38+00:00",
+      "author": "Tokener",
+      "content": "Pretty expensive Sir, ![:realmad:](https://reboot.pro/public/style_emoticons/default/realmad.gif)\n\nbut although I think it\u0027s overpriced I will send you the money by e-mail\n\nas soon as it is proven that you are the guy in the photo.\n\nRegards T.\n\nP.S. Is ten bucks OK ?\n\n"
+    },
+    {
+      "id": "216611",
+      "timestamp": "2020-10-10T08:04:52+00:00",
+      "author": "Wonko the Sane",
+      "content": "Naah.\n\nPayments are only accepted in person and in beers ![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif) , no discounts/rebates.\n\nDue to the current situation with Covid-19 it may take some time before you will be able to fulfill this obligation ![:(](https://reboot.pro/public/style_emoticons/default/sad.png), ~~but~~ the good news ~~are~~ ~~*is*~~ ++**being**++ ![:whistling:](https://reboot.pro/public/style_emoticons/default/happy22.gif) that there are no interests for delays in payments.\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "216616",
+      "timestamp": "2020-10-10T10:58:06+00:00",
+      "author": "antonino61",
+      "content": "the good news is, not the good news are\n\n"
+    },
+    {
+      "id": "216619",
+      "timestamp": "2020-10-10T12:08:02+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e the good news is, not the good news are\n\nYep, you are correct, but it may depend on the gnus:\n\n[https://pbs.twimg.co...LvLCAAAdT8_.jpg](https://pbs.twimg.com/media/BMwTLvLCAAAdT8_.jpg \"External link\")\n\nFixed.\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    }
+  ]
+}

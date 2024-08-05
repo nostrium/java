@@ -1,0 +1,34 @@
+{
+  "id": "12521",
+  "title": "some strange bioses,lexar pendrive fdd+hd",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "109445",
+      "timestamp": "2010-09-19T07:26:30+00:00",
+      "author": "mateuszek",
+      "content": "Some old bioses:  \nI have lexar usb, it is modified by flashboot.ru so it is seen like FDD + HDD.  \n\nAnd this old bios i found is so stupid that it sees only FDD part.  \nSO ok i loaded from this part PLOP and tried to boot HDD part but this wont go.  \n\nIs there some other boot manager with own usb drivers ?  \nOr do you have other idea ? (1.44mb space on fdd)  \nGRUB also is not seeing HDD part, bios does not load it, only loads first thing he can see and nothing more.   \n"
+    },
+    {
+      "id": "109458",
+      "timestamp": "2010-09-19T09:46:26+00:00",
+      "author": "steve6375",
+      "content": "I have a car and it won\u0027t start - can you fix it?  \n\nMy point is it would help if we had some **details** !  \nUSB is made by lexar - but what model, what size?  \nWon\u0027t boot - boot to what OS won\u0027t it boot?  \nIt only loads first thing it can see - do you mean the BIOS will not boot at all from the USB pen - does the USB pen LED flash at all?  \nWhat BIOS options do you have?  \nDo you have any USB pens that do work or any more that don\u0027t? If so, what make, model and size are they?  \n\n\u003cbr /\u003e\n\nSome BIOSes will not boot from a USB pen if larger than 512MB. Some BIOSes may boot if you use a partition table with two partitions (try RMPrepUSB with HDD option).   \n"
+    },
+    {
+      "id": "109459",
+      "timestamp": "2010-09-19T09:51:37+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Some old bioses:  \n\u003e I have lexar usb, it is modified by flashboot.ru so it is seen like FDD + HDD.  \n\u003e\n\u003e And this old bios i found is so stupid that it sees only FDD part.  \n\u003e SO ok i loaded from this part PLOP and tried to boot HDD part but this wont go.  \n\u003e\n\u003e Is there some other boot manager with own usb drivers ?  \n\u003e Or do you have other idea ? (1.44mb space on fdd)  \n\u003e GRUB also is not seeing HDD part, bios does not load it, only loads first thing he can see and nothing more.\n\nI guess you are stuck. :smile:  \n\nNo, there in no other bootmanager with USB stack AFAIK, but my guess is that the issue is connected to the way the stick has been \"set\" with it\u0027s Manufacturer\u0027s tool.  \n\nWhat you can ***try*** is using the double (actually triple) makbootfat MBR/PBR, but I doubt that it can work since what is missing is actually the \"device\" ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)  \n\nSome info and a helper are here:  \n[http://www.boot-land...showtopic\u003d10397](http://www.boot-land.net/forums/index.php?showtopic\u003d10397 \"External link\")  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "109462",
+      "timestamp": "2010-09-19T12:03:27+00:00",
+      "author": "Icecube",
+      "content": "\u003e Is there some other boot manager with own usb drivers ?\n**grub2** has its own USB drivers:  \n\u003e Many BIOSs do not support booting from USB, with this option you can use Super GRUB2 Disk (booted from a floppy, CD, or other media that your BIOS does support booting from) to boot an operating system from a USB drive despite your BIOSs limitation, using GRUB2\u0027s native USB drivers. This option will only allow you boot Free Operating Systems like GNU/Linux or FreeBSD, chainloading will not work with this option and so it cannot be used to boot Windows from a USB drive. This option, as stated, is still experimental.\n[http://www.supergrub...experimental.2A](http://www.supergrubdisk.org/wiki/SuperGRUB2Disk#Enable_GRUB2.27s_USB_support_.2Aexperimental.2A \"External link\")  \n[http://www.boot-land...mp;#entry109124](http://www.boot-land.net/forums/index.php?showtopic\u003d12395\u0026pid\u003d109124\u0026st\u003d10\u0026#entry109124 \"External link\")  \n\nMaybe **burg** (based on grub2) allows you to boot non-free Operating Systems too from USB:  \n[http://www.boot-land...showtopic\u003d12474](http://www.boot-land.net/forums/index.php?showtopic\u003d12474 \"External link\")   \n"
+    }
+  ]
+}

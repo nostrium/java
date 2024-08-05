@@ -1,0 +1,22 @@
+{
+  "id": "12426",
+  "title": "Winpe 3.0 how to add shell to winpe",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "108623",
+      "timestamp": "2010-09-06T06:31:32+00:00",
+      "author": "Slaughter",
+      "content": "Hi,  \n\nIm new here and new to the world of WINPE but find it interesting and very usefull.  \n\nI have a problem , im looking at booting a winpe and using a citrix client to login to a virtual environment for work, problem is that the client once u log in disappears, in a normal environment you would have to go down to the where the clock is and right click it and open up your screen from there, well of course in winpe that isnt there, at least not in mine. So questions is how do i get a fully functioning startbar and menu with the icon system tray available?   \n\nAny help or ideas would be greatly appreciated. Remember im a new to this technology.   \n"
+    },
+    {
+      "id": "108636",
+      "timestamp": "2010-09-06T09:35:51+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Any help or ideas would be greatly appreciated. Remember im a new to this technology.\n\nSee if this fits your needs:  \n[http://www.boot-land...?...c\u003d11852\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d11852\u0026hl\u003d \"External link\")  \n\n![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \nWonko   \n"
+    }
+  ]
+}

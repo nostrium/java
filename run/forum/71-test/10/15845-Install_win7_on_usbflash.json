@@ -1,0 +1,544 @@
+{
+  "id": "15845",
+  "title": "Install win7 on usb/flash",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "142180",
+      "timestamp": "2011-11-19T19:43:34+00:00",
+      "author": "bodin",
+      "content": "Hi all, i am new member so i am sorry if i put this thread on wrong place.  \n\nI try to install win7 on usb/flash and 10 days i cant do it. I try everything i know, and i could find on google.  \nI found this forum today and as i read more i know less what i want. So...  \n\ni have win7 on my lap top, i wanna install some win (whatever u suggest) on usb so i can disconnect my hdd and use system from usb.   \n\nQuestion:  \nis it better to install win7 or xp? To use fool or lite or smallest installation (i found something like that as question in some thread, i didnt even know till know that this exist)?  \nhow to do all that?   \n"
+    },
+    {
+      "id": "142181",
+      "timestamp": "2011-11-19T21:33:19+00:00",
+      "author": "MedEvil",
+      "content": "Let\u0027s get started with a few questions, so whoever tries to help, has a clue what you wanna do.  \n\n- Are we talking about a USB-HDD or or a USB-Flash-Drive (USB-Stick)?  \n- Is the installed OS, just to run on that one computer or should it be used on several?  \n- What is the intended use of that OS? (Something specific (What?) / Everything the normal OS can do)  \n- How big is your USB-Device? If USB-Flash-Drive: \"How fast is it?\"  \n- How much RAM has your Notebook?  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142183",
+      "timestamp": "2011-11-19T22:03:49+00:00",
+      "author": "sbaeder",
+      "content": "Ad if the hard drive works OK today - WHY do you want to remove it, and use a USB drive? If it is a USB HDD, then you still have the same sort of power issues of a rotating disk drive, and in both cases, USB speed will be slower than direct disk access. I guess it relates to the issue of one computer or many...and as MedEvil also pointed out the uses. Remember that full windows (for full use) is tied to the hardware and activation. A PE version isn\u0027t, but would probably be limited in what it can do.   \n"
+    },
+    {
+      "id": "142186",
+      "timestamp": "2011-11-19T23:12:54+00:00",
+      "author": "bodin",
+      "content": "\u003e Let\u0027s get started with a few questions, so whoever tries to help, has a clue what you wanna do.  \n\u003e\n\u003e - Are we talking about a USB-HDD or or a USB-Flash-Drive (USB-Stick)?\n\nI think on USB Flash drive  \n\n![Posted Image](http://cdn-img-a.infibeam.net/img/2acf123a/Kingston/DT108-16GB/upload/front/Kingston_DT108-16GB_2284f.jpg?hei\u003d270\u0026amp;wid\u003d250\u0026amp;op_sharpen\u003d1)  \n\n\u003e - Is the installed OS, just to run on that one computer or should it be used on several?\n\nI would run it only on one computer, my lap-top  \n\n\u003e - What is the intended use of that OS? (Something specific (What?) / Everything the normal OS can do)\n\u003e Ad if the hard drive works OK today - WHY do you want to remove it, and use a USB drive?   \n\nThis is almost same questions. Because i am not sure that my lap-top dont have mailware or trojan or something worse, and i started to use e-banking almost everyday the idea is when i wanna to pay over my account something to disconnect my lap-top hdd and use OS from flash drive. I would use it only for control my balance and pay over that account. So chrome or mozzila or opera is everthing that my OS from flash will do.  \n\n\u003cbr /\u003e\n\n\u003e - How big is your USB-Device? If USB-Flash-Drive: \"How fast is it?\"\n\n16GB, USB2.0  \n\n\u003e - How much RAM has your Notebook?  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n4GB , Dell inspiron 1750  \n\nI hope this help   \n\n**Edited by bodin, 19 November 2011 - 11:13 PM.**\n"
+    },
+    {
+      "id": "142187",
+      "timestamp": "2011-11-19T23:58:23+00:00",
+      "author": "patsch",
+      "content": "\u003e This is almost same questions. Because i am not sure that my lap-top dont have mailware or trojan or something worse, and i started to use e-banking almost everyday the idea is when i wanna to pay over my account something to disconnect my lap-top hdd and use OS from flash drive. I would use it only for control my balance and pay over that account. So chrome or mozzila or opera is everthing that my OS from flash will do.  \nif malware is your reason I think a win7PE on a CD/DVD is the best choice because your flash drive could also be infected if you install a full functional os on a flash drive   \n"
+    },
+    {
+      "id": "142188",
+      "timestamp": "2011-11-20T00:00:05+00:00",
+      "author": "RoyM",
+      "content": "**For your specific application: e-banking,\nI would use it only for control my balance and pay over that account.**   \n**%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%**   \n\n**See if this would work for you.\nLightweight Portable Security kernel 2.6.27.56 with Firefox**   \n\n**Website: [http://spi.dod.mil/L...lic_for_DoD.htm](http://spi.dod.mil/LPS-Public_for_DoD.htm \"External link\")**   \n\n**current version LPS-Public ISO image, version 1.3.1\n[http://www.spi.dod.m....3.1_public.iso](http://www.spi.dod.mil/docs/LPS-1.3.1_public.iso \"External link\")**   \n\n**It can be run from flash drive,\nYou could even put the .iso on your hard drive and use grub to chainload to it.**   \n"
+    },
+    {
+      "id": "142189",
+      "timestamp": "2011-11-20T00:12:34+00:00",
+      "author": "MedEvil",
+      "content": "If security is the reason, i would also go with some sort of read only medium. (CD / DVD / USB-Stick with write protect switch)  \nAnd since only a browser is required, i would go with a prebuild live Linux. Easy to install, no assembly required and best of all, no need to disconnect the HDD, no matter how infected it is. :wink: Since Windows virii can\u0027t touch a Linux system.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142192",
+      "timestamp": "2011-11-20T00:30:30+00:00",
+      "author": "amalux",
+      "content": "Is this to imply the Windows virus could infect an ISO booting from USB?   \n"
+    },
+    {
+      "id": "142193",
+      "timestamp": "2011-11-20T02:49:25+00:00",
+      "author": "RoyM",
+      "content": "If I may respond amalux:  \n\n\"I personally have never had my ISO\u0027s infected, by practicing safe ISO\u0027ing.\"  \n\n1. I keep my archives in a secure place with a redundant backup.  \n2. Scan regularly with multiple AV\u0027s  \n3. Minimally connect archive machine to network.  \n4. I have never encountered a cross-platform virus personally, but they do exist.  \n\n\\*\\*\\* Known Cross-Platform Virus\u0027 \\*\\*\\*  \n\nVirus.Linux.Bi.a/Virus.Win32.Bi.a (circa 2001)  \nThe virus doesn\u0027t have any practical application - it\u0027s classic Proof of Concept code,  \nwritten to show that it is possible to create a cross platform virus  \nThe code for Bi-A is simple and its only action is to inject text strings into infected files.  \nBi-A poses no immediate risk to users in its present form.  \nThe virus does not work with latest kernel version 2.6.16  \n\nW32.Winux, The virus writer, \"Benny/29A,\" has a web page where he documents  \nW32.Winux along with other viruses he\u0027s created, and shares his thoughts on the joys of writing viruses.  \nInterview with Benny: [http://vxheavens.com/lib/iv001.html](http://vxheavens.com/lib/iv001.htmlMore \"External link\")  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\\*\\*\\* More Info Virus\u0027: \\*\\*\\*  \n\n[http://antivirus.abo...y/aa032801a.htm](http://antivirus.about.com/library/weekly/aa032801a.htm \"External link\")  \n[http://www.pandasecu...1451/W32/Winux/](http://www.pandasecurity.com/homeusers/security-info/31451/W32%2FWinux/ \"External link\")  \nW32/Winux  \nThreat level: Low  \nAlias: W32/Lindose  \nType: Virus  \nEffects: It carries out damaging actions on the affected computer.  \nIt captures certain information entered or saved by the user, with the corresponding threat to privacy.  \nIt causes the loss of information stored on the computer, either specific files or data in general.  \nIt affects the productivity of the computer, the network to which it\u0027s connected or other remote sites.  \nIt carries out actions that decrease the security level of the computer.  \nIt does not spread automatically using its own means.  \nAffected platforms: Windows 2003/XP/2000/NT/ME/98/95  \nDetection updated on: Dec. 10, 2002  \nBrief Description: W32/Winux has the following characteristics:  \nIt affects Linux, Windows 9.x/ME, Windows NT/2000/XP systems.  \nIt is 2132 Bytes in size.  \n\nsadmin worm. It was cross platform between Solaris and Windows  \n[http://www.cert.org/...CA-2001-11.html](http://www.cert.org/advisories/CA-2001-11.htmlKoobface \"External link\")  \n\n[Koobface](http://www.cert.org/advisories/CA-2001-11.htmlKoobface \"External link\") worm infects Windows, but targets Mac OS X and Linux  \n\n[http://www.virusexpe...facebook-users/](http://www.virusexperts.org/security-news/cross-platform-worm-targets-facebook-users/Simile.D \"External link\")  \n\nSimile.D the fourth variant on the Simile virus  \n[http://itmanagement....ndows-Linux.htm](http://itmanagement.earthweb.com/secu/article.php/1315761/Cross-Platform-Chaos-New-Virus-Infects-Windows-Linux.htm \"External link\")  \n\n\\*\\*\\* How to infect ISO \\*\\*\\*  \n\nan ISO is a disc image - it could potentially contain files which could be viruses.  \nIdentical to how a ZIP file (or any other archive file format) could contain an infected file.  \nbut this would require the virus to contain the software necessary to edit the ISO.  \nbecause ISO files store information \"as is\", not compressed or encrypted form,  \nyou just scan an ISO file for well-known sequences of data, that indicate the  \nstart of executable section in an exe file for example, and overwrite it with your data  \nAlthough not a common technique, viruses can attack image file formats   \nsuch as the ISO 9660, which defines a standard file system.  \n\nISO images often have an AUTORUN.INF file on them to automatically launch an  \nexecutable when the CD-ROM is used on Windows, Viruses can take advantage  \nof this file within the image and modify it to run an infected exe.  \nThis technique was developed by the Russian virus writer, Zombie, in early 2002.  \n[http://books.google....ing iso\\\u0026f\u003dfalse](http://books.google.com/books?id\u003dXE-ddYF6uhYC\u0026pg\u003dPT113\u0026lpg\u003dPT113\u0026dq\u003dvirus+infecting+iso\u0026source\u003dbl\u0026ots\u003dGfGLhrUPMY\u0026sig\u003dEIFPPDnPZqO_yT6Hi1abF1DYPi0\u0026hl\u003den\u0026ei\u003d5VnITs-BJYLJiQKG2-XmDw\u0026sa\u003dX\u0026oi\u003dbook_result\u0026ct\u003dresult\u0026resnum\u003d4\u0026sqi\u003d2\u0026ved\u003d0CDgQ6AEwAw#v\u003donepage\u0026q\u003dvirus%20infecting%20iso\u0026f\u003dfalse \"External link\")   \n"
+    },
+    {
+      "id": "142194",
+      "timestamp": "2011-11-20T04:59:49+00:00",
+      "author": "amalux",
+      "content": "So this virus would ostensibly run from the offline system your booting from ISO to fix; it would run a batch to find, edit and repack the ISO you\u0027re booting from so that the next time you booted from that ISO it could infect the offline system your working on?   \n"
+    },
+    {
+      "id": "142195",
+      "timestamp": "2011-11-20T05:38:48+00:00",
+      "author": "RoyM",
+      "content": "I certainly would like to meet the guru that COULD code that.  \n\nobviously no, it could only run from his infected online OS  \nand then edit/infect an offline ISO that it has access to.  \nFor instance if ISO was on same HD or a plugged in USB.  \n\nBut you gave me a good laugh imagining your scenario.  \n\nAlso if you\u0027ll notice the cross-platform virus\u0027 listed, are all categorized as mild infections.  \nEven still, I will always exercise an ounce of prevention with my critical systems.  \nNo cooties for me please.   \n"
+    },
+    {
+      "id": "142225",
+      "timestamp": "2011-11-20T15:59:14+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Is this to imply the Windows virus could infect an ISO booting from USB?\n- Unless the USB-Device has a write protect switch, the iso file can get infected / damaged.  \n- If the OS uses a writable image in RAM, eighter by FBWF or natively, the OS can get infected.  \n- Read only images in RAM could get infected as well, however for that we would need a virus that specificly targets one of our PE1, since this contellation does not exist anywhere else.   \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142227",
+      "timestamp": "2011-11-20T16:48:59+00:00",
+      "author": "amalux",
+      "content": "\u003e - Unless the USB-Device has a write protect switch, the iso file can get infected / damaged.  \nToo vague, *how* does it get infected? Every instance (extremely rare) of an ISO being infected that I\u0027ve read about (including ones cited by RoyM) have occurred at ISO *creation* from an infected machine. This makes sense to me but the scenario I\u0027ve outlined (please confirm it accurately describes your concerns) seems to fall into the category of the theoretical. If there is an instance of an ISO being infected *while booting from itself* from an infected *offline system,* please give details so we can know how to protect ourselves.  \n\n\u003e - If the OS uses a writable image in RAM, eighter by FBWF or natively, the OS can get infected.  \nHow? I thought you couldn\u0027t retain a viable virus in RAM through reboot, has this changed?  \n\n\u003e - Read only images in RAM could get infected as well, however for that we would need a virus that specificly targets one of our PE1, since this contellation does not exist anywhere else.   \nNeed details how this could occur; if it\u0027s possible it\u0027s a serious security concern but just saying it\u0027s possible doesn\u0027t make it so.   \n"
+    },
+    {
+      "id": "142228",
+      "timestamp": "2011-11-20T16:55:47+00:00",
+      "author": "bodin",
+      "content": "I will try ubuntu, i hope i know how to install it (i have somewhere on my hdd iso file downloaded), i downloaded lps public.iso also. So i will try it if i cant install ubuntu. Tnx everyone   \n"
+    },
+    {
+      "id": "142239",
+      "timestamp": "2011-11-20T19:21:07+00:00",
+      "author": "MedEvil",
+      "content": "Amalux do you understand the concept of security?  \nIt means to prevent things from happening, not saying afterwards: \"Oh that was new, we didn\u0027t prepare for that.\"  \n\n\u003e Too vague, *how* does it get infected? Every instance (extremely rare) of an ISO being infected that I\u0027ve read about (including ones cited by RoyM) have occurred at ISO *creation* from an infected machine.\nAn iso is a file - virii can infect / destoy files - ergo virii can infect / destroy iso on rw medium.  \n\n\u003e seems to fall into the category of the theoretical.\nEverything is theoretical till it happens the first time. Would it comfort you, to know, that you\u0027re the first one, if your bank account gets drained or would you be furous, that nobody did anything, though the risk was known?  \n\n\u003e If there is an instance of an ISO being infected *while booting from itself* from an infected *offline system,*please give details so we can know how to protect ourselves.\nEver heared about BIOS virii? Ok, they are pretty seldom these days, but they are doable and existed at one time.  \nBesides that, executing a single infected file from the infected system is enough, to let the virii run wild on all writable media.  \nOr how about simply mounting a partition, i\u0027m sure that could be used to kick of a virus.  \n\nYou\u0027re playing on the fact, that noone has yet created a virus, that targets specificly computer technicians. But just because it doesn\u0027t exist today, doesn\u0027t mean it won\u0027t tomorrow.  \n\n\u003e How? I thought you couldn\u0027t retain a viable virus in RAM through reboot, has this changed?\nAnd how about inbetween reboots?  \nHe asked for a system, that is secure while being used not be clean after each reboot and infected during use!  \n\n\u003e Need details how this could occur; if it\u0027s possible it\u0027s a serious security concern but just saying it\u0027s possible doesn\u0027t make it so.\nRAM is writable, hence i or a virus can change its content - ergo not safe!  \nBut as i said, ISO in RAM without FBWF, that was only ever done on Boot-Land and isn\u0027t done anymore today. So the virus developer has a very, very small target group. Probably too small for the virus to even survive in the wild.  \n\nBUT....  \nif i knew, Amalux would fix a specific computer with a PE and i would really wanna stick it to him, i might invest the time, to put just the right virus into place. :wink:  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142241",
+      "timestamp": "2011-11-20T19:25:47+00:00",
+      "author": "MedEvil",
+      "content": "\u003e I will try ubuntu, i hope i know how to install it (i have somewhere on my hdd iso file downloaded), i downloaded lps public.iso also. So i will try it if i cant install ubuntu. Tnx everyone\nYou can do whatever you want, but noone suggested to install a Linux. We suggested to use a live system directly. In my case, even from a read only medium like a CD or DVD.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142256",
+      "timestamp": "2011-11-20T21:25:31+00:00",
+      "author": "bodin",
+      "content": "\u003e You can do whatever you want, but noone suggested to install a Linux. We suggested to use a live system directly. In my case, even from a read only medium like a CD or DVD.  \n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nHow to find and how to know that i found live linux? ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \n\nis lps public.iso live linux? xD   \n"
+    },
+    {
+      "id": "142262",
+      "timestamp": "2011-11-20T22:26:00+00:00",
+      "author": "MedEvil",
+      "content": "\u003e How to find and how to know that i found live linux?\nIt is always clearly stated if it is a LiveCD or just an InstallCD.  \nWhen in doubt run the CD on your computer or the iso file in your Virtual Machine. If you get to the desktop without being asked where to install to, you have a LiveCD.  \n\n\u003e is lps public.iso live linux?\nYes. [http://www.spi.dod.mil/lipose.htm](http://www.spi.dod.mil/lipose.htm \"External link\")  \n\nI like SLAX, Knoppix and Kanotix. The later two show off finest german engineering. No Ubuntu flavored, live system, comes even close to them.  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142265",
+      "timestamp": "2011-11-20T23:36:35+00:00",
+      "author": "RoyM",
+      "content": "I fixed link in post #6 above for Website, should be:  \n[http://spi.dod.mil/L...lic_for_DoD.htm](http://spi.dod.mil/LPS-Public_for_DoD.htmAlso \"External link\")  \n\nAlso see here:  \nLPS-Public webpage:  \n[http://spi.dod.mil/lipose.htm](http://spi.dod.mil/lipose.htm \"External link\")  \n\nThere is also this download: \"Have not tried this one yet.\"  \nLPS-Public Deluxe ISO image, version 1.3.1 (11 November 2011).  \nThis version is the same as the LPS-Public edition,  \nbut also includes OpenOffice and Adobe Reader software  \n[http://spi.dod.mil/d...blic_deluxe.iso](http://spi.dod.mil/docs/LPS-1.3.1_public_deluxe.iso \"External link\")  \n\n@bodin, LPS is not meant to be installed, website does not say Live linux,  \nbut I have used this software, and it\u0027s quite nice.  \nyou can run from usb or run from an ISO on hard drive booted from grub.  \nThis software is as it\u0027s name implies, Security.  \n\nYou can use something like this to start an ISO from grub: \"UNTESTED\"  \nOr it can be ran from USB or CD.  \ntitle Lightweight Portable Security kernel 2.6.27.56  \nfind --set-root --ignore-floppies /iso/LPS-1.2.2_public.iso  \nmap /iso/LPS-1.2.2_public.iso (hd32)  \nmap --hook  \nroot (hd32)  \nkernel /vmlinuz loadramdisk\u003d1 initrd\u003dinitrd ramdisk_blocksize\u003d4096 root\u003d/dev/ram0 ramdisk_size\u003d524288 vga\u003d791 console\u003dttyS3  \nchainloader (hd32)  \n\n@MedEvil   \nQuote:  \nEver heared about BIOS virii?  \n\nReply:  \nYes Sir, I have first hand experience, \"VERY NASTY\"  \nlet\u0027s sum it up by saying, Time to buy a new motherboard.  \nAnd because of virus\u0027 just like this, is why I keep my security tight.  \ncurrent prices to replace my current motherboards,  \nare well over $600 last time I checked. (Motherboard Only).  \n\n@amalux   \nQuote:  \nToo vague, how does it get infected? Every instance (extremely rare) of an ISO being infected that I\u0027ve read about  \n(including ones cited by RoyM) have occurred at ISO creation from an infected machine.  \nThis makes sense to me but the scenario I\u0027ve outlined (please confirm it accurately describes your concerns)  \nseems to fall into the category of the theoretical.  \n\nReply  \nYes, I would have to agree that it is rather theoretical, and I have not personally encountered one that  \nbehaves as stated above, and as for Mr. bodin\u0027s application of e-banking, he\u0027s probably pretty safe running  \nfrom an .ISO from HD. \"IF\" he wants the added security, then run it from USB/CD.  \n\nPlease see above where Mr. Bodin states  \n\"Because i am not sure that my lap-top dont have mailware or trojan or something worse,  \nand i started to use e-banking almost everyday \"  \n\"Hopefully there\u0027s also no keyloggers or something else to violate his security,  \nI would hate to see his e-banking get compromised.\"  \n\nAs Mr. MedEvil mentioned above, \"it\u0027s all about security\",  \nPersonally, I am under contract and \"can not/will not\" jeopardize the resources at my disposal.  \n\nI certainly don\u0027t want to be known as the guy that leaked secure information  \nor lost millions because he neglected to properly secure his systems or network.  \n\nDo not underestimate the talent pool available for writing virus\u0027.  \n\nFYI, the steam network was just recently hacked, and steam released a statement to it\u0027s users that  \nsteam accounts, to include passwords, personal sensitive information, as well as bank account  \ninformation may have been compromised and that steam users should immediately change their passwords  \nand that we should pay close attention to our bank accounts.  \n\nI\u0027d hate to be that IT guy.   \n"
+    },
+    {
+      "id": "142270",
+      "timestamp": "2011-11-21T00:33:25+00:00",
+      "author": "amalux",
+      "content": "\u003e Yes, I would have to agree that it is rather theoretical, and I have not personally encountered one that  \n\u003e behaves as stated above, and as for Mr. bodin\u0027s application of e-banking, he\u0027s probably pretty safe running  \n\u003e from an .ISO from HD. \"IF\" he wants the added security, then run it from USB/CD.  \nMy feeling exactly and since nothing more than fear mongering has been offered to substantiate the purported threat, I won\u0027t spend time pursuing a counter measure (for now) :wink:   \n"
+    },
+    {
+      "id": "142273",
+      "timestamp": "2011-11-21T00:55:03+00:00",
+      "author": "TheGnome",
+      "content": "@bodin  \n\nThe german magazine c\u0027t Computertechnik has prepared a system called c\u0027t Bankix that does exactly what you are looking for (I think). It is based on Ubuntu 10.4.  \n\nIt is intended to be installed on a write protectable medium like a cdrom or a flash drive with a writeprotect switch. A SD card in a cardreader works fine also. Additionally you need a flash drive for the home directory to be able to save your preferences and maybe some other data.  \n\nAn article (in german only, sorry) describing it and an ISO file can be downloaded here: [http://www.heise.de/...kix-284099.html](http://www.heise.de/ct/projekte/Sicheres-Online-Banking-mit-Bankix-284099.html \"External link\")  \n\nYou will also need UNetbootin.exe to install it on a flash drive if you\u0027re doing this on a Windows system.  \n\nAs an additional bonus its kernel is modified so the internal hard disks can not be accessed which blocks another path for malware to invade your system.   \n"
+    },
+    {
+      "id": "142313",
+      "timestamp": "2011-11-21T15:18:04+00:00",
+      "author": "MedEvil",
+      "content": "For all those, who believe a iso on a rw medium is safe.  \n\nA little proof of concept, you can do yourself.   \n\nGet yourself a Win7 iso, except for Enterprise. Language or service pack doesn\u0027t matter.  \nOpen the iso and look for sources\\\\ei.cfg  \n\nGet eicfg_removal_utility.zip from here: [http://code.kliu.org/misc/winisoutils/](http://code.kliu.org/misc/winisoutils/ \"External link\")  \n\nRun the tool on the iso and check again for the file.  \n\nRun the tool again and check the file a third time.   \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142319",
+      "timestamp": "2011-11-21T16:36:57+00:00",
+      "author": "amalux",
+      "content": "OK, now I\u0027m scared ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)  \n\nSeriously, you made your point well, unfortunately for you (for all of us); since this works on the UDF, it also applies to RO media like CD-R ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\nWhat a sick world, is nothing sacred? Now I have to look into ways to block UDF access, that assumes it\u0027s possible to actually inject virus code into UDF, something I seriously doubt but still, something to think about.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142323",
+      "timestamp": "2011-11-21T17:25:23+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Seriously, you made your point well, unfortunately for you (for all of us); since this works on the UDF, it also applies to RO media like CD-R ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)\u0027\nInteresting idea.  \nCould a virus be designed in such a way, that it can be installed into an already burned CD-R, by means of a CD-Burner?  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nPS: Amendment to \u0027secure computing\u0027. Run LiveOS on CDVD-R only from player and not from writer! :wink:   \n"
+    },
+    {
+      "id": "142374",
+      "timestamp": "2011-11-22T08:40:42+00:00",
+      "author": "bodin",
+      "content": "MedEvil i hate u know xD...whatever i was thinking that i know about security now i see that i dont know anything...this with CDrw is amazing...   \n"
+    },
+    {
+      "id": "142180",
+      "timestamp": "2011-11-19T19:43:34+00:00",
+      "author": "bodin",
+      "content": "Hi all, i am new member so i am sorry if i put this thread on wrong place.  \n\nI try to install win7 on usb/flash and 10 days i cant do it. I try everything i know, and i could find on google.  \nI found this forum today and as i read more i know less what i want. So...  \n\ni have win7 on my lap top, i wanna install some win (whatever u suggest) on usb so i can disconnect my hdd and use system from usb.   \n\nQuestion:  \nis it better to install win7 or xp? To use fool or lite or smallest installation (i found something like that as question in some thread, i didnt even know till know that this exist)?  \nhow to do all that?   \n"
+    },
+    {
+      "id": "142181",
+      "timestamp": "2011-11-19T21:33:19+00:00",
+      "author": "MedEvil",
+      "content": "Let\u0027s get started with a few questions, so whoever tries to help, has a clue what you wanna do.  \n\n- Are we talking about a USB-HDD or or a USB-Flash-Drive (USB-Stick)?  \n- Is the installed OS, just to run on that one computer or should it be used on several?  \n- What is the intended use of that OS? (Something specific (What?) / Everything the normal OS can do)  \n- How big is your USB-Device? If USB-Flash-Drive: \"How fast is it?\"  \n- How much RAM has your Notebook?  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142183",
+      "timestamp": "2011-11-19T22:03:49+00:00",
+      "author": "sbaeder",
+      "content": "Ad if the hard drive works OK today - WHY do you want to remove it, and use a USB drive? If it is a USB HDD, then you still have the same sort of power issues of a rotating disk drive, and in both cases, USB speed will be slower than direct disk access. I guess it relates to the issue of one computer or many...and as MedEvil also pointed out the uses. Remember that full windows (for full use) is tied to the hardware and activation. A PE version isn\u0027t, but would probably be limited in what it can do.   \n"
+    },
+    {
+      "id": "142186",
+      "timestamp": "2011-11-19T23:12:54+00:00",
+      "author": "bodin",
+      "content": "\u003e Let\u0027s get started with a few questions, so whoever tries to help, has a clue what you wanna do.  \n\u003e\n\u003e - Are we talking about a USB-HDD or or a USB-Flash-Drive (USB-Stick)?\n\nI think on USB Flash drive  \n\n![Posted Image](http://cdn-img-a.infibeam.net/img/2acf123a/Kingston/DT108-16GB/upload/front/Kingston_DT108-16GB_2284f.jpg?hei\u003d270\u0026amp;wid\u003d250\u0026amp;op_sharpen\u003d1)  \n\n\u003e - Is the installed OS, just to run on that one computer or should it be used on several?\n\nI would run it only on one computer, my lap-top  \n\n\u003e - What is the intended use of that OS? (Something specific (What?) / Everything the normal OS can do)\n\u003e Ad if the hard drive works OK today - WHY do you want to remove it, and use a USB drive?   \n\nThis is almost same questions. Because i am not sure that my lap-top dont have mailware or trojan or something worse, and i started to use e-banking almost everyday the idea is when i wanna to pay over my account something to disconnect my lap-top hdd and use OS from flash drive. I would use it only for control my balance and pay over that account. So chrome or mozzila or opera is everthing that my OS from flash will do.  \n\n\u003cbr /\u003e\n\n\u003e - How big is your USB-Device? If USB-Flash-Drive: \"How fast is it?\"\n\n16GB, USB2.0  \n\n\u003e - How much RAM has your Notebook?  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n4GB , Dell inspiron 1750  \n\nI hope this help   \n\n**Edited by bodin, 19 November 2011 - 11:13 PM.**\n"
+    },
+    {
+      "id": "142187",
+      "timestamp": "2011-11-19T23:58:23+00:00",
+      "author": "patsch",
+      "content": "\u003e This is almost same questions. Because i am not sure that my lap-top dont have mailware or trojan or something worse, and i started to use e-banking almost everyday the idea is when i wanna to pay over my account something to disconnect my lap-top hdd and use OS from flash drive. I would use it only for control my balance and pay over that account. So chrome or mozzila or opera is everthing that my OS from flash will do.  \nif malware is your reason I think a win7PE on a CD/DVD is the best choice because your flash drive could also be infected if you install a full functional os on a flash drive   \n"
+    },
+    {
+      "id": "142188",
+      "timestamp": "2011-11-20T00:00:05+00:00",
+      "author": "RoyM",
+      "content": "**For your specific application: e-banking,\nI would use it only for control my balance and pay over that account.**   \n**%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%**   \n\n**See if this would work for you.\nLightweight Portable Security kernel 2.6.27.56 with Firefox**   \n\n**Website: [http://spi.dod.mil/L...lic_for_DoD.htm](http://spi.dod.mil/LPS-Public_for_DoD.htm \"External link\")**   \n\n**current version LPS-Public ISO image, version 1.3.1\n[http://www.spi.dod.m....3.1_public.iso](http://www.spi.dod.mil/docs/LPS-1.3.1_public.iso \"External link\")**   \n\n**It can be run from flash drive,\nYou could even put the .iso on your hard drive and use grub to chainload to it.**   \n"
+    },
+    {
+      "id": "142189",
+      "timestamp": "2011-11-20T00:12:34+00:00",
+      "author": "MedEvil",
+      "content": "If security is the reason, i would also go with some sort of read only medium. (CD / DVD / USB-Stick with write protect switch)  \nAnd since only a browser is required, i would go with a prebuild live Linux. Easy to install, no assembly required and best of all, no need to disconnect the HDD, no matter how infected it is. :wink: Since Windows virii can\u0027t touch a Linux system.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142192",
+      "timestamp": "2011-11-20T00:30:30+00:00",
+      "author": "amalux",
+      "content": "Is this to imply the Windows virus could infect an ISO booting from USB?   \n"
+    },
+    {
+      "id": "142193",
+      "timestamp": "2011-11-20T02:49:25+00:00",
+      "author": "RoyM",
+      "content": "If I may respond amalux:  \n\n\"I personally have never had my ISO\u0027s infected, by practicing safe ISO\u0027ing.\"  \n\n1. I keep my archives in a secure place with a redundant backup.  \n2. Scan regularly with multiple AV\u0027s  \n3. Minimally connect archive machine to network.  \n4. I have never encountered a cross-platform virus personally, but they do exist.  \n\n\\*\\*\\* Known Cross-Platform Virus\u0027 \\*\\*\\*  \n\nVirus.Linux.Bi.a/Virus.Win32.Bi.a (circa 2001)  \nThe virus doesn\u0027t have any practical application - it\u0027s classic Proof of Concept code,  \nwritten to show that it is possible to create a cross platform virus  \nThe code for Bi-A is simple and its only action is to inject text strings into infected files.  \nBi-A poses no immediate risk to users in its present form.  \nThe virus does not work with latest kernel version 2.6.16  \n\nW32.Winux, The virus writer, \"Benny/29A,\" has a web page where he documents  \nW32.Winux along with other viruses he\u0027s created, and shares his thoughts on the joys of writing viruses.  \nInterview with Benny: [http://vxheavens.com/lib/iv001.html](http://vxheavens.com/lib/iv001.htmlMore \"External link\")  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\\*\\*\\* More Info Virus\u0027: \\*\\*\\*  \n\n[http://antivirus.abo...y/aa032801a.htm](http://antivirus.about.com/library/weekly/aa032801a.htm \"External link\")  \n[http://www.pandasecu...1451/W32/Winux/](http://www.pandasecurity.com/homeusers/security-info/31451/W32%2FWinux/ \"External link\")  \nW32/Winux  \nThreat level: Low  \nAlias: W32/Lindose  \nType: Virus  \nEffects: It carries out damaging actions on the affected computer.  \nIt captures certain information entered or saved by the user, with the corresponding threat to privacy.  \nIt causes the loss of information stored on the computer, either specific files or data in general.  \nIt affects the productivity of the computer, the network to which it\u0027s connected or other remote sites.  \nIt carries out actions that decrease the security level of the computer.  \nIt does not spread automatically using its own means.  \nAffected platforms: Windows 2003/XP/2000/NT/ME/98/95  \nDetection updated on: Dec. 10, 2002  \nBrief Description: W32/Winux has the following characteristics:  \nIt affects Linux, Windows 9.x/ME, Windows NT/2000/XP systems.  \nIt is 2132 Bytes in size.  \n\nsadmin worm. It was cross platform between Solaris and Windows  \n[http://www.cert.org/...CA-2001-11.html](http://www.cert.org/advisories/CA-2001-11.htmlKoobface \"External link\")  \n\n[Koobface](http://www.cert.org/advisories/CA-2001-11.htmlKoobface \"External link\") worm infects Windows, but targets Mac OS X and Linux  \n\n[http://www.virusexpe...facebook-users/](http://www.virusexperts.org/security-news/cross-platform-worm-targets-facebook-users/Simile.D \"External link\")  \n\nSimile.D the fourth variant on the Simile virus  \n[http://itmanagement....ndows-Linux.htm](http://itmanagement.earthweb.com/secu/article.php/1315761/Cross-Platform-Chaos-New-Virus-Infects-Windows-Linux.htm \"External link\")  \n\n\\*\\*\\* How to infect ISO \\*\\*\\*  \n\nan ISO is a disc image - it could potentially contain files which could be viruses.  \nIdentical to how a ZIP file (or any other archive file format) could contain an infected file.  \nbut this would require the virus to contain the software necessary to edit the ISO.  \nbecause ISO files store information \"as is\", not compressed or encrypted form,  \nyou just scan an ISO file for well-known sequences of data, that indicate the  \nstart of executable section in an exe file for example, and overwrite it with your data  \nAlthough not a common technique, viruses can attack image file formats   \nsuch as the ISO 9660, which defines a standard file system.  \n\nISO images often have an AUTORUN.INF file on them to automatically launch an  \nexecutable when the CD-ROM is used on Windows, Viruses can take advantage  \nof this file within the image and modify it to run an infected exe.  \nThis technique was developed by the Russian virus writer, Zombie, in early 2002.  \n[http://books.google....ing iso\\\u0026f\u003dfalse](http://books.google.com/books?id\u003dXE-ddYF6uhYC\u0026pg\u003dPT113\u0026lpg\u003dPT113\u0026dq\u003dvirus+infecting+iso\u0026source\u003dbl\u0026ots\u003dGfGLhrUPMY\u0026sig\u003dEIFPPDnPZqO_yT6Hi1abF1DYPi0\u0026hl\u003den\u0026ei\u003d5VnITs-BJYLJiQKG2-XmDw\u0026sa\u003dX\u0026oi\u003dbook_result\u0026ct\u003dresult\u0026resnum\u003d4\u0026sqi\u003d2\u0026ved\u003d0CDgQ6AEwAw#v\u003donepage\u0026q\u003dvirus%20infecting%20iso\u0026f\u003dfalse \"External link\")   \n"
+    },
+    {
+      "id": "142194",
+      "timestamp": "2011-11-20T04:59:49+00:00",
+      "author": "amalux",
+      "content": "So this virus would ostensibly run from the offline system your booting from ISO to fix; it would run a batch to find, edit and repack the ISO you\u0027re booting from so that the next time you booted from that ISO it could infect the offline system your working on?   \n"
+    },
+    {
+      "id": "142195",
+      "timestamp": "2011-11-20T05:38:48+00:00",
+      "author": "RoyM",
+      "content": "I certainly would like to meet the guru that COULD code that.  \n\nobviously no, it could only run from his infected online OS  \nand then edit/infect an offline ISO that it has access to.  \nFor instance if ISO was on same HD or a plugged in USB.  \n\nBut you gave me a good laugh imagining your scenario.  \n\nAlso if you\u0027ll notice the cross-platform virus\u0027 listed, are all categorized as mild infections.  \nEven still, I will always exercise an ounce of prevention with my critical systems.  \nNo cooties for me please.   \n"
+    },
+    {
+      "id": "142225",
+      "timestamp": "2011-11-20T15:59:14+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Is this to imply the Windows virus could infect an ISO booting from USB?\n- Unless the USB-Device has a write protect switch, the iso file can get infected / damaged.  \n- If the OS uses a writable image in RAM, eighter by FBWF or natively, the OS can get infected.  \n- Read only images in RAM could get infected as well, however for that we would need a virus that specificly targets one of our PE1, since this contellation does not exist anywhere else.   \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142227",
+      "timestamp": "2011-11-20T16:48:59+00:00",
+      "author": "amalux",
+      "content": "\u003e - Unless the USB-Device has a write protect switch, the iso file can get infected / damaged.  \nToo vague, *how* does it get infected? Every instance (extremely rare) of an ISO being infected that I\u0027ve read about (including ones cited by RoyM) have occurred at ISO *creation* from an infected machine. This makes sense to me but the scenario I\u0027ve outlined (please confirm it accurately describes your concerns) seems to fall into the category of the theoretical. If there is an instance of an ISO being infected *while booting from itself* from an infected *offline system,* please give details so we can know how to protect ourselves.  \n\n\u003e - If the OS uses a writable image in RAM, eighter by FBWF or natively, the OS can get infected.  \nHow? I thought you couldn\u0027t retain a viable virus in RAM through reboot, has this changed?  \n\n\u003e - Read only images in RAM could get infected as well, however for that we would need a virus that specificly targets one of our PE1, since this contellation does not exist anywhere else.   \nNeed details how this could occur; if it\u0027s possible it\u0027s a serious security concern but just saying it\u0027s possible doesn\u0027t make it so.   \n"
+    },
+    {
+      "id": "142228",
+      "timestamp": "2011-11-20T16:55:47+00:00",
+      "author": "bodin",
+      "content": "I will try ubuntu, i hope i know how to install it (i have somewhere on my hdd iso file downloaded), i downloaded lps public.iso also. So i will try it if i cant install ubuntu. Tnx everyone   \n"
+    },
+    {
+      "id": "142239",
+      "timestamp": "2011-11-20T19:21:07+00:00",
+      "author": "MedEvil",
+      "content": "Amalux do you understand the concept of security?  \nIt means to prevent things from happening, not saying afterwards: \"Oh that was new, we didn\u0027t prepare for that.\"  \n\n\u003e Too vague, *how* does it get infected? Every instance (extremely rare) of an ISO being infected that I\u0027ve read about (including ones cited by RoyM) have occurred at ISO *creation* from an infected machine.\nAn iso is a file - virii can infect / destoy files - ergo virii can infect / destroy iso on rw medium.  \n\n\u003e seems to fall into the category of the theoretical.\nEverything is theoretical till it happens the first time. Would it comfort you, to know, that you\u0027re the first one, if your bank account gets drained or would you be furous, that nobody did anything, though the risk was known?  \n\n\u003e If there is an instance of an ISO being infected *while booting from itself* from an infected *offline system,*please give details so we can know how to protect ourselves.\nEver heared about BIOS virii? Ok, they are pretty seldom these days, but they are doable and existed at one time.  \nBesides that, executing a single infected file from the infected system is enough, to let the virii run wild on all writable media.  \nOr how about simply mounting a partition, i\u0027m sure that could be used to kick of a virus.  \n\nYou\u0027re playing on the fact, that noone has yet created a virus, that targets specificly computer technicians. But just because it doesn\u0027t exist today, doesn\u0027t mean it won\u0027t tomorrow.  \n\n\u003e How? I thought you couldn\u0027t retain a viable virus in RAM through reboot, has this changed?\nAnd how about inbetween reboots?  \nHe asked for a system, that is secure while being used not be clean after each reboot and infected during use!  \n\n\u003e Need details how this could occur; if it\u0027s possible it\u0027s a serious security concern but just saying it\u0027s possible doesn\u0027t make it so.\nRAM is writable, hence i or a virus can change its content - ergo not safe!  \nBut as i said, ISO in RAM without FBWF, that was only ever done on Boot-Land and isn\u0027t done anymore today. So the virus developer has a very, very small target group. Probably too small for the virus to even survive in the wild.  \n\nBUT....  \nif i knew, Amalux would fix a specific computer with a PE and i would really wanna stick it to him, i might invest the time, to put just the right virus into place. :wink:  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142241",
+      "timestamp": "2011-11-20T19:25:47+00:00",
+      "author": "MedEvil",
+      "content": "\u003e I will try ubuntu, i hope i know how to install it (i have somewhere on my hdd iso file downloaded), i downloaded lps public.iso also. So i will try it if i cant install ubuntu. Tnx everyone\nYou can do whatever you want, but noone suggested to install a Linux. We suggested to use a live system directly. In my case, even from a read only medium like a CD or DVD.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142256",
+      "timestamp": "2011-11-20T21:25:31+00:00",
+      "author": "bodin",
+      "content": "\u003e You can do whatever you want, but noone suggested to install a Linux. We suggested to use a live system directly. In my case, even from a read only medium like a CD or DVD.  \n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nHow to find and how to know that i found live linux? ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \n\nis lps public.iso live linux? xD   \n"
+    },
+    {
+      "id": "142262",
+      "timestamp": "2011-11-20T22:26:00+00:00",
+      "author": "MedEvil",
+      "content": "\u003e How to find and how to know that i found live linux?\nIt is always clearly stated if it is a LiveCD or just an InstallCD.  \nWhen in doubt run the CD on your computer or the iso file in your Virtual Machine. If you get to the desktop without being asked where to install to, you have a LiveCD.  \n\n\u003e is lps public.iso live linux?\nYes. [http://www.spi.dod.mil/lipose.htm](http://www.spi.dod.mil/lipose.htm \"External link\")  \n\nI like SLAX, Knoppix and Kanotix. The later two show off finest german engineering. No Ubuntu flavored, live system, comes even close to them.  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142265",
+      "timestamp": "2011-11-20T23:36:35+00:00",
+      "author": "RoyM",
+      "content": "I fixed link in post #6 above for Website, should be:  \n[http://spi.dod.mil/L...lic_for_DoD.htm](http://spi.dod.mil/LPS-Public_for_DoD.htmAlso \"External link\")  \n\nAlso see here:  \nLPS-Public webpage:  \n[http://spi.dod.mil/lipose.htm](http://spi.dod.mil/lipose.htm \"External link\")  \n\nThere is also this download: \"Have not tried this one yet.\"  \nLPS-Public Deluxe ISO image, version 1.3.1 (11 November 2011).  \nThis version is the same as the LPS-Public edition,  \nbut also includes OpenOffice and Adobe Reader software  \n[http://spi.dod.mil/d...blic_deluxe.iso](http://spi.dod.mil/docs/LPS-1.3.1_public_deluxe.iso \"External link\")  \n\n@bodin, LPS is not meant to be installed, website does not say Live linux,  \nbut I have used this software, and it\u0027s quite nice.  \nyou can run from usb or run from an ISO on hard drive booted from grub.  \nThis software is as it\u0027s name implies, Security.  \n\nYou can use something like this to start an ISO from grub: \"UNTESTED\"  \nOr it can be ran from USB or CD.  \ntitle Lightweight Portable Security kernel 2.6.27.56  \nfind --set-root --ignore-floppies /iso/LPS-1.2.2_public.iso  \nmap /iso/LPS-1.2.2_public.iso (hd32)  \nmap --hook  \nroot (hd32)  \nkernel /vmlinuz loadramdisk\u003d1 initrd\u003dinitrd ramdisk_blocksize\u003d4096 root\u003d/dev/ram0 ramdisk_size\u003d524288 vga\u003d791 console\u003dttyS3  \nchainloader (hd32)  \n\n@MedEvil   \nQuote:  \nEver heared about BIOS virii?  \n\nReply:  \nYes Sir, I have first hand experience, \"VERY NASTY\"  \nlet\u0027s sum it up by saying, Time to buy a new motherboard.  \nAnd because of virus\u0027 just like this, is why I keep my security tight.  \ncurrent prices to replace my current motherboards,  \nare well over $600 last time I checked. (Motherboard Only).  \n\n@amalux   \nQuote:  \nToo vague, how does it get infected? Every instance (extremely rare) of an ISO being infected that I\u0027ve read about  \n(including ones cited by RoyM) have occurred at ISO creation from an infected machine.  \nThis makes sense to me but the scenario I\u0027ve outlined (please confirm it accurately describes your concerns)  \nseems to fall into the category of the theoretical.  \n\nReply  \nYes, I would have to agree that it is rather theoretical, and I have not personally encountered one that  \nbehaves as stated above, and as for Mr. bodin\u0027s application of e-banking, he\u0027s probably pretty safe running  \nfrom an .ISO from HD. \"IF\" he wants the added security, then run it from USB/CD.  \n\nPlease see above where Mr. Bodin states  \n\"Because i am not sure that my lap-top dont have mailware or trojan or something worse,  \nand i started to use e-banking almost everyday \"  \n\"Hopefully there\u0027s also no keyloggers or something else to violate his security,  \nI would hate to see his e-banking get compromised.\"  \n\nAs Mr. MedEvil mentioned above, \"it\u0027s all about security\",  \nPersonally, I am under contract and \"can not/will not\" jeopardize the resources at my disposal.  \n\nI certainly don\u0027t want to be known as the guy that leaked secure information  \nor lost millions because he neglected to properly secure his systems or network.  \n\nDo not underestimate the talent pool available for writing virus\u0027.  \n\nFYI, the steam network was just recently hacked, and steam released a statement to it\u0027s users that  \nsteam accounts, to include passwords, personal sensitive information, as well as bank account  \ninformation may have been compromised and that steam users should immediately change their passwords  \nand that we should pay close attention to our bank accounts.  \n\nI\u0027d hate to be that IT guy.   \n"
+    },
+    {
+      "id": "142270",
+      "timestamp": "2011-11-21T00:33:25+00:00",
+      "author": "amalux",
+      "content": "\u003e Yes, I would have to agree that it is rather theoretical, and I have not personally encountered one that  \n\u003e behaves as stated above, and as for Mr. bodin\u0027s application of e-banking, he\u0027s probably pretty safe running  \n\u003e from an .ISO from HD. \"IF\" he wants the added security, then run it from USB/CD.  \nMy feeling exactly and since nothing more than fear mongering has been offered to substantiate the purported threat, I won\u0027t spend time pursuing a counter measure (for now) :wink:   \n"
+    },
+    {
+      "id": "142273",
+      "timestamp": "2011-11-21T00:55:03+00:00",
+      "author": "TheGnome",
+      "content": "@bodin  \n\nThe german magazine c\u0027t Computertechnik has prepared a system called c\u0027t Bankix that does exactly what you are looking for (I think). It is based on Ubuntu 10.4.  \n\nIt is intended to be installed on a write protectable medium like a cdrom or a flash drive with a writeprotect switch. A SD card in a cardreader works fine also. Additionally you need a flash drive for the home directory to be able to save your preferences and maybe some other data.  \n\nAn article (in german only, sorry) describing it and an ISO file can be downloaded here: [http://www.heise.de/...kix-284099.html](http://www.heise.de/ct/projekte/Sicheres-Online-Banking-mit-Bankix-284099.html \"External link\")  \n\nYou will also need UNetbootin.exe to install it on a flash drive if you\u0027re doing this on a Windows system.  \n\nAs an additional bonus its kernel is modified so the internal hard disks can not be accessed which blocks another path for malware to invade your system.   \n"
+    },
+    {
+      "id": "142313",
+      "timestamp": "2011-11-21T15:18:04+00:00",
+      "author": "MedEvil",
+      "content": "For all those, who believe a iso on a rw medium is safe.  \n\nA little proof of concept, you can do yourself.   \n\nGet yourself a Win7 iso, except for Enterprise. Language or service pack doesn\u0027t matter.  \nOpen the iso and look for sources\\\\ei.cfg  \n\nGet eicfg_removal_utility.zip from here: [http://code.kliu.org/misc/winisoutils/](http://code.kliu.org/misc/winisoutils/ \"External link\")  \n\nRun the tool on the iso and check again for the file.  \n\nRun the tool again and check the file a third time.   \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142319",
+      "timestamp": "2011-11-21T16:36:57+00:00",
+      "author": "amalux",
+      "content": "OK, now I\u0027m scared ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)  \n\nSeriously, you made your point well, unfortunately for you (for all of us); since this works on the UDF, it also applies to RO media like CD-R ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\nWhat a sick world, is nothing sacred? Now I have to look into ways to block UDF access, that assumes it\u0027s possible to actually inject virus code into UDF, something I seriously doubt but still, something to think about.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142323",
+      "timestamp": "2011-11-21T17:25:23+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Seriously, you made your point well, unfortunately for you (for all of us); since this works on the UDF, it also applies to RO media like CD-R ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)\u0027\nInteresting idea.  \nCould a virus be designed in such a way, that it can be installed into an already burned CD-R, by means of a CD-Burner?  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nPS: Amendment to \u0027secure computing\u0027. Run LiveOS on CDVD-R only from player and not from writer! :wink:   \n"
+    },
+    {
+      "id": "142374",
+      "timestamp": "2011-11-22T08:40:42+00:00",
+      "author": "bodin",
+      "content": "MedEvil i hate u know xD...whatever i was thinking that i know about security now i see that i dont know anything...this with CDrw is amazing...   \n"
+    },
+    {
+      "id": "142381",
+      "timestamp": "2011-11-22T09:24:22+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Could a virus be designed in such a way, that it can be installed into an already burned CD-R, by means of a CD-Burner?  \nYes.  \nGenerally speaking Cd writers (unlike the common cd readers) have upgradable firmware, so in theory it is possible to store a virus in it, and have it write a few bytes to the written CD on-the-fly. (not unlike a BIOS virus)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "142398",
+      "timestamp": "2011-11-22T15:24:03+00:00",
+      "author": "RoyM",
+      "content": "Very good point there Mr. Wonko, and hardware BIOS is not something usually scanned by AV\u0027s.   \n"
+    },
+    {
+      "id": "142403",
+      "timestamp": "2011-11-22T15:44:33+00:00",
+      "author": "MedEvil",
+      "content": "Ok, that would be another way of doing it. ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)  \n\nMy idea was more along the lines, that a PE is cleanly burned to a CDVD-RW.   \nNow the PE is used on a computer, which has only a burner and get\u0027s infected with the very nasty Wonko virus.  \nThe Wonko virus can for sure demage/destroy the CDVD. But can it actually add/embed itself into the CDVD?  \n\nIf the session wasn\u0027t closed, that\u0027s obviously no problem.   \nIf only one specific file, which has by chance the correct original byte order for this hack, is targeted, it is at least conceivable, imo.  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142410",
+      "timestamp": "2011-11-22T15:56:02+00:00",
+      "author": "RoyM",
+      "content": "(very nasty Wonko virus)  \n\nVery funny stuff MedEvil, I was actually LOL\u0027ing not just typing it.  \n\nI\u0027ve heard of this rampant nasty little bug before, I\u0027d hate to catch that one.   \n"
+    },
+    {
+      "id": "142428",
+      "timestamp": "2011-11-22T17:41:13+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e My idea was more along the lines, that a PE is cleanly burned to a CDVD-RW.  \n\u003e Now the PE is used on a computer, which has only a burner and get\u0027s infected with the very nasty Wonko virus.  \n\u003e The Wonko virus can for sure demage/destroy the CDVD. But can it actually add/embed itself into the CDVD?  \nIn theory yes, if the media is actually writable (CDRW and the like).  \nNothing prevents to load the whole CD to RAM, then re-write it, but I presume that with the right code it is also possible to modify a small part of the CDRW. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\nThis may include not only CDRW, but also normal writable CD\u0027s if the session has not been finalized (i.e. it is a multi-session CD). (admittedly a quite rare event, but still in pure theory, possible, I have no actual idea if making such a mixed mode bootable CD is possible at all ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)).  \n\nAnother interesting point (pure theory) can actual bytes or bits be changed on optical media? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \nI mean how exactly is a 0 or a 1 (or whatever) represented in the CD \"groove\"?  \nIs it possible to overwrite a 0 with a 1 or viceversa?  \nSome (partially unlrelated ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)) matter for thought:  \n[http://ece.wpi.edu/\\~hammouri/CD/](http://ece.wpi.edu/~hammouri/CD/ \"External link\")  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "142448",
+      "timestamp": "2011-11-22T19:43:11+00:00",
+      "author": "amalux",
+      "content": "This was the line that jumped out at me, it seems counter-intuitive and gives a whole new meaning to the term \u0027read-only\u0027.  \n\u003e Normally, authoring software will master a UDF file system in a batch process and write it to optical media in a single pass. But when packet writing to rewriteable media, such as CD-RW, UDF allows files to be created, deleted and changed on-disc just as a general-purpose filesystem would on removable media like floppy disks and flash drives. This is also possible on write-once media, such as CD-R, but in that case the space occupied by the deleted files cannot be reclaimed (and instead becomes inaccessible).\n[http://en.wikipedia....sal_Disk_Format](http://en.wikipedia.org/wiki/Universal_Disk_Format \"External link\")  \n\n\u003cbr /\u003e\n\nSince the only proof of concept given by MedEvil dealt with writing a bit or two to UDF, it seems CD-R is equally susceptible.   \n"
+    },
+    {
+      "id": "142450",
+      "timestamp": "2011-11-22T19:50:46+00:00",
+      "author": "MedEvil",
+      "content": "Oops, sorry typed CDVD-RW but meant CDVD-R. Cause a CDVD-RW is rather obviously to alter, as one can delete and write.  \n\nI think it wouldn\u0027t even be necessary to load the whole content to RAM.  \nIf one writes 100MB data on a brand new CDVD-RW, one can see where the data is. A quick erase does not change that look of the CDVD. After a full erase, the CDVD will look like it was filled before to the rim.  \n\nRegarding open session CDVD.  \nI had actually used that before. Was a Live Linux from a russian developer, which featured that very ingenius idea. It was an open session CD, so one could set it up, on first run, to ones liking and click save, to have a personalised Live Linux.  \n\nIf i remember right (And i doubt i do! :wink:), CD don\u0027t actuall encode 0 and 1 but places where a series of one of them changes to the other. It\u0027s more like: \"1s start here\" - \"Now start 0s\".  \nBut no matter what the exact tway is, a unwritten spot can be written but a written spot can\u0027t be unwritten.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142454",
+      "timestamp": "2011-11-22T20:03:39+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Since the only proof of concept given by MedEvil dealt with writing a bit or two to UDF, it seems CD-R is equally susceptible.\nSorry Amalux, must have been brain dead. You wrote UDF the whole time and understood ISO. ![:crazy:](http://reboot.pro/public/style_emoticons/default/crazy.gif)  \n\nYes, UDF can be changed even on a CDVD-R media because, just like a open multisession CDVD, UDF file systems are not read only as a whole. Only the part that is already used, can\u0027t be reused. It is marked as deleted and the new data is added in free space.  \nOnce the media is filled to the rim, no further adding of content is possible, but files might still can be deleted / undeleted, if the file table isn\u0027t full yet.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142463",
+      "timestamp": "2011-11-22T21:04:06+00:00",
+      "author": "amalux",
+      "content": "Right, this stuff can make your head spin \u0027round for sure :wink:  \n\nMy only question, since you raised it as a possibility, has been; is it possible to infect an ISO (in writable drive) while booted from it (in use). This would present a serious security threat that would need to be addressed. Your proof of concept involved a tool (eicfg removal tool) which \"works by toggling the deletion bit in the UDF file table, eliminating the need for unpacking and rebuilding the ISO\". Since it is equally possible to do this with CD-R media, it seems your point was moot.  \n\nIt is still my assertion that booting from an ISO is safe (even on writable drive) since attempting to mount, re-write and save the (now infected) ISO would result in crashing the OS your running from. Even if the image completely resides in RAM, you would still be attempting to re-write the image your working from and why bother? If it\u0027s possible to write a virus to RAM, then you don\u0027t need an ISO image to infect, just write the virus in RAM to infect the system on reboot, something I always believed to be impossible since RAM is cleared on reboot. Writing to the BIOS chip would be more likely but is outside the discussion here since it has nothing to do with ISOs vs CD-Rs.  \n\nI can (just barely) imagine a scenario where, while your working from an image in RAM, the virus secretly mounts and rewrites the inactive ISO residing on writable UFD/HDD; this might bypass the usual checks against writing to the drive directly but then this could only affect the system on a subsequent boot of the (now infected) ISO. I seriously doubt any lowlife virus writer could possess this degree of delayed gratification but even so, a quick hash check should root out this possibility before next boot (something I might actually implement).  \n\nI think the real discussion should be writable media vs read-only (the ISO is neither here nor there) and *there* , I agree, better to use RO media like a UFD with RO switch or at least scan it after every use, good idea anyway.   \n"
+    },
+    {
+      "id": "142470",
+      "timestamp": "2011-11-22T23:00:55+00:00",
+      "author": "MedEvil",
+      "content": "Well... :wink:  \nRAM is not necessarily cleared after a reset. There exist reset proof ramdisks, for instance.  \n\nYour point of a CD-R in use as systemdrive. Yes that would prevent a scenario like: making an image in RAM - modifying it - burning it back to CDVD. But this is impossible for CDVD-R anyway.  \n\nAn ISO image on the other hand would not be protected by beeing used, since it would not need to be unmounted to be changed. The virus could change any file as long as the new file does not require more storage space than the original.  \nA simple binary patcher can do that, if you like to test yourself.  \n\nThe theoretical possibility, that also a CDVD-R could get infected by a virus, would be highly tricky.  \nCause the virus would had to work with the limitation in which data on a CDVD-R can be changed.   \nThere can only pits be added, but not removed!  \nThis limitation would require the virus to target one specific file, which has a usable byte structure.  \n\nDamaging the CDVD-R by adding senseless pits, should be no problem.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142472",
+      "timestamp": "2011-11-22T23:07:46+00:00",
+      "author": "MedEvil",
+      "content": "\u003e or at least scan it after every use\nNot really a secure solution, as no Anti-Virus company claims a higher efficency than 97%.  \nGiven the high number of known virii, 3% is a pretty big number they admit to miss and i\u0027m sure they lie about that too. :wink:  \n\nIt\u0027s better than nothing, but secure it aint.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142475",
+      "timestamp": "2011-11-23T00:08:26+00:00",
+      "author": "amalux",
+      "content": "\u003e An ISO image on the other hand would not be protected by beeing used, since it would not need to be unmounted to be changed. The virus could change any file as long as the new file does not require more storage space than the original.  \n\u003e A simple binary patcher can do that, if you like to test yourself.  \nShow me an example of real editing, not just flipping bits in UDF; I can find no evidence of virus infecting UDF. Afaik, the closest you could get to automated editing of ISO is here:  \n[http://www.asylumnat.../post-2775.html](http://www.asylumnation.com/blogs/amerikanjunkie/post-2775.html \"External link\")  \n\nIt\u0027s far more likely a virus would just destroy the ISO then produce something useful to its ends. In this case, no harm done to system. I have loaded many ISOs in machines crawling with nasties; often where any exposed file is immediately corrupted but never any damage to the ISO. I\u0027m not saying it\u0027s impossible, there\u0027s probably very little beyond the scope of the *possible* ; just that I\u0027m not worried about it right now. I have always felt a sense of security in knowing that, booting from ISO (or CD for that matter), I\u0027m relatively safe from whatever is infecting the host machine, it is off-line after all and afaik, no virus can remain active in a frozen system. The only real danger would be copying back infected files to the host when rebooted but this can be done from any platform. I just don\u0027t see the advantage to using CD-R over ISO/RAM, especially with all it\u0027s known limitations; if I\u0027m proven wrong, what\u0027s the worst that happens, I re-infect an already infected machine?   \n"
+    },
+    {
+      "id": "142493",
+      "timestamp": "2011-11-23T09:43:55+00:00",
+      "author": "PioHS",
+      "content": "[http://technet.micro...893(WS.10).aspx](http://technet.microsoft.com/en-us/library/ee731893(WS.10).aspx \"External link\")   \n"
+    },
+    {
+      "id": "142494",
+      "timestamp": "2011-11-23T09:47:28+00:00",
+      "author": "PioHS",
+      "content": "[http://msdn.microsof...bedded.60).aspx](http://msdn.microsoft.com/en-us/library/ff793735(v\u003dWinEmbedded.60).aspx \"External link\")   \n"
+    },
+    {
+      "id": "142498",
+      "timestamp": "2011-11-23T10:18:06+00:00",
+      "author": "Wonko the Sane",
+      "content": "Hey, we are just doing \"fantasy\" work here. :smile:  \n\nA CD/DVD has so many unused space that it is a possibility that you find there some space to write rather \"long\" pieces of code.  \nThe issue is only \"how to have those bytes read and executed\",  \n\nAn example (remember this is \"fantasy\" still) is BOOTFIX.BIN, it is executed normally everytime the PE 1.x disc is booted and it has \"direct access\" (read only) to the internal hard disk MBR well before any \"protected mode\" thingy is started.  \n\nWhy isn\u0027t it possible to have it load some code from the CD itself or even write it (self-deploy itself) to (say) the first normally unused first sectors of the CD?  \n\nMy previous (still largely theoretical :wink:) approach of modifying the CD/DVD burner firmware is more elegant, as basically you can be infected by \\*anything\\* (meaning CD/DVD, executed file, Internet browsing, etc.) and once you are affected, every single CD/DVD inserted there will be re-written/modified..... ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "142507",
+      "timestamp": "2011-11-23T12:08:52+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Show me an example of real editing, not just flipping bits in UDF; I can find no evidence of virus infecting UDF. Afaik, the closest you could get to automated editing of ISO is here:  \n\u003e [http://www.asylumnat.../post-2775.html](http://www.asylumnation.com/blogs/amerikanjunkie/post-2775.html \"External link\")\nThere is a fellow, that goes by the name of Hiren, who distributes a CD strangely in an archive. :wink: Why? Because the archive contains next to the ISO image a program, which can patch the ISO to another keyboard layout.   \n\n\u003e It\u0027s far more likely a virus would just destroy the ISO then produce something useful to its ends.\nLike i said before, there are no virii known, to target specificly computer technicians.  \nThe closest to that, i\u0027ve ever seen, are virii, who stop the user from downloading, installing or running anti-virus software.   \n\nRegarding you\u0027re feeling safe.  \nWhen nuclear power plants were first introduced, it was said, that they are so secure, that only 1 desaster every 10000 years is likely.  \n3 mile island - Tschernobyl - Fukushima - Wow call my Methusalem, i\u0027m between 20000 and 30000 years old! :wink:  \n\nI trust in Murphys law. Everything that can go wrong, will go wrong.   \n"
+    },
+    {
+      "id": "142508",
+      "timestamp": "2011-11-23T12:18:24+00:00",
+      "author": "MedEvil",
+      "content": "\u003e A CD/DVD has so many unused space that it is a possibility that you find there some space to write rather \"long\" pieces of code.  \n\u003e The issue is only \"how to have those bytes read and executed\",\nThat is actually no problem. If there is enough unused space to store the virus, all one needs to do is, bend the pointer in the directory from another file to the virus and one\u0027s in business. Finding a suitable pointer for such a hack should be rather trivial compared to actually finding a file in which the virus could be embedded.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142513",
+      "timestamp": "2011-11-23T12:59:24+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e That is actually no problem. If there is enough unused space to store the virus, all one needs to do is, bend the pointer in the directory from another file to the virus and one\u0027s in business. Finding a suitable pointer for such a hack should be rather trivial compared to actually finding a file in which the virus could be embedded.  \n\u003e\nThen, you have at least the first ~~17~~ **16** sectors available in most cases, ~~17~~ **16** x 2048 i.e. ~~34816~~ **32768** bytes to store the code.  \nThere is also the \"overburn area\". ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)  \nBut this wouldn\u0027t \"pass\" MD5 hashing.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "142519",
+      "timestamp": "2011-11-23T13:44:16+00:00",
+      "author": "MedEvil",
+      "content": "I doubt that the first 17 sectors could be used, as they are not only outside the file system, but negative outside the file system. The overburn area might also does us no good. In a finalized CDVD this area is outside the filesystem. No idea if a pointer to such a point would even be accepted.  \nOn the other hand, when we are talking boot files here, we\u0027re might in luck as the BIOS does almost no checking.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142528",
+      "timestamp": "2011-11-23T14:24:31+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I doubt that the first 17 sectors could be used, as they are not only outside the file system, but negative outside the file system. The overburn area might also does us no good. In a finalized CDVD this area is outside the filesystem. No idea if a pointer to such a point would even be accepted.  \n\u003e On the other hand, when we are talking boot files here, we\u0027re might in luck as the BIOS does almost no checking.  \nWell, yes and no.  \nThe first ~~17~~ **16** sectors are accessible (of course they are outside the file-system), allright by direct access, after all we are talking theoretically of a virus, something that will be probably written in assembler and that will use not a filesystem kind of access.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "142531",
+      "timestamp": "2011-11-23T14:54:13+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Well, yes and no.  \n\u003e The first 17 sectors are accessible (of course they are outside the file-system), allright by direct access, after all we are talking theoretically of a virus, something that will be probably written in assembler and that will use not a filesystem kind of access.\nIt would need to be in the file system, if it should be loaded by the starting OS or if that pointer bending hack is done.  \nWhat you\u0027re proposing is more like a boot sector virus, i think.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142534",
+      "timestamp": "2011-11-23T15:12:03+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e It would need to be in the file system, if it should be loaded by the starting OS or if that pointer bending hack is done.  \nWhy?  \nI mean, in a fully booted NT system, provided your CDROM gets drive letter D:, what you get with:  \n\n```\ndsfo .D: 0 34816 C:myfirstCDsectors.bin\n```\n\nBTW, I was wrong, it\u0027s 16 empty sectors, i.e. 32.768 bytes available, correcting previous posts :blush:  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "142550",
+      "timestamp": "2011-11-23T16:28:07+00:00",
+      "author": "cdob",
+      "content": "\u003e Then, you have at least the first ~~17~~ **16** sectors available in most cases\nDo we use use CD-R media still?  \nFirst 16 sectors are part of ISO image. The writer does write first 16 sectors too. It\u0027s not possible, to overwrite sectors.  \n\nA example: boot catalog at sector 15:  \n[http://www.msfn.org/...et-of-floppies/](http://www.msfn.org/board/topic/147545-create-a-bootable-cddvd-from-a-set-of-floppies/ \"External link\")  \n\nGiven a CD-R, pad ISO image to whole media. Write all sectors at CD-R.  \n\nAvoid Packet writing media like DVD+RW and DVD-RAM: a single sector can be overwritten  \n\nEditing is ISO9660 or ISO13346 (UDF) image is simple.  \nI\u0027m using a hexeditor to change menu.lst inside a ISO9660 image.  \n\n\u003cbr /\u003e\n\nContrary UEFI is more likely target for malicious software.   \n"
+    },
+    {
+      "id": "142567",
+      "timestamp": "2011-11-23T17:47:59+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Do we use use CD-R media still?  \n\u003e First 16 sectors are part of ISO image. The writer does write first 16 sectors too.\nYes, we do and it was never a question if the first 16 or 17 sectors are part of the ISO image, just if they are part of the CD, which can be reached from the file catalog.  \n\n\u003e It\u0027s not possible, to overwrite sectors.\nWhy not? One can\u0027t remove pits, but one should be able to add some. That\u0027S how UDF on CD-R works. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\n\u003e Why?  \n\u003e I mean, in a fully booted NT system, provided your CDROM gets drive letter D:\\\\, what you get with:  \n\u003e\n\u003e ```\n\u003e dsfo \\\\.\\D:\\ 0 34816 C:\\myfirstCDsectors.bin\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\nThe question is not if the virus can be written there, but if it can also start from there.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142568",
+      "timestamp": "2011-11-23T18:35:43+00:00",
+      "author": "Wonko the Sane",
+      "content": "I haven\u0027t really read, let alone understood ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif) this (not that necessarily IF I read it I will be able to understend it ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)):  \n[http://www.laesiewor...Storage_CD.html](http://www.laesieworks.com/digicom/Storage_CD.html \"External link\")  \nbut it seems to me like one of the very few place where to find some relevant info. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "142571",
+      "timestamp": "2011-11-23T19:06:38+00:00",
+      "author": "MedEvil",
+      "content": "Ok, so i did remember things a bit correct. :wink:   \nWhat is actually read, are the beginning and end of the pits, just what it exactly means, was a bit scrambled up in my head. :wink:  \n\nThough there is one part of the description, that seems wrong to me.  \n\"On the land are many \"pits\" written in a spiral-shaped track.\"  \nI could have sworn, that the pits are arranged in rings, just like on a Floppy or HDD and not like in a record.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142572",
+      "timestamp": "2011-11-23T19:12:02+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I could have sworn, that the pits are arranged in rings, just like on a Floppy or HDD and not like in a record.  \n\nNo, no, they are in a spiral allright.  \n[http://www.lightbyte...piralLength.htm](http://www.lightbyte.com/SpiralLength.htm \"External link\")  \n\nAnd a same piece of data can seemingly occupy different lengths of the spiral:  \n[http://www.laesiewor...Storage_CD.html](http://www.laesieworks.com/digicom/Storage_CD.html \"External link\")  \n\u003e \\* Since the channel bit rate is held constant (4321800 channel bit/sec \u003d 75 blocks/sec \\* 98 frames/block \\* 588 channel bits/frame.), then the density of the bits must vary with recording velocity. In other words, those 4321800 channel bits that encode 1 second of audio could be stored in as little as 1.2 linear meters or as much as 1.4 linear meters.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "142573",
+      "timestamp": "2011-11-23T19:12:17+00:00",
+      "author": "cdob",
+      "content": "\u003e it was never a question if the first 16 or 17 sectors are part of the ISO image, just if they are part of the CD, which can be reached from the file catalog.\nISO9660 9.1.3 Location of Extent uses a absolute pointer to whole media.  \nYes, first sectors are available by file catalog.  \n\nContrary Ecma 119 6.2.1 The System Area shall occupy the Logical Sectors with Logical Sector Numbers 0 to 15. The System Area shall  \n\u003e be reserved for system use. Its content is not specified by this Standard.\nA file system driver may read sectors 0 to 15 or ignore them.  \n\n\u003e One can\u0027t remove pits, but one should be able to add some.\nNo user software can access a CD drive directly. Only drive firmware can access a CD.  \nA user software may ask the drive firmware. The drive firmware does request or deny the request.  \nAs far as I know, no drive firmware allows to add single bits to a written sector at CD-R.  \n\n\u003e That\u0027S how UDF on CD-R works.\n[http://www.pctechgui...udf-file-system](http://www.pctechguide.com/cd-rw/cdr-rw-udf-file-system \"External link\")  \nDosn\u0027t physical sectors are written once?  \nUDF on CD-R requires to prepare the CD-R first.  \nYou may delete data or change data, but physically sectors are added in both cases.  \nWrite all sectors at a UDF on CD-R once yourself. Data can\u0027t be altered anymore.  \n\nDoes anybody uses UDF packet writing boot media so far?  \n\nWindows Vista and later uses mixed mode ISO9660 UDF.  \nOS driver can\u0027t change files at physical sector level.  \nYou may add data at end of physical media.   \n"
+    },
+    {
+      "id": "142575",
+      "timestamp": "2011-11-23T19:59:03+00:00",
+      "author": "MedEvil",
+      "content": "\u003e And a same piece of data can seemingly occupy different lengths of the spiral\nYes, there used to be two differnt ways to read/write CD. Constant angular velocity \u0027won\u0027. The other was constant linear velocity.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142577",
+      "timestamp": "2011-11-23T20:32:00+00:00",
+      "author": "MedEvil",
+      "content": "\u003e ISO9660 9.1.3 Location of Extent uses a absolute pointer to whole media.  \n\u003e Yes, first sectors are available by file catalog.\nOk, 1 point for Wonko! :wink:  \n\n\u003e No user software can access a CD drive directly. Only drive firmware can access a CD.  \n\u003e A user software may ask the drive firmware. The drive firmware does request or deny the request.\nSeems more and more like this general all purpose Wonko virus, will have to target a specific Amalux. ![:rofl:](http://reboot.pro/public/style_emoticons/default/roll1.gif)  \n\nSo firmware has to be infected, to allow the virus to infect burned CDVD and while at it, it can also infect all newly created CDVD.  \n\n\u003e Dosn\u0027t physical sectors are written once?  \n\u003e UDF on CD-R requires to prepare the CD-R first.\nDid you notice, that contradicted yourself here?  \nIf all sectors can only be written once, how does on go about formatting a CD for UDF?  \nAlso maybe interesting to know, a blank CD-R isn\u0027t completely 100% blank. The groove already exists on it. And that\u0027s nothing but precreated pits.  \n\n\u003e You may delete data or change data, but physically sectors are added in both cases.\nYep, i think i have explained, how UDF works further above. Maybe wasn\u0027t quite clear.  \n\nRegarding, overwriting of sectors not possible.  \n\u003e A quick erase is meant to be quick (duh ...) and therefore the disc\u0027s main data area is left unaffected, or at least mainly unaffected. All (or most) data remains present on the disc. What changes is the disc\u0027s structures again, on the inside rings of the media. All references to tracks and session are deleted and the media is left in a state which seems like empty media for a CD/DVD writer (in most cases ... read further).\nhttp://www.smart-projects.net/tips.php?tips_page\u003d9  \n\nGuess we are doing it on a regular basis. Just not with CDVD-R. :wink:  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142582",
+      "timestamp": "2011-11-23T21:29:58+00:00",
+      "author": "amalux",
+      "content": "\u003e Seems more and more like this general all purpose Wonko virus, will have to target a specific Amalux. ![:rofl:](http://reboot.pro/public/style_emoticons/default/roll1.gif)  \nYes but now I\u0027ll be watching for him! ![:devil:](http://reboot.pro/public/style_emoticons/default/devil.gif) ![:raygun:](http://reboot.pro/public/style_emoticons/default/raygun.gif)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142583",
+      "timestamp": "2011-11-23T22:00:06+00:00",
+      "author": "cdob",
+      "content": "\u003e So firmware has to be infected, to allow the virus to infect burned CDVD and while at it, it can also infect all newly created CDVD.\nAs for a CD-R firmware offers hardware possibilities already.  \nNo hardware is designed to change a single bit.  \nMost likely you have to change hardware first and firmware next.  \n\n\u003e Did you notice, that contradicted yourself here?  \n\u003e If all sectors can only be written once, how does on go about formatting a CD for UDF?\nWell what\u0027s formating a CD-R? A CD-R is not a hard disk.  \nFormat is different at different media and different operating systems.  \nIt\u0027s writing fixed pattern at CD-R. That\u0027s marker at the spiral, a laser may find this pattern later.  \nThis fixed pattern are written once.  \nThis reduce much user storage space.  \n\n\u003e Regarding, overwriting of sectors not possible.  \n\u003e [http://www.smart-pro...php?tips_page\u003d9](http://www.smart-projects.net/tips.php?tips_page\u003d9 \"External link\")  \n\u003e Guess we are doing it on a regular basis. Just not with CDVD-R.\nYes, a CD-RW can be overwritten.  \n\nDo not mix CD-R, CD-RW, DVD-R, DVD-RW, DVD+R, DVD+RW or DVD-RAM.  \nAll are different cases.   \n"
+    },
+    {
+      "id": "142585",
+      "timestamp": "2011-11-23T23:28:23+00:00",
+      "author": "MedEvil",
+      "content": "\u003e As for a CD-R firmware offers hardware possibilities already.  \n\u003e No hardware is designed to change a single bit.  \n\u003e Most likely you have to change hardware first and firmware next.\ncdob, i know for a fact, that you\u0027re a smart guy. Why do you play dumb now?  \n\nIf i can\u0027t write a single bit. I write a whole sector, which is empty except for 1 bit.  \nOr did you mean, that given the way data is written to the CD, i can\u0027t change 1 bit, but have to change at least 2?  \n\n\u003cbr /\u003e\n\n\u003e This fixed pattern are written once.  \n\u003e This reduce much user storage space.\nBut those markers can\u0027t possibly each take up a whole sector. The loss in capacity isn\u0027t big enough for that, imo.  \n\n\u003e Yes, a CD-RW can be overwritten.  \n\u003e\n\u003e Do not mix CD-R, CD-RW, DVD-R, DVD-RW, DVD+R, DVD+RW or DVD-RAM.\nYes CD-RW are different, in the way, that they can be deleted, while CD-R can not.  \nBut you missed my point!  \nOn a quick erased CD-RW, non empty sectors get overwritten. So if it works there, it should be possible on a CD-R as well, just that the two writes would overlay to form a new data pattern, instead of the new one replacing the old one.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142604",
+      "timestamp": "2011-11-24T09:29:15+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Yes but now I\u0027ll be watching for him! ![:devil:](http://reboot.pro/public/style_emoticons/default/devil.gif) ![:raygun:](http://reboot.pro/public/style_emoticons/default/raygun.gif)  \nRemember that virii are - *by design* - sneaky :wink::  \n\u003chttp://reboot.pro/8092/\u003e  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "142623",
+      "timestamp": "2011-11-24T12:15:14+00:00",
+      "author": "MedEvil",
+      "content": "Wonko the sneaky. ![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142638",
+      "timestamp": "2011-11-24T16:20:43+00:00",
+      "author": "amalux",
+      "content": "\u003e Remember that virii are - *by design* - sneaky :wink::  \nBring it on ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)  \n\n"
+    },
+    {
+      "id": "142665",
+      "timestamp": "2011-11-24T20:11:37+00:00",
+      "author": "cdob",
+      "content": "\u003e Why do you play dumb now?\nAsking the next logical step: after firmware there is hardware. Can hardware solve the request?  \nI don\u0027t build CD burners. Manufacturer knowledge is required.  \n\n\u003e If i can\u0027t write a single bit. I write a whole sector, which is empty except for 1 bit.  \n\u003e Or did you mean, that given the way data is written to the CD, i can\u0027t change 1 bit, but have to change at least 2?\nThere are no end user data stored at hardware level.  \n\nCompare CD-ROM ECMA-130, 19.1 8-to-14 Encoding  \n[http://www.ecma-inte...ds/Ecma-130.htm](http://www.ecma-international.org/publications/standards/Ecma-130.htm \"External link\")  \n[http://en.wikipedia....teen_modulation](http://en.wikipedia.org/wiki/Eight-to-fourteen_modulation \"External link\")  \n[http://www.s-c-h-m-i...el_8/index.html](http://www.s-c-h-m-i-d-t.net/enrico/arbeiten/cd/Kapitel_8/index.html \"External link\")  \n\n8 to 14 encoding was introduced because of hardware limitation.  \nIt\u0027s rather difficult to add a byte as a single bits in a existing 8-to-14 encoding.  \n\nAnd there is error detection and correction.  \nYou have to set 14.3 EDC field to match changed data.  \nOr a adjusted firmware to ignore EDF field.  \n\nCD-R Orange Book is licenced by manufacturer and can be purchased from manufacturer.  \n[http://www.ccs.neu.e.../info/info.html](http://www.ccs.neu.edu/home/bchafy/cdb/info/info.html \"External link\")  \n[https://www.ip.phili...ew\\\u0026id\u003d21\\\u0026part\u003d2](https://www.ip.philips.com/services/?module\u003dIpsLicenseProgram\u0026command\u003dView\u0026id\u003d21\u0026part\u003d2 \"External link\")  \n\nNo optical drive is designed to assign at bit level.  \nIt\u0027s designed to access blocks of data, several sectors.  \nA block may shift a small space at CD location, exact location at CD dosn\u0027t matter.  \nHardware does find block later, read a whole block.  \nAnd drive firmware interpret block and returns a sector.  \n\nHow accurate is a end user hardware?  \nIt\u0027s technical possible to assign exactly a written space matching at bit level?  \nTo overwrite at bit level, you have to position at bit level first.  \nI doubt it\u0027s technically possible to position at bit accuracy, given a end user drive.  \n\nAre we at a therotical, technical, philsophical or theological level?  \n\nLet\u0027s compare:  \nGiven a overwritten mechanical hard disk.  \nIt\u0027s possible to read previous data?  \n\n\u003cbr /\u003e\n\n\u003e But those markers can\u0027t possibly each take up a whole sector.  \n\u003e The loss in capacity isn\u0027t big enough for that, imo.\n\n[http://www-soft.uni-...SH/DIRECTCD.PDF](http://www-soft.uni-regensburg.de/soft/hardware/STORAGE/ADAPTEC/DIRECTCD/LOCALE/ENGLISH/DIRECTCD.PDF \"External link\")  \n\u003e Formatted CD-RW discs have about 530 MBytes of available space; formatted CD-R discs can store up to about 620 MBytes of data.\nThat\u0027s about 30 Mbytes at formatted CD-R.  \n\nDid you ever user packet writing CD-R? How did colour change at underside?  \nWas it filled from inside to out?  \nAre data added at end of previous written space?  \n\n\u003e But you missed my point!  \n\u003e On a quick erased CD-RW, non empty sectors get overwritten. So if it works there, it should be possible on a CD-R as well, just that the two writes would overlay to form a new data pattern, instead of the new one replacing the old one.\nI miss the point still.  \n\nA CD-R uses a organic layer. To change this you have to heat this (or wait some time, that\u0027s another story)  \nData can be added only.  \n\nA CD-RW uses a alloy layer. To write hits you have to heat this to 500 - 700 °C.  \nTo erase this, you have to heat this to about 200 °C.  \nIt\u0027s possible to write and erase at bit level.  \n[http://en.wikipedia.org/wiki/CD-RW](http://en.wikipedia.org/wiki/CD-RW \"External link\")   \n"
+    },
+    {
+      "id": "142670",
+      "timestamp": "2011-11-24T22:26:54+00:00",
+      "author": "MedEvil",
+      "content": "Ok, now i finally get you.  \nYou mean, that i can\u0027t say, write bit X. Cause it will be encoded and all changed up. Did i understand you right?  \n\nLike i said before, to alter data to something useful, one needs to have original data as well as overwrite data, with which this is even possible, given the technical limitations (8-14 encoding as well as how data is stored on the CD itself)  \n\n\u003e How accurate is a end user hardware?  \n\u003e It\u0027s technical possible to assign exactly a written space matching at bit level?  \n\u003e To overwrite at bit level, you have to position at bit level first.  \n\u003e I doubt it\u0027s technically possible to position at bit accuracy, given a end user drive.\nThis a good question!  \nCounter question, is bit precise writing required to add a new session to a multisession CD?   \n\nOn the other hand, i remember, when a buffer underrun was the dead of a CD-R.   \n\n\u003e Did you ever user packet writing CD-R? How did colour change at underside?  \n\u003e Was it filled from inside to out?  \n\u003e Are data added at end of previous written space?\nYes i did. Something like 15 years ago. The driver constantly crashed the system, even when not writing to a CD. There were also some other complications, i can\u0027t remeber now.   \nLong story short, i abandoned UDF. And can\u0027t really remember enough, to answer your other qestions.  \n\n\u003e A CD-R uses a organic layer. To change this you have to heat this (or wait some time, that\u0027s another story)  \n\u003e Data can be added only.\n![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif) My point the whole time. On a CD-R, can\u0027t data be deleted, but maybe modified, by writing over the existing data. In which case only lands can be turned into pits but not pits into lands.  \n\nSo only new pits can be created and existing ones elongated. IF precise enough writing is possible!  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "142702",
+      "timestamp": "2011-11-25T13:06:35+00:00",
+      "author": "ambralivio",
+      "content": "Medevil and Cdob,  \n\nbefore proceeding on, with the high risk to create misunderstandings, I\u0027d like to say that a CD-R is completely different from a CD-RW, just starting from the media material (sensitive or not to be \"erased\") and, maybe, also from the hardware (laser).  \n\nBesides, please take care that the packet writing tecnique is just based on the multi-session concept, so the data are always written sequentially on the \"spiral\", able to be re-written on a CD-RW and not on a simple CD-R.  \n\nambralivio   \n"
+    }
+  ]
+}

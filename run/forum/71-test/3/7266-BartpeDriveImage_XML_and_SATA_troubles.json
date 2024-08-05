@@ -1,0 +1,34 @@
+{
+  "id": "7266",
+  "title": "Bartpe,DriveImage XML and SATA troubles",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "60869",
+      "timestamp": "2009-02-28T05:27:40+00:00",
+      "author": "DXML NEWBIE",
+      "content": "I have hear that this is the best place for troubleshooting problems, lets see it I am not misinformed.  \n\nNow my trouble is trying to get Driveimage XML to operate on a SATA drive through BART PE.  \n\nAt first i was being bombarded with BSODs thich I think told me that Bart PE could not find my hard drive. So as per instructions I downloaded the Driver pack from the sugested website and now bart pe starts, so i am getting somewhere. Now I am be told about a write error with info along the lines of unable to copy partition. At This point i am trying to store the partition image on an external drive and copy it to the system drive using drive to drive , i can\u0027t see this working but no harm in trying.  \n\nAny help would be great, as it appears that all the other forums have left me out to dry.  \n\nThanks   \n"
+    },
+    {
+      "id": "60874",
+      "timestamp": "2009-02-28T08:48:23+00:00",
+      "author": "was_jaclaz",
+      "content": "So you came here NOT because we are friendly, nice guys ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif), but only because \"the others\" left you in the middle of the highway alone? ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n\u003cbr /\u003e\n\nSeriously, we have no way to guess what the problem might be, unless you provide some details.  \n\n\u003cbr /\u003e\n\nThe usual recommendation apply.  \n\nTry to think about what you actually need to do:  \n\u003e trying to store the partition image on an external drive and copy it to the system drive using drive to drive\n\nrather than HOW to do it:  \n\u003e trying to store the partition image on an external drive and copy it to the system drive using drive to drive ***using Driveimage XML***\n\nThere are \"easier\" (won\u0027t say \"better\") programs to do that, and you will need anyway another program to backup MBR and hidden sectors, as Driveimage XML is NOT a real \"disk\" tool, but only a \"partition\" (or \"drive\") one.  \n\nThe distinction between \"disk\" and \"drive\" is not an easy one, thanks to the enormous amount of technical and non-technical documentation and info that mixes the two terms indifferently.  \n\nPost info on your current BartPE build, some info about hardware, some details about what you have done so far.  \n\nMy initial suggestion, that you may like or like not ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif), is to try as- is Selfimage and it\u0027s BartpE plugin:  \n[http://selfimage.excelcia.org/](http://selfimage.excelcia.org/ \"External link\")  \n\nAnd/or try building an UBCD4WIN that includes BOTH (and normally working) Selfimage and DriveimageXML:  \n[http://www.ubcd4win.com/](http://www.ubcd4win.com/ \"External link\")  \n[http://www.ubcd4win.com/contents.htm](http://www.ubcd4win.com/contents.htm \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "60882",
+      "timestamp": "2009-02-28T11:30:02+00:00",
+      "author": "DXML NEWBIE",
+      "content": "my appoligies if I sounded harsh in my previous post, but I have be trying to get this problem solved for about 2 days now and no one has been able to solve this yet. I am not infering that we won\u0027t here.  \nAt this moment i am puting together a new pe disk, in the mean time i have the Pe bould log and a summary of system hardware of affected system. please note that all information is in one file.  \nwill try selfimage and report back  \nHope this helps  \n\nFist the pe log  \nsecond is summary of system  \n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/txt.gif)](http://reboot.pro/index.php?s\u003d0c246db27b5e0ec6b0ef2958444de373\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d7718 \"Download attachment\") [**pebuilder_1.txt**](http://reboot.pro/index.php?s\u003d0c246db27b5e0ec6b0ef2958444de373\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d7718 \"Download attachment\") **257.08KB** 981 downloads\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/txt.gif)](http://reboot.pro/index.php?s\u003d0c246db27b5e0ec6b0ef2958444de373\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d7719 \"Download attachment\") [**pebuilder.txt**](http://reboot.pro/index.php?s\u003d0c246db27b5e0ec6b0ef2958444de373\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d7719 \"Download attachment\") **83.08KB** 1145 downloads\n\n"
+    },
+    {
+      "id": "60929",
+      "timestamp": "2009-02-28T19:24:00+00:00",
+      "author": "was_jaclaz",
+      "content": "No need for apologies whatsoever. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nJust kidding. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nAn indirect way to remind new members that, unlike other boards, we have Rule #12 here:  \n[http://www.boot-land...?act\u003dboardrules](http://www.boot-land.net/forums/index.php?act\u003dboardrules \"External link\")  \n\u003e 12. SMILE! ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) Life is tough, we all know that, when you enter this board, it will be appreciated that you leave your personal problems behind, asking and replyinq questions or however exchanging informations with a \"positive\" attitude, TAKE IT EASY ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) and enjoy your stay here.\n\nHaving fun is part of what the Community is about.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\njaclaz   \n"
+    }
+  ]
+}

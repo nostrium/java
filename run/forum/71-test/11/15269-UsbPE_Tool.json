@@ -1,0 +1,106 @@
+{
+  "id": "15269",
+  "title": "UsbPE Tool",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "135879",
+      "timestamp": "2011-08-21T22:03:01+00:00",
+      "author": "Max_Real Qnx",
+      "content": "![Posted Image](http://reboot.pro/index.php?app\u003ddownloads\u0026module\u003ddisplay\u0026section\u003dscreenshot\u0026id\u003d35)\n**File Name** : UsbPE Tool  \n**File Submitter** : [Max_Real Qnx](http://reboot.pro/user/2252-max-real-qnx/ \"\")  \n**File Submitted** : 22 Aug 2011  \n**File Updated** : *22 Feb 2012*   \n**File Category** : [Boot tools](http://reboot.pro/files/category/7-boot-tools/ \"\")  \n\nHi my friends :wink:  \n\nI think, a small program sometimes it would be useful for you. Lol lol use it. Best regards ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif)  \n\n[Click here to download this file](http://reboot.pro/files/file/35-usbpe-tool/ \"\")   \n"
+    },
+    {
+      "id": "135896",
+      "timestamp": "2011-08-22T07:13:56+00:00",
+      "author": "TheHive",
+      "content": "Can you give more details on its use. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)   \n"
+    },
+    {
+      "id": "136567",
+      "timestamp": "2011-08-30T18:46:04+00:00",
+      "author": "Max_Real Qnx",
+      "content": "\u003e Can you give more details on its use. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\nHi TheHive :wink:  \n\nThe program is very simple way, installing the WinPE files to the USB devices. If the wim file is pure unedited file, it adds its own extras to wim file. Otherwise, the program only doing the installation winpe files to usb device. USB device has to be NTFS format. The program automatically makes it bootable the usb device. In fact, it is a simple the pe program. If you want, I can share with you the source code of the program. Thank you for your interest. Best regards ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif)   \n"
+    },
+    {
+      "id": "136682",
+      "timestamp": "2011-09-01T06:23:24+00:00",
+      "author": "TheHive",
+      "content": "Ok! Thanks for the info.  \n\nFrom the pics I can see some other options are available but no explanation or steps to take on how to use them.  \n\n\u003cbr /\u003e\n\nWhat are these options.  \n[![UsbPE Tool1.jpg](http://reboot.pro/uploads/monthly_09_2011/post-5-0-37551200-1314857820_thumb.jpg)](http://reboot.pro/uploads/monthly_09_2011/post-5-0-37551200-1314857820.jpg \"UsbPE Tool1.jpg - Size: 27.28KB\"){#ipb-attach-url-12644-0-95801600-1676066576}   \n\n\u003cbr /\u003e\n\nHow to use which one. when. No Help File to help get started.  \n[![UsbPE Tool2.jpg](http://reboot.pro/uploads/monthly_09_2011/post-5-0-09541300-1314858067_thumb.jpg)](http://reboot.pro/uploads/monthly_09_2011/post-5-0-09541300-1314858067.jpg \"UsbPE Tool2.jpg - Size: 22.32KB\"){#ipb-attach-url-12645-0-95813500-1676066576}   \n\nCan you post screen shots to how to use. Lets say: you\u0027re doing a PE to USB device.   \n"
+    },
+    {
+      "id": "136702",
+      "timestamp": "2011-09-01T09:30:06+00:00",
+      "author": "Max_Real Qnx",
+      "content": "Hi TheHive :wink:  \n\nAdd Extra Features : The selected the any wim file opens as writeable on the the c:\\\\MountUSB folder. This opens the A43 file manager to access this folder. That way, if you want you can add what you want. When you close the file manager, the things you added are saved to the destination file. Of course, this feature is optional.  \n\nFormat Usb Device : This option will help you take the format to the target usb device. For this program currently not used Grub4Dos manager. So the format type should be ntfs for the Bootmgr file. I used two files to activate the boot feature of the usb device.  \n\nTo put it crudely:  \nbootsect.exe /nt60  \nMbrFix.exe setactivepartition /yes  \n\nExtract Boot.Wim (not recommanded) : The destination wim file opens as be readable to the C:\\\\MountUsb folder. Then the files in this folder are copied to the target usb device. I think, if physical ram is less, this feature can be used.  \n\nSet FilePath : If the target files (\\*.wim, BCD and BootMgr) are used by the program in different paths, you can use this feature. The paths of files is saved in UsbPE.ini .  \n\nSet DirPath : If the target files (\\*.wim, BCD and BootMgr) are used by the program in same path, you can use this feature. The path of the source is saved in UsbPE.ini .  \n\n(DVD Source)  \nBoot\\\\BCD  \nSources\\\\Boot.wim  \n\\\\BootMgr  \n\nBut if you do not use these two features, The program has to be in the same path with the target files.  \n\n(DVD Source)  \nBoot\\\\BCD  \nSources\\\\Boot.wim  \n\\\\BootMgr  \n\\\\UsbPETool.exe  \n\nYou can use these two features with the command-line.  \n\nUsbPETool.exe /DirPath \"c:\\\\Target_Dir Path\"  \n\nUsbPETool.exe /FilePath /bcd \"c:\\\\Target_Dir Path\\\\Boot\\\\BCD\" /bootwim \"d:\\\\Target_Dir Path\\\\Leopard\\\\Leopard.wim\" /bootmgr \"d:\\\\Target_Dir Path\\\\BootMgr\"  \n\nIf there is a point not mentioned, please notify me. Thanks for your interest. Best regards ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif)   \n"
+    },
+    {
+      "id": "139009",
+      "timestamp": "2011-10-06T17:34:36+00:00",
+      "author": "slo_hand2",
+      "content": "call me stupid but I am at a complete loss as to what to do with this utility (USBpe tool kit) if I click on either of the 2 boxes add extras or format I get a error when I hit copy (copy What? from where?) the error code is **\" c:\\\\user\\\\mine\\\\Sources\\\\Boot.WIM file not found!\"**   \n"
+    },
+    {
+      "id": "139011",
+      "timestamp": "2011-10-06T18:13:27+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e call me stupid but I am at a complete loss as to what to do with this utility (USBpe tool kit) if I click on either of the 2 boxes add extras or format I get a error when I hit copy (copy What? from where?) the error code is **\" c:\\\\user\\\\mine\\\\Sources\\\\Boot.WIM file not found!\"**   \n\nI won\u0027t call you names (for the moment ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)).  \n\nThis tool is intended to create a bootable 2.x/3.x PE - or if you prefere a PE created from Vista ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif) or 7 sources , which basically is made of three files:\n\n* boot.wim\n* BOOTMGR\n* \\\\boot\\\\BCD\n\n\u003cbr /\u003e\n\nSo, you need to give it a Vista ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif) or 7 SOURCE (in the form of a DVD or a mounted image of it or the mentioned files copied from it to the same folder where you have the tool)  \n\nTry re-reading the post by **Max_Real Qnx** just above yours :smile:.  \n\nMore simply \"c:\\\\user\\\\mine\\\\Sources\\\\Boot.WIM file not found!\" *probably* means that you are running the tool from folder \"c:\\\\user\\\\mine\\\\\" but that there is no \\\\Source\\\\boot.wim file in it.  \n\nVerify that you have:\n\n* c:\\\\user\\\\mine\\\\Boot\\\\BCD\n* c:\\\\user\\\\mine\\\\Sources\\\\Boot.wim\n* c:\\\\user\\\\mine\\\\BootMgr\n* c:\\\\user\\\\mine\\\\UsbPETool.exe\n\nOr that you have pointed the app to \\*something\\* containing files:\n\n\u003c!-- --\u003e\n\n* Boot\\\\BCD\n* Sources\\\\Boot.wim\n* \\\\BootMgr\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "139014",
+      "timestamp": "2011-10-06T19:07:28+00:00",
+      "author": "slo_hand2",
+      "content": "**Ah I c said the blind man lol ,**   \nI am trying to make a bootable usb xp drive , one like what I remember BartPe to be I had a cd years ago, long gone, but alas after 2 days of constant d/l\u0027ing and trying (including bartpe) I am no closer to my goal!  \nI am working on and old Dell inspiron 1200, the HDD is no good and I have removed it, the cd player is iffy at best runs when it wants to, it only has 256mb DDR1 ram, (yes it\u0027s old 2005) so I am left with using a flashdrive , (8GB PNY mini attache) for my temp os until I see if there is anything else wrong with the unit. I have a OEM winxp disc. I don\u0027t think this laptop could handle vista or win7  \n\nMy Granddaughter is turning 9 in February and would like to give her this machine as her first laptop (she has computer labs already in 3rd grade).  \nNot in a position to do better at this time (retired limited income).  \nIf everything checks out I will get a new 160 gb HDD and CD/dvd from Newegg, but can\u0027t afford to waste $$ on a project that is not worth the $ if you understand.  \nin a nutshell all I want is:  \nWinxp to run off a usb drive on the laptop. why is this so hard?  \n\nIf you can be of some help inthis quest I would appreciate it, thanks ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)   \n"
+    },
+    {
+      "id": "139026",
+      "timestamp": "2011-10-07T09:05:27+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e **Ah I c said the blind man lol ,**   \n\u003e I am trying to make a bootable usb xp drive , one like what I remember BartPe to be I had a cd years ago, long gone, but alas after 2 days of constant d/l\u0027ing and trying (including bartpe) I am no closer to my goal!  \n\u003e I am working on and old Dell inspiron 1200, the HDD is no good and I have removed it, the cd player is iffy at best runs when it wants to, it only has 256mb DDR1 ram, (yes it\u0027s old 2005) so I am left with using a flashdrive , (8GB PNY mini attache) for my temp os until I see if there is anything else wrong with the unit. I have a OEM winxp disc. I don\u0027t think this laptop could handle vista or win7  \nI see. :smile:  \nProblem is that you will need \"another\" PC to build the stick.  \n\u003e Winxp to run off a usb drive on the laptop. why is this so hard?  \nYou have a \"reverse\" attitude. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n:dubbio:Officially and according to Microsoft, running XP from a USB device is IMPOSSIBLE.  \nA number of peeps - nothwithstanding this - made it possible. ![:yahoo:](http://reboot.pro/public/style_emoticons/default/yahoo.gif)  \nSo the point is not about being sad because it\u0027s hard ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif), it\u0027s about being happy because it has become possible. ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)  \n\u003e If you can be of some help inthis quest I would appreciate it, thanks ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)  \nIt all depends on your current skills/knowledge and on the amount of time you wish to dedicate to this.  \nIf I were you I would try first thing the \"fully automated way\":  \n[http://www.usboot.org/tiki-index.php](http://www.usboot.org/tiki-index.php \"External link\")  \nIf anything goes wrong, second attempt would be using **wimb** \u0027s little app:  \n[http://www.911cd.net...showtopic\u003d23553](http://www.911cd.net/forums//index.php?showtopic\u003d23553 \"External link\")  \n\u003chttp://reboot.pro/13731/\u003e  \nbefore going all the way down to the basics (Dietmar\u0027s Stoelting tutorials).  \nIn any case, should you need support/help, please start ***a new thread*** here:  \n\u003chttp://reboot.pro/forum/71/\u003e  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "139045",
+      "timestamp": "2011-10-07T18:37:57+00:00",
+      "author": "slo_hand2",
+      "content": "\u003e I see. :smile:  \n\u003e Problem is that you will need \"another\" PC to build the stick.  \n\u003e\n\u003e You have a \"reverse\" attitude. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\u003e :dubbio:Officially and according to Microsoft, running XP from a USB device is IMPOSSIBLE.  \n\u003e A number of peeps - nothwithstanding this - made it possible. ![:yahoo:](http://reboot.pro/public/style_emoticons/default/yahoo.gif)  \n\u003e So the point is not about being sad because it\u0027s hard ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif), it\u0027s about being happy because it has become possible. ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)  \n\u003e\n\u003e It all depends on your current skills/knowledge and on the amount of time you wish to dedicate to this.  \n\u003e If I were you I would try first thing the \"fully automated way\":  \n\u003e [http://www.usboot.org/tiki-index.php](http://www.usboot.org/tiki-index.php \"External link\")  \n\u003e If anything goes wrong, second attempt would be using **wimb** \u0027s little app:  \n\u003e [http://www.911cd.net...showtopic\u003d23553](http://www.911cd.net/forums//index.php?showtopic\u003d23553 \"External link\")  \n\u003e \u003chttp://reboot.pro/13731/\u003e  \n\u003e before going all the way down to the basics (Dietmar\u0027s Stoelting tutorials).  \n\u003e In any case, should you need support/help, please start ***a new thread*** here:  \n\u003e \u003chttp://reboot.pro/forum/71/\u003e  \n\u003e\n\u003e ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\u003e Wonko  \n\nReverse attitude? I know I\u0027m old but what is a reverse attitude?  \nI am trying your suggestions doing usboot now quite length hope it does it for me!   \n"
+    },
+    {
+      "id": "139049",
+      "timestamp": "2011-10-07T19:19:27+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Reverse attitude? I know I\u0027m old but what is a reverse attitude?  \nAs said, you should be happy that it has been made possible at all, as opposed to be sad and rant about it being hard ... :smile:  \n\n\u003e I am trying your suggestions doing usboot now quite length hope it does it for me!  \nLet\u0027s see what happens, please start a NEW THREAD if you have porblems, we have hijacked this one enough (sorry **Max_Real Qnx** :blush:).  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "139050",
+      "timestamp": "2011-10-07T19:28:00+00:00",
+      "author": "slo_hand2",
+      "content": "I give!!! when I made the partpe disc (not usb) it was very easy a few steps and I was done, but this is CRAZY!!! I guess it was not meanyt for me to have this on USB? anyway I am just going to replace the hardware , HDD and cd drive and be done with it if it works great if not a new door stop I guess, thanks everyone for your help!   \n"
+    },
+    {
+      "id": "141059",
+      "timestamp": "2011-11-06T18:42:56+00:00",
+      "author": "Brito",
+      "content": "Hello, this file was reported as broken. Is this information correct? ![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png)   \n"
+    },
+    {
+      "id": "141061",
+      "timestamp": "2011-11-06T18:50:50+00:00",
+      "author": "Max_Real Qnx",
+      "content": "\u003e Hello, this file was reported as broken. Is this information correct? ![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png)  \n\nHi Nuno Brito :wink:  \n\nNow I\u0027ve checked but the file and its links is working. Best regards ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif)   \n"
+    },
+    {
+      "id": "141062",
+      "timestamp": "2011-11-06T18:59:50+00:00",
+      "author": "Brito",
+      "content": "Thank you for confirming. I\u0027ve set the report as reviewed, many times is an issue at the end-user side or ISP filters.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "149684",
+      "timestamp": "2012-03-03T09:59:40+00:00",
+      "author": "MrChucong™",
+      "content": "thank for shared   \n"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "3401",
+  "title": "Scanning USB Bus for bottable Devices",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "24027",
+      "timestamp": "2007-10-31T15:53:39+00:00",
+      "author": "osmethod",
+      "content": "Hello,  \n\nIt\u0027s been years since I coded assembly but I have some free time and would like to get into it again.  \nIn the past using Smart Boot Manager I managed to install 18 OSes in a box with 2 IDE drives and 4 SCSI drives. Each of the oses installed on primary partitions. This is why I feel this boot manager has proven itself to me. Typically, each of the oses installs its own boot loader into its own partition which SBM is able to scan and create a menu item respectively, which in turn can then be set Active. It also is able to boot atapi cdroms even if not supported by the bios.  \n\nWhat it can\u0027t do is scan USB devices. The source code for SBM is released under GPL so I would to try to add USB device scanning for boot loaders, add them to the menu and set active to boot accordingly whether the USB device contains Windows, Linux, BSD or whatever... e.g. vmware\u0027s ESX3i is bootable from a USB stick and is a linux based boot. I\u0027ve seen where windows can be booted also from a USB stick.  \n\nI\u0027d like to just scan the USB bus, locate the device, see if its bootable.....  \n\nCan someone provide me with links or references for same and maybe some clarifications?  \n\nAre there int13 extensions provided in newer bioses to locate USB devices?  \nIf not, does one need to provide a USB stack and can this be provided without device drivers?  \n\nI\u0027d prefer not to have to use specific device drivers to try and find the USB device...  \n\nI appreciate any comments or help.  \n\nThank you,  \n\nosmethod   \n"
+    },
+    {
+      "id": "24028",
+      "timestamp": "2007-10-31T16:38:40+00:00",
+      "author": "was_jaclaz",
+      "content": "First thing, welcome to the board. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n\u003e Are there int13 extensions provided in newer bioses to locate USB devices?  \n\u003e If not, does one need to provide a USB stack and can this be provided without device drivers?\n\nYes/No.  \n\nI mean, BIOS implementations differ a lot, as far as I know there are three main \"categories\":  \n1) Do NOT support USB (booting) properly  \n2) Only provide the \"extension\" or \"internal\" stack if BIOS settings are set to boot from USB  \n3) Also allow the above \"on the fly\" by pressing F10, F11 or F12  \nThe setting that is sometimes referred as \"Legacy USB support\" appears to affect the behaviour of BIOS, somehow.  \nSome BIOS have options to boot:  \n1) Generic USB boot  \n2) ONLY \"Floppy\"  \n3) Choose between \"Floppy\" or \"HD like\"  \n4) Choose between \"Floppy\" or \"Zip Drive\" or \"HD like\"  \nSome BIOSes, moreover limit the \"Floppy\" type to \"real\" floppies, i.e. 1,44 or 2,88, whilst other also accept \"Superfloppies\"  \n\nAll in all it is a mess, and to be more precise, an UNDOCUMENTED mess ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif).  \n\nSince you have assembly/low level experience, you could be the contributor to the \"missing steps\".  \n\nDo read these, AND links therein:  \n[http://www.911cd.net...o...c\u003d16847\\\u0026hl\u003d](http://www.911cd.net/forums//index.php?showtopic\u003d16847\u0026hl\u003d \"External link\")  \n[http://www.911cd.net...o...c\u003d17633\\\u0026hl\u003d](http://www.911cd.net/forums//index.php?showtopic\u003d17633\u0026hl\u003d \"External link\")  \n[http://www.911cd.net...o...c\u003d18650\\\u0026hl\u003d](http://www.911cd.net/forums//index.php?showtopic\u003d18650\u0026hl\u003d \"External link\")  \n[http://www.911cd.net...o...c\u003d20310\\\u0026hl\u003d](http://www.911cd.net/forums//index.php?showtopic\u003d20310\u0026hl\u003d \"External link\")  \n[http://www.911cd.net...o...c\u003d20450\\\u0026hl\u003d](http://www.911cd.net/forums//index.php?showtopic\u003d20450\u0026hl\u003d \"External link\")  \n[http://www.boot-land...?...\u003d2246\\\u0026st\u003d15](http://www.boot-land.net/forums/index.php?showtopic\u003d2246\u0026st\u003d15 \"External link\")  \n\n\u003cbr /\u003e\n\nAnd maybe these:  \n[http://www.911cd.net...o...c\u003d15776\\\u0026hl\u003d](http://www.911cd.net/forums//index.php?showtopic\u003d15776\u0026hl\u003d \"External link\")  \n[http://www.911cd.net...o...c\u003d19731\\\u0026hl\u003d](http://www.911cd.net/forums//index.php?showtopic\u003d19731\u0026hl\u003d \"External link\")  \n\nI know it\u0027s a lot, expecially all together ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif), so you\u0027d better   \nSTART WORKING! ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "24762",
+      "timestamp": "2007-11-12T21:47:07+00:00",
+      "author": "liquid98",
+      "content": "Hi Jaclaz and osmethod,  \n\n\u003cbr /\u003e\n\n@Jaclaz: How was the plop bootloader in booting usb devices?  \n\n-- [http://www.plop.at/d...mngrusblog.html](http://www.plop.at/de/bootmngrusblog.html \"External link\")  \n\nI see there is yet some work to do, but it looks promising.  \n\n@osmethod:  \n\nI think he is trying to accomplish the same thing as you want,  \nmaybe Elmar can help you...  \n\nliquid98   \n"
+    },
+    {
+      "id": "24788",
+      "timestamp": "2007-11-13T09:23:31+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e @Jaclaz: How was the plop bootloader in booting usb devices?  \n\u003e\n\u003e -- [http://www.plop.at/d...mngrusblog.html](http://www.plop.at/de/bootmngrusblog.html \"External link\")  \n\u003e\n\u003e I see there is yet some work to do, but it looks promising.\n\nI haven\u0027t tested it, mainly because the only way to know if it works as expected is to try it on \"real\" hardware that has no USB support, which I do not have handy.  \n\n**ktp** did a couple of tests in QEMU:  \n[http://www.boot-land...port-t3226.html](http://www.boot-land.net/forums/Release-candidate-of-plop-with-USB-support-t3226.html \"External link\")  \n\nbut nothing definite, as you can see. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nHowever plop\u0027s Author appears to be working hard in solving problems, he is already onto RC5:  \n[http://www.plop.at/e...mngrusblog.html](http://www.plop.at/en/bootmngrusblog.html \"External link\")  \n\n\u003cbr /\u003e\n\njaclaz   \n"
+    }
+  ]
+}

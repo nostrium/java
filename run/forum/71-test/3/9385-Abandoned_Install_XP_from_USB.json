@@ -1,0 +1,16 @@
+{
+  "id": "9385",
+  "title": "[Abandoned] Install XP from USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "53818",
+      "timestamp": "2009-01-04T15:41:22+00:00",
+      "author": "Bobberbob",
+      "content": "Hi  \n\nWhen using USB Multiboot 10, the DOS windows opens and after a key (as is asked) I do get an error report, saying: File $OEM$ is Missing  \n\nI simply cannot find a file by that name. What am I doing wrong?  \n\nI use USB Multiboot on my Windows machine (XP Pro), my WIndows Setup CD is in the drive.  \n\nI plan to install Windows on my Aspire One from a USB stick  \n\nCan anybody help me out?   \n"
+    }
+  ]
+}

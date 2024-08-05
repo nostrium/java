@@ -1,0 +1,40 @@
+{
+  "id": "5703",
+  "title": "XP setup doesn\u0027t start if there is an ext3 partition",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "44374",
+      "timestamp": "2008-09-14T10:28:20+00:00",
+      "author": "mr_",
+      "content": "XP setup doesn\u0027t start if there is an ext3 partition. Also ubcd4win doesn\u0027t start.  \n\nThe partitions are currently 100 MB ext3, 10 GB NTFS, 2 GB FAT32, 10 GB NTFS. I wanted later to install grub4dos into the ext3 partition so it\u0027s unreadable for XP (and XP not touching the bootloader).  \n\nThe setup/ubcd4win starts but after a while the HDD laser diode shines, display is on and black and nothing happens anymore.   \n"
+    },
+    {
+      "id": "44394",
+      "timestamp": "2008-09-14T16:07:42+00:00",
+      "author": "ktp",
+      "content": "What is the active partition? Are all partitions primary?  \nIf you set the NTFS partition primary, I think there would be no problem.   \n"
+    },
+    {
+      "id": "44403",
+      "timestamp": "2008-09-14T17:41:05+00:00",
+      "author": "mr_",
+      "content": "\u003e What is the active partition?\nThere was none.  \n\n\u003e Are all partitions primary?\nYes.  \n\n\u003e If you set the NTFS partition primary, I think there would be no problem.\nTested it, same result. I even created everything from scratch again. Forgot to mention, currently it\u0027s only a pretest in VMware but it shouldn\u0027t matter.   \n"
+    },
+    {
+      "id": "44704",
+      "timestamp": "2008-09-17T14:17:12+00:00",
+      "author": "tcns",
+      "content": "I ran into this before. If my memory serves me right, I got it to work by using SETUPLDR.BIN from XP SP1.  \n\nIt just about drove me crazy trying to figure it out.  \n\nHope this helps.   \n"
+    },
+    {
+      "id": "53455",
+      "timestamp": "2008-12-31T13:54:14+00:00",
+      "author": "Slesa",
+      "content": "My personally results were that Windows does not like to be second on a stick. When I used a partition table like 1) Fat32/ntfs 2) ext3 it worked. With 1) ext3 2) Fat32 it didn\u0027t.   \n"
+    }
+  ]
+}

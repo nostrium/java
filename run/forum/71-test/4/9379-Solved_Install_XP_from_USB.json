@@ -1,0 +1,34 @@
+{
+  "id": "9379",
+  "title": "[Solved] Install XP from USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "69919",
+      "timestamp": "2009-06-17T13:09:05+00:00",
+      "author": "SmokingKills",
+      "content": "Sorry, I searched but couldnâ€™t\u0027 found a solution!  \nEvery time when trying to repair from USB stick option 2 â€œâ€œUSB Repair NOT to Start Microsoft Windows XP Professionalâ€ appear message â€œhall.dllâ€ missing.  \nAny suggestion to resolve this.   \n\nmy boot.ini C drive  \n\n```\n\u0026#91;/code\u0026#93;\u0026#91;Boot Loader\u0026#93;\n\ntimeout\u003d7\n\nDefault\u003dmulti\u0026#40;0\u0026#41;disk\u0026#40;0\u0026#41;rdisk\u0026#40;0\u0026#41;partition\u0026#40;1\u0026#41;\\WINDOWS\n\n\u0026#91;Operating Systems\u0026#93;\n\nmulti\u0026#40;0\u0026#41;disk\u0026#40;0\u0026#41;rdisk\u0026#40;0\u0026#41;partition\u0026#40;1\u0026#41;\\WINDOWS\u003d\u0026#34;Microsoft Windows XP Professional\u0026#34; /noexecute\u003doptin /fastdetect\n\nmulti\u0026#40;0\u0026#41;disk\u0026#40;0\u0026#41;rdisk\u0026#40;1\u0026#41;partition\u0026#40;1\u0026#41;\\WINDOWS\u003d\u0026#34;USB Repair NOT to Start Microsoft Windows XP Professional\u0026#34; /noexecute\u003doptin /fastdetect\u0026#91;code\u0026#93;\n```\n\n\u003cbr /\u003e\n\nmy boot.ini U drive \"USB\"  \n\n```\n\u0026#91;/code\u0026#93;\u0026#91;Boot Loader\u0026#93;\n\nTimeout\u003d10\n\nDefault\u003dmulti\u0026#40;0\u0026#41;disk\u0026#40;0\u0026#41;rdisk\u0026#40;1\u0026#41;partition\u0026#40;1\u0026#41;\\WINDOWS\n\n\u0026#91;Operating Systems\u0026#93;\n\nmulti\u0026#40;0\u0026#41;disk\u0026#40;0\u0026#41;rdisk\u0026#40;1\u0026#41;partition\u0026#40;1\u0026#41;\\WINDOWS\u003d\u0026#34;2. GUI Mode Setup Windows XP, Continue Setup + Start XP\u0026#34; /FASTDETECT\n\n\n\nC\u0026#58;\\SETUPLDR.bs\u003d\u0026#34;1. TXT Mode Setup Windows XP, Never unplug USB-Drive Until After Logon\u0026#34;\u0026#91;code\u0026#93;\n```\n\n\u003cbr /\u003e\n\nOperating system: Windows XP Pro SP3  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![2009_06_17_150034.jpg](http://reboot.pro/uploads/monthly_06_2009/post-26863-1245243928_thumb.jpg)](http://reboot.pro/uploads/monthly_06_2009/post-26863-1245243928.jpg \"2009_06_17_150034.jpg - Size: 68.34KB\"){#ipb-attach-url-8594-0-32875500-1676066704}\n* [![2009_06_17_150112.jpg](http://reboot.pro/uploads/monthly_06_2009/post-26863-1245243944_thumb.jpg)](http://reboot.pro/uploads/monthly_06_2009/post-26863-1245243944.jpg \"2009_06_17_150112.jpg - Size: 126.23KB\"){#ipb-attach-url-8595-0-32884500-1676066704}\n* [![2009_06_17_150449.jpg](http://reboot.pro/uploads/monthly_06_2009/post-26863-1245243952_thumb.jpg)](http://reboot.pro/uploads/monthly_06_2009/post-26863-1245243952.jpg \"2009_06_17_150449.jpg - Size: 109.96KB\"){#ipb-attach-url-8596-0-32890600-1676066704}\n\n"
+    },
+    {
+      "id": "69921",
+      "timestamp": "2009-06-17T13:16:56+00:00",
+      "author": "ilko",
+      "content": "Without this entry if you start Repair install and Recovery Console from USB, they will NOT see the XP installation on the hard disk.  \nIt is NOT to be executed/selected and the error you see is normal.   \nIf it bothers you during startup, simply decrease timeout value to 1 or 2 in boot.ini on your hard drive.   \n"
+    },
+    {
+      "id": "69926",
+      "timestamp": "2009-06-17T13:34:49+00:00",
+      "author": "SmokingKills",
+      "content": "\u003e Without this entry if you start Repair install and Recovery Console from USB, they will NOT see the XP installation on the hard disk.  \n\u003e It is NOT to be executed/selected and the error you see is normal.   \n\u003e If it bothers you during startup, simply decrease timeout value to 1 or 2 in boot.ini on your hard drive.\n\nso there is no way to repair from USB stick!!   \n"
+    },
+    {
+      "id": "69934",
+      "timestamp": "2009-06-17T14:14:53+00:00",
+      "author": "ilko",
+      "content": "To repair from USB stick you need to boot from USB stick ( makes sense, doesn\u0027t it :wink: ), start normal Setup until you get offered Repair, leaving the line about USB repair intact in the boot.ini on the internal hard disk.  \nYou do NOT start \"repair from USB\" booting from internal hard disk and selecting USB repair option. To repeat- this option is NOT to be selected by user, it is used only by XP setup as pointer where Windows installation is, when another Setup routine (including RC and Repair install) is launched from USB.   \n"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "18015",
+  "title": "how to set Found new harware wizard to automatic and eliminate restart message (XPsp2)",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "165992",
+      "timestamp": "2013-01-17T01:35:50+00:00",
+      "author": "Zoso",
+      "content": "XP pro sp2, n-lited, usboot activated, firadisk installed.  \n\nIve attached all usb devices to the OS before I copy it to an image for ram booting and I have set the registry key:  \nHKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\DeviceInstal\\\\Settings  \n\nwith Dword: SuppressNewHWUI to 1  \n\nafter Ram booting this image with grub4dos it pops up found new hardware (disk drive)  \n\nI have tried it with an ImDisk image and CloneDisk image. even booted the ram image then exported mounted devices key and Imported it into the original os then copied it back to the same image and still get the found new hardware wizard.  \n\nIm out of ideas, anyone have suggestions?  \n\nthanks   \n"
+    },
+    {
+      "id": "166005",
+      "timestamp": "2013-01-17T08:47:05+00:00",
+      "author": "Sha0",
+      "content": "I think you need the [special version of Umpnpmgr.dll](http://support.microsoft.com/kb/938596 \"External link\").\n\n"
+    }
+  ]
+}

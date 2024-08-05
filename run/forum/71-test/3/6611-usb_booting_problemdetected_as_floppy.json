@@ -1,0 +1,142 @@
+{
+  "id": "6611",
+  "title": "usb booting problem,detected as floppy",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "53572",
+      "timestamp": "2009-01-02T09:53:35+00:00",
+      "author": "cdnbln",
+      "content": "hai,thanks to all  \n\nI used two usb sticks- 4GB Kingstone and 2GB sandisc  \nUBCD4WIN built on winxpsp2 NTFS intel845gvsr ,256MB RAM  \nbooted into GRUB4DOS BASH then used configfile (fd0)/menu.lst  \nto get the menu and selcted ubcd4win ,usb cannot boot  \n\nIs there a way to boot usb stick(especially pe based) detected as floppy by BIOS  \nand make it multibootable ?  \n\nI had successfully booted the usb using knoppix,ploplinux etc   \nmy trial and error detail is available here  \n[http://ubcd4win.com/...showtopic\u003d12011](http://ubcd4win.com/forum/index.php?showtopic\u003d12011 \"External link\")  \n\nI am not sure if link from other forum is allowed here, any way it is the best and accurate means to explain my problem  \nNow i try to make LiveXP boot from usb  \n\nwelcome any solution/suggestion   \nThanks in advance   \n"
+    },
+    {
+      "id": "53595",
+      "timestamp": "2009-01-02T19:40:56+00:00",
+      "author": "vain",
+      "content": "Try to flip the \"removable media bit\" with this gem from Lexar called [BootIt](http://files.filefront.com/lexar+usb+formatzip/;10112841;/fileinfo.html \"External link\"); basically it turns an attribute stored in the drive circuitry from being recognized as removable to fixed and vice versa - **if the drive has that feature** ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) From my little experience, **no Kingston drives** support it and I don\u0027t know about SanDisks, but a few lesser-known ones with names like Netac and Avance do. I also use an 845-based mainboard and it would never boot PE off USB-RMD FDD mode, complaining about missing or corrupt txtsetup.sif. After the drive got flipped to USB-HDD, it actually started running up to the splash screen before going down with bluescreen 7B, which can be easily remedied by replacing ntdetect.com with the modified one from Dietmar at [911cd.net](http://www.911cd.net/forums//index.php?showtopic\u003d14181\u0026st\u003d0 \"External link\").  \n\nNote that this problem seems to be machine-dependent as most other recent mainboards have no problem kicking PE off true removables without hacks.   \n"
+    },
+    {
+      "id": "53615",
+      "timestamp": "2009-01-03T00:43:00+00:00",
+      "author": "amalux",
+      "content": "Hi cdnbln, welcome to the forum ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nYou can make your USB Stick be detected as a USB hard drive and then partition it for multi-boot by creating your own custom driver(s). See this easy tutorial [here](http://www.lancelhoff.com/2008/06/19/make-windows-see-any-usb-flash-drive-as-local-disk/ \"External link\") for creating the drivers; I\u0027ve used this method for both Kingston and Sandisk UFD\u0027s so you should be OK. Good luck :wink:   \n"
+    },
+    {
+      "id": "53636",
+      "timestamp": "2009-01-03T07:15:10+00:00",
+      "author": "cdnbln",
+      "content": "thanks vain  \nthanks amalux for ready responses  \n\nI am afraid i have been mistaken , perhaps due to my faulty report  \n\nI have already made the usb stick as local using usboot from usboot.org while i have been experimenting and left it incompleted . but the stick appear as local disk and not removable  \n\nI shall be grateful if you go through my trial error in the following post, if you have any time  \n[http://ubcd4win.com/...showtopic\u003d12011](http://ubcd4win.com/forum/index.php?showtopic\u003d12011 \"External link\")  \nI hope It will make things clear  \nMy problem is not in windows but in BIOS when booting  \nvain said  \n\u003e Try to flip the \"removable media bit\" .......being recognized as removable to fixed and vice versa\n\nWhether BIOS will also recognise it as fixed hdd  \nAre you sure this will help and whether i can use the stick in the normal way after trying to flip the bit and uninstall the changes later  \nI have to try this after getting a clarification  \n\n\u003e I also use an 845-based mainboard and it would never boot PE off USB-RMD FDD mode\nRight, that is the thing. But I have not changed anything(mode) in BIOS, but it just cannot boot PE based bootable usb in may case and when used the BASH command in GRUB4DOS that i found the stick is detected as (fd0). BIOS already contain and option for boot from usb and enabled it and selcted the stick after pressing F10.The system restarts or boots into the system hdd. Linux based OS works well  \n\nmy question again, Is there any way to make usb stick boot PE based OS from intel 845gvsr Mother Board, BIOS of which detect a stick as floppy drive and boot fails  \n\nThanks in advance   \n"
+    },
+    {
+      "id": "53641",
+      "timestamp": "2009-01-03T08:01:50+00:00",
+      "author": "cdob",
+      "content": "\u003e Try to flip the \"removable media bit\"\nThanks, that\u0027s a nice approach.  \n\n\u003e Are you sure this will help and whether i can use the stick in the normal way after trying to flip the bit and uninstall the changes later  \n\u003e I have to try this after getting a clarification\nYou can use the stick in a normal way after: read and write  \nHowever XP use USB stick as hard disk:   \ncreates a folder \"System Volume Information\" and may use write cache.  \nWell, you use this at XP already using addional driver.  \n\nYou can flip the \"media bit\" again to get the original behaviour.  \n\nNo user without a 845gvsr can be sure. Try it. The approach makes sense.   \n\nStrange BIOS may read \"media bit\":   \nremovable: floppy  \nfixed: hard disk  \n\nOr try a USB hard disk.   \n"
+    },
+    {
+      "id": "53642",
+      "timestamp": "2009-01-03T08:27:50+00:00",
+      "author": "amalux",
+      "content": "\u003e --  \n\u003e Are you sure this will help and whether i can use the stick in the normal way after trying to flip the bit and uninstall the changes later  \n\u003e I have to try this after getting a clarification  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e Right, that is the thing. But I have not changed anything(mode) in BIOS, but it just cannot boot PE based bootable usb in may case and when used the BASH command in GRUB4DOS that i found the stick is detected as (fd0). BIOS already contain and option for boot from usb and enabled it and selcted the stick after pressing F10.The system restarts or boots into the system hdd. Linux based OS works well  \n\u003e\n\u003e my question again, Is there any way to make usb stick boot PE based OS from intel 845gvsr Mother Board, BIOS of which detect a stick as floppy drive and boot fails  \n\u003e\n\u003e Thanks in advance\nI don\u0027t have your MB/BIOS so can\u0027t say for sure but with the stick plugged in, boot into setup and check that you can see the usb stick listed under boot devices and that it\u0027s set to first (top) in boot order. Also confirm that usb emulation option (maybe in peripherals) is set ON. I have less experience with the \u0027bootit\u0027 thingy (didn\u0027t work on my kingston dt) but the custom driver technique is safe and reversable, just roll back the driver when you want it seen as removable again. Once you install the custom driver, partition the drive as wanted and for a test, use [petousb](http://gocoding.com/page.php?al\u003dpetousb \"External link\") to format your first pri/active partition; choose fixed usb option of course. If your using ntdetect, make sure it\u0027s the modded setup described [here](http://www.msfn.org/board/index.php?showtopic\u003d112630\u0026pid\u003d738009\u0026mode\u003dthreaded\u0026start\u003d#entry738009 \"External link\") (4th post) to avoid your bsod 7b.   \n"
+    },
+    {
+      "id": "53665",
+      "timestamp": "2009-01-03T15:34:57+00:00",
+      "author": "Garfield",
+      "content": "Some of the older intel motherboards only detected USB sticks as Floppy disks. You can try to download a newer BIOS from [http://downloadcenter.intel.com/](http://downloadcenter.intel.com/ \"External link\"). Some of the newer Intel BIOSes have an option to detect a USB storage device as a USB floppy or a USB Harddisk. If you are unsure of anything get more help or don\u0027t update the BIOS. It can render your machine unbootable.   \n"
+    },
+    {
+      "id": "54069",
+      "timestamp": "2009-01-06T11:24:46+00:00",
+      "author": "cdnbln",
+      "content": "hai thanks,  \n\nI have already updated the BIOS , it is of no use  \nIn BIOS setup usb stick is avaiblae in boot dvices option  \nand it is shown as removable  \nThere is also an option for usb boot enable  \nI have successfully booted using Knoppix,ploplinux etc  \nand also booted from a Ghost image downloaded from net which works DOS way   \nAll this trial and error can be examined on the link provided earlier describing all the things again is waste of time, anyhow anyone like to know has to read anyway  \nthat\u0027s why i posted the link  \n\nOne thing as i have successfully booted from Knoppix and DOS , is there a way to boot from PE   \n\nI have some doubt regarding the use of BootIt, whether i have to format it after chaning the bit or before, and before or after making it bootable using pe2usb etc, there is no option for update,no option is available for reversing it, how to do it  \n\nthanks in advance   \n"
+    },
+    {
+      "id": "54081",
+      "timestamp": "2009-01-06T13:31:02+00:00",
+      "author": "vain",
+      "content": "The BootIt tool does its job within the drive circuit, so after being flipped it stays that way anywhere without our having to do things with the local systems. It is also quite harmless, afaik, as many drives that it failed to flip continued functioning correctly as removable, but still unable to boot PE from my 845. And yes, they do boot syslinux - **but only when formatted FAT-16** , neither FAT-32 nor NTFS will do (hanging after the string \"MBR\"). Unfortunately, [Siblo](http://www.simplux.org/siblo/index.html \"External link\") the syslinux derivative capable of directly loading ntldr/setupldr prefers FAT-32.  \n\nI am sorry to report that SanDisk flash drives seem to not support it either, as do all Kingstons and many other brands (pqi, Nexus, JetFlash, very probably others). I can only verify that among those I personally use, Netac and Avance are the only ones that successfully flipped, besides Lexar\u0027s naturally.  \n\nI think this problem has more to do with the mainboard design rather than software - updating to the latest BIOS did not help in my machine, and even the original BIOS is capable to recognize USB-HDD whether true hard drives or flipped UFD\u0027s.  \n\nOne drawback I noticed after flipping one of my drives: somehow my SLAX Linux failed to mount its own drive - it boots normally but the partition does not automatically appear on /mnt. I had to \"mkdir /media\" before it could be mounted manually. But that\u0027s another story I guess....   \n"
+    },
+    {
+      "id": "54115",
+      "timestamp": "2009-01-06T17:40:33+00:00",
+      "author": "was_jaclaz",
+      "content": "Rather obviously the Lexar tool is NOT from Lexar at all.  \n\nIt is from the maker of the USB Controller inside some of Lexar sticks, and has been re-branded by Lexar.  \n\nConsequently any other brand that uses the same controller chip will work, any other brand that uses \"another\" controller chip will NOT.  \n\nBut you can find the Manufacturer Tool for the \"another\" one.  \n\nUse ChipGenius to identify the CHIP:  \n[http://www.boot-land...?showtopic\u003d4661](http://www.boot-land.net/forums/index.php?showtopic\u003d4661 \"External link\")  \n\nThen, you will need all your google-fu, here is a good starting point ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif):  \n\n[http://www.flashboot...php?name\u003diflash](http://www.flashboot.ru/index.php?name\u003diflash \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "54336",
+      "timestamp": "2009-01-08T10:26:01+00:00",
+      "author": "cdnbln",
+      "content": "Hai,  \n@jaclaz  \n\u003e Use ChipGenius to identify the CHIP\nCannot identify The CHIP of Sandisk cruzer mini 2gb  \n\n```\nSanDisk\t  U3 Cruzer Micro \u0026#40;USB2.0\u0026#41;\t  2 Gb\t  0781\t  5406\t  –\t  –\t  CheckUDisk 5.0\n```\n\nWhether PID AND VID enough  \n\nany help  \nthanks in advance   \n\n@vain  \n\u003e Siblo the syslinux derivative capable of directly loading ntldr/setupldr prefers FAT-32.\nwhether using SIBLO can i overcome the drawback of the BIOS and be able to boot WIN PE from the usb stick and if so please post the details, how it do   \n"
+    },
+    {
+      "id": "54337",
+      "timestamp": "2009-01-08T10:35:21+00:00",
+      "author": "was_jaclaz",
+      "content": "That is an **U3** stick, they are different, it\u0027s an added layer of possible \"complication\", it is possible that the \"CD\" part is cause or part of the problem.  \n\nAs you can see by entering 0781 in [http://www.flashboot...php?name\u003diflash](http://www.flashboot.ru/index.php?name\u003diflash \"External link\")  \nthere is not an utility on there for 5406.  \n\nThere may be somewhere, cannot say, you might want to try removing the U3 feature, (RISKY - UNSAFE -NO WARRANTIES attached) or use it:  \n[http://www.msfn.org/...opic\u003d121502\\\u0026hl\u003d](http://www.msfn.org/board/index.php?showtopic\u003d121502\u0026hl\u003d \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "54415",
+      "timestamp": "2009-01-09T00:58:39+00:00",
+      "author": "dencorso",
+      "content": "Well, my own main machine has an Asus A7V600-X motherboard and the latest existing BIOS revision: 1009. I can boot it with linux, solaris and DOS (MS, PC and Free) from pen drives (of which I have several, in many sizes, from 1GB to 32GB, Corsair, Kingston and Sony Micro-Vault). The only BIOS options for USB-Boot are USB-FDD and USB-Zip, so, no matter what I do, I always end up with the pen-drive detected as A:\\\\ or (fd0), which is the same. Either FAT-32 or FAT-16 works perfectly. And, when I toggle the removable bit with Lexar Boot-It (works for the Corsairs and my old USM-E Plus 1GB Sony Micro-Vault, all of which have SMI controllers), the motherboard refuses to boot at all. Toggling back the bit for the device to return to \"removable\" restores bootability! I\u0027m more than convinced, by now, that all direct boot approaches are hopeless for this motherboard to boot Windows. So, I\u0027m slowly working my way through Dietmar\u0027s Tutorial #7, s4e\u0027s original thread and all the many threads scattered over at least three forums, regarding the \"XP Kansas City Shuffle\", which is the \\*only\\* way to go, IMHO, if your machine refuses to detect USB devices as a hard-disk. Has anyone found any other way to do it, starting from the USB-device booted as (fd0)? Your comments and advice are much welcome!   \n"
+    },
+    {
+      "id": "54429",
+      "timestamp": "2009-01-09T14:28:12+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e So, I\u0027m slowly working my way through Dietmar\u0027s Tutorial #7, s4e\u0027s original thread and all the many threads scattered over at least three forums, regarding the \"XP Kansas City Shuffle\", which is the \\*only\\* way to go, IMHO, if your machine refuses to detect USB devices as a hard-disk. Has anyone found any other way to do it, starting from the USB-device booted as (fd0)? Your comments and advice are much welcome!\n\nNO, the \"XP Kansas City Shuffle\" is the only known way. :smile:   \n\nSomething that you may want to try is however the makebootfat MBR, read some details about it here:  \n[http://www.911cd.net...o...13784\\\u0026st\u003d44](http://www.911cd.net/forums//index.php?showtopic\u003d13784\u0026st\u003d44 \"External link\")  \n\nIt is possible (but I have no way to test it) that using it in combination with grub4dos you can trick the NT to believe being on a HD-like device :smile: :  \n\n* BIOS detects as removable/superfloppy\n* Grub4dos re-maps as HD-like\n* NT loader rescans MBR, finds partition table and signature and use it as \"HD\"\n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "54477",
+      "timestamp": "2009-01-09T22:44:05+00:00",
+      "author": "dencorso",
+      "content": "\u003e \\[...\\]  \n\u003e It is possible (but I have no way to test it) that using it in combination with grub4dos you can trick the NT to believe being on a HD-like device :smile: :  \n\u003e\n\u003e * BIOS detects as removable/superfloppy\n\u003e * Grub4dos re-maps as HD-like\n\u003e * NT loader rescans MBR, finds partition table and signature and use it as \"HD\"\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n:smile: :smile: You mean:  \n\nmap (fd0) (hd0)  \nmap (hd0) (hd1)  \n.  \n.  \n.  \nmap (hd*n* ) (hd*n+1* )  \nmap --hook  \nrootnoverify (hd0)  \nchainloader (hd0)+1  \nboot  \n\n??????????  \ndoes   \nmap (fd0) (hd0)  \nwork??????  \n\nWow! :smile:   \n"
+    },
+    {
+      "id": "54531",
+      "timestamp": "2009-01-10T14:40:43+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e :smile: :smile: You mean:\n\nYes and No :smile:, I mean, try the \"double action\" makebootfat MBR.  \nBIOS should see it as Floppy.  \nWould grub4dos be able to map it directly (as you proposed) map (fd0) (hd0)?  \nWould grub4dos be able to map it to a hd (by faking a MBR)?  \nWould this \"bring with it\" the disk signature?  \nWould NTLDR recognize the \"double action\" MBR as a MBR and thus get it\u0027s signature, create an arcpath and continue booting?  \n:smile:  \n\nThere is no way to know if not by testing...  \n\njaclaz   \n"
+    },
+    {
+      "id": "54665",
+      "timestamp": "2009-01-11T20:29:52+00:00",
+      "author": "dencorso",
+      "content": "\u003e There is no way to know if not by testing...\n\nQuite true! I\u0027m working on it... And shall keep you posted, of course!  \n\nMeanwhile, I propose we call this procedure \"Remap Recoil\", even before we know whether it works or not, just because it\u0027s much easier to think about things that can be named. :smile:   \n"
+    },
+    {
+      "id": "54769",
+      "timestamp": "2009-01-12T18:14:40+00:00",
+      "author": "steve6375",
+      "content": "Have you tried a 512MB USB flash drive?  \n\nI have tried booting from this board and BIOS and it would boot from a 512MB USB stick but not from a 1GB stick of the same manufacture and identical contents (copied from 512MB stick to 1GB stick using dd utility).   \n"
+    },
+    {
+      "id": "54881",
+      "timestamp": "2009-01-13T18:37:10+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Meanwhile, I propose we call this procedure \"Remap Recoil\", even before we know whether it works or not, just because it\u0027s much easier to think about things that can be named. :smile:\n\nI would personally prefer \"Total Remap\" ....:smile:  \n\njaclaz   \n"
+    },
+    {
+      "id": "54954",
+      "timestamp": "2009-01-14T08:12:05+00:00",
+      "author": "alvinwong",
+      "content": "If you want to make your USB flash drive into a floppy-detected drive,  \nI think you should format it into FAT12.  \nBased on my knowledge,  \nFAT12 \u003d usb-fdd  \nFAT18 \u003d usb-zip  \nFAT32 \u003d usb-hdd  \n......   \n"
+    },
+    {
+      "id": "55068",
+      "timestamp": "2009-01-15T05:14:18+00:00",
+      "author": "alvinwong",
+      "content": "If you would like to boot from USB flash drive,  \nI recommend you to format it as FAT32.   \n"
+    },
+    {
+      "id": "55080",
+      "timestamp": "2009-01-15T08:35:38+00:00",
+      "author": "was_jaclaz",
+      "content": "@alvinwong  \n\nFor the record, the \"floppy\" can be formatted with ANY filesystem.  \n\nParticular motherboards may need it to be FAT12 and/or to be 1.44 or 2.88 Mb in size, but the actual difference, as far as a \"normal\" well written BIOS is used, is that the device has (HD-like) or has NOT (floppy-like) a MBR.  \n\nAlso, some moherboard BIOS may have other limits, like the first CHS barrier (528 Mb) and/or other ones.  \n\nDepending on the OS, filesystem used may affect (positively or negatively) real world performance:  \n[http://www.msfn.org/...howtopic\u003d125116](http://www.msfn.org/board/index.php?showtopic\u003d125116 \"External link\")  \n\n\"zip\" format is actually TWO formats, one with MBR and one without, with a particular setup:  \n[http://www.boot-land...?showtopic\u003d4830](http://www.boot-land.net/forums/?showtopic\u003d4830 \"External link\")  \n[http://www.win.tue.n.../zip/zip-1.html](http://www.win.tue.nl/~aeb/linux/zip/zip-1.html \"External link\")  \n\nOther \"strange\" behaviours are listed in FAQ #10:  \n[http://home.graffiti...SB/USBfaqs.html](http://home.graffiti.net/jaclaz:graffiti.net/Projects/USB/USBfaqs.html \"External link\")  \n\nand an even more peculiar one is reported here:  \n[http://www.boot-land...?showtopic\u003d4863](http://www.boot-land.net/forums/index.php?showtopic\u003d4863 \"External link\")  \n\n\u003cbr /\u003e\n\njaclaz   \n"
+    }
+  ]
+}

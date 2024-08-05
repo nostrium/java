@@ -1,0 +1,34 @@
+{
+  "id": "20536",
+  "title": "Prevent Windows Setup From Creating Page/Hibernation Files?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "193227",
+      "timestamp": "2015-06-18T18:24:51+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "When installing Windows, it always create both a page and hibernation file on my C drive on the SSD, both files appear there when logging into your user account for the first time. This is a problem for me, since my C is on an SSD, and Windows 7 creates a page file of around 16GB, to match the size of my RAM, and a hibernation file as well. I would like to prevent these hits to my SSD at all, even though they can be manually disabled/moved after they\u0027re created, this isn\u0027t optimal. Are there any commands/tweaks whch can prevent these files from being created at all?\n\nPerhaps creating empty 0/1 byte page/hiber files (with Notepad) might work, then renaming them with a .sys extension? Or will Windows simply overwrite them?\n\nThanks!\n\n**Edited by AnonVendetta, 18 June 2015 - 06:37 PM.**\n"
+    },
+    {
+      "id": "193228",
+      "timestamp": "2015-06-18T20:07:34+00:00",
+      "author": "dickfitzwell",
+      "content": "Assuming Windows 7,\n\nPaging file from setupcomplete.cmd:\n\n```\nwmic computersystem set AutomaticManagedPagefile\u003dfalse\nwmic PageFileSet delete\n```\n\nPaging file will be deleted on reboot after first log in.\n\nHibernation from unattend.xml:\n\n```\n\u003csettings pass\u003d\"offlineServicing\"\u003e\n\u003ccomponent name\u003d\"Microsoft-Windows-Power-Policy-Definitions\" processorArchitecture\u003d\"amd64\" publicKeyToken\u003d\"31bf3856ad364e35\" language\u003d\"neutral\" versionScope\u003d\"nonSxS\" xmlns:wcm\u003d\"http://schemas.microsoft.com/WMIConfig/2002/State\" xmlns:xsi\u003d\"http://www.w3.org/2001/XMLSchema-instance\"\u003e\n\u003cHibernateEnabled\u003e0\u003c/HibernateEnabled\u003e\n\u003c/component\u003e\n\u003c/settings\u003e\n```\n\nIf your method of install doesn\u0027t process the \"OfflineServicing\" pass, try \"powercfg -h off\" in setupcomplete.cmd I\u0027ve had instances where this method fails, the file is never created because there is not enough space available. Then upon reboot with enough available space (like after the paging file is deleted), the file is created and \"powercfg -h off\" is needed again.\n\n"
+    },
+    {
+      "id": "193229",
+      "timestamp": "2015-06-18T20:28:01+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "Thanks for the info but.......your command would only \\*delete\\* the page file \\*after\\* it is created. In which case the writing of the file has already been done, and decreased its\u0027 lifespan by a bit. I want to prevent the file from being created at all. Your command regarding the hibernation file might work though.\n\n**Edited by AnonVendetta, 18 June 2015 - 08:29 PM.**\n"
+    },
+    {
+      "id": "193231",
+      "timestamp": "2015-06-18T21:30:05+00:00",
+      "author": "v77",
+      "content": "\u003e In which case the writing of the file has already been done\n\nTry to create a very large pagefile on a slow hard drive: it will be instantaneous, because nothing is written.  \nThe space for a file can be reserved without being written.\n\n"
+    }
+  ]
+}

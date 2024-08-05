@@ -1,0 +1,22 @@
+{
+  "id": "20453",
+  "title": "Something is wrong on my end that makes booting from usb hard",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "192082",
+      "timestamp": "2015-04-21T00:23:18+00:00",
+      "author": "Max Pen",
+      "content": "I\u0027ve booted before, for example memtest64 and memtest64+ from USB drive without issue.\n\nSo it probably is either:\n\nThe iso file used\n\nOR\n\nthe program writing the boot records and stuff to the usb drive\n\nOR\n\n????\n\nI don\u0027t know what to do.\n\nI want to make a usb drive with several bootable iso files. Say in short: I want to make my own utilities disk with the iso files I choose.\n\nMacrium Rescue Media\n\nAvira rescue media\n\netc...\n\nAre some of the iso files I want to put on my usb and boot to.\n\nI\u0027ve changed the boot order to and strange thing is when I disable all boot options but the usb it boots to BIOS.\n\n**Edited by Max Pen, 21 April 2015 - 12:23 AM.**\n"
+    },
+    {
+      "id": "192109",
+      "timestamp": "2015-04-22T12:24:14+00:00",
+      "author": "Agent47",
+      "content": "Hi\n\nIt\u0027s possible to create a multiboot USB stick with the help of**\"GRUB4DOS\"**.\n\n[http://diddy.boot-la...os/Grub4dos.htm](http://diddy.boot-land.net/grub4dos/Grub4dos.htm \"External link\")\n\nAlso there is a project called**\"Easy2Boot\"** which will ease the process of creating the multiboot USB stick. It\u0027s a collection of GRUB4DOS scripts which will automate the creation of necessary GRUB4DOS boot entries which may otherwise difficult to do manually.\n\nHave a look at [http://www.easy2boot.com/](http://www.easy2boot.com/ \"External link\")\n\n"
+    }
+  ]
+}

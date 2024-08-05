@@ -1,0 +1,22 @@
+{
+  "id": "4628",
+  "title": "Need help with Vista/XP multiboot",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "35232",
+      "timestamp": "2008-05-09T20:52:39+00:00",
+      "author": "ALI KHAN",
+      "content": "I Want help. Iwant to boot my \"XP\" OR \"Server 2003\" OS machine from bootable \"DOS OS\" ISO, FLOPPY DISK IMAGE FILE OR WIM files through DUAL BOOT and add entry on boot.ini file Using through VISTA BOOTLOADER without installation of vista or with VISTA. It is possible to boot with (ISO) or Disk Image (IMG) files with VISTA loader.   \nIf you know any other utility except GRUB plz tell me and send me link.   \nplz tell me step by step al things. I want to start a DOS base GHOST imaging utility at system startup through boot.ini file with VISTA LOADER.  \n\nTHANKS   \n\n**Edited by Nuno Brito, 09 May 2008 - 11:28 PM.**   \nModified title and moved to proper section\n"
+    },
+    {
+      "id": "35256",
+      "timestamp": "2008-05-10T10:37:09+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e It is possible to boot with (ISO) or Disk Image (IMG) files with VISTA loader.\n\nNO.  \n\nThe most you can do is to chainload from the Vista loader the NTLDR from XP/2003 which can chainload a bootsector throgh BOOT.INI.  \n\nFrom that bootsector you can chainload a DOS of some kind (in root of the volume, NOT in a IMG or ISO) or another NT loader, possibly using a .IMG or .ISO using RAMDISK to boot a PE of some kind or a full XP with the Euhenio\u0027s method.  \n\nTo load a DOS image you need a bootloader of some kind, grub4dos, which you appear to like not, or syslinux/isolinux/memdisk or siblo:  \n[http://syslinux.zytor.com/](http://syslinux.zytor.com/ \"External link\")  \n[http://simplux.org/siblo/index.html](http://simplux.org/siblo/index.html \"External link\")  \n\nThis is standard reference site for multibooting VISTA:  \n[http://www.multibooters.co.uk/](http://www.multibooters.co.uk/ \"External link\")  \n\njaclaz   \n"
+    }
+  ]
+}

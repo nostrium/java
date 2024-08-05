@@ -1,0 +1,22 @@
+{
+  "id": "5824",
+  "title": "MultiBoot USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "45576",
+      "timestamp": "2008-09-26T22:12:52+00:00",
+      "author": "Enyalius",
+      "content": "![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png) Ok I have been running in circles. Too many ways of doing the same thing...  \n\nI am trying to create an all-in-one repair support flash drive on an 8GB flash drive (SanDisk Cruzer). Since it is easier to update a flash drive than a cd/iso.   \nI am trying to create a simple boot menu to select programs (Aero Studio, GRUB4DOS ![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png))... Later I will need to consolidate some of the programs (remove doubles/overlaps). Only using 1 partition and not looking for Win installers.  \n\nI am trying to incorporate the following:  \n\nUBCD4Win (XP only? or similar program)  \nVista PE (works with both XP and Vista?)  \nUBCD (v 4.1.1)  \nBack Track (v 3)  \nKNOPPIX (5.3.1)\n\nSuggestions are greatly appreciated.   \n"
+    },
+    {
+      "id": "45585",
+      "timestamp": "2008-09-26T23:28:03+00:00",
+      "author": "Enyalius",
+      "content": "[WinSetupFromUSB](http://www.msfn.org/board/How-to-install-from-USB-WinSetupFromUSB-t120444.html \"External link\") Kinda works half way. I would still have to script some of the programs in. The menu system can be better. I worked with AeroStudio and the syslinux.cfg file. I also don\u0027t need the Win installers.   \n"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "8235",
+  "title": "CD Booteable with NOD32DOS",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "69937",
+      "timestamp": "2009-06-17T15:25:48+00:00",
+      "author": "asecasp",
+      "content": "I have created a CD Booteable with NOD32DOS and this one is executed perfectly, the only one problem that I have is that it me does not recognize the hard disks, i want that was recognizing these and if is possible also devices USB.  \n\nThe configuration of autoexec.bat is   \n\n```\n@ECHO OFF\n\nMSCDEX.EXE /D\u0026#58;CDDRIVER /L\u0026#58;X\n\nXMSDSK.EXE 102400 R\u0026#58; /t /y\n\nCTMOUSE.EXE\n\nPATH\u003dA\u0026#58;\\;R\u0026#58;\\\n\nGOTO %CONFIG%\n\n\n\n\u0026#58;NOD32DOS\n\nCOPY X\u0026#58;\\NOD32DOS\\*.* R\u0026#58;\n\nR\u0026#58;\\nod32dos.exe\n\nx\u0026#58;\\\n\nGOTO DOS\n\n\n\n\u0026#58;DOS\n\nECHO  X\u0026#58; CD DRIVE\n\nECHO  R\u0026#58; RAM DRIVE\n```\n\n\u003cbr /\u003e\n\nThe configuration of config.sys is  \n\n```\n\u0026#91;MENU\u0026#93;\n\nmenuitem\u003dNOD32DOS, nod32dos\n\n\n\n\u0026#91;DOS\u0026#93;\n\nDEVICE\u003dOAKCDROM.SYS /D\u0026#58;CDDRIVER /L\u0026#58;X\n\n\n\n\u0026#91;NOD32DOS\u0026#93;\n\ninclude\u003dDOS\n\n\n\n\u0026#91;COMMON\u0026#93;\n\nLASTDRIVE\u003dZ\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "69940",
+      "timestamp": "2009-06-17T15:40:46+00:00",
+      "author": "was_jaclaz",
+      "content": "Well, you cannot expect a \"plain\" DOS system to see:  \n\n* any FAT32 or NTFS formatted filesystem (if DOS version up to 6.22)\n* any NTFS formatted filesystem (if DOS version 7.x or 8.0)\n* any device on a BUS like USB, Firewire, SCSI for which DOS has NOT native support unless you load a specific BUS stack and driver.\n\n\u003cbr /\u003e\n\nTeere are solutions for the latter two problems, don\u0027t think there is one for first one.  \n\nSince it is unlikely that you will find a tutorial/reference wahtever for BOTH 2. and 3. together, you may want to search separately for \"NTFS support DOS\" aand for \"USB support DOS\".  \n\njaclaz   \n"
+    }
+  ]
+}

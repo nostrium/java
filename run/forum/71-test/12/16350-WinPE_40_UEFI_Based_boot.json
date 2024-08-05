@@ -1,0 +1,82 @@
+{
+  "id": "16350",
+  "title": "WinPE 4.0 UEFI Based boot",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "148428",
+      "timestamp": "2012-02-16T14:37:23+00:00",
+      "author": "amitr0",
+      "content": "all,  \n\nI am trying to create an USB bootable winPe image based on the Winpe 4.0 builds available with win8 dev preview build 8220.  \n\nThe image used is created to be UEFI bootable and I have verified that it boots on a UEFI bootable hardware.  \n\n\u003cbr /\u003e\n\nNow, I copy the contents of the same ISO into a folder in the C drive and point the UEFI BCD to load the boot.WIM from that location. The boot fails. But flipping the firmware mode to BIOS (this hardware supports both) gracefully boots up from the ramdisk (where I load the boot.wim).  \n\nSo what could be the possible problem here?   \n\nDoesnt winpe support uefi boot from ramdisk based images?  \n\n\u003cbr /\u003e\n\nNote: The iso is dual boot itself and can boot both in bios and uefi.  \n\namitr0   \n"
+    },
+    {
+      "id": "148429",
+      "timestamp": "2012-02-16T14:47:12+00:00",
+      "author": "ericgl",
+      "content": "You should probably wait for the **Consumer Preview of Windows 8** , which should be available free to download by the end of February 2012.   \n"
+    },
+    {
+      "id": "148433",
+      "timestamp": "2012-02-16T15:19:19+00:00",
+      "author": "amitr0",
+      "content": "\u003e You should probably wait for the **Consumer Preview of Windows 8** , which should be available free to download by the end of February 2012.  \n\ndoes this mean, that you recommend I wait because there could be a bug in this build with UEFI boot broken? hmmm might be, but as I said the CD boots fine in UEFI mode, it only doesnt boot when I try the RAMdisk approach, and if it is the same code that should execute (efisys.bin) I would think it should boot....   \n"
+    },
+    {
+      "id": "148439",
+      "timestamp": "2012-02-16T16:13:50+00:00",
+      "author": "cdob",
+      "content": "Walkthrough: Boot Windows PE from a UEFI-based Hard Disk  \n[http://technet.micro...-us,WS.10).aspx](http://technet.microsoft.com/de-de/library/hh265131(en-us,WS.10).aspx \"External link\")   \n"
+    },
+    {
+      "id": "148457",
+      "timestamp": "2012-02-16T20:20:20+00:00",
+      "author": "Tripredacus",
+      "content": "\u003e does this mean, that you recommend I wait because there could be a bug in this build with UEFI boot broken? hmmm might be, but as I said the CD boots fine in UEFI mode, it only doesnt boot when I try the RAMdisk approach, and if it is the same code that should execute (efisys.bin) I would think it should boot....  \n\nI haven\u0027t tried WinPE 4 yet but WinPE 3 boots in UEFI mode with Ramdisk just fine.   \n"
+    },
+    {
+      "id": "148471",
+      "timestamp": "2012-02-17T04:57:49+00:00",
+      "author": "amitr0",
+      "content": "\u003e I haven\u0027t tried WinPE 4 yet but WinPE 3 boots in UEFI mode with Ramdisk just fine.  \n\nyes, right. in our product we had the same steps to boot from a winpe3 based setup, the moment we migrated to winpe4 the boot stopped   \n"
+    },
+    {
+      "id": "166268",
+      "timestamp": "2013-01-21T12:09:37+00:00",
+      "author": "MikhailCompo",
+      "content": "Since Windows 8 was released properly, and now UEFI devices are being released with it installed, many will have secure boot enabled, which BLOCKS WIN PE3.\n\nAnyone who REQUIRES a WinPE based boot disk for their systesm will need to use WinPE4 based boot disks, or disabled Secure Boot rendering their systems less secure to rootkits viruses.\n\n"
+    },
+    {
+      "id": "166275",
+      "timestamp": "2013-01-21T12:55:20+00:00",
+      "author": "wimb",
+      "content": "In Windows 8 use Configuration \\\u003e Recovery to make Recovery USB-stick.\n\nTo save space and time you can Uncheck to Copy Recovery Partition (needed in case of Factory Restore)\n\nIt boots in UEFI Secure boot with Recovery Environment and with Advanced Options e.g. System Restore or Command prompt\n\n[http://reboot.pro/to...e-2#entry166256](http://reboot.pro/topic/17877-uefi-windows-8-bios-grub4dos-multiboot-usb-harddisk/page-2#entry166256 \"\")\n\nWindows 8 Recovery ramdisk is as good (even better) than WinPE 4.0\n\nIn Recovery environment using command prompt, I can launch notepad and via File open get Explorer browser GUI\n\nand can launch with R-mouse menu as administrator any 64-bits program e.g. WinNTSetup2_x64.exe to Install any Windows version ......\n\nby mounting with R-mouse any Windows Setup ISO file. ![:1st:](http://reboot.pro/public/style_emoticons/default/1st.gif)\n\n"
+    },
+    {
+      "id": "166286",
+      "timestamp": "2013-01-21T14:15:57+00:00",
+      "author": "MikhailCompo",
+      "content": "Thanks for that tip WIMB, i didnt know that.\n\nHowever, we need a much more customised WinPE4 boot disk than the MS one for our environment. We currently have a WinPE3 with all of our tools installed (Using MakePE3, heard ot it? :wink: ), but this wont work with new and future client devices.\n\nTherefore we need to migrate where possible, all the tools to a WinPE 4 alternative, rather than all the technicians using multple boot disks.\n\nAny plans on MakePE4 or something similar?\n\n"
+    },
+    {
+      "id": "166289",
+      "timestamp": "2013-01-21T15:29:46+00:00",
+      "author": "wimb",
+      "content": "\u003e Therefore we need to migrate where possible, all the tools to a WinPE 4 alternative, rather than all the technicians using multple boot disks.\n\u003e\n\u003e Any plans on MakePE4 or something similar?\n\n[http://reboot.pro/to...t-usb-harddisk/](http://reboot.pro/topic/17877-uefi-windows-8-bios-grub4dos-multiboot-usb-harddisk/ \"\")\n\nInstead I propose to Install Windows 8 direct as described to USB-harddisk by using WinNTSetup2\n\nYou can boot then from USB-harddisk into Windows 8 environment\n\nand again use WinNTSetup2 to Install any Windows version on drive of local harddisk.\n\nAnd all tools (32 and 64-bits) can be used or even installed in Windows 8\n\nWindows 8 booting from USB easily adjusts itself to any hardware\n\nand is more powerful then PE environment.\n\nSo I don\u0027t have plans for Make_PE4 ........\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\n"
+    },
+    {
+      "id": "166290",
+      "timestamp": "2013-01-21T15:30:33+00:00",
+      "author": "ericgl",
+      "content": "MikhailCompo,\n\nHave you looked at my WinPE 4.0 guide?\n\nIt\u0027s a bit technical and lengthy, but I assure you that it works nicely.\n\nThe WinPE 4.0 is minimal without a fancy GUI, but you can run any portable executable on it.\n\nlink to guide: [http://reboot.pro/to...e-40-usb-drive/](http://reboot.pro/topic/16544-create-a-bootable-winpe-40-usb-drive/ \"\")\n\n"
+    },
+    {
+      "id": "166292",
+      "timestamp": "2013-01-21T16:03:54+00:00",
+      "author": "wimb",
+      "content": "\u003e The WinPE 4.0 is minimal without a fancy GUI, but you can run any portable executable on it.\n\u003e\n\u003e link to guide: [http://reboot.pro/to...e-40-usb-drive/](http://reboot.pro/topic/16544-create-a-bootable-winpe-40-usb-drive/ \"\")\n\nDo you have 32-bits support working in WinPE 4.0 or can you use only 64-bits apps ?\n\nIf so can you give some details (filelist and regtweaks) on how to add 32-bits support to WinPE 4.0\n\nWhat extra registry entries and what extra files \\\\ folders are needed ?\n\nIt might be useful to add such 32-bits support to the Recovery boot.wim\n\nThe Win8 Recovery USB-stick is quite easily made (few mouse clicks) in Windows 8 environment\n\nand has System Restore for Win8 Restore Points and more useful features ....\n\nIn Recovery environment using command prompt, I can launch notepad and via File open get Explorer browser GUI\n\nand can launch with R-mouse menu as administrator any 64-bits program e.g. WinNTSetup2_x64.exe to Install any Windows version ......\n\nby mounting with R-mouse any Windows Setup ISO file. ![:1st:](http://reboot.pro/public/style_emoticons/default/1st.gif)\n\n[http://reboot.pro/to...e-2#entry166256](http://reboot.pro/topic/17877-uefi-windows-8-bios-grub4dos-multiboot-usb-harddisk/page-2#entry166256 \"\")\n\n[http://reboot.pro/to...pe/#entry166561](http://reboot.pro/topic/18056-the-universal-pe/#entry166561 \"\")\n\n[http://reboot.pro/to...party-software/](http://reboot.pro/topic/17872-reset-a-windows-8-password-without-using-any-third-party-software/ \"\")\n\n"
+    }
+  ]
+}

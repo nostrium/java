@@ -1,0 +1,34 @@
+{
+  "id": "14211",
+  "title": "Boot From DVD",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "126057",
+      "timestamp": "2011-04-01T03:45:30+00:00",
+      "author": "Novaes",
+      "content": "How can y make one boot dvd 8GB with three softwares Windows xp, Windows Vista and Windows 7?  \n\nCarlos Novaes   \n"
+    },
+    {
+      "id": "126088",
+      "timestamp": "2011-04-01T12:46:24+00:00",
+      "author": "Sha0",
+      "content": "\u003e How can y make one boot dvd 8GB ...  \nThe single-layer DVDs that I am familiar with are 4.7 GB. Are you talking about a dual-layer DVD? Have you ever made a bootable CD?   \n"
+    },
+    {
+      "id": "126150",
+      "timestamp": "2011-04-02T04:06:11+00:00",
+      "author": "Novaes",
+      "content": "I believe that the 3 softwares do not fit in a DVD of 4,7GB - Windows XP \u003d 846MB, Windows Vista \u003d 3,6 GB and 3,2 Windows 7 \u003d Total \u003d 7,646 GB. (DVD + RDL \u003d 8.5GB)  \n\nCarlos Novaes   \n"
+    },
+    {
+      "id": "126227",
+      "timestamp": "2011-04-04T02:43:40+00:00",
+      "author": "Sha0",
+      "content": "Sorry: I misunderstood your question and don\u0027t know the answer. Good luck!   \n"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "13474",
+  "title": "A method to boot DEFT Linux 6.0 RC - some queries follow",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "117819",
+      "timestamp": "2010-12-26T03:34:58+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "I downloaded [DEFT Linux 6.0 RC](http://www.deftlinux.net/download/ \"External link\") (deft_6_rc.iso) . Within the ISO, **\\\\.disk\\\\info** file contains the following line  \n\n```\n\n\nLubuntu 10.10 \"Maverick Meerkat\" - i386 (20101010)\n\n```\n\n\u003cbr /\u003e\n\nwhich made me believe that the image is based on Ubuntu 10.10. Previously I experimented with **ubuntu-10.10-netbook-i386.iso** \\\u0026 was sure that the DEFT kernel supports **live-media-path** parameter. I extracted the image in a folder called **deft-6-rc** \\\u0026 my Grub4DOS menu.lst looks like  \n\n```\n\n\ntitle DEFT 6 RC\n\n  kernel\t\t/deft-6-rc/casper/vmlinuz file\u003d/deft-6-rc/preseed/ubuntu.seed boot\u003dcasper ignore_uuid live-media-path\u003d/deft-6-rc/casper/\n\n  initrd\t\t/deft-6-rc/casper/initrd.lz\n\n```\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nThe booting stopped with the error message that it can\u0027t find the squashfs image. It clearly indicates the DEFT kernel is not supporting **live-media-path** though it was supposed to do so. The I replaced the vmlinuz \\\u0026 initrd.lz of the DEFT CD with the ones from the Ubuntu netbook edition. Then the USB booted fine with the same menu.lst.   \n\n\u003cbr /\u003e\n\nBUT when the booting was done from DEFT ISO with its native kernel, then the desktop contains three icons - one evidence folder \\\u0026 two other shortcuts to Time \\\u0026 Date and shell. When the booting was done from the replaced Ubuntu kernel, the desktop shows only one shortcut of Install Ubuntu **9.04** (pretty amazing).  \n\nMy queries follow:  \n\n* Is it possible that Ubuntu 10.10 supports live-media-path but Lubuntu 10.10 does not?\n* How does the kernel make the difference in desktop environments?\n* How is it giving the option of installing Ubuntu **9.04**while the kernels are of Ubuntu 10.10?\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "117832",
+      "timestamp": "2010-12-26T11:50:54+00:00",
+      "author": "Wonko the Sane",
+      "content": "Holmes.Sherlock  \nLet\u0027s analyze what you posted:  \n\u003e The I replaced the vmlinuz \\\u0026 initrd.lz of the DEFT CD with the ones from the Ubuntu netbook edition.\n\n\u003e How does the kernel make the difference in desktop environments?\n\nYou replaced TWO files and then you ASSUMED that one of the two (and not the other one) causes a different desktop. :smile:  \n\nI presume Sir Arthur Conan Doyle had higher expectations for his character\u0027s logical skills.... :smile:  \n\nBTW, last time I checked, Ubuntu used:  \n\n```\nfile\u003d\n\niso-scan/filename\u003d\n```\n\nhttp://reboot.pro/5041/page__st__69  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "117849",
+      "timestamp": "2010-12-26T18:03:23+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "\u003e BTW, last time I checked, Ubuntu used:  \n\u003e\n\u003e ```\n\u003e file\u003d\n\u003e\n\u003e iso-scan/filename\u003d\n\u003e ```\n\u003e\n\u003e \u003chttp://reboot.pro/5041/page__st__69\u003e  \n\u003e\n\u003e :smile:  \n\u003e Wonko  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nHow does it relate to my problem? To my understanding, linux kernel vmlinuz provides the basic wrapper around the HW \\\u0026 the low-level syscalls while initrd/initramfs contains a bare minimum filesystem in compressed format to be mounted @ boot-time. It\u0027s very much unlikely that either of them will incorporate a part of desktop environments like GNOME/KDE. I decompressed the original initrd where I found a folder called **evidence** . So now I got the answer that how the folder was there in original desktop. What about the other couple of shortcuts? Or it may be the shorcut files were also present in initrd, not sure about that. That\u0027s why I asked the question here.  \n\n\u003e I presume Sir Arthur Conan Doyle had higher expectations for his character\u0027s logical skills....  \nC\u0027mon, like my Italian neighbor is sceptical about my logical ability, someone from India can also doubt your [sanity](http://www.thefreedictionary.com/sanity \"External link\").   \n"
+    },
+    {
+      "id": "117851",
+      "timestamp": "2010-12-26T18:17:53+00:00",
+      "author": "Wonko the Sane",
+      "content": "Why don\u0027t you try changing the kernel but NOT the initrd.lz?   \nOr the initrd.lz but not the kernel?  \n:smile:  \n\n(just to see if anything changes)  \n\n***Then*** , and ***if*** the result is the same you may be able to understand what causes what....  \n\n\u003cbr /\u003e\n\nWouldn\u0027t be easier to just ask at the DEFT site?  \n[http://www.deftlinux.net/forum/](http://www.deftlinux.net/forum/ \"External link\")  \n\n\u003cbr /\u003e\n\nFrom the little I can understand Lubuntu DOES NOT use GNOME, but rather LXDE:  \n[http://en.wikipedia.org/wiki/Lubuntu](http://en.wikipedia.org/wiki/Lubuntu \"External link\")  \n(the actual Lubuntu site seems down)  \n\n\u003e \"I just thought you\u0027d like to see,\" he said, \"what angels wear on their feet. Just out of curiosity. I\u0027m not trying to prove anything, by the way. I\u0027m a scientist and I know what constitutes proof. But the reason I call myself by my childhood name is to remind myself that a scientist must also be absolutely like a child. If he sees a thing, he must say that he sees it, whether it was what he thought he was going to see or not. See first, think later, then test. But always see first. Otherwise you will only see what you were expecting. Most scientists forget that. I\u0027ll show you something to demonstrate that later. So, the other reason I call myself Wonko ***the Sane*** is ***so that people will think I am a fool*** . **That Allows me to say what I see when I see it.** You can\u0027t possibly be a scientist if you mind people thinking that you\u0027re a fool.   \n\u003e\n\u003e - So Long and Thanks for all the Fish, Douglas Adams .\n\n:smile:  \nWonko   \n"
+    },
+    {
+      "id": "117871",
+      "timestamp": "2010-12-26T23:56:51+00:00",
+      "author": "Holmes.Sherlock",
+      "content": "\u003e Why don\u0027t you try changing the kernel but NOT the initrd.lz?   \n\u003e Or the initrd.lz but not the kernel?  \n\u003e :smile:  \n\u003e\n\u003e (just to see if anything changes)\nWho told u that I didn\u0027t do that? Either of the two combinations fails to mount the squashfs image. There is some version \\\u0026 argument mismatch. I guess, to mount the newer version of squash image, some kernel support is needed, as well as some command needs to be present in the /init residing @ the root of initramfs.  \n\n\u003e Wouldn\u0027t be easier to just ask at the DEFT site?  \n\u003e [http://www.deftlinux.net/forum/](http://www.deftlinux.net/forum/ \"External link\")  \n\u003e\nI asked a couple of question in Ubuntu forum, but nobody didn\u0027t answer any of the questions. But the queries were not un-answerable by a dev/hard-core user. Their reticence made me believe, that they are one or more of the following  \n\n* lack of knowledge (very much unlikely)\n* idle to go through or reply to a post (possible)\n* un-helpful (the most probable one)\n\nIf, the forum of such a widely used Linux distro, becomes so silent, then I can\u0027t expect anyone to answer in DEFT forum. But, as u\u0027ve told me, I\u0027ll ask there also.   \n"
+    },
+    {
+      "id": "117900",
+      "timestamp": "2010-12-27T13:53:42+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Who told u that I didn\u0027t do that?   \nWell, then Who told me that you did that? :smile:  \n(my crystall ball is still in the shop for tuning ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png))  \n\nIn any case you have NOTHING to backup your **assumption** that the Kernel has something to do with the modified desktop.  \n\n:wink:  \nWonko   \n"
+    }
+  ]
+}

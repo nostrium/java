@@ -1,0 +1,112 @@
+{
+  "id": "8785",
+  "title": "[Solved] usb key image of the Recovery Console",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "75383",
+      "timestamp": "2009-08-20T06:03:30+00:00",
+      "author": "Acris",
+      "content": "Hello everyone,  \nI installed the recovery console windows xp home on my usb stick :  \n\nContents of USB STICK :   \n\nFiles and folders are hidden.  \n\n\u003e Boot.ini  \n\u003e bootfont.bin  \n\u003e cmdcons  \n\u003e cmldr  \n\u003e ntldr  \n\u003e ntdetect.com\n\nIt\u0027s work fine :smile:   \nI\u0027d like to make an image for extracting the distribution and that people can install it by clicking on any usb stick, is this possible? ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \nThis image is for users of NETBOOK Acer Aspire One under XP Home ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nMy project is to create a simple batch which formats the key using HP USB Disk Format Tool storage (command line : HPUSBF and install the files on the usb stick  \n\nWhat software can help?  \n\nThanks a lot.  \n\nAcris   \n"
+    },
+    {
+      "id": "75387",
+      "timestamp": "2009-08-20T07:07:35+00:00",
+      "author": "was_jaclaz",
+      "content": "I would use RMprepUSB, as it has a number of features missing in the HP utility:  \n[http://www.boot-land...?showtopic\u003d7739](http://www.boot-land.net/forums/index.php?showtopic\u003d7739 \"External link\")  \n\nBut then again I would probably use an image.  \n\nTake your time reading this thread:  \n[http://www.boot-land...?showtopic\u003d5316](http://www.boot-land.net/forums/index.php?showtopic\u003d5316 \"External link\")  \n\na number of different ways to setup a Recovery Console are detailed in there.  \n\njaclaz   \n"
+    },
+    {
+      "id": "75389",
+      "timestamp": "2009-08-20T07:22:05+00:00",
+      "author": "maanu",
+      "content": "\u003e My project is to create a simple batch which formats the key using HP USB Disk Format Tool storage (command line : HPUSBF and install the files on the usb stick  \n\u003e\n\u003e What software can help?  \n\u003e\n\u003e Thanks a lot.  \n\u003e\n\u003e Acris\n\nwhy dont u ghost it or if seeking freeware app , then disk genius...(i hope im not missing anything since u want to just use the current setup on multiple flashes ? )   \n"
+    },
+    {
+      "id": "75396",
+      "timestamp": "2009-08-20T07:53:14+00:00",
+      "author": "Acris",
+      "content": "jaclaz \\\u003e\\\u003e   \nI have carefully read the topics but I have not seen information to make a img on my usb key to install it as UbuntuNR.img ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \n\nmaanu \\\u003e\\\u003e  \nYes I use my current setup on different usb key but i would like use   \nbut I would like to use a standard format for easy installation and quick  \n\nEdit : Make_USB.exe is my solution ?   \n"
+    },
+    {
+      "id": "75397",
+      "timestamp": "2009-08-20T08:12:40+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e jaclaz \\\u003e\\\u003e   \n\u003e I have carefully read the topics but I have not seen information to make a img on my usb key to install it as UbuntuNR.img :smile:\n\nReading the given thread AND links within it **CANNOT** possibly be done in 46 minutes, let alone \"carefully\". ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \n\nYou asked advice about:  \n\u003e My project is to create a simple batch which formats the key using HP USB Disk Format Tool storage (command line : HPUSBF and install the files on the usb stick\n\nWhich I read as:  \n\n* a batch with HP usb formatting copying files\n\n\u003cbr /\u003e\n\nI gave you my advice for that only, suggesting you to use RMprepUSB instead of the HP utility.  \n\nNo more, no less. :wink:  \n\nYou did not mention creating an image, I introduced the idea, meaning NOT:  \n\u003e to make a img on my usb key to install it as UbuntuNR.img\n(which I have NO idea what you mean with ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif))  \nbut rather running the Recovery Console FROM an image, the given thread explains several methods to have that.  \n\nA number of image related tools is listed here:  \n[http://www.msfn.org/...re-t100299.html](http://www.msfn.org/board/disk-imaging-software-t100299.html \"External link\")  \n\nAbout the batch, you can get some inspiration from the CASBAH:  \n[http://www.boot-land...?showtopic\u003d4023](http://www.boot-land.net/forums/index.php?showtopic\u003d4023 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "75398",
+      "timestamp": "2009-08-20T08:31:22+00:00",
+      "author": "Acris",
+      "content": "I do not want to create an image of the console to use this image as shown in the various subjects.  \nI would create an image and extract file into differents usb keys Like UbuntuNR.img and win32 disk copy : [https://help.ubuntu....on/FromImgFiles](https://help.ubuntu.com/community/Installation/FromImgFiles \"External link\")  \n\nis it possible ?   \n"
+    },
+    {
+      "id": "75400",
+      "timestamp": "2009-08-20T09:13:09+00:00",
+      "author": "wimb",
+      "content": "Use **Make_IMG.exe** of **U_XP_SET** package to make and install Recovery Console image RECONS.img using XP Setup Source folder as Source.   \nYou can Install RECONS.img as boot option on any selected Target drive - USB-stick or Harddisk.  \n\nUse previously **Make_USB.exe** to Format USB-stick using Format Stick button.  \n\nSee Section 7 in   \n[http://www.911cd.net...showtopic\u003d21883](http://www.911cd.net/forums//index.php?showtopic\u003d21883 \"External link\")   \n"
+    },
+    {
+      "id": "75491",
+      "timestamp": "2009-08-21T09:34:31+00:00",
+      "author": "Acris",
+      "content": "I tried to run make_usb.exe.  \n\n\u003cbr /\u003e\n\nI have several files and folders on my key.  \nI have the GRUB menu at startup of the key, I would like to remove and use only the boot.ini how?  \n.  \nis ti possible ??   \n"
+    },
+    {
+      "id": "75496",
+      "timestamp": "2009-08-21T11:12:03+00:00",
+      "author": "maanu",
+      "content": "\u003e I tried to run make_usb.exe.  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e I have several files and folders on my key.  \n\u003e I have the GRUB menu at startup of the key, I would like to remove and use only the boot.ini how?  \n\u003e .  \n\u003e is ti possible ??\n\nwhy u want grub to be removed ? :smile:   \n\nconsider it oxygen for ur usb drive . :smile:   \n"
+    },
+    {
+      "id": "75499",
+      "timestamp": "2009-08-21T11:28:25+00:00",
+      "author": "Acris",
+      "content": "I\u0027m curious  \narf my hard disk is SATA and the console does not see it  \nnothing works I have no access to the hard drive only the key usb  \n\nhow do ?   \n"
+    },
+    {
+      "id": "75501",
+      "timestamp": "2009-08-21T11:37:04+00:00",
+      "author": "maanu",
+      "content": "\u003e I\u0027m curious  \n\u003e arf my hard disk is SATA and the console does not see it  \n\u003e nothing works I have no access to the hard drive only the key usb  \n\u003e\n\u003e how do ?\n\ntry changin ur hdd mode from native to legacy in bios. or sata to ide   \n"
+    },
+    {
+      "id": "75505",
+      "timestamp": "2009-08-21T11:47:22+00:00",
+      "author": "Acris",
+      "content": "In my bios   \ni have changed SATA MODE INTO IDE  \n\nI have the same message :   \nA disk read error occurred -  \nPress Ctrl+Alt+Del to restart   \n"
+    },
+    {
+      "id": "75507",
+      "timestamp": "2009-08-21T11:58:49+00:00",
+      "author": "maanu",
+      "content": "\u003e In my bios   \n\u003e i have changed SATA MODE INTO IDE  \n\u003e\n\u003e I have the same message :   \n\u003e A disk read error occurred -  \n\u003e Press Ctrl+Alt+Del to restart\n\n\u003cbr /\u003e\n\nchange ur hdd mode , and try booting from ur flash drive which contains recovery console .  \n\nis the above error occured when u were trying to boot from usb or from ur hdd ?   \n\ni asked u to change sata mood to ide just because of RC could see it (possibily )   \n\notherwise , get a clean xp sp2 or 3 image . slip stream mass storage driver pack with nlite , and then prepare another RC image with the same tool that u have used earlier...   \n"
+    },
+    {
+      "id": "75511",
+      "timestamp": "2009-08-21T12:12:49+00:00",
+      "author": "Acris",
+      "content": "With KEY USB + SATA MODE INTO IDE \u003d it\u0027s work now but  \n\nI have also installed the console on my hard drive and then I get the message that does not work   \nwhy ??  \n\ncan you tell me how to add Safe Mode and boot partition on my disk?  \n\n\\[boot loader\\]  \ntimeout\u003d30  \ndefault\u003dmulti(0)disk(0)rdisk(1)partition(2)\\\\WINDOWS  \n\\[operating systems\\]  \nmulti(0)disk(0)rdisk(1)partition(2)\\\\WINDOWS\u003d\"Microsoft Windows XP dition familiale usb\" /noexecute\u003doptin /fastdetect  \nC:\\\\CMDCONS\\\\BOOTSECT.DAT\u003d\"Console de récupération Microsoft Windows XP\" /cmdcons  \nmulti(0)disk(0)rdisk(1)partition(2)\\\\WINDOWS\u003d\"Mode sans échec\"/fastdetect/safeboot:minimal/sos/bootlog   \n"
+    },
+    {
+      "id": "75519",
+      "timestamp": "2009-08-21T13:06:12+00:00",
+      "author": "Acris",
+      "content": "title Start Windows XP from hd1 after Boot from USB hd0  \nmap (hd1) (hd0)  \nmap --hook  \nrootnoverify (hd0)  \nfind --set-root --ignore-floppies --ignore-cd /ntldr  \nchainloader /ntldr  \n\n\u003cbr /\u003e\n\nI miss more than the Safe mode   \n"
+    },
+    {
+      "id": "75789",
+      "timestamp": "2009-08-24T08:36:19+00:00",
+      "author": "Acris",
+      "content": "Hi everyone,  \n\nrecovery console works fine... thanks for your help.  \n\nbut i have a strange problem.  \n\nI installed the Recovery Console directly on the hard drive, but it does not work.  \nI have a SATA hard drive.  \nRecovery Console displays the following message: A DISK reader error occurred.  \n\nWhy ?   \n"
+    },
+    {
+      "id": "75863",
+      "timestamp": "2009-08-25T08:39:05+00:00",
+      "author": "Acris",
+      "content": "Thanks a lot for your helps  \n\nMy USB key works very fine ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n"
+    }
+  ]
+}

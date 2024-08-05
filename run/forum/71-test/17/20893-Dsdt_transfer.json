@@ -1,0 +1,58 @@
+{
+  "id": "20893",
+  "title": "Dsdt transfer",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "196891",
+      "timestamp": "2015-12-29T05:49:43+00:00",
+      "author": "friske",
+      "content": "Do it is possible to extract Dsdt from windows xp and load it to windows 7 or linux?\n\n"
+    },
+    {
+      "id": "196893",
+      "timestamp": "2015-12-29T10:38:25+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Do it is possible to extract Dsdt from windows xp and load it to windows 7 or linux?\n\nYou might want to try to explain WHAT you actually would like to do ( and possibly also WHY), as is the question makes not real sense, DSDT is part of ACPI, and fiddling with it is not something that you would normally do, and particularly it\u0027s a clear CATCH22 situation, if you know what you are doing you wouldn\u0027t be here asking how to do it. ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)\n\nHowever, start reading around here:\n\n[https://tonycr.wordpress.com/xp_dsdt/](https://tonycr.wordpress.com/xp_dsdt/ \"External link\")\n\n[https://github.com/R...patch-your-DSDT](https://github.com/RehabMan/HP-ProBook-4x30s-DSDT-Patch/wiki/How-to-patch-your-DSDT \"External link\")\n\n[https://wiki.archlin.../index.php/DSDT](https://wiki.archlinux.org/index.php/DSDT \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "196894",
+      "timestamp": "2015-12-29T10:47:36+00:00",
+      "author": "friske",
+      "content": "I have a laptop with fan working in xp.\n\nIn Win7 it not work, speed at boot and after return every slow.\n\nIf i change the DSDT all fase to x064 it turn to work in win7 but only in max and min not in medium.\n\nI thing to replace DSDT of Win7 With Xp.\n\nIo ho un portatile con le ventole che funzionavano in xp. Passando a Win7 le ventole funzionano al massimo solo al riavvio ma appena entra nel desktop rimangono al minimo.\n\nModificando il DSDT manualmente ritorna a funzionare ma solo al minimo o al massimo senza valori intermedi. Se provo ad impostare valori intermedi ritorna a funzionare sempre al minimo. Così mi son chiesto se fosse possibile copiare il DSDT da XP a WIN7.\n\n"
+    },
+    {
+      "id": "196895",
+      "timestamp": "2015-12-29T11:15:57+00:00",
+      "author": "Wonko the Sane",
+      "content": "Yep :smile:, but maybe, knowing the EXACT model/make of the laptop there is a specific solution/workaround ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png).\n\nI mean, unless it is a \"strange\" piece of hardware it is unlikely that you are the first and only one around with this kind of issue, my crystal ball was accurate enough to see that you likely needed something \\*like\\* the work by Rehabman ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif):\n\n[http://www.tonymacx8...gher-temps.html](http://www.tonymacx86.com/hp-probook/72043-new-fan-control-dsdt-silent-fan-higher-temps.html \"External link\")\n\nand by the good guys at the notebookreview forum:\n\n[http://forum.noteboo...-module.657013/](http://forum.notebookreview.com/threads/hp-probook-4530s-fan-always-on-help-with-dsdt-editing-or-nhc-acpi-module.657013/ \"External link\")\n\nbut still it is not tuned enough to let me see which specific model of laptop is it ![:(](http://reboot.pro/public/style_emoticons/default/sad.png).\n\nReally, you should have by now learned to ask questions \"the smart way\", just in case :wink::\n\n[http://www.catb.org/...-questions.html](http://www.catb.org/~esr/faqs/smart-questions.html \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "196897",
+      "timestamp": "2015-12-29T11:37:40+00:00",
+      "author": "friske",
+      "content": "hp 6735s\n\n"
+    },
+    {
+      "id": "196898",
+      "timestamp": "2015-12-29T11:54:23+00:00",
+      "author": "Wonko the Sane",
+      "content": "Good, are you trying to set a new record for the shortest post? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\nOr setting a new one for *sloth* ? ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)\n\nAny reason why the NBFC doesn\u0027t work for you?\n\nHere:\n\n[https://github.com/hirschmann/nbfc](https://github.com/hirschmann/nbfc \"External link\")\n\n[https://github.com/h...n/nbfc/releases](https://github.com/hirschmann/nbfc/releases \"External link\")\n\n[https://github.com/h...on X2 RM-72.xml](https://github.com/hirschmann/nbfc/blob/master/Configs/HP%20Compaq%206735s%20Turion%20X2%20RM-72.xml \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "196899",
+      "timestamp": "2015-12-29T12:00:44+00:00",
+      "author": "friske",
+      "content": "I have a sempron do it work also?\n\nIt is a pleasure for me to make you gay. :wink: ty\n\n"
+    },
+    {
+      "id": "196900",
+      "timestamp": "2015-12-29T12:32:08+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I have a sempron do it work also?\n\nPerfect! ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)  \n[http://www.catb.org/...-questions.html](http://www.catb.org/~esr/faqs/smart-questions.html \"External link\")\n\u003e Q: Can I convert an AcmeCorp document into a TeX file using the Bass-o-matic file converter?  \n\u003e\n\u003e A: Try it and see. If you did that, you\u0027d ( a ) learn the answer, and ( b ) stop wasting my time.\n\n\u003cbr /\u003e\n\n\u003e It is a pleasure for me to make you gay. :wink: ty\n\nYou what? ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)\n\n\u003cbr /\u003e\n\nSpoiler  \nFor NO apparent reason:  \n[https://www.pinteres...79565583862378/](https://www.pinterest.com/pin/566679565583862378/ \"External link\")  \n![e5dd9632a0a61a53e11f35f11f34ca5f.jpg](https://s-media-cache-ak0.pinimg.com/originals/e5/dd/96/e5dd9632a0a61a53e11f35f11f34ca5f.jpg)  \n\nI don\u0027t think ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif) I would particularly like to be *frisked*.\n\n\u003cbr /\u003e\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n"
+    }
+  ]
+}

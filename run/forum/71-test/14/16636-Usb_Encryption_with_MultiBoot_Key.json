@@ -1,0 +1,46 @@
+{
+  "id": "16636",
+  "title": "Usb Encryption with MultiBoot Key",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "151718",
+      "timestamp": "2012-03-31T10:26:27+00:00",
+      "author": "Hy T. Diep",
+      "content": "Is there some time of software that I can use to encrypt my files on the flashdrive, but still be able to boot in to all my Bootable Usb Disks? Or is there some type of hardware trick? Like to create 2 partitions on the Flash Drive 1 partition being the Bootable Disks and the other for Encryption?   \n"
+    },
+    {
+      "id": "151722",
+      "timestamp": "2012-03-31T10:51:17+00:00",
+      "author": "misty",
+      "content": "**@Hy T.Diep**   \nYou could try [Truecrypt](http://www.truecrypt.org/ \"External link\").  \n\nI\u0027ve been using this for a while to encrypt sensitive data to transport it between home and office. This has been an unofficial way of getting stuff into work as my tight manager has refused to purchase the *official* encrypted USB sticks that are allowed on the system.  \n\nAs of last week it\u0027s no longer an option for me as I no longer have the account privileges needed to mount the image file I\u0027ve encrypted. It does however work well if you have the necessary account privileges.  \n\nRegards,  \n\nMisty   \n"
+    },
+    {
+      "id": "151723",
+      "timestamp": "2012-03-31T10:57:17+00:00",
+      "author": "Hy T. Diep",
+      "content": "How would you encrypt the Flash Drive so that I can still boot my Bootable Images?   \n"
+    },
+    {
+      "id": "151729",
+      "timestamp": "2012-03-31T13:06:14+00:00",
+      "author": "Wonko the Sane",
+      "content": "For NO apparent reason:  \n\u003chttp://reboot.pro/12367/\u003e  \n\n\u003cbr /\u003e\n\n\u003e How would you encrypt the Flash Drive so that I can still boot my Bootable Images?  \nYou go where you have been pointed to:  \n[http://www.truecrypt.org/](http://www.truecrypt.org/ \"External link\")  \nread, experiment and learn.  \n\nHint:  \nStart here:  \n[http://www.truecrypt...stem-encryption](http://www.truecrypt.org/docs/?s\u003dsystem-encryption \"External link\")  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "151852",
+      "timestamp": "2012-04-02T13:09:56+00:00",
+      "author": "dog",
+      "content": "You wont be able to encrypt \"all bootable images\", I think a separate encrypted file or partition is the best you can expect.  \nAFAIK no-one has reported success integrating truecrypt pre-boot authentication into a PE.   \n"
+    },
+    {
+      "id": "175321",
+      "timestamp": "2013-08-02T08:01:09+00:00",
+      "author": "diaoor",
+      "content": "try flash drive encryption software, I have tried truecrypt(www.truecrypt.org) and USB Security([http://www.abetterso...b-security.html](http://www.abettersoft.com/usb-security.html \"External link\")). there are all great, truecrypt is opensource freeware; USB Security supports to encrypt part or whole of the external drive; you can view your encrypted data on any other computers without to install the encryption software. only type the password to access the encrypted external drive. good luck.\n\n"
+    }
+  ]
+}

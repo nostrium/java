@@ -1,0 +1,52 @@
+{
+  "id": "13953",
+  "title": "Windows Recovery Console issue when booting from flash drive",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "123575",
+      "timestamp": "2011-02-27T22:50:27+00:00",
+      "author": "markhelp",
+      "content": "Hello,  \n\nI recently created a customized ubcd flash drive to boot into various windows recovery consoles. Weird problem occurs that I hope someone could help me out with:  \nWhen you boot into the win7r console, it is unable to find my os. It states that it has found the following errors and it would like to repair and restart. Basically it looks like it wants to mess with my boot records to say that my main windows 7 install has been recovered. I basically don\u0027t want to do that so I did more investigating.  \n-even though it cannot find my os with the recovery console, it is easily located in cmd  \n\nWhen I made a cd from a nearly identical set of files, it does not have the issue  \nWith the cd it is able to find my os and it does not complain.  \n\nDoes anyone have an explanation for this difference?  \nTo clarify: the windows 7 recovery console loads fine, the problem occurs when it says that it is looking for the os  \n\nFor additional info:  \nI believe that I have my customized ubcd loading the windows recovery console with grub4dos  \n\nHere is the code that I use to load it up:  \n\n```\nLABEL -\n\nMENU LABEL Windows 7 Recovery x86\n\nENDTEXT\n\n\tkernel   /boot/grub.exe\n\nAPPEND --config-file\u003d\"map /ubcd/custom/win7rx86.iso (0xff);map --hook;chainloader (0xff)\n```\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nI am also wondering if it is possible to gzip my iso file for the windows recovery console  \nI tried using memdisk and it uncompresses the iso but then is unable to load it  \n\nThanks,  \n\nMark   \n"
+    },
+    {
+      "id": "123579",
+      "timestamp": "2011-02-27T23:21:44+00:00",
+      "author": "Sha0",
+      "content": "\u003e ...  \n\u003e Here is the code that I use to load it up:  \n\u003e\n\u003e ```\n\u003e LABEL -\n\u003e\n\u003e MENU LABEL Windows 7 Recovery x86\n\u003e\n\u003e ENDTEXT\n\u003e\n\u003e \tkernel   /boot/grub.exe\n\u003e\n\u003e APPEND --config-file\u003d\"map /ubcd/custom/win7rx86.iso (0xff);map --hook;chainloader (0xff)\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\nHow about:  \n\n```\nLABEL win7r\n\n  MENU LABEL Windows 7 Recovery x86\n\n  KERNEL /boot/grub.exe\n\n  APPEND --config-file\u003d\"map /ubcd/custom/win7rx86.iso (0xff);map --hook;chainloader (0xff)\"\n\n  TEXT HELP\n\n This option will boot a Windows 7 Recovery environment.\n\n  ENDTEXT\n\n```\n\nI don\u0027t quite understand why you are using a hyphen as a label and why you have **ENDTEXT** without **TEXT HELP** (or something else).  \n\nRegardless of that, please pretend for a moment that you can divide the Windows boot process into 2 parts: Pre-kernel and post-kernel.  \n\nFor the sake of simplicity, let\u0027s further pretend that GRUB4DOS makes the virtual CD/DVD at pre-kernel time. That\u0027s fine.  \n\nBut what post-kernel component do you have for the virtual CD/DVD drive? After the kernel loads, you need a Windows driver to drive the virtual CD/DVD, as the pre-kernel support is gone; this is one purpose of drivers like **WinVBlock** and **Firadisk** , for example. What drivers are you using to find the GRUB4DOS-established virtual CD/DVD drive?   \n"
+    },
+    {
+      "id": "123580",
+      "timestamp": "2011-02-27T23:40:54+00:00",
+      "author": "davlak",
+      "content": "\u003e When you boot into the win7r console, it is unable to find my os.   \n\ntry adding:  \n\n```\nmap (hd0) (hd1) \u0026\u0026 map (hd1) (hd0)\n\n```\n\n\u003cbr /\u003e\n\nas first line:  \n\n```\nAPPEND --config-file\u003d\"map (hd0) (hd1) \u0026\u0026 map (hd1) (hd0);map /ubcd/custom/win7rx86.iso (0xff);map --hook;chainloader (0xff)\"\n\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "123587",
+      "timestamp": "2011-02-28T02:38:25+00:00",
+      "author": "markhelp",
+      "content": "@davlak  \nJust tried that and it worked great!  \nThanks a lot  \n\nI guess the only question I currently have left is if it is possible to compress my recovery consoles into iso.gz ?  \n\nMark   \n"
+    },
+    {
+      "id": "123588",
+      "timestamp": "2011-02-28T02:49:12+00:00",
+      "author": "Sha0",
+      "content": "\u003e @davlak  \n\u003e Just tried that and it worked great!  \n\u003e Thanks a lot  \nI guess your .ISO loads its own environment into RAM and doesn\u0027t require the .ISO at post-kernel time.  \n\u003e I guess the only question I currently have left is if it is possible to compress my recovery consoles into iso.gz ?  \nNot with a sector-mapped disk, like you are currently using. You could expand it as a RAM disk, but then when that .ISO loads loads the environment into RAM, now you\u0027ve used almost twice as much RAM as you really need. (An \"outer\" RAM disk and an \"inner\" RAM disk, but the bulk of the \"outer\" is most likely the \"inner\", so you effectively have the \"inner\" in RAM twice.)   \n"
+    },
+    {
+      "id": "123593",
+      "timestamp": "2011-02-28T06:44:58+00:00",
+      "author": "markhelp",
+      "content": "@Sha0  \nI guess the reason that I would like to try this, even though it seems somewhat impractical, is that I am just 30MB short of being able fit everything I want on a CD.  \nHow could I go about expanding it as a RAM disk?  \n\nThanks,  \n\nMark   \n"
+    },
+    {
+      "id": "123597",
+      "timestamp": "2011-02-28T07:47:36+00:00",
+      "author": "davlak",
+      "content": "you can add --mem to the map command:  \n\n```\nmap --mem /ubcd/custom/win7rx86.iso.gz\n\n```\n\n\u003cbr /\u003e\n\nbut this way it will occur the issue mentioned by Sha0 about wasting a lot of ram ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)   \n"
+    }
+  ]
+}

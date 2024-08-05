@@ -1,0 +1,40 @@
+{
+  "id": "20532",
+  "title": "Create A Bootable USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "193199",
+      "timestamp": "2015-06-17T07:43:10+00:00",
+      "author": "amltzy",
+      "content": "How to create a bootable usb? with what tool? I find a tool called AOMEI PE builder, which bootable usb is based on Winpe, following is official turorial:\n\n[http://www.aomeitech...e-usb-1004.html](http://www.aomeitech.com/pebuilder/tutorials/make-a-bootable-usb-1004.html \"External link\")\n\neasy,right?\n\n"
+    },
+    {
+      "id": "193200",
+      "timestamp": "2015-06-17T07:48:06+00:00",
+      "author": "steve6375",
+      "content": "The problem with that tool is that it if you have a 64-bit Windows, it cannot create a 32-bit PE (and vice versa).\n\nIt has [already](http://reboot.pro/topic/20527-aomei-pe-builder-free/ \"\") been posted too\n\n"
+    },
+    {
+      "id": "193201",
+      "timestamp": "2015-06-17T07:53:33+00:00",
+      "author": "amltzy",
+      "content": "\u003e The problem with that tool is that it if you have a 64-bit Windows, it cannot create a 32-bit PE (and vice versa).\n\u003e\n\u003e It has [already](http://reboot.pro/topic/20527-aomei-pe-builder-free/ \"\") been posted too\n\nThank you, it official has said like:\n\n* If you run AOMEI PE Builder on a 64-bit operating system, then the bootable Windows PE media that you created supports both UEFI/GPT boot mode and Legacy BIOS/MBR boot mode.\n* If you run AOMEI PE Builder on a 32-bit operating system which cannot support UEFI/GPT boot, therefore, the bootable Windows PE media that you created only supports Legacy BIOS/MBR boot mode.\n\nBefore adding portable software to Windows PE, you need to figure out whether your system is 32bit or 64bit. If AOMEI PE Builder is installed on a 32bit computer, the applications you add to Windows PE should also be 32bit; if the computer is 64bit, the applications should be 64bit. Only doing like this, the programs included in Windows PE can work normally. To check the type of your computer, you can right click the \"Computer\" on the desktop and choose \"Properties\" as follows\n\nNot perfect, right?\n\n"
+    },
+    {
+      "id": "193202",
+      "timestamp": "2015-06-17T07:56:10+00:00",
+      "author": "steve6375",
+      "content": "My Windows system is 64-bit, but I want to create a 32-bit PE because it will boot on both types of systems (32-bit and 64-bit).\n\nHow can I do this with AOMEI PE Builder?\n\n"
+    },
+    {
+      "id": "193204",
+      "timestamp": "2015-06-17T08:03:13+00:00",
+      "author": "amltzy",
+      "content": "\u003e My Windows system is 64-bit, but I want to create a 32-bit PE because it will boot on both types of systems (32-bit and 64-bit).\n\u003e\n\u003e How can I do this with AOMEI PE Builder?\n\nyes, not perfect now. but you can create on your friend\u0027s 32-bit machine. It seems here 32-bit is more useful\n\n"
+    }
+  ]
+}

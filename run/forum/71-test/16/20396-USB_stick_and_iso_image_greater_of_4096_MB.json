@@ -1,0 +1,70 @@
+{
+  "id": "20396",
+  "title": "USB stick and iso image greater of 4096 MB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "191534",
+      "timestamp": "2015-03-21T11:12:08+00:00",
+      "author": "Balubeto Balubeto",
+      "content": "Hi\n\nI would use the WinSetupFromUSB utility to create a USB stick to insert two customized iso of Windows 8.x.\n\nThe problem is that one of the image exceeds the size of 4096 MB.\n\nSo, how do I do to put this image in the USB stick so that, when I will have to boot from this USB stick into a BIOS or UEFI computer, its operating system starts correctly?\n\nThanks\n\nBye\n\n"
+    },
+    {
+      "id": "191536",
+      "timestamp": "2015-03-21T13:44:27+00:00",
+      "author": "steve6375",
+      "content": "Are you saying that you tried it and it did not work (or just that you *think* it might not work)?\n\nIs the \\\\sources\\\\install.wim over 4GB?\n\nDid you read the FAQ on the WinSetupFromUSB site?\n\n"
+    },
+    {
+      "id": "191547",
+      "timestamp": "2015-03-22T10:20:07+00:00",
+      "author": "Balubeto Balubeto",
+      "content": "\u003e Are you saying that you tried it and it did not work (or just that you *think* it might not work)?\n\u003e\n\u003e Is the \\\\sources\\\\install.wim over 4GB?\n\u003e\n\u003e Did you read the FAQ on the WinSetupFromUSB site?\n\nThe file install.wim is less than 4GB.  \n\nOn a VM of WorkStation, the ISO, inserted on a virtual DVD, it works correctly.  \n\nIf, instead, I run the iso from USB stick on a computer with the UEFI, the boot manager is displayed but when I try to start the operating system, it does not start; whereas with a computer with the BIOS, I have no problem. How come?\n\nThanks\n\nBye\n\n"
+    },
+    {
+      "id": "191548",
+      "timestamp": "2015-03-22T10:29:38+00:00",
+      "author": "steve6375",
+      "content": "Why not test it using a VM that will UEFI boot from the USB drive - e,g, [VirtualBox + DavidB\u0027s Virtual Machine Boot USB utility](http://www.rmprepusb.com/tutorials/how-to-boot-from-usb-under-vmware-server#TOC-Boot-from-a-USB-drive-using-Oracle-VM-VirtualBox \"External link\")?\n\nCheck that the \\\\EFI\\\\boot\\\\bootx64.efi file is present and that the USB drive is FAT32.\n\n"
+    },
+    {
+      "id": "191549",
+      "timestamp": "2015-03-22T10:50:54+00:00",
+      "author": "Balubeto Balubeto",
+      "content": "\u003e Why not test it using a VM that will UEFI boot from the USB drive - e,g, [VirtualBox + DavidB\u0027s Virtual Machine Boot USB utility](http://www.rmprepusb.com/tutorials/how-to-boot-from-usb-under-vmware-server#TOC-Boot-from-a-USB-drive-using-Oracle-VM-VirtualBox \"External link\")?\n\u003e\n\u003e Check that the \\\\EFI\\\\boot\\\\bootx64.efi file is present and that the USB drive is FAT32.\n\nSince my iso image exceeds 4 GB, the WinSetupFromUSB utility does not allow me to use the FAT32 file system. How come?\n\nThanks\n\nBye\n\n"
+    },
+    {
+      "id": "191550",
+      "timestamp": "2015-03-22T11:02:56+00:00",
+      "author": "steve6375",
+      "content": "The FAQ points you to\n\n[http://forums.mydigi...GB)-install-wim](http://forums.mydigitallife.info/threads/46981-Install-Win8-Windows-8-1-UEFI-With-a-Over-sized%28over-4GB%29-install-wim \"External link\")\n\nWhy not ask on [http://www.winsetupfromusb.com/faq/](http://www.winsetupfromusb.com/faq/ \"External link\")\n\n"
+    },
+    {
+      "id": "191554",
+      "timestamp": "2015-03-22T13:00:54+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Since my iso image exceeds 4 GB, the WinSetupFromUSB utility does not allow me to use the FAT32 file system. How come?\n\n[http://en.wikipedia....ion_Table#FAT32](http://en.wikipedia.org/wiki/File_Allocation_Table#FAT32 \"External link\")\n\u003e The maximum possible size for a file on a FAT32 volume is 4 GiB minus 1 byte or 4,294,967,295 (2^32^ − 1) bytes. This limit is a consequence of the file length entry in the directory table ...\n\u003e\n[https://technet.micr...y/cc938937.aspx](https://technet.microsoft.com/en-us/library/cc938937.aspx \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "191557",
+      "timestamp": "2015-03-22T19:57:45+00:00",
+      "author": "steve6375",
+      "content": "WInSetupFromUSB copies the entire ISO to the USB drive. You can always try Easy2Boot.\n\nAs long as the install.wim is below 4GB there should be no problem making a .imgPTN file.\n\nIf the instal.wim/esd is over 4GB then read [here](http://www.easy2boot.com/add-payload-files/adding-windows-install-isos-without-needing-a-helper-flash-drive/ \"External link\").\n\n"
+    },
+    {
+      "id": "191558",
+      "timestamp": "2015-03-23T08:23:21+00:00",
+      "author": "Balubeto Balubeto",
+      "content": "\u003e WInSetupFromUSB copies the entire ISO to the USB drive. You can always try Easy2Boot.\n\u003e\n\u003e As long as the install.wim is below 4GB there should be no problem making a .imgPTN file.\n\u003e\n\u003e If the instal.wim/esd is over 4GB then read [here](http://www.easy2boot.com/add-payload-files/adding-windows-install-isos-without-needing-a-helper-flash-drive/ \"External link\").\n\nIn order to follow this guide, what type of Easy2Boot I will have to download? This utility is portable?\n\nThanks\n\nBye\n\n"
+    },
+    {
+      "id": "191559",
+      "timestamp": "2015-03-23T09:23:59+00:00",
+      "author": "steve6375",
+      "content": "All info is on the site. There are two versions of E2B (one contains XP 32-bit drivers) - either will work.\n\n"
+    }
+  ]
+}

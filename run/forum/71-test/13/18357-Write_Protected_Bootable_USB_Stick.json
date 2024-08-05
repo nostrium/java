@@ -1,0 +1,808 @@
+{
+  "id": "18357",
+  "title": "Write Protected Bootable USB Stick",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "169961",
+      "timestamp": "2013-03-23T19:23:41+00:00",
+      "author": "popov",
+      "content": "Hey there,\n\nis there any way of making USB stick bootable when it is write protected(by switch)? I have several sticks and tried several OS\u0027es on them, but they all fail to boot when i write-protect my pendrive, while working perfectly fine when the drive is unlocked. It seems kinda awkward, when compared to bootable live CD\u0027s, which do not require to write anything.\n\nThe second thing I want to ask about - I am looking for a fast, small (max 2GB) bootable distro that will boot and work on as many computers as possible, ie. probably having lots of preinstalled drivers. It needs to automatically detect and config simple network, must have r/w access to NTFS drives, ability to detect printers, internet browser, office, and some basic tools. And it should be easy enough for pure-windows person to use it as OS/data backup.\n\n"
+    },
+    {
+      "id": "169964",
+      "timestamp": "2013-03-23T19:54:09+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Hey there,  \n\u003e\n\u003e is there any way of making USB stick bootable when it is write protected(by switch)? I have several sticks and tried several OS\u0027es on them, but they all fail to boot when i write-protect my pendrive, while working perfectly fine when the drive is unlocked. It seems kinda awkward, when compared to bootable live CD\u0027s, which do not require to write anything.  \n\nSure it is possible :smile:, anything that boots entirely in RAM should do, but of course it might depend on the specific stick and the actual OS that you boot, as an example Windows/PE\u0027s might want to anyway write the Disk Signature (if there isn\u0027t any) and fail in booting.  \nYou need to be more specific, provide some detailed report of the hardware and setup involved, etc., etc....\n\n\u003e The second thing I want to ask about - I am looking for a fast, small (max 2GB) bootable distro that will boot and work on as many computers as possible, ie. probably having lots of preinstalled drivers. It needs to automatically detect and config simple network, must have r/w access to NTFS drives, ability to detect printers, internet browser, office, and some basic tools. And it should be easy enough for pure-windows person to use it as OS/data backup.\n\nWell, while you are at it, it should also do some coffee (black strong, two spoon of sugar for me, please) ![:w00t:](https://reboot.pro/public/style_emoticons/default/w00t.gif).  \nMore seriously, what you described is a \"vague\" limitless superOS capable of doing \\*anything\\* on \\*any\\* hardware.  \n\nAre you thinking of a Linux distro or about a PE?  \nBoth can do ***some*** of that, probably ***most*** of that, but you cannot realistically expect to find such a \"wide use\" multi-tool, additionally fitting in less than 2 Gb.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "169968",
+      "timestamp": "2013-03-23T21:02:26+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Hey there,  \n\u003e\n\u003e is there any way of making USB stick bootable when it is write protected(by switch)? I have several sticks and tried several OS\u0027es on them, but they all fail to boot when i write-protect my pendrive, while working perfectly fine when the drive is unlocked. It seems kinda awkward, when compared to bootable live CD\u0027s, which do not require to write anything.\nA CD is not only \"write protected\", but each and every file has the ro attribute set as well.  \n\nWhen you flip the switch on your USB-Stick, it can not be written to any longer, however the file attributes do not get set to ro.  \n\nSo the OS expects the file to be writable, but the write access attempt fails and this causes the OS to crash.  \n\nFix the file attributes and the OS will not crash. (Given that it runs fine from CD!)  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "169981",
+      "timestamp": "2013-03-24T02:02:44+00:00",
+      "author": "popov",
+      "content": "Heya, thanks for answers.\n\n\u003e A CD is not only \"write protected\", but each and every file has the ro attribute set as well.  \n\u003e\n\u003e When you flip the switch on your USB-Stick, it can not be written to any longer, however the file attributes do not get set to ro.  \n\u003e\n\u003e So the OS expects the file to be writable, but the write access attempt fails and this causes the OS to crash.  \n\u003e\n\u003e Fix the file attributes and the OS will not crash. (Given that it runs fine from CD!)\n\nTried that, but it did not help. After some testing I am almost convinced that when write protection switch is beeing turned on, flash stick is not beeing detected as bootable. The whole detection procedure is skipped and it starts from HDD just like my flash drive would be normal storage device. Of course it boots from that flash when I set it to writeable mode.\n\n\u003e You need to be more specific, provide some detailed report of the hardware and setup involved, etc., etc....\n\nI have tried this on 4 PC\u0027s, each of different era, with probably every BIOS setting and the problem is persistent. Stick details: PQI 4GB USB 2.0 model: U339.\n\nOS is custom nix version that is normally used as Live CD with option to use it as Live USB.\n\n\u003e More seriously, what you described is a \"vague\" limitless superOS capable of doing \\*anything\\* on \\*any\\* hardware.  \n\u003e\n\u003e Are you thinking of a Linux distro or about a PE?  \n\u003e Both can do ***some*** of that, probably ***most*** of that, but you cannot realistically expect to find such a \"wide use\" multi-tool, additionally fitting in less than 2 Gb.\n\nROFL\n\nBasically I want as small as possible, as fast as possible, as realiable as possible linux based distro that can be used as both secondary OS and recovery tool for NTFS Windows machines. Hence, it needs drivers to boot properly into various kinds of machines and needs to have ability to operate on NTFS drives. Also I want it to load and configure network and printer drivers by itself. Then just basic office software, browser, pdf-reader, calculator, etc. I don\u0027t think that its that much, IMO almost any distro offers that. What I need is \"out of box\" solution, easy to set, easy to use(for somebody who is only familiar with Windows) but also fast, tested and realiable.\n\nOf course multiboot is always option, and in fact I might be trying to load few compact distros at once, in case of one or another failing on some system, so that\u0027s why I am space limited, but since the smallest stick I own is 4GB, there should be plenty space for everything.\n\n**Edited by popov, 24 March 2013 - 02:03 AM.**\n"
+    },
+    {
+      "id": "169991",
+      "timestamp": "2013-03-24T11:31:00+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Tried that, but it did not help. After some testing I am almost convinced that when write protection switch is beeing turned on, flash stick is not beeing detected as bootable.\nThen you have a strange USB-Stick.  \nMine work fine for years.  \n\nWhen it comes to Live Linux Distros, i recommend Knoppix or Kanotix.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170007",
+      "timestamp": "2013-03-24T17:01:04+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, it would be the first time we see such a thing. ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nThis one?\n\n[http://www.newegg.co...N82E16820141485](http://www.newegg.com/Product/Product.aspx?Item\u003dN82E16820141485 \"External link\")\n\nHow (exactly) did you partition/format the stick?\n\nWhich tool, under which OS, with which settings?\n\nWhich is your \"primary\" bootloader?\n\nIs it installed to the MBR (+hidden sectors, examples GRUB, grub4dos GRUB2) or it is in the PBR?\n\nIf the latter which MBR code is used?\n\nAFAIK, apart the nice feature of the write protect switch, it uses a \"common\" USBest UT163 or UT165, nothing particularly \"strange\".\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170036",
+      "timestamp": "2013-03-24T21:12:43+00:00",
+      "author": "popov",
+      "content": "Yes, that\u0027s the one I\u0027m using. Under Windows XP I have installed LPS(lightweight portable security) with their own installer that automatically formatted device. There is no bootloader, it\u0027s the only thing that is on the stick.\n\nAnd yes, the stick itself stinks, I am using it just because of the switch. I would get something better, but it seems that write protected drives are very rare these days.\n\nAnother thing, I will be making multiboot flash stick(different than one above), and I am wondering what to use to format and build everything. It will be made (preferably) under Windows XP, and will have one main distro(with its own write storage, like Mint), small fast-launching distro for browsing net(like xPUD but recent), some basic diagnostic and recovery tools for both WinXP and Win7 and all that standard HDD/Memory/etc tools that are there on recovery CD\u0027s. I could even add MS-DOS, PicoXP and such just for fun, but the thing needs to start rolling first. As for now, I am somehow stuck.\n\nThe point is, some distros need to be installed in much different way than others, which complicates everything. This is especially true for all those distros that come with their own installers, like Slax. So I\u0027d like to ask for a preffered tool, which could do it.\n\n**Edited by popov, 24 March 2013 - 09:14 PM.**\n"
+    },
+    {
+      "id": "170045",
+      "timestamp": "2013-03-25T08:13:52+00:00",
+      "author": "Wonko the Sane",
+      "content": "Yes, I can confirm that sticks with the switch are very rare nowadays. ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)\n\nSo, ALL your bootability tests (from which you derived your conclusions) are made with a single \\*something\\*, which you don\u0027t even know how partitions/formats the stick and WHICH booting approach uses? ![:w00t:](https://reboot.pro/public/style_emoticons/default/w00t.gif)\n\nMaybe you should try that stick with \"something else\" (known) and see how it behaves ![:whistling:](https://reboot.pro/public/style_emoticons/default/happy22.gif) :wink:.\n\nThe general idea (with Linux based distro\u0027s) is to actually (whenever possible), NOT to install anything but use a .iso \"as is\".\n\nWhat most people uses nowadays are either Syslinux or grub4dos.\n\nThere are several tools/utilities to partition/format the stick (and compatible with either of those two bootmanagers).\n\nJust browse/search the board and you will find many examples/tutorials, etc., check the stickies first.\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170062",
+      "timestamp": "2013-03-25T14:01:41+00:00",
+      "author": "popov",
+      "content": "Okay, that single something runs on isolinux with huge initrd beeing its main component. The point is, thing has it own installer, I can format drive using it(which is recommended), or format it by myself.\n\nThis is content of main isolinux.cfg file:\n\n\u003e timeout 0  \n\u003e default vmlinuz  \n\u003e append initrd\u003dinitrd splash\u003dsilent,theme:lps load_ramdisk\u003d1 ramdisk_blocksize\u003d4096 root\u003d/dev/ram0 ramdisk_size\u003d524288 console\u003dtty1 loglevel\u003d3 LM\u003d4  \n\u003e display product.txt\n\nBut, there is a folder called InstalltoUSB, which contains syslinux, and here is its cfg:\n\n\u003e timeout 0  \n\u003e default vmlinuz  \n\u003e append initrd\u003dinitrd splash\u003dsilent,theme:lps load_ramdisk\u003d1 ramdisk_blocksize\u003d4096 root\u003d/dev/ram0 ramdisk_size\u003d524288 console\u003dtty1 loglevel\u003d3 LM\u003d2  \n\u003e display product.txt\n\nWhat else? Installation bat file is scripted like this:\n\n\u003e @echo off  \n\u003e cls  \n\u003e :: Rich Kutter, CISSP  \n\u003e :: Install LPS to a USB thumb drive  \n\u003e ::  \n\u003e :: Design:  \n\u003e :: Gather user input  \n\u003e :: Verify correctness - verify file locations  \n\u003e :: {Format}  \n\u003e :: Copy files  \n\u003e :: Install Linux boot loader  \n\u003e ::  \n\u003e :: ATSPI_Outreach@wpafb.af.mil for help/support  \n\u003e :: [http://spi.dod.mil](http://spi.dod.mil \"External link\")  \n\u003e set CDROM\u003d  \n\u003e set SRC_PATH\u003dInstallToUSB  \n\u003e set SUP_PATH\u003d%SRC_PATH%\\\\Support  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e :: BEGIN  \n\u003e echo.  \n\u003e echo Batch file to install LPS to a USB storage device  \n\u003e echo.  \n\u003e echo Brought to you by the ATSPI Technology Branch  \n\u003e echo [http://spi.dod.mil](http://spi.dod.mil \"External link\")  \n\u003e echo.  \n\u003e echo Summary of process:  \n\u003e echo Format USB drive (optional)  \n\u003e echo Copy required files  \n\u003e echo Install Linux boot loader  \n\u003e echo.  \n\u003e echo Prepare to enter the drive letter of the source and target media  \n\u003e\n\u003e ::CHECK FOR ADMIN RIGHTS  \n\u003e %CDROM%\\\\%SUP_PATH%\\\\IsAdmin.exe  \n\u003e if \"%errorlevel%\"\u003d\u003d\"0\" goto :notadmin  \n\u003e\n\u003e pause  \n\u003e cls  \n\u003e :: GET USER INPUT  \n\u003e set /P CDROM\u003d\"Enter drive letter of source disc (often CD-ROM, but could be USB): \"  \n\u003e IF NOT \u0027%CDROM%\u0027\u003d\u003d\u0027\u0027 SET CDROM\u003d%CDROM:\\~0,1%  \n\u003e set CDROM\u003d%CDROM%:  \n\u003e\n\u003e echo.  \n\u003e set USB\u003d  \n\u003e set /P USB\u003d\"Enter drive letter of USB flash drive: \"  \n\u003e IF NOT \u0027%USB%\u0027\u003d\u003d\u0027\u0027 SET USB\u003d%USB:\\~0,1%  \n\u003e set USB\u003d%USB%:  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e echo.  \n\u003e set FORMAT\u003d  \n\u003e set /P FORMAT\u003d\"Do you wish to format the USB drive (y/N): \"  \n\u003e IF NOT \u0027%FORMAT%\u0027\u003d\u003d\u0027\u0027 SET FORMAT\u003d%FORMAT:\\~0,1%  \n\u003e\n\u003e echo.  \n\u003e set EncWizard\u003d  \n\u003e if not exist %CDROM%\\\\EncryptionWizard goto notencwiz  \n\u003e set /P EncWizard\u003d\"Do you wish to install Encryption Wizard to USB drive (y/N): \"  \n\u003e IF NOT \u0027%EncWizard%\u0027\u003d\u003d\u0027\u0027 SET EncWizard\u003d%EncWizard:\\~0,1%  \n\u003e\n\u003e echo.  \n\u003e\n\u003e :notencwiz  \n\u003e\n\u003e echo \\*\\*\\* Validating drives... \\*\\*\\*  \n\u003e :: VERIFY EXISTANCE OF DRIVES  \n\u003e if not exist %CDROM% goto driveerror  \n\u003e if not exist %USB% goto driveerror  \n\u003e\n\u003e :: VERIFY STRUCTURE OF CDROM  \n\u003e if exist %USB%\\\\Windows goto windirerror  \n\u003e\n\u003e :: FORMAT USB DRIVE?  \n\u003e :: Example: HPUSBF.EXE e: -FS:FAT32 -Q -Y -V:LPS -S:\\\\LPS  \n\u003e IF /I \u0027%FORMAT%\u0027 neq \u0027Y\u0027 goto notformat  \n\u003e echo CDROM %CDROM% SRC_PATH %SRC_PATH%  \n\u003e %CDROM%\\\\%SUP_PATH%\\\\HPUSBF.EXE %USB% -FS:FAT32 -Q -V:LPS  \n\u003e IF NOT %errorlevel%\u003d\u003d0 goto :formaterror  \n\u003e\n\u003e :notformat  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e :: COPY CONTENT TO USB STICK  \n\u003e echo.  \n\u003e echo \\*\\*\\* Copying content to USB device \\*\\*\\*  \n\u003e for %%X in (%SRC_PATH%) do (mkdir %USB%\\\\%%X)  \n\u003e for %%X in (%SRC_PATH%) do (xcopy /v /s %CDROM%\\\\%%X %USB%\\\\%%X)  \n\u003e\n\u003e mkdir %USB%\\\\Docs  \n\u003e xcopy /v /s %CDROM%\\\\Docs %USB%\\\\Docs  \n\u003e echo \\*\\*\\* Copying large files - please be patient \\*\\*\\*  \n\u003e copy /v %CDROM%\\\\initrd %USB%\\\\  \n\u003e copy /v %CDROM%\\\\README\\* %USB%\\\\  \n\u003e copy /v %CDROM%\\\\%SRC_PATH%\\\\syslinux\\\\\\* %USB%\\\\  \n\u003e copy /v %CDROM%\\\\vmlinuz\\* %USB%\\\\  \n\u003e copy /v %CDROM%\\\\image.md5 %USB%\\\\  \n\u003e\n\u003e :: INSTALL ENCRYPTION WIZARD?  \n\u003e IF /I \u0027%EncWizard%\u0027\u003d\u003d\u0027Y\u0027 mkdir %USB%\\\\EncryptionWizard  \n\u003e IF /I \u0027%EncWizard%\u0027\u003d\u003d\u0027Y\u0027 xcopy /V /S %CDROM%\\\\EncryptionWizard %USB%\\\\EncryptionWizard  \n\u003e\n\u003e :: INSTALL LINUX BOOT LOADER  \n\u003e echo.  \n\u003e echo \\*\\*\\* Installing Linux Boot Loader \\*\\*\\*  \n\u003e %CDROM%\\\\%SUP_PATH%\\\\syslinux %USB%  \n\u003e IF NOT %errorlevel%\u003d\u003d0 goto :bootloadererror  \n\u003e\n\u003e echo.  \n\u003e echo \\*\\*\\* Installation of LPS to USB device complete \\*\\*\\*  \n\u003e echo.  \n\u003e echo.  \n\u003e echo \\*\\*\\* PLEASE NOTE \\*\\*\\*  \n\u003e echo Your LPS USB device will NOT automount as a storage  \n\u003e echo device in LPS. You are strongly encouraged to use  \n\u003e echo a separate USB device for data storage and disconnect  \n\u003e echo the boot device once the boot loader has finished  \n\u003e echo loading LPS.  \n\u003e echo \\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*  \n\u003e echo.  \n\u003e\n\u003e ::END  \n\u003e goto eof  \n\u003e\n\u003e :: ERROR MESSAGES  \n\u003e :driveerror  \n\u003e echo.  \n\u003e echo.  \n\u003e echo \\*\\*\\*\\* ERROR: \\*\\*\\*\\*  \n\u003e echo One or more drives requested do not exist (%CDROM% or %USB%)  \n\u003e echo.  \n\u003e echo.  \n\u003e goto eof  \n\u003e\n\u003e :cdromerror  \n\u003e echo.  \n\u003e echo.  \n\u003e echo \\*\\*\\*\\* ERROR: \\*\\*\\*\\*  \n\u003e echo Verify file structure of CDROM or contact ATSPI_Outreach@wpafb.af.mil for  \n\u003e echo help  \n\u003e echo.  \n\u003e goto eof  \n\u003e\n\u003e :windirerror  \n\u003e echo.  \n\u003e echo.  \n\u003e echo \\*\\*\\*\\* ERROR: \\*\\*\\*\\*  \n\u003e echo Windows directory detected on %USB% - are you sure you want to install here?  \n\u003e echo.  \n\u003e echo Rename or remove %USB%\\\\Windows and re-run the script  \n\u003e echo.  \n\u003e goto eof  \n\u003e\n\u003e :notadmin  \n\u003e echo.  \n\u003e echo.  \n\u003e echo \\*\\*\\*\\* ERROR: \\*\\*\\*\\*  \n\u003e echo Administrator rights are required to install the Linux boot loader to a USB  \n\u003e echo device and to (optionally) format the device.  \n\u003e echo.  \n\u003e goto eof  \n\u003e\n\u003e :formaterror  \n\u003e echo.  \n\u003e echo.  \n\u003e echo \\*\\*\\*\\* ERROR: \\*\\*\\*\\*  \n\u003e echo There was a problem formatting the USB device %USB%. Ensure the device  \n\u003e echo is writable / formatable.  \n\u003e echo.  \n\u003e goto eof  \n\u003e\n\u003e :bootloadererror  \n\u003e echo.  \n\u003e echo.  \n\u003e echo \\*\\*\\*\\* ERROR: \\*\\*\\*\\*  \n\u003e echo There was a problem installing the Linux bootloader to %USB%. Ensure the  \n\u003e echo device is writable.  \n\u003e echo.  \n\u003e goto eof  \n\u003e\n\u003e :: TERMINATE HERE  \n\u003e :eof  \n\u003e set CDROM\u003d  \n\u003e set USB\u003d  \n\u003e pause  \n\n"
+    },
+    {
+      "id": "170064",
+      "timestamp": "2013-03-25T14:25:51+00:00",
+      "author": "steve6375",
+      "content": "Standard grub4dos ISo boot works fine for this distro\n\n```\ntitle LPS-1.4.0_public.iso MNU\nmap /LPS-1.4.0_public.iso (0xff)\nmap --hook\nroot (0xff)\nchainloader (0xff)\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "170065",
+      "timestamp": "2013-03-25T14:32:17+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, first thing the actual USB is never (properly) partitioned (which is an usual requirement to have more chances to boot \\*anything\\* ).\n\nThe batch seemingly uses the good ol\u0027 HP USB formatting utility, that has proved to work in a (largish) number of cases BUT also to fail in a number of other cases.\n\n(please understand how there is no way to know what will work with what, the usual idea is to make a stick \"as compatible as possible\")\n\nThe Syslinux basically uses a \"standard\" MBR CODE (i.e. some code that looks for the Active primary partition in the partition table and chainloads it\u0027s bootsector), and by a Syslinux bootsector that loads the actual bootloader.\n\nIt is possible that Syslinux maps the device as HD and somehow \"assumes\" that it must be R/W.\n\nAs well it is possible that LPS (some setting in it) needs the write access for (example) writing a log or something like that.\n\nYou can easily add to your stick \"as is\" the grub.exe from grub4dos adding to syslinux.cfg a line calling it:\n\n[http://www.rmprepusb...inload-syslinux](http://www.rmprepusb.com/tutorials/chainload-syslinux \"External link\")\n\nthen try either the entry **Steve6375** just posted or a \"flat file\" approach like (on grub command line):\n\n```\nkernel /vmlinuz splash\u003dsilent,theme:lps load_ramdisk\u003d1 ramdisk_blocksize\u003d4096 root\u003d/dev/ram0 ramdisk_size\u003d524288 console\u003dtty1 loglevel\u003d3 LM\u003d2\ninitrd /initrd\nboot\n```\n\nget latest 0.4.5.c version of grub4dos here:\n\n[http://code.google.c.../downloads/list](http://code.google.com/p/grub4dos-chenall/downloads/list \"External link\")\n\nHave a look to the grub4dos guide:\n\n[http://diddy.boot-la...os/Grub4dos.htm](http://diddy.boot-land.net/grub4dos/Grub4dos.htm \"External link\")\n\nat least:\n\n[http://diddy.boot-la...iles/basics.htm](http://diddy.boot-land.net/grub4dos/files/basics.htm \"External link\")\n\n[http://diddy.boot-la...s/files/cli.htm](http://diddy.boot-land.net/grub4dos/files/cli.htm \"External link\")\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n:\n\n"
+    },
+    {
+      "id": "170066",
+      "timestamp": "2013-03-25T14:37:34+00:00",
+      "author": "steve6375",
+      "content": "To WP an NTFS pendrive, you can use diskpart to add the ReadOnly attribute to the disk. However, this will only protect it from writes under Vista/7/8 (not XP or linux).\n\nAs for what is \u0027best\u0027 2Gb distro, it depends what you want to use it for - accessing Windows based systems and running Windows apps, or accessing linux systems and running linux apps.\n\nMost people have both in their arsenal.\n\nFor a Windows like linux distro try [StartOS](http://www.rmprepusb.com/tutorials/ylmf \"External link\") (which can boot directly from an ISO and have persistence too).\n\nThough it is considered Warez (*stands well back and light the blue touch paper...* ) [Hirens DLC1](http://www.rmprepusb.com/tutorials/hbcd \"External link\") is pretty damn useful as it has a mini XP OS and a mini 7 OS.\n\ngparted is pretty good for hardware - I would suggest backtrack5 as a good development OS, but it is too big for your criteria.\n\nAnother good WinPE project is Make_PE3.\n\nWhy not put them all on a decent USB stick?\n\n"
+    },
+    {
+      "id": "170071",
+      "timestamp": "2013-03-25T15:30:44+00:00",
+      "author": "steve6375",
+      "content": "P.S. SD cards have a \u0027lock\u0027 switch which is a write-protect switch. So if you buy a cheap [USB SD card reader](http://www.amazon.co.uk/Uspeed-Reader-RS-MMC-Micro-Support/dp/B006TOL6JK/ref\u003dsr_1_3?ie\u003dUTF8\u0026qid\u003d1364225161\u0026sr\u003d8-3 \"External link\") (these look like a USB stick and USB 2.0 ones cost peanuts) then you have your WP USB stick.\n\nP.P.S. I booted LPS from an NTFS formatted **WP** SD card+reader and it booted fine - though very slowly! (using the grub4dos menu in post #10).\n\n"
+    },
+    {
+      "id": "170074",
+      "timestamp": "2013-03-25T18:17:56+00:00",
+      "author": "popov",
+      "content": "Thanks for answers, there are few things more I\u0027d like to share:\n\nwhile testing inside Virtual Box, LPS is detected and starts even when drive is write protected\n\nthe actual loader used by live USB installation is actually syslinux, while it seems that isolinux is there for live CD\u0027s\n\nfor LPS(more like testing LPS) I am just wiling to have separate write protected live USB stick\n\nstick for multiboot with persistent distro/recovery tools is a different one, doesn\u0027t have/need write switch and won\u0027t include LPS\n\nI had Hiren\u0027s winXP already, and I liked it as a repair tool for Windows XP, so now I am planning to have both WinXP and Win7 versions installed\n\nabout live linux distros with persistence mode, previously I really liked MooLux, because it booted on every machine I\u0027ve tried it, and it properly configured everything(network, graphics, printers) in 90% of cases, while other, more popular distros failed me many times(currently I am testing Mint as main USB system, but it\u0027s one of slowest systems I ever had)\n\nI don\u0027t want to build my own distro, just because my knowledge about linux drivers is very limited, there is no problem for me in building it for single desktop\n\nfrom what I know SD cards only offer software write protection, while it\u0027s hardware on USB sticks\n\n"
+    },
+    {
+      "id": "170075",
+      "timestamp": "2013-03-25T18:22:11+00:00",
+      "author": "steve6375",
+      "content": "SD cards have a switch on them (hardware).\n\n![id1102_extreme4.gif](http://kb.sandisk.com/euf/assets/images/faqs/1102/id1102_extreme4.gif)\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "170084",
+      "timestamp": "2013-03-25T21:26:23+00:00",
+      "author": "MedEvil",
+      "content": "![:rofl:](https://reboot.pro/public/style_emoticons/default/roll1.gif) Nice one Steve!  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170087",
+      "timestamp": "2013-03-25T23:10:55+00:00",
+      "author": "popov",
+      "content": "Well, I smiled, but according to this, it\u0027s not that simple:\n\n[http://www.fencepost...ite-protection/](http://www.fencepost.net/2010/03/usb-flash-drives-with-hardware-write-protection/ \"External link\")\n\n\u003e SD Cards, while they have a write-protect switch, are actually no good for this purpose because **it\u0027s not actually hardware write protection** -- at best the card reader sends a signal to the operating system that the drive should be treated as read-only. The write-protect switch on the cards is read by a sensor that\u0027s part of the card reader, and the card reader then passes along to the operating system whether the card is read-only. According to the specification from [http://www.sdcard.org/](http://www.sdcard.org/ \"External link\"):\n\u003e \u003e A proper, matched, switch on the socket side will indicate to the host that the card is write-protected or not. It is the responsibility of the host to protect the card. The position of the write protect switch is unknown to the internal circuitry of the card.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "170088",
+      "timestamp": "2013-03-25T23:39:04+00:00",
+      "author": "steve6375",
+      "content": "In the same way that some USB Flash drives have a WP switch... ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\n"
+    },
+    {
+      "id": "170089",
+      "timestamp": "2013-03-25T23:46:40+00:00",
+      "author": "MedEvil",
+      "content": "I think you misunderstood me, popov.  \n\nYou are perfectly right. The wp on the sd cards is not any more a hardware one, than the one on a floppy was.  \n\nI have a cardreader myself, which doesn\u0027t give a damn about that switch.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170090",
+      "timestamp": "2013-03-25T23:56:04+00:00",
+      "author": "MedEvil",
+      "content": "\u003e In the same way that some USB Flash drives have a WP switch... ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)\nNope not in the same way.  \nSince a USB stick comes with it\u0027s own controller, there\u0027s nothing in the world , short of \u0027fixing\u0027 the stick, that will allow write access.  \nSince an SD card has no own controller, it\u0027s write protect ~~switch~~ suggestor can easily be ignored by the host system.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170091",
+      "timestamp": "2013-03-26T00:31:53+00:00",
+      "author": "steve6375",
+      "content": "No, it\u0027s exactly the same. What do you think is inside the card reader?\n\nSo moving the switch on an SD card is the same as moving the switch on a USB flash drive.\n\nA WP signal is sent to the USB controller in both cases. The USB controller reports the media as Read Only.\n\n"
+    },
+    {
+      "id": "170095",
+      "timestamp": "2013-03-26T08:42:06+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e No, it\u0027s exactly the same. What do you think is inside the card reader?\n\u003e\n\u003e So moving the switch on an SD card is the same as moving the switch on a USB flash drive.\n\u003e\n\u003e A WP signal is sent to the USB controller in both cases. The USB controller reports the media as Read Only.\n\nNo, it is not, the analogy with the floppy RO switch is very correct.\n\nThe USB stick INCLUDES a controller that (unless the manufacturer is completely demented) CAN put the stick device in RO mode.\n\nThe switch is physically connected to the built in controller.\n\nThe issue with SD card is that the card \"switch\" tells the card reader that it should be treated as RO, BUT if the controller in the reader ignores this, the card will be RW anyway.\n\nThe switch on a sd card is nothing by a \"notch\", if there is not \\*something\\* sensing the position of this notch moved to the RO position the card will be seen normally.\n\nIf you prefer, a SD card on an adapter TESTED to have the RO sensor working is OK, but every time you insert a SD card in a new reader or new device, you are flipping a coin (at the most).\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170097",
+      "timestamp": "2013-03-26T10:51:00+00:00",
+      "author": "steve6375",
+      "content": "Sure, but what was wanted was a USB stick with a WP switch. If you use a \u0027stick-form\u0027 SD card reader (as I pictured previously) + SD card then you have this. Further, the SD lock switch is inside the device and thus less likely to be fiddled with (especially if you glue the end cap on with the SD card still inside!). So I see no difference between a single USB stick with a WP switch and a single SD-reader+SD card!\n\n"
+    },
+    {
+      "id": "170098",
+      "timestamp": "2013-03-26T11:05:13+00:00",
+      "author": "MedEvil",
+      "content": "I agree. A Cardreader - SD-Card combo, which is verified to have WP working, is similar to a USB-Stick with WP.  \n\nThe only downside to the SD combo is, that i have not yet seen any SD card, which comes even close speedwise to a good USB-Stick.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170099",
+      "timestamp": "2013-03-26T11:13:24+00:00",
+      "author": "MedEvil",
+      "content": "btw. Did just run a test and actually none of my cardreaders give a damn about that switch.  \n\nSteve, do you have actually a cardreader, which does switch to WP, if the lock is enabled on the card or did you just assume it would work?  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "169961",
+      "timestamp": "2013-03-23T19:23:41+00:00",
+      "author": "popov",
+      "content": "Hey there,\n\nis there any way of making USB stick bootable when it is write protected(by switch)? I have several sticks and tried several OS\u0027es on them, but they all fail to boot when i write-protect my pendrive, while working perfectly fine when the drive is unlocked. It seems kinda awkward, when compared to bootable live CD\u0027s, which do not require to write anything.\n\nThe second thing I want to ask about - I am looking for a fast, small (max 2GB) bootable distro that will boot and work on as many computers as possible, ie. probably having lots of preinstalled drivers. It needs to automatically detect and config simple network, must have r/w access to NTFS drives, ability to detect printers, internet browser, office, and some basic tools. And it should be easy enough for pure-windows person to use it as OS/data backup.\n\n"
+    },
+    {
+      "id": "169964",
+      "timestamp": "2013-03-23T19:54:09+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Hey there,  \n\u003e\n\u003e is there any way of making USB stick bootable when it is write protected(by switch)? I have several sticks and tried several OS\u0027es on them, but they all fail to boot when i write-protect my pendrive, while working perfectly fine when the drive is unlocked. It seems kinda awkward, when compared to bootable live CD\u0027s, which do not require to write anything.  \n\nSure it is possible :smile:, anything that boots entirely in RAM should do, but of course it might depend on the specific stick and the actual OS that you boot, as an example Windows/PE\u0027s might want to anyway write the Disk Signature (if there isn\u0027t any) and fail in booting.  \nYou need to be more specific, provide some detailed report of the hardware and setup involved, etc., etc....\n\n\u003e The second thing I want to ask about - I am looking for a fast, small (max 2GB) bootable distro that will boot and work on as many computers as possible, ie. probably having lots of preinstalled drivers. It needs to automatically detect and config simple network, must have r/w access to NTFS drives, ability to detect printers, internet browser, office, and some basic tools. And it should be easy enough for pure-windows person to use it as OS/data backup.\n\nWell, while you are at it, it should also do some coffee (black strong, two spoon of sugar for me, please) ![:w00t:](https://reboot.pro/public/style_emoticons/default/w00t.gif).  \nMore seriously, what you described is a \"vague\" limitless superOS capable of doing \\*anything\\* on \\*any\\* hardware.  \n\nAre you thinking of a Linux distro or about a PE?  \nBoth can do ***some*** of that, probably ***most*** of that, but you cannot realistically expect to find such a \"wide use\" multi-tool, additionally fitting in less than 2 Gb.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "169968",
+      "timestamp": "2013-03-23T21:02:26+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Hey there,  \n\u003e\n\u003e is there any way of making USB stick bootable when it is write protected(by switch)? I have several sticks and tried several OS\u0027es on them, but they all fail to boot when i write-protect my pendrive, while working perfectly fine when the drive is unlocked. It seems kinda awkward, when compared to bootable live CD\u0027s, which do not require to write anything.\nA CD is not only \"write protected\", but each and every file has the ro attribute set as well.  \n\nWhen you flip the switch on your USB-Stick, it can not be written to any longer, however the file attributes do not get set to ro.  \n\nSo the OS expects the file to be writable, but the write access attempt fails and this causes the OS to crash.  \n\nFix the file attributes and the OS will not crash. (Given that it runs fine from CD!)  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "169981",
+      "timestamp": "2013-03-24T02:02:44+00:00",
+      "author": "popov",
+      "content": "Heya, thanks for answers.\n\n\u003e A CD is not only \"write protected\", but each and every file has the ro attribute set as well.  \n\u003e\n\u003e When you flip the switch on your USB-Stick, it can not be written to any longer, however the file attributes do not get set to ro.  \n\u003e\n\u003e So the OS expects the file to be writable, but the write access attempt fails and this causes the OS to crash.  \n\u003e\n\u003e Fix the file attributes and the OS will not crash. (Given that it runs fine from CD!)\n\nTried that, but it did not help. After some testing I am almost convinced that when write protection switch is beeing turned on, flash stick is not beeing detected as bootable. The whole detection procedure is skipped and it starts from HDD just like my flash drive would be normal storage device. Of course it boots from that flash when I set it to writeable mode.\n\n\u003e You need to be more specific, provide some detailed report of the hardware and setup involved, etc., etc....\n\nI have tried this on 4 PC\u0027s, each of different era, with probably every BIOS setting and the problem is persistent. Stick details: PQI 4GB USB 2.0 model: U339.\n\nOS is custom nix version that is normally used as Live CD with option to use it as Live USB.\n\n\u003e More seriously, what you described is a \"vague\" limitless superOS capable of doing \\*anything\\* on \\*any\\* hardware.  \n\u003e\n\u003e Are you thinking of a Linux distro or about a PE?  \n\u003e Both can do ***some*** of that, probably ***most*** of that, but you cannot realistically expect to find such a \"wide use\" multi-tool, additionally fitting in less than 2 Gb.\n\nROFL\n\nBasically I want as small as possible, as fast as possible, as realiable as possible linux based distro that can be used as both secondary OS and recovery tool for NTFS Windows machines. Hence, it needs drivers to boot properly into various kinds of machines and needs to have ability to operate on NTFS drives. Also I want it to load and configure network and printer drivers by itself. Then just basic office software, browser, pdf-reader, calculator, etc. I don\u0027t think that its that much, IMO almost any distro offers that. What I need is \"out of box\" solution, easy to set, easy to use(for somebody who is only familiar with Windows) but also fast, tested and realiable.\n\nOf course multiboot is always option, and in fact I might be trying to load few compact distros at once, in case of one or another failing on some system, so that\u0027s why I am space limited, but since the smallest stick I own is 4GB, there should be plenty space for everything.\n\n**Edited by popov, 24 March 2013 - 02:03 AM.**\n"
+    },
+    {
+      "id": "169991",
+      "timestamp": "2013-03-24T11:31:00+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Tried that, but it did not help. After some testing I am almost convinced that when write protection switch is beeing turned on, flash stick is not beeing detected as bootable.\nThen you have a strange USB-Stick.  \nMine work fine for years.  \n\nWhen it comes to Live Linux Distros, i recommend Knoppix or Kanotix.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170007",
+      "timestamp": "2013-03-24T17:01:04+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, it would be the first time we see such a thing. ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nThis one?\n\n[http://www.newegg.co...N82E16820141485](http://www.newegg.com/Product/Product.aspx?Item\u003dN82E16820141485 \"External link\")\n\nHow (exactly) did you partition/format the stick?\n\nWhich tool, under which OS, with which settings?\n\nWhich is your \"primary\" bootloader?\n\nIs it installed to the MBR (+hidden sectors, examples GRUB, grub4dos GRUB2) or it is in the PBR?\n\nIf the latter which MBR code is used?\n\nAFAIK, apart the nice feature of the write protect switch, it uses a \"common\" USBest UT163 or UT165, nothing particularly \"strange\".\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170036",
+      "timestamp": "2013-03-24T21:12:43+00:00",
+      "author": "popov",
+      "content": "Yes, that\u0027s the one I\u0027m using. Under Windows XP I have installed LPS(lightweight portable security) with their own installer that automatically formatted device. There is no bootloader, it\u0027s the only thing that is on the stick.\n\nAnd yes, the stick itself stinks, I am using it just because of the switch. I would get something better, but it seems that write protected drives are very rare these days.\n\nAnother thing, I will be making multiboot flash stick(different than one above), and I am wondering what to use to format and build everything. It will be made (preferably) under Windows XP, and will have one main distro(with its own write storage, like Mint), small fast-launching distro for browsing net(like xPUD but recent), some basic diagnostic and recovery tools for both WinXP and Win7 and all that standard HDD/Memory/etc tools that are there on recovery CD\u0027s. I could even add MS-DOS, PicoXP and such just for fun, but the thing needs to start rolling first. As for now, I am somehow stuck.\n\nThe point is, some distros need to be installed in much different way than others, which complicates everything. This is especially true for all those distros that come with their own installers, like Slax. So I\u0027d like to ask for a preffered tool, which could do it.\n\n**Edited by popov, 24 March 2013 - 09:14 PM.**\n"
+    },
+    {
+      "id": "170045",
+      "timestamp": "2013-03-25T08:13:52+00:00",
+      "author": "Wonko the Sane",
+      "content": "Yes, I can confirm that sticks with the switch are very rare nowadays. ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)\n\nSo, ALL your bootability tests (from which you derived your conclusions) are made with a single \\*something\\*, which you don\u0027t even know how partitions/formats the stick and WHICH booting approach uses? ![:w00t:](https://reboot.pro/public/style_emoticons/default/w00t.gif)\n\nMaybe you should try that stick with \"something else\" (known) and see how it behaves ![:whistling:](https://reboot.pro/public/style_emoticons/default/happy22.gif) :wink:.\n\nThe general idea (with Linux based distro\u0027s) is to actually (whenever possible), NOT to install anything but use a .iso \"as is\".\n\nWhat most people uses nowadays are either Syslinux or grub4dos.\n\nThere are several tools/utilities to partition/format the stick (and compatible with either of those two bootmanagers).\n\nJust browse/search the board and you will find many examples/tutorials, etc., check the stickies first.\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170062",
+      "timestamp": "2013-03-25T14:01:41+00:00",
+      "author": "popov",
+      "content": "Okay, that single something runs on isolinux with huge initrd beeing its main component. The point is, thing has it own installer, I can format drive using it(which is recommended), or format it by myself.\n\nThis is content of main isolinux.cfg file:\n\n\u003e timeout 0  \n\u003e default vmlinuz  \n\u003e append initrd\u003dinitrd splash\u003dsilent,theme:lps load_ramdisk\u003d1 ramdisk_blocksize\u003d4096 root\u003d/dev/ram0 ramdisk_size\u003d524288 console\u003dtty1 loglevel\u003d3 LM\u003d4  \n\u003e display product.txt\n\nBut, there is a folder called InstalltoUSB, which contains syslinux, and here is its cfg:\n\n\u003e timeout 0  \n\u003e default vmlinuz  \n\u003e append initrd\u003dinitrd splash\u003dsilent,theme:lps load_ramdisk\u003d1 ramdisk_blocksize\u003d4096 root\u003d/dev/ram0 ramdisk_size\u003d524288 console\u003dtty1 loglevel\u003d3 LM\u003d2  \n\u003e display product.txt\n\nWhat else? Installation bat file is scripted like this:\n\n\u003e @echo off  \n\u003e cls  \n\u003e :: Rich Kutter, CISSP  \n\u003e :: Install LPS to a USB thumb drive  \n\u003e ::  \n\u003e :: Design:  \n\u003e :: Gather user input  \n\u003e :: Verify correctness - verify file locations  \n\u003e :: {Format}  \n\u003e :: Copy files  \n\u003e :: Install Linux boot loader  \n\u003e ::  \n\u003e :: ATSPI_Outreach@wpafb.af.mil for help/support  \n\u003e :: [http://spi.dod.mil](http://spi.dod.mil \"External link\")  \n\u003e set CDROM\u003d  \n\u003e set SRC_PATH\u003dInstallToUSB  \n\u003e set SUP_PATH\u003d%SRC_PATH%\\\\Support  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e :: BEGIN  \n\u003e echo.  \n\u003e echo Batch file to install LPS to a USB storage device  \n\u003e echo.  \n\u003e echo Brought to you by the ATSPI Technology Branch  \n\u003e echo [http://spi.dod.mil](http://spi.dod.mil \"External link\")  \n\u003e echo.  \n\u003e echo Summary of process:  \n\u003e echo Format USB drive (optional)  \n\u003e echo Copy required files  \n\u003e echo Install Linux boot loader  \n\u003e echo.  \n\u003e echo Prepare to enter the drive letter of the source and target media  \n\u003e\n\u003e ::CHECK FOR ADMIN RIGHTS  \n\u003e %CDROM%\\\\%SUP_PATH%\\\\IsAdmin.exe  \n\u003e if \"%errorlevel%\"\u003d\u003d\"0\" goto :notadmin  \n\u003e\n\u003e pause  \n\u003e cls  \n\u003e :: GET USER INPUT  \n\u003e set /P CDROM\u003d\"Enter drive letter of source disc (often CD-ROM, but could be USB): \"  \n\u003e IF NOT \u0027%CDROM%\u0027\u003d\u003d\u0027\u0027 SET CDROM\u003d%CDROM:\\~0,1%  \n\u003e set CDROM\u003d%CDROM%:  \n\u003e\n\u003e echo.  \n\u003e set USB\u003d  \n\u003e set /P USB\u003d\"Enter drive letter of USB flash drive: \"  \n\u003e IF NOT \u0027%USB%\u0027\u003d\u003d\u0027\u0027 SET USB\u003d%USB:\\~0,1%  \n\u003e set USB\u003d%USB%:  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e echo.  \n\u003e set FORMAT\u003d  \n\u003e set /P FORMAT\u003d\"Do you wish to format the USB drive (y/N): \"  \n\u003e IF NOT \u0027%FORMAT%\u0027\u003d\u003d\u0027\u0027 SET FORMAT\u003d%FORMAT:\\~0,1%  \n\u003e\n\u003e echo.  \n\u003e set EncWizard\u003d  \n\u003e if not exist %CDROM%\\\\EncryptionWizard goto notencwiz  \n\u003e set /P EncWizard\u003d\"Do you wish to install Encryption Wizard to USB drive (y/N): \"  \n\u003e IF NOT \u0027%EncWizard%\u0027\u003d\u003d\u0027\u0027 SET EncWizard\u003d%EncWizard:\\~0,1%  \n\u003e\n\u003e echo.  \n\u003e\n\u003e :notencwiz  \n\u003e\n\u003e echo \\*\\*\\* Validating drives... \\*\\*\\*  \n\u003e :: VERIFY EXISTANCE OF DRIVES  \n\u003e if not exist %CDROM% goto driveerror  \n\u003e if not exist %USB% goto driveerror  \n\u003e\n\u003e :: VERIFY STRUCTURE OF CDROM  \n\u003e if exist %USB%\\\\Windows goto windirerror  \n\u003e\n\u003e :: FORMAT USB DRIVE?  \n\u003e :: Example: HPUSBF.EXE e: -FS:FAT32 -Q -Y -V:LPS -S:\\\\LPS  \n\u003e IF /I \u0027%FORMAT%\u0027 neq \u0027Y\u0027 goto notformat  \n\u003e echo CDROM %CDROM% SRC_PATH %SRC_PATH%  \n\u003e %CDROM%\\\\%SUP_PATH%\\\\HPUSBF.EXE %USB% -FS:FAT32 -Q -V:LPS  \n\u003e IF NOT %errorlevel%\u003d\u003d0 goto :formaterror  \n\u003e\n\u003e :notformat  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e :: COPY CONTENT TO USB STICK  \n\u003e echo.  \n\u003e echo \\*\\*\\* Copying content to USB device \\*\\*\\*  \n\u003e for %%X in (%SRC_PATH%) do (mkdir %USB%\\\\%%X)  \n\u003e for %%X in (%SRC_PATH%) do (xcopy /v /s %CDROM%\\\\%%X %USB%\\\\%%X)  \n\u003e\n\u003e mkdir %USB%\\\\Docs  \n\u003e xcopy /v /s %CDROM%\\\\Docs %USB%\\\\Docs  \n\u003e echo \\*\\*\\* Copying large files - please be patient \\*\\*\\*  \n\u003e copy /v %CDROM%\\\\initrd %USB%\\\\  \n\u003e copy /v %CDROM%\\\\README\\* %USB%\\\\  \n\u003e copy /v %CDROM%\\\\%SRC_PATH%\\\\syslinux\\\\\\* %USB%\\\\  \n\u003e copy /v %CDROM%\\\\vmlinuz\\* %USB%\\\\  \n\u003e copy /v %CDROM%\\\\image.md5 %USB%\\\\  \n\u003e\n\u003e :: INSTALL ENCRYPTION WIZARD?  \n\u003e IF /I \u0027%EncWizard%\u0027\u003d\u003d\u0027Y\u0027 mkdir %USB%\\\\EncryptionWizard  \n\u003e IF /I \u0027%EncWizard%\u0027\u003d\u003d\u0027Y\u0027 xcopy /V /S %CDROM%\\\\EncryptionWizard %USB%\\\\EncryptionWizard  \n\u003e\n\u003e :: INSTALL LINUX BOOT LOADER  \n\u003e echo.  \n\u003e echo \\*\\*\\* Installing Linux Boot Loader \\*\\*\\*  \n\u003e %CDROM%\\\\%SUP_PATH%\\\\syslinux %USB%  \n\u003e IF NOT %errorlevel%\u003d\u003d0 goto :bootloadererror  \n\u003e\n\u003e echo.  \n\u003e echo \\*\\*\\* Installation of LPS to USB device complete \\*\\*\\*  \n\u003e echo.  \n\u003e echo.  \n\u003e echo \\*\\*\\* PLEASE NOTE \\*\\*\\*  \n\u003e echo Your LPS USB device will NOT automount as a storage  \n\u003e echo device in LPS. You are strongly encouraged to use  \n\u003e echo a separate USB device for data storage and disconnect  \n\u003e echo the boot device once the boot loader has finished  \n\u003e echo loading LPS.  \n\u003e echo \\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*  \n\u003e echo.  \n\u003e\n\u003e ::END  \n\u003e goto eof  \n\u003e\n\u003e :: ERROR MESSAGES  \n\u003e :driveerror  \n\u003e echo.  \n\u003e echo.  \n\u003e echo \\*\\*\\*\\* ERROR: \\*\\*\\*\\*  \n\u003e echo One or more drives requested do not exist (%CDROM% or %USB%)  \n\u003e echo.  \n\u003e echo.  \n\u003e goto eof  \n\u003e\n\u003e :cdromerror  \n\u003e echo.  \n\u003e echo.  \n\u003e echo \\*\\*\\*\\* ERROR: \\*\\*\\*\\*  \n\u003e echo Verify file structure of CDROM or contact ATSPI_Outreach@wpafb.af.mil for  \n\u003e echo help  \n\u003e echo.  \n\u003e goto eof  \n\u003e\n\u003e :windirerror  \n\u003e echo.  \n\u003e echo.  \n\u003e echo \\*\\*\\*\\* ERROR: \\*\\*\\*\\*  \n\u003e echo Windows directory detected on %USB% - are you sure you want to install here?  \n\u003e echo.  \n\u003e echo Rename or remove %USB%\\\\Windows and re-run the script  \n\u003e echo.  \n\u003e goto eof  \n\u003e\n\u003e :notadmin  \n\u003e echo.  \n\u003e echo.  \n\u003e echo \\*\\*\\*\\* ERROR: \\*\\*\\*\\*  \n\u003e echo Administrator rights are required to install the Linux boot loader to a USB  \n\u003e echo device and to (optionally) format the device.  \n\u003e echo.  \n\u003e goto eof  \n\u003e\n\u003e :formaterror  \n\u003e echo.  \n\u003e echo.  \n\u003e echo \\*\\*\\*\\* ERROR: \\*\\*\\*\\*  \n\u003e echo There was a problem formatting the USB device %USB%. Ensure the device  \n\u003e echo is writable / formatable.  \n\u003e echo.  \n\u003e goto eof  \n\u003e\n\u003e :bootloadererror  \n\u003e echo.  \n\u003e echo.  \n\u003e echo \\*\\*\\*\\* ERROR: \\*\\*\\*\\*  \n\u003e echo There was a problem installing the Linux bootloader to %USB%. Ensure the  \n\u003e echo device is writable.  \n\u003e echo.  \n\u003e goto eof  \n\u003e\n\u003e :: TERMINATE HERE  \n\u003e :eof  \n\u003e set CDROM\u003d  \n\u003e set USB\u003d  \n\u003e pause  \n\n"
+    },
+    {
+      "id": "170064",
+      "timestamp": "2013-03-25T14:25:51+00:00",
+      "author": "steve6375",
+      "content": "Standard grub4dos ISo boot works fine for this distro\n\n```\ntitle LPS-1.4.0_public.iso MNU\nmap /LPS-1.4.0_public.iso (0xff)\nmap --hook\nroot (0xff)\nchainloader (0xff)\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "170065",
+      "timestamp": "2013-03-25T14:32:17+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, first thing the actual USB is never (properly) partitioned (which is an usual requirement to have more chances to boot \\*anything\\* ).\n\nThe batch seemingly uses the good ol\u0027 HP USB formatting utility, that has proved to work in a (largish) number of cases BUT also to fail in a number of other cases.\n\n(please understand how there is no way to know what will work with what, the usual idea is to make a stick \"as compatible as possible\")\n\nThe Syslinux basically uses a \"standard\" MBR CODE (i.e. some code that looks for the Active primary partition in the partition table and chainloads it\u0027s bootsector), and by a Syslinux bootsector that loads the actual bootloader.\n\nIt is possible that Syslinux maps the device as HD and somehow \"assumes\" that it must be R/W.\n\nAs well it is possible that LPS (some setting in it) needs the write access for (example) writing a log or something like that.\n\nYou can easily add to your stick \"as is\" the grub.exe from grub4dos adding to syslinux.cfg a line calling it:\n\n[http://www.rmprepusb...inload-syslinux](http://www.rmprepusb.com/tutorials/chainload-syslinux \"External link\")\n\nthen try either the entry **Steve6375** just posted or a \"flat file\" approach like (on grub command line):\n\n```\nkernel /vmlinuz splash\u003dsilent,theme:lps load_ramdisk\u003d1 ramdisk_blocksize\u003d4096 root\u003d/dev/ram0 ramdisk_size\u003d524288 console\u003dtty1 loglevel\u003d3 LM\u003d2\ninitrd /initrd\nboot\n```\n\nget latest 0.4.5.c version of grub4dos here:\n\n[http://code.google.c.../downloads/list](http://code.google.com/p/grub4dos-chenall/downloads/list \"External link\")\n\nHave a look to the grub4dos guide:\n\n[http://diddy.boot-la...os/Grub4dos.htm](http://diddy.boot-land.net/grub4dos/Grub4dos.htm \"External link\")\n\nat least:\n\n[http://diddy.boot-la...iles/basics.htm](http://diddy.boot-land.net/grub4dos/files/basics.htm \"External link\")\n\n[http://diddy.boot-la...s/files/cli.htm](http://diddy.boot-land.net/grub4dos/files/cli.htm \"External link\")\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n:\n\n"
+    },
+    {
+      "id": "170066",
+      "timestamp": "2013-03-25T14:37:34+00:00",
+      "author": "steve6375",
+      "content": "To WP an NTFS pendrive, you can use diskpart to add the ReadOnly attribute to the disk. However, this will only protect it from writes under Vista/7/8 (not XP or linux).\n\nAs for what is \u0027best\u0027 2Gb distro, it depends what you want to use it for - accessing Windows based systems and running Windows apps, or accessing linux systems and running linux apps.\n\nMost people have both in their arsenal.\n\nFor a Windows like linux distro try [StartOS](http://www.rmprepusb.com/tutorials/ylmf \"External link\") (which can boot directly from an ISO and have persistence too).\n\nThough it is considered Warez (*stands well back and light the blue touch paper...* ) [Hirens DLC1](http://www.rmprepusb.com/tutorials/hbcd \"External link\") is pretty damn useful as it has a mini XP OS and a mini 7 OS.\n\ngparted is pretty good for hardware - I would suggest backtrack5 as a good development OS, but it is too big for your criteria.\n\nAnother good WinPE project is Make_PE3.\n\nWhy not put them all on a decent USB stick?\n\n"
+    },
+    {
+      "id": "170071",
+      "timestamp": "2013-03-25T15:30:44+00:00",
+      "author": "steve6375",
+      "content": "P.S. SD cards have a \u0027lock\u0027 switch which is a write-protect switch. So if you buy a cheap [USB SD card reader](http://www.amazon.co.uk/Uspeed-Reader-RS-MMC-Micro-Support/dp/B006TOL6JK/ref\u003dsr_1_3?ie\u003dUTF8\u0026qid\u003d1364225161\u0026sr\u003d8-3 \"External link\") (these look like a USB stick and USB 2.0 ones cost peanuts) then you have your WP USB stick.\n\nP.P.S. I booted LPS from an NTFS formatted **WP** SD card+reader and it booted fine - though very slowly! (using the grub4dos menu in post #10).\n\n"
+    },
+    {
+      "id": "170074",
+      "timestamp": "2013-03-25T18:17:56+00:00",
+      "author": "popov",
+      "content": "Thanks for answers, there are few things more I\u0027d like to share:\n\nwhile testing inside Virtual Box, LPS is detected and starts even when drive is write protected\n\nthe actual loader used by live USB installation is actually syslinux, while it seems that isolinux is there for live CD\u0027s\n\nfor LPS(more like testing LPS) I am just wiling to have separate write protected live USB stick\n\nstick for multiboot with persistent distro/recovery tools is a different one, doesn\u0027t have/need write switch and won\u0027t include LPS\n\nI had Hiren\u0027s winXP already, and I liked it as a repair tool for Windows XP, so now I am planning to have both WinXP and Win7 versions installed\n\nabout live linux distros with persistence mode, previously I really liked MooLux, because it booted on every machine I\u0027ve tried it, and it properly configured everything(network, graphics, printers) in 90% of cases, while other, more popular distros failed me many times(currently I am testing Mint as main USB system, but it\u0027s one of slowest systems I ever had)\n\nI don\u0027t want to build my own distro, just because my knowledge about linux drivers is very limited, there is no problem for me in building it for single desktop\n\nfrom what I know SD cards only offer software write protection, while it\u0027s hardware on USB sticks\n\n"
+    },
+    {
+      "id": "170075",
+      "timestamp": "2013-03-25T18:22:11+00:00",
+      "author": "steve6375",
+      "content": "SD cards have a switch on them (hardware).\n\n![id1102_extreme4.gif](http://kb.sandisk.com/euf/assets/images/faqs/1102/id1102_extreme4.gif)\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "170084",
+      "timestamp": "2013-03-25T21:26:23+00:00",
+      "author": "MedEvil",
+      "content": "![:rofl:](https://reboot.pro/public/style_emoticons/default/roll1.gif) Nice one Steve!  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170087",
+      "timestamp": "2013-03-25T23:10:55+00:00",
+      "author": "popov",
+      "content": "Well, I smiled, but according to this, it\u0027s not that simple:\n\n[http://www.fencepost...ite-protection/](http://www.fencepost.net/2010/03/usb-flash-drives-with-hardware-write-protection/ \"External link\")\n\n\u003e SD Cards, while they have a write-protect switch, are actually no good for this purpose because **it\u0027s not actually hardware write protection** -- at best the card reader sends a signal to the operating system that the drive should be treated as read-only. The write-protect switch on the cards is read by a sensor that\u0027s part of the card reader, and the card reader then passes along to the operating system whether the card is read-only. According to the specification from [http://www.sdcard.org/](http://www.sdcard.org/ \"External link\"):\n\u003e \u003e A proper, matched, switch on the socket side will indicate to the host that the card is write-protected or not. It is the responsibility of the host to protect the card. The position of the write protect switch is unknown to the internal circuitry of the card.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "170088",
+      "timestamp": "2013-03-25T23:39:04+00:00",
+      "author": "steve6375",
+      "content": "In the same way that some USB Flash drives have a WP switch... ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\n"
+    },
+    {
+      "id": "170089",
+      "timestamp": "2013-03-25T23:46:40+00:00",
+      "author": "MedEvil",
+      "content": "I think you misunderstood me, popov.  \n\nYou are perfectly right. The wp on the sd cards is not any more a hardware one, than the one on a floppy was.  \n\nI have a cardreader myself, which doesn\u0027t give a damn about that switch.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170090",
+      "timestamp": "2013-03-25T23:56:04+00:00",
+      "author": "MedEvil",
+      "content": "\u003e In the same way that some USB Flash drives have a WP switch... ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)\nNope not in the same way.  \nSince a USB stick comes with it\u0027s own controller, there\u0027s nothing in the world , short of \u0027fixing\u0027 the stick, that will allow write access.  \nSince an SD card has no own controller, it\u0027s write protect ~~switch~~ suggestor can easily be ignored by the host system.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170091",
+      "timestamp": "2013-03-26T00:31:53+00:00",
+      "author": "steve6375",
+      "content": "No, it\u0027s exactly the same. What do you think is inside the card reader?\n\nSo moving the switch on an SD card is the same as moving the switch on a USB flash drive.\n\nA WP signal is sent to the USB controller in both cases. The USB controller reports the media as Read Only.\n\n"
+    },
+    {
+      "id": "170095",
+      "timestamp": "2013-03-26T08:42:06+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e No, it\u0027s exactly the same. What do you think is inside the card reader?\n\u003e\n\u003e So moving the switch on an SD card is the same as moving the switch on a USB flash drive.\n\u003e\n\u003e A WP signal is sent to the USB controller in both cases. The USB controller reports the media as Read Only.\n\nNo, it is not, the analogy with the floppy RO switch is very correct.\n\nThe USB stick INCLUDES a controller that (unless the manufacturer is completely demented) CAN put the stick device in RO mode.\n\nThe switch is physically connected to the built in controller.\n\nThe issue with SD card is that the card \"switch\" tells the card reader that it should be treated as RO, BUT if the controller in the reader ignores this, the card will be RW anyway.\n\nThe switch on a sd card is nothing by a \"notch\", if there is not \\*something\\* sensing the position of this notch moved to the RO position the card will be seen normally.\n\nIf you prefer, a SD card on an adapter TESTED to have the RO sensor working is OK, but every time you insert a SD card in a new reader or new device, you are flipping a coin (at the most).\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170097",
+      "timestamp": "2013-03-26T10:51:00+00:00",
+      "author": "steve6375",
+      "content": "Sure, but what was wanted was a USB stick with a WP switch. If you use a \u0027stick-form\u0027 SD card reader (as I pictured previously) + SD card then you have this. Further, the SD lock switch is inside the device and thus less likely to be fiddled with (especially if you glue the end cap on with the SD card still inside!). So I see no difference between a single USB stick with a WP switch and a single SD-reader+SD card!\n\n"
+    },
+    {
+      "id": "170098",
+      "timestamp": "2013-03-26T11:05:13+00:00",
+      "author": "MedEvil",
+      "content": "I agree. A Cardreader - SD-Card combo, which is verified to have WP working, is similar to a USB-Stick with WP.  \n\nThe only downside to the SD combo is, that i have not yet seen any SD card, which comes even close speedwise to a good USB-Stick.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170099",
+      "timestamp": "2013-03-26T11:13:24+00:00",
+      "author": "MedEvil",
+      "content": "btw. Did just run a test and actually none of my cardreaders give a damn about that switch.  \n\nSteve, do you have actually a cardreader, which does switch to WP, if the lock is enabled on the card or did you just assume it would work?  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170100",
+      "timestamp": "2013-03-26T11:37:39+00:00",
+      "author": "steve6375",
+      "content": "No, I have a card reader that works correctly and is WP if the switch is moved on the SD card. It was a cheap plastic one.\n\nI agree about the speed, however this is because most of these card readers are very cheap. If you buy a USB 3.0 card reader (which I don\u0027t have and so have not tested - e.g. Kingston do one) then speed should not be an issue as these have good (fast) controllers. Of course, SD cards vary in speed a lot so you need a good fast one too.\n\nInterestingly, on wiki it says\n\n\u003e A host device can lock an SD card using a password of up to 16 bytes, typically supplied by the user. A locked card interacts normally with the host device except that it rejects commands to read and write data. A locked card can be unlocked only by providing the same password. The host device can, after supplying the old password, specify a new password or disable locking. Without the password (typically, in the case that the user forgets the password), the host device can command the card to erase all the data on the card for future re-use (except card data under DRM), but there is no way to gain access to the existing data.\n\nI wonder if any s/w exists which will do this?\n\n"
+    },
+    {
+      "id": "170101",
+      "timestamp": "2013-03-26T11:40:04+00:00",
+      "author": "Uvais",
+      "content": "maybe off topic..but i have burned an DVD its bootable...I have created its ISO ..but I want to make Non Copy-able..I means after burning that ISO..no one can Normally make its Image OR Copy its Contents..? Is it possible ? ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\n"
+    },
+    {
+      "id": "170102",
+      "timestamp": "2013-03-26T11:55:52+00:00",
+      "author": "MedEvil",
+      "content": "Only in Spy-Fi movies!  \n\nYou can make it harder, but you can\u0027t stop it.  \nMany companies have tryed. All have failed! :wink:  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170104",
+      "timestamp": "2013-03-26T12:02:12+00:00",
+      "author": "steve6375",
+      "content": "If it contains files, encrypt them.\n\n"
+    },
+    {
+      "id": "170107",
+      "timestamp": "2013-03-26T12:34:08+00:00",
+      "author": "MedEvil",
+      "content": "That will stop reading not copying.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170108",
+      "timestamp": "2013-03-26T12:46:35+00:00",
+      "author": "Wonko the Sane",
+      "content": "@Uvais\n\nJFYI:\n\n[http://www.pandreonline.com/tzcopy/](http://www.pandreonline.com/tzcopy/ \"External link\")\n\n[http://translate.goo...\\\u0026hl\u003dit\\\u0026ie\u003dUTF-8](http://translate.google.com/translate?u\u003dhttp%3A%2F%2Fwww.pandreonline.com%2Ftzcopy%2F\u0026sl\u003des\u0026tl\u003den\u0026hl\u003dit\u0026ie\u003dUTF-8 \"External link\")\n\nthe used approach reminds the good ol\u0027 times of \"intermediate sectors\" on floppies ![:whistling:](https://reboot.pro/public/style_emoticons/default/happy22.gif)\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170109",
+      "timestamp": "2013-03-26T13:04:09+00:00",
+      "author": "steve6375",
+      "content": "You could lock the CD to a particular system via it\u0027s MAC address (or you could use mainboard serial number).\n\ne.g. in grub4dos\n\n```\n# check mainboard MAC address - e.g. MAC address is 00:23:54:58:32:6b\ncat --locate\u003d\\x00\\x23\\x54\\x58\\x32\\x6b (md)0x680+0x180 || pause --wait\u003d3 WRONG SYSTEM! \u0026\u0026 halt\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "170111",
+      "timestamp": "2013-03-26T13:22:25+00:00",
+      "author": "MedEvil",
+      "content": "Again, this will stop reading / using it on another system, it will not stop making a copy of the DVD.  \n\nUvais looks for a DVD, which can be used on any computer, but not made a copy of on any.  \n\nHaving something readable, but not copyable, is just not possible.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170112",
+      "timestamp": "2013-03-26T13:27:33+00:00",
+      "author": "steve6375",
+      "content": "\u003e Having something readable, but not copyable, is just not possible.\n\nI agree, which is why I was offering alternatives. It depends on *why*he wants it to be non-copyable to see if there is a work-around....\n\n"
+    },
+    {
+      "id": "170113",
+      "timestamp": "2013-03-26T13:29:16+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e You could lock the CD to a particular system via it\u0027s MAC address (or you could use mainboard serial number).\nBut again that would prevent the built-in-bootability on a \"non-given\" system, the copy would still be possible AND access to contents as well (and also booting it thhrough an \"external\" bootloader bootmanager.  \nIn the mentioned good ol\u0027 times you simply could not COPY a diskette, i.e. the COPY would not even work on the SAME machine (even if coupled with any hardware based protection, such as a parallel port dongle).  \nAnd then again, it was defeated in a short period of time, preventing \"legal\" users from doing backup copies, any IT guy\u0027s life more complex and making things for \"professional software pirates\" only very slightly more difficult.  \n\nI guess you are old enough to remember the Central Point Option board ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png):  \n[http://retro.icequake.net/dob/](http://retro.icequake.net/dob/ \"External link\")  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "170116",
+      "timestamp": "2013-03-26T13:48:16+00:00",
+      "author": "steve6375",
+      "content": "Not sure if this would work but...\n\n1. Make an ISO which has a large (say 200MB) dummy file written to the CD/DVD first, followed by your own payload files\n\n2. Burn the CD/DVD\n\n3. Put several large scratches in the tracks nearest the hub of the CD/DVD.\n\nThat should prevent any **image** copier from working! ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nIt won\u0027t prevent a decent hacker from re-making it though.\n\n"
+    },
+    {
+      "id": "170121",
+      "timestamp": "2013-03-26T14:43:39+00:00",
+      "author": "MedEvil",
+      "content": "Decent hacker? ![:confused1:](https://reboot.pro/public/style_emoticons/default/confused1.gif)  \nBoy do we have lowered our standards! ![:lol:](https://reboot.pro/public/style_emoticons/default/laugh.png)  \n\nCopy the boot sectore and files seperately and burn a new bootable DVD.  \nEvery payware burn-software can do that, so we\u0027re hardly talking hacker ground here.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170122",
+      "timestamp": "2013-03-26T14:49:38+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e 1. Make an ISO which has a large (say 200MB) dummy file written to the CD/DVD first, followed by your own payload files\n\u003e\n\u003e 2. Burn the CD/DVD\n\u003e\n\u003e 3. ***Put*** several ***large*** scratches in the tracks nearest the hub of the CD/DVD.\n\nThe stationery shop around the corner has no more any of the commonly used self-adhesive scratches, can you tell us how to ***make*** some?\n\n(I would like to make a few ***large*** ones, I mean :wink: ++***from scratch***++ ![:buehehe:](https://reboot.pro/public/style_emoticons/default/buehehe.gif))\n\n![:jaclaz:](https://reboot.pro/public/style_emoticons/default/jaclaz.gif)\n\nMore seriously, a recently loosely related topic:\n\n[http://reboot.pro/to...-with-grub4dos/](http://reboot.pro/topic/18296-booting-an-encrypted-iso-with-grub4dos/ \"\")\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170151",
+      "timestamp": "2013-03-27T02:51:52+00:00",
+      "author": "popov",
+      "content": "Going back to my protected stick discussion, I have tried some of those described methods, and nothing works. When drive is unprotected it\u0027s booting properly, when protected, it doesn\u0027t. I have even forced boot from BIOS and unplugged other devices, and all I had was some message about improper disk(but different one than when there was nothing connected). Device was normally detected in BIOS. I have also reformatted thing few times, each time with different tool, installed thing, did few tries with variously configured syslinux/grub and still no go. Steve6375\u0027s method of copying whole ISO was kinda helpful, one of my computers stopped at: Missing MBR-helper(others didn\u0027t report anything and just ignored drive). Of course it booted normally in readable mode. Now I am wondering what to do, maybe I should simple do some sort of low format? But then which tool is recommended for Windows XP, and is it possible that it\u0027s producers specific code in MBR that is causing it?   \n"
+    },
+    {
+      "id": "170156",
+      "timestamp": "2013-03-27T08:42:56+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, it doesn\u0027t work like this. ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)\n\nI mean if you need help/assistance. :smile:\n\nBasically you have an issue of unknown nature, that noone here has actually encountered/experienced (as in \"no previous reference/solution\"), so you do a number of \"random\" tests, and come back saying \"nothing\" works, without detailing which tests you did and what happened (besides the final result \"didn\u0027t work\").\n\n\u003e I have also reformatted thing few times, each time with different tool, installed thing, did few tries with variously configured syslinux/grub and still no go.\n\nIt is difficult to try and suggest you something if you don\u0027t detail WHAT EXACTLY you tried and HOW EXACTLY it failed.\n\nPlease do ONE thing (and ONE only) and DETAIL it.\n\nGet RMPREPUSB:\n\n[http://www.rmprepusb.com/](http://www.rmprepusb.com/ \"External link\")\n\nPartition the stick as having \"Boot as HD C: 2Ptns\", \"FAT32\" and install grub4dos to it (and nothing else).\n\nDescribe what happens when attempting to boot with NO write protection and what happens when attempting to boot with the write protection on.\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170188",
+      "timestamp": "2013-03-27T14:03:24+00:00",
+      "author": "popov",
+      "content": "I wrote numerous because I can\u0027t even count them all. I was simply trying everything I know plus stuff I found online, including this thread. Those tests took me few hours of non-stop work, without any success. The way it fail is always the same - unprotected drive boots properly, protected doesn\u0027t. Either it simply skips USB completely(90% of times), or posts random generic junk messages, of which \"Missing MBR-helper\" is most common(and most detailed). Note: Different PC\u0027s display different junk messages, some don\u0027t display anything, while launching thing in VM always works.\n\nNow RMPrepUSB results:\n\nWhen stick is unprotected, drive is properly detected in BIOS and after boot grub command line is displayed.\n\nWhen stick is protected, drive is properly detected in BIOS and after boot \"Missing MBR-helper\" message is displayed.\n\n"
+    },
+    {
+      "id": "170197",
+      "timestamp": "2013-03-27T14:23:58+00:00",
+      "author": "popov",
+      "content": "Basically, I am wondering about this in RMPrepUSB:\n\n[http://reboot.pro/to...e-2#entry166301](http://reboot.pro/topic/16783-rmprepusb-faster-fat32-write-access-on-flash-memory-drives/page-2#entry166301 \"\")\n\nSeems that MBR message might be coming because of it(?), but then, when its windows formatted, USB is simply skipped.\n\nAnd out of curiosity, did anyone benched new USB 3.0 sticks that supposedly reach 200MB/sec transfer with the thing above? And compared results?\n\n**Edited by popov, 27 March 2013 - 02:25 PM.**\n"
+    },
+    {
+      "id": "170199",
+      "timestamp": "2013-03-27T14:29:07+00:00",
+      "author": "steve6375",
+      "content": "\u003e Now RMPrepUSB results:\n\u003e\n\u003e When stick is unprotected, drive is properly detected in BIOS and after boot grub command line is displayed.\n\u003e\n\u003e When stick is protected, drive is properly detected in BIOS and after boot \"Missing MBR-helper\" message is displayed.\n\nThis is most odd! Booting should not involve writing to the stick unless you have a virus somewhere??\n\nHow many systems did you try? What is your test system and does it have the standard BIOS?\n\n"
+    },
+    {
+      "id": "170204",
+      "timestamp": "2013-03-27T14:43:36+00:00",
+      "author": "popov",
+      "content": "I\u0027ve tried 4 systems and 2 VM\u0027s. Mainly for testing I am using ASUS A7N8X or P5GC-MX mobos, other than that it can be MSI 870A-G54. To this, there are few laptops, not sure about their details, I might be able to check later on. Tbh, I could even try it on old mobo with just USB 1.1 support, but I highly doubt it will change anything.\n\nTbh I was also considereing it to be possible virus or manufacturer driver.\n\n**Edited by popov, 27 March 2013 - 02:45 PM.**\n"
+    },
+    {
+      "id": "170206",
+      "timestamp": "2013-03-27T14:55:04+00:00",
+      "author": "steve6375",
+      "content": "Sounds like the issue is with the USb drive. How many have you tried and what are they?\n\n"
+    },
+    {
+      "id": "170210",
+      "timestamp": "2013-03-27T15:30:43+00:00",
+      "author": "popov",
+      "content": "It\u0027s PQI U339 USB 2.0 4GB with write protection switch.\n\nThey have a tool that did not help me:\n\n[http://www.pqigroup....odid\u003d245\\\u0026nid\u003d27](http://www.pqigroup.com/soft_in.aspx?mnuid\u003d1416\u0026modid\u003d245\u0026nid\u003d27 \"External link\")\n\n"
+    },
+    {
+      "id": "170226",
+      "timestamp": "2013-03-27T19:32:13+00:00",
+      "author": "Shahzaib",
+      "content": "The way use ultra iso-\\\u003e write imake usb_\\\u003e use option hide partition,.\n\n"
+    },
+    {
+      "id": "170227",
+      "timestamp": "2013-03-27T19:49:27+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Basically, I am wondering about this in RMPrepUSB:\n\u003e\n\u003e [http://reboot.pro/to...e-2#entry166301](http://reboot.pro/topic/16783-rmprepusb-faster-fat32-write-access-on-flash-memory-drives/page-2#entry166301 \"\")\n\u003e\n\u003e Seems that MBR message might be coming because of it(?), but then, when its windows formatted, USB is simply skipped.\n\nNo, it is similar (actually EXACTLY like) as if grub4dos cannot find \"itself\".\n\nTry again with NTFS formatting (this way we completely exclude FAT32 and it\u0027s optimization).\n\nMaybe, for \\*any\\* reason, when the stick is Read Only the controller \"REALLY\" hides the \"hidden sectors\" (where part of the grub4dos code is written, but then again it should work with a \"conventional\" MBR. ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nCan you check the EXACT (in bytes) size of the stick?\n\nRMPREPUSB should have an option to see that, otherwise use the method here:\n\n[http://reboot.pro/to...-alpha/?p\u003d38197](http://reboot.pro/topic/5000-managing-mbrs-by-jaclaz-mbrbatch-release-001-alpha/?p\u003d38197 \"\")\n\nI can try making for you a couple images in order to try and troubleshoot the issue.\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170257",
+      "timestamp": "2013-03-28T00:29:58+00:00",
+      "author": "popov",
+      "content": "I\u0027ve formatted it to NTFS with HPUSBDisk, installed GRUB but it\u0027s undetectable in both modes. VM detects it in both modes and works fine...  \n\u003e Disk Signature bytes (1B8h-1BBh) \u003d 28 3F 32 24  \n\u003e\n\u003e Partition 1 SIZE\u003d3890.711MiB Type: 0C FAT32LBA (2047GB max) \\*ACTIVE\\*  \n\u003e START POS \u003d CYL:0 HD:1 SEC:1 END POS \u003d CYL:495 HD:254 SEC:63  \n\u003e START (LBA) \u003d 63 (0000003F) SIZE (LBA) \u003d 7,968,177 (007995B1)  \n\u003e\n\u003e Partition 2 SIZE\u003d0.031MiB Type: 21 Hidden(rsvd)  \n\u003e START POS \u003d CYL:496 HD:0 SEC:1 END POS \u003d CYL:496 HD:0 SEC:63  \n\u003e START (LBA) \u003d 7,968,240 (007995F0) SIZE (LBA) \u003d 63 (0000003F)  \n\u003e\n\u003e Partition 3 SIZE\u003d0MiB Type: 00  \n\u003e START POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \n\u003e START (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\u003e\n\u003e Partition 4 SIZE\u003d0MiB Type: 00  \n\u003e START POS \u003d CYL:0 HD:0 SEC:0 END POS \u003d CYL:0 HD:0 SEC:0  \n\u003e START (LBA) \u003d 0 (00000000) SIZE (LBA) \u003d 0 (00000000)  \n\u003e\n\u003e P1 Start\u003d63 (32,256 bytes) End\u003d7,968,239 (4,079,738,368 bytes)  \n\u003e P2 Start\u003d7,968,240 (4,079,738,880 bytes) End\u003d7,968,302 (4,079,770,624 bytes)  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e Drive 1 Generic USB Flash Disk is 4,083,351,552 bytes long (3.803GiB)  \n\u003e F/W Rev.\u003d1100 Serial No.\u003d \\[ 00 00 00 00 00 00 00 00 \\]\n\nOne of my observations, that is related to RMPrepUSB dual partition thing, is a fact, that when I simply format drive with HPUSBDisk to FAT32 and load GRUB onto, computer threats it like there would be no stick inside and skips to HDD. When formatted with RMPrepUSB dual partition + GRUB, it does actually detect something, as it pops that \"Missing MBR-helper\" message. That\u0027s the only clue I got.\n\nSo by researching Missing MBR-helper, I found out that:\n\n\u003e 1. Missing MBR-helper.  \n\u003e\n\u003e The helper function in the sectors that immediately follow the MBR is  \n\u003e not present, or it has been erased by a virus or by Windows XP/Vista.  \n\u003e\n\u003e Run the bootlace.com utility to fix the problem.\n\nThen I went to bootlace.com, but it has so many options, that there are even external websites to ease command line...\n\n[http://apps.farterso...dbootlacer/main](http://apps.fartersoft.com/cloudbootlacer/main \"External link\")\n\n**Edited by popov, 28 March 2013 - 01:15 AM.**\n"
+    },
+    {
+      "id": "170312",
+      "timestamp": "2013-03-28T15:23:36+00:00",
+      "author": "rrolsbe",
+      "content": "\u003e I have been booting Puppy Linux from a hardware write locked Kanguru USB sticks for years. I also boot my ASUS Netbook using a write locked SDHC card; however, as discussed in this thread there is a possiblity that the write lock could be defeated. I am currently using Puppy Precise version 5.4.3 which is based on Ubuntu 12.04.\n\nRegards, Ron\n\n\u003e Hey there,\n\u003e\n\u003e is there any way of making USB stick bootable when it is write protected(by switch)? I have several sticks and tried several OS\u0027es on them, but they all fail to boot when i write-protect my pendrive, while working perfectly fine when the drive is unlocked. It seems kinda awkward, when compared to bootable live CD\u0027s, which do not require to write anything.\n\u003e\n\u003e The second thing I want to ask about - I am looking for a fast, small (max 2GB) bootable distro that will boot and work on as many computers as possible, ie. probably having lots of preinstalled drivers. It needs to automatically detect and config simple network, must have r/w access to NTFS drives, ability to detect printers, internet browser, office, and some basic tools. And it should be easy enough for pure-windows person to use it as OS/data backup.\n\n"
+    },
+    {
+      "id": "170325",
+      "timestamp": "2013-03-28T19:42:27+00:00",
+      "author": "athrelia",
+      "content": "Please any show me a way........\n\ni have a bootable ghost restore dvd. i have also its boot image file. now how its possible that make this iso boot disk password protect???\n\n"
+    },
+    {
+      "id": "170328",
+      "timestamp": "2013-03-28T20:04:46+00:00",
+      "author": "Wonko the Sane",
+      "content": "**popov** , you are admirable in your attempts :smile:, but again, if you could NOT panic, you would probably get faster to a solution (or at least risk less going after red herrings)\n\n.\n\nJFYI, bootlace.com is NOT a web site, it is a program, part of grub4dos, which is used to install grub4dos.\n\nThe site you found is a \"wrap-around\" to that program.\n\nAs you have seen, the options are many, and learning to use it is not the easiest thing to do (either in command line or through a pseudo-GUI), more than that, it is simply not needed/useful to try understanding the issue you are having.\n\nRMPREPUSB has been developed as a replacement to the HPusb tool, that has a series of issues, RMPREPUSB includes each and every \"trick of the trade\" to have a USB stick bootable on a wider range of machines (which includes the double partition), but the sheer fact that you have issue with a single partition on USB is itself a sign that your machine has a \"pesky\" BIOS. ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\n\nIt is also possible that the grub4dos MBR code has issue with that BIOS (it has happened in the past).\n\nSo, the stick size is 4,083,351,552 bytes, right?\n\nI will make a few test images for that stick, to see how it behaves.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170341",
+      "timestamp": "2013-03-29T01:29:50+00:00",
+      "author": "popov",
+      "content": "I know that bootlace is prog, just pointed out that it\u0027s so hard that they made website with command line params so people can copy text. Obviously currently I am unable to use it alone. Also, my stick doesn\u0027t work anywhere, as I\u0027ve tested it on few other computers. Mostly I am trying to run each test on at least two separate PC\u0027s with different BIOS\u0027es.   \n"
+    },
+    {
+      "id": "170363",
+      "timestamp": "2013-03-29T13:52:03+00:00",
+      "author": "MedEvil",
+      "content": "Just a crazy idea.  \n\nHow about using a hex/disk-editor to have a look at what\u0027s different with/without WP?  \n\nOr maybe easier. Create an image of the drive once with WP on and once with WP off and compare the two.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170381",
+      "timestamp": "2013-03-29T18:35:27+00:00",
+      "author": "popov",
+      "content": "Sure... which software should I use for img and hex?\n\n**Edited by popov, 29 March 2013 - 06:37 PM.**\n"
+    },
+    {
+      "id": "170385",
+      "timestamp": "2013-03-29T19:32:23+00:00",
+      "author": "Wonko the Sane",
+      "content": "Ok, let\u0027s see if this (partial) image works.\n\nThe stick partitioning/filesystem will be modified, so, if you have any valuable data SAVE/BACKUP it, FIRST.\n\nIt is a single partition image using the \"mini\" MBR from COD11 and it\u0027s Grub4dos FAT32 bootsector (and grldr).  \nAttached is file Mbr_GRLDR_popov.zip.  \nUNzip it to (say) C:\\\\testimages\\\\Mbr_GRLDR_popov.img  \nIn the same C:\\\\testimages\\\\ directory put dsf**i** (part of the DSFOK) here:  \n[http://members.ozema...eezip/freeware/](http://members.ozemail.com.au/~nulifetv/freezip/freeware/ \"External link\")  \nOpen a command prompt and navigate to that directory, at the C:\\\\testimages\\\\\\\u003e prompt type:\n\n\u003e dsf++**i**++ \\\\\\\\.\\\\PhysicalDrive***n***0 0 Mbr_GRLDR_popov.img\n\nReplace the ***n*** with the CORRECT PhysicalDrive number corresponding to your stick.\n\nIf you have only a disk, that wiil be \\\\\\\\.\\\\PhysicalDrive0, and the stick will be \\\\\\\\.\\\\PhysicalDrive1, the numbers are the same as the disks that you can see in Disk Management. BE CAREFUL!\n\nThen try booting both with the switch on and off and report what happens.\n\nAsk if you have any doubt on the usage of the DSFOK dsfi, or more generally any doubt BEFORE doing something that you may later regret.\n\nI doubt that the image of the stick may change when the protection is on/off (a BIOS issue of some kind is more likely), but \\*everything\\* is possible (though there may be issues if the stick controller has some wear leveling functions ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png))\n\nAnyway the dsf**o** .exein the DSFOK toolkit is a very suitable tool.\n\nSyntax to make the images of the stick will be:\n\n\u003e dsf***o*** \\\\\\\\.\\\\PhysicalDrive***n***0 0 Write_Protected_image.img\n\nand then once the stick switch has been disconnected and re-connected with the switch on:\n\n\u003e dsf***o*** \\\\\\\\.\\\\PhysicalDrive***n***0 0 Read_Only_image.img\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003deae48db310b1f2606de3d6d384679381\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14212 \"Download attachment\") [**Mbr_GRLDR_popov.zip**](http://reboot.pro/index.php?s\u003deae48db310b1f2606de3d6d384679381\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14212 \"Download attachment\") **146.04KB** 343 downloads\n\n"
+    },
+    {
+      "id": "170398",
+      "timestamp": "2013-03-29T22:29:02+00:00",
+      "author": "MedEvil",
+      "content": "\u003e Sure... which software should I use for img and hex?\nWhatever you like, as long as it creates a raw image.  \nI would use WinHEX for both, but i have a licence for it.  \nHxD may be able to do the same, but not sure about that.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170483",
+      "timestamp": "2013-04-01T05:56:39+00:00",
+      "author": "popov",
+      "content": "No matter how hard I try, the content is identical. I used HDD Guru Raw Copy Tool(dd) and compared \\*img files with HxD. Now I am trying to create two images with HxD as it has native option to read whole disks and build their image(I am doing this with \"read only\" box unticked for both modes). Then I will create pair of images with HxD but I will load disk not as raw, but as windows detected drive(with its own letter). I\u0027ll update this post with results soon.  \n\nUpdate1: Seems that images created by Guru RAW Copy Tool and HxD(when reading drive as \"Removable Disk 1\" are identical. I must point out that Guru RAW Copy Tool made image like 5 times faster than HxD and didn\u0027t clog system.   \n\n**Edited by popov, 01 April 2013 - 06:28 AM.**\n"
+    },
+    {
+      "id": "170486",
+      "timestamp": "2013-04-01T08:14:58+00:00",
+      "author": "popov",
+      "content": "As expected, HxD reported that files are identical.  \n\nAs for dsfi, I did in two ways:  \n\nFormatted drive with HPUSBDisk, did dsfi, formatted again with HPUSBDisk, installed GRUB - no effect.  \n\nFormatted drive with HPUSBDisk, did dsfi, installed GRUB - no effect.  \n\nIn both cases dsfi reported that it wrote 2323456 bytes at offset 0.  \n\nI used \"wmic diskdrive list brief\" console command to get correct drive readings.   \n\n**Edited by popov, 01 April 2013 - 08:29 AM.**\n"
+    },
+    {
+      "id": "170489",
+      "timestamp": "2013-04-01T09:05:44+00:00",
+      "author": "steve6375",
+      "content": "Maybe the \u0027mode\u0027 of the USB stick is different when the WP switch is moved?\n\nMight be good to compare the results of a few programs with the switch in each position (after unplugging and re-inserting it when the switch is changed)?\n\ne.g. USBDeview, diskmgmt.msc, wmic diskdrive list\n\ncan you suggest any more?\n\n"
+    },
+    {
+      "id": "170490",
+      "timestamp": "2013-04-01T10:16:31+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e As for dsfi, I did in two ways:  \n\u003e\n\u003e Formatted drive with HPUSBDisk, did dsfi, formatted again with HPUSBDisk, installed GRUB - no effect.  \n\u003e\n\u003e Formatted drive with HPUSBDisk, did dsfi, installed GRUB - no effect.  \n\u003e\n\u003e In both cases dsfi reported that it wrote 2323456 bytes at offset 0.  \n\u003e\n\u003e I used \"wmic diskdrive list brief\" console command to get correct drive readings.\n\nI don\u0027t understand what the HECK are you doing. ![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)  \n\nThe idea is to just test the image I provided.  \n\nYou don\u0027t format anything, do not install anything, you do nothing but copying the provided (partial) image and try booting from that stick, and report what happens.\n\u003e\n\u003e Then try booting both with the switch on and off and report what happens.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "170491",
+      "timestamp": "2013-04-01T10:38:14+00:00",
+      "author": "popov",
+      "content": "Formatted drive with HPUSBDisk, did dsfi, then:\n\nunprotected - booted into GRUB shell\n\nprotected - \"FDD EBIOS Disk error\"\n\n**Edited by popov, 01 April 2013 - 10:39 AM.**\n"
+    },
+    {
+      "id": "170492",
+      "timestamp": "2013-04-01T10:40:56+00:00",
+      "author": "steve6375",
+      "content": "Some USB sticks have an FDD mode switch - are you sure the switch is a WP switch?\n\n"
+    },
+    {
+      "id": "170493",
+      "timestamp": "2013-04-01T11:13:17+00:00",
+      "author": "Wonko the Sane",
+      "content": "@popov\n\nAGAIN you NEED NOT to format anything, let alone with the HP USB formatting tool, before applying the immage, you simply apply the image (of course you are perfectly free to needlessly re-format that stick :smile:, but it is not needed, nor suggested).\n\nAnd it is important as a general rule, if you are told to do something you should do that EXACTLY.\n\nIn this particular case not following to the letter a set of instruction and adding to them the formatting step causes NO issues whatsoever, but in another case it may.\n\nThe difference should mean that the switch as Steve6375 posted does not \"write protect\" only or, better, beside \"write protecting\", it also changes something in the way the stick \"presents\" itself to the BIOS.\n\nTry applying this other image.\n\nThe stick won\u0027t boot in either \"switch mode\", but it should print in both cases some data.\n\nThis one has the MBR SPY by COD11.\n\nYou could take a photo of the screen or jolt down these values and post them.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko  \n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003deae48db310b1f2606de3d6d384679381\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14215 \"Download attachment\") [**Mbr_MBRspy_popov.zip**](http://reboot.pro/index.php?s\u003deae48db310b1f2606de3d6d384679381\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14215 \"Download attachment\") **1.43KB** 326 downloads\n\n"
+    },
+    {
+      "id": "170494",
+      "timestamp": "2013-04-01T11:20:49+00:00",
+      "author": "popov",
+      "content": "Just to claryfiy, my BIOS base settings are are: Boot from USB-HDD-\\\u003eUSB-FDD-\\\u003eUSB-ZIP-\\\u003eCDROM-\\\u003eHDD in that other. Also as for MBRSpy, wondering if BIOS matters, because I can try on few other computers.\n\nResults show that CX and DX parameters are different.\n\nunprotected:\n\n\u003e CS\u003d0000 DS\u003d9FC0 ES\u003dF000 SS\u003d0000\n\u003e\n\u003e AX\u003d0C8D BX\u003dFFFF CX\u003d0004 DX\u003d0080\n\u003e\n\u003e BP\u003d7C00 SP\u003d7BD2 IP\u003d7C00\n\u003e\n\u003e SI\u003d0040 DI\u003d8400 FG\u003d0202\n\nprotected:\n\n\u003e \u003e CS\u003d0000 DS\u003d9FC0 ES\u003dF000 SS\u003d0000\n\u003e \u003e\n\u003e \u003e AX\u003d0C8D BX\u003dFFFF CX\u003d007E DX\u003d0000\n\u003e \u003e\n\u003e \u003e BP\u003d7C00 SP\u003d7BD2 IP\u003d7C00\n\u003e \u003e\n\u003e \u003e SI\u003d0040 DI\u003d8400 FG\u003d0202\n\n**Edited by popov, 01 April 2013 - 11:41 AM.**\n"
+    },
+    {
+      "id": "170495",
+      "timestamp": "2013-04-01T12:33:50+00:00",
+      "author": "popov",
+      "content": "Also, in Windows, where drive is detected and treated normally, running QEMU I obtained two identical results:\n\n\u003e CS\u003d0000 DS\u003d0000 ES\u003d0000 SS\u003d0000\n\u003e\n\u003e AX\u003dAA55 BX\u003d0000 CX\u003d0000 DX\u003d0080\n\u003e\n\u003e BP\u003d0000 SP\u003d6F50 IP\u003d7C00\n\u003e\n\u003e SI\u003d0000 DI\u003d0000 FG\u003d0202\n\n**Edited by popov, 01 April 2013 - 12:34 PM.**\n"
+    },
+    {
+      "id": "170496",
+      "timestamp": "2013-04-01T12:35:18+00:00",
+      "author": "Wonko the Sane",
+      "content": "Yep, at least in combination with that particular BIOS the issue should be the DX value 80 means drive 128 (Fixed Disk) while 00 means Floppy.\n\nNow it could be the \"right time\" to try fbinst. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\nI am not particularly familiar with it, but the basic instructions should be these:\n\n[http://reboot.pro/to...ws-7-and-vista/](http://reboot.pro/topic/11753-fbinst-162-now-supports-windows-7-and-vista/ \"\")\n\nAgain, be very careful with chosing the right device.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170497",
+      "timestamp": "2013-04-01T13:02:42+00:00",
+      "author": "MedEvil",
+      "content": "Wonko, the way i see it, the problem is that the stick is formatted as a HDD with 2 partitions and this creates problems, when the stick is detected as a Floppy.  \n\nSo formatting the stick as a removable device, should fix the issue.  \n\nWould you agree with this reasoning?  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170498",
+      "timestamp": "2013-04-01T13:02:57+00:00",
+      "author": "steve6375",
+      "content": "Because the boot order is USB HDD - USB FDD, the BIOS does not think that it is a HDD and so boots it as an FDD.\n\nAs QEMU works OK, then I wonder what is causing the BIOS to think that it is not an HDD?\n\nIt might be interesting to try the 5 [TESTMBR](http://www.rmprepusb.com/tutorials/diagnose-bios \"External link\") images - they also reports the disk geometry and extended BIOS support, and has one and two partition test code for 32 and 63 spt ptn tables.\n\n"
+    },
+    {
+      "id": "170501",
+      "timestamp": "2013-04-01T13:46:00+00:00",
+      "author": "popov",
+      "content": "I am reading instructions from website and wondering which image to chose?\n\nFormatted with RMPrepUSB as HDD.\n\n0P \u003d no partition\n\n32S \u003d PBR erased\n\n63S \u003d PBR retained\n\nShould it be MBR1P63S.BIN?\n\n**Edited by popov, 01 April 2013 - 01:47 PM.**\n"
+    },
+    {
+      "id": "170502",
+      "timestamp": "2013-04-01T13:49:25+00:00",
+      "author": "steve6375",
+      "content": "all 5 - test them all. The BIOS may do different things depending on how many partitions there are and what geometry they have.\n\n"
+    },
+    {
+      "id": "170503",
+      "timestamp": "2013-04-01T13:55:11+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Wonko, the way i see it, the problem is that the stick is formatted as a HDD with 2 partitions and this creates problems, when the stick is detected as a Floppy.  \n\u003e\n\u003e So formatting the stick as a removable device, should fix the issue.  \n\u003e\n\u003e Would you agree with this reasoning?\n\nNo.\n\nIf the registers values change with the switch, it means that the switch does \"more than\" Read protect.\n\nAs said it is more likely an issue with this particular BIOS (in combination with this particular stick).\n\nFrom experience, these kind of issues tend also to be connected to the size of the stick, which in this case is simply too big to make it probable that it boots as super-floppy.\n\nIt would be - in case - more likely that it could boot as Zip (and yes I have at least one motherboard that could boot form USB HDD alright, but after a BIOS update - needed for another issue - only booted if formatted as ZIP - and no - the multiple partitions do not affect seemingly the Zip format)\n\nThe **Steve6375**\u0027s TEST MBR\u0027s might be able to give more insight.\n\n@popov\n\nJust READ the instructions and follow them:\n\n[http://www.rmprepusb...s/diagnose-bios](http://www.rmprepusb.com/tutorials/diagnose-bios \"External link\")\n\nWhich one represents a problem for you?\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170510",
+      "timestamp": "2013-04-01T14:35:37+00:00",
+      "author": "popov",
+      "content": "I am testing on 3 computers. First, HP Pavillion DV2718US is ++sometimes++ able to boot when stick is write protected. It is the one that is most successful in everything. Second computer, P5GC-MX is ++usually++ displaying error mesages when booting with write protection on. Third, A7N8X ++almost++ always skips to HDD when USB boot fails, giving no error messages(and when HDD boot is turned off it\u0027s often just black screen).\n\nEvery time I will format with RMPrepUSB (FAT32, Boot as HDD, 2PTNS, SYSLINUX bootable).\n\nAs for MBR1P63S.BIN\n\nDV2718US(both in r- and rw mode):\n\n\u003e 80\n\u003e\n\u003e 0000 FE02 003F 03BD\n\u003e\n\u003e LHDD0 00\n\u003e\n\u003e SHDD0 00\n\nP5GC-MX(rw):\n\n\u003e \u003e 80\n\u003e \u003e\n\u003e \u003e 0000 FE02 003F 03BD\n\u003e \u003e\n\u003e \u003e LHDD0 00\n\u003e \u003e\n\u003e \u003e SHDD0 00\n\nP5GC-MX(r-):\n\n\u003e 00\n\u003e\n\u003e 0000 FF01 0000 03FF\n\u003e\n\u003e L1\n\u003e\n\u003e SFDD0 00\n\nA7N8X(rw):\n\n\u003e 80\n\u003e\n\u003e 0000 7F03 003F 036F\n\u003e\n\u003e LHDD0 00\n\u003e\n\u003e SHDD0 00\n\nA7N8X(r-):\n\nskips\n\nAs for MBR2P63S.BIN\n\nP5GC-MX and A7N8X:\n\nidentical results as with MBR1P63S.BIN\n\nDV2718US:\n\nblacked out after connecting \"r-\" mode stick\n\nafter dischargining I plugged stick in \"rw\" mode first and then in \"r-\" and results were identical as with MBR1P63S.BIN\n\n@Wonko\n\nProblem with DV2718US is, that it is blacking out when testing. It\u0027s not the first time I need to wait for battery discharge. Initially I didn\u0027t even test on this one due to that problem (first time I tried to boot with it, it blacked out so I didn\u0027t repeat, but now it seemed to work fine for short time), because it\u0027s happening over and over. Always when trying to boot with \"r-\" mode. It just seems that some sessions are issueless(and it can work with protected stick but then it blacks out at some reboot).\n\n**Edited by popov, 01 April 2013 - 03:07 PM.**\n"
+    },
+    {
+      "id": "170511",
+      "timestamp": "2013-04-01T14:44:09+00:00",
+      "author": "Wonko the Sane",
+      "content": "So, as expected, it is an issue with BIOS.\n\nThe DV2718US should be able to ALWAYS boot in the two modes (once the stick has been partitioned/formatted \"properly\"), what do you mean with \"sometimes\"?\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170512",
+      "timestamp": "2013-04-01T14:52:09+00:00",
+      "author": "steve6375",
+      "content": "What about MBR2P63S ???\n\n"
+    },
+    {
+      "id": "170514",
+      "timestamp": "2013-04-01T15:30:03+00:00",
+      "author": "popov",
+      "content": "@Wonko\n\nI have removed laptop battery and running just off charger now, so whenever I need to reboot I simply unplug power cable. When testing last thing I had like 6 blackouts in \"r-\" mode, then I plugged \"rw\" and it worked, so again I did \"r-\" and it blacked out, finally after that \"r-\" worked. Those blackouts are happening only on \"r-\". Also if I remeber correctly, besides blackouts this laptop freezes at manual boot device selection when \"r-\" is connected.\n\n\u003e What about MBR2P63S ???\n\nResults identical to MBR1P63S on all devices.\n\nNow results of MBR1P32S\n\nDV2718US(both in r- and rw mode):\n\n\u003e 80  \n\u003e\n\u003e 0000 FE02 0020 0343\n\u003e\n\u003e LHDD0 00\n\u003e\n\u003e SHDD0 00\n\nP5GC-MX(rw):\n\n\u003e 80  \n\u003e\n\u003e 0000 7F02 003F 0373\n\u003e\n\u003e LHDD0 00\n\u003e\n\u003e SHDD0 00\n\nP5GC-MX(r-):\n\n\u003e \u003e 00  \n\u003e \u003e\n\u003e \u003e 0000 FF01 0000 03FF\n\u003e \u003e\n\u003e \u003e L1\n\u003e \u003e\n\u003e \u003e SFDD0 00\n\nA7N8X(rw):\n\n\u003e 80  \n\u003e\n\u003e 0000 7F03 003F 036F\n\u003e\n\u003e LHDD0 00\n\u003e\n\u003e SHDD0 00\n\nA7N8X(r-):\n\nskips\n\nResults of MBR2P32S were exactly sme as MBR1P32S.\n\n**Edited by popov, 01 April 2013 - 03:42 PM.**\n"
+    },
+    {
+      "id": "170515",
+      "timestamp": "2013-04-01T15:57:45+00:00",
+      "author": "steve6375",
+      "content": "re. \u0027blackouts\u0027 - I get this often on laptops when booting some linux distros. After a shutdown/hang/halt, I can switch them off and on again (hold down power button) and there is no POST/display. To fix I have to remove battery and unplug AC, then re-connect.\n\nIt seems your BIOS is determined to treat the USB as a floppy in r-mode - but why? Even a floppy is rw?\n\nThe A7N8X also is treating the USB as an FDD - so the USB drive is responding differently in r mode which both system BIOSes are detecting (but not QEMU or the other system).\n\nCan you boot to grub4dos in r mode on the P5GC ?\n\n"
+    },
+    {
+      "id": "170518",
+      "timestamp": "2013-04-01T16:58:55+00:00",
+      "author": "popov",
+      "content": "MBR0P.BIN results\n\nDV2718US(both in r- and rw mode):\n\n\u003e 80\n\u003e\n\u003e 0000 FE02 0020 0343\n\u003e\n\u003e LHDD0 00\n\u003e\n\u003e SHDD0 00\n\nP5GC-MX(rw):\n\n\u003e 80\n\u003e\n\u003e 0000 7F02 003F 0373\n\u003e\n\u003e LHDD0 00\n\u003e\n\u003e SHDD0 00\n\nP5GC-MX(r-):\n\n\u003e 00\n\u003e\n\u003e 0000 FF01 0000 03FF\n\u003e\n\u003e L1\n\u003e\n\u003e SFDD0 00\n\nA7N8X(rw):\n\n\u003e \u003e 80  \n\u003e \u003e\n\u003e \u003e 0000 7F03 003F 036F\n\u003e \u003e\n\u003e \u003e LHDD0 00\n\u003e \u003e\n\u003e \u003e SHDD0 00\n\nA7N8X(r-):\n\nskips\n\n\u003e re. \u0027blackouts\u0027 - I get this often on laptops when booting some linux distros. After a shutdown/hang/halt, I can switch them off and on again (hold down power button) and there is no POST/display. To fix I have to remove battery and unplug AC, then re-connect.\n\nDuring test it blacked out only once when drive was in \"rw\" mode, but were very frequent for \"r-\". But of course you are correct, because I had other flash drives and it sometimes randomly blacks out on them too. Still it doesn\u0027t explain that I had like 10 in a row while testing one of those files.\n\n\u003e It seems your BIOS is determined to treat the USB as a floppy in r-mode - but why? Even a floppy is rw?\n\u003e\n\u003e The A7N8X also is treating the USB as an FDD - so the USB drive is responding differently in r mode which both system BIOSes are detecting (but not QEMU or the other system).\n\u003e\n\u003e Can you boot to grub4dos in r mode on the P5GC ?\n\nAfaik A7N8X had problems from the very first launch, it didn\u0027t support USB booting for quite time until ASUS finally made some driver update. It could be some defect with their mobos, not sure, but the way they fixed it was making it emulate USB-HDD with USB-FDD, so in fact it was using USB-FDD driver to read USB-HDD disks. If it\u0027s true, then probably it\u0027s hardcoded in BIOS and nothing can be done about it. Unconfimed.\n\nP5GC-MX is cheap limited mobo that also does not offer anything near real experience. I never saw poorer BIOS before, literary there\u0027s nothing inside. There is no way of choosing USB-HDD/FDD/ZIP/etc simply, because there is just one single USB option.\n\nSadly I don\u0027t have access to P5GC-MX right now, but I can test it on MSI 870A-G54, which full recent mobo with latest drivers. Just don\u0027t have much time atm. Cheers.\n\n**Edited by popov, 01 April 2013 - 05:00 PM.**\n"
+    },
+    {
+      "id": "170525",
+      "timestamp": "2013-04-01T18:28:50+00:00",
+      "author": "popov",
+      "content": "MSI 870A-G54 tests complete\n\nMBR0P.BIN, MBR1P32S, MBR2P32S\n\n\"rw\":\n\u003e 80\n\u003e\n\u003e 0000 7F02 003F 0373\n\u003e\n\u003e LHDD00 00\n\u003e\n\u003e SHDD00 00\n\n\"r-\":\n\u003e 00\n\u003e\n\u003e 0000 7F01 003F 0373\n\u003e\n\u003e L1\n\u003e\n\u003e SHDD00 00\n\nMBR1P63S.BIN, MBR2P63S\n\n\"rw\":\n\u003e 80\n\u003e\n\u003e 0000 FE02 003F 03BD\n\u003e\n\u003e LHDD00 00\n\u003e\n\u003e SHDD00 00\n\n\"r-\":\n\u003e 00\n\u003e\n\u003e 0000 FE01 003F 03BD\n\u003e\n\u003e L1\n\u003e\n\u003e SHDD00 00\n\nUSB options in BIOS for MSI mobo were actually very limited.\n\n**Edited by popov, 01 April 2013 - 06:35 PM.**\n"
+    },
+    {
+      "id": "170528",
+      "timestamp": "2013-04-01T19:12:40+00:00",
+      "author": "steve6375",
+      "content": "At least the geometry is right even when it treats it as a FDD. It does look like the USB drive is reporting itself as an FDD.\n\nPresumably in Windows, it appears as an HDD when in r- mode (after disconnecting and reconnecting)? USBDeview. Dev Man, etc?\n\n"
+    },
+    {
+      "id": "170530",
+      "timestamp": "2013-04-01T19:56:59+00:00",
+      "author": "popov",
+      "content": "USB Device Tree Viewer produces same output for both \"r-\" and \"rw\", the only minor idfference is \"Kernel Name\", but that is dynamically assigned each time I reconnect drive.\n\n\u003e \u003cbr /\u003e\n\u003e\n\u003e \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d USB Port3 \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\u003e\n\u003e Connection Status : Device is connected  \n\u003e Port Chain : 3-3  \n\u003e PortAttributes : 0x00000002 (Shared USB2)  \n\u003e\n\u003e \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d USB Device \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d  \n\u003e\n\u003e +++++++++++++++++ Device Information ++++++++++++++++++  \n\u003e Device Description : USB Mass Storage Device  \n\u003e Device ID : USB\\\\VID_3538\\\u0026PID_0901\\\\08AD330000005236  \n\u003e Driver KeyName : {36FC9E60-C465-11CF-8056-444553540000}\\\\0009  \n\u003e Driver : D:\\\\WINDOWS\\\\system32\\\\DRIVERS\\\\USBSTOR.SYS (Version: 5.1.2600.5512 Date: 2008-04-14)  \n\u003e Legacy BusType : PNPBus  \n\u003e Class : USB  \n\u003e Service : USBSTOR  \n\u003e Enumerator : USB  \n\u003e Location Info : USB Flash Drive  \n\u003e Manufacturer Info : Compatible USB storage device  \n\u003e Capabilities : Removable, UniqueID  \n\u003e Address : 3  \n\u003e Problem Code : 0  \n\u003e Power State : D0 (supported: D0, D3, wake from D0, wake from D3)  \n\u003e Child Device 1 : Disk drive  \n\u003e Device ID : USBSTOR\\\\DISK\\\u0026VEN_GENERIC\\\u0026PROD_USB_FLASH_DISK\\\u0026REV_1100\\\\08AD330000005236\\\u00260  \n\u003e Class : DiskDrive  \n\u003e Volume : \\\\\\\\?\\\\Volume{ec879900-8e7a-11e2-8dfd-00dc32be41ab}\\\\  \n\u003e Kernel Name : \\\\Device\\\\Harddisk1\\\\DP(1)0-0+14  \n\u003e Mountpoint : H:\\\\  \n\u003e\n\u003e ---------------- Connection Information ---------------  \n\u003e Connection Index : 0x03  \n\u003e Connection Status : 0x01 (DeviceConnected)  \n\u003e Current Config Value : 0x01  \n\u003e Device Address : 0x01  \n\u003e Is Hub : 0x00 (no)  \n\u003e Number Of Open Pipes : 0x02 (2)  \n\u003e Device Bus Speed : 0x02 (High-Speed)  \n\u003e Pipe0ScheduleOffset : 0x00 (0)  \n\u003e Pipe1ScheduleOffset : 0x00 (0)  \n\u003e\n\u003e ------------- Device Qualifier Descriptor -------------  \n\u003e bLength : 0x12 (18 bytes)  \n\u003e bDescriptorType : 0x01 (Device Qualifier Descriptor)  \n\u003e bcdUSB : 0x200 (USB Version 2.00)  \n\u003e bDeviceClass : 0x00 (defined by the interface descriptors)  \n\u003e bDeviceSubClass : 0x00  \n\u003e bDeviceProtocol : 0x00  \n\u003e bMaxPacketSize0 : 0x40 (64 bytes)  \n\u003e idVendor : 0x3538  \n\u003e idProduct : 0x0901  \n\u003e bcdDevice : 0x1100  \n\u003e iManufacturer : 0x01  \n\u003e Language 0x0409 : \"PQI\"  \n\u003e iProduct : 0x02  \n\u003e Language 0x0409 : \"USB Flash Drive\"  \n\u003e iSerialNumber : 0x03  \n\u003e Language 0x0409 : \"08AD330000005236\"  \n\u003e bNumConfigurations : 0x01  \n\u003e\n\u003e -------------- Configuration Descriptor ---------------  \n\u003e bLength : 0x09 (9 bytes)  \n\u003e bDescriptorType : 0x02 (Configuration Descriptor)  \n\u003e wTotalLength : 0x0020 (32 bytes)  \n\u003e bNumInterfaces : 0x01  \n\u003e bConfigurationValue : 0x01  \n\u003e iConfiguration : 0x00  \n\u003e bmAttributes : 0x80 (Bus Powered)  \n\u003e MaxPower : 0xFA (500 mA)  \n\u003e\n\u003e ---------------- Interface Descriptor -----------------  \n\u003e bLength : 0x09 (9 bytes)  \n\u003e bDescriptorType : 0x04 (Interface Descriptor)  \n\u003e bInterfaceNumber : 0x00  \n\u003e bAlternateSetting : 0x00  \n\u003e bNumEndpoints : 0x02  \n\u003e bInterfaceClass : 0x08 (Mass Storage)  \n\u003e bInterfaceSubClass : 0x06 (SCSI transparent command set)  \n\u003e bInterfaceProtocol : 0x50 (BulkOnly Transport)  \n\u003e iInterface : 0x00  \n\u003e\n\u003e ----------------- Endpoint Descriptor -----------------  \n\u003e bLength : 0x07 (7 bytes)  \n\u003e bDescriptorType : 0x05 (Endpoint Descriptor)  \n\u003e bEndpointAddress : 0x81 (Direction\u003dIN EndpointID\u003d1)  \n\u003e bmAttributes : 0x02 (TransferType\u003dBulk)  \n\u003e wMaxPacketSize : 0x200 (max 512 bytes)  \n\u003e bInterval : 0xFF (at most 1 NAK each 255 microframes)  \n\u003e\n\u003e ----------------- Endpoint Descriptor -----------------  \n\u003e bLength : 0x07 (7 bytes)  \n\u003e bDescriptorType : 0x05 (Endpoint Descriptor)  \n\u003e bEndpointAddress : 0x02 (Direction\u003dOUT EndpointID\u003d2)  \n\u003e bmAttributes : 0x02 (TransferType\u003dBulk)  \n\u003e wMaxPacketSize : 0x200 (max 512 bytes)  \n\u003e bInterval : 0xFF (at most 1 NAK each 255 microframes)  \n\n"
+    },
+    {
+      "id": "170556",
+      "timestamp": "2013-04-02T19:51:55+00:00",
+      "author": "popov",
+      "content": "I have noticed one thing, not that it matters but on some systems(didn\u0027t try on all) when I insert stick as \"rw\" and then, after initial detection phase completes(ie. I see first signs of booting), I can move switch back to \"r-\", and everything works normally just like it would be in \"r-\". Another thing, is that I\u0027ve tried to format stick with RMPrepUSB as USB-FDD and then I have set USB-FDD as only USB booting device, and in \"rw\" everything was working but \"r-\" was still the same. I guess that I\u0027ll try fbinst, just now don\u0027t have time for that.   \n"
+    },
+    {
+      "id": "170568",
+      "timestamp": "2013-04-03T10:22:43+00:00",
+      "author": "popov",
+      "content": "I don\u0027t see how can I use FBINST by myself, seems that lots of stuff can be broken with it. There was also bootlace option as I described before.\n\nAnyway I found out good website with download section, their tools might be worth of checking: [http://code.google.c.../downloads/list](http://code.google.com/p/winsetupfromusb/downloads/list \"External link\")\n\nAlso I am wondering on another thing. Maybe I should use something like PLOP on small CD or another USB stick and just chain boot USB driver and then \"r-\" USB stick...\n\n**Edited by popov, 03 April 2013 - 10:23 AM.**\n"
+    },
+    {
+      "id": "170571",
+      "timestamp": "2013-04-03T11:17:13+00:00",
+      "author": "Wonko the Sane",
+      "content": "Unless you choose the \"wrong\" device, the only device affected (temporarily) will be the USB stick.\n\nThe given instructions:\n\n[http://reboot.pro/to...ws-7-and-vista/](http://reboot.pro/topic/11753-fbinst-162-now-supports-windows-7-and-vista/ \"\")\n\nseem to me clear enough.\n\nThe site you found is the repository of **Ilko_t** (for the WinsetupFromUSB with GUI) that has some additional files, let it alone and try the given link above, for the moment.\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko\n\n"
+    },
+    {
+      "id": "170573",
+      "timestamp": "2013-04-03T11:45:32+00:00",
+      "author": "popov",
+      "content": "I did what the guy posted in frist post, but it didn\u0027t change anything. Now when I tried to repeat step again, this command:\n\n\u003e **fbinst (hd1) format --fat32 --force**\n\nproduced this error:\n\n\u003e Fbinst: error: can\u0027t lock disk\n\nUpdate: resolved error above, it seems that fbinst doesn\u0027t always unload itself from memory when finished. Once corresponding process is closed, everything works fine.\n\nFormatted with fbinst as zip/chs(just like the guy from #6):\n\n[http://reboot.pro/to...ws-7-and-vista/](http://reboot.pro/topic/11753-fbinst-162-now-supports-windows-7-and-vista/http://reboot.pro/topic/11753-fbinst-162-now-supports-windows-7-and-vista/ \"\")\n\n...no difference.\n\nIs there any way of using plopboot straight from USB?\n\n**Edited by popov, 03 April 2013 - 12:12 PM.**\n"
+    },
+    {
+      "id": "170574",
+      "timestamp": "2013-04-03T12:13:05+00:00",
+      "author": "Wonko the Sane",
+      "content": "In case, you may want to try the atttached which should be the \"automated\" installer by Maanu (for which the actual link is invalid).\n\nIt is a \"compiled SFX\", you can open the thingy in 7-zip and extract/verify the contents.\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko  \n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/zip.gif)](http://reboot.pro/index.php?s\u003d037b44ec8c6c85ca9b9492bd61aae281\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14216 \"Download attachment\") [**USBoot-2.zip**](http://reboot.pro/index.php?s\u003d037b44ec8c6c85ca9b9492bd61aae281\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d14216 \"Download attachment\") **240.66KB** 275 downloads\n\n"
+    },
+    {
+      "id": "170575",
+      "timestamp": "2013-04-03T12:15:43+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Formatted with fbinst as zip/chs(just like the guy from #6):\n\u003e\n\u003e [http://reboot.pro/to...ws-7-and-vista/](http://reboot.pro/topic/11753-fbinst-162-now-supports-windows-7-and-vista/http://reboot.pro/topic/11753-fbinst-162-now-supports-windows-7-and-vista/ \"\")\n\nWHY/how?\n\nJust simply try doing this:\n\nfbinst --list ( use the proper hd number from this command)  \n\nfbinst (hd#) format --fat32 --force ENTER  \nfbinst (hd#) add grldr grldr ENTER  \nfbinst (hd#) add-menu fb.cfg fb.txt ENTER\n\nand nothing else.\n\nIt will either work or not and if you could provide a descrtiption of WHAT happens both with RW and R, it may help.\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170576",
+      "timestamp": "2013-04-03T12:26:52+00:00",
+      "author": "popov",
+      "content": "It doesn\u0027t work, I did that manually in fbinst. In \"r-\" one mobo skips, second hangs with just flashing underscore(very common for that mobo), while \"rw\" is always fine. Same results for both #1 and #6(I don\u0027t know what\u0027s with plop).   \n"
+    },
+    {
+      "id": "170580",
+      "timestamp": "2013-04-03T13:45:31+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, we have pretty much aended available options.\n\nThe only thing remaining to be tried would be the triple MBR thingy, but fbinst should have worked like ti (and even better).\n\nIt seems like that stick besides R/RW selection \"hides\" or \"changes\" something.\n\nTill now the results seemed to imply that it behaves not completely unlike the switch that some ZIP disk drives had, that simply hid MBR+hidden sectors. ![:unsure:](https://reboot.pro/public/style_emoticons/default/unsure.png) but I wonder what is actually hidden by that switch, could it be that it switches NOT \"from HD-like to FD-like\" but rather \"from HD-like to CD-like\"?\n\nIf this is the case, you could try a hybrid boot .iso ![:dubbio:](https://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\n[http://reboot.pro/to...os-isohybrided/](http://reboot.pro/topic/9916-grub4dos-isohybrided/ \"\")\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170581",
+      "timestamp": "2013-04-03T14:04:53+00:00",
+      "author": "popov",
+      "content": "I will definitely try this option, but now I have messed one of computers HDD\u0027s with some dumb chineese tools and I am trying to recover what was there. It seems that tool messed filesystems on both HDD and USB Flash Stick(wtf?), I have reformatted USB but HDD is real problem, as there were many usable files and well working Windows 7 os. It seems that tool - Lvyanan 1JF9z isn\u0027t only boot manager tool, but also hidden(?) partition recovery tool, that somehow got activated on both HDD and Flash.\n\n"
+    },
+    {
+      "id": "170589",
+      "timestamp": "2013-04-03T17:27:15+00:00",
+      "author": "MedEvil",
+      "content": "Now that we\u0027re through, throwing everything and the kitchen sink at the problem. How about we try some fault isolation?  \n\nThe test are done on 3 different computers, from 3 different manufacturers, yet yield the same results.  \nThe chance that all 3 BIOS have the exact same problem is highly unlikely.  \nSo the problem has to lie with the USB-Stick.  \n\nThe raw images created with and without write protection are identical. So The WP switch does not hide anything.  \n\nThe only things left as problem source are:  \n- the bootloader / manager has issues with a write protected device (pretty unlikely since it works for others)  \n- the wp switch switches the device to become something else  \n\nUnless someone has a better idea, i would suggest to disable all boot media in BIOS and then always only enable 1 after the other to see what the BIOS \u0027thinks\u0027 of the USB-Stick with and without WP.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170590",
+      "timestamp": "2013-04-03T17:55:11+00:00",
+      "author": "popov",
+      "content": "Well, it might be funny for you but it\u0027s not for me. I was using Lvyanan program because it started to post some results, as it menu appeared both in \"rw\" and \"r-\" mode. The point is, I didn\u0027t even click anything and it somehow jumped on my hard drive, messed it and then messed my flash stick same way. Now I just hope that partition table ain\u0027t wiped, and that I will be able to get some stuff back, if not full OS then maybe just some word documents that I had there. Anyway I made new thread for that and even mailed few people who made that prog, but I don\u0027t really expect any results. ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)\n\n"
+    },
+    {
+      "id": "170591",
+      "timestamp": "2013-04-03T18:38:26+00:00",
+      "author": "MedEvil",
+      "content": "A messed-up partition table is no big thing. there are plenty of programs, which can scan a HDD to find partitions and fix the table.  \n\nIf that\u0027s all, that got broken, you\u0027re very lucky, as it is the easiest to fix.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170592",
+      "timestamp": "2013-04-03T18:49:36+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e The raw images created with and without write protection are identical. So The WP switch does not hide anything.  \n\u003e\n\u003e The only things left as problem source are:  \n\u003e - the bootloader / manager has issues with a write protected device (pretty unlikely since it works for others)  \n\u003e - **the wp switch switches the device to become something else**\n\nYep ![:thumbup:](https://reboot.pro/public/style_emoticons/default/thumbup.gif), that\u0027s exactly what I posted right before you (though you expressed it much better :smile:)\n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170657",
+      "timestamp": "2013-04-05T01:07:05+00:00",
+      "author": "popov",
+      "content": "I\u0027ve tried fresh GRUB on empty stick. A7N8X(the one that never detects stick with its own driver issues - I wrote earlier about this) has 4 options related to USB: USB-HDD, USB-ZIP, USB-FDD and USB-CDROM. The only thing that booted normally was \"rw\" stick in USB-HDD. Everything else displayed standard \"DISK BOOT FAILURE, INSERT SYSTEM DISK AND PRESS ENTER.\" for both stick modes.\n\nJust for fun I ran CrystalDisk Mark on few of my pendrives, and PQI drive with switch had reads: Seq and 512 reads at around 20MB/s, 4K and 4KQD32 at around 5MB/s, but writes were like: Seq - 4MB/s, 512 - 0,67MB/s, 4K - 0.005MB/sec and 4KQD32 0.01MB/s.\n\nSo I compared to my other 2.0 sticks and those write speeds were horrible. For example for stick that had similar read results: 17MB/s // 5MB/s, writes were 6MB/s // 2MB/s // 0.75MB/s // 0.08MB/s.\n\n\u003cbr /\u003e\n\n**Edited by popov, 05 April 2013 - 02:03 AM.**\n"
+    },
+    {
+      "id": "170890",
+      "timestamp": "2013-04-10T03:51:33+00:00",
+      "author": "popov",
+      "content": "Hey, I am back. I\u0027d like to try a bit different approach, ie. creating boot manager that could run from CD/other USB stick/etc, which would have its own USB drivers, completely independant of ones used by mobos, to see if it boots this way, and what are readings. Just wondering wht options I do have, I know that PLop is good, but are there any other \"out of box\" solutions, and what are other options?\n\n"
+    },
+    {
+      "id": "170892",
+      "timestamp": "2013-04-10T05:08:23+00:00",
+      "author": "popov",
+      "content": "Also, is there any good wiping tool for USB? Just to be sure that tests are performed on clean sticks.\n\n"
+    },
+    {
+      "id": "170917",
+      "timestamp": "2013-04-10T14:13:52+00:00",
+      "author": "popov",
+      "content": "So I have tested few things - obviously chain booting via plop worked well.\n\nBut after that I\u0027ve tried few other boot loaders(direct boot) on write protected stick and I had rather interesting results. Wee gave me \"Urr! Wee\" message, which meant that stick was actually detected and something was loader, just not what I need. Then I tried UltraISO boot manager which has various boot and write options with ability to hide boot paritions and this program actually depenadant on mode can display some errors and shows sings that it starts reading MBR but is unable to read filesystem. At least it looks that way, but this is still progress compared to what I had before. One of specified errors is Q0.\n\n**Edited by popov, 10 April 2013 - 02:22 PM.**\n"
+    },
+    {
+      "id": "170922",
+      "timestamp": "2013-04-10T17:00:26+00:00",
+      "author": "MedEvil",
+      "content": "As far as i know, all bootmanagers except Plop use the BIOS and it\u0027s drivers to boot the selected OS. Hence they all should fail as well.  \nSTill, if you happen to get out of any, what exactly goes wrong, you might have a chance to fix it after all.  \n\n![:cheers:](https://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170951",
+      "timestamp": "2013-04-11T05:19:48+00:00",
+      "author": "popov",
+      "content": "UltraISO boot manager is somehow able to read something from MBR even when stick is write protected. From what it shows, it cannot get to filesystem/boot sector, no matter what is there(tried probably all filesystems and common loaders). It also has some option to chose \"write method\" with few USB-HDD and USB-ZIP possibilities, and dependant on choice, ability to hide boot partition, also with various options. I\u0027ve tried some of those options without any success, but I didn\u0027t try them all. Would any of those matter at all?\n\nAs for boot loaders, some time ago, when many motherboards didn\u0027t have USB/(other) boot option yet, people were building their own loaders to make it possible. I guess that those progs are unavailable by now, but I am pretty sure that people use different techniques to make it work. Wikipedia has small list of boot loaders\n\n[http://en.wikipedia....of_boot_loaders](http://en.wikipedia.org/wiki/Comparison_of_boot_loaders \"External link\")\n\nI might be checking some of them now, if there is any other lists with more of them, then I\u0027ll be pleased to get it.\n\n**Edited by popov, 11 April 2013 - 05:22 AM.**\n"
+    },
+    {
+      "id": "170956",
+      "timestamp": "2013-04-11T09:17:21+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e As for boot loaders, some time ago, when many motherboards didn\u0027t have USB/(other) boot option yet, people were building their own loaders to make it possible. I guess that those progs are unavailable by now, but I am pretty sure that people use different techniques to make it work. Wikipedia has small list of boot loaders\n\u003e\n\u003e [http://en.wikipedia....of_boot_loaders](http://en.wikipedia.org/wiki/Comparison_of_boot_loaders \"External link\")\n\u003e\n\u003e I might be checking some of them now, if there is any other lists with more of them, then I\u0027ll be pleased to get it.\n\nNo.\n\nAFAIK (and I tend to be quite accurate when it comes to this :wink:) PLoP is the only one that has it\u0027s own USB stack, Medevil is 100% correct on this.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170967",
+      "timestamp": "2013-04-11T12:58:57+00:00",
+      "author": "MedEvil",
+      "content": "I just had this crazy idea.  \nWouldn\u0027t it be possible to rip a good USB driver out of a BIOS and use it in a transportable fashion?   \nSort of like a BIOS extension?  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170972",
+      "timestamp": "2013-04-11T14:09:26+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I just had this crazy idea.  \n\u003e Wouldn\u0027t it be possible to rip a good USB driver out of a BIOS and use it in a transportable fashion?  \n\u003e Sort of like a BIOS extension?\n\nEXACTLY! ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)\n\nMore or less it is what PLoP does (only Elmar wrote his own USB stack instead of ripping it), but there is even a \"better\" IMHO approach which is the same used in BCDL (and SmartBootManager - and later added to grub4dos) for CD\u0027s.\n\nAs often happens it is difficult to find kids (with enough knowledge) wanting to play this game.\n\nJFYI:\n\n[http://www.911cd.net...showtopic\u003d18650](http://www.911cd.net/forums//index.php?showtopic\u003d18650 \"External link\")\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "170982",
+      "timestamp": "2013-04-11T17:48:45+00:00",
+      "author": "popov",
+      "content": "@MedEvil, I am just wondering what is \"good\" USB driver. Out of all computers that were tested, only one laptop was able to post some positive results, but as mentioned, there were other issues.\n\nAnd while we are on BIOS thread, althro I never saw it in use, coreboot is really intersting, because it supports various payloads. This opens huge area for anything, including diagnostics.\n\n[http://en.wikipedia.org/wiki/Coreboot](http://en.wikipedia.org/wiki/Coreboot \"External link\")\n\n"
+    },
+    {
+      "id": "170983",
+      "timestamp": "2013-04-11T17:56:33+00:00",
+      "author": "MedEvil",
+      "content": "The thread you point too is pretty useless, imo.  \n\n1. Noone ever tested if the beta at least works on USB-CD.  \n2. I don\u0027t know of any DOS drivers, which work better/faster than plop.  \n\nOn all computers, i have tested Plop on, the BIOS driver always outperforms the Plop one.  \nThe faster the BIOS one, the worst looks Plop in comparison.  \n\nMaybe Elmar could increase the MaximumTransferLength of his driver, just like M$ Turbo-Mode does? If he hasn\u0027t already.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "170987",
+      "timestamp": "2013-04-11T18:28:11+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e The thread you point too is pretty useless, imo.  \n\u003e\n\u003e 1. Noone ever tested if the beta at least works on USB-CD.  \n\u003e 2. I don\u0027t know of any DOS drivers, which work better/faster than plop.  \n\u003e\nWell, that doesn\u0027t mean at all that the thread is pointless, only, as said, no kids (or not the kids with the \"right\" kind of knowledge) want to play at it. ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n\n\u003e On all computers, i have tested Plop on, the BIOS driver always outperforms the Plop one.\nWe already had this exchange, and it still remains a fact that lots of people, myself included, had a different experience than yours.  \nIn any case it would be IMHO \"out of the main scopes\" of PLoP, which AFAICR are/were:\n\n* ADD USB booting support to motherboard having it not (or having it \"defective\")\n* PROVIDE on motherboards having USB 2.00 chips BUT having BIOS booting only at 1.1 speeds\n\nExactly like BCDL and SBM added capabilities with booting from CD ROM have slowly faded into irrelevance, as soon as each and every motherboard (just like the ones you tested) will have \"good\" and \"native\" USB support for booting, PLoP will lose every relevance.  \n\n\u003cbr /\u003e\n\n\u003e The faster the BIOS one, the worst looks Plop in comparison.\nReally? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif) ***Good mooorning*** , Mr. de La Palice! :smile:  \n[http://en.wikipedia....es_de_la_Palice](http://en.wikipedia.org/wiki/Jacques_de_la_Palice \"External link\")  \n![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)  \n\u003e Maybe Elmar could increase the MaximumTransferLength of his driver, just like M$ Turbo-Mode does? If he hasn\u0027t already.\nCannot say, it is possible that BIOS (and PLoP\u0027s) implementation of the driver cannot be tweaked in the same way (because \\*something else\\* that is present in a \"fully booted protected mode OS\" is missing), think of the ol\u0027 good DOS copying files with and without SMARTDRV ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png).  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "170989",
+      "timestamp": "2013-04-11T18:48:12+00:00",
+      "author": "MedEvil",
+      "content": "\u003e @MedEvil, I am just wondering what is \"good\" USB driver. Out of all computers that were tested, only one laptop was able to post some positive results,\nA good USB driver to me is one, which gives a good throughput.  \nThis has nothing to do with the ability or non-ability of the BIOS to recognize a USB device correctly.  \n\nI removed Network boot from the BIOS of my computer some years ago and replaced it with USB boot support.  \nLater i switched the USB module again to get a better bootspeed .  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "172006",
+      "timestamp": "2013-05-05T01:59:38+00:00",
+      "author": "mikeserv",
+      "content": "In case any one else comes here with a genuine interest in write-protecting boot media against possible firmware-based malware, reads the first few posts about a USB stick and skips to the end to find mention of replacing BIOS USB drivers and even open-sourced BIOS replacement project CoreBoot, please don\u0027t waste your time (as I did) reading the rest this thread trying to discover how they might relate, because, for all practical purposes, they don\u0027t. The most interesting information (in my opinion) within was actually when the thread was temporarily derailed into a somewhat off-topic discussion on the efficacy (and apparent lack thereof) of SD card write-protect switches. You can find most of that on page 2, I believe. But from the point that Popov redirects the discussion into troubleshooting his own 4GB USB flash stick write-protected boot issues this summary should do:\n\n1) By means of various (and later exhaustive) imaging tests, it\u0027s established pretty early on that Popov\u0027s USB stick is either a flawed model or is individually defective in that his write-protect switch also fundamentally changes the read mode of the device to (apparently imperfectly) emulate a floppy. Time and again regardless of hardware or software platform Popov doggedly returns test results to indicate that his USB stick a ) successfully boots with the switch set to off but b ) fails to boot with the switch set to on.\n\n2) Possibly motivated by some combination of sadomasochism and/or scholarly interest, Wonko and MedEvil continue to encourage Popov in his misguided efforts by suggesting test after redundant imaging test until they finally devolve into what appears to be the the tail-end of an argument (probably begun elsewhere) between themselves on the merits of the plop bootloader USB driver. While Wonko is apparently for it and MedEvil against, neither offers any especially supportive evidence to back their positions.\n\n3) After plainly and repeatedly demonstrating a fundamental lack of subject-matter understanding, in the course of testing Popov finally mistakenly destroys his hard-disk partition table and expresses very understandable concerns over valuable personal data loss. Nevertheless undaunted and evidently equipped with much more free time than purchasing power (or common sense), when we last hear from Popov he is considering replacing his laptop\u0027s BIOS firmware with the extremely experimental and almost certainly unsupported open-source CoreBoot project.\n\n4) Considering Popov\u0027s boundless (and witless) determination up to that point, we can assume that we haven\u0027t heard from Popov for three weeks now because he actually did attempt to replace his manufacturer\u0027s BIOS with CoreBoot, failed miserably in said attempt, and can therefore no longer boot at all let-alone access the internet to apprise us of the situation regardless of his 4GB USB flash drive\u0027s write-protect switch setting.\n\nWow.\n\nStill, just in case I\u0027m not too late and Popov still is out there somewhere, I have this advice to offer him:\n\nTroubleshooting should result in an economical solution, not more problems. Remember Occam\u0027s razor and always start your troubleshooting with evaluating and/or replacing those components that are most obviously related to your issue and that are cheapest/easiest to replace/evaluate.\n\nPopov, don\u0027t flash over your BIOS with CoreBoot to solve a problem with your USB stick. Instead, consider booting with the switch set to \"off,\" or even, just maybe, try another USB stick. Seriously, I\u0027m astounded that throughout 5 pages of forum posts and test after redundant test, no one once suggested this. At some point, Popov, you\u0027ve just gotta cut your losses; know when to fold \u0027em, as it were.\n\nHappy Hunting!\n\n**Edited by mikeserv, 05 May 2013 - 02:01 AM.**\n"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "id": "21821",
+  "title": "Combo USB M.2 converter and M.2 SSD recommendation",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "207345",
+      "timestamp": "2018-07-22T11:37:20+00:00",
+      "author": "Uneitohr",
+      "content": "Hello,\n\nI\u0027d like build a custom USB stick made from a USB to M.2 converter and a M.2 SSD. However, there are many converters and I\u0027d like to know what to look for in such devices.\n\nCan I just buy anything or is there anything in particular I should look for?\n\nThank you.\n\n"
+    },
+    {
+      "id": "207346",
+      "timestamp": "2018-07-22T11:47:13+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Hello,\n\u003e\n\u003e I\u0027d like build a custom USB stick made from a USB to M.2 converter and a M.2 SSD. However, there are many converters and I\u0027d like to know what to look for in such devices.\n\u003e\n\u003e Can I just buy anything or is there anything in particular I should look for?\n\u003e\n\u003e Thank you.\n\nFirst choose the M.2 SSD, some have \"peculiar\" connectors (it is an actual mess, there are B keyed SSD\u0027s, M keyed ones, B+M keyed and adapters/converters may be of this or that type), see (as a reference only):\n\n[https://rog.asus.com...which-is-which/](https://rog.asus.com/articles/maximus-motherboards/buying-an-m-2-ssd-how-to-tell-which-is-which/ \"External link\")\n\nAlso check the length of the SSD, some adapters may not have the \"right\" length space.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "207403",
+      "timestamp": "2018-07-29T20:30:41+00:00",
+      "author": "Brito",
+      "content": "Is the speed improvement that dramatic when compared to regular flash disks?\n\n"
+    },
+    {
+      "id": "207408",
+      "timestamp": "2018-07-30T09:52:19+00:00",
+      "author": "Uneitohr",
+      "content": "I assume there is no difference between a Samsung EVO or PRO for this, correct? I think I\u0027m never going to achieve the SSDs maximum speed anyway.\n\nThus I\u0027m thinking of buying a [https://www.delock.d...?setLanguage\u003den](https://www.delock.de/produkte/H/42597/merkmale.html?setLanguage\u003den \"External link\")using a Samsung 860 EVO 1TB B+M connector key.\n\n"
+    },
+    {
+      "id": "207410",
+      "timestamp": "2018-07-30T09:58:53+00:00",
+      "author": "Wonko the Sane",
+      "content": "Yes, very likely the bottleneck will be anyway the USB conversion (in the external adapter), the USB bus (in the motherboard) and the overhead of drivers/protocols on top of the SATA..\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "207412",
+      "timestamp": "2018-07-30T11:20:29+00:00",
+      "author": "Uneitohr",
+      "content": "I also wanted to ask, do these converters have any limit on the size of the SSD? Would I have any issues in the future if I\u0027d buy a bigger SSD?\n\n"
+    },
+    {
+      "id": "207414",
+      "timestamp": "2018-07-30T11:46:18+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I also wanted to ask, do these converters have any limit on the size of the SSD? Would I have any issues in the future if I\u0027d buy a bigger SSD?\nNaah, no limits, that DeLock thingy uses an Asmedia ASM1351:  \n[http://www.asmedia.c...dex\u003d97\\\u0026item\u003d156](http://www.asmedia.com.tw/eng/e_show_products.php?cate_index\u003d97\u0026item\u003d156 \"External link\")  \n\nthat is used also as bridge in \"normal\" 2.5\" external cases (that use both SSD\u0027s and conventional hard disks):  \n[https://www.delock.d...?setLanguage\u003dit](https://www.delock.de/produkte/G_42556/merkmale.html?setLanguage\u003dit \"External link\")  \n\nso at least up to 4 TB it should be fine.  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    },
+    {
+      "id": "207415",
+      "timestamp": "2018-07-30T12:19:54+00:00",
+      "author": "Brito",
+      "content": "\u003e Yes, very likely the bottleneck will be anyway the USB conversion (in the external adapter), the USB bus (in the motherboard) and the overhead of drivers/protocols on top of the SATA..\n\nYes, I thought so. ![:huh:](http://reboot.pro/public/style_emoticons/default/huh.png)\n\nIn the end you get stuck on USB3 bandwidth regardless of faster speed on the SSD side.\n\nI wonder if someone smart already came up with an SSD RAID that be connected to two USB3 ports and exceed the USB bandwidth limitation per port.\n\n"
+    },
+    {
+      "id": "207417",
+      "timestamp": "2018-07-30T16:22:01+00:00",
+      "author": "Wonko the Sane",
+      "content": "To be fair, SuperSpeed USB 10 Gbps (USB 3.1 Gen 2) is fastish, if I had to raise a doubt about the mentioned Delock thingy is the use of the (stupid) USB C connector.  \n\nNot that there is any foreseeable problem with it (using the cable provided by DeLock), but before or later it may happen to use another cable, and the amount of badly made cables is - I believe - still preoccupying, as Benson Leung has shown in the past years.  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    },
+    {
+      "id": "207420",
+      "timestamp": "2018-07-30T18:36:46+00:00",
+      "author": "Uneitohr",
+      "content": "Yes, well i don\u0027t think I can find one without a cable (i.e using a direct male connector). I don\u0027t like these either because that internal connector can easily break on many plug/unplug operations.\n\n"
+    },
+    {
+      "id": "207426",
+      "timestamp": "2018-07-31T07:14:05+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Yes, well i don\u0027t think I can find one without a cable (i.e using a direct male connector). I don\u0027t like these either because that internal connector can easily break on many plug/unplug operations.\n\nYep, which is actually good ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) as those with male connectors, like - example - this one:  \n[http://www.microsata...m-2-ssd-adapter](http://www.microsatacables.com/usb3-1-a-type-to-m-2-ssd-adapter \"External link\")  \n(if used without a cable) tend to have the connector bent/snapped off by pets, passers by and clumsy colleagues ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif) \\[1\\].  \n\nA female connector one is IMHO still preferable, like - other examples - these ones (NOT Type C):  \n[http://www.ewent-onl...nt_nederland_nl](http://www.ewent-online.com/catalog/product/view/id/4916?___store\u003dewent_nederland_en\u0026___from_store\u003dewent_nederland_nl \"External link\")  \n[http://www.reposit.e...-enclosure.html](http://www.reposit.eu/mydigitalssd-usb-3-1-external-m2-ngff-ssd-enclosure.html \"External link\")  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko  \n\n\\[1\\] I had more than one \"normal\" USB sticks die a premature death thanks to this kind of accident, and a M2 case is (relatively) huge when compared to a USB flash stick   \n"
+    },
+    {
+      "id": "207428",
+      "timestamp": "2018-07-31T12:08:05+00:00",
+      "author": "Uneitohr",
+      "content": "But Wonko, using a female connector will eventually loosen it. Which means the cable will not stay in place anymore, the slightest touch will disconnect it. What would you do then?\n\n"
+    },
+    {
+      "id": "207429",
+      "timestamp": "2018-07-31T14:00:32+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e But Wonko, using a female connector will eventually loosen it. Which means the cable will not stay in place anymore, the slightest touch will disconnect it. What would you do then?\n\nI would fix it ![:rolleyes:](http://reboot.pro/public/style_emoticons/default/rolleyes.gif) (duct tape comes to mind :wink: ).  \n\nAnd before you ask what if you drop the thingy in a pond of water and the connector jams/rusts up? ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)\n\nAn image is worth a thousand words:\n\n![h0FFF2C88.jpg](https://i.chzbgr.com/full/6370681600/h0FFF2C88.jpg)  \n\n\u003cbr /\u003e\n\nMore seriously, the newish 3/3.1 Micro-B connectors are pretty solid and surely WAY more robust than USB-C ones.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    }
+  ]
+}

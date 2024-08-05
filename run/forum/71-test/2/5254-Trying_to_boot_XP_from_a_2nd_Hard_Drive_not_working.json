@@ -1,0 +1,82 @@
+{
+  "id": "5254",
+  "title": "Trying to boot XP from a 2nd Hard Drive - not working",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "40256",
+      "timestamp": "2008-07-24T06:08:42+00:00",
+      "author": "Ladybug",
+      "content": "Oops! Wrong group. Reposted this here.   \n"
+    },
+    {
+      "id": "40257",
+      "timestamp": "2008-07-24T07:16:58+00:00",
+      "author": "Ladybug",
+      "content": "Hi! I\u0027m hoping someone can help me with this. I know it\u0027s a common problem but all the fixes I read about online involve using \"bootcfg.exe\" and I have the HOME edition of XP - meaning I don\u0027t have access to it because bootcfg is available in the XP PRO version ONLY. So your help is greatly appreciated! Thanks in advance!!  \n\n\u003cbr /\u003e\n\n1. I did a full backup (image) of my C: drive which contains the XP OS and all my files (I used ShadowProtect Desktop v. 3.2 if that\u0027s any help) and saved the image to an external USB hard drive.  \n\n2. I restored the image to my F: Drive. This is my 2nd Hard Drive. It was copied to a primary partition on the F: Drive which was newly formatted.  \n\n3. I edited the boot.ini file to now include the F: drive as an option to boot from but when I tried to boot from it, I got an error message that said \"Windows could not start because of a computer disk hardware configuration problem\"  \n\nI should mention that when I did the restore, I did NOT check off any of the options \"Set Partition Active\", \"Restore MBR\" or \"Restore Disk Hidden Track\". I don\u0027t want to make the F: drive the active partition and I was afraid to check \"Restore MBR\" out of fear that it might overwrite the one on the C: drive or mess it up somehow at which point I would have NO clue how to restore it to its original state. The thought of not being able to boot to either and having to re-install XP on my C: drive and wipe it out is a bit too scary right now.  \n\nHere is my new boot.ini file (in which I added the \"XP Test\" or F: Drive) It currently defaults to the C: Drive  \n\n\\[boot loader\\]  \ntimeout\u003d30  \ndefault\u003dmulti(0)disk(0)rdisk(0)partition(2)\\\\WINDOWS  \n\\[operating systems\\]  \nmulti(0)disk(0)rdisk(0)partition(2)\\\\WINDOWS\u003d\"Microsoft Windows XP Home Edition\" /fastdetect  \nmulti(0)disk(1)rdisk(0)partition(1)\\\\WINDOWS\u003d\"XP Test\" /fastdetect  \n/NoExecute\u003dOptIn  \n\npartition(2) IS CORRECT by the way and disk(0) refers to my C: drive.  \n\nHope this is enough info for you to go on :-) Can you please tell me what\u0027s happening, why, and how I can fix it so that I can boot from either hard drive successfully?  \n\nThanks so much!!!!   \n"
+    },
+    {
+      "id": "40264",
+      "timestamp": "2008-07-24T11:09:52+00:00",
+      "author": "was_jaclaz",
+      "content": "Hmmm, ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif), some good news and some bad news.  \n\nThe good news ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) are that you do not need bootcfg.exe, as it would not be of any use.  \n\nThe bad news ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) are that what you are trying to do is actually one of the MOST DIFFICULT things to do with a XP install.  \n\nAccording to the good MS guys it\u0027s impossible, and actually, though possible, is VERY, VERY tricky.  \n\nIt resolves to BOTH (and at the same time):  \n1) migrating a XP install to another drive  \n2) changing the XP System drive letter  \n\nRead this:  \n[http://www.msfn.org/...art-t90495.html](http://www.msfn.org/board/Change-Boot-Drive-Letter-for-System-Part-t90495.html \"External link\")  \n\nand these:  \n[http://www.michaelst.../moving_xp.html](http://www.michaelstevenstech.com/moving_xp.html \"External link\")  \n[http://www.michaelst...pairinstall.htm](http://www.michaelstevenstech.com/XPrepairinstall.htm \"External link\")  \n[http://www.goodells....ot/partsigs.htm](http://www.goodells.net/multiboot/partsigs.htm \"External link\")  \n\n(and links therein)  \n\nI do not want to put you down, mind you ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif), but you must be prepared to spend quite a bit of time on attempting to do the above and WITHOUT ANY guarantee that you will be able to have it working at all.  \n\nCan you explain the reasons why you are trying to do what you described? ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "40312",
+      "timestamp": "2008-07-24T19:51:19+00:00",
+      "author": "Ladybug",
+      "content": "Jaclaz, I see your point.  \n\nThe reason I was trying to do it this way was because when I insert the XP (SP1 Home Edition) re-installation CD into my NEW computer I get a blue screen and Windows installation just hangs there indefinitely with the message \"\"Windows could not start because of a computer disk hardware configuration problem\" I never even get to the installation screen that asks me if I want to install XP. (My new computer came with Vista installed on C: Drive and I want to keep it there and make Hard Drive #2 my 2nd bootable drive)  \n\nSo I thought if I install XP from my OLD computer and then physically move the hard drive over to my NEW computer, then at least XP will already be installed on that hard drive... but maybe that kind of migration doesn\u0027t work?  \n\nAny thoughts?   \n"
+    },
+    {
+      "id": "40313",
+      "timestamp": "2008-07-24T19:51:41+00:00",
+      "author": "ilko",
+      "content": "\u003e ...Here is my new boot.ini file (in which I added the \"XP Test\" or F: Drive) It currently defaults to the C: Drive  \n\u003e\n\u003e \\[boot loader\\]  \n\u003e timeout\u003d30  \n\u003e default\u003dmulti(0)disk(0)rdisk(0)partition(2)\\\\WINDOWS  \n\u003e \\[operating systems\\]  \n\u003e multi(0)disk(0)rdisk(0)partition(2)\\\\WINDOWS\u003d\"Microsoft Windows XP Home Edition\" /fastdetect  \n\u003e multi(0)disk(1)rdisk(0)partition(1)\\\\WINDOWS\u003d\"XP Test\" /fastdetect  \n\u003e /NoExecute\u003dOptIn  \n\u003e\n\u003e partition(2) IS CORRECT by the way and disk(0) refers to my C: drive.  \n\u003e ...\nDon\u0027t touch disk, change rdisk(X).  \n[http://support.microsoft.com/kb/102873](http://support.microsoft.com/kb/102873 \"External link\")  \n\nIf Windows was cloned on the second disk, first partition, then the line for it in BOOT.INI is:  \n\n```\nmulti\u0026#40;0\u0026#41;disk\u0026#40;0\u0026#41;rdisk\u0026#40;1\u0026#41;partition\u0026#40;1\u0026#41;\\WINDOWS\u003d\u0026#34;XP Test\u0026#34; /fastdetect\n```\n\nThe other steps are in the links Jaclaz gave you.  \n\nBasically you have 2 options-   \n1) make the second drive (F) to appear as drive C, and the original C as something else  \n2) change all references in registry from C: to F:  \n\nAs said results are not guaranteed.   \n"
+    },
+    {
+      "id": "40316",
+      "timestamp": "2008-07-24T20:00:52+00:00",
+      "author": "Ladybug",
+      "content": "Ilko, thanks for the boot.ini file info.  \n\nI\u0027m beginning to think it would be easier to just reformat the F: drive, partition it as needed and then move it to the NEW computer, attach it as a 2nd hard drive and do a clean install of XP that way.  \n\nOnly problem is that blue screen error message I mentioned above... still need to get past that to actually even attempt the installation.  \n\nAny ideas?   \n"
+    },
+    {
+      "id": "40317",
+      "timestamp": "2008-07-24T20:09:15+00:00",
+      "author": "ilko",
+      "content": "I don\u0027t see anything about blue screen error in your second post.  \nWhat exactly are you trying to accomplish? There could be an easier way.   \n"
+    },
+    {
+      "id": "40318",
+      "timestamp": "2008-07-24T20:14:04+00:00",
+      "author": "Ladybug",
+      "content": "Ilko... here\u0027s a repost:  \n\n...when I insert the XP (SP1 Home Edition) re-installation CD into my NEW computer I get a blue screen and Windows installation just hangs there indefinitely with the message \"**Windows could not start because of a computer disk hardware configuration problem** \" I never even get to the installation screen that asks me if I want to install XP. (My new computer came with Vista installed on C: Drive and I want to keep it there and make Hard Drive #2 my 2nd bootable drive with XP on it)  \n\nSo I thought if I install XP onto HD #2 from my OLD computer and then physically move the hard drive over to my NEW computer, then at least XP will already be installed on that hard drive... but maybe that kind of migration doesn\u0027t work?  \n\nWhat\u0027s the easiest way to do this? And how do I get around the blue screen that hangs?   \n"
+    },
+    {
+      "id": "40322",
+      "timestamp": "2008-07-24T20:33:53+00:00",
+      "author": "ilko",
+      "content": "Ohh, sorry, we have posted at the same time.  \n\nXP Setup does not need boot.ini (apart from detecting previous Windows-es), hence your problem will not be resolved by bootcfg.exe.  \n\nIs this the exact message you are getting when booting from the CD? I believe this comes from NTLDR(wrong boot.ini path), and you booted from a hard disk. Double check boot order please.  \n\nA few options to try:  \nDisconnect the Vista disk and connect ONLY your new disk. Does Setup still hang?  \nIf no- is using BIOS to choose hard disk boot order convenient for you? This way you can boot into Vista or XP. If no- we can use grub4dos to do the boot part.  \nWould the installed XP hang if Vista disk is connected?  \nWhat\u0027s the hardware on that machine?   \n"
+    },
+    {
+      "id": "40323",
+      "timestamp": "2008-07-24T21:07:25+00:00",
+      "author": "Ladybug",
+      "content": "I don\u0027t mind using BIOS to choose option of which OS to boot from - I think I have to do that anyway or have some kind of interface allowing me to choose my OS at bootup.  \n\nWhen I got the Error Message above, I only had 1 Hard Drive in the system (the one it came with - see below for details) and the C: already had 3 primary partitions taken leaving only 1 logical partition free. Now I know that OS\u0027s can only be installed on a primary partition - but since it hung before it even got to the installation prompt screen, I\u0027m not sure that\u0027s what caused it to hang. Does it check for available primary partitions before it attempts to even try to install the OS??   \n\nMy only concern with disconnecting the HD that Vista is on and connecting the 2nd IDE HD and trying to install XP on that (assuming I can get past that blue screen) is that XP will then install itself on the Hard Drive thinking it\u0027s the C: drive and assign that path to all registry entries... so that when I re-connect the HD Vista is on, XP won\u0027t be able to boot properly because C: will now point to Vista not XP (which will be F: )  \n\nUnless there\u0027s a way to make the C: drive (the one Vista is installed on) \"invisible\" and have the computer \"see\" only 1 hard drive so that when it runs XP it thinks it\u0027s the C: drive (when in fact it\u0027s physically the F: drive)  \n\nMy NEW computer has an Intel Core 2 quad-core processor 2.66GHz, 12MB cache, 4GB DDR2 800MHz SDRAM, 500GB SATA RAID Hard Drive (although that shouldn\u0027t matter since I\u0027m installing XP on my IDE ATA hard drive - unless of course the SATA drive is NOT invisible in which case XP may need the drivers to read the info from it?) and then there\u0027s the video/sound cards etc...   \n\nI already downloaded the drivers for the chipset and HW from Dell\u0027s website.  \n\nThoughts?   \n"
+    },
+    {
+      "id": "40327",
+      "timestamp": "2008-07-24T22:14:24+00:00",
+      "author": "ilko",
+      "content": "\u003e My only concern with disconnecting the HD that Vista is on and connecting the 2nd IDE HD and trying to install XP on that (assuming I can get past that blue screen) is that XP will then install itself on the Hard Drive thinking it\u0027s the C: drive and assign that path to all registry entries... so that when I re-connect the HD Vista is on, XP won\u0027t be able to boot properly because C: will now point to Vista not XP (which will be F: )\n\"C\" gets the first disk/first primary partition according to BIOS boot settings. At boot time drive letter doesn\u0027t play role, it comes into effect much later.  \nSo you should be safe to install XP while the SATA disk is disconnected and boot it later on by changing BIOS order.  \nWhen you boot VISTA- SATA disk/PART1 will be C.  \nWhen you boot XP- IDE disk/PART1 will be C.  \nGood enough?  \n\nLack of free primary partitions should not cause error messages- one may want to (delete one of them and) install there.  \n\nThe error message you were referring does not exist in SETUPLDR.BIN, so I assume XP setup was not started at all.  \n\nThe request to install XP on the new PC, with only IDE disk connected is also for troubleshooting.  \n\nOn second read- my **guess** what happened is that when you added the IDE disk, with wrong boot.ini on it, it became FIRST boot device, rather than your CD with XP in it. Hence the error message you got, it didn\u0027t come from the XP Setup.  \nDouble check boot order in BIOS while both disks are attached and make it boot your XP CD. Leave the other steps for later if this doesn\u0027t work.   \n"
+    },
+    {
+      "id": "40346",
+      "timestamp": "2008-07-25T09:03:50+00:00",
+      "author": "was_jaclaz",
+      "content": "Ladybug,  \nI am a bit confused, do you mind if we start from scratch?  \n\nYou have a problem installing XP home on your new computer, right?  \n\nMost straightforward thing would be to solve THAT install problem, before going astray with more complex attempts.  \n\nXP setup has problem in installing when lots of memory is available, if you have 4 Gb it may be part of the problem why it won\u0027t install.  \n\nI would first thing try again installing after having removed some RAM.  \n\njaclaz   \n"
+    }
+  ]
+}

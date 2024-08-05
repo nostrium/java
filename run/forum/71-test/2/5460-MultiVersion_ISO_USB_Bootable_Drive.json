@@ -1,0 +1,346 @@
+{
+  "id": "5460",
+  "title": "Multi-Version ISO USB Bootable Drive",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "42108",
+      "timestamp": "2008-08-16T16:19:10+00:00",
+      "author": "Arch3Angel",
+      "content": "Hello,  \n\nI was reading this post [Multi Multi Multi Boot](http://www.boot-land.net/forums/?showtopic\u003d5434 \"External link\") which has lead me in the right direction. However it still gives me problems.  \n\nWhat I am looking to do it boot multiple ISO images stored on my USB Flash Drive. I have grub4dos installed and working (I get my boot menu and reboot / halt work fine) but I can not get any additional images to boot. Here is my current menu list which is stripped down to only the needed information:  \n\n```\ncolor black/cyan yellow/cyan\n\ntimeout 30\n\ndefault /default\n\n\n\ntitle Ultimate Boot CD\n\nfind --set-root /images/ultimatebootcd/ubcd411.iso\n\nmap /images/ultimatebootcd/ubcd411.iso \u0026#40;hd32\u0026#41;\n\nmap --hook\n\nroot \u0026#40;hd32\u0026#41;\n\nchainloader \u0026#40;hd32\u0026#41;\n\n\n\ntitle BT3 Graphics mode \u0026#40;KDE\u0026#41;\n\nroot \u0026#40;sd1,1\u0026#41;\n\nkernel\u003d /images/backtrack3/boot/vmlinuz ramdisk_size\u003d6666 root\u003d/dev/ram0 rw autoexec\u003dxconf;kdm APPEND vga\u003d0x317\n\ninitrd\u003d/images/backtrack3/boot/initrd.gz\n\nboot\n\n\n\ntitle Reboot\n\nsavedefault --wait\u003d2\n\nreboot\n\n\n\ntitle Halt\n\nsavedefault --wait\u003d2\n\nhalt\n```\n\n\u003cbr /\u003e\n\nWhen I boot into \"Ultimate Boot CD\" it seems to hang because of the boot loader inside the ISO image. Never giving an error just flashing the cursor  \n\nNow when I boot into \"BT3 Graphics mode (KDE)\" it tells me:  \n\n```\nroot \u0026#40;hd0,1\u0026#41;\n\n\n\nError 22\u0026#58; No such partition\n\n\n\nPress any key to continue...\n```\n\n\u003cbr /\u003e\n\nI can only assume this is because the (hd0,1) it referencing a physical hard drive not the USB drive. In my linux box it shows my drive as sdb with the partition being sdb1  \n\nNow thinking it would be (sd1,1) it came up with a different error:  \n\n```\nroot \u0026#40;sd1,1\u0026#41;\n\n\n\nError 23\u0026#58; Error while parsing number\n\n\n\nPress any key to continue...\n```\n\n\u003cbr /\u003e\n\nI have many ISO images I would like to make into a usb multi-tool of software. I would also like to keep it as clean as possible as far as the directory structure. Here is what I would like to have in the end:  \n\n/  \n/documents  \n/downloads  \n/images  \n/logs  \ngrldr  \nmenu.lst  \n\nWith the ISO images stored under /images - This would make it easy for me to update images as time goes on - simply edit the menu list and copy the iso to the drive.  \n\nAny and all help is greatly appreciated, suggestions on better ways are also welcome - Thanks   \n"
+    },
+    {
+      "id": "42119",
+      "timestamp": "2008-08-16T19:21:32+00:00",
+      "author": "tzepu",
+      "content": "hello all  \ni am new in here and warn you that i have few knowledge about this kind of stuff  \ni want a multiboot pendrive with iso\u0027s , i want to be able to install them from the pendrive   \ni need it to show livecd\u0027s to various people, from the pendrive, and after they decide which one they want to install it on their computer (i am trying to make an intense popularisation of linux (various distributions) in schools, and several computers have no cd (even so i have to cary a dozen of discs with me)(it would be great just to stick in the pendrive and boot whatever i need)  \nmy question is  \nhave you guys found a way to put several iso\u0027s on a pendrive and somehow to be able to boot, and install each of them if needed?  \nand the worse part , to explain this in a way that even a six year old child ca do it?(or automatize it in a manner that is not requesting to many knowledge regarding programing or so?  \nmy intention is to use only free software( linux distributions )  \nthank you in advance  \nsomehow like flashboot program but to manage several iso files (beeing able to boot the one i want)   \n"
+    },
+    {
+      "id": "42125",
+      "timestamp": "2008-08-16T21:59:39+00:00",
+      "author": "xterm",
+      "content": "Hello,  \n\nI don\u0027t know about booting multiple iso images quite yet, but if you use live distros orriented towards usb you can create a boot menu in syslinux.cfg, I\u0027m sure that if you are using isolinux, you can do the same thing as it is a branch off of syslinux as far as I know. I am too, looking for a way to boot iso images tho.   \n"
+    },
+    {
+      "id": "42145",
+      "timestamp": "2008-08-17T10:40:40+00:00",
+      "author": "tzepu",
+      "content": "after some digging i figured that there are some programs that can create a multiboot iso (i can include to that everything i need(i mean iso files with distributions i want)  \nbut  \ni could not figure how to put that multiboot iso file onto the pendrive, and to be able to boot it (i found tho some ideas but they are long, complex and i always get stuck on the way   \n"
+    },
+    {
+      "id": "42154",
+      "timestamp": "2008-08-17T16:13:37+00:00",
+      "author": "tzepu",
+      "content": "well , hoping that some wise guy in here will help me from suffering, i tell you the news about my problem  \nUnetbootin is the answer to my problem but, i am stuck now at creating a multiboot iso (i go my ears stuck in easyboot (i just could not figure about what to do with it(my english is too poor and the program is too complex for me), i tried though magiciso, but it creates the image (there might be some bad movements i do in there) but this image loaded onto the pen drive with Unetbootin it gets stuck on \u0027default\u0027 button(after rebooting)  \ni managed though to put various distributions on the pen drive, but just one by one (it works like a charm anyway) with this great program (it even downloads the needed iso, and puts it onto the drive you need, ready to boot)  \nso  \ncan any of you give me a solution to this?  \nif you need specific info about my \u0027work\u0027 i will gladly tell you everything you need  \ni think that my mistake is in the multiboot iso file (i will burn it onto a dvd to see if it works this way) or might be some limitation from Unetbootin?  \nthanks in advance   \n"
+    },
+    {
+      "id": "42175",
+      "timestamp": "2008-08-17T20:12:00+00:00",
+      "author": "ktp",
+      "content": "1) UBCD uses isolinux/syslinux which cannot be loaded by grub4dos.  \n\n2) For Backtrack 3, the code in menu.lst is  \n\n```\n#\n\ntitle BackTrack 3 1024x768\n\nfind --set-root /boot/vmlinuz\n\nkernel /boot/vmlinuz max_loop\u003d255 vga\u003d791 initrd\u003dinitrd.gz init\u003dlinuxrc load_ramdisk\u003d1 prompt_ramdisk\u003d0 ramdisk_size\u003d6666 root\u003d/dev/ram0 rw\n\ninitrd /boot/initrd.gz\n\nboot\n```\n\n\u003cbr /\u003e\n\nYou need to copy (from the ISO file) the /boot and /BT3 directories to root of your USB stick (so you get x:\\\\boot and x:\\\\BT3 if x: is your USB drive letter).   \n\nFor BackTrack 3 1280x1024, use vga\u003d794.   \n"
+    },
+    {
+      "id": "42177",
+      "timestamp": "2008-08-17T20:17:37+00:00",
+      "author": "tzepu",
+      "content": "can you please detail (translate into newbie language) all you said?  \ni do not know where to start  \nto use ubcd?  \nto use backtrack?  \ni will google for both and i hope i will figure what you told me:))  \nthanks   \n"
+    },
+    {
+      "id": "42180",
+      "timestamp": "2008-08-17T20:37:14+00:00",
+      "author": "ktp",
+      "content": "1) Impossible to boot UBCD iso \u0027as is\u0027 without modifications with grub4dos, as far as I know.  \nCheck this topic :  \n[http://www.boot-land...?showtopic\u003d4486](http://www.boot-land.net/forums/?showtopic\u003d4486 \"External link\")  \n2) I assume we are talking about Back Track 3, there is an iso called BackTrack3_final_usb.iso.  \nYou simply copy the 2 directories boot and BT3 from the iso to the root of your USB drive (or if you do not have iso decompressor, from the Back Track CD after burning the iso to the CD).  \nThen you take my mentioned code and put this in your menu.lst.   \nThen you can try to boot Back Track 3 entry, this will work!  \n\nIn other words, grub4dos in vast majority of cases cannot use iso emulation (hd32), so you must as I showed you  \ncopy some content of the iso to you USB key/HDD, and invoke it with grub4dos syntax.   \n"
+    },
+    {
+      "id": "42223",
+      "timestamp": "2008-08-18T07:35:43+00:00",
+      "author": "Arch3Angel",
+      "content": "Are there any grub flavors that does allow for this method to take place?   \n"
+    },
+    {
+      "id": "42224",
+      "timestamp": "2008-08-18T08:07:25+00:00",
+      "author": "ktp",
+      "content": "They are standard grub4dos features. Any recent version will be OK. You may want to take the latest version from here :  \n[http://download.gna.org/grub4dos/](http://download.gna.org/grub4dos/ \"External link\")  \nThe grub4dos-0.4.4-2008-08-08 version is OK for me.   \n"
+    },
+    {
+      "id": "42227",
+      "timestamp": "2008-08-18T08:35:33+00:00",
+      "author": "Arch3Angel",
+      "content": "Hello - That is the version I am currently running   \n"
+    },
+    {
+      "id": "42228",
+      "timestamp": "2008-08-18T08:41:01+00:00",
+      "author": "Arch3Angel",
+      "content": "```\n#\n\ntitle BackTrack 3 1024x768\n\nfind --set-root /boot/vmlinuz\n\nkernel /boot/vmlinuz max_loop\u003d255 vga\u003d791 initrd\u003dinitrd.gz init\u003dlinuxrc load_ramdisk\u003d1 prompt_ramdisk\u003d0 ramdisk_size\u003d6666 root\u003d/dev/ram0 rw\n\ninitrd /boot/initrd.gz\n\nboot\n```\n\n\u003cbr /\u003e\n\nNow with my directory structure would the code be:  \n\n```\n#\n\ntitle BackTrack 3 1024x768\n\nfind --set-root /images/backtrack3/boot/vmlinuz\n\nkernel /images/backtrack3/boot/vmlinuz max_loop\u003d255 vga\u003d791 initrd\u003dinitrd.gz init\u003dlinuxrc load_ramdisk\u003d1 prompt_ramdisk\u003d0 ramdisk_size\u003d6666 root\u003d/dev/ram0 rw\n\ninitrd /images/backtrack3/boot/initrd.gz\n\nboot\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "42229",
+      "timestamp": "2008-08-18T09:02:57+00:00",
+      "author": "ktp",
+      "content": "1) You should remove initrd\u003dinitrd.gz from the kernel line, since the initrd has its own line/path already.  \nYou have to adapt the line, not only copy-paste.  \n2) kernel and initrd have absolute path so they would load OK, but the initrd scripts etc... would internally still search for BT3 directory starting from root, so make sure that x:\\\\BT3 is there (x: your USB HDD/key).  \n\nThen as always test the entry on real situation with grub4dos.  \n\nGood luck.   \n"
+    },
+    {
+      "id": "42232",
+      "timestamp": "2008-08-18T09:52:34+00:00",
+      "author": "Arch3Angel",
+      "content": "\u003e 1) You should remove initrd\u003dinitrd.gz from the kernel line, since the initrd has its own line/path already.  \n\u003e You have to adapt the line, not only copy-paste.  \n\u003e 2) kernel and initrd have absolute path so they would load OK, but the initrd scripts etc... would internally still search for BT3 directory starting from root, so make sure that x:\\\\BT3 is there (x: your USB HDD/key).  \n\u003e\n\u003e Then as always test the entry on real situation with grub4dos.  \n\u003e\n\u003e Good luck.\n\nSo to get this right, I can\u0027t do the directory structure as originally planned since it would have the backtrack 3 directory down three levels as below:  \n\n/images/backtrack3/BT3   \n"
+    },
+    {
+      "id": "42234",
+      "timestamp": "2008-08-18T11:05:06+00:00",
+      "author": "tzepu",
+      "content": "well, i am dizzy right now  \nmy english is not that good or you explanations are too technical for me  \ncan someone explain this step by step?  \nand i mean about porting an multiboot iso on a pendrive using UNetbootin (or something else)  \ni need a multiboot iso creator that works with UNetbootin (this one boots it, and several multiboot iso\u0027s builded with some software(i tried ultraiso,magiciso,easy boot) just hooks the UNetbootin boot menu at \u0027default\u0027 option (no other is available)(usually, if i use a single OS iso,not a \u0027by me custom one\u0027 it loads the UNetbootin boot screen, where i can choose the options that i usually have on the livecd)  \ni think that my mistake is somewhere on the road building multiboot iso (i will try though the multiboot iso\u0027s by burning them on dvd\u0027s to see if there is a difference in their behaviour)   \n"
+    },
+    {
+      "id": "42245",
+      "timestamp": "2008-08-18T14:52:23+00:00",
+      "author": "Arch3Angel",
+      "content": "![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \n\nBackTrack3 is Bootable!!!  \n\nOn to the next one :wink:   \n\nThanks for the help :wink:   \n"
+    },
+    {
+      "id": "42281",
+      "timestamp": "2008-08-19T13:09:55+00:00",
+      "author": "Arch3Angel",
+      "content": "Whelp I am close to getting the second on my list to boot correctly, still got a slight problem. Below is the code and the error message:  \n\n```\ntitle UBCD 4.11\n\nfind --set-root /boot/baslinux\n\nkernel /boot/baslinux max_loop\u003d255 vga\u003d791 init\u003dlinuxrc load_ramdisk\u003d1 prompt_ramdisk\u003d0 ramdisk_size\u003d6666 root\u003d/dev/ram0 rw\n\ninitrd /boot/baslinux.gz\n\nboot\n```\n\n\u003cbr /\u003e\n\nBelow is the resulting error:  \n\n```\nKernel Panic\u0026#58; No init found. Try passing init\u003d option to kernel\n```\n\n\u003cbr /\u003e\n\nAny advice?   \n"
+    },
+    {
+      "id": "42282",
+      "timestamp": "2008-08-19T13:18:22+00:00",
+      "author": "Mesh",
+      "content": "at last someone mentioned my post, it seem that when i registered i had to chose my Country as USA no Jordan to get replies to my post ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif) :wink:   \n\nArch3Angel, i hope my post was useful for you , i\u0027ve tried to include the experince i had in details and organized manner.  \ni\u0027ve mentioned in my post that iso emulation most of the times won\u0027t work...  \n\nanyway, tzepu  \n\nfor any live linux distribution , there is a file that can be booted from which is vmlinuz,  \n\nnow the purpose of grub4dos is to create a menu boot loader that is compitable with FAT32 and NTFS ,  \nany how it can do the job too,  \n\ndownload grub4dos the latest version as ktp said , read the readme file to install it.  \n\nnow when trying to boot from your pendrive , it should display a menu , this menu can be edited to include commands that makes grub4dos to boot various things,  \n\nwhen you see in this forum a code paragraph , most propably begins with :   \n\ntitle ( something here ) and followed by:  \nroot (hd0,0)  \n\nor something like that , they are talking about menu.lst configurations that i just mentioned above .its a file that will appear the in partition where grub4dos is installed.  \n\ni don\u0027t know if grub4dos supports locating files in a deep subdirectory like : /sub1/sub2/sub3/sub4/ (the file in here)  \nto workaround this problem (if exsits-i dunt know honestly) , you can partition you pendrive to partitions that fits the linux live cd\u0027s WHEN EXTERACTED !  \n\nyes you are going to extract the iso images ( using winrar maybe ) to each partition , or into different folderes withen one partitions   \n\nmenu.lst of yours will look like ( in case of folders ) in this case each iso image will be extracted in a folder.  \n\n```\ntitle Backtrack 3 \n\nroot \u0026#40;hd0,0\u0026#41;\n\nkernel\u003d/Backtrack3/boot/vmlinuz\n\ninitrd\u003d.......\u0026#40;etc\u0026#41;\n\n\n\ntitle Kubuntu\n\nroot \u0026#40;hd0,0\u0026#41;\n\nkernel\u003d/Kubuntu/boo/vmlinuz\n\ninitrd-........ etc\n```\n\n\u003cbr /\u003e\n\nor in case of partitions :  \n\n```\ntitle Backtrack 3\n\nroot \u0026#40;hd0,0\u0026#41;\t\t \u0026#91; this will be the main partition\u0026#93;\n\nkernel\u003d/boot/vmlinuz\n\ninitrd\u003d.........\n\n\n\ntitle Kubuntu\n\nroot\u0026#40;hd0,1\u0026#41;\n\nkernel\u003d/Kubuntu/boo/vmlinuz\n\ninitrd-........ etc\n```\n\n\u003cbr /\u003e\n\nyou have to read the grub4dos manual in case you want to understand the commands , and how grub works.  \n\n\u003cbr /\u003e\n\nhas any one got answers to my post the Multi Multi Multi Boot ?!?!?  \n\n"
+    },
+    {
+      "id": "42283",
+      "timestamp": "2008-08-19T13:34:52+00:00",
+      "author": "Arch3Angel",
+      "content": "Nope - Wish I did, this way I would have the answer to my menu.lst problems :wink:   \n\nAny suggestions on this kernel panic, I know it is because I used the wrong files but the hard part of any of these if finding out which file you are suppose to use to begin with. Very frustrating to say the least ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \n"
+    },
+    {
+      "id": "42289",
+      "timestamp": "2008-08-19T15:55:53+00:00",
+      "author": "Mesh",
+      "content": "\u003e Nope - Wish I did, this way I would have the answer to my menu.lst problems :wink:   \n\u003e\n\u003e Any suggestions on this kernel panic, I know it is because I used the wrong files but the hard part of any of these if finding out which file you are suppose to use to begin with. Very frustrating to say the least ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)\n\ndid you try this :   \n\n```\ntitle BT3 Graphics mode \u0026#40;KDE\u0026#41;\n\nroot \u0026#40;hd0,1\u0026#41;\n\nkernel\u003d /boot/vmlinuz ramdisk_size\u003d6666 root\u003d/dev/ram0 rw autoexec\u003dxconf;kdm APPEND vga\u003d0x317\n\ninitrd\u003d/boot/initrd.gz\n\nboot\n```\n\n\u003cbr /\u003e\n\nif it still kernel panic , did you tried it on another pc ??   \n"
+    },
+    {
+      "id": "42309",
+      "timestamp": "2008-08-20T05:23:18+00:00",
+      "author": "Arch3Angel",
+      "content": "\u003e did you try this :   \n\u003e\n\u003e ```\n\u003e title BT3 Graphics mode \u0026#40;KDE\u0026#41;\n\u003e\n\u003e root \u0026#40;hd0,1\u0026#41;\n\u003e\n\u003e kernel\u003d /boot/vmlinuz ramdisk_size\u003d6666 root\u003d/dev/ram0 rw autoexec\u003dxconf;kdm APPEND vga\u003d0x317\n\u003e\n\u003e initrd\u003d/boot/initrd.gz\n\u003e\n\u003e boot\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e if it still kernel panic , did you tried it on another pc ??\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nI got BackTrack3 working but now I am stuck on getting UBCD (Ultimate Boot CD) Working. I know it has to be something with the kernel \u003d and initrd\u003d portions  \n\nAny advice?   \n"
+    },
+    {
+      "id": "42320",
+      "timestamp": "2008-08-20T09:11:41+00:00",
+      "author": "Mesh",
+      "content": "\u003e I got BackTrack3 working but now I am stuck on getting UBCD (Ultimate Boot CD) Working. I know it has to be something with the kernel \u003d and initrd\u003d portions  \n\u003e\n\u003e Any advice?\n\nas ktp mentioned grub4dos does not \u0027currently booting from syslinux or isolinux , unless of floppy images sth can be done maybe ..   \n"
+    },
+    {
+      "id": "42326",
+      "timestamp": "2008-08-20T09:29:30+00:00",
+      "author": "Arch3Angel",
+      "content": "Basically it sounds like my goal of a single USB thumb drive that contains all my bootable CDs is just that a dream. Unless you can make a suggestion on how to do this so all my bootable CDs are on a single USB thumb drive   \n"
+    },
+    {
+      "id": "42328",
+      "timestamp": "2008-08-20T09:53:36+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Basically it sounds like my goal of a single USB thumb drive that contains all my bootable CDs is just that a dream. Unless you can make a suggestion on how to do this so all my bootable CDs are on a single USB thumb drive\n\nWell, you cannot expect to find a one-size-fits-all only-a-few-clicks-away solution for ALL conceivable boot CD\u0027s.  \n\nEach single boot CD has it\u0027s own story and (hopefully ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)) a way to be added to a USB stick.  \n\nIf I may, it seems to me like you (as many people around, rest assured you ar not the first and only one) are more focused on the (undoubtedly nifty) idea of adding a bootCD to your USB key than to what really matters, i.e. adding the functionalities of your bootCD to your USB stick.  \n\nThis might require modifying the contents of the .iso image itself or using amother approach.  \n\nI mean, ***if*** there is a way to add the whole untouched .iso image, it\u0027s better, but if there is not, why not using a non-iso image, or any other possible way as long as the goal is reached?  \n\nI\u0027ll have a look at UBCD411 and see what I can find...  \n\njaclaz   \n"
+    },
+    {
+      "id": "42331",
+      "timestamp": "2008-08-20T10:14:10+00:00",
+      "author": "Arch3Angel",
+      "content": "\u003e Well, you cannot expect to find a one-size-fits-all only-a-few-clicks-away solution for ALL conceivable boot CD\u0027s.  \n\u003e\n\u003e Each single boot CD has it\u0027s own story and (hopefully ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)) a way to be added to a USB stick.  \n\u003e\n\u003e If I may, it seems to me like you (as many people around, rest assured you ar not the first and only one) are more focused on the (undoubtedly nifty) idea of adding a bootCD to your USB key than to what really matters, i.e. adding the functionalities of your bootCD to your USB stick.  \n\u003e\n\u003e This might require modifying the contents of the .iso image itself or using amother approach.  \n\u003e\n\u003e I mean, ***if*** there is a way to add the whole untouched .iso image, it\u0027s better, but if there is not, why not using a non-iso image, or any other possible way as long as the goal is reached?  \n\u003e\n\u003e I\u0027ll have a look at UBCD411 and see what I can find...  \n\u003e\n\u003e jaclaz\n\nHello jaclaz,  \n\nI am not so much all about the nifty. I carry so much stuff with me that my goal was to try and condense as much as possible into my thumb drives for a couple reasons. Less to keep track of, less stuff to drag around, and universal tool for the things i work on.  \n\nNow saying that it was not enjoyable / frustrating to learn these things would be a lie, it is \"nifty\" to see what all can be done now a days with flash drives is pretty cool, but not my main reason.  \n\nThanks for looking into this - I hope you can find a good solution for me   \n"
+    },
+    {
+      "id": "42108",
+      "timestamp": "2008-08-16T16:19:10+00:00",
+      "author": "Arch3Angel",
+      "content": "Hello,  \n\nI was reading this post [Multi Multi Multi Boot](http://www.boot-land.net/forums/?showtopic\u003d5434 \"External link\") which has lead me in the right direction. However it still gives me problems.  \n\nWhat I am looking to do it boot multiple ISO images stored on my USB Flash Drive. I have grub4dos installed and working (I get my boot menu and reboot / halt work fine) but I can not get any additional images to boot. Here is my current menu list which is stripped down to only the needed information:  \n\n```\ncolor black/cyan yellow/cyan\n\ntimeout 30\n\ndefault /default\n\n\n\ntitle Ultimate Boot CD\n\nfind --set-root /images/ultimatebootcd/ubcd411.iso\n\nmap /images/ultimatebootcd/ubcd411.iso \u0026#40;hd32\u0026#41;\n\nmap --hook\n\nroot \u0026#40;hd32\u0026#41;\n\nchainloader \u0026#40;hd32\u0026#41;\n\n\n\ntitle BT3 Graphics mode \u0026#40;KDE\u0026#41;\n\nroot \u0026#40;sd1,1\u0026#41;\n\nkernel\u003d /images/backtrack3/boot/vmlinuz ramdisk_size\u003d6666 root\u003d/dev/ram0 rw autoexec\u003dxconf;kdm APPEND vga\u003d0x317\n\ninitrd\u003d/images/backtrack3/boot/initrd.gz\n\nboot\n\n\n\ntitle Reboot\n\nsavedefault --wait\u003d2\n\nreboot\n\n\n\ntitle Halt\n\nsavedefault --wait\u003d2\n\nhalt\n```\n\n\u003cbr /\u003e\n\nWhen I boot into \"Ultimate Boot CD\" it seems to hang because of the boot loader inside the ISO image. Never giving an error just flashing the cursor  \n\nNow when I boot into \"BT3 Graphics mode (KDE)\" it tells me:  \n\n```\nroot \u0026#40;hd0,1\u0026#41;\n\n\n\nError 22\u0026#58; No such partition\n\n\n\nPress any key to continue...\n```\n\n\u003cbr /\u003e\n\nI can only assume this is because the (hd0,1) it referencing a physical hard drive not the USB drive. In my linux box it shows my drive as sdb with the partition being sdb1  \n\nNow thinking it would be (sd1,1) it came up with a different error:  \n\n```\nroot \u0026#40;sd1,1\u0026#41;\n\n\n\nError 23\u0026#58; Error while parsing number\n\n\n\nPress any key to continue...\n```\n\n\u003cbr /\u003e\n\nI have many ISO images I would like to make into a usb multi-tool of software. I would also like to keep it as clean as possible as far as the directory structure. Here is what I would like to have in the end:  \n\n/  \n/documents  \n/downloads  \n/images  \n/logs  \ngrldr  \nmenu.lst  \n\nWith the ISO images stored under /images - This would make it easy for me to update images as time goes on - simply edit the menu list and copy the iso to the drive.  \n\nAny and all help is greatly appreciated, suggestions on better ways are also welcome - Thanks   \n"
+    },
+    {
+      "id": "42119",
+      "timestamp": "2008-08-16T19:21:32+00:00",
+      "author": "tzepu",
+      "content": "hello all  \ni am new in here and warn you that i have few knowledge about this kind of stuff  \ni want a multiboot pendrive with iso\u0027s , i want to be able to install them from the pendrive   \ni need it to show livecd\u0027s to various people, from the pendrive, and after they decide which one they want to install it on their computer (i am trying to make an intense popularisation of linux (various distributions) in schools, and several computers have no cd (even so i have to cary a dozen of discs with me)(it would be great just to stick in the pendrive and boot whatever i need)  \nmy question is  \nhave you guys found a way to put several iso\u0027s on a pendrive and somehow to be able to boot, and install each of them if needed?  \nand the worse part , to explain this in a way that even a six year old child ca do it?(or automatize it in a manner that is not requesting to many knowledge regarding programing or so?  \nmy intention is to use only free software( linux distributions )  \nthank you in advance  \nsomehow like flashboot program but to manage several iso files (beeing able to boot the one i want)   \n"
+    },
+    {
+      "id": "42125",
+      "timestamp": "2008-08-16T21:59:39+00:00",
+      "author": "xterm",
+      "content": "Hello,  \n\nI don\u0027t know about booting multiple iso images quite yet, but if you use live distros orriented towards usb you can create a boot menu in syslinux.cfg, I\u0027m sure that if you are using isolinux, you can do the same thing as it is a branch off of syslinux as far as I know. I am too, looking for a way to boot iso images tho.   \n"
+    },
+    {
+      "id": "42145",
+      "timestamp": "2008-08-17T10:40:40+00:00",
+      "author": "tzepu",
+      "content": "after some digging i figured that there are some programs that can create a multiboot iso (i can include to that everything i need(i mean iso files with distributions i want)  \nbut  \ni could not figure how to put that multiboot iso file onto the pendrive, and to be able to boot it (i found tho some ideas but they are long, complex and i always get stuck on the way   \n"
+    },
+    {
+      "id": "42154",
+      "timestamp": "2008-08-17T16:13:37+00:00",
+      "author": "tzepu",
+      "content": "well , hoping that some wise guy in here will help me from suffering, i tell you the news about my problem  \nUnetbootin is the answer to my problem but, i am stuck now at creating a multiboot iso (i go my ears stuck in easyboot (i just could not figure about what to do with it(my english is too poor and the program is too complex for me), i tried though magiciso, but it creates the image (there might be some bad movements i do in there) but this image loaded onto the pen drive with Unetbootin it gets stuck on \u0027default\u0027 button(after rebooting)  \ni managed though to put various distributions on the pen drive, but just one by one (it works like a charm anyway) with this great program (it even downloads the needed iso, and puts it onto the drive you need, ready to boot)  \nso  \ncan any of you give me a solution to this?  \nif you need specific info about my \u0027work\u0027 i will gladly tell you everything you need  \ni think that my mistake is in the multiboot iso file (i will burn it onto a dvd to see if it works this way) or might be some limitation from Unetbootin?  \nthanks in advance   \n"
+    },
+    {
+      "id": "42175",
+      "timestamp": "2008-08-17T20:12:00+00:00",
+      "author": "ktp",
+      "content": "1) UBCD uses isolinux/syslinux which cannot be loaded by grub4dos.  \n\n2) For Backtrack 3, the code in menu.lst is  \n\n```\n#\n\ntitle BackTrack 3 1024x768\n\nfind --set-root /boot/vmlinuz\n\nkernel /boot/vmlinuz max_loop\u003d255 vga\u003d791 initrd\u003dinitrd.gz init\u003dlinuxrc load_ramdisk\u003d1 prompt_ramdisk\u003d0 ramdisk_size\u003d6666 root\u003d/dev/ram0 rw\n\ninitrd /boot/initrd.gz\n\nboot\n```\n\n\u003cbr /\u003e\n\nYou need to copy (from the ISO file) the /boot and /BT3 directories to root of your USB stick (so you get x:\\\\boot and x:\\\\BT3 if x: is your USB drive letter).   \n\nFor BackTrack 3 1280x1024, use vga\u003d794.   \n"
+    },
+    {
+      "id": "42177",
+      "timestamp": "2008-08-17T20:17:37+00:00",
+      "author": "tzepu",
+      "content": "can you please detail (translate into newbie language) all you said?  \ni do not know where to start  \nto use ubcd?  \nto use backtrack?  \ni will google for both and i hope i will figure what you told me:))  \nthanks   \n"
+    },
+    {
+      "id": "42180",
+      "timestamp": "2008-08-17T20:37:14+00:00",
+      "author": "ktp",
+      "content": "1) Impossible to boot UBCD iso \u0027as is\u0027 without modifications with grub4dos, as far as I know.  \nCheck this topic :  \n[http://www.boot-land...?showtopic\u003d4486](http://www.boot-land.net/forums/?showtopic\u003d4486 \"External link\")  \n2) I assume we are talking about Back Track 3, there is an iso called BackTrack3_final_usb.iso.  \nYou simply copy the 2 directories boot and BT3 from the iso to the root of your USB drive (or if you do not have iso decompressor, from the Back Track CD after burning the iso to the CD).  \nThen you take my mentioned code and put this in your menu.lst.   \nThen you can try to boot Back Track 3 entry, this will work!  \n\nIn other words, grub4dos in vast majority of cases cannot use iso emulation (hd32), so you must as I showed you  \ncopy some content of the iso to you USB key/HDD, and invoke it with grub4dos syntax.   \n"
+    },
+    {
+      "id": "42223",
+      "timestamp": "2008-08-18T07:35:43+00:00",
+      "author": "Arch3Angel",
+      "content": "Are there any grub flavors that does allow for this method to take place?   \n"
+    },
+    {
+      "id": "42224",
+      "timestamp": "2008-08-18T08:07:25+00:00",
+      "author": "ktp",
+      "content": "They are standard grub4dos features. Any recent version will be OK. You may want to take the latest version from here :  \n[http://download.gna.org/grub4dos/](http://download.gna.org/grub4dos/ \"External link\")  \nThe grub4dos-0.4.4-2008-08-08 version is OK for me.   \n"
+    },
+    {
+      "id": "42227",
+      "timestamp": "2008-08-18T08:35:33+00:00",
+      "author": "Arch3Angel",
+      "content": "Hello - That is the version I am currently running   \n"
+    },
+    {
+      "id": "42228",
+      "timestamp": "2008-08-18T08:41:01+00:00",
+      "author": "Arch3Angel",
+      "content": "```\n#\n\ntitle BackTrack 3 1024x768\n\nfind --set-root /boot/vmlinuz\n\nkernel /boot/vmlinuz max_loop\u003d255 vga\u003d791 initrd\u003dinitrd.gz init\u003dlinuxrc load_ramdisk\u003d1 prompt_ramdisk\u003d0 ramdisk_size\u003d6666 root\u003d/dev/ram0 rw\n\ninitrd /boot/initrd.gz\n\nboot\n```\n\n\u003cbr /\u003e\n\nNow with my directory structure would the code be:  \n\n```\n#\n\ntitle BackTrack 3 1024x768\n\nfind --set-root /images/backtrack3/boot/vmlinuz\n\nkernel /images/backtrack3/boot/vmlinuz max_loop\u003d255 vga\u003d791 initrd\u003dinitrd.gz init\u003dlinuxrc load_ramdisk\u003d1 prompt_ramdisk\u003d0 ramdisk_size\u003d6666 root\u003d/dev/ram0 rw\n\ninitrd /images/backtrack3/boot/initrd.gz\n\nboot\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "42229",
+      "timestamp": "2008-08-18T09:02:57+00:00",
+      "author": "ktp",
+      "content": "1) You should remove initrd\u003dinitrd.gz from the kernel line, since the initrd has its own line/path already.  \nYou have to adapt the line, not only copy-paste.  \n2) kernel and initrd have absolute path so they would load OK, but the initrd scripts etc... would internally still search for BT3 directory starting from root, so make sure that x:\\\\BT3 is there (x: your USB HDD/key).  \n\nThen as always test the entry on real situation with grub4dos.  \n\nGood luck.   \n"
+    },
+    {
+      "id": "42232",
+      "timestamp": "2008-08-18T09:52:34+00:00",
+      "author": "Arch3Angel",
+      "content": "\u003e 1) You should remove initrd\u003dinitrd.gz from the kernel line, since the initrd has its own line/path already.  \n\u003e You have to adapt the line, not only copy-paste.  \n\u003e 2) kernel and initrd have absolute path so they would load OK, but the initrd scripts etc... would internally still search for BT3 directory starting from root, so make sure that x:\\\\BT3 is there (x: your USB HDD/key).  \n\u003e\n\u003e Then as always test the entry on real situation with grub4dos.  \n\u003e\n\u003e Good luck.\n\nSo to get this right, I can\u0027t do the directory structure as originally planned since it would have the backtrack 3 directory down three levels as below:  \n\n/images/backtrack3/BT3   \n"
+    },
+    {
+      "id": "42234",
+      "timestamp": "2008-08-18T11:05:06+00:00",
+      "author": "tzepu",
+      "content": "well, i am dizzy right now  \nmy english is not that good or you explanations are too technical for me  \ncan someone explain this step by step?  \nand i mean about porting an multiboot iso on a pendrive using UNetbootin (or something else)  \ni need a multiboot iso creator that works with UNetbootin (this one boots it, and several multiboot iso\u0027s builded with some software(i tried ultraiso,magiciso,easy boot) just hooks the UNetbootin boot menu at \u0027default\u0027 option (no other is available)(usually, if i use a single OS iso,not a \u0027by me custom one\u0027 it loads the UNetbootin boot screen, where i can choose the options that i usually have on the livecd)  \ni think that my mistake is somewhere on the road building multiboot iso (i will try though the multiboot iso\u0027s by burning them on dvd\u0027s to see if there is a difference in their behaviour)   \n"
+    },
+    {
+      "id": "42245",
+      "timestamp": "2008-08-18T14:52:23+00:00",
+      "author": "Arch3Angel",
+      "content": "![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \n\nBackTrack3 is Bootable!!!  \n\nOn to the next one :wink:   \n\nThanks for the help :wink:   \n"
+    },
+    {
+      "id": "42281",
+      "timestamp": "2008-08-19T13:09:55+00:00",
+      "author": "Arch3Angel",
+      "content": "Whelp I am close to getting the second on my list to boot correctly, still got a slight problem. Below is the code and the error message:  \n\n```\ntitle UBCD 4.11\n\nfind --set-root /boot/baslinux\n\nkernel /boot/baslinux max_loop\u003d255 vga\u003d791 init\u003dlinuxrc load_ramdisk\u003d1 prompt_ramdisk\u003d0 ramdisk_size\u003d6666 root\u003d/dev/ram0 rw\n\ninitrd /boot/baslinux.gz\n\nboot\n```\n\n\u003cbr /\u003e\n\nBelow is the resulting error:  \n\n```\nKernel Panic\u0026#58; No init found. Try passing init\u003d option to kernel\n```\n\n\u003cbr /\u003e\n\nAny advice?   \n"
+    },
+    {
+      "id": "42282",
+      "timestamp": "2008-08-19T13:18:22+00:00",
+      "author": "Mesh",
+      "content": "at last someone mentioned my post, it seem that when i registered i had to chose my Country as USA no Jordan to get replies to my post ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif) :wink:   \n\nArch3Angel, i hope my post was useful for you , i\u0027ve tried to include the experince i had in details and organized manner.  \ni\u0027ve mentioned in my post that iso emulation most of the times won\u0027t work...  \n\nanyway, tzepu  \n\nfor any live linux distribution , there is a file that can be booted from which is vmlinuz,  \n\nnow the purpose of grub4dos is to create a menu boot loader that is compitable with FAT32 and NTFS ,  \nany how it can do the job too,  \n\ndownload grub4dos the latest version as ktp said , read the readme file to install it.  \n\nnow when trying to boot from your pendrive , it should display a menu , this menu can be edited to include commands that makes grub4dos to boot various things,  \n\nwhen you see in this forum a code paragraph , most propably begins with :   \n\ntitle ( something here ) and followed by:  \nroot (hd0,0)  \n\nor something like that , they are talking about menu.lst configurations that i just mentioned above .its a file that will appear the in partition where grub4dos is installed.  \n\ni don\u0027t know if grub4dos supports locating files in a deep subdirectory like : /sub1/sub2/sub3/sub4/ (the file in here)  \nto workaround this problem (if exsits-i dunt know honestly) , you can partition you pendrive to partitions that fits the linux live cd\u0027s WHEN EXTERACTED !  \n\nyes you are going to extract the iso images ( using winrar maybe ) to each partition , or into different folderes withen one partitions   \n\nmenu.lst of yours will look like ( in case of folders ) in this case each iso image will be extracted in a folder.  \n\n```\ntitle Backtrack 3 \n\nroot \u0026#40;hd0,0\u0026#41;\n\nkernel\u003d/Backtrack3/boot/vmlinuz\n\ninitrd\u003d.......\u0026#40;etc\u0026#41;\n\n\n\ntitle Kubuntu\n\nroot \u0026#40;hd0,0\u0026#41;\n\nkernel\u003d/Kubuntu/boo/vmlinuz\n\ninitrd-........ etc\n```\n\n\u003cbr /\u003e\n\nor in case of partitions :  \n\n```\ntitle Backtrack 3\n\nroot \u0026#40;hd0,0\u0026#41;\t\t \u0026#91; this will be the main partition\u0026#93;\n\nkernel\u003d/boot/vmlinuz\n\ninitrd\u003d.........\n\n\n\ntitle Kubuntu\n\nroot\u0026#40;hd0,1\u0026#41;\n\nkernel\u003d/Kubuntu/boo/vmlinuz\n\ninitrd-........ etc\n```\n\n\u003cbr /\u003e\n\nyou have to read the grub4dos manual in case you want to understand the commands , and how grub works.  \n\n\u003cbr /\u003e\n\nhas any one got answers to my post the Multi Multi Multi Boot ?!?!?  \n\n"
+    },
+    {
+      "id": "42283",
+      "timestamp": "2008-08-19T13:34:52+00:00",
+      "author": "Arch3Angel",
+      "content": "Nope - Wish I did, this way I would have the answer to my menu.lst problems :wink:   \n\nAny suggestions on this kernel panic, I know it is because I used the wrong files but the hard part of any of these if finding out which file you are suppose to use to begin with. Very frustrating to say the least ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \n"
+    },
+    {
+      "id": "42289",
+      "timestamp": "2008-08-19T15:55:53+00:00",
+      "author": "Mesh",
+      "content": "\u003e Nope - Wish I did, this way I would have the answer to my menu.lst problems :wink:   \n\u003e\n\u003e Any suggestions on this kernel panic, I know it is because I used the wrong files but the hard part of any of these if finding out which file you are suppose to use to begin with. Very frustrating to say the least ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)\n\ndid you try this :   \n\n```\ntitle BT3 Graphics mode \u0026#40;KDE\u0026#41;\n\nroot \u0026#40;hd0,1\u0026#41;\n\nkernel\u003d /boot/vmlinuz ramdisk_size\u003d6666 root\u003d/dev/ram0 rw autoexec\u003dxconf;kdm APPEND vga\u003d0x317\n\ninitrd\u003d/boot/initrd.gz\n\nboot\n```\n\n\u003cbr /\u003e\n\nif it still kernel panic , did you tried it on another pc ??   \n"
+    },
+    {
+      "id": "42309",
+      "timestamp": "2008-08-20T05:23:18+00:00",
+      "author": "Arch3Angel",
+      "content": "\u003e did you try this :   \n\u003e\n\u003e ```\n\u003e title BT3 Graphics mode \u0026#40;KDE\u0026#41;\n\u003e\n\u003e root \u0026#40;hd0,1\u0026#41;\n\u003e\n\u003e kernel\u003d /boot/vmlinuz ramdisk_size\u003d6666 root\u003d/dev/ram0 rw autoexec\u003dxconf;kdm APPEND vga\u003d0x317\n\u003e\n\u003e initrd\u003d/boot/initrd.gz\n\u003e\n\u003e boot\n\u003e ```\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e if it still kernel panic , did you tried it on another pc ??\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003cbr /\u003e\n\nI got BackTrack3 working but now I am stuck on getting UBCD (Ultimate Boot CD) Working. I know it has to be something with the kernel \u003d and initrd\u003d portions  \n\nAny advice?   \n"
+    },
+    {
+      "id": "42320",
+      "timestamp": "2008-08-20T09:11:41+00:00",
+      "author": "Mesh",
+      "content": "\u003e I got BackTrack3 working but now I am stuck on getting UBCD (Ultimate Boot CD) Working. I know it has to be something with the kernel \u003d and initrd\u003d portions  \n\u003e\n\u003e Any advice?\n\nas ktp mentioned grub4dos does not \u0027currently booting from syslinux or isolinux , unless of floppy images sth can be done maybe ..   \n"
+    },
+    {
+      "id": "42326",
+      "timestamp": "2008-08-20T09:29:30+00:00",
+      "author": "Arch3Angel",
+      "content": "Basically it sounds like my goal of a single USB thumb drive that contains all my bootable CDs is just that a dream. Unless you can make a suggestion on how to do this so all my bootable CDs are on a single USB thumb drive   \n"
+    },
+    {
+      "id": "42328",
+      "timestamp": "2008-08-20T09:53:36+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Basically it sounds like my goal of a single USB thumb drive that contains all my bootable CDs is just that a dream. Unless you can make a suggestion on how to do this so all my bootable CDs are on a single USB thumb drive\n\nWell, you cannot expect to find a one-size-fits-all only-a-few-clicks-away solution for ALL conceivable boot CD\u0027s.  \n\nEach single boot CD has it\u0027s own story and (hopefully ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)) a way to be added to a USB stick.  \n\nIf I may, it seems to me like you (as many people around, rest assured you ar not the first and only one) are more focused on the (undoubtedly nifty) idea of adding a bootCD to your USB key than to what really matters, i.e. adding the functionalities of your bootCD to your USB stick.  \n\nThis might require modifying the contents of the .iso image itself or using amother approach.  \n\nI mean, ***if*** there is a way to add the whole untouched .iso image, it\u0027s better, but if there is not, why not using a non-iso image, or any other possible way as long as the goal is reached?  \n\nI\u0027ll have a look at UBCD411 and see what I can find...  \n\njaclaz   \n"
+    },
+    {
+      "id": "42331",
+      "timestamp": "2008-08-20T10:14:10+00:00",
+      "author": "Arch3Angel",
+      "content": "\u003e Well, you cannot expect to find a one-size-fits-all only-a-few-clicks-away solution for ALL conceivable boot CD\u0027s.  \n\u003e\n\u003e Each single boot CD has it\u0027s own story and (hopefully ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)) a way to be added to a USB stick.  \n\u003e\n\u003e If I may, it seems to me like you (as many people around, rest assured you ar not the first and only one) are more focused on the (undoubtedly nifty) idea of adding a bootCD to your USB key than to what really matters, i.e. adding the functionalities of your bootCD to your USB stick.  \n\u003e\n\u003e This might require modifying the contents of the .iso image itself or using amother approach.  \n\u003e\n\u003e I mean, ***if*** there is a way to add the whole untouched .iso image, it\u0027s better, but if there is not, why not using a non-iso image, or any other possible way as long as the goal is reached?  \n\u003e\n\u003e I\u0027ll have a look at UBCD411 and see what I can find...  \n\u003e\n\u003e jaclaz\n\nHello jaclaz,  \n\nI am not so much all about the nifty. I carry so much stuff with me that my goal was to try and condense as much as possible into my thumb drives for a couple reasons. Less to keep track of, less stuff to drag around, and universal tool for the things i work on.  \n\nNow saying that it was not enjoyable / frustrating to learn these things would be a lie, it is \"nifty\" to see what all can be done now a days with flash drives is pretty cool, but not my main reason.  \n\nThanks for looking into this - I hope you can find a good solution for me   \n"
+    },
+    {
+      "id": "42339",
+      "timestamp": "2008-08-20T12:55:11+00:00",
+      "author": "was_jaclaz",
+      "content": "Had a quick look. ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \n\nMost entries use memdisk as the actual loader, which is chainloadable from grub4dos, thus you need to convert SYSLINUX entries to GRUB4DOS ones.  \n\nExample:  \nAdd to root of the stick a folder /ubcd and copy to it ubcd411.iso  \n\nAdd to menu.lst an entry like:  \n\n```\ntitle UBCD\n\nfind --set-root /ubcd/ubcd.lst\n\nmap /ubcd/ubcd411.iso \u0026#40;hd32\u0026#41;\n\nmap --hook\n\nconfig-file /ubcd/ubcd.lst\n```\n\nAdd in folder /ubcd a ubcd.lst with these contents:  \n\n```\ntitle UBCD DOS Boot Disks \u0026#40;WAS bootdsk1.cfg\u0026#41;\n\nconfig-file /ubcd/bootdisk1.lst\n```\n\nAdd in folder /ubcd a bootdisk1.lst with these contents:  \n\n```\ntitle  FreeDOS Boot Disk V3.40\n\n\tkernel /SYSLINUX/MEMDISK.\n\n\tinitrd /IMAGES/DOSUBCD.IGZ\n\ntitle LZ-DOS Boot Disk V3.40\n\n\tkernel /SYSLINUX/MEMDISK.\n\n\tinitrd /IMAGES/LZUBCD.IGZ\n\ntitle OpenDOS Boot Disk V3.40\n\n\tkernel /SYSLINUX/MEMDISK.\n\n\tinitrd /IMAGES/DRUBCD.IGZ\n\ntitle NwDsk\u0026#58; NetWare Boot Disk V3.40\n\n\tkernel /SYSLINUX/MEMDISK.\n\n\tinitrd /IMAGES/FDNWD288.IGZ\n\ntitle MSRRC\u0026#58; Bart\u0026#39;s N/W Disk Clone V3.40\n\n\tkernel /SYSLINUX/MEMDISK.\n\n\tinitrd /IMAGES/FDMSRRC.IGZ\n```\n\n\u003cbr /\u003e\n\nRepeat the above, adding to ubcd.lst an entry like:  \n\n```\ntitle UBCD DOS Boot Disks \u0026#40;WAS bootdsk2.cfg\u0026#41;\n\nconfig-file /ubcd/bootdisk2.lst\n```\n\n\u003cbr /\u003e\n\nand create a bootdisk2.lst converting bootdsk2.cfg....  \n\n.... and so on.  \n\nBe aware that grub4dos is CaSe SeNsItIvE, the ubcd411.iso has ALL CAPITAL letters (and memdisk is actually \"MEMDISK.\" - yes, including the trailing dot).  \n\nThe above should cover most entries.  \n\nAn entry like this (from bootdsk2.cfg):  \n\n```\nLABEL baslinux\n\n\tMENU LABEL BasicLinux V3.40\n\n  KERNEL /boot/baslinux\n\n  APPEND root\u003d/dev/ram0 ramdisk_size\u003d20480 initrd\u003d/boot/baslinux.gz\n```\n\n\u003cbr /\u003e\n\n\"translates\" to:  \n\n```\ntitle BasicLinux V3.40\n\nkernel /BOOT/BASLINUX. root\u003d/dev/ram0 ramdisk_size\u003d20480\n\ninitrd /BOOT/BASLINUX.GZ\n```\n\n\u003cbr /\u003e\n\nHopefully you will only need a bit of patience.....:wink:  \n\njaclaz   \n"
+    },
+    {
+      "id": "42340",
+      "timestamp": "2008-08-20T13:38:57+00:00",
+      "author": "ktp",
+      "content": "Just to remind that most of jaclaz\u0027s suggested changes are in ilko\u0027s menu.7z attachment in this topic :  \n[http://www.boot-land...opic\u003d4486\\\u0026st\u003d10](http://www.boot-land.net/forums/?showtopic\u003d4486\u0026st\u003d10 \"External link\")  \n\nA part from the problem of memdisk hang on my system, there is the problem of parametor to memdisk.   \n"
+    },
+    {
+      "id": "42346",
+      "timestamp": "2008-08-20T16:05:39+00:00",
+      "author": "tzepu",
+      "content": "well   \neven before i start i have another question  \ni foud 2 grub4 dos programs  \none in here [https://gna.org/projects/grub4dos/](https://gna.org/projects/grub4dos/ \"External link\")  \nand the other here [http://sourceforge.n...ojects/grub4dos](http://sourceforge.net/projects/grub4dos \"External link\")  \nthere seems to be differences between the two  \nwhich one should i use for what you told me?  \n@jaclaz  \ni hope that the moment when a application that prepares an usb key for booting through few clicks, allowing me to simply copy onto the pendrive the iso files that i need ( maybe hitting a \u0027something-like-refresh-key\u0027 when i add new iso files) is not that far  \ni am no programmer, so i can not evaluate the amount or quality for the work required to do such program, especially when we are talking about a free one   \n"
+    },
+    {
+      "id": "42350",
+      "timestamp": "2008-08-20T16:28:45+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e which one should i use for what you told me?\n\nWhat I am currently using is 0.4.3 14-05-2008 from here:  \n[http://grub4dos.jot.com/WikiHome](http://grub4dos.jot.com/WikiHome \"External link\")  \n[http://grub4dos.jot....-2008-05-14.zip](http://grub4dos.jot.com/WikiHome/grub4dos-0.4.3-2008-05-14.zip \"External link\")?  \n\nANY later version ***should*** work as well. (DO NOT use the test-only versions).  \n\nREAD stickies:  \n[http://www.boot-land...owtopic\u003d14\\\u0026st\u003d2](http://www.boot-land.net/forums/?showtopic\u003d14\u0026st\u003d2 \"External link\")  \n(they were made \"sticky\" for a reason ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif))  \n\njaclaz   \n"
+    },
+    {
+      "id": "42542",
+      "timestamp": "2008-08-23T15:29:24+00:00",
+      "author": "Arch3Angel",
+      "content": "To make sure I understand things here. I need to create these files and the entries into the ubcd.lst file for all 28 files ending in .cfg under the \\\\ubcd\\\\menus directory?   \n"
+    },
+    {
+      "id": "42546",
+      "timestamp": "2008-08-23T16:38:10+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e To make sure I understand things here. I need to create these files and the entries into the ubcd.lst file for all 28 files ending in .cfg under the \\\\ubcd\\\\menus directory?\n\\[sarcasm\\]  \nNo, only for the odd ones, the even ones translate by themselves if left enough time near the already translated odd ones.  \n\\[/sarcasm\\]  \n\n![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \n\nSeriously, YES, or at least you need to \"translate\" the ones you need.  \n\nBut actually, you should READ the post by **ktp** , the \"translating\" work is **already done** , by Ilko_t, you ONLY need testing ALL the entries (and Report).  \n\nIlko_t, maybe more wisely than what I suggested :wink:, did not rename the .cfg to.lst, I was thinking about keeping the old ones and ADDING grub4dos compatibility, Ilko_t moved thinking of REPLACING Syslinux/Isolinux with grub4dos.  \n\njaclaz   \n"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "id": "13180",
+  "title": "Plop VHD Loader",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "115160",
+      "timestamp": "2010-11-30T00:25:57+00:00",
+      "author": "Icecube",
+      "content": "\u003e VHD files are Virtual Hard Disk files used by Microsoft Virtual PC.  \n\u003e\n\u003e The Plop VHD Loader makes it possible to start an operating system from the VHD file without Windows. Only plpvhd.bin is required to load and boot the VHD file. No OS specific startup files (os loader, kernel, ...) must be stored on the real partition. The operating system on the VHD file must be Windows/Linux that is able to run nativ from a VHD file or DOS. DOS is able to run without modifications.  \n\u003e\n\u003e The Plop VHD Loader is free for personal and commercial use. See the licence file in the zip file -\\\u003e plpvhd-0.1-test.zip.  \n\u003e\n\u003e Plop VHD Loader details  \n\u003e\n\u003e The current VHD Loader is a test version. Depending on that its needed, development will be continued. See the [forum entry](http://forum.plop.at/index.php/topic,448.0.html \"External link\").  \n\u003e\n\u003e * It supports fixed hard disk images and dyamic hard disk images.\n\u003e * You select the VHD file easily from the listed directory structure with cursor up/down and enter.\n\u003e * Size of plpvhd.bin is only 2991 bytes!\n\u003e * It supports currently only images on FAT32 partitions.\n\u003e * Currently, plpvhd.bin starts only from floppy or CD.\n\u003e\n\u003e plpvhd.bin is searching for a primary FAT32 partition at startup. When it finds one, then you can navigate through the directory structure and boot a VHD file.\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n[http://www.plop.at/en/vhdloader.html](http://www.plop.at/en/vhdloader.html \"External link\")   \n"
+    },
+    {
+      "id": "115176",
+      "timestamp": "2010-11-30T05:28:27+00:00",
+      "author": "sara - pmedia",
+      "content": "I\u0027m going to check it out. If it actually works you can say goodbye to all complicated Guides of booting xp from usb   \n"
+    },
+    {
+      "id": "115191",
+      "timestamp": "2010-11-30T11:47:08+00:00",
+      "author": "karyonix",
+      "content": "\u003e I\u0027m going to check it out. If it actually works you can say goodbye to all complicated Guides of booting xp from usb\n... only if you don\u0027t use it with Windows XP.   \nPlop VHD Loader is only a \"loader\". You still need USB and VHD drivers in Windows XP.   \n"
+    },
+    {
+      "id": "115220",
+      "timestamp": "2010-11-30T17:09:17+00:00",
+      "author": "steve6375",
+      "content": "\u003e ... only if you don\u0027t use it with Windows XP.   \n\u003e Plop VHD Loader is only a \"loader\". You still need USB and VHD drivers in Windows XP.\nCurrently, plpvhd.bin starts only from floppy or CD. ??????? no USB ????? No NTFS ????? so no VHD \\\u003e 4GB.   \n"
+    },
+    {
+      "id": "115222",
+      "timestamp": "2010-11-30T17:33:39+00:00",
+      "author": "sara - pmedia",
+      "content": "\u003e Currently, plpvhd.bin starts only from floppy or CD. ??????? no USB ????? No NTFS ????? so no VHD \\\u003e 4GB.\n\nit\u0027s work for me with iso map (hd32) so i will can boot full os from it :smile:   \n"
+    },
+    {
+      "id": "115239",
+      "timestamp": "2010-11-30T19:35:10+00:00",
+      "author": "Icecube",
+      "content": "@ steve6375  \n\nElmar (aka BiTByte) just wrote the program:  \n\u003e currently, there is no write access implemented. it should be no big problem to add this. i did not spent too much time for the program, because i don\u0027t know if much people want to use it. for me, it was a chance to free the mind, because another project drives me crazy. however, its the first test release with much potential to extend and improve. personally i don\u0027t use the program, so i need**input from others what features are useful** .  \n\u003e\n\u003e regards  \n\u003e elmar\n[http://forum.plop.at...opic,448.0.html](http://forum.plop.at/index.php/topic,448.0.html \"External link\")   \n"
+    },
+    {
+      "id": "115245",
+      "timestamp": "2010-11-30T20:17:23+00:00",
+      "author": "erwan.l",
+      "content": "Hi,  \n\nIs it similar to vboot? aka a boot loader (dont know if the wording is right there) to boot straight from a vhd file?  \nA bit like win7 boot manager and vhd file?  \n\nRegards,  \nErwan.   \n"
+    },
+    {
+      "id": "115292",
+      "timestamp": "2010-12-01T06:43:32+00:00",
+      "author": "maanu",
+      "content": "thank you so much Elmar , for providing us with yet another magical tune ,. it sure looks promising . i ll test it as soon as i get some free time.   \n\ntake care , and keep up the good work..   \n"
+    }
+  ]
+}

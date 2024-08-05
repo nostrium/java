@@ -1,0 +1,40 @@
+{
+  "id": "11338",
+  "title": "USB Disk to boot BOTH WinXp and Win7",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "99653",
+      "timestamp": "2010-05-09T20:02:13+00:00",
+      "author": "BondUniverse",
+      "content": "I appologize if this is elsewhere, but I haven\u0027t found any information on this yet, even though I would think others may have done this already...  \n\nI\u0027m looking to create a USB drive with at least BOTH WinXP and Windows 7. I want them to be native on the disk to allow for easy updating (so no ISO images). I\u0027ve found plenty on XP/2003, but not XP AND 7 on the same drive...  \n\nA bonus would be to include 2003 and 2008 Servers...  \n\nI would also prefer to do as much as possible by hand, but freeware (preferably open source) are ok if no alternatives (or alternatives are MUCH more difficult...)  \n\nAny help would be greatefully apprectiated!   \n"
+    },
+    {
+      "id": "99657",
+      "timestamp": "2010-05-09T21:51:28+00:00",
+      "author": "maanu",
+      "content": "hello and welcome on board.   \n\nfollowing the link to a set of tools made by wimb for the same purpose .   \n\njust take ur time . and read it . and the links within it .   \n\n[http://www.boot-land...amp;#entry99656](http://www.boot-land.net/forums/index.php?showtopic\u003d9830\u0026pid\u003d99656\u0026start\u003d20\u0026#entry99656 \"External link\")   \n"
+    },
+    {
+      "id": "99658",
+      "timestamp": "2010-05-09T22:35:47+00:00",
+      "author": "ilko",
+      "content": "Look at the first post to find out what can be put to your USB disk.  \n[http://www.msfn.org/...omusb-with-gui/](http://www.msfn.org/board/topic/120444-how-to-install-windows-from-usb-winsetupfromusb-with-gui/ \"External link\")  \n\nLook at the subforum for other methods:  \n[http://www.msfn.org/...ndows-from-usb/](http://www.msfn.org/board/forum/157-install-windows-from-usb/ \"External link\")   \n"
+    },
+    {
+      "id": "99710",
+      "timestamp": "2010-05-10T13:32:38+00:00",
+      "author": "pscEx",
+      "content": "\u003e I appologize if this is elsewhere, but I haven\u0027t found any information on this yet, even though I would think others may have done this already...  \n\u003e\n\u003e I\u0027m looking to create a USB drive with at least BOTH WinXP and Windows 7. I want them to be native on the disk to allow for easy updating (so no ISO images). I\u0027ve found plenty on XP/2003, but not XP AND 7 on the same drive...  \n\u003e\n\u003e A bonus would be to include 2003 and 2008 Servers...  \n\u003e\n\u003e I would also prefer to do as much as possible by hand, but freeware (preferably open source) are ok if no alternatives (or alternatives are MUCH more difficult...)  \n\u003e\n\u003e Any help would be greatefully apprectiated!\nNot aggressive meant, just \u0027technically\u0027 ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nIf you want to have something which does not exist, **create** it, and share it!  \nEven if this post is your post #1, you can learn! ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nIMHO this forum is not meant to \u0027fullfill some member\u0027s needs\u0027. It is meant: \u0027Some more or less experienced members create something they need, and explain and share with all other members\u0027.  \n\nMost members, me included, do not have any concerns to help you even with \u0027stupid qestions\u0027 (please have a look at my signature ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) )  \n\nBut IMO YOU should be the \u0027Senior Developer\u0027 for your topic.  \n\nPeter   \n"
+    },
+    {
+      "id": "99712",
+      "timestamp": "2010-05-10T13:40:38+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e But IMO YOU should be the \u0027Senior Developer\u0027 for your topic.\nJFYI, both hot water and wheel have been invented, see posts before yours by **ilko** and **maanu** ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\n\u003cbr /\u003e\n\n@BondUniverse  \nActually it\u0027s all over the place, but are we talking about installing ***FROM*** USB stick (which is what **ilko** gave links for) or installing ***ON*** a USB stick(which **maanu** posted)?  \nIf the latter, check the stickies here:  \n[http://www.boot-land...hp?showforum\u003d77](http://www.boot-land.net/forums/index.php?showforum\u003d77 \"External link\")  \nand this:  \n[http://www.boot-land...?...ic\u003d9830\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d9830\u0026hl\u003d \"External link\")  \n(same as **maanu** posted)  \n\n\u003cbr /\u003e\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    }
+  ]
+}

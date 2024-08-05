@@ -1,0 +1,70 @@
+{
+  "id": "20193",
+  "title": "Theory Question: Change boot from Win 2k to Win7",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "189004",
+      "timestamp": "2014-12-02T15:51:39+00:00",
+      "author": "grrrd",
+      "content": "So I am sure that this question will create more questions - but will give it a go!\n\nSo I have a requirement to upgrade windows 2000 machines to windows 7, preserving only some flat files. I have created a Windows 7 WIM and can happily apply this to a Windows 2000 machine when booting into winpe via PXE/TFTpd32.\n\nSo I was thinking, the file structure between Win2K and Win7 are pretty much completely different (apart from Program Files). Because these files are different you wouldn\u0027t have any issue putting this file structure on to a HardDrive that has Win2k already installed (and booted).\n\nThe question would be how you would change the Boot Configuration to boot to the WIndows7 system, instead of the Win2k system when you reboot Win2k next?\n\nIf this was possible then I would be able to trickle the windows 7 files to the already installed windows 2k machines (over adsl) - then when I have confirmed all files are present switch the boot order on next reboot to Win7. Afterwhich I can remove the Win2k Files from the HDD.\n\nAm I living in a make believe world?!?!\n\n"
+    },
+    {
+      "id": "189008",
+      "timestamp": "2014-12-02T16:50:53+00:00",
+      "author": "Wonko the Sane",
+      "content": "There are really no issues (exception made for the \"superimposing\" you mentioned).  \nUsually Windows 2000 (at least by default) is installed to \\\\WINNT while Windows 7 is installed on \\\\WINDOWS.  \nWhen you apply the .WIM (actually when you run BCDboot and later bootsect /NT60) an entry for the \"previous operating system\" should be added to the \\\\boot\\\\BCD (please read to the Windows 7 boot manager choices).  \n\nStandard booting of a Win2K (or XP) machine:  \nMBR (2K code)-\\\u003ePBR of Active Primary partition (2K code invoking NTLDR)-\\\u003eNTLDR-\\\u003eBOOT.INI-\\\u003eChoices in BOOT.INI-\\\u003eNTDETECT.COM-\\\u003eWindows 2000  \nStandard booting of a Windows 7 machine:  \nMBR (Win7 code)-\\\u003ePBR of Active Primary partition (Win7 code invoking BOOTMGR)-\\\u003eBOOTMGR-\\\u003eChoices in \\\\boot\\\\BCD-\\\u003eWINLOAD.EXE-\\\u003eWindows 7  \nDual booting:  \nMBR (Win7 code)-\\\u003ePBR of Active Primary partition (Win7 code invoking BOOTMGR)-\\\u003eBOOTMGR-\\\u003eChoices in \\\\boot\\\\BCD-\\\u003eNTLDR-\\\u003eBOOT.INI-\\\u003eChoices in BOOT.INI-\\\u003eNTDETECT.COM-\\\u003eWindows 2000  \n\nYou can better understand it here (just fake that you are reading \"Windows 7\" instead of \"Vista\" ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)):  \n[http://www.multiboot.../multiboot.html](http://www.multibooters.co.uk/multiboot.html \"External link\")  \n\nNow, it would make sense to have anyway a \"Plan B\".  \nOne of the features of BOOTMGR is that it will parse directly the BOOT.INI for any booting entry which is NOT an ARCPATH.  \nSo you can (should) add to the root of the booting disk (where now NTLDR is) a copy of grldr (one of the main files from grub4dos) and add to the BOOT.INI this line:  \n\n```\nC:\\grldr\u003d\"grub4dos\"\n```\n\nthis way, should for any reason the Windows 7 install not add itself the Windows 2000 entry to BCD, you can use grub4dos to chainload either BOOTMGR (to boot the Windows 7 and manually add the entry to the BCD with BCDEdit) or use it to load temporarily the Windows 2000.  \n\nGet grub4dos from here:  \n[http://grub4dos.chen...egories/0-4-5c/](http://grub4dos.chenall.net/categories/0-4-5c/ \"External link\")  \nclick on the 2014 tab and get latest available, right now:  \n[http://grub4dos.chen....5c-2014-11-27/](http://grub4dos.chenall.net/downloads/grub4dos-0.4.5c-2014-11-27/ \"External link\")  \n[http://dl.grub4dos.c...c-2014-11-27.7z](http://dl.grub4dos.chenall.net/grub4dos-0.4.5c-2014-11-27.7z \"External link\")  \n\nIn a nutshell:\n\n* add the grldr and it\u0027s BOOT.INI entry\n* test that it boots to grldr if chosen\n* apply the Windows 7 Wim\n* run the BCDboot command\n* run the bootsect command\n* try booting\n\nRead this topic for #3, #4, #5 explanation:  \n[http://reboot.pro/to...external-drive/](http://reboot.pro/topic/10126-nt-6x-fast-installer-install-win7-directly-to-usb-external-drive/ \"\")  \n\nJFYI, there is an \"evolution\" of the above here:  \n[http://www.msfn.org/...372-375-beta-1/](http://www.msfn.org/board/topic/149612-winntsetup-v372-375-beta-1/ \"External link\")  \n(though cannot say if it runs on 2K ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png))  \n\nTHEN:  \nIF the entry for Windows 2000 has been added, it\u0027s fine.  \nIF the entry for Windows 2000 has NOT been added, run grub4dos and use it to chainload NTLDR (and boot to the Windows 2000)  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    },
+    {
+      "id": "189029",
+      "timestamp": "2014-12-03T08:19:41+00:00",
+      "author": "grrrd",
+      "content": "Thank you Wonko - as always your responses are very detailed!\n\nI will take a read of everything you have said and see if I understand correctly.\n\n"
+    },
+    {
+      "id": "189032",
+      "timestamp": "2014-12-03T12:08:29+00:00",
+      "author": "grrrd",
+      "content": "If I were to use Grub4Dos would i be able to do the following;\n\nFrom Within Windows 2000 (current operational OS);\n\nApply Windows 7 WIM to a Folder on the Active Single HDD (C:\\\\NEWHDD for example)\n\nInstall Grub4DOS\n\nAmend the Boot.INI to load GRLDR\n\nHave a dual boot via the menu.lst to either call Windows 2000 OR Windows7 from the C:\\\\NEWHDD location\n\nOr would i come into a world of trouble not using the Root of the HDD?\n\n"
+    },
+    {
+      "id": "189033",
+      "timestamp": "2014-12-03T12:44:18+00:00",
+      "author": "Wonko the Sane",
+      "content": "You have to understand that the .WIM is an imaging format.\n\nYou capture an installation (in this special case the pre-installation has been already captured and provided to you as .wim) and deploy an installation.\n\nThe installation is intended to be on root, you capture it from root and deploy it to a root.\n\nWhat you are asking ultimately (and indirectly) is \"can I install windows 7 to a folder instead of the root of a drive?\" (and the answer to it is NO).\n\nYou should install (not actually \"install\" but rather simply copy grldr and amend boot.ini) on the working windows 2000 and test its functionality first (if you prefer outside and before adding to the system anything else, the only difference will be an added choice in BOOT.INI and a few kb occupied on the root by the grldr file).\n\nWhat you *may* want to do (actually what you *can* do alternatively) is another thing, installing the new Windows 7 OS to a .vhd file, i.e. a (rather largish) file that you are able to place \\*anywhere\\* on the disk drive, even in a folder or subfolder.\n\nThis can be done \"natively\" with some \"higher\" versions of Windows 7 or using grub4dos and a third party driver (Winvblock) on the \"lower\" versions.\n\nThe .vhd file will behave to all effects as if it was another partition (i.e. it will get another drive letter) and will be completely separated form the Windows 2000 install.\n\nWhether this is convenient in your specific environment is to be seen.\n\nYet another possibility is the \"classical\" way to dual boot a system, you shrink your current (Windows 2000) partition, create a new partition on the disk and install the Windows 7 on this second partition, this will also guarantee a \"separation\" of the systems.\n\nA trick or two may be needed to assign drive letters the way you want them to be, but nothing that cannot be done.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "189034",
+      "timestamp": "2014-12-03T13:33:50+00:00",
+      "author": "grrrd",
+      "content": "To you point about creating a VHD and giving it a partition, is there a way to shrink the current active partition (like Diskpart can do now)?\n\nThat way i could just apply the wim to a new drive and set that to boot?\n\n"
+    },
+    {
+      "id": "189041",
+      "timestamp": "2014-12-03T17:41:58+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e To you point about creating a VHD and giving it a partition, is there a way to shrink the current active partition (like Diskpart can do now)?\n\u003e\n\u003e That way i could just apply the wim to a new drive and set that to boot?\n\nYou are seemingly confusing things. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)\n\nA .vhd is a \"file backed virtual disk\", i.e. it contains a partition/volume and the backing file needs to be hosted inside a partition/volume.\n\nALTERNATIVELY to the .vhd approach, you may want to shrink current partition/volume size in order to create enough space for another (new) partition/volume.\n\nAn example may help.\n\nLet\u0027s say that you have a 250 Gb hard disk with in it a single (primary) partition, NTFS formatted, and that you have on that volume more than 30 Gb of free space.\n\nYou can EITHER:\n\n* create inside that volume a .vhd file of about 30 Gb\n\nOR:\n\n* shrink the existing around 250 Gb partition (with diskpart or with a third party tool) to around 220 Gb and create a new partition of around 30 Gb.\n\nOr you are asking something else? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "189051",
+      "timestamp": "2014-12-04T08:31:20+00:00",
+      "author": "grrrd",
+      "content": "I think the question i was aiming for was is there a way of getting the Diskpart Shrink command to work on Windows 2000? For this was a feature of Vista and above?!\n\n"
+    },
+    {
+      "id": "189052",
+      "timestamp": "2014-12-04T09:55:33+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I think the question i was aiming for was is there a way of getting the Diskpart Shrink command to work on Windows 2000? For this was a feature of Vista and above?!\n\nNo, you may want to look for third party tools, there are a couple ones that should run on 2K fine, Minitool Partition Wizard and Partition Guru, I believe.\n\n[http://reboot.pro/to...ize-partitions/](http://reboot.pro/topic/18037-what-portable-tool-works-well-to-resize-partitions/ \"\")\n\nOr boot to the PE 3.x and use diskpart from it.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "189054",
+      "timestamp": "2014-12-04T10:30:13+00:00",
+      "author": "grrrd",
+      "content": "I think I am going to have to stay on the WinPE route - seems like far too much trouble trying to do all this from WithIN windows 2000!\n\nThank you Wonko, a pleasure as always!\n\n"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "id": "21203",
+  "title": "HDD Regenerator: Bad command error",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "199859",
+      "timestamp": "2016-08-02T11:29:29+00:00",
+      "author": "Uneitohr",
+      "content": "I burned an HDD Regenerator to a DVD today and it gives me the error:\n\n```\nStarting HDD Regenerator...\nBad command or filename\n```\n\nThis is also given in grub4dos, for both iso and floppy image (ima). Entry used in grub4dos:\n\n```\ntitle HDD Regenerator 1.71\nfind --set-root /data_disk\nmap --mem /iso/HDDREG171.iso (hd32)\nmap --hook\nchainloader (hd32)\n\ntitle HDD Regenerator 1.71\nfind --set-root /boot_disk\nmap --mem /ima/HDDREG171.ima (fd0)\nmap --hook\nroot (fd0)\nchainloader (fd0)+1\nrootnoverify (fd0)\n```\n\nIt works however if it is burned to a CD. And only to a CD. However, the iso and ima images are made from that CD. I don\u0027t understand why this happens.\n\nIt only happens with 1.61 and 1.71.\n\n1.51 works fine.\n\nPlease help.\n\nThank you!\n\n"
+    },
+    {
+      "id": "199860",
+      "timestamp": "2016-08-02T12:01:31+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I don\u0027t understand why this happens.\n\u003e\n\u003e It only happens with 1.61 and 1.71.\n\u003e\n\u003e 1.51 works fine.\n\nThis is then likely an issue with those versions of the program, ask their support:\n\n[http://www.dposoft.net/feedback.php](http://www.dposoft.net/feedback.php \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko  \n\n"
+    },
+    {
+      "id": "199864",
+      "timestamp": "2016-08-02T14:16:57+00:00",
+      "author": "Agent47",
+      "content": "Hi\n\nTry using \"memdisk\" from ISOLINUX package.\n\n[http://www.syslinux....p?title\u003dMEMDISK](http://www.syslinux.org/wiki/index.php?title\u003dMEMDISK \"External link\")\n\nI had some issues booting a number of DOS images using Grub4dos \"map\" command but all fixed when i switched to the \"memdisk\" method.\n\nHere is the code i used to load \"HDD regen 2011\" which is newer than 1.71.\n\n```\ntitle HDD Regenerator\nfind --set-root /Boot/DOS/hddregen.img\nkernel /Boot/DOS/memdisk\ninitrd /Boot/DOS/hddregen.img\n\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "199868",
+      "timestamp": "2016-08-02T19:21:14+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "This is meant as an off-topic comment, but softwares like HDD Regenerator and SpinRite seem a bit scammy and like snake oil, they haven\u0027t been proven to work. I\u0027ve tried both and feel like they didn\u0027t really help. They may even cause more harm than good, making a drive\u0027s condition worse. In the end nothing will save a drive if it is failing hardware-wise, you\u0027re much better off buying new ones. It\u0027s my understanding that drive damage can be due to either software errors (which HDD Regenerator/SpinRite may or may not be able to fix) or hardware errors (like damaged platters, bad sectors), or both.\n\n"
+    },
+    {
+      "id": "199874",
+      "timestamp": "2016-08-03T08:13:43+00:00",
+      "author": "Uneitohr",
+      "content": "I agree with you Anon, 100%. But I\u0027ve had some drives that were unable to read some sectors but they were not bad, they were \"stuck\", meaning not bad or good just something in between. This made windows load very slow and caused programs to crash or freeze. Most of time, I managed to solve these issues buy just writing extensively on the drive for several hours. Which I why I sometimes need this program: that\u0027s exactly what it does. Spins up the drive, forces it to read and write, again and again.\n\nI never used this for data recovery as I\u0027m no fool.\n\nAlso, as a solution, apparently the the drives work fine but only on some computers due to himem.sys error (ramdisk). I tested the original HDDREG 1.61 and 1.71 on laptops with 8GB ram and the RAMDISK driver could not be loaded. Then I replaced CONFIG.SYS from the floppies with the above and it worked fine:  \n\n```\nbreak\u003don\ndevice\u003dhimem.sys /testmem:off /M:1\nfiles\u003d10\nbuffers\u003d10\ndos\u003dhigh,umb\nstacks\u003d9,256\ndevicehigh\u003dramdrive.sys /E 4096\nlastdrive\u003dz\n```\n\n@Wonko I should\u0027ve called support but as we all know, support is always late in reply and I did it way faster.\n\nThank you guys once again.\n\n"
+    },
+    {
+      "id": "199879",
+      "timestamp": "2016-08-03T10:34:18+00:00",
+      "author": "Wonko the Sane",
+      "content": "Good :smile:, cannot say if it applies to the specific program tool, but when it comes to DOS ramdisks I have traditionally been very happy to use either Frack Uberto\u0027s one or SRDISK, instead of the original MS one.  \nThough I believe that issues with MS-DOS one are not - strangely enough - MS\u0027s fault, but rather due to some changes that were made to chipsets and arrangement/indexing of RAM on some newer motherboards.  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    },
+    {
+      "id": "199882",
+      "timestamp": "2016-08-03T10:45:35+00:00",
+      "author": "Uneitohr",
+      "content": "One last question since we\u0027re on the subject: are there any updated MS-DOS disks (that uses new ramdisk like xmsdsk)?\n\nI know FreeDOS exists but I find MS-DOS more stable.\n\n"
+    },
+    {
+      "id": "199883",
+      "timestamp": "2016-08-03T11:08:45+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e One last question since we\u0027re on the subject: are there any updated MS-DOS disks (that uses new ramdisk like xmsdsk\\[/size\\])?\nWell, you create one, what is the problem?  \n[http://www.geocities...lk/index-2.html](http://www.geocities.ws/politalk/index-2.html \"External link\")  \n[http://www.geocities...ootdisk.htm#dos](http://www.geocities.ws/politalk/dos/bootdisk.htm#dos \"External link\")  \n[http://www.geocities...mdrv/index.html](http://www.geocities.ws/politalk/rmdrv/index.html \"External link\")  \n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)  \nWonko   \n"
+    }
+  ]
+}

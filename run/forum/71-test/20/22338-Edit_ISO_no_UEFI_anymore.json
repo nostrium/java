@@ -1,0 +1,316 @@
+{
+  "id": "22338",
+  "title": "Edit ISO - no UEFI anymore",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "215803",
+      "timestamp": "2020-08-10T07:27:15+00:00",
+      "author": "nierewa",
+      "content": "Hi,  \n\nI\u0027ve been using ventoy for a while now and I love it.  \nBut there\u0027s a problem I have.  \n\nI made an Multiboot-USB Stick. With ventoy so easy.  \nBut if I edit an ISO the error: \"No bootfile found for UEFI! Maybe the image does not support X64 UEFI!\" occured.  \n\nIn this case it\u0027s Acronis 2019.  \nInside iso is a file for Mac: AcronisTrueImage2019-17000.dmg  \nI delete this one to safe space. Now I boot and get the error.  \n\nKaspersky rescue disc the same.  \n\nBut I did the same thing with Acronis 2017 ago... this worked fine.  \n\nI use PowerISO or UltraIso to edit the isos.  \n\nCan someone help me with this?  \n\nBest regards ![biggrin.png](https://forums.ventoy.net/images/smilies/biggrin.png \"Big Grin\")\n\n"
+    },
+    {
+      "id": "215804",
+      "timestamp": "2020-08-10T07:34:09+00:00",
+      "author": "steve6375",
+      "content": "Are you testing booting on a real system?\n\n"
+    },
+    {
+      "id": "215805",
+      "timestamp": "2020-08-10T08:05:05+00:00",
+      "author": "nierewa",
+      "content": "Hi ![:D](https://reboot.pro/public/style_emoticons/default/biggrin.png)\n\nOn a real system.\n\n"
+    },
+    {
+      "id": "215806",
+      "timestamp": "2020-08-10T08:07:52+00:00",
+      "author": "steve6375",
+      "content": "Does the modified ISO UEFI-boot from an Easy2Boot v2 USB drive?\n\n"
+    },
+    {
+      "id": "215807",
+      "timestamp": "2020-08-10T08:10:22+00:00",
+      "author": "nierewa",
+      "content": "Can\u0027t test because I have no Easy2Boot USb drive.\n\n"
+    },
+    {
+      "id": "215808",
+      "timestamp": "2020-08-10T09:38:56+00:00",
+      "author": "nierewa",
+      "content": "So I\u0027ve tested with Easy2Boot v2... same problem.  \n\"No bootfile found for UEFI\"\n\n"
+    },
+    {
+      "id": "215809",
+      "timestamp": "2020-08-10T09:40:58+00:00",
+      "author": "steve6375",
+      "content": "OK - so if you extract the files from each ISO and compare the contents, what differences do you see?\n\n"
+    },
+    {
+      "id": "215810",
+      "timestamp": "2020-08-10T10:52:01+00:00",
+      "author": "nierewa",
+      "content": "Content is the same.  \nOnly folder doc and the file AcronisTrueImage2019-17000.dmg are deleted.\n\nI had a screenshot but no idea how to attaching it ![:confused1:](https://reboot.pro/public/style_emoticons/default/confused1.gif)\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "215811",
+      "timestamp": "2020-08-10T11:25:58+00:00",
+      "author": "nierewa",
+      "content": "I made a new GPT ventoy stick with [Ventoy-1.0.18_Modified_EN](http://reboot.pro/topic/22328-ventoy-boot-grubfm-modified/ \"\") and Support for SecureBoot.\n\nNow I get this error message:\n\nASSERT_EFI_ERROR (Status \u003d Invalid Parameter)\n\nASSERT \\[Ventoy\\] /home/share/Ventoy/EDKII/edk2-edk2-stable201911/MdePkg/Library/UefiMemoryAllocationLib/MemoryAllocationLib.c(813): !EFI_ERROR (Status)\n\nNo bootfile found for UEFI!\n\nMaybe the image does not support X64 UEFI!\n\n"
+    },
+    {
+      "id": "215813",
+      "timestamp": "2020-08-10T12:55:25+00:00",
+      "author": "steve6375",
+      "content": "Are you sure the unmodified ISO boots OK?\n\nI have downloaded AcronisTrueImage2019_14110.iso and it also gives a UEFI boot error in E2B UEFI64 agFM grub2 (unmodified).\n\nIt does not contain any dmg file. I think you can get ISOs for PC or for MAC - maybe yours is the MAC one?\n\nAcronisTrueImage2019_14110.iso UEFI64 boots OK if I use the agFM .isomem boot option however.\n\n"
+    },
+    {
+      "id": "215838",
+      "timestamp": "2020-08-13T20:01:44+00:00",
+      "author": "nierewa",
+      "content": "Yes, it boots ok.\n\nNo, Its not the MAC one.\n\nOnly the modified doesn\u0027t boot uefi.\n\n[Screenshot merged ISOs](https://ibb.co/Zh6DHnG \"External link\")\n\n"
+    },
+    {
+      "id": "215839",
+      "timestamp": "2020-08-13T22:33:54+00:00",
+      "author": "steve6375",
+      "content": "Check file contents using 7zip - so you can see \\[BOOT\\] files.\n\n"
+    },
+    {
+      "id": "215840",
+      "timestamp": "2020-08-13T23:15:55+00:00",
+      "author": "nierewa",
+      "content": "The files in \\[BOOT\\] folder are the same in both ISOs:\n\n1. 1-Boot-NoEmul.img size: 2048  \n2. 2-Boot-NoEmul.img size: 0\n\nHmm, can it be some kind of signature?\n\n"
+    },
+    {
+      "id": "215842",
+      "timestamp": "2020-08-13T23:27:04+00:00",
+      "author": "steve6375",
+      "content": "How can it UEFI-boot if there are no .EFI boot files???\n\n"
+    },
+    {
+      "id": "215843",
+      "timestamp": "2020-08-13T23:57:34+00:00",
+      "author": "alacran",
+      "content": "UEFI boot files should be located into **efi** folder and I didn\u0027t see it on the pictures link on Post No, 11\n\nSee attached pictures from AcronisBootableMedia2016.iso\n\nalacran  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![efi folder.png](http://reboot.pro/uploads/monthly_08_2020/post-26560-0-24269200-1597363032_thumb.png)](http://reboot.pro/uploads/monthly_08_2020/post-26560-0-24269200-1597363032.png \"efi folder.png - Size: 360.47KB\"){#ipb-attach-url-17310-0-93048100-1676066383}\n* [![efi content.png](http://reboot.pro/uploads/monthly_08_2020/post-26560-0-69656200-1597363049_thumb.png)](http://reboot.pro/uploads/monthly_08_2020/post-26560-0-69656200-1597363049.png \"efi content.png - Size: 84.16KB\"){#ipb-attach-url-17311-0-93056900-1676066383}\n\n"
+    },
+    {
+      "id": "215845",
+      "timestamp": "2020-08-14T08:00:17+00:00",
+      "author": "nierewa",
+      "content": "\u003e UEFI boot files should be located into efi folder\nIt sems that there are more then one ISO-Versions outside.  \n\nAs I wrote in Post 1 the Acronis 2017 ISO has the same content like your 2016 ISO.  \nThe Acronis 2019 ISO unmodified boots UEFI.  \n\n\u003cbr /\u003e\n\n\u003e AcronisTrueImage2019_14110.iso UEFI64 boots OK if I use the agFM .isomem boot option however.\nAs I wrote I use the modified ventoy Version.  \nIf I boot .isomem nothing happens. Can you tell me how you did this?   \n"
+    },
+    {
+      "id": "215847",
+      "timestamp": "2020-08-14T08:15:09+00:00",
+      "author": "steve6375",
+      "content": "My ISO contains a EFI folder. I don\u0027t see how your ISO can UEFI boot as it does not have EFI files - are you SURE it UEFI boots when unmodified?\n\nTo test:\n\nI just made an E2B v2.04 USB drive using Windows 10\n\nAdded the ISO to \\\\_ISO\\\\BACKUP folder\n\nUEFI64 booted\n\nand chose the .isomem option.  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![acroniscontents.JPG](http://reboot.pro/uploads/monthly_08_2020/post-17818-0-77348500-1597392773_thumb.jpg)](http://reboot.pro/uploads/monthly_08_2020/post-17818-0-77348500-1597392773.jpg \"acroniscontents.JPG - Size: 139.14KB\"){#ipb-attach-url-17312-0-93062800-1676066383}\n\n"
+    },
+    {
+      "id": "215848",
+      "timestamp": "2020-08-14T08:45:59+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I use PowerISO or UltraIso to edit the isos.  \n\nThen don\u0027t and instead of editing a .iso (that by definition cannot be edited) re-create one.\n\nMaking a .iso that dual boots BIOS and UEFI is \"tough\" and it is very likely - not to say probable - that the original .iso has \\*some\\* settings\\[1\\] that \"generic automagic\" tools like PowerIso or UltraIso simply miss, or at least that was the case before:  \n[https://msfn.org/boa...comment\u003d1080917](https://msfn.org/board/topic/172122-got-tips-on-how-to-make-a-bootable-cd-from-bootable-usb/?do\u003dfindComment\u0026comment\u003d1080917 \"External link\")\n\nCompare with:  \n\u003chttp://reboot.pro/topic/21664-makeiso/\u003e\n\n[http://reboot.pro/to...-under-windows/](http://reboot.pro/topic/20247-biosefi-hybrid-iso-creation-under-windows/ \"\")\n\nBasically you need to understand how (EXACTLY) the original .iso is made and then find a way to recreate it with mkisofs or oscdimg, start here:  \n[https://msfn.org/boa...-torito-images/](https://msfn.org/board/topic/172655-strange-or-odd-multi-or-single-boot-cddvd-el-torito-images/ \"External link\")\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n\\[1\\] possibly unrelated, but Acronis has historically made \"strange\" .iso\u0027s:  \n[http://reboot.pro/to...-grub2-at-uefi/](http://reboot.pro/topic/20004-boot-a-acronis-true-image-2014-iso-image-with-grub2-at-uefi/ \"\")\n\n[https://msfn.org/boa...oot-on-uefi-pc/](https://msfn.org/board/topic/172610-acronis-iso-boot-on-uefi-pc/ \"External link\")\n\n"
+    },
+    {
+      "id": "215854",
+      "timestamp": "2020-08-14T17:02:08+00:00",
+      "author": "cdob",
+      "content": "\u003e 2. 2-Boot-NoEmul.img size: 0\n\n.\n\nCompare this at ImDisk or ISOBuster.\n\n.  \nThis is the EFI boot image, It\u0027s a approximate 400 MB floppy image.\n\n"
+    },
+    {
+      "id": "215893",
+      "timestamp": "2020-08-16T19:20:26+00:00",
+      "author": "nierewa",
+      "content": "\u003e Compare this at ImDisk or ISOBuster.\n\nComparing with IsoBuster shows the difference\n\n[![isobuster.jpg](https://reboot.pro/uploads/monthly_08_2020/post-21205-0-04329700-1597605526_thumb.jpg)](https://reboot.pro/uploads/monthly_08_2020/post-21205-0-04329700-1597605526.jpg \"isobuster.jpg - Size: 81.52KB\"){#ipb-attach-url-17324-0-00818700-1675925656}\n\nThere only three entrys in Spur 1 in the modified ISO and the BiitImage.img with 0kib\n\nStrange\n\n"
+    },
+    {
+      "id": "215894",
+      "timestamp": "2020-08-16T19:20:32+00:00",
+      "author": "nierewa",
+      "content": "\u003e Compare this at ImDisk or ISOBuster.\n\nComparing with IsoBuster shows the difference\n\n[![isobuster.jpg](https://reboot.pro/uploads/monthly_08_2020/post-21205-0-04329700-1597605526_thumb.jpg)](https://reboot.pro/uploads/monthly_08_2020/post-21205-0-04329700-1597605526.jpg \"isobuster.jpg - Size: 81.52KB\"){#ipb-attach-url-17324-0-01591700-1675925656}\n\nThere only three entrys in Spur 1 in the modified ISO and the BiitImage.img with 0kib\n\nStrange  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![isobuster.jpg](http://reboot.pro/uploads/monthly_08_2020/post-21205-0-04329700-1597605526_thumb.jpg)](http://reboot.pro/uploads/monthly_08_2020/post-21205-0-04329700-1597605526.jpg \"isobuster.jpg - Size: 81.52KB\"){#ipb-attach-url-17324-0-93067600-1676066383}\n\n"
+    },
+    {
+      "id": "215907",
+      "timestamp": "2020-08-17T10:27:09+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Strange\n\nPlease read as \"normal for Acronis\", as seen in the given threads.\n\nWhat very likely happens is that the size of the boot image is mis-reported, not entirely unlike what happened here:  \n[http://reboot.pro/to...ting-iso-files/](http://reboot.pro/topic/12406-editing-iso-files/ \"\")\n\nwith a \"more normal\" isolinux .iso.\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "215929",
+      "timestamp": "2020-08-17T20:07:23+00:00",
+      "author": "cdob",
+      "content": "\u003e Comparing with IsoBuster shows the difference\n\nThe original ISO contains two \\~ 400 MB boot images.\n\nGuessed: one PC and another Mac one. Then one image should be mountable at ImDisk.\n\nThe boot images are missing at the edited ISO, UEFI boot fails.\n\n"
+    },
+    {
+      "id": "215943",
+      "timestamp": "2020-08-19T09:18:49+00:00",
+      "author": "nierewa",
+      "content": "Ok, I give up.  \nSo I use the original Image instead.\n\nThanks all for your help ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)\n\n"
+    },
+    {
+      "id": "215952",
+      "timestamp": "2020-08-19T16:32:13+00:00",
+      "author": "cdob",
+      "content": "I wonder the file size: why a 1.6 GB ISO image?  \nDosn\u0027t Acronis offer a about 700 MB CD image anymore?\n\n"
+    },
+    {
+      "id": "215803",
+      "timestamp": "2020-08-10T07:27:15+00:00",
+      "author": "nierewa",
+      "content": "Hi,  \n\nI\u0027ve been using ventoy for a while now and I love it.  \nBut there\u0027s a problem I have.  \n\nI made an Multiboot-USB Stick. With ventoy so easy.  \nBut if I edit an ISO the error: \"No bootfile found for UEFI! Maybe the image does not support X64 UEFI!\" occured.  \n\nIn this case it\u0027s Acronis 2019.  \nInside iso is a file for Mac: AcronisTrueImage2019-17000.dmg  \nI delete this one to safe space. Now I boot and get the error.  \n\nKaspersky rescue disc the same.  \n\nBut I did the same thing with Acronis 2017 ago... this worked fine.  \n\nI use PowerISO or UltraIso to edit the isos.  \n\nCan someone help me with this?  \n\nBest regards ![biggrin.png](https://forums.ventoy.net/images/smilies/biggrin.png \"Big Grin\")\n\n"
+    },
+    {
+      "id": "215804",
+      "timestamp": "2020-08-10T07:34:09+00:00",
+      "author": "steve6375",
+      "content": "Are you testing booting on a real system?\n\n"
+    },
+    {
+      "id": "215805",
+      "timestamp": "2020-08-10T08:05:05+00:00",
+      "author": "nierewa",
+      "content": "Hi ![:D](https://reboot.pro/public/style_emoticons/default/biggrin.png)\n\nOn a real system.\n\n"
+    },
+    {
+      "id": "215806",
+      "timestamp": "2020-08-10T08:07:52+00:00",
+      "author": "steve6375",
+      "content": "Does the modified ISO UEFI-boot from an Easy2Boot v2 USB drive?\n\n"
+    },
+    {
+      "id": "215807",
+      "timestamp": "2020-08-10T08:10:22+00:00",
+      "author": "nierewa",
+      "content": "Can\u0027t test because I have no Easy2Boot USb drive.\n\n"
+    },
+    {
+      "id": "215808",
+      "timestamp": "2020-08-10T09:38:56+00:00",
+      "author": "nierewa",
+      "content": "So I\u0027ve tested with Easy2Boot v2... same problem.  \n\"No bootfile found for UEFI\"\n\n"
+    },
+    {
+      "id": "215809",
+      "timestamp": "2020-08-10T09:40:58+00:00",
+      "author": "steve6375",
+      "content": "OK - so if you extract the files from each ISO and compare the contents, what differences do you see?\n\n"
+    },
+    {
+      "id": "215810",
+      "timestamp": "2020-08-10T10:52:01+00:00",
+      "author": "nierewa",
+      "content": "Content is the same.  \nOnly folder doc and the file AcronisTrueImage2019-17000.dmg are deleted.\n\nI had a screenshot but no idea how to attaching it ![:confused1:](https://reboot.pro/public/style_emoticons/default/confused1.gif)\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "215811",
+      "timestamp": "2020-08-10T11:25:58+00:00",
+      "author": "nierewa",
+      "content": "I made a new GPT ventoy stick with [Ventoy-1.0.18_Modified_EN](http://reboot.pro/topic/22328-ventoy-boot-grubfm-modified/ \"\") and Support for SecureBoot.\n\nNow I get this error message:\n\nASSERT_EFI_ERROR (Status \u003d Invalid Parameter)\n\nASSERT \\[Ventoy\\] /home/share/Ventoy/EDKII/edk2-edk2-stable201911/MdePkg/Library/UefiMemoryAllocationLib/MemoryAllocationLib.c(813): !EFI_ERROR (Status)\n\nNo bootfile found for UEFI!\n\nMaybe the image does not support X64 UEFI!\n\n"
+    },
+    {
+      "id": "215813",
+      "timestamp": "2020-08-10T12:55:25+00:00",
+      "author": "steve6375",
+      "content": "Are you sure the unmodified ISO boots OK?\n\nI have downloaded AcronisTrueImage2019_14110.iso and it also gives a UEFI boot error in E2B UEFI64 agFM grub2 (unmodified).\n\nIt does not contain any dmg file. I think you can get ISOs for PC or for MAC - maybe yours is the MAC one?\n\nAcronisTrueImage2019_14110.iso UEFI64 boots OK if I use the agFM .isomem boot option however.\n\n"
+    },
+    {
+      "id": "215838",
+      "timestamp": "2020-08-13T20:01:44+00:00",
+      "author": "nierewa",
+      "content": "Yes, it boots ok.\n\nNo, Its not the MAC one.\n\nOnly the modified doesn\u0027t boot uefi.\n\n[Screenshot merged ISOs](https://ibb.co/Zh6DHnG \"External link\")\n\n"
+    },
+    {
+      "id": "215839",
+      "timestamp": "2020-08-13T22:33:54+00:00",
+      "author": "steve6375",
+      "content": "Check file contents using 7zip - so you can see \\[BOOT\\] files.\n\n"
+    },
+    {
+      "id": "215840",
+      "timestamp": "2020-08-13T23:15:55+00:00",
+      "author": "nierewa",
+      "content": "The files in \\[BOOT\\] folder are the same in both ISOs:\n\n1. 1-Boot-NoEmul.img size: 2048  \n2. 2-Boot-NoEmul.img size: 0\n\nHmm, can it be some kind of signature?\n\n"
+    },
+    {
+      "id": "215842",
+      "timestamp": "2020-08-13T23:27:04+00:00",
+      "author": "steve6375",
+      "content": "How can it UEFI-boot if there are no .EFI boot files???\n\n"
+    },
+    {
+      "id": "215843",
+      "timestamp": "2020-08-13T23:57:34+00:00",
+      "author": "alacran",
+      "content": "UEFI boot files should be located into **efi** folder and I didn\u0027t see it on the pictures link on Post No, 11\n\nSee attached pictures from AcronisBootableMedia2016.iso\n\nalacran  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![efi folder.png](http://reboot.pro/uploads/monthly_08_2020/post-26560-0-24269200-1597363032_thumb.png)](http://reboot.pro/uploads/monthly_08_2020/post-26560-0-24269200-1597363032.png \"efi folder.png - Size: 360.47KB\"){#ipb-attach-url-17310-0-09036100-1676066384}\n* [![efi content.png](http://reboot.pro/uploads/monthly_08_2020/post-26560-0-69656200-1597363049_thumb.png)](http://reboot.pro/uploads/monthly_08_2020/post-26560-0-69656200-1597363049.png \"efi content.png - Size: 84.16KB\"){#ipb-attach-url-17311-0-09044900-1676066384}\n\n"
+    },
+    {
+      "id": "215845",
+      "timestamp": "2020-08-14T08:00:17+00:00",
+      "author": "nierewa",
+      "content": "\u003e UEFI boot files should be located into efi folder\nIt sems that there are more then one ISO-Versions outside.  \n\nAs I wrote in Post 1 the Acronis 2017 ISO has the same content like your 2016 ISO.  \nThe Acronis 2019 ISO unmodified boots UEFI.  \n\n\u003cbr /\u003e\n\n\u003e AcronisTrueImage2019_14110.iso UEFI64 boots OK if I use the agFM .isomem boot option however.\nAs I wrote I use the modified ventoy Version.  \nIf I boot .isomem nothing happens. Can you tell me how you did this?   \n"
+    },
+    {
+      "id": "215847",
+      "timestamp": "2020-08-14T08:15:09+00:00",
+      "author": "steve6375",
+      "content": "My ISO contains a EFI folder. I don\u0027t see how your ISO can UEFI boot as it does not have EFI files - are you SURE it UEFI boots when unmodified?\n\nTo test:\n\nI just made an E2B v2.04 USB drive using Windows 10\n\nAdded the ISO to \\\\_ISO\\\\BACKUP folder\n\nUEFI64 booted\n\nand chose the .isomem option.  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![acroniscontents.JPG](http://reboot.pro/uploads/monthly_08_2020/post-17818-0-77348500-1597392773_thumb.jpg)](http://reboot.pro/uploads/monthly_08_2020/post-17818-0-77348500-1597392773.jpg \"acroniscontents.JPG - Size: 139.14KB\"){#ipb-attach-url-17312-0-09050700-1676066384}\n\n"
+    },
+    {
+      "id": "215848",
+      "timestamp": "2020-08-14T08:45:59+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I use PowerISO or UltraIso to edit the isos.  \n\nThen don\u0027t and instead of editing a .iso (that by definition cannot be edited) re-create one.\n\nMaking a .iso that dual boots BIOS and UEFI is \"tough\" and it is very likely - not to say probable - that the original .iso has \\*some\\* settings\\[1\\] that \"generic automagic\" tools like PowerIso or UltraIso simply miss, or at least that was the case before:  \n[https://msfn.org/boa...comment\u003d1080917](https://msfn.org/board/topic/172122-got-tips-on-how-to-make-a-bootable-cd-from-bootable-usb/?do\u003dfindComment\u0026comment\u003d1080917 \"External link\")\n\nCompare with:  \n\u003chttp://reboot.pro/topic/21664-makeiso/\u003e\n\n[http://reboot.pro/to...-under-windows/](http://reboot.pro/topic/20247-biosefi-hybrid-iso-creation-under-windows/ \"\")\n\nBasically you need to understand how (EXACTLY) the original .iso is made and then find a way to recreate it with mkisofs or oscdimg, start here:  \n[https://msfn.org/boa...-torito-images/](https://msfn.org/board/topic/172655-strange-or-odd-multi-or-single-boot-cddvd-el-torito-images/ \"External link\")\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n\\[1\\] possibly unrelated, but Acronis has historically made \"strange\" .iso\u0027s:  \n[http://reboot.pro/to...-grub2-at-uefi/](http://reboot.pro/topic/20004-boot-a-acronis-true-image-2014-iso-image-with-grub2-at-uefi/ \"\")\n\n[https://msfn.org/boa...oot-on-uefi-pc/](https://msfn.org/board/topic/172610-acronis-iso-boot-on-uefi-pc/ \"External link\")\n\n"
+    },
+    {
+      "id": "215854",
+      "timestamp": "2020-08-14T17:02:08+00:00",
+      "author": "cdob",
+      "content": "\u003e 2. 2-Boot-NoEmul.img size: 0\n\n.\n\nCompare this at ImDisk or ISOBuster.\n\n.  \nThis is the EFI boot image, It\u0027s a approximate 400 MB floppy image.\n\n"
+    },
+    {
+      "id": "215893",
+      "timestamp": "2020-08-16T19:20:26+00:00",
+      "author": "nierewa",
+      "content": "\u003e Compare this at ImDisk or ISOBuster.\n\nComparing with IsoBuster shows the difference\n\n[![isobuster.jpg](https://reboot.pro/uploads/monthly_08_2020/post-21205-0-04329700-1597605526_thumb.jpg)](https://reboot.pro/uploads/monthly_08_2020/post-21205-0-04329700-1597605526.jpg \"isobuster.jpg - Size: 81.52KB\"){#ipb-attach-url-17324-0-00818700-1675925656}\n\nThere only three entrys in Spur 1 in the modified ISO and the BiitImage.img with 0kib\n\nStrange\n\n"
+    },
+    {
+      "id": "215894",
+      "timestamp": "2020-08-16T19:20:32+00:00",
+      "author": "nierewa",
+      "content": "\u003e Compare this at ImDisk or ISOBuster.\n\nComparing with IsoBuster shows the difference\n\n[![isobuster.jpg](https://reboot.pro/uploads/monthly_08_2020/post-21205-0-04329700-1597605526_thumb.jpg)](https://reboot.pro/uploads/monthly_08_2020/post-21205-0-04329700-1597605526.jpg \"isobuster.jpg - Size: 81.52KB\"){#ipb-attach-url-17324-0-01591700-1675925656}\n\nThere only three entrys in Spur 1 in the modified ISO and the BiitImage.img with 0kib\n\nStrange  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![isobuster.jpg](http://reboot.pro/uploads/monthly_08_2020/post-21205-0-04329700-1597605526_thumb.jpg)](http://reboot.pro/uploads/monthly_08_2020/post-21205-0-04329700-1597605526.jpg \"isobuster.jpg - Size: 81.52KB\"){#ipb-attach-url-17324-0-09055700-1676066384}\n\n"
+    },
+    {
+      "id": "215907",
+      "timestamp": "2020-08-17T10:27:09+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Strange\n\nPlease read as \"normal for Acronis\", as seen in the given threads.\n\nWhat very likely happens is that the size of the boot image is mis-reported, not entirely unlike what happened here:  \n[http://reboot.pro/to...ting-iso-files/](http://reboot.pro/topic/12406-editing-iso-files/ \"\")\n\nwith a \"more normal\" isolinux .iso.\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "215929",
+      "timestamp": "2020-08-17T20:07:23+00:00",
+      "author": "cdob",
+      "content": "\u003e Comparing with IsoBuster shows the difference\n\nThe original ISO contains two \\~ 400 MB boot images.\n\nGuessed: one PC and another Mac one. Then one image should be mountable at ImDisk.\n\nThe boot images are missing at the edited ISO, UEFI boot fails.\n\n"
+    },
+    {
+      "id": "215943",
+      "timestamp": "2020-08-19T09:18:49+00:00",
+      "author": "nierewa",
+      "content": "Ok, I give up.  \nSo I use the original Image instead.\n\nThanks all for your help ![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)\n\n"
+    },
+    {
+      "id": "215952",
+      "timestamp": "2020-08-19T16:32:13+00:00",
+      "author": "cdob",
+      "content": "I wonder the file size: why a 1.6 GB ISO image?  \nDosn\u0027t Acronis offer a about 700 MB CD image anymore?\n\n"
+    },
+    {
+      "id": "216238",
+      "timestamp": "2020-09-23T11:00:16+00:00",
+      "author": "nierewa",
+      "content": "\u003e I wonder the file size: why a 1.6 GB ISO image?\n\nYes it was my fault :blush:\n\nThe image I have had was an iso from install medium not \"the\" bootmedium.\n\n"
+    }
+  ]
+}

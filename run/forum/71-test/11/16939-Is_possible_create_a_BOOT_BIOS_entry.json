@@ -1,0 +1,82 @@
+{
+  "id": "16939",
+  "title": "Is possible create a BOOT BIOS entry?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "155139",
+      "timestamp": "2012-05-23T22:00:35+00:00",
+      "author": "ewqa",
+      "content": "Hello, I\u0027ve learned a lot from this forum on boot different operating systems with EasyBCD, BootICE, grub4dos, etc.. But what I do not meeting for any site on google or reboot.pro and would like you to help me solve it.  \n\nI want to add a boot entry to the BIOS to call any partition of my hard drive to boot regardless in case of mbr main failure.  \n\n![Posted Image](http://www.besttechtips.net/wp-content/uploads/2012/03/boot-menu.png)  \n\nI say this because all the ways described in this forum depend on the main mbr, but I do not know if you can use another mbr in case of failure of the principal.  \n\nI know that with boot usbs and cds could be solved but , What happens if I have none at that time?.  \n\nPXE not worth for me because I will not hold anything out of my hard drive.  \n\nIs there any way to do or is not possible?.  \n\nSorry for my english and thank you.   \n"
+    },
+    {
+      "id": "155146",
+      "timestamp": "2012-05-24T02:58:02+00:00",
+      "author": "0scar",
+      "content": "Modding the bios is possible, there are tools for editing the bios, but it is too easy to brick the motherboard.  \nSearch in Google, for ex. [http://home.arcor.de.../bmreport1.html](http://home.arcor.de/frogge/pepper/bmreport1.html \"External link\")   \n"
+    },
+    {
+      "id": "155167",
+      "timestamp": "2012-05-24T15:15:20+00:00",
+      "author": "sbaeder",
+      "content": "I would agree with the above. Modifying the BIOS (or even the UEFI going forward) is a complex and tricky proposition. Even \"experts\" have problems doing this!  \n\nBest bet would be to have a USB drive with a good MBR (or bootable environment) that can be used to \"repair\" a faulty MBR. But just a question...How often or likely is it to be the case that you have a bad MBR and can\u0027t boot - AND you don\u0027t have access to a USB or CD?   \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nScott   \n"
+    },
+    {
+      "id": "155168",
+      "timestamp": "2012-05-24T15:39:16+00:00",
+      "author": "pscEx",
+      "content": "\u003e I want to add a boot entry to the BIOS to call any partition of my hard drive to boot regardless in case of mbr main failure.  \nIn good old NT / XP ICE-Age for such reasons I had a bootable floppy with a copy of boot.ini.  \n\nMaybe something similar can be done with BCD?  \n\nPeter   \n"
+    },
+    {
+      "id": "155173",
+      "timestamp": "2012-05-24T16:27:21+00:00",
+      "author": "sbaeder",
+      "content": "\u003e In good old NT / XP ICE-Age for such reasons I had a bootable floppy with a copy of boot.ini.  \n\u003e\n\u003e Maybe something similar can be done with BCD?  \n\u003e\n\u003e Peter  \nYes, and I have a partition (FAT w/dos) on my system too...Not quite as good as a floppy :smile: since it is on the same drive, but useful for BIOS and firmware updates...Problem with this (i.e. a separate partition (and using BCD) is that it can still become FUBAR if there is a corruption on the MBR and partition table...But again, just one more reason to have a bootable flash drive around. In fact, I love carrying around the little [swiss-army knife with a flash drive](http://www.swissknifeshop.com/shop/swiss-army/victorinox/swiss-army-knives/victorinox-flash?gclid\u003dCM6EnZermbACFYeo4AodjBvZ3A \"External link\"). Not cheap, but a handy tool to have...  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nScott   \n"
+    },
+    {
+      "id": "155191",
+      "timestamp": "2012-05-25T02:01:16+00:00",
+      "author": "ewqa",
+      "content": "\u003e **Modding the bios is possible, there are tools for editing the bios, but it is too easy to brick the motherboard.\n\u003e Search in Google, for ex.** [http://home.arcor.de.../bmreport1.html](http://home.arcor.de/frogge/pepper/bmreport1.html \"External link\")  \n\n**Thanks for the link, though it is true that is too easy to brick the motherboard.**   \n\n\u003cbr /\u003e\n\n---------------------------------------------------------------------------------------------------------------------------------------------------------  \n\u003e **In good old NT / XP ICE-Age for such reasons I had a bootable floppy with a copy of boot.ini.\n\u003e Maybe something similar can be done with BCD?\n\u003e Peter**   \n\n**Thanks Peter, i know how to do it with USBs, CDs, DVDs , and floppies. But the challenge is do it like I explain below to Sbaeder.**   \n\n\u003cbr /\u003e\n\n---------------------------------------------------------------------------------------------------------------------------------------------------------  \n\u003e **But just a question...How often or likely is it to be the case that you have a bad MBR and can\u0027t boot - AND you don\u0027t have access to a USB or CD?**   \n\n**I practice a lot trying different boot methods and it happens to me sometimes.**  \n\n\u003cbr /\u003e\n\n---------------------------------------------------------------------------------------------------------------------------------------------------------  \n\u003e **Best bet would be to have a USB drive with a good MBR (or bootable environment) that can be used to \"repair\" a faulty MBR.**\n\n**The challenge is to create something for example like this:**  \n\n![Posted Image](http://www.majotphotography.com/TestingGrounds/Leopard.5/DSC_4167.JPG)  \n\n**Look at the input 7 or 8 (links to HD partitions). I want only an entry that calls to a partition of my hard disc that(f.example) execute the software Bootice or similar to restore my MBR or partitions table (WITHOUT the interaction of any USB or DVD).**  \n\n**How can we add a partition to our Bios to call a (basic) rescue software?.**  \n\n**By the by, Could we create a Virtual Device(not vmware,virtualbox or so) and trick the Bios for this purpose?**.  \n---------------------------------------------------------------------------------------------------------------------------------------------------------   \n\n**Edited by ewqa, 25 May 2012 - 02:28 AM.**\n"
+    },
+    {
+      "id": "155211",
+      "timestamp": "2012-05-25T15:11:34+00:00",
+      "author": "Wonko the Sane",
+      "content": "Something that you can do with no risk, is to use a network card (actually the EPROM/EEPROM/Flash on it) as an \"Extension Bios\".  \n\nAmong the various things that you can put on it there are PLoP and Wee, both of which could represent a \"failsafe booting\".  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "155240",
+      "timestamp": "2012-05-25T19:04:09+00:00",
+      "author": "sbaeder",
+      "content": "yes, adding a bootable rom (and a NIC is a good way to cheaply add this - I hadn\u0027t thought of it before ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif) ) You would still need to do the work to make that ROM, and add in the code to be able to repair the MBR that was corrupted, etc. So, making a bootable ROM and using a NIC card to access it (at least when there is the ability to have a NIC boot rom) is possibly viable.   \n\nBut seems it would be simple and inexpensive to just make a bootable USB, and throw it onto a [micro USB stick](https://www.google.com/search?q\u003dmicro+usb+stick\u0026ie\u003dutf-8\u0026oe\u003dutf-8\u0026aq\u003dt\u0026rls\u003dorg.mozilla:en-US:official\u0026client\u003dfirefox-a\u0026channel\u003dfflb \"External link\") that you leave plugged in at all times. Then it works for a laptop, or a case where you have the NIC on the motherboard without an option ROM available, etc... And, my experience has been that if the MBR is non-functional, that you need more tools to fix things, since access to the other disks or partitions on any hard drive may not be functional. This way you can update it when you need to, but even set it up so it isn\u0027t even mounted by Windows (by default)...  \n\nIn any case, good luck, and if you do build a ROM module, let us know!  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nScott   \n"
+    },
+    {
+      "id": "155264",
+      "timestamp": "2012-05-26T12:20:53+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e yes, adding a bootable rom (and a NIC is a good way to cheaply add this - I hadn\u0027t thought of it before ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif) ) You would still need to do the work to make that ROM, and add in the code to be able to repair the MBR that was corrupted, etc.  \nNot really really, as said Wee is a \"ready\" solution, I presume that very little tweaks are needed to have it work the intended way, and maybe tinybit could be willing to add anything that may be \"missing\":  \n\u003chttp://reboot.pro/11751/\u003e  \n[http://code.google.c.../downloads/list](http://code.google.com/p/grubutils/downloads/list \"External link\")  \n\nOtherways there is also this nice resource (also cited in the above thread):  \n[http://rayer.ic.cz/romos/romose.htm](http://rayer.ic.cz/romos/romose.htm \"External link\")  \n(down right now, but available through the Wayback Machine):  \n[http://web.archive.o...omos/romose.htm](http://web.archive.org/web/20100111040625/http://rayer.ic.cz/romos/romose.htm \"External link\")  \nbasically you get freedos running from your ROM, and the limit is more or less size of the available ROM.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "155281",
+      "timestamp": "2012-05-26T16:21:51+00:00",
+      "author": "sbaeder",
+      "content": "thanks for the pointers - interesting stuff, but looks like they rely on BIOS things, so not sure that looking forward to UEFI, that it makes sense... so to me, just getting a micro USB seems easier.   \n\nBUT, the good think about options is that it\u0027s good to have a lot of them!...And it is cool to see what has been done in the past to help guide us in the future!  \n\nTHANKS  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nScott   \n"
+    },
+    {
+      "id": "155292",
+      "timestamp": "2012-05-26T17:18:56+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e thanks for the pointers - interesting stuff, but looks like they rely on BIOS things, so not sure that looking forward to UEFI, that it makes sense... so to me, just getting a micro USB seems easier.  \nIt is easier ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif), but if you want the same \"level\" of \"reliability\" or \"protection from accidental delete\" of a Flash/Eprom you will also need the Manufacurer tool and set it to read only and/or CD LUN, etc., etc.  \nEven easier would be a CF card on a (nowadays mostly unused) IDE connection.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "155612",
+      "timestamp": "2012-06-01T09:34:47+00:00",
+      "author": "ewqa",
+      "content": "\u003e **Something that you can do with no risk, is to use a network card (actually the EPROM/EEPROM/Flash on it) as an \"Extension Bios\".\n\u003e Among the various things that you can put on it there are PLoP and Wee, both of which could represent a \"failsafe booting\".**   \n\n**Sorry, i don´t understand how to do this: \"to use a network card (actually the EPROM/EEPROM/Flash on it) as an \"Extension Bios\".**   \n-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  \n\n\u003e **But seems it would be simple and inexpensive to just make a bootable USB, and throw it onto a [micro USB stick](https://www.google.com/search?q\u003dmicro+usb+stick\u0026ie\u003dutf-8\u0026oe\u003dutf-8\u0026aq\u003dt\u0026rls\u003dorg.mozilla:en-US:official\u0026client\u003dfirefox-a\u0026channel\u003dfflb \"External link\") that you leave plugged in at all times.**   \n\n**MicroUSB seems to be a great idea (or a CF card that is smaller** ![:pressure:](http://reboot.pro/public/style_emoticons/default/infomilies10.gif) **)**  \n-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  \n\n\u003e **If you want the same \"level\" of \"reliability\" or \"protection from accidental delete\" of a Flash/Eprom you will also need the Manufacurer tool and set it to read only and/or CD LUN, etc., etc.\n\u003e Even easier would be a CF card on a (nowadays mostly unused) IDE connection.**   \n\n**I supose that the CF card on a IDE connection would be connected internally in a PC but .... in a laptop it is not viable, isn´t it?**  \n\n**I think that is dangerous tune or modify the Bios, it could cause equipment failure. The best option for me is to leave plugged in at all times a CF card with Plop boot manager installed on it .... What do you think?** .   \n"
+    }
+  ]
+}

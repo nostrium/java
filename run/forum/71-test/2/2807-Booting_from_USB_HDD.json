@@ -1,0 +1,370 @@
+{
+  "id": "2807",
+  "title": "Booting from USB HDD",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "18958",
+      "timestamp": "2007-08-07T04:58:35+00:00",
+      "author": "iceangel89",
+      "content": "hi, :smile:   \n\na new comer here ![:yahoo:](http://reboot.pro/public/style_emoticons/default/yahoo.gif) , i want to boot my XP/Vista Install from a USB HDD hope fully without any CD/DVDs. if possible also add Partition Magic and stuff in too, how do i do these?  \n\nThanks :smile:   \n"
+    },
+    {
+      "id": "18965",
+      "timestamp": "2007-08-07T08:09:06+00:00",
+      "author": "was_jaclaz",
+      "content": "Cannot say about Vista.  \n\nFor XP the (LOONG!) thread is here:  \n[http://www.911cd.net...showtopic\u003d14181](http://www.911cd.net/forums//index.php?showtopic\u003d14181 \"External link\")  \n\nJust read the links in Dietmar\u0027s signature, and/or try the \"automated way\":  \n[http://www.usboot.org/tiki-index.php](http://www.usboot.org/tiki-index.php \"External link\")  \n\n(we are talking about FULL XP, ***not*** BartPE/WinPE here, right? ![:yahoo:](http://reboot.pro/public/style_emoticons/default/yahoo.gif))  \n\njaclaz   \n"
+    },
+    {
+      "id": "18966",
+      "timestamp": "2007-08-07T08:22:21+00:00",
+      "author": "iceangel89",
+      "content": "ya i am talking about full XP. will try that tmr, tmr i have an exam ![:yahoo:](http://reboot.pro/public/style_emoticons/default/yahoo.gif)   \n"
+    },
+    {
+      "id": "19016",
+      "timestamp": "2007-08-08T07:26:10+00:00",
+      "author": "iceangel89",
+      "content": "actually i was wanting to boot \\\u0026 **install** XP not use it. and also add softwares like partition magic so i fo not need any CD.DVD anymore. so what i hope to accomplish is something like:  \n\n1. Boot From USB HDD   \n\\*. Extension: Start Partition Magic  \n2. Install XP (I have used nLite to make a unattended setup)  \n3. Install any programs from USB HDD - trying to make silent install for all programs   \n"
+    },
+    {
+      "id": "19026",
+      "timestamp": "2007-08-08T13:59:42+00:00",
+      "author": "was_jaclaz",
+      "content": "Well,  \nthen go here:  \n[http://www.msfn.org/...topic\u003d61384\\\u0026hl\u003d](http://www.msfn.org/board/index.php?showtopic\u003d61384\u0026hl\u003d \"External link\")  \n\nSome background, an alternative using DOS and links to most relevant posts:  \n[http://www.msfn.org/...opic\u003d81788\\\u0026st\u003d6](http://www.msfn.org/board/index.php?showtopic\u003d81788\u0026st\u003d6 \"External link\")  \n[http://www.msfn.org/...opic\u003d99453\\\u0026st\u003d3](http://www.msfn.org/board/index.php?showtopic\u003d99453\u0026st\u003d3 \"External link\")  \n\nThe very last one files are here:  \n[http://www.msfn.org/...o...1384\\\u0026st\u003d293](http://www.msfn.org/board/index.php?showto...1384\u0026st\u003d293 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "19178",
+      "timestamp": "2007-08-10T09:01:25+00:00",
+      "author": "iceangel89",
+      "content": "then if i want it to be NTFS instead of FAT?  \n\nand if i want to boot from a partitioned HDD? say i have a 250GB HDD with partitions will it cause any problems?   \n"
+    },
+    {
+      "id": "19180",
+      "timestamp": "2007-08-10T09:49:18+00:00",
+      "author": "was_jaclaz",
+      "content": "The source and destination partitions need to be FAT or FAT32 ONLY if you use the DOS+WINNT method.  \n\nThey can be FAT, FAT32 or NTFS if you use the WINNT32.EXE one.  \n\nOf course there is no problem using a \"partitioned\" HD, there is no such thing as a \"unpartitioned\" HD, but I have to warn you that both methods are not (yet) aimed to the \"common\" end user, as a little more than average understanding of the way hard disks, PC and the NT booting is required.  \n\nMoreover, if you want to add apps, make an unattended setup (which won\u0027t be unattended at all if you plan to use Partition Magic before ![:yahoo:](http://reboot.pro/public/style_emoticons/default/yahoo.gif)), and doing your own customizations, you\u0027ll need to learn and understand quite a lot of more \"advanced\" topics.  \n\nMy guess is that it will be then more \"flexible\" for your scopes a setup with a booting PE system, as in method #2 listed here:  \n[http://www.msfn.org/...opic\u003d81788\\\u0026st\u003d6](http://www.msfn.org/board/index.php?showtopic\u003d81788\u0026st\u003d6 \"External link\")  \n\n(though again, most probably it won\u0027t be\"really\" unattended)  \n\njaclaz   \n"
+    },
+    {
+      "id": "19190",
+      "timestamp": "2007-08-10T11:56:48+00:00",
+      "author": "yahoouk",
+      "content": "Hi ![:yahoo:](http://reboot.pro/public/style_emoticons/default/yahoo.gif)   \n\nPlease see here.  \n\n[http://www.ngine.de/...jsp?pageid\u003d4176](http://www.ngine.de/index.jsp?pageid\u003d4176 \"External link\")   \n"
+    },
+    {
+      "id": "19192",
+      "timestamp": "2007-08-10T12:53:53+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Hi ![:yahoo:](http://reboot.pro/public/style_emoticons/default/yahoo.gif)   \n\u003e\n\u003e Please see here.  \n\u003e\n\u003e [http://www.ngine.de/...jsp?pageid\u003d4176](http://www.ngine.de/index.jsp?pageid\u003d4176 \"External link\")\n\nWell, NO, this is the modified **tubo** \u0027s tutorial, derived from **Dietmar** \u0027s one, already linked to.  \n\nThis is to install a full XP **ON** USB device, as in first answer, something that **iceangel89** does not want.  \n\njaclaz   \n"
+    },
+    {
+      "id": "19261",
+      "timestamp": "2007-08-11T07:57:10+00:00",
+      "author": "iceangel89",
+      "content": "it says only says using winbuilder which i did already then whats next? run winnt32.exe using winbuilder?  \n\nand after reading so many posts, i think the easiest way is method 3 instead? modifying boot.ini to load SETUPLDR.BIN isit?  \n\nbut, ok want to clarify - the files i need are? (NTLDR, boot.ini etc if i am not wrong)  \nand the boot.ini need to be changed to?   \nand resources to get info on what do multi(0)disk(0)rdisk(0)partition(1)\\\\WINDOWS mean. i think its something like the index of the disk then the partition etc. but like u said, i need to understand how things works.  \n\nThanks for your help so far, really appreciate   \n"
+    },
+    {
+      "id": "19543",
+      "timestamp": "2007-08-17T07:45:26+00:00",
+      "author": "omegahawk",
+      "content": "\u003e Cannot say about Vista.  \n\u003e\n\u003e For XP the (LOONG!) thread is here:  \n\u003e [http://www.911cd.net...showtopic\u003d14181](http://www.911cd.net/forums//index.php?showtopic\u003d14181 \"External link\")  \n\u003e\n\u003e Just read the links in Dietmar\u0027s signature, and/or try the \"automated way\":  \n\u003e [http://www.usboot.org/tiki-index.php](http://www.usboot.org/tiki-index.php \"External link\")  \n\u003e\n\u003e (we are talking about FULL XP, ***not*** BartPE/WinPE here, right? ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif))  \n\u003e\n\u003e jaclaz\n\nHi All,  \n\nThis is my first time here,   \n\nI have managed to get my USB HDD(3.5\" samsung 80G HDD) working from the tutorial given by Dietmar. ps the 1st link seems not working anymore, im getting errors by going to that link.  \n\nmy question is as below;  \n1) is there a way to make the bootable USB HDD that i have managed to make boot on other boards other than the one i installed the WinXP on? is there any thread that have the tutorial or instruction to this?  \n2) i\u0027ve seen few forums on booting the USB on non supported BIOS. My question would be is there a way to make the USB HDD bootable when there is no BOOT from USB HDD option? is there any related threads to this? since the one i saw on 911cd is not what i wanted to search on.  \n\nThx   \n"
+    },
+    {
+      "id": "19620",
+      "timestamp": "2007-08-21T10:41:56+00:00",
+      "author": "was_jaclaz",
+      "content": "First thing welcome to the board. ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)  \n\nYou seem to have managed to get into your first two questions the two biggest unresolved problems around. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)  \n\n\u003cbr /\u003e\n\n\u003e 1) is there a way to make the bootable USB HDD that i have managed to make boot on other boards other than the one i installed the WinXP on? is there any thread that have the tutorial or instruction to this?\n\nNO, at least none that is straightforward or \"fool-proof\".  \nThe only known procedure is to behave exactly as for a motherboard switch:  \n[http://www.michaelst.../moving_xp.html](http://www.michaelstevenstech.com/moving_xp.html \"External link\")  \n\nXP has been DESIGNED to be NOT easily portable.  \n\nI had a relatively high rate of success moving Windows 2000 (which is much less picky) by simply removing from device manager ALL devices, switching off the machine, moving the hard disk (I am talking here about normal IDE/ATAPI HD\u0027s, not USB), put it in the new machine and boot, the hardware is re-detected from scratch, and as long as the appropriate drivers are on the system, it takes a few minutes (and a couple of re-boots) to have the system running. To manage different HALs, one can use multiple lines in boot.ini with the   \n/KERNEL\u003d/HAL\u003d switches pointing to different HALs.  \n\nBut the above is however VERY different from a PE based system that is REALLY \"portable\".  \nMaybe using the Universal ATA driver and the Universal VBE driver it would be possible to have an increased (but still limited) portability, with at least a small number of core functions working, but still the problems with SATA drives and motherboard specific drivers would probably be overwhelming.  \n\nMaybe one could use a dual boot setup with DOS and use a batch file with a program like ERUNT to restore \"on the spot\" a different Registry, but portability would however be limited to a certain number of PC\u0027s for which a proper Registry had been built and backed up.  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003e 2) i\u0027ve seen few forums on booting the USB on non supported BIOS. My question would be is there a way to make the USB HDD bootable when there is no BOOT from USB HDD option? is there any related threads to this? since the one i saw on 911cd is not what i wanted to search on.\n\nWell, there are TWO kinds of \"not booting from USB\" BIOSes:  \n1) one that cannot boot from ANY USB device  \n2) one that can boot only from some specific device (for example from \"floppy\" but not from HD)  \n\nFor the first one, there is NO solution at the moment, some ideas are reported here:  \n[http://www.911cd.net...o...650\\\u0026hl\u003dBCDL](http://www.911cd.net/forums//index.php?sho...650\u0026hl\u003dBCDL \"External link\")  \nbut noone is developing anything of the like, as far as I know.  \n\nFor the second one, (typically some laptops BIOSes) through grub4dos and/or makebootfat \"special\" bootsector it should possible to \"work around\" the limitation, but there is no specific guide I know of, you\u0027ll have to experiment quite a bit.  \n\njaclaz   \n"
+    },
+    {
+      "id": "19622",
+      "timestamp": "2007-08-21T10:55:27+00:00",
+      "author": "MedEvil",
+      "content": "\u003e 2) i\u0027ve seen few forums on booting the USB on non supported BIOS. My question would be is there a way to make the USB HDD bootable when there is no BOOT from USB HDD option? is there any related threads to this? since the one i saw on 911cd is not what i wanted to search on.\nDon\u0027t know how geeky you are and if you\u0027re talking about your own computers.  \nIn any case, if the computer in question has an Award BIOS you\u0027re in luck.  \nThere are at least 2 Tools available, that give you the opportunity to build your own Award BIOS.  \n(Please note! If you\u0027re not a master geek, this can easily result in an unusable motherboard.)  \nThis idea is best used with motherboards that have Dual BIOS.  \n\n![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)   \n"
+    },
+    {
+      "id": "19628",
+      "timestamp": "2007-08-21T13:10:39+00:00",
+      "author": "omegahawk",
+      "content": "Thx for the infos...   \n\nOne more thing is if i\u0027m not mistaken i\u0027ve seen my friend moving from DOS to WIN98 without rebooting (if i remembered it correctly... these is during the old days) which having a dual OS on same IDE Disk. But i never learned it since i wasn\u0027t interested in these stuffs back then.... ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)   \n\nSo im thinking of whether there is anyone that did by having a dual OS in the portable USB HDD in which it loads the DOS first then after fully loaded the DOS, it move to WinXP. If this is an feasible option i would like to try out this one... ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)   \n\nps: the mother boards that i am using is mostly having SPI chips and some of them arent AWARD BIOSEs.. and not having any boot options from USB at all. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) Ill worry about the bios later... ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)   \n"
+    },
+    {
+      "id": "19632",
+      "timestamp": "2007-08-21T17:12:26+00:00",
+      "author": "was_jaclaz",
+      "content": "Yes and no.  \n\nWindows 98 **IS** DOS, to be more exact it is a graphical extension for DOS, so it is perfectly normal to start in DOS and type \"WIN\" to load Windows 3.x and 9.x, in Windows ME this possibility was disabled (but can be reactivated with a patch).  \n\nWindows NT/2K/XP/2003 (and Vista) have NO \"underlying\" DOS, but what you can do is to boot in DOS, then invoke grub.exe (the DOS executable of the grub4dos package) and from it\u0027s menu.lst chainload a NT based Operating System\u0027s NTLDR.  \n\njaclaz   \n"
+    },
+    {
+      "id": "19663",
+      "timestamp": "2007-08-22T05:00:56+00:00",
+      "author": "omegahawk",
+      "content": "Thx ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)   \nWill see what i can get hold of later using the info you gave me... ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)   \n"
+    },
+    {
+      "id": "20107",
+      "timestamp": "2007-09-01T11:00:58+00:00",
+      "author": "iceangel89",
+      "content": "\u003e The source and destination partitions need to be FAT or FAT32 ONLY if you use the DOS+WINNT method.  \n\u003e They can be FAT, FAT32 or NTFS if you use the WINNT32.EXE one.\nbut the HP Format utility do not allow me to make bootable disk when i select NTFS   \n"
+    },
+    {
+      "id": "20109",
+      "timestamp": "2007-09-01T11:40:06+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e but the HP Format utility do not allow me to make bootable disk when i select NTFS\n\nWell, I haven\u0027t used it in ages, but have you actullay tried it?  \nOf course it won\u0027t allow you to make a bootable ***DOS*** partition!  \nBut the NTFS should be bootable allright, once you have copied to it the boot files:  \nNTLDR  \nNTDETECT.COM  \nBOOT.INI  \nNTBOOTDD.SYS (only if you have SCSI or some SATA drives)  \n\nBut anyway it does not allow you to multipartition the disk. ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)  \n\nThe \"HP\" USB utility (actually DataSystems) has been designed for USB pendrives, to overcome the limits of built-in 2K/XP tools on devices that are seen as \"Removable\".  \n\nA USB hard Disk should be seen as \"Fixed\" by 2K/XP, just use normally the Disk Manager and format command of 2K/XP.  \n**Every** partition formatted with 2K/XP FORMAT command will **always** contain a bootable bootsector (invoking NTLDR).  \n\nIf your BIOS has problems booting from the \"standard\" 2K/XP MBR, you can try \"hexediting\" it with the code that the HP USB utility uses:  \n[http://www.boot-land...?...\u003d2246\\\u0026st\u003d15](http://www.boot-land.net/forums/index.php?...\u003d2246\u0026st\u003d15 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "20440",
+      "timestamp": "2007-09-11T13:26:40+00:00",
+      "author": "iceangel89",
+      "content": "so erm ...   \n\ni copy files   \n\nNTLDR  \nNTDETECT.COM  \nBOOT.INI  \n\nright?  \n\nthen how should i edit Boot.ini? just point it to the something.bin (i forgot whats it for now) file?  \n\ni was thinking of GRUB for DOS too... or will Boot.ini be enuf? if i add other things then i need GRUB for DOS right?   \n"
+    },
+    {
+      "id": "20448",
+      "timestamp": "2007-09-11T16:20:04+00:00",
+      "author": "was_jaclaz",
+      "content": "NO, let alone, for the moment, .bin or .bs files, one thing at the time. ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)  \n\nYou need a BOOT.INI with (at least) two entries.  \nSomething like:  \n\n```\n\u0026#91;Boot Loader\u0026#93;\n\nTimeout\u003d5\n\nDefault\u003dmulti\u0026#40;0\u0026#41;disk\u0026#40;0\u0026#41;rdisk\u0026#40;0\u0026#41;partition\u0026#40;1\u0026#41;\\Windows\n\n\u0026#91;Operating Systems\u0026#93;\n\nmulti\u0026#40;0\u0026#41;disk\u0026#40;0\u0026#41;rdisk\u0026#40;0\u0026#41;partition\u0026#40;1\u0026#41;\\Windows\u003d\u0026#34;Windows\u0026#34; /fastdetect\n\nmulti\u0026#40;0\u0026#41;disk\u0026#40;0\u0026#41;rdisk\u0026#40;1\u0026#41;partition\u0026#40;1\u0026#41;\\Windows\u003d\u0026#34;Windows\u0026#34; /fastdetect\n```\n\n\u003cbr /\u003e\n\nRead these:  \n[http://www.msfn.org/...showtopic\u003d25365](http://www.msfn.org/board/index.php?showtopic\u003d25365 \"External link\")  \n[http://www.msfn.org/...showtopic\u003d33030](http://www.msfn.org/board/index.php?showtopic\u003d33030 \"External link\")  \n[http://www.911cd.net...o...\u003d19594\\\u0026st\u003d0](http://www.911cd.net/forums//index.php?sho...\u003d19594\u0026st\u003d0 \"External link\")  \n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "20463",
+      "timestamp": "2007-09-12T00:46:26+00:00",
+      "author": "iceangel89",
+      "content": "ok lets see... i was thinking of the 3rd method, but, ... isit more complex? it says \"which is what the normal install CD does\" but from what i saw in other posts, minnt, is something else right? winpe or something  \n\u003e To this you add that there are at least 4 possible ways to install XP:  \n\u003e 1) from a booted 16-bit environment through WINNT.EXE  \n\u003e 2) from a booted 32-bit environment through WINNT32.EXE  \n\u003e 3) from a \\\\I386 or \\\\minint folder by invoking SETUPLDR.BIN (which is what the normal install CD does)  \n\u003e 4) from an \"expanded\" pre-install bootfolder $WIN_NT$.\\~BT like in the flyakite multiboot DVD tutorial\nif so then u recommend method 2? mmm... tried that a bit on virtual PC but can\u0027t get it to detect my USB HDD so erm now, on a real PC, i create a \"mini\" xp (its WinPE/BartPE also can right?) then run winnt32.exe? isit i need /noreboot /makelocalfiles? something like that... off to school soon... cya   \n"
+    },
+    {
+      "id": "20493",
+      "timestamp": "2007-09-12T13:56:37+00:00",
+      "author": "was_jaclaz",
+      "content": "Well, as said things must done one at the time.  \n\nFirst thing we need to make sure that your motherboard can boot from your USB stick.  \n\nOnce, and only once that has been proved true, we can think about the actual install method.  \n\nOf the said list there is a FULLY working tutorial for method #1 and for method #4 (actually method #3 has been found not to work, and thus parts of method #3 have been \"incorporated\" in method #4).  \n\nThe easiest is #1, FULLY documented and tested, but as said it has it\u0027s own limitations.  \nThus the recommended one is method #4 that is to be considered in post-beta stage, very near to be fully mature.  \n\nRead the various howto\u0027s on the MSFN thread:  \n[http://www.msfn.org/...o...1384\\\u0026st\u003d128](http://www.msfn.org/board/index.php?showto...1384\u0026st\u003d128 \"External link\")  \n[http://www.msfn.org/...o...1384\\\u0026st\u003d154](http://www.msfn.org/board/index.php?showto...1384\u0026st\u003d154 \"External link\")  \n[http://www.msfn.org/...o...1384\\\u0026st\u003d178](http://www.msfn.org/board/index.php?showto...1384\u0026st\u003d178 \"External link\")  \n[http://www.msfn.org/...o...1384\\\u0026st\u003d199](http://www.msfn.org/board/index.php?showto...1384\u0026st\u003d199 \"External link\")  \n\nWe all expect ilko_t to post a final tutorial very soon, but reading the above and using the latest batches, right now here:  \n[http://www.msfn.org/...o...1384\\\u0026st\u003d325](http://www.msfn.org/board/index.php?showto...1384\u0026st\u003d325 \"External link\")  \nis a working solution right now.  \n\nWhy don\u0027t you just try it and post if you find problems on the MSFN thread?  \n\nMethod #2 is theoretically the easiest of all, **IF** someone will take the time to test a minimal build, report errors, fix them by adding files or Registry entries, and finally publish it, and related scripts, something like \"Install_PE\", as the **minimal** system to run successfully WINNT32.EXE.  \n\nAFAIK, noone took my challenge here:  \n[http://www.boot-land...p?showtopic\u003d644](http://www.boot-land.net/forums/index.php?showtopic\u003d644 \"External link\")  \n(or at least no material was published with this specific aim)  \n\nYou can always try with a \"generic\" BartPE or Winbuilder build, my ***guess*** is that a mid-sized one should work.  \n\njaclaz   \n"
+    },
+    {
+      "id": "20706",
+      "timestamp": "2007-09-17T00:59:03+00:00",
+      "author": "iceangel89",
+      "content": "\u003e 1. Format the USB stick, I used HP USB Format tool, because XP format was reported as incorrect in GRUB.  \n\u003e 2. Install GRUB MBR on the stick, the quickest way I found is by GRUBINST_GUI for WIN  \n\u003e 3. Get the latest GRUB4DOS and copy GRLDR to the USB root.\n@ step 2, hd1 will be the 2nd HDD right? and it does not support partitioned HDD?  \nor can i mannually do it? it it copy files grldr \\\u0026 grldr.mbr? i just copied all for the moment  \n\u003e 4. Backup your current BOOT.INI and in the XP setup folder \\\\I386 run  \n\u003e\n\u003e ```\n\u003e winnt32 /makelocalsource /noreboot\n\u003e ```\n\u003e\n\u003e after it\u0027s finished restore BOOT.INI\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\nwindows gave this version of windows cannot be upgraded? did i do it wrong? i shld do that under my XP right? but i was under the impression that that triggers the setup to run?  \n\u003e 5. Copy two new folders in the USB stick root - $WIN_NT$.\\~BT and $WIN_NT$.\\~LS\nthis requires me to do things from [http://flyakite.msfn.org/](http://flyakite.msfn.org/ \"External link\") right?  \n\nby the way now this HDD is plugged directly into my motherboard for now, does it make any difference?   \n"
+    },
+    {
+      "id": "20715",
+      "timestamp": "2007-09-17T08:01:55+00:00",
+      "author": "iceangel89",
+      "content": "THANKS ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif) ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)   \n\nfinally working... but i noticed something... i nLited the XP (to make it unattended) but seems like it becomes not unattended anymore... ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) i still need to do things like Regional Settings etc... is it becos i did my nLite wrong? (will chk in VMware).  \n\nand also for clean up, since i just copy all files in the GRUB4DOS \\\u0026 GRUBINST folders, can u tell me which files are needed which are not... and for menu.lst, the \"GUI Setup\" whats it and it does not work for me... the screen flashes and i am back to OS Selection   \n"
+    },
+    {
+      "id": "20721",
+      "timestamp": "2007-09-17T09:32:38+00:00",
+      "author": "was_jaclaz",
+      "content": "iceangel89,  \nI am happy you (partially) succeeded ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif), but really, trying to help you is really difficult. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)   \n\n1) When you Quote something, you MUST somehow say FROM WHERE you Quoted that part, i.e. cite the source, otherwise the quoted snippet might be incomprehensible out of context.  \n2) ALWAYS choose ONE and ONLY ONE tutorial/guide/method, do not mix for ANY reason more than one together, until you are 100% sure of what you are doing.  \n3) ALWAYS follow the chosen tutorial/guide/method EXACTLY as it says, DO NOT introduce changes at first.  \n4) Once you have succeeded, start introducing your wished changes ONE (or a very few) AT THE TIME, if you introduce a series of changes it will be practically impossible (or VERY lengthy) to find out WHICH one causes a problem later.  \n5) If you are unsure how to perform a step, ask for clarifications BEFORE doing it.  \n6) The more \"documented\" questions are, the most probable will be that a member can answer them.  \n\nThis is the only question that is \"general\" enough to be replied without further data on your part:  \n\u003e and also for clean up, since i just copy all files in the GRUB4DOS \\\u0026 GRUBINST folders, can u tell me which files are needed which are not\nThe ONLY files you need for grub4dos booting, either from a grub4dos MBR or from a C:\\\\grldr chainloading through NTLDR and BOOT.INI are **grldr** and **menu.lst** in ROOT of the partition.  \n\n\u003cbr /\u003e\n\nThe answer to this one, as is:  \n\u003e and for menu.lst, the \"GUI Setup\" whats it and it does not work for me... the screen flashes and i am back to OS Selection\nCannot be but a Standard Reply #32:  \n[http://www.boot-land...?...c\u003d2587\\\u0026st\u003d1](http://www.boot-land.net/forums/index.php?...c\u003d2587\u0026st\u003d1 \"External link\")  \nbut, besides the fact that my crystal ball is ***still*** under repair/tuning, I have also no access to Tarots and I-Ching right now. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "18958",
+      "timestamp": "2007-08-07T04:58:35+00:00",
+      "author": "iceangel89",
+      "content": "hi, :smile:   \n\na new comer here ![:yahoo:](http://reboot.pro/public/style_emoticons/default/yahoo.gif) , i want to boot my XP/Vista Install from a USB HDD hope fully without any CD/DVDs. if possible also add Partition Magic and stuff in too, how do i do these?  \n\nThanks :smile:   \n"
+    },
+    {
+      "id": "18965",
+      "timestamp": "2007-08-07T08:09:06+00:00",
+      "author": "was_jaclaz",
+      "content": "Cannot say about Vista.  \n\nFor XP the (LOONG!) thread is here:  \n[http://www.911cd.net...showtopic\u003d14181](http://www.911cd.net/forums//index.php?showtopic\u003d14181 \"External link\")  \n\nJust read the links in Dietmar\u0027s signature, and/or try the \"automated way\":  \n[http://www.usboot.org/tiki-index.php](http://www.usboot.org/tiki-index.php \"External link\")  \n\n(we are talking about FULL XP, ***not*** BartPE/WinPE here, right? ![:yahoo:](http://reboot.pro/public/style_emoticons/default/yahoo.gif))  \n\njaclaz   \n"
+    },
+    {
+      "id": "18966",
+      "timestamp": "2007-08-07T08:22:21+00:00",
+      "author": "iceangel89",
+      "content": "ya i am talking about full XP. will try that tmr, tmr i have an exam ![:yahoo:](http://reboot.pro/public/style_emoticons/default/yahoo.gif)   \n"
+    },
+    {
+      "id": "19016",
+      "timestamp": "2007-08-08T07:26:10+00:00",
+      "author": "iceangel89",
+      "content": "actually i was wanting to boot \\\u0026 **install** XP not use it. and also add softwares like partition magic so i fo not need any CD.DVD anymore. so what i hope to accomplish is something like:  \n\n1. Boot From USB HDD   \n\\*. Extension: Start Partition Magic  \n2. Install XP (I have used nLite to make a unattended setup)  \n3. Install any programs from USB HDD - trying to make silent install for all programs   \n"
+    },
+    {
+      "id": "19026",
+      "timestamp": "2007-08-08T13:59:42+00:00",
+      "author": "was_jaclaz",
+      "content": "Well,  \nthen go here:  \n[http://www.msfn.org/...topic\u003d61384\\\u0026hl\u003d](http://www.msfn.org/board/index.php?showtopic\u003d61384\u0026hl\u003d \"External link\")  \n\nSome background, an alternative using DOS and links to most relevant posts:  \n[http://www.msfn.org/...opic\u003d81788\\\u0026st\u003d6](http://www.msfn.org/board/index.php?showtopic\u003d81788\u0026st\u003d6 \"External link\")  \n[http://www.msfn.org/...opic\u003d99453\\\u0026st\u003d3](http://www.msfn.org/board/index.php?showtopic\u003d99453\u0026st\u003d3 \"External link\")  \n\nThe very last one files are here:  \n[http://www.msfn.org/...o...1384\\\u0026st\u003d293](http://www.msfn.org/board/index.php?showto...1384\u0026st\u003d293 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "19178",
+      "timestamp": "2007-08-10T09:01:25+00:00",
+      "author": "iceangel89",
+      "content": "then if i want it to be NTFS instead of FAT?  \n\nand if i want to boot from a partitioned HDD? say i have a 250GB HDD with partitions will it cause any problems?   \n"
+    },
+    {
+      "id": "19180",
+      "timestamp": "2007-08-10T09:49:18+00:00",
+      "author": "was_jaclaz",
+      "content": "The source and destination partitions need to be FAT or FAT32 ONLY if you use the DOS+WINNT method.  \n\nThey can be FAT, FAT32 or NTFS if you use the WINNT32.EXE one.  \n\nOf course there is no problem using a \"partitioned\" HD, there is no such thing as a \"unpartitioned\" HD, but I have to warn you that both methods are not (yet) aimed to the \"common\" end user, as a little more than average understanding of the way hard disks, PC and the NT booting is required.  \n\nMoreover, if you want to add apps, make an unattended setup (which won\u0027t be unattended at all if you plan to use Partition Magic before ![:yahoo:](http://reboot.pro/public/style_emoticons/default/yahoo.gif)), and doing your own customizations, you\u0027ll need to learn and understand quite a lot of more \"advanced\" topics.  \n\nMy guess is that it will be then more \"flexible\" for your scopes a setup with a booting PE system, as in method #2 listed here:  \n[http://www.msfn.org/...opic\u003d81788\\\u0026st\u003d6](http://www.msfn.org/board/index.php?showtopic\u003d81788\u0026st\u003d6 \"External link\")  \n\n(though again, most probably it won\u0027t be\"really\" unattended)  \n\njaclaz   \n"
+    },
+    {
+      "id": "19190",
+      "timestamp": "2007-08-10T11:56:48+00:00",
+      "author": "yahoouk",
+      "content": "Hi ![:yahoo:](http://reboot.pro/public/style_emoticons/default/yahoo.gif)   \n\nPlease see here.  \n\n[http://www.ngine.de/...jsp?pageid\u003d4176](http://www.ngine.de/index.jsp?pageid\u003d4176 \"External link\")   \n"
+    },
+    {
+      "id": "19192",
+      "timestamp": "2007-08-10T12:53:53+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Hi ![:yahoo:](http://reboot.pro/public/style_emoticons/default/yahoo.gif)   \n\u003e\n\u003e Please see here.  \n\u003e\n\u003e [http://www.ngine.de/...jsp?pageid\u003d4176](http://www.ngine.de/index.jsp?pageid\u003d4176 \"External link\")\n\nWell, NO, this is the modified **tubo** \u0027s tutorial, derived from **Dietmar** \u0027s one, already linked to.  \n\nThis is to install a full XP **ON** USB device, as in first answer, something that **iceangel89** does not want.  \n\njaclaz   \n"
+    },
+    {
+      "id": "19261",
+      "timestamp": "2007-08-11T07:57:10+00:00",
+      "author": "iceangel89",
+      "content": "it says only says using winbuilder which i did already then whats next? run winnt32.exe using winbuilder?  \n\nand after reading so many posts, i think the easiest way is method 3 instead? modifying boot.ini to load SETUPLDR.BIN isit?  \n\nbut, ok want to clarify - the files i need are? (NTLDR, boot.ini etc if i am not wrong)  \nand the boot.ini need to be changed to?   \nand resources to get info on what do multi(0)disk(0)rdisk(0)partition(1)\\\\WINDOWS mean. i think its something like the index of the disk then the partition etc. but like u said, i need to understand how things works.  \n\nThanks for your help so far, really appreciate   \n"
+    },
+    {
+      "id": "19543",
+      "timestamp": "2007-08-17T07:45:26+00:00",
+      "author": "omegahawk",
+      "content": "\u003e Cannot say about Vista.  \n\u003e\n\u003e For XP the (LOONG!) thread is here:  \n\u003e [http://www.911cd.net...showtopic\u003d14181](http://www.911cd.net/forums//index.php?showtopic\u003d14181 \"External link\")  \n\u003e\n\u003e Just read the links in Dietmar\u0027s signature, and/or try the \"automated way\":  \n\u003e [http://www.usboot.org/tiki-index.php](http://www.usboot.org/tiki-index.php \"External link\")  \n\u003e\n\u003e (we are talking about FULL XP, ***not*** BartPE/WinPE here, right? ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif))  \n\u003e\n\u003e jaclaz\n\nHi All,  \n\nThis is my first time here,   \n\nI have managed to get my USB HDD(3.5\" samsung 80G HDD) working from the tutorial given by Dietmar. ps the 1st link seems not working anymore, im getting errors by going to that link.  \n\nmy question is as below;  \n1) is there a way to make the bootable USB HDD that i have managed to make boot on other boards other than the one i installed the WinXP on? is there any thread that have the tutorial or instruction to this?  \n2) i\u0027ve seen few forums on booting the USB on non supported BIOS. My question would be is there a way to make the USB HDD bootable when there is no BOOT from USB HDD option? is there any related threads to this? since the one i saw on 911cd is not what i wanted to search on.  \n\nThx   \n"
+    },
+    {
+      "id": "19620",
+      "timestamp": "2007-08-21T10:41:56+00:00",
+      "author": "was_jaclaz",
+      "content": "First thing welcome to the board. ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)  \n\nYou seem to have managed to get into your first two questions the two biggest unresolved problems around. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)  \n\n\u003cbr /\u003e\n\n\u003e 1) is there a way to make the bootable USB HDD that i have managed to make boot on other boards other than the one i installed the WinXP on? is there any thread that have the tutorial or instruction to this?\n\nNO, at least none that is straightforward or \"fool-proof\".  \nThe only known procedure is to behave exactly as for a motherboard switch:  \n[http://www.michaelst.../moving_xp.html](http://www.michaelstevenstech.com/moving_xp.html \"External link\")  \n\nXP has been DESIGNED to be NOT easily portable.  \n\nI had a relatively high rate of success moving Windows 2000 (which is much less picky) by simply removing from device manager ALL devices, switching off the machine, moving the hard disk (I am talking here about normal IDE/ATAPI HD\u0027s, not USB), put it in the new machine and boot, the hardware is re-detected from scratch, and as long as the appropriate drivers are on the system, it takes a few minutes (and a couple of re-boots) to have the system running. To manage different HALs, one can use multiple lines in boot.ini with the   \n/KERNEL\u003d/HAL\u003d switches pointing to different HALs.  \n\nBut the above is however VERY different from a PE based system that is REALLY \"portable\".  \nMaybe using the Universal ATA driver and the Universal VBE driver it would be possible to have an increased (but still limited) portability, with at least a small number of core functions working, but still the problems with SATA drives and motherboard specific drivers would probably be overwhelming.  \n\nMaybe one could use a dual boot setup with DOS and use a batch file with a program like ERUNT to restore \"on the spot\" a different Registry, but portability would however be limited to a certain number of PC\u0027s for which a proper Registry had been built and backed up.  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003e 2) i\u0027ve seen few forums on booting the USB on non supported BIOS. My question would be is there a way to make the USB HDD bootable when there is no BOOT from USB HDD option? is there any related threads to this? since the one i saw on 911cd is not what i wanted to search on.\n\nWell, there are TWO kinds of \"not booting from USB\" BIOSes:  \n1) one that cannot boot from ANY USB device  \n2) one that can boot only from some specific device (for example from \"floppy\" but not from HD)  \n\nFor the first one, there is NO solution at the moment, some ideas are reported here:  \n[http://www.911cd.net...o...650\\\u0026hl\u003dBCDL](http://www.911cd.net/forums//index.php?sho...650\u0026hl\u003dBCDL \"External link\")  \nbut noone is developing anything of the like, as far as I know.  \n\nFor the second one, (typically some laptops BIOSes) through grub4dos and/or makebootfat \"special\" bootsector it should possible to \"work around\" the limitation, but there is no specific guide I know of, you\u0027ll have to experiment quite a bit.  \n\njaclaz   \n"
+    },
+    {
+      "id": "19622",
+      "timestamp": "2007-08-21T10:55:27+00:00",
+      "author": "MedEvil",
+      "content": "\u003e 2) i\u0027ve seen few forums on booting the USB on non supported BIOS. My question would be is there a way to make the USB HDD bootable when there is no BOOT from USB HDD option? is there any related threads to this? since the one i saw on 911cd is not what i wanted to search on.\nDon\u0027t know how geeky you are and if you\u0027re talking about your own computers.  \nIn any case, if the computer in question has an Award BIOS you\u0027re in luck.  \nThere are at least 2 Tools available, that give you the opportunity to build your own Award BIOS.  \n(Please note! If you\u0027re not a master geek, this can easily result in an unusable motherboard.)  \nThis idea is best used with motherboards that have Dual BIOS.  \n\n![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)   \n"
+    },
+    {
+      "id": "19628",
+      "timestamp": "2007-08-21T13:10:39+00:00",
+      "author": "omegahawk",
+      "content": "Thx for the infos...   \n\nOne more thing is if i\u0027m not mistaken i\u0027ve seen my friend moving from DOS to WIN98 without rebooting (if i remembered it correctly... these is during the old days) which having a dual OS on same IDE Disk. But i never learned it since i wasn\u0027t interested in these stuffs back then.... ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)   \n\nSo im thinking of whether there is anyone that did by having a dual OS in the portable USB HDD in which it loads the DOS first then after fully loaded the DOS, it move to WinXP. If this is an feasible option i would like to try out this one... ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)   \n\nps: the mother boards that i am using is mostly having SPI chips and some of them arent AWARD BIOSEs.. and not having any boot options from USB at all. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) Ill worry about the bios later... ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)   \n"
+    },
+    {
+      "id": "19632",
+      "timestamp": "2007-08-21T17:12:26+00:00",
+      "author": "was_jaclaz",
+      "content": "Yes and no.  \n\nWindows 98 **IS** DOS, to be more exact it is a graphical extension for DOS, so it is perfectly normal to start in DOS and type \"WIN\" to load Windows 3.x and 9.x, in Windows ME this possibility was disabled (but can be reactivated with a patch).  \n\nWindows NT/2K/XP/2003 (and Vista) have NO \"underlying\" DOS, but what you can do is to boot in DOS, then invoke grub.exe (the DOS executable of the grub4dos package) and from it\u0027s menu.lst chainload a NT based Operating System\u0027s NTLDR.  \n\njaclaz   \n"
+    },
+    {
+      "id": "19663",
+      "timestamp": "2007-08-22T05:00:56+00:00",
+      "author": "omegahawk",
+      "content": "Thx ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)   \nWill see what i can get hold of later using the info you gave me... ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)   \n"
+    },
+    {
+      "id": "20107",
+      "timestamp": "2007-09-01T11:00:58+00:00",
+      "author": "iceangel89",
+      "content": "\u003e The source and destination partitions need to be FAT or FAT32 ONLY if you use the DOS+WINNT method.  \n\u003e They can be FAT, FAT32 or NTFS if you use the WINNT32.EXE one.\nbut the HP Format utility do not allow me to make bootable disk when i select NTFS   \n"
+    },
+    {
+      "id": "20109",
+      "timestamp": "2007-09-01T11:40:06+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e but the HP Format utility do not allow me to make bootable disk when i select NTFS\n\nWell, I haven\u0027t used it in ages, but have you actullay tried it?  \nOf course it won\u0027t allow you to make a bootable ***DOS*** partition!  \nBut the NTFS should be bootable allright, once you have copied to it the boot files:  \nNTLDR  \nNTDETECT.COM  \nBOOT.INI  \nNTBOOTDD.SYS (only if you have SCSI or some SATA drives)  \n\nBut anyway it does not allow you to multipartition the disk. ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)  \n\nThe \"HP\" USB utility (actually DataSystems) has been designed for USB pendrives, to overcome the limits of built-in 2K/XP tools on devices that are seen as \"Removable\".  \n\nA USB hard Disk should be seen as \"Fixed\" by 2K/XP, just use normally the Disk Manager and format command of 2K/XP.  \n**Every** partition formatted with 2K/XP FORMAT command will **always** contain a bootable bootsector (invoking NTLDR).  \n\nIf your BIOS has problems booting from the \"standard\" 2K/XP MBR, you can try \"hexediting\" it with the code that the HP USB utility uses:  \n[http://www.boot-land...?...\u003d2246\\\u0026st\u003d15](http://www.boot-land.net/forums/index.php?...\u003d2246\u0026st\u003d15 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "20440",
+      "timestamp": "2007-09-11T13:26:40+00:00",
+      "author": "iceangel89",
+      "content": "so erm ...   \n\ni copy files   \n\nNTLDR  \nNTDETECT.COM  \nBOOT.INI  \n\nright?  \n\nthen how should i edit Boot.ini? just point it to the something.bin (i forgot whats it for now) file?  \n\ni was thinking of GRUB for DOS too... or will Boot.ini be enuf? if i add other things then i need GRUB for DOS right?   \n"
+    },
+    {
+      "id": "20448",
+      "timestamp": "2007-09-11T16:20:04+00:00",
+      "author": "was_jaclaz",
+      "content": "NO, let alone, for the moment, .bin or .bs files, one thing at the time. ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)  \n\nYou need a BOOT.INI with (at least) two entries.  \nSomething like:  \n\n```\n\u0026#91;Boot Loader\u0026#93;\n\nTimeout\u003d5\n\nDefault\u003dmulti\u0026#40;0\u0026#41;disk\u0026#40;0\u0026#41;rdisk\u0026#40;0\u0026#41;partition\u0026#40;1\u0026#41;\\Windows\n\n\u0026#91;Operating Systems\u0026#93;\n\nmulti\u0026#40;0\u0026#41;disk\u0026#40;0\u0026#41;rdisk\u0026#40;0\u0026#41;partition\u0026#40;1\u0026#41;\\Windows\u003d\u0026#34;Windows\u0026#34; /fastdetect\n\nmulti\u0026#40;0\u0026#41;disk\u0026#40;0\u0026#41;rdisk\u0026#40;1\u0026#41;partition\u0026#40;1\u0026#41;\\Windows\u003d\u0026#34;Windows\u0026#34; /fastdetect\n```\n\n\u003cbr /\u003e\n\nRead these:  \n[http://www.msfn.org/...showtopic\u003d25365](http://www.msfn.org/board/index.php?showtopic\u003d25365 \"External link\")  \n[http://www.msfn.org/...showtopic\u003d33030](http://www.msfn.org/board/index.php?showtopic\u003d33030 \"External link\")  \n[http://www.911cd.net...o...\u003d19594\\\u0026st\u003d0](http://www.911cd.net/forums//index.php?sho...\u003d19594\u0026st\u003d0 \"External link\")  \n\n\u003cbr /\u003e\n\njaclaz   \n"
+    },
+    {
+      "id": "20463",
+      "timestamp": "2007-09-12T00:46:26+00:00",
+      "author": "iceangel89",
+      "content": "ok lets see... i was thinking of the 3rd method, but, ... isit more complex? it says \"which is what the normal install CD does\" but from what i saw in other posts, minnt, is something else right? winpe or something  \n\u003e To this you add that there are at least 4 possible ways to install XP:  \n\u003e 1) from a booted 16-bit environment through WINNT.EXE  \n\u003e 2) from a booted 32-bit environment through WINNT32.EXE  \n\u003e 3) from a \\\\I386 or \\\\minint folder by invoking SETUPLDR.BIN (which is what the normal install CD does)  \n\u003e 4) from an \"expanded\" pre-install bootfolder $WIN_NT$.\\~BT like in the flyakite multiboot DVD tutorial\nif so then u recommend method 2? mmm... tried that a bit on virtual PC but can\u0027t get it to detect my USB HDD so erm now, on a real PC, i create a \"mini\" xp (its WinPE/BartPE also can right?) then run winnt32.exe? isit i need /noreboot /makelocalfiles? something like that... off to school soon... cya   \n"
+    },
+    {
+      "id": "20493",
+      "timestamp": "2007-09-12T13:56:37+00:00",
+      "author": "was_jaclaz",
+      "content": "Well, as said things must done one at the time.  \n\nFirst thing we need to make sure that your motherboard can boot from your USB stick.  \n\nOnce, and only once that has been proved true, we can think about the actual install method.  \n\nOf the said list there is a FULLY working tutorial for method #1 and for method #4 (actually method #3 has been found not to work, and thus parts of method #3 have been \"incorporated\" in method #4).  \n\nThe easiest is #1, FULLY documented and tested, but as said it has it\u0027s own limitations.  \nThus the recommended one is method #4 that is to be considered in post-beta stage, very near to be fully mature.  \n\nRead the various howto\u0027s on the MSFN thread:  \n[http://www.msfn.org/...o...1384\\\u0026st\u003d128](http://www.msfn.org/board/index.php?showto...1384\u0026st\u003d128 \"External link\")  \n[http://www.msfn.org/...o...1384\\\u0026st\u003d154](http://www.msfn.org/board/index.php?showto...1384\u0026st\u003d154 \"External link\")  \n[http://www.msfn.org/...o...1384\\\u0026st\u003d178](http://www.msfn.org/board/index.php?showto...1384\u0026st\u003d178 \"External link\")  \n[http://www.msfn.org/...o...1384\\\u0026st\u003d199](http://www.msfn.org/board/index.php?showto...1384\u0026st\u003d199 \"External link\")  \n\nWe all expect ilko_t to post a final tutorial very soon, but reading the above and using the latest batches, right now here:  \n[http://www.msfn.org/...o...1384\\\u0026st\u003d325](http://www.msfn.org/board/index.php?showto...1384\u0026st\u003d325 \"External link\")  \nis a working solution right now.  \n\nWhy don\u0027t you just try it and post if you find problems on the MSFN thread?  \n\nMethod #2 is theoretically the easiest of all, **IF** someone will take the time to test a minimal build, report errors, fix them by adding files or Registry entries, and finally publish it, and related scripts, something like \"Install_PE\", as the **minimal** system to run successfully WINNT32.EXE.  \n\nAFAIK, noone took my challenge here:  \n[http://www.boot-land...p?showtopic\u003d644](http://www.boot-land.net/forums/index.php?showtopic\u003d644 \"External link\")  \n(or at least no material was published with this specific aim)  \n\nYou can always try with a \"generic\" BartPE or Winbuilder build, my ***guess*** is that a mid-sized one should work.  \n\njaclaz   \n"
+    },
+    {
+      "id": "20706",
+      "timestamp": "2007-09-17T00:59:03+00:00",
+      "author": "iceangel89",
+      "content": "\u003e 1. Format the USB stick, I used HP USB Format tool, because XP format was reported as incorrect in GRUB.  \n\u003e 2. Install GRUB MBR on the stick, the quickest way I found is by GRUBINST_GUI for WIN  \n\u003e 3. Get the latest GRUB4DOS and copy GRLDR to the USB root.\n@ step 2, hd1 will be the 2nd HDD right? and it does not support partitioned HDD?  \nor can i mannually do it? it it copy files grldr \\\u0026 grldr.mbr? i just copied all for the moment  \n\u003e 4. Backup your current BOOT.INI and in the XP setup folder \\\\I386 run  \n\u003e\n\u003e ```\n\u003e winnt32 /makelocalsource /noreboot\n\u003e ```\n\u003e\n\u003e after it\u0027s finished restore BOOT.INI\n\u003e\n\u003e \u003cbr /\u003e\n\u003e\nwindows gave this version of windows cannot be upgraded? did i do it wrong? i shld do that under my XP right? but i was under the impression that that triggers the setup to run?  \n\u003e 5. Copy two new folders in the USB stick root - $WIN_NT$.\\~BT and $WIN_NT$.\\~LS\nthis requires me to do things from [http://flyakite.msfn.org/](http://flyakite.msfn.org/ \"External link\") right?  \n\nby the way now this HDD is plugged directly into my motherboard for now, does it make any difference?   \n"
+    },
+    {
+      "id": "20715",
+      "timestamp": "2007-09-17T08:01:55+00:00",
+      "author": "iceangel89",
+      "content": "THANKS ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif) ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)   \n\nfinally working... but i noticed something... i nLited the XP (to make it unattended) but seems like it becomes not unattended anymore... ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) i still need to do things like Regional Settings etc... is it becos i did my nLite wrong? (will chk in VMware).  \n\nand also for clean up, since i just copy all files in the GRUB4DOS \\\u0026 GRUBINST folders, can u tell me which files are needed which are not... and for menu.lst, the \"GUI Setup\" whats it and it does not work for me... the screen flashes and i am back to OS Selection   \n"
+    },
+    {
+      "id": "20721",
+      "timestamp": "2007-09-17T09:32:38+00:00",
+      "author": "was_jaclaz",
+      "content": "iceangel89,  \nI am happy you (partially) succeeded ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif), but really, trying to help you is really difficult. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)   \n\n1) When you Quote something, you MUST somehow say FROM WHERE you Quoted that part, i.e. cite the source, otherwise the quoted snippet might be incomprehensible out of context.  \n2) ALWAYS choose ONE and ONLY ONE tutorial/guide/method, do not mix for ANY reason more than one together, until you are 100% sure of what you are doing.  \n3) ALWAYS follow the chosen tutorial/guide/method EXACTLY as it says, DO NOT introduce changes at first.  \n4) Once you have succeeded, start introducing your wished changes ONE (or a very few) AT THE TIME, if you introduce a series of changes it will be practically impossible (or VERY lengthy) to find out WHICH one causes a problem later.  \n5) If you are unsure how to perform a step, ask for clarifications BEFORE doing it.  \n6) The more \"documented\" questions are, the most probable will be that a member can answer them.  \n\nThis is the only question that is \"general\" enough to be replied without further data on your part:  \n\u003e and also for clean up, since i just copy all files in the GRUB4DOS \\\u0026 GRUBINST folders, can u tell me which files are needed which are not\nThe ONLY files you need for grub4dos booting, either from a grub4dos MBR or from a C:\\\\grldr chainloading through NTLDR and BOOT.INI are **grldr** and **menu.lst** in ROOT of the partition.  \n\n\u003cbr /\u003e\n\nThe answer to this one, as is:  \n\u003e and for menu.lst, the \"GUI Setup\" whats it and it does not work for me... the screen flashes and i am back to OS Selection\nCannot be but a Standard Reply #32:  \n[http://www.boot-land...?...c\u003d2587\\\u0026st\u003d1](http://www.boot-land.net/forums/index.php?...c\u003d2587\u0026st\u003d1 \"External link\")  \nbut, besides the fact that my crystal ball is ***still*** under repair/tuning, I have also no access to Tarots and I-Ching right now. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "20725",
+      "timestamp": "2007-09-17T11:59:24+00:00",
+      "author": "iceangel89",
+      "content": "ops sorry... its from [http://www.msfn.org/...o...st\\\u0026p\u003d647573](http://www.msfn.org/board/index.php?showto...st\u0026p\u003d647573 \"External link\")  \nthe link u gave, the 1st one  \n\nabout the nLite part, its becos my XP is nLited and i thought that will not make a diff  \n\nactually i am also guessing that u would be frustrated, sorry abt that ![:loleverybody:](http://reboot.pro/public/style_emoticons/default/loleverybody.gif)   \n"
+    },
+    {
+      "id": "28746",
+      "timestamp": "2008-02-06T14:46:11+00:00",
+      "author": "iceangel89",
+      "content": "can someone give me a reminder on how i can boot install XP from USB HDD? i forgot. i am using the   \n\nwinnt32 /makelocalsource /noreboot method  \n\ni did the command as above the copy the folders $WIN_NT$.\\~BT \\\u0026 $WIN_NT$.\\~LS to my USB HDD then  \nadd GRUB4DOS in the HDD   \nthen i think the parts i am missing out are, what do i have to put in the menu.lst and i need to rename some files right? NTLDR to SETUPLDR or something like that...  \ni am using XP SP3 now and i seem to get a $LDR$ file too, whats that?   \n"
+    },
+    {
+      "id": "28748",
+      "timestamp": "2008-02-06T15:26:16+00:00",
+      "author": "was_jaclaz",
+      "content": "Go back to square #1 ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)  \n\nThere is a brand new sub-forum at MSFN and new releases of the files by **Wimb** , the procedure is fully automated and works for both HD\u0027s and sticks:  \n[http://www.msfn.org/...P-USB-f157.html](http://www.msfn.org/board/Install-XP-USB-f157.html \"External link\")  \n\n...or read the actions performed by the various batch files and re-do them one by one by hand ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \n\njaclaz   \n"
+    },
+    {
+      "id": "28773",
+      "timestamp": "2008-02-07T01:33:19+00:00",
+      "author": "iceangel89",
+      "content": "thats what i have been trying to do, find out which posts i got the info from. but some of the links to msfn forums is broken, it directs me to the forum index page... ok maybe i try looking around in that forum ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)   \n"
+    },
+    {
+      "id": "28812",
+      "timestamp": "2008-02-08T06:11:20+00:00",
+      "author": "iceangel89",
+      "content": "\u003e i did the command as above the copy the folders $WIN_NT$.\\~BT \\\u0026 $WIN_NT$.\\~LS to my USB HDD then  \n\u003e add GRUB4DOS in the HDD   \n\u003e then i think the parts i am missing out are, what do i have to put in the menu.lst and i need to rename some files right? NTLDR to SETUPLDR or something like that...  \n\u003e i am using XP SP3 now and i seem to get a $LDR$ file too, whats that?\n\nmaybe some1 can help me with this method 1st? after using winnt32 /makelocalsource /noreboot, what do i do?   \n"
+    },
+    {
+      "id": "29645",
+      "timestamp": "2008-02-20T14:08:36+00:00",
+      "author": "dracula",
+      "content": "this is a very very bad idea! why do you want to do this? it will run extremely slow!!!!   \n"
+    },
+    {
+      "id": "29647",
+      "timestamp": "2008-02-20T14:20:25+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e this is a very very bad idea! why do you want to do this? it will run extremely slow!!!!\n\nDracula, take it easy, man :smile:.  \n\nDo read Board Rules:  \n[http://www.boot-land...?act\u003dboardrules](http://www.boot-land.net/forums/index.php?act\u003dboardrules \"External link\")  \nwith a particular attention to point #12.  \n\nYou are of course very welcome to express your opinion about anything, AS LONG as it substantiated by either:  \n- an alternative, BETTER way/tutorial/howto/link  \n- technical facts, reports or similar documentation  \n- description of a repeatable test  \n- description of the reasoning that led you to the one-line conclusion  \n\njaclaz   \n"
+    },
+    {
+      "id": "37441",
+      "timestamp": "2008-06-12T03:59:25+00:00",
+      "author": "jazs",
+      "content": "Hi iceangel89, additional information maybe useful  \n\n[http://www.murga-lin...e62e1d7a2512110](http://www.murga-linux.com/puppy/viewtopic.php?p\u003d123676\u0026sid\u003d173064083e4f9be44e62e1d7a2512110 \"External link\")   \n"
+    },
+    {
+      "id": "38110",
+      "timestamp": "2008-06-21T14:38:40+00:00",
+      "author": "jazs",
+      "content": "\u003e 2) i\u0027ve seen few forums on booting the USB on non supported BIOS. My question would be is there a way to make the USB HDD bootable when there is no BOOT from USB HDD option? is there any related threads to this? since the one i saw on 911cd is not what i wanted to search on.  \n\u003e Hi iceangel89, additional information maybe useful\n\nNon support bios is not a problem under many OS linux distros.  \nYou can boot the linux OS over cd or floppydisk, like wakepup etc.  \n\nBoot xp from USB/Firewire HD without BIOS support (Mar 15 2008)  \n[http://www.911cd.net...mp;#entry144095](http://www.911cd.net/forums//index.php?showtopic\u003d21242\u0026st\u003d60\u0026p\u003d144095\u0026#entry144095 \"External link\")   \n"
+    },
+    {
+      "id": "41449",
+      "timestamp": "2008-08-07T06:38:15+00:00",
+      "author": "jazs",
+      "content": "XP hardware independent  \n[http://www.murga-lin...5d2717c3110031d](http://www.murga-linux.com/puppy/viewtopic.php?t\u003d31360\u0026start\u003d30\u0026sid\u003dde6e32a91d3f4abdc5d2717c3110031d \"External link\")   \n"
+    }
+  ]
+}

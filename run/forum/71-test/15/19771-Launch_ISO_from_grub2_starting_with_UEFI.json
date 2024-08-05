@@ -1,0 +1,64 @@
+{
+  "id": "19771",
+  "title": "Launch ISO from grub2 starting with UEFI",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "184067",
+      "timestamp": "2014-05-01T19:29:25+00:00",
+      "author": "davidecosta",
+      "content": "Hi,  \ni\u0027m trying to convert these entries from grub4dos to grub2 starting with UEFI  \n\nIn my lst I\u0027ve  \n\n```\nfind --set-root /boot/InSeven.iso\nmap --heads\u003d0 --sectors-per-track\u003d0 /boot/InSeven.iso (hd32)\nmap --hook; chainloader (hd32)\n```\n\nAnd  \n\n```\nkernel memdisk\n    append iso\n    INITRD /boot/InSeven.iso\n\n```\n\nI just tried to launch grub.exe using this entry  \n\n```\nmenuentry \"GRUB4DOS\" {\n set root\u003d\u0027(hd0,1)\u0027\n set g4d_dir\u003d\"/boot/Grub045\"\n linux $g4d_dir/grub.exe --config-file\u003d$g4d_dir/menu.lst\n}\n```\n\nBut don\u0027t find the menu.lst  \n\nCan any one hel me to find the solution?  \n\nThanks  \n\nDavide\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "184068",
+      "timestamp": "2014-05-01T19:50:45+00:00",
+      "author": "Wonko the Sane",
+      "content": "Try first a plainer approach:\n\u003e\n\u003e menuentry \"GRUB4DOS\" {  \n\u003e set root\u003d\u0027(hd0,1)\u0027  \n\u003e set g4d_dir\u003d\"/boot/Grub045\"  \n\u003e linux $g4d_dir/grub.exe --config-file\u003d(hd0,0)/boot/Grub045/menu.lst  \n\u003e }\n\nRemember that grub4dos numbers partitions with base 0 whilst GRUB2 numbers them with base 1.\n\n![:duff:](https://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "184069",
+      "timestamp": "2014-05-01T19:58:15+00:00",
+      "author": "davidecosta",
+      "content": "Thanks for reply but don\u0027t works ![:(](https://reboot.pro/public/style_emoticons/default/sad.png)\n\n"
+    },
+    {
+      "id": "184073",
+      "timestamp": "2014-05-01T22:09:31+00:00",
+      "author": "ilko",
+      "content": "From grub2 you are loading grub4dos (grub.exe), which does not support UEFI at all.\n\n"
+    },
+    {
+      "id": "184078",
+      "timestamp": "2014-05-02T07:02:55+00:00",
+      "author": "davidecosta",
+      "content": "Thanks for reply,  \nI\u0027ve to launch one ISO that contain one ima with freedos.  \nI don\u0027t have to launch EFI but one ISO large 1.44 mb.  \nI Just tried with memdisk with the same result.  \nI Just tried to put standard menu of Grub4Dos with the same result (not found menu.lst)  \n\n"
+    },
+    {
+      "id": "184079",
+      "timestamp": "2014-05-02T08:06:41+00:00",
+      "author": "cdob",
+      "content": "\u003e I\u0027ve to launch one ISO that contain one ima with freedos.\nI doubt freedos at UEFI environment. Freedos won\u0027t run at UEFI.  \nA BIOS is required.  \n\nRevalutate your question:  \nwhich application do you like to run at UEFI?  \n\n\u003cbr /\u003e\n\nSome hints  \n[http://askubuntu.com...-iso-from-grub2](http://askubuntu.com/questions/367011/boot-windows-7-iso-from-grub2 \"External link\")  \n[http://askubuntu.com...o-file-in-grub2](http://askubuntu.com/questions/24903/how-to-boot-from-an-iso-file-in-grub2 \"External link\")  \n[http://askubuntu.com...live-iso-images](http://askubuntu.com/questions/141940/how-to-boot-live-iso-images \"External link\")  \n\nI doubt grub2 to launch a Windows ISO image at UEFI.   \n"
+    },
+    {
+      "id": "184081",
+      "timestamp": "2014-05-02T09:10:07+00:00",
+      "author": "davidecosta",
+      "content": "I\u0027ve to launch[this ISO file](http://www.sarducd.it/private/InSeven.iso \"External link\").  \nMy test is with this file but my issue born before coming to load the ISO.  \n\nI\u0027m usigng the bootx64.efi taken from gparted and   \nlinux16 isn\u0027t a command recognized.  \nmemdisk.mod isn\u0027t found\n\n"
+    },
+    {
+      "id": "184132",
+      "timestamp": "2014-05-04T06:43:16+00:00",
+      "author": "azlvda",
+      "content": "try this\n\n[http://www.projectos...?showtopic\u003d3244](http://www.projectosx.com/forum/index.php?showtopic\u003d3244 \"External link\")\n\n"
+    },
+    {
+      "id": "184133",
+      "timestamp": "2014-05-04T07:17:23+00:00",
+      "author": "davidecosta",
+      "content": "Thanks, today i Make others tests :smile:\n\n"
+    }
+  ]
+}

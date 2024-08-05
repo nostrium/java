@@ -1,0 +1,46 @@
+{
+  "id": "17060",
+  "title": "boot from USB 3.0 port",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "156197",
+      "timestamp": "2012-06-11T23:48:04+00:00",
+      "author": "ccl",
+      "content": "Dear all,  \n\nI\u0027m having USB flash drive 2.0 and plug into USB 3.0 port. why cannot boot from it ?  \n\nAny special rules required to boot from USB 3.0 port ?   \n"
+    },
+    {
+      "id": "156203",
+      "timestamp": "2012-06-12T04:08:03+00:00",
+      "author": "cdob",
+      "content": "First BIOS has to support USB 3.0 boot.  \n\nAnd operating system may require USB 3.0 drivers.   \n"
+    },
+    {
+      "id": "156209",
+      "timestamp": "2012-06-12T06:49:50+00:00",
+      "author": "steve6375",
+      "content": "If you have added a USB 3 card, then the BIOS will not know how to access it as the BIOS code will not have been written for a card that is designed in the future!  \nSo booting from a USB (or any) **add-in** mass storage card is not usually supported in a BIOS.  \nYou will also have problems even when booting from a built-in USB port because once the system starts to boot the OS from the USB drive, it needs to load USB 3 drivers in order to see the files on the USB 3 drive. All OS\u0027s before Win8 do not natively contain USB 3 drivers...   \n"
+    },
+    {
+      "id": "156210",
+      "timestamp": "2012-06-12T07:04:13+00:00",
+      "author": "amalux",
+      "content": "\u003e Any special rules required to boot from USB 3.0 port ?  \nIf there\u0027s an option in the BIOS for legacy USB, enable it; that might allow USB 2.0 devices to boot on USB 3.0 ports (at USB 2.0 speed). The drivers that enable USB 3.0 are loaded later if available. My limited experience with USB 3.0 is that it\u0027s not bootable yet but I\u0027m sure this will change, look for driver and BIOS updates.   \n"
+    },
+    {
+      "id": "156228",
+      "timestamp": "2012-06-12T14:26:00+00:00",
+      "author": "ccl",
+      "content": "Thanks for the info, guys ![:good:](http://reboot.pro/public/style_emoticons/default/good.gif)   \n"
+    },
+    {
+      "id": "156244",
+      "timestamp": "2012-06-12T19:48:12+00:00",
+      "author": "steve6375",
+      "content": "\u003e My limited experience with USB 3.0 is that it\u0027s not bootable yet but I\u0027m sure this will change, look for driver and BIOS updates.  \nUSB 3 **integrated** ports (e.g. modern Intel mainboards and modern notebooks) do normally support USB booting. Whether they will boot at USB 3 speeds is up to the BIOS writers, but so far the USB 3 ports do seem faster than the USB 2 ports when I use the same USB 3 stick.   \n"
+    }
+  ]
+}

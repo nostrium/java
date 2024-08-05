@@ -1,0 +1,340 @@
+{
+  "id": "13033",
+  "title": "Boot USB HDD WinXP",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "113691",
+      "timestamp": "2010-11-13T14:50:37+00:00",
+      "author": "Ags",
+      "content": "Hello, I need advice, I have a home 500GB SATA HDD (removed from the PC) and when you move it to another PC and I want it to boot Windows XP Home, is a USB connection, 2-3 seconds to load classic Windows starts, then there Not for a second blue screen and restart the pc the same thing over and over. Please advice, thank you and sorry for my English.   \n"
+    },
+    {
+      "id": "113693",
+      "timestamp": "2010-11-13T14:59:36+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Hello, I need advice, I have a home 500GB SATA HDD (removed from the PC) and when you move it to another PC and I want it to boot Windows XP Home, is a USB connection, 2-3 seconds to load classic Windows starts, then there Not for a second blue screen and restart the pc the same thing over and over. Please advice, thank you and sorry for my English.\n\nCheck the BSOD STOP ERROR, see here:  \n[http://www.911cd.net...o...\u003d24161\\\u0026st\u003d3](http://www.911cd.net/forums//index.php?showtopic\u003d24161\u0026st\u003d3 \"External link\")  \n\nIt is most probably a 0x0000007b.  \n\nYou need to install and make active the USB drivers.  \n\nMost probably this is the easiest path you can take:  \n[http://www.boot-land...?...ic\u003d9830\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d9830\u0026hl\u003d \"External link\")  \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "113697",
+      "timestamp": "2010-11-13T15:24:38+00:00",
+      "author": "Ags",
+      "content": "I need to explain it inactive so much a noob I do not understand what you write here and not very good in English using Google Translate so that you do not understand, I edited the boot.ini and I go try to put away the blue screen.   \n"
+    },
+    {
+      "id": "113698",
+      "timestamp": "2010-11-13T15:34:01+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I need to explain it inactive so much a noob I do not understand what you write here and not very good in English using Google Translate so that you do not understand, I edited the boot.ini and I go try to put away the blue screen.\nBOOT.INI has NOTHING to do with your problem. :wink:  \n\nThe idea is to have the Blue screen **stay** so that you can read the STOP ERROR number.  \n\nIf you post in English on a Forum where English is used, you are supposed to understand English.  \n\nWe don\u0027t have a \"regional\" section:  \n[http://www.boot-land...hp?showforum\u003d39](http://www.boot-land.net/forums/index.php?showforum\u003d39 \"External link\")  \nfor czech, maybe you can find a friend that better understands English? :wink:  \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "113699",
+      "timestamp": "2010-11-13T15:45:42+00:00",
+      "author": "Ags",
+      "content": "Error code is 0x0000007B (0xBA4C7524, 0x0000034, 0x00000000, 0x00000000) now, please consult same time, what   \n\n**Edited by Ags, 13 November 2010 - 03:55 PM.**\n"
+    },
+    {
+      "id": "113701",
+      "timestamp": "2010-11-13T16:23:06+00:00",
+      "author": "Wonko the Sane",
+      "content": "Good.  \nThat was expected. :wink:  \n\nNow, what you need to do is to \"transform\" that install into an USB bootable one.  \n\nThere are several ways, but AFAIK they are ONLY documented in English. (or pseudo-English :wink:).  \n\nThe idea is to make the USB drivers load at boot time and prevent windows from re-setting their Group and Start type.  \n\nThe program by Wimb:  \n[http://www.boot-land...?...ic\u003d9830\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d9830\u0026hl\u003d \"External link\")  \n\nshould be able to do that.  \n\nOtherwise you should try using marv\u0027s service:  \n[http://www.911cd.net...o...c\u003d22473\\\u0026hl\u003d](http://www.911cd.net/forums//index.php?showtopic\u003d22473\u0026hl\u003d \"External link\")  \n\nSome details are given in this seemingly unrelated thread:  \n[http://www.boot-land...?showtopic\u003d9196](http://www.boot-land.net/forums/index.php?showtopic\u003d9196 \"External link\")  \n(ONLY the information about ISB services is useful)   \n\nIt is assumed that you understand the \"principles\" of the findings by Dietmar Stoelting:  \n[http://www.911cd.net...showtopic\u003d14181](http://www.911cd.net/forums//index.php?showtopic\u003d14181 \"External link\")  \n(check the Tutorials linked to in his signature)  \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "113702",
+      "timestamp": "2010-11-13T16:30:19+00:00",
+      "author": "Ags",
+      "content": "I do not understand you please give a link directly to the program and how to write your own words what I do.   \n"
+    },
+    {
+      "id": "113703",
+      "timestamp": "2010-11-13T16:36:58+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I do not understand you please give a link directly to the program and how to write your own words what I do.\n\nThat is the problem.  \nWe are talking of a very complex topic.  \nYou will NOT be able to do it unless you understand FULLY the basics.  \n\n\\[pseudo-czech\\]  \nTo je ten problém.  \nMluvíme o velmi komplexní téma.  \nNebudete schopni to udělat, pokud jste plně pochopit základy.  \n\\[/pseudo-czech\\]  \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "113707",
+      "timestamp": "2010-11-13T17:00:13+00:00",
+      "author": "Ags",
+      "content": "so please write inactive for him to understand even the biggest idiot and put a link directly to the program not on the forum I did not withdraw anything else   \n"
+    },
+    {
+      "id": "113709",
+      "timestamp": "2010-11-13T17:26:01+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e so please write inactive for him to understand even the biggest idiot and put a link directly to the program not on the forum I did not withdraw anything else\n\nNO.  \n\nIt makes NO sense whatever to use a program WITHOUT knowing HOW to use it AND without knowing WHAT it does.  \n\nAnd believe me it is DIFFICULT.  \n\nEach program is however linked to in the posts I gave you.   \n\n\u003cbr /\u003e\n\n\\[pseudo-czech\\]  \nNO.  \n\nNedává to smysl, co použít program bez vědět, jak jej používat a, aniž by věděl, co program dělá.  \n\nA věřte mi, je to těžké.  \n\nKaždý program je však spojena s do míst co jsem ti dal.  \n\\[/pseudo-czech\\]  \n\n:wink:  \n\nWonko  \n\nP.S.:  \nczech proverbs:  \n[http://en.wikiquote..../Czech_proverbs](http://en.wikiquote.org/wiki/Czech_proverbs \"External link\")  \n\n\"Bez práce nejsou koláče.\"   \nTranslation: There are no cakes without work.  \nEnglish equivalent: You don\u0027t work; you don\u0027t eat.  \nEnglish equivalent: There\u0027s no such thing as a free lunch.  \n\n\"Kolik jazyků znáš, tolikrát jsi člověkem.\"   \nTranslation: The more languages you know, the more (times) you are human.  \nMeaning: The more languages you know, the richer is your life.  \n\n\"Žádný učený z nebe nespadl.\"   \nTranslation: Wise men don\u0027t fall from the sky.  \nMeaning: Knowledge doesn\u0027t come easily.  \nEnglish equivalent: You can\u0027t expect knowledge to hit you over the head.   \n"
+    },
+    {
+      "id": "113719",
+      "timestamp": "2010-11-13T19:15:49+00:00",
+      "author": "Ags",
+      "content": "Please write you how I do it again and write it in paragraphs pls give a link directly to the program I do not want to accidentally download something else.   \n"
+    },
+    {
+      "id": "113721",
+      "timestamp": "2010-11-13T19:27:29+00:00",
+      "author": "Wonko the Sane",
+      "content": "Again NO.  \n\nIt is likely that you ruin the disk, making it not bootable.  \n\nThe only member I know that comes from the czech republic is Filip Hasa:  \n[http://www.boot-land...?showuser\u003d12670](http://www.boot-land.net/forums/index.php?showuser\u003d12670 \"External link\")  \n\nYou need some guidance to use those methods/programs.  \n\nTry contacting him.  \n\n\\[pseudo-czech\\]  \nOpět NO.  \n\nJe pravděpodobné, že vás zničit disk, takže není bootovací.  \n\nJediným členem Vím, že pochází z Česká republika je Filip Hasa:  \n[http://www.boot-land...?showuser\u003d12670](http://www.boot-land.net/forums/index.php?showuser\u003d12670 \"External link\")  \n\nMusíte určité vodítko k používání těchto metod / programů.  \n\nZkuste kontaktovat ho.  \n\\[/pseudo-czech\\]  \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "113746",
+      "timestamp": "2010-11-14T10:05:58+00:00",
+      "author": "Ags",
+      "content": "What do I do now when I have the program you run, and so on?   \n"
+    },
+    {
+      "id": "113762",
+      "timestamp": "2010-11-14T13:07:20+00:00",
+      "author": "Filip Hasa",
+      "content": "Ahoj Agsi,  \n\nnapis mi na PM. Uvidime co se da delat :wink:  \n\nDiky   \n"
+    },
+    {
+      "id": "113790",
+      "timestamp": "2010-11-14T17:25:29+00:00",
+      "author": "Ags",
+      "content": "\u003e Ahoj Agsi,  \n\u003e\n\u003e napis mi na PM. Uvidime co se da delat :wink:  \n\u003e\n\u003e Diky\nSnad se odeslala   \n"
+    },
+    {
+      "id": "113837",
+      "timestamp": "2010-11-15T05:57:54+00:00",
+      "author": "Ags",
+      "content": "Kdyby ti nic nepřišlo napiš sem.   \n"
+    },
+    {
+      "id": "113838",
+      "timestamp": "2010-11-15T07:18:11+00:00",
+      "author": "Filip Hasa",
+      "content": "\u003e Kdyby ti nic nepřišlo napiš sem.\n\n\u003cbr /\u003e\n\nPoslal jsem ti PMko. Odepis.   \n"
+    },
+    {
+      "id": "113886",
+      "timestamp": "2010-11-15T15:55:06+00:00",
+      "author": "Ags",
+      "content": "poslal jsem pm odepis   \n"
+    },
+    {
+      "id": "114184",
+      "timestamp": "2010-11-19T08:01:06+00:00",
+      "author": "Ags",
+      "content": "Are you dead?   \n"
+    },
+    {
+      "id": "114478",
+      "timestamp": "2010-11-22T12:43:05+00:00",
+      "author": "Filip Hasa",
+      "content": "Ahoj,  \n\nuz jsem psal post, ale ztratil se/ asi jsem ho neulozitl. promin.  \n\nVzhledem k tomu co potrebujes. Je potreba aby sis prosel [postup](http://www.boot-land.net/forums/index.php?showtopic\u003d9830\u0026hl\u003d \"External link\") jak psal wonko.  \n\nkoukal jsi na nej?   \n"
+    },
+    {
+      "id": "114480",
+      "timestamp": "2010-11-22T13:05:53+00:00",
+      "author": "Filip Hasa",
+      "content": "Dle meho potrebujes toto:  \n\n\u003cbr /\u003e\n\n\u003e 4. Universal Image Create and Restore - Details  \n\u003e\n\u003e - IMG_XP_Restore.exe for Restore on USB drive takes care of:  \n\u003e USB Services get \"Group\"\u003d\"Boot Bus Extender\" and Start\u003d0 to prevent BSOD 7B  \n\u003e UsbBootWatcher.exe and UsbBootWatcher.conf are copied to USB-HDD\\\\WINDOWS\\\\system32 directory.  \n\u003e Thanks to marv and cdob for describing effect of Driver Group and Start value to prevent BSOD 7B in booting XP from USB.  \n\u003e [http://www.911cd.net...showtopic\u003d22473](http://www.911cd.net/forums//index.php?showtopic\u003d22473 \"External link\")\n\n"
+    },
+    {
+      "id": "114484",
+      "timestamp": "2010-11-22T13:33:42+00:00",
+      "author": "Ags",
+      "content": "no ja neumim moc dobre anglicky takže mi vysvětli pls česky jak mam co udělat   \n"
+    },
+    {
+      "id": "114486",
+      "timestamp": "2010-11-22T13:58:15+00:00",
+      "author": "Filip Hasa",
+      "content": "\u003e no ja neumim moc dobre anglicky takže mi vysvětli pls česky jak mam co udělat\n\nto mi je lito, ale prekladat ti to nebudu, nemam tolik volneho casu abych si mohl dovolit ti to prelozit a predpokladam ze mi za to nehodlas platit abych si ho nasel ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif) kdybys mel sedmicky, muzem to nejak zacit resit, ted se snazim nabootovat 2008 na vmware (instalace na HW) ale pada mi to do stejne smrti ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif)  \n\nmyslim ze je nevyssi cas se pustit do anglictiny ci se to zkusit na ceskem foru  \n\nv odkazu mas podrobny postup, takze co vic dodat  \n\nuz se dostavas vice do vnitrku systemu, takze te anglictina stejne ceka  \n\nsorry   \n"
+    },
+    {
+      "id": "114489",
+      "timestamp": "2010-11-22T14:07:50+00:00",
+      "author": "Ags",
+      "content": "a neaky cesky forum existuje?? nic jsem nenasel   \n"
+    },
+    {
+      "id": "114490",
+      "timestamp": "2010-11-22T14:11:53+00:00",
+      "author": "Filip Hasa",
+      "content": "\u003e a neaky cesky forum existuje?? nic jsem nenasel\n\n\u003cbr /\u003e\n\nnevim nehledal jsem, spise to najdes ty nez ja  \n\nale doporucil bych ti zacit od zacatku ato: udelej si cistou instalaci na USB disk, tak si odzkousis co a jak a pak s tvym diskem uz budes moudrejsi   \n"
+    },
+    {
+      "id": "113691",
+      "timestamp": "2010-11-13T14:50:37+00:00",
+      "author": "Ags",
+      "content": "Hello, I need advice, I have a home 500GB SATA HDD (removed from the PC) and when you move it to another PC and I want it to boot Windows XP Home, is a USB connection, 2-3 seconds to load classic Windows starts, then there Not for a second blue screen and restart the pc the same thing over and over. Please advice, thank you and sorry for my English.   \n"
+    },
+    {
+      "id": "113693",
+      "timestamp": "2010-11-13T14:59:36+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Hello, I need advice, I have a home 500GB SATA HDD (removed from the PC) and when you move it to another PC and I want it to boot Windows XP Home, is a USB connection, 2-3 seconds to load classic Windows starts, then there Not for a second blue screen and restart the pc the same thing over and over. Please advice, thank you and sorry for my English.\n\nCheck the BSOD STOP ERROR, see here:  \n[http://www.911cd.net...o...\u003d24161\\\u0026st\u003d3](http://www.911cd.net/forums//index.php?showtopic\u003d24161\u0026st\u003d3 \"External link\")  \n\nIt is most probably a 0x0000007b.  \n\nYou need to install and make active the USB drivers.  \n\nMost probably this is the easiest path you can take:  \n[http://www.boot-land...?...ic\u003d9830\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d9830\u0026hl\u003d \"External link\")  \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "113697",
+      "timestamp": "2010-11-13T15:24:38+00:00",
+      "author": "Ags",
+      "content": "I need to explain it inactive so much a noob I do not understand what you write here and not very good in English using Google Translate so that you do not understand, I edited the boot.ini and I go try to put away the blue screen.   \n"
+    },
+    {
+      "id": "113698",
+      "timestamp": "2010-11-13T15:34:01+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I need to explain it inactive so much a noob I do not understand what you write here and not very good in English using Google Translate so that you do not understand, I edited the boot.ini and I go try to put away the blue screen.\nBOOT.INI has NOTHING to do with your problem. :wink:  \n\nThe idea is to have the Blue screen **stay** so that you can read the STOP ERROR number.  \n\nIf you post in English on a Forum where English is used, you are supposed to understand English.  \n\nWe don\u0027t have a \"regional\" section:  \n[http://www.boot-land...hp?showforum\u003d39](http://www.boot-land.net/forums/index.php?showforum\u003d39 \"External link\")  \nfor czech, maybe you can find a friend that better understands English? :wink:  \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "113699",
+      "timestamp": "2010-11-13T15:45:42+00:00",
+      "author": "Ags",
+      "content": "Error code is 0x0000007B (0xBA4C7524, 0x0000034, 0x00000000, 0x00000000) now, please consult same time, what   \n\n**Edited by Ags, 13 November 2010 - 03:55 PM.**\n"
+    },
+    {
+      "id": "113701",
+      "timestamp": "2010-11-13T16:23:06+00:00",
+      "author": "Wonko the Sane",
+      "content": "Good.  \nThat was expected. :wink:  \n\nNow, what you need to do is to \"transform\" that install into an USB bootable one.  \n\nThere are several ways, but AFAIK they are ONLY documented in English. (or pseudo-English :wink:).  \n\nThe idea is to make the USB drivers load at boot time and prevent windows from re-setting their Group and Start type.  \n\nThe program by Wimb:  \n[http://www.boot-land...?...ic\u003d9830\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d9830\u0026hl\u003d \"External link\")  \n\nshould be able to do that.  \n\nOtherwise you should try using marv\u0027s service:  \n[http://www.911cd.net...o...c\u003d22473\\\u0026hl\u003d](http://www.911cd.net/forums//index.php?showtopic\u003d22473\u0026hl\u003d \"External link\")  \n\nSome details are given in this seemingly unrelated thread:  \n[http://www.boot-land...?showtopic\u003d9196](http://www.boot-land.net/forums/index.php?showtopic\u003d9196 \"External link\")  \n(ONLY the information about ISB services is useful)   \n\nIt is assumed that you understand the \"principles\" of the findings by Dietmar Stoelting:  \n[http://www.911cd.net...showtopic\u003d14181](http://www.911cd.net/forums//index.php?showtopic\u003d14181 \"External link\")  \n(check the Tutorials linked to in his signature)  \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "113702",
+      "timestamp": "2010-11-13T16:30:19+00:00",
+      "author": "Ags",
+      "content": "I do not understand you please give a link directly to the program and how to write your own words what I do.   \n"
+    },
+    {
+      "id": "113703",
+      "timestamp": "2010-11-13T16:36:58+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I do not understand you please give a link directly to the program and how to write your own words what I do.\n\nThat is the problem.  \nWe are talking of a very complex topic.  \nYou will NOT be able to do it unless you understand FULLY the basics.  \n\n\\[pseudo-czech\\]  \nTo je ten problém.  \nMluvíme o velmi komplexní téma.  \nNebudete schopni to udělat, pokud jste plně pochopit základy.  \n\\[/pseudo-czech\\]  \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "113707",
+      "timestamp": "2010-11-13T17:00:13+00:00",
+      "author": "Ags",
+      "content": "so please write inactive for him to understand even the biggest idiot and put a link directly to the program not on the forum I did not withdraw anything else   \n"
+    },
+    {
+      "id": "113709",
+      "timestamp": "2010-11-13T17:26:01+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e so please write inactive for him to understand even the biggest idiot and put a link directly to the program not on the forum I did not withdraw anything else\n\nNO.  \n\nIt makes NO sense whatever to use a program WITHOUT knowing HOW to use it AND without knowing WHAT it does.  \n\nAnd believe me it is DIFFICULT.  \n\nEach program is however linked to in the posts I gave you.   \n\n\u003cbr /\u003e\n\n\\[pseudo-czech\\]  \nNO.  \n\nNedává to smysl, co použít program bez vědět, jak jej používat a, aniž by věděl, co program dělá.  \n\nA věřte mi, je to těžké.  \n\nKaždý program je však spojena s do míst co jsem ti dal.  \n\\[/pseudo-czech\\]  \n\n:wink:  \n\nWonko  \n\nP.S.:  \nczech proverbs:  \n[http://en.wikiquote..../Czech_proverbs](http://en.wikiquote.org/wiki/Czech_proverbs \"External link\")  \n\n\"Bez práce nejsou koláče.\"   \nTranslation: There are no cakes without work.  \nEnglish equivalent: You don\u0027t work; you don\u0027t eat.  \nEnglish equivalent: There\u0027s no such thing as a free lunch.  \n\n\"Kolik jazyků znáš, tolikrát jsi člověkem.\"   \nTranslation: The more languages you know, the more (times) you are human.  \nMeaning: The more languages you know, the richer is your life.  \n\n\"Žádný učený z nebe nespadl.\"   \nTranslation: Wise men don\u0027t fall from the sky.  \nMeaning: Knowledge doesn\u0027t come easily.  \nEnglish equivalent: You can\u0027t expect knowledge to hit you over the head.   \n"
+    },
+    {
+      "id": "113719",
+      "timestamp": "2010-11-13T19:15:49+00:00",
+      "author": "Ags",
+      "content": "Please write you how I do it again and write it in paragraphs pls give a link directly to the program I do not want to accidentally download something else.   \n"
+    },
+    {
+      "id": "113721",
+      "timestamp": "2010-11-13T19:27:29+00:00",
+      "author": "Wonko the Sane",
+      "content": "Again NO.  \n\nIt is likely that you ruin the disk, making it not bootable.  \n\nThe only member I know that comes from the czech republic is Filip Hasa:  \n[http://www.boot-land...?showuser\u003d12670](http://www.boot-land.net/forums/index.php?showuser\u003d12670 \"External link\")  \n\nYou need some guidance to use those methods/programs.  \n\nTry contacting him.  \n\n\\[pseudo-czech\\]  \nOpět NO.  \n\nJe pravděpodobné, že vás zničit disk, takže není bootovací.  \n\nJediným členem Vím, že pochází z Česká republika je Filip Hasa:  \n[http://www.boot-land...?showuser\u003d12670](http://www.boot-land.net/forums/index.php?showuser\u003d12670 \"External link\")  \n\nMusíte určité vodítko k používání těchto metod / programů.  \n\nZkuste kontaktovat ho.  \n\\[/pseudo-czech\\]  \n\n:wink:  \nWonko   \n"
+    },
+    {
+      "id": "113746",
+      "timestamp": "2010-11-14T10:05:58+00:00",
+      "author": "Ags",
+      "content": "What do I do now when I have the program you run, and so on?   \n"
+    },
+    {
+      "id": "113762",
+      "timestamp": "2010-11-14T13:07:20+00:00",
+      "author": "Filip Hasa",
+      "content": "Ahoj Agsi,  \n\nnapis mi na PM. Uvidime co se da delat :wink:  \n\nDiky   \n"
+    },
+    {
+      "id": "113790",
+      "timestamp": "2010-11-14T17:25:29+00:00",
+      "author": "Ags",
+      "content": "\u003e Ahoj Agsi,  \n\u003e\n\u003e napis mi na PM. Uvidime co se da delat :wink:  \n\u003e\n\u003e Diky\nSnad se odeslala   \n"
+    },
+    {
+      "id": "113837",
+      "timestamp": "2010-11-15T05:57:54+00:00",
+      "author": "Ags",
+      "content": "Kdyby ti nic nepřišlo napiš sem.   \n"
+    },
+    {
+      "id": "113838",
+      "timestamp": "2010-11-15T07:18:11+00:00",
+      "author": "Filip Hasa",
+      "content": "\u003e Kdyby ti nic nepřišlo napiš sem.\n\n\u003cbr /\u003e\n\nPoslal jsem ti PMko. Odepis.   \n"
+    },
+    {
+      "id": "113886",
+      "timestamp": "2010-11-15T15:55:06+00:00",
+      "author": "Ags",
+      "content": "poslal jsem pm odepis   \n"
+    },
+    {
+      "id": "114184",
+      "timestamp": "2010-11-19T08:01:06+00:00",
+      "author": "Ags",
+      "content": "Are you dead?   \n"
+    },
+    {
+      "id": "114478",
+      "timestamp": "2010-11-22T12:43:05+00:00",
+      "author": "Filip Hasa",
+      "content": "Ahoj,  \n\nuz jsem psal post, ale ztratil se/ asi jsem ho neulozitl. promin.  \n\nVzhledem k tomu co potrebujes. Je potreba aby sis prosel [postup](http://www.boot-land.net/forums/index.php?showtopic\u003d9830\u0026hl\u003d \"External link\") jak psal wonko.  \n\nkoukal jsi na nej?   \n"
+    },
+    {
+      "id": "114480",
+      "timestamp": "2010-11-22T13:05:53+00:00",
+      "author": "Filip Hasa",
+      "content": "Dle meho potrebujes toto:  \n\n\u003cbr /\u003e\n\n\u003e 4. Universal Image Create and Restore - Details  \n\u003e\n\u003e - IMG_XP_Restore.exe for Restore on USB drive takes care of:  \n\u003e USB Services get \"Group\"\u003d\"Boot Bus Extender\" and Start\u003d0 to prevent BSOD 7B  \n\u003e UsbBootWatcher.exe and UsbBootWatcher.conf are copied to USB-HDD\\\\WINDOWS\\\\system32 directory.  \n\u003e Thanks to marv and cdob for describing effect of Driver Group and Start value to prevent BSOD 7B in booting XP from USB.  \n\u003e [http://www.911cd.net...showtopic\u003d22473](http://www.911cd.net/forums//index.php?showtopic\u003d22473 \"External link\")\n\n"
+    },
+    {
+      "id": "114484",
+      "timestamp": "2010-11-22T13:33:42+00:00",
+      "author": "Ags",
+      "content": "no ja neumim moc dobre anglicky takže mi vysvětli pls česky jak mam co udělat   \n"
+    },
+    {
+      "id": "114486",
+      "timestamp": "2010-11-22T13:58:15+00:00",
+      "author": "Filip Hasa",
+      "content": "\u003e no ja neumim moc dobre anglicky takže mi vysvětli pls česky jak mam co udělat\n\nto mi je lito, ale prekladat ti to nebudu, nemam tolik volneho casu abych si mohl dovolit ti to prelozit a predpokladam ze mi za to nehodlas platit abych si ho nasel ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif) kdybys mel sedmicky, muzem to nejak zacit resit, ted se snazim nabootovat 2008 na vmware (instalace na HW) ale pada mi to do stejne smrti ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif)  \n\nmyslim ze je nevyssi cas se pustit do anglictiny ci se to zkusit na ceskem foru  \n\nv odkazu mas podrobny postup, takze co vic dodat  \n\nuz se dostavas vice do vnitrku systemu, takze te anglictina stejne ceka  \n\nsorry   \n"
+    },
+    {
+      "id": "114489",
+      "timestamp": "2010-11-22T14:07:50+00:00",
+      "author": "Ags",
+      "content": "a neaky cesky forum existuje?? nic jsem nenasel   \n"
+    },
+    {
+      "id": "114490",
+      "timestamp": "2010-11-22T14:11:53+00:00",
+      "author": "Filip Hasa",
+      "content": "\u003e a neaky cesky forum existuje?? nic jsem nenasel\n\n\u003cbr /\u003e\n\nnevim nehledal jsem, spise to najdes ty nez ja  \n\nale doporucil bych ti zacit od zacatku ato: udelej si cistou instalaci na USB disk, tak si odzkousis co a jak a pak s tvym diskem uz budes moudrejsi   \n"
+    },
+    {
+      "id": "114497",
+      "timestamp": "2010-11-22T14:31:44+00:00",
+      "author": "Ags",
+      "content": "win instalovat umim takze jak to myslis, skousel jsem ten hdd pripojit i na jinym pc dovnitr ale stejne to neslo podle me je to tim ze xp pri startu hledaj novej hw   \n"
+    },
+    {
+      "id": "114508",
+      "timestamp": "2010-11-22T15:33:09+00:00",
+      "author": "Filip Hasa",
+      "content": "jasne, tak jinak:  \n\nduvodu je nekolik:  \n\n1. nemas ovladace  \n2. nemas je pustene  \n\npokud je nemas pustene pust si tento [soubor](http://www.boot-land.net/forums/index.php?act\u003dattach\u0026type\u003dpost\u0026id\u003d10316 \"External link\") a dej vedet  \n\n[jinak vice info](http://www.boot-land.net/forums/index.php?showtopic\u003d9196\u0026view\u003dfindpost\u0026p\u003d89161 \"External link\")  \n\njeste si spust usbbootfix.bat z IMG_XP.exe pro USB   \n"
+    },
+    {
+      "id": "114510",
+      "timestamp": "2010-11-22T16:03:45+00:00",
+      "author": "Filip Hasa",
+      "content": "ahoj,  \n\nnasel jsem toto [http://www.911cd.net...showtopic\u003d21883](http://www.911cd.net/forums//index.php?showtopic\u003d21883 \"External link\")  \n\nale bez anglictiny to asi nepujde   \n"
+    },
+    {
+      "id": "114514",
+      "timestamp": "2010-11-22T16:18:28+00:00",
+      "author": "Ags",
+      "content": "ted uvidime neco jsem tu spitlikoval   \n"
+    },
+    {
+      "id": "116154",
+      "timestamp": "2010-12-09T23:00:45+00:00",
+      "author": "Filip Hasa",
+      "content": "\u003e ted uvidime neco jsem tu spitlikoval\n\n\u003cbr /\u003e\n\njak to dopadlo? me to funguje ;o)   \n"
+    }
+  ]
+}

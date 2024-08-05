@@ -1,0 +1,46 @@
+{
+  "id": "16839",
+  "title": "bootdiskSDK",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "154005",
+      "timestamp": "2012-05-09T14:26:21+00:00",
+      "author": "Brito",
+      "content": "![Posted Image](http://reboot.pro/index.php?app\u003ddownloads\u0026module\u003ddisplay\u0026section\u003dscreenshot\u0026id\u003d185)\n**File Name** : bootdiskSDK  \n**File Submitter** : [Nuno Brito](http://reboot.pro/user/1-nuno-brito/ \"\")  \n**File Submitted** : 09 May 2012  \n**File Updated** : *21 May 2012*   \n**File Category** : [Boot tools](http://reboot.pro/files/category/7-boot-tools/ \"\")  \n\nSince I am often testing over and over again Windows PE images, I needed a quick and automated way to rebuild ISO images and test them on the virtual machine. So, I am just sharing some of the tools that I use for myself in the hope they can help others too.  \n\nIf you are using mkisofs and qemu from command line, you might find yourself in troubles to create a Windows PE ISO image by hand. This SDK is a simple script that you can learn or modify for your own purposes and is targeted for Windows PE 2, 3 and above.  \n\n\u003cbr /\u003e\n\n**What does it do?**\n\n* Creates a new ISO image from an existent Windows PE using mkisofs (included)\n* Run the newly created ISO inside the QEMU virtual machine (included)\n\n**How to use?**   \nTo use this SDK, just place your Windows PE files inside the \"winpe\" folder and then click on \"run.bat\" file.  \n\n\u003cbr /\u003e\n\n**Modifying**   \nIf you wish, you can adjust the settings just by editing run.bat to your desire. By default, QEMU will run with 1Gb of allocated RAM memory for the virtual machine. If you think this is too much for your case, you should edit run.bat to use a lower value.  \n\n\u003cbr /\u003e\n\n**Future**   \nMore features will be added on the feature. I have developed this SDK for my own use and might be adding more features if requested by other developers/users.  \n\n\u003cbr /\u003e\n\nTake care!  \n:smile:  \n\n[Click here to download this file](http://reboot.pro/files/file/185-bootdisksdk/ \"\")   \n"
+    },
+    {
+      "id": "154088",
+      "timestamp": "2012-05-10T07:37:46+00:00",
+      "author": "TheHive",
+      "content": "Hard to see the attached image.   \n"
+    },
+    {
+      "id": "154089",
+      "timestamp": "2012-05-10T07:45:00+00:00",
+      "author": "Brito",
+      "content": "That is a forum definition for posts, nothing much that I can do about.  \n\nIf you visit the download topic it shows the whole size screenshot: [http://reboot.pro/fi...85-bootdisksdk/](http://reboot.pro/files/file/185-bootdisksdk/ \"\")  \n\n:smile:   \n"
+    },
+    {
+      "id": "154093",
+      "timestamp": "2012-05-10T08:20:39+00:00",
+      "author": "TheHive",
+      "content": "Thanks!   \n"
+    },
+    {
+      "id": "154874",
+      "timestamp": "2012-05-20T15:37:58+00:00",
+      "author": "Dave in Tulsa",
+      "content": "Nuno,  \n\nI actually have no question for you regarding bootdskSDK. I only wanted to take the time to express my sincere appreciation for the fact that you have developed this fine utility and then decided to share it with others for their convenience as well. I have tested your SDK on my WinPE projects and found that it works fanatastic! And it\u0027s also very fast. The method I\u0027d used previously to accomplish all of the same things was both tedious and time consuming.   \n\nSo again, this SDK is great Nuno! And I do appreciate the fact that you have chosen to share this with others.  \n\nThanks again! ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)  \nDave in Sperry, OK, USA   \n"
+    },
+    {
+      "id": "154910",
+      "timestamp": "2012-05-21T07:33:05+00:00",
+      "author": "Brito",
+      "content": "Hi Dave,  \n\nThank you very much for the kind words, they were really appreciated.  \n\nHave a nice day,  \nNuno Brito   \n"
+    }
+  ]
+}

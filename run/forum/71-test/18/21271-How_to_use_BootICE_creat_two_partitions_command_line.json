@@ -1,0 +1,88 @@
+{
+  "id": "21271",
+  "title": "How to use BootICE creat two partitions (command line)",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "200533",
+      "timestamp": "2016-10-05T10:25:07+00:00",
+      "author": "meoit",
+      "content": "Hi all.\n\nI am searching method to re-partitioning my USB with BootICE in CommandLine\n\nI want to BootICE creat two partitions by using command line.\n\nSomeone help me.\n\n"
+    },
+    {
+      "id": "200535",
+      "timestamp": "2016-10-05T10:57:32+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "Why BootICE? There are much better partitioning tools out there.\n\n"
+    },
+    {
+      "id": "200536",
+      "timestamp": "2016-10-05T11:29:01+00:00",
+      "author": "meoit",
+      "content": "I need re-partition in CMD, no GUI, no DiskPart. I like BootICE but I don\u0027t know it support cmd to creat two partitions...\n\n"
+    },
+    {
+      "id": "200538",
+      "timestamp": "2016-10-05T12:09:14+00:00",
+      "author": "Guest_AnonVendetta_*",
+      "content": "@meowit: So, it seems you use Linux as your main OS.....but you want to use Windows-based tools to create partitions? Why not just use Gparted/parted or gptfdisk/fdisk, etc.?\n\n"
+    },
+    {
+      "id": "200540",
+      "timestamp": "2016-10-05T13:20:37+00:00",
+      "author": "meoit",
+      "content": "Main OS: Windows.\n\n"
+    },
+    {
+      "id": "200541",
+      "timestamp": "2016-10-05T15:12:29+00:00",
+      "author": "devdevadev",
+      "content": "Same problem here....\n\nBut I have just manage from somewhere to create 3 partition in my removable usb drive by using my \u0027SMART_USB.cmd\u0027...\n\n```\n:Erase\ncls\u0026 color 4F\u0026 echo.\u0026 echo Please wait...\u0026 echo.\nptn\\bootice.exe /DEVICE\u003d%DD% /partitions /repartition /usb-hdd /vollabel\u003dDEV /fstype\u003dfat32 /quiet\n\n\n:Size\ncls\u0026 color 1F\u0026 echo.\u0026 echo Please wait....\u0026 echo.\u0026echo.\u0026echo.\nset data\u003d\nSET /P Size\u003dCHOOSE SIZE FOR DATA?    (1GB-10GB):   \nIF /I \u0027%Size%\u0027\u003d\u003d\u0027\u0027 (\necho.\u0026 echo ERROR: You must enter 1GB-10GB to continue...\u0026 echo.\u0026 pause\u003enul\u0026 cls\u0026 goto :Size\n)\necho.\nIF %Size%\u003d\u003d1 set data\u003d1030 \u0026 goto :repartition\nIF %Size%\u003d\u003d2 set data\u003d2060 \u0026 goto :repartition\nIF %Size%\u003d\u003d3 set data\u003d3080 \u0026 goto :repartition\nIF %Size%\u003d\u003d4 set data\u003d4110 \u0026 goto :repartition\nIF %Size%\u003d\u003d5 set data\u003d5130 \u0026 goto :repartition\nIF %Size%\u003d\u003d6 set data\u003d6160 \u0026 goto :repartition\nIF %Size%\u003d\u003d7 set data\u003d7190 \u0026 goto :repartition\nIF %Size%\u003d\u003d8 set data\u003d8210 \u0026 goto :repartition\nIF %Size%\u003d\u003d9 set data\u003d9230 \u0026 goto :repartition\nIF %Size%\u003d\u003d10 set data\u003d10250 \u0026 goto :repartition\necho.\u0026 echo  ERROR: You must enter 1GB-10GB to continue...\u0026 echo.\u0026 pause\u003enul\u0026 cls\u0026 goto :Size\n\n\n:repartition\ncls\u0026 color 2F\u0026 echo.\nptn\\partassist.exe /hd:%DD% /del:all\ncls\u0026 color 3F\u0026 echo.\nptn\\partassist.exe /hd:%DD% /cre /pri /size:19 /end /fs:fat16 /act /hide /align /label:UEFI /letter:Z\ncls\u0026 color 4F\u0026 echo.\nptn\\partassist.exe /hd:%DD% /cre /pri /size:%data% /fs:fat32 /align /label:DEV /letter:Y\ncls\u0026 color 5F\u0026 echo.\nptn\\partassist.exe /hd:%DD% /cre /pri /size:auto /fs:ntfs /act /align /label:SMART USB /letter:X\ncls\u0026 color 6F\u0026 echo.\n```\n\nMay be it can help you a bit ?  \nRegards..\n\n"
+    },
+    {
+      "id": "200547",
+      "timestamp": "2016-10-06T01:29:58+00:00",
+      "author": "meoit",
+      "content": "Thanks to DevDevADev.\n\nBut this method is using Aomei Partition. ![:suda:](http://reboot.pro/public/style_emoticons/default/suda.gif)\n\n"
+    },
+    {
+      "id": "200559",
+      "timestamp": "2016-10-09T02:21:44+00:00",
+      "author": "meoit",
+      "content": "Someone help me.\n\n"
+    },
+    {
+      "id": "200561",
+      "timestamp": "2016-10-09T07:35:53+00:00",
+      "author": "devdevadev",
+      "content": "Sorry Bro....Currently BOOTICE does not support multi-partition by command line. \"Partassist.exe\u0027 is currently the best choice for the same. BTW, i have tried to contacted \u0027Pauly\u0027 to add some new feature in next Beta....You can also do the same for quick resolution of the thread...\n\nRegards..\n\n"
+    },
+    {
+      "id": "200587",
+      "timestamp": "2016-10-15T00:52:29+00:00",
+      "author": "meoit",
+      "content": "We must have some way instead. Someone help me. :smile:\n\n"
+    },
+    {
+      "id": "200588",
+      "timestamp": "2016-10-15T08:53:20+00:00",
+      "author": "Atari800XL",
+      "content": "Use AutoIt or similar to create some sort of \"silent\" diskpart script launcher.\n\nYou could even use nicrmd to launch diskpart /s silently.\n\nOf course, you would have to program it yourself and make sure you format the correct drive...\n\n"
+    },
+    {
+      "id": "200592",
+      "timestamp": "2016-10-15T13:25:48+00:00",
+      "author": "meoit",
+      "content": "So, how to creat two partitions for USB by using DiskPart Script?. :smile:\n\n"
+    },
+    {
+      "id": "200604",
+      "timestamp": "2016-10-16T07:21:43+00:00",
+      "author": "wimb",
+      "content": "**UFD_FORMAT.exe** - Tool to format USB-stick for Booting with Boot Manager Menu on BIOS or UEFI computer and  \nTool to make USB-Stick having two partitions - FAT32 Boot partition for WIM or ISO and NTFS System partition for VHD.\n\n[http://reboot.pro/to...140-ufd-format/](http://reboot.pro/topic/19140-ufd-format/ \"\")\n\n**USB_Part_Flip.exe** to Exchange Partition Table Entries in MBR of USB-Stick -  \nallows to change which primary partition of the USB-stick is visible in Windows\n\n"
+    }
+  ]
+}

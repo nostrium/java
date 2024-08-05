@@ -1,0 +1,22 @@
+{
+  "id": "5924",
+  "title": "To jaclaz problems with Hpusbf.exe",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "46443",
+      "timestamp": "2008-10-08T06:54:37+00:00",
+      "author": "yggdrasil",
+      "content": "To jaclaz  \n\nI have problem using HP USB format tool. I use Hpusbf.exe with this simple switch in my script to format USB device:  \n**ShellExecute,Open,\"%Temp%\\\\grub\\\\hpusbf.exe\",\"%pScrollBox4% -FS:NTFS -y\"**   \nEverything works fine with formatting and USB device boot up with a breeze. But I always have to correct partition table to the correct value ![:confused1:](http://reboot.pro/public/style_emoticons/default/confused1.gif)   \nThis is done automatically using Norton PartitionMagic witch offers me to correct partition table. This is what PartitionMagic tells me:   \n\"**PartitionMagic has detected an error 110 on the partition starting at sector 63 on disk1. The length of the partition in the partition table is incorrect, the CHS length is 995967, the LBA length is 996030 and the filesystem length is 996029. The length can be changed to the correct value of 1012032** \"   \nI of course use this option and the problem are solved.   \n\nMy question is; can I change or put in something in my switch in line for Hpusbf.exe (-FS:NTFS -y) to create a correct partition table from start?  \n\nyggdrasil   \n"
+    },
+    {
+      "id": "46444",
+      "timestamp": "2008-10-08T07:16:48+00:00",
+      "author": "was_jaclaz",
+      "content": "Unfortunately no.  \n\nThe problem is a known one, basically the HP USB formatter tries to use ALL the sectors available, which, since a stick is in sizes that go along the powers of 2, when divided by 63 gives an uneven Cylinder/Head.  \nThe data in the MBR is unbalanced between the CHS and LBA part.  \nIn most cases this is not a problem, but a number of BIOSes will read the CHS part, find it invalid (partition NOT ending on cylinder boundary) and refuse to boot.  \nIt also seems that the FAT32 bootsector is affected by this.  \n\nApart from the possible error, it is a good idea to do things in the most \"compatible\" way.  \n\nI wrote for this reason a couple of batches, see here:  \n[http://www.boot-land...?showtopic\u003d5000](http://www.boot-land.net/forums/index.php?showtopic\u003d5000 \"External link\")  \n[http://www.boot-land...?showtopic\u003d3191](http://www.boot-land.net/forums/?showtopic\u003d3191 \"External link\")  \n\nApart using them instead of the HP utility, I guess that you can take snippets from them to \"correct\" an already formattted stick.  \nBasically you need to:  \n1) run the HP tool  \n2) copy the MBR locally  \n3) correct the MBR data  \n4) copy back the corrected MBR  \n5) eject the stick and re-insert it  \n6) use the \"normal\" Windows FORMAT command on it  \n\njaclaz   \n"
+    }
+  ]
+}

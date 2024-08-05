@@ -1,0 +1,70 @@
+{
+  "id": "7022",
+  "title": "ChipGenius v2.7 New version [20090207]",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "58426",
+      "timestamp": "2009-02-08T11:52:26+00:00",
+      "author": "myusbdisk",
+      "content": "New version ChipGenius(v2.7) date:20090207  \n\n[![Capture.jpg](http://reboot.pro/uploads/monthly_02_2009/post-22967-1234093887_thumb.jpg)](http://reboot.pro/uploads/monthly_02_2009/post-22967-1234093887.jpg \"Capture.jpg - Size: 95.18KB\"){#ipb-attach-url-7456-0-41159800-1676066719}   \n\nEnglish edition  \n\ndownload:  \n[http://www.mydigit.c.../chipgenius.rar](http://www.mydigit.cn/mytool/chipgenius.rar \"External link\")   \n"
+    },
+    {
+      "id": "58433",
+      "timestamp": "2009-02-08T12:17:25+00:00",
+      "author": "Brito",
+      "content": "Thanks for the suggestion, are you the author?  \n\nI understand it can be used to read the chips from USB drives, but would you enlighten me on the situations where it is used?  \n\n![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n"
+    },
+    {
+      "id": "58434",
+      "timestamp": "2009-02-08T12:18:22+00:00",
+      "author": "was_jaclaz",
+      "content": "Thanks for the heads up! ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\nFor anyone not familiar with this tool:  \n[http://www.boot-land...?showtopic\u003d4661](http://www.boot-land.net/forums/index.php?showtopic\u003d4661 \"External link\")  \n\njaclaz   \n"
+    },
+    {
+      "id": "58436",
+      "timestamp": "2009-02-08T12:23:44+00:00",
+      "author": "Brito",
+      "content": "Thanks for the link.  \n\nNow I see that it can be used to fetch the drivers to make USB work.  \n\n![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n"
+    },
+    {
+      "id": "58438",
+      "timestamp": "2009-02-08T12:41:26+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Now I ***see*** that it can be used to fetch the drivers to make USB work.\nWell, I can recommend you to a good optician. ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n\nIn 2K/XP/2003 the USB Mass Storage Drivers are included in the OS, and ANY stick is supported by them.  \n\nThe tool is helpful in finding the Chip Manufacturer\u0027s \"tools\" which in some cases allow for nice tricks, like flipping at will the \"Removable/Fixed\" bit, creating a CD-ROM device on the stick, creating read only devices, etc.  \n\nBeware, NOT for the faint of heart, NOT for the newbie:  \n*KIDS, DON\u0027T DO THIS AT HOME*   \n\njaclaz   \n"
+    },
+    {
+      "id": "58442",
+      "timestamp": "2009-02-08T13:36:24+00:00",
+      "author": "Brito",
+      "content": "\u003e In 2K/XP/2003 the USB Mass Storage Drivers are included in the OS, and ANY stick is supported by them.\n\nYes, I was actually remembering the recent case of Windows 98 (non-SE) where the USB support was a bit more complicated.  \n\nIn case I do stumble on some non-supported drive then perhaps I\u0027m lucky enough to find the driver on the manufacturer\u0027s page.  \n\n![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n"
+    },
+    {
+      "id": "58446",
+      "timestamp": "2009-02-08T13:45:23+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e Yes, I was actually remembering the recent case of Windows 98 (non-SE) where the USB support was a bit more complicated.\n\nDidn\u0027t this:  \n[http://www.boot-land...?showtopic\u003d2411](http://www.boot-land.net/forums/index.php?showtopic\u003d2411 \"External link\")  \n\nwork? ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\nNUSB should work on FE as well, since a lonfg time:  \n[http://www.msfn.org/...a...html\\\u0026st\u003d361](http://www.msfn.org/board/Maximum-Decim-Native-USB-t43605.html\u0026st\u003d361 \"External link\")  \n\nYou can get both FE and SE versions here:  \n[http://www.technical...kb/usbmsd98.php](http://www.technical-assistance.co.uk/kb/usbmsd98.php \"External link\")  \n[http://www.technical...age-drivers.php](http://www.technical-assistance.co.uk/kb/win98fe-usb-mass-storage-drivers.php \"External link\")  \n[http://www.technical...age-drivers.php](http://www.technical-assistance.co.uk/kb/win98se-usb-mass-storage-drivers.php \"External link\")  \n\nOr was it a problem with a non-English version? ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n\njaclaz   \n"
+    },
+    {
+      "id": "58454",
+      "timestamp": "2009-02-08T14:51:23+00:00",
+      "author": "myusbdisk",
+      "content": "v2.70 New characteristic  \n\n1. improved the examination algorithm, the result has been more accurate;   \n2. revised some minimum detail question  \n\nPS:  \na little bug, in English contact surface display ver is v2.64   \n"
+    },
+    {
+      "id": "58741",
+      "timestamp": "2009-02-10T13:03:14+00:00",
+      "author": "axa",
+      "content": "thanx   \n"
+    },
+    {
+      "id": "58813",
+      "timestamp": "2009-02-10T20:08:22+00:00",
+      "author": "risolutore",
+      "content": "I used the nirsoft USBview but thanks for this new apps ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)  \n@jaclaz entroduce me to the magic feature like make read only an usb stick partition.. ![:poke:](http://reboot.pro/public/style_emoticons/default/poke.gif)   \n"
+    }
+  ]
+}

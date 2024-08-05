@@ -1,0 +1,46 @@
+{
+  "id": "14423",
+  "title": "grub2 menu entry",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "127874",
+      "timestamp": "2011-05-03T19:01:17+00:00",
+      "author": "wsh",
+      "content": "Hai there,  \n\nIs there a possibility to use grub2 menu entry for ibm dsa preboot using grub2 because i already tried but i cannot succeed it.  \n\nThanks   \n"
+    },
+    {
+      "id": "128378",
+      "timestamp": "2011-05-09T15:34:04+00:00",
+      "author": "pokemon1",
+      "content": "Not sure how the ibm dsa iso is built and the way iso boots? Is it a linux iso (with vmlinuz \\\u0026 initrd files?)  \n\nHave you tried with Grub4DOS booting the iso? I have experienced some problems with grub2 not able to map few iso files directly. You can try Grub4DOS and then use Grub2 to call Grub4DOS.   \n\n**Edited by pokemon1, 09 May 2011 - 03:34 PM.**\n"
+    },
+    {
+      "id": "128518",
+      "timestamp": "2011-05-11T15:46:27+00:00",
+      "author": "wsh",
+      "content": "thanks for the reply pokemon but when i\u0027m using the link as below the error will come out that it cannot mount the iso image.  \n\n\u003chttp://reboot.pro/4708/page__st__15\u003e  \n\nthis iso is linux image and it using such as below.  \n\ndefault toolscenter  \ntimeout 100  \nprompt 1  \nlabel memtest  \nkernel rom.c32  \nappend kernelimage\u003dimg2a initrd\u003dimg3a root\u003d/dev/ram0 rw ramdisk_size\u003d100000 dimmdata\u003d00000000 vga\u003d0x317 debug_level\u003d1 silent_boot\u003dno boot_src\u003d3  \nontimeout toolscenter  \nlabel toolscenter  \ndisplay bsb.msg  \nSAY Running on the server side  \nSAY Please input \"memtest\" if you want to run standalone memory test. Otherwise it will boot to ToolsCenter Customized Media when timeout (10 seconds)  \nkernel img2a  \nappend initrd\u003dimg3a vga\u003d0x317 root\u003d/dev/ram0 rw ramdisk_size\u003d100000 dimmdata\u003d00000000 debug_level\u003d1 silent_boot\u003dno boot_src\u003d3  \n\nand it using isolinux and point to img1a.cfg  \n\nthen from that it will point to the img2b and lastly img3a.  \n\nIs there anything that i can do to extract it and mount straight by using the grub2?   \n"
+    },
+    {
+      "id": "128525",
+      "timestamp": "2011-05-11T16:52:26+00:00",
+      "author": "pokemon1",
+      "content": "So it is linux type. From your isolinux menu it looks like the kernel file is img2a \\\u0026 initrd file is img3a.  \n\nI assume you have abovementioned 2 files in the root of iso? if not please list the root folder structure and files within it.   \n\nIs your grub2 menu entry looks like below? If not, please try the below.  \n\nmenuentry \"toolcenter\" {  \nset isofile\u003d\"/youriso.iso\"  \nloopback loop $isofile  \nlinux (loop)/img2a vga\u003d0x317 root\u003d/dev/ram0 rw ramdisk_size\u003d100000 dimmdata\u003d00000000 debug_level\u003d1 silent_boot\u003dno boot_src\u003d3  \ninitrd (loop)/img3a  \n\n\\\u003cIs there anything that i can do to extract it and mount straight by using the grub2?\\\u003e Lets try iso loading directly, if it does not work then we will try by extracting.  \n\nRegards,   \n"
+    },
+    {
+      "id": "130519",
+      "timestamp": "2011-06-10T03:51:42+00:00",
+      "author": "wsh",
+      "content": "i already tried follow the instruction that you have given but it will prompt invalid magic number.  \nCan i know what the problem and how to resolve the problem?  \n\nThanks.   \n"
+    },
+    {
+      "id": "130548",
+      "timestamp": "2011-06-10T17:10:05+00:00",
+      "author": "Wonko the Sane",
+      "content": "At first sight, the proposed entry misses a trailing }.  \n\nMaybe it\u0027s it? ![:worship:](http://reboot.pro/public/style_emoticons/default/worship.gif)  \n\nAlso, is \"you iso\" actually named \"youriso.iso\"  \n\n```\nset isofile\u003d\"/youriso.iso\"\n```\n\nand is it in root of current device?  \n(or have you appropriately changed these settings ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif))  \n\nPost the EXACT menu entry that you tried unsuccessfully and confirm name and location of .iso.  \n\n![:thumbup:](http://reboot.pro/public/style_emoticons/default/thumbup.gif)  \nWonko   \n"
+    }
+  ]
+}

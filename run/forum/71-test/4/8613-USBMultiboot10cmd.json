@@ -1,0 +1,22 @@
+{
+  "id": "8613",
+  "title": "USB_Multiboot_10.cmd",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "73421",
+      "timestamp": "2009-08-02T17:02:40+00:00",
+      "author": "stealthmode",
+      "content": "I have had a headache from the start of all this but am managing to do some of the things asked for.  \nIt gives me option 2 to allow me to point to the USB drive but then it comes up with error message  \n\n\u0027fsutil\u0027 is not recognized as an internal or external command, operable program or batch file.  \nFAT FAT32 NTFS Drivelist \u003d  \nSelect Target USB-Drive from DriveList  \n\\*\\*\\*\\*\\* H: has NOT FAT FAT32 or NTFS Format and is NOT Valid \\*\\*\\*\\*\\*  \nPress any key to continue...  \n\nI then copied the fsutil.exe to the same folder and now it says \u0027FINDSTOR\u0027 is not recognized.................batch file.  \n\nI have tried a USB Flash drive and partitioned a USB HARD-DRIVE to 1.8 GB\u0027s  \nI have formatted them both with windows and also all other types like PeToUSB.  \n\nI have had to copy all the system32 files into the USB_MultiBoot_10 folder as the .cmd program will not work. It just keeps saying can\u0027t find or is not recognized.  \n\nany help would be appreciated  \n\nI have also tried fixpath but still to no avail.   \n"
+    },
+    {
+      "id": "73705",
+      "timestamp": "2009-08-05T10:14:32+00:00",
+      "author": "wimb",
+      "content": "Otherwise try GUI program of **ilko_t**   \n[http://www.msfn.org/...howtopic\u003d120444](http://www.msfn.org/board/index.php?\u0026showtopic\u003d120444 \"External link\")  \n\nOr try New approach:   \nInstall of XP from USB without booting from USB using U_XP_SET with GUI programs  \n[http://www.boot-land...?showtopic\u003d5306](http://www.boot-land.net/forums/index.php?showtopic\u003d5306 \"External link\")   \n"
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "id": "21642",
+  "title": "boot from hard disk caddy, can it be done?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "204930",
+      "timestamp": "2017-11-27T17:06:37+00:00",
+      "author": "stepdown",
+      "content": "I replaced the internal CD drive of my 2008 laptop with a hard disk caddy featuring an IDE to SATA interface. This is the product link\\[1\\]. Then I moved the internal HDD to the caddy and added an SSD in the HDD slot. I can boot just fine from the SSD - it\u0027s basically just a disk from a boot perspective. However, I can\u0027t boot from the HDD at all. Can it be done, and how? I\u0027m planning to replace the SSD with a larger one, and move the current SSD to the caddy. I would like to be able to boot several OSes (Win7 and Linux) on the current SSD, where GRUB4DOS is the boot manager.\n\nThanks in advance for any help.\n\n\\[1\\] [https://www.aliexpre.../829743981.html](https://www.aliexpress.com/item/2013-New-Style-Whole-sale-IDE-to-SATA-Hard-Drive-Caddy-to-CD-Bay-Adapter-12/829743981.html \"External link\")\n\n"
+    },
+    {
+      "id": "204931",
+      "timestamp": "2017-11-27T17:54:56+00:00",
+      "author": "steve6375",
+      "content": "Since you replaced the CD drive, the BIOS code would be expecting to boot from a \u0027CD\u0027.\n\nIf the \u0027boot from CD\u0027 option does not work (or is not present) then the BIOS probably does not support it.\n\nIt might be possible to install a boot loader onto hd0 and use the boot menu from that to boot from the \u0027fake CD\u0027 drive.\n\nYou could test this by booting from a USB flash drive to say grub4dos, and then seeing if it can \u0027see\u0027 a valid formatted disk in the \u0027fake CD\u0027 slot?\n\n"
+    },
+    {
+      "id": "204933",
+      "timestamp": "2017-11-27T21:47:52+00:00",
+      "author": "stepdown",
+      "content": "Thank you, Steve. The BIOS boot menu has CD/DVD as top priority, but booting goes straight to the grub4dos menu that\u0027s installed in the current SDD. I guess the BIOS CD boot code doesn\u0027t understand how to boot a HDD as a CD ?\n\n"
+    },
+    {
+      "id": "204934",
+      "timestamp": "2017-11-27T21:59:19+00:00",
+      "author": "steve6375",
+      "content": "If you can get to the grub4dos console, type\n\nfind\n\ngeometry (hd0)\n\ngeometry (hd1)\n\ndoes it list hd0 AND hd1 ? Assumes that both disks are partitioned...\n\nIf so, you should be able to boot from the hard disk to grub4dos and then boot to the \u0027fake CD\u0027 hard disk.\n\n**Edited by steve6375, 27 November 2017 - 10:01 PM.**\n"
+    },
+    {
+      "id": "204935",
+      "timestamp": "2017-11-27T22:31:34+00:00",
+      "author": "stepdown",
+      "content": "You\u0027re right!\n\n![2mhfoeq.jpg](http://i67.tinypic.com/2mhfoeq.jpg)\n\n"
+    },
+    {
+      "id": "204936",
+      "timestamp": "2017-11-27T22:35:36+00:00",
+      "author": "stepdown",
+      "content": "I was able to boot from hd1,1 from grub4dos. I got the Windows logo spinning for a while, then the computer went into lala land, blank screen or so. But I think Window was running in the background, because I could put my PC into and out of sleep mode by pressing the Power On key.\n\n"
+    },
+    {
+      "id": "204937",
+      "timestamp": "2017-11-27T22:40:17+00:00",
+      "author": "steve6375",
+      "content": "Did you swap over disks? e.g.\n\n```\nmap (hd0) (hd1)\nmap (hd1) (hd0)\nmap --hook\nroot (hd0,1)\nchainloader /bootmgr || chainloader ()+1\nboot\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "204939",
+      "timestamp": "2017-11-28T11:55:13+00:00",
+      "author": "stepdown",
+      "content": "I think I don\u0027t need to swap over disks because the spinning Windows logo is an indication that it\u0027s booting Windows from hd1,1 - as I expected. What I didn\u0027t expect, and don\u0027t understand, is that the Windows logo goes away and the Windows desktop doesn\u0027t replace it. It\u0027s like Windows is only half booted. That last sentence is my interpretation of what I see.\n\nWhy did you ask if I swapped over disk, what did you have in mind?\n\n"
+    },
+    {
+      "id": "204940",
+      "timestamp": "2017-11-28T13:02:57+00:00",
+      "author": "steve6375",
+      "content": "The \u0027fake CD\u0027 HDD may be classed as a Removable device? This would cause the symptoms if you are using a pre-1607 version of Windows 10.\n\nLater versions Win 10 would be OK.\n\nYou can check this by booting to Windows on your internal disk and using DISKPART to look at the 2nd HDD\n\nDISKPART\n\nlist disk\n\nselect disk 1\n\ndetail disk\n\nany mention of \u0027removable\u0027 ??\n\n"
+    },
+    {
+      "id": "204944",
+      "timestamp": "2017-11-28T15:55:24+00:00",
+      "author": "stepdown",
+      "content": "Interesting. Diskpart lists disks in opposite order vs. grub4dos. In other words  \ndiskpart type grub4dos  \ndisk 0 ATA hd1  \ndisk 1 SATA hd0  \nStill, when I was booting hd1,1 with grub4dos I really did mean that partition.  \nSteve, diskpart doesn\u0027t mention \"removable\" for any disk.  \nHowever, I found out that the NTFS file system in hd1,1 is corrupted, so that\u0027s likely the cause for Windows not to start correctly. I will need to re-install.\n\n"
+    },
+    {
+      "id": "204946",
+      "timestamp": "2017-11-28T16:45:19+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Interesting. Diskpart lists disks in opposite order vs. grub4dos. In other words  \n\u003e diskpart type grub4dos  \n\u003e disk 0 ATA hd1  \n\u003e disk 1 SATA hd0  \n\u003e Still, when I was booting hd1,1 with grub4dos I really did mean that partition.  \n\u003e Steve, diskpart doesn\u0027t mention \"removable\" for any disk.  \n\u003e However, I found out that the NTFS file system in hd1,1 is corrupted, so that\u0027s likely the cause for Windows not to start correctly. I will need to re-install.\n\u003e\nWait a minute.\n\nIt happens (not often but it happens) that \\*somehow\\* Windows drivers (when they rescan the hardware when switching to protected mode from real mode) get a different drive order from what BIOS (and thus grub4dos and similar) can see.\n\nIn your specific case, you have first boot device the \"once CD\" but \\*somehow\\* the BIOS rejects it from being first hard disk (because it expects a CD, because the converter inside the caddy is too slow for the BIOS, at bootup, \\*whatever\\*).\n\nGrub4dos the \"inherits\" this mapping from BIOS.\n\nWhen you chainload NTLDR or BOOTMGR, they have initially the same \"inherited\" device id, but when the Windows drivers interrogate the BIOS, they \"see\" that first device (boot device in BIOS) is actually a hard disk and then they set it as hd0, putting second device as hd1.\n\nSince a number of \"paths\" in the early part f the Windows NT booting are relative to disk number (besides drive letter assignment) it is entirely possible that your windows failing to load comes from this.\n\nBefore any other attempt, check what happens in the Diskpart of the windows on the internal SSD, if you change the BIOS boot order, i.e.:\n\n1) First device CD (hard disk in tray), second device hard disk (SSD)\n\nvs.\n\n2) First device hard disk (SSD), second device CD (hard disk in tray)\n\nDoes the ATA disk (hard disk in tray) remain \"disk 0\"?\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "204947",
+      "timestamp": "2017-11-28T17:12:04+00:00",
+      "author": "stepdown",
+      "content": "Thanks Wonko. Just tested, the ATA disk remains disk 0 regardless of its BIOS boot order being first or last.\n\n"
+    },
+    {
+      "id": "204948",
+      "timestamp": "2017-11-28T17:26:15+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Thanks Wonko. Just tested, the ATA disk remains disk 0 regardless of its BIOS boot order being first or last.\n\nGood, then most probably it is just a \"scanning order\" of the Windows drivers, first ATA, later SATA (or something like that)\n\nnow try (since you have grub4dos available) to exchange the disks in it before booting Windows.\n\ni.e.:\n\nmap (hd0) (hd1)\n\nmap (hd1) (hd0)\n\nmap --hook\n\n...\n\nas Steve6375 suggested before, but then continue instead tried booting to the Windows on the SSD:\n\nroot (hd1,1)  \nchainloader /bootmgr  \nboot\n\nIf the diskpart disk order remains the same (and provided that the Windows on the SSD booted with the BIOS disks exhanged ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)), then the disk exchange could be put as \"first thing\" in the grub4dos menu.lst, before any boot choices, and you would have \\*always\\* the same disk order.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "204966",
+      "timestamp": "2017-11-30T22:45:01+00:00",
+      "author": "karyonix",
+      "content": "I don\u0027t understand. You are we troubleshooting Windows booting without specifying which Windows version.  \n\nBIOS boot option  \nIn many computer, harddisk has only a single entry in main boot order list (among CD-ROM,Floppy,Removable).  \nHarddisk boot order is in another option item which allow user to set order among all harddisks (and SSD).  \nThe first disk in the list become (hd0) when boot to GRUB4DOS.  \nLaptop BIOS may omit harddisk boot order option, but you should look for it to know whether this option exist.  \n\nBIOS also have boot menu that allow user to select which harddisk to boot.  \nThe harddisk selected from boot menu become (hd0) when boot to GRUB4DOS.  \n\n\u003e I think I don\u0027t need to swap over disks because the spinning Windows logo is an indication that it\u0027s booting Windows from hd1,1 - as I expected. What I didn\u0027t expect, and don\u0027t understand, is that the Windows logo goes away and the Windows desktop doesn\u0027t replace it. It\u0027s like Windows is only half booted. That last sentence is my interpretation of what I see.  \n\u003e Why did you ask if I swapped over disk, what did you have in mind?\nYour Windows does not boot from (hd1) successfully.  \nDon\u0027t think you don\u0027t have to swap them.  \nTry swap them. Make the drive you want to boot NTLDR/BOOTMGR (hd0).  \n\nWindows XP.  \nMake sure NTLDR and boot.ini is in active partition in (hd0).  \nMake sure (hd\\\u003cnumber\\\u003e) in GRUB4DOS match rdisk(\\\u003cnumber\\\u003e) in boot option ARC path in boot.ini.  \n\nWindows Vista-7-8-10.  \nMake sure BOOTMGR and boot\\\\BCD is in active partition in (hd0).  \n\nDrive number in Windows does not matter.   \n"
+    },
+    {
+      "id": "204968",
+      "timestamp": "2017-12-01T09:27:07+00:00",
+      "author": "Wonko the Sane",
+      "content": "@Karyionix\n\nThis seems one of those \"edge cases\", the laptop BIOS was probably made with the assumption that devices were:\n\n1) A (SATA) internal hard disk (now replaced by SSD)\n\n2) A (IDE) CD/DDV drive in the caddy (now replaced by the hard disk + IDE to SATA converter).\n\nsince grub4dos can see both just fine, the IDE to SATA doesn\u0027t seem to be an issue.\n\nBut the BIOS may well be limited to believe that that the device attached to the caddy has to be optical media and as such it chains not the MBR but rather attempts to load sector 16 (possibly on a 2048 byte per sector device) when set as \"boot device\".\n\nIt would be - maybe - the case for some \"reverse iso-hybrid\" approach ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)\n\nAs you say we have no data on the specific Windows version, and given the issue with the NTFS corruption, it is also possible that what the OP reported is caused - even if through grub4dos the hard disk in the caddy is chainloaded - by \\*something\\* that confuses disk order or drive letter assignment, after all the booting windows gets up to the logo and then seemingly fails to load logon/desktop, this is \"after\" any NTLDR or BOOTMGR possible problem, this usually happens when there is a mixup with drive letters.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "204969",
+      "timestamp": "2017-12-01T11:33:02+00:00",
+      "author": "stepdown",
+      "content": "@Karyionix\n\nthank you for your reply. But Wonko has the facts right; I\u0027m on an \"edge case\".\n\n@Wonko\n\nI swapped over the disk with grub4dos and the diskpart order remains the same. You wrote:\n\u003e If the diskpart disk order remains the same (and provided that the Windows on the SSD booted with the BIOS disks exhanged ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)), then the disk exchange could be put as \"first thing\" in the grub4dos menu.lst, before any boot choices, and you would have \\*always\\* the same disk order\n\u003e\nIf the diskpart order remains the same, as it is, doesn\u0027t Window already \\*always\\* have the same disk order? What\u0027 the benefit of adding the disk exchange to grub4dos menu?\n\n"
+    },
+    {
+      "id": "204972",
+      "timestamp": "2017-12-01T16:05:50+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I swapped over the disk with grub4dos and the diskpart order remains the same. You wrote:\n\u003e\n\u003e If the diskpart order remains the same, as it is, doesn\u0027t Window already \\*always\\* have the same disk order? What\u0027 the benefit of adding the disk exchange to grub4dos menu?\n\nAs often happens, there is some difference between theory and practice.\n\nIn theory swapping the disks bears no consequence (as well as not swapping them).\n\nIn practice, if the disks in grub4dos do not appear the same as in Windows, before or later, you will issue a \"destructive\" command in grub4dos using the disk nomenclature you find in Windows (or viceversa).\n\nIt is only a (personal and) generic SMAP (Stupid Mistake Avoidance Policy) similar to the one along which (in my perverted mind) when you have a multi-os (Dos/Windows) booting system the same partition volume must always get the same drive letter (other people like to have different Windows installs on different partitions where the system drive letter is always \"C:\\\\\" even if it is applied to different volumes depending on which install you boot to).\n\nAnd yes, I have seen *some* of these people cry. :wink:\n\nNow, back to the issue, if (and only if) you have the time and will to play with the thingy, the next attempt to make the disk drive in the caddy be bootable would be IMHO to try a Iso-Hybrid approach (of course with no guarantee whatever that it will ever work).\n\nAnd possibly a \"plain\" iso-hybrid won\u0027t work and we will need to modify it to take into account the possible different sector size between 512 and 2048.\n\nSo, all in all, if once you will have reviewed the NTFS filesystem and/or corrected the Windows install on the hard disk you are OK with first booting from the internal SSD (to grub4dos or othe bootmanager) and from it boot the OS(\u0027s) installed on the caddy device, it would be only a (nice BTW) experiment.\n\nOut of curiosity, are the devices both the exact same size?\n\nThe grub4dos screenshot you posted shows for both 14594/255/63 and 234452610 sectors, i.e. 120,039,736,320, around 120 GB.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "205075",
+      "timestamp": "2017-12-11T09:08:01+00:00",
+      "author": "stepdown",
+      "content": "Hi Wonko,  \nThanks for your continued support. We need to set aside SMAP and Iso-Hybrid approach for a moment because now we have a real non-booting case. Recall that the partition in the HDD caddy was corrupted, and that my ultimate goal was to replace the SSD with a larger one. So I did, and moved the smaller SSD to the HDD caddy. Now I have two cloned Windows partitions to boot from, the larger one in the main HDD slot, and the smaller one in the HDD caddy. Unfortunately, BSOD.  \nThis is the larger SSD that replaced the smaller one:\n\n```\n/dev/sda1: UUID\u003d\"2496E29E96E2702A\" TYPE\u003d\"ntfs\" PARTUUID\u003d\"051396f8-01\"\n/dev/sda2: LABEL\u003d\"System Reserved\" UUID\u003d\"8E500369500356FD\" TYPE\u003d\"ntfs\" PARTUUID\u003d\"051396f8-02\"\n/dev/sda4: LABEL\u003d\"WIN-P\" UUID\u003d\"000352A9000F2D09\" TYPE\u003d\"ntfs\" PARTUUID\u003d\"051396f8-04\"\n/dev/sda5: LABEL\u003d\"BOOT\" UUID\u003d\"1676-EF88\" TYPE\u003d\"vfat\" PARTUUID\u003d\"051396f8-05\"\n/dev/sda6: LABEL\u003d\"OS\" UUID\u003d\"b109ad1f-eef8-4623-a1f2-e86da390b290\" TYPE\u003d\"ext4\" PARTUUID\u003d\"051396f8-06\"\n```\n\nunallocated space follows.\n\nThis is the smaller SSD that got replaced and moved to the HDD caddy located in the CD-drive slot, see my first post for physical interface info:\n\n```\n/dev/sdb1: UUID\u003d\"3496E29E96E2702A\" TYPE\u003d\"ntfs\" PARTUUID\u003d\"051396f8-01\"\n/dev/sdb2: LABEL\u003d\"System Reserved\" UUID\u003d\"9E500369500356FD\" TYPE\u003d\"ntfs\" PARTUUID\u003d\"051396f8-02\"\n/dev/sdb4: LABEL\u003d\"WIN-P\" UUID\u003d\"100352A9000F2D09\" TYPE\u003d\"ntfs\" PARTUUID\u003d\"051396f8-04\"\n/dev/sdb5: LABEL\u003d\"BOOTX\" UUID\u003d\"2676-EF88\" TYPE\u003d\"vfat\" PARTUUID\u003d\"051396f8-05\"\n/dev/sdb6: LABEL\u003d\"OSx\" UUID\u003d\"c109ad1f-eef8-4623-a1f2-e86da390b290\" TYPE\u003d\"ext4\" PARTUUID\u003d\"051396f8-06\"\n```\n\nI cloned the smaller SDD to the larger one using clonezilla with default parameters. Then I used methods \\[1\\] and \\[2\\] to change the UUIDs of all partitions on the smaller disk. Notice that each UUID in /dev/sdb is the same as the corresponding UUID of /dev/sda with the first hex digit augmented by 1. I also used gparted to change the labels of sdb5 and sdb6. This concerns my Linux bootloader entries, and I think it shouldn\u0027t matter for Windows.  \n\\[1\\] [https://ubuntuforums...d.php?t\u003d1240146](https://ubuntuforums.org/showthread.php?t\u003d1240146 \"External link\")  \n\\[2\\] [http://schlemmersoft.de/en/node/180946](http://schlemmersoft.de/en/node/180946 \"External link\")  \nA glitch is that PARTUUIDs are the same between the two disks. I don\u0027t know how to change them, and I don\u0027t know if it matters, because I\u0027ve never seen PARTUUIDs referenced in grub4dos. But maybe Windows and other bootloaders use them?  \nsda3 is the extended partition that holds sda5 and sda6. Similarly for sdb3.  \nsda2 and sdb2 are bootable. sda5 and sdb5 are hidden.  \nWindows grub4dos boot entry sda1:menu.lst (and sdb1:menu.lst). This entry used to work just fine when the smaller SSD (sdb) was in sda\u0027s place, and a Toshiba HDD was in the caddy (without booting it):\n\n```\ntitle Windows 7 (sda2:PBS)\n  uuid 8E500369500356FD\n  chainloader +1\n```\n\nNow that entry works to boot Win7 to a blue screen:\n\n```\nSTOP 0x0000007B  0xFFFFF880009A9928\n                 0xFFFFFFFFC0000034\n                 0x0 0x0\n```\n\nMy intention is to boot off the larger SSD entirely, but I think that the boot process follows the smaller SSD, because file BOOT/BCD.LOG1 in sdb2 is newer than the corresponding file in the larger SSD.\n\nI didn\u0027t change BCD - not sure how to do it. I booted Hirens and opened sda2/Boot/BCD with BootICE in edit mode but I don\u0027t see any partition UUID or PARTUUID to guide me. One thing I noticed is that the OS Title entry was changed from \"Windows\" to \"Windows (recovered)\". Possibly Windows attempted a repair on the first boot? The OS Title entry of sdb3/Boot/BCD is still \"Windows\".\n\nSo, I\u0027m stuck.  \n\u003e Out of curiosity, are the devices both the exact same size?\n\u003e\n\u003e The grub4dos screenshot you posted shows for both 14594/255/63 and 234452610 sectors, i.e. 120,039,736,320, around 120 GB.\n\u003e\nYes, they are. I noticed the coincidence too, a Samsung SSD and a much older TOSHIBA HDD exactly the same. But the TOSHIBA is gone now.\n\n**Edited by stepdown, 11 December 2017 - 09:09 AM.**\n"
+    },
+    {
+      "id": "205077",
+      "timestamp": "2017-12-11T11:19:46+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, if you cloned the SSD you most probably duplicated also the Disk Signature (which should - I believe - be also the \"base\" for that PARTUUID).\n\nThe UUID is the actual volume serial.\n\nFew things can make a mess on Windows systems like having a duplicate Disk Signature ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)\n\nBasically partitions/volumes (please read as drive letters) are identified/assigned by Windows by using the Disk Signature and the offset to the beginning of the partition, see:\n\n[https://web.archive....showtopic\u003d19663](https://web.archive.org/web/20160817074749/http://www.911cd.net:80/forums/index.php?showtopic\u003d19663 \"External link\")\n\n(only seemingly unrelated)\n\nYou can boot the one (or the other) SSD with grub4dos (or boot grub4dos from a USB stick) right?\n\nFor each hard disk/SSD run the command:\n\ncat --hex --skip\u003d440 --length\u003d4 (hd0)+1\n\nand (hd1), etc.\n\nor anyway, check with a hex editor the MBR (first absolute sector of disk), you want to check the Disk Signature, at offset 440.\n\nIt is likely that both SSD will have \"051396f8\" (possibly inverted)\n\nChange the Disk Signature of the SSD in the caddy (from grub4dos or Linux) to a \\*random\\* one or to \"00000000\".\n\nRemove the caddy.\n\nBoot the PC with only the internal SSD and (if needed) repair the Windows 7 install.\n\nShut it down, add the caddy and try again booting from the internal SSD.\n\nIf the above works (it should) we\u0027ll talk about the second (on the caddy SSD) Windows 7 install.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "205101",
+      "timestamp": "2017-12-11T20:17:24+00:00",
+      "author": "stepdown",
+      "content": "\u003e Well, if you cloned the SSD you most probably duplicated also the Disk Signature (which should - I believe - be also the \"base\" for that PARTUUID).\nI don\u0027t know if clonezilla duplicated the disk signatures. Too late to tell now because the disk signatures aren\u0027t the same, and I didn\u0027t do anything to change them. So either clonezilla or Windows set a different disk signature for the cloned SSD. I used DISKPART UNIQUEID to confirm that the old SDD is still signed 051396F8 while the new SDD is signed 11481147.  \n\u003e The UUID is the actual volume serial.  \n\u003e ...  \n\u003e Basically partitions/volumes (please read as drive letters) are identified/assigned by Windows by using the Disk Signature and the offset to the beginning of the partition, see:  \n\u003e [https://web.archive....showtopic\u003d19663](https://web.archive.org/web/20160817074749/http://www.911cd.net:80/forums/index.php?showtopic\u003d19663 \"External link\")  \n\u003e (only seemingly unrelated)  \n\u003e ...   \n\u003e check with a hex editor the MBR (first absolute sector of disk), you want to check the Disk Signature, at offset 440.  \n\u003e It is likely that both SSD will have \"051396f8\" (possibly inverted)  \n\u003e Change the Disk Signature of the SSD in the caddy (from grub4dos or Linux) to a \\*random\\* one or to \"00000000\".  \n\u003e Remove the caddy.  \n\u003e Boot the PC with only the internal SSD and (if needed) repair the Windows 7 install.  \n\u003e Shut it down, add the caddy and try again booting from the internal SSD.\nI haven\u0027t done anything yet. I need to ask; given that trying to boot Win7 updates BCD.LOG1 on the **old** SSD, which is uniquely signed 051396F8, does it make sense to change the new SSD to 051396F8, with DISKPART or whatever, then remove the caddy SSD and try to boot Win7?  \n\nBy the way, I ran DISKPART on WinXP and on Win7. The disk order is swapped between the two OS.   \n"
+    },
+    {
+      "id": "205106",
+      "timestamp": "2017-12-11T20:51:51+00:00",
+      "author": "Wonko the Sane",
+      "content": "When a Windows disk \"realizes\" that a hard disk signature is duplicated, it changes one of the two duplicates.\n\nBut there is no real way to know WHICH one is changed (and as such made practically unbootable).\n\nI thought that the collision detection (and \"silent\" Disk Signature change) would have happened later in the boot process, but since the two disk signatures are now different whilst they were the same when you examined them in Linux before attempting the boot it means that the duplicate one is changed in the early part of booting.\n\nSince the device in the caddy became first disk or (hd0) it would be logical that that disk signature was kept (as it was the first one read) and that the one changed was the (hd1), i.e. the internal SSD that you were trying to boot from, and since this happened in the midst of booting the whole thing crashed.\n\nYes :smile:, it makes sense to have ONLY the internal SSD connected and have that one with the 051396F8 for next attempt.\n\nAlternatively you can clear the relevant DosDevices keys in the Registry (and possibly in the BCD), but simply having the original value Disk Signature on the \"new\" disk seems simpler to me.\n\nAND then change the disk signature on the SSD in the caddy to \\*something else\\* BEFORE re-attempying booting with both SSD connected.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "205113",
+      "timestamp": "2017-12-11T22:12:49+00:00",
+      "author": "stepdown",
+      "content": "That did it :smile: I changed the new SSD to the correct signature, then changed the old SSD signature to something else, disconneced the caddy and booted Win7 with no sweat. It looks intact, as far as I can tell. The new SSD is disk 1. Then I connected the caddy, and rebooted into Win7 on the new SSD again with no sweat. Next I need to figure out how to boot Win7 on the old SSD. My first attempt would be to add a grub4dos entry like:\n\n```\ntitle Windows 7 (sdb2:PBS)\n  uuid 9E500369500356FD\n  chainloader +1\n```\n\nThe UUID corresponds to the old SSD in the caddy. That should do it. Any thoughts?\n\n"
+    },
+    {
+      "id": "205125",
+      "timestamp": "2017-12-12T08:58:40+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e That did it :smile: I changed the new SSD to the correct signature, then changed the old SSD signature to something else, disconneced the caddy and booted Win7 with no sweat. It looks intact, as far as I can tell. The new SSD is disk 1. Then I connected the caddy, and rebooted into Win7 on the new SSD again with no sweat. Next I need to figure out how to boot Win7 on the old SSD. My first attempt would be to add a grub4dos entry like:\n\u003e\n\u003e ```\n\u003e\n\u003e title Windows 7 (sdb2:PBS)\n\u003e   uuid 9E500369500356FD\n\u003e   chainloader +1\n\u003e ```\n\u003e\n\u003e The UUID corresponds to the old SSD in the caddy. That should do it. Any thoughts?\n\nShould do nicely, but check if grub4dos generated UUID is the same, just in case.\n\nAnd -personally - I see no reason to chainload the bootsector (that will chainload the BOOTMGR) when you can directly chainload the BOOTMGR.\n\nAnd still it probably remains the issue of disk numbering.\n\nUnder Linux you see that as sdb2 (2nd partition on 2nd disk) whilst in grub4dos (and Windows) you should be seeing it as 2nd partition on 1st disk.\n\nSo - still personally - I would have at the the beginning of menu.lst (common part):\n\nmap (hd0) (hd1)\n\nmap (hd1) (hd0)\n\nmap --hook\n\n....\n\nand then:\n\ntitle Windows 7 (sdb2:PBS)  \nroot (hd1,1)  \nchainloader /bootmgr\n\nbut both should make no difference and should work.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "205127",
+      "timestamp": "2017-12-12T11:25:14+00:00",
+      "author": "karyonix",
+      "content": "The old drive which has new disk signature needs the new disk signature in BCD and also needs drive letter assignment in its registry.  \nYou can use bcdedit to update the BCD.  \nAssume you boot from new SSD which is now C:, the old SSD system partition is now S: and old SSD Windows partition is now W:.  \nIf the offline system partition does not currently have drive letter, assign a drive letter to it (S:).  \nS: and W: can be the same drive use that drive letter in place of S: and W:.  \nOpen command prompt run as administrator.  \nRead BCD in S:.  \n\nbcdedit /store S:\\\\Boot\\\\BCD\nCopy the \"Windows Boot Manager\"\u0027s \"default\" {*id* } value. you will use it in following commands.  \n\nbcdedit /store S:\\\\Boot\\\\BCD /set {bootmgr} device partition\u003dS:  \nbcdedit /store S:\\\\Boot\\\\BCD /set {*id* } device partition\u003dW:  \nbcdedit /store S:\\\\Boot\\\\BCD /set {*id*} osdevice partition\u003dW:\n\n\u003cbr /\u003e\n\nThe next is drive letter registry.  \nBackup the file W:\\\\Windows\\\\system32\\\\config\\\\SYSTEM before you edit it.  \nThe following commands will edit W:\\\\Windows\\\\system32\\\\config\\\\SYSTEM.  \nRead the value for drive W: and C: in currently running system  \n\nreg query HKLM\\\\SYSTEM\\\\MountedDevices /v \\\\DosDevices\\\\W:\n\nHKEY_LOCAL_MACHINE\\\\SYSTEM\\\\MountedDevices  \n\\\\DosDevices\\\\W: REG_BINARY BBBBBBBB0000100000000000\n\nreg query HKLM\\\\SYSTEM\\\\MountedDevices /v \\\\DosDevices\\\\C:\n\nHKEY_LOCAL_MACHINE\\\\SYSTEM\\\\MountedDevices  \n\\\\DosDevices\\\\C: REG_BINARY AAAAAAAA0000100000000000\nLoad the registry hive.  \n\nreg load HKLM\\\\TTTTTT W:\\\\Windows\\\\system32\\\\config\\\\SYSTEM\nSet value from currenly running W: to offline Windows\u0027 C:.  \n\nreg set HKLM\\\\TTTTTT\\\\MountedDevices /v \\\\DosDevices\\\\C: /t REG_BINARY /d BBBBBBBB0000100000000000\nSet value from currenly running C: to offline Windows\u0027 X:.  \n\nreg set HKLM\\\\TTTTTT\\\\MountedDevices /v \\\\DosDevices\\\\X: /t REG_BINARY /d AAAAAAAA0000100000000000\nSave and close the registry hive.  \n\nreg unload HKLM\\\\TTTTTT\n\n"
+    },
+    {
+      "id": "205129",
+      "timestamp": "2017-12-12T13:18:40+00:00",
+      "author": "Wonko the Sane",
+      "content": "Ooops. :blush:\n\nI thought that it was going to be a new install on the SSD in the caddy.\n\nIf course Karyionix is right-on-spot ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif) if you are going to re-use the \"old\" install of 7, you need to fix the \\\\boot\\\\BCD and drive letter assignments.\n\nPersonally I would use the Offline Registry instead:\n\n[http://reboot.pro/to...fline-registry/](http://reboot.pro/topic/11312-offline-registry/ \"\")\n\nbut that is just the preferred tool.\n\nBack to the SMAP ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif) possible issue, however, the end result will be two different Windows 7 installs residing on two different disks that when booted will have C:\\\\ assigned to \"self\", unless you have a very evident way to distinguish them (like - say - a **green background** on one and a **red background** on the other) before or later you will *risk* doing the \"right\" thing on the \"wrong\" C:\\\\ ... ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "id": "16574",
+  "title": "How to have vistape on USB, but not on root but in folder ?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "150922",
+      "timestamp": "2012-03-21T11:13:03+00:00",
+      "author": "mateuszek",
+      "content": "When i have: (dir)  \n\n\u003cbr /\u003e\n\nK:\\\\  \n\n2010-12-10 07:57 \\\u003cDIR\\\u003e boot  \n2010-12-10 07:57 \\\u003cDIR\\\u003e Programs  \n2010-12-08 11:48 2˙048 boot.catalog  \n2008-01-19 21:00 333˙203 BOOTMGR  \n2009-12-20 03:11 2˙048 default  \n2012-03-21 11:38 285˙507 grldr  \n2009-07-29 15:55 111˙864 memtest.bin  \n2010-12-31 06:44 3˙388 menu.lst  \n2012-03-21 11:38 0 penv  \n2009-12-12 19:54 0 usbdrive.tag  \n2010-12-08 11:44 8˙440 vistape.cfg  \n2010-12-08 11:48 160˙845˙124 vistape.wim  \n\neverything works fine  \n\nbut i want to have it in  \nK:\\\\vpe\\\\  \n\nand when i do that and chane entries in menu.lst etc, windows black screen says that he can not find some files \\\\BOOT  \n\nIS something hardcoded inside BOOTMGR ? how to fix it ?  \nthanks.   \n"
+    },
+    {
+      "id": "150926",
+      "timestamp": "2012-03-21T11:58:28+00:00",
+      "author": "steve6375",
+      "content": "Try booting from an ISO or a disk image instead using grub4dos.  \nBootmgr expects to find bootbcd which is hard coded.   \n"
+    },
+    {
+      "id": "150957",
+      "timestamp": "2012-03-21T19:10:14+00:00",
+      "author": "mateuszek",
+      "content": "\u003e Try booting from an ISO or a disk image instead using grub4dos.  \n\u003e Bootmgr expects to find bootbcd which is hard coded.  \nthanks, but if i have eventually this file vpe.iso  \nand inside is vistape.wim \u003d170mb  \nand folder programs, so if i would map this iso into 0xff and later chainload 0xff - will all programs in folder programs be available ?   \n"
+    },
+    {
+      "id": "150958",
+      "timestamp": "2012-03-21T19:12:52+00:00",
+      "author": "steve6375",
+      "content": "If vistape.wim is loaded into ram, yes - it depends on the PE. Why not try it? Use RMprepUSB it will take less than 2 minutes and you can test booting using the QEMU button?   \n"
+    },
+    {
+      "id": "150978",
+      "timestamp": "2012-03-22T07:36:03+00:00",
+      "author": "mateuszek",
+      "content": "thanks but probably i am doing something wrong in winbuilder finalize section/create iso because when i have:  \n\ntitle vpe  \nmap /vpe.iso (0xff)  \nmap --hook  \nroot (0xff)  \nchainloader /bootmmgr  \nit looks like only loads wim file, desktop is almost empty and there is no menu shortcuts, i can not even access Programs folder, there is only disk named boot...  \n\n\u003cbr /\u003e\n\nand i dont want to load everything to wim/ ram because i often work with system with small ram capacity.  \n\nthanks.   \n\n**Edited by mateuszek, 22 March 2012 - 07:37 AM.**\n"
+    },
+    {
+      "id": "150981",
+      "timestamp": "2012-03-22T08:36:02+00:00",
+      "author": "misty",
+      "content": "Windows will not recognise Grub4dos device mappings - irrespective of whether **map --mem** or just **map** is used.  \n\nYou will need to try adding either firadisk or Winvblock for the ISO file to be accessible from WinPE - check the relevant forums.   \n"
+    },
+    {
+      "id": "150985",
+      "timestamp": "2012-03-22T09:55:17+00:00",
+      "author": "Wonko the Sane",
+      "content": "@mateuszek  \n\u003chttp://reboot.pro/8043/\u003e  \n[http://sites.google....and-server-2008](http://sites.google.com/site/rmprepusb/tutorials/how-to-create-a-usb-drive-that-will-install-vista-win7-and-server-2008 \"External link\")  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "150989",
+      "timestamp": "2012-03-22T10:41:28+00:00",
+      "author": "steve6375",
+      "content": "\u003e thanks but probably i am doing something wrong in winbuilder finalize section/create iso because when i have:  \nIt sounds like there are other folders in the ISO that are not inside the wim file which are detected and auto-run after PE has booted. You can try extracting those folders from the ISO to the USB drive (same folder structure) and see if when PE boots, it detects the folders and automatically runs the scripts in them - or - load the ISO using ImDisk or similar after PE has booted and kick off the script that should have run during PE boot.   \n"
+    },
+    {
+      "id": "150995",
+      "timestamp": "2012-03-22T13:06:28+00:00",
+      "author": "misty",
+      "content": "**@mateuszek**   \nI\u0027m going to make some assumptions here, based upon the information you have provided. Your original USB configuration was working, however when you started using the new folder structure and moved stuff to **K:\\\\vpe\\\\** it stopped working.  \n\nI\u0027m going to assume that you also moved your **Programs** folder from the root of the drive (**K:\\\\Programs** ) to **K:\\\\vpe\\\\Programs** .  \n\nI\u0027m not familiar with the **vistape** project, but will also assume that when WinPE was booted (before the folder structure was changed) a command of some sort was executed and the **Programs** directory at the root of the drive was located and shortcuts were then created based upon the USB\u0027s mount point.  \n\nWhen booting from an ISO file you mentioned that -  \n\u003e it looks like only loads wim file, desktop is almost empty and there is no menu shortcuts, i can not even access Programs folder, there is only disk named boot...\n\nUnless the WinPE you are booting from the ISO file has a driver that reads Grub4dos mappings then there is no way for the mounted ISO file to be accessed. This is normal. You should however be able to access the USB drive - is it mounted at all when WinPE is booted?  \n\nAssuming the USB drive is allocated a drive letter and is accessible from the running WinPE, try moving your **\\[USB_drive_root\\]** **\\\\vpe\\\\Programs** back to the root of the USB drive (**\\[USB_drive_root\\]** **\\\\Programs** ) and rebooting WinPE.  \n\n**If** this works then it looks like a script/command is executed by WinPE that searches for **\\[USB_drive_root\\]** **\\\\Programs** - this path will need to be edited to search for **\\[USB_drive_root\\]** **\\\\vpe\\\\Programs** .  \n\nOnce this is working we can move onto the hard coded BCD store problem - something I believe is covered in **Wonko** \u0027s links.  \n\nRegards,  \n\nMisty   \n"
+    },
+    {
+      "id": "151006",
+      "timestamp": "2012-03-22T14:52:05+00:00",
+      "author": "mateuszek",
+      "content": "THANK you... i will check all this info. for now i accepted to have it on pendrive just as is now... but soon i will try all of this.  \nThanks.   \n"
+    }
+  ]
+}

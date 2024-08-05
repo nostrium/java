@@ -1,0 +1,340 @@
+{
+  "id": "21917",
+  "title": "boot windows 8 vhd with grub",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "208777",
+      "timestamp": "2018-12-22T19:27:10+00:00",
+      "author": "favorinus",
+      "content": "Hi,\n\nI am trying for weeks now to boot a windows 8.1 vhd with grub (4dos) .\n\nI am doing it with XP successfully, but windows 8.1 gives me headaches.\n\nMy idea it to have two entries in grub:\n\nto load the sectormapped vhd or\n\nthe load the memory loaded vhd.\n\nthe windows 8.1 is stripped down to fit into a 1 GB ntfs compressed vhd. it has the firadisk driver installed, but it fails always to boot, --\\\u003e can\u0027t find the winload.efi / winload.exe.\n\ncan anyone help me with this and /or point me to a tutorial dealing with this specific case?\n\nsteps I did: normal windows 8.1 install.\n\ninstall firadisk driver, disable pagefile, hibernation etc. reboot into a PE. copy the contents of the C into a VHD. try the boot the VHD with grub4dos.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "208778",
+      "timestamp": "2018-12-22T19:43:20+00:00",
+      "author": "steve6375",
+      "content": "How are you booting using grub4dos?\n\nDo you have normal uncompressed \\\\bootmgr and BCD?\n\nI think I have read that...\n\u003e Using compressed or encrypted VHDs for native boot. VHDs that have been compressed by NTFS or encrypted using Encrypting File System on the host volume are not supported for native boot.\n\n"
+    },
+    {
+      "id": "208779",
+      "timestamp": "2018-12-22T19:45:04+00:00",
+      "author": "favorinus",
+      "content": "yes using grub4dos from a usb stick\n\n"
+    },
+    {
+      "id": "208780",
+      "timestamp": "2018-12-22T19:49:32+00:00",
+      "author": "steve6375",
+      "content": "and the other two points? One was a question and one a quote? Can you answer those?\n\n"
+    },
+    {
+      "id": "208781",
+      "timestamp": "2018-12-23T00:18:31+00:00",
+      "author": "favorinus",
+      "content": "Hi,\n\nsorry I misunderstood you.\n\nthis is the menu.lst I am using.\n\ntitle q1900.vhd -FILEDISK  \nfind --set-root --ignore-floppies /q1900.vhd  \nmap /q1900.vhd (hd0)  \nmap --hook  \nroot (hd0,0)  \nchainloader /bootmgr  \ntitle q1900.vhd - RAMDISK  \nfind --set-root --ignore-floppies /q1900.vhd  \nmap --mem /q1900.vhd (hd0)  \nmap --hook  \nroot (hd0,0)  \nchainloader /bootmgr  \nI think the boot files were also ntfs compressed, but as I were doing trial and error llooking for a solution I think I have those uncompressed also. I will check that soon.  \nBut the method I use should work?\n\n"
+    },
+    {
+      "id": "208793",
+      "timestamp": "2018-12-24T04:07:30+00:00",
+      "author": "favorinus",
+      "content": "I am now a step futher, the fix was: doing bootrec /rebuildbcd . Now it\u0027s booting futher, but it crashes throwing a INACCESSIBLE BOOT DEVICE.\n\nit that because firadisk is not loading properly? NB. it\u0027s a windows 8.1 64 bit, and I changed to testmodus in the BCD.\n\n"
+    },
+    {
+      "id": "208794",
+      "timestamp": "2018-12-24T08:07:05+00:00",
+      "author": "wimb",
+      "content": "UEFI_MULTI can make the correct Firadisk entry\n\n[http://reboot.pro/to...e-5#entry208639](http://reboot.pro/topic/18182-uefi-multi-make-multi-boot-usb-drive/page-5#entry208639 \"\")\n\nMore Info\n\n[http://reboot.pro/fi...ct-make-mini-8/](http://reboot.pro/files/file/299-vhd-w8-compact-make-mini-8/ \"\")\n\n[http://reboot.pro/to...ct-make-mini-8/](http://reboot.pro/topic/18467-vhd-w8-compact-make-mini-8/ \"\")\n\n"
+    },
+    {
+      "id": "208795",
+      "timestamp": "2018-12-24T08:43:24+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e UEFI_MULTI can make the correct Firadisk entry\n\nGood :smile:, what about sharing the \"correct\" Firadisk entry it uses?\n\nOr are you referring to the ones you have here?:\n\n[http://reboot.pro/fi...ct-make-mini-8/](http://reboot.pro/files/file/299-vhd-w8-compact-make-mini-8/ \"\")\n\n@favorinus\n\nAt first sight the \"non mem\" one cannot possibly work (see the menu.lst in the above link, you need to pass parameters to Firadisk for non mem mapped hard disks images), while the \"mem\" one should.\n\nAre you sure the .vhd is a \"static\" one?\n\nWhich (EXACT) version of grub4dos are you using?\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "208797",
+      "timestamp": "2018-12-24T09:17:58+00:00",
+      "author": "wimb",
+      "content": "\u003e Good :smile:, what about sharing the \"correct\" Firadisk entry it uses?\n\u003e\n\u003e Or are you referring to the ones you have here?:\n\u003e\n\u003e [http://reboot.pro/fi...ct-make-mini-8/](http://reboot.pro/files/file/299-vhd-w8-compact-make-mini-8/ \"\")\n\u003e\nSure, here it is ....\n\n```\ntitle Portable W864USP1.vhd - FiraDisk FILEDISK - 3.5 GB\nfind --set-root --ignore-floppies /W864USP1.vhd\nmap --heads\u003d2 --sectors-per-track\u003d18 --mem (md)0x800+4 (99)\nmap /W864USP1.vhd (hd0)\nmap --hook\nwrite (99) [FiraDisk]\\nStartOptions\u003ddisk,vmem\u003dfind:/W864USP1.vhd,boot;\\n\\0\nrootnoverify (hd0,0)\nchainloader /bootmgr\nmap --status\npause Press any key . . .\n\ntitle Portable W864USP1.vhd - FiraDisk RAMDISK - 3.5 GB\nfind --set-root --ignore-floppies /W864USP1.vhd\nmap --mem /W864USP1.vhd (hd0)\nmap --hook\nroot (hd0,0)\nchainloader /bootmgr\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "208798",
+      "timestamp": "2018-12-24T09:22:04+00:00",
+      "author": "steve6375",
+      "content": "Why not try using a VHD with a non-compressed NTFS filesystem first?\n\nOnce that is working, try it with your NTFS compressed VHD.\n\n"
+    },
+    {
+      "id": "208799",
+      "timestamp": "2018-12-24T09:22:35+00:00",
+      "author": "misty",
+      "content": "@**favorinus**   \nThe Boot Configuration Data (BCD) store entries usually contain disk signature and partition offset information - unless device is set as **boot** in which case a relative path is used. The other exception is using **locate** as device.  \n\nIn your first test, it\u0027s possible that you copied the BCD store and then when loading it, it tried to find winload.exe on your original setup - the one copied to the VHD. If you deleted the Windows on your HDD after copying it to the VHD, then winload.exe would be missing.  \n\nRunning the **bootrec** command may have fixed this. I usually use **bcdboot** . E.g. (with VHD mounted as R:) -  \n\n```\nbcdboot R:\\Windows /S R: /F BIOS\n```\n\nbcdboot reference - [here](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/bcdboot-command-line-options-techref-di \"External link\")  \n\n\u003e ...@favorinus  \n\u003e At first sight the \"non mem\" one cannot possibly work (see the menu.lst in the above link, you need to pass parameters to Firadisk for non mem mapped hard disks images), while the \"mem\" one should.  \n\u003e\n\u003e Are you sure the .vhd is a \"static\" one?  \n\u003e Which (EXACT) version of grub4dos are you using?...\n\nAs **Wonko** has asked - is the VHD a fixed type disk?  \n\nAlso, [SVBus](http://reboot.pro/topic/21787-svbus-virtual-scsi-host-adapter-for-grub4dos \"\") may be easier to use if booting from file backed disks - it does not require additional parameters in your Grub4dos commands.  \n\nPersonally, I would recommend getting Native Boot VHD working first before trying RAM loading. Assuming your Windows version supports VHD Native Boot, this is essentially a way of booting a file backed disk.  \n\nOnce Native Boot is working, then try RAM boot.  \n\nMisty   \n"
+    },
+    {
+      "id": "208800",
+      "timestamp": "2018-12-24T09:24:55+00:00",
+      "author": "misty",
+      "content": "And another suggestion - try using none RAM loading (flat boot) WinPE for tests. WinPE 5.\\* is essentially a stripped down version of Windows 8.\\*.   \n"
+    },
+    {
+      "id": "208804",
+      "timestamp": "2018-12-24T16:43:35+00:00",
+      "author": "favorinus",
+      "content": "\u003e Why not try using a VHD with a non-compressed NTFS filesystem first?\n\u003e\n\u003e Once that is working, try it with your NTFS compressed VHD\n\nIt\u0027s now decompressed.\n\n\u003e you need to pass parameters to Firadisk for non mem mapped hard disks images)\n\nok, now I applied the correct parameters:\n\nfind --set-root --ignore-floppies /W864USP1.vhd  \nmap --heads\u003d2 --sectors-per-track\u003d18 --mem (md)0x800+4 (99)  \nmap /W864USP1.vhd (hd0)  \nmap --hook  \nwrite (99) \\[FiraDisk\\]\\\\nStartOptions\u003ddisk,vmem\u003dfind:/W864USP1.vhd,boot;\\\\n\\\\0  \nrootnoverify (hd0,0)  \nchainloader /bootmgr\n\nit\u0027s not giving me a blue screen 7B anymore but it\u0027s infinity booting now (the moving circle)\n\n\u003e is the VHD a fixed type disk?\n\nyes it\u0027s a fixed vhd.\n\n\u003e try using none RAM loading (flat boot) WinPE for tests\n\nsounds interesting. I will take a look at that.\n\nbut any thoughts about at can cause the infinite boot now?\n\n"
+    },
+    {
+      "id": "208855",
+      "timestamp": "2019-01-03T17:50:42+00:00",
+      "author": "favorinus",
+      "content": "Hi,\n\nI have started all over again and used the SVBUS method, which I have more success until now. I manage install and boot windows 8.1 into a VHD when installed on a HDD. When I copy the VHD to a USB pendrive it boots as FILEDISK it will show me a BSOD and reboots quickly, but when I do booting as RAMDISK it loading perfectly.\n\nWhen can be the cause of this? I remember from XP that there needed to be a waitbt driver for USB.\n\ngreetings,\n\nMariano\n\n"
+    },
+    {
+      "id": "208858",
+      "timestamp": "2019-01-03T19:51:28+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e When can be the cause of this? I remember from XP that there needed to be a waitbt driver for USB.\n\nThere could be also an issue with \"Removable\" vs. \"Fixed\"? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nI.e. a USB hard disk might work BUT a USB stick (without the \"Removable bit flipped\") might not? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\nYou might try (but no guarantee that this is the cause and corresponding fix) the diskmod driver (alternative to the \"historic\" cfadisk and dummydisk filter driver):\n\n[http://reboot.pro/to...-usb-hard-disk/](http://reboot.pro/topic/9461-page-file-in-usb-hard-disk/ \"\")\n\nAnyway, first thing you should need to modify the build so that it stops (and does not reboot) on STOP errors/BSOD\u0027s, I believe that you need to change a setting in Registry also in Windows 8/8.1:\n\n```\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\CrashControl]\n\"AutoReboot\"\u003ddword:00000000\n```\n\n(of course when offline it will be either ControlSet001 or ControlSet002).\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "208859",
+      "timestamp": "2019-01-03T20:52:02+00:00",
+      "author": "favorinus",
+      "content": "Thank you for the reply,\n\nNow it doesnt autoreboot anymore and the bsod message is INACCESSIBLE_BOOT_DEVICE.\n\n"
+    },
+    {
+      "id": "208860",
+      "timestamp": "2019-01-03T21:05:33+00:00",
+      "author": "steve6375",
+      "content": "If the USB stick is a \u0027Removable\u0027 type then you will get that error.\n\nCan you try booting using [VirtualBox + VMUB](https://www.rmprepusb.com/tutorials/how-to-boot-from-usb-under-vmware-server \"External link\")?\n\nThe USB drive will appear as a hard disk to WinPE - if it boots OK, then the issue is most likely to be because the USB is a removable device.\n\nOne way to prove it would be to use a USB HDD instead.\n\n"
+    },
+    {
+      "id": "208861",
+      "timestamp": "2019-01-03T21:32:14+00:00",
+      "author": "favorinus",
+      "content": "ok I have copied to a USB HDD and it gives me to same error. INACCESSIBLE_BOOT_DEVICE when trying to boot as FILEDISK,\n\ncan it be the problem that I installed windows 8.1 first on the internal SATA HDD and now it\u0027s booting without any sata ?\n\n"
+    },
+    {
+      "id": "208862",
+      "timestamp": "2019-01-03T21:53:52+00:00",
+      "author": "steve6375",
+      "content": "What does the BCD look like for FILEDISK booting?\n\nIs the VHD specified in the BCD entry?\n\n"
+    },
+    {
+      "id": "208865",
+      "timestamp": "2019-01-04T02:52:30+00:00",
+      "author": "favorinus",
+      "content": "I have tried now a workaround by using bootmgr to load the VHD as FILEDISK .\n\nWindows Boot Manager  \n--------------------  \nidentifier {bootmgr}  \ndescription Boot Manager  \nlocale en_US  \nnointegritychecks Yes  \ndisplayorder {a80a400f-f3d3-4c07-b7b9-8729c6f78b37}  \n{7eca6a46-2bb5-4d8c-b556-40d70ec55e93}  \nbootsequence {bootmgr}  \ntimeout 30  \nWindows Boot Loader  \n-------------------  \nidentifier {a80a400f-f3d3-4c07-b7b9-8729c6f78b37}  \ndevice vhd\u003d\\[locate\\]\\\\RADIO.VHD  \npath \\\\Windows\\\\system32\\\\winload.exe  \ndescription Boot from VHD  \nlocale en-US  \ntestsigning Yes  \nosdevice vhd\u003d\\[locate\\]\\\\RADIO.VHD  \nsystemroot \\\\Windows  \ndetecthal Yes  \nReal-mode Boot Sector  \n---------------------  \nidentifier {7eca6a46-2bb5-4d8c-b556-40d70ec55e93}  \ndevice boot  \npath \\\\grldr.mbr  \ndescription Realmode App Loader\n\nSo de MBR of the usbstick is set to bootmgr and the /boot/bcd has two entries:\n\n1. pointing to the VHD with test-signing enabled.\n\n2. pointing to grldr.mbr which loads menu.lst which has two entries, one for loading VHD as FILEDISK the other as RAMDISK.\n\nRAMDISK works fine,\n\nFILEDISK failed with INACCESSABLE_BOOT_DEVICE\n\nThe VHD has also a /boot/bcd inside.\n\nH:\\\\Boot\\\u003ebcdedit /store h:\\\\boot\\\\bcd /enum  \nWindows Boot Manager  \n--------------------  \nidentifier {bootmgr}  \ndevice unknown  \ndescription Windows Boot Manager  \nlocale en-us  \ninherit {globalsettings}  \ndefault {default}  \nresumeobject {1bdf8bc8-0f0a-11e9-9a75-d05099614b6b}  \ndisplayorder {default}  \ntoolsdisplayorder {memdiag}  \ntimeout 30  \nWindows Boot Loader  \n-------------------  \nidentifier {default}  \ndevice unknown  \npath \\\\windows\\\\system32\\\\winload.exe  \ndescription Windows 8.1  \nlocale en-us  \ninherit {bootloadersettings}  \ntestsigning Yes  \nallowedinmemorysettings 0x15000075  \nosdevice unknown  \nsystemroot \\\\windows  \nresumeobject {1bdf8bc8-0f0a-11e9-9a75-d05099614b6b}  \nnx OptIn  \nbootmenupolicy Legacy  \ndetecthal Yes\n\n"
+    },
+    {
+      "id": "208870",
+      "timestamp": "2019-01-04T09:03:50+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e So de MBR of the usbstick is set to bootmgr and the /boot/bcd has two entries:\n\u003e\n\u003e 1. pointing to the VHD with test-signing enabled.\n\u003e\n\u003e 2. pointing to grldr.mbr which loads menu.lst which has two entries, one for loading VHD as FILEDISK the other as RAMDISK.\n\u003e\n\u003e RAMDISK works fine,\n\u003e\n\u003e FILEDISK failed with INACCESSABLE_BOOT_DEVICE\n\u003e\n\u003e The VHD has also a /boot/bcd inside.\n\nFor the record, the MBR is probably a standard one and the PBR of the active partition is \"set to BOOTMGR\", the MBR is not set to \"anything\", if it is a \"standard\" one.\n\nThe actual \\\\bootBCD that is used in the actual booting seems to be the one inside the VHD.\n\nFirst thing I would add to the vhd another copy of grldr and grldr.mbr and an entry for it in the internal \\\\boot\\\\BCD, so that once booted the \"external\" BOOTMGR and \\\\boot\\\\BCDyou have a menu/pause loading the \"internal\" ones.\n\nThe \"unknown\" in both \"device\" and \"osdevice\" look \"suspect\" to me. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "208871",
+      "timestamp": "2019-01-04T09:38:59+00:00",
+      "author": "steve6375",
+      "content": "As Wonko says, the BCD that is actually used is the BCD inside the VHD.\n\nThat BCD needs to load the VHD because the mapped (hd0) BIOS drive disappears as soon as the Windows kernel is loaded and protected mode is used.\n\nThe alternative would be to copy \\\\bootmgr and \\\\boot folders to the USB drive and edit the \\\\boot\\\\BCD on the USB drive so that it loads the VHD.\n\n(or simply copy the VHD to an Easy2Boot USB drive!).\n\n"
+    },
+    {
+      "id": "208874",
+      "timestamp": "2019-01-04T13:56:58+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e That BCD needs to load the VHD because the mapped (hd0) BIOS drive disappears as soon as the Windows kernel is loaded and protected mode is used.\n\nThat is the actual question/doubt ![:ermm:](http://reboot.pro/public/style_emoticons/default/ermm.gif) , the \"virtual\" (hd0) should actually be \"hooked\" by the SVBUS driver AFAICU, and as seen on the release thread:\n\n[http://reboot.pro/to...r-for-grub4dos/](http://reboot.pro/topic/21787-svbus-virtual-scsi-host-adapter-for-grub4dos/ \"\")\n\n(much in the way firadisk works, but without needing to have parameters passed to the driver)\n\nIf the \\\\boot\\\\BCD loads the VHD, it would IMHO become a sort of \"mixed mode\" between \"grub4dos/svbus\" and \"native\" booting. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)\n\nNow since it worked for everyone on that thread, there must be something \"wrong\" in either the (internal to the VHD) \\\\boot\\\\BCD or in the grub4dos commands executed (now that the mentioned Removable/Fixed issue is not relevant since the same setup doesn\u0027t work from USB hard disk, they may be a further issue, though).\n\nIn the above mentioned SVBUS thread, unless I missed some reports, both 7 and 10 worked, 8/8.1 were not tested, so it is possible that is something specific to 8/8.1 but I personally doubt it.\n\nAs a matter of fact - provided that the SAME VHD does work in \"mem\" mode, I am actually surprised that it works - I would have expected that for BOTH (\"mem\" and \"filedisk\") booting a \"specific\" \\\\boot\\\\BCD entry coming from running bcdboot would have been needed.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "208879",
+      "timestamp": "2019-01-04T18:27:29+00:00",
+      "author": "steve6375",
+      "content": "Since the SVBUS VHD works as a filedisk from an internal HDD but not from a USB HDD, it sounds like a USB driver issue.\n\nPerhaps Win8 does not contain the required USB drivers for your particular system.\n\nThat is why I suggested testing with VBOX so that the USB drive would appear to be a SATA\\\\IDE drive.\n\nA USB driver issue would explain why mem works but not filedisk?\n\nOr maybe SVBUS prevents the Win8 USB driver from hooking in.\n\nPresumably if you do a mem boot, you can \u0027see\u0027 the USB drive under Windows?\n\n"
+    },
+    {
+      "id": "208881",
+      "timestamp": "2019-01-04T18:46:44+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Since the SVBUS VHD works as a filedisk from an internal HDD but not from a USB HDD, it sounds like a USB driver issue.\n\u003e\n\u003e Perhaps Win8 does not contain the required USB drivers for your particular system.\n\u003e\n\u003e That is why I suggested testing with VBOX so that the USB drive would appear to be a SATA\\\\IDE drive.\n\u003e\n\u003e A USB driver issue would explain why mem works but not filedisk?\n\u003e\n\u003e Or maybe SVBUS prevents the Win8 USB driver from hooking in.\n\u003e\n\u003e Presumably if you do a mem boot, you can \u0027see\u0027 the USB drive under Windows?\n\nVery possible :smile: , I missed that none of the reports on the mentioned thread were about USB disks/sticks, but I thought that Windows 8+ have \\*somehow\\* a very good USB support, even at boot time (better than 7, I think because of the Windows To Go added feature).\n\nMaybe it is really some kind of \"missed hooking\" between SVBUS and the Windows 8 USB stack, but (again I may be well mistaken) I seem to remember that either Winvblock or Firadisk (or both) did actually work off USB sticks with Windows 8/8.1. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "208777",
+      "timestamp": "2018-12-22T19:27:10+00:00",
+      "author": "favorinus",
+      "content": "Hi,\n\nI am trying for weeks now to boot a windows 8.1 vhd with grub (4dos) .\n\nI am doing it with XP successfully, but windows 8.1 gives me headaches.\n\nMy idea it to have two entries in grub:\n\nto load the sectormapped vhd or\n\nthe load the memory loaded vhd.\n\nthe windows 8.1 is stripped down to fit into a 1 GB ntfs compressed vhd. it has the firadisk driver installed, but it fails always to boot, --\\\u003e can\u0027t find the winload.efi / winload.exe.\n\ncan anyone help me with this and /or point me to a tutorial dealing with this specific case?\n\nsteps I did: normal windows 8.1 install.\n\ninstall firadisk driver, disable pagefile, hibernation etc. reboot into a PE. copy the contents of the C into a VHD. try the boot the VHD with grub4dos.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "208778",
+      "timestamp": "2018-12-22T19:43:20+00:00",
+      "author": "steve6375",
+      "content": "How are you booting using grub4dos?\n\nDo you have normal uncompressed \\\\bootmgr and BCD?\n\nI think I have read that...\n\u003e Using compressed or encrypted VHDs for native boot. VHDs that have been compressed by NTFS or encrypted using Encrypting File System on the host volume are not supported for native boot.\n\n"
+    },
+    {
+      "id": "208779",
+      "timestamp": "2018-12-22T19:45:04+00:00",
+      "author": "favorinus",
+      "content": "yes using grub4dos from a usb stick\n\n"
+    },
+    {
+      "id": "208780",
+      "timestamp": "2018-12-22T19:49:32+00:00",
+      "author": "steve6375",
+      "content": "and the other two points? One was a question and one a quote? Can you answer those?\n\n"
+    },
+    {
+      "id": "208781",
+      "timestamp": "2018-12-23T00:18:31+00:00",
+      "author": "favorinus",
+      "content": "Hi,\n\nsorry I misunderstood you.\n\nthis is the menu.lst I am using.\n\ntitle q1900.vhd -FILEDISK  \nfind --set-root --ignore-floppies /q1900.vhd  \nmap /q1900.vhd (hd0)  \nmap --hook  \nroot (hd0,0)  \nchainloader /bootmgr  \ntitle q1900.vhd - RAMDISK  \nfind --set-root --ignore-floppies /q1900.vhd  \nmap --mem /q1900.vhd (hd0)  \nmap --hook  \nroot (hd0,0)  \nchainloader /bootmgr  \nI think the boot files were also ntfs compressed, but as I were doing trial and error llooking for a solution I think I have those uncompressed also. I will check that soon.  \nBut the method I use should work?\n\n"
+    },
+    {
+      "id": "208793",
+      "timestamp": "2018-12-24T04:07:30+00:00",
+      "author": "favorinus",
+      "content": "I am now a step futher, the fix was: doing bootrec /rebuildbcd . Now it\u0027s booting futher, but it crashes throwing a INACCESSIBLE BOOT DEVICE.\n\nit that because firadisk is not loading properly? NB. it\u0027s a windows 8.1 64 bit, and I changed to testmodus in the BCD.\n\n"
+    },
+    {
+      "id": "208794",
+      "timestamp": "2018-12-24T08:07:05+00:00",
+      "author": "wimb",
+      "content": "UEFI_MULTI can make the correct Firadisk entry\n\n[http://reboot.pro/to...e-5#entry208639](http://reboot.pro/topic/18182-uefi-multi-make-multi-boot-usb-drive/page-5#entry208639 \"\")\n\nMore Info\n\n[http://reboot.pro/fi...ct-make-mini-8/](http://reboot.pro/files/file/299-vhd-w8-compact-make-mini-8/ \"\")\n\n[http://reboot.pro/to...ct-make-mini-8/](http://reboot.pro/topic/18467-vhd-w8-compact-make-mini-8/ \"\")\n\n"
+    },
+    {
+      "id": "208795",
+      "timestamp": "2018-12-24T08:43:24+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e UEFI_MULTI can make the correct Firadisk entry\n\nGood :smile:, what about sharing the \"correct\" Firadisk entry it uses?\n\nOr are you referring to the ones you have here?:\n\n[http://reboot.pro/fi...ct-make-mini-8/](http://reboot.pro/files/file/299-vhd-w8-compact-make-mini-8/ \"\")\n\n@favorinus\n\nAt first sight the \"non mem\" one cannot possibly work (see the menu.lst in the above link, you need to pass parameters to Firadisk for non mem mapped hard disks images), while the \"mem\" one should.\n\nAre you sure the .vhd is a \"static\" one?\n\nWhich (EXACT) version of grub4dos are you using?\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "208797",
+      "timestamp": "2018-12-24T09:17:58+00:00",
+      "author": "wimb",
+      "content": "\u003e Good :smile:, what about sharing the \"correct\" Firadisk entry it uses?\n\u003e\n\u003e Or are you referring to the ones you have here?:\n\u003e\n\u003e [http://reboot.pro/fi...ct-make-mini-8/](http://reboot.pro/files/file/299-vhd-w8-compact-make-mini-8/ \"\")\n\u003e\nSure, here it is ....\n\n```\ntitle Portable W864USP1.vhd - FiraDisk FILEDISK - 3.5 GB\nfind --set-root --ignore-floppies /W864USP1.vhd\nmap --heads\u003d2 --sectors-per-track\u003d18 --mem (md)0x800+4 (99)\nmap /W864USP1.vhd (hd0)\nmap --hook\nwrite (99) [FiraDisk]\\nStartOptions\u003ddisk,vmem\u003dfind:/W864USP1.vhd,boot;\\n\\0\nrootnoverify (hd0,0)\nchainloader /bootmgr\nmap --status\npause Press any key . . .\n\ntitle Portable W864USP1.vhd - FiraDisk RAMDISK - 3.5 GB\nfind --set-root --ignore-floppies /W864USP1.vhd\nmap --mem /W864USP1.vhd (hd0)\nmap --hook\nroot (hd0,0)\nchainloader /bootmgr\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "208798",
+      "timestamp": "2018-12-24T09:22:04+00:00",
+      "author": "steve6375",
+      "content": "Why not try using a VHD with a non-compressed NTFS filesystem first?\n\nOnce that is working, try it with your NTFS compressed VHD.\n\n"
+    },
+    {
+      "id": "208799",
+      "timestamp": "2018-12-24T09:22:35+00:00",
+      "author": "misty",
+      "content": "@**favorinus**   \nThe Boot Configuration Data (BCD) store entries usually contain disk signature and partition offset information - unless device is set as **boot** in which case a relative path is used. The other exception is using **locate** as device.  \n\nIn your first test, it\u0027s possible that you copied the BCD store and then when loading it, it tried to find winload.exe on your original setup - the one copied to the VHD. If you deleted the Windows on your HDD after copying it to the VHD, then winload.exe would be missing.  \n\nRunning the **bootrec** command may have fixed this. I usually use **bcdboot** . E.g. (with VHD mounted as R:) -  \n\n```\nbcdboot R:\\Windows /S R: /F BIOS\n```\n\nbcdboot reference - [here](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/bcdboot-command-line-options-techref-di \"External link\")  \n\n\u003e ...@favorinus  \n\u003e At first sight the \"non mem\" one cannot possibly work (see the menu.lst in the above link, you need to pass parameters to Firadisk for non mem mapped hard disks images), while the \"mem\" one should.  \n\u003e\n\u003e Are you sure the .vhd is a \"static\" one?  \n\u003e Which (EXACT) version of grub4dos are you using?...\n\nAs **Wonko** has asked - is the VHD a fixed type disk?  \n\nAlso, [SVBus](http://reboot.pro/topic/21787-svbus-virtual-scsi-host-adapter-for-grub4dos \"\") may be easier to use if booting from file backed disks - it does not require additional parameters in your Grub4dos commands.  \n\nPersonally, I would recommend getting Native Boot VHD working first before trying RAM loading. Assuming your Windows version supports VHD Native Boot, this is essentially a way of booting a file backed disk.  \n\nOnce Native Boot is working, then try RAM boot.  \n\nMisty   \n"
+    },
+    {
+      "id": "208800",
+      "timestamp": "2018-12-24T09:24:55+00:00",
+      "author": "misty",
+      "content": "And another suggestion - try using none RAM loading (flat boot) WinPE for tests. WinPE 5.\\* is essentially a stripped down version of Windows 8.\\*.   \n"
+    },
+    {
+      "id": "208804",
+      "timestamp": "2018-12-24T16:43:35+00:00",
+      "author": "favorinus",
+      "content": "\u003e Why not try using a VHD with a non-compressed NTFS filesystem first?\n\u003e\n\u003e Once that is working, try it with your NTFS compressed VHD\n\nIt\u0027s now decompressed.\n\n\u003e you need to pass parameters to Firadisk for non mem mapped hard disks images)\n\nok, now I applied the correct parameters:\n\nfind --set-root --ignore-floppies /W864USP1.vhd  \nmap --heads\u003d2 --sectors-per-track\u003d18 --mem (md)0x800+4 (99)  \nmap /W864USP1.vhd (hd0)  \nmap --hook  \nwrite (99) \\[FiraDisk\\]\\\\nStartOptions\u003ddisk,vmem\u003dfind:/W864USP1.vhd,boot;\\\\n\\\\0  \nrootnoverify (hd0,0)  \nchainloader /bootmgr\n\nit\u0027s not giving me a blue screen 7B anymore but it\u0027s infinity booting now (the moving circle)\n\n\u003e is the VHD a fixed type disk?\n\nyes it\u0027s a fixed vhd.\n\n\u003e try using none RAM loading (flat boot) WinPE for tests\n\nsounds interesting. I will take a look at that.\n\nbut any thoughts about at can cause the infinite boot now?\n\n"
+    },
+    {
+      "id": "208855",
+      "timestamp": "2019-01-03T17:50:42+00:00",
+      "author": "favorinus",
+      "content": "Hi,\n\nI have started all over again and used the SVBUS method, which I have more success until now. I manage install and boot windows 8.1 into a VHD when installed on a HDD. When I copy the VHD to a USB pendrive it boots as FILEDISK it will show me a BSOD and reboots quickly, but when I do booting as RAMDISK it loading perfectly.\n\nWhen can be the cause of this? I remember from XP that there needed to be a waitbt driver for USB.\n\ngreetings,\n\nMariano\n\n"
+    },
+    {
+      "id": "208858",
+      "timestamp": "2019-01-03T19:51:28+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e When can be the cause of this? I remember from XP that there needed to be a waitbt driver for USB.\n\nThere could be also an issue with \"Removable\" vs. \"Fixed\"? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nI.e. a USB hard disk might work BUT a USB stick (without the \"Removable bit flipped\") might not? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\nYou might try (but no guarantee that this is the cause and corresponding fix) the diskmod driver (alternative to the \"historic\" cfadisk and dummydisk filter driver):\n\n[http://reboot.pro/to...-usb-hard-disk/](http://reboot.pro/topic/9461-page-file-in-usb-hard-disk/ \"\")\n\nAnyway, first thing you should need to modify the build so that it stops (and does not reboot) on STOP errors/BSOD\u0027s, I believe that you need to change a setting in Registry also in Windows 8/8.1:\n\n```\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\CrashControl]\n\"AutoReboot\"\u003ddword:00000000\n```\n\n(of course when offline it will be either ControlSet001 or ControlSet002).\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "208859",
+      "timestamp": "2019-01-03T20:52:02+00:00",
+      "author": "favorinus",
+      "content": "Thank you for the reply,\n\nNow it doesnt autoreboot anymore and the bsod message is INACCESSIBLE_BOOT_DEVICE.\n\n"
+    },
+    {
+      "id": "208860",
+      "timestamp": "2019-01-03T21:05:33+00:00",
+      "author": "steve6375",
+      "content": "If the USB stick is a \u0027Removable\u0027 type then you will get that error.\n\nCan you try booting using [VirtualBox + VMUB](https://www.rmprepusb.com/tutorials/how-to-boot-from-usb-under-vmware-server \"External link\")?\n\nThe USB drive will appear as a hard disk to WinPE - if it boots OK, then the issue is most likely to be because the USB is a removable device.\n\nOne way to prove it would be to use a USB HDD instead.\n\n"
+    },
+    {
+      "id": "208861",
+      "timestamp": "2019-01-03T21:32:14+00:00",
+      "author": "favorinus",
+      "content": "ok I have copied to a USB HDD and it gives me to same error. INACCESSIBLE_BOOT_DEVICE when trying to boot as FILEDISK,\n\ncan it be the problem that I installed windows 8.1 first on the internal SATA HDD and now it\u0027s booting without any sata ?\n\n"
+    },
+    {
+      "id": "208862",
+      "timestamp": "2019-01-03T21:53:52+00:00",
+      "author": "steve6375",
+      "content": "What does the BCD look like for FILEDISK booting?\n\nIs the VHD specified in the BCD entry?\n\n"
+    },
+    {
+      "id": "208865",
+      "timestamp": "2019-01-04T02:52:30+00:00",
+      "author": "favorinus",
+      "content": "I have tried now a workaround by using bootmgr to load the VHD as FILEDISK .\n\nWindows Boot Manager  \n--------------------  \nidentifier {bootmgr}  \ndescription Boot Manager  \nlocale en_US  \nnointegritychecks Yes  \ndisplayorder {a80a400f-f3d3-4c07-b7b9-8729c6f78b37}  \n{7eca6a46-2bb5-4d8c-b556-40d70ec55e93}  \nbootsequence {bootmgr}  \ntimeout 30  \nWindows Boot Loader  \n-------------------  \nidentifier {a80a400f-f3d3-4c07-b7b9-8729c6f78b37}  \ndevice vhd\u003d\\[locate\\]\\\\RADIO.VHD  \npath \\\\Windows\\\\system32\\\\winload.exe  \ndescription Boot from VHD  \nlocale en-US  \ntestsigning Yes  \nosdevice vhd\u003d\\[locate\\]\\\\RADIO.VHD  \nsystemroot \\\\Windows  \ndetecthal Yes  \nReal-mode Boot Sector  \n---------------------  \nidentifier {7eca6a46-2bb5-4d8c-b556-40d70ec55e93}  \ndevice boot  \npath \\\\grldr.mbr  \ndescription Realmode App Loader\n\nSo de MBR of the usbstick is set to bootmgr and the /boot/bcd has two entries:\n\n1. pointing to the VHD with test-signing enabled.\n\n2. pointing to grldr.mbr which loads menu.lst which has two entries, one for loading VHD as FILEDISK the other as RAMDISK.\n\nRAMDISK works fine,\n\nFILEDISK failed with INACCESSABLE_BOOT_DEVICE\n\nThe VHD has also a /boot/bcd inside.\n\nH:\\\\Boot\\\u003ebcdedit /store h:\\\\boot\\\\bcd /enum  \nWindows Boot Manager  \n--------------------  \nidentifier {bootmgr}  \ndevice unknown  \ndescription Windows Boot Manager  \nlocale en-us  \ninherit {globalsettings}  \ndefault {default}  \nresumeobject {1bdf8bc8-0f0a-11e9-9a75-d05099614b6b}  \ndisplayorder {default}  \ntoolsdisplayorder {memdiag}  \ntimeout 30  \nWindows Boot Loader  \n-------------------  \nidentifier {default}  \ndevice unknown  \npath \\\\windows\\\\system32\\\\winload.exe  \ndescription Windows 8.1  \nlocale en-us  \ninherit {bootloadersettings}  \ntestsigning Yes  \nallowedinmemorysettings 0x15000075  \nosdevice unknown  \nsystemroot \\\\windows  \nresumeobject {1bdf8bc8-0f0a-11e9-9a75-d05099614b6b}  \nnx OptIn  \nbootmenupolicy Legacy  \ndetecthal Yes\n\n"
+    },
+    {
+      "id": "208870",
+      "timestamp": "2019-01-04T09:03:50+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e So de MBR of the usbstick is set to bootmgr and the /boot/bcd has two entries:\n\u003e\n\u003e 1. pointing to the VHD with test-signing enabled.\n\u003e\n\u003e 2. pointing to grldr.mbr which loads menu.lst which has two entries, one for loading VHD as FILEDISK the other as RAMDISK.\n\u003e\n\u003e RAMDISK works fine,\n\u003e\n\u003e FILEDISK failed with INACCESSABLE_BOOT_DEVICE\n\u003e\n\u003e The VHD has also a /boot/bcd inside.\n\nFor the record, the MBR is probably a standard one and the PBR of the active partition is \"set to BOOTMGR\", the MBR is not set to \"anything\", if it is a \"standard\" one.\n\nThe actual \\\\bootBCD that is used in the actual booting seems to be the one inside the VHD.\n\nFirst thing I would add to the vhd another copy of grldr and grldr.mbr and an entry for it in the internal \\\\boot\\\\BCD, so that once booted the \"external\" BOOTMGR and \\\\boot\\\\BCDyou have a menu/pause loading the \"internal\" ones.\n\nThe \"unknown\" in both \"device\" and \"osdevice\" look \"suspect\" to me. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "208871",
+      "timestamp": "2019-01-04T09:38:59+00:00",
+      "author": "steve6375",
+      "content": "As Wonko says, the BCD that is actually used is the BCD inside the VHD.\n\nThat BCD needs to load the VHD because the mapped (hd0) BIOS drive disappears as soon as the Windows kernel is loaded and protected mode is used.\n\nThe alternative would be to copy \\\\bootmgr and \\\\boot folders to the USB drive and edit the \\\\boot\\\\BCD on the USB drive so that it loads the VHD.\n\n(or simply copy the VHD to an Easy2Boot USB drive!).\n\n"
+    },
+    {
+      "id": "208874",
+      "timestamp": "2019-01-04T13:56:58+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e That BCD needs to load the VHD because the mapped (hd0) BIOS drive disappears as soon as the Windows kernel is loaded and protected mode is used.\n\nThat is the actual question/doubt ![:ermm:](http://reboot.pro/public/style_emoticons/default/ermm.gif) , the \"virtual\" (hd0) should actually be \"hooked\" by the SVBUS driver AFAICU, and as seen on the release thread:\n\n[http://reboot.pro/to...r-for-grub4dos/](http://reboot.pro/topic/21787-svbus-virtual-scsi-host-adapter-for-grub4dos/ \"\")\n\n(much in the way firadisk works, but without needing to have parameters passed to the driver)\n\nIf the \\\\boot\\\\BCD loads the VHD, it would IMHO become a sort of \"mixed mode\" between \"grub4dos/svbus\" and \"native\" booting. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)\n\nNow since it worked for everyone on that thread, there must be something \"wrong\" in either the (internal to the VHD) \\\\boot\\\\BCD or in the grub4dos commands executed (now that the mentioned Removable/Fixed issue is not relevant since the same setup doesn\u0027t work from USB hard disk, they may be a further issue, though).\n\nIn the above mentioned SVBUS thread, unless I missed some reports, both 7 and 10 worked, 8/8.1 were not tested, so it is possible that is something specific to 8/8.1 but I personally doubt it.\n\nAs a matter of fact - provided that the SAME VHD does work in \"mem\" mode, I am actually surprised that it works - I would have expected that for BOTH (\"mem\" and \"filedisk\") booting a \"specific\" \\\\boot\\\\BCD entry coming from running bcdboot would have been needed.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "208879",
+      "timestamp": "2019-01-04T18:27:29+00:00",
+      "author": "steve6375",
+      "content": "Since the SVBUS VHD works as a filedisk from an internal HDD but not from a USB HDD, it sounds like a USB driver issue.\n\nPerhaps Win8 does not contain the required USB drivers for your particular system.\n\nThat is why I suggested testing with VBOX so that the USB drive would appear to be a SATA\\\\IDE drive.\n\nA USB driver issue would explain why mem works but not filedisk?\n\nOr maybe SVBUS prevents the Win8 USB driver from hooking in.\n\nPresumably if you do a mem boot, you can \u0027see\u0027 the USB drive under Windows?\n\n"
+    },
+    {
+      "id": "208881",
+      "timestamp": "2019-01-04T18:46:44+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Since the SVBUS VHD works as a filedisk from an internal HDD but not from a USB HDD, it sounds like a USB driver issue.\n\u003e\n\u003e Perhaps Win8 does not contain the required USB drivers for your particular system.\n\u003e\n\u003e That is why I suggested testing with VBOX so that the USB drive would appear to be a SATA\\\\IDE drive.\n\u003e\n\u003e A USB driver issue would explain why mem works but not filedisk?\n\u003e\n\u003e Or maybe SVBUS prevents the Win8 USB driver from hooking in.\n\u003e\n\u003e Presumably if you do a mem boot, you can \u0027see\u0027 the USB drive under Windows?\n\nVery possible :smile: , I missed that none of the reports on the mentioned thread were about USB disks/sticks, but I thought that Windows 8+ have \\*somehow\\* a very good USB support, even at boot time (better than 7, I think because of the Windows To Go added feature).\n\nMaybe it is really some kind of \"missed hooking\" between SVBUS and the Windows 8 USB stack, but (again I may be well mistaken) I seem to remember that either Winvblock or Firadisk (or both) did actually work off USB sticks with Windows 8/8.1. ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "208886",
+      "timestamp": "2019-01-05T12:08:36+00:00",
+      "author": "wimb",
+      "content": "\u003e steps I did: normal windows 8.1 install.\n\u003e\n\u003e install firadisk driver, disable pagefile, hibernation etc. reboot into a PE. copy the contents of the C into a VHD. try the boot the VHD with grub4dos.\n\nSince you **copy** Installed Windows 8.1 into vhd, you need to repair the registry key [MountedDevices](http://diddy.boot-land.net/firadisk/files/mounteddevices.htm \"External link\") in your VHD SYSTEM registry.\n\nThe Disk Signature and the Partition Offset can be found in the MBR of the VHD.\n\nIn Windows 10 you can mount the 8.1 VHD in explorer with a double click on the file.\n\nTiny Hexer allows then to view the MBR and read the DiskSignature of 4 bytes at offset 0x1B8 and the Partition Offset of 4 bytes at 0x1C6\n\nThe correct value of the \\\\DosDevices\\\\C: key of 8.1 VHD can also be found in the registry MountedDevices of Windows 10 for the VHD mounted as drive N: in my case.\n\nIn VHD registry loaded as SYSTEM_VHD you can remove all MountedDevices entries except \\\\DosDevices\\\\C: and then repair this one for the correct DiskSignature and Partition Offset.\n\nAlso you need to repair the BCD inside the VHD e.g. with BOOTICE, since ApplicationDevice and OSDevise are now unknown and that will not work.\n\nMost likely you also need UsbBootWatcher and you should empty folder Windows\\\\Prefetch\n\nAll these precautions and some more are taken care of in VHD_W8_Compact.exe used for [Making Portable and Mini 8](http://reboot.pro/topic/18467-vhd-w8-compact-make-mini-8/ \"\")\n\n[![W10_MountedDev.png](http://reboot.pro/uploads/monthly_01_2019/post-9517-0-57863500-1546689972_thumb.png)](http://reboot.pro/uploads/monthly_01_2019/post-9517-0-57863500-1546689972.png \"W10_MountedDev.png - Size: 68.89KB\"){#ipb-attach-url-16346-0-01713700-1676066413} \u003d [![W81_MountedDev_VHD.png](http://reboot.pro/uploads/monthly_01_2019/post-9517-0-35986200-1546689989_thumb.png)](http://reboot.pro/uploads/monthly_01_2019/post-9517-0-35986200-1546689989.png \"W81_MountedDev_VHD.png - Size: 71.84KB\"){#ipb-attach-url-16347-0-01732500-1676066413} \u003d [![W81_MBR_VHD.png](http://reboot.pro/uploads/monthly_01_2019/post-9517-0-23794000-1546690002_thumb.png)](http://reboot.pro/uploads/monthly_01_2019/post-9517-0-23794000-1546690002.png \"W81_MBR_VHD.png - Size: 62.99KB\"){#ipb-attach-url-16348-0-01741700-1676066413} \u003d [![W81_BCD_VHD.png](http://reboot.pro/uploads/monthly_01_2019/post-9517-0-61186400-1546690510_thumb.png)](http://reboot.pro/uploads/monthly_01_2019/post-9517-0-61186400-1546690510.png \"W81_BCD_VHD.png - Size: 109.26KB\"){#ipb-attach-url-16350-0-01750400-1676066413}\n\nBetter is to Install straight into VHD as done e.g. in making [Win 10 x64 VHDX booting from Portable SSD](http://reboot.pro/topic/21883-install-windows-10-from-usb-after-booting-with-wim-or-vhdx/?p\u003d208164 \"\")\n\nsee - In that case there are no fixes needed.\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\n"
+    },
+    {
+      "id": "208890",
+      "timestamp": "2019-01-05T17:47:43+00:00",
+      "author": "favorinus",
+      "content": "Hi, wimb,\n\ncopy the already installed windows 8 into a VHD was my first attemped. Now I have a windows 8 installed straight into the VHD using the guide provided by the SVbus driver. It booting fine as FILEDISK and RAMDISK when the VHD is on the internal HDD. Coping the VHD to a usb stick or usb hdd cause that the grub RAMDISK works fine, while FILEDISK gives me the INACCESSIBLE_BOOT_DEVICE error. Both using grub and bootmgr.\n\nTwo things I will do now it take a look and the USB drivers and the ApplicationDevice and OSDevise in the BCD.\n\n"
+    },
+    {
+      "id": "208891",
+      "timestamp": "2019-01-05T18:04:12+00:00",
+      "author": "steve6375",
+      "content": "can you use VirtualBox+VMUB to boot the USB drive as FILEDISK?\n\nUnder VBOX, the USB drive will appear as a HDD and so it should work when booting the same USB drive on a real system does not.\n\nCan you test please?\n\n"
+    },
+    {
+      "id": "208893",
+      "timestamp": "2019-01-05T18:12:34+00:00",
+      "author": "wimb",
+      "content": "\u003e Hi, wimb,\n\u003e\n\u003e copy the already installed windows 8 into a VHD was my first attemped. Now I have a windows 8 installed straight into the VHD using the guide provided by the SVbus driver. It booting fine as FILEDISK and RAMDISK when the VHD is on the internal HDD. Coping the VHD to a usb stick or usb hdd cause that the grub RAMDISK works fine, while FILEDISK gives me the INACCESSIBLE_BOOT_DEVICE error. Both using grub and bootmgr.\n\u003e\n\u003e Two things I will do now it take a look and the USB drivers and the ApplicationDevice and OSDevise in the BCD.\n\nThat sounds like you need UsbBootWatcher .... which you don\u0027t need in case of Win 10 x64 VHDX ....\n\n"
+    },
+    {
+      "id": "208922",
+      "timestamp": "2019-01-08T16:24:14+00:00",
+      "author": "favorinus",
+      "content": "\u003e can you use VirtualBox+VMUB to boot the USB drive as FILEDISK?\n\nWhen I try this option windows 8.1 is booting fine.\n\n\u003e That sounds like you need UsbBootWatcher\n\nI have installed this but still it gives me the 7B . I will take a better look at the drivers, I think they are not working well.\n\n"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "7018",
+  "title": "modifying big (\u003e5 MB) floppy images?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "58392",
+      "timestamp": "2009-02-08T04:29:41+00:00",
+      "author": "mr_",
+      "content": "There are nice oversized floppy images floating around from 5 MB up to 700 MB.  \n[http://bootcd.narod.ru/images_e.htm](http://bootcd.narod.ru/images_e.htm \"External link\") Got one with 50 MB.  \n\nWhen booting it with grub4dos floppy emulation it works well. Unfortunately data written to emulated floppy images will not be stored.  \n\nIt was neither possible VirtualFloppy on XP, nor mounted in VMware and written with XP guest or DOS guest to write more then 2.44 MB to it.  \n\nHow can I add more data to it?   \n"
+    },
+    {
+      "id": "58393",
+      "timestamp": "2009-02-08T04:44:03+00:00",
+      "author": "Galapo",
+      "content": "You can probably mount the image as read-writeable with vdk and so add data.  \n\nRegards,  \nGalapo.   \n"
+    },
+    {
+      "id": "58395",
+      "timestamp": "2009-02-08T05:31:27+00:00",
+      "author": "tinybit",
+      "content": "Many possibilities to write to a floppy image file. Here are a few of them:  \n\n1. Use imdisk on Windows.  \n\n2. Use mount on Linux  \n\n3. Use grub4dos\u0027 floppy emulation**without** --mem option for the map command, which will update data when you write to the virtual floppy. If there are problems, try again with the additional --unsafe-boot option for the map command.   \n"
+    },
+    {
+      "id": "58418",
+      "timestamp": "2009-02-08T10:45:56+00:00",
+      "author": "was_jaclaz",
+      "content": "I can only add that VDK supports perfectly \"super-floppy\" images.  \n\nYou can create them with mksparse, fsutil, fsz, than mount them in VDK and format them with normal Windows FORMAT, either command line or right clicking on the volume in Explorer.  \n\nIMDISK may be more suited as you can map it to B: and have the floppy icon in Explorer.  \n\njaclaz   \n"
+    }
+  ]
+}

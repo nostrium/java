@@ -1,0 +1,340 @@
+{
+  "id": "17024",
+  "title": "Multiboot XP-Win7-Hiren Boot",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "155886",
+      "timestamp": "2012-06-06T06:28:44+00:00",
+      "author": "dagonas",
+      "content": "Hello  \n\nI\u0027m trying to make a MultiBoot USB with Windows XP, Windows 7 and Hiren\u0027s Boot Cd  \n\n\u003cbr /\u003e\n\nI made it with Grub4Dos and Firadisk loading ISO\u0027s directly.  \n\n\u003cbr /\u003e\n\nBut the WinXp installation failed, and Win7 installation was very slowly.  \n\nNow i\u0027m trying to make it extracting the ISO to make the installation faster, but i don\u0027t know how to do it.  \n\n\u003cbr /\u003e\n\nThanks in advance   \n"
+    },
+    {
+      "id": "155887",
+      "timestamp": "2012-06-06T06:52:48+00:00",
+      "author": "steve6375",
+      "content": "For a USB Flash drive see www.rmprepusb.com. [Tutorial #63](http://www.rmprepusb.com/tutorials/install-xp-and-win7-to-internal-hdd \"External link\") and add to it [Tutorial #36](http://www.rmprepusb.com/tutorials/hbcd \"External link\").   \n"
+    },
+    {
+      "id": "155889",
+      "timestamp": "2012-06-06T07:23:05+00:00",
+      "author": "dagonas",
+      "content": "Thanks in advance  \n\nThe ISO Load using Firadisk worked great  \n\n\u003cbr /\u003e\n\nI will try what you said and i will post the result  \n\n\u003cbr /\u003e\n\nNice to meet you, and thanks for your tutorials   \n"
+    },
+    {
+      "id": "155894",
+      "timestamp": "2012-06-06T08:36:47+00:00",
+      "author": "dagonas",
+      "content": "Hi again  \n\nI followed all the steps of #63 tutorial and i got these errors:  \n\nOn winXP  \n\nerror copying winblock and firadisk after selecting those drivers  \ncan\u0027t find OEMbinun7zip.exe after beginning the 2nd step of the installatin  \n\nOn WIn7  \n\nWarning SOURCEINSTALL.WIN not found  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n¿Is there a way to do this extracting the iso directly on the USB drive?  \n\n\u003cbr /\u003e\n\nThanks   \n\n**Edited by dagonas, 06 June 2012 - 08:38 AM.**\n"
+    },
+    {
+      "id": "155897",
+      "timestamp": "2012-06-06T08:55:36+00:00",
+      "author": "steve6375",
+      "content": "Did you use an MS source ISO or a \u0027special\u0027 one of your own?  \nThe tutorials are for MS install ISOs.  \nYou can simply extract the Win 7 source DVD and then use a grub4dos menu to boot to chainloader /bootmgr.  \n\nAre you trying to run Win 7 and XP from a USB Flash drive or install Win 7 and XP from a USB flash drive?   \n"
+    },
+    {
+      "id": "155899",
+      "timestamp": "2012-06-06T09:00:28+00:00",
+      "author": "dagonas",
+      "content": "It\u0027s a special ISO...  \n\nI want to make an USB for installing XP or Windows 7  \n\n\u003cbr /\u003e\n\nI will try extracting the ISO, but what do i have to do for WinXp?  \n\n\u003cbr /\u003e\n\nThanks again   \n"
+    },
+    {
+      "id": "155902",
+      "timestamp": "2012-06-06T09:42:07+00:00",
+      "author": "steve6375",
+      "content": "Try running [WinSetupFromUSB](http://www.msfn.org/board/topic/120444-how-to-install-windows-from-usb-winsetupfromusb-with-gui/ \"External link\") and then transferring the files over to your multiboot stick.   \n"
+    },
+    {
+      "id": "155912",
+      "timestamp": "2012-06-06T11:44:24+00:00",
+      "author": "dagonas",
+      "content": "It seems it works  \n\nI will try doing a complete installation of each one this afternoon  \n\nI\u0027ll tell you the result  \n\nThanks again for your help   \n"
+    },
+    {
+      "id": "155945",
+      "timestamp": "2012-06-06T19:49:44+00:00",
+      "author": "dagonas",
+      "content": "Hi again  \n\nI\u0027m getting an error installing forn WinSetup with Windows 7 and Windows Xp  \n\n\u003cbr /\u003e\n\nIs there a way to start the installation with Grub4dos?  \n\nThank you   \n"
+    },
+    {
+      "id": "155951",
+      "timestamp": "2012-06-06T21:14:01+00:00",
+      "author": "steve6375",
+      "content": "What error?  \nDid you test your USB drive using RMPrepUSB Quick Size Test? It may be faulty?   \n"
+    },
+    {
+      "id": "155969",
+      "timestamp": "2012-06-07T07:38:11+00:00",
+      "author": "dagonas",
+      "content": "Hello again  \n\nI\u0027m going to tell you the steps i have made:  \n\n1) Winsetupfromusb with options:  \nAuto format it with Fbinst, NTFS, Align  \n\nSection \"Add to USB DISK\"  \n\nWindows 2000/XP/2003 Setup Checked and the correct drive with an iso mounted inside the textbox  \n\nWindows Vista / 7 ... Setup Checked and the correct drive with an iso mounted inside the textbox  \n\n2) Start the process  \n\n3) Try each installation  \n\na) On Windows XP, when i started the second part of the installation it get hanged when the installation said \"39 minutes left\"  \n\n:cool: On Windows 7, it get hanged when the installation reached the Blue Screen of the installation beginning.  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nIt seems WinSetupfromUSB have a problem detecting the USB pendrive  \n\n\u003cbr /\u003e\n\nIs there another way to do this Multiboot?   \n"
+    },
+    {
+      "id": "155970",
+      "timestamp": "2012-06-07T07:41:09+00:00",
+      "author": "steve6375",
+      "content": "What system are you testing it on and what USB port (USB 2 or 3) are you using?  \nDid you try QEMU for Win 7 boot?   \n"
+    },
+    {
+      "id": "155974",
+      "timestamp": "2012-06-07T08:03:56+00:00",
+      "author": "dagonas",
+      "content": "Yes, i tried the QEMU and worked  \n\nIt takes a long time to show the screen on the computer where i inserted the USB  \n\nIt\u0027s a USB 2.0 port   \n"
+    },
+    {
+      "id": "155980",
+      "timestamp": "2012-06-07T09:36:13+00:00",
+      "author": "steve6375",
+      "content": "So what system are you testing it on? Does it have SATA drives, what chipset, what mainboard, etc.   \n"
+    },
+    {
+      "id": "155983",
+      "timestamp": "2012-06-07T09:54:36+00:00",
+      "author": "dagonas",
+      "content": "I have tried it on different system  \n\nThe Win7 installation started a hour ago and now is on 77% expanding files  \n\nSo it is going VERY slowly  \n\nThe system is:  \n\nMainboard: MSI N1996  \nChipset: VIA  \nHardisk: SATA  \n\nBut yesterday i tried it on a different system with a PATA hard disk   \n\n**Edited by dagonas, 07 June 2012 - 09:56 AM.**\n"
+    },
+    {
+      "id": "156018",
+      "timestamp": "2012-06-07T23:27:07+00:00",
+      "author": "dagonas",
+      "content": "Hi again  \n\nwhat about this method?  \n\n[https://sites.google...and-server-2008](https://sites.google.com/site/rmprepusb/tutorials/how-to-create-a-usb-drive-that-will-install-vista-win7-and-server-2008 \"External link\")  \n\ndo you think it may help?  \n\nTHANKS   \n"
+    },
+    {
+      "id": "156028",
+      "timestamp": "2012-06-08T06:56:28+00:00",
+      "author": "steve6375",
+      "content": "I think the problem is that the first system has a strange mass storage controller and the 2nd one has slow USB ports.  \nMSI N1996 is not the board name, all MSI boards have MSI N1996 on them - the name should be something like MS-6359.  \nDid you test your USB drive with RMPrepUSB Quick Size Test?   \nFor XP set the BIOS HDD mode to IDE not AHCI.   \n"
+    },
+    {
+      "id": "156049",
+      "timestamp": "2012-06-08T17:02:21+00:00",
+      "author": "dagonas",
+      "content": "I have tried another source and all went ok.  \n\nNow i\u0027m thinking about how may i put two different sources of Windows XP (one clean and another modified) to install one or other depending on the situation  \n\nDo you know how can i do that?  \n\n\u003cbr /\u003e\n\nThanks   \n"
+    },
+    {
+      "id": "156054",
+      "timestamp": "2012-06-08T19:00:52+00:00",
+      "author": "steve6375",
+      "content": "Well you can have two ISOs, but if one is modified it might not work in the same way. I can\u0027t really help with the modified one...   \n"
+    },
+    {
+      "id": "156055",
+      "timestamp": "2012-06-08T19:09:53+00:00",
+      "author": "dagonas",
+      "content": "But Installing from ISO is too slow   \n"
+    },
+    {
+      "id": "156062",
+      "timestamp": "2012-06-08T21:20:09+00:00",
+      "author": "Mah Moua",
+      "content": "The easiest is to boot hiren from grub4dos  \nmount the iso (xp or 7) with eg imdisk  \nThere are 2 \"fast\" installers under programs/others in hiren\u0027s menu one for xp (winntsetup)  \nand another for win6/7 (nt6.x fast installer)  \n\nIf you want to install xp directly from iso use winvblock. Make the iso file contigious with wincontig  \nYou can copy the xp iso (as one file) to your hard disk first. The installation is much faster  \nWin7 directly from iso is difficult  \n\nBelow are the menu.lst enteries for xp with winvblock usb  \n\ntitle Install Windows XP from iso with winvblock   \nfind --set-root --ignore-floppies /xpsp3.iso  \nmap /winvblock.ima (fd0)  \nmap /winvblock.ima (fd1)  \nmap /xpsp3.iso (0xff)  \ncheckrange 0x80 read 0x8280 \\\u0026\\\u0026 map (hd0) (hd1)  \ncheckrange 0x80 read 0x8280 \\\u0026\\\u0026 map (hd1) (hd0)  \nmap --hook  \nchainloader (0xff)  \n\ntitle Continue Windows XP setup with winvblock  \nfind --set-root --ignore-floppies /xpsp3.iso  \nmap /winvblock.ima (fd0)  \nmap /winvblock.ima (fd1)  \nmap /xpsp3.iso (0xff)  \ncheckrange 0x80 read 0x8280 \\\u0026\\\u0026 map (hd0) (hd1)  \ncheckrange 0x80 read 0x8280 \\\u0026\\\u0026 map (hd1) (hd0)  \nmap --hook  \nchainloader (hd0)+1   \n"
+    },
+    {
+      "id": "156160",
+      "timestamp": "2012-06-11T08:06:54+00:00",
+      "author": "dagonas",
+      "content": "Thanks, Mah Moua. I will try what you said.  \n\nSteve, i\u0027m getting the Stop error 0x0000007B so as i read in your Tutorial, i have to include the AHCI driver.  \n\n[http://www.rmprepusb...-xp-from-an-iso](http://www.rmprepusb.com/tutorials/install-xp-from-an-iso \"External link\")  \n\n\u003cbr /\u003e\n\nWhat do i have to do if i have this folder structure?  \n\n\u003cbr /\u003e\n\n![Posted Image](http://i48.tinypic.com/dnysrk.jpg)  \n\n\u003cbr /\u003e\n\nAnd the file menu.lst  \n\n```\ntitle Windows XP/2000/2003 Setup\n\nmap --unmap\u003d0:0xff\n\nmap --unhook\n\nsavedefault\n\nls /usbdrive.tag || find --set-root --ignore-cd /usbdrive.tag\n\nconfigfile /winsetup.lst\n\ntitle Start Vista/Win7/Server 2008 Setup or PE/Recovery ISO from partition 0\n\nmap --unmap\u003d0:0xff\n\nmap --unhook\n\nroot (hd0,0)\n\nchainloader /bootmgr\n\n```\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nand Winsetup.lst  \n\n\u003cbr /\u003e\n\n```\ncolor black/cyan yellow/cyan\n\ntimeout 10\n\ndefault /windefault\n\ntitle Back to Main Menu\n\nconfigfile /menu.lst\n\n\n\ntitle First part of Windows XP Professional SP3 setup from partition 0\n\nmap --unmap\u003d0:0xff\n\nmap --unhook\n\nls /WINSETUP/XPpSP3.ISO || find --set-root --ignore-cd /WINSETUP/XPpSP3.ISO\n\nmap /WINSETUP/XPpSP3.ISO (0xff) || map --mem /WINSETUP/XPpSP3.ISO (0xff)\n\nsavedefault 2\n\ncheckrange 0x00,0x01 read 0x8280 \u0026\u0026 configfile /BOOTWS/fd.lst\n\ncheckrange 8 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/8.lst\n\ncheckrange 7 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/7.lst\n\ncheckrange 6 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/6.lst\n\ncheckrange 5 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/5.lst\n\ncheckrange 4 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/4.lst\n\ncheckrange 3 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/3.lst\n\ncheckrange 2 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/2.lst\n\ncheckrange 1 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/1.lst\n\nboot\n\nmap --unmap\u003d0:0xff\n\nmap --unhook\n\ntitle Second part of 2000/XP/2003 setup / Boot first internal hard disk\n\ncheckrange 8 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/8.lst\n\ncheckrange 7 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/7.lst\n\ncheckrange 6 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/6.lst\n\ncheckrange 5 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/5.lst\n\ncheckrange 4 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/4.lst\n\ncheckrange 3 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/3.lst\n\ncheckrange 2 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/2.lst\n\ncheckrange 1 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/1.lst\n\nboot\n\n```\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nThanks, again  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003e The easiest is to boot hiren from grub4dos  \n\u003e mount the iso (xp or 7) with eg imdisk  \n\u003e There are 2 \"fast\" installers under programs/others in hiren\u0027s menu one for xp (winntsetup)  \n\u003e and another for win6/7 (nt6.x fast installer)  \n\u003e\n\u003e If you want to install xp directly from iso use winvblock. Make the iso file contigious with wincontig  \n\u003e You can copy the xp iso (as one file) to your hard disk first. The installation is much faster  \n\u003e Win7 directly from iso is difficult  \n\u003e\n\u003e Below are the menu.lst enteries for xp with winvblock usb  \n\u003e\n\u003e title Install Windows XP from iso with winvblock  \n\u003e find --set-root --ignore-floppies /xpsp3.iso  \n\u003e map /winvblock.ima (fd0)  \n\u003e map /winvblock.ima (fd1)  \n\u003e map /xpsp3.iso (0xff)  \n\u003e checkrange 0x80 read 0x8280 \\\u0026\\\u0026 map (hd0) (hd1)  \n\u003e checkrange 0x80 read 0x8280 \\\u0026\\\u0026 map (hd1) (hd0)  \n\u003e map --hook  \n\u003e chainloader (0xff)  \n\u003e\n\u003e title Continue Windows XP setup with winvblock  \n\u003e find --set-root --ignore-floppies /xpsp3.iso  \n\u003e map /winvblock.ima (fd0)  \n\u003e map /winvblock.ima (fd1)  \n\u003e map /xpsp3.iso (0xff)  \n\u003e checkrange 0x80 read 0x8280 \\\u0026\\\u0026 map (hd0) (hd1)  \n\u003e checkrange 0x80 read 0x8280 \\\u0026\\\u0026 map (hd1) (hd0)  \n\u003e map --hook  \n\u003e chainloader (hd0)+1  \n\n"
+    },
+    {
+      "id": "156392",
+      "timestamp": "2012-06-15T10:56:59+00:00",
+      "author": "dagonas",
+      "content": "Hi again  \n\nI\u0027m testing how to add a XP F6 installation driver for my SATA old computer  \n\nI done this:  \n\n```\n; Copyright (c) 2003-10 Intel Corporation\n\n;#############################################################################\n\n;#\n\n;#    Filename:  TXTSETUP.OEM\n\n;#\n\n;#############################################################################\n\n[Disks]\n\ndisk1 \u003d \"Intel(R) Rapid Storage Technology Driver\", iaStor.sys, \n\ndiskf\u003d\"FiraDisk Installation Disk\",firadisk.inf,\n\ndisk \u003d \"WinVBlock Driver Disk\",WinVBlk.inf,\n\n\n\n[Defaults]\n\n#scsi \u003d iaStor_Mobile\n\n#SCSI\u003dfiradisk\n\nscsi \u003d firadisk\n\n#scsi \u003d WINVBLOCK32\n\n\n\n;#############################################################################\n\n[scsi]\n\nDefault \u003d \"Choose Firadisk (or WinvBlock), then press S then choose your SATA driver\"\n\nfiradisk\u003d\"FiraDisk Driver (32-bit)\"\n\nfiradisk64\u003d\"FiraDisk Driver (64-bit)\"\n\nWinVBlock32 \u003d \"WinVBlock Bus (32-bit)\"\n\nWinVBlock64 \u003d \"WinVBlock Bus (64-bit)\"\n\n\n\n\n\n; iaAHCI.inf\n\niaAHCI_7RDH\t\t\t\t\t \u003d \"Intel(R) ICH7R/DH SATA AHCI Controller\"\n\niaAHCI_ESB2\t\t\t\t\t \u003d \"Intel(R) ESB2 SATA AHCI Controller\"\n\niaAHCI_7MMDH\t\t\t\t    \u003d \"Intel(R) ICH7M/MDH SATA AHCI Controller\"\n\niaAHCI_8RDHDO\t\t\t\t   \u003d \"Intel(R) ICH8R/DH/DO SATA AHCI Controller\"\n\niaAHCI_8MEM\t\t\t\t\t \u003d \"Intel(R) ICH8M-E/M SATA AHCI Controller\"\n\niaAHCI_9RDODH\t\t\t\t   \u003d \"Intel(R) ICH9R/DO/DH SATA AHCI Controller\"\n\niaAHCI_9MEM\t\t\t\t\t \u003d \"Intel(R) ICH9M-E/M SATA AHCI Controller\"\n\niaAHCI_10DDO\t\t\t\t    \u003d \"Intel(R) ICH10D/DO SATA AHCI Controller\"\n\niaAHCI_10R\t\t\t\t\t  \u003d \"Intel(R) ICH10R SATA AHCI Controller\"\n\niaAHCI_5\t\t\t\t\t    \u003d \"Intel(R) 5 Series 4 Port SATA AHCI Controller\"\n\niaAHCI_5_1\t\t\t\t\t  \u003d \"Intel(R) 5 Series 6 Port SATA AHCI Controller\"\n\niaAHCI_5_1_1\t\t\t\t    \u003d \"Intel(R) 5 Series/3400 Series SATA AHCI Controller\"\n\niaAHCI_DesktopWorkstationServer \u003d \"Intel(R) Desktop/Workstation/Server Express Chipset\n\nSATA AHCI Controller\"\n\niaAHCI_Mobile\t\t\t\t   \u003d \"Intel(R) Mobile Express Chipset SATA AHCI\n\nController\"\n\niaAHCI_ICH7R \u003d \"Intel(R) 82801GR/GH SATA AHCI Controller (Desktop ICH7R/DH)\"\n\niaAHCI_ICH6R \u003d \"Intel(R) 82801FR SATA AHCI Controller (Desktop ICH6R)\"\n\niaAHCI_ICH6M \u003d \"Intel(R) 82801FBM SATA AHCI Controller (Mobile  ICH6M)\"\n\n\n\n; iaStor.inf\n\niaStor_ESB2\t\t\t\t\t \u003d \"Intel(R) ESB2 SATA RAID Controller\"\n\niaStor_7RDH\t\t\t\t\t \u003d \"Intel(R) ICH7R/DH SATA RAID Controller\"\n\niaStor_7MDH\t\t\t\t\t \u003d \"Intel(R) ICH7MDH SATA RAID Controller\"\n\niaStor_DesktopWorkstationServer \u003d \"Intel(R) Desktop/Workstation/Server Express Chipset\n\nSATA RAID Controller\"\n\niaStor_Mobile\t\t\t\t   \u003d \"Intel(R) Mobile Express Chipset SATA RAID\n\nController\"\n\niaStor_ICH7DH \u003d \"Intel(R) 82801GR/GH SATA RAID Controller (Desktop ICH7R/DH)\"\n\niaStor_ICH6R \u003d \"Intel(R) 82801FR SATA RAID Controller (Desktop ICH6R)\"\n\niaStor_ICH5R \u003d \"Intel(R) 82801ER SATA RAID Controller (Desktop ICH5R)\"\n\niaStor_ICH5RHR \u003d \"Intel(R) 6300ESB SATA RAID Controller\"\n\n\n\n;#############################################################################\n\n; iaAHCI.inf\n\n[Files.scsi.iaAHCI_ESB2]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_7RDH]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_7MMDH]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_8RDHDO]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_8MEM]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_9RDODH]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_9MEM]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_10DDO]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_10R]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_5]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_5_1]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_5_1_1]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_DesktopWorkstationServer]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_Mobile]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaStor_ICH7DH]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf    \u003d disk1, iaStor.inf\n\ncatalog \u003d disk1, iaStor.cat\n\n[Files.scsi.iaAHCI_ICH7R]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf    \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaStor_ICH6R]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf    \u003d disk1, iaStor.inf\n\ncatalog \u003d disk1, iaStor.cat\n\n[Files.scsi.iaAHCI_ICH6R]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf    \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_ICH6M]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf    \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaStor_ICH5R]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf    \u003d disk1, iaStor.inf\n\ncatalog \u003d disk1, iaStor.cat\n\n[Files.scsi.iaStor_ICH5RHR]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf    \u003d disk1, iaStor.inf\n\ncatalog \u003d disk1, iaStor.cat\n\n\n\n; iaStor.inf\n\n[Files.scsi.iaStor_ESB2]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaStor.inf\n\ncatalog \u003d disk1, iaStor.cat\n\n[Files.scsi.iaStor_7RDH]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaStor.inf\n\ncatalog \u003d disk1, iaStor.cat\n\n[Files.scsi.iaStor_7MDH]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaStor.inf\n\ncatalog \u003d disk1, iaStor.cat\n\n[Files.scsi.iaStor_DesktopWorkstationServer]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaStor.inf\n\ncatalog \u003d disk1, iaStor.cat\n\n[Files.scsi.iaStor_Mobile]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaStor.inf\n\ncatalog \u003d disk1, iaStor.cat\n\n\n\n;#############################################################################\n\n[Config.iaStor]\n\nvalue \u003d \"\", tag, REG_DWORD, 1b\n\nvalue \u003d \"\", ErrorControl, REG_DWORD, 1\n\nvalue \u003d \"\", Group, REG_SZ, \"SCSI Miniport\"\n\nvalue \u003d \"\", Start, REG_DWORD, 0\n\nvalue \u003d \"\", Type, REG_DWORD, 1\n\n;#############################################################################\n\n; iaAHCI.inf\n\n[HardwareIds.scsi.iaAHCI_ESB2]\n\nid \u003d \"PCIVEN_8086\u0026DEV_2681\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_7RDH]\n\nid \u003d \"PCIVEN_8086\u0026DEV_27C1\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_7MMDH]\n\nid \u003d \"PCIVEN_8086\u0026DEV_27C5\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_8RDHDO]\n\nid \u003d \"PCIVEN_8086\u0026DEV_2821\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_8MEM]\n\nid \u003d \"PCIVEN_8086\u0026DEV_2829\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_9RDODH]\n\nid \u003d \"PCIVEN_8086\u0026DEV_2922\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_9MEM]\n\nid \u003d \"PCIVEN_8086\u0026DEV_2929\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_10DDO]\n\nid \u003d \"PCIVEN_8086\u0026DEV_3A02\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_10R]\n\nid \u003d \"PCIVEN_8086\u0026DEV_3A22\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_5]\n\nid \u003d \"PCIVEN_8086\u0026DEV_3B29\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_5_1]\n\nid \u003d \"PCIVEN_8086\u0026DEV_3B2F\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_5_1_1]\n\nid \u003d \"PCIVEN_8086\u0026DEV_3B22\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_DesktopWorkstationServer]\n\nid \u003d \"PCIVEN_8086\u0026DEV_1C02\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_Mobile]\n\nid \u003d \"PCIVEN_8086\u0026DEV_1C03\u0026CC_0106\",\"iaStor\"\n\n\n\n; iaStor.inf\n\n[HardwareIds.scsi.iaStor_ESB2]\n\nid \u003d \"PCIVEN_8086\u0026DEV_2682\u0026CC_0104\",\"iaStor\"\n\n[HardwareIds.scsi.iaStor_7RDH]\n\nid \u003d \"PCIVEN_8086\u0026DEV_27C3\u0026CC_0104\",\"iaStor\"\n\n[HardwareIds.scsi.iaStor_7MDH]\n\nid \u003d \"PCIVEN_8086\u0026DEV_27C6\u0026CC_0104\",\"iaStor\"\n\n[HardwareIds.scsi.iaStor_DesktopWorkstationServer]\n\nid \u003d \"PCIVEN_8086\u0026DEV_2822\u0026CC_0104\",\"iaStor\"\n\n[HardwareIds.scsi.iaStor_Mobile]\n\nid \u003d \"PCIVEN_8086\u0026DEV_282A\u0026CC_0104\",\"iaStor\"\n\n[Files.scsi.firadisk]\n\ndriver\u003ddiskf,firadisk.sys,firadisk\n\ninf\u003ddiskf,firadisk.inf\n\ncatalog\u003ddiskf,firadisk.cat\n\n[Config.firadisk]\n\n[HardwareIds.scsi.firadisk]\n\nid\u003d\"detectedfiradisk\",\"firadisk\"\n\n[Files.scsi.WinVBlock32]\n\ndriver \u003d disk,WVBlk32.Sys,WinVBlock\n\ninf \u003d disk,WinVBlk.Inf\n\ncatalog \u003d disk,WinVBlk.Cat\n\n[Files.scsi.firadisk64]\n\ndriver\u003ddisk1,firadi64.sys,firadisk\n\ninf\u003ddisk1,firadisk.inf\n\ncatalog\u003ddisk1,firadisk.cat\n\n[Config.firadisk64]\n\n[HardwareIds.scsi.firadisk]\n\nid\u003d\"detectedfiradisk\",\"firadisk\"\n\n\n\n[Files.scsi.WinVBlock64]\n\ndriver \u003d disk,WVBlk64.Sys,WinVBlock\n\ninf \u003d disk,WinVBlk.Inf\n\ncatalog \u003d disk,WinVBlk.Cat\n\n\n\n[Config.WinVBlock]\n\nvalue\u003d\"\",TxtSetupInstalled,REG_DWORD,1\n\n\n\n[HardwareIds.scsi.WinVBlock32]\n\nid\u003d\"ROOTWINVBLOCK\",\"WinVBlock\"\n\nid\u003d\"DetectedWinVBlock\",\"WinVBlock\"\n\n\n\n[HardwareIds.scsi.WinVBlock64]\n\nid\u003d\"ROOTWINVBLOCK\",\"WinVBlock\"\n\nid\u003d\"DetectedWinVBlock\",\"WinVBlock\"\n\n[HardwareIds.scsi.iaStor_ICH7DH]\n\nid \u003d \"PCIVEN_8086\u0026DEV_27C3\u0026CC_0104\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_ICH7R]\n\nid \u003d \"PCIVEN_8086\u0026DEV_27C1\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaStor_ICH6R]\n\nid \u003d \"PCIVEN_8086\u0026DEV_2652\u0026CC_0104\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_ICH6R]\n\nid \u003d \"PCIVEN_8086\u0026DEV_2652\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_ICH6M]\n\nid \u003d \"PCIVEN_8086\u0026DEV_2653\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaStor_ICH5R]\n\nid \u003d \"PCIVEN_8086\u0026DEV_24DF\u0026CC_0104\",\"iaStor\"\n\n[HardwareIds.scsi.iaStor_ICH5RHR]\n\nid \u003d \"PCIVEN_8086\u0026DEV_25B0\u0026CC_0104\",\"iaStor\"\n\n\n\n```\n\n\u003cbr /\u003e\n\nI opened the winvblock.ima, followed the Steve instructions and then put all the driver downloaded driver into the winvblock ima file.  \n\nIt told me to overwrite iaStor.sys and other files ¿is it ok?  \n\n\u003cbr /\u003e\n\nThe motherboard driver is :  \n\n\u003cbr /\u003e\n\nASROCK CONROE 865PE  \nVENDOR\u003d8086 DEVICE\u003d24D1  \nICH5  \n\nI can\u0027t find that driver, but i\u0027ll try with this one:  \n\n[http://devid.info/es/27749](http://devid.info/es/27749 \"External link\")  \n\nThanks again   \n"
+    },
+    {
+      "id": "156393",
+      "timestamp": "2012-06-15T11:25:07+00:00",
+      "author": "steve6375",
+      "content": "If 24D1 is not in the INF file then it probably won\u0027t work. Try adding extra lines by copying an existing section and changing the PCI ID tp 8086 24D1.  \nAs for overwriting files, I would always use the newest version of the .sys file but it may not work! You can always make one floppy image for the 865 system, and use a different floppy image for other systems if you make a separate menu entry in the grub4dos menu.   \n"
+    },
+    {
+      "id": "156416",
+      "timestamp": "2012-06-15T15:42:54+00:00",
+      "author": "cdob",
+      "content": "\u003e VENDOR\u003d8086 DEVICE\u003d24D1  \n\u003e ICH5\nThat\u0027s IDE emulation mode, that\u0027s NOT AHCI mode.  \nThere is no need to include iastor.sys.  \n\nRead instructions again and try custom ntdetect.com.   \n"
+    },
+    {
+      "id": "155886",
+      "timestamp": "2012-06-06T06:28:44+00:00",
+      "author": "dagonas",
+      "content": "Hello  \n\nI\u0027m trying to make a MultiBoot USB with Windows XP, Windows 7 and Hiren\u0027s Boot Cd  \n\n\u003cbr /\u003e\n\nI made it with Grub4Dos and Firadisk loading ISO\u0027s directly.  \n\n\u003cbr /\u003e\n\nBut the WinXp installation failed, and Win7 installation was very slowly.  \n\nNow i\u0027m trying to make it extracting the ISO to make the installation faster, but i don\u0027t know how to do it.  \n\n\u003cbr /\u003e\n\nThanks in advance   \n"
+    },
+    {
+      "id": "155887",
+      "timestamp": "2012-06-06T06:52:48+00:00",
+      "author": "steve6375",
+      "content": "For a USB Flash drive see www.rmprepusb.com. [Tutorial #63](http://www.rmprepusb.com/tutorials/install-xp-and-win7-to-internal-hdd \"External link\") and add to it [Tutorial #36](http://www.rmprepusb.com/tutorials/hbcd \"External link\").   \n"
+    },
+    {
+      "id": "155889",
+      "timestamp": "2012-06-06T07:23:05+00:00",
+      "author": "dagonas",
+      "content": "Thanks in advance  \n\nThe ISO Load using Firadisk worked great  \n\n\u003cbr /\u003e\n\nI will try what you said and i will post the result  \n\n\u003cbr /\u003e\n\nNice to meet you, and thanks for your tutorials   \n"
+    },
+    {
+      "id": "155894",
+      "timestamp": "2012-06-06T08:36:47+00:00",
+      "author": "dagonas",
+      "content": "Hi again  \n\nI followed all the steps of #63 tutorial and i got these errors:  \n\nOn winXP  \n\nerror copying winblock and firadisk after selecting those drivers  \ncan\u0027t find OEMbinun7zip.exe after beginning the 2nd step of the installatin  \n\nOn WIn7  \n\nWarning SOURCEINSTALL.WIN not found  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n¿Is there a way to do this extracting the iso directly on the USB drive?  \n\n\u003cbr /\u003e\n\nThanks   \n\n**Edited by dagonas, 06 June 2012 - 08:38 AM.**\n"
+    },
+    {
+      "id": "155897",
+      "timestamp": "2012-06-06T08:55:36+00:00",
+      "author": "steve6375",
+      "content": "Did you use an MS source ISO or a \u0027special\u0027 one of your own?  \nThe tutorials are for MS install ISOs.  \nYou can simply extract the Win 7 source DVD and then use a grub4dos menu to boot to chainloader /bootmgr.  \n\nAre you trying to run Win 7 and XP from a USB Flash drive or install Win 7 and XP from a USB flash drive?   \n"
+    },
+    {
+      "id": "155899",
+      "timestamp": "2012-06-06T09:00:28+00:00",
+      "author": "dagonas",
+      "content": "It\u0027s a special ISO...  \n\nI want to make an USB for installing XP or Windows 7  \n\n\u003cbr /\u003e\n\nI will try extracting the ISO, but what do i have to do for WinXp?  \n\n\u003cbr /\u003e\n\nThanks again   \n"
+    },
+    {
+      "id": "155902",
+      "timestamp": "2012-06-06T09:42:07+00:00",
+      "author": "steve6375",
+      "content": "Try running [WinSetupFromUSB](http://www.msfn.org/board/topic/120444-how-to-install-windows-from-usb-winsetupfromusb-with-gui/ \"External link\") and then transferring the files over to your multiboot stick.   \n"
+    },
+    {
+      "id": "155912",
+      "timestamp": "2012-06-06T11:44:24+00:00",
+      "author": "dagonas",
+      "content": "It seems it works  \n\nI will try doing a complete installation of each one this afternoon  \n\nI\u0027ll tell you the result  \n\nThanks again for your help   \n"
+    },
+    {
+      "id": "155945",
+      "timestamp": "2012-06-06T19:49:44+00:00",
+      "author": "dagonas",
+      "content": "Hi again  \n\nI\u0027m getting an error installing forn WinSetup with Windows 7 and Windows Xp  \n\n\u003cbr /\u003e\n\nIs there a way to start the installation with Grub4dos?  \n\nThank you   \n"
+    },
+    {
+      "id": "155951",
+      "timestamp": "2012-06-06T21:14:01+00:00",
+      "author": "steve6375",
+      "content": "What error?  \nDid you test your USB drive using RMPrepUSB Quick Size Test? It may be faulty?   \n"
+    },
+    {
+      "id": "155969",
+      "timestamp": "2012-06-07T07:38:11+00:00",
+      "author": "dagonas",
+      "content": "Hello again  \n\nI\u0027m going to tell you the steps i have made:  \n\n1) Winsetupfromusb with options:  \nAuto format it with Fbinst, NTFS, Align  \n\nSection \"Add to USB DISK\"  \n\nWindows 2000/XP/2003 Setup Checked and the correct drive with an iso mounted inside the textbox  \n\nWindows Vista / 7 ... Setup Checked and the correct drive with an iso mounted inside the textbox  \n\n2) Start the process  \n\n3) Try each installation  \n\na) On Windows XP, when i started the second part of the installation it get hanged when the installation said \"39 minutes left\"  \n\n:cool: On Windows 7, it get hanged when the installation reached the Blue Screen of the installation beginning.  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nIt seems WinSetupfromUSB have a problem detecting the USB pendrive  \n\n\u003cbr /\u003e\n\nIs there another way to do this Multiboot?   \n"
+    },
+    {
+      "id": "155970",
+      "timestamp": "2012-06-07T07:41:09+00:00",
+      "author": "steve6375",
+      "content": "What system are you testing it on and what USB port (USB 2 or 3) are you using?  \nDid you try QEMU for Win 7 boot?   \n"
+    },
+    {
+      "id": "155974",
+      "timestamp": "2012-06-07T08:03:56+00:00",
+      "author": "dagonas",
+      "content": "Yes, i tried the QEMU and worked  \n\nIt takes a long time to show the screen on the computer where i inserted the USB  \n\nIt\u0027s a USB 2.0 port   \n"
+    },
+    {
+      "id": "155980",
+      "timestamp": "2012-06-07T09:36:13+00:00",
+      "author": "steve6375",
+      "content": "So what system are you testing it on? Does it have SATA drives, what chipset, what mainboard, etc.   \n"
+    },
+    {
+      "id": "155983",
+      "timestamp": "2012-06-07T09:54:36+00:00",
+      "author": "dagonas",
+      "content": "I have tried it on different system  \n\nThe Win7 installation started a hour ago and now is on 77% expanding files  \n\nSo it is going VERY slowly  \n\nThe system is:  \n\nMainboard: MSI N1996  \nChipset: VIA  \nHardisk: SATA  \n\nBut yesterday i tried it on a different system with a PATA hard disk   \n\n**Edited by dagonas, 07 June 2012 - 09:56 AM.**\n"
+    },
+    {
+      "id": "156018",
+      "timestamp": "2012-06-07T23:27:07+00:00",
+      "author": "dagonas",
+      "content": "Hi again  \n\nwhat about this method?  \n\n[https://sites.google...and-server-2008](https://sites.google.com/site/rmprepusb/tutorials/how-to-create-a-usb-drive-that-will-install-vista-win7-and-server-2008 \"External link\")  \n\ndo you think it may help?  \n\nTHANKS   \n"
+    },
+    {
+      "id": "156028",
+      "timestamp": "2012-06-08T06:56:28+00:00",
+      "author": "steve6375",
+      "content": "I think the problem is that the first system has a strange mass storage controller and the 2nd one has slow USB ports.  \nMSI N1996 is not the board name, all MSI boards have MSI N1996 on them - the name should be something like MS-6359.  \nDid you test your USB drive with RMPrepUSB Quick Size Test?   \nFor XP set the BIOS HDD mode to IDE not AHCI.   \n"
+    },
+    {
+      "id": "156049",
+      "timestamp": "2012-06-08T17:02:21+00:00",
+      "author": "dagonas",
+      "content": "I have tried another source and all went ok.  \n\nNow i\u0027m thinking about how may i put two different sources of Windows XP (one clean and another modified) to install one or other depending on the situation  \n\nDo you know how can i do that?  \n\n\u003cbr /\u003e\n\nThanks   \n"
+    },
+    {
+      "id": "156054",
+      "timestamp": "2012-06-08T19:00:52+00:00",
+      "author": "steve6375",
+      "content": "Well you can have two ISOs, but if one is modified it might not work in the same way. I can\u0027t really help with the modified one...   \n"
+    },
+    {
+      "id": "156055",
+      "timestamp": "2012-06-08T19:09:53+00:00",
+      "author": "dagonas",
+      "content": "But Installing from ISO is too slow   \n"
+    },
+    {
+      "id": "156062",
+      "timestamp": "2012-06-08T21:20:09+00:00",
+      "author": "Mah Moua",
+      "content": "The easiest is to boot hiren from grub4dos  \nmount the iso (xp or 7) with eg imdisk  \nThere are 2 \"fast\" installers under programs/others in hiren\u0027s menu one for xp (winntsetup)  \nand another for win6/7 (nt6.x fast installer)  \n\nIf you want to install xp directly from iso use winvblock. Make the iso file contigious with wincontig  \nYou can copy the xp iso (as one file) to your hard disk first. The installation is much faster  \nWin7 directly from iso is difficult  \n\nBelow are the menu.lst enteries for xp with winvblock usb  \n\ntitle Install Windows XP from iso with winvblock   \nfind --set-root --ignore-floppies /xpsp3.iso  \nmap /winvblock.ima (fd0)  \nmap /winvblock.ima (fd1)  \nmap /xpsp3.iso (0xff)  \ncheckrange 0x80 read 0x8280 \\\u0026\\\u0026 map (hd0) (hd1)  \ncheckrange 0x80 read 0x8280 \\\u0026\\\u0026 map (hd1) (hd0)  \nmap --hook  \nchainloader (0xff)  \n\ntitle Continue Windows XP setup with winvblock  \nfind --set-root --ignore-floppies /xpsp3.iso  \nmap /winvblock.ima (fd0)  \nmap /winvblock.ima (fd1)  \nmap /xpsp3.iso (0xff)  \ncheckrange 0x80 read 0x8280 \\\u0026\\\u0026 map (hd0) (hd1)  \ncheckrange 0x80 read 0x8280 \\\u0026\\\u0026 map (hd1) (hd0)  \nmap --hook  \nchainloader (hd0)+1   \n"
+    },
+    {
+      "id": "156160",
+      "timestamp": "2012-06-11T08:06:54+00:00",
+      "author": "dagonas",
+      "content": "Thanks, Mah Moua. I will try what you said.  \n\nSteve, i\u0027m getting the Stop error 0x0000007B so as i read in your Tutorial, i have to include the AHCI driver.  \n\n[http://www.rmprepusb...-xp-from-an-iso](http://www.rmprepusb.com/tutorials/install-xp-from-an-iso \"External link\")  \n\n\u003cbr /\u003e\n\nWhat do i have to do if i have this folder structure?  \n\n\u003cbr /\u003e\n\n![Posted Image](http://i48.tinypic.com/dnysrk.jpg)  \n\n\u003cbr /\u003e\n\nAnd the file menu.lst  \n\n```\ntitle Windows XP/2000/2003 Setup\n\nmap --unmap\u003d0:0xff\n\nmap --unhook\n\nsavedefault\n\nls /usbdrive.tag || find --set-root --ignore-cd /usbdrive.tag\n\nconfigfile /winsetup.lst\n\ntitle Start Vista/Win7/Server 2008 Setup or PE/Recovery ISO from partition 0\n\nmap --unmap\u003d0:0xff\n\nmap --unhook\n\nroot (hd0,0)\n\nchainloader /bootmgr\n\n```\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nand Winsetup.lst  \n\n\u003cbr /\u003e\n\n```\ncolor black/cyan yellow/cyan\n\ntimeout 10\n\ndefault /windefault\n\ntitle Back to Main Menu\n\nconfigfile /menu.lst\n\n\n\ntitle First part of Windows XP Professional SP3 setup from partition 0\n\nmap --unmap\u003d0:0xff\n\nmap --unhook\n\nls /WINSETUP/XPpSP3.ISO || find --set-root --ignore-cd /WINSETUP/XPpSP3.ISO\n\nmap /WINSETUP/XPpSP3.ISO (0xff) || map --mem /WINSETUP/XPpSP3.ISO (0xff)\n\nsavedefault 2\n\ncheckrange 0x00,0x01 read 0x8280 \u0026\u0026 configfile /BOOTWS/fd.lst\n\ncheckrange 8 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/8.lst\n\ncheckrange 7 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/7.lst\n\ncheckrange 6 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/6.lst\n\ncheckrange 5 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/5.lst\n\ncheckrange 4 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/4.lst\n\ncheckrange 3 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/3.lst\n\ncheckrange 2 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/2.lst\n\ncheckrange 1 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/1.lst\n\nboot\n\nmap --unmap\u003d0:0xff\n\nmap --unhook\n\ntitle Second part of 2000/XP/2003 setup / Boot first internal hard disk\n\ncheckrange 8 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/8.lst\n\ncheckrange 7 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/7.lst\n\ncheckrange 6 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/6.lst\n\ncheckrange 5 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/5.lst\n\ncheckrange 4 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/4.lst\n\ncheckrange 3 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/3.lst\n\ncheckrange 2 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/2.lst\n\ncheckrange 1 calc *0x475 \u0026 0xFF \u0026\u0026 configfile /BOOTWS/1.lst\n\nboot\n\n```\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nThanks, again  \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n\u003e The easiest is to boot hiren from grub4dos  \n\u003e mount the iso (xp or 7) with eg imdisk  \n\u003e There are 2 \"fast\" installers under programs/others in hiren\u0027s menu one for xp (winntsetup)  \n\u003e and another for win6/7 (nt6.x fast installer)  \n\u003e\n\u003e If you want to install xp directly from iso use winvblock. Make the iso file contigious with wincontig  \n\u003e You can copy the xp iso (as one file) to your hard disk first. The installation is much faster  \n\u003e Win7 directly from iso is difficult  \n\u003e\n\u003e Below are the menu.lst enteries for xp with winvblock usb  \n\u003e\n\u003e title Install Windows XP from iso with winvblock  \n\u003e find --set-root --ignore-floppies /xpsp3.iso  \n\u003e map /winvblock.ima (fd0)  \n\u003e map /winvblock.ima (fd1)  \n\u003e map /xpsp3.iso (0xff)  \n\u003e checkrange 0x80 read 0x8280 \\\u0026\\\u0026 map (hd0) (hd1)  \n\u003e checkrange 0x80 read 0x8280 \\\u0026\\\u0026 map (hd1) (hd0)  \n\u003e map --hook  \n\u003e chainloader (0xff)  \n\u003e\n\u003e title Continue Windows XP setup with winvblock  \n\u003e find --set-root --ignore-floppies /xpsp3.iso  \n\u003e map /winvblock.ima (fd0)  \n\u003e map /winvblock.ima (fd1)  \n\u003e map /xpsp3.iso (0xff)  \n\u003e checkrange 0x80 read 0x8280 \\\u0026\\\u0026 map (hd0) (hd1)  \n\u003e checkrange 0x80 read 0x8280 \\\u0026\\\u0026 map (hd1) (hd0)  \n\u003e map --hook  \n\u003e chainloader (hd0)+1  \n\n"
+    },
+    {
+      "id": "156392",
+      "timestamp": "2012-06-15T10:56:59+00:00",
+      "author": "dagonas",
+      "content": "Hi again  \n\nI\u0027m testing how to add a XP F6 installation driver for my SATA old computer  \n\nI done this:  \n\n```\n; Copyright (c) 2003-10 Intel Corporation\n\n;#############################################################################\n\n;#\n\n;#    Filename:  TXTSETUP.OEM\n\n;#\n\n;#############################################################################\n\n[Disks]\n\ndisk1 \u003d \"Intel(R) Rapid Storage Technology Driver\", iaStor.sys, \n\ndiskf\u003d\"FiraDisk Installation Disk\",firadisk.inf,\n\ndisk \u003d \"WinVBlock Driver Disk\",WinVBlk.inf,\n\n\n\n[Defaults]\n\n#scsi \u003d iaStor_Mobile\n\n#SCSI\u003dfiradisk\n\nscsi \u003d firadisk\n\n#scsi \u003d WINVBLOCK32\n\n\n\n;#############################################################################\n\n[scsi]\n\nDefault \u003d \"Choose Firadisk (or WinvBlock), then press S then choose your SATA driver\"\n\nfiradisk\u003d\"FiraDisk Driver (32-bit)\"\n\nfiradisk64\u003d\"FiraDisk Driver (64-bit)\"\n\nWinVBlock32 \u003d \"WinVBlock Bus (32-bit)\"\n\nWinVBlock64 \u003d \"WinVBlock Bus (64-bit)\"\n\n\n\n\n\n; iaAHCI.inf\n\niaAHCI_7RDH\t\t\t\t\t \u003d \"Intel(R) ICH7R/DH SATA AHCI Controller\"\n\niaAHCI_ESB2\t\t\t\t\t \u003d \"Intel(R) ESB2 SATA AHCI Controller\"\n\niaAHCI_7MMDH\t\t\t\t    \u003d \"Intel(R) ICH7M/MDH SATA AHCI Controller\"\n\niaAHCI_8RDHDO\t\t\t\t   \u003d \"Intel(R) ICH8R/DH/DO SATA AHCI Controller\"\n\niaAHCI_8MEM\t\t\t\t\t \u003d \"Intel(R) ICH8M-E/M SATA AHCI Controller\"\n\niaAHCI_9RDODH\t\t\t\t   \u003d \"Intel(R) ICH9R/DO/DH SATA AHCI Controller\"\n\niaAHCI_9MEM\t\t\t\t\t \u003d \"Intel(R) ICH9M-E/M SATA AHCI Controller\"\n\niaAHCI_10DDO\t\t\t\t    \u003d \"Intel(R) ICH10D/DO SATA AHCI Controller\"\n\niaAHCI_10R\t\t\t\t\t  \u003d \"Intel(R) ICH10R SATA AHCI Controller\"\n\niaAHCI_5\t\t\t\t\t    \u003d \"Intel(R) 5 Series 4 Port SATA AHCI Controller\"\n\niaAHCI_5_1\t\t\t\t\t  \u003d \"Intel(R) 5 Series 6 Port SATA AHCI Controller\"\n\niaAHCI_5_1_1\t\t\t\t    \u003d \"Intel(R) 5 Series/3400 Series SATA AHCI Controller\"\n\niaAHCI_DesktopWorkstationServer \u003d \"Intel(R) Desktop/Workstation/Server Express Chipset\n\nSATA AHCI Controller\"\n\niaAHCI_Mobile\t\t\t\t   \u003d \"Intel(R) Mobile Express Chipset SATA AHCI\n\nController\"\n\niaAHCI_ICH7R \u003d \"Intel(R) 82801GR/GH SATA AHCI Controller (Desktop ICH7R/DH)\"\n\niaAHCI_ICH6R \u003d \"Intel(R) 82801FR SATA AHCI Controller (Desktop ICH6R)\"\n\niaAHCI_ICH6M \u003d \"Intel(R) 82801FBM SATA AHCI Controller (Mobile  ICH6M)\"\n\n\n\n; iaStor.inf\n\niaStor_ESB2\t\t\t\t\t \u003d \"Intel(R) ESB2 SATA RAID Controller\"\n\niaStor_7RDH\t\t\t\t\t \u003d \"Intel(R) ICH7R/DH SATA RAID Controller\"\n\niaStor_7MDH\t\t\t\t\t \u003d \"Intel(R) ICH7MDH SATA RAID Controller\"\n\niaStor_DesktopWorkstationServer \u003d \"Intel(R) Desktop/Workstation/Server Express Chipset\n\nSATA RAID Controller\"\n\niaStor_Mobile\t\t\t\t   \u003d \"Intel(R) Mobile Express Chipset SATA RAID\n\nController\"\n\niaStor_ICH7DH \u003d \"Intel(R) 82801GR/GH SATA RAID Controller (Desktop ICH7R/DH)\"\n\niaStor_ICH6R \u003d \"Intel(R) 82801FR SATA RAID Controller (Desktop ICH6R)\"\n\niaStor_ICH5R \u003d \"Intel(R) 82801ER SATA RAID Controller (Desktop ICH5R)\"\n\niaStor_ICH5RHR \u003d \"Intel(R) 6300ESB SATA RAID Controller\"\n\n\n\n;#############################################################################\n\n; iaAHCI.inf\n\n[Files.scsi.iaAHCI_ESB2]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_7RDH]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_7MMDH]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_8RDHDO]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_8MEM]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_9RDODH]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_9MEM]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_10DDO]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_10R]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_5]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_5_1]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_5_1_1]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_DesktopWorkstationServer]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_Mobile]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaStor_ICH7DH]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf    \u003d disk1, iaStor.inf\n\ncatalog \u003d disk1, iaStor.cat\n\n[Files.scsi.iaAHCI_ICH7R]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf    \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaStor_ICH6R]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf    \u003d disk1, iaStor.inf\n\ncatalog \u003d disk1, iaStor.cat\n\n[Files.scsi.iaAHCI_ICH6R]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf    \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaAHCI_ICH6M]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf    \u003d disk1, iaAHCI.inf\n\ncatalog \u003d disk1, iaAHCI.cat\n\n[Files.scsi.iaStor_ICH5R]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf    \u003d disk1, iaStor.inf\n\ncatalog \u003d disk1, iaStor.cat\n\n[Files.scsi.iaStor_ICH5RHR]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf    \u003d disk1, iaStor.inf\n\ncatalog \u003d disk1, iaStor.cat\n\n\n\n; iaStor.inf\n\n[Files.scsi.iaStor_ESB2]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaStor.inf\n\ncatalog \u003d disk1, iaStor.cat\n\n[Files.scsi.iaStor_7RDH]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaStor.inf\n\ncatalog \u003d disk1, iaStor.cat\n\n[Files.scsi.iaStor_7MDH]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaStor.inf\n\ncatalog \u003d disk1, iaStor.cat\n\n[Files.scsi.iaStor_DesktopWorkstationServer]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaStor.inf\n\ncatalog \u003d disk1, iaStor.cat\n\n[Files.scsi.iaStor_Mobile]\n\ndriver \u003d disk1, iaStor.sys, iaStor\n\ninf \u003d disk1, iaStor.inf\n\ncatalog \u003d disk1, iaStor.cat\n\n\n\n;#############################################################################\n\n[Config.iaStor]\n\nvalue \u003d \"\", tag, REG_DWORD, 1b\n\nvalue \u003d \"\", ErrorControl, REG_DWORD, 1\n\nvalue \u003d \"\", Group, REG_SZ, \"SCSI Miniport\"\n\nvalue \u003d \"\", Start, REG_DWORD, 0\n\nvalue \u003d \"\", Type, REG_DWORD, 1\n\n;#############################################################################\n\n; iaAHCI.inf\n\n[HardwareIds.scsi.iaAHCI_ESB2]\n\nid \u003d \"PCIVEN_8086\u0026DEV_2681\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_7RDH]\n\nid \u003d \"PCIVEN_8086\u0026DEV_27C1\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_7MMDH]\n\nid \u003d \"PCIVEN_8086\u0026DEV_27C5\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_8RDHDO]\n\nid \u003d \"PCIVEN_8086\u0026DEV_2821\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_8MEM]\n\nid \u003d \"PCIVEN_8086\u0026DEV_2829\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_9RDODH]\n\nid \u003d \"PCIVEN_8086\u0026DEV_2922\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_9MEM]\n\nid \u003d \"PCIVEN_8086\u0026DEV_2929\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_10DDO]\n\nid \u003d \"PCIVEN_8086\u0026DEV_3A02\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_10R]\n\nid \u003d \"PCIVEN_8086\u0026DEV_3A22\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_5]\n\nid \u003d \"PCIVEN_8086\u0026DEV_3B29\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_5_1]\n\nid \u003d \"PCIVEN_8086\u0026DEV_3B2F\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_5_1_1]\n\nid \u003d \"PCIVEN_8086\u0026DEV_3B22\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_DesktopWorkstationServer]\n\nid \u003d \"PCIVEN_8086\u0026DEV_1C02\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_Mobile]\n\nid \u003d \"PCIVEN_8086\u0026DEV_1C03\u0026CC_0106\",\"iaStor\"\n\n\n\n; iaStor.inf\n\n[HardwareIds.scsi.iaStor_ESB2]\n\nid \u003d \"PCIVEN_8086\u0026DEV_2682\u0026CC_0104\",\"iaStor\"\n\n[HardwareIds.scsi.iaStor_7RDH]\n\nid \u003d \"PCIVEN_8086\u0026DEV_27C3\u0026CC_0104\",\"iaStor\"\n\n[HardwareIds.scsi.iaStor_7MDH]\n\nid \u003d \"PCIVEN_8086\u0026DEV_27C6\u0026CC_0104\",\"iaStor\"\n\n[HardwareIds.scsi.iaStor_DesktopWorkstationServer]\n\nid \u003d \"PCIVEN_8086\u0026DEV_2822\u0026CC_0104\",\"iaStor\"\n\n[HardwareIds.scsi.iaStor_Mobile]\n\nid \u003d \"PCIVEN_8086\u0026DEV_282A\u0026CC_0104\",\"iaStor\"\n\n[Files.scsi.firadisk]\n\ndriver\u003ddiskf,firadisk.sys,firadisk\n\ninf\u003ddiskf,firadisk.inf\n\ncatalog\u003ddiskf,firadisk.cat\n\n[Config.firadisk]\n\n[HardwareIds.scsi.firadisk]\n\nid\u003d\"detectedfiradisk\",\"firadisk\"\n\n[Files.scsi.WinVBlock32]\n\ndriver \u003d disk,WVBlk32.Sys,WinVBlock\n\ninf \u003d disk,WinVBlk.Inf\n\ncatalog \u003d disk,WinVBlk.Cat\n\n[Files.scsi.firadisk64]\n\ndriver\u003ddisk1,firadi64.sys,firadisk\n\ninf\u003ddisk1,firadisk.inf\n\ncatalog\u003ddisk1,firadisk.cat\n\n[Config.firadisk64]\n\n[HardwareIds.scsi.firadisk]\n\nid\u003d\"detectedfiradisk\",\"firadisk\"\n\n\n\n[Files.scsi.WinVBlock64]\n\ndriver \u003d disk,WVBlk64.Sys,WinVBlock\n\ninf \u003d disk,WinVBlk.Inf\n\ncatalog \u003d disk,WinVBlk.Cat\n\n\n\n[Config.WinVBlock]\n\nvalue\u003d\"\",TxtSetupInstalled,REG_DWORD,1\n\n\n\n[HardwareIds.scsi.WinVBlock32]\n\nid\u003d\"ROOTWINVBLOCK\",\"WinVBlock\"\n\nid\u003d\"DetectedWinVBlock\",\"WinVBlock\"\n\n\n\n[HardwareIds.scsi.WinVBlock64]\n\nid\u003d\"ROOTWINVBLOCK\",\"WinVBlock\"\n\nid\u003d\"DetectedWinVBlock\",\"WinVBlock\"\n\n[HardwareIds.scsi.iaStor_ICH7DH]\n\nid \u003d \"PCIVEN_8086\u0026DEV_27C3\u0026CC_0104\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_ICH7R]\n\nid \u003d \"PCIVEN_8086\u0026DEV_27C1\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaStor_ICH6R]\n\nid \u003d \"PCIVEN_8086\u0026DEV_2652\u0026CC_0104\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_ICH6R]\n\nid \u003d \"PCIVEN_8086\u0026DEV_2652\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaAHCI_ICH6M]\n\nid \u003d \"PCIVEN_8086\u0026DEV_2653\u0026CC_0106\",\"iaStor\"\n\n[HardwareIds.scsi.iaStor_ICH5R]\n\nid \u003d \"PCIVEN_8086\u0026DEV_24DF\u0026CC_0104\",\"iaStor\"\n\n[HardwareIds.scsi.iaStor_ICH5RHR]\n\nid \u003d \"PCIVEN_8086\u0026DEV_25B0\u0026CC_0104\",\"iaStor\"\n\n\n\n```\n\n\u003cbr /\u003e\n\nI opened the winvblock.ima, followed the Steve instructions and then put all the driver downloaded driver into the winvblock ima file.  \n\nIt told me to overwrite iaStor.sys and other files ¿is it ok?  \n\n\u003cbr /\u003e\n\nThe motherboard driver is :  \n\n\u003cbr /\u003e\n\nASROCK CONROE 865PE  \nVENDOR\u003d8086 DEVICE\u003d24D1  \nICH5  \n\nI can\u0027t find that driver, but i\u0027ll try with this one:  \n\n[http://devid.info/es/27749](http://devid.info/es/27749 \"External link\")  \n\nThanks again   \n"
+    },
+    {
+      "id": "156393",
+      "timestamp": "2012-06-15T11:25:07+00:00",
+      "author": "steve6375",
+      "content": "If 24D1 is not in the INF file then it probably won\u0027t work. Try adding extra lines by copying an existing section and changing the PCI ID tp 8086 24D1.  \nAs for overwriting files, I would always use the newest version of the .sys file but it may not work! You can always make one floppy image for the 865 system, and use a different floppy image for other systems if you make a separate menu entry in the grub4dos menu.   \n"
+    },
+    {
+      "id": "156416",
+      "timestamp": "2012-06-15T15:42:54+00:00",
+      "author": "cdob",
+      "content": "\u003e VENDOR\u003d8086 DEVICE\u003d24D1  \n\u003e ICH5\nThat\u0027s IDE emulation mode, that\u0027s NOT AHCI mode.  \nThere is no need to include iastor.sys.  \n\nRead instructions again and try custom ntdetect.com.   \n"
+    },
+    {
+      "id": "156423",
+      "timestamp": "2012-06-15T18:01:09+00:00",
+      "author": "steve6375",
+      "content": "If it\u0027s IDe mode then you won\u0027t need to select a storage driver. Try just selecting firadisk and winvblock only.   \n"
+    },
+    {
+      "id": "156477",
+      "timestamp": "2012-06-17T00:19:23+00:00",
+      "author": "dagonas",
+      "content": "Hi!!  \n\nI have tried another XP SP3, and i have installed it on another computer  \n\nKnow i\u0027m gettng an error with Win7 installation with the WinSetupFromUsb .  \n\nThis is the error   \n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\nWindows failed to start  \n\nFILE: \\\\BOOT\\\\BCD  \nSTATUS: 0xc000000e  \nINFO: AN ERROR OCCURRED WHILE ATTEMPTING TO READ THE BOOT CONFIGURATION DATA   \n"
+    },
+    {
+      "id": "156483",
+      "timestamp": "2012-06-17T15:17:27+00:00",
+      "author": "ilko",
+      "content": "Is this a good tested source?  \nIs this a USB hard disk filled beyond 128GB and then added Windows 7 setup files?  \n\nDid you use latest WinSetupFromUSB 1.0 beta8?  \nIt adds a couple of debug startup options for Vista/7 setup, most likely one of them will get you going if the source is confirmed as working one and nothing is wrong with the hardware.   \n"
+    },
+    {
+      "id": "156487",
+      "timestamp": "2012-06-17T17:40:11+00:00",
+      "author": "dagonas",
+      "content": "Hi  \n\nI\u0027m using a brand new Transcend JetFlash 16GB   \n\nAlso, i used the last version of Winsetupfromusb  \n\nThe W7 source had been tested in about 20+ desktop and laptop computers   \n"
+    },
+    {
+      "id": "156502",
+      "timestamp": "2012-06-18T09:16:31+00:00",
+      "author": "ilko",
+      "content": "\u003e Hi  \n\u003e\n\u003e I\u0027m using a brand new Transcend JetFlash 16GB  \n\u003e\n\u003e Also, i used the last version of Winsetupfromusb  \n\u003e\n\u003e The W7 source had been tested in about 20+ desktop and laptop computers  \nThere are more questions than answers, please re-read the post above yours.  \nTry the debug startup menu entries as mentioned.   \n"
+    }
+  ]
+}

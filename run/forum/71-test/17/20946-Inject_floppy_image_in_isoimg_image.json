@@ -1,0 +1,52 @@
+{
+  "id": "20946",
+  "title": "Inject floppy image in iso/img image",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "197453",
+      "timestamp": "2016-01-25T18:15:55+00:00",
+      "author": "Uneitohr",
+      "content": "I\u0027m trying to create a bootable MS-DOS iso, using as the bootcode a Windows 98 Startup Floppy Disk. I need to add add files that exceed a normal 700MB disc, so it must be an iso/img file. Now, due to the fact that a floppy is mostly 1.44MB or 2.88MB, I know that I must add the floppy image as the iso\u0027s boot code, to be run in emulation mode.\n\nBut for the life of me, I cannot find any tool that will do this. WinImage works only on floppy Images, UltraISO injects extracted boot files but does not accept full floppy images.\n\nWhat is a good appplication that does this? I got the floppy image from here [http://www.allbootdi...ownload/98.html](http://www.allbootdisks.com/download/98.html \"External link\")\n\nThank you\n\n**Edited by Alexander Ceed, 25 January 2016 - 06:20 PM.**\n"
+    },
+    {
+      "id": "197454",
+      "timestamp": "2016-01-25T18:30:46+00:00",
+      "author": "Rootman",
+      "content": "It\u0027s been a long time since I\u0027ve done this but I am sure I used UltraISO for the injection. I had to setup a boot disk for IDE CDROM support to launch DOS so that I could pull an old Symantec Ghost for DOS off the ISO / CDROM portion of the ISO. We used to use this for images on VMWare and the old Windows Virtual Server. I don\u0027t believe I have any of the old ISO\u0027s around any more. I switched to WinPE and Ghost32/64.\n\nCould it be just as simple as the extension you are choosing for the floppy image? Rename it to .img????\n\n"
+    },
+    {
+      "id": "197455",
+      "timestamp": "2016-01-25T18:41:24+00:00",
+      "author": "steve6375",
+      "content": "You posted in a USB forum. Where does a USB fit in with this? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\n"
+    },
+    {
+      "id": "197456",
+      "timestamp": "2016-01-25T18:51:22+00:00",
+      "author": "Uneitohr",
+      "content": "\u003e You posted in a USB forum. Where does a USB fit in with this? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\u003e\nBoot from USB / **Boot anywhere?**I was thinking of highlighted part. If I made a mistake, I ask respectfully to move the thread to where it belongs, thanks.\n\n"
+    },
+    {
+      "id": "197458",
+      "timestamp": "2016-01-25T18:54:32+00:00",
+      "author": "steve6375",
+      "content": "No problem, just wondered if it would be easier to do if you just booted from a USB drive (if possible) instead of making an ISO.\n\n"
+    },
+    {
+      "id": "197459",
+      "timestamp": "2016-01-25T18:59:13+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, \\*any\\* CD or .iso making tool will do that.\n\nMKISOFS will do but if you are scared by the command line ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) the good IMGBURN will do nicely.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "197476",
+      "timestamp": "2016-01-26T20:31:27+00:00",
+      "author": "alacran",
+      "content": "You can use this tool and create a multi-Iso (.img) CD or DVD: [http://reboot.pro/fi...543-mkisofsgui/](http://reboot.pro/files/file/543-mkisofsgui/ \"\")  \nThis is a Mkisofs GUI made by **erwan.l** : [http://reboot.pro/to...351-mkisofsgui/](http://reboot.pro/topic/20351-mkisofsgui/ \"\")\n\nOnly thing you need to do es create your own menu.lst for launching each: \\*.img, \\*.iso, \\*.gz images form the created Multi-Iso burned to a disc.  \n\nMy menu.lst  \n\\[spoiler\\]color white/blue black/light-gray white/black white/black  \ntimeout 30  \n\ndefault 1  \n\ntitle Iniciar Live XP New en RAM\\\\nEjecuta LiveXP New de OMP para 224 MB ram  \nfind --set-root /Raiz.txt  \nmap --mem /LiveXP_New.gz (0xFF)  \nmap --hook  \nchainloader (0xFF)  \n\ntitle Iniciar Win7PEx86 Lite\\\\nEjecuta Win7PEx86 desde DVD  \n##ISO file must be contiguous on disk in this case, use Wincontig  \nfind --set-root /Raiz.txt  \nmap /7pe_x86.iso (0xFF)  \nmap --hook  \nchainloader (0xFF)  \n\ntitle Iniciar Win7PEx64 Lite\\\\nEjecuta Win7PEx64 desde DVD  \n##ISO file must be contiguous on disk in this case, use Wincontig  \nfind --set-root /Raiz.txt  \nmap /7pe_amd64_M.iso (0xFF)  \nmap --hook  \nchainloader (0xFF)  \n\ntitle Iniciar MistyPE-7x86\\\\nEjecuta MistyPE-7x86 desde DVD  \n##ISO file must be contiguous on disk in this case, use Wincontig  \nfind   \n"
+    }
+  ]
+}

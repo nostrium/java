@@ -1,0 +1,34 @@
+{
+  "id": "15192",
+  "title": "(Help Please) Boot Kaspersky and F-Secure from UBCD on USB",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "135043",
+      "timestamp": "2011-08-12T00:06:53+00:00",
+      "author": "markhelp",
+      "content": "Hello,  \n\nI am customizing my UBCD and would like to be able to boot Kaspersky Rescue CD and F-Secure Rescue CD. Here is what I have for my .cfg file:  \n\nKaspersky: (basically I extracted the ISO and the .cfg file that the cd uses and updated the language and changed the file paths)  \n\n```\nlabel -\n\nmenu label Kaspersky\n\n    linux /ubcd/custom/kaspersky/boot/rescue root\u003d/dev/ram0 vga\u003d791 init\u003d/linuxrc looptype\u003dsquashfs loop\u003d/ubcd/custom/kaspersky/image.squashfs nodevfs cdroot initrd\u003d/ubcd/custom/kaspersky/rescue.igz kav_lang\u003den udev aufs quiet \n\n\n\nnoresume doscsi\n\n    initrd /ubcd/custom/kaspersky/boot/rescue.igz\n```\n\n\u003cbr /\u003e\n\nWhenever I try to boot Kaspersky from my ISO it works for a while then says:   \n!!Media not found  \n\\\u003e\\\u003eNo bootable medium found. Waiting for new devices...  \n\nF-Secure  \n\n```\nlabel -\n\nmenu label F-Secure\n\nkernel /ubcd/custom/fsecure/linux\n\n    APPEND ramdisk_size\u003d100000 lang\u003den vt.default_utf8\u003d0 vga\u003dnormal atapicd nosound noapic nolapic noacpi pnpbios\u003doff acpi\u003doff noscsi nodma noapm nopcmcia nofirewire noagp nomce nodhcp \n\n\n\ninitrd\u003d/ubcd/custom/fsecure/minirt.gz loglevel\u003d10\n```\n\n\u003cbr /\u003e\n\nF-Secure boots fine for a while and then says:  \nCould not mount disk to /mnt-system. Starting debugging Shell...  \nsh: can\u0027t access tty; job control turned off  \n\n\u003cbr /\u003e\n\nIt seems that my issues for both disks are similar. If anyone can help me I would appreciate it.  \n\n\u003cbr /\u003e\n\nMark   \n"
+    },
+    {
+      "id": "135099",
+      "timestamp": "2011-08-13T01:08:37+00:00",
+      "author": "mike05",
+      "content": "Hello Friend  \n1- download XBOX  \n2- drag and drop your Kav_Rescue10.iso and f-secure iso  \n3- in green box scroll down and point to the kaspersky and f-secure to boot metthod  \n3-create iso or usb  \n4-boot from usb or,, if you want to boot from cd and grub then copy all the content extracted from kaspersky and put them in grub root dir .  \n5- copy the line from syslink.cfg put the line in grub menu entry  \n6- when you boot kaspersky on eula accepting screen it will seem like keyboard is stuck,,, but its not.. you just right click twice on screen then press \"A\" to accept eula txt ..........tested works 100%  \n\nGood luck   \n"
+    },
+    {
+      "id": "135114",
+      "timestamp": "2011-08-13T08:48:54+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Hello Friend  \n\u003e 1- download XBOX  \n\u003e ....  \n\u003e Good luck  \n\nHe might need it (the luck I mean). ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)  \nI don\u0027t think that you can download an **XBOX** ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif) (for physical reasons, besides the obvious objections by Sony ![:ph34r:](http://reboot.pro/public/style_emoticons/default/scared9.gif)).  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "135140",
+      "timestamp": "2011-08-13T13:01:23+00:00",
+      "author": "mike05",
+      "content": "Hello friend;  \n\nSo sorry, I meant XBOOT software its a multiboot creating utility.  \n\ndownload it install it and follow my instruction  \n\nSorry for the typo error  \n\nGood luck   \n"
+    }
+  ]
+}

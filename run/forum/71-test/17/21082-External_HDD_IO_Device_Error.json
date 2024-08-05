@@ -1,0 +1,154 @@
+{
+  "id": "21082",
+  "title": "External HDD I/O Device Error",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "198623",
+      "timestamp": "2016-04-07T09:58:04+00:00",
+      "author": "Uneitohr",
+      "content": "I have an internal HDD, with 2 partitions: 100GB and 930GB, which I use it with this device [http://www.scythe-eu...-connect-3.html](http://www.scythe-eu.com/en/products/pc-accessory/kama-connect-3.html \"External link\")\n\nAfter some innactivity time (usually 10-20 minutes), the drive outputs the following error:\n\n**The request could not be performed because of an I/O device error**.\n\nThis happens everytime I try to open a file or browse to a folder. And only happens on the biggest partition (930GB). The smallest one always work but all my data is one the other one. This is usually solved by unplugging and replugging the drive.\n\nI\u0027ve been trying to find a fix for this for a long time and found nothing. It\u0027s really irritating and don\u0027t know why it does this. I\u0027ve been fiddling arround with windows power options and set everything to High Performance, never sleep, hybernate and nothing.\n\nAny insights would be appreciated. Thank you.\n\n"
+    },
+    {
+      "id": "198624",
+      "timestamp": "2016-04-07T10:06:28+00:00",
+      "author": "steve6375",
+      "content": "What is the make and model of the drive?\n\nAre you connected via USB to your PC?\n\nAre you booting to Windows, DOS, linux, Mac, android?\n\nAre you booting from the device or booting from an internal HDD?\n\nYou say it never happens on the smaller partition - are you sure? Maybe it is because you never access the smaller partition after 20-30 minutes? Of do you mean that when you get the I/O device error on the large partition, you can still access the smaller partition?\n\n"
+    },
+    {
+      "id": "198625",
+      "timestamp": "2016-04-07T10:22:26+00:00",
+      "author": "Uneitohr",
+      "content": "\u003e What is the make and model of the drive?\n\u003e\nI don\u0027t have the exact make of the drive but it is an Western Digital Black 5400RPM 1TB 2.5\u0027\u0027 Drive.\n\n\u003e Are you connected via USB to your PC?\n\u003e\nUSB\n\n\u003e Are you booting to Windows, DOS, linux, Mac, android?\n\u003e\nOn the 100GB I have Windows 8.1 installed. The drive is used as a windows live HDD.\n\n\u003e Are you booting from the device or booting from an internal HDD?\n\u003e\nThe HDD is connected via USB to my laptop\u0027s internal HDD, which also runs Windows 8.1.\n\n\u003e Of do you mean that when you get the I/O device error on the large partition, you can still access the smaller partition?\n\u003e\nThat\u0027s it. When I run an executable off the large partition it gives I/o error but I run a file or exec off the smaller partition everything works fine.\n\n"
+    },
+    {
+      "id": "198626",
+      "timestamp": "2016-04-07T10:35:34+00:00",
+      "author": "steve6375",
+      "content": "Sorry, I am still not clear. Can you outline the steps you take to reproduce the problem (i.e. step 1 - connect X to Y, step 2 - switch on laptop, step 3 - boot to XXX, step 4 - do yyyyy, step 5 - do zzzzz, step 6 - etc.)?\n\nDo you get the problem both when booting from the USB partition 1 to Win8 AND when you boot from the laptops internal HDD to Win8?\n\nCan you access the 2nd partition normally, without problems, when you first boot, but then if you do not access the USB drive for 20 minutes, you then get the error.\n\nIf the drive is going into standby after 20 minutes or so due to having no accesses, then both partitions would be inaccessible??\n\n"
+    },
+    {
+      "id": "198627",
+      "timestamp": "2016-04-07T10:46:01+00:00",
+      "author": "Uneitohr",
+      "content": "This HDD is used as a Windows live disk. When I boot from it everything works fine. The problem occurs when the HDD is plugged in as a removable drive in an already booted laptop (inside windows).\n\nFor instance, my laptop is running Windows 8.1. I\u0027m already inside the os, logged in with a few programs running. I plug in the USB HDD, open some PDF files and an executable off the large partition, and then close the files and executable. After 20 minutes, the same PDF suddenly outputs I/O error when trying to open. This goes for every document, not just the one I previously opened. And all of this happens only on the 930GB partition.\n\nThe 100GB partition works any time. Even after several hours and still works.\n\n\u003e Do you get the problem both when booting from the USB partition 1 to Win8 AND when you boot from the laptops internal HDD to Win8?\n\u003e\nNo, this only happens when the drive is plugged in an already booted system (directly to windows, as a removable drive).\n\n\u003e If the drive is going into standby after 20 minutes or so due to having no accesses, then both partitions would be inaccessible??\n\u003e\nNo, only the larger on. But the driver never goes to sleep as I have disabled all power options in windows.\n\n**Edited by Alexander Ceed, 07 April 2016 - 10:48 AM.**\n"
+    },
+    {
+      "id": "198628",
+      "timestamp": "2016-04-07T10:51:11+00:00",
+      "author": "steve6375",
+      "content": "That is most odd! It makes no sense!\n\nDid you check the Windows Event Logs and look for errors to do with that volume ?\n\nAlso, what does the Disk Management GUI show?\n\nTry using DISKPART in a command console to view the status of the disk and volumes when the error occurs.\n\ndiskpart\n\nlist disk\n\nsel disk 3 (where 3 is USb disk)\n\ndetail disk\n\nsel vol U: (where U: is USb volume)\n\ndetail vol\n\netc.\n\nexit\n\n"
+    },
+    {
+      "id": "198629",
+      "timestamp": "2016-04-07T11:08:25+00:00",
+      "author": "Uneitohr",
+      "content": "Full output of diskpart:\n\n```\nDISKPART\u003e list disk\n\n  Disk ###  Status         Size     Free     Dyn  Gpt\n  --------  -------------  -------  -------  ---  ---\n  Disk 0    Online          298 GB      0 B\n* Disk 2    Online          931 GB      0 B\n\nDISKPART\u003e select disk 2\n\nDisk 2 is now the selected disk.\n\nDISKPART\u003e detail disk\n\nJmicron Corp. USB Device\nDisk ID: 22F0D273\nType   : USB\nStatus : Online\nPath   : 0\nTarget : 0\nLUN ID : 0\nLocation Path : UNAVAILABLE\nCurrent Read-only State : No\nRead-only  : No\nBoot Disk  : No\nPagefile Disk  : No\nHibernation File Disk  : No\nCrashdump Disk  : No\nClustered Disk  : No\n\n  Volume ###  Ltr  Label        Fs     Type        Size     Status     Info\n  ----------  ---  -----------  -----  ----------  -------  ---------  --------\n  Volume 3     G                NTFS   Partition    100 GB  Healthy\n  Volume 4     H                NTFS   Partition    831 GB  Healthy\n\nDISKPART\u003e select volume H:\n\nVolume 4 is the selected volume.\n\nDISKPART\u003e detail volume\n\n  Disk ###  Status         Size     Free     Dyn  Gpt\n  --------  -------------  -------  -------  ---  ---\n* Disk 2    Online          931 GB      0 B\n\nRead-only              : No\nHidden                 : No\nNo Default Drive Letter: No\nShadow Copy            : No\nOffline                : No\nBitLocker Encrypted    : No\nInstallable            : Yes\n\nVolume Capacity        :  831 GB\nVolume Free Space      :  457 GB\n\nDISKPART\u003e select volume G:\n\nVolume 3 is the selected volume.\n\nDISKPART\u003e detail volume\n\n  Disk ###  Status         Size     Free     Dyn  Gpt\n  --------  -------------  -------  -------  ---  ---\n* Disk 2    Online          931 GB      0 B\n\nRead-only              : No\nHidden                 : No\nNo Default Drive Letter: No\nShadow Copy            : No\nOffline                : No\nBitLocker Encrypted    : No\nInstallable            : Yes\n\nVolume Capacity        :   99 GB\nVolume Free Space      :   88 GB\n```\n\nI\u0027ll try to check eventviewer but there are so many entries in there, I don\u0027t even know where to start.\n\nThe Disk Management GUI says nothing. Only Disk 2 and says it\u0027s Online. Both partitions healthy.\n\n**Edited by Alexander Ceed, 07 April 2016 - 11:12 AM.**\n"
+    },
+    {
+      "id": "198630",
+      "timestamp": "2016-04-07T11:25:18+00:00",
+      "author": "steve6375",
+      "content": "Is that after you get the error or before you get the error?\n\n"
+    },
+    {
+      "id": "198632",
+      "timestamp": "2016-04-07T11:58:56+00:00",
+      "author": "Uneitohr",
+      "content": "The above is after the error.\n\nThe following is before the error (did a fresh restart):\n\n```\nDISKPART\u003e lis dis\n\n  Disk ###  Status         Size     Free     Dyn  Gpt\n  --------  -------------  -------  -------  ---  ---\n  Disk 0    Online          298 GB      0 B\n  Disk 1    Online          931 GB      0 B\n\nDISKPART\u003e select disk 1\n\nDisk 1 is now the selected disk.\n\nDISKPART\u003e detail disk\n\nJmicron Corp. USB Device\nDisk ID: 22F0D273\nType   : USB\nStatus : Online\nPath   : 0\nTarget : 0\nLUN ID : 0\nLocation Path : UNAVAILABLE\nCurrent Read-only State : No\nRead-only  : No\nBoot Disk  : No\nPagefile Disk  : No\nHibernation File Disk  : No\nCrashdump Disk  : No\nClustered Disk  : No\n\n  Volume ###  Ltr  Label        Fs     Type        Size     Status     Info\n  ----------  ---  -----------  -----  ----------  -------  ---------  --------\n  Volume 3     G                NTFS   Partition    100 GB  Healthy\n  Volume 4     H                NTFS   Partition    831 GB  Healthy\n\nDISKPART\u003e select volume H:\n\nVolume 4 is the selected volume.\n\nDISKPART\u003e detail volume\n\n  Disk ###  Status         Size     Free     Dyn  Gpt\n  --------  -------------  -------  -------  ---  ---\n* Disk 1    Online          931 GB      0 B\n\nRead-only              : No\nHidden                 : No\nNo Default Drive Letter: No\nShadow Copy            : No\nOffline                : No\nBitLocker Encrypted    : No\nInstallable            : Yes\n\nVolume Capacity        :  831 GB\nVolume Free Space      :  457 GB\n\nDISKPART\u003e select volume G:\n\nVolume 3 is the selected volume.\n\nDISKPART\u003e detail volume\n\n  Disk ###  Status         Size     Free     Dyn  Gpt\n  --------  -------------  -------  -------  ---  ---\n* Disk 1    Online          931 GB      0 B\n\nRead-only              : No\nHidden                 : No\nNo Default Drive Letter: No\nShadow Copy            : No\nOffline                : No\nBitLocker Encrypted    : No\nInstallable            : Yes\n\nVolume Capacity        :   99 GB\nVolume Free Space      :   88 GB\n```\n\n\u003cbr /\u003e\n\n**Edited by Alexander Ceed, 07 April 2016 - 12:13 PM.**\n"
+    },
+    {
+      "id": "198633",
+      "timestamp": "2016-04-07T14:08:13+00:00",
+      "author": "steve6375",
+      "content": "Maybe try accessing the volume from the command line\n\ndir H:\\\\\n\ncould also try a rescan in diskpart?\n\nAlso, maybe assign a different drive letter to the H: volume (no idea why, but just trying to think of experiments!).\n\n"
+    },
+    {
+      "id": "198638",
+      "timestamp": "2016-04-08T10:23:50+00:00",
+      "author": "Uneitohr",
+      "content": "When double clicking on the files, the error is **The request could not be performed because of an I/O device error.**\n\nWhen trying drag-and-drop to notepad++ the error is **H:\\\\WinNTSetup\\\\cfg.ini doesn\u0027t exist. Create it?**\n\nI was mistaken, this issue happens on both partitions (100GB and 831GB). Sorry for confusing you.\n\nWell, I have tested *diskpart\\\u003e rescan* and it worked. I do not know why it works, maybe someone can shed some light.\n\nI\u0027ll also check how long it lasts before the I/O error appears again.\n\n**Edited by Alexander Ceed, 08 April 2016 - 10:28 AM.**\n"
+    },
+    {
+      "id": "198639",
+      "timestamp": "2016-04-08T10:38:55+00:00",
+      "author": "steve6375",
+      "content": "Ahh, OK, so the drive is going into standby - presumably it is not spinning?\n\nThere are some suggestion [here](http://superuser.com/questions/307643/how-to-setup-windows-to-not-put-my-external-drive-to-sleep \"External link\"). Also some \u0027keep alive\u0027 utils/tricks [here](http://www.thewindowsclub.com/prevent-hard-drive-going-sleep-windows \"External link\"). Maybe disable selective suspend [here](http://www.sevenforums.com/tutorials/147369-usb-selective-suspend-turn-off.html \"External link\").\n\n"
+    },
+    {
+      "id": "198640",
+      "timestamp": "2016-04-08T10:45:05+00:00",
+      "author": "Uneitohr",
+      "content": "USB Suspend have been disabled for a long time, power options have been set to full performance and HDDs are set to 0 (never turn off). Still, it does this.\n\nI was actually wanted to make a script to write to it but was affraid of wearing out the drive. My laptop is on non-stop, and this external HDD is connected non-stop. With this in mind, writing 5MB every 3 minutes, won\u0027t wear out the drive?\n\n"
+    },
+    {
+      "id": "198641",
+      "timestamp": "2016-04-08T10:49:54+00:00",
+      "author": "steve6375",
+      "content": "NoSleepHD seems OK. You can set it to write every 15 minutes. I don\u0027t see what harm it would do to the drive considering that a page file is updated loads of times a second on system hard drives...\n\n"
+    },
+    {
+      "id": "198643",
+      "timestamp": "2016-04-08T11:43:19+00:00",
+      "author": "steve6375",
+      "content": "You can check your Windows settings using powercfg. Use -l to find current active profile and then -query to get all settings. You can redirect to a file and then look for USB and Disk settings.  \n\n#### Attached Thumbnails {#attach_wrap}\n\n* [![CapturePowercfg.PNG](http://reboot.pro/uploads/monthly_04_2016/post-17818-0-17219500-1460115733_thumb.png)](http://reboot.pro/uploads/monthly_04_2016/post-17818-0-17219500-1460115733.png \"CapturePowercfg.PNG - Size: 9KB\"){#ipb-attach-url-15888-0-97361700-1676066461}\n\n**Edited by steve6375, 08 April 2016 - 11:45 AM.**\n"
+    },
+    {
+      "id": "198644",
+      "timestamp": "2016-04-08T13:43:08+00:00",
+      "author": "Wonko the Sane",
+      "content": "Maybe a stupid thought ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png), but why exactly one would need to actually write to a hd to keep it spinning? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nI mean, maybe it is needed to avoid that a read command may result in a no-start because of disk cache, but what about copying (reading) a large (larger than disk cache) from the disk to NUL device?\n\nOr interrogating the device SMART (if pass-trough the USB bridge)?\n\nWould hdparm to disable APM (Advanced Power Management) for the disk work? (the USB bridge may well not allow or ignore it):\n\n[http://disablehddapm.blogspot.it/](http://disablehddapm.blogspot.it/ \"External link\")\n\n[https://sites.google...ablehddapm/home](https://sites.google.com/site/disablehddapm/home \"External link\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "198645",
+      "timestamp": "2016-04-08T14:13:16+00:00",
+      "author": "cdob",
+      "content": "\u003e USB Suspend have been disabled for a long time, Still, it does this.\nSome WD are set to spindown after 10 minutes.  \nIt\u0027s a internal feature of the hard disk firmware, not a windows setting.  \n\nAdjust the firmware setting  \n[https://wiki.archlin...ndex.php/hdparm](https://wiki.archlinux.org/index.php/hdparm \"External link\")  \nYou may have to connect the hdd to the motherboard chipset.   \n"
+    },
+    {
+      "id": "198649",
+      "timestamp": "2016-04-08T18:03:04+00:00",
+      "author": "Uneitohr",
+      "content": "```\nIt\u0027s a internal feature of the hard disk firmware, not a windows setting.\n```\n\nI agree but I cannot change firmware, you must understand that I have many of these drives, used for testing stuff. Modyfing the firmware manually just wouldn\u0027t work for me.\n\n\u003e I mean, maybe it is needed to avoid that a read command may result in a no-start because of disk cache, **but what about copying (reading) a large (larger than disk cache) from the disk to NUL device**?\n\n~~What does selected text mean?~~\n\nSo basically, a script which reads the content of the entire partition recusively, and outputs to nul? Something like:\n\ndir /b /s \\\u003e nul . Would this work? Or did you mean copying a file and pasting it to nul?\n\nNow, I have this question: why does diskpart rescan works? I mean all it does is to redetect unplugged devices. If this device is already plugged in, how can it redect it?\n\n**Edited by Alexander Ceed, 08 April 2016 - 06:09 PM.**\n"
+    },
+    {
+      "id": "198650",
+      "timestamp": "2016-04-08T21:00:58+00:00",
+      "author": "cdob",
+      "content": "\u003e I have many of these drives\nThe SATA USB adapter should wake up the hard disk. It\u0027s another firmware bug inside the SATA USB adapter.  \nCan you replace the SATA USB adapter?   \n"
+    },
+    {
+      "id": "198662",
+      "timestamp": "2016-04-10T15:37:55+00:00",
+      "author": "Wonko the Sane",
+      "content": "Well, it has to be seen if a command like dir /b/s \\\u003enul would be \"enough\"\n\nBut hold on your horses.\n\nThe specific adapter you have is a (re-branded) no-name, el-cheapo adapter and it is unlikely to have anything \"programmable\" or changeable, you would need to identify the chip inside it.\n\nThose are intended to connect a disk in an emergency for recovery purposes or backup/imaging and not for being connected (unused) for long periods of time, I doubt they have a \"keep-alive\" provision, which may instead be present (but not necessarily) in controller/adapters inside external hard disk cases.\n\nSome hard disks (and until you don\u0027t post EXACT make/model of the hard disk you have and that multiplied in the meantime to \"many\" there is no way to know if this is the case) may have a setting in the ATA accessible part of the firmware (so-called APM or Advanced Power Management feature) that puts them on sleep INDEPENDENTLY from the settings in Windows.\n\nDo ALL the hard disks you have, when connected to that specific PC through that same specific USB controller/adapter behave like that?\n\nDo you have another (different make/model) USB adapter?\n\nDoes the same disk(s) behave like that when in the other adapter?\n\nIF the issue is the setting in the ATA accessible part of the hard disk, it can be easily set through hdparm (though it has to be seen if the specific adapter allows pass-through ATA commands, i.e. it is possible that in order to change the setting you will need to connect the disk directly to a motherboard).\n\nIF the issue is with the USB controller/adapter, it is unlikely that it can be fixed.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "198664",
+      "timestamp": "2016-04-10T19:05:03+00:00",
+      "author": "Uneitohr",
+      "content": "\u003e Do ALL the hard disks you have, when connected to that specific PC through that same specific USB controller/adapter behave like that?\n\u003e\nYes. I came to the conclusion that it\u0027s due to the USB adapter because it works as expected if I connect the HDD to a computer/notebook as a secondary HDD (through SATA port).\n\n\u003e Do you have another (different make/model) USB adapter?  \n\u003e Does the same disk(s) behave like that when in the other adapter?\n\nUnfortunatelly, just this one.\n\nI made a batch script that is executed through Task Scheduler. It runs every 5 minutes, and creates a new text file in the drive\u0027s root. This may not be enough but I\u0027ll have to test it. To exceed the drive\u0027s buffer, I;ll have to write \\\u003e 70MB every 5 minutes.\n\n"
+    },
+    {
+      "id": "198673",
+      "timestamp": "2016-04-11T08:44:00+00:00",
+      "author": "steve6375",
+      "content": "Why not just use [this](http://nosleephd.codeplex.com/ \"External link\") open source project?\n\n"
+    },
+    {
+      "id": "198676",
+      "timestamp": "2016-04-11T12:57:49+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Yes. I came to the conclusion that it\u0027s due to the USB adapter because it works as expected if I connect the HDD to a computer/notebook as a secondary HDD (through SATA port).\n\nNaah, that doesn\u0027t count, as the way the disk is mounted/accessed/whatever when directly connected to SATA may be different from when it goes through a bus converter which may well act as an \"insulating\" layer between the device and the PC.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "198752",
+      "timestamp": "2016-04-14T07:57:45+00:00",
+      "author": "Uneitohr",
+      "content": "Well on this particular drive, a script that writes 1KB of data overy 5 minutes works fine. No issues for 5 days.\n\nIssue solved, thank you all for your valued input.\n\n"
+    }
+  ]
+}

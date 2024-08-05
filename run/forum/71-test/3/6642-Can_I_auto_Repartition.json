@@ -1,0 +1,58 @@
+{
+  "id": "6642",
+  "title": "Can I auto Repartition",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "53944",
+      "timestamp": "2009-01-05T14:08:31+00:00",
+      "author": "Bodman",
+      "content": "Hi,  \nI have successfully created a USB XP Install disk (using the bat file) but I would like to make it automatically remove all partitions from the HDD and repartition to 1 full size partition.  \n\n\u003cbr /\u003e\n\nOn a normal Unattended XP I would add the line into Winnt.sif  \n\n\\[Unattended\\]  \nRepartition\u003dYes  \n\n\u003cbr /\u003e\n\nSo I added this to win**at** .sif  \n\nbut as the Multiboot USB Key ignores the \\[Unattended\\] section this will not work  \n\nAny help greatly appreciated  \n\n//Bod   \n"
+    },
+    {
+      "id": "54023",
+      "timestamp": "2009-01-05T22:49:04+00:00",
+      "author": "Cronk",
+      "content": "Don\u0027t know if this will help. When I\u0027m imaging using Vista PE i use a 2 part batch/txt file  \n\nThe batch uses diskpart and calls a txt file:  \n\n**diskpart /s x:\\\\i386\\\\system32\\\\delpart.txt**   \n\nThe delpart.txt file:  \n\n**Select disk 0\nclean\ncreate partition primary\nassign letter c\nactive\nexit**   \n"
+    },
+    {
+      "id": "54024",
+      "timestamp": "2009-01-05T22:57:10+00:00",
+      "author": "Bodman",
+      "content": "Thanks for that, do you know if there is anyway to run that before the windows install starts   \n"
+    },
+    {
+      "id": "54025",
+      "timestamp": "2009-01-05T22:59:58+00:00",
+      "author": "amalux",
+      "content": "\u003e Hi,  \n\u003e I have successfully created a USB XP Install disk (using the bat file) but I would like to make it automatically remove all partitions from the HDD and repartition to 1 full size partition.  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e On a normal Unattended XP I would add the line into Winnt.sif  \n\u003e\n\u003e \\[Unattended\\]  \n\u003e Repartition\u003dYes  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e So I added this to win**at** .sif  \n\u003e\n\u003e but as the Multiboot USB Key ignores the \\[Unattended\\] section this will not work  \n\u003e\n\u003e Any help greatly appreciated  \n\u003e\n\u003e //Bod\nI\u0027m sure someone will have a better answer, it\u0027s been awhile since I played with this but as I remember win**at** .sif is for **at** tended installs (winnt.sif is patched for this option); make sure you\u0027ve selected unattended in setup options and then look for the \\*nt.sif in $WIN_NT$ on your USB drive. Hope that helps ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "54032",
+      "timestamp": "2009-01-06T00:00:31+00:00",
+      "author": "Cronk",
+      "content": "How are you starting the install?   \n"
+    },
+    {
+      "id": "54241",
+      "timestamp": "2009-01-07T18:26:41+00:00",
+      "author": "Bodman",
+      "content": "The problem is in order to have the Repartition command to work it needs to be in the section  \n\n\\[Unattended\\]  \n\nBut this section of the .sif is ignored/removed by the USB_MultiBoot_10 batch file :smile:  \n\n//Bod   \n"
+    },
+    {
+      "id": "54319",
+      "timestamp": "2009-01-08T08:06:17+00:00",
+      "author": "ilko",
+      "content": "Did you look at the reply in msfn.org?   \n"
+    },
+    {
+      "id": "54323",
+      "timestamp": "2009-01-08T08:30:54+00:00",
+      "author": "Bodman",
+      "content": "\u003e Did you look at the reply in msfn.org?\n\n\u003cbr /\u003e\n\nYes I have seen that now, Thank you for your reply. I will look at this (from MSFN) [http://www.msfn.org/...howtopic\u003d119742](http://www.msfn.org/board/index.php?showtopic\u003d119742 \"External link\") and see if I can work anything out  \n\nThank you again  \n\n//Bod   \n"
+    }
+  ]
+}

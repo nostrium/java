@@ -1,0 +1,352 @@
+{
+  "id": "22372",
+  "title": "Vadi E-spor Multiboot [v3] Grubfm+ventoy",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "216219",
+      "timestamp": "2020-09-22T13:15:15+00:00",
+      "author": "fi-zilal",
+      "content": "*Vadi E-Spor MultiBoot v3*\n\n*Şimdilik zamanım olmadığı için dosya indirme linkleri ve kısa kurulum video paylaşımı ile konuyu açıyorum.*\n\n*Kısmet olursa gün içinde detaylı anlatım yapılacaktır.*\n\n```\nhttps://yadi.sk/d/oT1Zi8ug_qy8Fw?w\u003d1\n```\n\nTurkish and English..\n\n"
+    },
+    {
+      "id": "216228",
+      "timestamp": "2020-09-22T18:18:48+00:00",
+      "author": "fi-zilal",
+      "content": "*Vadi E-Spor MultiBoot v3*\n\n*Kurulum ve komut özellikleri.*\n\n[![cmd.jpg.1ceb3676574cd4e12a88b63f6294dcd0](https://www.tnctr.com/uploads/monthly_2020_09/cmd.jpg.1ceb3676574cd4e12a88b63f6294dcd0.jpg)](https://www.tnctr.com/uploads/monthly_2020_09/cmd.jpg.1ceb3676574cd4e12a88b63f6294dcd0.jpg \"External link\")\n\n*Son zamanlarda paylaştığım grubfm+ventoy versiyonlardan farklı olarak bu multiboot paylaşımı grubfm ve ventoy sistemlerini bünyesinde barındıran, legacy,de grub2 ve grub4dos yanı sıra efi,de refind ile clover, sistem bir çok desteği uzun vadeli güncellemeler ve değişkenleri beraberinde getirmiştir. Bilinçli kullanıcılar istediği gibi düzenleme ve eklemeler yapabilir.*\n\n*Sistemi istediğiniz gibi değiştirebileceğiniz bölümler olduğu gibi bu haliyle de tüm işlemleri sorunsuz ve eksiksiz yerine getirebilmektedir.*\n\n*Sistemde olan loader ve eklentiler şunlardır.*\n\n*1-[Grub2 file manager](https://github.com/a1ive/grub2-filemanager \"External link\").. Sürekli güncellenecek.*\n\n*2-[Ventoy Boot](https://github.com/ventoy/Ventoy \"External link\").. Sürekli güncellenecek.*\n\n*3-Bootisox64.wim , Bootisox86.wim build versiyon, 10.0.19041.450, eklentiler; [Total commander](https://www.ghisler.com/ \"External link\"), [Dism++](https://www.chuyu.me/tr/index.html \"External link\"), [WinToHDD](https://www.easyuefi.com/wintohdd/index.html \"External link\"), [WinNTSetup](https://msfn.org/board/topic/149612-winntsetup-v423/ \"External link\"), [Aomei Part Asist,](https://www.diskpart.com/partition-manager-pro-edition.html \"External link\") [Disk Genius](https://www.diskgenius.com/ \"External link\"), [Image for windows](https://www.terabyteunlimited.com/image-for-windows.htm \"External link\"), [Macrium Reflect](https://www.macrium.com/products/business/standalone/server-plus \"External link\"), vs..*\n\n*4-Mini Xp PE, Acronis 2018, Acronis Disk Director 12.5, Image for linux + dos , Bootlt++**vs..*\n\n*5-TR Windows Xp Kurulumu, [Linkte](https://yadi.sk/d/H4Ulc4n93PWUbv \"External link\") olan dosyayı usb NTFS bölümünde EGO klasörü oluşturup adını değiştirmeden ekleyin.*\n\n*Paylaşım klasöründe türkçe ve ingilizce olmak üzere iki ayrı klasör içinde dosyalar eklenmiştir.*\n\n*Güncellemeler oldukça her iki dilde ayrı çalışmalar hazırlanıp ilgili paylaşım klasörüne eklenecektir.*\n\n"
+    },
+    {
+      "id": "216329",
+      "timestamp": "2020-09-27T14:29:27+00:00",
+      "author": "fi-zilal",
+      "content": "Güncellendi \\\u003c MultiBoot TR\\\u003c\n\nGüncellendi \\\u003c MultiBoot EN\\\u003c\n\n1-GrubFM 7.3.3+ update \\\\ Ventoy 1.0.22 güncellendi.\n\n2-SecureBoot aioboot sistemi kullanılarak multiboot,a eklendi.\n\n3-MultiBoot-Kur güncellendi.\n\nGüncellemeyi kurmak için MultiBoot-Kur.cmd yi yeniden indirmeniz gerekmektedir.\n\nVentoy Boot 10 saniyelik (uyarı) bekleme süresini iptal etti, ventoy yapımcısına teşekkür ederiz.\n\n"
+    },
+    {
+      "id": "216406",
+      "timestamp": "2020-10-01T15:56:05+00:00",
+      "author": "KeYuR",
+      "content": "English Version ? Video\n\n**Edited by KeYuR, 01 October 2020 - 03:57 PM.**\n"
+    },
+    {
+      "id": "216407",
+      "timestamp": "2020-10-01T16:38:19+00:00",
+      "author": "fi-zilal",
+      "content": "\u003e English Version ? Video\n\n[https://yadi.sk/d/oT...g_qy8Fw/ENG?w\u003d1](https://yadi.sk/d/oT1Zi8ug_qy8Fw/ENG?w\u003d1 \"External link\")\n\nİngilizce video çekmedim, kurulum çok basit mantık bire bir aynı.\n\n[Buradaki](https://www.tnctr.com/topic/812593-vadi-e-spor-multiboot-v3-grubfmventoy/ \"External link\") türkçe forumda paylaşım konusunda sorun yaşayanlar için çözümler sunuyoruz ancak diğer diller için google translate ile yardımcı olabilirim.\n\n"
+    },
+    {
+      "id": "216414",
+      "timestamp": "2020-10-01T22:11:28+00:00",
+      "author": "KeYuR",
+      "content": "ohky bro got it\n\nhow to update update_en.7zip file ?\n\nextra and copy in the vadi_multiboot.7zip?\n\n"
+    },
+    {
+      "id": "216419",
+      "timestamp": "2020-10-02T07:06:34+00:00",
+      "author": "fi-zilal",
+      "content": "\u003e ohky bro got it\n\u003e\n\u003e how to update update_en.7zip file ?\n\u003e\n\u003e extra and copy in the vadi_multiboot.7zip?\n\nthe update7z file contains grubfm, ventoy and other updates.\n\nauto setup available.\n\n[https://www.youtube....eature\u003dyoutu.be](https://youtu.be/9WUXAkrdxvc \"External link\")\n\n**Edited by fi-zilal, 02 October 2020 - 07:09 AM.**\n"
+    },
+    {
+      "id": "216669",
+      "timestamp": "2020-10-14T19:23:51+00:00",
+      "author": "fi-zilal",
+      "content": "***GrubFM update.***\n\n```\nhttps://yadi.sk/d/jueQZTIfMDWKJQ\n```\n\nSpoiler  \n\n![id3yHT.jpg](https://i.hizliresim.com/id3yHT.jpg)\n\n![sVTjRF.jpg](https://i.hizliresim.com/sVTjRF.jpg)\n\n![lVDNAf.jpg](https://i.hizliresim.com/lVDNAf.jpg)\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "216684",
+      "timestamp": "2020-10-15T15:59:13+00:00",
+      "author": "KeYuR",
+      "content": "always waiting for new release :wink: ![:bounce8:](https://reboot.pro/public/style_emoticons/default/bounce8.gif)\n\n"
+    },
+    {
+      "id": "216703",
+      "timestamp": "2020-10-17T08:12:28+00:00",
+      "author": "fi-zilal",
+      "content": "***Update.***\n\n***[Ventoy](https://github.com/ventoy/Ventoy \"External link\") 1.0.24***\n\n***[GrubFM](https://github.com/a1ive/grub2-filemanager \"External link\") 7.3.3 ++***\n\n```\nhttps://yadi.sk/d/dGNp9kaznF8usw\n```\n\n\u003cbr /\u003e\n\n**Edited by fi-zilal, 17 October 2020 - 08:48 AM.**\n"
+    },
+    {
+      "id": "216725",
+      "timestamp": "2020-10-19T11:17:15+00:00",
+      "author": "fi-zilal",
+      "content": "***Update.***\n\n***GrubFM 7.3.3 ++***\n\n***MultiBoot Setup***\n\n```\nhttps://yadi.sk/d/G_NigTHE4vjnoA?w\u003d1\n```\n\nSpoiler  \n![grubfm.jpg.e366562d3031239fb07f0b46fe10a](https://www.tnctr.com/uploads/monthly_2020_10/grubfm.jpg.e366562d3031239fb07f0b46fe10a6d2.jpg)\n\n"
+    },
+    {
+      "id": "216860",
+      "timestamp": "2020-10-25T06:59:33+00:00",
+      "author": "fi-zilal",
+      "content": "***Update.***\n\n***GrubFM 7.3.3 ++***\n\n***Ventoy 1.0.26***\n\n"
+    },
+    {
+      "id": "216922",
+      "timestamp": "2020-11-02T08:22:35+00:00",
+      "author": "fi-zilal",
+      "content": "[Update.](https://yadi.sk/d/dGNp9kaznF8usw \"External link\")  \n[GrubFM](https://github.com/a1ive/grub2-filemanager \"External link\") 7.3.3 ++  \n[Ventoy](https://github.com/ventoy/Ventoy/releases \"External link\") 1.0.27\n\n"
+    },
+    {
+      "id": "216925",
+      "timestamp": "2020-11-02T09:49:05+00:00",
+      "author": "Tokener",
+      "content": "hi **fi-zilal**\n\nthank you for introducing **Vadi E-spor Multiboot** .\n\n\"MultiBoot-Setup.cmd\" is apparently a compressed binary.\n\nwhat is the advantage over a \"zipped\" (sfx) archive?\n\nbtw. nice app:**virtual machine usb boot 1.72**\n\nRegards T.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "216926",
+      "timestamp": "2020-11-02T09:51:01+00:00",
+      "author": "Tokener",
+      "content": "hi **fi-zilal**\n\nthank you for introducing **Vadi E-spor Multiboot** .\n\n\"MultiBoot-Setup.cmd\" is apparently a compressed binary.\n\nwhat is the advantage over a \"zipped\" (sfx) archive?\n\nbtw. nice app:**virtual machine usb boot 1.72**\n\nRegards T.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "216927",
+      "timestamp": "2020-11-02T09:51:36+00:00",
+      "author": "Tokener",
+      "content": "hi **fi-zilal**\n\nthank you for introducing **Vadi E-spor Multiboot** .\n\n\"MultiBoot-Setup.cmd\" is apparently a compressed binary.\n\nwhat is the advantage over a \"zipped\" (sfx) archive?\n\nbtw. nice app:**virtual machine usb boot 1.72**\n\nRegards T.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "216928",
+      "timestamp": "2020-11-02T09:57:50+00:00",
+      "author": "fi-zilal",
+      "content": "\u003e hi **fi-zilal**\n\u003e\n\u003e thank you for introducing **Vadi E-spor Multiboot** .\n\u003e\n\u003e \"MultiBoot-Setup.cmd\" is apparently a compressed binary.\n\u003e\n\u003e what is the advantage over a \"zipped\" (sfx) archive?\n\u003e\n\u003e btw. nice app:**virtual machine usb boot 1.72**\n\u003e\n\u003e Regards T.\n\nyour welcome.\n\nI used [compressed 2 txt](https://github.com/AveYo/Compressed2TXT \"External link\") and compressed\n\nMy goal is to prevent content damage by viruses and antivirus programs.\n\n"
+    },
+    {
+      "id": "216970",
+      "timestamp": "2020-11-05T08:07:25+00:00",
+      "author": "fi-zilal",
+      "content": "Update.\n\n[GrubFM](https://github.com/a1ive/grub2-filemanager \"External link\")\n\n```\nhttps://yadi.sk/d/dGNp9kaznF8usw \n```\n\nSpoiler  \n![grubfm.jpg.daa8e82a8cadbdb219a66a4ce5b88](https://www.tnctr.com/uploads/monthly_2020_11/grubfm.jpg.daa8e82a8cadbdb219a66a4ce5b88963.jpg)\n\n**Edited by fi-zilal, 05 November 2020 - 08:10 AM.**\n"
+    },
+    {
+      "id": "217124",
+      "timestamp": "2020-12-01T09:08:14+00:00",
+      "author": "fi-zilal",
+      "content": "***Aioboot dosya ekleri silindi ve efi boot loader güncellendi.***\n\n***GrubFM güncellendi.***\n\n***Harici kullanmak isteyenler için grubfm tüm dosyaları paylaşım klasörüne eklendi.***\n\n***Paylaşım klasörleri için bundan sonra her güncelleme dosyası tarihi ile eklenip eski dosyalar kalacak, böylece şikayet olması halinde bir önceki güncellemeye dönülmesi mümkün olacak.***\n\n```\nhttps://yadi.sk/d/G_NigTHE4vjnoA?w\u003d1\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "217390",
+      "timestamp": "2020-12-15T14:12:28+00:00",
+      "author": "fi-zilal",
+      "content": "Güncellendi.\n\nGrubFM 14.12.20\n\n------------\n\nVentoy 1.0.30 sürümünde henüz unofficial sorununu çözemedim.\n\nÇözüm önerisi veya test edilmiş dosya önerisi olan varsa sevinirim.\n\n```\nhttps://yadi.sk/d/G_NigTHE4vjnoA?w\u003d1\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "217479",
+      "timestamp": "2020-12-24T14:54:23+00:00",
+      "author": "fi-zilal",
+      "content": "***Güncellendi.***\n\n***GrubFM ++ 24.12.2020***\n\n***Ventoy v1.0.30 x64. [@serhat100](https://www.tnctr.com/profile/220094-serhat100/ \"External link\") üstada teşekkür ederim.***\n\n"
+    },
+    {
+      "id": "217544",
+      "timestamp": "2020-12-31T15:42:44+00:00",
+      "author": "fi-zilal",
+      "content": "Güncellendi.  \nGrubFM 31.12.20  \nGrubFM varsayılan tema değiştirildi, F1 menü ise klasik tema olarak görüntülenir.  \nSpoiler  \n\n![aq69r9.jpg](https://i.hizliresim.com/aq69r9.jpg)  \n\n![wwWFZk.jpg](https://i.hizliresim.com/wwWFZk.jpg)  \n\n\u003cbr /\u003e\n\n```\nhttps://yadi.sk/d/G_NigTHE4vjnoA?w\u003d1\n```\n\n\u003cbr /\u003e\n\n**Edited by fi-zilal, 31 December 2020 - 03:57 PM.**\n"
+    },
+    {
+      "id": "217550",
+      "timestamp": "2021-01-01T07:11:09+00:00",
+      "author": "KeYuR",
+      "content": "hi, Request\n\ncan u create one single file direct install to pen drive so many updates...\n\nwe can just download and install direct with update one file.\n\n#sry for bad english\n\n"
+    },
+    {
+      "id": "217551",
+      "timestamp": "2021-01-01T09:29:55+00:00",
+      "author": "fi-zilal",
+      "content": "Merhaba, ingilizcem olmadığı için türkçe yazıyorum kusura bakmayın. Grubfm ve ventoy çok sık güncelleme yapıyor ve bende yandex paylaşım klasörüne yaptığım güncelleme paketlerini ekliyorum, bazen yeni güncellemer sorunlu olabilir diye önceki paketleri silmiyorum. İlk multiboot sistemi kurduktan sonra güncellemeleri eklemek otomatik olarak çok kısa sürede tamamlanmış oluyor. Bootisox güncellemeleri olduğunda tek paket olarak hazırlanıp bilgi verilecek inşaAllah.   \n[https://github.com/a...ub2-filemanager](https://github.com/a1ive/grub2-filemanager \"External link\")  \n[https://github.com/ventoy/Ventoy](https://github.com/ventoy/Ventoy \"External link\")   \n"
+    },
+    {
+      "id": "217609",
+      "timestamp": "2021-01-10T02:47:41+00:00",
+      "author": "fi-zilal",
+      "content": "*Vadi MultiBoot Full Sistem Güncellendi.*\n\n*Daha evvel sistemi kurmuş olanlar 7. seçenek ile sistemlerini tamamen yenilemiş olur ve USB_DATA kısmında olan dosyalarınız silinmez ![default_wink.png](https://www.tnctr.com/uploads/emoticons/default_wink.png \";)\") Bu seçeneği kullanırken FAT32 disk birimi 2.ci birim olarak başlatılıp normal güncelleme yapılır gibi çalıştırılacak.*\n\n*++Sistemi kurmak için her iki dosyamızın da indirilmesi gerekiyor.++*\n\n*Detaylı anlatım ve video çekimi yarın yapılacak inşaAllah.*\n\n*Bootisox64.wim and programs are updated*\n\n*Bootisox86.wim and programs are updated*\n\n*GrubFM Update x86-x64 Tools and Programs F5-F7*\n\n*Ventoy 1.0.32**x86-x64* *Tools and Programs F7*\n\n*Grub4dos UEFI**x86-x64*\n\nSpoiler  \n\u003cbr /\u003e\n\n![MultiBoot.jpg.fce479b4af1d4f40c596247e9a](https://www.tnctr.com/uploads/monthly_2021_01/MultiBoot.jpg.fce479b4af1d4f40c596247e9ace2916.jpg)\n\n![bootice.jpg.c5c6bcaa892b31ea161f7c9f45eb](https://www.tnctr.com/uploads/monthly_2021_01/bootice.jpg.c5c6bcaa892b31ea161f7c9f45ebc0de.jpg)\n\n```\nhttps://yadi.sk/d/G_NigTHE4vjnoA?w\u003d1 \n```\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "216219",
+      "timestamp": "2020-09-22T13:15:15+00:00",
+      "author": "fi-zilal",
+      "content": "*Vadi E-Spor MultiBoot v3*\n\n*Şimdilik zamanım olmadığı için dosya indirme linkleri ve kısa kurulum video paylaşımı ile konuyu açıyorum.*\n\n*Kısmet olursa gün içinde detaylı anlatım yapılacaktır.*\n\n```\nhttps://yadi.sk/d/oT1Zi8ug_qy8Fw?w\u003d1\n```\n\nTurkish and English..\n\n"
+    },
+    {
+      "id": "216228",
+      "timestamp": "2020-09-22T18:18:48+00:00",
+      "author": "fi-zilal",
+      "content": "*Vadi E-Spor MultiBoot v3*\n\n*Kurulum ve komut özellikleri.*\n\n[![cmd.jpg.1ceb3676574cd4e12a88b63f6294dcd0](https://www.tnctr.com/uploads/monthly_2020_09/cmd.jpg.1ceb3676574cd4e12a88b63f6294dcd0.jpg)](https://www.tnctr.com/uploads/monthly_2020_09/cmd.jpg.1ceb3676574cd4e12a88b63f6294dcd0.jpg \"External link\")\n\n*Son zamanlarda paylaştığım grubfm+ventoy versiyonlardan farklı olarak bu multiboot paylaşımı grubfm ve ventoy sistemlerini bünyesinde barındıran, legacy,de grub2 ve grub4dos yanı sıra efi,de refind ile clover, sistem bir çok desteği uzun vadeli güncellemeler ve değişkenleri beraberinde getirmiştir. Bilinçli kullanıcılar istediği gibi düzenleme ve eklemeler yapabilir.*\n\n*Sistemi istediğiniz gibi değiştirebileceğiniz bölümler olduğu gibi bu haliyle de tüm işlemleri sorunsuz ve eksiksiz yerine getirebilmektedir.*\n\n*Sistemde olan loader ve eklentiler şunlardır.*\n\n*1-[Grub2 file manager](https://github.com/a1ive/grub2-filemanager \"External link\").. Sürekli güncellenecek.*\n\n*2-[Ventoy Boot](https://github.com/ventoy/Ventoy \"External link\").. Sürekli güncellenecek.*\n\n*3-Bootisox64.wim , Bootisox86.wim build versiyon, 10.0.19041.450, eklentiler; [Total commander](https://www.ghisler.com/ \"External link\"), [Dism++](https://www.chuyu.me/tr/index.html \"External link\"), [WinToHDD](https://www.easyuefi.com/wintohdd/index.html \"External link\"), [WinNTSetup](https://msfn.org/board/topic/149612-winntsetup-v423/ \"External link\"), [Aomei Part Asist,](https://www.diskpart.com/partition-manager-pro-edition.html \"External link\") [Disk Genius](https://www.diskgenius.com/ \"External link\"), [Image for windows](https://www.terabyteunlimited.com/image-for-windows.htm \"External link\"), [Macrium Reflect](https://www.macrium.com/products/business/standalone/server-plus \"External link\"), vs..*\n\n*4-Mini Xp PE, Acronis 2018, Acronis Disk Director 12.5, Image for linux + dos , Bootlt++**vs..*\n\n*5-TR Windows Xp Kurulumu, [Linkte](https://yadi.sk/d/H4Ulc4n93PWUbv \"External link\") olan dosyayı usb NTFS bölümünde EGO klasörü oluşturup adını değiştirmeden ekleyin.*\n\n*Paylaşım klasöründe türkçe ve ingilizce olmak üzere iki ayrı klasör içinde dosyalar eklenmiştir.*\n\n*Güncellemeler oldukça her iki dilde ayrı çalışmalar hazırlanıp ilgili paylaşım klasörüne eklenecektir.*\n\n"
+    },
+    {
+      "id": "216329",
+      "timestamp": "2020-09-27T14:29:27+00:00",
+      "author": "fi-zilal",
+      "content": "Güncellendi \\\u003c MultiBoot TR\\\u003c\n\nGüncellendi \\\u003c MultiBoot EN\\\u003c\n\n1-GrubFM 7.3.3+ update \\\\ Ventoy 1.0.22 güncellendi.\n\n2-SecureBoot aioboot sistemi kullanılarak multiboot,a eklendi.\n\n3-MultiBoot-Kur güncellendi.\n\nGüncellemeyi kurmak için MultiBoot-Kur.cmd yi yeniden indirmeniz gerekmektedir.\n\nVentoy Boot 10 saniyelik (uyarı) bekleme süresini iptal etti, ventoy yapımcısına teşekkür ederiz.\n\n"
+    },
+    {
+      "id": "216406",
+      "timestamp": "2020-10-01T15:56:05+00:00",
+      "author": "KeYuR",
+      "content": "English Version ? Video\n\n**Edited by KeYuR, 01 October 2020 - 03:57 PM.**\n"
+    },
+    {
+      "id": "216407",
+      "timestamp": "2020-10-01T16:38:19+00:00",
+      "author": "fi-zilal",
+      "content": "\u003e English Version ? Video\n\n[https://yadi.sk/d/oT...g_qy8Fw/ENG?w\u003d1](https://yadi.sk/d/oT1Zi8ug_qy8Fw/ENG?w\u003d1 \"External link\")\n\nİngilizce video çekmedim, kurulum çok basit mantık bire bir aynı.\n\n[Buradaki](https://www.tnctr.com/topic/812593-vadi-e-spor-multiboot-v3-grubfmventoy/ \"External link\") türkçe forumda paylaşım konusunda sorun yaşayanlar için çözümler sunuyoruz ancak diğer diller için google translate ile yardımcı olabilirim.\n\n"
+    },
+    {
+      "id": "216414",
+      "timestamp": "2020-10-01T22:11:28+00:00",
+      "author": "KeYuR",
+      "content": "ohky bro got it\n\nhow to update update_en.7zip file ?\n\nextra and copy in the vadi_multiboot.7zip?\n\n"
+    },
+    {
+      "id": "216419",
+      "timestamp": "2020-10-02T07:06:34+00:00",
+      "author": "fi-zilal",
+      "content": "\u003e ohky bro got it\n\u003e\n\u003e how to update update_en.7zip file ?\n\u003e\n\u003e extra and copy in the vadi_multiboot.7zip?\n\nthe update7z file contains grubfm, ventoy and other updates.\n\nauto setup available.\n\n[https://www.youtube....eature\u003dyoutu.be](https://youtu.be/9WUXAkrdxvc \"External link\")\n\n**Edited by fi-zilal, 02 October 2020 - 07:09 AM.**\n"
+    },
+    {
+      "id": "216669",
+      "timestamp": "2020-10-14T19:23:51+00:00",
+      "author": "fi-zilal",
+      "content": "***GrubFM update.***\n\n```\nhttps://yadi.sk/d/jueQZTIfMDWKJQ\n```\n\nSpoiler  \n\n![id3yHT.jpg](https://i.hizliresim.com/id3yHT.jpg)\n\n![sVTjRF.jpg](https://i.hizliresim.com/sVTjRF.jpg)\n\n![lVDNAf.jpg](https://i.hizliresim.com/lVDNAf.jpg)\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "216684",
+      "timestamp": "2020-10-15T15:59:13+00:00",
+      "author": "KeYuR",
+      "content": "always waiting for new release :wink: ![:bounce8:](https://reboot.pro/public/style_emoticons/default/bounce8.gif)\n\n"
+    },
+    {
+      "id": "216703",
+      "timestamp": "2020-10-17T08:12:28+00:00",
+      "author": "fi-zilal",
+      "content": "***Update.***\n\n***[Ventoy](https://github.com/ventoy/Ventoy \"External link\") 1.0.24***\n\n***[GrubFM](https://github.com/a1ive/grub2-filemanager \"External link\") 7.3.3 ++***\n\n```\nhttps://yadi.sk/d/dGNp9kaznF8usw\n```\n\n\u003cbr /\u003e\n\n**Edited by fi-zilal, 17 October 2020 - 08:48 AM.**\n"
+    },
+    {
+      "id": "216725",
+      "timestamp": "2020-10-19T11:17:15+00:00",
+      "author": "fi-zilal",
+      "content": "***Update.***\n\n***GrubFM 7.3.3 ++***\n\n***MultiBoot Setup***\n\n```\nhttps://yadi.sk/d/G_NigTHE4vjnoA?w\u003d1\n```\n\nSpoiler  \n![grubfm.jpg.e366562d3031239fb07f0b46fe10a](https://www.tnctr.com/uploads/monthly_2020_10/grubfm.jpg.e366562d3031239fb07f0b46fe10a6d2.jpg)\n\n"
+    },
+    {
+      "id": "216860",
+      "timestamp": "2020-10-25T06:59:33+00:00",
+      "author": "fi-zilal",
+      "content": "***Update.***\n\n***GrubFM 7.3.3 ++***\n\n***Ventoy 1.0.26***\n\n"
+    },
+    {
+      "id": "216922",
+      "timestamp": "2020-11-02T08:22:35+00:00",
+      "author": "fi-zilal",
+      "content": "[Update.](https://yadi.sk/d/dGNp9kaznF8usw \"External link\")  \n[GrubFM](https://github.com/a1ive/grub2-filemanager \"External link\") 7.3.3 ++  \n[Ventoy](https://github.com/ventoy/Ventoy/releases \"External link\") 1.0.27\n\n"
+    },
+    {
+      "id": "216925",
+      "timestamp": "2020-11-02T09:49:05+00:00",
+      "author": "Tokener",
+      "content": "hi **fi-zilal**\n\nthank you for introducing **Vadi E-spor Multiboot** .\n\n\"MultiBoot-Setup.cmd\" is apparently a compressed binary.\n\nwhat is the advantage over a \"zipped\" (sfx) archive?\n\nbtw. nice app:**virtual machine usb boot 1.72**\n\nRegards T.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "216926",
+      "timestamp": "2020-11-02T09:51:01+00:00",
+      "author": "Tokener",
+      "content": "hi **fi-zilal**\n\nthank you for introducing **Vadi E-spor Multiboot** .\n\n\"MultiBoot-Setup.cmd\" is apparently a compressed binary.\n\nwhat is the advantage over a \"zipped\" (sfx) archive?\n\nbtw. nice app:**virtual machine usb boot 1.72**\n\nRegards T.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "216927",
+      "timestamp": "2020-11-02T09:51:36+00:00",
+      "author": "Tokener",
+      "content": "hi **fi-zilal**\n\nthank you for introducing **Vadi E-spor Multiboot** .\n\n\"MultiBoot-Setup.cmd\" is apparently a compressed binary.\n\nwhat is the advantage over a \"zipped\" (sfx) archive?\n\nbtw. nice app:**virtual machine usb boot 1.72**\n\nRegards T.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "216928",
+      "timestamp": "2020-11-02T09:57:50+00:00",
+      "author": "fi-zilal",
+      "content": "\u003e hi **fi-zilal**\n\u003e\n\u003e thank you for introducing **Vadi E-spor Multiboot** .\n\u003e\n\u003e \"MultiBoot-Setup.cmd\" is apparently a compressed binary.\n\u003e\n\u003e what is the advantage over a \"zipped\" (sfx) archive?\n\u003e\n\u003e btw. nice app:**virtual machine usb boot 1.72**\n\u003e\n\u003e Regards T.\n\nyour welcome.\n\nI used [compressed 2 txt](https://github.com/AveYo/Compressed2TXT \"External link\") and compressed\n\nMy goal is to prevent content damage by viruses and antivirus programs.\n\n"
+    },
+    {
+      "id": "216970",
+      "timestamp": "2020-11-05T08:07:25+00:00",
+      "author": "fi-zilal",
+      "content": "Update.\n\n[GrubFM](https://github.com/a1ive/grub2-filemanager \"External link\")\n\n```\nhttps://yadi.sk/d/dGNp9kaznF8usw \n```\n\nSpoiler  \n![grubfm.jpg.daa8e82a8cadbdb219a66a4ce5b88](https://www.tnctr.com/uploads/monthly_2020_11/grubfm.jpg.daa8e82a8cadbdb219a66a4ce5b88963.jpg)\n\n**Edited by fi-zilal, 05 November 2020 - 08:10 AM.**\n"
+    },
+    {
+      "id": "217124",
+      "timestamp": "2020-12-01T09:08:14+00:00",
+      "author": "fi-zilal",
+      "content": "***Aioboot dosya ekleri silindi ve efi boot loader güncellendi.***\n\n***GrubFM güncellendi.***\n\n***Harici kullanmak isteyenler için grubfm tüm dosyaları paylaşım klasörüne eklendi.***\n\n***Paylaşım klasörleri için bundan sonra her güncelleme dosyası tarihi ile eklenip eski dosyalar kalacak, böylece şikayet olması halinde bir önceki güncellemeye dönülmesi mümkün olacak.***\n\n```\nhttps://yadi.sk/d/G_NigTHE4vjnoA?w\u003d1\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "217390",
+      "timestamp": "2020-12-15T14:12:28+00:00",
+      "author": "fi-zilal",
+      "content": "Güncellendi.\n\nGrubFM 14.12.20\n\n------------\n\nVentoy 1.0.30 sürümünde henüz unofficial sorununu çözemedim.\n\nÇözüm önerisi veya test edilmiş dosya önerisi olan varsa sevinirim.\n\n```\nhttps://yadi.sk/d/G_NigTHE4vjnoA?w\u003d1\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "217479",
+      "timestamp": "2020-12-24T14:54:23+00:00",
+      "author": "fi-zilal",
+      "content": "***Güncellendi.***\n\n***GrubFM ++ 24.12.2020***\n\n***Ventoy v1.0.30 x64. [@serhat100](https://www.tnctr.com/profile/220094-serhat100/ \"External link\") üstada teşekkür ederim.***\n\n"
+    },
+    {
+      "id": "217544",
+      "timestamp": "2020-12-31T15:42:44+00:00",
+      "author": "fi-zilal",
+      "content": "Güncellendi.  \nGrubFM 31.12.20  \nGrubFM varsayılan tema değiştirildi, F1 menü ise klasik tema olarak görüntülenir.  \nSpoiler  \n\n![aq69r9.jpg](https://i.hizliresim.com/aq69r9.jpg)  \n\n![wwWFZk.jpg](https://i.hizliresim.com/wwWFZk.jpg)  \n\n\u003cbr /\u003e\n\n```\nhttps://yadi.sk/d/G_NigTHE4vjnoA?w\u003d1\n```\n\n\u003cbr /\u003e\n\n**Edited by fi-zilal, 31 December 2020 - 03:57 PM.**\n"
+    },
+    {
+      "id": "217550",
+      "timestamp": "2021-01-01T07:11:09+00:00",
+      "author": "KeYuR",
+      "content": "hi, Request\n\ncan u create one single file direct install to pen drive so many updates...\n\nwe can just download and install direct with update one file.\n\n#sry for bad english\n\n"
+    },
+    {
+      "id": "217551",
+      "timestamp": "2021-01-01T09:29:55+00:00",
+      "author": "fi-zilal",
+      "content": "Merhaba, ingilizcem olmadığı için türkçe yazıyorum kusura bakmayın. Grubfm ve ventoy çok sık güncelleme yapıyor ve bende yandex paylaşım klasörüne yaptığım güncelleme paketlerini ekliyorum, bazen yeni güncellemer sorunlu olabilir diye önceki paketleri silmiyorum. İlk multiboot sistemi kurduktan sonra güncellemeleri eklemek otomatik olarak çok kısa sürede tamamlanmış oluyor. Bootisox güncellemeleri olduğunda tek paket olarak hazırlanıp bilgi verilecek inşaAllah.   \n[https://github.com/a...ub2-filemanager](https://github.com/a1ive/grub2-filemanager \"External link\")  \n[https://github.com/ventoy/Ventoy](https://github.com/ventoy/Ventoy \"External link\")   \n"
+    },
+    {
+      "id": "217609",
+      "timestamp": "2021-01-10T02:47:41+00:00",
+      "author": "fi-zilal",
+      "content": "*Vadi MultiBoot Full Sistem Güncellendi.*\n\n*Daha evvel sistemi kurmuş olanlar 7. seçenek ile sistemlerini tamamen yenilemiş olur ve USB_DATA kısmında olan dosyalarınız silinmez ![default_wink.png](https://www.tnctr.com/uploads/emoticons/default_wink.png \";)\") Bu seçeneği kullanırken FAT32 disk birimi 2.ci birim olarak başlatılıp normal güncelleme yapılır gibi çalıştırılacak.*\n\n*++Sistemi kurmak için her iki dosyamızın da indirilmesi gerekiyor.++*\n\n*Detaylı anlatım ve video çekimi yarın yapılacak inşaAllah.*\n\n*Bootisox64.wim and programs are updated*\n\n*Bootisox86.wim and programs are updated*\n\n*GrubFM Update x86-x64 Tools and Programs F5-F7*\n\n*Ventoy 1.0.32**x86-x64* *Tools and Programs F7*\n\n*Grub4dos UEFI**x86-x64*\n\nSpoiler  \n\u003cbr /\u003e\n\n![MultiBoot.jpg.fce479b4af1d4f40c596247e9a](https://www.tnctr.com/uploads/monthly_2021_01/MultiBoot.jpg.fce479b4af1d4f40c596247e9ace2916.jpg)\n\n![bootice.jpg.c5c6bcaa892b31ea161f7c9f45eb](https://www.tnctr.com/uploads/monthly_2021_01/bootice.jpg.c5c6bcaa892b31ea161f7c9f45ebc0de.jpg)\n\n```\nhttps://yadi.sk/d/G_NigTHE4vjnoA?w\u003d1 \n```\n\n\u003cbr /\u003e\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "217728",
+      "timestamp": "2021-01-30T22:59:45+00:00",
+      "author": "fi-zilal",
+      "content": "***Update.***\n\n* ***GrubFM 7.4 - 25.01.21***\n* ***Ventoy 1.0.33***\n* ***Grub4dos efi 21-01-21***\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "217759",
+      "timestamp": "2021-02-08T16:53:41+00:00",
+      "author": "KeYuR",
+      "content": "What is password? rar file? multi boot setup\n\n**Edited by KeYuR, 08 February 2021 - 04:53 PM.**\n"
+    },
+    {
+      "id": "217760",
+      "timestamp": "2021-02-08T20:26:23+00:00",
+      "author": "fi-zilal",
+      "content": "\u003e What is password? rar file? multi boot setup\n\nWinrar was writing in the description section :)\n\nDouble click and run\n\nPassword: vadi\n\n"
+    },
+    {
+      "id": "217823",
+      "timestamp": "2021-02-24T14:30:23+00:00",
+      "author": "fi-zilal",
+      "content": "***Update.***\n\n***GrubFM 02.24.2021***\n\n***Ventoy Boot 1.0.35***\n\n```\nhttps://disk.yandex.com.tr/d/G_NigTHE4vjnoA?w\u003d1\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "217829",
+      "timestamp": "2021-02-27T18:45:53+00:00",
+      "author": "fi-zilal",
+      "content": "Update.  \nGrubFM 02.27.2021  \nVentoy Boot 1.0.36\n\n"
+    },
+    {
+      "id": "217835",
+      "timestamp": "2021-03-01T22:39:00+00:00",
+      "author": "fi-zilal",
+      "content": "Update.\n\n[GrubFM 01.03.2021](https://disk.yandex.com.tr/d/HOvQdLlxIDttGw \"External link\")\n\n[Update_EN_ATI21.7z](https://disk.yandex.com.tr/d/3Wbm8AdB8OFzHg \"External link\") Acronis true image 2021+update\n\n[MultiBoot-Setup.rar](https://disk.yandex.com.tr/d/-M9UPj7V_JZwCQ \"External link\") password: vadi\n\n```\nhttps://disk.yandex.com.tr/d/G_NigTHE4vjnoA?w\u003d1\n```\n\n![grubfm01_03_21.thumb.jpg.bf646ccf1e4c901](https://www.tnctr.com/uploads/monthly_2021_03/grubfm01_03_21.thumb.jpg.bf646ccf1e4c90105ca33cf5202205cf.jpg)\n\n"
+    },
+    {
+      "id": "218166",
+      "timestamp": "2021-05-10T00:46:45+00:00",
+      "author": "fi-zilal",
+      "content": "***Update.***\n\n***Ventoy 1.0.43***\n\n***Grub4dos UEFI 05.07.2021 \\[a1ive\\]***\n\n```\nhttps://disk.yandex.com.tr/d/G_NigTHE4vjnoA?w\u003d1\n```\n\n\u003cbr /\u003e\n\n"
+    }
+  ]
+}

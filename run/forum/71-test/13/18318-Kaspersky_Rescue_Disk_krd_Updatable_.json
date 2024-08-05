@@ -1,0 +1,22 @@
+{
+  "id": "18318",
+  "title": "Kaspersky Rescue Disk (krd) Updatable ?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "169375",
+      "timestamp": "2013-03-15T00:10:16+00:00",
+      "author": "Motasem",
+      "content": "Hello every one i have a little Problem\n\ni want to use KRD 10 ( [https://support.kasp...uses/rescuedisk](https://support.kaspersky.com/viruses/rescuedisk \"External link\") ) on multiple pc\u0027s\n\ni found a lot of tut\u0027s in this fourm but non of them showing how to keep the updates at the usb stick folder\n\nim now using g4d and mounting rescue.iso with it so i dont think this\u0027s the way it is to save the update files and setting\n\nafter finishing testing krd made a folder on my C: drive called \"Kaspersky Rescue Disk 10.0\" and put updates and setting there\n\nmaby because im using iso file its not saving the updates! so how about extracting the iso and load it with g4d ? and what config i must do to order krd to sve updates and overwrite older updates on the same folder ?\n\nany ideas ?\n\n"
+    },
+    {
+      "id": "169538",
+      "timestamp": "2013-03-17T14:43:46+00:00",
+      "author": "Wonko the Sane",
+      "content": "Just to keep things as together as possible, this is a doubled thread, discussion is here::\n\n[http://reboot.pro/to...-krd-updatable/](http://reboot.pro/topic/18319-kaspersky-rescue-disk-krd-updatable/ \"\")\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    }
+  ]
+}

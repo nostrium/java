@@ -1,0 +1,634 @@
+{
+  "id": "21007",
+  "title": "Help with multiboot project (newbie alert)",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "197924",
+      "timestamp": "2016-02-22T23:52:19+00:00",
+      "author": "Shoshi",
+      "content": "If this is in the wrong section, I do apologize!\n\nI had a computer issue a month ago and fortunately a rescue disk helped! Since then, I have wanted to make my own custom multiboot rescue disk/usb.\n\nI have spent weeks looking at all sorts of forums and trying all kinds of tools (SARDU, SharpBoot, XBoot, YUMI, etc) to make the multiboot compilation. They all have their pluses and minuses. I plan on having Windows 10PE (which I made using winbuilder). A Xubuntu live cd, Bitdefender, Comodo, Eset, and possibly Kaspersky rescue cds as well. Some tools get Bitdefender to work but end up with Eset not working and vice versa.\n\nI ended up taking the general layout from the ISO that winbuilder makes with Grub4Dos and GfxBoot. I was then able to use a lot of the syntax that WinsetupFromUSB uses to get Linux isos to boot. It all works on the USB drive. But when I try to boot the ISO image there are issues.\n\nThe menu loads fine. I but when I try to launch any of the antivirus rescue cds I get this.\n\n```\n224 (HEX:0xE0)\nFilesystem type is udf, partition type 0x00\n224 (HEX:0xE0)\nWarning: PARTITION TABLE 4 IN BIOS DEVICE 224 IS ALREADY IN USE!\n\nTo prevent possible data loss will not continue further \n```\n\nThe fact that it works on the thumb drive is great but it would be nice if it worked as an ISO image too. I am new to all of this so if I missed something just ask. I am sure I am missing something simple that will fix this that I just cannot figure out.\n\n**Edited by Shoshi, 23 February 2016 - 12:04 AM.**\n"
+    },
+    {
+      "id": "197925",
+      "timestamp": "2016-02-23T01:23:15+00:00",
+      "author": "memoarfaa",
+      "content": "that because of you have 4 primary partitions in your USB drive\n\nsee here\n\n[http://www.easy2boot...roubleshooting/](http://www.easy2boot.com/faq-/troubleshooting/ \"External link\")\n\n**\u0027WARNING: PTN TABLE 4 IS ALREADY IN USE!\u0027** - Easy2Boot needs the last (4th) primary partition entry to be empty in order to boot linux ISOs. Delete the 4th Primary partition (you will be prompted to do this) or re-partition the USB drive so that you have two Primary partitions or just one Primary partition and any number of Logical partitions.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "197926",
+      "timestamp": "2016-02-23T01:32:31+00:00",
+      "author": "Shoshi",
+      "content": "\u003e that because of you have 4 primary partitions in your USB drive\n\u003e\n\u003e see here\n\u003e\n\u003e [http://www.easy2boot...roubleshooting/](http://www.easy2boot.com/faq-/troubleshooting/ \"External link\")\n\u003e\n\u003e **\u0027WARNING: PTN TABLE 4 IS ALREADY IN USE!\u0027** - Easy2Boot needs the last (4th) primary partition entry to be empty in order to boot linux ISOs. Delete the 4th Primary partition (you will be prompted to do this) or re-partition the USB drive so that you have two Primary partitions or just one Primary partition and any number of Logical partitions.\n\nThanks for the fast reply! :smile: My googling brought me to that page before I posted this and I experimented with easy2boot as well. I do not get the error on the USB drive, Only when I packaged it back into an ISO does the error happen. I m a newbie and I do understand that there is a file format difference between the USB drive (mine is formatted fat32) and the format of an ISO file.\n\nIs the error because the ISO image does not have the 4th partition? I guess I am confused about what changes I need to make to get it to work like it does on the USB and as an ISO file as well,\n\n**Edited by Shoshi, 23 February 2016 - 01:33 AM.**\n"
+    },
+    {
+      "id": "197934",
+      "timestamp": "2016-02-23T07:57:44+00:00",
+      "author": "steve6375",
+      "content": "ISOs do not have partitions. You cannot use E2B or partnew on a CD or ISO.\n\nIf you try to use partnew when booting from a CD then you can destroy partitions on your hard disk because hd0 will be your hard disk and not the USB boot drive!\n\n"
+    },
+    {
+      "id": "197936",
+      "timestamp": "2016-02-23T08:18:16+00:00",
+      "author": "Shoshi",
+      "content": "Thanks for the reply! I have only tested in virtual machines so I am ok!\n\nI do like E2B, but for what I wanted I found it a bit too much. I want a good looking (hence the GFXBoot) tool to boot Windows 10PE, 2 or 3 antivirus rescue disks, and 2 of Ubuntus Minimal text based installers. I have tried so many multiboot tools and one thing or another messes it up.\n\nI am willing to make changes to the commands used in Grub4dos if it would work in both the ISO and on a USB. I am just stuck...\n\n"
+    },
+    {
+      "id": "197941",
+      "timestamp": "2016-02-23T12:04:16+00:00",
+      "author": "steve6375",
+      "content": "As you have found, making something that will work both as a USB drive and a CD\\\\DVD is tricky.\n\nPersonally, I would go for a grub4dos-based solution (you can use GFX Boot if you wish).\n\nI would test the menu entries from a USB drive first and then use the RMPrepUSB feature to convert the grub4dos USB drive to an ISO.\n\nI would then test the ISO on a VM (e.g. VBox or QEMU).\n\nYou will need to craft the menu entries carefully and will probably need to understand how each one needs to be loaded.\n\nIf you want to use an existing utility, it needs to be designed to generate an ISO file (e.g. XBoot). A USB-only tool will not make the correct menu entries to run as a CD/DVD.\n\nYou can use E2B to make an ISO, but you will need to create your own .mnu files rather than use the standard E2B features.\n\nYou can find lots of grub4dos menu examples and tutorials on my RMPrepUSB site.\n\n"
+    },
+    {
+      "id": "197945",
+      "timestamp": "2016-02-23T14:02:45+00:00",
+      "author": "Shoshi",
+      "content": "Indeed Steve! And thanks again for replying!\n\nThis is basically what I did. I have tried both Sardu, xboot, and sharpboot to make iso files, but they fail to make the ISOS from Bitdefender, ESET, or Kaspersky work. As such I have basically made my own Grub4DOs setup and it does work pretty well on the USB. I just know that the G4D command arguments I am using are not ideal and could probably be adjusted to work in both a USB and an ISO. I have read several of your articles and I get lost.\n\nTo boot these antivirus discs I basically ripped the arguments that WinSetupFromUSB uses to make a multboot USB. I have it on a file called antivirus.lst which is a submenu off menu.lst.\n\nHere is the code for ESET\n\n```\ntitle ESET SysRescue from partition 0\nmap --unmap\u003d0:0xff\nmap --unhook \u0026\u0026 map --rehook\ncat --hex --locate\u003dPoLPu@ (md)0x3D0+0x130 \u003e nul \u0026\u0026 echo Cannot continue if PLoP is active, please start this entry without loading PLoP first \u0026\u0026 echo \u0026\u0026 pause Press any key to return to the main menu \u0026\u0026 configfile /menu.lst\nset /a dev\u003d*0x8280\u00260xff\nroot (%dev%,0)\nset ISO\u003d/ISO/eset.iso\nls %ISO% \u003e nul || find --set-root --devices\u003dhf /usbdrive.tag|| echo Error! Could not find usbdrive.tag \u0026\u0026 echo  \u0026\u0026 pause Press any key to return to the main menu \u0026\u0026 configfile /menu.lst\nls %ISO% \u003e nul || find --set-root --devices\u003dhf %ISO% || echo Error! Could not find %ISO% \u0026\u0026 echo  \u0026\u0026 pause Press any key to return to the main menu \u0026\u0026 configfile /menu.lst\nmap %ISO% (0xff) || map --heads\u003d0 --sectors-per-track\u003d0 %ISO% (0xff) || echo FATAL ERROR mapping %ISO%, please check if file is present and defragmented \u0026\u0026 pause Press any key to return to main menu \u0026\u0026 configfile /menu.lst\n#http://reboot.pro/topic/9916-grub4dos-isohybrided/page-2#entry88531\n#http://www.rmprepusb.com/tutorials/tails\nset /a dev\u003d*0x82a0\u00260xff\ndebug 1\nparttype (%dev%,3) | set check\u003d\ndebug off\nset check\u003d%check:~-5,4%\nif \"%check%\"\u003d\u003d\"0x00\" partnew (%dev%,3) 0 0 0 \u0026\u0026 partnew (%dev%,3) 0x00 %ISO%\nif not \"%check%\"\u003d\u003d\"0x00\" echo WARNING: PARTITION TABLE 4 IN BIOS DEVICE %dev% IS ALREADY IN USE! \u0026\u0026 echo  \u0026\u0026 echo To prevent possible data loss will not continue further \u0026\u0026 pause \u0026\u0026 configfile /menu.lst\nmap --rehook\nroot (0xff)\n```\n\nAs you can see it is quite long and it borrows information from you!\n\n"
+    },
+    {
+      "id": "197947",
+      "timestamp": "2016-02-23T14:36:10+00:00",
+      "author": "steve6375",
+      "content": "That uses partnew so it won\u0027t work with a CD. WinSetupFromUSB (there is a hint in the name!!!!) is not designed to run from a CD.\n\nWhat you may find useful is the ISOBOOT code used in E2B.\n\nFor instance, you can boot from the eset-sysrescue.1.0.9.0.enu.iso file in E2B by holding down the SHIFT key when you press ENTER.\n\nThis makes E2B use ISOBOOT instead of partnew.\n\nThe code used by ISOBOOT can be found at \\\\_ISO\\\\e2b\\\\grub\\\\ISOBOOT.g4b\n\nIt works by recognising the file name of the ISO file.\n\nThere is a list of ISOs which work with ISOBOOT [here](http://www.easy2boot.com/add-payload-files/list-of-tested-payload-files/ \"External link\").\n\nWith the latest version of E2B 1.77, if you convert it to a CD, it should automatically run ISOBOOT (though I haven\u0027t tested that).\n\nOr you can use the ISOBOOT.g4b file, or pull out the code from it.\n\nISOBOOT is for linux ISOs, though it could be adapted to recognise other ISOs.\n\ne.g. if you had the E2B files on your USB drive or CD, you could have a menu\n\nset ISOC\u003d/ISO/someiso.iso\n\ncall /_ISO/e2b/grub/isoboot.g4b\n\nAs I said, you should use a utility that is designed to generate an ISO file if you want to use their menus. WinSetup**FromUSB** is totally the wrong choice!\n\nHTH\n\nSteve\n\n"
+    },
+    {
+      "id": "197949",
+      "timestamp": "2016-02-23T16:00:12+00:00",
+      "author": "Shoshi",
+      "content": "I completely understand. Like I said, I did try three other tools that make ISO files but they have issues themselves. I will check out that g4b file to see what I can see. I did look at [http://www.easy2boot...4dos-usb-drive/](http://www.easy2boot.com/make-an-easy2boot-usb-drive/add-e2b-to-your-own-grub4dos-usb-drive/ \"External link\")\n\nbut I guess I am still not knowledgeable enough to understand and utilize the instructions.\n\nWould call /_ISO/e2b/grub/isoboot.g4b be used in a menu.list kind of file?\n\n"
+    },
+    {
+      "id": "197958",
+      "timestamp": "2016-02-23T23:02:16+00:00",
+      "author": "Shoshi",
+      "content": "I tried using isoboot.g4b in a lst file and I get a an error.  \nI added the following to antivirus.lst  \nset ISOC\u003d/ISO/bitdefender.iso  \ncall /isoboot.g4b  \nI moved isoboot to the root of the project to just see what happens.  \nI ended up with this message.  \nISBOOT: Trying to identify a linxu ISO filname bitdefender...  \nSorry /ISO/bitdefender.iso is not supported by ISOBOOT\n\n"
+    },
+    {
+      "id": "197959",
+      "timestamp": "2016-02-23T23:16:21+00:00",
+      "author": "steve6375",
+      "content": "Well, that shouldn\u0027t come as a surprise, since it is not in the list of ISOs recognised by ISOBOOT that I gave you in the link!\n\nubuntu  \nlinuxmint (linuxmint-cinnamone 17.1 64-bit \u0027Rebecca\u0027)  \nfedora (not NTFS or exFAT)  \nkali  \nopensuse (not NTFS or exFAT)  \nsystemrescue  \nknoppix  \ndebian  \ntails  \ngparted  \ncentos  \narch (user will be prompted for 32-bit or 64-bit boot, if dual ISO detected)  \nzorin  \npclinux (not NTFS or exFAT)  \navg  \nporteus  \nslax  \nslackware  \nmakulu  \nantix  \ncrunchbang  \nacronis  \npaladin  \nParted Magic  \nVoyager (ensure the string \u0027ubuntu\u0027 is in the filename e.g. Voyager-14.04.04-amd64_ubuntu.iso)  \nophcrack - ensure \\\\tables folder exists on E2B drive and use notables ISO (v1.77+)\n\nRead more: [http://www.easy2boot...-payload-files/](http://www.easy2boot.com/add-payload-files/list-of-tested-payload-files/ \"External link\")\n\n"
+    },
+    {
+      "id": "197960",
+      "timestamp": "2016-02-23T23:22:42+00:00",
+      "author": "Shoshi",
+      "content": "My apologies! I am still very new at this.\n\nI do not know what cheat codes get for example Bitdefender to work , other than using the codes that WinSetupFromUSB uses which as we both know is not for ISO files. So modifying the b4d file to suit is beyond my scope so far. This is why I am asking for help because even though I have spent days googling and reading stuff I am stuck.\n\n"
+    },
+    {
+      "id": "197961",
+      "timestamp": "2016-02-23T23:24:16+00:00",
+      "author": "steve6375",
+      "content": "[http://www.rmprepusb...-as-an-iso-file](http://www.rmprepusb.com/tutorials/boot-bitdefender-from-usb-as-an-iso-file \"External link\")\n\nThis may not work for recent versions though!\n\n**Edited by steve6375, 23 February 2016 - 11:27 PM.**\n"
+    },
+    {
+      "id": "197962",
+      "timestamp": "2016-02-23T23:44:13+00:00",
+      "author": "Shoshi",
+      "content": "It does not work. Is there a way to look at the structure and files in the Bitdefender ISO itself that will give me information about what codes will work?\n\nThere\u0027s a grub.cfg file that has the following code in the ISO.\n\n```\ninsmod exfat\ninsmod fat\ninsmod iso9660\ninsmod ext2\ninsmod ntfs\n\nsource ${prefix}/${platform}/loadvideo.cfg\n\ninsmod font\nif loadfont ${prefix}/fonts/unicode.pf2 ; then\n\tset gfxmode\u003d1024x768x24,1024x768x16,auto\n\tset gfxpayload\u003dkeep\n\n\tinsmod gfxterm\n\tif terminal_output gfxterm ; then\n\t\ttrue\n\telse\n\t\tterminal gfxterm\n\tfi\n\n\tif insmod png ; then\n\t\tbackground_color 0,0,0,0\n\t\tif [ -f \"${prefix}/theme/theme.txt\" ] ; then\n\t\t\tif [ -f \"${prefix}/theme/theme.cfg\" ] ; then\n\t\t\t\tsource \"${prefix}/theme/theme.cfg\"\n\t\t\tfi\n\t\t\tset theme\u003d\"${prefix}/theme/theme.txt\"\n\t\telse\n\t\t\tbackground_image -m stretch ($root)/rescue/bootsplash.png\n\t\t\tif [ -f \"${prefix}/pack.cfg\" ] ; then\n\t\t\t\tsource \"${prefix}/pack.cfg\"\n\t\t\tfi\n\t\tfi\n\tfi\nfi\n\nset SQUASHFILE\u003d\"/rescue/livecd.squashfs\"\n\nif [ -z $net_default_ip ]; then\n\tset kopts_common\u003d\"root\u003d/dev/ram0 real_root\u003d/dev/loop0 loop\u003d${SQUASHFILE} cdroot_marker\u003d${SQUASHFILE} initrd udev cdroot scandelay\u003d10\"\nelse\n\teval \"set nfsroot\u003d\\${net_${net_default_interface}_rootpath}\"\n\tif [ -z $nfsroot ]; then\n\t\techo \"Your DHCP configuration is incomplete, please add \u0027option root-path\u0027 to your configuration file\"\n\t\techo \"The system will reboot in 60 seconds\"\n\t\tsleep --verbose --interruptible 60\n\t\treboot\n\tfi\n\tset kopts_common\u003d\"root\u003d/dev/nfs real_root\u003d/dev/nfs nfsroot\u003d${nfsroot} ip\u003d${net_default_ip} loop\u003d${SQUASHFILE} looptype\u003dsquashfs livecd.nfsif\u003d${net_default_mac} initrd udev cdroot\"\nfi\nset kopts_silent\u003d\"quiet splash\"\n\nsource ${prefix}/menu.cfg.${platform}\n\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "197963",
+      "timestamp": "2016-02-24T00:21:02+00:00",
+      "author": "steve6375",
+      "content": "```\ntitle Bitdefender Rescue CD 2014 (ISO file 0xff)\nset ISOfile\u003d/_ISO/Linux/Bitdefender-rescue-cd.iso\nmap %ISOfile% (0xff)\nmap --hook\nroot (0xff)\nset SQUASH\u003drescue/livecd.squashfs\nset common\u003droot\u003d/dev/ram0  real_root\u003d/dev/loop0 loop\u003d%SQUASH% cdroot_marker\u003d%SQUASH% initrd udev cdroot scandelay\u003d2\nset silent\u003dquiet splash\nset silent\u003d\nset lang\u003den\nkernel /boot/kernel.i386-pc %common% %silent% isoboot\u003d%ISOfile% lang\u003d%lang% vga\u003dask\ninitrd /boot/initfs.i386-pc\nboot\n```\n\nThis works, but NOT on an NTFS USB drive (FAT32 works).\n\n"
+    },
+    {
+      "id": "197964",
+      "timestamp": "2016-02-24T00:52:34+00:00",
+      "author": "Shoshi",
+      "content": "I appreciate all of the help you have given me!\n\nI have been building the old compilation on a USB drive because making quick change there is way faster than rebuilding an ISO in Ultraiso. I used a utility called Virtual Machine USB Boot to make my USB drive bootable in Virtualbox for testing and it has worked pretty well. Since I want my compilation to work as an ISO file too I started again and I have a very simple ISO layout.\n\nUsing your code it looks like it works at first. I do not see a Bitdfender bot menu, but it asks me to select a resolution. After that it starts booting until I see invalid loop location: rescue/livecd.squashfs\n\n**Edited by Shoshi, 24 February 2016 - 01:05 AM.**\n"
+    },
+    {
+      "id": "197965",
+      "timestamp": "2016-02-24T01:35:28+00:00",
+      "author": "steve6375",
+      "content": "DId you change the menu so it has the correct path for the ISO?\n\n"
+    },
+    {
+      "id": "197966",
+      "timestamp": "2016-02-24T01:42:05+00:00",
+      "author": "Shoshi",
+      "content": "That\u0027s embarrassing... Everything was correct except the ISO name in the menu had a capitol B and the ISO was small. It works! :smile: Thank you!\n\nIs there a way for it to use the Bitdefender menu after selecting it from my menu? As it stands now, it asks me to select a resolution or skip it and then boots in verbose mode.\n\n"
+    },
+    {
+      "id": "197967",
+      "timestamp": "2016-02-24T01:47:58+00:00",
+      "author": "steve6375",
+      "content": "just remove **vga\u003dask** and remove the **set silent\u003d** line\n\nit will boot as if the first English menu option was selected.\n\nfor a different language, instead of en use fr or de or es or tr or ptbr or ro\n\n"
+    },
+    {
+      "id": "197968",
+      "timestamp": "2016-02-24T02:24:22+00:00",
+      "author": "Shoshi",
+      "content": "It woks! Well, sort of... I removed the set silent\u003d and the vga\u003dask and I got a loading screen but it looked messed up, I then added vga\u003d0x344 for 1024x768 x32b and the loading screen booted correctly!\n\nHowever the original Bitdefender loading menu does not show up. On [http://www.easy2boot...les/linux-isos/](http://www.easy2boot.com/add-payload-files/linux-isos/ \"External link\")You talk about how other multiboot software replaces the menu with their own. Is there anything to fix this?\n\n"
+    },
+    {
+      "id": "197971",
+      "timestamp": "2016-02-24T13:27:14+00:00",
+      "author": "steve6375",
+      "content": "Because we are not using the ISO\u0027s boot files, we are also not using their boot menu.\n\nSo it is difficult to use their menu (often this uses grub2 or syslinux).\n\nIn the case of Bitdefender, it only offers the choice of different languages anyway.\n\nI use **vga\u003dask** because when booting on different systems, the display is not always correct.\n\nIt is possible to \u0027chain\u0027 to syslinux or grub2 from grub4dos, but then it would use their menus which would be wrong, so you would have to change their menus and write you own in syslinux or grub2. Also, the required menu can change when booting from a CD.\n\n"
+    },
+    {
+      "id": "197978",
+      "timestamp": "2016-02-24T18:55:43+00:00",
+      "author": "Shoshi",
+      "content": "You use the chainloader command do chainload syslinux? It looks like Bitdefender uses that. How hard would it be to do this?\n\n"
+    },
+    {
+      "id": "197980",
+      "timestamp": "2016-02-24T19:51:47+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e You use the chainloader command do chainload syslinux? It looks like Bitdefender uses that. How hard would it be to do this?\n\nThe issue is different.\n\nThere is no problem whatsoever in chainloading either syslinux or GRUB2 from grub4dos (they are as well linux kernels), the issue comes after, when these tools will look for their configuration files, such as syslinux.cfg or grub.cfg.\n\nThings that may go wrong:\n\n1) the configuration file is not found\n\n2) the configuration file is found but it is written in such a way that assumes something about it\u0027s own locations/paths and devices.\n\nTo remain in grub4dos, to make an example, this:\n\ntitle my first example\n\nroot (hd0,0)\n\nchainloader /myexample\n\nwill work OK, but ONLY if the file is in the device mapped as (hd0,0).\n\nThis one:\n\ntitle my second example\n\nfind --set-root /myexample\n\nchainloader /myexample\n\nwill work on \\*any\\* device.\n\nSo you need not only to chainload the \"original\" loader, but EITHER make sure that it can find its own configuration file ***and*** that the configuration files is \"portable\" OR duplicate the \"original\" loader and the configuration file on the writable media you are booting from ***and*** modify the configuration file in such a way that it finds and boot the target.\n\nIn some cases this is very easy, in some other cases it can be extremely difficult or impossible.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "197984",
+      "timestamp": "2016-02-24T22:44:57+00:00",
+      "author": "Shoshi",
+      "content": "I suppose adding extra complexity when it now works is silly.\n\nThis multiboot disk is really being a pain to get working, I am now having issues with ESET.\n\nESET is based on Ubuntu 12.04. There is no preseed fle as far as I can see.\n\nI have tried multiple strings to boot it and none have worked.\n\nAt first I tried this and I got (initramfs unable to find a medium containing a live file system)\n\n```\ntitle eset3\nls /iso/eset.iso || find --set-root /iso/eset.iso\nmap /iso/eset.iso (0xff)\nmap --hook\nroot (0xff)\nchainloader (0xff)\n\n```\n\nSo then I looked around and tried this set of strings\n\n```\ntitle Eset\nfind --set-root --ignore-floppies /iso/eset.iso\nmap /iso/eset.iso (hd32)\nmap --hook\nroot (hd32)\nkernel /casper/vmlinuz boot\u003dcasper iso-scan/filename\u003d/iso/eset.iso\ninitrd /casper/initrd.lz\n\n```\n\nThere is no seed file at all. I run it verbose and after mounting casper-premount it then spits this out over and over again.\n\n/init: line3: can\u0027t open /dev/sr1: no medium found\n\nAfter around 20 seconds of this I am back at (initramfs unable to find a medium containing a live file system)\n\n"
+    },
+    {
+      "id": "197985",
+      "timestamp": "2016-02-24T23:26:16+00:00",
+      "author": "steve6375",
+      "content": "The latest version of E2B has a version of isoboot which works with eset-sysrescue, but you have to extract the whole casper folder and put it on the E2B usb drive in a \\\\sysrescue folder. There is also a .mnu file for it too...\n\n```\n# eset 1.0.9 - need to extract casper to \\sysrescue on E2B drive!  ISO cheat codes don\u0027t work!\n# you can add quiet and splash to the kernel parameters if you wish and remove the vga\u003dask\n# This does not seem to be persistent and creating an ext2 casper-rw file stops it from booting!\niftitle [if exist /sysrescue/casper/vmlinuz] Eset sysrescue (linux, flat file) \\n Boot to Eset System Rescue\nkernel /sysrescue/casper/vmlinuz  boot\u003dcasper persistent live-media-path\u003d/sysrescue/casper vga\u003dask  --\ninitrd /sysrescue/casper/initrd.lz\n```\n\nyou can remove the persistent and vga\u003dask if you like\n\n"
+    },
+    {
+      "id": "197924",
+      "timestamp": "2016-02-22T23:52:19+00:00",
+      "author": "Shoshi",
+      "content": "If this is in the wrong section, I do apologize!\n\nI had a computer issue a month ago and fortunately a rescue disk helped! Since then, I have wanted to make my own custom multiboot rescue disk/usb.\n\nI have spent weeks looking at all sorts of forums and trying all kinds of tools (SARDU, SharpBoot, XBoot, YUMI, etc) to make the multiboot compilation. They all have their pluses and minuses. I plan on having Windows 10PE (which I made using winbuilder). A Xubuntu live cd, Bitdefender, Comodo, Eset, and possibly Kaspersky rescue cds as well. Some tools get Bitdefender to work but end up with Eset not working and vice versa.\n\nI ended up taking the general layout from the ISO that winbuilder makes with Grub4Dos and GfxBoot. I was then able to use a lot of the syntax that WinsetupFromUSB uses to get Linux isos to boot. It all works on the USB drive. But when I try to boot the ISO image there are issues.\n\nThe menu loads fine. I but when I try to launch any of the antivirus rescue cds I get this.\n\n```\n224 (HEX:0xE0)\nFilesystem type is udf, partition type 0x00\n224 (HEX:0xE0)\nWarning: PARTITION TABLE 4 IN BIOS DEVICE 224 IS ALREADY IN USE!\n\nTo prevent possible data loss will not continue further \n```\n\nThe fact that it works on the thumb drive is great but it would be nice if it worked as an ISO image too. I am new to all of this so if I missed something just ask. I am sure I am missing something simple that will fix this that I just cannot figure out.\n\n**Edited by Shoshi, 23 February 2016 - 12:04 AM.**\n"
+    },
+    {
+      "id": "197925",
+      "timestamp": "2016-02-23T01:23:15+00:00",
+      "author": "memoarfaa",
+      "content": "that because of you have 4 primary partitions in your USB drive\n\nsee here\n\n[http://www.easy2boot...roubleshooting/](http://www.easy2boot.com/faq-/troubleshooting/ \"External link\")\n\n**\u0027WARNING: PTN TABLE 4 IS ALREADY IN USE!\u0027** - Easy2Boot needs the last (4th) primary partition entry to be empty in order to boot linux ISOs. Delete the 4th Primary partition (you will be prompted to do this) or re-partition the USB drive so that you have two Primary partitions or just one Primary partition and any number of Logical partitions.\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "197926",
+      "timestamp": "2016-02-23T01:32:31+00:00",
+      "author": "Shoshi",
+      "content": "\u003e that because of you have 4 primary partitions in your USB drive\n\u003e\n\u003e see here\n\u003e\n\u003e [http://www.easy2boot...roubleshooting/](http://www.easy2boot.com/faq-/troubleshooting/ \"External link\")\n\u003e\n\u003e **\u0027WARNING: PTN TABLE 4 IS ALREADY IN USE!\u0027** - Easy2Boot needs the last (4th) primary partition entry to be empty in order to boot linux ISOs. Delete the 4th Primary partition (you will be prompted to do this) or re-partition the USB drive so that you have two Primary partitions or just one Primary partition and any number of Logical partitions.\n\nThanks for the fast reply! :smile: My googling brought me to that page before I posted this and I experimented with easy2boot as well. I do not get the error on the USB drive, Only when I packaged it back into an ISO does the error happen. I m a newbie and I do understand that there is a file format difference between the USB drive (mine is formatted fat32) and the format of an ISO file.\n\nIs the error because the ISO image does not have the 4th partition? I guess I am confused about what changes I need to make to get it to work like it does on the USB and as an ISO file as well,\n\n**Edited by Shoshi, 23 February 2016 - 01:33 AM.**\n"
+    },
+    {
+      "id": "197934",
+      "timestamp": "2016-02-23T07:57:44+00:00",
+      "author": "steve6375",
+      "content": "ISOs do not have partitions. You cannot use E2B or partnew on a CD or ISO.\n\nIf you try to use partnew when booting from a CD then you can destroy partitions on your hard disk because hd0 will be your hard disk and not the USB boot drive!\n\n"
+    },
+    {
+      "id": "197936",
+      "timestamp": "2016-02-23T08:18:16+00:00",
+      "author": "Shoshi",
+      "content": "Thanks for the reply! I have only tested in virtual machines so I am ok!\n\nI do like E2B, but for what I wanted I found it a bit too much. I want a good looking (hence the GFXBoot) tool to boot Windows 10PE, 2 or 3 antivirus rescue disks, and 2 of Ubuntus Minimal text based installers. I have tried so many multiboot tools and one thing or another messes it up.\n\nI am willing to make changes to the commands used in Grub4dos if it would work in both the ISO and on a USB. I am just stuck...\n\n"
+    },
+    {
+      "id": "197941",
+      "timestamp": "2016-02-23T12:04:16+00:00",
+      "author": "steve6375",
+      "content": "As you have found, making something that will work both as a USB drive and a CD\\\\DVD is tricky.\n\nPersonally, I would go for a grub4dos-based solution (you can use GFX Boot if you wish).\n\nI would test the menu entries from a USB drive first and then use the RMPrepUSB feature to convert the grub4dos USB drive to an ISO.\n\nI would then test the ISO on a VM (e.g. VBox or QEMU).\n\nYou will need to craft the menu entries carefully and will probably need to understand how each one needs to be loaded.\n\nIf you want to use an existing utility, it needs to be designed to generate an ISO file (e.g. XBoot). A USB-only tool will not make the correct menu entries to run as a CD/DVD.\n\nYou can use E2B to make an ISO, but you will need to create your own .mnu files rather than use the standard E2B features.\n\nYou can find lots of grub4dos menu examples and tutorials on my RMPrepUSB site.\n\n"
+    },
+    {
+      "id": "197945",
+      "timestamp": "2016-02-23T14:02:45+00:00",
+      "author": "Shoshi",
+      "content": "Indeed Steve! And thanks again for replying!\n\nThis is basically what I did. I have tried both Sardu, xboot, and sharpboot to make iso files, but they fail to make the ISOS from Bitdefender, ESET, or Kaspersky work. As such I have basically made my own Grub4DOs setup and it does work pretty well on the USB. I just know that the G4D command arguments I am using are not ideal and could probably be adjusted to work in both a USB and an ISO. I have read several of your articles and I get lost.\n\nTo boot these antivirus discs I basically ripped the arguments that WinSetupFromUSB uses to make a multboot USB. I have it on a file called antivirus.lst which is a submenu off menu.lst.\n\nHere is the code for ESET\n\n```\ntitle ESET SysRescue from partition 0\nmap --unmap\u003d0:0xff\nmap --unhook \u0026\u0026 map --rehook\ncat --hex --locate\u003dPoLPu@ (md)0x3D0+0x130 \u003e nul \u0026\u0026 echo Cannot continue if PLoP is active, please start this entry without loading PLoP first \u0026\u0026 echo \u0026\u0026 pause Press any key to return to the main menu \u0026\u0026 configfile /menu.lst\nset /a dev\u003d*0x8280\u00260xff\nroot (%dev%,0)\nset ISO\u003d/ISO/eset.iso\nls %ISO% \u003e nul || find --set-root --devices\u003dhf /usbdrive.tag|| echo Error! Could not find usbdrive.tag \u0026\u0026 echo  \u0026\u0026 pause Press any key to return to the main menu \u0026\u0026 configfile /menu.lst\nls %ISO% \u003e nul || find --set-root --devices\u003dhf %ISO% || echo Error! Could not find %ISO% \u0026\u0026 echo  \u0026\u0026 pause Press any key to return to the main menu \u0026\u0026 configfile /menu.lst\nmap %ISO% (0xff) || map --heads\u003d0 --sectors-per-track\u003d0 %ISO% (0xff) || echo FATAL ERROR mapping %ISO%, please check if file is present and defragmented \u0026\u0026 pause Press any key to return to main menu \u0026\u0026 configfile /menu.lst\n#http://reboot.pro/topic/9916-grub4dos-isohybrided/page-2#entry88531\n#http://www.rmprepusb.com/tutorials/tails\nset /a dev\u003d*0x82a0\u00260xff\ndebug 1\nparttype (%dev%,3) | set check\u003d\ndebug off\nset check\u003d%check:~-5,4%\nif \"%check%\"\u003d\u003d\"0x00\" partnew (%dev%,3) 0 0 0 \u0026\u0026 partnew (%dev%,3) 0x00 %ISO%\nif not \"%check%\"\u003d\u003d\"0x00\" echo WARNING: PARTITION TABLE 4 IN BIOS DEVICE %dev% IS ALREADY IN USE! \u0026\u0026 echo  \u0026\u0026 echo To prevent possible data loss will not continue further \u0026\u0026 pause \u0026\u0026 configfile /menu.lst\nmap --rehook\nroot (0xff)\n```\n\nAs you can see it is quite long and it borrows information from you!\n\n"
+    },
+    {
+      "id": "197947",
+      "timestamp": "2016-02-23T14:36:10+00:00",
+      "author": "steve6375",
+      "content": "That uses partnew so it won\u0027t work with a CD. WinSetupFromUSB (there is a hint in the name!!!!) is not designed to run from a CD.\n\nWhat you may find useful is the ISOBOOT code used in E2B.\n\nFor instance, you can boot from the eset-sysrescue.1.0.9.0.enu.iso file in E2B by holding down the SHIFT key when you press ENTER.\n\nThis makes E2B use ISOBOOT instead of partnew.\n\nThe code used by ISOBOOT can be found at \\\\_ISO\\\\e2b\\\\grub\\\\ISOBOOT.g4b\n\nIt works by recognising the file name of the ISO file.\n\nThere is a list of ISOs which work with ISOBOOT [here](http://www.easy2boot.com/add-payload-files/list-of-tested-payload-files/ \"External link\").\n\nWith the latest version of E2B 1.77, if you convert it to a CD, it should automatically run ISOBOOT (though I haven\u0027t tested that).\n\nOr you can use the ISOBOOT.g4b file, or pull out the code from it.\n\nISOBOOT is for linux ISOs, though it could be adapted to recognise other ISOs.\n\ne.g. if you had the E2B files on your USB drive or CD, you could have a menu\n\nset ISOC\u003d/ISO/someiso.iso\n\ncall /_ISO/e2b/grub/isoboot.g4b\n\nAs I said, you should use a utility that is designed to generate an ISO file if you want to use their menus. WinSetup**FromUSB** is totally the wrong choice!\n\nHTH\n\nSteve\n\n"
+    },
+    {
+      "id": "197949",
+      "timestamp": "2016-02-23T16:00:12+00:00",
+      "author": "Shoshi",
+      "content": "I completely understand. Like I said, I did try three other tools that make ISO files but they have issues themselves. I will check out that g4b file to see what I can see. I did look at [http://www.easy2boot...4dos-usb-drive/](http://www.easy2boot.com/make-an-easy2boot-usb-drive/add-e2b-to-your-own-grub4dos-usb-drive/ \"External link\")\n\nbut I guess I am still not knowledgeable enough to understand and utilize the instructions.\n\nWould call /_ISO/e2b/grub/isoboot.g4b be used in a menu.list kind of file?\n\n"
+    },
+    {
+      "id": "197958",
+      "timestamp": "2016-02-23T23:02:16+00:00",
+      "author": "Shoshi",
+      "content": "I tried using isoboot.g4b in a lst file and I get a an error.  \nI added the following to antivirus.lst  \nset ISOC\u003d/ISO/bitdefender.iso  \ncall /isoboot.g4b  \nI moved isoboot to the root of the project to just see what happens.  \nI ended up with this message.  \nISBOOT: Trying to identify a linxu ISO filname bitdefender...  \nSorry /ISO/bitdefender.iso is not supported by ISOBOOT\n\n"
+    },
+    {
+      "id": "197959",
+      "timestamp": "2016-02-23T23:16:21+00:00",
+      "author": "steve6375",
+      "content": "Well, that shouldn\u0027t come as a surprise, since it is not in the list of ISOs recognised by ISOBOOT that I gave you in the link!\n\nubuntu  \nlinuxmint (linuxmint-cinnamone 17.1 64-bit \u0027Rebecca\u0027)  \nfedora (not NTFS or exFAT)  \nkali  \nopensuse (not NTFS or exFAT)  \nsystemrescue  \nknoppix  \ndebian  \ntails  \ngparted  \ncentos  \narch (user will be prompted for 32-bit or 64-bit boot, if dual ISO detected)  \nzorin  \npclinux (not NTFS or exFAT)  \navg  \nporteus  \nslax  \nslackware  \nmakulu  \nantix  \ncrunchbang  \nacronis  \npaladin  \nParted Magic  \nVoyager (ensure the string \u0027ubuntu\u0027 is in the filename e.g. Voyager-14.04.04-amd64_ubuntu.iso)  \nophcrack - ensure \\\\tables folder exists on E2B drive and use notables ISO (v1.77+)\n\nRead more: [http://www.easy2boot...-payload-files/](http://www.easy2boot.com/add-payload-files/list-of-tested-payload-files/ \"External link\")\n\n"
+    },
+    {
+      "id": "197960",
+      "timestamp": "2016-02-23T23:22:42+00:00",
+      "author": "Shoshi",
+      "content": "My apologies! I am still very new at this.\n\nI do not know what cheat codes get for example Bitdefender to work , other than using the codes that WinSetupFromUSB uses which as we both know is not for ISO files. So modifying the b4d file to suit is beyond my scope so far. This is why I am asking for help because even though I have spent days googling and reading stuff I am stuck.\n\n"
+    },
+    {
+      "id": "197961",
+      "timestamp": "2016-02-23T23:24:16+00:00",
+      "author": "steve6375",
+      "content": "[http://www.rmprepusb...-as-an-iso-file](http://www.rmprepusb.com/tutorials/boot-bitdefender-from-usb-as-an-iso-file \"External link\")\n\nThis may not work for recent versions though!\n\n**Edited by steve6375, 23 February 2016 - 11:27 PM.**\n"
+    },
+    {
+      "id": "197962",
+      "timestamp": "2016-02-23T23:44:13+00:00",
+      "author": "Shoshi",
+      "content": "It does not work. Is there a way to look at the structure and files in the Bitdefender ISO itself that will give me information about what codes will work?\n\nThere\u0027s a grub.cfg file that has the following code in the ISO.\n\n```\ninsmod exfat\ninsmod fat\ninsmod iso9660\ninsmod ext2\ninsmod ntfs\n\nsource ${prefix}/${platform}/loadvideo.cfg\n\ninsmod font\nif loadfont ${prefix}/fonts/unicode.pf2 ; then\n\tset gfxmode\u003d1024x768x24,1024x768x16,auto\n\tset gfxpayload\u003dkeep\n\n\tinsmod gfxterm\n\tif terminal_output gfxterm ; then\n\t\ttrue\n\telse\n\t\tterminal gfxterm\n\tfi\n\n\tif insmod png ; then\n\t\tbackground_color 0,0,0,0\n\t\tif [ -f \"${prefix}/theme/theme.txt\" ] ; then\n\t\t\tif [ -f \"${prefix}/theme/theme.cfg\" ] ; then\n\t\t\t\tsource \"${prefix}/theme/theme.cfg\"\n\t\t\tfi\n\t\t\tset theme\u003d\"${prefix}/theme/theme.txt\"\n\t\telse\n\t\t\tbackground_image -m stretch ($root)/rescue/bootsplash.png\n\t\t\tif [ -f \"${prefix}/pack.cfg\" ] ; then\n\t\t\t\tsource \"${prefix}/pack.cfg\"\n\t\t\tfi\n\t\tfi\n\tfi\nfi\n\nset SQUASHFILE\u003d\"/rescue/livecd.squashfs\"\n\nif [ -z $net_default_ip ]; then\n\tset kopts_common\u003d\"root\u003d/dev/ram0 real_root\u003d/dev/loop0 loop\u003d${SQUASHFILE} cdroot_marker\u003d${SQUASHFILE} initrd udev cdroot scandelay\u003d10\"\nelse\n\teval \"set nfsroot\u003d\\${net_${net_default_interface}_rootpath}\"\n\tif [ -z $nfsroot ]; then\n\t\techo \"Your DHCP configuration is incomplete, please add \u0027option root-path\u0027 to your configuration file\"\n\t\techo \"The system will reboot in 60 seconds\"\n\t\tsleep --verbose --interruptible 60\n\t\treboot\n\tfi\n\tset kopts_common\u003d\"root\u003d/dev/nfs real_root\u003d/dev/nfs nfsroot\u003d${nfsroot} ip\u003d${net_default_ip} loop\u003d${SQUASHFILE} looptype\u003dsquashfs livecd.nfsif\u003d${net_default_mac} initrd udev cdroot\"\nfi\nset kopts_silent\u003d\"quiet splash\"\n\nsource ${prefix}/menu.cfg.${platform}\n\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "197963",
+      "timestamp": "2016-02-24T00:21:02+00:00",
+      "author": "steve6375",
+      "content": "```\ntitle Bitdefender Rescue CD 2014 (ISO file 0xff)\nset ISOfile\u003d/_ISO/Linux/Bitdefender-rescue-cd.iso\nmap %ISOfile% (0xff)\nmap --hook\nroot (0xff)\nset SQUASH\u003drescue/livecd.squashfs\nset common\u003droot\u003d/dev/ram0  real_root\u003d/dev/loop0 loop\u003d%SQUASH% cdroot_marker\u003d%SQUASH% initrd udev cdroot scandelay\u003d2\nset silent\u003dquiet splash\nset silent\u003d\nset lang\u003den\nkernel /boot/kernel.i386-pc %common% %silent% isoboot\u003d%ISOfile% lang\u003d%lang% vga\u003dask\ninitrd /boot/initfs.i386-pc\nboot\n```\n\nThis works, but NOT on an NTFS USB drive (FAT32 works).\n\n"
+    },
+    {
+      "id": "197964",
+      "timestamp": "2016-02-24T00:52:34+00:00",
+      "author": "Shoshi",
+      "content": "I appreciate all of the help you have given me!\n\nI have been building the old compilation on a USB drive because making quick change there is way faster than rebuilding an ISO in Ultraiso. I used a utility called Virtual Machine USB Boot to make my USB drive bootable in Virtualbox for testing and it has worked pretty well. Since I want my compilation to work as an ISO file too I started again and I have a very simple ISO layout.\n\nUsing your code it looks like it works at first. I do not see a Bitdfender bot menu, but it asks me to select a resolution. After that it starts booting until I see invalid loop location: rescue/livecd.squashfs\n\n**Edited by Shoshi, 24 February 2016 - 01:05 AM.**\n"
+    },
+    {
+      "id": "197965",
+      "timestamp": "2016-02-24T01:35:28+00:00",
+      "author": "steve6375",
+      "content": "DId you change the menu so it has the correct path for the ISO?\n\n"
+    },
+    {
+      "id": "197966",
+      "timestamp": "2016-02-24T01:42:05+00:00",
+      "author": "Shoshi",
+      "content": "That\u0027s embarrassing... Everything was correct except the ISO name in the menu had a capitol B and the ISO was small. It works! :smile: Thank you!\n\nIs there a way for it to use the Bitdefender menu after selecting it from my menu? As it stands now, it asks me to select a resolution or skip it and then boots in verbose mode.\n\n"
+    },
+    {
+      "id": "197967",
+      "timestamp": "2016-02-24T01:47:58+00:00",
+      "author": "steve6375",
+      "content": "just remove **vga\u003dask** and remove the **set silent\u003d** line\n\nit will boot as if the first English menu option was selected.\n\nfor a different language, instead of en use fr or de or es or tr or ptbr or ro\n\n"
+    },
+    {
+      "id": "197968",
+      "timestamp": "2016-02-24T02:24:22+00:00",
+      "author": "Shoshi",
+      "content": "It woks! Well, sort of... I removed the set silent\u003d and the vga\u003dask and I got a loading screen but it looked messed up, I then added vga\u003d0x344 for 1024x768 x32b and the loading screen booted correctly!\n\nHowever the original Bitdefender loading menu does not show up. On [http://www.easy2boot...les/linux-isos/](http://www.easy2boot.com/add-payload-files/linux-isos/ \"External link\")You talk about how other multiboot software replaces the menu with their own. Is there anything to fix this?\n\n"
+    },
+    {
+      "id": "197971",
+      "timestamp": "2016-02-24T13:27:14+00:00",
+      "author": "steve6375",
+      "content": "Because we are not using the ISO\u0027s boot files, we are also not using their boot menu.\n\nSo it is difficult to use their menu (often this uses grub2 or syslinux).\n\nIn the case of Bitdefender, it only offers the choice of different languages anyway.\n\nI use **vga\u003dask** because when booting on different systems, the display is not always correct.\n\nIt is possible to \u0027chain\u0027 to syslinux or grub2 from grub4dos, but then it would use their menus which would be wrong, so you would have to change their menus and write you own in syslinux or grub2. Also, the required menu can change when booting from a CD.\n\n"
+    },
+    {
+      "id": "197978",
+      "timestamp": "2016-02-24T18:55:43+00:00",
+      "author": "Shoshi",
+      "content": "You use the chainloader command do chainload syslinux? It looks like Bitdefender uses that. How hard would it be to do this?\n\n"
+    },
+    {
+      "id": "197980",
+      "timestamp": "2016-02-24T19:51:47+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e You use the chainloader command do chainload syslinux? It looks like Bitdefender uses that. How hard would it be to do this?\n\nThe issue is different.\n\nThere is no problem whatsoever in chainloading either syslinux or GRUB2 from grub4dos (they are as well linux kernels), the issue comes after, when these tools will look for their configuration files, such as syslinux.cfg or grub.cfg.\n\nThings that may go wrong:\n\n1) the configuration file is not found\n\n2) the configuration file is found but it is written in such a way that assumes something about it\u0027s own locations/paths and devices.\n\nTo remain in grub4dos, to make an example, this:\n\ntitle my first example\n\nroot (hd0,0)\n\nchainloader /myexample\n\nwill work OK, but ONLY if the file is in the device mapped as (hd0,0).\n\nThis one:\n\ntitle my second example\n\nfind --set-root /myexample\n\nchainloader /myexample\n\nwill work on \\*any\\* device.\n\nSo you need not only to chainload the \"original\" loader, but EITHER make sure that it can find its own configuration file ***and*** that the configuration files is \"portable\" OR duplicate the \"original\" loader and the configuration file on the writable media you are booting from ***and*** modify the configuration file in such a way that it finds and boot the target.\n\nIn some cases this is very easy, in some other cases it can be extremely difficult or impossible.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "197984",
+      "timestamp": "2016-02-24T22:44:57+00:00",
+      "author": "Shoshi",
+      "content": "I suppose adding extra complexity when it now works is silly.\n\nThis multiboot disk is really being a pain to get working, I am now having issues with ESET.\n\nESET is based on Ubuntu 12.04. There is no preseed fle as far as I can see.\n\nI have tried multiple strings to boot it and none have worked.\n\nAt first I tried this and I got (initramfs unable to find a medium containing a live file system)\n\n```\ntitle eset3\nls /iso/eset.iso || find --set-root /iso/eset.iso\nmap /iso/eset.iso (0xff)\nmap --hook\nroot (0xff)\nchainloader (0xff)\n\n```\n\nSo then I looked around and tried this set of strings\n\n```\ntitle Eset\nfind --set-root --ignore-floppies /iso/eset.iso\nmap /iso/eset.iso (hd32)\nmap --hook\nroot (hd32)\nkernel /casper/vmlinuz boot\u003dcasper iso-scan/filename\u003d/iso/eset.iso\ninitrd /casper/initrd.lz\n\n```\n\nThere is no seed file at all. I run it verbose and after mounting casper-premount it then spits this out over and over again.\n\n/init: line3: can\u0027t open /dev/sr1: no medium found\n\nAfter around 20 seconds of this I am back at (initramfs unable to find a medium containing a live file system)\n\n"
+    },
+    {
+      "id": "197985",
+      "timestamp": "2016-02-24T23:26:16+00:00",
+      "author": "steve6375",
+      "content": "The latest version of E2B has a version of isoboot which works with eset-sysrescue, but you have to extract the whole casper folder and put it on the E2B usb drive in a \\\\sysrescue folder. There is also a .mnu file for it too...\n\n```\n# eset 1.0.9 - need to extract casper to \\sysrescue on E2B drive!  ISO cheat codes don\u0027t work!\n# you can add quiet and splash to the kernel parameters if you wish and remove the vga\u003dask\n# This does not seem to be persistent and creating an ext2 casper-rw file stops it from booting!\niftitle [if exist /sysrescue/casper/vmlinuz] Eset sysrescue (linux, flat file) \\n Boot to Eset System Rescue\nkernel /sysrescue/casper/vmlinuz  boot\u003dcasper persistent live-media-path\u003d/sysrescue/casper vga\u003dask  --\ninitrd /sysrescue/casper/initrd.lz\n```\n\nyou can remove the persistent and vga\u003dask if you like\n\n"
+    },
+    {
+      "id": "197986",
+      "timestamp": "2016-02-25T00:40:02+00:00",
+      "author": "Shoshi",
+      "content": "If I use e2b then it will not work as a bootable iso right? Lets say I want to boot it as a flat file, how would the menu.lst commands look?\n\n"
+    },
+    {
+      "id": "197988",
+      "timestamp": "2016-02-25T05:50:38+00:00",
+      "author": "Shoshi",
+      "content": "Could issues with the label name and stuff talked about in this post ([http://www.ezbsystem...\\\u0026st\u003d#entry18651](http://www.ezbsystems.com/cgi-bin/ikonboard.cgi?act\u003dST\u0026f\u003d1\u0026t\u003d5311\u0026st\u003d#entry18651 \"External link\")) Be the reeason it is so difficult to boot?\n\nI am still looking for information on if it is possible to flat file boot it instead. If so, how?\n\n"
+    },
+    {
+      "id": "197989",
+      "timestamp": "2016-02-25T06:18:25+00:00",
+      "author": "Shoshi",
+      "content": "So I extracted the entire casper folder to my multiboot cd. I them edited the iso and deleted all of the squashfs files from the iso. It left me with basically a 32meg stub iso. It actually boots with the following commands.\n\n```\ntitle Eset\nfind --set-root --ignore-floppies /iso/eSysRescueLiveCD.iso\nmap /iso/eSysRescueLiveCD.iso (hd32)\nmap --hook\nroot (hd32)\nkernel /casper/vmlinuz boot\u003dcasper iso-scan/filename\u003d/iso/eSysRescueLiveCD.iso\ninitrd /casper/initrd.lz\n```\n\nThere has to be a cleaner way to do this...\n\n"
+    },
+    {
+      "id": "198002",
+      "timestamp": "2016-02-25T07:54:36+00:00",
+      "author": "Shoshi",
+      "content": "My apologies for the rapid succession of posts. Is there a way to move or rename the casper folder? I have tried and editing the corresponding .lst file and either the files are not found and it does not boot or it boots and cannot find a live file system. I want to move it because there\u0027s something else that I want to add that may also need its own casper folder.\n\n**Edited by Shoshi, 25 February 2016 - 07:54 AM.**\n"
+    },
+    {
+      "id": "198012",
+      "timestamp": "2016-02-25T08:13:41+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e My apologies for the rapid succession of posts. Is there a way to move or rename the casper folder? I have tried and editing the corresponding .lst file and either the files are not found and it does not boot or it boots and cannot find a live file system. I want to move it because there\u0027s something else that I want to add that may also need its own casper folder.\n\nAnd again the issue is \"one step further\".\n\nMost probably (please read as \"surely\") that distro has the \"casper\" folder hardcoded in some of the following steps of booting (i.e. long after grub4dos - or other bootloader - has passed control to the internal to the distro booting part).\n\nTo rename it you would need to either re-build the Linux distro from sources or track each and every occurrence of this hardcoded folder name and change/hexedit it, both are far beyond (IMHO) the level of complexity that a \"normal\" user can tackle and in any case simply not worth it.\n\nAny reason that prevents you (where applicable) to use the (hd0,3) partition for the .iso? (not necessarily this one, but maybe the \"other\" one using casper is bootable like that or maybe it accepts correctly the cheatcodes)\n\nAnother (not really safe/tested or recommended) approach could be that of having (say) a caspe1 and a caspe2 folder and rename the folder at boot time to casper from grub4dos.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "198013",
+      "timestamp": "2016-02-25T08:17:52+00:00",
+      "author": "steve6375",
+      "content": "I already gave you menu in post 25   \nFlat file boot using different folder   \n"
+    },
+    {
+      "id": "198014",
+      "timestamp": "2016-02-25T08:23:40+00:00",
+      "author": "Shoshi",
+      "content": "\u003e I already gave you menu in post 25  \n\u003e Flat file boot using different folder\n\nHey Steve! I really do thank you for helping me so much with this. Would I need to use all of the e2b files or could I just grab the isoboot batchfile and integrate that into my existing compilation and such? How would I call it from a menu file?\n\n"
+    },
+    {
+      "id": "198015",
+      "timestamp": "2016-02-25T08:46:05+00:00",
+      "author": "steve6375",
+      "content": "If you **look**at the menu in post #25, you will see that there are no special commands in it or special batch files, etc.\n\nIt is just a straight, plain, old-fashioned grub4dos menu.\n\nIt can be used on any grub4dos implementation.\n\n"
+    },
+    {
+      "id": "198017",
+      "timestamp": "2016-02-25T09:51:59+00:00",
+      "author": "Shoshi",
+      "content": "I did not realize it was just a drop in that did not need to be specially called or anything. Very much appreciated!\n\n"
+    },
+    {
+      "id": "198018",
+      "timestamp": "2016-02-25T10:02:34+00:00",
+      "author": "steve6375",
+      "content": "You can use E2B as both USB and ISO, but the special E2B features (e.g. direct boot from any linux ISO, Wiindows install ISO, partition images, etc.) will not work as a CD.\n\nYou can however use the E2B \u0027framework\u0027 and simply add grub4dos menus (.mnu files) which work the same as any grub4dos menu.\n\nIf you make a \\\\_ISO\\\\MyE2B.cfg file on the E2B USB drive which has\n\n```\n!BAT\nset CD\u003d1\n```\n\nthen when you boot from the USB drive, it will behave as if the USB drive was write-protected and will not use partnew commands even on a USB drive. This would be useful for USB testing before you test the ISO version.\n\nI suggest using the latest version 1.77A, or the latest Beta (1.78) which includes support for an animated logo. Or you can use a GFX Boot menu with E2B (but GFX Boot usually requires quite a bit of tinkering!).\n\nIf you want a general purpose USB\\\\CD to use on any system, I suggest you stick to 800x600 resolution and also use vga\u003dask (or at least have a boot option menu which adds vga\u003dask without splash and quiet for troubleshooting).\n\nYou can MBR-boot to USB via a Plop! CD, and I have also made a Plop!+grub4dos CD which will automatically boot to USB even if the system does not support USB booting.\n\nIt is quite rare these days to find a system that does not support USB booting. However, it is more common to find UEFI systems which will not boot via MBR - for these systems, an E2B USB drive may prove useful.\n\n"
+    },
+    {
+      "id": "198029",
+      "timestamp": "2016-02-25T19:29:29+00:00",
+      "author": "Shoshi",
+      "content": "Thank you! I will try that. I have the latest non beta downloaded. But I will look at the beta. I have integrated plop into my compilation.\n\n"
+    },
+    {
+      "id": "198030",
+      "timestamp": "2016-02-25T19:31:56+00:00",
+      "author": "steve6375",
+      "content": "Why do you need to *integrate* plop?\n\nIf you boot from CD then USB access is not needed.\n\nIf you boot from USB then you already have USB access.\n\nThere is no need for Plop?\n\n"
+    },
+    {
+      "id": "198031",
+      "timestamp": "2016-02-25T20:09:00+00:00",
+      "author": "Shoshi",
+      "content": "I suppose you are right. But this is right now a working ISO so it could be burned to disk and used to boot a USB if needed.\n\nDo you stll recommend g4d 0.4.6a 2015-06-05? Which version does rpmprep stable and beta come with?\n\n**Edited by Shoshi, 25 February 2016 - 08:11 PM.**\n"
+    },
+    {
+      "id": "198036",
+      "timestamp": "2016-02-25T22:16:00+00:00",
+      "author": "Shoshi",
+      "content": "Hey Steve. I was building my new compilation on an ISO that was originally created in xboot. So there is no telling how old the Grub4dos files were. I was looking at your RMPREP and theres the ability to make a bootable USB and then take that same USB and make it a bootable ISO, presumably with up to date g4d files.\n\nI started building my compilation with all lower case names and folders. But using OSCDIMG it only wants to make it all capitol. I want to use OSCDIMG, because I do have a WInPE file I want to use and I may go over 4 gigs. Is the all caps for compatibility reasons? I found out that adding the switch -d will permit lowercase names.\n\n"
+    },
+    {
+      "id": "198037",
+      "timestamp": "2016-02-25T22:31:54+00:00",
+      "author": "steve6375",
+      "content": "RMPrepUSB runs QEMU\\\\makegrub4dosiso.cmd.which uses mkisofs and asks you if you want all upppercase or not by default\n\nif you add oscdimg it will use different switches..\n\nYou can edit the cmd file to change the switches if you like. If adding a -d works for your purposes then add it.\n\nThe cmd file does not change the grldr flle - whatever you have on the USB drive is what will be on the ISO.\n\n"
+    },
+    {
+      "id": "198038",
+      "timestamp": "2016-02-25T22:38:06+00:00",
+      "author": "Shoshi",
+      "content": "Is updating the grldr file all you need to do to update grub4dos? That is if I take the existing iso that was made in xboot and just replace that one file.\n\n**Edited by Shoshi, 25 February 2016 - 10:38 PM.**\n"
+    },
+    {
+      "id": "198039",
+      "timestamp": "2016-02-25T22:49:03+00:00",
+      "author": "steve6375",
+      "content": "You can change version by just changing the \\\\grldr file.\n\nWhen preparing a USB drive and installing grub4dos, there are a few things to realise\n\n1. RMPrepUSB uses a new version of grubinst.exe which creates a more compatible MBR boot sector than older versions.\n\n2. You can install the boot code to the MBR and PBR or both. Some systems boot directly to the PBR.\n\n3. RMPrepUSB can add a 2nd small partition (Boot as HDD C: option). This makes some BIOSes boot the USB drive as a hard disk instead of booting it as a floppy and hanging with a flashing cursor.\n\nFor E2B, I install to MBR and PBR and create the 2nd small hidden partition.\n\nI also use a recent version of grub4dos 0.4.6a. I recommend using it because it has more features (e.g. understands UDF ISOs and has a USB 2.0 rd/wr driver + GPT support + debug features and new commands, etc. etc.). Also, if you do find a bug, it can be reported and fixed easily. Any bugs in old versions will obviously not be fixed and you will just be asked to use the latest version. However, bear in mind that many versions are buggy, so don\u0027t just use the latest version of 0.4.6a (or 0.4.5c) and think that is the \u0027released\u0027 version.\n\nAny version used by E2B or RMPrepUSB in released versions (i.e. ones not ending in a lower case letter) should be OK.\n\n"
+    },
+    {
+      "id": "198058",
+      "timestamp": "2016-02-26T17:58:31+00:00",
+      "author": "Shoshi",
+      "content": "Thanks for all of that awesome information. The new compilation is coming along terrifically. However I am having an issue booting Windows PE up via WIM. It boots fine on USB but it does not boot when in ISO.\n\nI get an error 15. file not found. I have googled and found a few threads that have not been of much help. The following is what I am using to start Win PE\n\n```\ntitle Windows 10 PSE 64                           \nfind   --set-root   --ignore-floppies   --ignore-cd   /bootmgr\nchainloader /bootmgr\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "198059",
+      "timestamp": "2016-02-26T18:08:07+00:00",
+      "author": "steve6375",
+      "content": "you have --ignore-cd, so the first line wont see the cd?\n\nNot sure if that is the problem though...\n\n"
+    },
+    {
+      "id": "198060",
+      "timestamp": "2016-02-26T18:46:50+00:00",
+      "author": "Shoshi",
+      "content": "I figured it out!\n\nIt\u0027s literally this.\n\ntitle Win10PESE  \nchainloader /BOOTMGR\n\n"
+    },
+    {
+      "id": "198061",
+      "timestamp": "2016-02-26T18:56:51+00:00",
+      "author": "steve6375",
+      "content": "find --set-root is not necessary when you know where the files are.\n\nIn fact, it can cause problems if the system has other disks which contain the same file - for instance, it might find \\\\bootmgr on the hard disk and boot to that instead of the one on your CD - which is probably what iwas happening?\n\nI would remove any find commands from all your menus, if I were you.\n\n"
+    },
+    {
+      "id": "198069",
+      "timestamp": "2016-02-26T23:36:52+00:00",
+      "author": "Shoshi",
+      "content": "Does the information here work with Windows 10 based PE\u0027s? [http://www.rmprepusb.../multi_boot-wim](http://www.rmprepusb.com/tutorials/multi_boot-wim \"External link\")\n\n"
+    },
+    {
+      "id": "198070",
+      "timestamp": "2016-02-26T23:39:29+00:00",
+      "author": "steve6375",
+      "content": "It should do.\n\nP.S. E2B can boot from WIM and VHD files - just copy them onto the USB drive and boot! :wink:\n\n"
+    },
+    {
+      "id": "198071",
+      "timestamp": "2016-02-26T23:41:36+00:00",
+      "author": "Shoshi",
+      "content": "Can I rename the wim files? When you say E2B you mean my compilation using the isoboot.g4b file? I am really only using that from E2B.\n\n"
+    },
+    {
+      "id": "198072",
+      "timestamp": "2016-02-26T23:47:17+00:00",
+      "author": "steve6375",
+      "content": "The wim files can be any name and in any folder (but keep the .wim file extension).\n\nIt uses QRUN.g4b and files in the \\\\_ISO\\\\e2b\\\\grub\\\\DPMS\\\\NTBOOT.MOD folder.\n\nIf you look at the QRUN.g4b file and find the :.wim label, you will see how it works.\n\nNTBOOT was written by Chenal and I modified it slightly. It needs a copy of bootmgr to be in the NTBOOT.MOD folder or the root too (not the WIN10 version of bootmgr).\n\n**Edited by steve6375, 26 February 2016 - 11:59 PM.**\n"
+    },
+    {
+      "id": "198074",
+      "timestamp": "2016-02-27T00:00:07+00:00",
+      "author": "Shoshi",
+      "content": "Thank you! Let\u0027s say I want to use qrun and the ntboot.mod folder. if I move them to my compilations boot folder, would that be possible? The DPMS folder is over 60 megs. I just want to know what files I need. I looked at the ::wim section. I know if I move the stuff I would need to alter the pathing in the section.\n\n"
+    },
+    {
+      "id": "198078",
+      "timestamp": "2016-02-27T00:06:09+00:00",
+      "author": "steve6375",
+      "content": "You must have downloaded the DPMS version - you don\u0027t need that version unless you intend to install XP.\n\nYou don\u0027t need QRUN.g4b, just use the code from it\n\ne.g.\n\n```\n# ISOC has wim file, bootmgr is in root, no BCD needed\nset ISOC\u003d/myfolder/myboot.wim\n/_ISO/e2b/grub/NTBOOT NT6\u003d%ISOC% NTLDR\u003d/bootmgr\n```\n\nso you need the \\\\_ISO\\\\e2b\\\\grub folder and the NTBOOT.MOD subfolder.\n\nProbably just the NTBOOT file is needed in the grub folder (but it may use some other files??? - can\u0027t remember??)\n\nNTBOOT is a grub4dos text file (batch file), it assumes there is a DPMS\\\\NTBOOT.MOD folder below where NTBOOT is.\n\nso\n\n\\\\xxx\\\\yyy\\\\NTBOOT\n\n\\\\xxx\\\\yyy\\\\DPMS\\\\NTBOOT.MOD folder\n\nshould work.\n\n**Edited by steve6375, 27 February 2016 - 12:13 AM.**\n"
+    },
+    {
+      "id": "198080",
+      "timestamp": "2016-02-27T00:53:15+00:00",
+      "author": "Shoshi",
+      "content": "I am getting windows failed to start errors when it changes to use NTBOOT. My directory structure and everything should be fine.\n\n\\\\_ISO\\\\e2b\\\\grub\\\\DPMS\\\\NTBOOT.MOD has all of the files in there including BOOTMGR I have tried a different versions of the BOOTMGR\n\n\\\\_ISO\\\\e2b\\\\grub has the NTBOOT file and nothing else. It has no extension, should it have the g4b extension on it?\n\n**Edited by Shoshi, 27 February 2016 - 01:47 AM.**\n"
+    },
+    {
+      "id": "198085",
+      "timestamp": "2016-02-27T04:15:35+00:00",
+      "author": "Shoshi",
+      "content": "OK, I have moved files around, made sure things were in place that I think they should be in place. Tried a few different bootmgr files and I still get the status 0xc000000e error. Ugh...\n\n"
+    },
+    {
+      "id": "198086",
+      "timestamp": "2016-02-27T04:32:41+00:00",
+      "author": "Shoshi",
+      "content": "It seems to kinda work on a USB not as an ISO. The windows loading screen appears and it finishes. Then an error appears.\n\nit involves winload.exe and 0xc0000428\n\nthe signature could not be verified.\n\n"
+    },
+    {
+      "id": "198088",
+      "timestamp": "2016-02-27T08:15:35+00:00",
+      "author": "steve6375",
+      "content": "Are you using a recent version of grub4dos - e.g. 2016-02-26 0.4.6a is latest version and seems good.\n\nIs the wim file a PE-in-RAM file (i.e. loads as X:) and is it bootable? You cannot boot a flat-file wim.\n\nTry with a \\\\sources\\\\boot.wim file from an standard MS Windows Install ISO.\n\nTry on a standard E2B USB drive just to make sure it works.\n\nI have never tried NTBOOT from a CD - so that may well not work or require some tweaking...\n\n**Edited by steve6375, 27 February 2016 - 08:38 AM.**\n"
+    },
+    {
+      "id": "198090",
+      "timestamp": "2016-02-27T09:07:33+00:00",
+      "author": "Shoshi",
+      "content": "I ended up using the version of G4D that the latest non beta of RMPrep uses. I scraped having it boot the wims directly and I am jut using the whole ISO or booting and it works fine! Going the WIM way only saved a little bit of space. I will still give the options you gave me a look.\n\n"
+    },
+    {
+      "id": "198109",
+      "timestamp": "2016-02-28T01:15:58+00:00",
+      "author": "Shoshi",
+      "content": "I have been doing research and Is there a more elegant solution available now to make a splash screen with no menu? I have looked at [http://www.rmprepusb...o-menu-on-boot-](http://www.rmprepusb.com/tutorials/57---automatic-grub4dos-menu#TOC-Splash-Screen-Only-no-menu-on-boot- \"External link\")\n\n"
+    },
+    {
+      "id": "198111",
+      "timestamp": "2016-02-28T05:10:54+00:00",
+      "author": "Shoshi",
+      "content": "Is there an easy way to add a welcome screen to gfxboot? I am using that for my menus. To get the splash I had made a new menu.lst that did not include the gfxboot code so it would just simply load a background graphic as a splash and then call menu2.lst that has the gfxboot code and the menu entries. But if there\u0027s a way to add a welcome screen to gfxboot that would be awesome.\n\n"
+    },
+    {
+      "id": "198112",
+      "timestamp": "2016-02-28T07:30:41+00:00",
+      "author": "Shoshi",
+      "content": "As it is using the information provided all of the text is hidden except the bottom text that tells you to use the arrows to make a selection and stuff.\n\n"
+    },
+    {
+      "id": "198114",
+      "timestamp": "2016-02-28T08:49:51+00:00",
+      "author": "steve6375",
+      "content": "The new grub4dos can display a graphic bitmap/jpeg with a delay using the new splashimage --animate command.\n\nYou can display one file for a number of 1/18ths of a second, or a whole sequence for animation.\n\n[http://reboot.pro/to...-grub4dos-046a/](http://reboot.pro/topic/21012-new-features-in-grub4dos-046a/ \"\")\n\nYou can move/hide the help text using the new setmenu command in grub4dos.\n\n"
+    },
+    {
+      "id": "198127",
+      "timestamp": "2016-02-28T10:48:04+00:00",
+      "author": "Shoshi",
+      "content": "Would you recommend such a new version of g4d?\n\n"
+    },
+    {
+      "id": "198128",
+      "timestamp": "2016-02-28T10:49:35+00:00",
+      "author": "steve6375",
+      "content": "latest one seems good [2016-02-26 0.4.6a](http://dl.grub4dos.chenall.net/grub4dos-0.4.6a-2016-02-26.7z \"External link\")\n\n"
+    },
+    {
+      "id": "198130",
+      "timestamp": "2016-02-28T11:24:08+00:00",
+      "author": "Shoshi",
+      "content": "Upgraded and got rid of the box and version text. Unsure how to hide the help and menu text.\n\nIs there a way to have my config file menu redirect function without a menu entry? I removed the title tag and it just automatically went to the next menu instead of listening to the timeout.\n\n**Edited by Shoshi, 28 February 2016 - 11:24 AM.**\n"
+    },
+    {
+      "id": "198133",
+      "timestamp": "2016-02-28T12:06:39+00:00",
+      "author": "steve6375",
+      "content": "move the help outside the display to line 90\n\nsetmenu --help\u003d0\u003d0\u003d90\n\nNot sure what you mean about config file? What do you have at the moment?\n\n"
+    },
+    {
+      "id": "198134",
+      "timestamp": "2016-02-28T12:11:12+00:00",
+      "author": "Shoshi",
+      "content": "My menu. This is just supposed to be purely a splash image that after 6 seconds redirects to my actual menu.  \n\n```\nclear\ndebug off\ngraphicsmode -1 1024 768 32\nsplashimage /bsg.bmp\ntimeout 6\n\nsetmenu  --box l\u003d0  --ver-off\n\n\ntitle Main menu\nconfigfile /boot/grub4dos/menu.lst\n\n\n\n\n```\n\n\u003cbr /\u003e\n\n**Edited by Shoshi, 28 February 2016 - 01:07 PM.**\n"
+    },
+    {
+      "id": "198139",
+      "timestamp": "2016-02-28T13:26:33+00:00",
+      "author": "steve6375",
+      "content": "try\n\n```\nsetmenu --box y\u003d40\n```\n\nto set the menu to start at line 40 (only 37 lines in 800x600) - so is off screen\n\n"
+    },
+    {
+      "id": "198149",
+      "timestamp": "2016-02-28T21:06:35+00:00",
+      "author": "Shoshi",
+      "content": "That works! I just noticed though, If I press a key while the splash screen is loading it stops the redirect. Is there a way to disable that?\n\n"
+    },
+    {
+      "id": "198150",
+      "timestamp": "2016-02-28T21:11:34+00:00",
+      "author": "steve6375",
+      "content": "If you can wait a day or two for a new version of grub4dos, you can use the new splashimage --animated command to display any bitmap for a period of time. There is a small bug at the moment - if you set a time of say 6 seconds it does not actually display the bitmap for 6 seconds and then displays it for 6 seconds. Once that is fixed, you wont need to use any tricks.\n\n"
+    },
+    {
+      "id": "198151",
+      "timestamp": "2016-02-28T21:21:20+00:00",
+      "author": "steve6375",
+      "content": "or try this\n\n```\ngraphicsmode -1 800\nsplashimage /_ISO/e2b/grub/background.bmp.gz\n# set cursor mode and show graphics\ncall Fn.70 3\nclear\n# delay 3 secs\ncall Fn.73 3\n# restore cursor mode\ncall Fn.70 2\n```\n\nFunction calls are detailed on my site [here](http://www.rmprepusb.com/tutorials/grub4dos/grub4dos-internal-variables-and-functions \"External link\").\n\nEdit: To hide the cursor, move it off the screen\n\ncall Fn.5 0 38\n\n**Edited by steve6375, 28 February 2016 - 09:58 PM.**\n"
+    },
+    {
+      "id": "198152",
+      "timestamp": "2016-02-28T23:12:50+00:00",
+      "author": "Shoshi",
+      "content": "This will prevent keystrokes from interacting wit my splash screen?\n\n"
+    },
+    {
+      "id": "198153",
+      "timestamp": "2016-02-28T23:21:33+00:00",
+      "author": "steve6375",
+      "content": "yes.\n\n"
+    },
+    {
+      "id": "198154",
+      "timestamp": "2016-02-28T23:41:09+00:00",
+      "author": "Shoshi",
+      "content": "I must not be doing it correctly. I have added it to my existing lst file and it did no work and I put alone in a lst file and it did not seem to work. The following code seems to work (except keypresses can stop the timeout, etc)\n\nI wonder if there is another way to add a splash boot image. I have checked into GFXBOOT and I know it can do it, but itis not easy. I was able to fnd the rippergfx download by using the wayback machine. I know you have messed with it and did not have much luck.I am a bit scared to mess with it as a [few virus engines detect it as having malware](https://www.virustotal.com/en/file/06c7b0c2e2cfc4fca7138a9d1bb92728713d546114e2c7b4f72c97ded5afefed/analysis/1456702712/ \"External link\"). Not sure if is false positives.\n\n```\nclear\ndebug off\ngraphicsmode -1 1024 768 32\nsplashimage /bsg.bmp\ntimeout 6\n\nsetmenu  --box l\u003d0  --ver-off --help\u003d0\u003d0\u003d90  --box y\u003d80\n\n\ntitle\nconfigfile /boot/grub4dos/menu.lst\n\n\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "198156",
+      "timestamp": "2016-02-29T01:12:32+00:00",
+      "author": "Shoshi",
+      "content": "I just made a second GFXBOOT file that is only linked to my splash menu.lst and it works except hitting key stops the timeout countdown.\n\n```\ndefault 0\ntimeout 6\ngfxmenu /splash.gfx\n\n\ntitle\nconfigfile /boot/grub4dos/menu.lst\n\n\n```\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "198169",
+      "timestamp": "2016-02-29T19:16:59+00:00",
+      "author": "steve6375",
+      "content": "[Here](https://onedrive.live.com/redir?resid\u003d8A0F146CC7416BA9!2276\u0026authkey\u003d!AOSC-4MN9q6GiGM\u0026ithint\u003dfile%2C \"External link\") is latest 2016-02-29 0.4.6a which has fixed the splashimage bug I mentioned earlier. It may not be the final version, but at least you can try the splashimage command now to display a \u0027boiler plate\u0027 for a number of seconds\n\ne.g.\n\ngraphicsmode -1 800\n\nsplashimage /background.bmp \\\u003e nul\n\nclear\n\ndebug 0\n\n#display boilerplate for 5 seconds (90/18)\n\nsplashimage --animated\u003d1\u003d90\u003d1\u003d300\u003d300 /boilerplate.bmp \\\u003e nul\n\ntitle ddddd\n\netc.\n\n"
+    },
+    {
+      "id": "198174",
+      "timestamp": "2016-03-01T04:04:23+00:00",
+      "author": "Shoshi",
+      "content": "Tanks for the update! Is this new boilerplste method more like an actual splash intro screen? Would pressing a key interrupt the timer?\n\n"
+    },
+    {
+      "id": "198176",
+      "timestamp": "2016-03-01T08:41:22+00:00",
+      "author": "steve6375",
+      "content": "It plays an animation sequence (or just one picture) with a specified delay. It cannot be interrupted by the user. Why not try it and you will see?\n\n"
+    },
+    {
+      "id": "198187",
+      "timestamp": "2016-03-01T12:30:41+00:00",
+      "author": "steve6375",
+      "content": "Chenall latest version 0.4.6a is [here](https://onedrive.live.com/redir?resid\u003d8A0F146CC7416BA9!2276\u0026authkey\u003d!AOSC-4MN9q6GiGM\u0026ithint\u003dfile%2C \"External link\"). Currently 2016-01-03. This can support frames 001-999 for animation now. Looks good. Just help text needs updating and Chenall will probably release it.\n\n"
+    },
+    {
+      "id": "198208",
+      "timestamp": "2016-03-02T15:14:01+00:00",
+      "author": "Shoshi",
+      "content": "That sounds like what I am looking for! However, I am going to hold off on the splash screen until a more stable release is available. Unless you are comfortable with such a bleeding edge build.\n\nThanks again! You have been an immense help!\n\n"
+    }
+  ]
+}

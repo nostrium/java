@@ -1,0 +1,52 @@
+{
+  "id": "14961",
+  "title": "Boot and run Windows from the external hard drive or even a stick.",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "132847",
+      "timestamp": "2011-07-12T14:52:21+00:00",
+      "author": "calfared",
+      "content": "Hello,  \n\nI looked on the web too, made many trials and tests, but still did not get what I need. I also read a lot in this forum, but each did get more confused.  \n\nMy notebook no longer works to connect the internal hard drive, because it has some defect in the connector. I took workshops for repair, but it was not worth fixing, it would have to replace the motherboard.  \nI tried to connect the external USB hard drive and of course did not start in Windows.  \nI install Linux to use a provisional to find a better solution.  \nPreviously, the laptop works fine with Windows XP, but also may work with Windows 7.  \nWhat I do is to boot Windows and run the external hard drive or even a stick.  \nI researched a lot on the web and could not get a good solution and would appreciate a suggestion to resolve this situation.  \n\nI want an external harddrive boot this laptop, just that, ie, load Windows and I was able to use as an internal harddrive. The external harddrive may be new.  \n\nThanks   \n"
+    },
+    {
+      "id": "132852",
+      "timestamp": "2011-07-12T15:50:01+00:00",
+      "author": "Wonko the Sane",
+      "content": "You did not search deep or long enough. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nReady made solution:  \n[http://www.usboot.org/tiki-index.php](http://www.usboot.org/tiki-index.php \"External link\")  \n\nThe above will work allright on \"working\" hardware.  \n\nAlternate:  \n[http://www.911cd.net...showtopic\u003d22473](http://www.911cd.net/forums//index.php?showtopic\u003d22473 \"External link\")  \n\nCheck the tutorials by Dietmar Stoelting (they are linked to in his signature):  \n[http://www.911cd.net...showtopic\u003d14181](http://www.911cd.net/forums//index.php?showtopic\u003d14181 \"External link\")  \n\nFor anything but the \"automated\" usboot.org you will need to take the Red pill and explore the rabbit hole (which ***is*** deeper than you might think ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)) ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif).  \n\nThe suggestion you were already given on 911CD:  \n[http://www.911cd.net...showtopic\u003d24426](http://www.911cd.net/forums//index.php?showtopic\u003d24426 \"External link\")  \n(although extremely long and complex due to a number of factors related to the actual hardware used and of some quirks due to the previous lack of experience of the user) was correct, assuming that you wanted to use an existing install of XP, if you want a new install, the above given are the \"main\" possibilities.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "133195",
+      "timestamp": "2011-07-18T01:26:24+00:00",
+      "author": "calfared",
+      "content": "\u003e You did not search deep or long enough. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\u003e\n\u003e Ready made solution:  \n\u003e [http://www.usboot.org/tiki-index.php](http://www.usboot.org/tiki-index.php \"External link\")  \n\u003e\n\u003e ...\n\n\u003cbr /\u003e\n\nHello,  \n\nFor information, I used the method [http://www.usboot.org/tiki-index.php](http://www.usboot.org/tiki-index.php \"External link\")  \non another computer and got the external hard work and load Windows. There was an error loading the Windows \"virtual memory\" or \"paging\", but click OK and loaded Windows.   \nThis was done on another computer and not the notebook that is faulty.  \n\nI removed the external hard drive of your computer and put the external hard drive in your notebook. An error occurred \"out of ntldr\". I copied the boot files BOOT, NTLDR and NTDETECT the old original HD Notebook for this new external hard drive, but keep on with that same error \"out of ntldr\". thumbdown.gif  \n\nMy next step: Make a clone of the original HD Notebook (because I want to preserve it) and start the method of [http://www.usboot.org/tiki-index.php.](http://www.usboot.org/tiki-index.php. \"External link\")   \n\nThanks   \n"
+    },
+    {
+      "id": "133208",
+      "timestamp": "2011-07-18T08:14:41+00:00",
+      "author": "Wonko the Sane",
+      "content": "There is NO error such as \"out of NTLDR\".  \nPost the EXACT text of the error. (even if in brazilian/portuguese)  \nIt is likely that it is a \"missing NTLDR\" kind of error (which you see as white txt on black background) which usually is related to a problem with the bootsector (typically \"wrong CHS geometry\").  \nIf the notebook is a Lenovo this is \"typical\" (but other brands/models may have the same kind of issue).  \nBasically the BIOS maps the disk (when internally connected) as having a geometry of 240 heads, whilst once the same disk is inside an USB encliosure it maps the disk as having the \"normal\" 255 heads.  \nYou can remove the CHS check in the bootsector, see here:  \n\u003chttp://reboot.pro/8528/page__st__21\u003e  \nBut it is possible that you also need to correct data in the partition table in the MBR (and the given thread on 911CD also contains related info to this).  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "133642",
+      "timestamp": "2011-07-23T23:40:17+00:00",
+      "author": "calfared",
+      "content": "I installed Windows XP and run the external hard drive, thanks to your help.   \n\nI want to thank everyone for the help.   \n\nLike I said, I followed the tutorial [http://www.usboot.org/tiki-index.php](http://www.usboot.org/tiki-index.php \"External link\")   \n"
+    },
+    {
+      "id": "170249",
+      "timestamp": "2013-03-27T22:36:46+00:00",
+      "author": "locoloco",
+      "content": "I found how to boot windows 7 on a external hard drive by using a program called PWBoot.\n\nAgain, the name is PWBoot.\n\nIt took me ages to find a program like this.\n\nAll you have to do is install windows Vista or windows 7 by connecting the drive on ata or ide. Then after the installation is over, you boot into windows and install the program PWBoot. From that moment on, your hard drive will be able to boot from a USB. Sweet uh?\n\n"
+    },
+    {
+      "id": "170277",
+      "timestamp": "2013-03-28T09:08:46+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I found how to boot windows 7 on a external hard drive by using a program called PWBoot.\n\u003e\n\u003e Again, the name is PWBoot.\n\u003e\n\u003e It took me ages to find a program like this.\n\u003e\n\u003e All you have to do is install windows Vista or windows 7 by connecting the drive on ata or ide. Then after the installation is over, you boot into windows and install the program PWBoot. From that moment on, your hard drive will be able to boot from a USB. Sweet uh?\n\nReally? ![:unsure:](http://reboot.pro/public/style_emoticons/default/unsure.png)\n\nGuess WHERE PWboot has been published/is available? ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)\n\n[http://reboot.pro/to...st-version-302/](http://reboot.pro/topic/6851-project-pwboot-latest-version-302/ \"\")\n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)\n\nWonko\n\n"
+    }
+  ]
+}

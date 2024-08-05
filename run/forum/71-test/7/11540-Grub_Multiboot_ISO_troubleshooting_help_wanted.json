@@ -1,0 +1,40 @@
+{
+  "id": "11540",
+  "title": "Grub Multiboot ISO troubleshooting help wanted",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "101094",
+      "timestamp": "2010-05-28T14:25:20+00:00",
+      "author": "Alloishus",
+      "content": "My intent is to create a Bootable USB drive that will allow me to select many .isos.   \n\nI have found and followed the directions at [http://www.pendrivel...b-multiboot-usb](http://www.pendrivelinux.com/boot-multiple-iso-from-usb-multiboot-usb \"External link\"), several times on the same USB device.   \n\nI understand different ISOs need different menu.lst options.   \n\nSo, my problem...........................  \n\nI tested this on two different systems, 1. Ubuntu Asus netbook 2. HP Windows Desktop.   \n\nSo, scenario 1:  \nOn the Ubuntu netbook, I have it set to boot from USB as 1st device, and have the internal hard drive disabled.  \n\nThe USB drive boots, apparently from the USB device. I get the grub prompt, and I have to type in root (fd0). At this point I get the correct menu, splash screen, and can select and boot my ISOs.  \n\nScenario 2:  \nSame boot setup as above, but with no option to disable hard drive (like in Asus BIOS). However, apparently it boots from the USB drive, I get the grub prompt, but when I do \"root (\\\u003cTAB\\\u003e\", I get Error 25: Device Read Error.   \n\nI cannot figure out how it can boot from the device, and then not be able to read from it. I am not able to find any devices at this point.   \n\nAny help with either/or situation would be awesome. I can wipe out the USB drive as much as needed.  \n\nRegards,  \n\n- Allo.   \n"
+    },
+    {
+      "id": "101103",
+      "timestamp": "2010-05-28T16:20:37+00:00",
+      "author": "Wonko the Sane",
+      "content": "HOW did you partition/format the USB stick?  \n\nThere are a lot of quirks in BIOS, it wouldn\u0027t be the first time that a \"normal\" (otherwise working) partitioning/formatting won\u0027t result in something actually booting properly as HD-like device on \"peculiar\" machines.  \n\nMy suggestions are:  \n\n* try RMPREPUSB first, with the 2PTN option\n* if it doesn\u0027t work, try FBINST\n\n\u003cbr /\u003e\n\nSticky in this same Forum:  \n[http://www.boot-land...?showtopic\u003d9460](http://www.boot-land.net/forums/index.php?showtopic\u003d9460 \"External link\")  \n\nBe aware that RMPREPUSB is (mostly) straightforward, FBINST is a bit more complex, if you run XP or similar NT based system you can use this batch to easen the install of FBINST:  \n[http://www.boot-land...?...c\u003d11463\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d11463\u0026hl\u003d \"External link\")  \n\n![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif)  \nWonko   \n"
+    },
+    {
+      "id": "101105",
+      "timestamp": "2010-05-28T16:55:38+00:00",
+      "author": "Alloishus",
+      "content": "The multibootISOx.exe has a checkbox for formatting. Just for completeness, I low level formatted the disk using HDDGuru Low Level Disk Formatter. Then I ran multibootisos.exe, and checked the box to format it with Fat32. I only need 1 partition as far as I can tell...But admittedly, the multibootISO.exe program might be doing something else.   \n\nThanks for those links and response. I\u0027ll try those and get back with results.   \n"
+    },
+    {
+      "id": "101178",
+      "timestamp": "2010-05-29T16:29:13+00:00",
+      "author": "Alloishus",
+      "content": "Thanks Wonko.   \n\nRMPREPUSB did the trick and all works in the world now.   \n"
+    },
+    {
+      "id": "101180",
+      "timestamp": "2010-05-29T16:56:48+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Thanks Wonko.\nOnly too happy ![:thumbsup:](http://reboot.pro/public/style_emoticons/default/thumbsup.gif) to have contributed to another happy bunny:  \n[http://www.msfn.org/...o...28727\\\u0026st\u003d10](http://www.msfn.org/board/index.php?showtopic\u003d128727\u0026st\u003d10 \"External link\")  \n\n:wink:  \nWonko   \n"
+    }
+  ]
+}

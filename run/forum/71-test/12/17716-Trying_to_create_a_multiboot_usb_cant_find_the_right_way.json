@@ -1,0 +1,34 @@
+{
+  "id": "17716",
+  "title": "Trying to create a multiboot usb, can\u0027t find the right way",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "162518",
+      "timestamp": "2012-10-30T21:53:58+00:00",
+      "author": "pnikkosis",
+      "content": "Hi everyone, sorry if this sounds a bit newbie, but I\u0027m trying to create a multiboot usb. I have a couple of ISOs i\u0027d like to boot, mainly it\u0027s an AIO Win7 iso, gparted and backtrack5. (sometimes I use ophcrack or hirens, but that can be discarded).  \nI have tried xboot, yumi, sardu; but there seems to be more to it than just selecting the ISOs.  \nCan anyone give me a hand? I have problems already in something simple as gparted not booting (and it\u0027s supported by all this programs). I formatted to FAT32 before trying every program, but still no luck. I used the microsoft tool to make a usb stick with a win7 install iso, and I have another one with gpard working, but the idea is carrying just one stick, not one for every iso.  \nCan this 3 things be in one same usb stick?   \n\n**Edited by pnikkosis, 30 October 2012 - 10:02 PM.**\n"
+    },
+    {
+      "id": "162520",
+      "timestamp": "2012-10-30T23:50:23+00:00",
+      "author": "steve6375",
+      "content": "Yes. Grub4dos can do these 3 and more. See tutorials on my site. You can even have Vista 32\\\u002664, Win7 32\\\u002664, Server 2008R2 and Win8 installs on same USB boot drive, + ophcrack + hirens + BT5 + gparted + many linux OS\u0027s + UBCD + many more - all on same USB drive. Just follow each tutorial and add to the menu.lst file.  \n\nGparted - Tutorial 14  \nBT5 - Tutorial 9  \nWin7 Install ISO - Tutorial 43  \nHirens - Tutorial 36  \nOphcrack - Tutorial 13   \n"
+    },
+    {
+      "id": "162576",
+      "timestamp": "2012-10-31T13:05:20+00:00",
+      "author": "pnikkosis",
+      "content": "Yes I\u0027ve been looking at the tutorials. Something I don\u0027t quite understand is... the first (or one of the firsts) steps is to prepare the usb for the iso.. which involves formatting in some way. But for different ISOs the options to prepare it are different, for example, for backtrack you select MS-DOS bootable, but for windows it\u0027s WinPE + boot as HDD.  \nSo I don\u0027t quite understand how should I format it for all of the ISOs to work, and create the menu which leads me to select the proper ISOs.  \nBTW couldn\u0027t find the gparted tutorial, 14 it\u0027s \"Crack or clear your BIOS password with PC CMOS CLEANER (uses Parted Magic)\"   \n"
+    },
+    {
+      "id": "162577",
+      "timestamp": "2012-10-31T13:10:21+00:00",
+      "author": "steve6375",
+      "content": "If grub4dos is installed then the bootloader option is irrelevant (any choice will do). If you are making a multiboot drive, I would suggest you use FAT32 as some linux distros and DOS cannot read NTFS. You will however have the 4GB max file size limit.  \nTut 14 has gparted in it - example menus for pure gparted can be found in the grub4dos tutorial #21 Examples section.   \n"
+    }
+  ]
+}

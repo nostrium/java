@@ -1,0 +1,34 @@
+{
+  "id": "11415",
+  "title": "How can I recover lost files from ipod",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "100258",
+      "timestamp": "2010-05-16T06:35:05+00:00",
+      "author": "Rance Lucifinil",
+      "content": "when I pluged ipod into my computer, it tells me that I need to format the ipod.  \n\nIf i did so, then all of my data will go. I can\u0027t do that.  \n\nHow can I recover that?  \n\nI didn\u0027t make a backup. Sucks.  \n\nI checked many data recovery software, they can\u0027t fix this problem, like recuva, diskgetor, etc. they can\u0027t run in Mac   \n"
+    },
+    {
+      "id": "100260",
+      "timestamp": "2010-05-16T07:11:36+00:00",
+      "author": "Master of Disaster",
+      "content": "u need 2 plug ur ipod 2 a different pc with different OS that mean if u r using xp now u should plug 2 vista or 7 and make the back up u want before formating the ipod.ithink this will work with you.i dont know if other users hav other idea.lets wait and c their opinions.   \n"
+    },
+    {
+      "id": "100264",
+      "timestamp": "2010-05-16T08:34:45+00:00",
+      "author": "Wonko the Sane",
+      "content": "@Rance  \nFirst thing you should do (and also MAC\u0027s should have available dd or a similar tool) would be to make a \"forensic like\" image of the whole disk of the I-pod.  \n\nThen work on the image instead of on the device.   \n\nIn any case, if you only have a MAC, you most probably have better assistance/advice on a MAC forum, here people are mostly Windows/Linux users on PC\u0027s.  \n\nHere is a nice sum-up:  \n[http://guides.macrum...gs_from_an_iPod](http://guides.macrumors.com/Recovering_Songs_from_an_iPod \"External link\")  \n\nPHOTOREC:  \n[http://www.cgsecurit...g/wiki/PhotoRec](http://www.cgsecurity.org/wiki/PhotoRec \"External link\")  \nnow runs on MAC\u0027s too  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "100286",
+      "timestamp": "2010-05-16T13:11:56+00:00",
+      "author": "JonF",
+      "content": "On the PC [Media Widget](http://www.easyipodtransfer.com/ipod-to-itunes-transfer \"External link\") has performed well for me on several occasions. You can transfer a big library without buying it but it\u0027s tedious. There are others out ther in the $15-$40 price range, but I haven\u0027t tried them. I bet there are such things for the Mac.   \n"
+    }
+  ]
+}

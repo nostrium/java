@@ -1,0 +1,94 @@
+{
+  "id": "21994",
+  "title": "Windows 10 setup won\u0027t boot in UEFI GPT mode by Rufus",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "210684",
+      "timestamp": "2019-04-14T05:00:07+00:00",
+      "author": "SoloKing",
+      "content": "I used Rufus to make a bootable USB using an ISO of Windows 10 Pro while setting the \"Partition Scheme\" to GPT \\\u0026 \"File System\" to FAT32, BIOS set to boot in \"UEFI only\" mode \\\u0026 \"Secure Boot\" feature was disabled.\n\nNow, the Boot Screen detects the USB drive as UEFI device but the problem is that it never starts the installation process after being selected! It just goes back to the Boot Screen.\n\nI tried enabling CSM \\\u0026 legacy boot mode, as well as changing the USB port used, but to no avail.\n\nMy Mobo is Gigabyte x370 K7.\n\nYour help is highly appreciated.\n\nThanks so much guys!  \n\n"
+    },
+    {
+      "id": "210687",
+      "timestamp": "2019-04-14T08:28:09+00:00",
+      "author": "steve6375",
+      "content": "When the USB drive is listed in the BIOS Boot Selection menu, is it listed by Make and Model (how exactly is it listed)?\n\nWhen you select it, does the USB LED activity light flash at all as it tries to boot from it?\n\nDid you disable Fast Boot in the BIOS settings?\n\nIs there a \\\\EFI\\\\BOOT\\\\BOOTX64.EFI file on the USB drive?\n\nCan you boot from the same USB drive on another system?\n\nIs your USB drive tested and known to be good (or recently purchased and possibly fake or faulty)?\n\n**Edited by steve6375, 14 April 2019 - 08:36 AM.**\n"
+    },
+    {
+      "id": "211461",
+      "timestamp": "2019-06-04T09:39:00+00:00",
+      "author": "adamsli",
+      "content": "What\u0027s the Windows 10 ISO size? The burning process could fail if it extends 4G. You can also try another ISO to USB burning utility as Rufus doesn\u0027t work sometimes.\n\n"
+    },
+    {
+      "id": "211464",
+      "timestamp": "2019-06-04T11:48:53+00:00",
+      "author": "Garcia90",
+      "content": "I have the exact same problem. What could be a possible solution?\n\n"
+    },
+    {
+      "id": "211465",
+      "timestamp": "2019-06-04T11:51:51+00:00",
+      "author": "steve6375",
+      "content": "Really? \u0027exact same problem\u0027? How on earth do you know when you don\u0027t even know what ISO was used or what USB drive was used?\n\nIf you want answers, give DETAILS and answer the questions in the above posts!\n\n"
+    },
+    {
+      "id": "211466",
+      "timestamp": "2019-06-04T13:14:00+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e Really? \u0027exact same problem\u0027? How on earth do you know when you don\u0027t even know what ISO was used or what USB drive was used?\n\u003e\n\u003e If you want answers, give DETAILS and answer the questions in the above posts!\n\nMaybe same problem as in:\n\nUnknown ISO on unknown device (but on same EXACT motherboard Gigabyte x370 K7) Windows 10 setup won\u0027t boot in UEFI GPT mode by Rufus? ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\n![:lol:](http://reboot.pro/public/style_emoticons/default/laugh.png)\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "211481",
+      "timestamp": "2019-06-05T00:46:49+00:00",
+      "author": "Slimaure",
+      "content": "I recommended use dvd media   \n"
+    },
+    {
+      "id": "211482",
+      "timestamp": "2019-06-05T09:01:36+00:00",
+      "author": "Garcia90",
+      "content": "When the USB drive is listed in the BIOS Boot Selection menu, is it listed by Make and Model (how exactly is it listed)?  \n\nAns) By Model Of The Drive  \n\nWhen you select it, does the USB LED activity light flash at all as it tries to boot from it?  \n\nAns) No Led In The Drive  \n\nDid you disable Fast Boot in the BIOS settings?  \n\nAns) No Fast Boot Option. Secure Boot was Disabled  \n\nIs there a \\\\EFI\\\\BOOT\\\\BOOTX64.EFI file on the USB drive?  \n\nYes  \n\nCan you boot from the same USB drive on another system?  \n\nYes  \n\nIs your USB drive tested and known to be good (or recently purchased and possibly fake or faulty)?  \n\nAns) I use it everyday.\n\nI am using the latest Win 10 Image built with Rufus and on a HP Laptop 15 r033tx.\n\nAlso if the issue gets resolved I would like to post the info [here](https://silicophilic.com \"External link\"). Is that okay with you?\n\n**Edited by Garcia90, 05 June 2019 - 09:04 AM.**\n"
+    },
+    {
+      "id": "211483",
+      "timestamp": "2019-06-05T09:30:27+00:00",
+      "author": "steve6375",
+      "content": "So is your boot problem with HP Laptop 15 r033tx or Gigabyte x370 K7?\n\nPlease give exact details!\n\nWhen listed in the pop-up F8/F12 menu - how EXACTLY is it listed?\n\ne.g. what text is actually displayed...\n\nUSB: SanDisk\n\nUSB:UEFI: SanDisk\n\nUSB:HDD: SanDisk\n\netc?\n\nWhich options have you tried?\n\nSince it boots on \u0027another\u0027 unknown system, the problem must be with the target system\u0027s BIOS or BIOS settings - I would investigate all BIOS settings to look for options to do with USB and booting, etc, and maybe reset some of the UEFI options.\n\nDoes this \u0027bad\u0027 system boot to any other USB drive (Legacy or UEFI) or payload? If so what exactly (specify make, model, how it is formatted, what it contains and if it Legacy or UEFI boots).\n\n"
+    },
+    {
+      "id": "211495",
+      "timestamp": "2019-06-06T10:07:21+00:00",
+      "author": "Garcia90",
+      "content": "Okay. Let me check in details and revert back to you.\n\n"
+    },
+    {
+      "id": "211531",
+      "timestamp": "2019-06-08T09:56:47+00:00",
+      "author": "larry678",
+      "content": "I suspect Rufus made a mistake,many of my friends have failed to use it,create new one with other burners.\n\n"
+    },
+    {
+      "id": "211564",
+      "timestamp": "2019-06-11T06:39:07+00:00",
+      "author": "larry678",
+      "content": "\u003e I suspect Rufus made a mistake,many of my friends have failed to use it,create new one with other burners.\n\nFortunately, we have some alternatives for Rufus,like this [https://www.uubyte.c...e-to-rufus.html](https://www.uubyte.com/alternative-to-rufus.html \"External link\")It claim to do everything Rufus can do.\n\n**Edited by larry678, 11 June 2019 - 06:40 AM.**\n"
+    },
+    {
+      "id": "211566",
+      "timestamp": "2019-06-11T07:02:55+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e I suspect Rufus made a mistake,many of my friends have failed to use it,create new one with other burners.\n\nWhich is good as many of my friends never failed to use it, thus creating a nice, symmetrical situation.  \n\n\u003cbr /\u003e\n\n\u003e Fortunately, we have some alternatives for Rufus,like this httpx://www.uubyte.com/alternative-to-rufus.htmlIt claim to do everything Rufus can do.\n\nYes, fortunately,\n\nThough - still fortunately - we don\u0027t have any need for softwares that *claim* to do something, and rest assured, that crappy, commercial program you are SPAMming for does only a fraction of the things that Rufus can do, besides \"queer\" TOTAL bullshit claims, such as:\n\u003e\n\u003e Smart Engine\n\u003e\n\u003e Build the ground with sophisticated AI engines, UUbyte is much faster and smarter than other ISO tools.\n\nand (let\u0027s pretend that the following is written in English)\n\u003e\n\u003e The software claims to create almost all manufacturer drives into a bootable drive, even SanDisk, which many software isn\u0027t able to do that. Also, it supports all kinds of DVD and memory cards. So, if you create too many bootable DVD, and want this software feature. Then it is worth trying out.\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "218418",
+      "timestamp": "2021-06-19T09:42:00+00:00",
+      "author": "95miabrown",
+      "content": "Well, you should try to fix it using diskpart or disable legacy boot (uefi). I think this [guide](https://www.techravy.com/blog/fix-reboot-and-select-proper-boot-device/ \"External link\") might help you in a better way.\n\n"
+    }
+  ]
+}

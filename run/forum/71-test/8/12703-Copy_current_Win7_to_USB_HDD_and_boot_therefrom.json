@@ -1,0 +1,64 @@
+{
+  "id": "12703",
+  "title": "Copy current Win7 to USB HDD and boot therefrom",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "110957",
+      "timestamp": "2010-10-10T19:57:55+00:00",
+      "author": "rebell",
+      "content": "![:sos:](http://reboot.pro/public/style_emoticons/default/help.gif) Hello world,  \nI\u0027m beginning to think I\u0027m a bit dim. ![:(](http://reboot.pro/public/style_emoticons/default/sad.png) I\u0027ve been reading posts at a number of forums about running Win7 from an USB HDD and my head is spinning. ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png) I need some instruction as I\u0027ve never worked with a lot of the programs (i.e. Grub4dos, grub2, etc.) that people reference in those posts and often the posts seem to be from experts to experts and I don\u0027t understand all the terminology. It also seems like often some steps are left out and it\u0027s just taken for granted that the other person will know what to do to get there. :smile:   \n\nWhat I need is a \"Booting From USB Drive For Dumbies\" apporach from people who have a little patience for a newbie. :smile: My problem seems to be mostly that in order to get the whole picture I\u0027ve needed to go from post to post and often Forum to Forum for peices of the puzzle and I can\u0027t seem to keep them straight. :smile:   \n\nHere is my problem: I have an HP/Compaq laptop and the nVidia GPU is faulty. The optimum fix would be to get a new mobo, but there is a pending law suit that looks to be settled by my being able to get a new machine, therefore I don\u0027t want to spend any more money on this one than absolutely necessary. However, it will probably be early next year before I actually see a new machine and I would like to be able to use this one until then. This faulty nVidia chip causes two distinct symptoms: 1) The video won\u0027t always work when one firsts presses the power button and this requires turning the machine on and off multiple times until the video finally kicks in (frustrating and tedious, but managable); and 2) the machine does not see the internal HDD, which is fatal. So, my plan was to clone the laptop\u0027s HDD to my FreeAgent external USB drive and boot from there. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nI have tried several methods and I end up with the same thing, the machine (any machine) refuses to boot from the USB drive. So, it\u0027s clear that, assuming it really is possible to do what I want to, I\u0027m doing something (or several things) wrong. So far I have been able to get the laptop to attempt to load Windows from the USB drive, but this always fails and the machine reboots (initiating the frustrating symptom #1 above). When I can finally get it to show the video and the OS attempts to load, I get a screen that say that the load failed due to new hardware and/or software being installed and gives me the option to begin the repair process or to start Windows normally. If I choose \"start Windows normally\" it immediately drops to a screen that says \"The boot selection failed because a required device is inaccessible.\" Running the startup repair process appears to do nothing as once it is done and I can get it to attempt to load Windows, it goes back to the screen telling me that startup failed and then the screen with \"The boot selection failed because a required device is inaccessible\" error again and I could do that all day. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nSo, is there a simple, step-by-step solution for setting up the USB drive to boot Win7? :smile:   \n\nThanks for your patience. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "110984",
+      "timestamp": "2010-10-11T07:18:25+00:00",
+      "author": "Wonko the Sane",
+      "content": "Booting a Windows 7 from a USB HD is perfectly possible, rest assured. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nDoing so on defective hardware may be either IMpossible or very, very tricky, though. ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)  \n\nThis is the best bet you can take:  \n[http://www.boot-land...?...ic\u003d9830\\\u0026hl\u003d](http://www.boot-land.net/forums/index.php?showtopic\u003d9830\u0026hl\u003d \"External link\")  \n\n:smile:  \nWonko   \n"
+    },
+    {
+      "id": "110986",
+      "timestamp": "2010-10-11T08:01:07+00:00",
+      "author": "rebell",
+      "content": "Thanks for the info Wonko the Sane! ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) I haven\u0027t gone over the material in detail yet, but it looks like it is just what I was looking for. ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n\nIt may be that what I want to do will not be possible on this machine because the internal HDD is not being detected by either the BIOS or the OS (and I know of a certainty that the HDD is in perfect working order), so apparently there is a problem with the IDE controller on the motherboard. Still, this would be an extremely useful universal drive to use when repairing other\u0027s computers. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "111020",
+      "timestamp": "2010-10-11T18:48:49+00:00",
+      "author": "ceehoppy",
+      "content": "Most of my experience has been on XP machines, but it seems you have 2 problems to overcome. First is that the Win7 OS that you are using for your \"build source\" has to be functioning, because it needs to see the usb harddrive in order to install the correct drivers. That info is then stored in the registry. Those drivers have to be \"pre-loaded\" in order for the usb hdd to be able to boot. If you can\u0027t boot the laptop at all on Win7 then you can\u0027t update those settings. (IF you ever used that usb hdd with the laptop before it failed then you can tweak the registry from another Windows computer.)  \nThe second problem is that As Far As I Know, Windows needs to see an internal drive during bootup. I have gotten around that on XP by using \"embedded drivers\" (from my post [here.](http://www.boot-land.net/forums/index.php?showtopic\u003d12587 \"External link\")) I don\u0027t know if these can work on Win7 or if there are Win7 versions. You may be out of luck but it don\u0027t hurt to keep trying. ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n"
+    },
+    {
+      "id": "111025",
+      "timestamp": "2010-10-11T20:42:15+00:00",
+      "author": "rebell",
+      "content": "Wonko the Sane,  \n\n\"This is the best bet you can take:  \n\\[url\u003d\"http://www.boot-land.net/forums/index.php?...ic\u003d9830\\\u0026hl\u003d\"\"\\]http://www.boot-land.net/forums/index.php?...0\\\u0026hl\u003d\"\\[/url\\]  \n\nI went to this post and downloaded IMG_XP.exe, and my Norton Internet Security immediately popped up saying this was the Trojan.Gen trojan and refuses to run it. At the Symantec website, it says that this was detected in February, 2010. Norton also flags the site (wimb.winbuilder.net) that this program comes from as a dangerous site. So, I don\u0027t think I\u0027m going to try using this program.  \n\nThanks anyway.   \n"
+    },
+    {
+      "id": "111029",
+      "timestamp": "2010-10-11T22:05:40+00:00",
+      "author": "amalux",
+      "content": "Either the site\u0027s bad (and files infected) or Norton\u0027s a joke. I\u0027m gonna vote for the latter ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n"
+    },
+    {
+      "id": "111031",
+      "timestamp": "2010-10-11T22:13:30+00:00",
+      "author": "ceehoppy",
+      "content": "Most anti-virus programs seem to flag ANY Preinstalled Enviroment (PE) builder (such as winbuilder) as a \"trojan\" because as part of its build process winbuilder modifies \"system\" files from the windows installation cd source file. Any program that isn\u0027t windows that tries to do that \"must\" be malware. Do what you feel comfortable with.  \nAnother possibility would be to download \\\u0026 run a Linux OS such as Peppermint or Puppy linux. You don\u0027t have to install it to the hdd. It won\u0027t have the windows functionality that you\u0027re used to but, It took about 1 min to boot my pc from a usb flash drive, auto-configured the ethernet card \\\u0026 I was connected to the web in 10 sec. ![:D](http://reboot.pro/public/style_emoticons/default/biggrin.png)   \n"
+    },
+    {
+      "id": "111084",
+      "timestamp": "2010-10-12T17:22:02+00:00",
+      "author": "Wonko the Sane",
+      "content": "Let\u0027s clear this part. ![:sos:](http://reboot.pro/public/style_emoticons/default/help.gif)  \n\nNorton ***IS*** a joke, and a heavily BLOATED one too. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nI am ***personally*** very happy that it prevents the use of **wimb** \u0027s nice program(s). ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n\nSimply put, whoever in 2010 still uses Norton Security Essentials deserves NOT to have nice, lean, working programs on his/her PC.  \n\nThe above said (my ***personal*** opinion to the awful load of bloat Norton Security Essentials - as well as a number of other recent product from Symantec - does represent), you may be interested to this:  \n[http://www.boot-land...?showtopic\u003d7835](http://www.boot-land.net/forums/index.php?showtopic\u003d7835 \"External link\")  \n\n\u003cbr /\u003e\n\nLife is tough :smile:, there is no secure place, there is nothing safe, and you need to choose (knowingly) when and on what you wish to take risks.  \n\noh, ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif) and NEVER trust anyone, ALWAYS check yourself. :smile:   \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \nWonko   \n"
+    },
+    {
+      "id": "111122",
+      "timestamp": "2010-10-13T13:31:22+00:00",
+      "author": "agni",
+      "content": "Try PWBoot by Dhilip  \n[http://www.boot-land...?showtopic\u003d6851](http://www.boot-land.net/forums/index.php?showtopic\u003d6851 \"External link\")  \n\nThis tool will help you to boot existing installation of Windows Vista/7 from USB storage  \n\nPlease post your feedback after using the tool.   \n"
+    }
+  ]
+}

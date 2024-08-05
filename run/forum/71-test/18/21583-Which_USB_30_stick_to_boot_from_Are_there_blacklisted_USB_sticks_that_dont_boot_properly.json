@@ -1,0 +1,58 @@
+{
+  "id": "21583",
+  "title": "Which USB 3.0 stick to boot from? Are there blacklisted USB sticks that don\u0027t boot properly?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "204445",
+      "timestamp": "2017-09-11T16:46:54+00:00",
+      "author": "hemlatuyda",
+      "content": "Greetings\n\nAsking which 3.0 stick to get, 32-128GB size so probably 64 preferred. There\u0027s plenty on market but it seems not all are good for booting. I want probably MLC NAND or maybe 3D one(does it even exist in flash stick market?) with some nice controller that does not overheat USB stick. What should I look at when choosing my model, I\u0027ve heard that for booting it\u0027s 4k read/writes that are most important, is that true? Some sticks can be 300MB/s for 1GB readts but their 4k writes are like 0.005MB/s, while others are 100MB/s for 1GB and 1MB/s when writing 4k. Any clues?\n\n"
+    },
+    {
+      "id": "204448",
+      "timestamp": "2017-09-12T13:12:42+00:00",
+      "author": "steve6375",
+      "content": "If you want to run an OS (like a WindowsToGo installation or a linux installation) from the USB drive, then random write 4K I/O is important.\n\nA good test is to extract all 1000+ files from an XP ISO directly onto the USB drive. With some drives this can take over 1 hour, with others a few minutes!\n\nI recommend the SanDisk Extreme 3.0 range (not the Go version).\n\n[https://rmprepusb.bl...-usb-flash.html](https://rmprepusb.blogspot.co.uk/2017/04/is-new-sandisk-extreme-pro-31-usb-flash.html \"External link\")\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "204449",
+      "timestamp": "2017-09-12T13:13:00+00:00",
+      "author": "steve6375",
+      "content": "Double post (forum not working properly yet!)\n\n**Edited by steve6375, 13 September 2017 - 11:21 AM.**\n"
+    },
+    {
+      "id": "204450",
+      "timestamp": "2017-09-12T14:43:40+00:00",
+      "author": "hemlatuyda",
+      "content": "I know Sandisk Extreme Pro is best thing out there but the price is so high, I could get older portable SSD for less. Would booting from SD card with SD-\\\u003eUSB adapter be option, or should I expect compatibility issues? I know many flash sticks are made in such way, there\u0027s lot of issues when trying to use them as boot devices and afraid of such SD-\\\u003eUSB scenario. Also some of cards/sticks can overheat and malfunction and I want to avoid this. I was wondering on some sticks like HyperX Savage, that is half of Sandisk Pro price here but those 4k speed are simply horrible, here\u0027s some Amazon reviewer testing fastest 256GB one, left picture:\n\n[](https://images-na.ssl-images-amazon.com/images/I/61iCyc06lOL._SL256_.jpg \"External link\")\u003chttps://images-na.ssl-images-amazon.com/images/I/61iCyc06lOL._SL256_.jpg\u003e\n\n**Edited by hemlatuyda, 12 September 2017 - 02:45 PM.**\n"
+    },
+    {
+      "id": "204451",
+      "timestamp": "2017-09-12T18:27:49+00:00",
+      "author": "dencorso",
+      "content": "To boot decently, you\u0027ll need at least 1MiB/s 4k Random Write, and any pendrive or SDHC card able to do that is expensive.  \nYour best bet is to find an out-of-the market one in good condition. I just bought a 32kB Super\\*Talent USB 3.0 RAIDDrive (not the 3.1, now available) for US$41... were I in the US that\u0027d be about US$ 20 (because prices for imported things in Brazil are always about x2, due to importation tax)... now, when that same pendrive was available on the market, it went for US$ 255 in the US so, by buying it used, I got it for about 10% of the original price. Then again, it might have been damaged, so I took the risk. And, in what regards getting hot, it won\u0027t bur your hand, but just barely.\n\n"
+    },
+    {
+      "id": "204452",
+      "timestamp": "2017-09-12T18:28:05+00:00",
+      "author": "dencorso",
+      "content": "Sorry! Double-post, please do delete.\n\n"
+    },
+    {
+      "id": "204453",
+      "timestamp": "2017-09-12T21:16:10+00:00",
+      "author": "cdob",
+      "content": "\u003e I know Sandisk Extreme Pro is best thing out there but the price is so high, I could get older portable SSD for less.\nI don\u0027t know the local prices for you, including shipping.  \nDo you count the disk price or the price per GB size?  \nCompare the price and 4K speed for the old Sandisk SDCZ80. A 64 GB SDCZ80 may be a acceptable 4K speed at lower price.  \nYes, there are older faster (USB connected) SSD disks.  \nAnd consider fixed disk bit to a removable disk bit.  \n\nTimes guessed (classic USB stick and a USB ssd)  \nBooting Winows to go at another hardware:  \n4K 0.005MB/s : wait about one hour  \n4K 10MB/s : wait about one minute   \n"
+    },
+    {
+      "id": "204454",
+      "timestamp": "2017-09-13T16:15:26+00:00",
+      "author": "hemlatuyda",
+      "content": "Another problem with those Flash Sticks is that some of them have tiny cache that is used when benchmarks are done. This causes some slow drives to report 100MB/s++ speeds but in reality it\u0027s ten times slower.\n\n"
+    }
+  ]
+}

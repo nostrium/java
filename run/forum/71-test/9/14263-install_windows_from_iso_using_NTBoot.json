@@ -1,0 +1,40 @@
+{
+  "id": "14263",
+  "title": "install windows from iso using NTBoot?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "126529",
+      "timestamp": "2011-04-09T12:11:54+00:00",
+      "author": "TheRookie",
+      "content": "Hello People,  \n\nI\u0027m having a problem trying to install windows from an ISO file using NTBoot.  \n\nFor now, I have elected to try first with Windows XP, and have gotten as far as step2.  \n\nBelow are my commands trying to install xp:  \ntitle Windows Xp step1  \nroot (hd0,0)  \n(hd0,0)/boot/ntboot/ntboot iso_inst\u003dwinvblk cdrom\u003d(hd0,0)/isos/xpsp3.iso  \nWorks fine.  \n:smile:  \ntitle windows Xp step2  \nroot (hd0,0)  \n(hd0,0)/boot/ntboot/ntboot iso_inst\u003dwinvblk cdrom\u003d(hd0,0)/isos/xpsp3.iso boot\u003dharddisk  \n\nSetup starts, but then complains of not being able to copy files once I click on ok, it looks for the cd-rom in drive j.  \n\n1. How did you using NTBoot manage to have the cdrom present at step 2?  \n1.a are there additional commands that I may be missing?  \n\nI gather if I substitute windows xp for windows 7 and winvblk for vboot or firadisk I\u0027d still get a similar error?  \n\nanswers would be much appreciated!  \n:smile:  \n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)   \n"
+    },
+    {
+      "id": "126535",
+      "timestamp": "2011-04-09T16:28:00+00:00",
+      "author": "maanu",
+      "content": "ask here  \n\n[http://bbs.wuyou.com...03\\\u0026extra\u003dpage\u003d1](http://bbs.wuyou.com/viewthread.php?tid\u003d190203\u0026extra\u003dpage%3D1 \"External link\")   \n"
+    },
+    {
+      "id": "126537",
+      "timestamp": "2011-04-09T17:45:26+00:00",
+      "author": "joakim",
+      "content": "How did you manage to sign up on a chineese-only forum?   \n"
+    },
+    {
+      "id": "126540",
+      "timestamp": "2011-04-09T18:40:19+00:00",
+      "author": "TheRookie",
+      "content": "Hi,  \n\n@Maanu,  \nThanks for the link,  \nI guess I can be greatful for google translate although I hope I will understand what they are saying since g-translate can translate weird really.  \n:smile:  \n\n@Joakim,  \nI was wondering the same thing until I thought of g-translate?  \n\nRegards,   \n"
+    },
+    {
+      "id": "126585",
+      "timestamp": "2011-04-11T04:31:53+00:00",
+      "author": "maanu",
+      "content": "\u003e How did you manage to sign up on a chineese-only forum?  \n\nAFAIK registrations have been closed now for some time , i was invited by a chinese friend from ANOTHER forums (znpc) 2 years ago.   \n"
+    }
+  ]
+}

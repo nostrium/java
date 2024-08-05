@@ -1,0 +1,64 @@
+{
+  "id": "13231",
+  "title": "flipping the removable bit",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "111555",
+      "timestamp": "2010-10-20T13:35:14+00:00",
+      "author": "michaeltheclyde",
+      "content": "Almost off topic but,  \nI use an app by \"Lexar\" that flips the \"removable bit\" on Lexar and a few other brands (not all) of flash drives. For the brands that the app didn\u0027t work on, i have lost, but used to have a \"script\"? written in notepad that when placed in your registry would tell Windows that this particular flash drive was not removable and that allowed Windows to recognize, format and access multiple partitions on a removable flash drive. does anyone know of the script or notepad file i\u0027m speaking of?   \n\nmany thanks,  \nMichael Clyde   \n"
+    },
+    {
+      "id": "111582",
+      "timestamp": "2010-10-20T21:06:54+00:00",
+      "author": "Wonko the Sane",
+      "content": "The good news :wink: are that you appear like being a very honest person ![:hi:](http://reboot.pro/public/style_emoticons/default/hi.gif) :  \n\u003e typical arrogant american\nsince you just posted your question on a topic where in the title it says:  \n\u003e Index of USB Boot Making Applications, **Please DO NOT post here**, post in the above\n\nNow, that\u0027s arrogant! ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)  \n\nThe bad news :wink: is that you are not fully honest, your question is not \"Almost\", buut rather \"Completely and utterly\" off-topic! :tongue:  \n\nHowever, it is simply NOT possible to have a \"script\" written in notepad that did what you are talking about.  \n\nFor two good reasons:  \n\n* Whatever you write in Notepad or in ANY \"RAW text\" editor comes out as \"*RAW text\"* :wink:, it may represent a script, but there is no way in the world that you can say it is written in Notepad (as opposed to ANY other \"RAW text\" editor - and there are tens if not hundreds of them available\n* There is NO way a \"script\" of ANY kind can do what you are talking about\n\n\u003cbr /\u003e\n\nThe known alternative to \"flipping the removable bit\" through the use of the Lexar utility you mention or ANY other \"Manufacturer Production tool\" suitable for the particular controller of the given stick is the use of a \"filter driver\".  \n\nThere are two of them widely known:  \n\n* cfadisk.sys aka Hitachi Microdrive Filter Driver\n* dummydisk.sys by Anton Bassov\n\n\u003cbr /\u003e\n\nJust google for the above keywords and you will find here on boot-land and on MSFN and 911CD boards related threads and howto\u0027s about installing and setting them.  \n\nAn Admin or Mod may want to move your post and my reply to it somewhere more suitable (like a new thread meaningfully titled).  \n\n:tongue:  \nWonko   \n"
+    },
+    {
+      "id": "111587",
+      "timestamp": "2010-10-20T22:35:24+00:00",
+      "author": "michaeltheclyde",
+      "content": "hence the \"?\" after the word \"script\", maybe a better term would be \"a set of instructions\" (?) written in notepad. in any event, it did exist until some less than totally honest, completely and udderly (a little barn humor) off topic poster misplaced it.  \ni do**thank you** for your help.  \n\nmichael clyde  \n\n\"thank you for your continued support,  \nplease pull up to the second window\"   \n"
+    },
+    {
+      "id": "115521",
+      "timestamp": "2010-12-03T14:56:34+00:00",
+      "author": "sambul61",
+      "content": "Wonko is correct IMHO. Since this thread is intended to merely list available USB Boot apps, may I kindly ask the mod to move the above irrelevant posts to the sticky thread *USB Booting Utilities* that serves as a discussion playground?   \n"
+    },
+    {
+      "id": "115541",
+      "timestamp": "2010-12-03T17:42:52+00:00",
+      "author": "michaeltheclyde",
+      "content": "\u003e Wonko is correct IMHO. Since this thread is intended to merely list available USB Boot apps, may I kindly ask the mod to move the above irrelevant posts to the sticky thread *USB Booting Utilities* that serves as a discussion playground?\n\nyes, by all means, you can delete it if need be since somebody understood what i was referring to and sent me the file to manually add to the registry which seems to work with every usb stick.  \ni do regret assuming that just because the article was semi-dated it was alright to post a somewhat related question.  \nonce again, my apologies   \n"
+    },
+    {
+      "id": "115572",
+      "timestamp": "2010-12-03T22:39:53+00:00",
+      "author": "Brito",
+      "content": "\u003e may I kindly ask the mod to move..\nDone.  \n\nTo keep in context, the above posts were split from this topic:  \n[http://www.boot-land...?showtopic\u003d9460](http://www.boot-land.net/forums/index.php?showtopic\u003d9460 \"External link\")   \n"
+    },
+    {
+      "id": "115583",
+      "timestamp": "2010-12-04T01:26:02+00:00",
+      "author": "skyide",
+      "content": "[http://www.uwe-siebe...btrouble_e.html](http://www.uwe-sieber.de/usbtrouble_e.html \"External link\")  \n\nUnder the \"**On flash drive only the first partition works** \" section:  \n\n\"**A filter driver for removing the RMB has been made by Hitachi for their Microdrives (Compatct Flash cards with a mini harddrive)** :\"  \n\nVery easy to follow...   \n\n**Edited by skyide, 04 December 2010 - 01:26 AM.**\n"
+    },
+    {
+      "id": "115637",
+      "timestamp": "2010-12-04T17:07:04+00:00",
+      "author": "COD11",
+      "content": "**How to use the \"Hitachi Microdrive Filter Driver \" for USB Flash Drive (UFD) partitioning**  \n\n1. Download Driver Package from [here](http://www.uwe-sieber.de/files/xpfildrvr1224_320.zip \"External link\").  \n\n2. Extract **cfadisk.inf** and **cfadisk.sys** to a folder on your UFD (1st primary partition automatically). Just to have it available, when you need it on other systems !  \n\n3. Open **cfadisk.inf** with an Editor.  \n\n4. Look for lines ...  \n\n```\n...\n\n\u0026#91;cfadisk_device\u0026#93;\n\n%Microdrive_devdesc% \u003d cfadisk_install,...\n\n%Microdrive_devdesc% \u003d cfadisk_install,...\n\n...\n\n\u0026#91;cfadisk_addreg\u0026#93;\n\n...\n```\n\n... and **replace** it by  \n\n```\n...\n\n\u0026#91;cfadisk_device\u0026#93;\n\n%Microdrive_devdesc% \u003d cfadisk_install,USBSTOR\\GenDisk\n\n\n\n\u0026#91;cfadisk_addreg\u0026#93;\n\n...\n```\n\nLeave only this (ONE) line under the item **cfadisk_device** , delete the rest up to the empty line preceeding **cfadisk_addreg** (both excluded, of course). There is no need to alter anything else.  \n\n5. In Windows start \"Device Management\" (devmgmt.msc), open \"Disks\", right click your UFD and \"actualize\" the driver. It\u0027s not found automatically; you have to point the wizard to your UFD (where it should be according to item 2). When you see \"Hitachi Microdrive\" as selection, choose it and proceed. Ignore the usual warning.  \n\n6. There is no need to reboot. Just go to \"Disk management\" (diskmgmt.msc) and  \npartition your UFD for your needs.   \n\n**Edited by COD11, 04 December 2010 - 05:36 PM.**\n"
+    },
+    {
+      "id": "115640",
+      "timestamp": "2010-12-04T17:20:43+00:00",
+      "author": "Wonko the Sane",
+      "content": "And to close the circle, here is - besides for cfadisk.sys - also for dummydisk.sys:  \n[http://www.911cd.net...showtopic\u003d22795](http://www.911cd.net/forums//index.php?showtopic\u003d22795 \"External link\")  \n\n![:frusty:](http://reboot.pro/public/style_emoticons/default/frusty.gif)  \nWonko   \n"
+    }
+  ]
+}

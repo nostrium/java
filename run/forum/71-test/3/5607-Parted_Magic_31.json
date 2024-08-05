@@ -1,0 +1,112 @@
+{
+  "id": "5607",
+  "title": "Parted Magic 3.1",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "43559",
+      "timestamp": "2008-09-04T16:35:52+00:00",
+      "author": "risolutore",
+      "content": "in old version of script the script was structured like this:  \nWinBuilder_0.74\\\\Projects\\\\VistaPE\\\\OtherOS\\\\Parted Magic Linux\\\\ and here were present (initrd.pml, kernel.pml, PartedMagic.script, pmagic.fs)  \n\nI downloaded the new ver from here [http://partedmagic.com/beef_drapes/](http://partedmagic.com/beef_drapes/ \"External link\") **I renamed the file to pmagic-grub4dos.iso** and none contain an iso with those file :-((  \n\nany help?   \n\nUpdated to gparted-0.3.8-svn for hfs+ support.  \n\\* Added G4L. This is probably incomplete and needs testing.  \nPlease give us a hand if you have time.  \n\\* VirtualPC/VirtualBox/VMWare/qemu should work now if you pick  \nthe second option in the isolinux menu.  \n\\* Updated to lsscsi-0.21.  \n\\* Updated to sdparm-1.03.  \n\\* Updated to syslinux-3.71.  \n\\* Added cmdline option to specify tmpfs size. The default is  \n180M. This gives the option of not using the default 50% of  \nRAM and leaving more for applications. Parted Magic fully  \ndecompressed is about 160MB. If you add a bunch of pmodules  \nor your own programs you might want to change this.  \n\\* Updated to udev-127.  \n\\* Updated to testdisk/photorec-6.11-WIP.  \n\\* Updated to lftp-3.7.4.  \n\\* Updated to ntfs-3g-1.2812.  \n\\* Updated to linux-2.6.27-rc4.  \n\\* Added cryptsetup.  \n\\* Switched to LXDE and removed XFCE. (still rough, needs work)  \n\\* Updated to fuse-2.7.4. Fixes sshfs bug.  \n\\* Updated to busybox-1.12.0.  \n\\* Updated to file-4.26.  \n\\* Made a GUI for udpcast. (please test)  \n\\* Updated to conky-1.6.1.  \n\\* Updated to e2fsprogs-1.41.1.   \n"
+    },
+    {
+      "id": "43565",
+      "timestamp": "2008-09-04T17:35:24+00:00",
+      "author": "pecd.net",
+      "content": "Change the first dl url in the attached script to this:   \n\n[http://partedmagic.c...2Sep,202007.zip](http://partedmagic.com/beef_drapes/pmagic-grub4dos-svn.iso-02Sep,202007.zip \"External link\")  \n(or whatever is current, but use the grub4dos version)   \n\ndid not test but should work...  \n\n#### Attached Files {#attach_wrap}\n\n* [![Attached File](http://reboot.pro/public/style_extra/mime_types/unknown.gif)](http://reboot.pro/index.php?s\u003ddd71e3905bfe7b7756a89f2556183966\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d6240 \"Download attachment\") [**00_PartedMagic3.x.script**](http://reboot.pro/index.php?s\u003ddd71e3905bfe7b7756a89f2556183966\u0026app\u003dcore\u0026module\u003dattach\u0026section\u003dattach\u0026attach_id\u003d6240 \"Download attachment\") **77KB** 416 downloads\n\n"
+    },
+    {
+      "id": "43571",
+      "timestamp": "2008-09-04T18:51:01+00:00",
+      "author": "risolutore",
+      "content": "thanls for 3.x script   \nThe version I used was the grub4dos :-)  \ntonight I will try   \n"
+    },
+    {
+      "id": "43575",
+      "timestamp": "2008-09-04T19:06:52+00:00",
+      "author": "risolutore",
+      "content": "the svn.iso file I downlaoded and renamed to **pmagic-grub4dos.iso**   \nWhere I have to put this file? I added the script for ver 3.x that you provided into Other OS folder, and disabled the older plugin  \n..  \nlooking inside the script is reported something like a %Tmpfolder% but can you point me exactly to it? thanks best regards   \n"
+    },
+    {
+      "id": "43633",
+      "timestamp": "2008-09-05T07:06:56+00:00",
+      "author": "pecd.net",
+      "content": "hmm, i meant replace the download url in the script, then the script will do the download and unpack for you...  \n\nbut if you have the iso (unpack the ZIP!)  \n\nput it in %TmpFolder%\u003d%basedir%\\\\Temp\\\\%ProjectName%\\\\PartedMagic3  \n\n(it is a few lines above the iso name in the script...)   \n"
+    },
+    {
+      "id": "43634",
+      "timestamp": "2008-09-05T07:15:34+00:00",
+      "author": "risolutore",
+      "content": "I put the iso in WinBuilder_0.74\\\\Temp\\\\VistaPE\\\\PartedMagic3 now I will try ![:whistling:](http://reboot.pro/public/style_emoticons/default/happy22.gif)   \n"
+    },
+    {
+      "id": "43646",
+      "timestamp": "2008-09-05T10:02:51+00:00",
+      "author": "pecd.net",
+      "content": "what vistape do you have? for me (vpe12b3) it is vistape-core\\\\partedmagic3   \n"
+    },
+    {
+      "id": "43652",
+      "timestamp": "2008-09-05T12:02:41+00:00",
+      "author": "risolutore",
+      "content": "I am using WinBuilder 0.75 b4 g and VistaPe11multiboot Project.   \n"
+    },
+    {
+      "id": "43654",
+      "timestamp": "2008-09-05T12:09:01+00:00",
+      "author": "pecd.net",
+      "content": "hmm, you need a current grub4dos for this i would say at least 4.3 or better 4.4 beta...check if the old vistape has this, and if not you need to get an update...the script was made for vistape12b3   \n"
+    },
+    {
+      "id": "44326",
+      "timestamp": "2008-09-13T07:08:23+00:00",
+      "author": "risolutore",
+      "content": "I added the grub 4.4 and tested this menu, exporting PMAGIC directory under Boot dir,   \nbut it doesn\u0027t boot at all.   \n\nplashimage /Boot/gentleblue.gz  \ntimeout 30  \ndefault 0  \n\ntitle VistaPE  \nchainloader /BOOTMGR  \n\n**title PartedMagic 3.1 (Runs from RAM / Ejects CD)\nkernel /Boot/pmagic/bzImage noapic root\u003d/dev/ram0 init\u003d/linuxrc keymap\u003dus livecd vga\u003d791 sleep\u003d0 quiet tmpfs_size\u003d180M ramdisk_size\u003d25000\ninitrd /Boot/pmagic/initrd\ntitle PartedMagic 3.1 Safe Graphics settings (vga\u003dnormal)\nkernel /Boot/pmagic/bzImage noapic root\u003d/dev/ram0 init\u003d/linuxrc keymap\u003dit livecd vga\u003dnormal sleep\u003d0 tmpfs_size\u003d180M ramdisk_size\u003d25000\ninitrd /Boot/pmagic/initrd**   \n\ntitle UBCD  \nkernel /Boot/memdisk  \ninitrd /Boot/Ubcd.img   \n"
+    },
+    {
+      "id": "44334",
+      "timestamp": "2008-09-13T09:52:11+00:00",
+      "author": "pecd.net",
+      "content": "title Parted Magic Linux 3.x (Runs from RAM)  \nfind --set-root /boot/IMG/pmagic-grub4dos.iso  \nmap /boot/IMG/pmagic-grub4dos.iso (hd32)  \nmap --hook  \nroot (hd32)  \nkernel (hd32)/pmagic/bzImage noapic root\u003d/dev/ram0 init\u003d/linuxrc keymap\u003dus livecd vga\u003d791 sleep\u003d0 ramdisk_size\u003d25000 noeject iso_location\u003d/boot/IMG/pmagic-grub4dos.iso  \ninitrd (hd32)/pmagic/initrd  \n\n\u003cbr /\u003e\n\nthis is the needed syntax for the grub4dos iso....it works fine with grub4dos 4.4 (assuming you have the iso in the right place..)  \n\ntake a look aut the script it is all in there...   \n"
+    },
+    {
+      "id": "44365",
+      "timestamp": "2008-09-13T21:39:04+00:00",
+      "author": "ilko",
+      "content": "Patrick Verner was kind enough to make PartedMagic grub4dos aware:  \n[http://partedmagic.c....php?f\u003d11\\\u0026t\u003d151](http://partedmagic.com/phpBB3/viewtopic.php?f\u003d11\u0026t\u003d151 \"External link\")  \n\n3.x versions should be easily loaded by using the supplied grub4dos.lst file, even from NTFS partition:  \n[http://partedmagic.c...p;start\u003d60#p762](http://partedmagic.com/phpBB3/viewtopic.php?f\u003d11\u0026t\u003d151\u0026st\u003d0\u0026sk\u003dt\u0026sd\u003da\u0026start\u003d60#p762 \"External link\")  \n\n```\ntitle Parted Magic\n\nroot \u0026#40;hd0,0\u0026#41;\n\nmap /pmagic-grub4dos-3.0.iso \u0026#40;hd32\u0026#41;\n\nmap --hook\n\nroot \u0026#40;hd32\u0026#41;\n\nconfigfile /grub4dos.lst\n```\n\n\u003cbr /\u003e\n\nor directly by:  \n\n```\ntitle Parted Magic 2\n\nroot \u0026#40;hd0,0\u0026#41;\n\nmap /pmagic-grub4dos-3.0.iso \u0026#40;hd32\u0026#41;\n\nmap --hook\n\nroot \u0026#40;hd32\u0026#41;\n\nchainloader \u0026#40;hd32\u0026#41;\n```\n\n\u003cbr /\u003e\n\nI guess grub4dos.lst will be kept updated.  \n\nAs far as I remember pmagic.iso could be placed in the following folders:  \n/  \n/pmagic/  \n/images/  \n\n[http://partedmagic.c...p;start\u003d40#p717](http://partedmagic.com/phpBB3/viewtopic.php?f\u003d11\u0026t\u003d151\u0026st\u003d0\u0026sk\u003dt\u0026sd\u003da\u0026start\u003d40#p717 \"External link\") and the follow ups.   \n"
+    },
+    {
+      "id": "44610",
+      "timestamp": "2008-09-16T11:56:18+00:00",
+      "author": "risolutore",
+      "content": "title Parted Magic Linux 3.x (Runs from RAM)  \nfind --set-root /boot/IMG/pmagic-grub4dos.iso  \nmap /boot/IMG/pmagic-grub4dos.iso (hd32)  \nmap --hook  \nroot (hd32)  \nkernel (hd32)/pmagic/bzImage noapic root\u003d/dev/ram0 init\u003d/linuxrc keymap\u003dit livecd vga\u003d791 sleep\u003d0 ramdisk_size\u003d25000 noeject iso_location\u003d/boot/IMG/pmagic-grub4dos.iso  \ninitrd (hd32)/pmagic/initrd  \n\nerror 17 kernel not found :-( the pmagic-grub4dos.iso is located under /boot/IMG/pmagic-grub4dos.iso   \n"
+    },
+    {
+      "id": "48434",
+      "timestamp": "2008-10-28T10:42:39+00:00",
+      "author": "Icecube",
+      "content": "You have to add quotes around the path that you specify in iso_location:  \n\n\u003e kernel (hd32)/pmagic/bzImage noapic root\u003d/dev/ram0 init\u003d/linuxrc keymap\u003dit livecd vga\u003d791 sleep\u003d0 ramdisk_size\u003d25000 noeject iso_location\u003d**\"/boot/IMG/pmagic-grub4dos.iso\"**\nThis is due a new feature of Parted Magic 3.1. Spaces in the iso_location and directory path are allowed now.  \n[http://partedmagic.c...c.php?f\u003d8\\\u0026t\u003d240](http://partedmagic.com/phpBB3/viewtopic.php?f\u003d8\u0026t\u003d240 \"External link\")   \n"
+    },
+    {
+      "id": "48435",
+      "timestamp": "2008-10-28T10:45:05+00:00",
+      "author": "pecd.net",
+      "content": "Thanks, i already saw this in another post...it fixed the problem...   \n"
+    },
+    {
+      "id": "57087",
+      "timestamp": "2009-01-29T17:47:38+00:00",
+      "author": "risolutore",
+      "content": "Today Parted Magic 3.5 is out!!!  \n\nThis release of Parted Magic includes many new features and updated programs. The first thing you might notice is the **dramatic increase in size** . We are now using a squashfs image instead of a 7zip archive. This once again allows for a \"live\" option for older computers. Parted Magic doesn\u0027t use any additional RAM with the default boot option, the compression was just decreased. With the Linux **2.6.28 kernel comes the first stable ext4 file system release** . We are using a highly tested SVN version of GParted to give you full control of your ext4 partitions. This includes all features for ext file systems found in previous releases. Jason Vasquez has vastly improved support **of wireless devices** . We hope you have a better experience with your wireless networking. Last but not leased we have added some new programs. gsmartcontrol-0.8.3, xfce4-screenshooter-1.5.0, fsarchiver-0.3.5, and squashfs-3.4 are now part of the Parted Magic program list.  \n\nThese programs have been updated: libburn-0.6.0.pl01, xfburn-0.4.0, libisofs-0.6.12, linux-2.6.28.2, gparted-svn with full ext4 support, dhcp-4.1.0, openssl-0.9.8i, util-linux-ng-2.14.1, gtk+-2.14.6, leafpad-0.8.16, xfce libraries for xfburn to xfce version 4.4.3, memtest86+-2.11, vte-0.19.4, tar-1.21, wpa_supplicant-0.5.11, roxterm-1.13.4, rsync-3.0.5, dbus-1.2.6, dbus-glib-0.78, hal-info-20081127, hal-0.5.11, hdparm-9.8, bash-3.2.48, busybox-1.13.2, galculator-1.3.3, p7zip_4.61, reiserfsprogs-3.6.21, dhcpcd-4.0.7, xfsdump_2.2.48-1, xfsprogs_2.10.2-1, pciutils-3.1.0, ntfs-3g-2009.1.1, lftp-3.7.8.  \n\nany chance to get the new ver working, also without dowloading every time I rebuild ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)?   \n"
+    },
+    {
+      "id": "57103",
+      "timestamp": "2009-01-29T20:22:56+00:00",
+      "author": "was_jaclaz",
+      "content": "\u003e The first thing you might notice is the **dramatic increase in size**\n\nIs this supposed to be \"good\" news? ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\njaclaz   \n"
+    }
+  ]
+}

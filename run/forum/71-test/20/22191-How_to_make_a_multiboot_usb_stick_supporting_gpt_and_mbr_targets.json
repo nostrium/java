@@ -1,0 +1,52 @@
+{
+  "id": "22191",
+  "title": "How to make a multiboot usb stick supporting gpt and mbr targets?",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "213373",
+      "timestamp": "2019-11-23T17:21:36+00:00",
+      "author": "HeshamRashwan",
+      "content": "I want to make a multiboot usb drive contains the following :\n\n* windows 7\n* windows 8.1\n* windows 10\n* DLC boot or Hearn\u0027s boot\n* Kaspersky Rescue Tool\n* etc....\n\nand i want all windows to be installable on both GPT and MBR hard disks.\n\nI\u0027ve tried WinSetupFromUSB, but it works only on MBR target hard disks and didn\u0027t work on GPT hard disks\n\nand to solve the problem i have used Rufus to make it bootable on gpt hard disk, but it create one windows installation.\n\nIsn\u0027t there any way for creating a multiboot usb drive that can be bootable on both GPT and MBR (Legacy and UEFI) ?\n\nIf anyone know how, please give instructions for doing this!\n\n\u003cbr /\u003e\n\n"
+    },
+    {
+      "id": "213374",
+      "timestamp": "2019-11-23T17:51:07+00:00",
+      "author": "wimb",
+      "content": "[UEFI_MULTI](http://reboot.pro/files/file/279-uefi-multi-make-multi-boot-usb-drive/ \"\") together with [WinNTSetup](https://msfn.org/board/topic/149612-winntsetup-v394-40-rc1/ \"External link\") can do it :smile:\n\nMore Info: [Install Windows 10 from USB after booting with WIM or VHDX](http://reboot.pro/topic/21883-install-windows-10-from-usb-after-booting-with-wim-or-vhdx/?p\u003d208164 \"\")\n\nand here: [http://reboot.pro/to...sb-drive/page-5](http://reboot.pro/topic/18182-uefi-multi-make-multi-boot-usb-drive/page-5 \"\")\n\nand here\n\nOf course Windows 7 cannot be installed on GPT disk, but everything else you asked for is possible .....\n\nIn other words the thing that you want is in fact:\n\nMultiBoot from MBR USB in UEFI Or BIOS (\u003dLegacy) mode for Install of Windows on GPT Or MBR hard disks.\n\n"
+    },
+    {
+      "id": "213375",
+      "timestamp": "2019-11-23T18:17:44+00:00",
+      "author": "steve6375",
+      "content": "[http://www.winsetupfromusb.com/faq/](http://www.winsetupfromusb.com/faq/ \"External link\")\n\nWinSetupFromUSB supports UEFI. Just make sure you make a FAT32 USB drive.\n\nWhy do you think it does not work? Give a specific example of say a Win10 install ISO and WinSetupFromUSB - what happens when you try it exactly?\n\n"
+    },
+    {
+      "id": "213376",
+      "timestamp": "2019-11-23T18:39:43+00:00",
+      "author": "HeshamRashwan",
+      "content": "\u003e [http://www.winsetupfromusb.com/faq/](http://www.winsetupfromusb.com/faq/ \"External link\")\n\u003e\n\u003e WinSetupFromUSB supports UEFI. Just make sure you make a FAT32 USB drive.\n\u003e\n\u003e Why do you think it does not work? Give a specific example of say a Win10 install ISO and WinSetupFromUSB - what happens when you try it exactly?\n\nit gives me this error\n\nWindows/Boot/Winload.efi not found\n\n"
+    },
+    {
+      "id": "213377",
+      "timestamp": "2019-11-23T19:06:52+00:00",
+      "author": "steve6375",
+      "content": "OK. Any more words in the error message?\n\nSo are you using a Windows 10 64-bit install ISO as the source?\n\nIs it the standard Microsoft ISO as distributed by Microsoft?\n\nWhat system are you booting it on (Make/Model).\n\nIs this error before it reaches Windows Setup?\n\n"
+    },
+    {
+      "id": "213378",
+      "timestamp": "2019-11-23T20:18:14+00:00",
+      "author": "steve6375",
+      "content": "If Rufus works OK with the type of ISOs you want to use, then converting each one to a .imgPTN file and copying the files to an E2B USB multibooot drive should work OK. You will need to work out how to use the .imgPTN files with E2B as there is no UEFI menu system.\n\n[http://www.easy2boot...files/e2b-uefi/](http://www.easy2boot.com/add-payload-files/e2b-uefi/ \"External link\")\n\n"
+    },
+    {
+      "id": "213391",
+      "timestamp": "2019-11-24T15:29:30+00:00",
+      "author": "HeshamRashwan",
+      "content": "\u003e If Rufus works OK with the type of ISOs you want to use, then converting each one to a .imgPTN file and copying the files to an E2B USB multibooot drive should work OK. You will need to work out how to use the .imgPTN files with E2B as there is no UEFI menu system.\n\u003e\n\u003e [http://www.easy2boot...files/e2b-uefi/](http://www.easy2boot.com/add-payload-files/e2b-uefi/ \"External link\")\n\ni well try this and tell you.\n\n"
+    }
+  ]
+}

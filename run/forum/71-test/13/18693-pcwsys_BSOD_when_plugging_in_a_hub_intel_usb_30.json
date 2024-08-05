@@ -1,0 +1,28 @@
+{
+  "id": "18693",
+  "title": "pcw.sys BSOD when plugging in a hub (intel usb 3.0)",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "174547",
+      "timestamp": "2013-07-09T01:51:04+00:00",
+      "author": "zeropc",
+      "content": "Hello all,\n\nI recently got windows 7 pro to boot off my USB drive and installed all my drivers for my laptop (including intel usb 3.0 drivers (link: [https://downloadcent...x?DwnldID\u003d21129](https://downloadcenter.intel.com/Detail_Desc.aspx?DwnldID\u003d21129 \"External link\")) and everything works great - EXCEPT when I plug in a hub into one of the ports. Within 2-3 seconds of plugging the hub in, I\u0027m greeted with a BSOD saying that pcw.sys is to blame. Digging deeper, I discovered that my registry keys gets reset back to their default values:\n\nMy values:\n\nHKEY_LOCAL_MACHINE\\\\systemdst\\\\ControlSet001\\\\services\\\\iusb3hub\n\nstart \u003d 0\n\ngroup \u003d boot bus extender\n\nDefault value:\n\nHKEY_LOCAL_MACHINE\\\\systemdst\\\\ControlSet001\\\\services\\\\iusb3hub\n\nstart \u003d 3\n\ngroup \u003d bus\n\nI then have to take my usb drive to another machine, load the hive and restore my these 2 reg keys, then I\u0027m back up and running.\n\nThe work around is to uninstall the intel usb 3.0 drivers and let windows use it\u0027s built in 2.0 native support. I\u0027d really like to keep/fix the usb 3.0 speed. Any thoughts??\n\nThanks ahead of time.\n\n"
+    },
+    {
+      "id": "174555",
+      "timestamp": "2013-07-09T06:28:44+00:00",
+      "author": "BobxT",
+      "content": "Hi zeropc,  \n\nHave a look at this topic:-  \nBSOD in pcw.sys - stop error 7e  \nStarted by BobxT, Sep 30 2012 11:37 AM   \n\nLocated here:-  \n[http://reboot.pro/to...-stop-error-7e/](http://reboot.pro/topic/17573-bsod-in-pcwsys-stop-error-7e/ \"\")  \n\nPerhaps it may help.  \n\nRegards,  \nBobxT   \n"
+    },
+    {
+      "id": "174616",
+      "timestamp": "2013-07-10T23:45:44+00:00",
+      "author": "zeropc",
+      "content": "Yea, after reading with no specifics mentioned. I\u0027m still at the same point. Any other thoughts?? Thanks   \n"
+    }
+  ]
+}

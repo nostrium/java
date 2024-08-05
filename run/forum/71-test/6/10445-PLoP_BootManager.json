@@ -1,0 +1,94 @@
+{
+  "id": "10445",
+  "title": "PLoP BootManager",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "91657",
+      "timestamp": "2010-02-17T00:03:03+00:00",
+      "author": "mightymouse",
+      "content": "Several months ago I needed to help an elderly relative  \nwho has two old desktops. They\u0027re in good condition,  \nbecause I\u0027ve replaced 90% of the hardware in both  \nof them.  \n\nI\u0027ve got many portable diagnostic apps on bootable CDs  \nand USB sticks. Old desktops can\u0027t boot from either, but  \nPLoP came to the rescue. I used v5.0.3 and created a  \nsimple PLoP floppy. I selected CDROM or USB from the  \nmenu. It worked perfectly!  \n\nRecently, I got a call from the same relative, because he  \nneeded help again with his desktops. I didn\u0027t keep the  \noriginal PLoP floppy, so I created a new one in a few minutes.  \nFor some reason, PLoP keeps telling me all my bootable CDs  \nare not bootable. I downloaded the latest version - 5.0.8.  \nSame problem!  \n\nI\u0027m a command line junkie going back 30 years, so I have  \nno trouble performing simple or complex operations from  \nthe command line.  \n\nI posted on the PLoP forum. Elmar, the creator of PLoP  \ndoesn\u0027t have a solution.  \n\nI tested my bootable CDs on several modern desktops that  \nall have a seperate BIOS utility that allows you to boot from  \na wide range of devices. There is nothing wrong with any of  \nmy bootable CDs.  \n\nBoth old desktops have CDROM and CDRW drives. PLoP  \nidentifies them correctly, when you select CDROM from the  \nmenu.  \n\nElmar has made it incredibly easy to create a working floppy  \nwith PLoP.  \n\nI\u0027ve tried some crazy things, like creating the same floppy  \nwith different brands of disks. There is only one anomally  \nwhen I create a PLoP floppy. The starfield graphical theme  \ndoesn\u0027t work. The only thing I remember about the original  \nworking floppy is the starfield and the menu. I didn\u0027t use the  \n\"stf\" parameter with the working disk, but the starfield  \nappeared anyway. When I attempt to recreate the disk, the  \nstarfield doesn\u0027t appear, even if I use the \"stf\u003don\" parameter.  \nI don\u0027t care about the starfield one way or the other, but  \nmaybe the failure of the starfield is part of a larger problem  \nwhich is causing PLoP to list all bootable CDs as not bootable.  \n\nElmar was very kind. He tried to help, but all he could say  \nwas \"very strange.\" I agree with him!  \n\nThere is something wrong, but I\u0027m at a dead end. Before I  \nabandon PLoP, maybe a forum member can help me.   \n"
+    },
+    {
+      "id": "91675",
+      "timestamp": "2010-02-17T05:11:20+00:00",
+      "author": "ktp",
+      "content": "Maybe you can ask Elmar for the 5.0.3 version that worked for you. In the meantime, the old 5.0.7 version is available :  \n[http://download.plop...plpbt-5.0.7.zip](http://download.plop.at/files/bootmngr/plpbt-5.0.7.zip \"External link\")   \n"
+    },
+    {
+      "id": "91680",
+      "timestamp": "2010-02-17T07:36:12+00:00",
+      "author": "Wonko the Sane",
+      "content": "This should be 5.03:  \n[http://rapidshare.co...plpbt-5.0.3.zip](http://rapidshare.com/files/276158866/plpbt-5.0.3.zip \"External link\")  \n\n@mightymouse  \n\nHave you checked the floppy image in Qemu?  \n\n![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)  \n\nWonko   \n"
+    },
+    {
+      "id": "91767",
+      "timestamp": "2010-02-18T00:15:36+00:00",
+      "author": "mightymouse",
+      "content": "Thanks for replying Wonko the Sane and ktp.  \n\nI was reluctant to post on any other forum about  \nthis problem. Elmar, the creator of PLoP couldn\u0027t  \nhelp, so what\u0027s the point of annoying you nice folks  \nat Boot Land with this crazy problem. On the other  \nhand, it\u0027s common for advanced computer users  \nto understand all the inner workings of an app,  \nsometimes better than the person(s) who created  \nthe app.  \n\nWhen I attempted to recreate the PLoP floppy the  \nonly version I had was 5.0.3. I didn\u0027t bother checking  \nthe PLoP site to see if there were any newer versions.  \nThat\u0027s why I was really puzzled when it failed to work.  \nI used the same copy I had downloaded several months  \nago. Even though I didn\u0027t save the original disk, it was  \nso easy to create another I wasn\u0027t concerned about  \nhaving problems with the same version of PLoP. When  \nit failed to work, that\u0027s when I checked the PLoP site  \nand downloaded the latest version, 5.0.8. I thought  \nthe \"new and improved\" version might resolve the  \nproblem I was having. It didn\u0027t.   \n"
+    },
+    {
+      "id": "91782",
+      "timestamp": "2010-02-18T09:49:15+00:00",
+      "author": "Icecube",
+      "content": "You can try the Gujin boot loader to boot your CDs.  \n[http://gujin.sourceforge.net/](http://gujin.sourceforge.net/ \"External link\")   \n"
+    },
+    {
+      "id": "91789",
+      "timestamp": "2010-02-18T12:09:05+00:00",
+      "author": "Wonko the Sane",
+      "content": "Yep ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif), or the good ol\u0027 SMART boot manager:  \n[http://btmgr.sourceforge.net/](http://btmgr.sourceforge.net/ \"External link\")  \nor grub4dos using cdrom --init ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nbut the \"The strange case of the unrebuildable floppy\" would remain a mistery. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\n@mightymouse  \nIt is well possible that there has been a \"code regression\", but I find it strange, **Elmar** is usually very, very accurate in his thingies. ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \nIf you cannot recreate the floppy with either the 5.03 or the 5.08, there could be, as I see it only these reasons:  \n\n* you actually created the original working floppy witrh an earlier version, say 5.01, and there is actually a code regression \\\u003c-unlikely\n* your floppy drive is botched \\\u003c-possible\n* something has changed in your machine (services, filter drivers, what not) that prevents the building of the \"right\" floppy\\\u003c- possible, but easily verifiable, build the PLoP floppy in a VM\n* you used some \"exoteric\" option that you cannot remember anymore \\\u003c- unlikely as **Elmar** would have spotted it\n\n\u003cbr /\u003e\n\n![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n\n![:(](http://reboot.pro/public/style_emoticons/default/sad.png)  \n\nWonko   \n"
+    },
+    {
+      "id": "91819",
+      "timestamp": "2010-02-18T16:45:53+00:00",
+      "author": "mightymouse",
+      "content": "The two old desktops that my elderly relatively will keep   \nforever are in great shape! The external appearance  \nbelies what\u0027s inside. I have an extensive background in  \nelectronics. It\u0027s no problem for me to replace anything  \nin these desktops. I\u0027ve got friends in the surplus business  \nwho always manage to find unused components for old  \ndesktops. It may seem like a thousand years ago, but in  \nthe early 1990\u0027s companies like Gateway had no idea  \nhow rapidly key components like processors and RAM  \nwould advance! They thought their desktops would be  \nused for 10 years, so they built them like army tanks.  \n\nBefore I move on to an app like SMART Boot Manager,  \nI\u0027d like to try one last thing. Yesterday, I was able to  \ndownload several different versions of PLoP. 5.0.3 - thru -  \n5.0.7. The problem is I can\u0027t find earlier versions of plpcfgbt.  \nThe only one available is the latest, plpcfgbt-0.7.zip. I need  \nversions 0.3 - thru - 0.6. You can\u0027t use the new version of  \nplpcfgbt with older versions of PLoP.  \n\nIt takes about 5 minutes to create a PLoP floppy. If I could  \ntry some of the older versions, maybe one of them would  \nwork. I need links to the older versions of plpcfgbt. Who  \nknows, maybe I\u0027ll be able to create another working floppy.   \n"
+    },
+    {
+      "id": "91821",
+      "timestamp": "2010-02-18T16:54:49+00:00",
+      "author": "Wonko the Sane",
+      "content": "\u003e It takes about 5 minutes to create a PLoP floppy. If I could  \n\u003e try some of the older versions, maybe one of them would  \n\u003e work. I need links to the older versions of plpcfgbt. Who  \n\u003e knows, maybe I\u0027ll be able to create another working floppy.\nNow I am not following you. ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)  \n\nIn the PLoP release there is already a floppy image.  \n\nTry using it first, the starfield should be there.  \n\nWonko  \n\nRemember that google is your friend ![:(](http://reboot.pro/public/style_emoticons/default/sad.png):  \n[http://gnu.ethz.ch/debian/plop/](http://gnu.ethz.ch/debian/plop/ \"External link\")  \n[ftp://ftp.armedslack.org/people/alphageek/unpackaged/plpbt/](ftp://ftp.armedslack.org/people/alphageek/unpackaged/plpbt/ \"External link\")  \nand I wouldn\u0027t be so sure about plpcfgbt versin needing to match that of the actual bootmanager   \n"
+    },
+    {
+      "id": "91860",
+      "timestamp": "2010-02-19T02:43:55+00:00",
+      "author": "mightymouse",
+      "content": "Rawwritewin uses plpbt.img, but plpbt.bin is the file written onto the  \nfloppy. An app like WinImage can format a disk and write the bin  \nfile in one operation.  \n\nIf you try to configure plpbt.bin from version 5.0.3, with plpcfgbt.exe  \nfrom the zip archive 0.7 it won\u0027t work. Bring up a command prompt  \nin Windows and try it. You\u0027ll get an error message. You have to use  \none of the early versions of plpcfgbt.exe with a compatible bin file.  \nThat\u0027s why I searched Google, hoping to find versions 0.3 - thru - 0.6.   \n\nI appreciate the link for v0.4. I\u0027d like to find the others. The more  \nversions I\u0027ve got, the better my chances are of creating a working  \ndisk.   \n\nI\u0027m not sure why you mentioned the starfield. The starfield is just  \none of many parameters Elmar included with PLoP. I mentioned  \nthe starfield only because I remember seeing it several months  \nago when I somehow created a working PLoP floppy.  \n\nI tried every combination of words I could think of with Google to  \nfind the other versions of plpcfgbt. I\u0027m surprised you found v0.4.  \nWhile Googling, I couldn\u0027t find any of the older versions.   \n"
+    },
+    {
+      "id": "91867",
+      "timestamp": "2010-02-19T08:48:36+00:00",
+      "author": "Lancelot",
+      "content": "Here are some oldies from my archive, maybe helps (maybe not). ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)   \n\n[Info Picture](http://lancelot.winbuilder.net/5F/2008112X0000_PLoP%20bootmanager_Resim.png \"External link\")  \n\n[plpbt-5.0rc17.zip](http://lancelot.winbuilder.net/5F/200811240000_PLoP%20bootmanager_plpbt-5.0rc17.zip \"External link\")  \n[plpcfgbt-0.2.zip](http://lancelot.winbuilder.net/5F/200811230000_PLoP%20bootmanager_plpcfgbt-0.2.zip \"External link\")  \n[plpgenbtldr-0.3.zip](http://lancelot.winbuilder.net/5F/200811270000_PLoP%20bootmanager_plpgenbtldr-0.3.zip \"External link\")   \n"
+    },
+    {
+      "id": "91871",
+      "timestamp": "2010-02-19T10:07:47+00:00",
+      "author": "Wonko the Sane",
+      "content": "What I mean was actually WHY the HECK do you need to configure the .bin?  \n\nDoes the DEFAULT image, UNMODIFIED work or not?  \n\nWHAT happens with the DEFAULT UNMODIFIED image?  \n\nAs you can see from the link I gave you, the plpbt.bin inside plpbt.img inside plpbt-5.0.3.zip is dated 28/03/2009.  \nThe plpcfgbt.exe inside plpcfgbt-0.4.zip is dated 27/03/2009.  \n\nNow, do you think that **Elmar** created/modified/released on 28/03/2009 a plpbt.bin with a tool he wrote on 27/03/2009 (plpcfgbt 0.4) or did he use a previous tool?  \n\n![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)  \n\nWonko   \n"
+    },
+    {
+      "id": "91912",
+      "timestamp": "2010-02-19T22:54:59+00:00",
+      "author": "mightymouse",
+      "content": "Please, stay calm Wonko the Sane.  \n\nThis whole thing is something I got stuck on  \nbecause I\u0027ve never had this much trouble  \nbefore with a command line app. GUI based  \napps have been buggy for so many years  \nwe hardly even notice anymore!  \n\nWhen I created the orginal working floppy,  \nI remember using plpcfgbt.exe to configure  \nthe bin file. Believe it or not, I never thought  \nabout booting the disk without configuring the  \nbin.  \n\nYou\u0027re correct, Wonko the Sane. The floppy  \nboots normally without messing around with  \nthe bin file. Unfortunately, it doesn\u0027t fix the  \nproblem. That \"not bootable\" error still appears  \nwhen I select CDROM from the menu.  \n\nI never should have allowed myself to get  \ncaught up in this crazy loop of failure. I\u0027m  \nactually embarassed that a computer veteran  \nlike me didn\u0027t back away from PLoP several  \ndays ago.  \n\nTo tell you the truth, there is something about  \nbooting a computer in unusal ways that I really  \nenjoy! My own home and business computers  \nare fast, modern machines running the 64-bit  \nversion of Vista Ultimate. When I found PLoP,  \nmy first thought was to try it on those old  \ndesktops. It was actually a lot of fun, which is  \nsomething I rarely experience anymore using  \ncomputers.  \n\nJust like a dog chasing its tail, we could all go  \naround in circles forever and never come up  \nwith a logical solution to this problem.  \n\nThank you very much Wonko the Sane, (I love  \nthat Username!) Lancelot, Icecube, and ktp.   \n"
+    },
+    {
+      "id": "92063",
+      "timestamp": "2010-02-21T12:15:31+00:00",
+      "author": "Wonko the Sane",
+      "content": "I am actually very calm, rest assured. ![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nThen, are you going to leave \"the game\" or are you willing to go on looking for the problem? ![:smiling9:](http://reboot.pro/public/style_emoticons/default/smiling9.gif)  \n\nIf you are still wiht us, there are not so many things you can actually configure through plpcfgbt:  \n\n```\nUsage\u0026#58; plpcfgbt \u0026#91;OPTIONS\u0026#93; file\n\n\n\nOptions\u0026#58;\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\n PARAM   SET\t\t\t VALUES\n\n#1 vm\t  video mode\t  text, 640x480, 800x600, 1024x768, 1280x1024\n\n#2 stm\t start mode\t  menu or hidden, hidden requires cnt\u003don and dbt not off\n\n#3 cnt\t countdown\t   on or off\n\n#4 cntval  countdown\t   value in seconds between 1 and 99\n\n#4 dbt\t default boot\toff, profile, floppy, cdrom, usb\n\n#5 prf\t profile\t\t value between 1 and 16\n\n#6 stf\t starfield\t   on or off\n\n#7 zan\t zoom animation  on or off\n\n#8 fnt\t font\t\t\tbt or bios\n\n#9 usb1\tforce usb 1.1   on or off\n\n#10 int19h  int19h/os boot  do not boot the os and use int19h, on or off\n\n#11 hotkey  startup hotkey  yes or no\n```\n\n\u003cbr /\u003e\n\nSettings #1 to #8 and #11 seem more like \"cosmetic\" or \"interface\" settings and cannot possibly change the booting behaviour, so the only two settings that may have actually a relevance should be #9 and #10.  \n\nIf I were you I would play with those two only.  \n\n![:cheers:](http://reboot.pro/public/style_emoticons/default/cheers.gif)  \n\nWonko   \n"
+    },
+    {
+      "id": "93627",
+      "timestamp": "2010-03-07T19:13:46+00:00",
+      "author": "breaker",
+      "content": "Hi, I am also versed in electronics and have been using computers for years.  \n\nCan we take a step back from PLoP for a minute?  \n\nI remember how unreliable floppy disks and drives were, and still are. In fact, you could create a floppy on one computer and bring it to another computer and it wouldn\u0027t read.  \n\nWhy? Misalignment of the floppy read/write heads. So let me ask you this... Did you create the floppy boot disk using the same drive you are trying to boot it with? If not, could you create a boot disk on your relative\u0027s computer, or install your floppy drive on his computer?  \n\nAnother solution I would suggest is ditching the whole boot from CD-ROM or USB method.  \n\nWhy not install a cheap small hard drive as the master IDE, install whatever OS your relative uses on the drive and whatever diagnostic and fix-it tools you need, then install his main drive after that as a slave, and use your \"rescue fixed disk\" to repair his computer? That way you have a sure way to boot, and you can diagnose hardware, work with his disk while it is offline, etc. When done, obviously revert it back to normal.  \n\nIt is a bit more work, you have to disassemble the PC, but it is a good excuse to blow out the dust inside, if any.  \n\nFinally, if this user of yours is having MS Windows related issues due to malware or viruses, and his needs are not specialized, I would suggest he try Linux instead. Depending on the distro it is super easy to use and has a full suite of apps and drivers ready to go. The distro to use depends on the power of the PC. Anyway, I use Linux Mint 7 XFCE which has a light weight but full featured desktop with familiar controls (compared to Windows), and it runs rock solid and detected all of my hardware and installed flash, etc out of the box. I don\u0027t have to defrag, virus scan, or any of that nonsense anymore. Boot times are fast also. It\u0027s not for everyone, just a suggestion.  \n\nbreaker   \n"
+    }
+  ]
+}

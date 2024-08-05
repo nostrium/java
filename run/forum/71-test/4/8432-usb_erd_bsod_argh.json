@@ -1,0 +1,22 @@
+{
+  "id": "8432",
+  "title": "usb erd bsod... argh",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "71915",
+      "timestamp": "2009-07-16T13:26:08+00:00",
+      "author": "nialrw",
+      "content": "Hi all  \n\nI\u0027ve finally got my usb to start booting erd 2005.  \nEvery time it blue screens at the windows logo screen.  \nIf I boot from the CD direct it goes straight into the gui.  \n\n\u003cbr /\u003e\n\nAny ideas?  \n\nThanks.   \n"
+    },
+    {
+      "id": "71926",
+      "timestamp": "2009-07-16T15:38:09+00:00",
+      "author": "maanu",
+      "content": "\u003e Hi all  \n\u003e\n\u003e I\u0027ve finally got my usb to start booting erd 2005.  \n\u003e Every time it blue screens at the windows logo screen.  \n\u003e If I boot from the CD direct it goes straight into the gui.  \n\u003e\n\u003e \u003cbr /\u003e\n\u003e\n\u003e Any ideas?  \n\u003e\n\u003e Thanks.\n\ndid u try to search first ? online shared an excellent little tut few days ago ,   \n\nanyways , how is ur erd booting /? ram boot ?   \nwhich versions of ntdetect.com and setupldr,bin , ?  \nhave u followed any guide to make ur usb bootable and erd ,if yes then which ? if not give little bit detail on how u get erd working.   \n"
+    }
+  ]
+}

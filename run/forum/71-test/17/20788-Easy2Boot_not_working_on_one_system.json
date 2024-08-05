@@ -1,0 +1,28 @@
+{
+  "id": "20788",
+  "title": "Easy2Boot not working on one system",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "195791",
+      "timestamp": "2015-10-09T00:34:48+00:00",
+      "author": "blackwind",
+      "content": "On one of my systems, Easy2Boot boots, but dumps me at a \"grub\\\u003e\" prompt. On all my other systems, it works as expected. What gives?\n\n"
+    },
+    {
+      "id": "195792",
+      "timestamp": "2015-10-09T00:47:03+00:00",
+      "author": "saddlejib",
+      "content": "Is the other system your Television or Stereo System ?????\n\n"
+    },
+    {
+      "id": "195799",
+      "timestamp": "2015-10-09T15:55:23+00:00",
+      "author": "steve6375",
+      "content": "Try adding to top of \\\\menu.lst\n\nfind\n\npause HERE I AM\n\nWhat do you see?\n\n"
+    }
+  ]
+}

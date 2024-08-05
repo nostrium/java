@@ -1,0 +1,16 @@
+{
+  "id": "21120",
+  "title": "Hiren\u0027s 15.2 restored Mac Bootcamp - bootable into Hiren\u0027s",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "198967",
+      "timestamp": "2016-05-17T22:19:00+00:00",
+      "author": "arlesterc",
+      "content": "We have Hiren\u0027s 15.2 USB made per these instructions -[http://www.hiren.inf...tcd-on-usb-disk](http://www.hiren.info/pages/bootcd-on-usb-disk \"External link\") .\n\nWe have been able to boot the USB stick on a Mac system with it and also on a PC system - both systems see it as a bootable device. However when we try to boot a bootcamp MAC with it it is not seen as a bootable USB. However it is recognized from within the Windows VM. Anybody who could help us figure out what we are doing wrong/what we need to do please provide feedback.\n\nThanks in advance.\n\n"
+    }
+  ]
+}

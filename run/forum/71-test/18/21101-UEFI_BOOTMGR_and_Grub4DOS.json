@@ -1,0 +1,82 @@
+{
+  "id": "21101",
+  "title": "UEFI: BOOTMGR and Grub4DOS",
+  "isPinned": false,
+  "isFirstTopic": false,
+  "isLocked": false,
+  "tags": [],
+  "forumNotes": [
+    {
+      "id": "198860",
+      "timestamp": "2016-04-28T09:37:01+00:00",
+      "author": "Uneitohr",
+      "content": "I\u0027m trying to make a USB partition work on MBR and UEFI. From what I\u0027ve read on the forum, this will work If I use bootmgr and add a new entry for the grldr loader file.\n\nI formated the disk as FAT32, modified the partition boot code to BOOTMGR, added the BCD files using windows bcdboot command: BCDBOOT c:\\\\WINDOWS /s H: /f ALL . Copied over grldr and grldr.mbr. Added the grub4dos entry in the BCD store of BCD and EFI folders.\n\nWhen I try to boot it it displays the error: Cannot load grldr because a file is missing.\n\nThank you\n\n"
+    },
+    {
+      "id": "198861",
+      "timestamp": "2016-04-28T10:38:14+00:00",
+      "author": "Wonko the Sane",
+      "content": "No. ![:(](http://reboot.pro/public/style_emoticons/default/sad.png)\n\nMeaning that you are mixing things. ![:w00t:](http://reboot.pro/public/style_emoticons/default/w00t.gif)\n\nMBR is a partitioning scheme or (as MS calls it a \"style\") as opposed to GPT.\n\nBIOS is a type of firmware as opposed to EFI or UEFI.\n\nMost EFI firmware offer an option called Compatibility Support Module that emulates the BIOS functions:  \n[https://en.wikipedia..._Support_Module](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface#Compatibility_Support_Module \"External link\")\n\nYou do not use \"a\" BOOTMGR, you use either the \"normal\" BOOTMGR (if using BIOS or EFI in CSM) or the EFI BOOTMGR (if using EFI/UEFI).\n\nGrub4dos is STRICTLY \"BIOS only\" i.e. you either have a BIOS or have an CSM enabled in the EFI, in pure EFI grub4dos cannot run (as it needs BIOS support, either \"real\" or emulated through the CSM).\n\nWhen using grub4dos with BIOS (or CSM) and you are using the \"normal\" BOOTMGR as primary bootmanager, the advised way is to leave the BCD alone and use instead a BOOT.INI, as in here:  \n[http://reboot.pro/to...e-2#entry184060](http://reboot.pro/topic/19730-dmde-basic-disk-imaging-test-and-results/page-2#entry184060 \"\")\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "198863",
+      "timestamp": "2016-04-28T13:15:10+00:00",
+      "author": "Uneitohr",
+      "content": "In other words, only windows setup images (8, 10) can boot in pure UEFI, correct?\n\nI\u0027ve seen very few iso images that are capable of booting on UEFI. Only those images which are made for UEFI can actually boot in UEFI.\n\nI tried on a computer with uefi (CSM disabled) to boot a windows 7 dvd disk and it didn\u0027t work. The same with acronis cd disk. Isn\u0027t there some way to make them work on UEFI without enabling CSM or legacy boot?\n\n"
+    },
+    {
+      "id": "198866",
+      "timestamp": "2016-04-28T14:29:44+00:00",
+      "author": "wimb",
+      "content": "Grub4dos booting can only be used in BIOS-mode and is not available in UEFI-mode, as **jaclaz** aka **Wonko the Sane** described already. :wink:\n\nMore Info is here\n\nUEFI_MULTI.exe - [http://reboot.pro/to...ve/#entry168079](http://reboot.pro/topic/18182-uefi-multi-make-multi-boot-usb-drive/#entry168079 \"\")\n\n[http://www.msfn.org/...comment-1117324](http://www.msfn.org/board/topic/121446-install-from-usb-after-booting-with-pe/?page\u003d2#comment-1117324 \"External link\")\n\n"
+    },
+    {
+      "id": "198867",
+      "timestamp": "2016-04-28T15:58:25+00:00",
+      "author": "cdob",
+      "content": "\u003e I tried on a computer with uefi (CSM disabled) to boot a windows 7 dvd disk and it didn\u0027t work.\nA x64 windows 7 DVD supports UEFI.  \nA x64 UEFI requires a x64 OS. A x86 OS will fail.  \n\nWindows 8/10 supports UEFI secure boot.  \nWindos 7 dosn\u0027t supports UEFI secure boot. Disable secure boot at UEFI settings.   \n"
+    },
+    {
+      "id": "199003",
+      "timestamp": "2016-05-23T16:13:55+00:00",
+      "author": "Uneitohr",
+      "content": "I\u0027m back.\n\nHere\u0027s what I\u0027m trying to achieve with this:\n\nBOOTMGR (FAT32)\n\nIF BIOS -\\\u003e LOAD grldr\n\nIF UEFI -\\\u003e LOAD Windows from USB (separate partition, same stick)\n\nPlease advise on the best way to achieve this.\n\nI\u0027ve created a file called BOOT.INI in the root of my drive, where grldr and menu.lst are located with the following content:\n\n```\n[boot loader]\nTimeout\u003d30\ndefault\u003dC:\\grldr\n[operating systems]\nC:\\grldr\u003d\"grub4dos\"\n```\n\nI copied bootmgr from my current installed windows 8 OS to the root of the drive.\n\nAnd outputs the following error:\n\n```\n\\Boot\\BCD\n0xc0000000f\nThe boot configuration data for your PC is missing or contains errors.\n```\n\nThis happens with or without the \\\\boot\\\\bcd files. I tried with a blank set of BCD store and still outputs the same. It just ignores the boot.ini.\n\n"
+    },
+    {
+      "id": "199004",
+      "timestamp": "2016-05-23T16:43:19+00:00",
+      "author": "Wonko the Sane",
+      "content": "Not really. ![:dubbio:](http://reboot.pro/public/style_emoticons/default/dubbio.gif)\n\nMeaning that AFAICR the way it works is that BOOTMGR reads the \\\\boot\\\\BCD file, and LATER it ADDS to them BOOT.INI entries (non arcpaths ones to be accurate).\n\nSo you must first put yourself in a condition where the \\\\boot\\\\BCD file is found and gives no error and only later you add a BOOT.INI.\n\nAlso, if you are going to have a multipartition, the device needs to be seen as \"fixed\".\n\nWhy don\u0027t you simply try the:  \n[http://reboot.pro/to...40-ufd-format/](http://reboot.pro/topic/19140-ufd-format/%C2%A0 \"\")\n\nbefore introducing changes/variations?\n\n![:duff:](http://reboot.pro/public/style_emoticons/default/duff.gif)\n\nWonko\n\n"
+    },
+    {
+      "id": "199006",
+      "timestamp": "2016-05-23T17:28:19+00:00",
+      "author": "cdob",
+      "content": "\u003e BOOTMGR (FAT32)  \n\u003e IF BIOS -\\\u003e LOAD grldr  \n\u003e IF UEFI -\\\u003e LOAD Windows from USB (separate partition, same stick) just ignores the boot.ini.\nWhich separate partition do you like to create?  \nDo you use a removable stick?  \nShould windows read the sepearte partiton?  \nWhich storage capacity matches the USB stick?  \n\nWhat about a 64gb removable stick with:  \none big active NTFS partiton: partition boot code loads grldr, with files grldr, menu.lst and Windows files  \nand a small FAT32 partition: holds the directory \\\\efi  \n\nBootice can swap the accessible partition and maintain the bcd file.  \nAccess the FAT32 partition, maintain the file \\\\efi\\\\microsoft\\\\boot\\\\bcd and swap back to the NTFS partition.   \n"
+    },
+    {
+      "id": "199008",
+      "timestamp": "2016-05-23T18:15:16+00:00",
+      "author": "Uneitohr",
+      "content": "I use a 256GB usb stick that is seen by windows as a fixed drive. On it, I have 3 partitions:\n\n* FAT32 Active partition on which I have grldr, menu.lst\n* NTFS partition that holds a complete windows OS\n* NTFS partition for holding portable applications and iso images for grub4dos use\n\nWhat I want is to boot off the FAT32 partition, and if it detects UEFI/EFI chainload bootmgr off the second partition. Otherwise boot grldr.\n\n"
+    },
+    {
+      "id": "199009",
+      "timestamp": "2016-05-23T18:26:36+00:00",
+      "author": "cdob",
+      "content": "\u003e I use a 256GB usb stick that is seen by windows as a fixed drive. On it, I have 3 partitions:\n\u003e\n\u003e * FAT32 Active partition on which I have grldr, menu.lst\n\u003e * NTFS partition that holds a complete windows OS\n\u003e * NTFS partition for holding portable applications and iso images for grub4dos use\nYes, windows access all partitions at a fixed drive.  \n.  \nCopy \\\\efi folder to the FAT32 partition.  \n\n\u003e What I want is to boot off the FAT32 partition, and if it detects UEFI/EFI chainload bootmgr off the second partition. Otherwise boot grldr.\nThis is not possible. UEFI dosn\u0027t work that way.  \nUEFI dosn\u0027t boot bootmgr. It searches a file \\\\efi\\\\boot\\\\boot\\*.efi at a FAT32 partition.  \nAdjust \\\u003cFAT32\\\u003e\\\\efi\\\\microsoft\\\\boot\\\\bcd to your NTFS partiton that holds a complete windows OS.  \n\nAdded:  \nWhich complete windows OS do you use?  \nbcdboot.exe may create the \\\\efi folder.   \n\n**Edited by cdob, 23 May 2016 - 06:34 PM.**\n"
+    },
+    {
+      "id": "199011",
+      "timestamp": "2016-05-23T18:35:26+00:00",
+      "author": "Uneitohr",
+      "content": "~~Right but how do I chainload grldr from BCD (boot.ini not working for me, read above please)?~~\n\n~~I use BOOTICE to edit BCD entries.~~\n\nVery tired. It actually works fine. I just needed to add an entry in my empty BCD store in order for it to read boot.ini.\n\nThanks guys.\n\n"
+    },
+    {
+      "id": "204316",
+      "timestamp": "2017-07-30T20:55:28+00:00",
+      "author": "911CD.net",
+      "content": "Wow!! What a great read, so many familiar names. ![:wub:](http://reboot.pro/public/style_emoticons/default/wub.png)\n\n"
+    }
+  ]
+}
