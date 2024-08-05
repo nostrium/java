@@ -1,4 +1,4 @@
-
+```
                                ███                                               
  ████████    ██████   █████  ███████   ████████  ████  █████ ████ █████████████  
   ███  ███  ███  ███ ███       ███      ███  ███  ███   ███  ███   ███  ███  ███ 
@@ -7,6 +7,7 @@
  ████ █████  ██████  ██████     █████  █████     █████   ████████ █████ ███ █████
 	Nostr powered forum platform: https://github.com/nostrium
 
+```
 
 Nostrium is a nostr relay that provides a basic forum software.
 Users can register using their usual nostr accounts (npub, nsec)
