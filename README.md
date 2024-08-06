@@ -70,9 +70,25 @@ Requisites
 ----------
 
 + Java, anything above JDK 7
++ Linux or OSX (for development)
 + Maven
 
 The code is developed using Netbeans IDE (any version)
+
+
+Development
+-----------
+
++ Download the source code to your computer
++ create an SSH key to log into a server as root
++ edit the deploy.sh script to match your domain
++ run the deploy script: sh deploy.sh
+
+This will compile the java code, upload to the server
+and then launch.
+
+Please edit the config.json on your server the
+"debug" option to "false".
 
 
 License
