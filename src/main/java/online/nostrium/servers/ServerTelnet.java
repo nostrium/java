@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import online.nostrium.main.core;
 import online.nostrium.servers.apps.basic.TerminalBasic;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
@@ -37,10 +38,18 @@ import online.nostrium.users.UserUtils;
 @SuppressWarnings("StaticNonFinalUsedInInitialization")
 public class ServerTelnet {
 
-    private static final int PORT = 10101;
 
     
-    public static void main(String[] args) {
+    public static void startServerTelnet(){
+        int PORT = 23;
+        
+        if(core.config.debug){
+            PORT = core.config.portTelnet_Debug;
+        }else{
+            PORT = core.config.portTelnet;
+        }
+        
+        
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             System.out.println("Telnet server started on port " + PORT);
 
@@ -54,7 +63,8 @@ public class ServerTelnet {
                     + "Another service is already using port " + PORT);
         }
     }
-
+    
+    
     private static class ClientHandler implements Runnable {
 
         private final Socket clientSocket;

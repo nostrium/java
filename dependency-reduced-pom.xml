@@ -23,7 +23,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>online.nostrium.servers.ServerTelnet</mainClass>
+                  <mainClass>online.nostrium.main.core</mainClass>
                 </transformer>
               </transformers>
               <filters>

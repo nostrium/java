@@ -13,6 +13,7 @@ online/nostrium/forum/structures/ForumGroup.class
 online/nostrium/forum/structures/Level1.class
 online/nostrium/utils/TextFunctions.class
 online/nostrium/servers/apps/basic/CommandCd.class
+online/nostrium/main/coreOld.class
 online/nostrium/main/core.class
 online/nostrium/main/Folder.class
 online/nostrium/forum/convert/ConvertIPB.class

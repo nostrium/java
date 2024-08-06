@@ -1,35 +1,33 @@
 /*
+ * Runs a telnet server
+ *
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-
 package online.nostrium.main;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import online.nostrium.forum.structures.ManageUsers;
-import online.nostrium.requests.RequestIndex;
+import online.nostrium.servers.ServerTelnet;
+import online.nostrium.servers.terminal.TerminalColor;
+import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.servers.terminal.TerminalUtils;
 import online.nostrium.utils.AsciiArt;
 import online.nostrium.utils.Log;
-import org.apache.commons.io.FileUtils;
-import org.takes.facets.fork.FkRegex;
-import org.takes.facets.fork.TkFork;
-import org.takes.http.Exit;
-import org.takes.http.FtBasic;
-import org.takes.tk.TkFiles;
 
 /**
- * Date: 2023-02-07
- * Place: Germany
- * @author brito
+ *
+ * To test the telnet server do this from the command line:
+ *
+ * telnet 127.0.0.1 10101
+ *
+ *
+ * @author Brito
+ * @date: 2024-08-06
+ * @location: Germany
  */
 public class core {
 
-    // use default settings
-    public static Config config = new Config();
-    public static ManageUsers users = new ManageUsers();
+    public static Config config;
     
     
     public static void main(String[] args) {
@@ -37,73 +35,26 @@ public class core {
         File folder = Folder.getFolderBase();
         File folderData = new File(folder, "data");
         
-        System.out.println(AsciiArt.intro3());
+        String logo = TerminalUtils.paint(TerminalType.ANSI,
+                TerminalColor.GREEN, AsciiArt.intro());
+        
+        
+        System.out.println(logo);
+        System.out.println("");
         System.out.println(AsciiArt.description());
         System.out.println("--------------------------");
         Log.write("Running from folder: " + folder.getPath());
         
+        
         // get the config started
-        loadConfig();
+        config = Config.loadConfig();
         
-        try {
-            
-            Log.write("Starting on port 8080");
-           
-            FtBasic basic = new FtBasic(
-                    new TkFork(
-                            new FkRegex("/data/.+", new TkFiles(folderData)),
-                            new FkRegex(".+", new RequestIndex())
-                    )
-                    , 8080
-            );
+        
+        // telnet
+        ServerTelnet.startServerTelnet();
+        
+    }
 
-            basic.start(Exit.NEVER);
-            
-            
-            
-        } catch (IOException ex) {
-            Logger.getLogger(core.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
     
-    
-    /**
-     * Load the configuration from disk,
-     * when it does not exist then it will
-     * create one.
-     */
-    private static void loadConfig() {
-        File file = Folder.getFileConfig();
-        
-        // there is no file? Create one
-        if(file.exists() == false){
-            try {
-                String data = core.config.jsonExport();
-                FileUtils.writeStringToFile(file, data);
-            } catch (IOException ex) {
-                Logger.getLogger(core.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            // nothing else to do, just exit
-            Log.write("Created config file: " + file.getPath());
-            return;
-        }
-        // the config file exists, let's load it.
-        
-        Config config = Config.jsonImport(file);
-        if(config == null){
-            try {
-                String data = core.config.jsonExport();
-                FileUtils.writeStringToFile(file, data);
-            } catch (IOException ex) {
-                Logger.getLogger(core.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            // nothing else to do, just exit
-            Log.write("Restored config file with default settings: " + file.getPath());
-            return;
-        }
-        // the config file is valid, use it
-        core.config = config;
-    }
-    
-    
+
 }

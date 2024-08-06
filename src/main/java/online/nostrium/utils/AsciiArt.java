@@ -43,7 +43,7 @@ public class AsciiArt {
     }
     
     public static String description(){
-        return "\tNostr powered forum platform: https://github.com/nostrium";    
+        return " The NOSTR BBS\n https://github.com/nostrium";    
     }
     
     
