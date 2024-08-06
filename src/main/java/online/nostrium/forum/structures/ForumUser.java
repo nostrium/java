@@ -33,6 +33,7 @@ public class ForumUser {
     String interests;
     String signatureText;
     
+    @SuppressWarnings("unchecked")
     HashMap<String, String> customFields = new HashMap();
     
     /**

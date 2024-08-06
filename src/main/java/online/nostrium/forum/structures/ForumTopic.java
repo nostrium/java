@@ -34,7 +34,9 @@ public class ForumTopic {
         isFirstTopic = false,
         isLocked = false;
     
+    @SuppressWarnings("unchecked")
     ArrayList<String> tags = new ArrayList();
+    @SuppressWarnings("unchecked")
     ArrayList<ForumNote> forumNotes = new ArrayList();
 
     public String getId() {

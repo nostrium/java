@@ -23,6 +23,7 @@ public abstract class TerminalApp {
 
     // navigation between different apps
     public TerminalApp appParent = null;
+    @SuppressWarnings("unchecked")
     public ArrayList<TerminalApp> appChildren = new ArrayList();
     public final User user;
     

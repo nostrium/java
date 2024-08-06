@@ -69,7 +69,7 @@ a password, which is used for encrypting the NSEC.
 Requisites
 ----------
 
-+ Java, anything above JDK 7
++ Java, anything above JDK 17
 + Linux or OSX (for development)
 + Maven
 

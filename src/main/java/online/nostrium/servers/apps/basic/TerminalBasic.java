@@ -6,6 +6,7 @@
  */
 package online.nostrium.servers.apps.basic;
 
+import online.nostrium.servers.apps.chat.TerminalChat;
 import online.nostrium.servers.apps.user.TerminalUser;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
@@ -31,6 +32,7 @@ public class TerminalBasic extends TerminalApp {
         
         // add apps inside
         addApp(new TerminalUser(terminalType, user));
+        addApp(new TerminalChat(terminalType, user));
     }
 
     @Override

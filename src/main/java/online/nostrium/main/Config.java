@@ -68,7 +68,7 @@ public class Config {
      */
     public String jsonExport() {
         GsonBuilder gsonBuilder = new GsonBuilder()
-                //.excludeFieldsWithoutExposeAnnotation()
+                .excludeFieldsWithoutExposeAnnotation()
                 //.enableComplexMapKeySerialization()
                 //.setLenient()
                 .setPrettyPrinting();

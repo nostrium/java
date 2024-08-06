@@ -27,6 +27,7 @@ public class Forum {
            title,
            one_line_summary;
     
+    @SuppressWarnings("unchecked")
     ArrayList<ForumGroup> forumGroups = new ArrayList();
 
     public String getId() {

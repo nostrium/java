@@ -44,6 +44,7 @@ public class CommandHelp extends TerminalCommand {
         
         text += "Available commands:";
 
+        @SuppressWarnings("unchecked")
         ArrayList<String> commandList = new ArrayList();
 
         // sort the ones with slash first

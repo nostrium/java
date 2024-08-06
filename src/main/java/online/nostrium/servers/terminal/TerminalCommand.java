@@ -21,6 +21,7 @@ public abstract class TerminalCommand {
     public boolean internalCommand = false;
     
     // list of alternative commands that can be recognized
+    @SuppressWarnings("unchecked")
     protected ArrayList<String> 
             commandsAlternative = new ArrayList();
     

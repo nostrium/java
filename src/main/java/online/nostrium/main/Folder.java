@@ -23,6 +23,7 @@ public class Folder {
     static String 
             nameFileConfig = "config.json",
             nameFolderData = "data",
+            nameFolderChat = "chat",
             nameFolderBase = "forum",
             nameFolderUsers = "users",
             nameFolderProfileImages = "profile_images";
@@ -64,6 +65,10 @@ public class Folder {
     
     public static File getFolderData() {
         return defaultGetFolder(nameFolderData);
+    }
+    
+    public static File getFolderChat() {
+        return defaultGetFolder(nameFolderChat);
     }
     
     

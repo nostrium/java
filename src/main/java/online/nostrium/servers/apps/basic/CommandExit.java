@@ -22,14 +22,14 @@ public class CommandExit extends TerminalCommand{
 
     public CommandExit(TerminalApp app) {
         super(app);
-        this.commandsAlternative.add("return");
+        //this.commandsAlternative.add("return");
         this.commandsAlternative.add("quit");
     }
 
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
         // -10 means to leave the app, go to previous app
-        int returnCode = TerminalCode.EXIT_APP;
+        int returnCode = TerminalCode.EXIT_CLIENT;
         String text = "";
         // -100 means to exit the program
         if(app.appParent == null){
