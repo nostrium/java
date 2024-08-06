@@ -47,21 +47,43 @@ public class User {
     String password = null,
             nsec = null;
 
+    
+    /**
+     * Provides the JSON where the file should be created
+     * It does not create folders
+     * @return 
+     */
+    public File getFile(){
+        File folder = FileFunctions.getThirdLevelFolder(
+                Folder.getFolderUsers(), npub, false);
+        File file = new File(folder, this.npub + ".json");
+        return file;
+    }
+    
+    public void delete(){
+        FileFunctions.deleteFolderIfEmpty
+            (getFile(), Folder.getFolderUsers());
+    }
+    
     /**
      * Save this user on the folder
      * @return 
      */
     public boolean save() {
-        File folder = FileFunctions.getThirdLevelFolder(
-                Folder.getFolderUsers(), npub, true);
-        if(folder == null){
+        File file = getFile();
+        File folder = file.getParentFile();
+        
+        if(folder != null && folder.exists() == false){
+            folder.mkdirs();
+        }
+        
+        if(folder == null || folder.exists() == false){
             return false;
         }
         
         String text = this.jsonExport();
         
         // save it do disk
-        File file = new File(folder, this.npub + ".json");
         boolean result = FileFunctions.saveStringToFile(file, text);
         
         if(result == false){
@@ -69,10 +91,6 @@ public class User {
         }
         
         if(file.exists() == false){
-            return false;
-        }
-        
-        if(file.length() == 0){
             return false;
         }
 

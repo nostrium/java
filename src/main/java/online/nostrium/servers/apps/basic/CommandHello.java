@@ -8,6 +8,7 @@ package online.nostrium.servers.apps.basic;
 
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
+import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
@@ -26,10 +27,10 @@ public class CommandHello extends TerminalCommand{
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
         if(parameters.isEmpty()){
-            return reply(404, "Please type a name");
+            return reply(TerminalCode.NOT_FOUND, "Please type a name");
         }
         
-        return reply(200, "Hello, "
+        return reply(TerminalCode.OK, "Hello, "
                 + paint(BLUE, parameters)
                 + "!");
     }

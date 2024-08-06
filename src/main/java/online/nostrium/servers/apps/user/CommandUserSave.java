@@ -8,6 +8,7 @@ package online.nostrium.servers.apps.user;
 
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
+import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
@@ -29,9 +30,9 @@ public class CommandUserSave extends TerminalCommand{
     public CommandResponse execute(TerminalType terminalType, String parameters) {
         // try to save the user
         if(app.user.save()){
-            return reply(200, paint(BLUE, "Saved to disk"));
+            return reply(TerminalCode.OK, paint(BLUE, "Saved to disk"));
         }else{
-            return reply(500, paint(RED, "Failed to save"));
+            return reply(TerminalCode.FAIL, paint(RED, "Failed to save"));
         }
     }
 

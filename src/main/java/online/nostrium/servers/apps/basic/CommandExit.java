@@ -29,7 +29,7 @@ public class CommandExit extends TerminalCommand{
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
         // -10 means to leave the app, go to previous app
-        int returnCode = TerminalCode.EXIT_CLIENT;
+        TerminalCode returnCode = TerminalCode.EXIT_CLIENT;
         String text = "";
         // -100 means to exit the program
         if(app.appParent == null){

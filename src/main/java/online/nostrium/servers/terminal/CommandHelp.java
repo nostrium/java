@@ -90,7 +90,7 @@ public class CommandHelp extends TerminalCommand {
             text += "\n";
         }
 
-        return reply(200, text);
+        return reply(TerminalCode.OK);
     }
 
     @Override

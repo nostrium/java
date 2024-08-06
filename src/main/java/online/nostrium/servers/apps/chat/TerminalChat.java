@@ -8,6 +8,7 @@ package online.nostrium.servers.apps.chat;
 
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
+import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
@@ -49,7 +50,7 @@ public class TerminalChat extends TerminalApp {
 
             @Override
             public CommandResponse execute(TerminalType terminalType, String parameters) {
-                return reply(404, "");
+                return reply(TerminalCode.NOT_FOUND);
             }
         };
     }

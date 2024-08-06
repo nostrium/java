@@ -36,5 +36,11 @@ public class UserTest {
         assertEquals(user.getRegisteredTime(), timestamp);
         assertEquals(user.getLastLoginTime(), timestamp);
         
+        user.save();
+        assertTrue(user.getFile().exists());
+        
+        user.delete();
+        assertFalse(user.getFile().exists());
+        
     }
 }

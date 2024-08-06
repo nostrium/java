@@ -8,6 +8,7 @@ package online.nostrium.servers.apps.basic;
 
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
+import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
@@ -32,7 +33,7 @@ public class CommandLs extends TerminalCommand {
         String text = "";
         // no need to continue when there is nothing
         if (this.app.appChildren.isEmpty()) {
-            return reply(200, text);
+            return reply(TerminalCode.OK, text);
         }
 
         // iterate all apps        
@@ -43,7 +44,7 @@ public class CommandLs extends TerminalCommand {
                     + "\t";
         }
 
-        return reply(200, text);
+        return reply(TerminalCode.OK, text);
     }
 
     @Override

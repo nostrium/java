@@ -10,6 +10,7 @@ import online.nostrium.servers.apps.chat.TerminalChat;
 import online.nostrium.servers.apps.user.TerminalUser;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
+import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
 import online.nostrium.servers.terminal.TerminalCommand;
@@ -57,7 +58,7 @@ public class TerminalBasic extends TerminalApp {
 
             @Override
             public CommandResponse execute(TerminalType terminalType, String parameters) {
-                return reply(404, "");
+                return reply(TerminalCode.NOT_FOUND, "");
             }
         };
     }

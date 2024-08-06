@@ -52,7 +52,7 @@ public class CommandUserPassword extends TerminalCommand{
         app.user.setPassword(parameters);
         
         
-        return reply(200, ""
+        return reply(TerminalCode.OK, ""
                 + paint(BLUE, "Password set")
         );
     }

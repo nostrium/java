@@ -8,6 +8,7 @@ package online.nostrium.servers.apps.basic;
 
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
+import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
 
@@ -24,7 +25,7 @@ public class CommandLogin extends TerminalCommand{
 
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
-        return reply(200, "Current server time: " + java.time.LocalDateTime.now());
+        return reply(TerminalCode.OK, "Current server time: " + java.time.LocalDateTime.now());
     }
 
     @Override

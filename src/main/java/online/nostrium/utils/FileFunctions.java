@@ -109,11 +109,37 @@ public class FileFunctions {
     }
 
     /**
+     * Deletes the folder where the JSON file is located and deletes empty parent folders
+     * up to the base path.
+     *
+     * @param jsonFile The JSON file whose containing folder is to be deleted.
+     * @param basePath The base path which should not be deleted.
+     */
+    public static void deleteFolderIfEmpty(File jsonFile, File basePath) {
+        if (jsonFile == null || basePath == null) {
+            return;
+        }
+        
+        // delete the file itself
+        jsonFile.delete();
+
+        File folder = jsonFile.getParentFile();
+        while (folder != null && !folder.equals(basePath)) {
+            if (folder.list().length == 0) {
+                folder.delete();
+                folder = folder.getParentFile();
+            } else {
+                break;
+            }
+        }
+    }
+    
+    /**
      * Recursively deletes a directory and all its contents.
      *
      * @param file The directory to delete.
      */
-    private static void deleteRecursively(File file) {
+    public static void deleteRecursively(File file) {
         if (file.isDirectory()) {
             File[] entries = file.listFiles();
             if (entries != null) {

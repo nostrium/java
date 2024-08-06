@@ -67,8 +67,12 @@ public abstract class TerminalCommand {
         }
     }
 
-    protected CommandResponse reply(int code, String text){
+    protected CommandResponse reply(TerminalCode code, String text){
         return new CommandResponse(code, text);
+    }
+    
+    protected CommandResponse reply(TerminalCode code){
+        return new CommandResponse(code, "");
     }
     
     protected CommandResponse reply(TerminalApp app){

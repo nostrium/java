@@ -61,7 +61,7 @@ public class CommandCd extends TerminalCommand {
             }
         }
         
-        return reply(200, "Not found");
+        return reply(TerminalCode.NOT_FOUND, "Not found");
     }
 
     @Override

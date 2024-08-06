@@ -7,6 +7,9 @@
 package online.nostrium.servers.apps.chat;
 
 
+import java.io.File;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import online.nostrium.users.*;
 import static online.nostrium.utils.NostrUtils.generateNostrKeys;
 import online.nostrium.utils.TextFunctions;
@@ -34,6 +37,9 @@ public class ChatUtils {
         // add the user as founder
         chatRoom.addAdmin(user.getNpub());
         
+        // user needs to be save to disk
+        user.save();
+        
         // set the name
         chatRoom.setName("randochat#" 
                 + chatRoom.getNpub().substring(0, 4)
@@ -45,6 +51,19 @@ public class ChatUtils {
         
         // all done
         return chatRoom;
+    }
+    
+    /**
+     * Gets the message box for the current day
+     * @param folder
+     * @return 
+     */
+    public static File getFileMessageBoxForToday(File folder) {
+        LocalDate currentDate = LocalDate.now();
+        String today = currentDate.format(DateTimeFormatter.ISO_LOCAL_DATE);
+        String filename = "messages_" + today + ".json";
+        File file = new File(folder, filename);
+        return file;
     }
 
 }

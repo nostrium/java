@@ -8,8 +8,13 @@ package online.nostrium.servers.apps.chat;
 
 import com.google.gson.annotations.Expose;
 import java.io.File;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import online.nostrium.main.Folder;
+import online.nostrium.servers.terminal.CommandResponse;
+import online.nostrium.servers.terminal.TerminalCode;
+import online.nostrium.users.User;
 import online.nostrium.utils.FileFunctions;
 import online.nostrium.utils.JsonTextFile;
 import static online.nostrium.utils.TextFunctions.addIfNew;
@@ -73,6 +78,9 @@ public class ChatRoom extends JsonTextFile{
     @SuppressWarnings("unchecked")
     @Expose
     ArrayList<String> usersBlacklisted = new ArrayList();     // users permitted to talk
+    
+    // the folder where we keep the work files
+    private File folder = null;
     
     public ChatRoom(String npub) {
         this.npub = npub;
@@ -203,19 +211,96 @@ public class ChatRoom extends JsonTextFile{
             (getFile(), Folder.getFolderChat());
     }
 
-    @Override
-    public File getFile() {
+    public File getFolder(){
+        if(folder != null){
+            return folder;
+        }
         File folderBase = Folder.getFolderChat();
         File folderMiddle = FileFunctions.getFirstLevelFolder(folderBase, npub, true);
-        File folder = new File(folderMiddle, npub);
-        folder.mkdirs();
-        String filename = npub + "-chat.json";
-        File file = new File(folder, filename);
+        File folderCreated = new File(folderMiddle, npub);
+        if(folderCreated.exists() == false){
+            folderCreated.mkdirs();
+        }
+        folder = folderCreated;
+        return folderCreated;
+    }
+    
+    @Override
+    public File getFile() {
+        File folderToBeUsed = getFolder();
+        String filename = "room.json";
+        File file = new File(folderToBeUsed, filename);
         return file;
     }
 
     public void addAdmin(String npub) {
         addIfNew(npub, this.admins);
+    }
+
+    /**
+     * Gets the message box for the current day
+     * @param folder
+     * @return 
+     */
+    public ChatArchive getMessagesToday() {
+        // user can add the text here
+        File file = ChatUtils.getFileMessageBoxForToday(folder);
+        ChatArchive archive = null;
+        
+        if(file.exists() == false){
+            archive = new ChatArchive(file);
+            archive.save();
+        }else{
+            archive = ChatArchive.jsonImport(file, ChatArchive.class);
+        }
+        return archive;
+    }
+    
+    /**
+     * Add a new text on the chat box
+     * @param user
+     * @param text 
+     * @return  
+     */
+    public CommandResponse addText(User user, String text) {
+        if(userCannotAddText(user)){
+            return new CommandResponse(TerminalCode.DENIED);
+        }
+        
+        ChatArchive archive = this.getMessagesToday();
+                
+        if(archive == null){
+            return new CommandResponse(TerminalCode.FAIL);
+        }
+        
+        // add the text message
+        ChatMessage message = new ChatMessage(user, text);
+        archive.addMessage(message);
+        archive.save();
+        
+        
+        // all good
+        return new CommandResponse(TerminalCode.OK);
+    }
+
+    /**
+     * Check if a user is permitted to write on this chat
+     * @param user
+     * @return 
+     */
+    private boolean userCannotAddText(User user) {
+        // is the user blacklisted?
+        if(usersBlacklisted.contains(user.getNpub())){
+            return true;
+        }
+        
+        // not a member at a password-closed group
+        if(needPasswordToEnter 
+                && usersPermitted.contains(user.getNpub()) == false){
+            return true;
+        }
+        
+        return false;
     }
 
 

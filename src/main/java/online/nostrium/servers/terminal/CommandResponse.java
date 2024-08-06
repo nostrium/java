@@ -14,22 +14,27 @@ package online.nostrium.servers.terminal;
  */
 public class CommandResponse {
 
-    final int code;
+    final TerminalCode code;
     final String text;
     private TerminalApp app;
     
     public CommandResponse(TerminalApp app) {
-        this.code = -1;
+        this.code = TerminalCode.CHANGE_APP;
         this.text = "";
         this.app = app;
     }
 
-    public CommandResponse(int code, String text) {
+    public CommandResponse(TerminalCode code, String text) {
         this.code = code;
         this.text = text;
     }
+    
+    public CommandResponse(TerminalCode code) {
+        this.code = code;
+        this.text = "";
+    }
 
-    public int getCode() {
+    public TerminalCode getCode() {
         return code;
     }
 
