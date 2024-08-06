@@ -10,7 +10,9 @@ import com.google.gson.annotations.Expose;
 import java.io.File;
 import java.util.ArrayList;
 import online.nostrium.main.Folder;
+import online.nostrium.utils.FileFunctions;
 import online.nostrium.utils.JsonTextFile;
+import static online.nostrium.utils.TextFunctions.addIfNew;
 
 
 /**
@@ -21,16 +23,35 @@ import online.nostrium.utils.JsonTextFile;
 public class ChatRoom extends JsonTextFile{
     
     @Expose
-    final String id;
+    final String npub;
+    
+    @Expose
+    String
+            nsec;           // maybe used in the future for signing events
+    
+    @Expose
+    ChatType chatType = ChatType.NORMAL;    // type of room
     
     @Expose
     String name,            // one name without spaces
            description,     // one-line description
-           password;        // define a password to enter (optional)
+           intro,           // set initial screen when entering the room
+           passwordHash,    // define a password to enter (optional)
+           registeredTime;  // when it was registered
+
     
     @Expose
     boolean showHistory = true,
-            needPasswordToEnter = false;
+            needPasswordToEnter = false,
+            needApprovalToEnter = false;
+    
+    @Expose
+    String
+            roomParent;     // either null or the parent inside this chat
+    
+    @SuppressWarnings("unchecked")
+    @Expose
+    ArrayList<String> subrooms = new ArrayList();
     
     
     @SuppressWarnings("unchecked")
@@ -53,19 +74,149 @@ public class ChatRoom extends JsonTextFile{
     @Expose
     ArrayList<String> usersBlacklisted = new ArrayList();     // users permitted to talk
     
+    public ChatRoom(String npub) {
+        this.npub = npub;
+    }
     
     
-    
+    public String getNsec() {
+        return nsec;
+    }
 
-    public ChatRoom(String id) {
-        this.id = id;
-        
+    public void setNsec(String nsec) {
+        this.nsec = nsec;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
+    }
+
+    public boolean isShowHistory() {
+        return showHistory;
+    }
+
+    public void setShowHistory(boolean showHistory) {
+        this.showHistory = showHistory;
+    }
+
+    public boolean isNeedPasswordToEnter() {
+        return needPasswordToEnter;
+    }
+
+    public void setNeedPasswordToEnter(boolean needPasswordToEnter) {
+        this.needPasswordToEnter = needPasswordToEnter;
+    }
+
+    public boolean isNeedApprovalToEnter() {
+        return needApprovalToEnter;
+    }
+
+    public void setNeedApprovalToEnter(boolean needApprovalToEnter) {
+        this.needApprovalToEnter = needApprovalToEnter;
+    }
+
+    public ArrayList<String> getSubrooms() {
+        return subrooms;
+    }
+
+    public ArrayList<String> getAdmins() {
+        return admins;
+    }
+
+    public ArrayList<String> getMods() {
+        return mods;
+    }
+
+    public ArrayList<String> getTags() {
+        return tags;
+    }
+
+    public ArrayList<String> getUsersPermitted() {
+        return usersPermitted;
+    }
+
+    public ArrayList<String> getUsersBlacklisted() {
+        return usersBlacklisted;
+    }
+
+    public String getRoomParent() {
+        return roomParent;
+    }
+
+    public void setRoomParent(String roomParent) {
+        this.roomParent = roomParent;
+    }
+
+    public String getNpub() {
+        return npub;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+
+    public String getRegisteredTime() {
+        return registeredTime;
+    }
+
+    public void setRegisteredTime(String registeredTime) {
+        this.registeredTime = registeredTime;
+    }
+
+    public ChatType getChatType() {
+        return chatType;
+    }
+
+    public void setChatType(ChatType chatType) {
+        this.chatType = chatType;
+    }
+    
+    /**
+     * Delete this folder and related files
+     */
+    public void delete(){
+        FileFunctions.deleteFolderAndParentsIfEmpty
+            (getFile(), Folder.getFolderChat());
     }
 
     @Override
     public File getFile() {
-        File folder = Folder.getFolderChat();
-        
+        File folderBase = Folder.getFolderChat();
+        File folderMiddle = FileFunctions.getFirstLevelFolder(folderBase, npub, true);
+        File folder = new File(folderMiddle, npub);
+        folder.mkdirs();
+        String filename = npub + "-chat.json";
+        File file = new File(folder, filename);
+        return file;
     }
+
+    public void addAdmin(String npub) {
+        addIfNew(npub, this.admins);
+    }
+
 
 }

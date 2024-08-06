@@ -41,6 +41,89 @@ public class FileFunctions {
         }
         return null;
     }
+    
+    /**
+     * Provides the folder based on texts such as nsec, creates the folders when
+     * they don't exist.
+     *
+     * @param startingFolder The starting folder path.
+     * @param text The input text to determine folder structure.
+     * @param createFolders Flag to indicate whether to create the folders if they don't exist.
+     * @return The folder located at the specified level, or null if folder creation fails or text is invalid.
+     */
+    public static File getFirstLevelFolder(File startingFolder, String text, boolean createFolders) {
+        if (text == null || text.length() < 3) {
+            return null;
+        }
+
+        try {
+            String firstChar = text.substring(0, 1);
+            String secondChar = text.substring(1, 2);
+            String thirdChar = text.substring(2, 3);
+
+            File firstLevelFolder = new File(startingFolder, firstChar);
+            File secondLevelFolder = new File(firstLevelFolder, secondChar);
+            File thirdLevelFolder = new File(secondLevelFolder, thirdChar);
+
+            if (createFolders && !thirdLevelFolder.exists()) {
+                boolean created = thirdLevelFolder.mkdirs();
+                if (!created) {
+                    return null;
+                }
+            }
+
+            return thirdLevelFolder;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    /**
+     * Deletes the folder where the JSON file is located and deletes empty parent folders
+     * up to the base path.
+     *
+     * @param jsonFile The JSON file whose containing folder is to be deleted.
+     * @param basePath The base path which should not be deleted.
+     */
+    public static void deleteFolderAndParentsIfEmpty(File jsonFile, File basePath) {
+        if (jsonFile == null || basePath == null) {
+            return;
+        }
+
+        // Delete all files and subfolders in the folder where the JSON file is located
+        File folder = jsonFile.getParentFile();
+        if (folder != null) {
+            deleteRecursively(folder);
+        }
+
+        // Delete empty parent folders up to the base path
+        File parentFolder = folder.getParentFile();
+        while (parentFolder != null && !parentFolder.equals(basePath)) {
+            if (parentFolder.list().length == 0) {
+                parentFolder.delete();
+                parentFolder = parentFolder.getParentFile();
+            } else {
+                break;
+            }
+        }
+    }
+
+    /**
+     * Recursively deletes a directory and all its contents.
+     *
+     * @param file The directory to delete.
+     */
+    private static void deleteRecursively(File file) {
+        if (file.isDirectory()) {
+            File[] entries = file.listFiles();
+            if (entries != null) {
+                for (File entry : entries) {
+                    deleteRecursively(entry);
+                }
+            }
+        }
+        file.delete();
+    }
 
     /**
      * Provides the folder based on texts such as nsec, creates the folders when

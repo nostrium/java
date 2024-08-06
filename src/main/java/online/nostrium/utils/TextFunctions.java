@@ -15,6 +15,7 @@ import java.security.NoSuchAlgorithmException;
 import java.text.Normalizer;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 /**
  * Date: 2023-02-09
@@ -119,6 +120,17 @@ public class TextFunctions {
         }
 
         return sanitized.toString();
+    }
+    
+    public static void addIfNew(String text, ArrayList<String> list) {
+        if(text == null || text.trim().length() == 0){
+            return;
+        }
+        if(list.contains(text)){
+            return;
+        }
+        // add it up
+        list.add(text);
     }
     
 }
