@@ -7,7 +7,7 @@
 package basic;
 
 import java.io.File;
-import network.nostrium.main.Folder;
+import online.nostrium.main.Folder;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -6,10 +6,10 @@
  */
 package basic;
 
-import network.nostrium.users.User;
-import network.nostrium.users.UserType;
-import network.nostrium.users.UserUtils;
-import network.nostrium.utils.TextFunctions;
+import online.nostrium.users.User;
+import online.nostrium.users.UserType;
+import online.nostrium.users.UserUtils;
+import online.nostrium.utils.TextFunctions;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

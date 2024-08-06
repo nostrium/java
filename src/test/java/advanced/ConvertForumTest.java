@@ -10,10 +10,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import network.nostrium.main.Folder;
-import network.nostrium.forum.convert.ConvertIPB;
-import network.nostrium.forum.structures.ForumGroup;
-import network.nostrium.forum.structures.ForumTopic;
+import online.nostrium.main.Folder;
+import online.nostrium.forum.convert.ConvertIPB;
+import online.nostrium.forum.structures.ForumGroup;
+import online.nostrium.forum.structures.ForumTopic;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
 

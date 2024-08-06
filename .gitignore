@@ -1,3 +1,5 @@
 *.class
 ./temp/
 ./run/
+/nbproject/
+/target/
