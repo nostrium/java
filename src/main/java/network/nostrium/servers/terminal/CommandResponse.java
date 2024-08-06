@@ -16,6 +16,13 @@ public class CommandResponse {
 
     final int code;
     final String text;
+    private TerminalApp app;
+    
+    public CommandResponse(TerminalApp app) {
+        this.code = -1;
+        this.text = "";
+        this.app = app;
+    }
 
     public CommandResponse(int code, String text) {
         this.code = code;
@@ -28,6 +35,10 @@ public class CommandResponse {
 
     public String getText() {
         return text;
+    }
+
+    public TerminalApp getApp() {
+        return app;
     }
 
 }

@@ -50,5 +50,28 @@ public class TerminalUtils {
         
         return text;
     }
+
+    public static String getPath(TerminalApp app) {
+        if(app.appParent == null){
+            return "/";
+        }
+        // tranverse the parent apps to build the path
+        String path = app.getName();
+        TerminalApp appCurrent = app;
+        while(appCurrent.appParent.appParent != null){
+            appCurrent = appCurrent.appParent;
+            path = appCurrent + "/" + path;
+        }
+        path = "/" + path;
+        return path;
+    }
+
+    public static TerminalApp getAppRoot(TerminalApp app) {
+        TerminalApp appSelected = app;
+        while(appSelected.appParent != null){
+            appSelected = appSelected.appParent;
+        }
+        return appSelected;
+    }
     
 }

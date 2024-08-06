@@ -33,8 +33,8 @@ public class UserTest {
         assertNotNull(user.getDisplayName());
         assertEquals(UserType.ANON, user.getUserType());
         String timestamp = TextFunctions.getDate();
-        assertEquals(user.getRegistered(), timestamp);
-        assertEquals(user.getLastLogin(), timestamp);
+        assertEquals(user.getRegisteredTime(), timestamp);
+        assertEquals(user.getLastLoginTime(), timestamp);
         
     }
 }

@@ -4,43 +4,82 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-
 package network.nostrium.users;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
+import com.google.gson.annotations.Expose;
 import java.io.File;
 import java.io.IOException;
+import network.nostrium.main.Folder;
+import network.nostrium.utils.EncryptionUtils;
+import network.nostrium.utils.FileFunctions;
+import network.nostrium.utils.TextFunctions;
 import org.apache.commons.io.FileUtils;
 
 /**
  * Date: 2024-08-04
  * Place: Germany
+ *
  * @author brito
  */
 public class User {
+
     
+    // fields written to disk in clear text
+    @Expose
+    String npub = null,
+            nsecEncrypted = null,
+            username = null,
+            displayName = null,
+            website = null,
+            aboutMe = null,
+            nostrVerifiedAddress = null,
+            registeredTime = null,
+            lastLoginTime = null,
+            passwordHash = null;
+
+    @Expose
     UserType userType = UserType.ANON;
-    String npub = null;
-    String nsec = null;
-    String username = null;
-    String displayName = null;
-    String website = null;
-    String aboutMe = null;
-    String nostrVerifiedAddress = null;
-    String registered = null;
-    String lastLogin = null;
     
-    
+    // fields that are not exposed (just stored in memory)
+    String password = null,
+            nsec = null;
+
     /**
      * Save this user on the folder
+     * @return 
      */
-    public void save(){
+    public boolean save() {
+        File folder = FileFunctions.getThirdLevelFolder(
+                Folder.getFolderUsers(), npub, true);
+        if(folder == null){
+            return false;
+        }
         
+        String text = this.jsonExport();
+        
+        // save it do disk
+        File file = new File(folder, this.npub + ".json");
+        boolean result = FileFunctions.saveStringToFile(file, text);
+        
+        if(result == false){
+            return false;
+        }
+        
+        if(file.exists() == false){
+            return false;
+        }
+        
+        if(file.length() == 0){
+            return false;
+        }
+
+        // all done
+        return true;
     }
 
-     
     /**
      * Export this object as JSON
      *
@@ -48,14 +87,14 @@ public class User {
      */
     public String jsonExport() {
         GsonBuilder gsonBuilder = new GsonBuilder()
-                //.excludeFieldsWithoutExposeAnnotation()
+                .excludeFieldsWithoutExposeAnnotation()
                 //.enableComplexMapKeySerialization()
                 //.setLenient()
                 .setPrettyPrinting();
         Gson gson = gsonBuilder.create();
         return gson.toJson(this);
     }
-    
+
     /**
      * Import a JSON into an object
      *
@@ -93,6 +132,11 @@ public class User {
 
     public void setNsec(String nsec) {
         this.nsec = nsec;
+        if(password != null){
+            // encrypt the nsec
+            this.nsecEncrypted = EncryptionUtils.encrypt(nsec, password);
+            this.save();
+        }
     }
 
     public String getUsername() {
@@ -143,22 +187,50 @@ public class User {
         this.userType = userType;
     }
 
-    public String getRegistered() {
-        return registered;
+    public String getRegisteredTime() {
+        return registeredTime;
     }
 
-    public void setRegistered(String registered) {
-        this.registered = registered;
+    public void setRegisteredTime(String registered) {
+        this.registeredTime = registered;
     }
 
-    public String getLastLogin() {
-        return lastLogin;
+    public String getLastLoginTime() {
+        return lastLoginTime;
     }
 
-    public void setLastLogin(String lastLogin) {
-        this.lastLogin = lastLogin;
+    public void setLastLoginTime(String lastLogin) {
+        this.lastLoginTime = lastLogin;
     }
-    
-    
-    
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+        this.passwordHash = TextFunctions.sha256(password);
+        if(password != null){
+            // encrypt the nsec
+            this.nsecEncrypted = EncryptionUtils.encrypt(nsec, password);
+            this.save();
+        }
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+
+    public String getNsecEncrypted() {
+        return nsecEncrypted;
+    }
+
+    public void setNsecEncrypted(String nsecEncrypted) {
+        this.nsecEncrypted = nsecEncrypted;
+    }
+
 }

@@ -6,12 +6,14 @@
  */
 package network.nostrium.servers.apps.basic;
 
+import network.nostrium.servers.apps.user.TerminalUser;
 import network.nostrium.servers.terminal.CommandResponse;
 import network.nostrium.servers.terminal.TerminalApp;
 import static network.nostrium.servers.terminal.TerminalColor.BLUE;
 import static network.nostrium.servers.terminal.TerminalColor.GREEN;
 import network.nostrium.servers.terminal.TerminalCommand;
 import network.nostrium.servers.terminal.TerminalType;
+import network.nostrium.users.User;
 import network.nostrium.utils.AsciiArt;
 
 /**
@@ -21,10 +23,14 @@ import network.nostrium.utils.AsciiArt;
  */
 public class TerminalBasic extends TerminalApp {
 
-    public TerminalBasic(TerminalType terminalType) {
-        super(terminalType);
+    public TerminalBasic(TerminalType terminalType, User user) {
+        super(terminalType, user);
+        // add some specific commands
         addCommand(new CommandHello(this));
         addCommand(new CommandTime(this));
+        
+        // add apps inside
+        addApp(new TerminalUser(terminalType, user));
     }
 
     @Override
@@ -65,6 +71,11 @@ public class TerminalBasic extends TerminalApp {
                 );
         
         return intro;
+    }
+
+    @Override
+    public String getName() {
+        return "basic";
     }
 
 }

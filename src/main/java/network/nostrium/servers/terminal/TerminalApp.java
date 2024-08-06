@@ -5,10 +5,13 @@
  * License: Apache-2.0
  */
 package network.nostrium.servers.terminal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import network.nostrium.servers.apps.basic.CommandCd;
 import network.nostrium.servers.apps.basic.CommandExit;
 import network.nostrium.servers.apps.basic.CommandLs;
+import network.nostrium.users.User;
 
 /**
 
@@ -18,22 +21,32 @@ import network.nostrium.servers.apps.basic.CommandLs;
  */
 public abstract class TerminalApp {
 
+    // navigation between different apps
     public TerminalApp appParent = null;
+    public ArrayList<TerminalApp> appChildren = new ArrayList();
+    public final User user;
     
     public final Map<String, TerminalCommand> commands = new HashMap<>();
     public final TerminalType terminalType;
 
-    public TerminalApp(TerminalType terminalType) {
+    public TerminalApp(TerminalType terminalType, User user) {
         this.terminalType = terminalType;
+        this.user = user;
         // add the default commands
         addCommandInternal(new CommandHelp(this));
         addCommandInternal(new CommandLs(this));
+        addCommandInternal(new CommandCd(this));
         addCommandInternal(new CommandExit(this));
     }
 
     public final void addCommandInternal(TerminalCommand command){
         command.internalCommand = true;
         addCommand(command);
+    }
+    
+    public final void addApp(TerminalApp app){
+        app.appParent = this;
+        this.appChildren.add(app);
     }
     
     // shows an intro for this app
@@ -106,4 +119,6 @@ public abstract class TerminalApp {
     public abstract String getDescription();
     
     public abstract TerminalCommand defaultCommand();
+
+    public abstract String getName();
 }

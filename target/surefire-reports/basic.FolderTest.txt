@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: basic.FolderTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.039 s - in basic.FolderTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s - in basic.FolderTest

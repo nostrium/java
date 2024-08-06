@@ -10,6 +10,7 @@ import network.nostrium.servers.terminal.CommandResponse;
 import network.nostrium.servers.terminal.TerminalApp;
 import static network.nostrium.servers.terminal.TerminalColor.BLUE;
 import network.nostrium.servers.terminal.TerminalCommand;
+import network.nostrium.servers.terminal.TerminalCode;
 import network.nostrium.servers.terminal.TerminalType;
 
 /**
@@ -22,11 +23,20 @@ public class CommandExit extends TerminalCommand{
     public CommandExit(TerminalApp app) {
         super(app);
         this.commandsAlternative.add("return");
+        this.commandsAlternative.add("quit");
     }
 
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
-        return reply(-1, paint(BLUE, "Goodbye!"));
+        // -10 means to leave the app, go to previous app
+        int returnCode = TerminalCode.EXIT_APP;
+        String text = "";
+        // -100 means to exit the program
+        if(app.appParent == null){
+            returnCode = TerminalCode.EXIT_CLIENT;
+            text = paint(BLUE, "Goodbye!");
+        }
+        return reply(returnCode, text);
     }
 
     @Override

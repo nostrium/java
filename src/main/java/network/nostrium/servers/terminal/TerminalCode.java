@@ -8,13 +8,16 @@ package network.nostrium.servers.terminal;
 
 /**
  * @author Brito
- * @date: 2024-08-04
+ * @date: 2024-08-05
  * @location: Germany
  */
-public enum TerminalType {
+public class TerminalCode {
     
-    ANSI,   // accepts color text
-    PLAIN,
-    HTML
-    
+    final public static int
+            OK = 200,
+            CHANGE_APP = -1,
+            EXIT_APP = -10,
+            EXIT_CLIENT = -100,
+            FAIL = 500,
+            INCOMPLETE = 300;
 }

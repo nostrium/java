@@ -4,32 +4,33 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-package network.nostrium.servers.apps.basic;
+package network.nostrium.servers.apps.user;
 
 import network.nostrium.servers.terminal.CommandResponse;
 import network.nostrium.servers.terminal.TerminalApp;
 import static network.nostrium.servers.terminal.TerminalColor.BLUE;
-import static network.nostrium.servers.terminal.TerminalColor.GREEN;
 import network.nostrium.servers.terminal.TerminalCommand;
 import network.nostrium.servers.terminal.TerminalType;
-import network.nostrium.utils.AsciiArt;
+import network.nostrium.users.User;
+import network.nostrium.utils.TextFunctions;
 
 /**
  * @author Brito
  * @date: 2024-08-04
  * @location: Germany
  */
-public class TerminalBasic extends TerminalApp {
+public class TerminalUser extends TerminalApp {
 
-    public TerminalBasic(TerminalType terminalType) {
-        super(terminalType);
-        addCommand(new CommandHello(this));
-        addCommand(new CommandTime(this));
+    public TerminalUser(TerminalType terminalType, User user) {
+        super(terminalType, user);
+        addCommand(new CommandUserPassword(this));
+        addCommand(new CommandUserSave(this));
+        //addCommand(new CommandTime(this));
     }
 
     @Override
     public String getDescription() {
-        return "The basic CLI app";
+        return "User functions (e.g. login, save, edit)";
     }
 
     // setup the default answer
@@ -57,14 +58,20 @@ public class TerminalBasic extends TerminalApp {
     @Override
     public String getIntro() {
         
-        String intro = paint(GREEN, AsciiArt.intro())
-                + "\n\n"
-                + paint(BLUE,
-                "The NOSTR BBS! Type '/help' to list the commands."
-                        + "\n"
+        String title = "Manage your user profile";
+        String text = TextFunctions.getWindowFrame(title);
+        
+        String intro = 
+                paint(BLUE,
+                    text
                 );
         
         return intro;
+    }
+
+    @Override
+    public String getName() {
+        return "user";
     }
 
 }

@@ -7,6 +7,7 @@
 /home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/servers/terminal/TerminalColor.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/utils/AsciiArt.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/servers/terminal/CommandResponse.java
+/home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/servers/apps/basic/CommandCd.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/utils/ImageFunctions.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/main/core.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/forum/structures/ManageUsers.java
@@ -30,12 +31,15 @@
 /home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/servers/terminal/TerminalCommand.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/servers/terminal/TerminalType.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/servers/terminal/TerminalUtils.java
+/home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/servers/apps/basic/CommandLs.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/forum/structures/ForumTopic.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/servers/terminal/CommandHelp.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/forum/structures/ManageTopics.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/forum/structures/Level1.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/forum/structures/ForumNote.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/main/Config.java
+/home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/servers/apps/user/TerminalUser.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/forum/structures/AffiliateLink.java
+/home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/servers/terminal/TerminalCode.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/forum/structures/Level.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/network/nostrium/servers/terminal/TerminalApp.java

@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public abstract class TerminalCommand {
 
-    final TerminalApp app;
+    final protected TerminalApp app;
     // force commands to use a slash
     public boolean requireSlash = true;
     public boolean internalCommand = false;
@@ -68,6 +68,10 @@ public abstract class TerminalCommand {
 
     protected CommandResponse reply(int code, String text){
         return new CommandResponse(code, text);
+    }
+    
+    protected CommandResponse reply(TerminalApp app){
+        return new CommandResponse(app);
     }
     
 }

@@ -86,10 +86,10 @@ public class UserUtils {
         String[] keys = generateNostrKeys();
         user.setNsec(keys[0]);
         user.setNpub(keys[1]);
-        user.setDisplayName("Anonymous#" + user.getNpub().substring(0, 5));
+        user.setDisplayName("Anonymouse#" + user.getNpub().substring(0, 4));
         String timestamp = TextFunctions.getDate();
-        user.setRegistered(timestamp);
-        user.setLastLogin(timestamp);
+        user.setRegisteredTime(timestamp);
+        user.setLastLoginTime(timestamp);
         return user;
     }
 
