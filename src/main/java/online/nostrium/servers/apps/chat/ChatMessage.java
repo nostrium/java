@@ -41,22 +41,22 @@ import online.nostrium.users.User;
 public class ChatMessage {
     
     @Expose
-    final String id;
+    String id;
     
     @Expose
-    final String pubkey;
+    String pubkey;
     
     @Expose
-    final long createdAt;
+    long createdAt;
     
     @Expose
-    final int kind;
+    int kind;
     
     @Expose
     final ArrayList<String[]> tags;
     
     @Expose
-    final String content;
+    String content;
 
     public ChatMessage(String pubkey, int kind, String content, ArrayList<String[]> tags) {
         this.pubkey = pubkey;

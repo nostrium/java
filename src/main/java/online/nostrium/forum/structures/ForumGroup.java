@@ -32,6 +32,7 @@ public class ForumGroup {
 
     ForumGroup forumParent;
 
+    @SuppressWarnings("unchecked")
     ArrayList<String> forumTopics = new ArrayList();
 
     public String getId() {

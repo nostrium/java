@@ -10,26 +10,25 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import online.nostrium.utils.JsonTextFile;
+import org.apache.commons.io.FileUtils;
 
 /**
  * Author: Brito
  * Date: 2024-08-06
  * Location: Germany
  */
-public class ChatArchive extends JsonTextFile{
+public class ChatArchive {
     
-    final File file;
     
     @SuppressWarnings("unchecked")
     @Expose
     ArrayList<ChatMessage> messages = new ArrayList();
 
-    public ChatArchive(File file) {
-        this.file = file;
+    public ChatArchive() {
     }
     
     public void addMessage(ChatMessage message){
@@ -38,6 +37,55 @@ public class ChatArchive extends JsonTextFile{
 
     public ArrayList<ChatMessage> getMessages() {
         return messages;
+    }
+    
+     /**
+     * Import a JSON into an object
+     *
+     * @param file
+     * @return null if something went wrong
+     */
+    public static ChatArchive jsonImport(File file) {
+        if (file.exists() == false
+                || file.isDirectory()
+                || file.length() == 0) {
+            return null;
+        }
+        try {
+            String text = FileUtils.readFileToString(file, "UTF-8");
+            Gson gson = new Gson();
+            ChatArchive item = gson.fromJson(text, ChatArchive.class);
+            return item;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    /**
+     * Save this object as JSON to its file.
+     */
+    public void save(File file) {
+        saveToFile(file);
+    }
+
+    /**
+     * Save this object as JSON to the specified file.
+     *
+     * @param file the file where the JSON will be saved
+     */
+    public void saveToFile(File file) {
+        try {
+            String data = jsonExport();
+            if (data != null) {
+                FileUtils.writeStringToFile(file, data);
+                Logger.getLogger(ChatArchive.class.getName()).log(Level.INFO, "Saved config file: {0}", file.getPath());
+            } else {
+                Logger.getLogger(ChatArchive.class.getName()).log(Level.SEVERE, "Failed to export JSON");
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(ChatArchive.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     /**
@@ -58,8 +106,4 @@ public class ChatArchive extends JsonTextFile{
         }
     }
 
-    @Override
-    public File getFile() {
-        return file;
-    }
 }

@@ -24,7 +24,7 @@ public class TerminalChat extends TerminalApp {
 
     public TerminalChat(TerminalType terminalType, User user) {
         super(terminalType, user);
-        //addCommand(new CommandUserPassword(this));
+        addCommand(new CommandMkdir(this));
         //addCommand(new CommandUserSave(this));
     }
 

@@ -24,7 +24,7 @@ public class CommandLs extends TerminalCommand {
         super(app);
         this.requireSlash = false;
         // add an alternative command
-        this.commandsAlternative.add("chdir");
+        this.commandsAlternative.add("dir");
     }
 
     @Override

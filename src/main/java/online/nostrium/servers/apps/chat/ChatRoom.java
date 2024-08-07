@@ -8,12 +8,11 @@ package online.nostrium.servers.apps.chat;
 
 import com.google.gson.annotations.Expose;
 import java.io.File;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import online.nostrium.main.Folder;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalCode;
+import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.users.User;
 import online.nostrium.utils.FileFunctions;
 import online.nostrium.utils.JsonTextFile;
@@ -53,6 +52,11 @@ public class ChatRoom extends JsonTextFile{
     @Expose
     String
             roomParent;     // either null or the parent inside this chat
+    
+    
+    @Expose
+    TerminalColor defaultTextColor = TerminalColor.WHITE;
+    
     
     @SuppressWarnings("unchecked")
     @Expose
@@ -109,6 +113,14 @@ public class ChatRoom extends JsonTextFile{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public TerminalColor getDefaultTextColor() {
+        return defaultTextColor;
+    }
+
+    public void setDefaultTextColor(TerminalColor defaultTextColor) {
+        this.defaultTextColor = defaultTextColor;
     }
 
     public String getIntro() {
@@ -239,22 +251,22 @@ public class ChatRoom extends JsonTextFile{
 
     /**
      * Gets the message box for the current day
-     * @param folder
      * @return 
      */
     public ChatArchive getMessagesToday() {
         // user can add the text here
         File file = ChatUtils.getFileMessageBoxForToday(folder);
-        ChatArchive archive = null;
+        ChatArchive archive;
         
         if(file.exists() == false){
-            archive = new ChatArchive(file);
-            archive.save();
+            archive = new ChatArchive();
+            archive.save(file);
         }else{
-            archive = ChatArchive.jsonImport(file, ChatArchive.class);
+            archive = ChatArchive.jsonImport(file);
         }
         return archive;
     }
+    
     
     /**
      * Add a new text on the chat box
@@ -276,7 +288,8 @@ public class ChatRoom extends JsonTextFile{
         // add the text message
         ChatMessage message = new ChatMessage(user, text);
         archive.addMessage(message);
-        archive.save();
+        File file = ChatUtils.getFileMessageBoxForToday(folder);
+        archive.save(file);
         
         
         // all good

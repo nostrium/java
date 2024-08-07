@@ -22,7 +22,7 @@ public abstract class TerminalCommand {
     
     // list of alternative commands that can be recognized
     @SuppressWarnings("unchecked")
-    protected ArrayList<String> 
+    public ArrayList<String> 
             commandsAlternative = new ArrayList();
     
     public TerminalCommand(TerminalApp app) {

@@ -5,6 +5,7 @@
  * License: Apache-2.0
  */
 package online.nostrium.servers.terminal;
+import online.nostrium.servers.apps.basic.CommandHelp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;

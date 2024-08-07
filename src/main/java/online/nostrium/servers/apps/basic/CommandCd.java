@@ -71,7 +71,7 @@ public class CommandCd extends TerminalCommand {
 
     @Override
     public String oneLineDescription() {
-        return "Change directory/app";
+        return "Change to another app";
     }
 
 }
