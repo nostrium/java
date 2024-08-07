@@ -20,13 +20,15 @@ import org.apache.commons.io.FileUtils;
  */
 public class Folder {
 
-    static String 
+    public static String 
             nameFileConfig = "config.json",
             nameFolderData = "data",
             nameFolderChat = "chat",
+            nameFolderChatRoom = "room.json",
             nameFolderBase = "forum",
             nameFolderUsers = "users",
-            nameFolderProfileImages = "profile_images";
+            nameFolderProfileImages = "profile_images",
+            nameRootChat = "root";
     
     /**
      * There  are three type of paths that change: runtime, testing and custom.

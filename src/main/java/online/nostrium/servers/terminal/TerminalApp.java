@@ -98,6 +98,7 @@ public abstract class TerminalApp {
         // try to get this command
         TerminalCommand cmd = null;
         for(TerminalCommand command : commands.values()){
+            // found a command
             if(command.hasCommand(commandToProcess)){
                 cmd = command;
                 break;
@@ -109,7 +110,7 @@ public abstract class TerminalApp {
             return cmd.execute(terminalType, parameters);
         } else {
             // command was not recognized, run the default
-            return defaultCommand().execute(terminalType, parameters);
+            return defaultCommand(commandInput);
         }
     }
 
@@ -120,7 +121,19 @@ public abstract class TerminalApp {
     // provide a one-line description of the app
     public abstract String getDescription();
     
-    public abstract TerminalCommand defaultCommand();
+    public abstract CommandResponse defaultCommand(String commandInput);
 
     public abstract String getName();
+    
+    protected CommandResponse reply(TerminalCode code, String text){
+        return new CommandResponse(code, text);
+    }
+    
+    protected CommandResponse reply(TerminalCode code){
+        return new CommandResponse(code, "");
+    }
+    
+    protected CommandResponse reply(TerminalApp app){
+        return new CommandResponse(app);
+    }
 }

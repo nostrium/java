@@ -41,26 +41,9 @@ public class TerminalBasic extends TerminalApp {
         return "The basic CLI app";
     }
 
-    // setup the default answer
     @Override
-    public TerminalCommand defaultCommand() {
-        return new TerminalCommand(this) {
-
-            @Override
-            public String commandName() {
-                return "default";
-            }
-
-            @Override
-            public String oneLineDescription() {
-                return "Default answer to any commands";
-            }
-
-            @Override
-            public CommandResponse execute(TerminalType terminalType, String parameters) {
-                return reply(TerminalCode.NOT_FOUND, "");
-            }
-        };
+    public CommandResponse defaultCommand(String commandInput) {
+        return reply(TerminalCode.NOT_FOUND);
     }
 
     @Override

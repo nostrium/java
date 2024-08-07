@@ -9,6 +9,7 @@ package online.nostrium.utils;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Date: 2023-02-10
@@ -18,6 +19,32 @@ import java.io.IOException;
  */
 public class FileFunctions {
 
+    /**
+     * Searches all subfolders from a starting folder for files ending with a specific string.
+     *
+     * @param startingFolder the folder to start the search from
+     * @param endingString the string that the file names should end with
+     * @return an ArrayList of files that match the criteria
+     */
+    public static ArrayList<File> searchFiles(File startingFolder, String endingString) {
+        ArrayList<File> resultList = new ArrayList<>();
+        
+        if (startingFolder.isDirectory()) {
+            File[] files = startingFolder.listFiles();
+            if (files != null) {
+                for (File file : files) {
+                    if (file.isDirectory()) {
+                        resultList.addAll(searchFiles(file, endingString));
+                    } else if (file.isFile() && file.getName().endsWith(endingString)) {
+                        resultList.add(file);
+                    }
+                }
+            }
+        }
+        
+        return resultList;
+    }
+    
     /**
      * Looks inside a folder for a file that begins and ends with specific
      * texts.

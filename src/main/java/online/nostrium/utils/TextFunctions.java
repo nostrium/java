@@ -77,7 +77,9 @@ public class TextFunctions {
           .append(new String(new char[paddingHorizontal / 2]).replace('\0', ' '))
           .append(title)
           .append(new String(new char[paddingHorizontal / 2]).replace('\0', ' '))
-          .append("|").append("\n");
+          //.append("|")
+                .append("\n")
+                ;
 
         sb.append(topBottomBorder);
 

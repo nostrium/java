@@ -6,13 +6,14 @@
  */
 package online.nostrium.servers.apps.chat;
 
+import online.nostrium.main.Folder;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
-import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.users.User;
+import online.nostrium.users.UserUtils;
 import online.nostrium.utils.TextFunctions;
 
 /**
@@ -22,37 +23,21 @@ import online.nostrium.utils.TextFunctions;
  */
 public class TerminalChat extends TerminalApp {
 
+    ChatRoom roomNow = 
+            ChatUtils.getOrCreateRoom(
+                    Folder.nameRootChat, UserUtils.getUserAdmin()
+            );
+    
+    
     public TerminalChat(TerminalType terminalType, User user) {
         super(terminalType, user);
-        addCommand(new CommandMkdir(this));
+        //addCommand(new CommandMkdir(this));
         //addCommand(new CommandUserSave(this));
     }
 
     @Override
     public String getDescription() {
-        return "Chat with users";
-    }
-
-    // setup the default answer
-    @Override
-    public TerminalCommand defaultCommand() {
-        return new TerminalCommand(this) {
-
-            @Override
-            public String commandName() {
-                return "default";
-            }
-
-            @Override
-            public String oneLineDescription() {
-                return "Default answer to any commands";
-            }
-
-            @Override
-            public CommandResponse execute(TerminalType terminalType, String parameters) {
-                return reply(TerminalCode.NOT_FOUND);
-            }
-        };
+        return "Chat with others";
     }
 
     @Override
@@ -72,6 +57,12 @@ public class TerminalChat extends TerminalApp {
     @Override
     public String getName() {
         return "chat";
+    }
+
+    @Override
+    public CommandResponse defaultCommand(String commandInput) {
+        ChatArchive archive = roomNow.getMessagesToday();
+        return roomNow.sendChatText(user, commandInput);
     }
 
 }

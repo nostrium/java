@@ -51,7 +51,7 @@ public class ChatTest {
         
         
         String text = "Hello World";
-        CommandResponse result = room.addText(user, text);
+        CommandResponse result = room.sendChatText(user, text);
         assertEquals(TerminalCode.OK, result.getCode());
         
         

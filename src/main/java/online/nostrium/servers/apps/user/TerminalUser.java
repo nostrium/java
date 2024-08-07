@@ -10,7 +10,6 @@ import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
-import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.users.User;
 import online.nostrium.utils.TextFunctions;
@@ -33,26 +32,9 @@ public class TerminalUser extends TerminalApp {
         return "User functions (e.g. login, save, edit)";
     }
 
-    // setup the default answer
     @Override
-    public TerminalCommand defaultCommand() {
-        return new TerminalCommand(this) {
-
-            @Override
-            public String commandName() {
-                return "default";
-            }
-
-            @Override
-            public String oneLineDescription() {
-                return "Default answer to any commands";
-            }
-
-            @Override
-            public CommandResponse execute(TerminalType terminalType, String parameters) {
-                return reply(TerminalCode.NOT_FOUND);
-            }
-        };
+    public CommandResponse defaultCommand(String commandInput) {
+        return reply(TerminalCode.NOT_FOUND);
     }
 
     @Override

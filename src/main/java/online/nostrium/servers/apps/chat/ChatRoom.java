@@ -240,7 +240,7 @@ public class ChatRoom extends JsonTextFile{
     @Override
     public File getFile() {
         File folderToBeUsed = getFolder();
-        String filename = "room.json";
+        String filename = Folder.nameFolderChatRoom; // room.json
         File file = new File(folderToBeUsed, filename);
         return file;
     }
@@ -274,7 +274,7 @@ public class ChatRoom extends JsonTextFile{
      * @param text 
      * @return  
      */
-    public CommandResponse addText(User user, String text) {
+    public CommandResponse sendChatText(User user, String text) {
         if(userCannotAddText(user)){
             return new CommandResponse(TerminalCode.DENIED);
         }
@@ -291,6 +291,7 @@ public class ChatRoom extends JsonTextFile{
         File file = ChatUtils.getFileMessageBoxForToday(folder);
         archive.save(file);
         
+        String text = paint();
         
         // all good
         return new CommandResponse(TerminalCode.OK);

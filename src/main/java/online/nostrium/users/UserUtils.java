@@ -6,10 +6,8 @@
  */
 package online.nostrium.users;
 
-
 import static online.nostrium.utils.NostrUtils.generateNostrKeys;
 import online.nostrium.utils.TextFunctions;
-
 
 /**
  * @author Brito
@@ -18,7 +16,24 @@ import online.nostrium.utils.TextFunctions;
  */
 public class UserUtils {
 
-    
+    /**
+     * Create an admin user with nsec and npub set to all zeros
+     *
+     * @return user that was automatically generated
+     */
+    public static User getUserAdmin() {
+        User user = new User();
+        // set nsec and npub to all zeros
+        String zeroKeys = "00000000000000000000000000000000";
+        user.setNsec(zeroKeys);
+        user.setNpub(zeroKeys);
+        user.setDisplayName("admin");
+        String timestamp = "2000-01-01T00:00:00Z";
+        user.setRegisteredTime(timestamp);
+        user.setLastLoginTime(timestamp);
+        return user;
+    }
+
     /**
      * Create an anonymous user
      *

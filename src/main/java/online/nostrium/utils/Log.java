@@ -15,8 +15,11 @@ package online.nostrium.utils;
 public class Log {
 
     public static void write(String message){
-        
         System.out.println(message);
+    }
+
+    public static void write(String message, String value){
+        System.out.println(message + ": " + value);
     }
     
 }
