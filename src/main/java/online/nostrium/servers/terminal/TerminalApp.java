@@ -115,7 +115,7 @@ public abstract class TerminalApp {
     }
 
     public String paint(TerminalColor colorType, String text) {
-        return TerminalUtils.paint(terminalType, colorType, text);
+        return Screen.paint(terminalType, colorType, text);
     }
 
     // provide a one-line description of the app

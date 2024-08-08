@@ -15,12 +15,12 @@ import java.net.Socket;
 import online.nostrium.main.core;
 import online.nostrium.servers.apps.basic.TerminalBasic;
 import online.nostrium.servers.terminal.CommandResponse;
+import online.nostrium.servers.terminal.Screen;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN_BRIGHT;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.TerminalUtils;
-import static online.nostrium.servers.terminal.TerminalUtils.paint;
 import online.nostrium.users.User;
 import online.nostrium.users.UserUtils;
 
@@ -150,7 +150,7 @@ public class ServerTelnet {
         
         String path = TerminalUtils.getPath(app);
         
-        String userPrompt = paint(TerminalType.ANSI, GREEN_BRIGHT,
+        String userPrompt = Screen.paint(TerminalType.ANSI, GREEN_BRIGHT,
                 user.getDisplayName())
                 + ":"
                 + path

@@ -18,6 +18,7 @@ public enum ChatType {
     ANON,       // don't see identification of participants
     UNSAVED,    // don't save conversations to disk
     READ_ONLY,  // archived or only used for announcements by mods/admins
+    IRC         // connect to an IRC channel/provider
     
 
 }

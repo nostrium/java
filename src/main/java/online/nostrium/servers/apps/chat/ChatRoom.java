@@ -253,7 +253,7 @@ public class ChatRoom extends JsonTextFile{
      * Gets the message box for the current day
      * @return 
      */
-    public ChatArchive getMessagesToday() {
+    public synchronized ChatArchive getMessagesToday() {
         // user can add the text here
         File file = ChatUtils.getFileMessageBoxForToday(folder);
         ChatArchive archive;
@@ -291,10 +291,13 @@ public class ChatRoom extends JsonTextFile{
         File file = ChatUtils.getFileMessageBoxForToday(folder);
         archive.save(file);
         
-        String text = paint();
+        String textToShow = "["
+                + user.getDisplayName()
+                + "] "
+                + text;
         
         // all good
-        return new CommandResponse(TerminalCode.OK);
+        return new CommandResponse(TerminalCode.OK, textToShow);
     }
 
     /**

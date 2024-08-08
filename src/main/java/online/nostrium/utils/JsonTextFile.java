@@ -19,13 +19,13 @@ import java.util.logging.Logger;
 
 /**
  * Abstract class for importing and exporting objects as JSON files.
- * 
- * This class provides methods to export an object to a JSON file and import it back.
- * The class that extends this abstract class should define the file where the data will be saved.
- * 
- * Date: 2023-02-08
- * Place: Germany
- * 
+ *
+ * This class provides methods to export an object to a JSON file and import it
+ * back. The class that extends this abstract class should define the file where
+ * the data will be saved.
+ *
+ * Date: 2023-02-08 Place: Germany
+ *
  * @author brito
  */
 public abstract class JsonTextFile {
@@ -69,7 +69,7 @@ public abstract class JsonTextFile {
         }
         try {
             String text = FileUtils.readFileToString(file);
-            Gson gson = new Gson();
+            Gson gson = GsonUtils.createGson(); // Use the custom Gson instance
             return gson.fromJson(text, clazz);
         } catch (JsonSyntaxException | IOException e) {
             Logger.getLogger(JsonTextFile.class.getName()).log(Level.SEVERE, null, e);
@@ -104,23 +104,27 @@ public abstract class JsonTextFile {
     }
 
     /**
-     * Load the configuration from its default file. When it does not exist, then it will create one.
+     * Load the configuration from its default file. When it does not exist,
+     * then it will create one.
      *
      * @param <T> the type of the object to be created
      * @param clazz the class of the object to be created
-     * @return the loaded configuration object, or a new one if the file does not exist or is invalid
+     * @return the loaded configuration object, or a new one if the file does
+     * not exist or is invalid
      */
     public <T extends JsonTextFile> T loadConfig(Class<T> clazz) {
         return loadConfigFromFile(clazz, getFile());
     }
 
     /**
-     * Load the configuration from the specified file. When it does not exist, then it will create one.
+     * Load the configuration from the specified file. When it does not exist,
+     * then it will create one.
      *
      * @param <T> the type of the object to be created
      * @param clazz the class of the object to be created
      * @param file the file from which to load the configuration
-     * @return the loaded configuration object, or a new one if the file does not exist or is invalid
+     * @return the loaded configuration object, or a new one if the file does
+     * not exist or is invalid
      */
     public <T extends JsonTextFile> T loadConfigFromFile(Class<T> clazz, File file) {
         // If there is no file, create one with default values

@@ -9,7 +9,6 @@ package online.nostrium.servers.apps.chat;
 import online.nostrium.main.Folder;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
-import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.users.User;
@@ -23,7 +22,8 @@ import online.nostrium.utils.TextFunctions;
  */
 public class TerminalChat extends TerminalApp {
 
-    ChatRoom roomNow = 
+    // load the room, but not the chat history
+    public ChatRoom roomNow = 
             ChatUtils.getOrCreateRoom(
                     Folder.nameRootChat, UserUtils.getUserAdmin()
             );
@@ -31,7 +31,7 @@ public class TerminalChat extends TerminalApp {
     
     public TerminalChat(TerminalType terminalType, User user) {
         super(terminalType, user);
-        //addCommand(new CommandMkdir(this));
+        addCommand(new CommandChatLs(this, roomNow));
         //addCommand(new CommandUserSave(this));
     }
 
@@ -50,6 +50,15 @@ public class TerminalChat extends TerminalApp {
                 paint(BLUE,
                     text
                 );
+        
+        // read the number of messages
+        ChatArchive messagesToday = this.roomNow.getMessagesToday();
+        int countMessages = messagesToday.getMessages().size();
+        if(countMessages > 0){
+            intro += "\n"
+                    + "Messages today: " + countMessages;
+        }
+        
         
         return intro;
     }

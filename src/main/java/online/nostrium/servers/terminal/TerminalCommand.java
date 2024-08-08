@@ -30,7 +30,7 @@ public abstract class TerminalCommand {
     }
     
     protected String paint(TerminalColor colorType, String text) {
-        return TerminalUtils.paint(app.terminalType, colorType, text);
+        return Screen.paint(app.terminalType, colorType, text);
     }
     
     
