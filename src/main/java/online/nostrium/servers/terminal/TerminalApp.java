@@ -66,6 +66,16 @@ public abstract class TerminalApp {
         }
         commands.put(command.commandName(), command);
     }
+    
+    protected final void removeCommand(String commandName){
+        // find the command when existing
+        if (commands.containsKey(commandName) == false) {
+            return;
+        }
+        // remove the command from our list
+        commands.remove(commandName);
+        
+    }
 
     /**
      * A new command was received, is it a valid one?

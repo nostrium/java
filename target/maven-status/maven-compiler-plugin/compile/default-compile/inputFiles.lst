@@ -43,6 +43,7 @@
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/apps/chat/ChatRoom.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/apps/chat/TerminalChat.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/terminal/TerminalUtils.java
+/home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/apps/chat/CommandChatClear.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/apps/basic/CommandCd.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/terminal/TerminalApp.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/utils/ImageFunctions.java

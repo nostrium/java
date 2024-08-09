@@ -1,0 +1,76 @@
+{
+  "messages": [
+    {
+      "id": "b4f8c08422b5fafb0acbecf17fe605bdc838b31d98a64a289a4fd899d77593cd",
+      "pubkey": "024d4af030e876e54cb71bdfa9457839bb363496bbaab9a349eedadb15b46c3f96",
+      "createdAt": 1723194595,
+      "kind": 1,
+      "tags": [],
+      "content": "testing"
+    },
+    {
+      "id": "d88fba50d9addf553d2068bdba35235916ea46af56e944704e1d38339ea7988c",
+      "pubkey": "024d4af030e876e54cb71bdfa9457839bb363496bbaab9a349eedadb15b46c3f96",
+      "createdAt": 1723194598,
+      "kind": 1,
+      "tags": [],
+      "content": "testing2"
+    },
+    {
+      "id": "ee8288474c2a39d7eb38fc48139509566283408e83f71cd15e61fbcfe5f72f76",
+      "pubkey": "024d4af030e876e54cb71bdfa9457839bb363496bbaab9a349eedadb15b46c3f96",
+      "createdAt": 1723194601,
+      "kind": 1,
+      "tags": [],
+      "content": "testing3"
+    },
+    {
+      "id": "1d45a9f6e00cdda356367d04512aac575f71c53187fda6dc881201aaf493747a",
+      "pubkey": "0200b094aae29fccb948792c3d186db0c257b6037a42a01fc3cae90af377f08e56",
+      "createdAt": 1723220686,
+      "kind": 1,
+      "tags": [],
+      "content": "This should have a name displayed"
+    },
+    {
+      "id": "ac7987bb3d56d82a1b12dd56366dacc0eedfae138b6c3725e5cdbb364060a89c",
+      "pubkey": "0200b094aae29fccb948792c3d186db0c257b6037a42a01fc3cae90af377f08e56",
+      "createdAt": 1723220701,
+      "kind": 1,
+      "tags": [],
+      "content": "another?"
+    },
+    {
+      "id": "4c1bff9ceb15bc6404540adf2e78fd0d821fcdd1dd37e2e8542b5df41848fedc",
+      "pubkey": "03bc1cc76c3a4beb9d9da9b34a263a257338051c1beefe386bc4959c447b872004",
+      "createdAt": 1723225748,
+      "kind": 1,
+      "tags": [],
+      "content": "clear"
+    },
+    {
+      "id": "39b001e1f7a5e05aeebcff3f9c6208db2780cdbadd2672c850c9b242fb12076f",
+      "pubkey": "03f23dbc24b1cb0800a5a9c4c491ca57360113f5a504baac06641496bb6aec309b",
+      "createdAt": 1723226500,
+      "kind": 1,
+      "tags": [],
+      "content": "clear"
+    },
+    {
+      "id": "31c01a311749024bc49cee187484741ed706add8386cad261167e5af9edf3d01",
+      "pubkey": "034f3c2bc75d7036d5692e331e29a0052ea25aa6a5d457a96daa88dbfcd115d546",
+      "createdAt": 1723227480,
+      "kind": 1,
+      "tags": [],
+      "content": "\u001b[2K\u001b[Grwerwer"
+    },
+    {
+      "id": "823271284c5f3fb97c33be4d0f118aa3d2a941c36de146c35edb8f689c6a0174",
+      "pubkey": "02d8b97cab92c6b81491b4e0e5d155cd9e44c9d3189198e3156629bc0e826a4dc5",
+      "createdAt": 1723227603,
+      "kind": 1,
+      "tags": [],
+      "content": "\u001b[2K\u001b[GHello"
+    }
+  ]
+}

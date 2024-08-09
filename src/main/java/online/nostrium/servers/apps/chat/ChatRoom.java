@@ -8,6 +8,8 @@ package online.nostrium.servers.apps.chat;
 
 import com.google.gson.annotations.Expose;
 import java.io.File;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import online.nostrium.main.Folder;
 import online.nostrium.servers.terminal.CommandResponse;
@@ -265,6 +267,145 @@ public class ChatRoom extends JsonTextFile{
             archive = ChatArchive.jsonImport(file);
         }
         return archive;
+    }
+    
+    /**
+     * Gets the ChatArchives for each day in the past up to the specified number of days.
+     *
+     * @param days the number of days in the past
+     * @return an ArrayList of ChatArchive objects
+     */
+    public synchronized ArrayList<ChatArchive> getMessageArchivesForDay(int days) {
+        ArrayList<ChatArchive> archiveList = new ArrayList<>();
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+
+        for (int i = 0; i <= days; i++) {
+            LocalDate targetDate = LocalDate.now().minusDays(i);
+            String formattedDate = targetDate.format(formatter);
+            String filename = "messages_" + formattedDate + ".json";
+            File file = new File(folder, filename);
+
+            if (file.exists() && file.isFile()) {
+                ChatArchive archive = ChatArchive.jsonImport(file);
+                if (archive != null) {
+                    archiveList.add(archive);
+                }
+            }
+        }
+
+        return archiveList;
+    }
+    
+    /**
+     * Gets the ChatMessages for each day in the past up to the specified number of days.
+     *
+     * @param days the number of days in the past
+     * @return an ArrayList of ChatMessage objects
+     */
+    public synchronized ArrayList<ChatMessage> getMessagesForDay(int days) {
+        ArrayList<ChatMessage> messageList = new ArrayList<>();
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+
+        for (int i = 0; i <= days; i++) {
+            LocalDate targetDate = LocalDate.now().minusDays(i);
+            String formattedDate = targetDate.format(formatter);
+            String filename = "messages_" + formattedDate + ".json";
+            File file = new File(folder, filename);
+
+            if (file.exists() && file.isFile()) {
+                ChatArchive archive = ChatArchive.jsonImport(file);
+                if (archive != null) {
+                    ArrayList<ChatMessage> messages = archive.getMessages();
+                    messageList.addAll(messages);
+                }
+            }
+        }
+
+        return messageList;
+    }
+    
+     /**
+     * Gets the ChatArchives between two specified dates within a 100-day interval.
+     *
+     * @param startDateString the start date in YYYY-MM-DD format
+     * @param endDateString   the end date in YYYY-MM-DD format
+     * @return an ArrayList of ChatArchive objects
+     * @throws IllegalArgumentException if the interval between dates exceeds 100 days
+     */
+    public synchronized ArrayList<ChatArchive> 
+            getMessagesBetweenDates(String startDateString, String endDateString) {
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+        LocalDate startDate = LocalDate.parse(startDateString, formatter);
+        LocalDate endDate = LocalDate.parse(endDateString, formatter);
+
+        if (startDate.isAfter(endDate)) {
+            throw new IllegalArgumentException("Start date must be before end date.");
+        }
+
+        if (startDate.plusDays(100).isBefore(endDate)) {
+            throw new IllegalArgumentException("Date interval cannot exceed 100 days.");
+        }
+
+        ArrayList<ChatArchive> archiveList = new ArrayList<>();
+        LocalDate currentDate = startDate;
+
+        while (!currentDate.isAfter(endDate)) {
+            String formattedDate = currentDate.format(formatter);
+            String filename = "messages_" + formattedDate + ".json";
+            File file = new File(folder, filename);
+            ChatArchive archive;
+
+            if (file.exists()) {
+                archive = ChatArchive.jsonImport(file);
+                archiveList.add(archive);
+            }
+
+            currentDate = currentDate.plusDays(1);
+        }
+
+        return archiveList;
+    }
+
+            
+      
+    /**
+     * Retrieves the last XXXX messages, starting from today and going back each day.
+     *
+     * @param numberOfMessages the number of messages to retrieve (1 to 999)
+     * @return an ArrayList of ChatMessage objects, or null if the number of messages is out of range
+     */
+    public synchronized ArrayList<ChatMessage> getLastMessages(int numberOfMessages) {
+        if (numberOfMessages < 1 || numberOfMessages > 999) {
+            return null;
+        }
+
+        ArrayList<ChatMessage> messageList = new ArrayList<>();
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+        int totalMessagesRetrieved = 0;
+
+        for (int i = 0; totalMessagesRetrieved < numberOfMessages; i++) {
+            LocalDate targetDate = LocalDate.now().minusDays(i);
+            String formattedDate = targetDate.format(formatter);
+            String filename = "messages_" + formattedDate + ".json";
+            File file = new File(folder, filename);
+
+            if (file.exists() && file.isFile()) {
+                ChatArchive archive = ChatArchive.jsonImport(file);
+                if (archive != null) {
+                    ArrayList<ChatMessage> messages = archive.getMessages();
+                    for (ChatMessage message : messages) {
+                        if (totalMessagesRetrieved < numberOfMessages) {
+                            messageList.add(message);
+                            totalMessagesRetrieved++;
+                        } else {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        return messageList;
     }
     
     

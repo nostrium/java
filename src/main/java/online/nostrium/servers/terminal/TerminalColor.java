@@ -17,15 +17,12 @@ package online.nostrium.servers.terminal;
 
 /**
  * Represents ANSI colors for terminal text.
- * 
- * Author: Brito
- * Date: 2024-08-04
- * Location: Germany
+ *
+ * Author: Brito Date: 2024-08-04 Location: Germany
  */
 public enum TerminalColor {
     // Reset
     RESET("\u001B[0m"),
-    
     // Standard text colors
     BLACK("\u001B[30m"),
     RED("\u001B[31m"),
@@ -36,7 +33,6 @@ public enum TerminalColor {
     CYAN("\u001B[36m"),
     WHITE("\u001B[37m"),
     PURPLE("\u001B[35m"),
-    
     // Bright text colors
     BLACK_BRIGHT("\u001B[90m"),
     RED_BRIGHT("\u001B[91m"),
@@ -46,12 +42,10 @@ public enum TerminalColor {
     MAGENTA_BRIGHT("\u001B[95m"),
     CYAN_BRIGHT("\u001B[96m"),
     WHITE_BRIGHT("\u001B[97m"),
-
     // Extended text colors
     ORANGE("\u001B[38;5;208m"),
     BROWN("\u001B[38;5;94m"),
     DESERT_SAND("\u001B[38;5;229m"),
-
     // Text on background combinations
     RED_ON_BLUE("\u001B[31m\u001B[44m"),
     GREEN_ON_YELLOW("\u001B[32m\u001B[43m"),
@@ -64,8 +58,9 @@ public enum TerminalColor {
     DESERT_SAND_ON_ORANGE("\u001B[38;5;229m\u001B[48;5;208m"),
     WHITE_ON_BLUE("\u001B[37m\u001B[44m"),
     BLACK_ON_WHITE("\u001B[30m\u001B[47m"),
-    GREEN_BRIGHT_ON_PURPLE("\u001B[92m\u001B[45m");
-
+    GREEN_BRIGHT_ON_PURPLE("\u001B[92m\u001B[45m"),
+    DARK_GREY_ON_BLACK("\u001B[38;5;240m\u001B[40m");
+    
     private final String ansiCode;
 
     TerminalColor(String ansiCode) {

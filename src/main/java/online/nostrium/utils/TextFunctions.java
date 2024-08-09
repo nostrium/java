@@ -13,7 +13,9 @@ import com.vladsch.flexmark.util.data.DataHolder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.Normalizer;
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
@@ -24,6 +26,21 @@ import java.util.ArrayList;
  */
 public class TextFunctions {
 
+    
+    public static String convertLongToDateTime(long timestamp) {
+        // Convert the long timestamp to an Instant
+        Instant instant = Instant.ofEpochSecond(timestamp);
+
+        // Convert the Instant to a LocalDateTime in the system's default time zone
+        LocalDateTime dateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+
+        // Define the date format
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+        // Format the LocalDateTime and return it as a string
+        return dateTime.format(formatter);
+    }
+    
     /**
      * Cleans a string from non-alphanumeric letters Finds equivalents for
      * letters with accents.

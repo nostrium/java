@@ -23,6 +23,7 @@ online/nostrium/main/coreOld.class
 online/nostrium/main/core.class
 online/nostrium/main/Folder.class
 online/nostrium/forum/convert/ConvertIPB.class
+online/nostrium/servers/apps/chat/CommandChatClear.class
 online/nostrium/main/Config.class
 online/nostrium/requests/RequestIndex.class
 online/nostrium/servers/apps/basic/CommandLogin.class

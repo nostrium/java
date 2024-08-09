@@ -79,6 +79,66 @@ public class ChatUtils {
         File file = new File(folder, filename);
         return file;
     }
+    
+    /**
+     * Gets the message box files for the specified number of days in the past.
+     *
+     * @param folder the folder containing the files
+     * @param days   the number of days in the past
+     * @return an ArrayList of File objects
+     */
+    public static ArrayList<File> getFileMessageBoxForPastDays(File folder, int days) {
+        ArrayList<File> fileList = new ArrayList<>();
+        LocalDate currentDate = LocalDate.now();
+
+        for (int i = 0; i <= days; i++) {
+            LocalDate targetDate = currentDate.minusDays(i);
+            String formattedDate = targetDate.format(DateTimeFormatter.ISO_LOCAL_DATE);
+            String filename = "messages_" + formattedDate + ".json";
+            File file = new File(folder, filename);
+
+            if (file.exists() && file.isFile() && file.length() > 0) {
+                fileList.add(file);
+            }
+        }
+
+        return fileList;
+    }
+    
+     /**
+     * Gets the message box files between two specified dates.
+     *
+     * @param folder   the folder containing the files
+     * @param startDateString the start date in YYYY-MM-DD format
+     * @param endDateString   the end date in YYYY-MM-DD format
+     * @return an ArrayList of File objects
+     */
+    public static ArrayList<File> getFileMessageBoxBetweenDates
+            (File folder, String startDateString, String endDateString) {
+        ArrayList<File> fileList = new ArrayList<>();
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+
+        LocalDate startDate = LocalDate.parse(startDateString, formatter);
+        LocalDate endDate = LocalDate.parse(endDateString, formatter);
+
+        LocalDate currentDate = startDate;
+
+        while (!currentDate.isAfter(endDate)) {
+            String formattedDate = currentDate.format(formatter);
+            String filename = "messages_" + formattedDate + ".json";
+            File file = new File(folder, filename);
+
+            if (file.exists() && file.isFile()) {
+                fileList.add(file);
+            }
+
+            currentDate = currentDate.plusDays(1);
+        }
+
+        return fileList;
+    }
+
+
 
     /**
      * Look at all available chat rooms, provide the first one that is matching

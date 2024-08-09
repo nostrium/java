@@ -6,6 +6,9 @@
  */
 package online.nostrium.users;
 
+import java.io.File;
+import online.nostrium.main.Folder;
+import online.nostrium.utils.FileFunctions;
 import static online.nostrium.utils.NostrUtils.generateNostrKeys;
 import online.nostrium.utils.TextFunctions;
 
@@ -49,6 +52,25 @@ public class UserUtils {
         String timestamp = TextFunctions.getDate();
         user.setRegisteredTime(timestamp);
         user.setLastLoginTime(timestamp);
+        return user;
+    }
+
+    public static User getUser(String npub) {
+        File folder = FileFunctions.getThirdLevelFolder(
+                Folder.getFolderUsers(), npub, false);
+        File file = new File(folder, npub + ".json");
+        
+        // user not found
+        if(file.exists() == false){
+            return null;
+        }        
+        
+        User user = User.jsonImport(file);
+        
+        if(user == null){
+            return null;
+        }
+        
         return user;
     }
 

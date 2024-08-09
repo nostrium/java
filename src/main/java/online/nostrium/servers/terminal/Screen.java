@@ -17,6 +17,11 @@ public class Screen {
     public static final String 
             ANSI_CLEAR_SCREEN = "\u001B[2J",    
             ANSI_HOME = "\u001B[H";
+    
+    // ANSI escape codes for clearing the line and moving the cursor
+    public static final String
+            ANSI_CLEAR_LINE = "\u001B[2K",
+            ANSI_CURSOR_TO_LINE_START = "\u001B[G";
    
     
     // ANSI escape codes for colors

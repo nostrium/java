@@ -47,6 +47,22 @@
       "kind": 1,
       "tags": [],
       "content": "another one 1"
+    },
+    {
+      "id": "e7fd3788ae569ca10334c3e9860204dd3c01c25551ceb53873803772561b3ea4",
+      "pubkey": "02dd891b5b30a85246aa408afe24442a2ea832d9cf851839a0a01528d7e63ff6b0",
+      "createdAt": 1723140413,
+      "kind": 1,
+      "tags": [],
+      "content": "test 7"
+    },
+    {
+      "id": "f8edff01f79183ed40e6a7bc3e92331ecc828a33e80b6b1c296e9c933b1299a3",
+      "pubkey": "02dd891b5b30a85246aa408afe24442a2ea832d9cf851839a0a01528d7e63ff6b0",
+      "createdAt": 1723140422,
+      "kind": 1,
+      "tags": [],
+      "content": "bla12"
     }
   ]
 }

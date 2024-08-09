@@ -8,10 +8,15 @@ package online.nostrium.servers.apps.chat;
 
 import java.util.ArrayList;
 import online.nostrium.servers.terminal.CommandResponse;
+import online.nostrium.servers.terminal.Screen;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
+import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.users.User;
+import online.nostrium.users.UserUtils;
+import online.nostrium.utils.TextFunctions;
 
 /**
  * @author Brito
@@ -32,18 +37,50 @@ public class CommandChatLs extends TerminalCommand {
 
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
-        // what we will write
-        String text = "";
-        
         // get all the message
+        @SuppressWarnings("unchecked")
+        ArrayList<String> lines = new ArrayList();
         ArrayList<ChatMessage> messagesToday = room.getMessagesToday().messages;
-        for(int i = messagesToday.size(); i < 0; i--){
-            text = messagesToday.get(i) + "\n" + text;
+        for(ChatMessage message : messagesToday){
+            
+            String id = message.pubkey.substring(0, 4);
+            
+            User user = UserUtils.getUser(message.pubkey);
+            if(user != null && user.getDisplayName() != null){
+                id = user.getDisplayName();
+            }
+            
+            String content = message.content;
+            String timestamp = 
+                    TextFunctions.convertLongToDateTime(message.createdAt);
+            
+            timestamp =
+                    Screen.paint(terminalType, 
+                            TerminalColor.BLUE, timestamp);
+            
+            String line = timestamp
+                    + " "
+                    + "["
+                    + id
+                    + "]"
+                    + " "
+                    + content
+                    ;
+            
+            lines.add(line);
         }
         
+        String output = "";
+        for(String line : lines){
+            output += line + "\n";
+        }
         
+        // remove the last break line
+        if(output.length() > 0){
+            output = output.substring(0, output.length() -1);
+        }
 
-        return reply(TerminalCode.OK, text);
+        return reply(TerminalCode.OK, output);
     }
 
     @Override
@@ -53,7 +90,7 @@ public class CommandChatLs extends TerminalCommand {
 
     @Override
     public String oneLineDescription() {
-        return "List the available items";
+        return "List the previous messages";
     }
 
 }
