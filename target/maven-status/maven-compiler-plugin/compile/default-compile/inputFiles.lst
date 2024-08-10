@@ -9,6 +9,7 @@
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/forum/structures/Level1.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/forum/structures/Level3.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/forum/structures/ForumTopic.java
+/home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/terminal/ScreenANSI.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/main/Folder.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/apps/basic/CommandExit.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/apps/basic/CommandLs.java
@@ -17,7 +18,6 @@
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/utils/FileTypeAdapter.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/terminal/TerminalCode.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/apps/chat/ChatType.java
-/home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/terminal/Screen.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/apps/chat/ChatArchive.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/main/Config.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/forum/structures/ManageTopics.java
@@ -38,6 +38,7 @@
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/forum/users/ForumUser.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/utils/GsonUtils.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/apps/chat/CommandChatLs.java
+/home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/terminal/screens/Screen.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/forum/structures/AffiliateLink.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/forum/structures/ForumNote.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/apps/chat/ChatRoom.java
@@ -56,6 +57,7 @@
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/forum/convert/ConvertIPB.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/forum/structures/Level2.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/users/User.java
+/home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/terminal/screens/ScreenTelnet.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/utils/EncryptionUtils.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/utils/AsciiArt.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/forum/structures/ForumUser.java

@@ -179,7 +179,7 @@ public class FileFunctions {
     }
 
     /**
-     * Provides the folder based on texts such as nsec, creates the folders when
+     * Provides the folder based on texts such as npub, creates the folders when
      * they don't exist.
      *
      * @param startingFolder
@@ -213,6 +213,46 @@ public class FileFunctions {
             return null;
         }
     }
+    
+    /**
+     * Provides the folder based on texts such as npub, creates the folders when
+     * they don't exist.
+     *
+     * @param startingFolder
+     * @param npub
+     * @return
+     */
+    public static File getThirdLevelFolderWithNpubOnEnd(
+            File startingFolder, String npub, boolean createFolders) {
+        if (npub == null || npub.length() < 9) {
+            return null;
+        }
+
+        try {
+            String firstThree = npub.substring(0, 3);
+            String secondThree = npub.substring(3, 6);
+            String thirdThree = npub.substring(6, 9);
+
+            File firstLevelFolder = new File(startingFolder, firstThree);
+            File secondLevelFolder = new File(firstLevelFolder, secondThree);
+            File thirdLevelFolder = new File(secondLevelFolder, thirdThree);
+            
+            // final folder
+            File folder = new File(thirdLevelFolder, npub);
+
+            if (createFolders && !folder.exists()) {
+                boolean created = folder.mkdirs();
+                if (!created) {
+                    return null;
+                }
+            }
+
+            return folder;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
     
      
     public static boolean saveStringToFile(File file, String content) {

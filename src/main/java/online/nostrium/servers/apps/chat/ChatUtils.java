@@ -172,6 +172,7 @@ public class ChatUtils {
             }
             // check the name, got a match? return it
             if(room.getName().equalsIgnoreCase(name)){
+                room.setFolder(file.getParentFile());
                 return room;
             }
         }

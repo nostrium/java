@@ -8,7 +8,6 @@ package online.nostrium.servers.apps.chat;
 
 import java.util.ArrayList;
 import online.nostrium.servers.terminal.CommandResponse;
-import online.nostrium.servers.terminal.Screen;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalColor;
@@ -40,8 +39,11 @@ public class CommandChatLs extends TerminalCommand {
         // get all the message
         @SuppressWarnings("unchecked")
         ArrayList<String> lines = new ArrayList();
-        ArrayList<ChatMessage> messagesToday = room.getMessagesToday().messages;
-        for(ChatMessage message : messagesToday){
+        //ArrayList<ChatMessage> messagesToday = room.getMessagesToday().messages;
+        
+        ArrayList<ChatMessage> messages = room.getLastMessages(50);
+        
+        for(ChatMessage message : messages){
             
             String id = message.pubkey.substring(0, 4);
             
@@ -50,13 +52,14 @@ public class CommandChatLs extends TerminalCommand {
                 id = user.getDisplayName();
             }
             
-            String content = message.content;
+            String content = TextFunctions.sanitizeChatMessage(message.content);
+            
+            
             String timestamp = 
                     TextFunctions.convertLongToDateTime(message.createdAt);
             
             timestamp =
-                    Screen.paint(terminalType, 
-                            TerminalColor.BLUE, timestamp);
+                    app.screen.paint(TerminalColor.BLUE, timestamp);
             
             String line = timestamp
                     + " "

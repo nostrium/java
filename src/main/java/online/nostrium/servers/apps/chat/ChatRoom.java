@@ -18,81 +18,84 @@ import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.users.User;
 import online.nostrium.utils.FileFunctions;
 import online.nostrium.utils.JsonTextFile;
+import online.nostrium.utils.TextFunctions;
 import static online.nostrium.utils.TextFunctions.addIfNew;
-
 
 /**
  * @author Brito
  * @date: 2024-08-06
  * @location: Germany
  */
-public class ChatRoom extends JsonTextFile{
-    
+public class ChatRoom extends JsonTextFile {
+
     @Expose
     final String npub;
-    
+
     @Expose
-    String
-            nsec;           // maybe used in the future for signing events
-    
+    String nsec;           // maybe used in the future for signing events
+
     @Expose
     ChatType chatType = ChatType.NORMAL;    // type of room
-    
-    @Expose
-    String name,            // one name without spaces
-           description,     // one-line description
-           intro,           // set initial screen when entering the room
-           passwordHash,    // define a password to enter (optional)
-           registeredTime;  // when it was registered
 
-    
+    @Expose
+    String name, // one name without spaces
+            description, // one-line description
+            intro, // set initial screen when entering the room
+            passwordHash, // define a password to enter (optional)
+            registeredTime;  // when it was registered
+
     @Expose
     boolean showHistory = true,
             needPasswordToEnter = false,
             needApprovalToEnter = false;
-    
+
     @Expose
-    String
-            roomParent;     // either null or the parent inside this chat
-    
-    
+    String roomParent;     // either null or the parent inside this chat
+
     @Expose
     TerminalColor defaultTextColor = TerminalColor.WHITE;
-    
-    
+
     @SuppressWarnings("unchecked")
     @Expose
     ArrayList<String> subrooms = new ArrayList();
-    
-    
+
     @SuppressWarnings("unchecked")
     @Expose
     ArrayList<String> admins = new ArrayList();
-    
+
     @SuppressWarnings("unchecked")
     @Expose
     ArrayList<String> mods = new ArrayList();     // the moderator team
-    
+
     @SuppressWarnings("unchecked")
     @Expose
     ArrayList<String> tags = new ArrayList();     // tags defining this chat room
-    
+
     @SuppressWarnings("unchecked")
     @Expose
     ArrayList<String> usersPermitted = new ArrayList();     // users permitted to talk
-    
+
     @SuppressWarnings("unchecked")
     @Expose
     ArrayList<String> usersBlacklisted = new ArrayList();     // users permitted to talk
-    
+
     // the folder where we keep the work files
-    private File folder = null;
-    
+    private File folder;
+
     public ChatRoom(String npub) {
         this.npub = npub;
+        folder = FileFunctions.getThirdLevelFolderWithNpubOnEnd
+            (Folder.getFolderChat(), npub, true);
+    }
+
+    public void setFolder(File folder) {
+        this.folder = folder;
     }
     
-    
+    public File getFolder(){
+        return this.folder;
+    }
+
     public String getNsec() {
         return nsec;
     }
@@ -216,29 +219,14 @@ public class ChatRoom extends JsonTextFile{
     public void setChatType(ChatType chatType) {
         this.chatType = chatType;
     }
-    
+
     /**
      * Delete this folder and related files
      */
-    public void delete(){
-        FileFunctions.deleteFolderAndParentsIfEmpty
-            (getFile(), Folder.getFolderChat());
+    public void delete() {
+        FileFunctions.deleteFolderAndParentsIfEmpty(getFile(), Folder.getFolderChat());
     }
 
-    public File getFolder(){
-        if(folder != null){
-            return folder;
-        }
-        File folderBase = Folder.getFolderChat();
-        File folderMiddle = FileFunctions.getFirstLevelFolder(folderBase, npub, true);
-        File folderCreated = new File(folderMiddle, npub);
-        if(folderCreated.exists() == false){
-            folderCreated.mkdirs();
-        }
-        folder = folderCreated;
-        return folderCreated;
-    }
-    
     @Override
     public File getFile() {
         File folderToBeUsed = getFolder();
@@ -253,24 +241,26 @@ public class ChatRoom extends JsonTextFile{
 
     /**
      * Gets the message box for the current day
-     * @return 
+     *
+     * @return
      */
     public synchronized ChatArchive getMessagesToday() {
         // user can add the text here
         File file = ChatUtils.getFileMessageBoxForToday(folder);
         ChatArchive archive;
-        
-        if(file.exists() == false){
+
+        if (file.exists() == false) {
             archive = new ChatArchive();
             archive.save(file);
-        }else{
+        } else {
             archive = ChatArchive.jsonImport(file);
         }
         return archive;
     }
-    
+
     /**
-     * Gets the ChatArchives for each day in the past up to the specified number of days.
+     * Gets the ChatArchives for each day in the past up to the specified number
+     * of days.
      *
      * @param days the number of days in the past
      * @return an ArrayList of ChatArchive objects
@@ -295,9 +285,10 @@ public class ChatRoom extends JsonTextFile{
 
         return archiveList;
     }
-    
+
     /**
-     * Gets the ChatMessages for each day in the past up to the specified number of days.
+     * Gets the ChatMessages for each day in the past up to the specified number
+     * of days.
      *
      * @param days the number of days in the past
      * @return an ArrayList of ChatMessage objects
@@ -323,16 +314,18 @@ public class ChatRoom extends JsonTextFile{
 
         return messageList;
     }
-    
-     /**
-     * Gets the ChatArchives between two specified dates within a 100-day interval.
+
+    /**
+     * Gets the ChatArchives between two specified dates within a 100-day
+     * interval.
      *
      * @param startDateString the start date in YYYY-MM-DD format
-     * @param endDateString   the end date in YYYY-MM-DD format
+     * @param endDateString the end date in YYYY-MM-DD format
      * @return an ArrayList of ChatArchive objects
-     * @throws IllegalArgumentException if the interval between dates exceeds 100 days
+     * @throws IllegalArgumentException if the interval between dates exceeds
+     * 100 days
      */
-    public synchronized ArrayList<ChatArchive> 
+    public synchronized ArrayList<ChatArchive>
             getMessagesBetweenDates(String startDateString, String endDateString) {
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
         LocalDate startDate = LocalDate.parse(startDateString, formatter);
@@ -366,100 +359,111 @@ public class ChatRoom extends JsonTextFile{
         return archiveList;
     }
 
-            
-      
     /**
-     * Retrieves the last XXXX messages, starting from today and going back each day.
+     * Retrieves the last XXXX messages, starting from today and going back each
+     * day.
      *
      * @param numberOfMessages the number of messages to retrieve (1 to 999)
-     * @return an ArrayList of ChatMessage objects, or null if the number of messages is out of range
+     * @return an ArrayList of ChatMessage objects, or null if the number of
+     * messages is out of range
      */
-    public synchronized ArrayList<ChatMessage> getLastMessages(int numberOfMessages) {
+    public ArrayList<ChatMessage> getLastMessages(int numberOfMessages) {
         if (numberOfMessages < 1 || numberOfMessages > 999) {
             return null;
         }
 
-        ArrayList<ChatMessage> messageList = new ArrayList<>();
+        ArrayList<ChatMessage> messageList = new ArrayList<>(numberOfMessages);
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
-        int totalMessagesRetrieved = 0;
+        int daysBack = 0;
 
-        for (int i = 0; totalMessagesRetrieved < numberOfMessages; i++) {
-            LocalDate targetDate = LocalDate.now().minusDays(i);
+        while (messageList.size() < numberOfMessages && daysBack <= 100) {
+            LocalDate targetDate = LocalDate.now().minusDays(daysBack++);
             String formattedDate = targetDate.format(formatter);
-            String filename = "messages_" + formattedDate + ".json";
-            File file = new File(folder, filename);
+            File file = new File(folder, "messages_" + formattedDate + ".json");
 
-            if (file.exists() && file.isFile()) {
-                ChatArchive archive = ChatArchive.jsonImport(file);
-                if (archive != null) {
-                    ArrayList<ChatMessage> messages = archive.getMessages();
-                    for (ChatMessage message : messages) {
-                        if (totalMessagesRetrieved < numberOfMessages) {
-                            messageList.add(message);
-                            totalMessagesRetrieved++;
-                        } else {
-                            break;
-                        }
-                    }
-                }
+            if (!file.exists() || !file.isFile()) {
+                continue;
+            }
+
+            ChatArchive archive = ChatArchive.jsonImport(file);
+            if (archive == null) {
+                continue;
+            }
+
+            ArrayList<ChatMessage> messages = archive.getMessages();
+            int remainingMessages = numberOfMessages - messageList.size();
+
+            // Add messages in reverse order to preserve the original chronology
+            int start = Math.max(messages.size() - remainingMessages, 0);
+            messageList.addAll(0, messages.subList(start, messages.size()));
+
+            if (messageList.size() >= numberOfMessages) {
+                break;
             }
         }
 
         return messageList;
     }
-    
-    
+
     /**
      * Add a new text on the chat box
+     *
      * @param user
-     * @param text 
-     * @return  
+     * @param text
+     * @return
      */
     public CommandResponse sendChatText(User user, String text) {
-        if(userCannotAddText(user)){
+        if (userCannotAddText(user)) {
+            return new CommandResponse(TerminalCode.DENIED);
+        }
+
+        // clean and normalize the text to remove weird characters
+        text = TextFunctions.sanitizeChatMessage(text);
+        if(TextFunctions.isValidText(text) == false){
             return new CommandResponse(TerminalCode.DENIED);
         }
         
+        // place the message on the local archive
         ChatArchive archive = this.getMessagesToday();
-                
-        if(archive == null){
+
+        if (archive == null) {
             return new CommandResponse(TerminalCode.FAIL);
         }
-        
+
         // add the text message
         ChatMessage message = new ChatMessage(user, text);
         archive.addMessage(message);
         File file = ChatUtils.getFileMessageBoxForToday(folder);
         archive.save(file);
-        
+
         String textToShow = "["
                 + user.getDisplayName()
                 + "] "
                 + text;
-        
+
         // all good
         return new CommandResponse(TerminalCode.OK, textToShow);
     }
 
     /**
      * Check if a user is permitted to write on this chat
+     *
      * @param user
-     * @return 
+     * @return
      */
     private boolean userCannotAddText(User user) {
         // is the user blacklisted?
-        if(usersBlacklisted.contains(user.getNpub())){
+        if (usersBlacklisted.contains(user.getNpub())) {
             return true;
         }
-        
+
         // not a member at a password-closed group
-        if(needPasswordToEnter 
-                && usersPermitted.contains(user.getNpub()) == false){
+        if (needPasswordToEnter
+                && usersPermitted.contains(user.getNpub()) == false) {
             return true;
         }
-        
+
         return false;
     }
-
 
 }

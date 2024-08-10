@@ -8,6 +8,7 @@ package online.nostrium.servers.apps.chat;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.annotations.Expose;
 import java.io.File;
 import java.io.IOException;
@@ -56,7 +57,7 @@ public class ChatArchive {
             Gson gson = new Gson();
             ChatArchive item = gson.fromJson(text, ChatArchive.class);
             return item;
-        } catch (Exception e) {
+        } catch (JsonSyntaxException | IOException e) {
             e.printStackTrace();
             return null;
         }
@@ -64,6 +65,7 @@ public class ChatArchive {
     
     /**
      * Save this object as JSON to its file.
+     * @param file
      */
     public void save(File file) {
         saveToFile(file);

@@ -18,15 +18,15 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 /**
- * Date: 2023-02-09
- * Place: Germany
+ * Date: 2023-02-09 Place: Germany
+ *
  * @author brito
  */
 public class TextFunctions {
 
-    
     public static String convertLongToDateTime(long timestamp) {
         // Convert the long timestamp to an Instant
         Instant instant = Instant.ofEpochSecond(timestamp);
@@ -40,7 +40,7 @@ public class TextFunctions {
         // Format the LocalDateTime and return it as a string
         return dateTime.format(formatter);
     }
-    
+
     /**
      * Cleans a string from non-alphanumeric letters Finds equivalents for
      * letters with accents.
@@ -73,8 +73,8 @@ public class TextFunctions {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH:mm");
         return now.format(formatter);
     }
-    
-   /**
+
+    /**
      * Returns an ASCII art window frame around the given title.
      *
      * @param title The title to be framed.
@@ -91,19 +91,17 @@ public class TextFunctions {
         sb.append(topBottomBorder).append("\n");
 
         sb.append("|")
-          .append(new String(new char[paddingHorizontal / 2]).replace('\0', ' '))
-          .append(title)
-          .append(new String(new char[paddingHorizontal / 2]).replace('\0', ' '))
-          //.append("|")
-                .append("\n")
-                ;
+                .append(new String(new char[paddingHorizontal / 2]).replace('\0', ' '))
+                .append(title)
+                .append(new String(new char[paddingHorizontal / 2]).replace('\0', ' '))
+                //.append("|")
+                .append("\n");
 
         sb.append(topBottomBorder);
 
         return sb.toString();
     }
 
-    
     public static String sha256(String text) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -140,16 +138,85 @@ public class TextFunctions {
 
         return sanitized.toString();
     }
-    
+
     public static void addIfNew(String text, ArrayList<String> list) {
-        if(text == null || text.trim().length() == 0){
+        if (text == null || text.trim().length() == 0) {
             return;
         }
-        if(list.contains(text)){
+        if (list.contains(text)) {
             return;
         }
         // add it up
         list.add(text);
     }
+
+//    public static String sanitizeChatMessage(String message) {
+//        if (message == null || message.isEmpty()) {
+//            return message;
+//        }
+//
+//        // Normalize the text to decompose characters with diacritics into base characters
+//        message = Normalizer.normalize(message, Normalizer.Form.NFKC);
+//
+//        // Regular expression to detect and remove invisible characters
+//        Pattern invisibleCharacters = Pattern.compile("[\\p{C}\\p{Z}]");
+//        message = invisibleCharacters.matcher(message).replaceAll("");
+//
+//        // Regular expression to allow common characters in conversations (letters, numbers, punctuation, and common symbols)
+//        String allowedCharacters = "[^\\p{L}\\p{Nd}\\p{P}\\p{Zs}\\p{Zl}\\p{Zp}\\p{Sm}]";
+//        message = message.replaceAll(allowedCharacters, "");
+//
+//        // Trim the result to remove leading or trailing whitespace
+//        return message.trim();
+//    }
     
+   public static String sanitizeChatMessage(String message) {
+        if (message == null || message.isEmpty()) {
+            return "";
+        }
+
+        StringBuilder sanitized = new StringBuilder(message.length());
+
+        for (int i = 0; i < message.length(); i++) {
+            char ch = message.charAt(i);
+
+            // Check for control characters and skip them, but allow standard whitespace characters
+            if (Character.isISOControl(ch) && ch != '\t' && ch != '\n' && ch != '\r') {
+                continue; // Skip control characters except tab, newline, carriage return
+            }
+
+            // Skip surrogate pairs and non-character code points
+            if (Character.isSurrogate(ch) || !Character.isDefined(ch)) {
+                continue;
+            }
+
+            // Append valid characters, including spaces, punctuation, and other visible characters
+            sanitized.append(ch);
+        }
+
+        // Trim leading and trailing spaces and return the sanitized string
+        return sanitized.toString().trim();
+    }
+   
+
+    public static boolean isValidText(String message) {
+        if (message == null || message.isEmpty()) {
+            return false;
+        }
+
+        // Normalize the text to decompose characters with diacritics into base characters
+        message = Normalizer.normalize(message, Normalizer.Form.NFKC);
+
+        // Regular expression to detect and remove invisible characters
+        Pattern invisibleCharacters = Pattern.compile("[\\p{C}\\p{Z}]");
+        String sanitizedMessage = invisibleCharacters.matcher(message).replaceAll("");
+
+        // Regular expression to allow common characters in conversations (letters, numbers, punctuation, and common symbols)
+        String allowedCharacters = "[^\\p{L}\\p{Nd}\\p{P}\\p{Zs}\\p{Zl}\\p{Zp}\\p{Sm}]";
+        sanitizedMessage = sanitizedMessage.replaceAll(allowedCharacters, "").trim();
+
+        // Return true if the sanitized message is non-empty after all checks
+        return !sanitizedMessage.isEmpty();
+    }
+
 }

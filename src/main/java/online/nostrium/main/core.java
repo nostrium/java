@@ -8,9 +8,6 @@ package online.nostrium.main;
 
 import java.io.File;
 import online.nostrium.servers.ServerTelnet;
-import online.nostrium.servers.terminal.Screen;
-import online.nostrium.servers.terminal.TerminalColor;
-import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.utils.AsciiArt;
 import online.nostrium.utils.Log;
 
@@ -33,11 +30,8 @@ public class core {
     public static void main(String[] args) {
         
         File folder = Folder.getFolderBase();
-        File folderData = new File(folder, "data");
         
-        String logo = Screen.paint(TerminalType.ANSI,
-                TerminalColor.GREEN, AsciiArt.intro());
-        
+        String logo = AsciiArt.intro();
         
         System.out.println(logo);
         System.out.println("");

@@ -7,7 +7,7 @@
 package online.nostrium.servers.apps.chat;
 
 import online.nostrium.servers.terminal.CommandResponse;
-import online.nostrium.servers.terminal.Screen;
+import online.nostrium.servers.terminal.ScreenANSI;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
@@ -29,7 +29,8 @@ public class CommandChatClear extends TerminalCommand {
 
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
-        return reply(TerminalCode.OK, Screen.clearScreen());
+        app.screen.clearScreen();
+        return reply(TerminalCode.OK, "");
     }
 
     @Override

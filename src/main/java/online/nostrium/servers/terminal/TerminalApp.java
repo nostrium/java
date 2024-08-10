@@ -12,6 +12,7 @@ import java.util.Map;
 import online.nostrium.servers.apps.basic.CommandCd;
 import online.nostrium.servers.apps.basic.CommandExit;
 import online.nostrium.servers.apps.basic.CommandLs;
+import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.users.User;
 
 /**
@@ -29,10 +30,10 @@ public abstract class TerminalApp {
     public final User user;
     
     public final Map<String, TerminalCommand> commands = new HashMap<>();
-    public final TerminalType terminalType;
+    public final Screen screen;
 
-    public TerminalApp(TerminalType terminalType, User user) {
-        this.terminalType = terminalType;
+    public TerminalApp(Screen screen, User user) {
+        this.screen = screen;
         this.user = user;
         // add the default commands
         addCommandInternal(new CommandHelp(this));
@@ -125,7 +126,7 @@ public abstract class TerminalApp {
     }
 
     public String paint(TerminalColor colorType, String text) {
-        return Screen.paint(terminalType, colorType, text);
+        return screen.paint(colorType, text);
     }
 
     // provide a one-line description of the app

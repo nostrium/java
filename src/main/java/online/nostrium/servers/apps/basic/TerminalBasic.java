@@ -13,8 +13,7 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
-import online.nostrium.servers.terminal.TerminalCommand;
-import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.users.User;
 import online.nostrium.utils.AsciiArt;
 
@@ -25,15 +24,15 @@ import online.nostrium.utils.AsciiArt;
  */
 public class TerminalBasic extends TerminalApp {
 
-    public TerminalBasic(TerminalType terminalType, User user) {
-        super(terminalType, user);
+    public TerminalBasic(Screen screen, User user) {
+        super(screen, user);
         // add some specific commands
         addCommand(new CommandHello(this));
         addCommand(new CommandTime(this));
         
         // add apps inside
-        addApp(new TerminalUser(terminalType, user));
-        addApp(new TerminalChat(terminalType, user));
+        addApp(new TerminalUser(screen, user));
+        addApp(new TerminalChat(screen, user));
     }
 
     @Override

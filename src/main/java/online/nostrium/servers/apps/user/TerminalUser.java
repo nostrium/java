@@ -10,7 +10,7 @@ import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
-import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.users.User;
 import online.nostrium.utils.TextFunctions;
 
@@ -21,8 +21,8 @@ import online.nostrium.utils.TextFunctions;
  */
 public class TerminalUser extends TerminalApp {
 
-    public TerminalUser(TerminalType terminalType, User user) {
-        super(terminalType, user);
+    public TerminalUser(Screen screenAssigned, User user) {
+        super(screenAssigned, user);
         addCommand(new CommandUserPassword(this));
         addCommand(new CommandUserSave(this));
     }
