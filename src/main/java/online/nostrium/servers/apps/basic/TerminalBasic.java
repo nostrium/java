@@ -14,7 +14,7 @@ import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
 import online.nostrium.servers.terminal.screens.Screen;
-import online.nostrium.users.User;
+import online.nostrium.servers.apps.user.User;
 import online.nostrium.utils.AsciiArt;
 
 /**

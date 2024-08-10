@@ -10,11 +10,12 @@ import java.util.ArrayList;
 import online.nostrium.main.Folder;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
+import online.nostrium.servers.terminal.TerminalCode;
+import online.nostrium.servers.terminal.TerminalColor;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
-import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.screens.Screen;
-import online.nostrium.users.User;
-import online.nostrium.users.UserUtils;
+import online.nostrium.servers.apps.user.User;
+import online.nostrium.servers.apps.user.UserUtils;
 import online.nostrium.utils.TextFunctions;
 
 /**
@@ -50,10 +51,7 @@ public class TerminalChat extends TerminalApp {
         String title = "Chat";
         String text = TextFunctions.getWindowFrame(title);
 
-        String intro
-                = paint(BLUE,
-                        text
-                );
+        String intro = paint(BLUE, text);
 
         // read the number of messages
         int countMessages = 0;
@@ -75,7 +73,50 @@ public class TerminalChat extends TerminalApp {
 
     @Override
     public CommandResponse defaultCommand(String commandInput) {
-        return roomNow.sendChatText(user, commandInput);
+        
+        // write the chat message on the room
+        CommandResponse reply = roomNow.sendChatText(user, commandInput);
+        // when something went wrong, stop it here
+        if(reply.getCode() != TerminalCode.OK){
+            return reply;
+        }
+        
+        // delete the current line
+        //screen.deleteCurrentLine();
+        screen.deletePreviousLine();
+        
+        String line = createMessageLine(
+                System.currentTimeMillis() / 1000L, 
+                user.getDisplayName(), 
+                reply.getText()
+        );
+        
+        // write the new line
+        screen.writeln(line);
+        
+        return new CommandResponse(TerminalCode.OK, "");
+    }
+    
+    
+    /**
+     * The message that appears on the chat box to the user
+     * @param timeCreated
+     * @param userId
+     * @param content
+     * @return 
+     */
+    public String createMessageLine(long timeCreated, String userId, String content){
+        String timestamp = TextFunctions.convertLongToDateTime(timeCreated);
+        timestamp = screen.paint(TerminalColor.BLUE, timestamp);
+        String line = timestamp
+                    + " "
+                    + "["
+                    + userId
+                    + "]"
+                    + " "
+                    + content
+                    ;
+        return line;
     }
 
 }

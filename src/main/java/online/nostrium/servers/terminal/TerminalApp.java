@@ -13,7 +13,7 @@ import online.nostrium.servers.apps.basic.CommandCd;
 import online.nostrium.servers.apps.basic.CommandExit;
 import online.nostrium.servers.apps.basic.CommandLs;
 import online.nostrium.servers.terminal.screens.Screen;
-import online.nostrium.users.User;
+import online.nostrium.servers.apps.user.User;
 
 /**
 

@@ -6,12 +6,13 @@
  */
 package online.nostrium.servers.apps.chat;
 
+import online.nostrium.servers.apps.user.UserUtils;
+import online.nostrium.servers.apps.user.User;
 import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import online.nostrium.main.Folder;
-import online.nostrium.users.*;
 import online.nostrium.utils.FileFunctions;
 import online.nostrium.utils.Log;
 import static online.nostrium.utils.NostrUtils.generateNostrKeys;

@@ -15,7 +15,7 @@ import online.nostrium.main.Folder;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalColor;
-import online.nostrium.users.User;
+import online.nostrium.servers.apps.user.User;
 import online.nostrium.utils.FileFunctions;
 import online.nostrium.utils.JsonTextFile;
 import online.nostrium.utils.TextFunctions;
@@ -423,27 +423,22 @@ public class ChatRoom extends JsonTextFile {
             return new CommandResponse(TerminalCode.DENIED);
         }
         
-        // place the message on the local archive
+        // get the local archive
         ChatArchive archive = this.getMessagesToday();
-
         if (archive == null) {
             return new CommandResponse(TerminalCode.FAIL);
         }
 
-        // add the text message
+        // write the text message to disk
         ChatMessage message = new ChatMessage(user, text);
         archive.addMessage(message);
         File file = ChatUtils.getFileMessageBoxForToday(folder);
         archive.save(file);
-
-        String textToShow = "["
-                + user.getDisplayName()
-                + "] "
-                + text;
-
+        
         // all good
-        return new CommandResponse(TerminalCode.OK, textToShow);
+        return new CommandResponse(TerminalCode.OK, text);
     }
+    
 
     /**
      * Check if a user is permitted to write on this chat

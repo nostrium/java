@@ -7,14 +7,13 @@
 package online.nostrium.servers.apps.chat;
 
 import java.util.ArrayList;
+import online.nostrium.main.Folder;
 import online.nostrium.servers.terminal.CommandResponse;
-import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
-import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
-import online.nostrium.users.User;
-import online.nostrium.users.UserUtils;
+import online.nostrium.servers.apps.user.User;
+import online.nostrium.servers.apps.user.UserUtils;
 import online.nostrium.utils.TextFunctions;
 
 /**
@@ -26,7 +25,7 @@ public class CommandChatLs extends TerminalCommand {
 
     final ChatRoom room;
     
-    public CommandChatLs(TerminalApp app, ChatRoom room) {
+    public CommandChatLs(TerminalChat app, ChatRoom room) {
         super(app);
         this.room = room;
         this.requireSlash = false;
@@ -45,30 +44,22 @@ public class CommandChatLs extends TerminalCommand {
         
         for(ChatMessage message : messages){
             
-            String id = message.pubkey.substring(0, 4);
+            String userId = UserUtils.getUserDisplayNameBasic(message.pubkey);
             
             User user = UserUtils.getUser(message.pubkey);
             if(user != null && user.getDisplayName() != null){
-                id = user.getDisplayName();
+                userId = user.getDisplayName();
             }
             
             String content = TextFunctions.sanitizeChatMessage(message.content);
             
-            
-            String timestamp = 
-                    TextFunctions.convertLongToDateTime(message.createdAt);
-            
-            timestamp =
-                    app.screen.paint(TerminalColor.BLUE, timestamp);
-            
-            String line = timestamp
-                    + " "
-                    + "["
-                    + id
-                    + "]"
-                    + " "
-                    + content
-                    ;
+            // create the line of previous messages
+            String line = ((TerminalChat) app).createMessageLine(
+                    message.createdAt, 
+                    Folder.nameAnonUsers
+                            + "#" + userId, 
+                    content
+            );
             
             lines.add(line);
         }

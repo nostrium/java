@@ -1,112 +1,67 @@
-/*
- * Chat message
- *
- * Copyright (c) Nostrium contributors
- * License: Apache-2.0
- * 
- * This class represents a chat message in the Nostr network.
- * 
- * Fields:
- * - id: Unique identifier for the message (generated).
- * - pubkey: Public key of the author.
- * - createdAt: Timestamp indicating when the message was created.
- * - kind: Type of the message (e.g., text note, event).
- * - tags: Array of tags for categorizing and filtering messages.
- * - content: Main content of the message.
- * 
- * Usage:
- * - Create a new ChatMessage object with necessary fields.
- * - Generate a unique ID based on the message content.
- * - Export the message as a JSON string.
- */
 package online.nostrium.servers.apps.chat;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
-
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import online.nostrium.users.User;
+import online.nostrium.servers.apps.user.User;
+import online.nostrium.utils.NostrSign;
 
-/**
- * Author: Brito
- * Date: 2024-08-06
- * Location: Germany
- */
 public class ChatMessage {
-    
+
     @Expose
     String id;
-    
+
     @Expose
     String pubkey;
-    
+
     @Expose
     long createdAt;
-    
+
     @Expose
-    int kind;
-    
+    final int kind = 1;  // Always kind = 1 for chat messages
+
     @Expose
     final ArrayList<String[]> tags;
-    
+
     @Expose
     String content;
 
-    public ChatMessage(String pubkey, int kind, String content, ArrayList<String[]> tags) {
-        this.pubkey = pubkey;
+    @Expose
+    String sig;  // Signature field
+
+    public ChatMessage(User user, String content, ArrayList<String[]> tags) {
+        this.pubkey = user.getNpub();
         this.createdAt = System.currentTimeMillis() / 1000L; // current timestamp in seconds
-        this.kind = kind;
         this.tags = tags;
         this.content = content;
         this.id = generateId();
+        this.sig = generateSignature(user);
     }
-    
-    public ChatMessage(String pubkey, int kind, String content) {
-        this.pubkey = pubkey;
-        this.createdAt = System.currentTimeMillis() / 1000L; // current timestamp in seconds
-        this.kind = kind;
-        this.tags = new ArrayList<>(); // Initialize tags to an empty list
-        this.content = content;
-        this.id = generateId();
-    }
-    
-     public ChatMessage(User user, String content) {
+
+    public ChatMessage(User user, String content) {
         this.pubkey = user.getNpub();
         this.createdAt = System.currentTimeMillis() / 1000L; // current timestamp in seconds
-        this.kind = 1;
         this.tags = new ArrayList<>(); // Initialize tags to an empty list
         this.content = content;
         this.id = generateId();
+        this.sig = generateSignature(user);
     }
-    
+
     /**
-     * Generates a unique ID for the message based on its content.
+     * Generates a unique ID for the message based on Nostr serialization.
      *
      * @return The unique ID as a hexadecimal string
      */
     private String generateId() {
         try {
-            // Convert fields to string and concatenate
-            StringBuilder data = new StringBuilder();
-            data.append(pubkey);
-            data.append(createdAt);
-            data.append(kind);
-            for (String[] tag : tags) {
-                for (String tagElement : tag) {
-                    data.append(tagElement);
-                }
-            }
-            data.append(content);
+            // Serialize the event as a JSON array according to Nostr's specification
+            String serializedEvent = "[" + 0 + ",\"" + pubkey + "\"," + createdAt + "," + kind + "," + serializeTags() + ",\"" + content + "\"]";
 
             // Compute SHA-256 hash
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hash = digest.digest(data.toString().getBytes(StandardCharsets.UTF_8));
+            byte[] hash = NostrSign.sha256(serializedEvent.getBytes("UTF-8"));
 
             // Convert to hexadecimal format
             StringBuilder hexString = new StringBuilder();
@@ -119,10 +74,36 @@ public class ChatMessage {
             }
 
             return hexString.toString();
-        } catch (NoSuchAlgorithmException e) {
+        } catch (Exception e) {
             Logger.getLogger(ChatMessage.class.getName()).log(Level.SEVERE, null, e);
             return null;
         }
+    }
+
+    /**
+     * Generates a signature for the message using the author's private key.
+     *
+     * @param user The User object containing the private key
+     * @return The generated signature as a Base64-encoded string
+     */
+    private String generateSignature(User user) {
+        try {
+            // Use the NostrSign class to generate the signature
+            return NostrSign.generateSignature(user.getNsec(), id);
+        } catch (Exception e) {
+            Logger.getLogger(ChatMessage.class.getName()).log(Level.SEVERE, null, e);
+            return null;
+        }
+    }
+
+    /**
+     * Serialize the tags as a JSON array.
+     *
+     * @return Serialized tags as a JSON array string
+     */
+    private String serializeTags() {
+        Gson gson = new Gson();
+        return gson.toJson(tags);
     }
 
     /**

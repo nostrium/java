@@ -43,7 +43,7 @@ import static online.nostrium.servers.terminal.TerminalColor.YELLOW;
 import static online.nostrium.servers.terminal.TerminalColor.YELLOW_ON_GREEN;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.TerminalUtils;
-import online.nostrium.users.User;
+import online.nostrium.servers.apps.user.User;
 import online.nostrium.utils.AsciiArt;
 
 /**
@@ -170,5 +170,30 @@ public class ScreenTelnet extends Screen {
         out.print(userPrompt);
         out.flush();
     }
+    
+    /**
+     * Deletes the current line on the telnet screen.
+     */
+    @Override
+    public void deleteCurrentLine() {
+        // ANSI escape code to clear the entire current line and move the cursor to the start of the line
+        out.write("\u001B[2K");  // Clear the current line
+        out.write("\u001B[G");   // Move the cursor to the beginning of the line
+        out.flush();
+    }
 
+    /**
+     * Deletes the previous line on the telnet screen.
+     */
+    @Override
+    public void deletePreviousLine() {
+        // Move the cursor up one line
+        out.write("\u001B[F");
+        // Clear the entire current line
+        out.write("\u001B[2K");
+        // Move the cursor to the beginning of the line (optional, if you need to print something immediately after)
+        out.write("\u001B[G");
+        out.flush();
+    }
+    
 }

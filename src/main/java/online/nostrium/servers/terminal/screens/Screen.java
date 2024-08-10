@@ -9,7 +9,7 @@ package online.nostrium.servers.terminal.screens;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.servers.terminal.TerminalType;
-import online.nostrium.users.User;
+import online.nostrium.servers.apps.user.User;
 
 /**
  * Author: Brito
@@ -35,6 +35,9 @@ public abstract class Screen {
      * Clears the terminal screen
      */
     public abstract void clearScreen();
+    
+    public abstract void deleteCurrentLine();
+    public abstract void deletePreviousLine();
     
     public abstract void writeUserPrompt(TerminalApp app, User user);
     

@@ -17,13 +17,11 @@ import online.nostrium.servers.apps.basic.TerminalBasic;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
-import static online.nostrium.servers.terminal.TerminalColor.GREEN_BRIGHT;
 import online.nostrium.servers.terminal.TerminalType;
-import online.nostrium.servers.terminal.TerminalUtils;
 import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.servers.terminal.screens.ScreenTelnet;
-import online.nostrium.users.User;
-import online.nostrium.users.UserUtils;
+import online.nostrium.servers.apps.user.User;
+import online.nostrium.servers.apps.user.UserUtils;
 
 /**
  *

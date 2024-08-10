@@ -28,7 +28,8 @@ public class Folder {
             nameFolderBase = "forum",
             nameFolderUsers = "users",
             nameFolderProfileImages = "profile_images",
-            nameRootChat = "root";
+            nameRootChat = "root",
+            nameAnonUsers = "Anon";
     
     /**
      * There  are three type of paths that change: runtime, testing and custom.

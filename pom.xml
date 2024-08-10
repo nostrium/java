@@ -6,6 +6,14 @@
     <artifactId>nostrium</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
+        
+    <properties>
+        <nostr-java.version>0.6.1-SNAPSHOT</nostr-java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+    
     <build>
         <plugins>
             <plugin>
@@ -64,6 +72,98 @@
             <artifactId>sshd-core</artifactId>
             <version>2.7.0</version>
         </dependency>
+        
+         <dependency>
+            <groupId>nostr-java</groupId>
+            <artifactId>nostr-java-base</artifactId>
+            <version>${nostr-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nostr-java</groupId>
+            <artifactId>nostr-java-crypto</artifactId>
+            <version>${nostr-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nostr-java</groupId>
+            <artifactId>nostr-java-event</artifactId>
+            <version>${nostr-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nostr-java</groupId>
+            <artifactId>nostr-java-examples</artifactId>
+            <version>${nostr-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nostr-java</groupId>
+            <artifactId>nostr-java-id</artifactId>
+            <version>${nostr-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nostr-java</groupId>
+            <artifactId>nostr-java-test</artifactId>
+            <version>${nostr-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nostr-java</groupId>
+            <artifactId>nostr-java-util</artifactId>
+            <version>${nostr-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nostr-java</groupId>
+            <artifactId>nostr-java-connection</artifactId>
+            <version>${nostr-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nostr-java</groupId>
+            <artifactId>nostr-java-command-interface</artifactId>
+            <version>${nostr-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nostr-java</groupId>
+            <artifactId>nostr-java-command-provider</artifactId>
+            <version>${nostr-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nostr-java</groupId>
+            <artifactId>nostr-java-client</artifactId>
+            <version>${nostr-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nostr-java</groupId>
+            <artifactId>nostr-java-api</artifactId>
+            <version>${nostr-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nostr-java</groupId>
+            <artifactId>nostr-java-encryption</artifactId>
+            <version>${nostr-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nostr-java</groupId>
+            <artifactId>nostr-java-encryption-nip04</artifactId>
+            <version>${nostr-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nostr-java</groupId>
+            <artifactId>nostr-java-encryption-nip44</artifactId>
+            <version>${nostr-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nostr-java</groupId>
+            <artifactId>nostr-java-context</artifactId>
+            <version>${nostr-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nostr-java</groupId>
+            <artifactId>nostr-java-context-interface</artifactId>
+            <version>${nostr-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nostr-java</groupId>
+            <artifactId>nostr-java-controller</artifactId>
+            <version>${nostr-java.version}</version>
+        </dependency>
+        
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk18on</artifactId>
@@ -119,10 +219,6 @@
             <classifier>lib</classifier>
         </dependency>
     </dependencies>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-    </properties>
+
     <description>The BBS for Nostr</description>
 </project>
