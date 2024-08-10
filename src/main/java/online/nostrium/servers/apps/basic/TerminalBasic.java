@@ -6,6 +6,7 @@
  */
 package online.nostrium.servers.apps.basic;
 
+import online.nostrium.notifications.NotificationType;
 import online.nostrium.servers.apps.chat.TerminalChat;
 import online.nostrium.servers.apps.user.TerminalUser;
 import online.nostrium.servers.terminal.CommandResponse;
@@ -15,6 +16,7 @@ import static online.nostrium.servers.terminal.TerminalColor.BLUE;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
 import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.servers.apps.user.User;
+import online.nostrium.servers.terminal.TerminalUtils;
 import online.nostrium.utils.AsciiArt;
 
 /**
@@ -61,6 +63,17 @@ public class TerminalBasic extends TerminalApp {
     @Override
     public String getName() {
         return "basic";
+    }
+
+    @Override
+    public void receiveNotification(User userSender, NotificationType notificationType, Object object) {
+        screen.writeln("Received a notification");
+    }
+    
+    @Override
+    public String getId() {
+        String path = TerminalUtils.getPath(this);
+        return path;
     }
 
 }

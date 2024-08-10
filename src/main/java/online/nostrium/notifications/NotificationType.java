@@ -20,6 +20,8 @@ public enum NotificationType {
     STOP,
     START,
     WARNING,
-    INFO
+    INFO,
+    MESSAGE,
+    CHALLENGE
 
 }

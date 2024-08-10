@@ -1,5 +1,6 @@
 online/nostrium/utils/TemplateSourceFile.class
 online/nostrium/servers/terminal/TerminalColor.class
+online/nostrium/servers/apps/chat/NotificationChat.class
 online/nostrium/servers/apps/basic/TerminalBasic.class
 online/nostrium/servers/apps/chat/ChatArchive.class
 online/nostrium/utils/FileTypeAdapter.class
@@ -11,11 +12,11 @@ online/nostrium/servers/ServerTelnet.class
 online/nostrium/forum/structures/ManageUsers.class
 online/nostrium/servers/apps/chat/ChatRoom.class
 online/nostrium/forum/structures/AffiliateLink.class
-online/nostrium/servers/terminal/ScreenANSI$1.class
 online/nostrium/servers/apps/user/CommandUserSave.class
 online/nostrium/servers/apps/basic/CommandLs.class
 online/nostrium/forum/structures/ForumGroup.class
 online/nostrium/utils/JsonTextFile.class
+online/nostrium/notifications/NotificationType.class
 online/nostrium/forum/structures/Level1.class
 online/nostrium/utils/TextFunctions.class
 online/nostrium/servers/apps/user/UserType.class
@@ -24,9 +25,9 @@ online/nostrium/main/coreOld.class
 online/nostrium/main/core.class
 online/nostrium/main/Folder.class
 online/nostrium/forum/convert/ConvertIPB.class
-online/nostrium/servers/terminal/ScreenANSI.class
 online/nostrium/servers/apps/chat/CommandChatClear.class
 online/nostrium/main/Config.class
+online/nostrium/notifications/Sessions.class
 online/nostrium/servers/terminal/screens/ScreenTelnet$1.class
 online/nostrium/requests/RequestIndex.class
 online/nostrium/servers/apps/basic/CommandLogin.class
@@ -34,11 +35,13 @@ online/nostrium/utils/NostrSign.class
 online/nostrium/servers/ServerTelnet$ClientHandler.class
 online/nostrium/forum/structures/Level.class
 online/nostrium/forum/structures/ForumTopic.class
+online/nostrium/notifications/ClientType.class
 online/nostrium/utils/NostrUtils.class
 online/nostrium/forum/structures/ForumNote.class
 online/nostrium/utils/NostrSign$ECPoint.class
 online/nostrium/servers/apps/chat/CommandMkdir.class
 online/nostrium/forum/structures/ForumUser.class
+online/nostrium/servers/terminal/screens/ScreenTesting.class
 online/nostrium/servers/apps/basic/CommandExit.class
 online/nostrium/utils/Log.class
 online/nostrium/utils/GsonUtils.class
@@ -54,6 +57,7 @@ online/nostrium/forum/users/ForumUser.class
 online/nostrium/servers/apps/basic/CommandTime.class
 online/nostrium/forum/structures/URLtype.class
 online/nostrium/utils/ImageFunctions.class
+online/nostrium/notifications/Session.class
 online/nostrium/servers/terminal/TerminalCommand.class
 online/nostrium/forum/structures/Level3.class
 online/nostrium/servers/terminal/screens/ScreenTelnet.class

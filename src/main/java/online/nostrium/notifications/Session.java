@@ -20,9 +20,10 @@ public class Session {
     
     final Date sessionStarted;        // when it was started
     Date sessionLastActive;     // when it was last doing something
-    final TerminalApp app;            // the root app
+    TerminalApp app;            // the current app
     User user;                  // who is using this
-    final ClientType clientType;      // what kind of terminal is being used   
+    final ClientType clientType;      // what kind of terminal is being used
+    private boolean timeToStop = false;
 
     public Session(ClientType clientType, TerminalApp app, User user) {
         this.app = app;
@@ -62,13 +63,22 @@ public class Session {
     public ClientType getClientType() {
         return clientType;
     }
-    
-    
-    
-    public void sendNotification(String appName, String id, 
-            NotificationType sessionType, Object object){
-        // e.g.: chat | root | update | object
-        
+
+    public boolean isTimeToStop() {
+        return timeToStop;
+    }
+
+    public void sendStop() {
+        timeToStop = true;
+    }
+
+    boolean hasId(String id) {
+        String appId = app.getId();
+        return appId.equalsIgnoreCase(id);
+    }
+
+    public void setApp(TerminalApp app) {
+        this.app = app;
     }
     
 

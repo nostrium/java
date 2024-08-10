@@ -1,5 +1,7 @@
-advanced/ConvertForumTest.class
+basic/SessionTest$1.class
 basic/ChatTest.class
+basic/UserTest.class
+advanced/ConvertForumTest.class
 basic/FolderTest.class
 basic/TemplateUnitTest.class
-basic/UserTest.class
+basic/SessionTest.class

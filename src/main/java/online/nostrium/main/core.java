@@ -8,6 +8,7 @@ package online.nostrium.main;
 
 import java.io.File;
 import online.nostrium.notifications.NotificationType;
+import online.nostrium.notifications.Sessions;
 import online.nostrium.servers.ServerTelnet;
 import online.nostrium.utils.AsciiArt;
 import online.nostrium.utils.Log;
@@ -26,7 +27,7 @@ import online.nostrium.utils.Log;
 public class core {
 
     public static Config config;
-    public static NotificationType notifications;
+    public static Sessions sessions = new Sessions();
     
     
     public static void main(String[] args) {

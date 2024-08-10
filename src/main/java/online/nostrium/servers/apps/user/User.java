@@ -251,4 +251,8 @@ public class User {
         this.nsecEncrypted = nsecEncrypted;
     }
 
+    public boolean sameAs(User userTarget) {
+        return this.npub.equalsIgnoreCase(userTarget.npub);
+    }
+
 }

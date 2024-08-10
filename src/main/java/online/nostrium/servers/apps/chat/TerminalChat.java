@@ -9,14 +9,15 @@ package online.nostrium.servers.apps.chat;
 import java.util.ArrayList;
 import online.nostrium.main.Folder;
 import online.nostrium.main.core;
+import online.nostrium.notifications.NotificationType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalColor;
-import static online.nostrium.servers.terminal.TerminalColor.BLUE;
 import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.servers.apps.user.User;
 import online.nostrium.servers.apps.user.UserUtils;
+import online.nostrium.servers.terminal.TerminalUtils;
 import online.nostrium.utils.TextFunctions;
 
 /**
@@ -53,8 +54,7 @@ public class TerminalChat extends TerminalApp {
         String intro = screen.getWindowFrame(core.config.colorAppsDefault, title);
         
         // read the number of messages
-        int countMessages = 0;
-        //if(countMessages == 0){
+        int countMessages;
         ArrayList<ChatMessage> messages = roomNow.getMessagesForDay(5);
         countMessages = messages.size();
         if (countMessages > 0) {
@@ -80,9 +80,6 @@ public class TerminalChat extends TerminalApp {
             return reply;
         }
         
-        // delete the current line
-        //screen.deleteCurrentLine();
-        screen.deletePreviousLine();
         
         String line = createMessageLine(
                 System.currentTimeMillis() / 1000L, 
@@ -90,8 +87,20 @@ public class TerminalChat extends TerminalApp {
                 reply.getText()
         );
         
+        // delete the current line
+        //screen.deleteCurrentLine();
+        screen.deletePreviousLine();
+        
         // write the new line
         screen.writeln(line);
+        
+        // send a notification
+        core.sessions.sendNotification(
+                this.getId(), 
+                user, 
+                NotificationType.UPDATE, 
+                line
+        );
         
         return new CommandResponse(TerminalCode.OK, "");
     }
@@ -116,6 +125,36 @@ public class TerminalChat extends TerminalApp {
                     + content
                     ;
         return line;
+    }
+
+    @Override
+    public void receiveNotification(User userSender, NotificationType notificationType, Object object) {
+        if(notificationType != NotificationType.UPDATE){
+            return;
+        }
+        if(userSender.sameAs(this.user)){
+            return;
+        }
+        String line = (String) object;
+        screen.deleteCurrentLine();
+        
+        // break the text in two parts
+        int i = line.indexOf("]") + 1;
+        String line1 = line.substring(0, i);
+        String line2 = line.substring(i);
+        
+        // write the text in different speed
+        screen.write(line1);
+        screen.writeLikeHuman(line2, 25);
+        screen.writeUserPrompt(this, user);
+    }
+    
+    @Override
+    public String getId() {
+        String path = TerminalUtils.getPath(this)
+                + "#"
+                + roomNow.name;
+        return path;
     }
 
 }

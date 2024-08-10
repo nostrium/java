@@ -9,6 +9,7 @@ package online.nostrium.servers.terminal.screens;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import online.nostrium.servers.terminal.TerminalApp;
@@ -94,6 +95,35 @@ public class ScreenTelnet extends Screen {
     @Override
     public void writeln(String text) {
         out.println(text);
+    }
+    
+    @Override
+    public void writeLikeHuman(String text, int speed) {
+        Random random = new Random();
+
+        for (char c : text.toCharArray()) {
+            out.write(c);
+            out.flush();
+
+            try {
+                // Base delay for each character
+                int delay = random.nextInt(100) + speed; // Speed controls the baseline typing speed
+                
+                // Extra pause for spaces
+                if (c == ' ') {
+                    delay += 100; // Increase delay for spaces
+                }
+
+                // Sleep for the calculated delay
+                Thread.sleep(delay);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                return; // Exit the method if the thread is interrupted
+            }
+        }
+        // add an end line
+        out.write("\n");
+        out.flush();
     }
 
     @Override

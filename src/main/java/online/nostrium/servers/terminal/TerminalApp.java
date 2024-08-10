@@ -9,6 +9,7 @@ import online.nostrium.servers.apps.basic.CommandHelp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import online.nostrium.notifications.NotificationType;
 import online.nostrium.servers.apps.basic.CommandCd;
 import online.nostrium.servers.apps.basic.CommandExit;
 import online.nostrium.servers.apps.basic.CommandLs;
@@ -54,6 +55,10 @@ public abstract class TerminalApp {
     
     // shows an intro for this app
     public abstract String getIntro();
+    
+    // shows an intro for this app
+    public abstract String getId();
+    
     
     /**
      * Adds a new command, avoid duplicates
@@ -147,4 +152,10 @@ public abstract class TerminalApp {
     protected CommandResponse reply(TerminalApp app){
         return new CommandResponse(app);
     }
+
+    // update a screen when shared by multiple users
+    public abstract void receiveNotification(
+            User userSender, 
+            NotificationType notificationType,
+            Object object);
 }

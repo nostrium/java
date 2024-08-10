@@ -13,6 +13,8 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import online.nostrium.main.core;
+import online.nostrium.notifications.ClientType;
+import online.nostrium.notifications.Session;
 import online.nostrium.servers.apps.basic.TerminalBasic;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
@@ -81,6 +83,9 @@ public class ServerTelnet {
                 // start with the basic app
                 User user = UserUtils.createUserAnonymous();
                 TerminalApp app = new TerminalBasic(screen, user);
+                
+                Session session = new Session(ClientType.TELNET, app, user);
+                core.sessions.addSession(session);
 
                 // show the intro
                 screen.writeIntro();
@@ -107,6 +112,13 @@ public class ServerTelnet {
                         out.println(response.getText());
                         break;
                     }
+                    
+                    // forced session break
+                    if (session.isTimeToStop()) {
+                        break;
+                    }
+                    
+                    
 
                     // is it time to go down one app?
                     if (response.getCode() == TerminalCode.EXIT_APP && app.appParent != null) {
@@ -116,6 +128,7 @@ public class ServerTelnet {
                     // is it time to change apps?
                     if (response.getCode() == TerminalCode.CHANGE_APP) {
                         app = response.getApp();
+                        session.setApp(app);
                         if (app.appParent != null) {
                             out.println(app.getIntro());
                         }

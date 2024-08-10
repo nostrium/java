@@ -25,6 +25,7 @@ public abstract class Screen {
     
     public abstract void write(String text);
     public abstract void writeln(String text);
+    public abstract void writeLikeHuman(String text, int speed);
     
     public abstract String readln();
 
