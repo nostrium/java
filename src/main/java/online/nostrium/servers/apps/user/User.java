@@ -54,7 +54,7 @@ public class User {
      * @return 
      */
     public File getFile(){
-        File folder = FileFunctions.getThirdLevelFolder(
+        File folder = FileFunctions.getThirdLevelFolderForUser(
                 Folder.getFolderUsers(), npub, false);
         File file = new File(folder, this.npub + ".json");
         return file;
@@ -73,7 +73,7 @@ public class User {
         File file = getFile();
         File folder = file.getParentFile();
         
-        if(folder != null && folder.exists() == false){
+          if(folder != null && folder.exists() == false){
             folder.mkdirs();
         }
         

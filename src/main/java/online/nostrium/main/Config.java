@@ -8,11 +8,13 @@ package online.nostrium.main;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.annotations.Expose;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.utils.Log;
 import org.apache.commons.io.FileUtils;
 
@@ -36,6 +38,10 @@ public class Config {
             portSSH_Debug = 22000,
             portWeb = 80,
             portWeb_Debug = 8080;
+    
+    @Expose
+    public TerminalColor colorAppsDefault = 
+            TerminalColor.GREEN_BRIGHT;
 
 //    String ForumTitle = "";
 //    String ForumDescription = "";
@@ -93,7 +99,7 @@ public class Config {
             Gson gson = new Gson();
             Config conf = gson.fromJson(text, Config.class);
             return conf;
-        } catch (Exception e) {
+        } catch (JsonSyntaxException | IOException e) {
             e.printStackTrace();
             return null;
         }
@@ -117,6 +123,7 @@ public class Config {
     /**
      * Load the configuration from disk, when it does not exist then it will
      * create one.
+     * @return 
      */
     public static Config loadConfig() {
 

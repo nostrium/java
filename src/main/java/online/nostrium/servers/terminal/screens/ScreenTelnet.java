@@ -11,10 +11,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static online.nostrium.servers.terminal.ScreenANSI.ANSI_CLEAR_SCREEN;
-import static online.nostrium.servers.terminal.ScreenANSI.ANSI_HOME;
-import static online.nostrium.servers.terminal.ScreenANSI.ANSI_RESET;
-import static online.nostrium.servers.terminal.ScreenANSI.ANSI_WHITE;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalColor;
 import static online.nostrium.servers.terminal.TerminalColor.BLACK;
@@ -53,6 +49,32 @@ public class ScreenTelnet extends Screen {
 
     final BufferedReader in;
     final PrintWriter out;
+    
+           // ANSI escape code to clear the screen
+    public static final String 
+            ANSI_CLEAR_SCREEN = "\u001B[2J",    
+            ANSI_HOME = "\u001B[H";
+    
+    // ANSI escape codes for clearing the line and moving the cursor
+    public static final String
+            ANSI_CLEAR_LINE = "\u001B[2K",
+            ANSI_CURSOR_TO_LINE_START = "\u001B[G";
+   
+    
+    // ANSI escape codes for colors
+    public static final String
+            ANSI_RESET = "\u001B[0m",
+            ANSI_RED = "\u001B[31m",
+            ANSI_GREEN = "\u001B[32m",
+            ANSI_GREEN_BRIGHT = "\u001B[92m",
+            ANSI_YELLOW = "\u001B[33m",
+            ANSI_BLUE = "\u001B[34m",
+            ANSI_PURPLE = "\u001B[35m",
+            ANSI_CYAN = "\u001B[36m",
+            ANSI_WHITE = "\u001B[37m",
+            ANSI_ORANGE = "\u001B[38;5;208m",
+            ANSI_BROWN = "\u001B[38;5;94m",
+            ANSI_DESERT_SAND = "\u001B[38;5;229m";
 
     public ScreenTelnet(BufferedReader in, PrintWriter out) {
         this.in = in;
@@ -133,16 +155,60 @@ public class ScreenTelnet extends Screen {
                 color = TerminalColor.BROWN_ON_BLACK.getAnsiCode();
             case DESERT_SAND_ON_ORANGE ->
                 color = TerminalColor.DESERT_SAND_ON_ORANGE.getAnsiCode();
-            case WHITE_ON_BLUE ->
-                color = TerminalColor.WHITE_ON_BLUE.getAnsiCode();
             case BLACK_ON_WHITE ->
                 color = TerminalColor.BLACK_ON_WHITE.getAnsiCode();
             case GREEN_BRIGHT_ON_PURPLE ->
                 color = TerminalColor.GREEN_BRIGHT_ON_PURPLE.getAnsiCode();
+
+            // notifications
+            case WHITE_ON_BLUE ->
+                color = TerminalColor.WHITE_ON_BLUE.getAnsiCode();
+            case WHITE_ON_YELLOW ->
+                color = TerminalColor.WHITE_ON_YELLOW.getAnsiCode();
+            case WHITE_ON_RED ->
+                color = TerminalColor.WHITE_ON_RED.getAnsiCode();
+            case WHITE_ON_GREY ->
+                color = TerminalColor.WHITE_ON_GREY.getAnsiCode();
         }
 
         // output according to color
         return color + text + ANSI_RESET;
+    }
+
+    /**
+     * Returns an ASCII art window frame around the given title.
+     *
+     * @param title The title to be framed.
+     * @param color
+     * @return The framed title as a string.
+     */
+    @Override
+    public String getWindowFrame(TerminalColor color, String title) {
+        int paddingHorizontal = 4;
+        int titleLength = title.length();
+        int totalWidth = titleLength + paddingHorizontal * 2; // No extra spaces for the borders
+
+        String output = "";
+        String topBottomBorder = "+" + new String(new char[totalWidth]).replace('\0', '-') + "+";
+        String line = paint(color, topBottomBorder) + "\n";
+        output += line;
+
+        String text = "|"
+                + new String(new char[paddingHorizontal / 2]).replace('\0', ' ')
+                + "  "
+                + title;
+
+        int dif = topBottomBorder.length() - (text.length() + 1);
+
+        String padding = new String(new char[dif]).replace('\0', ' ');
+
+        line = paint(color, text + padding + "|")
+                + "\n";
+        output += line;
+        line = paint(color, topBottomBorder);
+        output += line;
+
+        return output;
     }
 
     @Override
@@ -161,16 +227,16 @@ public class ScreenTelnet extends Screen {
 
     @Override
     public void writeUserPrompt(TerminalApp app, User user) {
-         String path = TerminalUtils.getPath(app);
+        String path = TerminalUtils.getPath(app);
 
-        String userPrompt = paint(GREEN_BRIGHT,user.getDisplayName())
+        String userPrompt = paint(GREEN_BRIGHT, user.getDisplayName())
                 + ":"
                 + path
                 + "> ";
         out.print(userPrompt);
         out.flush();
     }
-    
+
     /**
      * Deletes the current line on the telnet screen.
      */
@@ -195,5 +261,5 @@ public class ScreenTelnet extends Screen {
         out.write("\u001B[G");
         out.flush();
     }
-    
+
 }

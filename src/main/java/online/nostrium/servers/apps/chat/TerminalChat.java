@@ -8,6 +8,7 @@ package online.nostrium.servers.apps.chat;
 
 import java.util.ArrayList;
 import online.nostrium.main.Folder;
+import online.nostrium.main.core;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
@@ -49,10 +50,8 @@ public class TerminalChat extends TerminalApp {
     public String getIntro() {
 
         String title = "Chat";
-        String text = TextFunctions.getWindowFrame(title);
-
-        String intro = paint(BLUE, text);
-
+        String intro = screen.getWindowFrame(core.config.colorAppsDefault, title);
+        
         // read the number of messages
         int countMessages = 0;
         //if(countMessages == 0){

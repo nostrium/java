@@ -30,6 +30,7 @@ public abstract class Screen {
 
     public abstract String paint(TerminalColor colorType, String text);
     
+    public abstract String getWindowFrame(TerminalColor color, String title);
 
     /**
      * Clears the terminal screen

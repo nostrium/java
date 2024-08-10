@@ -12,15 +12,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Date: 2023-02-10
- * Place: Germany
+ * Date: 2023-02-10 Place: Germany
  *
  * @author brito
  */
 public class FileFunctions {
 
     /**
-     * Searches all subfolders from a starting folder for files ending with a specific string.
+     * Searches all subfolders from a starting folder for files ending with a
+     * specific string.
      *
      * @param startingFolder the folder to start the search from
      * @param endingString the string that the file names should end with
@@ -28,7 +28,7 @@ public class FileFunctions {
      */
     public static ArrayList<File> searchFiles(File startingFolder, String endingString) {
         ArrayList<File> resultList = new ArrayList<>();
-        
+
         if (startingFolder.isDirectory()) {
             File[] files = startingFolder.listFiles();
             if (files != null) {
@@ -41,10 +41,10 @@ public class FileFunctions {
                 }
             }
         }
-        
+
         return resultList;
     }
-    
+
     /**
      * Looks inside a folder for a file that begins and ends with specific
      * texts.
@@ -68,15 +68,17 @@ public class FileFunctions {
         }
         return null;
     }
-    
+
     /**
      * Provides the folder based on texts such as nsec, creates the folders when
      * they don't exist.
      *
      * @param startingFolder The starting folder path.
      * @param text The input text to determine folder structure.
-     * @param createFolders Flag to indicate whether to create the folders if they don't exist.
-     * @return The folder located at the specified level, or null if folder creation fails or text is invalid.
+     * @param createFolders Flag to indicate whether to create the folders if
+     * they don't exist.
+     * @return The folder located at the specified level, or null if folder
+     * creation fails or text is invalid.
      */
     public static File getFirstLevelFolder(File startingFolder, String text, boolean createFolders) {
         if (text == null || text.length() < 3) {
@@ -104,10 +106,10 @@ public class FileFunctions {
             return null;
         }
     }
-    
+
     /**
-     * Deletes the folder where the JSON file is located and deletes empty parent folders
-     * up to the base path.
+     * Deletes the folder where the JSON file is located and deletes empty
+     * parent folders up to the base path.
      *
      * @param jsonFile The JSON file whose containing folder is to be deleted.
      * @param basePath The base path which should not be deleted.
@@ -136,8 +138,8 @@ public class FileFunctions {
     }
 
     /**
-     * Deletes the folder where the JSON file is located and deletes empty parent folders
-     * up to the base path.
+     * Deletes the folder where the JSON file is located and deletes empty
+     * parent folders up to the base path.
      *
      * @param jsonFile The JSON file whose containing folder is to be deleted.
      * @param basePath The base path which should not be deleted.
@@ -146,7 +148,7 @@ public class FileFunctions {
         if (jsonFile == null || basePath == null) {
             return;
         }
-        
+
         // delete the file itself
         jsonFile.delete();
 
@@ -160,7 +162,7 @@ public class FileFunctions {
             }
         }
     }
-    
+
     /**
      * Recursively deletes a directory and all its contents.
      *
@@ -183,23 +185,24 @@ public class FileFunctions {
      * they don't exist.
      *
      * @param startingFolder
-     * @param text
+     * @param npub
      * @return
      */
-    public static File getThirdLevelFolder(
-            File startingFolder, String text, boolean createFolders) {
-        if (text == null || text.length() < 9) {
+    public static File getThirdLevelFolderForUser(
+            File startingFolder, String npub, boolean createFolders) {
+        if (npub == null || npub.length() < 9) {
             return null;
         }
 
         try {
-            String firstThree = text.substring(0, 3);
-            String secondThree = text.substring(3, 6);
-            String thirdThree = text.substring(6, 9);
+            int i = 5;
+            String firstLevel = npub.substring(i, i + 1); // Take the first character for the first level
+            String secondLevel = npub.substring(i + 1, i + 2); // Take the second character for the second level
+            String thirdLevel = npub.substring(i + 2, i + 3); // Take the third character for the third level
 
-            File firstLevelFolder = new File(startingFolder, firstThree);
-            File secondLevelFolder = new File(firstLevelFolder, secondThree);
-            File thirdLevelFolder = new File(secondLevelFolder, thirdThree);
+            File firstLevelFolder = new File(startingFolder, firstLevel);
+            File secondLevelFolder = new File(firstLevelFolder, secondLevel);
+            File thirdLevelFolder = new File(secondLevelFolder, thirdLevel);
 
             if (createFolders && !thirdLevelFolder.exists()) {
                 boolean created = thirdLevelFolder.mkdirs();
@@ -213,13 +216,14 @@ public class FileFunctions {
             return null;
         }
     }
-    
+
     /**
      * Provides the folder based on texts such as npub, creates the folders when
      * they don't exist.
      *
      * @param startingFolder
      * @param npub
+     * @param createFolders
      * @return
      */
     public static File getThirdLevelFolderWithNpubOnEnd(
@@ -229,14 +233,15 @@ public class FileFunctions {
         }
 
         try {
-            String firstThree = npub.substring(0, 3);
-            String secondThree = npub.substring(3, 6);
-            String thirdThree = npub.substring(6, 9);
+            int i = 5;
+            String firstLevel = npub.substring(i, i + 1); // Take the first character for the first level
+            String secondLevel = npub.substring(i + 1, i + 2); // Take the second character for the second level
+            String thirdLevel = npub.substring(i + 2, i + 3); // Take the third character for the third level
 
-            File firstLevelFolder = new File(startingFolder, firstThree);
-            File secondLevelFolder = new File(firstLevelFolder, secondThree);
-            File thirdLevelFolder = new File(secondLevelFolder, thirdThree);
-            
+            File firstLevelFolder = new File(startingFolder, firstLevel);
+            File secondLevelFolder = new File(firstLevelFolder, secondLevel);
+            File thirdLevelFolder = new File(secondLevelFolder, thirdLevel);
+
             // final folder
             File folder = new File(thirdLevelFolder, npub);
 
@@ -252,9 +257,7 @@ public class FileFunctions {
             return null;
         }
     }
-    
-    
-     
+
     public static boolean saveStringToFile(File file, String content) {
         try (FileWriter writer = new FileWriter(file)) {
             writer.write(content);

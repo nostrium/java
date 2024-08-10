@@ -6,9 +6,11 @@
  */
 package online.nostrium.servers.apps.user;
 
+import online.nostrium.main.core;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
+import online.nostrium.servers.terminal.TerminalColor;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
 import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.utils.TextFunctions;
@@ -40,14 +42,8 @@ public class TerminalUser extends TerminalApp {
     public String getIntro() {
         
         String title = "Manage your user profile";
-        String text = TextFunctions.getWindowFrame(title);
-        
-        String intro = 
-                paint(BLUE,
-                    text
-                );
-        
-        return intro;
+        String text = screen.getWindowFrame(core.config.colorAppsDefault, title);
+        return text;
     }
 
     @Override

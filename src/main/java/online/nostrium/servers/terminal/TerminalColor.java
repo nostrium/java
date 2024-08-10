@@ -54,13 +54,20 @@ public enum TerminalColor {
     BLUE_ON_RED("\u001B[34m\u001B[41m"),
     CYAN_ON_MAGENTA("\u001B[36m\u001B[45m"),
     YELLOW_ON_GREEN("\u001B[33m\u001B[42m"),
+    BLACK_ON_GREEN("\u001B[30m\u001B[42m"),
     BROWN_ON_BLACK("\u001B[38;5;94m\u001B[40m"),
     DESERT_SAND_ON_ORANGE("\u001B[38;5;229m\u001B[48;5;208m"),
-    WHITE_ON_BLUE("\u001B[37m\u001B[44m"),
     BLACK_ON_WHITE("\u001B[30m\u001B[47m"),
     GREEN_BRIGHT_ON_PURPLE("\u001B[92m\u001B[45m"),
-    DARK_GREY_ON_BLACK("\u001B[38;5;240m\u001B[40m");
+    DARK_GREY_ON_BLACK("\u001B[38;5;240m\u001B[40m"),
     
+    // notifications 
+    WHITE_ON_BLUE("\u001B[37m\u001B[44m"),
+    WHITE_ON_YELLOW("\u001B[37m\u001B[43m"),
+    BLACK_ON_YELLOW("\u001B[30m\u001B[43m"),
+    WHITE_ON_RED("\u001B[37m\u001B[41m"),
+    WHITE_ON_GREY("\u001B[37m\u001B[100m");
+
     private final String ansiCode;
 
     TerminalColor(String ansiCode) {

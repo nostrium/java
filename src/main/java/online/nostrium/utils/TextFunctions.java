@@ -74,34 +74,6 @@ public class TextFunctions {
         return now.format(formatter);
     }
 
-    /**
-     * Returns an ASCII art window frame around the given title.
-     *
-     * @param title The title to be framed.
-     * @return The framed title as a string.
-     */
-    public static String getWindowFrame(String title) {
-        int paddingHorizontal = 4;
-        int titleLength = title.length();
-        int totalWidth = titleLength + paddingHorizontal * 2; // No extra spaces for the borders
-
-        String topBottomBorder = "+" + new String(new char[totalWidth]).replace('\0', '-') + "+";
-
-        StringBuilder sb = new StringBuilder();
-        sb.append(topBottomBorder).append("\n");
-
-        sb.append("|")
-                .append(new String(new char[paddingHorizontal / 2]).replace('\0', ' '))
-                .append(title)
-                .append(new String(new char[paddingHorizontal / 2]).replace('\0', ' '))
-                //.append("|")
-                .append("\n");
-
-        sb.append(topBottomBorder);
-
-        return sb.toString();
-    }
-
     public static String sha256(String text) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");

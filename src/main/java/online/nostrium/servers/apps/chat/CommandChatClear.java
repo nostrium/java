@@ -7,7 +7,6 @@
 package online.nostrium.servers.apps.chat;
 
 import online.nostrium.servers.terminal.CommandResponse;
-import online.nostrium.servers.terminal.ScreenANSI;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;

@@ -69,7 +69,7 @@ public class UserUtils {
 
     public static User getUser(String npub) {
         String npubId = npub.substring(5);
-        File folder = FileFunctions.getThirdLevelFolder(
+        File folder = FileFunctions.getThirdLevelFolderForUser(
                 Folder.getFolderUsers(), npubId, false);
         File file = new File(folder, npub + ".json");
         
