@@ -1,9 +1,3 @@
-/*
- * Internal utils for users
- *
- * Copyright (c) Nostrium contributors
- * License: Apache-2.0
- */
 package online.nostrium.servers.apps.user;
 
 import java.io.File;
@@ -11,7 +5,7 @@ import java.util.ArrayList;
 import online.nostrium.main.Folder;
 import online.nostrium.utils.FileFunctions;
 import online.nostrium.utils.Log;
-import static online.nostrium.utils.NostrUtils.generateNostrKeys;
+import static online.nostrium.utils.nostr.NostrUtils.generateNostrKeys;
 import online.nostrium.utils.TextFunctions;
 
 /**
@@ -48,7 +42,6 @@ public class UserUtils {
         return npub.substring(5, 8).toUpperCase();
     }
     
-    
 
     /**
      * Create an anonymous user
@@ -73,7 +66,7 @@ public class UserUtils {
         String npubId = npub.substring(5);
         File folder = FileFunctions.getThirdLevelFolderForUser(
                 Folder.getFolderUsers(), npubId, false);
-        File file = new File(folder, npub + Folder.nameEndingJsonUser);
+        File file = new File(folder, npub + "-user.json");
         
         // user not found
         if(file.exists() == false){
@@ -100,7 +93,7 @@ public class UserUtils {
         File folderBase = Folder.getFolderUsers();
         
         // Adjust search pattern to match the new naming convention
-        ArrayList<File> files = FileFunctions.searchFiles(folderBase, Folder.nameEndingJsonUser);
+        ArrayList<File> files = FileFunctions.searchFiles(folderBase, "-user.json");
 
         for (File file : files) {
             // Attempt to import the user from the file

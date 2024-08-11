@@ -55,7 +55,7 @@ public class CommandChatLs extends TerminalCommand {
             
             // create the line of previous messages
             String line = ((TerminalChat) app).createMessageLine(
-                    message.createdAt, 
+                    message.created_at, 
                     Folder.nameAnonUsers
                             + "#" + userId, 
                     content

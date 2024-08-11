@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import online.nostrium.servers.apps.user.User;
-import online.nostrium.utils.NostrSign;
+import online.nostrium.utils.nostr.NostrSign;
+import online.nostrium.utils.nostr.NostrUtils;
 
 public class ChatMessage {
 
@@ -15,10 +16,10 @@ public class ChatMessage {
     String id;
 
     @Expose
-    String pubkey;
+    String pubkey;  // This will be the raw hex format
 
     @Expose
-    long createdAt;
+    long created_at;  // Nostr compatible field name
 
     @Expose
     final int kind = 1;  // Always kind = 1 for chat messages
@@ -33,8 +34,8 @@ public class ChatMessage {
     String sig;  // Signature field
 
     public ChatMessage(User user, String content, ArrayList<String[]> tags) {
-        this.pubkey = user.getNpub();
-        this.createdAt = System.currentTimeMillis() / 1000L; // current timestamp in seconds
+        this.pubkey = NostrUtils.bech32ToHex(user.getNpub());  // Convert npub to hex format
+        this.created_at = System.currentTimeMillis() / 1000L; // current timestamp in seconds
         this.tags = tags;
         this.content = content;
         this.id = generateId();
@@ -42,8 +43,8 @@ public class ChatMessage {
     }
 
     public ChatMessage(User user, String content) {
-        this.pubkey = user.getNpub();
-        this.createdAt = System.currentTimeMillis() / 1000L; // current timestamp in seconds
+        this.pubkey = NostrUtils.bech32ToHex(user.getNpub());  // Convert npub to hex format
+        this.created_at = System.currentTimeMillis() / 1000L; // current timestamp in seconds
         this.tags = new ArrayList<>(); // Initialize tags to an empty list
         this.content = content;
         this.id = generateId();
@@ -58,22 +59,13 @@ public class ChatMessage {
     private String generateId() {
         try {
             // Serialize the event as a JSON array according to Nostr's specification
-            String serializedEvent = "[" + 0 + ",\"" + pubkey + "\"," + createdAt + "," + kind + "," + serializeTags() + ",\"" + content + "\"]";
+            String serializedEvent = "[" + 0 + ",\"" + pubkey + "\"," + created_at + "," + kind + "," + serializeTags() + ",\"" + content + "\"]";
 
             // Compute SHA-256 hash
             byte[] hash = NostrSign.sha256(serializedEvent.getBytes("UTF-8"));
 
             // Convert to hexadecimal format
-            StringBuilder hexString = new StringBuilder();
-            for (byte b : hash) {
-                String hex = Integer.toHexString(0xff & b);
-                if (hex.length() == 1) {
-                    hexString.append('0');
-                }
-                hexString.append(hex);
-            }
-
-            return hexString.toString();
+            return NostrUtils.bytesToHex(hash);
         } catch (Exception e) {
             Logger.getLogger(ChatMessage.class.getName()).log(Level.SEVERE, null, e);
             return null;
@@ -84,7 +76,7 @@ public class ChatMessage {
      * Generates a signature for the message using the author's private key.
      *
      * @param user The User object containing the private key
-     * @return The generated signature as a Base64-encoded string
+     * @return The generated signature as a hexadecimal string
      */
     private String generateSignature(User user) {
         try {

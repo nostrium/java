@@ -89,7 +89,6 @@ public class TerminalChat extends TerminalApp {
         );
         
         // delete the current line
-        //screen.deleteCurrentLine();
         screen.deletePreviousLine();
         
         // write the new line

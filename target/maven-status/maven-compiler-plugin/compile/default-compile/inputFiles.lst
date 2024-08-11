@@ -27,6 +27,7 @@
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/utils/Log.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/forum/structures/URLtype.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/forum/structures/Level.java
+/home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/apps/basic/CommandVanity.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/apps/chat/CommandMkdir.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/apps/chat/ChatUtils.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/terminal/TerminalCommand.java
@@ -57,11 +58,13 @@
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/notifications/Session.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/terminal/CommandResponse.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/apps/basic/TerminalBasic.java
+/home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/utils/NostrSign_deprecated.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/utils/NostrUtils.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/forum/structures/ManageUsers.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/utils/JsonTextFile.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/forum/convert/ConvertIPB.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/forum/structures/Level2.java
+/home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/apps/basic/CommandStatus.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/servers/terminal/screens/ScreenTelnet.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/utils/EncryptionUtils.java
 /home/brito/code/x-file.xyz/nostrium/src/main/java/online/nostrium/notifications/NotificationType.java

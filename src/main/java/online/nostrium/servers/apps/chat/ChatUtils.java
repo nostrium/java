@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import online.nostrium.main.Folder;
 import online.nostrium.utils.FileFunctions;
 import online.nostrium.utils.Log;
-import static online.nostrium.utils.NostrUtils.generateNostrKeys;
+import static online.nostrium.utils.nostr.NostrUtils.generateNostrKeys;
 import online.nostrium.utils.TextFunctions;
 
 /**

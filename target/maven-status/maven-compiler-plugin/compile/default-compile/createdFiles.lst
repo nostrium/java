@@ -7,6 +7,7 @@ online/nostrium/utils/FileTypeAdapter.class
 online/nostrium/servers/apps/user/User.class
 online/nostrium/servers/terminal/TerminalType.class
 online/nostrium/servers/apps/user/UserUtils.class
+online/nostrium/utils/NostrSign_deprecated$ECPoint.class
 online/nostrium/servers/apps/basic/CommandHello.class
 online/nostrium/servers/ServerTelnet.class
 online/nostrium/forum/structures/ManageUsers.class
@@ -25,6 +26,7 @@ online/nostrium/main/coreOld.class
 online/nostrium/main/core.class
 online/nostrium/main/Folder.class
 online/nostrium/forum/convert/ConvertIPB.class
+online/nostrium/utils/NostrUtils$ECPoint.class
 online/nostrium/servers/apps/chat/CommandChatClear.class
 online/nostrium/main/Config.class
 online/nostrium/notifications/Sessions.class
@@ -35,6 +37,7 @@ online/nostrium/utils/NostrSign.class
 online/nostrium/servers/ServerTelnet$ClientHandler.class
 online/nostrium/forum/structures/Level.class
 online/nostrium/forum/structures/ForumTopic.class
+online/nostrium/utils/NostrSign_deprecated.class
 online/nostrium/notifications/ClientType.class
 online/nostrium/utils/NostrUtils.class
 online/nostrium/forum/structures/ForumNote.class
@@ -52,6 +55,7 @@ online/nostrium/forum/structures/Level2.class
 online/nostrium/servers/apps/chat/ChatType.class
 online/nostrium/forum/structures/Forum.class
 online/nostrium/servers/terminal/TerminalUtils.class
+online/nostrium/servers/apps/basic/CommandVanity.class
 online/nostrium/servers/apps/chat/ChatUtils.class
 online/nostrium/forum/users/ForumUser.class
 online/nostrium/servers/apps/basic/CommandTime.class
@@ -71,4 +75,5 @@ online/nostrium/utils/AsciiArt.class
 online/nostrium/utils/FileFunctions.class
 online/nostrium/servers/terminal/TerminalApp.class
 online/nostrium/forum/structures/ManageTopics.class
+online/nostrium/servers/apps/basic/CommandStatus.class
 online/nostrium/utils/EncryptionUtils.class
