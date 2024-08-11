@@ -9,7 +9,7 @@ package online.nostrium.main;
 import java.io.File;
 import java.util.Date;
 import online.nostrium.notifications.Sessions;
-import online.nostrium.servers.ServerTelnet;
+import online.nostrium.servers.terminal.telnet.ServerTelnet;
 import online.nostrium.utils.AsciiArt;
 import online.nostrium.utils.Log;
 
