@@ -49,6 +49,7 @@ To be implemented
 [] spam or manual approval to post on relay
 [x] access through telnet
 [] web crawl and convert older forums
+[] share nostr posts with other relays
 [] admin tools to map older users to new nostr accounts
 
 
@@ -81,14 +82,28 @@ Development
 
 + Download the source code to your computer
 + create an SSH key to log into a server as root
++ make sure you have Java above version 17 on the server
++ e.g.: sudo apt install openjdk-21-jre-headless
++ create the folder /opt/nostrium/
 + edit the deploy.sh script to match your domain
 + run the deploy script: sh deploy.sh
++ on the first run telnet is available on port 23000
++ e.g. telnet myipaddress 23000
++ using ssh, edit the /opt/nostrium/config.json
++ e.g. using nano. Change "debug" field to false
++ next time you deploy with deploy.sh it is working
++ e.g. telnet myipaddress
 
-This will compile the java code, upload to the server
-and then launch.
+
+
+The deploy will compile the java code, upload to
+the server and then launch the binary. When there
+is already another one running, it will stop it.
 
 Please edit the config.json on your server the
 "debug" option to "false".
+
+For anything else you can open a ticket and ask.
 
 
 License
