@@ -1,9 +1,0 @@
-{
-  "debug": false,
-  "portTelnet": 23232,
-  "portTelnet_Debug": 23000,
-  "portSSH": 22,
-  "portSSH_Debug": 22000,
-  "portWeb": 80,
-  "portWeb_Debug": 8080
-}
