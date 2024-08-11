@@ -44,7 +44,9 @@ import online.nostrium.servers.apps.user.User;
 import online.nostrium.utils.AsciiArt;
 
 /**
- * Author: Brito Date: 2024-08-10 Location: Germany
+ * Author: Brito
+ * Date: 2024-08-10
+ * Location: Germany
  */
 public class ScreenTelnet extends Screen {
 
@@ -65,8 +67,6 @@ public class ScreenTelnet extends Screen {
     public static final String
             ANSI_BELL = "\u001B[2K";
    
-    
-    
     // ANSI escape codes for colors
     public static final String
             ANSI_RESET = "\u001B[0m",
@@ -103,33 +103,49 @@ public class ScreenTelnet extends Screen {
     }
     
     @Override
-    public void writeLikeHuman(String text, int speed) {
-        Random random = new Random();
+  public void writeLikeHuman(String text, int speed) {
+    Random random = new Random();
+    int length = text.length();
+    
+    // Calculate the maximum time to display the text (now 2000ms or 2 seconds)
+    int maxDisplayTime = 1000;
+    
+    // Determine the total delay based on the length of the text and adjust dynamically
+    int totalDelay = length * speed;
+    int adjustedSpeed = speed;
 
-        for (char c : text.toCharArray()) {
-            out.write(c);
-            out.flush();
-
-            try {
-                // Base delay for each character
-                int delay = random.nextInt(100) + speed; // Speed controls the baseline typing speed
-                
-                // Extra pause for spaces
-                if (c == ' ') {
-                    delay += 100; // Increase delay for spaces
-                }
-
-                // Sleep for the calculated delay
-                Thread.sleep(delay);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                return; // Exit the method if the thread is interrupted
-            }
-        }
-        // add an end line
-        out.write("\n");
-        out.flush();
+    if (totalDelay > maxDisplayTime) {
+        // Adjust speed to ensure the entire text is shown within the maximum display time
+        adjustedSpeed = Math.max(10, maxDisplayTime / length);
     }
+
+    for (char c : text.toCharArray()) {
+        out.write(c);
+        out.flush();
+
+        try {
+            // Base delay for each character
+            int delay = random.nextInt(100) + adjustedSpeed;
+            
+            // Extra pause for spaces
+            if (c == ' ') {
+                delay += 100; // Increase delay for spaces
+            }
+
+            // Sleep for the calculated delay
+            Thread.sleep(delay);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            return; // Exit the method if the thread is interrupted
+        }
+    }
+
+    // Add an end line
+    out.write("\n");
+    out.flush();
+}
+
+
 
     @Override
     public String readln() {
