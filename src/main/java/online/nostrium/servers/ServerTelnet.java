@@ -97,6 +97,10 @@ public class ServerTelnet {
                 while ((inputLine = in.readLine()) != null) {
 
                     System.out.println("Received: " + inputLine);
+                    // show that the session is still active
+                    session.ping();
+                    
+                    // handle the command request
                     CommandResponse response = app
                             .handleCommand(TerminalType.ANSI, inputLine);
 
@@ -143,6 +147,10 @@ public class ServerTelnet {
                     // output the next prompt
                     screen.writeUserPrompt(app, user);
                 }
+                
+                // close the session
+                core.sessions.removeSession(session);
+                
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {

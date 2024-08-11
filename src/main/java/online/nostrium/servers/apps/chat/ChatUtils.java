@@ -184,5 +184,31 @@ public class ChatUtils {
         room.save();
         return room;
     }
+    
+     /**
+     * Retrieves all available and valid chat rooms.
+     *
+     * @return An ArrayList of valid ChatRoom objects.
+     */
+    public static ArrayList<ChatRoom> getChatRooms() {
+        ArrayList<ChatRoom> chatRooms = new ArrayList<>();
+        File folderBase = Folder.getFolderChat();
+        ArrayList<File> files = FileFunctions.searchFiles(folderBase, Folder.nameFolderChatRoom);
+
+        for (File file : files) {
+            // Attempt to import the chat room from the file
+            ChatRoom room = ChatRoom.jsonImport(file, ChatRoom.class);
+            if (room != null) {
+                // Room is valid, add to the list
+                room.setFolder(file.getParentFile());
+                chatRooms.add(room);
+            } else {
+                // Room is invalid, log the issue
+                Log.write("Invalid room file", file.getPath());
+            }
+        }
+
+        return chatRooms;
+    }
 
 }

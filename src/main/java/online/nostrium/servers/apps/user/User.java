@@ -56,7 +56,7 @@ public class User {
     public File getFile(){
         File folder = FileFunctions.getThirdLevelFolderForUser(
                 Folder.getFolderUsers(), npub, false);
-        File file = new File(folder, this.npub + ".json");
+        File file = new File(folder, this.npub + Folder.nameEndingJsonUser);
         return file;
     }
     

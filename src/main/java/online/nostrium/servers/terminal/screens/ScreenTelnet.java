@@ -58,9 +58,14 @@ public class ScreenTelnet extends Screen {
     
     // ANSI escape codes for clearing the line and moving the cursor
     public static final String
-            ANSI_CLEAR_LINE = "\u001B[2K",
+            ANSI_CLEAR_LINE = "\\u0007",
             ANSI_CURSOR_TO_LINE_START = "\u001B[G";
    
+    // ANSI code for sound
+    public static final String
+            ANSI_BELL = "\u001B[2K";
+   
+    
     
     // ANSI escape codes for colors
     public static final String

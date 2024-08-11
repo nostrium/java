@@ -18,6 +18,7 @@ import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.servers.apps.user.User;
 import online.nostrium.servers.apps.user.UserUtils;
 import online.nostrium.servers.terminal.TerminalUtils;
+import online.nostrium.servers.terminal.screens.ScreenTelnet;
 import online.nostrium.utils.TextFunctions;
 
 /**
@@ -146,6 +147,7 @@ public class TerminalChat extends TerminalApp {
         // write the text in different speed
         screen.write(line1);
         screen.writeLikeHuman(line2, 25);
+        
         screen.writeUserPrompt(this, user);
     }
     

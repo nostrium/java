@@ -7,8 +7,10 @@
 package online.nostrium.servers.apps.user;
 
 import java.io.File;
+import java.util.ArrayList;
 import online.nostrium.main.Folder;
 import online.nostrium.utils.FileFunctions;
+import online.nostrium.utils.Log;
 import static online.nostrium.utils.NostrUtils.generateNostrKeys;
 import online.nostrium.utils.TextFunctions;
 
@@ -71,7 +73,7 @@ public class UserUtils {
         String npubId = npub.substring(5);
         File folder = FileFunctions.getThirdLevelFolderForUser(
                 Folder.getFolderUsers(), npubId, false);
-        File file = new File(folder, npub + ".json");
+        File file = new File(folder, npub + Folder.nameEndingJsonUser);
         
         // user not found
         if(file.exists() == false){
@@ -86,5 +88,34 @@ public class UserUtils {
         
         return user;
     }
+    
+    
+    /**
+     * Counts the number of valid users available.
+     *
+     * @return The count of valid User objects.
+     */
+    public static int countUsers() {
+        int userCount = 0;
+        File folderBase = Folder.getFolderUsers();
+        
+        // Adjust search pattern to match the new naming convention
+        ArrayList<File> files = FileFunctions.searchFiles(folderBase, Folder.nameEndingJsonUser);
+
+        for (File file : files) {
+            // Attempt to import the user from the file
+            User user = User.jsonImport(file);
+            if (user != null) {
+                // User is valid, increment the count
+                userCount++;
+            } else {
+                // User is invalid, log the issue
+                Log.write("Invalid user file", file.getPath());
+            }
+        }
+
+        return userCount;
+    }
+    
 
 }

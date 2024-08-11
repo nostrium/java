@@ -7,7 +7,7 @@
 package online.nostrium.main;
 
 import java.io.File;
-import online.nostrium.notifications.NotificationType;
+import java.util.Date;
 import online.nostrium.notifications.Sessions;
 import online.nostrium.servers.ServerTelnet;
 import online.nostrium.utils.AsciiArt;
@@ -28,6 +28,9 @@ public class core {
 
     public static Config config;
     public static Sessions sessions = new Sessions();
+    
+    // track the time that it is up
+    public static Date uptime = new Date();
     
     
     public static void main(String[] args) {

@@ -29,7 +29,8 @@ public class Folder {
             nameFolderUsers = "users",
             nameFolderProfileImages = "profile_images",
             nameRootChat = "root",
-            nameAnonUsers = "Anon";
+            nameAnonUsers = "Anon",
+            nameEndingJsonUser = "-user.json";
     
     /**
      * There  are three type of paths that change: runtime, testing and custom.
