@@ -9,7 +9,6 @@ package online.nostrium.servers.terminal.screens;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.servers.terminal.TerminalType;
-import online.nostrium.servers.apps.user.User;
 
 /**
  * Author: Brito

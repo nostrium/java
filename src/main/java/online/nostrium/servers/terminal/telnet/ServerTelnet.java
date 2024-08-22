@@ -6,9 +6,8 @@
  */
 package online.nostrium.servers.terminal.telnet;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -62,108 +61,132 @@ public class ServerTelnet {
         }
     }
 
-    private static class ClientHandler implements Runnable {
+private static class ClientHandler implements Runnable {
 
-        private final Socket clientSocket;
+    private final Socket clientSocket;
 
-        public ClientHandler(Socket socket) {
-            this.clientSocket = socket;
-        }
+    public ClientHandler(Socket socket) {
+        this.clientSocket = socket;
+    }
 
-        @Override
-        public void run() {
+    @Override
+    public void run() {
 
-            try (
-                    BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())); 
-                    PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true)) {
+        try (
+                InputStream in = clientSocket.getInputStream(); 
+                PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true)) {
 
-                // the handler of text on the screen
-                Screen screen = new ScreenTelnet(in, out);
+            // the handler of text on the screen
+            Screen screen = new ScreenTelnet(in, out);
+
+            // start with the basic app
+            User user = UserUtils.createUserAnonymous();
+            TerminalApp app = new TerminalBasic(screen, user);
+
+            Session session = new Session(ClientType.TELNET, app, user);
+            core.sessions.addSession(session);
+
+            // show the intro
+            screen.writeIntro();
+
+            // write the start prompt
+            screen.writeUserPrompt(app);
+
+            int inputChar;
+            StringBuilder inputBuffer = new StringBuilder();
+            boolean skipNextNewline = false;
+
+            while ((inputChar = in.read()) != -1) {
+
+                char receivedChar = (char) inputChar;
                 
-                // start with the basic app
-                User user = UserUtils.createUserAnonymous();
-                TerminalApp app = new TerminalBasic(screen, user);
-                
-                Session session = new Session(ClientType.TELNET, app, user);
-                core.sessions.addSession(session);
+                // Skip processing if the last character was a carriage return and the current one is a newline
+                if (skipNextNewline && receivedChar == '\n') {
+                    skipNextNewline = false;
+                    continue;
+                }
 
-                // show the intro
-                screen.writeIntro();
-                
-                // write the start prompt
-                screen.writeUserPrompt(app);
-
-                String inputLine;
-                while ((inputLine = in.readLine()) != null) {
-
-                    System.out.println("Received: " + inputLine);
-                    // show that the session is still active
-                    session.ping();
-                    
-                    // handle the command request
-                    CommandResponse response = app
-                            .handleCommand(TerminalType.ANSI, inputLine);
-
-                    // ignore null responses
-                    if (response == null) {
-                        // output the next prompt
-                        screen.writeUserPrompt(app);
-                        continue;
-                    }
-
-                    // is it time to leave?
-                    if (response.getCode() == TerminalCode.EXIT_CLIENT) {
-                        out.println(response.getText());
-                        break;
-                    }
-                    
-                    // forced session break
-                    if (session.isTimeToStop()) {
-                        break;
-                    }
-                    
-                    
-
-                    // is it time to go down one app?
-                    if (response.getCode() == TerminalCode.EXIT_APP && app.appParent != null) {
-                        app = app.appParent;
-                    }
-
-                    // is it time to change apps?
-                    if (response.getCode() == TerminalCode.CHANGE_APP) {
-                        app = response.getApp();
-                        session.setApp(app);
-                        if (app.appParent != null) {
-                            out.println(app.getIntro());
-                        }
-                    }
-
-                    // output the reply
-                    if (response.getText().length() > 0) {
-                        // output the message
-                        out.println(response.getText());
-                    }
-
-                    // output the next prompt
-                    screen.writeUserPrompt(app);
+                // Accumulate characters until a line end is detected
+                if (receivedChar != '\n' && receivedChar != '\r') {
+                    // Continue to accumulate characters
+                    inputBuffer.append(receivedChar);
+                    continue;
                 }
                 
-                // close the session
-                core.sessions.removeSession(session);
-                
+                // If a carriage return is detected, set the flag to skip the next newline
+                if (receivedChar == '\r') {
+                    skipNextNewline = true;
+                }
+
+                // Build up the line
+                String inputLine = inputBuffer.toString();
+
+                // Clear the buffer
+                inputBuffer.setLength(0);
+
+                // Show that the session is still active
+                session.ping();
+
+                // Handle the command request
+                CommandResponse response = app.handleCommand(TerminalType.ANSI, inputLine);
+
+                // Ignore null responses
+                if (response == null) {
+                    // Output the next prompt
+                    screen.writeUserPrompt(app);
+                    continue;
+                }
+
+                // Is it time to leave?
+                if (response.getCode() == TerminalCode.EXIT_CLIENT) {
+                    out.println(response.getText());
+                    break;
+                }
+
+                // Forced session break
+                if (session.isTimeToStop()) {
+                    break;
+                }
+
+                // Is it time to go down one app?
+                if (response.getCode() == TerminalCode.EXIT_APP && app.appParent != null) {
+                    app = app.appParent;
+                }
+
+                // Is it time to change apps?
+                if (response.getCode() == TerminalCode.CHANGE_APP) {
+                    app = response.getApp();
+                    session.setApp(app);
+                    if (app.appParent != null) {
+                        out.println(app.getIntro());
+                    }
+                }
+
+                // Output the reply
+                if (response.getText().length() > 0) {
+                    // Output the message
+                    out.println(response.getText());
+                }
+
+                // Output the next prompt
+                screen.writeUserPrompt(app);
+            }
+
+            // Close the session
+            core.sessions.removeSession(session);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                clientSocket.close();
             } catch (IOException e) {
                 e.printStackTrace();
-            } finally {
-                try {
-                    clientSocket.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                System.out.println("Client disconnected: " + clientSocket.getInetAddress());
             }
+            System.out.println("Client disconnected: " + clientSocket.getInetAddress());
         }
-
     }
+}
 
 
 }

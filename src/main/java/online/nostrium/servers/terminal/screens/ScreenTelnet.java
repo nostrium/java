@@ -6,41 +6,19 @@
  */
 package online.nostrium.servers.terminal.screens;
 
-import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalColor;
-import static online.nostrium.servers.terminal.TerminalColor.BLACK;
-import static online.nostrium.servers.terminal.TerminalColor.BLACK_ON_WHITE;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
-import static online.nostrium.servers.terminal.TerminalColor.BLUE_ON_RED;
-import static online.nostrium.servers.terminal.TerminalColor.BROWN;
-import static online.nostrium.servers.terminal.TerminalColor.BROWN_ON_BLACK;
-import static online.nostrium.servers.terminal.TerminalColor.CYAN;
-import static online.nostrium.servers.terminal.TerminalColor.CYAN_ON_MAGENTA;
-import static online.nostrium.servers.terminal.TerminalColor.DESERT_SAND;
-import static online.nostrium.servers.terminal.TerminalColor.DESERT_SAND_ON_ORANGE;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN_BRIGHT;
-import static online.nostrium.servers.terminal.TerminalColor.GREEN_BRIGHT_ON_PURPLE;
-import static online.nostrium.servers.terminal.TerminalColor.GREEN_ON_YELLOW;
-import static online.nostrium.servers.terminal.TerminalColor.ORANGE;
-import static online.nostrium.servers.terminal.TerminalColor.ORANGE_ON_DESERT_SAND;
-import static online.nostrium.servers.terminal.TerminalColor.PURPLE;
-import static online.nostrium.servers.terminal.TerminalColor.PURPLE_ON_WHITE;
-import static online.nostrium.servers.terminal.TerminalColor.RED;
-import static online.nostrium.servers.terminal.TerminalColor.RED_ON_BLUE;
-import static online.nostrium.servers.terminal.TerminalColor.WHITE;
-import static online.nostrium.servers.terminal.TerminalColor.WHITE_ON_BLUE;
-import static online.nostrium.servers.terminal.TerminalColor.YELLOW;
-import static online.nostrium.servers.terminal.TerminalColor.YELLOW_ON_GREEN;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.TerminalUtils;
-import online.nostrium.servers.apps.user.User;
 import online.nostrium.utils.AsciiArt;
 
 /**
@@ -50,10 +28,10 @@ import online.nostrium.utils.AsciiArt;
  */
 public class ScreenTelnet extends Screen {
 
-    final BufferedReader in;
+    final InputStream in; // Changed from BufferedReader to InputStream
     final PrintWriter out;
-    
-           // ANSI escape code to clear the screen
+
+    // ANSI escape code to clear the screen
     public static final String 
             ANSI_CLEAR_SCREEN = "\u001B[2J",    
             ANSI_HOME = "\u001B[H";
@@ -82,7 +60,7 @@ public class ScreenTelnet extends Screen {
             ANSI_BROWN = "\u001B[38;5;94m",
             ANSI_DESERT_SAND = "\u001B[38;5;229m";
 
-    public ScreenTelnet(BufferedReader in, PrintWriter out) {
+    public ScreenTelnet(InputStream in, PrintWriter out) { // Modified constructor to accept InputStream instead of BufferedReader
         this.in = in;
         this.out = out;
     }
@@ -101,63 +79,70 @@ public class ScreenTelnet extends Screen {
     public void writeln(String text) {
         out.println(text);
     }
-    
+
     @Override
     @SuppressWarnings("SleepWhileInLoop")
-  public void writeLikeHuman(String text, int speed) {
-    Random random = new Random();
-    int length = text.length();
-    
-    // Calculate the maximum time to display the text (now 2000ms or 2 seconds)
-    int maxDisplayTime = 1000;
-    
-    // Determine the total delay based on the length of the text and adjust dynamically
-    int totalDelay = length * speed;
-    int adjustedSpeed = speed;
+    public void writeLikeHuman(String text, int speed) {
+        Random random = new Random();
+        int length = text.length();
+        
+        // Calculate the maximum time to display the text (now 2000ms or 2 seconds)
+        int maxDisplayTime = 1000;
+        
+        // Determine the total delay based on the length of the text and adjust dynamically
+        int totalDelay = length * speed;
+        int adjustedSpeed = speed;
 
-    if (totalDelay > maxDisplayTime) {
-        // Adjust speed to ensure the entire text is shown within the maximum display time
-        adjustedSpeed = Math.max(10, maxDisplayTime / length);
-    }
-
-    for (char c : text.toCharArray()) {
-        out.write(c);
-        out.flush();
-
-        try {
-            // Base delay for each character
-            int delay = random.nextInt(100) + adjustedSpeed;
-            
-            // Extra pause for spaces
-            if (c == ' ') {
-                delay += 100; // Increase delay for spaces
-            }
-
-            // Sleep for the calculated delay
-            Thread.sleep(delay);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            return; // Exit the method if the thread is interrupted
+        if (totalDelay > maxDisplayTime) {
+            // Adjust speed to ensure the entire text is shown within the maximum display time
+            adjustedSpeed = Math.max(10, maxDisplayTime / length);
         }
+
+        for (char c : text.toCharArray()) {
+            out.write(c);
+            out.flush();
+
+            try {
+                // Base delay for each character
+                int delay = random.nextInt(100) + adjustedSpeed;
+                
+                // Extra pause for spaces
+                if (c == ' ') {
+                    delay += 100; // Increase delay for spaces
+                }
+
+                // Sleep for the calculated delay
+                Thread.sleep(delay);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                return; // Exit the method if the thread is interrupted
+            }
+        }
+
+        // Add an end line
+        out.write("\n");
+        out.flush();
     }
-
-    // Add an end line
-    out.write("\n");
-    out.flush();
-}
-
-
 
     @Override
     public String readln() {
-        String text;
+        StringBuilder inputLine = new StringBuilder();
         try {
-            text = in.readLine();
-            return text;
+            int inputChar;
+            while ((inputChar = in.read()) != -1) {
+                char receivedChar = (char) inputChar;
+
+                // If newline or carriage return is detected, break the loop
+                if (receivedChar == '\n' || receivedChar == '\r') {
+                    break;
+                }
+
+                inputLine.append(receivedChar);
+            }
         } catch (IOException ex) {
             Logger.getLogger(ScreenTelnet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        return inputLine.toString();
     }
 
     @Override
@@ -211,7 +196,7 @@ public class ScreenTelnet extends Screen {
                 color = TerminalColor.BLACK_ON_WHITE.getAnsiCode();
             case GREEN_BRIGHT_ON_PURPLE ->
                 color = TerminalColor.GREEN_BRIGHT_ON_PURPLE.getAnsiCode();
-
+            
             // notifications
             case WHITE_ON_BLUE ->
                 color = TerminalColor.WHITE_ON_BLUE.getAnsiCode();
@@ -313,5 +298,4 @@ public class ScreenTelnet extends Screen {
         out.write("\u001B[G");
         out.flush();
     }
-
 }
