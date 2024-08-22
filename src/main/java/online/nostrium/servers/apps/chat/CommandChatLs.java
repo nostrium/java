@@ -46,7 +46,7 @@ public class CommandChatLs extends TerminalCommand {
             
             String userId = UserUtils.getUserDisplayNameBasic(message.pubkey);
             
-            User user = UserUtils.getUser(message.pubkey);
+            User user = UserUtils.getUserByNpub(message.pubkey);
             if(user != null && user.getDisplayName() != null){
                 userId = user.getDisplayName();
             }

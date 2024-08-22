@@ -3,6 +3,7 @@ package online.nostrium.servers.apps.user;
 import java.io.File;
 import java.util.ArrayList;
 import online.nostrium.main.Folder;
+import static online.nostrium.main.Folder.nameEndingJsonUser;
 import online.nostrium.utils.FileFunctions;
 import online.nostrium.utils.Log;
 import static online.nostrium.utils.nostr.NostrUtils.generateNostrKeys;
@@ -62,11 +63,50 @@ public class UserUtils {
         return user;
     }
 
-    public static User getUser(String npub) {
+    /**
+     * Get all the user files saved on disk
+     * @return 
+     */
+    public static ArrayList<File> getUserFiles(){
+        File folder = Folder.getFolderUsers();
+        return FileFunctions.searchFiles(
+                        folder, nameEndingJsonUser
+                );
+    }
+    
+    /**
+     * Finds an user based on username
+     * @param username to be used
+     * @return null when nothing was found
+     */
+    public static User getUserByUsername(String username){
+        ArrayList<File> files = getUserFiles();
+        if(files == null || files.isEmpty()){
+            return null;
+        }
+        for(File file : files){
+            User user = User.jsonImport(file);
+            if(user == null){
+                continue;
+            }
+            // too many users don't define the user name
+            if(user.getUsername() == null){
+                continue;
+            }
+            if(user.getUsername().equalsIgnoreCase(username)){
+                return user;
+            }
+        }
+        return null;
+    }
+    
+    
+    
+    public static User getUserByNpub(String npub) {
         String npubId = npub.substring(5);
         File folder = FileFunctions.getThirdLevelFolderForUser(
                 Folder.getFolderUsers(), npubId, false);
-        File file = new File(folder, npub + "-user.json");
+        File file = new File(folder, npub + nameEndingJsonUser);
         
         // user not found
         if(file.exists() == false){

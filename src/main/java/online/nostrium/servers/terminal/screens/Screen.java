@@ -41,6 +41,6 @@ public abstract class Screen {
     public abstract void deleteCurrentLine();
     public abstract void deletePreviousLine();
     
-    public abstract void writeUserPrompt(TerminalApp app, User user);
+    public abstract void writeUserPrompt(TerminalApp app);
     
 }

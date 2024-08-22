@@ -23,7 +23,7 @@ public class TerminalUtils {
         TerminalApp appCurrent = app;
         while(appCurrent.appParent.appParent != null){
             appCurrent = appCurrent.appParent;
-            path = appCurrent + "/" + path;
+            path = appCurrent.getName() + "/" + path;
         }
         path = "/" + path;
         return path;

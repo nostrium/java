@@ -8,6 +8,7 @@ package online.nostrium.servers.apps.basic;
 
 import online.nostrium.notifications.NotificationType;
 import online.nostrium.servers.apps.chat.TerminalChat;
+import online.nostrium.servers.apps.games.gods.TerminalGODS;
 import online.nostrium.servers.apps.user.TerminalUser;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
@@ -32,11 +33,13 @@ public class TerminalBasic extends TerminalApp {
         addCommand(new CommandHello(this));
         addCommand(new CommandTime(this));
         addCommand(new CommandStatus(this));
-        addCommand(new CommandVanity(this));
+        //addCommand(new CommandVanity(this));
+        addCommand(new CommandLogin(this));
         
         // add apps inside
         addApp(new TerminalUser(screen, user));
         addApp(new TerminalChat(screen, user));
+        addApp(new TerminalGODS(screen, user));
     }
 
     @Override

@@ -538,7 +538,8 @@ public class ConvertIPB {
         // use the default image location
         user.setImageURL(avatarURL);
 
-        try (BufferedInputStream inputStream
+        try (@SuppressWarnings("deprecation")
+            BufferedInputStream inputStream
                 = new BufferedInputStream(new URL(avatarURL).openStream())) {
             // read all the bytes
             byte[] data = inputStream.readAllBytes();

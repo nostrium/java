@@ -15,7 +15,6 @@ import java.io.IOException;
 import online.nostrium.main.Folder;
 import online.nostrium.utils.EncryptionUtils;
 import online.nostrium.utils.FileFunctions;
-import online.nostrium.utils.TextFunctions;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -72,8 +71,8 @@ public class User {
     public boolean save() {
         File file = getFile();
         File folder = file.getParentFile();
-        
-          if(folder != null && folder.exists() == false){
+          
+        if(folder != null && folder.exists() == false){
             folder.mkdirs();
         }
         
@@ -221,19 +220,6 @@ public class User {
         this.lastLoginTime = lastLogin;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-        this.passwordHash = TextFunctions.sha256(password);
-        if(password != null){
-            // encrypt the nsec
-            this.nsecEncrypted = EncryptionUtils.encrypt(nsec, password);
-            this.save();
-        }
-    }
 
     public String getPasswordHash() {
         return passwordHash;
@@ -242,6 +228,12 @@ public class User {
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
     }
+    
+    
+    public boolean hasPassword() {
+        return getPasswordHash() != null;
+    }
+
 
     public String getNsecEncrypted() {
         return nsecEncrypted;
@@ -253,6 +245,17 @@ public class User {
 
     public boolean sameAs(User userTarget) {
         return this.npub.equalsIgnoreCase(userTarget.npub);
+    }
+
+    public File getFolder(boolean createFolder) {
+        File folder = FileFunctions.getThirdLevelFolderForUser(
+                Folder.getFolderUsers(), npub, false);
+        
+        if(createFolder){
+            folder.mkdirs();
+        }
+        
+        return folder;
     }
 
 }

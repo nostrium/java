@@ -11,8 +11,9 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
-import static online.nostrium.servers.terminal.TerminalColor.BLUE;
+import static online.nostrium.servers.terminal.TerminalColor.GREEN;
 import online.nostrium.utils.TextFunctions;
+import static online.nostrium.utils.TextFunctions.sha256;
 
 /**
  * @author Brito
@@ -21,6 +22,8 @@ import online.nostrium.utils.TextFunctions;
  */
 public class CommandUserPassword extends TerminalCommand{
 
+    int minCharacters = 4;
+    
     public CommandUserPassword(TerminalApp app) {
         super(app);
         this.requireSlash = false;
@@ -28,6 +31,10 @@ public class CommandUserPassword extends TerminalCommand{
 
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
+        
+        if(this.app.user.username == null){
+            return reply(TerminalCode.INCOMPLETE, "Please define your username before setting a password");
+        }
         
         if(parameters == null){
             return reply(TerminalCode.INCOMPLETE, "Please include a password");
@@ -37,23 +44,30 @@ public class CommandUserPassword extends TerminalCommand{
         parameters = TextFunctions.sanitizePassword(parameters);
         
         if(parameters.isEmpty()){
-            return reply(TerminalCode.INCOMPLETE, "Please include a password (minimum 8 characters)");
+            return reply(TerminalCode.INCOMPLETE, "Please include a password (minimum "
+                    + minCharacters
+                    + " characters)");
         }
         
         if(parameters.length() < 8){
-            return reply(TerminalCode.FAIL, "Too short, needs at minimum 8 characters");
+            return reply(TerminalCode.FAIL, "Too short, needs at minimum "
+                    + minCharacters
+                    + " characters");
         }
         
         if(parameters.length() > 256){
             return reply(TerminalCode.FAIL, "Too long password");
         }
         
+        // never store the password, just its hashed version
+        String passwordHash = sha256(parameters);
+        
         // change the password and save to disk
-        app.user.setPassword(parameters);
+        app.user.setPasswordHash(passwordHash);
         
         
         return reply(TerminalCode.OK, ""
-                + paint(BLUE, "Password set")
+                + paint(GREEN, "Password set")
         );
     }
 
@@ -64,7 +78,7 @@ public class CommandUserPassword extends TerminalCommand{
     
     @Override
     public String oneLineDescription() {
-        return "Save this profile to disk";
+        return "Set the password";
     }
 
 

@@ -65,7 +65,7 @@ public class ScreenTesting extends Screen{
     }
 
     @Override
-    public void writeUserPrompt(TerminalApp app, User user) {
+    public void writeUserPrompt(TerminalApp app) {
     }
     
     @Override

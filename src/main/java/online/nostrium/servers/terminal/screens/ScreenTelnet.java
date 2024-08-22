@@ -103,6 +103,7 @@ public class ScreenTelnet extends Screen {
     }
     
     @Override
+    @SuppressWarnings("SleepWhileInLoop")
   public void writeLikeHuman(String text, int speed) {
     Random random = new Random();
     int length = text.length();
@@ -277,10 +278,10 @@ public class ScreenTelnet extends Screen {
     }
 
     @Override
-    public void writeUserPrompt(TerminalApp app, User user) {
+    public void writeUserPrompt(TerminalApp app) {
         String path = TerminalUtils.getPath(app);
 
-        String userPrompt = paint(GREEN_BRIGHT, user.getDisplayName())
+        String userPrompt = paint(GREEN_BRIGHT, app.user.getDisplayName())
                 + ":"
                 + path
                 + "> ";

@@ -24,8 +24,9 @@ public class TerminalUser extends TerminalApp {
     public TerminalUser(Screen screenAssigned, User user) {
         super(screenAssigned, user);
         addCommand(new CommandUserShow(this));
-        addCommand(new CommandUserPassword(this));
+        //addCommand(new CommandUserPassword(this));
         addCommand(new CommandUserSave(this));
+        addCommand(new CommandUserSet(this));
     }
 
     @Override

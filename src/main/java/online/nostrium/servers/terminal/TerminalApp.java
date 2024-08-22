@@ -28,7 +28,7 @@ public abstract class TerminalApp {
     public TerminalApp appParent = null;
     @SuppressWarnings("unchecked")
     public ArrayList<TerminalApp> appChildren = new ArrayList();
-    public final User user;
+    public User user;
     
     public final Map<String, TerminalCommand> commands = new HashMap<>();
     public final Screen screen;
@@ -158,4 +158,30 @@ public abstract class TerminalApp {
             User userSender, 
             NotificationType notificationType,
             Object object);
+
+    /**
+     * Update all apps with the new user info
+     * @param user 
+     */
+    public void updateUser(User user) {
+        TerminalApp rootApp = this;
+        // travel to the root app
+        if(this.appParent != null){
+            while(rootApp.appParent != null){
+                rootApp = rootApp.appParent;
+            }
+        }
+        setNewUser(rootApp, user);
+    }
+
+    private void setNewUser(TerminalApp app, User user) {
+        app.user = user;
+        if(app.appChildren.isEmpty()){
+            return;
+        }
+        // change for all new cases
+        for(TerminalApp appChild : app.appChildren){
+            setNewUser(appChild, user);
+        }
+    }
 }

@@ -91,7 +91,7 @@ public class ServerTelnet {
                 screen.writeIntro();
                 
                 // write the start prompt
-                screen.writeUserPrompt(app, user);
+                screen.writeUserPrompt(app);
 
                 String inputLine;
                 while ((inputLine = in.readLine()) != null) {
@@ -107,7 +107,7 @@ public class ServerTelnet {
                     // ignore null responses
                     if (response == null) {
                         // output the next prompt
-                        screen.writeUserPrompt(app, user);
+                        screen.writeUserPrompt(app);
                         continue;
                     }
 
@@ -145,7 +145,7 @@ public class ServerTelnet {
                     }
 
                     // output the next prompt
-                    screen.writeUserPrompt(app, user);
+                    screen.writeUserPrompt(app);
                 }
                 
                 // close the session

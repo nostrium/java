@@ -11,8 +11,6 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
-import static online.nostrium.servers.terminal.TerminalColor.BLUE;
-import static online.nostrium.servers.terminal.TerminalColor.RED;
 
 /**
  * @author Brito
@@ -33,12 +31,13 @@ public class CommandUserShow extends TerminalCommand{
         
         output += "npub: " + this.app.user.getNpub() + "\n";
         output += "nsec: " + this.app.user.getNsec() + "\n";
-        output += "name: " + noneWhenEmpty(this.app.user.username) + "\n";
+        output += "username: " + noneWhenEmpty(this.app.user.username) + "\n";
+        output += "password hash: " + noneWhenEmpty(this.app.user.passwordHash) + "\n";
         output += "type: " + noneWhenEmpty(this.app.user.userType.toString()) + "\n";
         output += "about: " + noneWhenEmpty(this.app.user.aboutMe) + "\n";
         output += "www: " + noneWhenEmpty(this.app.user.website) + "\n";
         output += "updated: " + noneWhenEmpty(this.app.user.lastLoginTime) + "\n";
-        output += "register: " + noneWhenEmpty(this.app.user.registeredTime)
+        output += "registered: " + noneWhenEmpty(this.app.user.registeredTime)
                 //+ "\n"
                 ;
         
