@@ -258,4 +258,22 @@ public class User {
         return folder;
     }
 
+    /**
+     * This value is never written to disk
+     * @return 
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * This value is never written to disk
+     * @param password 
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    
+
 }

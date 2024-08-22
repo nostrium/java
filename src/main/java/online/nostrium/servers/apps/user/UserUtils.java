@@ -4,10 +4,14 @@ import java.io.File;
 import java.util.ArrayList;
 import online.nostrium.main.Folder;
 import static online.nostrium.main.Folder.nameEndingJsonUser;
+import online.nostrium.servers.terminal.CommandResponse;
+import online.nostrium.servers.terminal.TerminalCode;
+import online.nostrium.utils.EncryptionUtils;
 import online.nostrium.utils.FileFunctions;
 import online.nostrium.utils.Log;
 import static online.nostrium.utils.nostr.NostrUtils.generateNostrKeys;
 import online.nostrium.utils.TextFunctions;
+import static online.nostrium.utils.TextFunctions.sha256;
 
 /**
  * @author Brito
@@ -15,6 +19,11 @@ import online.nostrium.utils.TextFunctions;
  * @location: Germany
  */
 public class UserUtils {
+    
+    public static int 
+            minCharacters = 4,
+            maxCharacters = 64,
+            maxCharactersAbout = 256;
 
     /**
      * Create an admin user with nsec and npub set to all zeros
@@ -151,4 +160,149 @@ public class UserUtils {
     }
     
 
+    public static CommandResponse setAbout(User user, String text) {
+        if(TextFunctions.isValidText(text) == false
+                || text.length() > maxCharactersAbout){
+            return reply(TerminalCode.FAIL, "Text is not valid, or too large");
+        }
+        
+        String textCleaned = TextFunctions.cleanString(text);
+        if(textCleaned.length() != text.length()){
+            return reply(TerminalCode.FAIL, "Only alphanumeric characters are permitted");
+        }
+        
+        // write the text
+        user.setAboutMe(text);
+        user.save();        
+        
+        return reply(TerminalCode.OK, "Done");
+    }
+    
+    public static CommandResponse setUsername(User user, String text) {
+        if(TextFunctions.isValidText(text) == false
+                || text.length() > maxCharacters){
+            return reply(TerminalCode.FAIL, "Invalid username");
+        }
+        
+        String textCleaned = TextFunctions.cleanString(text);
+        if(textCleaned.length() != text.length()){
+            return reply(TerminalCode.FAIL, "Only alphanumeric characters are permitted");
+        }
+        
+        if(text.contains(" ")){
+            return reply(TerminalCode.FAIL, "User name cannot contain spaces");
+        }
+        
+        // don't permit duplicate names
+        User userSameUsername = UserUtils.getUserByUsername(text);
+        if(userSameUsername != null){
+            return reply(TerminalCode.FAIL, "User name already taken, please choose another one");
+        }
+        
+        // set the user name
+        user.setUsername(text);
+        
+        // no longer an anon, upgrade to member
+        if(user.getUserType() == UserType.ANON){
+            user.setUserType(UserType.MEMBER);
+            user.setDisplayName(text);
+        }
+        
+        // save the changes
+        user.save();
+        
+        // all done
+        return reply(TerminalCode.OK, "Done");
+    }
+    
+    public static CommandResponse setWWW(User user, String text) {
+        if(TextFunctions.isValidText(text) == false
+                || text.length() > maxCharactersAbout){
+            return reply(TerminalCode.FAIL, "Text is not valid, or too large");
+        }
+        
+        // write the text
+        user.setWebsite(text);
+        user.save();        
+        
+        return reply(TerminalCode.OK, "Done");
+    }
+
+    public static CommandResponse setPassword(User user, String parameters) {
+         if(user.username == null){
+            return reply(TerminalCode.INCOMPLETE, "Please define your username before setting a password");
+        }
+        
+        if(parameters == null){
+            return reply(TerminalCode.INCOMPLETE, "Please include a password");
+        }
+
+        // clean the password
+        parameters = TextFunctions.sanitizePassword(parameters);
+        
+        if(parameters.isEmpty()){
+            return reply(TerminalCode.INCOMPLETE, "Please include a password (minimum "
+                    + minCharacters
+                    + " characters)");
+        }
+        
+        if(parameters.length() < minCharacters){
+            return reply(TerminalCode.FAIL, "Too short, needs at minimum "
+                    + minCharacters
+                    + " characters");
+        }
+        
+        if(parameters.length() > maxCharacters){
+            return reply(TerminalCode.FAIL, "Too long password, max is "
+                    + maxCharacters
+                    + " characters");
+        }
+        
+        // never store the password, just its hashed version
+        String passwordHash = sha256(parameters);
+        
+        // change the password and save to disk
+        user.setPasswordHash(passwordHash);
+        user.setPassword(parameters);
+        
+        // encrypt the nsec
+        String nsec = user.getNsec();
+        String nsecEnc = EncryptionUtils.encrypt(nsec, parameters);
+        user.setNsecEncrypted(nsecEnc);
+        
+        user.save();
+        
+        return reply(TerminalCode.OK, "Done");
+    }
+
+    
+    public static CommandResponse reply(TerminalCode code, String text){
+        return new CommandResponse(code, text);
+    }
+
+    public static boolean isValidPassword(String password) {
+        if(TextFunctions.sanitizePassword(password).length()
+                != password.length()){
+            return false;
+        }
+        if(password.length() > maxCharacters || password.length() < minCharacters){
+            return false;
+        }
+        // all done
+        return true;
+    }
+
+    public static boolean isValidUsername(String username) {
+         if(TextFunctions.cleanString(username)
+                 .equalsIgnoreCase(username) == false){
+            return false;
+        }
+        if(username.length() > maxCharacters 
+                || username.length() < minCharacters){
+            return false;
+        }
+        // all done
+        return true;
+    }
+    
 }

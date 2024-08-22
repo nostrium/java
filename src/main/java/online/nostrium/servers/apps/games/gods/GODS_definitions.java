@@ -4,7 +4,7 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-package online.nostrium.servers.apps;
+package online.nostrium.servers.apps.games.gods;
 
 
 /**

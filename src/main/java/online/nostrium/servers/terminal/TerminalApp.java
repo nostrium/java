@@ -13,6 +13,7 @@ import online.nostrium.notifications.NotificationType;
 import online.nostrium.servers.apps.basic.CommandCd;
 import online.nostrium.servers.apps.basic.CommandExit;
 import online.nostrium.servers.apps.basic.CommandLs;
+import online.nostrium.servers.apps.chat.CommandChatClear;
 import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.servers.apps.user.User;
 
@@ -40,6 +41,7 @@ public abstract class TerminalApp {
         addCommandInternal(new CommandHelp(this));
         addCommandInternal(new CommandLs(this));
         addCommandInternal(new CommandCd(this));
+        addCommandInternal(new CommandChatClear(this));
         addCommandInternal(new CommandExit(this));
     }
 

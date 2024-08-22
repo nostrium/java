@@ -35,6 +35,7 @@ public class TerminalBasic extends TerminalApp {
         addCommand(new CommandStatus(this));
         //addCommand(new CommandVanity(this));
         addCommand(new CommandLogin(this));
+        addCommand(new CommandRegister(this));
         
         // add apps inside
         addApp(new TerminalUser(screen, user));

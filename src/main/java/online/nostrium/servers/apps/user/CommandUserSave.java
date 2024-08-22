@@ -28,6 +28,11 @@ public class CommandUserSave extends TerminalCommand{
 
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
+        
+        if(app.user.hasPassword() == false){
+            return reply(TerminalCode.FAIL, "You need to first define a username and password");
+        }
+        
         // try to save the user
         if(app.user.save()){
             return reply(TerminalCode.OK, paint(BLUE, "Saved to disk"));
