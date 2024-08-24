@@ -7,14 +7,14 @@
 package basic;
 
 import java.io.File;
-import online.nostrium.servers.apps.chat.ChatArchive;
-import online.nostrium.servers.apps.chat.ChatRoom;
-import online.nostrium.servers.apps.chat.ChatType;
-import online.nostrium.servers.apps.chat.ChatUtils;
+import online.nostrium.apps.chat.ChatArchive;
+import online.nostrium.apps.chat.ChatRoom;
+import online.nostrium.apps.chat.ChatType;
+import online.nostrium.apps.chat.ChatUtils;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalCode;
-import online.nostrium.servers.apps.user.User;
-import online.nostrium.servers.apps.user.UserUtils;
+import online.nostrium.apps.user.User;
+import online.nostrium.apps.user.UserUtils;
 import online.nostrium.utils.TextFunctions;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

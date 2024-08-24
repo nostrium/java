@@ -6,7 +6,7 @@
  */
 package online.nostrium.servers.terminal.screens;
 
-import online.nostrium.servers.apps.user.User;
+import online.nostrium.apps.user.User;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.servers.terminal.TerminalType;

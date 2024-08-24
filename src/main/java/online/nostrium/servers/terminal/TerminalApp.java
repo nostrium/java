@@ -5,17 +5,17 @@
  * License: Apache-2.0
  */
 package online.nostrium.servers.terminal;
-import online.nostrium.servers.apps.basic.CommandHelp;
+import online.nostrium.apps.basic.CommandHelp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import online.nostrium.notifications.NotificationType;
-import online.nostrium.servers.apps.basic.CommandCd;
-import online.nostrium.servers.apps.basic.CommandExit;
-import online.nostrium.servers.apps.basic.CommandLs;
-import online.nostrium.servers.apps.chat.CommandChatClear;
+import online.nostrium.apps.basic.CommandCd;
+import online.nostrium.apps.basic.CommandExit;
+import online.nostrium.apps.basic.CommandLs;
+import online.nostrium.apps.chat.CommandChatClear;
 import online.nostrium.servers.terminal.screens.Screen;
-import online.nostrium.servers.apps.user.User;
+import online.nostrium.apps.user.User;
 
 /**
 

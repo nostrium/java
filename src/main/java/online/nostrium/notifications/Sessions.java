@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.TimeUnit;
-import online.nostrium.servers.apps.user.User;
+import online.nostrium.apps.user.User;
 
 /**
  * Author: Brito

@@ -21,11 +21,24 @@ import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 /**
- * Date: 2023-02-09 Place: Germany
- *
+ * @Date: 2023-02-09
+ * @Place: Germany
  * @author brito
  */
 public class TextFunctions {
+
+    public static boolean isValidNumberInRange(
+            String numberStr, int lowerBound, int upperBound) {
+        try {
+            int number = Integer.parseInt(numberStr);
+
+            // Check if the number falls within the specified range
+            return number >= lowerBound && number <= upperBound;
+        } catch (NumberFormatException e) {
+            // If the string is not a valid integer, return false
+            return false;
+        }
+    }
 
     public static String convertLongToDateTime(long timestamp) {
         // Convert the long timestamp to an Instant
@@ -141,8 +154,7 @@ public class TextFunctions {
 //        // Trim the result to remove leading or trailing whitespace
 //        return message.trim();
 //    }
-    
-   public static String sanitizeChatMessage(String message) {
+    public static String sanitizeChatMessage(String message) {
         if (message == null || message.isEmpty()) {
             return "";
         }
@@ -169,7 +181,6 @@ public class TextFunctions {
         // Trim leading and trailing spaces and return the sanitized string
         return sanitized.toString().trim();
     }
-   
 
     public static boolean isValidText(String message) {
         if (message == null || message.isEmpty()) {

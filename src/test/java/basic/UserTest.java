@@ -6,9 +6,9 @@
  */
 package basic;
 
-import online.nostrium.servers.apps.user.User;
-import online.nostrium.servers.apps.user.UserType;
-import online.nostrium.servers.apps.user.UserUtils;
+import online.nostrium.apps.user.User;
+import online.nostrium.apps.user.UserType;
+import online.nostrium.apps.user.UserUtils;
 import online.nostrium.utils.TextFunctions;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

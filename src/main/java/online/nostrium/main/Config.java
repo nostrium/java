@@ -19,8 +19,8 @@ import online.nostrium.utils.Log;
 import org.apache.commons.io.FileUtils;
 
 /**
- * Date: 2023-02-08 Place: Germany
- *
+ * @Date: 2023-02-08
+ * @Place: Germany
  * @author brito
  */
 public class Config {
@@ -43,6 +43,9 @@ public class Config {
     public TerminalColor colorAppsDefault = 
             TerminalColor.GREEN_BRIGHT;
 
+    @Expose
+    public String domain = "nostrium.online";
+    
 //    String ForumTitle = "";
 //    String ForumDescription = "";
 //    String ForumTheme = "default";
