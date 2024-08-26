@@ -121,4 +121,12 @@ public final class AppData {
         return data.get(tag);
     }
 
+    public void delete() {
+        data = new HashMap();
+        File file = this.getFile();
+        if(file.exists()){
+            file.delete();
+        }
+    }
+
 }

@@ -6,11 +6,16 @@
     <artifactId>nostrium</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-        
+    
     <properties>
         <nostr-java.version>0.6.1-SNAPSHOT</nostr-java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+  
+  
+
+    <description>The BBS for Nostr</description>
+
     
     <build>
         <plugins>
@@ -63,8 +68,10 @@
                 </configuration>
             </plugin>
         </plugins>
+        
     </build>
     <dependencies>
+        
         <dependency>
             <groupId>org.apache.sshd</groupId>
             <artifactId>sshd-core</artifactId>
@@ -77,96 +84,78 @@
             <version>3.4.1</version>
         </dependency>
         
+        
+            <!-- Core Undertow dependency -->
+    <dependency>
+        <groupId>io.undertow</groupId>
+        <artifactId>undertow-core</artifactId>
+        <version>2.3.7.Final</version>
+    </dependency>
+
+    <!-- Undertow WebSocket dependency -->
+    <dependency>
+        <groupId>io.undertow</groupId>
+        <artifactId>undertow-websockets-jsr</artifactId>
+        <version>2.3.7.Final</version>
+    </dependency>
+
+    <!-- Optionally, you can include this if you want servlet support -->
+    <dependency>
+        <groupId>io.undertow</groupId>
+        <artifactId>undertow-servlet</artifactId>
+        <version>2.3.7.Final</version>
+    </dependency>
+
+    <!-- Logging dependencies, as Undertow uses JBoss logging -->
+    <dependency>
+        <groupId>org.jboss.logging</groupId>
+        <artifactId>jboss-logging</artifactId>
+        <version>3.4.3.Final</version>
+    </dependency>
+        
+        
+        
+        
         <dependency>
-            <groupId>nostr-java</groupId>
-            <artifactId>nostr-java-base</artifactId>
-            <version>${nostr-java.version}</version>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>11.0.23</version>
         </dependency>
         <dependency>
-            <groupId>nostr-java</groupId>
-            <artifactId>nostr-java-crypto</artifactId>
-            <version>${nostr-java.version}</version>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlet</artifactId>
+            <version>11.0.23</version>
         </dependency>
+       
+       
         <dependency>
-            <groupId>nostr-java</groupId>
-            <artifactId>nostr-java-event</artifactId>
-            <version>${nostr-java.version}</version>
+            <groupId>org.eclipse.jetty.websocket</groupId>
+            <artifactId>websocket-servlet</artifactId>
+            <version>11.0.23</version>
         </dependency>
+        
+        
         <dependency>
-            <groupId>nostr-java</groupId>
-            <artifactId>nostr-java-examples</artifactId>
-            <version>${nostr-java.version}</version>
+            <groupId>org.eclipse.jetty.websocket</groupId>
+            <artifactId>websocket-jetty-server</artifactId>
+            <version>11.0.23</version>
         </dependency>
+        
         <dependency>
-            <groupId>nostr-java</groupId>
-            <artifactId>nostr-java-id</artifactId>
-            <version>${nostr-java.version}</version>
+            <groupId>org.eclipse.jetty.websocket</groupId>
+            <artifactId>websocket-jetty-server</artifactId>
+            <version>11.0.23</version>
         </dependency>
+        
+        
+        
         <dependency>
-            <groupId>nostr-java</groupId>
-            <artifactId>nostr-java-test</artifactId>
-            <version>${nostr-java.version}</version>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>nostr-java</groupId>
-            <artifactId>nostr-java-util</artifactId>
-            <version>${nostr-java.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>nostr-java</groupId>
-            <artifactId>nostr-java-connection</artifactId>
-            <version>${nostr-java.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>nostr-java</groupId>
-            <artifactId>nostr-java-command-interface</artifactId>
-            <version>${nostr-java.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>nostr-java</groupId>
-            <artifactId>nostr-java-command-provider</artifactId>
-            <version>${nostr-java.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>nostr-java</groupId>
-            <artifactId>nostr-java-client</artifactId>
-            <version>${nostr-java.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>nostr-java</groupId>
-            <artifactId>nostr-java-api</artifactId>
-            <version>${nostr-java.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>nostr-java</groupId>
-            <artifactId>nostr-java-encryption</artifactId>
-            <version>${nostr-java.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>nostr-java</groupId>
-            <artifactId>nostr-java-encryption-nip04</artifactId>
-            <version>${nostr-java.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>nostr-java</groupId>
-            <artifactId>nostr-java-encryption-nip44</artifactId>
-            <version>${nostr-java.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>nostr-java</groupId>
-            <artifactId>nostr-java-context</artifactId>
-            <version>${nostr-java.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>nostr-java</groupId>
-            <artifactId>nostr-java-context-interface</artifactId>
-            <version>${nostr-java.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>nostr-java</groupId>
-            <artifactId>nostr-java-controller</artifactId>
-            <version>${nostr-java.version}</version>
-        </dependency>
+        
         
         <dependency>
             <groupId>org.bouncycastle</groupId>
@@ -223,6 +212,4 @@
             <classifier>lib</classifier>
         </dependency>
     </dependencies>
-
-    <description>The BBS for Nostr</description>
 </project>

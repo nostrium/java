@@ -23,6 +23,7 @@ public class Folder {
     public static String 
             nameFileConfig = "config.json",
             nameFolderData = "data",
+            nameFolderWWW = "www",
             nameFolderChat = "chat",
             nameFolderChatRoom = "room.json",
             nameFolderBase = "forum",
@@ -120,6 +121,10 @@ public class Folder {
         String basePath = folder.getPath();
         String filepath = file.getPath().substring(basePath.length());
         return filepath;
+    }
+
+    public static File getFolderWWW() {
+        return defaultGetFolder(nameFolderWWW);
     }
     
     
