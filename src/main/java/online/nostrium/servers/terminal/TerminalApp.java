@@ -5,10 +5,12 @@
  * License: Apache-2.0
  */
 package online.nostrium.servers.terminal;
+import java.io.File;
 import online.nostrium.apps.basic.CommandHelp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import online.nostrium.apps.AppData;
 import online.nostrium.notifications.NotificationType;
 import online.nostrium.apps.basic.CommandCd;
 import online.nostrium.apps.basic.CommandExit;
@@ -16,15 +18,19 @@ import online.nostrium.apps.basic.CommandLs;
 import online.nostrium.apps.chat.CommandChatClear;
 import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.apps.user.User;
+import online.nostrium.main.Folder;
 
 /**
-
  * @author Brito
  * @date: 2024-08-04
  * @location: Germany
  */
 public abstract class TerminalApp {
 
+    // settings and data for this app
+    public AppData data = new AppData(this);
+ 
+    
     // navigation between different apps
     public TerminalApp appParent = null;
     @SuppressWarnings("unchecked")
@@ -185,5 +191,12 @@ public abstract class TerminalApp {
         for(TerminalApp appChild : app.appChildren){
             setNewUser(appChild, user);
         }
+    }
+
+    public File getFolder() {
+        File folderRoot = Folder.getFolderData();
+        return Folder.defaultGetFolder(
+                folderRoot, this.getName()
+        );
     }
 }

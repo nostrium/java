@@ -6,6 +6,7 @@
  */
 package online.nostrium.apps.games.guess_number;
 
+import java.util.ArrayList;
 import online.nostrium.notifications.NotificationType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
@@ -13,7 +14,10 @@ import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
 import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.apps.user.User;
+import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.servers.terminal.TerminalUtils;
+import online.nostrium.utils.MathFunctions;
+import online.nostrium.utils.TextFunctions;
 
 /**
  * @author Brito
@@ -22,18 +26,14 @@ import online.nostrium.servers.terminal.TerminalUtils;
  */
 public class TerminalGuessNumber extends TerminalApp {
 
-    String[] tries = new String[]{"First try",
-        "Second try",
-        "Third try",
-        "Fourth try",
-        "Fifth try",
-        "Sixth try"
-    };
-
-    int tryCounter = 1;
+    int tryCounter = 0;
     int tryMax = 6;
     int min = 1;
     int max = 100;
+    int chosenNumber = MathFunctions.getRandomIntInRange(min, max);
+    long timeStart = 0;
+    int maxScoreRecords = 10;
+    boolean debug = true;
 
     public TerminalGuessNumber(Screen screen, User user) {
         super(screen, user);
@@ -49,21 +49,70 @@ public class TerminalGuessNumber extends TerminalApp {
 
     public void reset() {
         tryCounter = 0;
+        chosenNumber = MathFunctions.getRandomIntInRange(min+1, max-1);
+        timeStart = System.currentTimeMillis();
     }
 
     @Override
     public CommandResponse defaultCommand(String commandInput) {
 
-        // reset the game
-        if (commandInput.equalsIgnoreCase("r")) {
+        // check if we are over the max
+        if (tryCounter == tryMax) {
             reset();
-            return reply(TerminalCode.OK, "reset");
+            return reply(TerminalCode.OK, "Sorry, failed to guess the number!"
+                    + "\n"
+                    + "The number was: " + chosenNumber
+                    + "\n"
+                    + "Please try with a new number, guess again:");
         }
 
+        // reset the game when requested
+        if (commandInput.equalsIgnoreCase("r")) {
+            reset();
+            return reply(TerminalCode.OK, getIntro());
+        }
+
+        // check if the number is valid
+        if (TextFunctions.isValidNumberInRange(
+                commandInput, min, max) == false) {
+            return reply(TerminalCode.OK, "Invalid number."
+                    + "\n"
+                    + "Please write a number between "
+                    + min
+                    + " and "
+                    + max);
+        }
+
+        // increase the counter
         tryCounter++;
 
-        String text = "";
-        +"Current tries: " + tryCounter;
+        String text = "Attempt #" + tryCounter;
+        
+        if(debug){
+            text += " (value is " + chosenNumber + ")"; 
+        }
+        
+        this.screen.writeln(text);
+
+        // number is valid
+        int number = Integer.parseInt(commandInput);
+
+        if (number > chosenNumber) {
+            return reply(TerminalCode.OK, "Smaller than that");
+        }
+
+        if (number < chosenNumber) {
+            return reply(TerminalCode.OK, "Bigger than that");
+        }
+
+        // great success!
+        if (number == chosenNumber) {
+            addRecordIfApplicable();
+            reset();
+            return reply(TerminalCode.OK,
+                    screen.paint(TerminalColor.GREEN_BRIGHT, "Congratulations!")
+            );
+        }
 
         return reply(TerminalCode.OK, text);
     }
@@ -77,7 +126,9 @@ public class TerminalGuessNumber extends TerminalApp {
                 + "\n"
                 + "On each attempt I'll say if the number is higher or lower"
                 + "\n"
-                + "Press (r) to reset at any time, or type the numbers to be guessed.";
+                + "Press (r) to reset at any time, or type the numbers to be guessed."
+                + "\n"
+                + "Write a number bellow and press ENTER to get started.";
 
         return intro;
     }
@@ -95,6 +146,58 @@ public class TerminalGuessNumber extends TerminalApp {
     public String getId() {
         String path = TerminalUtils.getPath(this);
         return path;
+    }
+
+    /**
+     * Add the new record to the top score
+     */
+    @SuppressWarnings("unchecked")
+    private void addRecordIfApplicable() {
+        long timeRequired = System.currentTimeMillis() - timeStart;
+        UserRecordGuess scoreNow = new UserRecordGuess(
+                this.tryCounter,
+                this.user.getNpub(),
+                System.currentTimeMillis(),
+                timeRequired
+        );
+
+        // records existing
+        ArrayList<UserRecordGuess> scores;
+        String tagByAttempts = "score_by_attempts";
+        if (data.has(tagByAttempts) == false) {
+            scores = new ArrayList();
+            data.put(tagByAttempts, scores);
+        } else {
+            scores = (ArrayList<UserRecordGuess>) data.get(tagByAttempts);
+        }
+
+        // add the value
+        if (scores.isEmpty()) {
+            scores.add(scoreNow);
+            data.save();
+            return;
+        }
+
+        // only add if less attempts
+        for (int i = 0; i < scores.size(); i++) {
+            UserRecordGuess score = scores.get(i);
+            // is this a new record or not?
+            if (scoreNow.attempts > score.attempts) {
+                continue;
+            }
+            // it is a new record, move all the items below
+            scores.add(i, scoreNow);
+            // remove the last placed
+            if (scores.size() >= maxScoreRecords) {
+                scores.remove(scores.size() - 1);
+            }
+            // save the result
+            data.put(tagByAttempts, scores);
+            data.save();
+            // no need to proceed forward
+            break;
+        }
+
     }
 
 }
