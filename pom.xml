@@ -70,90 +70,45 @@
         </plugins>
         
     </build>
+    
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+    
+    
     <dependencies>
         
+        
+        
         <dependency>
-            <groupId>org.apache.sshd</groupId>
-            <artifactId>sshd-core</artifactId>
-            <version>2.7.0</version>
+            <groupId>nostr-java</groupId>
+            <artifactId>nostr-java-api</artifactId>
+            <version>${nostr-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nostr-java</groupId>
+            <artifactId>nostr-java-event</artifactId>
+            <version>${nostr-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nostr-java</groupId>
+            <artifactId>nostr-java-id</artifactId>
+            <version>${nostr-java.version}</version>
         </dependency>
         
         <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>core</artifactId>
-            <version>3.4.1</version>
-        </dependency>
-        
-        
-            <!-- Core Undertow dependency -->
-    <dependency>
-        <groupId>io.undertow</groupId>
-        <artifactId>undertow-core</artifactId>
-        <version>2.3.7.Final</version>
-    </dependency>
-
-    <!-- Undertow WebSocket dependency -->
-    <dependency>
-        <groupId>io.undertow</groupId>
-        <artifactId>undertow-websockets-jsr</artifactId>
-        <version>2.3.7.Final</version>
-    </dependency>
-
-    <!-- Optionally, you can include this if you want servlet support -->
-    <dependency>
-        <groupId>io.undertow</groupId>
-        <artifactId>undertow-servlet</artifactId>
-        <version>2.3.7.Final</version>
-    </dependency>
-
-    <!-- Logging dependencies, as Undertow uses JBoss logging -->
-    <dependency>
-        <groupId>org.jboss.logging</groupId>
-        <artifactId>jboss-logging</artifactId>
-        <version>3.4.3.Final</version>
-    </dependency>
-        
-        
-        
-        
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-server</artifactId>
-            <version>11.0.23</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-servlet</artifactId>
-            <version>11.0.23</version>
-        </dependency>
-       
-       
-        <dependency>
-            <groupId>org.eclipse.jetty.websocket</groupId>
-            <artifactId>websocket-servlet</artifactId>
-            <version>11.0.23</version>
-        </dependency>
-        
-        
-        <dependency>
-            <groupId>org.eclipse.jetty.websocket</groupId>
-            <artifactId>websocket-jetty-server</artifactId>
-            <version>11.0.23</version>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.97.Final</version>
         </dependency>
         
         <dependency>
-            <groupId>org.eclipse.jetty.websocket</groupId>
-            <artifactId>websocket-jetty-server</artifactId>
-            <version>11.0.23</version>
-        </dependency>
-        
-        
-        
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
-            <scope>provided</scope>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
+            <version>1.7.32</version> <!-- Use the latest version -->
         </dependency>
         
         
@@ -210,6 +165,17 @@
             <artifactId>flexmark-all</artifactId>
             <version>0.64.0</version>
             <classifier>lib</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sshd</groupId>
+            <artifactId>sshd-core</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>3.4.1</version>
         </dependency>
     </dependencies>
 </project>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>nostrium.online</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm/css/xterm.css">
+        <style>
+            body, html {
+                height: 100%;
+                margin: 0;
+                background-color: black;
+            }
+            #terminal-container {
+                height: 100%;
+                width: 100%;
+                background-color: black;
+            }
+            .xterm {
+                font-family: monospace;
+                font-size: 18px;
+                color: green;
+                padding-top: 5px;
+                padding-left: 5px; /* Add left padding to create a margin */
+            }
+        </style>
+    </head>
+    <body>
+        <div id="terminal-container"></div>
+        <script src="https://cdn.jsdelivr.net/npm/xterm/lib/xterm.js"></script>
+        <script>
+            const terminal = new Terminal({
+                theme: {
+                    background: '#000000',  // Black background
+                    foreground: '#00FF00'   // Green text
+                },
+                fontSize: 16,  // Font size 16px
+                cursorBlink: true  // Enable cursor blinking
+            });
+            terminal.open(document.getElementById('terminal-container'));
+            
+            // Automatically focus the terminal to ensure cursor blinks
+            terminal.focus();
+
+            // Create WebSocket URL based on the current location
+            const loc = window.location;
+            const wsProtocol = loc.protocol === 'https:' ? 'wss:' : 'ws:';
+            const socketUrl = `${wsProtocol}//${loc.host}/ws`;
+
+            //terminal.write("Welcome to nostrium");
+            
+            const socket = new WebSocket(socketUrl);
+
+            // Send "showLogo" command when the WebSocket connection is opened
+            socket.addEventListener('open', function () {
+                socket.send('>showLogo\r');
+            });
+
+            socket.addEventListener('message', function (event) {
+                terminal.write(event.data);
+            });
+
+            let currentInput = '';
+
+            terminal.onData(data => {
+                if (data === '\u007F') { // Handle backspace (ASCII 127)
+                    if (currentInput.length > 0) {
+                        terminal.write('\b \b'); // Move cursor back, overwrite with space, move back again
+                        currentInput = currentInput.slice(0, -1); // Remove last character from currentInput
+                    }
+                } else {
+                    currentInput += data;
+                    socket.send(data);
+                }
+            });
+        </script>
+    </body>
+</html>

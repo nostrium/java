@@ -88,6 +88,7 @@ public class AppDataTest {
         assertEquals(2, data.size());
         
         // now add a more complex object
+        @SuppressWarnings("unchecked")
         ArrayList<String> list = new ArrayList();
         list.add("1");
         list.add("2");
@@ -96,6 +97,7 @@ public class AppDataTest {
         
         assertTrue(appData.has("list"));
         
+        @SuppressWarnings("unchecked")
         ArrayList<String> test2 = (ArrayList<String>) appData.get("list");
         assertEquals(2, test2.size());
         
@@ -105,11 +107,13 @@ public class AppDataTest {
         // load as a new appData
         appData = new AppData(app1);
         
+        @SuppressWarnings("unchecked")
         ArrayList<String> test3 = (ArrayList<String>) appData.get("list");
         assertEquals(2, test3.size());
         
         
         // move to place an ArrayList with objects
+        @SuppressWarnings("unchecked")
         ArrayList<UserRecordGuess> listScore1 = new ArrayList();
         UserRecordGuess score1 = new UserRecordGuess(1, "x", 1, 1);
         UserRecordGuess score2 = new UserRecordGuess(2, "y", 2, 2);
@@ -121,6 +125,7 @@ public class AppDataTest {
         
         // load as a new appData
         appData = new AppData(app1);
+        @SuppressWarnings("unchecked")
         ArrayList<UserRecordGuess> listScore2 = (ArrayList<UserRecordGuess>) appData.get("score");
         assertEquals(2, listScore2.size());
         

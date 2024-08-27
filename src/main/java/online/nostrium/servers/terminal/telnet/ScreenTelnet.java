@@ -4,7 +4,7 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-package online.nostrium.servers.terminal.screens;
+package online.nostrium.servers.terminal.telnet;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,6 +19,7 @@ import static online.nostrium.servers.terminal.TerminalColor.GREEN;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN_BRIGHT;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.TerminalUtils;
+import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.utils.AsciiArt;
 
 /**

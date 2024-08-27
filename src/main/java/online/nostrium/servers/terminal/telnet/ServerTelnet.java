@@ -22,15 +22,15 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.screens.Screen;
-import online.nostrium.servers.terminal.screens.ScreenTelnet;
 import online.nostrium.apps.user.User;
 import online.nostrium.apps.user.UserUtils;
+import online.nostrium.servers.Server;
 
 /**
  *
  * To test the telnet server do this from the command line:
  *
- * telnet 127.0.0.1 23232
+ * telnet 127.0.0.1 23000
  *
  *
  * @author Brito
@@ -38,23 +38,34 @@ import online.nostrium.apps.user.UserUtils;
  * @location: Germany
  */
 @SuppressWarnings("StaticNonFinalUsedInInitialization")
-public class ServerTelnet {
+public class ServerTelnet extends Server{
 
-    public static void startServerTelnet() {
-        @SuppressWarnings("UnusedAssignment")
-        int PORT = core.config.debug ? core.config.portTelnet_Debug : core.config.portTelnet;
-
+    
+    @Override
+    protected void boot() {
+        int PORT = getPort();
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
-            System.out.println("Telnet server started on port " + PORT);
-
-            while (true) {
+            isRunning = true;
+            
+            while (keepRunning) {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("Client connected: " + clientSocket.getInetAddress());
                 new Thread(new ClientHandler(clientSocket)).start();
             }
+            
         } catch (IOException e) {
-            System.out.println("Failed to start. Another service is already using port " + PORT);
+            System.out.println(getId() + " failed to start. Another service is already using port " + PORT);
         }
+    }
+
+    @Override
+    public int getPort() {
+        return core.config.debug ? core.config.portTelnet_Debug : core.config.portTelnet;
+    }
+
+    @Override
+    public String getId() {
+        return "Server_Telnet";
     }
 
     private static class ClientHandler implements Runnable {
