@@ -34,7 +34,7 @@ public class TerminalGuessNumber extends TerminalApp {
     int chosenNumber = MathFunctions.getRandomIntInRange(min, max);
     long timeStart = 0;
     int maxScoreRecords = 10;
-    boolean debug = true;
+    boolean debug = false;
 
     public TerminalGuessNumber(Screen screen, User user) {
         super(screen, user);
@@ -50,7 +50,7 @@ public class TerminalGuessNumber extends TerminalApp {
 
     public void reset() {
         tryCounter = 0;
-        chosenNumber = MathFunctions.getRandomIntInRange(min+1, max-1);
+        chosenNumber = MathFunctions.getRandomIntInRange(min+2, max-2);
         timeStart = System.currentTimeMillis();
     }
 
@@ -127,13 +127,16 @@ public class TerminalGuessNumber extends TerminalApp {
         String text = "Guess the number";
         String intro = screen.getWindowFrame(GREEN, text);
         intro += "\n"
+                + "\n"
                 + "You have 6 attempts to guess a number between 1 and 100"
                 + "\n"
                 + "On each attempt I'll say if the number is higher or lower"
                 + "\n"
                 + "Press (r) to reset at any time, or type the numbers to be guessed."
                 + "\n"
-                + "Write a number bellow and press ENTER to get started.";
+                + "Write a number bellow and press ENTER to get started."
+                + "\n"
+                ;
 
         return intro;
     }

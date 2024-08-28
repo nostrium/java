@@ -1,5 +1,5 @@
 /*
- * Runs a telnet server
+ * Launch the servers
  *
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
@@ -10,19 +10,13 @@ import java.io.File;
 import java.util.Date;
 import online.nostrium.notifications.Sessions;
 import online.nostrium.servers.Server;
-import online.nostrium.servers.terminal.telnet.ServerTelnet;
+import online.nostrium.servers.telnet.ServerTelnet;
 import online.nostrium.servers.web.ServerWeb;
 import online.nostrium.utils.AsciiArt;
 import online.nostrium.utils.Log;
 import online.nostrium.utils.time;
 
 /**
- *
- * To test the telnet server do this from the command line:
- *
- * telnet 127.0.0.1 10101
- *
- *
  * @author Brito
  * @date: 2024-08-06
  * @location: Germany

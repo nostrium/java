@@ -42,10 +42,10 @@ import static online.nostrium.servers.terminal.TerminalColor.YELLOW_ON_GREEN;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.TerminalUtils;
 import online.nostrium.servers.terminal.screens.Screen;
-import static online.nostrium.servers.terminal.telnet.ScreenTelnet.ANSI_CLEAR_SCREEN;
-import static online.nostrium.servers.terminal.telnet.ScreenTelnet.ANSI_HOME;
-import static online.nostrium.servers.terminal.telnet.ScreenTelnet.ANSI_RESET;
-import static online.nostrium.servers.terminal.telnet.ScreenTelnet.ANSI_WHITE;
+import static online.nostrium.servers.telnet.ScreenTelnet.ANSI_CLEAR_SCREEN;
+import static online.nostrium.servers.telnet.ScreenTelnet.ANSI_HOME;
+import static online.nostrium.servers.telnet.ScreenTelnet.ANSI_RESET;
+import static online.nostrium.servers.telnet.ScreenTelnet.ANSI_WHITE;
 import online.nostrium.utils.AsciiArt;
 
 /**
@@ -88,10 +88,15 @@ public class ScreenWeb extends Screen{
         text = text.replace("\r\n", "\n");
         text = text.replace("\n", "\r\n");
         
-        ctx.channel().writeAndFlush(new TextWebSocketFrame("\r\n" + text + "\r\n"));
+        ctx.channel().writeAndFlush(new TextWebSocketFrame(""
+                //+ "\r\n" 
+                + text 
+                + "\r\n"
+        ));
     }
 
     @Override
+    @SuppressWarnings("SleepWhileInLoop")
     public void writeLikeHuman(String text, int speed) {
         Random random = new Random();
         int length = text.length();
@@ -267,7 +272,8 @@ public class ScreenWeb extends Screen{
                 + ":"
                 + path
                 + "> ";
-        write("\n" + userPrompt);
+        write(//"\n" + 
+                userPrompt);
     }
 
 }

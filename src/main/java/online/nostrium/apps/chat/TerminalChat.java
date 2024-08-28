@@ -17,6 +17,7 @@ import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.apps.user.User;
 import online.nostrium.apps.user.UserUtils;
+import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.TerminalUtils;
 import online.nostrium.utils.TextFunctions;
 
@@ -73,6 +74,9 @@ public class TerminalChat extends TerminalApp {
     @Override
     public CommandResponse defaultCommand(String commandInput) {
         
+        // delete the current line before writing new stuff
+        screen.deleteCurrentLine();
+        
         // write the chat message on the room
         CommandResponse reply = roomNow.sendChatText(user, commandInput);
         // when something went wrong, stop it here
@@ -86,9 +90,6 @@ public class TerminalChat extends TerminalApp {
                 user.getDisplayName(), 
                 reply.getText()
         );
-        
-        // delete the current line
-        screen.deletePreviousLine();
         
         // write the new line
         screen.writeln(line);

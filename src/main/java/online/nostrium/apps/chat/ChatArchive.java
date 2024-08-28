@@ -81,7 +81,7 @@ public class ChatArchive {
             String data = jsonExport();
             if (data != null) {
                 FileUtils.writeStringToFile(file, data);
-                Logger.getLogger(ChatArchive.class.getName()).log(Level.INFO, "Saved config file: {0}", file.getPath());
+                Logger.getLogger(ChatArchive.class.getName()).log(Level.INFO, "Saved file: {0}", file.getPath());
             } else {
                 Logger.getLogger(ChatArchive.class.getName()).log(Level.SEVERE, "Failed to export JSON");
             }

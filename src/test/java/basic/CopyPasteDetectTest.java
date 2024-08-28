@@ -6,7 +6,7 @@
  */
 package basic;
 
-import online.nostrium.servers.terminal.telnet.TelnetDetectCopyAndPaste;
+import online.nostrium.servers.telnet.TelnetDetectCopyAndPaste;
 import org.junit.jupiter.api.Test;
 
 /**

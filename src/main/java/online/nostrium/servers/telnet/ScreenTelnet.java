@@ -4,7 +4,7 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-package online.nostrium.servers.terminal.telnet;
+package online.nostrium.servers.telnet;
 
 import java.io.IOException;
 import java.io.InputStream;

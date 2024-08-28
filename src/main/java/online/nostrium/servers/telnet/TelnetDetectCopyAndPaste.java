@@ -4,7 +4,7 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-package online.nostrium.servers.terminal.telnet;
+package online.nostrium.servers.telnet;
 
 public class TelnetDetectCopyAndPaste {
 

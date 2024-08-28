@@ -27,7 +27,6 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.screens.Screen;
-import online.nostrium.utils.AsciiArt;
 
 public class ServerWeb extends Server {
 
@@ -78,8 +77,6 @@ public class ServerWeb extends Server {
             try {
                 Channel ch = b.bind(PORT).sync().channel();
                 isRunning = true;
-                //String text = "Web server started on port " + PORT;
-                //System.out.println(text);
                 ch.closeFuture().sync();
 
             } catch (Exception ex) {
@@ -177,7 +174,7 @@ public class ServerWeb extends Server {
                 ctx.write(response);
 
                 // Write the content.
-                ChannelFuture sendFileFuture = ctx.write(new ChunkedFile(raf, 0, fileLength, 8192), ctx.newProgressivePromise());
+                ctx.write(new ChunkedFile(raf, 0, fileLength, 8192), ctx.newProgressivePromise());
 
                 // Write the end marker.
                 ChannelFuture lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT);
@@ -252,39 +249,11 @@ public class ServerWeb extends Server {
                 }
 
                 /////////// start the command processing /////////////
-                
                 processCommand(ctx, textCurrent);
-                
-                /////////// close the command processing /////////////
 
+                /////////// close the command processing /////////////
                 // remove the context from the cache
                 buffers.remove(ctx);
-
-                if (textCurrent.startsWith(">")) {
-                    textCurrent = textCurrent.substring(1);
-                }
-
-//                String output = "Running: " + textCurrent;
-//                switch (textCurrent) {
-//                    case ("showLogo"):
-//                        output
-//                                = //"\r\n" 
-//                                AsciiArt.intro().replace("\n", "\r\n")
-//                                + "\r\n"
-//                                + "\r\n"
-//                                + "The NOSTR BBS. Type '/help' to list the commands.";
-//                }
-//
-//                // Send a message to the browser indicating the command is being executed
-//                ctx.channel().writeAndFlush(
-//                        new TextWebSocketFrame("\r\n"
-//                                + output
-//                                + "\r\n"
-//                        )
-//                );
-//
-//                // write the start prompt
-//                ctxSession.screen.writeUserPrompt(ctxSession.app);
 
             } else {
                 throw new UnsupportedOperationException("Unsupported frame type: " + frame.getClass().getName());
@@ -303,92 +272,92 @@ public class ServerWeb extends Server {
             ctx.close();
         }
 
+        /**
+         * Handle the commands provided by the user
+         *
+         * @param ctx
+         * @param textCurrent
+         */
         private void processCommand(ChannelHandlerContext ctx, String textCurrent) {
-             // get the context
-                ContextSession ctxSession = ctxSessions.get(ctx);
+            // get the context
+            ContextSession ctxSession = ctxSessions.get(ctx);
 
-                // came null, create one
-                if (ctxSession == null) {
-                    // get the unique Id
-                    String uniqueId = getId(ctx);
-                    // create the screen
-                    Screen screen = new ScreenWeb(ctx);
-                    // start with the basic app
-                    User user = UserUtils.createUserAnonymous();
-                    TerminalApp app = new TerminalBasic(screen, user);
-                    ctxSession
-                            = new ContextSession(screen, user, app, uniqueId);
-                    ctxSessions.put(ctx, ctxSession);
+            // session is null, create one
+            if (ctxSession == null) {
+                // get the unique Id
+                String uniqueId = getId(ctx);
+                // create the screen
+                Screen screen = new ScreenWeb(ctx);
+                // start with the basic app
+                User user = UserUtils.createUserAnonymous();
+                TerminalApp app = new TerminalBasic(screen, user);
+                ctxSession
+                        = new ContextSession(screen, user, app, uniqueId);
+                ctxSessions.put(ctx, ctxSession);
+            }
+            
+            // ping that this account is still alive
+            ctxSession.ping();
+
+            // Handle the command request
+            CommandResponse response
+                    = ctxSession.app.handleCommand(
+                            TerminalType.ANSI, textCurrent);
+
+            // Ignore null responses
+            if (response == null) {
+                // Output the next prompt
+                //ctxSession.screen.writeln("");
+                ctxSession.screen.writeUserPrompt(ctxSession.app);
+                return;
+            }
+
+            if (textCurrent.startsWith(">")) {
+                textCurrent = textCurrent.substring(1);
+                switch (textCurrent) {
+                    case ("showLogo"):
+                        ctxSession.screen.writeln(ctxSession.app.getIntro());
+                        ctxSession.screen.writeUserPrompt(ctxSession.app);
                 }
-
-                // ping that this account is still alive
-                ctxSession.ping();
-
-                // Handle the command request
-                CommandResponse response
-                        = ctxSession.app.handleCommand(TerminalType.ANSI, textCurrent);
-
-                // Ignore null responses
-                if (response == null) {
-                    // Output the next prompt
-                    ctxSession.screen.writeUserPrompt(ctxSession.app);
-                    return;
-                }
-                
-                
-                if (textCurrent.startsWith(">")) {
-                    textCurrent = textCurrent.substring(1);
-                    String output = null;
-                    switch (textCurrent) {
-                        case ("showLogo"):
-                            ctxSession.screen.writeln(ctxSession.app.getIntro());
-                            ctxSession.screen.writeUserPrompt(ctxSession.app);
-                    }
-                    return;
-                }
-
-                
+                return;
+            }
 
 //                // Is it time to leave?
 //                if (response.getCode() == TerminalCode.EXIT_CLIENT) {
 //                    out.println(response.getText());
 //                    break;
 //                }
-
-
 //                    // Forced session break
 //                    if (session.isTimeToStop()) {
 //                        break;
 //                    }
+            // Is it time to go down one app?
+            if (response.getCode() == TerminalCode.EXIT_APP
+                    && ctxSession.app.appParent != null) {
+                ctxSession.screen.writeln("");
+                ctxSession.app = ctxSession.app.appParent;
+            }
 
-                    // Is it time to go down one app?
-                    if (response.getCode() == TerminalCode.EXIT_APP 
-                            && ctxSession.app.appParent != null) {
-                        ctxSession.app = ctxSession.app.appParent;
-                    }
+            // Is it time to change apps?
+            if (response.getCode() == TerminalCode.CHANGE_APP) {
+                ctxSession.app = response.getApp();
+                ctxSession.session.setApp(ctxSession.app);
+                ctxSession.screen.writeln("");
+                if (ctxSession.app.appParent != null) {
+                    ctxSession.screen.writeln(
+                            ctxSession.app.getIntro()
+                    );
+                }
+            }
 
-                    // Is it time to change apps?
-                    if (response.getCode() == TerminalCode.CHANGE_APP) {
-                        ctxSession.app = response.getApp();
-                        ctxSession.session.setApp(ctxSession.app);
-                        if (ctxSession.app.appParent != null) {
-                            ctxSession.screen.writeln(
-                                    ctxSession.app.getIntro()
-                            );
-                        }
-                    }
+            // Output the reply
+            if (response.getText().length() > 0) {
+                // Output the message
+                ctxSession.screen.writeln("\n"+ response.getText());
+            }
 
-                    // Output the reply
-                    if (response.getText().length() > 0) {
-                        // Output the message
-                        ctxSession.screen.writeln(response.getText());
-                    }
-
-                    // Output the next prompt
-                    ctxSession.screen.writeUserPrompt(ctxSession.app);
-
-
-
+            // Output the next prompt
+            ctxSession.screen.writeUserPrompt(ctxSession.app);
 
 //                // Print the command to the server console
 //                System.out.println(
