@@ -16,6 +16,7 @@ import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.apps.user.User;
 import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.servers.terminal.TerminalUtils;
+import online.nostrium.utils.Log;
 import online.nostrium.utils.MathFunctions;
 import online.nostrium.utils.TextFunctions;
 
@@ -107,7 +108,11 @@ public class TerminalGuessNumber extends TerminalApp {
 
         // great success!
         if (number == chosenNumber) {
-            addRecordIfApplicable();
+            try{
+                addRecordIfApplicable();
+            }catch (Exception e){
+                Log.write("Exception", e.getMessage());
+            }
             reset();
             return reply(TerminalCode.OK,
                     screen.paint(TerminalColor.GREEN_BRIGHT, "Congratulations!")

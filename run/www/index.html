@@ -9,19 +9,19 @@
             body, html {
                 height: 100%;
                 margin: 0;
+                padding: 0;
+                overflow: hidden;
                 background-color: black;
             }
             #terminal-container {
-                height: 100%;
-                width: 100%;
+                height: 100vh;
+                width: 100vw;
                 background-color: black;
             }
             .xterm {
                 font-family: monospace;
                 font-size: 18px;
                 color: green;
-                padding-top: 5px;
-                padding-left: 5px; /* Add left padding to create a margin */
             }
         </style>
     </head>
@@ -29,49 +29,59 @@
         <div id="terminal-container"></div>
         <script src="https://cdn.jsdelivr.net/npm/xterm/lib/xterm.js"></script>
         <script>
+            const FONT_SIZE = 16;
+            const CHAR_WIDTH = 9;
+            const CHAR_HEIGHT = 18;
+
+            function calculateTerminalSize() {
+                const cols = Math.floor(window.innerWidth / CHAR_WIDTH);
+                const rows = Math.floor(window.innerHeight / CHAR_HEIGHT);
+                return { cols, rows };
+            }
+
+            const { cols, rows } = calculateTerminalSize();
             const terminal = new Terminal({
                 theme: {
-                    background: '#000000',  // Black background
-                    foreground: '#00FF00'   // Green text
+                    background: '#000000',
+                    foreground: '#00FF00'
                 },
-                fontSize: 16,  // Font size 16px
-                cursorBlink: true  // Enable cursor blinking
+                fontSize: FONT_SIZE,
+                cursorBlink: true,
+                cols: cols,
+                rows: rows
             });
-            terminal.open(document.getElementById('terminal-container'));
             
-            // Automatically focus the terminal to ensure cursor blinks
+            terminal.open(document.getElementById('terminal-container'));
             terminal.focus();
-
-            // Create WebSocket URL based on the current location
+            
             const loc = window.location;
             const wsProtocol = loc.protocol === 'https:' ? 'wss:' : 'ws:';
             const socketUrl = `${wsProtocol}//${loc.host}/ws`;
-
-            //terminal.write("Welcome to nostrium");
             
             const socket = new WebSocket(socketUrl);
-
-            // Send "showLogo" command when the WebSocket connection is opened
             socket.addEventListener('open', function () {
                 socket.send('>showLogo\r');
             });
-
             socket.addEventListener('message', function (event) {
                 terminal.write(event.data);
             });
-
+            
             let currentInput = '';
-
             terminal.onData(data => {
-                if (data === '\u007F') { // Handle backspace (ASCII 127)
+                if (data === '\u007F') {
                     if (currentInput.length > 0) {
-                        terminal.write('\b \b'); // Move cursor back, overwrite with space, move back again
-                        currentInput = currentInput.slice(0, -1); // Remove last character from currentInput
+                        terminal.write('\b \b');
+                        currentInput = currentInput.slice(0, -1);
                     }
                 } else {
                     currentInput += data;
                     socket.send(data);
                 }
+            });
+            
+            window.addEventListener('resize', function() {
+                const { cols, rows } = calculateTerminalSize();
+                terminal.resize(cols, rows);
             });
         </script>
     </body>

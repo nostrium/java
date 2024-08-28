@@ -85,6 +85,8 @@ public class ServerTelnet extends Server{
                 InputStream in = clientSocket.getInputStream();
                 PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true)) {
 
+                
+                
                 // the handler of text on the screen
                 Screen screen = new ScreenTelnet(in, out);
 
@@ -100,6 +102,8 @@ public class ServerTelnet extends Server{
 
                 // write the start prompt
                 screen.writeUserPrompt(app);
+                
+                
 
                 int inputChar;
                 StringBuilder inputBuffer = new StringBuilder();

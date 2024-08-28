@@ -1,0 +1,4 @@
+${licenseFirst!""}
+${licensePrefix}Copyright (c) Nostrium contributors
+${licensePrefix}License: Apache-2.0
+${licenseLast!""}

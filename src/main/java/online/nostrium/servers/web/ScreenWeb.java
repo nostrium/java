@@ -1,69 +1,64 @@
 /*
- * Internal utilities for the text terminals
- *
+ *  Define a screen for the web CLI
+ *   
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-package online.nostrium.servers.terminal.telnet;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
+package online.nostrium.servers.web;
+
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalColor;
+import static online.nostrium.servers.terminal.TerminalColor.BLACK;
+import static online.nostrium.servers.terminal.TerminalColor.BLACK_ON_WHITE;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
+import static online.nostrium.servers.terminal.TerminalColor.BLUE_ON_RED;
+import static online.nostrium.servers.terminal.TerminalColor.BROWN;
+import static online.nostrium.servers.terminal.TerminalColor.BROWN_ON_BLACK;
+import static online.nostrium.servers.terminal.TerminalColor.CYAN;
+import static online.nostrium.servers.terminal.TerminalColor.CYAN_ON_MAGENTA;
+import static online.nostrium.servers.terminal.TerminalColor.DESERT_SAND;
+import static online.nostrium.servers.terminal.TerminalColor.DESERT_SAND_ON_ORANGE;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN_BRIGHT;
+import static online.nostrium.servers.terminal.TerminalColor.GREEN_BRIGHT_ON_PURPLE;
+import static online.nostrium.servers.terminal.TerminalColor.GREEN_ON_YELLOW;
+import static online.nostrium.servers.terminal.TerminalColor.ORANGE;
+import static online.nostrium.servers.terminal.TerminalColor.ORANGE_ON_DESERT_SAND;
+import static online.nostrium.servers.terminal.TerminalColor.PURPLE;
+import static online.nostrium.servers.terminal.TerminalColor.PURPLE_ON_WHITE;
+import static online.nostrium.servers.terminal.TerminalColor.RED;
+import static online.nostrium.servers.terminal.TerminalColor.RED_ON_BLUE;
+import static online.nostrium.servers.terminal.TerminalColor.WHITE;
+import static online.nostrium.servers.terminal.TerminalColor.WHITE_ON_BLUE;
+import static online.nostrium.servers.terminal.TerminalColor.WHITE_ON_GREY;
+import static online.nostrium.servers.terminal.TerminalColor.WHITE_ON_RED;
+import static online.nostrium.servers.terminal.TerminalColor.WHITE_ON_YELLOW;
+import static online.nostrium.servers.terminal.TerminalColor.YELLOW;
+import static online.nostrium.servers.terminal.TerminalColor.YELLOW_ON_GREEN;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.TerminalUtils;
 import online.nostrium.servers.terminal.screens.Screen;
+import static online.nostrium.servers.terminal.telnet.ScreenTelnet.ANSI_CLEAR_SCREEN;
+import static online.nostrium.servers.terminal.telnet.ScreenTelnet.ANSI_HOME;
+import static online.nostrium.servers.terminal.telnet.ScreenTelnet.ANSI_RESET;
+import static online.nostrium.servers.terminal.telnet.ScreenTelnet.ANSI_WHITE;
 import online.nostrium.utils.AsciiArt;
 
 /**
- * Author: Brito
- * Date: 2024-08-10
- * Location: Germany
+ * @author Brito
+ * @date: 2024-08-27
+ * @location: Germany
  */
-public class ScreenTelnet extends Screen {
-
-    final InputStream in; // Changed from BufferedReader to InputStream
-    final PrintWriter out;
-
-    // ANSI escape code to clear the screen
-    public static final String 
-            ANSI_CLEAR_SCREEN = "\u001B[2J",    
-            ANSI_HOME = "\u001B[H";
+public class ScreenWeb extends Screen{
     
-    // ANSI escape codes for clearing the line and moving the cursor
-    public static final String
-            ANSI_CLEAR_LINE = "\\u0007",
-            ANSI_CURSOR_TO_LINE_START = "\u001B[G";
-   
-    // ANSI code for sound
-    public static final String
-            ANSI_BELL = "\u001B[2K";
-   
-    // ANSI escape codes for colors
-    public static final String
-            ANSI_RESET = "\u001B[0m",
-            ANSI_RED = "\u001B[31m",
-            ANSI_GREEN = "\u001B[32m",
-            ANSI_GREEN_BRIGHT = "\u001B[92m",
-            ANSI_YELLOW = "\u001B[33m",
-            ANSI_BLUE = "\u001B[34m",
-            ANSI_PURPLE = "\u001B[35m",
-            ANSI_CYAN = "\u001B[36m",
-            ANSI_WHITE = "\u001B[37m",
-            ANSI_ORANGE = "\u001B[38;5;208m",
-            ANSI_BROWN = "\u001B[38;5;94m",
-            ANSI_DESERT_SAND = "\u001B[38;5;229m";
+    final ChannelHandlerContext ctx;
 
-    public ScreenTelnet(InputStream in, PrintWriter out) { // Modified constructor to accept InputStream instead of BufferedReader
-        this.in = in;
-        this.out = out;
+    public ScreenWeb(ChannelHandlerContext ctx) {
+        this.ctx = ctx;
     }
 
     @Override
@@ -72,17 +67,31 @@ public class ScreenTelnet extends Screen {
     }
 
     @Override
+    public void writeIntro() {
+        writeln(paint(GREEN, AsciiArt.intro()));
+        writeln("");
+        writeln("");
+        writeln(paint(BLUE, "The NOSTR BBS. Type '/help' to list the commands."));
+        writeln("");
+    }
+
+    @Override
     public void write(String text) {
-        out.print(text);
+        ctx.channel().writeAndFlush(new TextWebSocketFrame(text));
     }
 
     @Override
     public void writeln(String text) {
-        out.println(text);
+        // web terminal needs to always have \r\n
+        // so we first remove all cases that might exist
+        // and them make them all equal
+        text = text.replace("\r\n", "\n");
+        text = text.replace("\n", "\r\n");
+        
+        ctx.channel().writeAndFlush(new TextWebSocketFrame("\r\n" + text + "\r\n"));
     }
 
     @Override
-    @SuppressWarnings("SleepWhileInLoop")
     public void writeLikeHuman(String text, int speed) {
         Random random = new Random();
         int length = text.length();
@@ -100,9 +109,8 @@ public class ScreenTelnet extends Screen {
         }
 
         for (char c : text.toCharArray()) {
-            out.write(c);
-            out.flush();
-
+            write(String.valueOf(c));
+            
             try {
                 // Base delay for each character
                 int delay = random.nextInt(100) + adjustedSpeed;
@@ -121,29 +129,12 @@ public class ScreenTelnet extends Screen {
         }
 
         // Add an end line
-        out.write("\n");
-        out.flush();
+        writeln("");
     }
 
     @Override
     public String readln() {
-        StringBuilder inputLine = new StringBuilder();
-        try {
-            int inputChar;
-            while ((inputChar = in.read()) != -1) {
-                char receivedChar = (char) inputChar;
-
-                // If newline or carriage return is detected, break the loop
-                if (receivedChar == '\n' || receivedChar == '\r') {
-                    break;
-                }
-
-                inputLine.append(receivedChar);
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(ScreenTelnet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return inputLine.toString();
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
@@ -213,16 +204,9 @@ public class ScreenTelnet extends Screen {
         return color + text + ANSI_RESET;
     }
 
-    /**
-     * Returns an ASCII art window frame around the given title.
-     *
-     * @param title The title to be framed.
-     * @param color
-     * @return The framed title as a string.
-     */
     @Override
     public String getWindowFrame(TerminalColor color, String title) {
-        int paddingHorizontal = 4;
+           int paddingHorizontal = 4;
         int titleLength = title.length();
         int totalWidth = titleLength + paddingHorizontal * 2; // No extra spaces for the borders
 
@@ -251,16 +235,28 @@ public class ScreenTelnet extends Screen {
 
     @Override
     public void clearScreen() {
-        out.write(ANSI_CLEAR_SCREEN + ANSI_HOME);
+        write(ANSI_CLEAR_SCREEN + ANSI_HOME);
     }
 
     @Override
-    public void writeIntro() {
-        writeln(paint(GREEN, AsciiArt.intro()));
-        writeln("");
-        writeln("");
-        writeln(paint(BLUE, "The NOSTR BBS. Type '/help' to list the commands."));
-        writeln("");
+    public void deleteCurrentLine() {
+        // ANSI escape code to clear the entire current line and move the cursor to the start of the line
+        String text = ""
+                + "\u001B[2K" // Clear the current line
+                + "\u001B[G"; // Move the cursor to the beginning of the line
+        write(text);
+    }
+
+    @Override
+    public void deletePreviousLine() {
+        String text = ""
+        // Move the cursor up one line
+        + "\u001B[F"
+        // Clear the entire current line
+        + "\u001B[2K"
+        // Move the cursor to the beginning of the line (optional, if you need to print something immediately after)
+        + "\u001B[G";
+        write(text);
     }
 
     @Override
@@ -271,32 +267,7 @@ public class ScreenTelnet extends Screen {
                 + ":"
                 + path
                 + "> ";
-        write(userPrompt);
-        out.flush();
+        write("\n" + userPrompt);
     }
 
-    /**
-     * Deletes the current line on the telnet screen.
-     */
-    @Override
-    public void deleteCurrentLine() {
-        // ANSI escape code to clear the entire current line and move the cursor to the start of the line
-        out.write("\u001B[2K");  // Clear the current line
-        out.write("\u001B[G");   // Move the cursor to the beginning of the line
-        out.flush();
-    }
-
-    /**
-     * Deletes the previous line on the telnet screen.
-     */
-    @Override
-    public void deletePreviousLine() {
-        // Move the cursor up one line
-        out.write("\u001B[F");
-        // Clear the entire current line
-        out.write("\u001B[2K");
-        // Move the cursor to the beginning of the line (optional, if you need to print something immediately after)
-        out.write("\u001B[G");
-        out.flush();
-    }
 }

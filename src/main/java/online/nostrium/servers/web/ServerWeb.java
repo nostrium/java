@@ -16,13 +16,21 @@ import java.io.File;
 import java.io.RandomAccessFile;
 import java.util.HashMap;
 import java.util.Map;
+import online.nostrium.apps.basic.TerminalBasic;
+import online.nostrium.apps.user.User;
+import online.nostrium.apps.user.UserUtils;
 import online.nostrium.main.Folder;
 import online.nostrium.main.core;
 import online.nostrium.servers.Server;
+import online.nostrium.servers.terminal.CommandResponse;
+import online.nostrium.servers.terminal.TerminalApp;
+import online.nostrium.servers.terminal.TerminalCode;
+import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.utils.AsciiArt;
 
 public class ServerWeb extends Server {
-    
+
     @Override
     public String getId() {
         return "Server_Web";
@@ -66,14 +74,14 @@ public class ServerWeb extends Server {
                     });
 
             int PORT = this.getPort();
-                
+
             try {
                 Channel ch = b.bind(PORT).sync().channel();
                 isRunning = true;
                 //String text = "Web server started on port " + PORT;
                 //System.out.println(text);
                 ch.closeFuture().sync();
-                
+
             } catch (Exception ex) {
                 System.out.println(getId() + " failed to open port " + PORT);
             }
@@ -207,6 +215,7 @@ public class ServerWeb extends Server {
 
         // Store a buffer for each connected channel to accumulate text until a full line is received
         private final Map<ChannelHandlerContext, StringBuilder> buffers = new HashMap<>();
+        private final Map<ChannelHandlerContext, ContextSession> ctxSessions = new HashMap<>();
 
         @Override
         @SuppressWarnings("null")
@@ -242,16 +251,11 @@ public class ServerWeb extends Server {
                     return;
                 }
 
-                String uniqueId = getId(ctx);
-
-                // Print the command to the server console
-                System.out.println(
-                        "["
-                        + uniqueId
-                        + "] "
-                        + "Running: "
-                        + textCurrent
-                );
+                /////////// start the command processing /////////////
+                
+                processCommand(ctx, textCurrent);
+                
+                /////////// close the command processing /////////////
 
                 // remove the context from the cache
                 buffers.remove(ctx);
@@ -260,24 +264,27 @@ public class ServerWeb extends Server {
                     textCurrent = textCurrent.substring(1);
                 }
 
-                String output = "Running: " + textCurrent;
-                switch (textCurrent) {
-                    case ("showLogo"):
-                        output
-                                = //"\r\n" 
-                                AsciiArt.intro().replace("\n", "\r\n")
-                                + "\r\n"
-                                + "\r\n"
-                                + "The NOSTR BBS. Type '/help' to list the commands.";
-                }
-
-                // Send a message to the browser indicating the command is being executed
-                ctx.channel().writeAndFlush(
-                        new TextWebSocketFrame("\r\n"
-                                + output
-                                + "\r\n"
-                        )
-                );
+//                String output = "Running: " + textCurrent;
+//                switch (textCurrent) {
+//                    case ("showLogo"):
+//                        output
+//                                = //"\r\n" 
+//                                AsciiArt.intro().replace("\n", "\r\n")
+//                                + "\r\n"
+//                                + "\r\n"
+//                                + "The NOSTR BBS. Type '/help' to list the commands.";
+//                }
+//
+//                // Send a message to the browser indicating the command is being executed
+//                ctx.channel().writeAndFlush(
+//                        new TextWebSocketFrame("\r\n"
+//                                + output
+//                                + "\r\n"
+//                        )
+//                );
+//
+//                // write the start prompt
+//                ctxSession.screen.writeUserPrompt(ctxSession.app);
 
             } else {
                 throw new UnsupportedOperationException("Unsupported frame type: " + frame.getClass().getName());
@@ -294,6 +301,103 @@ public class ServerWeb extends Server {
         public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
             cause.printStackTrace();
             ctx.close();
+        }
+
+        private void processCommand(ChannelHandlerContext ctx, String textCurrent) {
+             // get the context
+                ContextSession ctxSession = ctxSessions.get(ctx);
+
+                // came null, create one
+                if (ctxSession == null) {
+                    // get the unique Id
+                    String uniqueId = getId(ctx);
+                    // create the screen
+                    Screen screen = new ScreenWeb(ctx);
+                    // start with the basic app
+                    User user = UserUtils.createUserAnonymous();
+                    TerminalApp app = new TerminalBasic(screen, user);
+                    ctxSession
+                            = new ContextSession(screen, user, app, uniqueId);
+                    ctxSessions.put(ctx, ctxSession);
+                }
+
+                // ping that this account is still alive
+                ctxSession.ping();
+
+                // Handle the command request
+                CommandResponse response
+                        = ctxSession.app.handleCommand(TerminalType.ANSI, textCurrent);
+
+                // Ignore null responses
+                if (response == null) {
+                    // Output the next prompt
+                    ctxSession.screen.writeUserPrompt(ctxSession.app);
+                    return;
+                }
+                
+                
+                if (textCurrent.startsWith(">")) {
+                    textCurrent = textCurrent.substring(1);
+                    String output = null;
+                    switch (textCurrent) {
+                        case ("showLogo"):
+                            ctxSession.screen.writeln(ctxSession.app.getIntro());
+                            ctxSession.screen.writeUserPrompt(ctxSession.app);
+                    }
+                    return;
+                }
+
+                
+
+//                // Is it time to leave?
+//                if (response.getCode() == TerminalCode.EXIT_CLIENT) {
+//                    out.println(response.getText());
+//                    break;
+//                }
+
+
+//                    // Forced session break
+//                    if (session.isTimeToStop()) {
+//                        break;
+//                    }
+
+                    // Is it time to go down one app?
+                    if (response.getCode() == TerminalCode.EXIT_APP 
+                            && ctxSession.app.appParent != null) {
+                        ctxSession.app = ctxSession.app.appParent;
+                    }
+
+                    // Is it time to change apps?
+                    if (response.getCode() == TerminalCode.CHANGE_APP) {
+                        ctxSession.app = response.getApp();
+                        ctxSession.session.setApp(ctxSession.app);
+                        if (ctxSession.app.appParent != null) {
+                            ctxSession.screen.writeln(
+                                    ctxSession.app.getIntro()
+                            );
+                        }
+                    }
+
+                    // Output the reply
+                    if (response.getText().length() > 0) {
+                        // Output the message
+                        ctxSession.screen.writeln(response.getText());
+                    }
+
+                    // Output the next prompt
+                    ctxSession.screen.writeUserPrompt(ctxSession.app);
+
+
+
+
+//                // Print the command to the server console
+//                System.out.println(
+//                        "["
+//                        + ctxSession.uniqueId
+//                        + "] "
+//                        + "Running: "
+//                        + textCurrent
+//                );
         }
     }
 }
