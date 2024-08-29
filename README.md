@@ -98,7 +98,7 @@ Communication:
 
 Network basics:
 + [ ] WHOIS - 43
-+ [ ] Finger - 79
++ [x] Finger - 79
 + [ ] Echo Protocol - 7
 + [ ] Daytime Protocol - 13
 + [ ] Time Protocol - 37
