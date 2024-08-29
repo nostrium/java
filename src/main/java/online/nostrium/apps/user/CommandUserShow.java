@@ -6,7 +6,6 @@
  */
 package online.nostrium.apps.user;
 
-import online.nostrium.main.core;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;

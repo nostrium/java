@@ -39,16 +39,20 @@ public class Config {
             enableBotSimpleX = true,
             enableServerEmail = true,
             enableServerIRC = true,
-            enableServerFTP = true;
+            enableServerFTP = true,
+            enableServerFinger = true;
     
     @Expose
     public int 
             portTelnet = 23,
-            portTelnet_Debug = 23000,
+            portTelnet_Debug = 2300,
             portSSH = 22,
-            portSSH_Debug = 22000,
+            portSSH_Debug = 2200,
             portWeb = 80,
-            portWeb_Debug = 8080;
+            portWeb_Debug = 8080,
+
+            portFinger = 79,
+            portFinger_Debug = 7900;
     
     @Expose
     public TerminalColor colorAppsDefault = 

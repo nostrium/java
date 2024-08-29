@@ -45,27 +45,90 @@ For that reason, we are adding many different types of
 services.
 
 
-Planned CLI interfaces:
+User interfaces:
 
 + [ ] NOSTR clients (Primal, Coracle, ...)
-+ [ ] web (server)
-+ [ ] telnet (server)
++ [x] web (server)
++ [x] telnet (server)
 + [ ] SSH (server)
 + [ ] IRC (server/client)
 + [ ] telegram (bot)
 + [ ] simpleX (bot)
 
-
+Need other ones? Please open a ticket. 
 
 
 Feature roadmap
 -----------------
 + [x] basic functionality (navigation, users, chat)
-+ [ ] spam or manual approval to post on relay
-+ [x] access through telnet
-+ [ ] web crawl and convert older forums
++ [ ] spam control / approval of posts on relay
 + [ ] share nostr posts with other relays
-+ [ ] admin tools to map older users to new nostr accounts
++ [ ] automatic SSL registration on Let's Encrypt
+
+
+Servers
+-------
++ [ ] NOSTR relay
++ [x] HTTP - 80
++ [ ] HTTPS - 443
++ [ ] SSH (Secure Shell) - 22
++ [x] Telnet - 23
+
+File sharing:
++ [ ] FTP (File Transfer Protocol) - 21
++ [ ] FTPS (FTP Secure) - 990
++ [ ] SFTP (SSH File Transfer Protocol) - 22
++ [ ] TFTP (Trivial File Transfer Protocol) - 69
++ [ ] Torrent - 6881..6889
+
+Email service:
++ [ ] SMTP (Simple Mail Transfer Protocol) - 25
++ [ ] SMTPS (SMTP Secure) - 465
++ [ ] POP3 (Post Office Protocol v3) - 110
++ [ ] POP3S (POP3 Secure) - 995
++ [ ] IMAP (Internet Message Access Protocol) - 143
++ [ ] IMAPS (IMAP Secure) - 993
+
+Communication:
++ [ ] IRC (Internet Relay Chat) - 194
++ [ ] IRCS (IRC Secure) - 6697
++ [ ] NNTP (Network News Transfer Protocol) - 119
++ [ ] NNTPS (NNTP Secure) - 563
++ [ ] Gopher - 70
+
+Network basics:
++ [ ] WHOIS - 43
++ [ ] Finger - 79
++ [ ] Echo Protocol - 7
++ [ ] Daytime Protocol - 13
++ [ ] Time Protocol - 37
++ [ ] Quote of the Day (QOTD) - 17
+
+Domain/IP handling:
++ [ ] DNS (Domain Name System) - 53
++ [ ] DNS over TLS - 853
++ [ ] DNS over HTTPS - 443
++ [ ] NTP (Network Time Protocol) - 123
++ [ ] SNTP (Simple Network Time Protocol) - 123
++ [ ] DHCP (Dynamic Host Configuration Protocol) - 67/68
+
+Contacts
++ [ ] WebDAV (Web Distributed Authoring and Versioning) - 80/443
++ [ ] CalDAV (Calendaring Extensions to WebDAV) - 80/443
++ [ ] CardDAV (Address Book Extensions to WebDAV) - 80/443
+
+
+
+Forum conversion
+----------------
+Independent web forums are disappearing due to server costs
+and centralization of discussion groups. One of our goals is
+to provide an easy conversion of the existing forums to the
+nostr platform and provide a second life to them.
+
++ [ ] web crawl to convert web forums (PhpBB, MyBB)
++ [ ] tools to map older users to new nostr accounts
+
 
 
 Security considerations
