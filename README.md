@@ -34,23 +34,38 @@ methods for a BBS, while forum sites prefer web interfaces.
 Nostrium will provide basic access for these interfaces.
 
 CLI navigation uses linux-style cd/ls commands.
+Type /help to see the available commands.
+
+Swiss-knife for off-grid services
+--------------------------------
+
+Think of Nostrium as a tool to provide Internet services
+even when the Internet is not available or became limited.
+For that reason, we are adding many different types of
+services.
 
 
-Planned interfaces:
-+ NOSTR clients
-+ web
-+ telnet/SSH
-+ IRC/telegram/SimpleX
+Planned CLI interfaces:
+
++ [ ] NOSTR clients (Primal, Coracle, ...)
++ [ ] web (server)
++ [ ] telnet (server)
++ [ ] SSH (server)
++ [ ] IRC (server/client)
++ [ ] telegram (bot)
++ [ ] simpleX (bot)
 
 
-To be implemented
+
+
+Feature roadmap
 -----------------
-[] basic functionality
-[] spam or manual approval to post on relay
-[x] access through telnet
-[] web crawl and convert older forums
-[] share nostr posts with other relays
-[] admin tools to map older users to new nostr accounts
++ [x] basic functionality (navigation, users, chat)
++ [ ] spam or manual approval to post on relay
++ [x] access through telnet
++ [ ] web crawl and convert older forums
++ [ ] share nostr posts with other relays
++ [ ] admin tools to map older users to new nostr accounts
 
 
 Security considerations
