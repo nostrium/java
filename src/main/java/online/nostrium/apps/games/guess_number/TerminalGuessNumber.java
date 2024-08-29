@@ -7,7 +7,7 @@
 package online.nostrium.apps.games.guess_number;
 
 import java.util.ArrayList;
-import online.nostrium.notifications.NotificationType;
+import online.nostrium.servers.terminal.notifications.NotificationType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
@@ -48,10 +48,13 @@ public class TerminalGuessNumber extends TerminalApp {
                 + max;
     }
 
-    public void reset() {
+    public void reset(boolean clearScreen) {
         tryCounter = 0;
         chosenNumber = MathFunctions.getRandomIntInRange(min+2, max-2);
         timeStart = System.currentTimeMillis();
+        if(clearScreen){
+            screen.clearScreen();
+        }
     }
 
     @Override
@@ -59,9 +62,9 @@ public class TerminalGuessNumber extends TerminalApp {
 
         // check if we are over the max
         if (tryCounter == tryMax) {
-            reset();
+            reset(false);
             return reply(TerminalCode.OK, "Sorry, failed to guess the number!"
-                    + "\n"
+                    + screen.breakLine()
                     + "The number was: " + chosenNumber
                     + "\n"
                     + "Please try with a new number, guess again:");
@@ -69,7 +72,7 @@ public class TerminalGuessNumber extends TerminalApp {
 
         // reset the game when requested
         if (commandInput.equalsIgnoreCase("r")) {
-            reset();
+            reset(true);
             return reply(TerminalCode.OK, getIntro());
         }
 
@@ -93,17 +96,15 @@ public class TerminalGuessNumber extends TerminalApp {
             text += " (value is " + chosenNumber + ")"; 
         }
         
-        this.screen.writeln(text);
-
         // number is valid
         int number = Integer.parseInt(commandInput);
 
         if (number > chosenNumber) {
-            return reply(TerminalCode.OK, "Smaller than that");
+            text += "-> Smaller than that";
         }
 
         if (number < chosenNumber) {
-            return reply(TerminalCode.OK, "Bigger than that");
+            text += "-> Bigger than that";
         }
 
         // great success!
@@ -113,10 +114,9 @@ public class TerminalGuessNumber extends TerminalApp {
             }catch (Exception e){
                 Log.write("Exception", e.getMessage());
             }
-            reset();
-            return reply(TerminalCode.OK,
-                    screen.paint(TerminalColor.GREEN_BRIGHT, "Congratulations!")
-            );
+            reset(false);
+            text = screen.paint(TerminalColor.GREEN_BRIGHT, 
+                    "Congratulations!");
         }
 
         return reply(TerminalCode.OK, text);

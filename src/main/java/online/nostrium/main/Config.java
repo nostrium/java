@@ -29,10 +29,21 @@ public class Config {
     // JSON readability when exported/imported
     
     @Expose
-    public boolean debug = true;
+    public boolean 
+            debug = true,
+            useSSL = true,
+            enableServerTelnet = true,
+            enableServerWWW = true,
+            enableServerSSH = true,
+            enableBotTelegramBot = true,
+            enableBotSimpleX = true,
+            enableServerEmail = true,
+            enableServerIRC = true,
+            enableServerFTP = true;
     
     @Expose
-    public int portTelnet = 23,
+    public int 
+            portTelnet = 23,
             portTelnet_Debug = 23000,
             portSSH = 22,
             portSSH_Debug = 22000,

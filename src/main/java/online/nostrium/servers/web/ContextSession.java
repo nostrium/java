@@ -9,8 +9,8 @@ package online.nostrium.servers.web;
 
 import online.nostrium.apps.user.User;
 import online.nostrium.main.core;
-import online.nostrium.notifications.ClientType;
-import online.nostrium.notifications.Session;
+import online.nostrium.servers.terminal.notifications.ClientType;
+import online.nostrium.servers.terminal.notifications.Session;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.screens.Screen;
 

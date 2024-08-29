@@ -91,7 +91,7 @@ public class ScreenWeb extends Screen{
         ctx.channel().writeAndFlush(new TextWebSocketFrame(""
                 //+ "\r\n" 
                 + text 
-                + "\r\n"
+                + breakLine()
         ));
     }
 
@@ -139,7 +139,7 @@ public class ScreenWeb extends Screen{
 
     @Override
     public String readln() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -217,7 +217,7 @@ public class ScreenWeb extends Screen{
 
         String output = "";
         String topBottomBorder = "+" + new String(new char[totalWidth]).replace('\0', '-') + "+";
-        String line = paint(color, topBottomBorder) + "\n";
+        String line = paint(color, topBottomBorder) + breakLine();
         output += line;
 
         String text = "|"
@@ -230,7 +230,7 @@ public class ScreenWeb extends Screen{
         String padding = new String(new char[dif]).replace('\0', ' ');
 
         line = paint(color, text + padding + "|")
-                + "\n";
+                + breakLine();
         output += line;
         line = paint(color, topBottomBorder);
         output += line;
@@ -274,6 +274,11 @@ public class ScreenWeb extends Screen{
                 + "> ";
         write(//"\n" + 
                 userPrompt);
+    }
+    
+    @Override
+    public String breakLine() {
+        return "\r\n";
     }
 
 }

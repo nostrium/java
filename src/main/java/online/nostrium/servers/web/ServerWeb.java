@@ -1,3 +1,9 @@
+/*
+ * Web server access
+ *
+ * Copyright (c) Nostrium contributors
+ * License: Apache-2.0
+ */
 package online.nostrium.servers.web;
 
 import io.netty.bootstrap.ServerBootstrap;
@@ -28,6 +34,11 @@ import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.screens.Screen;
 
+/**
+ * @author Brito
+ * @date: 2024-08-29
+ * @location: Germany
+ */
 public class ServerWeb extends Server {
 
     @Override
@@ -305,13 +316,14 @@ public class ServerWeb extends Server {
                             TerminalType.ANSI, textCurrent);
 
             // Ignore null responses
-            if (response == null) {
+            if (response == null// || response.getText().isEmpty()
+                    ) {
                 // Output the next prompt
                 //ctxSession.screen.writeln("");
                 ctxSession.screen.writeUserPrompt(ctxSession.app);
                 return;
             }
-
+           
             if (textCurrent.startsWith(">")) {
                 textCurrent = textCurrent.substring(1);
                 switch (textCurrent) {
@@ -321,6 +333,17 @@ public class ServerWeb extends Server {
                 }
                 return;
             }
+            
+            
+            if(response.getCode() == TerminalCode.NOT_FOUND
+                    && response.getText().isEmpty()){
+                // specific adjustments to the Xterm.js
+                ctxSession.screen.writeln(
+                        ctxSession.screen.breakLine()
+                        + "Not found"
+                );
+            }
+
 
 //                // Is it time to leave?
 //                if (response.getCode() == TerminalCode.EXIT_CLIENT) {
@@ -355,6 +378,15 @@ public class ServerWeb extends Server {
                 // Output the message
                 ctxSession.screen.writeln("\n"+ response.getText());
             }
+            
+            if (response.getCode() == TerminalCode.OK 
+                        && response.getText().isEmpty()
+                    ) {
+                // Output the message
+                ctxSession.screen.writeln(response.getText());
+            }
+            
+            
 
             // Output the next prompt
             ctxSession.screen.writeUserPrompt(ctxSession.app);

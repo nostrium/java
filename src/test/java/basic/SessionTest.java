@@ -6,10 +6,10 @@
  */
 package basic;
 
-import online.nostrium.notifications.ClientType;
-import online.nostrium.notifications.NotificationType;
-import online.nostrium.notifications.Session;
-import online.nostrium.notifications.Sessions;
+import online.nostrium.servers.terminal.notifications.ClientType;
+import online.nostrium.servers.terminal.notifications.NotificationType;
+import online.nostrium.servers.terminal.notifications.Session;
+import online.nostrium.servers.terminal.notifications.Sessions;
 import online.nostrium.apps.user.User;
 import online.nostrium.apps.user.UserUtils;
 import online.nostrium.servers.terminal.TerminalApp;

@@ -299,4 +299,9 @@ public class ScreenTelnet extends Screen {
         out.write("\u001B[G");
         out.flush();
     }
+
+    @Override
+    public String breakLine() {
+        return "\n";
+    }
 }

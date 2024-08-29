@@ -73,4 +73,8 @@ public class ScreenTesting extends Screen{
         writeln(text);
     }
     
+    @Override
+    public String breakLine() {
+        return "\n";
+    }
 }

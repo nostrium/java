@@ -5,23 +5,23 @@
  * License: Apache-2.0
  */
 
-package online.nostrium.forum.structures;
+package online.nostrium.main.old.forum.structures;
 
 /**
  * Date: 2023-02-08
  * Place: Germany
  * @author brito
  */
-public class Level2 implements Level{
+public class Level1 implements Level{
 
     @Override
     public int id() {
-        return 2;
+        return 1;
     }
 
     @Override
     public int maxNotesPerDay() {
-        return 10;
+        return 1;
     }
 
     @Override

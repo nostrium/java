@@ -5,7 +5,7 @@
  * License: Apache-2.0
  */
 
-package online.nostrium.forum.structures;
+package online.nostrium.main.old.forum.structures;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

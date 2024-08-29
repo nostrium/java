@@ -5,7 +5,7 @@
  * License: Apache-2.0
  */
 
-package online.nostrium.forum.structures;
+package online.nostrium.main.old.forum.structures;
 
 /**
  * Date: 2023-02-10

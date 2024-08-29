@@ -8,7 +8,7 @@ package online.nostrium.main;
 
 import java.io.File;
 import java.util.Date;
-import online.nostrium.notifications.Sessions;
+import online.nostrium.servers.terminal.notifications.Sessions;
 import online.nostrium.servers.Server;
 import online.nostrium.servers.telnet.ServerTelnet;
 import online.nostrium.servers.web.ServerWeb;

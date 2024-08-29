@@ -3,7 +3,7 @@
  * License: Apache-2.0
  */
 
-package online.nostrium.requests;
+package online.nostrium.main.old.requests;
 
 import java.net.URI;
 import online.nostrium.utils.Log;

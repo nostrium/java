@@ -6,7 +6,7 @@
  */
 package online.nostrium.apps.basic;
 
-import online.nostrium.notifications.NotificationType;
+import online.nostrium.servers.terminal.notifications.NotificationType;
 import online.nostrium.apps.chat.TerminalChat;
 import online.nostrium.apps.games.TerminalGames;
 import online.nostrium.apps.games.gods.TerminalGODS;

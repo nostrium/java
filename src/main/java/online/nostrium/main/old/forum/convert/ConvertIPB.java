@@ -4,7 +4,7 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-package online.nostrium.forum.convert;
+package online.nostrium.main.old.forum.convert;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -14,13 +14,13 @@ import java.net.URL;
 import java.security.MessageDigest;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import online.nostrium.forum.structures.Forum;
-import online.nostrium.forum.structures.ForumGroup;
-import online.nostrium.forum.structures.ForumNote;
-import online.nostrium.forum.structures.ForumTopic;
-import online.nostrium.forum.structures.ForumUser;
-import online.nostrium.forum.structures.ManageTopics;
-import online.nostrium.forum.structures.ManageUsers;
+import online.nostrium.main.old.forum.structures.Forum;
+import online.nostrium.main.old.forum.structures.ForumGroup;
+import online.nostrium.main.old.forum.structures.ForumNote;
+import online.nostrium.main.old.forum.structures.ForumTopic;
+import online.nostrium.main.old.forum.structures.ForumUser;
+import online.nostrium.main.old.forum.structures.ManageTopics;
+import online.nostrium.main.old.forum.structures.ManageUsers;
 import online.nostrium.main.Folder;
 import online.nostrium.utils.ImageFunctions;
 import online.nostrium.utils.Log;

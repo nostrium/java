@@ -6,7 +6,7 @@
  */
 package online.nostrium.apps.games.gods.bank;
 
-import online.nostrium.notifications.NotificationType;
+import online.nostrium.servers.terminal.notifications.NotificationType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;

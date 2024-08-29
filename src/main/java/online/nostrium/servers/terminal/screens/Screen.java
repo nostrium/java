@@ -41,5 +41,7 @@ public abstract class Screen {
     public abstract void deletePreviousLine();
     
     public abstract void writeUserPrompt(TerminalApp app);
+
+    public abstract String breakLine();
     
 }

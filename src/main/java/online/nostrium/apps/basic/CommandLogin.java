@@ -74,7 +74,7 @@ public class CommandLogin extends TerminalCommand{
         this.app.updateUser(user);
         
         // all done
-        return reply(TerminalCode.OK);
+        return reply(TerminalCode.OK, "Logged with ");
     }
 
     @Override

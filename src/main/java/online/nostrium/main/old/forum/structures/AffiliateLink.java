@@ -5,17 +5,18 @@
  * License: Apache-2.0
  */
 
-package online.nostrium.forum.structures;
+package online.nostrium.main.old.forum.structures;
 
 /**
  * Date: 2023-02-08
  * Place: Germany
  * @author brito
  */
-public interface Level {
+public class AffiliateLink {
 
-    public int id();
-    public int maxNotesPerDay();
-    public String description();
+    String URL;
+    String title;
+    String description;
+    String image;
     
 }
