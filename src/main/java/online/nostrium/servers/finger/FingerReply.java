@@ -175,7 +175,8 @@ public class FingerReply {
                 + "\n"
                 + "Mail: %s"
                 + "\n"
-                + "Plan: %s",
+                + "Plan: %s"
+                + "\n",
                 username, realName, npub, 
                 homeDirectory, shell, loginTime, 
                 terminal, //idleTime,

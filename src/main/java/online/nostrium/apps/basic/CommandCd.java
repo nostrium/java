@@ -57,6 +57,11 @@ public class CommandCd extends TerminalCommand {
         for (TerminalApp appChild : this.app.appChildren) {
             String textName = appChild.getName();
             if(textName.equalsIgnoreCase(parameters)){
+                // do we have permission to enter inside this app?
+                if(appChild.permissions
+                        .isPermitted(this.app.user) == false){
+                    continue;
+                }
                 return reply(appChild);
             }
         }

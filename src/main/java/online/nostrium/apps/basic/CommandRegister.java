@@ -34,8 +34,10 @@ public class CommandRegister extends TerminalCommand{
         
         // only valid for anon users
         User user = this.app.user;
-        if(user.getUserType() != UserType.ANON){
-            return reply(TerminalCode.FAIL, "Account already registered");
+        if(user.getUserType() != UserType.ANON
+                && user.getUserType() != UserType.ADMIN){
+            return reply(TerminalCode.FAIL, 
+                    "Can only use this command on new accounts");
         }
             
 
@@ -80,7 +82,9 @@ public class CommandRegister extends TerminalCommand{
         user.setPasswordHash(passwordHash);
         user.setDisplayName(username);
         user.setUsername(username);
-        user.setUserType(UserType.MEMBER);
+        if(user.getUserType() != UserType.ADMIN){
+            user.setUserType(UserType.MEMBER);
+        }
         
         // decrypt the nsec
         String nsecDec = EncryptionUtils.encrypt(user.getNsec(), password);
@@ -89,6 +93,10 @@ public class CommandRegister extends TerminalCommand{
         // update the user info
         user.save();
         this.app.updateUser(user);
+        
+        if(user.getUserType() == UserType.ADMIN){
+            this.app.screen.writeln(UserType.ADMIN.toString() + " account is defined");
+        }
         
         // all done
         return reply(TerminalCode.OK, "You are now registered");

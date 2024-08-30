@@ -299,8 +299,13 @@ public class ServerWeb extends Server {
                 String uniqueId = getId(ctx);
                 // create the screen
                 Screen screen = new ScreenWeb(ctx);
-                // start with the basic app
+                
+                // create a temporary user
                 User user = UserUtils.createUserAnonymous();
+                // is this the first user ever? Make him admin
+                UserUtils.checkFirstTimeSetup(user, screen);
+                
+                // start with the basic app
                 TerminalApp app = new TerminalBasic(screen, user);
                 ctxSession
                         = new ContextSession(screen, user, app, uniqueId);
@@ -309,6 +314,9 @@ public class ServerWeb extends Server {
             
             // ping that this account is still alive
             ctxSession.ping();
+            
+            // there was an enter
+            ctxSession.screen.writeln("");
 
             // Handle the command request
             CommandResponse response
@@ -339,8 +347,9 @@ public class ServerWeb extends Server {
                     && response.getText().isEmpty()){
                 // specific adjustments to the Xterm.js
                 ctxSession.screen.writeln(
-                        ctxSession.screen.breakLine()
-                        + "Not found"
+                        //ctxSession.screen.breakLine()
+                        //+ 
+                                "Not found"
                 );
             }
 
@@ -357,7 +366,6 @@ public class ServerWeb extends Server {
             // Is it time to go down one app?
             if (response.getCode() == TerminalCode.EXIT_APP
                     && ctxSession.app.appParent != null) {
-                ctxSession.screen.writeln("");
                 ctxSession.app = ctxSession.app.appParent;
             }
 
@@ -365,7 +373,6 @@ public class ServerWeb extends Server {
             if (response.getCode() == TerminalCode.CHANGE_APP) {
                 ctxSession.app = response.getApp();
                 ctxSession.session.setApp(ctxSession.app);
-                ctxSession.screen.writeln("");
                 if (ctxSession.app.appParent != null) {
                     ctxSession.screen.writeln(
                             ctxSession.app.getIntro()
@@ -376,7 +383,7 @@ public class ServerWeb extends Server {
             // Output the reply
             if (response.getText().length() > 0) {
                 // Output the message
-                ctxSession.screen.writeln("\n"+ response.getText());
+                ctxSession.screen.writeln(response.getText());
             }
             
             if (response.getCode() == TerminalCode.OK 

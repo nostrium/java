@@ -62,6 +62,13 @@
   </repositories>
   <dependencies>
     <dependency>
+      <groupId>org.shredzone.acme4j</groupId>
+      <artifactId>acme4j</artifactId>
+      <version>3.4.0</version>
+      <type>pom</type>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <version>5.6.0</version>

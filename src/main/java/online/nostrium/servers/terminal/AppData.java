@@ -17,7 +17,6 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import online.nostrium.main.Folder;
-import online.nostrium.servers.terminal.TerminalApp;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -29,6 +28,7 @@ public final class AppData {
     
     final TerminalApp app;
     
+    @SuppressWarnings("unchecked")
     @Expose
     HashMap<String, Object> data = new HashMap();
 

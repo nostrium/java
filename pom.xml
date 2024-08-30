@@ -82,6 +82,23 @@
     <dependencies>
         
         
+        <!-- https://mvnrepository.com/artifact/org.shredzone.acme4j/acme4j -->
+        <dependency>
+            <groupId>org.shredzone.acme4j</groupId>
+            <artifactId>acme4j</artifactId>
+            <version>3.4.0</version>
+            <type>pom</type>
+        </dependency>
+
+
+        <!-- acme4j-utils - Utility classes for acme4j -->
+        <dependency>
+            <groupId>org.shredzone.acme4j</groupId>
+            <artifactId>acme4j-utils</artifactId>
+            <version>2.16</version>
+        </dependency>
+
+        
         
         <dependency>
             <groupId>nostr-java</groupId>

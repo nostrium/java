@@ -6,6 +6,7 @@ import online.nostrium.main.Folder;
 import static online.nostrium.main.Folder.nameEndingJsonUser;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalCode;
+import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.utils.EncryptionUtils;
 import online.nostrium.utils.FileFunctions;
 import online.nostrium.utils.Log;
@@ -303,6 +304,26 @@ public class UserUtils {
         }
         // all done
         return true;
+    }
+
+    /**
+     * Check if this is the first time a user is entering the system
+     * @param user
+     * @param screen 
+     */
+    public static void checkFirstTimeSetup(User user, Screen screen) {
+        File folder = Folder.getFolderUsers();
+       
+        // are there files inside?
+        File[] files = folder.listFiles();
+        if(files.length > 0){
+            return;
+        }
+        // there is no valid user folder at this moment, first time entering
+        user.setUserType(UserType.ADMIN);
+        // announce it to the user
+        screen.writeln("You are the first user, you are now chosen as ADMINISTRATOR");
+        screen.writeln("Please use \"register <name> <password>\" to save your account to disk.");
     }
     
 }

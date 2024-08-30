@@ -17,7 +17,10 @@ import online.nostrium.apps.basic.CommandLs;
 import online.nostrium.apps.chat.CommandChatClear;
 import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.apps.user.User;
+import online.nostrium.apps.user.UserType;
 import online.nostrium.main.Folder;
+import static online.nostrium.main.Folder.namePermissions;
+import online.nostrium.utils.cybersec.Permissions;
 
 /**
  * @author Brito
@@ -38,6 +41,9 @@ public abstract class TerminalApp {
     
     public final Map<String, TerminalCommand> commands = new HashMap<>();
     public final Screen screen;
+    
+    // permissions to access this app
+    public Permissions permissions = new Permissions(data);
 
     public TerminalApp(Screen screen, User user) {
         this.screen = screen;
@@ -48,6 +54,9 @@ public abstract class TerminalApp {
         addCommandInternal(new CommandCd(this));
         addCommandInternal(new CommandChatClear(this));
         addCommandInternal(new CommandExit(this));
+        
+        // add the permissions into the data storage
+        data.put(namePermissions, permissions);
     }
 
     public final void addCommandInternal(TerminalCommand command){
@@ -64,7 +73,10 @@ public abstract class TerminalApp {
     public abstract String getIntro();
     
     // shows an intro for this app
-    public abstract String getId();
+    public String getId(){
+        String path = TerminalUtils.getPath(this);
+        return path;
+    }
     
     
     /**

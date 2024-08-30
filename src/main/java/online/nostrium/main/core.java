@@ -31,22 +31,8 @@ public class core {
     public static Date uptime = new Date();
 
     public static boolean keepRunning = true;
-
-    public static void main(String[] args) {
-
-        File folder = Folder.getFolderBase();
-
-        String logo = AsciiArt.intro();
-
-        System.out.println(logo);
-        System.out.println("");
-        System.out.println(AsciiArt.description());
-        System.out.println("--------------------------");
-        Log.write("Running from folder: " + folder.getPath());
-
-        // get the config started
-        config = Config.loadConfig();
-
+    
+    public static void runServers(){
         Server[] servers = new Server[]{
             new ServerTelnet(),
             new ServerWeb(),
@@ -74,9 +60,29 @@ public class core {
             }
             time.waitMs(500);
         }
-
         System.out.println("Stopped the servers");
-
     }
+
+    
+    public static void main(String[] args) {
+
+        File folder = Folder.getFolderBase();
+
+        String logo = AsciiArt.intro();
+
+        System.out.println(logo);
+        System.out.println("");
+        System.out.println(AsciiArt.description());
+        System.out.println("--------------------------");
+        Log.write("Running from folder: " + folder.getPath());
+
+        // get the config started
+        config = Config.loadConfig();
+        
+
+        // run servers and keep waiting
+        runServers();
+    }
+
 
 }

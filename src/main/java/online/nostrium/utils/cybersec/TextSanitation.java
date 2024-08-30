@@ -5,14 +5,14 @@
  * License: Apache-2.0
  */
 
-package online.nostrium.utils;
+package online.nostrium.utils.cybersec;
 
 /**
  * @author Brito
  * @date: 2024-08-29
  * @location: Germany
  */
-public class cybersec {
+public class TextSanitation {
     
     /**
      * Validates the input string.

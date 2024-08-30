@@ -100,6 +100,10 @@ public class ServerTelnet extends Server{
 
                 // show the intro
                 screen.writeIntro();
+                
+                // is this the first user ever? Make him admin
+                UserUtils.checkFirstTimeSetup(user, screen);
+                
 
                 // write the start prompt
                 screen.writeUserPrompt(app);

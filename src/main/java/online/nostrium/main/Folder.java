@@ -32,7 +32,8 @@ public class Folder {
             nameRootChat = "root",
             nameAnonUsers = "Anon",
             nameEndingJsonUser = "-user.json",
-            nameFileData = "data.json";
+            nameFileData = "data.json",
+            namePermissions = "permissions";
     
     /**
      * There  are three type of paths that change: runtime, testing and custom.

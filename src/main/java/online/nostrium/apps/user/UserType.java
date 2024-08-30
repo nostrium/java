@@ -7,15 +7,18 @@
 
 package online.nostrium.apps.user;
 
+import com.google.gson.annotations.Expose;
+
 /**
  * Date: 2024-08-04
  * Place: Germany
  * @author brito
  */
 public enum UserType {
-    ANON,
-    VISITOR,
-    MEMBER,
-    MOD,
-    ADMIN
+    @Expose
+    ANON,       // logged without registering
+    MEMBER,     // registered user
+    MOD,        // assigned as moderator to specific apps
+    JANITOR,    // global moderator
+    ADMIN,      // founder or owner of the platform
 }

@@ -38,6 +38,11 @@ public class CommandLs extends TerminalCommand {
 
         // iterate all apps        
         for (TerminalApp app : this.app.appChildren) {
+            // don't list when permissions don't permit
+            if(app.permissions.isPermitted(this.app.user) == false){
+                continue;
+            }
+            
             String textName = app.getName() + "/";
             text += ""
                     + paint(GREEN, textName)

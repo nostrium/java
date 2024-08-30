@@ -24,7 +24,7 @@ import online.nostrium.apps.user.User;
 import online.nostrium.apps.user.UserUtils;
 import online.nostrium.main.core;
 import online.nostrium.servers.Server;
-import online.nostrium.utils.cybersec;
+import online.nostrium.utils.cybersec.TextSanitation;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -138,7 +138,7 @@ public class ServerFinger extends Server {
             request = request.trim();
 
             // invalid request format
-            if (cybersec.checkRequest(request) == false) {
+            if (TextSanitation.checkRequest(request) == false) {
                 response = notFound + "\n";
                 ctx.writeAndFlush(response);
                 return;
@@ -156,6 +156,7 @@ public class ServerFinger extends Server {
             String replyText = fingerReply.toString();
 
             ctx.writeAndFlush(replyText);
+            ctx.close();
         }
 
         @Override
