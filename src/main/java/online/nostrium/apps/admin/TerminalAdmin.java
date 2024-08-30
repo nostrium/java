@@ -13,6 +13,7 @@ import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
 import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.apps.user.User;
+import online.nostrium.apps.user.UserType;
 
 /**
  * @author Brito
@@ -25,7 +26,11 @@ public class TerminalAdmin extends TerminalApp {
     public TerminalAdmin(Screen screen, User user) {
         super(screen, user);
          // add apps inside
-        //addApp(new TerminalGODS(screen, user));
+        this.addCommand(new CommandRegisterSSL(this));
+        
+        // make sure that only ADMIN can enter here
+//        permissions.clearEveryone();
+//        permissions.addUserType(UserType.ADMIN);
     }
 
     @Override

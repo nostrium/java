@@ -127,6 +127,14 @@ public class Folder {
     public static File getFolderWWW() {
         return defaultGetFolder(nameFolderWWW);
     }
+
+    public static File getFolderCerts() {
+        return defaultGetFolder("certs");
+    }
+
+    public static File getFolderWellKnown() {
+        return defaultGetFolder(getFolderWWW(), ".well-known");
+    }
     
     
 }

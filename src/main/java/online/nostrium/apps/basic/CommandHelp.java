@@ -25,24 +25,36 @@ public class CommandHelp extends TerminalCommand {
     public CommandHelp(TerminalApp app) {
         super(app);
         this.commandsAlternative.add("?");
+        this.requireSlash = false;
     }
 
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
         
-        String text = "";
+        String text = app.screen.getWindowFrame(GREEN, "Help menu")
+                + app.screen.breakLine()
+                + app.screen.breakLine()
+                ;
         
         // list all the apps first
         if (this.app.appChildren.isEmpty() == false) {
-            text += "Available apps:";
+            text += "Available apps (type cd to enter them):";
             for (TerminalApp app : this.app.appChildren) {
+                
+                // avoid listing non-permitted apps
+                if(app.permissions.isPermitted(app.user) == false){
+                    continue;
+                }
+                
                 String textName = "[" + app.getName() + "]";
-                text += " \n "
+                text += " "
+                        + app.screen.breakLine()
+                        + " "
                         + paint(GREEN, textName)
                         + ": "
                         + app.getDescription();
             }
-            text += "\n\n";
+            text += app.screen.breakLine() + app.screen.breakLine();
         }
         
         

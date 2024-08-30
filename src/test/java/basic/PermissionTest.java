@@ -33,7 +33,9 @@ public class PermissionTest {
         Permissions permission = new Permissions(UserType.ADMIN);
         
         // should not be allowed
-        assertFalse(permission.isPermitted(user2));
+        assertFalse(
+                permission.isPermitted(user2)
+        );
         
         permission.addUserType(UserType.ANON);
         // should now be allowed

@@ -17,7 +17,6 @@ import online.nostrium.apps.basic.CommandLs;
 import online.nostrium.apps.chat.CommandChatClear;
 import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.apps.user.User;
-import online.nostrium.apps.user.UserType;
 import online.nostrium.main.Folder;
 import static online.nostrium.main.Folder.namePermissions;
 import online.nostrium.utils.cybersec.Permissions;

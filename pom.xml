@@ -10,20 +10,29 @@
     <properties>
         <nostr-java.version>0.6.1-SNAPSHOT</nostr-java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
+        <maven.build.timestamp>${maven.build.timestamp}</maven.build.timestamp>
     </properties>
   
-  
-
     <description>The BBS for Nostr</description>
 
-    
     <build>
         <plugins>
+            <!-- Maven Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.0</version>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>20</source>
+                    <target>20</target>
+                    <compilerArgs>
+                        <arg>-Xlint:deprecation</arg>
+                        <arg>-Xlint:unchecked</arg>
+                    </compilerArgs>
+                </configuration>
             </plugin>
+            <!-- Maven Shade Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -38,6 +47,9 @@
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>online.nostrium.main.core</mainClass>
+                                    <manifestEntries>
+                                        <Build-Time>${maven.build.timestamp}</Build-Time>
+                                    </manifestEntries>
                                 </transformer>
                             </transformers>
                             <filters>
@@ -54,21 +66,13 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- Maven Surefire Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>20</source>
-                    <target>20</target>
-                    <compilerArgs>
-                        <arg>-Xlint:deprecation</arg>
-                        <arg>-Xlint:unchecked</arg>
-                    </compilerArgs>
-                </configuration>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.0</version>
             </plugin>
         </plugins>
-        
     </build>
     
     <repositories>
@@ -78,28 +82,21 @@
         </repository>
     </repositories>
     
-    
     <dependencies>
-        
-        
-        <!-- https://mvnrepository.com/artifact/org.shredzone.acme4j/acme4j -->
+        <!-- Acme4j Dependencies -->
         <dependency>
             <groupId>org.shredzone.acme4j</groupId>
             <artifactId>acme4j</artifactId>
             <version>3.4.0</version>
             <type>pom</type>
         </dependency>
-
-
-        <!-- acme4j-utils - Utility classes for acme4j -->
         <dependency>
             <groupId>org.shredzone.acme4j</groupId>
             <artifactId>acme4j-utils</artifactId>
             <version>2.16</version>
         </dependency>
 
-        
-        
+        <!-- Nostr Dependencies -->
         <dependency>
             <groupId>nostr-java</groupId>
             <artifactId>nostr-java-api</artifactId>
@@ -116,29 +113,35 @@
             <version>${nostr-java.version}</version>
         </dependency>
         
+        <!-- Netty Dependency -->
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
             <version>4.1.97.Final</version>
         </dependency>
         
+        <!-- SLF4J Dependency -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-nop</artifactId>
             <version>1.7.32</version> <!-- Use the latest version -->
         </dependency>
         
-        
+        <!-- BouncyCastle Dependency -->
         <dependency>
             <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk18on</artifactId>
-            <version>1.78.1</version>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.68</version>
         </dependency>
+
+        <!-- Takes Dependency -->
         <dependency>
             <groupId>org.takes</groupId>
             <artifactId>takes</artifactId>
             <version>1.24.4</version>
         </dependency>
+        
+        <!-- JUnit Dependencies -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -157,38 +160,51 @@
             <version>5.6.0</version>
             <scope>test</scope>
         </dependency>
+        
+        <!-- Gson Dependency -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.10.1</version>
         </dependency>
+
+        <!-- Commons-IO Dependency -->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.7</version>
         </dependency>
+
+        <!-- Apache Commons Lang Dependency -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.12.0</version>
         </dependency>
+
+        <!-- Jsoup Dependency -->
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
             <version>1.15.3</version>
         </dependency>
+
+        <!-- Flexmark Dependency -->
         <dependency>
             <groupId>com.vladsch.flexmark</groupId>
             <artifactId>flexmark-all</artifactId>
             <version>0.64.0</version>
             <classifier>lib</classifier>
         </dependency>
+
+        <!-- Apache SSHD Core Dependency -->
         <dependency>
             <groupId>org.apache.sshd</groupId>
             <artifactId>sshd-core</artifactId>
             <version>2.7.0</version>
         </dependency>
-        
+
+        <!-- ZXing Core Dependency -->
         <dependency>
             <groupId>com.google.zxing</groupId>
             <artifactId>core</artifactId>

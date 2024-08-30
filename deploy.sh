@@ -44,10 +44,21 @@ fi
 echo "Copying JAR to remote server..."
 scp "$FAT_JAR" "$REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR" || { echo "SCP failed"; exit 1; }
 
-# Step 3: Stop any running instances of the same JAR file
-echo "Stopping any running instances of the JAR..."
+# Step 3: Stop all running Java processes
+echo "Stopping all running Java processes..."
 ssh "$REMOTE_USER@$REMOTE_HOST" << EOF
-    pkill -f "$REMOTE_DIR/$(basename $FAT_JAR)"
+    PIDS=\$(pgrep -f java)
+    if [ ! -z "\$PIDS" ]; then
+        echo "Killing the following Java processes: \$PIDS"
+        kill \$PIDS
+        while pgrep -f java >/dev/null; do
+            echo "Waiting for all Java processes to terminate..."
+            sleep 1
+        done
+        echo "All Java processes have been terminated."
+    else
+        echo "No Java processes running."
+    fi
 EOF
 
 # Step 4: Launch the JAR file inside a screen session on the remote server

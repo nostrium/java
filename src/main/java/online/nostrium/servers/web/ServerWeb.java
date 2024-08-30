@@ -390,7 +390,7 @@ public class ServerWeb extends Server {
                         && response.getText().isEmpty()
                     ) {
                 // Output the message
-                ctxSession.screen.writeln(response.getText());
+                //ctxSession.screen.writeln(response.getText());
             }
             
             

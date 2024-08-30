@@ -19,7 +19,7 @@ import online.nostrium.servers.terminal.AppData;
  * @date: 2024-08-29
  * @location: Germany
  */
-public class Permissions {
+public final class Permissions {
 
     @SuppressWarnings("unchecked")
     @Expose
@@ -49,7 +49,10 @@ public class Permissions {
         this.data = data;
     }
 
-    public Permissions(UserType... userType) {
+    public Permissions(UserType... userTypes) {
+        for(UserType userType : userTypes){
+            addUserType(userType);
+        }
     }
 
     public boolean isPermitted(User userToCheck) {
@@ -191,6 +194,14 @@ public class Permissions {
         }
         data.put(Folder.namePermissions, this);
         data.save();
+    }
+
+    public void clearEveryone() {
+        userTypeAccessDenied.clear();
+        userTypeAccessPermitted.clear();
+        usersPermitted.clear();
+        usersBanned.clear();
+        usersSuspended.clear();
     }
 
 }

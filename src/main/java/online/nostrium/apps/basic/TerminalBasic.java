@@ -6,10 +6,10 @@
  */
 package online.nostrium.apps.basic;
 
+import online.nostrium.apps.admin.TerminalAdmin;
 import online.nostrium.servers.terminal.notifications.NotificationType;
 import online.nostrium.apps.chat.TerminalChat;
 import online.nostrium.apps.games.TerminalGames;
-import online.nostrium.apps.games.gods.TerminalGODS;
 import online.nostrium.apps.user.TerminalUser;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
@@ -38,7 +38,10 @@ public class TerminalBasic extends TerminalApp {
         addCommand(new CommandLogin(this));
         addCommand(new CommandRegister(this));
         
+        addCommand(new CommandAbout(this));
+        
         // add apps inside
+        addApp(new TerminalAdmin(screen, user));
         addApp(new TerminalUser(screen, user));
         addApp(new TerminalChat(screen, user));
         addApp(new TerminalGames(screen, user));
