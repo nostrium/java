@@ -29,8 +29,8 @@ public class TerminalAdmin extends TerminalApp {
         this.addCommand(new CommandRegisterSSL(this));
         
         // make sure that only ADMIN can enter here
-//        permissions.clearEveryone();
-//        permissions.addUserType(UserType.ADMIN);
+        permissions.clearEveryone();
+        permissions.addUserType(UserType.ADMIN);
     }
 
     @Override

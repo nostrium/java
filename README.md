@@ -71,7 +71,7 @@ Servers
 -------
 + [ ] NOSTR
 + [x] HTTP - 80
-+ [ ] HTTPS - 443
++ [x] HTTPS - 443
 + [ ] SSH (Secure Shell) - 22
 + [x] Telnet - 23
 
@@ -98,7 +98,7 @@ Communication:
 + [ ] Gopher - 70
 
 Network basics:
-+ [ ] WHOIS - 43
++ [?] WHOIS - 43
 + [x] Finger - 79
 + [ ] Echo Protocol - 7
 + [ ] Daytime Protocol - 13

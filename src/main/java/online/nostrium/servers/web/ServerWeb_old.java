@@ -17,8 +17,6 @@ import io.netty.handler.codec.http.websocketx.WebSocketFrame;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
 import io.netty.handler.stream.ChunkedFile;
-import io.netty.handler.ssl.SslContext;
-import io.netty.handler.ssl.SslContextBuilder;
 
 import java.io.File;
 import java.io.RandomAccessFile;
@@ -37,11 +35,11 @@ import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.screens.Screen;
 
 /**
- * Web server implementation with HTTPS support.
- *
- * Author: Brito Date: 2024-08-29 Location: Germany
+ * @author Brito
+ * @date: 2024-08-29
+ * @location: Germany
  */
-public class ServerWeb extends Server {
+public class ServerWeb_old extends Server {
 
     @Override
     public String getId() {
@@ -49,7 +47,7 @@ public class ServerWeb extends Server {
     }
 
     public static void main(String[] args) throws Exception {
-        ServerWeb server = new ServerWeb();
+        ServerWeb_old server = new ServerWeb_old();
         server.start();
     }
 
@@ -69,9 +67,6 @@ public class ServerWeb extends Server {
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
         try {
-            // Load the SSL context
-            SslContext sslCtx = createSslContext();
-
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
@@ -79,12 +74,6 @@ public class ServerWeb extends Server {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline p = ch.pipeline();
-
-                            // Add SSL handler first to enable encryption, only if SSL context is available
-                            if (sslCtx != null) {
-                                p.addLast(sslCtx.newHandler(ch.alloc()));
-                            }
-
                             p.addLast(new HttpServerCodec());
                             p.addLast(new HttpObjectAggregator(65536));
                             p.addLast(new ChunkedWriteHandler());
@@ -94,50 +83,19 @@ public class ServerWeb extends Server {
                         }
                     });
 
-            // Start HTTP server on the specified port
             int PORT = this.getPort();
-            int SSL_PORT = 443; // Default HTTPS port
 
             try {
                 Channel ch = b.bind(PORT).sync().channel();
                 isRunning = true;
-                System.out.println("HTTP server started on port " + PORT);
-
-                // Start HTTPS server if SSL context is available
-                if (sslCtx != null) {
-                    Channel sslChannel = b.bind(SSL_PORT).sync().channel();
-                    System.out.println("HTTPS server started on port " + SSL_PORT);
-                    sslChannel.closeFuture().sync();
-                }
-
                 ch.closeFuture().sync();
+
             } catch (Exception ex) {
                 System.out.println(getId() + " failed to open port " + PORT);
             }
         } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
-        }
-    }
-
-    private SslContext createSslContext() {
-        try {
-            File folder = Folder.getFolderCerts();
-            File domain = new File(folder, "domain.crt");
-            File keyFile = new File(folder, "domain.key"); // Private key
-
-            if (keyFile.exists() == false) {
-                System.out.println("SSL certificates not found, starting without HTTPS.");
-                return null;
-            }
-
-            //return SslContextBuilder.forServer(certChainFile, keyFile).build();
-            return SslContextBuilder.forServer(domain, keyFile).build();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Failed to create SSL context, starting without HTTPS.");
-            return null;
         }
     }
 
@@ -172,7 +130,11 @@ public class ServerWeb extends Server {
             String uniqueId = getId(ctx);
 
             // Print the command to the server console
-            System.out.println("[" + uniqueId + "] requested: " + uri);
+            System.out.println(
+                    "["
+                    + uniqueId
+                    + "] "
+                    + "requested: " + uri);
 
             // Default to serving index.html if the root is requested
             if ("/".equals(uri)) {
@@ -182,6 +144,7 @@ public class ServerWeb extends Server {
             // Resolve the full file path
             String basePath = Folder.getFolderWWW().getCanonicalPath();
             String fullPath = basePath + uri;
+            //System.out.println("Full file path: " + fullPath);
 
             // Create a File object for the requested file
             File file = new File(fullPath);
@@ -263,6 +226,7 @@ public class ServerWeb extends Server {
         private final Map<ChannelHandlerContext, ContextSession> ctxSessions = new HashMap<>();
 
         @Override
+        @SuppressWarnings("null")
         protected void channelRead0(ChannelHandlerContext ctx, WebSocketFrame frame) throws Exception {
             if (frame instanceof TextWebSocketFrame textWebSocketFrame) {
                 // Get the received text
@@ -271,25 +235,35 @@ public class ServerWeb extends Server {
                 // Accumulate the new characters in the buffer
                 StringBuilder buffer = buffers.get(ctx);
 
+                // does it exist already, or not?
                 if (buffer == null) {
+                    // create a new one
                     buffer = new StringBuilder();
                     buffers.put(ctx, buffer);
                 }
 
+                // add the text to the buffer
                 buffer.append(request);
 
+                // shall the text be ignored?
                 String textCurrent = buffer.toString().trim();
 
-                if (!textCurrent.startsWith(">")) {
+                if (textCurrent.startsWith(">") == false) {
+                    // Echo each character back to the browser right away
                     ctx.channel().writeAndFlush(new TextWebSocketFrame(request));
                 }
 
-                if (!textWebSocketFrame.text().contains("\n") && !textWebSocketFrame.text().contains("\r")) {
+                // Check if the original frame contained a newline character to indicate end of a message
+                if (textWebSocketFrame.text().contains("\n") == false
+                        && textWebSocketFrame.text().contains("\r") == false) {
                     return;
                 }
 
+                /////////// start the command processing /////////////
                 processCommand(ctx, textCurrent);
 
+                /////////// close the command processing /////////////
+                // remove the context from the cache
                 buffers.remove(ctx);
 
             } else {
@@ -299,7 +273,7 @@ public class ServerWeb extends Server {
 
         @Override
         public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
-            buffers.remove(ctx);
+            buffers.remove(ctx);  // Clean up buffer when the handler is removed (client disconnects)
             super.handlerRemoved(ctx);
         }
 
@@ -309,59 +283,129 @@ public class ServerWeb extends Server {
             ctx.close();
         }
 
+        /**
+         * Handle the commands provided by the user
+         *
+         * @param ctx
+         * @param textCurrent
+         */
         private void processCommand(ChannelHandlerContext ctx, String textCurrent) {
+            // get the context
             ContextSession ctxSession = ctxSessions.get(ctx);
 
+            // session is null, create one
             if (ctxSession == null) {
+                // get the unique Id
                 String uniqueId = getId(ctx);
+                // create the screen
                 Screen screen = new ScreenWeb(ctx);
+                
+                // create a temporary user
                 User user = UserUtils.createUserAnonymous();
+                // is this the first user ever? Make him admin
                 UserUtils.checkFirstTimeSetup(user, screen);
+                
+                // start with the basic app
                 TerminalApp app = new TerminalBasic(screen, user);
-                ctxSession = new ContextSession(screen, user, app, uniqueId);
+                ctxSession
+                        = new ContextSession(screen, user, app, uniqueId);
                 ctxSessions.put(ctx, ctxSession);
             }
-
+            
+            // ping that this account is still alive
             ctxSession.ping();
+            
+            // there was an enter
             ctxSession.screen.writeln("");
 
-            CommandResponse response = ctxSession.app.handleCommand(TerminalType.ANSI, textCurrent);
+            // Handle the command request
+            CommandResponse response
+                    = ctxSession.app.handleCommand(
+                            TerminalType.ANSI, textCurrent);
 
-            if (response == null) {
+            // Ignore null responses
+            if (response == null// || response.getText().isEmpty()
+                    ) {
+                // Output the next prompt
+                //ctxSession.screen.writeln("");
                 ctxSession.screen.writeUserPrompt(ctxSession.app);
                 return;
             }
-
+           
             if (textCurrent.startsWith(">")) {
                 textCurrent = textCurrent.substring(1);
-                if ("showLogo".equals(textCurrent)) {
-                    ctxSession.screen.writeln(ctxSession.app.getIntro());
-                    ctxSession.screen.writeUserPrompt(ctxSession.app);
+                switch (textCurrent) {
+                    case ("showLogo"):
+                        ctxSession.screen.writeln(ctxSession.app.getIntro());
+                        ctxSession.screen.writeUserPrompt(ctxSession.app);
                 }
                 return;
             }
-
-            if (response.getCode() == TerminalCode.NOT_FOUND && response.getText().isEmpty()) {
-                ctxSession.screen.writeln("Not found");
+            
+            
+            if(response.getCode() == TerminalCode.NOT_FOUND
+                    && response.getText().isEmpty()){
+                // specific adjustments to the Xterm.js
+                ctxSession.screen.writeln(
+                        //ctxSession.screen.breakLine()
+                        //+ 
+                                "Not found"
+                );
             }
 
-            if (response.getCode() == TerminalCode.EXIT_APP && ctxSession.app.appParent != null) {
+
+//                // Is it time to leave?
+//                if (response.getCode() == TerminalCode.EXIT_CLIENT) {
+//                    out.println(response.getText());
+//                    break;
+//                }
+//                    // Forced session break
+//                    if (session.isTimeToStop()) {
+//                        break;
+//                    }
+            // Is it time to go down one app?
+            if (response.getCode() == TerminalCode.EXIT_APP
+                    && ctxSession.app.appParent != null) {
                 ctxSession.app = ctxSession.app.appParent;
             }
 
+            // Is it time to change apps?
             if (response.getCode() == TerminalCode.CHANGE_APP) {
                 ctxSession.app = response.getApp();
                 ctxSession.session.setApp(ctxSession.app);
                 if (ctxSession.app.appParent != null) {
-                    ctxSession.screen.writeln(ctxSession.app.getIntro());
+                    ctxSession.screen.writeln(
+                            ctxSession.app.getIntro()
+                    );
                 }
             }
 
+            // Output the reply
             if (response.getText().length() > 0) {
+                // Output the message
                 ctxSession.screen.writeln(response.getText());
             }
+            
+            if (response.getCode() == TerminalCode.OK 
+                        && response.getText().isEmpty()
+                    ) {
+                // Output the message
+                //ctxSession.screen.writeln(response.getText());
+            }
+            
+            
 
+            // Output the next prompt
             ctxSession.screen.writeUserPrompt(ctxSession.app);
+
+//                // Print the command to the server console
+//                System.out.println(
+//                        "["
+//                        + ctxSession.uniqueId
+//                        + "] "
+//                        + "Running: "
+//                        + textCurrent
+//                );
         }
     }
 }
