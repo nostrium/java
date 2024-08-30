@@ -50,7 +50,7 @@ User interfaces:
 + [ ] NOSTR clients (Primal, Coracle, ...)
 + [x] web (server)
 + [x] telnet (server)
-+ [ ] SSH (server)
++ [-] SSH (server)
 + [ ] IRC (server/client)
 + [ ] telegram (bot)
 + [ ] simpleX (bot)
@@ -64,7 +64,7 @@ Feature roadmap
 + [x] basic functionality (navigation, users, chat)
 + [ ] spam control / approval of posts on relay
 + [ ] share nostr posts with other relays
-+ [ ] automatic SSL registration on Let's Encrypt
++ [x] automatic SSL registration on Let's Encrypt
 
 
 Servers

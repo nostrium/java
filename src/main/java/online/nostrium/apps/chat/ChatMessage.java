@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import online.nostrium.apps.user.User;
-import online.nostrium.utils.nostr.NostrSign;
-import online.nostrium.utils.nostr.NostrUtils;
+import online.nostrium.nostr.NostrSign;
+import online.nostrium.nostr.NostrUtils;
 
 public class ChatMessage {
 

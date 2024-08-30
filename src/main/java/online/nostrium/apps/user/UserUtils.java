@@ -10,7 +10,7 @@ import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.utils.EncryptionUtils;
 import online.nostrium.utils.FileFunctions;
 import online.nostrium.utils.Log;
-import static online.nostrium.utils.nostr.NostrUtils.generateNostrKeys;
+import static online.nostrium.nostr.NostrUtils.generateNostrKeys;
 import online.nostrium.utils.TextFunctions;
 import static online.nostrium.utils.TextFunctions.sha256;
 

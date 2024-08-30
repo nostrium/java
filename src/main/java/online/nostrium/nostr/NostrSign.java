@@ -1,4 +1,4 @@
-package online.nostrium.utils.nostr;
+package online.nostrium.nostr;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
