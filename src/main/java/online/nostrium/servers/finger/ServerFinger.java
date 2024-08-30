@@ -34,9 +34,9 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 
- * To test in debug mode, use this:
+ * To test, use this:
  *  
- *      echo "user1" | nc localhost 7900
+ *  finger brito@nostrium.online
  * 
  * @author Brito
  * @date: 2024-08-29

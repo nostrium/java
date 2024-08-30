@@ -11,6 +11,8 @@ import java.util.Date;
 import online.nostrium.servers.terminal.notifications.Sessions;
 import online.nostrium.servers.Server;
 import online.nostrium.servers.finger.ServerFinger;
+import online.nostrium.servers.qoft.ServerQOTD;
+import online.nostrium.servers.ssh.ServerSSH;
 import online.nostrium.servers.telnet.ServerTelnet;
 import online.nostrium.servers.web.ServerWeb;
 import online.nostrium.utils.AsciiArt;
@@ -36,7 +38,9 @@ public class core {
         Server[] servers = new Server[]{
             new ServerTelnet(),
             new ServerWeb(),
-            new ServerFinger()
+            new ServerFinger(),
+            //new ServerSSH(),
+            new ServerQOTD()
         };
 
         for (Server server : servers) {

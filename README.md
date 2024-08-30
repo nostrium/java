@@ -103,7 +103,7 @@ Network basics:
 + [ ] Echo Protocol - 7
 + [ ] Daytime Protocol - 13
 + [ ] Time Protocol - 37
-+ [ ] Quote of the Day (QOTD) - 17
++ [x] Quote of the Day (QOTD) - 17
 
 Domain/IP handling:
 + [ ] DNS (Domain Name System) - 53

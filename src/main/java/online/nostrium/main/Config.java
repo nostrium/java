@@ -46,13 +46,20 @@ public class Config {
     public int 
             portTelnet = 23,
             portTelnet_Debug = 2300,
+            
             portSSH = 22,
             portSSH_Debug = 2200,
+            
             portWeb = 80,
             portWeb_Debug = 8080,
 
+            portQOTD = 17,
+            portQOTD_Debug = 1717,
+
             portFinger = 79,
             portFinger_Debug = 7900;
+    
+    
     
     @Expose
     public TerminalColor colorAppsDefault = 
