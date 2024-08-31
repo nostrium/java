@@ -95,7 +95,7 @@ public class CommandRegister extends TerminalCommand{
         this.app.updateUser(user);
         
         if(user.getUserType() == UserType.ADMIN){
-            this.app.screen.writeln(UserType.ADMIN.toString() + " account is defined");
+            this.app.screen.writeln(UserType.ADMIN.toString() + " account is created.");
         }
         
         // all done

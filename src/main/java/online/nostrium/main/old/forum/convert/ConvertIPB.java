@@ -23,7 +23,7 @@ import online.nostrium.main.old.forum.structures.ManageTopics;
 import online.nostrium.main.old.forum.structures.ManageUsers;
 import online.nostrium.main.Folder;
 import online.nostrium.utils.ImageFunctions;
-import online.nostrium.utils.Log;
+import online.nostrium.main.old.LogObsolete;
 import online.nostrium.utils.TextFunctions;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -53,13 +53,13 @@ public class ConvertIPB {
 
         if (StringUtils.isAllBlank(targetURL)) {
             canStart = false;
-            Log.write("Invalid target URL");
+            LogObsolete.write("Invalid target URL");
             return;
         }
 
         if (StringUtils.isAllBlank(forumId)) {
             canStart = false;
-            Log.write("Invalid forumId");
+            LogObsolete.write("Invalid forumId");
             return;
         }
 
@@ -87,7 +87,7 @@ public class ConvertIPB {
 
     public void start() {
         if (canStart == false) {
-            Log.write("Unable to start converting");
+            LogObsolete.write("Unable to start converting");
             return;
         }
 
@@ -96,14 +96,14 @@ public class ConvertIPB {
             Document doc = Jsoup.connect(targetURL).get();
 
             if (doc != null) {
-                Log.write("Target URL exists: " + targetURL);
+                LogObsolete.write("Target URL exists: " + targetURL);
             }
 
             // get the categories
             getListOfAvailableForumGroups(doc);
 
             if (forum.getForumGroups().isEmpty()) {
-                Log.write("No groups to extract posts");
+                LogObsolete.write("No groups to extract posts");
                 return;
             }
 
@@ -278,14 +278,14 @@ public class ConvertIPB {
         Elements topics = doc.getElementsByClass("ipsBox");
 
         if (topics == null) {
-            Log.write("Failed to download: " + url);
+            LogObsolete.write("Failed to download: " + url);
             return;
         }
 
         // get each topic
         Elements h4 = topics.select("h4");
         if (h4 == null || h4.isEmpty()) {
-            Log.write("No topics were found: " + url);
+            LogObsolete.write("No topics were found: " + url);
             return;
         }
 
@@ -393,7 +393,7 @@ public class ConvertIPB {
                 if (nextPageDoc == null) {
                     continue;
                 }
-                Log.write("Crawling page: " + nextPageURL);
+                LogObsolete.write("Crawling page: " + nextPageURL);
                 extractNotesFromPage(forumTopic, nextPageDoc);
             }
         }
@@ -576,7 +576,7 @@ public class ConvertIPB {
             // save the result
             String webName = Folder.makeWebCompatible(file);
             user.setImageURL(webName);
-            Log.write("Wrote profile image: " + webName);
+            LogObsolete.write("Wrote profile image: " + webName);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -608,7 +608,7 @@ public class ConvertIPB {
             // make changes
             topic.setIsPinned(true);
             ManageTopics.writeTopic(topic);
-            Log.write("Pinned topic: " + topic.getId());
+            LogObsolete.write("Pinned topic: " + topic.getId());
             System.gc();
         }
     }

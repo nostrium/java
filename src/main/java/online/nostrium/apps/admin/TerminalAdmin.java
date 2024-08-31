@@ -27,6 +27,7 @@ public class TerminalAdmin extends TerminalApp {
         super(screen, user);
          // add apps inside
         this.addCommand(new CommandRegisterSSL(this));
+        this.addCommand(new CommandAdminLog(this));
         
         // make sure that only ADMIN can enter here
         permissions.clearEveryone();

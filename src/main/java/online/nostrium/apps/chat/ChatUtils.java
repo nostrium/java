@@ -14,8 +14,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import online.nostrium.main.Folder;
 import online.nostrium.utils.FileFunctions;
-import online.nostrium.utils.Log;
 import static online.nostrium.nostr.NostrUtils.generateNostrKeys;
+import online.nostrium.servers.terminal.TerminalApp;
+import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.utils.TextFunctions;
 
 /**
@@ -28,11 +29,12 @@ public class ChatUtils {
     /**
      * Create the main chat room on the root of the app
      *
+     * @param app
      * @return
      */
-    public static ChatRoom createChatRoomMain() {
+    public static ChatRoom createChatRoomMain(TerminalApp app) {
         User user = UserUtils.getUserAdmin();
-        ChatRoom room = ChatUtils.getOrCreateRoom(Folder.nameRootChat, user);
+        ChatRoom room = ChatUtils.getOrCreateRoom(app, Folder.nameRootChat, user);
         return room;
     }
 
@@ -149,7 +151,7 @@ public class ChatUtils {
      * @param user to be named as owner when needed to create it
      * @return
      */
-    public static ChatRoom getOrCreateRoom(String name, User user) {
+    public static ChatRoom getOrCreateRoom(TerminalApp app, String name, User user) {
         File folderBase = Folder.getFolderChat();
         ArrayList<File> files
                 = FileFunctions.searchFiles(
@@ -168,7 +170,7 @@ public class ChatUtils {
             // try to load the room
             ChatRoom room = ChatRoom.jsonImport(file, ChatRoom.class);
             if (room == null) {
-                Log.write("Invalid room file", file.getPath());
+                app.log(TerminalCode.INVALID, "Invalid room file", file.getPath());
                 continue;
             }
             // check the name, got a match? return it
@@ -190,7 +192,7 @@ public class ChatUtils {
      *
      * @return An ArrayList of valid ChatRoom objects.
      */
-    public static ArrayList<ChatRoom> getChatRooms() {
+    public static ArrayList<ChatRoom> getChatRooms(TerminalApp app) {
         ArrayList<ChatRoom> chatRooms = new ArrayList<>();
         File folderBase = Folder.getFolderChat();
         ArrayList<File> files = FileFunctions.searchFiles(folderBase, Folder.nameFolderChatRoom);
@@ -204,7 +206,7 @@ public class ChatUtils {
                 chatRooms.add(room);
             } else {
                 // Room is invalid, log the issue
-                Log.write("Invalid room file", file.getPath());
+                app.log(TerminalCode.INVALID, "Invalid room file", file.getPath());
             }
         }
 

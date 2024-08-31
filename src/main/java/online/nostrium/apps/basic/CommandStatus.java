@@ -116,7 +116,7 @@ public class CommandStatus extends TerminalCommand {
     }
 
     private String getChatRoomCount() {
-        ArrayList<ChatRoom> rooms = ChatUtils.getChatRooms();
+        ArrayList<ChatRoom> rooms = ChatUtils.getChatRooms(this.app);
         return "Chatrooms: " + rooms.size();
     }
 

@@ -6,7 +6,7 @@
 package online.nostrium.main.old.requests;
 
 import java.net.URI;
-import online.nostrium.utils.Log;
+import online.nostrium.main.old.LogObsolete;
 import org.takes.Request;
 import org.takes.Response;
 import org.takes.Take;

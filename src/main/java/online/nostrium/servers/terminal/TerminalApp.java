@@ -17,6 +17,7 @@ import online.nostrium.apps.basic.CommandLs;
 import online.nostrium.apps.chat.CommandChatClear;
 import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.apps.user.User;
+import online.nostrium.logs.Log;
 import online.nostrium.main.Folder;
 import static online.nostrium.main.Folder.namePermissions;
 import online.nostrium.utils.cybersec.Permissions;
@@ -208,5 +209,9 @@ public abstract class TerminalApp {
         return Folder.defaultGetFolder(
                 folderRoot, this.getName()
         );
+    }
+    
+    public void log(TerminalCode code, String text, String data){
+        Log.write(this.getId(), code, text, data);
     }
 }

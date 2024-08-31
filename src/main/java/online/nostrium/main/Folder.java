@@ -29,8 +29,10 @@ public class Folder {
             nameFolderBase = "forum",
             nameFolderUsers = "users",
             nameFolderProfileImages = "profile_images",
+            nameFolderLogs = "logs",
             nameRootChat = "root",
             nameAnonUsers = "Anon",
+            nameSystem = "SYSTEM",
             nameEndingJsonUser = "-user.json",
             nameFileData = "data.json",
             namePermissions = "permissions";
@@ -134,6 +136,10 @@ public class Folder {
 
     public static File getFolderWellKnown() {
         return defaultGetFolder(getFolderWWW(), ".well-known");
+    }
+
+    public static File getFolderLog() {
+        return defaultGetFolder(nameFolderLogs);
     }
     
     

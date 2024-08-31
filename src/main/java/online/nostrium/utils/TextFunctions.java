@@ -54,6 +54,20 @@ public class TextFunctions {
         return dateTime.format(formatter);
     }
 
+    public static String convertLongToDateTimeWithSeconds(long timestamp) {
+        // Convert the long timestamp to an Instant assuming it's in milliseconds
+        Instant instant = Instant.ofEpochMilli(timestamp);
+
+        // Convert the Instant to a LocalDateTime in the system's default time zone
+        LocalDateTime dateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+
+        // Define the date format including seconds
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        // Format the LocalDateTime and return it as a string
+        return dateTime.format(formatter);
+    }
+
     /**
      * Cleans a string from non-alphanumeric letters Finds equivalents for
      * letters with accents.

@@ -8,16 +8,17 @@ package online.nostrium.main;
 
 import java.io.File;
 import java.util.Date;
+import online.nostrium.logs.Log;
 import online.nostrium.servers.terminal.notifications.Sessions;
 import online.nostrium.servers.Server;
 import online.nostrium.servers.email.ServerEmail;
 import online.nostrium.servers.finger.ServerFinger;
 import online.nostrium.servers.qoft.ServerQOTD;
-import online.nostrium.servers.ssh.ServerSSH;
 import online.nostrium.servers.telnet.ServerTelnet;
+import static online.nostrium.servers.terminal.TerminalCode.BOOT;
+import static online.nostrium.servers.terminal.TerminalCode.OK;
 import online.nostrium.servers.web.ServerWeb;
 import online.nostrium.utils.AsciiArt;
-import online.nostrium.utils.Log;
 import online.nostrium.utils.time;
 
 /**
@@ -80,7 +81,7 @@ public class core {
         System.out.println("");
         System.out.println(AsciiArt.description());
         System.out.println("--------------------------");
-        Log.write("Running from folder: " + folder.getPath());
+        Log.write(BOOT, "Running from folder", folder.getPath());
 
         // get the config started
         config = Config.loadConfig();

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import online.nostrium.main.Folder;
-import online.nostrium.utils.Log;
+import online.nostrium.main.old.LogObsolete;
 import online.nostrium.utils.TextFunctions;
 import org.apache.commons.io.FileUtils;
 
@@ -114,7 +114,7 @@ public class ForumGroup {
             File file = new File(folderTopic, forumTopic.getFilename() + ".json");
             String text = forumTopic.jsonExport();
             FileUtils.writeStringToFile(file, text);
-            Log.write("Wrote topic: " + file.getPath());
+            LogObsolete.write("Wrote topic: " + file.getPath());
         } catch (IOException ex) {
             Logger.getLogger(ForumGroup.class.getName()).log(Level.SEVERE, null, ex);
         }

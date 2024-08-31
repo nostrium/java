@@ -5,14 +5,14 @@
  * License: Apache-2.0
  */
 
-package online.nostrium.utils;
+package online.nostrium.main.old;
 
 /**
  * Date: 2023-02-07
  * Place: Germany
  * @author brito
  */
-public class Log {
+public class LogObsolete {
 
     public static void write(String message){
         System.out.println(message);

@@ -2,6 +2,7 @@ package online.nostrium.apps.user;
 
 import java.io.File;
 import java.util.ArrayList;
+import online.nostrium.logs.Log;
 import online.nostrium.main.Folder;
 import static online.nostrium.main.Folder.nameEndingJsonUser;
 import online.nostrium.servers.terminal.CommandResponse;
@@ -9,7 +10,6 @@ import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.utils.EncryptionUtils;
 import online.nostrium.utils.FileFunctions;
-import online.nostrium.utils.Log;
 import static online.nostrium.nostr.NostrUtils.generateNostrKeys;
 import online.nostrium.utils.TextFunctions;
 import static online.nostrium.utils.TextFunctions.sha256;
@@ -153,7 +153,7 @@ public class UserUtils {
                 userCount++;
             } else {
                 // User is invalid, log the issue
-                Log.write("Invalid user file", file.getPath());
+                Log.write(TerminalCode.INVALID, "Invalid user file", file.getPath());
             }
         }
 

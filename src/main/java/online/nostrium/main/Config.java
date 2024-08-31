@@ -14,8 +14,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import online.nostrium.logs.Log;
+import static online.nostrium.servers.terminal.TerminalCode.INVALID;
+import static online.nostrium.servers.terminal.TerminalCode.OK;
 import online.nostrium.servers.terminal.TerminalColor;
-import online.nostrium.utils.Log;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -139,8 +141,8 @@ public class Config {
         try {
             String text = FileUtils.readFileToString(file, "UTF-8");
             Gson gson = new Gson();
-            Config conf = gson.fromJson(text, Config.class);
-            return conf;
+            Config item = gson.fromJson(text, Config.class);
+            return item;
         } catch (JsonSyntaxException | IOException e) {
             e.printStackTrace();
             return null;
@@ -154,7 +156,7 @@ public class Config {
             File file = Folder.getFileConfig();
             String data = config.jsonExport();
             FileUtils.writeStringToFile(file, data);
-            Log.write("Created config file: " + file.getPath());
+            Log.write(OK, "Created config file", file.getPath());
         } catch (IOException ex) {
             Logger.getLogger(Config.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -179,7 +181,7 @@ public class Config {
         // the config file exists, let's load it.
         Config config = Config.jsonImport(file);
         if (config == null) {
-            Log.write("Invalid config, using default values: " + file.getPath());
+            Log.write(INVALID, "Invalid config, using default values", file.getPath());
             return new Config();
         }
         // the config file is valid, use it

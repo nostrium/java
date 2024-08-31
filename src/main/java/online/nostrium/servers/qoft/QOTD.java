@@ -36,7 +36,46 @@ public class QOTD {
         "Invest in cryptographic research", 
         "Trust the code, not intermediaries", 
         "Enable permissionless innovation", 
-        "Focus on security-first development "
+        "Focus on security-first development ",
+        "Live off-grid", 
+        "Harvest your own energy", 
+        "Grow your own food", 
+        "Embrace self-sufficiency", 
+        "Reconnect with nature", 
+        "Simplify your life", 
+        "Reduce your dependence", 
+        "Protect your privacy", 
+        "Value your freedom", 
+        "Advocate for human rights", 
+        "Fight for digital freedom", 
+        "Defend cybersecurity", 
+        "Embrace open source", 
+        "Seek alternative energies", 
+        "Pursue sustainable living", 
+        "Champion privacy laws", 
+        "Guard your personal data", 
+        "Resist surveillance", 
+        "Cultivate resilience", 
+        "Practice mindful living", 
+        "Prioritize mental health", 
+        "Opt for renewable resources", 
+        "Live minimally", 
+        "Adopt a low-tech lifestyle", 
+        "Cherish community", 
+        "Engage in local governance", 
+        "Support decentralized networks", 
+        "Uphold digital rights", 
+        "Reject corporate control", 
+        "Be your own master", 
+        "Embrace freedom of thought", 
+        "Defend the right to privacy", 
+        "Guard against digital threats", 
+        "Value human dignity", 
+        "Create a self-reliant life", 
+        "Live closer to the land", 
+        "Empower yourself through technology", 
+        "Seek balance between tech and nature", 
+        "Protect the environment"
     };
 
     private static final String[] PART_TWO = {
@@ -58,7 +97,43 @@ public class QOTD {
         "for future-proof privacy.", 
         "to overcome the gatekeepers.", 
         "to empower creators globally.", 
-        "to safeguard against cyber threats."
+        "to safeguard against cyber threats.",
+        "to reduce reliance on the grid.", 
+        "to reclaim your independence.", 
+        "to foster community resilience.", 
+        "to live sustainably.", 
+        "to minimize your carbon footprint.", 
+        "to achieve true freedom.", 
+        "to simplify your life.", 
+        "to connect with the earth.", 
+        "to protect natural resources.", 
+        "to live authentically.", 
+        "to defend the vulnerable.", 
+        "to uphold justice.", 
+        "to resist digital colonization.", 
+        "to decentralize power structures.", 
+        "to ensure lasting security.", 
+        "to champion the disenfranchised.", 
+        "to preserve civil liberties.", 
+        "to promote global equality.", 
+        "to secure the future of the internet.", 
+        "to challenge corporate hegemony.", 
+        "to foster human connection.", 
+        "to nurture creativity.", 
+        "to build resilient communities.", 
+        "to align with your values.", 
+        "to avoid technological dependence.", 
+        "to honor your ancestors.", 
+        "to protect your legacy.", 
+        "to support local economies.", 
+        "to live within your means.", 
+        "to focus on what truly matters.", 
+        "to disconnect from the noise.", 
+        "to preserve your mental clarity.", 
+        "to enrich your soul.", 
+        "to live in harmony with nature.", 
+        "to find peace in simplicity.", 
+        "to be the change you wish to see."
     };
 
     private static final String[] PART_THREE = {
@@ -81,7 +156,41 @@ public class QOTD {
         "Take control of your digital destiny.", 
         "Empower yourself with technology, not corporations.", 
         "Decentralize or be compromised.", 
-        "Either the future is encrypted, or it isn't free."
+        "Either the future is encrypted, or it isn't free.",
+        "Living off-grid is living on your own terms.", 
+        "Simplicity is the ultimate sophistication.", 
+        "True freedom is living sustainably.", 
+        "Your energy is your independence.", 
+        "Grow your own food, grow your own freedom.", 
+        "Nature is the best teacher.", 
+        "Reconnect with the earth, reclaim your peace.", 
+        "In nature, we find our true selves.", 
+        "Privacy is the key to a free society.", 
+        "Digital freedom is a fundamental right.", 
+        "Security in the digital age starts with you.", 
+        "Off-grid living is the path to resilience.", 
+        "Decentralization is the future of freedom.", 
+        "The first step to freedom is to disconnect.", 
+        "Human rights are non-negotiable.", 
+        "Your data, your rules.", 
+        "Decentralized networks are the backbone of a free internet.", 
+        "To be off-grid is to be self-reliant.", 
+        "Cybersecurity is the new frontier of human rights.", 
+        "Protect nature, protect your future.", 
+        "Freedom begins when dependency ends.", 
+        "Embrace privacy, embrace freedom.", 
+        "Decentralized systems empower individuals.", 
+        "Sustainable living is true living.", 
+        "Off-grid living: a journey back to basics.", 
+        "The future is decentralized and secure.", 
+        "Your privacy, your power.", 
+        "Freedom is in the choices we make.", 
+        "A decentralized world is a free world.", 
+        "In nature, we find our balance.", 
+        "Human rights are the foundation of civilization.", 
+        "Off-grid is the new luxury.", 
+        "Living minimally is living freely.", 
+        "Cybersecurity is the shield of freedom."
     };
 
     public static String generateQuote() {
@@ -91,15 +200,6 @@ public class QOTD {
         String part2 = PART_TWO[random.nextInt(PART_TWO.length)];
         String part3 = PART_THREE[random.nextInt(PART_THREE.length)];
 
-        // Generate a random number for the day
-        //int numberOfTheDay = random.nextInt(100) + 1; // Random number between 1 and 100
-
-        return String.format("%s %s %s"
-                //+ " Your number for the day is: %d."
-                + "", part1, part2, part3 
-        //        ,numberOfTheDay
-        );
+        return String.format("%s %s %s", part1, part2, part3);
     }
-    
-    
 }

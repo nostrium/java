@@ -15,14 +15,18 @@ package online.nostrium.servers.terminal;
  */
 public enum TerminalCode {
     OK(200),
+    BOOT(201),
     CHANGE_APP(-1),
     EXIT_APP(-10),
     EXIT_CLIENT(-100),
     FAIL(500),
     INCOMPLETE(300),
+    INVALID(301),
+    CRASH(302),
     DENIED(501),
     NOT_FOUND(404);
-
+    
+    
     private final int code;
 
     TerminalCode(int code) {

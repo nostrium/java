@@ -17,7 +17,6 @@ import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.apps.user.User;
 import online.nostrium.apps.user.UserUtils;
-import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.TerminalUtils;
 import online.nostrium.utils.TextFunctions;
 
@@ -31,10 +30,11 @@ public class TerminalChat extends TerminalApp {
     // load the room, but not the chat history
     public ChatRoom roomNow = null;
             
+    @SuppressWarnings("LeakingThisInConstructor")
     public TerminalChat(Screen screenAssigned, User user) {
         super(screenAssigned, user);
         // make sure the room is not empty
-        roomNow = ChatUtils.getOrCreateRoom(
+        roomNow = ChatUtils.getOrCreateRoom(this,
                     Folder.nameRootChat, UserUtils.getUserAdmin()
             );
         // let's overwrite the previous LS command
