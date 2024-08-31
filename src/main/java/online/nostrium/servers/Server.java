@@ -47,10 +47,13 @@ public abstract class Server {
         keepRunning = false;
         String text = getId() + " stopped on port " + getPort();
         System.out.println(text);
+        shutdown();
     }
 
     public boolean isRunning() {
         return isRunning;
     }
+
+    protected abstract void shutdown();
 
 }

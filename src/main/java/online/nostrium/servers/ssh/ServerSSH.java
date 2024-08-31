@@ -26,6 +26,8 @@ import org.apache.sshd.sftp.server.SftpSubsystemFactory;
 
 public class ServerSSH extends Server {
 
+    private SshServer sshd;
+
     @Override
     public String getId() {
         return "Server_SSH";
@@ -38,7 +40,7 @@ public class ServerSSH extends Server {
 
     @Override
     protected void boot() {
-        SshServer sshd = SshServer.setUpDefaultServer();
+        sshd = SshServer.setUpDefaultServer();
         sshd.setPort(getPort());
 
         // Set the key pair provider (usually RSA keys)
@@ -65,9 +67,29 @@ public class ServerSSH extends Server {
         try {
             sshd.start();
             isRunning = true;
+            System.out.println("SSH Server started on port: " + getPort());
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    protected void shutdown() {
+        if (sshd != null && isRunning) {
+            try {
+                sshd.stop();
+                isRunning = false;
+                System.out.println("SSH Server shut down successfully.");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        ServerSSH server = new ServerSSH();
+        Runtime.getRuntime().addShutdownHook(new Thread(server::shutdown));
+        server.boot();
     }
 
     // This class would need to map the SSH commands to your existing Telnet command handling

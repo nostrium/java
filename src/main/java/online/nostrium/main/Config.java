@@ -52,14 +52,26 @@ public class Config {
             
             portHTTP = 80,
             portHTTP_Debug = 8080,
-            
             portHTTPS = 443,
             portHTTPS_Debug = 44300,
             
+            portSMTP = 25,
+            portSMTP_Debug = 2500,
+            portSMTPS = 465,
+            portSMTPS_Debug = 4650,
             
+            portIMAP = 143,
+            portIMAP_Debug = 14300,
+            portIMAPS = 993,
+            portIMAPS_Debug = 9930,
+    
+            portPOP3 = 110,
+            portPOP3_Debug = 11000,
+            portPOP3S = 995,
+            portPOP3S_Debug = 9950,
 
             portQOTD = 17,
-            portQOTD_Debug = 1717,
+            portQOTD_Debug = 1700,
 
             portFinger = 79,
             portFinger_Debug = 7900;

@@ -38,22 +38,24 @@ import online.nostrium.servers.Server;
  * @location: Germany
  */
 @SuppressWarnings("StaticNonFinalUsedInInitialization")
-public class ServerTelnet extends Server{
+public class ServerTelnet extends Server {
 
-    
+    private ServerSocket serverSocket;
+    private volatile boolean keepRunning;
+
     @Override
     protected void boot() {
         int PORT = getPort();
-        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
+        try {
+            serverSocket = new ServerSocket(PORT);
             isRunning = true;
             keepRunning = true;
-            
+
             while (keepRunning) {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("Client connected: " + clientSocket.getInetAddress());
                 new Thread(new ClientHandler(clientSocket)).start();
             }
-            
         } catch (IOException e) {
             System.out.println(getId() + " failed to start. Another service is already using port " + PORT);
         }
@@ -67,6 +69,26 @@ public class ServerTelnet extends Server{
     @Override
     public String getId() {
         return "Server_Telnet";
+    }
+
+    @Override
+    protected void shutdown() {
+        keepRunning = false;
+        if (serverSocket != null && !serverSocket.isClosed()) {
+            try {
+                serverSocket.close();
+                System.out.println("Telnet Server shut down successfully.");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        isRunning = false;
+    }
+
+    public static void main(String[] args) {
+        ServerTelnet server = new ServerTelnet();
+        Runtime.getRuntime().addShutdownHook(new Thread(server::shutdown));
+        server.boot();
     }
 
     private static class ClientHandler implements Runnable {
@@ -86,8 +108,6 @@ public class ServerTelnet extends Server{
                 InputStream in = clientSocket.getInputStream();
                 PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true)) {
 
-                
-                
                 // the handler of text on the screen
                 Screen screen = new ScreenTelnet(in, out);
 
@@ -103,12 +123,9 @@ public class ServerTelnet extends Server{
                 
                 // is this the first user ever? Make him admin
                 UserUtils.checkFirstTimeSetup(user, screen);
-                
 
                 // write the start prompt
                 screen.writeUserPrompt(app);
-                
-                
 
                 int inputChar;
                 StringBuilder inputBuffer = new StringBuilder();

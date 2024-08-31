@@ -10,6 +10,7 @@ import java.io.File;
 import java.util.Date;
 import online.nostrium.servers.terminal.notifications.Sessions;
 import online.nostrium.servers.Server;
+import online.nostrium.servers.email.ServerEmail;
 import online.nostrium.servers.finger.ServerFinger;
 import online.nostrium.servers.qoft.ServerQOTD;
 import online.nostrium.servers.ssh.ServerSSH;
@@ -40,7 +41,8 @@ public class core {
             new ServerWeb(),
             new ServerFinger(),
             //new ServerSSH(),
-            new ServerQOTD()
+            new ServerQOTD(),
+            new ServerEmail()
         };
 
         for (Server server : servers) {

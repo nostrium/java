@@ -22,14 +22,14 @@ import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.stream.ChunkedWriteHandler;
 import online.nostrium.main.core;
 import online.nostrium.servers.Server;
-import java.util.Random;
+
 import static online.nostrium.servers.qoft.QOTD.generateQuote;
 
 /**
  * 
- * To test, use this:
+ * To test this locally (on production is port 17):
  *  
- *      finger brito@nostrium.online
+ *   telnet localhost 1700
  * 
  * @author Brito
  * @date: 2024-08-29
@@ -37,7 +37,9 @@ import static online.nostrium.servers.qoft.QOTD.generateQuote;
  */
 public class ServerQOTD extends Server {
 
-     
+    private EventLoopGroup bossGroup;
+    private EventLoopGroup workerGroup;
+
     @Override
     public String getId() {
         return "Server_QOTD";
@@ -48,14 +50,14 @@ public class ServerQOTD extends Server {
         if (core.config.debug) {
             return core.config.portQOTD_Debug;
         } else {
-            return core.config.portQOTD     ;
+            return core.config.portQOTD;
         }
     }
 
     @Override
     protected void boot() {
-        EventLoopGroup bossGroup = new NioEventLoopGroup(1);
-        EventLoopGroup workerGroup = new NioEventLoopGroup();
+        bossGroup = new NioEventLoopGroup(1);
+        workerGroup = new NioEventLoopGroup();
         try {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
@@ -83,14 +85,28 @@ public class ServerQOTD extends Server {
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            bossGroup.shutdownGracefully();
-            workerGroup.shutdownGracefully();
+            shutdown();
         }
     }
 
+    @Override
+    protected void shutdown() {
+        if (bossGroup != null && workerGroup != null) {
+            try {
+                bossGroup.shutdownGracefully().sync();
+                workerGroup.shutdownGracefully().sync();
+                isRunning = false;
+                System.out.println("QOTD Server shut down successfully.");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public static void main(String[] args) {
-        new ServerQOTD().boot();
+        ServerQOTD server = new ServerQOTD();
+        Runtime.getRuntime().addShutdownHook(new Thread(server::shutdown));
+        server.boot();
     }
 
     // Inner class to handle the quote requests without rate limiting
@@ -98,9 +114,7 @@ public class ServerQOTD extends Server {
 
         @Override
         protected void channelRead0(ChannelHandlerContext ctx, String request) throws Exception {
-            
             String replyText = generateQuote();
-
             ctx.writeAndFlush(replyText);
             ctx.close();
         }

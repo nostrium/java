@@ -45,7 +45,7 @@ public class QOTD {
         "to ensure data immutability.", 
         "to provide privacy without trust.", 
         "to secure your digital life.", 
-        "for transparency and control.", 
+        "for transparent control.", 
         "to prevent vulnerabilities.", 
         "for self-sovereign identities.", 
         "to make decisions collectively.", 
@@ -56,7 +56,7 @@ public class QOTD {
         "in every digital interaction.", 
         "to protect personal information.", 
         "for future-proof privacy.", 
-        "overcome the gatekeepers.", 
+        "to overcome the gatekeepers.", 
         "to empower creators globally.", 
         "to safeguard against cyber threats."
     };

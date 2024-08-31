@@ -46,6 +46,9 @@ public class ServerFinger extends Server {
 
     // Map to track the last request time for each IP address
     private static final Map<String, Long> requestTimes = new ConcurrentHashMap<>();
+    private EventLoopGroup bossGroup;
+    private EventLoopGroup workerGroup;
+    private ScheduledExecutorService scheduler;
 
     @Override
     public String getId() {
@@ -63,8 +66,8 @@ public class ServerFinger extends Server {
 
     @Override
     protected void boot() {
-        EventLoopGroup bossGroup = new NioEventLoopGroup(1);
-        EventLoopGroup workerGroup = new NioEventLoopGroup();
+        bossGroup = new NioEventLoopGroup(1);
+        workerGroup = new NioEventLoopGroup();
         try {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
@@ -95,13 +98,12 @@ public class ServerFinger extends Server {
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            bossGroup.shutdownGracefully();
-            workerGroup.shutdownGracefully();
+            shutdown();
         }
     }
 
     private void startCleanupTask() {
-        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        scheduler = Executors.newScheduledThreadPool(1);
         scheduler.scheduleAtFixedRate(() -> {
             long currentTime = System.currentTimeMillis();
             long expirationTime = TimeUnit.MINUTES.toMillis(5); // 5 minutes expiration
@@ -109,8 +111,27 @@ public class ServerFinger extends Server {
         }, 5, 5, TimeUnit.MINUTES);
     }
 
+    @Override
+    protected void shutdown() {
+        if (bossGroup != null && workerGroup != null) {
+            try {
+                bossGroup.shutdownGracefully().sync();
+                workerGroup.shutdownGracefully().sync();
+                if (scheduler != null && !scheduler.isShutdown()) {
+                    scheduler.shutdownNow();
+                }
+                isRunning = false;
+                System.out.println("Finger Server shut down successfully.");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public static void main(String[] args) {
-        new ServerFinger().boot();
+        ServerFinger server = new ServerFinger();
+        Runtime.getRuntime().addShutdownHook(new Thread(server::shutdown));
+        server.boot();
     }
 
     // Inner class to handle the finger requests with rate limiting
@@ -137,14 +158,14 @@ public class ServerFinger extends Server {
             String notFound = "No such user";
             request = request.trim();
 
-            // invalid request format
-            if (TextSanitation.checkRequest(request) == false) {
+            // Invalid request format
+            if (!TextSanitation.checkRequest(request)) {
                 response = notFound + "\n";
                 ctx.writeAndFlush(response);
                 return;
             }
 
-            // try to find the user
+            // Try to find the user
             User user = UserUtils.getUserByUsername(request);
             if (user == null) {
                 response = notFound + "\n";

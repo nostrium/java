@@ -39,9 +39,14 @@ import online.nostrium.servers.terminal.screens.Screen;
 /**
  * Web server implementation with HTTPS support.
  *
- * Author: Brito Date: 2024-08-29 Location: Germany
+ * @Author: Brito
+ * @Date: 2024-08-29
+ * @Location: Germany
  */
 public class ServerWeb extends Server {
+
+    private EventLoopGroup bossGroup;
+    private EventLoopGroup workerGroup;
 
     @Override
     public String getId() {
@@ -61,7 +66,7 @@ public class ServerWeb extends Server {
             return core.config.portHTTP;
         }
     }
-    
+
     public int getPortHTTPS() {
         if (core.config.debug) {
             return core.config.portHTTPS_Debug;
@@ -73,8 +78,8 @@ public class ServerWeb extends Server {
     @Override
     @SuppressWarnings("UseSpecificCatch")
     protected void boot() {
-        EventLoopGroup bossGroup = new NioEventLoopGroup(1);
-        EventLoopGroup workerGroup = new NioEventLoopGroup();
+        bossGroup = new NioEventLoopGroup(1);
+        workerGroup = new NioEventLoopGroup();
 
         try {
             // Load the SSL context
@@ -166,6 +171,20 @@ public class ServerWeb extends Server {
             e.printStackTrace();
             System.out.println("Failed to create SSL context, starting without HTTPS.");
             return null;
+        }
+    }
+
+    @Override
+    protected void shutdown() {
+        if (bossGroup != null && workerGroup != null) {
+            try {
+                bossGroup.shutdownGracefully().sync();
+                workerGroup.shutdownGracefully().sync();
+                isRunning = false;
+                System.out.println("Web Server shut down successfully.");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
