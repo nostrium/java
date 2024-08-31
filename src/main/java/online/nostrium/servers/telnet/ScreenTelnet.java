@@ -255,15 +255,6 @@ public class ScreenTelnet extends Screen {
     }
 
     @Override
-    public void writeIntro() {
-        writeln(paint(GREEN, AsciiArt.intro()));
-        writeln("");
-        writeln("");
-        writeln(paint(BLUE, "The NOSTR BBS. Type '/help' to list the commands."));
-        writeln("");
-    }
-
-    @Override
     public void writeUserPrompt(TerminalApp app) {
         String path = TerminalUtils.getPath(app);
 

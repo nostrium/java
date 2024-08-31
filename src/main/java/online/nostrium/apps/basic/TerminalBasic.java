@@ -60,14 +60,14 @@ public class TerminalBasic extends TerminalApp {
     @Override
     public String getIntro() {
         
-        String intro = paint(GREEN, AsciiArt.intro())
-                + "\n\n"
-                + paint(BLUE,
-                "The NOSTR BBS! Type '/help' to list the commands."
-                        + "\n"
-                );
-        
-        return intro;
+//        String intro = paint(GREEN, AsciiArt.intro())
+//                + "\n\n"
+//                + paint(BLUE,
+//                "The NOSTR BBS! Type 'help' to list the commands."
+//                        + "\n"
+//                );
+        screen.writeIntro();
+        return "";
     }
 
     @Override

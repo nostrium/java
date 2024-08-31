@@ -66,14 +66,6 @@ public class ScreenWeb extends Screen{
         return TerminalType.ANSI;
     }
 
-    @Override
-    public void writeIntro() {
-        writeln(paint(GREEN, AsciiArt.intro()));
-        writeln("");
-        writeln("");
-        writeln(paint(BLUE, "The NOSTR BBS. Type '/help' to list the commands."));
-        writeln("");
-    }
 
     @Override
     public void write(String text) {

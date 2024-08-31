@@ -54,9 +54,9 @@ public class ServerWeb_old extends Server {
     @Override
     public int getPort() {
         if (core.config.debug) {
-            return core.config.portWeb_Debug;
+            return core.config.portHTTP_Debug;
         } else {
-            return core.config.portWeb;
+            return core.config.portHTTP;
         }
     }
 

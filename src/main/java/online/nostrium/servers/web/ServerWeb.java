@@ -56,9 +56,17 @@ public class ServerWeb extends Server {
     @Override
     public int getPort() {
         if (core.config.debug) {
-            return core.config.portWeb_Debug;
+            return core.config.portHTTP_Debug;
         } else {
-            return core.config.portWeb;
+            return core.config.portHTTP;
+        }
+    }
+    
+    public int getPortHTTPS() {
+        if (core.config.debug) {
+            return core.config.portHTTPS_Debug;
+        } else {
+            return core.config.portHTTPS;
         }
     }
 
@@ -80,40 +88,61 @@ public class ServerWeb extends Server {
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline p = ch.pipeline();
 
-                            // Add SSL handler first to enable encryption, only if SSL context is available
-                            if (sslCtx != null) {
+                            if (sslCtx != null && ch.localAddress().getPort() == getPortHTTPS()) {
                                 p.addLast(sslCtx.newHandler(ch.alloc()));
                             }
 
                             p.addLast(new HttpServerCodec());
                             p.addLast(new HttpObjectAggregator(65536));
                             p.addLast(new ChunkedWriteHandler());
-                            p.addLast(new HttpRequestHandler("/ws"));  // Handles HTTP requests and routes WebSocket requests
+                            p.addLast(new HttpRequestHandler("/ws"));
                             p.addLast(new WebSocketServerProtocolHandler("/ws"));
-                            p.addLast(new WebSocketFrameHandler()); // Handles WebSocket frames
+                            p.addLast(new WebSocketFrameHandler());
                         }
                     });
 
-            // Start HTTP server on the specified port
-            int PORT = this.getPort();
-            int SSL_PORT = 443; // Default HTTPS port
+            int HTTP_PORT = this.getPort();
+            int HTTPS_PORT = getPortHTTPS();
+
+            Channel httpChannel = null;
+            Channel httpsChannel = null;
 
             try {
-                Channel ch = b.bind(PORT).sync().channel();
+                httpChannel = b.bind(HTTP_PORT).sync().channel();
+                //System.out.println("HTTP server started on port " + HTTP_PORT);
                 isRunning = true;
-                System.out.println("HTTP server started on port " + PORT);
-
-                // Start HTTPS server if SSL context is available
-                if (sslCtx != null) {
-                    Channel sslChannel = b.bind(SSL_PORT).sync().channel();
-                    System.out.println("HTTPS server started on port " + SSL_PORT);
-                    sslChannel.closeFuture().sync();
-                }
-
-                ch.closeFuture().sync();
             } catch (Exception ex) {
-                System.out.println(getId() + " failed to open port " + PORT);
+                System.err.println("Failed to start HTTP server on port " + HTTP_PORT + ": " + ex.getMessage());
+                ex.printStackTrace();
             }
+
+            if (sslCtx != null) {
+                try {
+                    httpsChannel = b.bind(HTTPS_PORT).sync().channel();
+                    //System.out.println("HTTPS server started on port " + HTTPS_PORT);
+                } catch (Exception ex) {
+                    System.err.println("Failed to start HTTPS server on port " + HTTPS_PORT + ": " + ex.getMessage());
+                    ex.printStackTrace();
+                }
+            } else {
+                System.out.println("SSL context is not available, HTTPS server will not start.");
+            }
+
+            // Wait for the server channel(s) to close.
+            try {
+                if (httpChannel != null) {
+                    httpChannel.closeFuture().sync();
+                }
+                if (httpsChannel != null) {
+                    httpsChannel.closeFuture().sync();
+                }
+            } catch (InterruptedException e) {
+                System.err.println("Server interrupted: " + e.getMessage());
+            }
+
+        } catch (Exception e) {
+            System.err.println("Unexpected error during server boot: " + e.getMessage());
+            e.printStackTrace();
         } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
@@ -126,12 +155,11 @@ public class ServerWeb extends Server {
             File domain = new File(folder, "domain.crt");
             File keyFile = new File(folder, "domain.key"); // Private key
 
-            if (keyFile.exists() == false) {
+            if (!keyFile.exists()) {
                 System.out.println("SSL certificates not found, starting without HTTPS.");
                 return null;
             }
 
-            //return SslContextBuilder.forServer(certChainFile, keyFile).build();
             return SslContextBuilder.forServer(domain, keyFile).build();
 
         } catch (Exception e) {

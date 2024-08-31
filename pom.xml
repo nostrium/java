@@ -120,12 +120,13 @@
             <version>4.1.97.Final</version>
         </dependency>
         
-        <!-- SLF4J Dependency -->
+        <!-- SLF4J Dependency 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-nop</artifactId>
-            <version>1.7.32</version> <!-- Use the latest version -->
+            <version>1.7.32</version> 
         </dependency>
+        -->
         
         <!-- BouncyCastle Dependency -->
         <dependency>
@@ -224,6 +225,20 @@
             <groupId>org.apache.sshd</groupId>
             <artifactId>sshd-sftp</artifactId>
             <version>2.8.0</version>
+        </dependency>
+        
+        <!-- SLF4J API -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.7</version>
+        </dependency>
+
+        <!-- SLF4J Simple Logger -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.7</version>
         </dependency>
         
     </dependencies>

@@ -6,9 +6,13 @@
  */
 package online.nostrium.servers.terminal.screens;
 
+import online.nostrium.servers.qoft.QOTD;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalColor;
+import static online.nostrium.servers.terminal.TerminalColor.BLUE;
+import static online.nostrium.servers.terminal.TerminalColor.GREEN;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.utils.AsciiArt;
 
 /**
  * Author: Brito
@@ -20,7 +24,16 @@ public abstract class Screen {
     
     public abstract TerminalType getTerminalType();
     
-    public abstract void writeIntro();
+    public void writeIntro(){
+        writeln(paint(GREEN, AsciiArt.intro()));
+        writeln("");
+        writeln("");
+        writeln(paint(BLUE, "The NOSTR BBS. Type 'help' to list the commands."));
+        writeln("");
+        writeln(paint(TerminalColor.DARK_GREY_ON_BLACK,"> " + QOTD.generateQuote()));
+        writeln("");
+        
+    }
     
     public abstract void write(String text);
     public abstract void writeln(String text);
