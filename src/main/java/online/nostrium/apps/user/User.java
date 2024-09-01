@@ -283,6 +283,14 @@ public class User {
         }
         return name + "@" + core.config.domain;
     }
+
+    /**
+     * Verifies if a user has a user name
+     * @return 
+     */
+    public boolean hasUsername() {
+        return username != null;
+    }
     
     
 

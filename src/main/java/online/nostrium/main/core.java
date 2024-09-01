@@ -9,6 +9,8 @@ package online.nostrium.main;
 import java.io.File;
 import java.util.Date;
 import online.nostrium.logs.Log;
+import online.nostrium.nostr.nip05.NIP05;
+import online.nostrium.nostr.nip05.NIP05_emails;
 import online.nostrium.servers.terminal.notifications.Sessions;
 import online.nostrium.servers.Server;
 import online.nostrium.servers.email.ServerEmail;
@@ -37,6 +39,7 @@ public class core {
     public static Date uptime = new Date();
 
     public static boolean keepRunning = true;
+    
     
     public static void runServers(){
         Server[] servers = new Server[]{
@@ -88,6 +91,10 @@ public class core {
 
         // get the config started
         config = Config.loadConfig();
+        
+        // run the scheduled tasks
+        NIP05_emails nip05 = new NIP05_emails();  // every 10 minutes
+    
         
 
         // run servers and keep waiting
