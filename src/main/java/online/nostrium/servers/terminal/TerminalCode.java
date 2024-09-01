@@ -16,6 +16,10 @@ package online.nostrium.servers.terminal;
 public enum TerminalCode {
     OK(200),
     BOOT(201),
+    ROUTINE(202),
+    VISIT(203),
+    LOGIN(204),
+    EVENT(205),
     CHANGE_APP(-1),
     EXIT_APP(-10),
     EXIT_CLIENT(-100),

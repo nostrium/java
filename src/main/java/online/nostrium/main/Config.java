@@ -85,7 +85,9 @@ public class Config {
             TerminalColor.GREEN_BRIGHT;
 
     @Expose
-    public String domain = "nostrium.online";
+    public String 
+            domain = "nostrium.online",
+            language = "EN";
     
 //    String ForumTitle = "";
 //    String ForumDescription = "";
@@ -111,6 +113,8 @@ public class Config {
 //        new Level3()
 //    }; 
 //    URLtype URLtype = IPB;
+    
+    
     /**
      * Export this object as JSON
      *
@@ -149,7 +153,7 @@ public class Config {
         }
     }
 
-    @SuppressWarnings("FinallyDiscardsException")
+    @SuppressWarnings({"FinallyDiscardsException", "deprecation"})
     private static Config createAndWriteNew() {
         Config config = new Config();
         try {

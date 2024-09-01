@@ -62,7 +62,7 @@ public class TerminalChat extends TerminalApp {
             intro += "\n"
                     + "Messages this week: " + countMessages;
         }
-
+        
         return intro;
     }
 

@@ -7,6 +7,7 @@
 
 package online.nostrium.main;
 
+import com.google.gson.annotations.Expose;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -20,6 +21,7 @@ import org.apache.commons.io.FileUtils;
  */
 public class Folder {
 
+    @Expose
     public static String 
             nameFileConfig = "config.json",
             nameFolderData = "data",
@@ -28,6 +30,7 @@ public class Folder {
             nameFolderChatRoom = "room.json",
             nameFolderBase = "forum",
             nameFolderUsers = "users",
+            nameFolderLang = "lang",
             nameFolderProfileImages = "profile_images",
             nameFolderLogs = "logs",
             nameRootChat = "root",
@@ -132,6 +135,10 @@ public class Folder {
 
     public static File getFolderCerts() {
         return defaultGetFolder("certs");
+    }
+
+    public static File getFolderLang() {
+        return defaultGetFolder(nameFolderLang);
     }
 
     public static File getFolderWellKnown() {

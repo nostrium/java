@@ -21,6 +21,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 import static online.nostrium.main.Folder.nameSystem;
+import static online.nostrium.main.core.lang;
 import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalCode.CRASH;
 import static online.nostrium.servers.terminal.TerminalCode.INCOMPLETE;
@@ -81,6 +82,16 @@ public class Log {
     public static void write(TerminalCode code, String text, String data) {
         write(nameSystem, code, text, data);
     }
+    
+    /**
+     * Write JSON line to the archive.
+     *
+     * @param code operation code.
+     * @param text template text that can be translated.
+     */
+    public static void write(TerminalCode code, String text) {
+        write(nameSystem, code, text, null);
+    }
 
     /**
      * Write JSON line to the archive.
@@ -112,7 +123,15 @@ public class Log {
         logItems.add(logItem);
 
         writeLogItemsToZip(fileZip, logItems);
-        System.out.println(id + " | " + code + " | " + text + ": " + data);
+        
+        // apply translation
+        text = lang.translate(text);
+        
+        if(data != null && data.isEmpty() == false){
+            System.out.println(id + " | " + code + " | " + text + ": " + data);
+        }else{
+            System.out.println(id + " | " + code + " | " + text);
+        }
     }
 
     /**

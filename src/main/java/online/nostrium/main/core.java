@@ -15,9 +15,10 @@ import online.nostrium.servers.email.ServerEmail;
 import online.nostrium.servers.finger.ServerFinger;
 import online.nostrium.servers.qoft.ServerQOTD;
 import online.nostrium.servers.telnet.ServerTelnet;
+import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalCode.BOOT;
-import static online.nostrium.servers.terminal.TerminalCode.OK;
 import online.nostrium.servers.web.ServerWeb;
+import online.nostrium.translation.LanguageControl;
 import online.nostrium.utils.AsciiArt;
 import online.nostrium.utils.time;
 
@@ -30,6 +31,7 @@ public class core {
 
     public static Config config;
     public static Sessions sessions = new Sessions();
+    public static LanguageControl lang = new LanguageControl();
 
     // track the time that it is up
     public static Date uptime = new Date();
@@ -55,7 +57,8 @@ public class core {
         }
         
         if(keepRunning){
-            System.out.println("Nostrium is now running");
+            //System.out.println("Nostrium is now running");
+            Log.write(TerminalCode.OK,"Nostrium is now running");
         }
         
         while (keepRunning) {
@@ -67,7 +70,7 @@ public class core {
             }
             time.waitMs(500);
         }
-        System.out.println("Stopped the servers");
+        Log.write(TerminalCode.OK,"Stopped the servers");
     }
 
     
@@ -81,7 +84,7 @@ public class core {
         System.out.println("");
         System.out.println(AsciiArt.description());
         System.out.println("--------------------------");
-        Log.write(BOOT, "Running from folder", folder.getPath());
+        Log.write(BOOT, "Data folder", folder.getPath());
 
         // get the config started
         config = Config.loadConfig();
