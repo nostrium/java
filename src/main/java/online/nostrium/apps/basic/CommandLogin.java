@@ -8,6 +8,7 @@ package online.nostrium.apps.basic;
 
 import nostr.id.Identity;
 import online.nostrium.apps.user.User;
+import online.nostrium.apps.user.UserType;
 import online.nostrium.apps.user.UserUtils;
 import online.nostrium.nostr.NostrUtils;
 import online.nostrium.servers.terminal.CommandResponse;
@@ -119,15 +120,30 @@ public class CommandLogin extends TerminalCommand{
         // get the related user
         User user = UserUtils.getUserByNpub(npub);
         if(user == null){
-            return reply(TerminalCode.NOT_FOUND, "User was not found here. "
-                    + "Use 'register <nsec> <password>' to register the account.");
+            return registerUsingNsec(userNostr);
         }
         
         user.setNsec(nsec);
         // update the user info
         this.app.updateUser(user);
-        
         // all done
+        return reply(TerminalCode.OK, "Logged with success");
+    }
+
+    private CommandResponse registerUsingNsec(Identity userNostr) {
+        app.screen.writeln("NSEC is valid, but user was not yet registered here.");
+        
+        // create the new account
+        String nsec = userNostr.getPrivateKey().toBech32String();
+        String npub = userNostr.getPublicKey().toBech32String();
+        User user = UserUtils.createUserByNsec(nsec, npub);
+        // already set as member
+        user.setUserType(UserType.MEMBER);
+        // save to disk
+        user.save();
+        // update the user info
+        app.screen.writeln("Please type 'cd user' and 'help' to customize your account");
+        this.app.updateUser(user);
         return reply(TerminalCode.OK, "Logged with success");
     }
 

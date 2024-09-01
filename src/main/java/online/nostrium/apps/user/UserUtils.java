@@ -60,11 +60,16 @@ public class UserUtils {
      * @return user that was automatically generated
      */
     public static User createUserAnonymous() {
-        User user = new User();
         // generate random nostr keys
         String[] keys = generateNostrKeys();
-        user.setNsec(keys[0]);
-        user.setNpub(keys[1]);
+        return createUserByNsec(keys[0], keys[1]);
+    }
+
+    
+    public static User createUserByNsec(String nsec, String npub) {
+        User user = new User();
+        user.setNsec(nsec);
+        user.setNpub(npub);
         String name = getAnonUserDisplayName(user.getNpub());
         user.setDisplayName(name);
         String timestamp = TextFunctions.getDate();
@@ -72,7 +77,8 @@ public class UserUtils {
         user.setLastLoginTime(timestamp);
         return user;
     }
-
+    
+    
     /**
      * Get all the user files saved on disk
      * @return 
@@ -324,5 +330,5 @@ public class UserUtils {
         screen.writeln("You are the first user, you are now chosen as ADMINISTRATOR");
         screen.writeln("Please use \"register <name> <password>\" to save your account to disk.");
     }
-    
+
 }
