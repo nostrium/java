@@ -10,16 +10,14 @@ import online.nostrium.apps.admin.TerminalAdmin;
 import online.nostrium.servers.terminal.notifications.NotificationType;
 import online.nostrium.apps.chat.TerminalChat;
 import online.nostrium.apps.games.TerminalGames;
+import online.nostrium.apps.nostr.TerminalNostr;
 import online.nostrium.apps.user.TerminalUser;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
-import static online.nostrium.servers.terminal.TerminalColor.BLUE;
-import static online.nostrium.servers.terminal.TerminalColor.GREEN;
 import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.apps.user.User;
 import online.nostrium.servers.terminal.TerminalUtils;
-import online.nostrium.utils.AsciiArt;
 
 /**
  * @author Brito
@@ -45,6 +43,7 @@ public class TerminalBasic extends TerminalApp {
         addApp(new TerminalUser(screen, user));
         addApp(new TerminalChat(screen, user));
         addApp(new TerminalGames(screen, user));
+        addApp(new TerminalNostr(screen, user));
     }
 
     @Override

@@ -190,12 +190,12 @@ public class FileFunctions {
      */
     public static File getThirdLevelFolderForUser(
             File startingFolder, String npub, boolean createFolders) {
-        if (npub == null || npub.length() < 9) {
+        if (npub == null || npub.length() != 63) {
             return null;
         }
 
         try {
-            int i = 5;
+            int i = "npub".length();
             String firstLevel = npub.substring(i, i + 1); // Take the first character for the first level
             String secondLevel = npub.substring(i + 1, i + 2); // Take the second character for the second level
             String thirdLevel = npub.substring(i + 2, i + 3); // Take the third character for the third level

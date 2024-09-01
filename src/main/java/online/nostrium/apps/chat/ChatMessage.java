@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import online.nostrium.apps.user.User;
 import online.nostrium.nostr.NostrSign;
-import online.nostrium.nostr.NostrUtils;
+import online.nostrium.nostr.NostrAlgoHardCode;
 
 public class ChatMessage {
 
@@ -34,7 +34,7 @@ public class ChatMessage {
     String sig;  // Signature field
 
     public ChatMessage(User user, String content, ArrayList<String[]> tags) {
-        this.pubkey = NostrUtils.bech32ToHex(user.getNpub());  // Convert npub to hex format
+        this.pubkey = NostrAlgoHardCode.bech32ToHex(user.getNpub());  // Convert npub to hex format
         this.created_at = System.currentTimeMillis() / 1000L; // current timestamp in seconds
         this.tags = tags;
         this.content = content;
@@ -43,7 +43,7 @@ public class ChatMessage {
     }
 
     public ChatMessage(User user, String content) {
-        this.pubkey = NostrUtils.bech32ToHex(user.getNpub());  // Convert npub to hex format
+        this.pubkey = NostrAlgoHardCode.bech32ToHex(user.getNpub());  // Convert npub to hex format
         this.created_at = System.currentTimeMillis() / 1000L; // current timestamp in seconds
         this.tags = new ArrayList<>(); // Initialize tags to an empty list
         this.content = content;
@@ -65,7 +65,7 @@ public class ChatMessage {
             byte[] hash = NostrSign.sha256(serializedEvent.getBytes("UTF-8"));
 
             // Convert to hexadecimal format
-            return NostrUtils.bytesToHex(hash);
+            return NostrAlgoHardCode.bytesToHex(hash);
         } catch (Exception e) {
             Logger.getLogger(ChatMessage.class.getName()).log(Level.SEVERE, null, e);
             return null;

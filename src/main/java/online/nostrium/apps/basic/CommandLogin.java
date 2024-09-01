@@ -6,8 +6,10 @@
  */
 package online.nostrium.apps.basic;
 
+import nostr.id.Identity;
 import online.nostrium.apps.user.User;
 import online.nostrium.apps.user.UserUtils;
+import online.nostrium.nostr.NostrUtils;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
@@ -30,7 +32,29 @@ public class CommandLogin extends TerminalCommand{
 
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
+        
+        //login with nsec
+        if(parameters.length() == 63 
+                && parameters.toLowerCase().startsWith("nsec")){
+            return loginWithNsec(parameters);
+        }
+        
         // login USERNAME password
+        return loginWithUserPassword(parameters);
+    }
+
+    @Override
+    public String commandName() {
+        return "login";
+    }
+    
+    @Override
+    public String oneLineDescription() {
+        return "Log as existing user";
+    }
+
+
+    private CommandResponse loginWithUserPassword(String parameters) {
         String[] value = parameters.split(" ");
         
         // syntax needs to be correct
@@ -77,15 +101,34 @@ public class CommandLogin extends TerminalCommand{
         return reply(TerminalCode.OK, "Logged with success");
     }
 
-    @Override
-    public String commandName() {
-        return "login";
-    }
     
-    @Override
-    public String oneLineDescription() {
-        return "Log as existing user";
+    private CommandResponse loginWithNsec(String nsec) {
+        // nsec example: nsec1fat58gjcdwgjxlj97jlcf48smwktncqre280yesxawdjvx2xx8sswajwyn
+        //               nsec1wslyztt77wteqfvf3q8w5uyzq8kddvse9gvkx6k5xfecz7jwq7rsvpvghr
+        Identity userNostr;
+        try{
+            userNostr = NostrUtils.generateFromNsec(nsec);
+        }catch(Exception e){
+            app.log(TerminalCode.CRASH, "Failed to parse NSEC", nsec);
+            return reply(TerminalCode.INVALID, "NSEC is not valid");
+        }
+        if(userNostr == null){
+            return reply(TerminalCode.INVALID, "NSEC is not valid");
+        }
+        String npub = userNostr.getPublicKey().toBech32String();
+        // get the related user
+        User user = UserUtils.getUserByNpub(npub);
+        if(user == null){
+            return reply(TerminalCode.NOT_FOUND, "User was not found here. "
+                    + "Use 'register <nsec> <password>' to register the account.");
+        }
+        
+        user.setNsec(nsec);
+        // update the user info
+        this.app.updateUser(user);
+        
+        // all done
+        return reply(TerminalCode.OK, "Logged with success");
     }
-
 
 }

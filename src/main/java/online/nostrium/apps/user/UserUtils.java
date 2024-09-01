@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import online.nostrium.logs.Log;
 import online.nostrium.main.Folder;
 import static online.nostrium.main.Folder.nameEndingJsonUser;
+import static online.nostrium.nostr.NostrUtils.generateNostrKeys;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.utils.EncryptionUtils;
 import online.nostrium.utils.FileFunctions;
-import static online.nostrium.nostr.NostrUtils.generateNostrKeys;
 import online.nostrium.utils.TextFunctions;
 import static online.nostrium.utils.TextFunctions.sha256;
 
@@ -113,9 +113,8 @@ public class UserUtils {
     
     
     public static User getUserByNpub(String npub) {
-        String npubId = npub.substring(5);
         File folder = FileFunctions.getThirdLevelFolderForUser(
-                Folder.getFolderUsers(), npubId, false);
+                Folder.getFolderUsers(), npub, false);
         File file = new File(folder, npub + nameEndingJsonUser);
         
         // user not found
