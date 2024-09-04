@@ -4,7 +4,7 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-package online.nostrium.utils;
+package online.nostrium.utils.ascii;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;

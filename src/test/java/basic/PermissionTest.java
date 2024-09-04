@@ -4,9 +4,9 @@
  */
 package basic;
 
-import online.nostrium.apps.user.User;
-import online.nostrium.apps.user.UserType;
-import online.nostrium.apps.user.UserUtils;
+import online.nostrium.user.User;
+import online.nostrium.user.UserType;
+import online.nostrium.user.UserUtils;
 import online.nostrium.utils.cybersec.Permissions;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,13 +24,13 @@ public class PermissionTest {
     @Test
     public void helloPermissions() {
         User user1 = UserUtils.createUserAnonymous();
-        user1.setUserType(UserType.ADMIN);
+        user1.setUserType(UserType.SYSOP);
         
         User user2 = UserUtils.createUserAnonymous();
         user2.setUserType(UserType.ANON);
         
         // set permission only for ADMIN
-        Permissions permission = new Permissions(UserType.ADMIN);
+        Permissions permission = new Permissions(UserType.SYSOP);
         
         // should not be allowed
         assertFalse(

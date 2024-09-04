@@ -22,8 +22,8 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.screens.Screen;
-import online.nostrium.apps.user.User;
-import online.nostrium.apps.user.UserUtils;
+import online.nostrium.user.User;
+import online.nostrium.user.UserUtils;
 import online.nostrium.servers.Server;
 
 /**
@@ -41,8 +41,7 @@ import online.nostrium.servers.Server;
 public class ServerTelnet extends Server {
 
     private ServerSocket serverSocket;
-    private volatile boolean keepRunning;
-
+    
     @Override
     protected void boot() {
         int PORT = getPort();
@@ -212,7 +211,9 @@ public class ServerTelnet extends Server {
                     session.ping();
 
                     // Handle the command request
-                    CommandResponse response = app.handleCommand(TerminalType.ANSI, inputLine);
+                    CommandResponse response = 
+                            app.handleCommand(
+                                    TerminalType.ANSI, inputLine);
 
                     // Ignore null responses
                     if (response == null) {

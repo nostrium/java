@@ -13,7 +13,7 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
 import online.nostrium.servers.terminal.screens.Screen;
-import online.nostrium.apps.user.User;
+import online.nostrium.user.User;
 import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.servers.terminal.TerminalUtils;
 import online.nostrium.utils.MathFunctions;
@@ -124,7 +124,7 @@ public class TerminalGuessNumber extends TerminalApp {
     @Override
     public String getIntro() {
         String text = "Guess the number";
-        String intro = screen.getWindowFrame(GREEN, text);
+        String intro = screen.getWindowFrame(text);
         intro += "\n"
                 + "\n"
                 + "You have 6 attempts to guess a number between 1 and 100"

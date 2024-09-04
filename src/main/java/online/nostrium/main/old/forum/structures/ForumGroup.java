@@ -103,7 +103,9 @@ public class ForumGroup {
      * Writes a topic on disk
      *
      * @param forumTopic
+     * @param folderId
      */
+    @SuppressWarnings("deprecation")
     public void saveTopicToDisk(ForumTopic forumTopic, int folderId) {
         File folderBase = getFolder();
         File folderTopic = new File(folderBase, folderId + "");

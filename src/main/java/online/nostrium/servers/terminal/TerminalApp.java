@@ -5,6 +5,7 @@
  * License: Apache-2.0
  */
 package online.nostrium.servers.terminal;
+
 import java.io.File;
 import online.nostrium.apps.basic.CommandHelp;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import online.nostrium.apps.basic.CommandExit;
 import online.nostrium.apps.basic.CommandLs;
 import online.nostrium.apps.chat.CommandChatClear;
 import online.nostrium.servers.terminal.screens.Screen;
-import online.nostrium.apps.user.User;
+import online.nostrium.user.User;
 import online.nostrium.logs.Log;
 import online.nostrium.main.Folder;
 import static online.nostrium.main.Folder.namePermissions;
@@ -31,17 +32,16 @@ public abstract class TerminalApp {
 
     // settings and data for this app
     public AppData data = new AppData(this);
- 
-    
+
     // navigation between different apps
     public TerminalApp appParent = null;
     @SuppressWarnings("unchecked")
     public ArrayList<TerminalApp> appChildren = new ArrayList();
     public User user;
-    
+
     public final Map<String, TerminalCommand> commands = new HashMap<>();
     public final Screen screen;
-    
+
     // permissions to access this app
     public Permissions permissions = new Permissions(data);
 
@@ -54,31 +54,30 @@ public abstract class TerminalApp {
         addCommandInternal(new CommandCd(this));
         addCommandInternal(new CommandChatClear(this));
         addCommandInternal(new CommandExit(this));
-        
+
         // add the permissions into the data storage
         data.put(namePermissions, permissions);
     }
 
-    public final void addCommandInternal(TerminalCommand command){
+    public final void addCommandInternal(TerminalCommand command) {
         command.internalCommand = true;
         addCommand(command);
     }
-    
-    public final void addApp(TerminalApp app){
+
+    public final void addApp(TerminalApp app) {
         app.appParent = this;
         this.appChildren.add(app);
     }
-    
+
     // shows an intro for this app
     public abstract String getIntro();
-    
+
     // shows an intro for this app
-    public String getId(){
+    public String getId() {
         String path = TerminalUtils.getPath(this);
         return path;
     }
-    
-    
+
     /**
      * Adds a new command, avoid duplicates
      *
@@ -91,15 +90,15 @@ public abstract class TerminalApp {
         }
         commands.put(command.commandName(), command);
     }
-    
-    protected final void removeCommand(String commandName){
+
+    protected final void removeCommand(String commandName) {
         // find the command when existing
         if (commands.containsKey(commandName) == false) {
             return;
         }
         // remove the command from our list
         commands.remove(commandName);
-        
+
     }
 
     /**
@@ -132,14 +131,14 @@ public abstract class TerminalApp {
 
         // try to get this command
         TerminalCommand cmd = null;
-        for(TerminalCommand command : commands.values()){
+        for (TerminalCommand command : commands.values()) {
             // found a command
-            if(command.hasCommand(commandToProcess)){
+            if (command.hasCommand(commandToProcess)) {
                 cmd = command;
                 break;
             }
         }
-        
+
         //TerminalCommand cmd = commands.get(commandToProcess);
         if (cmd != null) {
             return cmd.execute(terminalType, parameters);
@@ -155,38 +154,54 @@ public abstract class TerminalApp {
 
     // provide a one-line description of the app
     public abstract String getDescription();
-    
+
     public abstract CommandResponse defaultCommand(String commandInput);
 
     public abstract String getName();
-    
-    protected CommandResponse reply(TerminalCode code, String text){
+
+    protected CommandResponse reply(TerminalCode code, String text) {
         return new CommandResponse(code, text);
     }
-    
-    protected CommandResponse reply(TerminalCode code){
+
+    protected CommandResponse reply(TerminalCode code) {
         return new CommandResponse(code, "");
     }
-    
-    protected CommandResponse reply(TerminalApp app){
+
+    protected CommandResponse reply(TerminalApp app) {
         return new CommandResponse(app);
     }
 
     // update a screen when shared by multiple users
-    public abstract void receiveNotification(
-            User userSender, 
+//    public abstract void receiveNotification(
+//            User userSender, 
+//            NotificationType notificationType,
+//            Object object);
+    public void receiveNotification(
+            User userSender,
             NotificationType notificationType,
-            Object object);
+            Object object) {
+
+        // only text messages are supported for now
+        if (object instanceof String) {
+            String text = "["
+                    + notificationType.name()
+                    + "] "
+                    + (String) object;
+
+            screen.writeln(text);
+        }
+    }
 
     /**
      * Update all apps with the new user info
-     * @param user 
+     *
+     * @param user
      */
     public void updateUser(User user) {
         TerminalApp rootApp = this;
         // travel to the root app
-        if(this.appParent != null){
-            while(rootApp.appParent != null){
+        if (this.appParent != null) {
+            while (rootApp.appParent != null) {
                 rootApp = rootApp.appParent;
             }
         }
@@ -195,11 +210,11 @@ public abstract class TerminalApp {
 
     private void setNewUser(TerminalApp app, User user) {
         app.user = user;
-        if(app.appChildren.isEmpty()){
+        if (app.appChildren.isEmpty()) {
             return;
         }
         // change for all new cases
-        for(TerminalApp appChild : app.appChildren){
+        for (TerminalApp appChild : app.appChildren) {
             setNewUser(appChild, user);
         }
     }
@@ -210,8 +225,8 @@ public abstract class TerminalApp {
                 folderRoot, this.getName()
         );
     }
-    
-    public void log(TerminalCode code, String text, String data){
+
+    public void log(TerminalCode code, String text, String data) {
         Log.write(this.getId(), code, text, data);
     }
 }

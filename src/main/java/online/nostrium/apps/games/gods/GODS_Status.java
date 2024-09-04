@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import online.nostrium.apps.user.User;
+import online.nostrium.user.User;
 import online.nostrium.utils.GsonUtils;
 import online.nostrium.utils.JsonTextFile;
 import org.apache.commons.io.FileUtils;

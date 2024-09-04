@@ -4,12 +4,12 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-package online.nostrium.apps.user;
+package online.nostrium.user;
 
-import static online.nostrium.apps.user.UserUtils.setAbout;
-import static online.nostrium.apps.user.UserUtils.setPassword;
-import static online.nostrium.apps.user.UserUtils.setUsername;
-import static online.nostrium.apps.user.UserUtils.setWWW;
+import static online.nostrium.user.UserUtils.setAbout;
+import static online.nostrium.user.UserUtils.setPassword;
+import static online.nostrium.user.UserUtils.setUsername;
+import static online.nostrium.user.UserUtils.setWWW;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;

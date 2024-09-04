@@ -12,8 +12,8 @@ import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
-import online.nostrium.apps.user.User;
-import online.nostrium.apps.user.UserUtils;
+import online.nostrium.user.User;
+import online.nostrium.user.UserUtils;
 import online.nostrium.utils.TextFunctions;
 
 /**

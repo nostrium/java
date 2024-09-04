@@ -8,8 +8,8 @@ package online.nostrium.main;
 
 import java.io.File;
 import java.util.Date;
+import online.nostrium.apps.admin.TerminalAdmin;
 import online.nostrium.logs.Log;
-import online.nostrium.nostr.nip05.NIP05;
 import online.nostrium.nostr.nip05.NIP05_emails;
 import online.nostrium.servers.terminal.notifications.Sessions;
 import online.nostrium.servers.Server;
@@ -17,11 +17,13 @@ import online.nostrium.servers.email.ServerEmail;
 import online.nostrium.servers.finger.ServerFinger;
 import online.nostrium.servers.qoft.ServerQOTD;
 import online.nostrium.servers.telnet.ServerTelnet;
+import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalCode.BOOT;
 import online.nostrium.servers.web.ServerWeb;
 import online.nostrium.translation.LanguageControl;
-import online.nostrium.utils.AsciiArt;
+import online.nostrium.utils.ascii.AsciiArt;
+import online.nostrium.utils.events.Events;
 import online.nostrium.utils.time;
 
 /**
@@ -33,6 +35,7 @@ public class core {
 
     public static Config config;
     public static Sessions sessions = new Sessions();
+    public static Events events = new Events();
     public static LanguageControl lang = new LanguageControl();
 
     // track the time that it is up

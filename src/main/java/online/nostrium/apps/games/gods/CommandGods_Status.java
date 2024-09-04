@@ -7,12 +7,10 @@
 package online.nostrium.apps.games.gods;
 
 import online.nostrium.servers.terminal.CommandResponse;
-import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
-import online.nostrium.utils.AsciiArt;
 
 /**
  * @author Brito
@@ -33,7 +31,7 @@ public class CommandGods_Status extends TerminalCommand {
         app.screen.clearScreen();
         String text = "";
         
-        text += this.app.screen.getWindowFrame(TerminalColor.GREEN, "STATUS");
+        text += this.app.screen.getWindowFrame("STATUS");
         
         
         text += "\n"

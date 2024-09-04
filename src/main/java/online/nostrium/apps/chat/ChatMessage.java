@@ -6,7 +6,7 @@ import com.google.gson.annotations.Expose;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import online.nostrium.apps.user.User;
+import online.nostrium.user.User;
 import online.nostrium.nostr.NostrSign;
 import online.nostrium.nostr.NostrAlgoHardCode;
 

@@ -6,8 +6,8 @@
  */
 package online.nostrium.apps.chat;
 
-import online.nostrium.apps.user.UserUtils;
-import online.nostrium.apps.user.User;
+import online.nostrium.user.UserUtils;
+import online.nostrium.user.User;
 import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

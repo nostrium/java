@@ -8,7 +8,7 @@
 package online.nostrium.servers.terminal.notifications;
 
 import java.util.Date;
-import online.nostrium.apps.user.User;
+import online.nostrium.user.User;
 import online.nostrium.servers.terminal.TerminalApp;
 
 /**

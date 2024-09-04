@@ -15,8 +15,8 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.servers.terminal.screens.Screen;
-import online.nostrium.apps.user.User;
-import online.nostrium.apps.user.UserUtils;
+import online.nostrium.user.User;
+import online.nostrium.user.UserUtils;
 import online.nostrium.servers.terminal.TerminalUtils;
 import online.nostrium.utils.TextFunctions;
 
@@ -52,7 +52,7 @@ public class TerminalChat extends TerminalApp {
     public String getIntro() {
 
         String title = "Chat";
-        String intro = screen.getWindowFrame(core.config.colorAppsDefault, title);
+        String intro = screen.getWindowFrame(title);
         
         // read the number of messages
         int countMessages;

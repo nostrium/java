@@ -9,8 +9,8 @@ package online.nostrium.utils.cybersec;
 import com.google.gson.annotations.Expose;
 import java.util.ArrayList;
 import java.util.HashMap;
-import online.nostrium.apps.user.User;
-import online.nostrium.apps.user.UserType;
+import online.nostrium.user.User;
+import online.nostrium.user.UserType;
 import online.nostrium.main.Folder;
 import online.nostrium.servers.terminal.AppData;
 
@@ -91,8 +91,16 @@ public final class Permissions {
                 return true;
             }
         }
+        
+        // there are rules to close the entrance
+        // but no rules specifying who gets in at this stage
+        // however, this account for sure was not banned
+        if(userTypeAccessDenied.isEmpty() == false
+                || usersBanned.isEmpty() == false){
+            return true;
+        }
 
-        // no qualified situation? In that case deny
+        // no qualified situation? In that case permit
         return false;
     }
 
@@ -114,15 +122,19 @@ public final class Permissions {
     }
 
     /**
-     * @param userTypeToAdd
+     * @param userTypeToDeny
      */
-    public void removeUserType(UserType userTypeToAdd) {
-        // if the user type was previously denied, remove it
-        if (userTypeAccessDenied.contains(userTypeToAdd)) {
-            userTypeAccessDenied.remove(userTypeToAdd);
-            // make the changes permanent
-            writeChangesToDisk();
+    public void denyUserType(UserType userTypeToDeny) {
+        // avoid duplicates
+        if(userTypeAccessDenied.contains(userTypeToDeny)){
+            return;
         }
+        // if the user type was previously permitted, remove it
+        if (userTypeAccessPermitted.contains(userTypeToDeny)) {
+            userTypeAccessPermitted.remove(userTypeToDeny);
+        }
+        userTypeAccessDenied.add(userTypeToDeny);
+        writeChangesToDisk();
     }
 
     public void banUser(User userToBan) {

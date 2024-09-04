@@ -41,6 +41,7 @@ public class ManageTopics {
         return ForumTopic.jsonImport(file);
     }
 
+    @SuppressWarnings("deprecation")
     public static void writeTopic(ForumTopic topic) {
         File file = getTopicFile(topic.getId());
         String text = topic.jsonExport();

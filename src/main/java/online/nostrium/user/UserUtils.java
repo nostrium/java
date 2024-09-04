@@ -1,4 +1,4 @@
-package online.nostrium.apps.user;
+package online.nostrium.user;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -325,10 +325,38 @@ public class UserUtils {
             return;
         }
         // there is no valid user folder at this moment, first time entering
-        user.setUserType(UserType.ADMIN);
+        user.setUserType(UserType.SYSOP);
         // announce it to the user
         screen.writeln("You are the first user, you are now chosen as ADMINISTRATOR");
         screen.writeln("Please use \"register <name> <password>\" to save your account to disk.");
+    }
+
+    /**
+     * Returns a user with a specific login username and password
+     * @param username
+     * @param password
+     * @return null when password is not valid
+     */
+    public static User login(String username, String password) {
+        // just look at the hashed version of the password
+        String passwordHash = sha256(password);
+        
+        // get the related user
+        User user = UserUtils.getUserByUsername(username);
+        
+        if(user == null){
+            return null;
+        }
+        
+        if(user.hasPassword() == false){
+            return null;
+        }
+        
+        // compare the password
+        if(user.getPasswordHash().equalsIgnoreCase(passwordHash) == false){
+            return null;
+        }
+        return user;
     }
 
 }

@@ -122,7 +122,7 @@ public final class AppData {
     }
 
     public void delete() {
-        data = new HashMap();
+        data = new HashMap<>();
         File file = this.getFile();
         if(file.exists()){
             file.delete();

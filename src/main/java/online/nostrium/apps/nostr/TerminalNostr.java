@@ -6,7 +6,7 @@
  */
 package online.nostrium.apps.nostr;
 
-import online.nostrium.apps.user.*;
+import online.nostrium.user.User;
 import online.nostrium.main.core;
 import online.nostrium.servers.terminal.notifications.NotificationType;
 import online.nostrium.servers.terminal.CommandResponse;
@@ -45,7 +45,7 @@ public class TerminalNostr extends TerminalApp {
     @Override
     public String getIntro() {
         String title = "NOSTR";
-        String text = screen.getWindowFrame(core.config.colorAppsDefault, title);
+        String text = screen.getWindowFrame(title);
         text += screen.breakLine();
         text += "Type 'help' to see the available commands";
         return text;

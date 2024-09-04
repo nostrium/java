@@ -54,7 +54,7 @@ public class CommandRegisterSSL extends TerminalCommand{
         
         // output the setting being used
         Screen screen = app.screen;
-        screen.writeln(screen.getWindowFrame(TerminalColor.GREEN, "SSL registration"));
+        screen.writeln(screen.getWindowFrame("SSL registration"));
         screen.writeln("domain: " + domain);
         screen.writeln("email: " + email);
         screen.writeln("Folder certs: " + folderCerts.getPath());

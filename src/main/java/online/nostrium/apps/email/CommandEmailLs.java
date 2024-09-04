@@ -4,52 +4,53 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-package online.nostrium.apps.user;
+package online.nostrium.apps.email;
 
+import java.io.File;
+import online.nostrium.servers.email.EmailUtils;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
-import static online.nostrium.servers.terminal.TerminalColor.BLUE;
-import static online.nostrium.servers.terminal.TerminalColor.RED;
+import static online.nostrium.utils.ascii.DirectoryTreeBuilder.buildTree;
 
 /**
  * @author Brito
- * @date: 2024-08-05
+ * @date: 2024-09-02
  * @location: Germany
  */
-public class CommandUserSave extends TerminalCommand{
+public class CommandEmailLs extends TerminalCommand {
 
-    public CommandUserSave(TerminalApp app) {
+    public CommandEmailLs(TerminalApp app) {
         super(app);
         this.requireSlash = false;
+        // add an alternative command
+        this.commandsAlternative.add("dir");
     }
 
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
+
+        File folder = EmailUtils.getFolderEmail(app.user);
+        String dirTree = buildTree(folder);
         
-        if(app.user.hasPassword() == false){
-            return reply(TerminalCode.FAIL, "You need to first define a username and password");
+        // remove the last character
+        if(dirTree.length() > 0){
+            dirTree = dirTree.substring(0, dirTree.length()-1);
         }
         
-        // try to save the user
-        if(app.user.save()){
-            return reply(TerminalCode.OK, paint(BLUE, "Saved to disk"));
-        }else{
-            return reply(TerminalCode.FAIL, paint(RED, "Failed to save"));
-        }
+        return reply(TerminalCode.OK, dirTree);
     }
 
     @Override
     public String commandName() {
-        return "save";
-    }
-    
-    @Override
-    public String oneLineDescription() {
-        return "Save this profile to disk";
+        return "ls";
     }
 
+    @Override
+    public String oneLineDescription() {
+        return "List the available items";
+    }
 
 }

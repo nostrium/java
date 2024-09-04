@@ -29,6 +29,7 @@ public class ManageUsers {
         return file.exists();
     }
     
+    @SuppressWarnings("deprecation")
     public static void addUser(ForumUser forumUser){
         String text = forumUser.jsonExport();
         String filename = forumUser.getFilename();

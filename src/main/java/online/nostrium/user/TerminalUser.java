@@ -4,7 +4,7 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-package online.nostrium.apps.user;
+package online.nostrium.user;
 
 import online.nostrium.main.core;
 import online.nostrium.servers.terminal.notifications.NotificationType;
@@ -43,7 +43,7 @@ public class TerminalUser extends TerminalApp {
     public String getIntro() {
         
         String title = "Manage your user profile";
-        String text = screen.getWindowFrame(core.config.colorAppsDefault, title);
+        String text = screen.getWindowFrame(title);
         return text;
     }
 

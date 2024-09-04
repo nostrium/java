@@ -7,7 +7,7 @@
 
 package online.nostrium.utils;
 
-import online.nostrium.apps.user.User;
+import online.nostrium.user.User;
 import online.nostrium.servers.terminal.notifications.NotificationType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;

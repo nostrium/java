@@ -12,6 +12,7 @@ import java.io.PrintWriter;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import online.nostrium.main.core;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalColor;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
@@ -20,7 +21,7 @@ import static online.nostrium.servers.terminal.TerminalColor.GREEN_BRIGHT;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.TerminalUtils;
 import online.nostrium.servers.terminal.screens.Screen;
-import online.nostrium.utils.AsciiArt;
+import online.nostrium.utils.ascii.AsciiArt;
 
 /**
  * Author: Brito
@@ -221,7 +222,8 @@ public class ScreenTelnet extends Screen {
      * @return The framed title as a string.
      */
     @Override
-    public String getWindowFrame(TerminalColor color, String title) {
+    public String getWindowFrame(String title) {
+        TerminalColor color = core.config.colorAppsDefault;
         int paddingHorizontal = 4;
         int titleLength = title.length();
         int totalWidth = titleLength + paddingHorizontal * 2; // No extra spaces for the borders

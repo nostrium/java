@@ -5,7 +5,7 @@
  * License: Apache-2.0
  */
 
-package online.nostrium.utils;
+package online.nostrium.utils.ascii;
 
 /**
  * Date: 2023-02-07

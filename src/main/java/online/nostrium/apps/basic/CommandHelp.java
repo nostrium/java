@@ -31,7 +31,7 @@ public class CommandHelp extends TerminalCommand {
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
         
-        String text = app.screen.getWindowFrame(GREEN, "Help menu")
+        String text = app.screen.getWindowFrame("Help menu")
                 + app.screen.breakLine()
                 + app.screen.breakLine()
                 ;
@@ -39,20 +39,20 @@ public class CommandHelp extends TerminalCommand {
         // list all the apps first
         if (this.app.appChildren.isEmpty() == false) {
             text += "Available apps (type cd to enter them):";
-            for (TerminalApp app : this.app.appChildren) {
+            for (TerminalApp appHere : this.app.appChildren) {
                 
                 // avoid listing non-permitted apps
-                if(app.permissions.isPermitted(app.user) == false){
+                if(appHere.permissions.isPermitted(appHere.user) == false){
                     continue;
                 }
                 
-                String textName = "[" + app.getName() + "]";
+                String textName = "[" + appHere.getName() + "]";
                 text += " "
-                        + app.screen.breakLine()
+                        + appHere.screen.breakLine()
                         + " "
                         + paint(GREEN, textName)
                         + ": "
-                        + app.getDescription();
+                        + appHere.getDescription();
             }
             text += app.screen.breakLine() + app.screen.breakLine();
         }

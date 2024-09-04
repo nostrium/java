@@ -65,6 +65,19 @@ Feature roadmap
 + [ ] spam control / approval of posts on relay
 + [ ] share nostr posts with other relays
 + [x] automatic SSL registration on Let's Encrypt
++ [ ] file sharing with a quota (FTP, WWW)
++ [ ] Android reverse proxy to a subdomain
++ [ ] launch virtual machines on browser/android
++ [ ] define personal NOSTR/NNTP/IRC/Gopher servers
++ [ ] add x-file messages
++ [ ] write text-based games
++ [ ] read/write emails
++ [ ] display static mardown files on www as HTML
++ [ ] display images on text terminals are text
++ [ ] queue of message notifications when login
+
+
+
 
 
 Servers
@@ -81,6 +94,7 @@ File sharing:
 + [ ] SFTP (SSH File Transfer Protocol) - 22
 + [ ] TFTP (Trivial File Transfer Protocol) - 69
 + [ ] Torrent - 6881..6889
++ [ ] Git
 
 Email service:
 + [ ] SMTP (Simple Mail Transfer Protocol) - 25

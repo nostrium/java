@@ -10,6 +10,7 @@ package online.nostrium.servers.web;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import java.util.Random;
+import online.nostrium.main.core;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalColor;
 import static online.nostrium.servers.terminal.TerminalColor.BLACK;
@@ -46,7 +47,6 @@ import static online.nostrium.servers.telnet.ScreenTelnet.ANSI_CLEAR_SCREEN;
 import static online.nostrium.servers.telnet.ScreenTelnet.ANSI_HOME;
 import static online.nostrium.servers.telnet.ScreenTelnet.ANSI_RESET;
 import static online.nostrium.servers.telnet.ScreenTelnet.ANSI_WHITE;
-import online.nostrium.utils.AsciiArt;
 
 /**
  * @author Brito
@@ -202,7 +202,8 @@ public class ScreenWeb extends Screen{
     }
 
     @Override
-    public String getWindowFrame(TerminalColor color, String title) {
+    public String getWindowFrame(String title) {
+        TerminalColor color = core.config.colorAppsDefault;
            int paddingHorizontal = 4;
         int titleLength = title.length();
         int totalWidth = titleLength + paddingHorizontal * 2; // No extra spaces for the borders

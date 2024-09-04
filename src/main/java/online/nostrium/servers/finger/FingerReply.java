@@ -6,7 +6,7 @@
  */
 package online.nostrium.servers.finger;
 
-import online.nostrium.apps.user.User;
+import online.nostrium.user.User;
 
 /**
  * @author Brito

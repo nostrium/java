@@ -16,7 +16,7 @@ import java.util.Date;
 import online.nostrium.main.core;
 import online.nostrium.apps.chat.ChatRoom;
 import online.nostrium.apps.chat.ChatUtils;
-import online.nostrium.apps.user.UserUtils;
+import online.nostrium.user.UserUtils;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;

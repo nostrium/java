@@ -7,7 +7,7 @@
 package online.nostrium.apps.games.gods.npc;
 
 import online.nostrium.apps.games.gods.GODS_Status;
-import online.nostrium.apps.user.User;
+import online.nostrium.user.User;
 
 /**
  * @author Brito

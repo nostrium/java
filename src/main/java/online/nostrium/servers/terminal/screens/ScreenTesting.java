@@ -6,7 +6,6 @@
  */
 package online.nostrium.servers.terminal.screens;
 
-import online.nostrium.apps.user.User;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.servers.terminal.TerminalType;
@@ -48,7 +47,7 @@ public class ScreenTesting extends Screen{
     }
 
     @Override
-    public String getWindowFrame(TerminalColor color, String title) {
+    public String getWindowFrame(String title) {
             return title;
     }
 

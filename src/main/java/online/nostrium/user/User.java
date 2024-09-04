@@ -4,7 +4,7 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-package online.nostrium.apps.user;
+package online.nostrium.user;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -61,7 +61,7 @@ public class User {
     }
     
     public void delete(){
-        FileFunctions.deleteFolderIfEmpty
+        FileFunctions.deleteFolderAndParentsIfEmpty
             (getFile(), Folder.getFolderUsers());
     }
     

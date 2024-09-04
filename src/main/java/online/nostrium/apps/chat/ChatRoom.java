@@ -15,7 +15,7 @@ import online.nostrium.main.Folder;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalColor;
-import online.nostrium.apps.user.User;
+import online.nostrium.user.User;
 import online.nostrium.utils.FileFunctions;
 import online.nostrium.utils.JsonTextFile;
 import online.nostrium.utils.TextFunctions;

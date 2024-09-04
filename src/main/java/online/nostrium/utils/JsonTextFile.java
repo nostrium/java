@@ -68,6 +68,7 @@ public abstract class JsonTextFile {
             return null;
         }
         try {
+            @SuppressWarnings("deprecation")
             String text = FileUtils.readFileToString(file);
             Gson gson = GsonUtils.createGson(); // Use the custom Gson instance
             return gson.fromJson(text, clazz);
@@ -89,6 +90,7 @@ public abstract class JsonTextFile {
      *
      * @param file the file where the JSON will be saved
      */
+    @SuppressWarnings("deprecation")
     public void saveToFile(File file) {
         try {
             String data = jsonExport();

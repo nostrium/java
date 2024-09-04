@@ -126,6 +126,7 @@ public class FileFunctions {
         }
 
         // Delete empty parent folders up to the base path
+        @SuppressWarnings("null")
         File parentFolder = folder.getParentFile();
         while (parentFolder != null && !parentFolder.equals(basePath)) {
             if (parentFolder.list().length == 0) {
@@ -186,6 +187,7 @@ public class FileFunctions {
      *
      * @param startingFolder
      * @param npub
+     * @param createFolders
      * @return
      */
     public static File getThirdLevelFolderForUser(
@@ -203,15 +205,18 @@ public class FileFunctions {
             File firstLevelFolder = new File(startingFolder, firstLevel);
             File secondLevelFolder = new File(firstLevelFolder, secondLevel);
             File thirdLevelFolder = new File(secondLevelFolder, thirdLevel);
+            
+            // create the last level
+            File folderUser = new File(thirdLevelFolder, npub);
 
-            if (createFolders && !thirdLevelFolder.exists()) {
-                boolean created = thirdLevelFolder.mkdirs();
+            if (createFolders && !folderUser.exists()) {
+                boolean created = folderUser.mkdirs();
                 if (!created) {
                     return null;
                 }
             }
 
-            return thirdLevelFolder;
+            return folderUser;
         } catch (Exception e) {
             return null;
         }

@@ -12,7 +12,7 @@ import online.nostrium.servers.terminal.TerminalColor;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
 import online.nostrium.servers.terminal.TerminalType;
-import online.nostrium.utils.AsciiArt;
+import online.nostrium.utils.ascii.AsciiArt;
 
 /**
  * Author: Brito
@@ -43,7 +43,7 @@ public abstract class Screen {
 
     public abstract String paint(TerminalColor colorType, String text);
     
-    public abstract String getWindowFrame(TerminalColor color, String title);
+    public abstract String getWindowFrame(String title);
 
     /**
      * Clears the terminal screen

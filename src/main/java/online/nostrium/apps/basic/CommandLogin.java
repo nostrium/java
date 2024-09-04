@@ -7,9 +7,9 @@
 package online.nostrium.apps.basic;
 
 import nostr.id.Identity;
-import online.nostrium.apps.user.User;
-import online.nostrium.apps.user.UserType;
-import online.nostrium.apps.user.UserUtils;
+import online.nostrium.user.User;
+import online.nostrium.user.UserType;
+import online.nostrium.user.UserUtils;
 import online.nostrium.nostr.NostrUtils;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
@@ -68,6 +68,8 @@ public class CommandLogin extends TerminalCommand{
         
         String username = value[0];
         String password = value[1];
+        
+        
         
         // just look at the hashed version of the password
         String passwordHash = sha256(password);

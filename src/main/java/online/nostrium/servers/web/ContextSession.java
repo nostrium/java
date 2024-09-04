@@ -7,7 +7,7 @@
 
 package online.nostrium.servers.web;
 
-import online.nostrium.apps.user.User;
+import online.nostrium.user.User;
 import online.nostrium.main.core;
 import online.nostrium.servers.terminal.notifications.ClientType;
 import online.nostrium.servers.terminal.notifications.Session;

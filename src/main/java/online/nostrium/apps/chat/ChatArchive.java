@@ -76,6 +76,7 @@ public class ChatArchive {
      *
      * @param file the file where the JSON will be saved
      */
+    @SuppressWarnings("deprecation")
     public void saveToFile(File file) {
         try {
             String data = jsonExport();
