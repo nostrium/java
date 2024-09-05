@@ -21,10 +21,12 @@ public class Scene {
     private String intro;             // description of the action
     private String description;       // description of the scene
     private ArrayList<Choice> choices;// choices available to the player in this scene
+    private String titleRandom = null; // sometimes random can have titles
     private ArrayList<Choice> random; // random choices available
     private List<Opponent> opponents; // opponents inside the scene
     private List<Item> items;         // items present in this scene
     private String nextScene;         // next scene identifier after making a choice
+    private Scene scenePrevious;      // used when no other path is available
 
     /**
      * Constructor for the Scene class.
@@ -119,6 +121,22 @@ public class Scene {
 
     public List<Opponent> getOpponents() {
         return opponents;
+    }
+
+    public void setScenePrevious(Scene scene) {
+        scenePrevious = scene;
+    }
+
+    public Scene getScenePrevious() {
+        return scenePrevious;
+    }
+
+    public String getTitleRandom() {
+        return titleRandom;
+    }
+
+    public void setTitleRandom(String titleRandom) {
+        this.titleRandom = titleRandom;
     }
 
 

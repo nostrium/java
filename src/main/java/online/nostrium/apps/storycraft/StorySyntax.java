@@ -40,10 +40,10 @@ public class StorySyntax {
     [Random choices]
             
             ## Random:
-            - 30% chance: [Fight a Skeleton Warrior](#scene-fight-skeleton)
-            - 30% chance: [Find a hidden alcove with a shield](#scene-find-shield)
-            - 20% chance: [Nothing happens](#scene-nothing-happens)
-            - 20% chance: [Find a pot of coins](#scene-find-coins)
+            - 30% [Fight a Skeleton Warrior](#scene-fight-skeleton)
+            - 30% [Find a hidden alcove with a shield](#scene-find-shield)
+            - 20% [Nothing happens](#scene-nothing-happens)
+            - 20% [Find a pot of coins](#scene-find-coins)
             
             -----
             

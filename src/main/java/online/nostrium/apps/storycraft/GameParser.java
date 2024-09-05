@@ -60,83 +60,6 @@ public class GameParser {
 
     }
 
-//    /**
-//     * Parses the script using the provided BufferedReader.
-//     *
-//     * @param reader the BufferedReader to use for parsing
-//     * @return a map of scenes
-//     * @throws IOException if an error occurs while reading the script
-//     */
-//    private Map<String, Scene> parse(BufferedReader reader) throws IOException {
-//        String line;
-//
-//        Scene currentScene = null;
-//
-//        while ((line = reader.readLine()) != null) {
-//            line = line.trim();
-//
-//            /// Scene and descriptions
-//            if (line.startsWith("# Scene: ")) {
-//                String sceneTitle = line.substring(9).trim();
-//                String sceneId = "scene-" + sceneTitle.toLowerCase().replace(" ", "-");
-//                currentScene = new Scene(sceneId, sceneTitle);
-//                scenes.put(sceneId, currentScene);
-//                // define the opening scene
-//                if (scenes.size() == 1) {
-//                    sceneStart = currentScene;
-//                }
-//            } else if (line.startsWith("> ")) {
-//                if (currentScene != null) {
-//                    String text = line.substring(2);
-//                    if (currentScene.getDescription().isEmpty() == false) {
-//                        text = currentScene.getDescription() + "\n\n" + text;
-//                    }
-//                    currentScene.addDescription(text);
-//                }
-//
-//                /// Choices    
-//            } else if (line.startsWith("- [Take]")) {
-//                if (currentScene != null) {
-//                    String nameTitle = "Take";
-//                    String nameScene = line.substring(9).replace("(", "").replace(")", "").trim();
-//                    //currentScene.addChoice(nameTitle, "take-" + nameScene);
-//                }
-//            } else if (line.startsWith("- [Leave]")) {
-//                if (currentScene != null) {
-//                    String nameTitle = "Leave";
-//                    //currentScene.addChoice(nameTitle, "leave-" + currentScene.getId());
-//                }
-////            else if (line.startsWith("- [Continue]")) {
-////                if (currentScene != null) {
-////                    String nameTitle = "Leave";
-////                    currentScene.addChoice(nameTitle, "leave-" + currentScene.getId());
-////                }
-//            } else if (line.startsWith("- [")) {
-//                // - [Investigate the side chamber](#scene-side-chamber)
-//                if (currentScene != null) {
-//                    int i = line.indexOf("]");
-//                    int x = line.indexOf("#");
-//                    String nameTitle = line.substring("- [".length(), i);
-//                    String nameScene = line.substring(x + 1).replace("(", "").replace(")", "").trim();
-////                    currentScene.addChoice(nameTitle, nameScene);
-//                }
-//
-//                // Items    
-//            } else if (line.startsWith("# Item: ")) {
-//                if (currentScene != null) {
-//                    String itemName = line.substring(8).trim();
-//                    String type = reader.readLine().trim().substring(6).trim();
-//                    String description = reader.readLine().trim().substring(12).trim();
-//                    currentScene.addItem(new Item(itemName, description, type, 0, 0, 0, 0));  // Adjusted to match Item class constructor
-//                }
-//            }
-//        }
-//        if (currentScene != null) {
-//            scenes.put(currentScene.getId(), currentScene);
-//            sceneFinish = currentScene;
-//        }
-//        return scenes;
-//    }
     public Map<String, Scene> getScenes() {
         return scenes;
     }
@@ -239,27 +162,34 @@ public class GameParser {
         if (randomBlock.isEmpty()) {
             return;
         }
+        String titleRandom = null;
+        
         String[] lines = randomBlock.split("\n");
         for (String line : lines) {
+            // ## Random: You look around and...
+            if (line.startsWith("## Random: ")) {
+                titleRandom = line.substring("## Random: ".length());
+                continue;
+            }
             // syntax: - 30% chance: [Fight a Skeleton Warrior](#scene-fight-skeleton)
             if (line.startsWith("- ") == false
                     || line.contains("%") == false) {
                 continue;
             }
             // add this choice
-            int y = line.indexOf("%");
+            int posPercent = line.indexOf("%");
             String chanceValueText = line
-                    .substring("- [".length(), y);
+                    .substring("- ".length(), posPercent);
 
             // try to convert the value
             int chanceValue = Integer.parseInt(chanceValueText);
 
-            int z1 = line.indexOf(": [");
-            int z2 = line.indexOf("]");
-            String choiceTitle = line.substring(z1 + 3, z2);
+            int t1 = line.indexOf("[");
+            int t2 = line.indexOf("]");
+            String choiceTitle = line.substring(t1+1, t2);
 
             int x = line.indexOf("](#");
-            String choiceLink = line.substring(x + 4)
+            String choiceLink = line.substring(x + 3)
                     .replace("(", "")
                     .replace(")", "")
                     .trim();
@@ -280,6 +210,10 @@ public class GameParser {
             Choice choice = new Choice(
                     choiceTitle, choiceLink, chanceValue, linkType);
             scene.addRandom(choice);
+        }
+        // add the title
+        if(titleRandom != null){
+            scene.setTitleRandom(titleRandom);
         }
     }
 

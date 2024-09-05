@@ -18,7 +18,7 @@ public class Choice {
 
     final LinkType linkType;
 
-    final int chance;
+    int chance;
 
     public Choice(String title, String link, LinkType linkType) {
         this.title = title;
@@ -68,6 +68,10 @@ public class Choice {
 
     public LinkType getLinkType() {
         return linkType;
+    }
+
+    public void setChance(int chance) {
+        this.chance = chance;
     }
 
     public int getChance() {

@@ -61,7 +61,7 @@ Description: A shield from a bygone era, worn but sturdy.
 Defense Bonus: 5  
 Durability: 20
 
-## Random:
+## Random: You look around and...
 - 30% chance: [Find a hidden alcove with a shield](#scene-find-shield)
 - 20% chance: [Nothing happens](#scene-nothing-happens)
 - 20% chance: [Find a pot of coins](#scene-find-coins)
@@ -181,6 +181,10 @@ As you leave the ruins behind, you reflect on your journey. There are still many
         assertNotNull(mainHallScene);
         assertEquals("The main hall is vast, with towering pillars and a high, vaulted ceiling.", mainHallScene.getDescription());
 
+        // test the main title for the random choice
+        String random = mainHallScene.getTitleRandom();
+        assertEquals("You look around and...", random);
+        
         // item testing
         assertEquals(1, entranceScene.getItems().size());
         Item sword = entranceScene.getItems().get(0);

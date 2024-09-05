@@ -7,6 +7,7 @@
 package online.nostrium.apps.storycraft;
 
 import java.util.Scanner;
+import online.nostrium.utils.time;
 
 /**
  * @author Brito
@@ -46,7 +47,7 @@ public class GameScreenCLI extends GameScreen {
     }
 
     @Override
-    public String processCommand(Scene scene) {
+    public Choice processCommand(Scene scene) {
         String messageError = "Invalid choice. Please try again.";
         // Get the input from the command line
         Scanner scanner = new Scanner(System.in);
@@ -75,11 +76,11 @@ public class GameScreenCLI extends GameScreen {
         }
 
         // The choice is valid, proceed with the selection
-        return scene.getChoices().get(playerChoice - 1).link;
+        return scene.getChoices().get(playerChoice - 1);
     }
 
     @Override
-    public String performChoices(Scene scene) {
+    public Choice performChoices(Scene scene) {
         if (scene.getChoices().isEmpty()) {
             return null;
         }
@@ -94,7 +95,13 @@ public class GameScreenCLI extends GameScreen {
         }
         writeln("");
         writeln("Your choice: ");
+
         return processCommand(scene);
+    }
+
+    @Override
+    public void delay(int i){
+        time.wait(i);
     }
 
 }

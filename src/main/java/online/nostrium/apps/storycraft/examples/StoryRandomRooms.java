@@ -26,10 +26,10 @@ public static String text =
 
 > You step into the ruins, the sound of your footsteps echoing off the stone walls. The air is cooler inside, and a sense of foreboding settles over you.
 
-## Random:
+## Random: You decide to...
 - 40% [Explore the main hall](#scene-main-hall)
-- 20% [Leave the ruins](#scene-leave-ruins)
-- 40% [Nothing happens](#scene-nothing-happens)
+- 40% [Leave the ruins](#scene-exit-ruins)
+- 20% [Nothing happens](#scene-nothing-happens)
 
 -----
 
@@ -41,7 +41,7 @@ As you move deeper into the hall,
 you notice something glinting in the dim light. It appears to be a small, ornate chest partially buried under rubble.
 
 ## Choices:
-- [Continue exploring the hall](#scene-main-hall)
+- [Return to the entrance](#scene-azurath-entrance)
 - [Nothing happens](#scene-nothing-happens)
 - [Exit the ruins](#scene-exit-ruins)
 
@@ -51,7 +51,8 @@ you notice something glinting in the dim light. It appears to be a small, ornate
 > You continue exploring the hall, but nothing unusual happens. The eerie silence only adds to your unease.
 
 ## Choices:
-- [Continue exploring the hall](#scene-main-hall)
+- [Return to the entrance](#scene-azurath-entrance)
+- [Exit the ruins](#scene-exit-ruins)
 
 -----
 

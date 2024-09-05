@@ -7,6 +7,7 @@
 package online.nostrium.apps.storycraft;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * @author Brito
@@ -113,5 +114,44 @@ public class StoryUtils {
         return "scene-" + title.toLowerCase().replace(" ", "-");
     }
 
+    
+    // Single method that normalizes the chances and selects a choice without throwing exceptions
+    public static Choice selectRandomChoice(ArrayList<Choice> choices) {
+        if (choices == null || choices.isEmpty()) {
+            // Return null if the input list is null or empty
+            return null;
+        }
+
+        // Step 1: Calculate the total sum of the chances
+        int totalChance = 0;
+        for (Choice choice : choices) {
+            totalChance += choice.getChance();
+        }
+
+        // Step 2: Normalize the percentages if the total doesn't equal 100
+        if (totalChance != 100) {
+            for (Choice choice : choices) {
+                // Normalization step: Scale each chance proportionally to make the sum 100%
+                double normalizedChance = (double) choice.getChance() / totalChance * 100;
+                choice.setChance((int) Math.round(normalizedChance));  // Update the chance value
+            }
+        }
+
+        // Step 3: Select a random choice based on the normalized chances
+        Random random = new Random();
+        int randomNumber = random.nextInt(100) + 1; // Generate random number between 1 and 100
+
+        int cumulativeChance = 0;
+        for (Choice choice : choices) {
+            cumulativeChance += choice.getChance();  // Sum the chances as we go
+            if (randomNumber <= cumulativeChance) {
+                return choice;  // Return the choice that falls within the cumulative range
+            }
+        }
+
+        // If no valid choice is selected (shouldn't happen), return null
+        return null;
+    }
+    
 
 }
