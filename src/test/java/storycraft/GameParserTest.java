@@ -12,9 +12,12 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
-import online.nostrium.apps.storycraft.GameParser;
+import online.nostrium.apps.storycraft.GamePlay;
+import online.nostrium.apps.storycraft.GameScreen;
+import online.nostrium.apps.storycraft.GameScreenCLI;
 import online.nostrium.apps.storycraft.Item;
 import online.nostrium.apps.storycraft.Scene;
+import online.nostrium.apps.storycraft.StoryExample;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,70 +28,79 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class GameParserTest {
 
-    private GameParser parser;
-
     @BeforeEach
     public void setUp() {
-        parser = new GameParser();
     }
 
     @Test
     public void testParseScriptFromString() throws IOException {
-        String script = """
+        
+       String script = """
                 # Scene: Azurath Entrance
                 > Welcome to the ancient ruins of Azurath. The air is thick with the scent of damp stone and decaying leaves.
-                - [Take](item-sword)
-                - [Leave](item-sword)
-                - [Continue](scene-main-hall)
                 
-                # Item: Sword
-                Type: Weapon
-                Description: A sharp blade, well-suited for combat.
+                ## Choices:
+                - [Take](#item-sword)
+                - [Leave](#scene-main-hall)
+                
+                ## Item: Sword
+                Type: Weapon  
+                Description: A worn and damaged sword, but it still has some fight left in it.
+                Attack Bonus: 3  
+                Durability: 10
                 
                 # Scene: Main Hall
                 > The main hall is vast, with towering pillars and a high, vaulted ceiling.
+                       
+                ## Item: Ancient Shield
+                Type: Shield  
+                Description: A shield from a bygone era, worn but sturdy.  
+                Defense Bonus: 5  
+                Durability: 20
+                        
+                ## Random:
+                - 30% chance: [Fight a Skeleton Warrior](#scene-fight-skeleton)
+                - 30% chance: [Find a hidden alcove with a shield](#scene-find-shield)
+                - 20% chance: [Nothing happens](#scene-nothing-happens)
+                - 20% chance: [Find a pot of coins](#scene-find-coins)        
+                        
                 """;
 
-        Map<String, Scene> scenes = parser.parseScript(script);
-
+        GameScreen screen = new GameScreenCLI();
+        GamePlay game = new GamePlay(script, screen);
+        
+        assertTrue(game.isValid());
+        
+        Map<String, Scene> scenes = game.getScenes();
+        
         // Verify scenes are correctly parsed
         assertNotNull(scenes);
         assertEquals(2, scenes.size());
 
         // Check the first scene
-        Scene entranceScene = scenes.get("azurath-entrance");
+        Scene entranceScene = scenes.get("scene-azurath-entrance");
         assertNotNull(entranceScene);
-        assertEquals("Welcome to the ancient ruins of Azurath. The air is thick with the scent of damp stone and decaying leaves.", entranceScene.getDescription());
-        assertEquals(3, entranceScene.getChoices().size());
+        assertEquals("Welcome to the ancient ruins of Azurath. "
+                + "The air is thick with the scent of damp stone and "
+                + "decaying leaves.", entranceScene.getDescription());
+        assertEquals(2, entranceScene.getChoices().size());
+        
+        
         assertEquals("scene-main-hall", entranceScene.getNextScene());
 
         // Check the second scene
-        Scene mainHallScene = scenes.get("main-hall");
+        Scene mainHallScene = scenes.get("scene-main-hall");
         assertNotNull(mainHallScene);
         assertEquals("The main hall is vast, with towering pillars and a high, vaulted ceiling.", mainHallScene.getDescription());
 
         // Verify item parsing
         assertEquals(1, entranceScene.getItems().size());
         Item sword = entranceScene.getItems().get(0);
+        assertEquals(4, entranceScene.getRandom().size());
         assertNotNull(sword);
         assertEquals("Sword", sword.getName());
         assertEquals("Weapon", sword.getType());
-        assertEquals("A sharp blade, well-suited for combat.", sword.getDescription());
+        assertEquals("A worn and damaged sword, but it still has some fight left in it.", sword.getDescription());
     }
 
-//    @Test
-//    public void testParseScriptFromFile() throws IOException {
-//        File scriptFile = new File("src/test/resources/script.md"); // Adjust this path to your file location
-//
-//        Map<String, Scene> scenes = parser.parseScript(scriptFile);
-//
-//        // Verify scenes are correctly parsed
-//        assertNotNull(scenes);
-//        assertFalse(scenes.isEmpty());
-//
-//        // Check a scene from the file (you can add more specific checks based on the actual content)
-//        Scene scene = scenes.get("azurath-entrance");
-//        assertNotNull(scene);
-//        assertTrue(scene.getDescription().contains("Welcome to the ancient ruins of Azurath"));
-//    }
 }

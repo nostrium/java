@@ -17,20 +17,22 @@ import java.util.List;
 public class Scene {
 
     private String id;                // The identifier of the scene
-    private String description;       // The description of the scene
-    private List<String> choices;     // The choices available to the player in this scene
+    private String title;             // Human readable title 
+    private String intro;             // description of the action
+    private String description;       // description of the scene
+    private ArrayList<Choice> choices;// The choices available to the player in this scene
+    private ArrayList<Choice> random; // The crandom hoices available
     private List<Item> items;         // The items present in this scene
     private String nextScene;         // The next scene identifier after making a choice
 
     /**
      * Constructor for the Scene class.
      *
-     * @param id          the identifier of the scene
-     * @param description the description of the scene
+     * @param id the identifier of the scene
      */
-    public Scene(String id, String description) {
+    public Scene(String id, String title) {
         this.id = id;
-        this.description = description;
+        this.title = title;
         this.choices = new ArrayList<>();
         this.items = new ArrayList<>();
     }
@@ -40,6 +42,9 @@ public class Scene {
     }
 
     public String getDescription() {
+        if (description == null) {
+            return "";
+        }
         return description;
     }
 
@@ -47,25 +52,42 @@ public class Scene {
         this.id = id;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void addDescription(String text) {
+        if (description != null && description.isEmpty() == false) {
+            description = description + "\n\n" + text;
+            return;
+        }
+        this.description = text;
     }
 
-    public void setChoices(List<String> choices) {
-        this.choices = choices;
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
     }
 
     public void setItems(List<Item> items) {
         this.items = items;
     }
 
-    public List<String> getChoices() {
+    public ArrayList<Choice> getChoices() {
         return choices;
     }
 
-    public void addChoice(String choice) {
+    public void addChoice(Choice choice) {
         choices.add(choice);
     }
+    
+    public ArrayList<Choice> getRandom() {
+        return random;
+    }
+
+    public void addRandom(Choice choice) {
+        random.add(choice);
+    }
+
 
     public void addItem(Item item) {
         items.add(item);
@@ -82,4 +104,9 @@ public class Scene {
     public void setNextScene(String nextScene) {
         this.nextScene = nextScene;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
 }

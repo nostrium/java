@@ -36,9 +36,10 @@ You step into the ruins, the sound of your footsteps echoing off the stone walls
 > The main hall is vast, with towering pillars and a high, vaulted ceiling. Broken statues and shattered pottery litter the floor.
 
 ## Intro
-As you move deeper into the hall, you notice something glinting in the dim light. It appears to be a small, ornate chest partially buried under rubble.
+As you move deeper into the hall, 
+you notice something glinting in the dim light. It appears to be a small, ornate chest partially buried under rubble.
 
-## Random Encounter:
+## Random:
 - 30% chance: [Fight a Skeleton Warrior](#scene-fight-skeleton)
 - 30% chance: [Find a hidden alcove with a shield](#scene-find-shield)
 - 20% chance: [Nothing happens](#scene-nothing-happens)
@@ -77,17 +78,17 @@ Durability: 10
 # Item: Coins (5-15)
 Type: Currency  
 Description: A small amount of coins collected from the defeated Skeleton Warrior.  
-Value: 5-15 coins
+Value: 5..15 coins
 
 # Item: Coins (5-10)
 Type: Currency  
 Description: A small amount of coins lost during the fight.  
-Value: 5-10 coins
+Value: -5..10 coins
 
 # Item: Coins (1-5)
 Type: Currency  
 Description: A small amount of coins lost while escaping the fight.  
-Value: 1-5 coins
+Value: -1..5 coins
 
 -----
 
@@ -188,7 +189,7 @@ Value: 5-10 coins
 The artifact is covered in strange runes that seem to shift as you look at them. You feel a surge of power as you pick it up.
 
 ## Choices:
-- [Take the artifact](#scene-take-artifact)
+- [Take](#scene-take-artifact)
 - [Leave the artifact](#scene-leave-artifact)
 
 -----
@@ -197,7 +198,14 @@ The artifact is covered in strange runes that seem to shift as you look at them.
 > You take the artifact, feeling its power coursing through you. This relic might be the key to uncovering the secrets of Azurath.
 
 ## Choices:
+- [Take](#item-gold-sword)
 - [Continue exploring](#scene-continue-hall)
+
+# Item: Gold Sword
+Type: Weapon  
+Description: A shard of the Stone Guardian. It's surprisingly light and has a faint magical aura.  
+Attack Bonus: 5  
+Durability: 20
 
 -----
 
@@ -212,7 +220,7 @@ The artifact is covered in strange runes that seem to shift as you look at them.
 # Scene: Continue Hall
 > As you move further into the hall, the air grows colder. You see a large doorway at the far end, leading deeper into the ruins.
 
-## Random Encounter:
+## Random:
 - 50% chance: [Fight a Spectral Wraith](#scene-fight-wraith)
 - 50% chance: [Find a hidden treasure room](#scene-hidden-treasure-room)
 
