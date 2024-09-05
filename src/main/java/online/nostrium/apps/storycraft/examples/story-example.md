@@ -1,23 +1,3 @@
-/*
- * Syntax example
- *
- * Copyright (c) Nostrium contributors
- * License: Apache-2.0
- */
-
-package online.nostrium.apps.storycraft;
-
-/**
- * @author Brito
- * @date: 2024-09-03
- * @location: Germany
- */
-public class StoryExample {
-    
-public static String text = 
-        
-"""
-   
 # Scene: Azurath Entrance
 > Welcome to the ancient ruins of Azurath. The air is thick with the scent of damp stone and decaying leaves. You are a treasure hunter, drawn by the legends of untold riches hidden within.
 > The entrance to the ruins is overgrown with vines. Faded carvings on the stone walls hint at the once-great civilization that lived here.
@@ -363,7 +343,3 @@ As you leave the ruins behind, you reflect on your journey. There are still many
 
 ## Intro
 Thank you for playing! The ruins of Azurath will await your return.
-
-""";
-   
-}

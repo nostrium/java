@@ -7,7 +7,6 @@
  */
 package online.nostrium.apps.storycraft;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -58,7 +57,7 @@ public class GameParser {
         }
         // define the first and last screens
         this.sceneStart = scenesFound.get(0);
-        this.sceneFinish = scenesFound.get(scenesFound.size()-1);
+        this.sceneFinish = scenesFound.get(scenesFound.size() - 1);
 
         return true;
     }
@@ -140,7 +139,6 @@ public class GameParser {
 //        }
 //        return scenes;
 //    }
-
     public Map<String, Scene> getScenes() {
         return scenes;
     }
@@ -154,11 +152,7 @@ public class GameParser {
     }
 
     public boolean isValid() {
-        if (sceneStart == null || sceneFinish == null || scenes.isEmpty()) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(sceneStart == null || sceneFinish == null || scenes.isEmpty());
     }
 
     private Scene parseScene(String sceneText) {
@@ -182,21 +176,20 @@ public class GameParser {
         for (String descLine : descLines) {
             scene.addDescription(descLine.substring(2));
         }
-        
+
         // get the intro
         String introBlock = StoryUtils.getTextBlock("## Intro", sceneText);
-        if(introBlock.isEmpty() == false){
+        if (introBlock.isEmpty() == false) {
             // skip the first line
             i = introBlock.indexOf("\n");
-            String intro = introBlock.substring(i+1);
+            String intro = introBlock.substring(i + 1);
             scene.setIntro(intro);
         }
-        
+
         parseChoices(scene, sceneText);
         parseChoicesRandom(scene, sceneText);
         parseItems(scene, sceneText);
 
-        System.gc();
         return scene;
     }
 
@@ -219,7 +212,7 @@ public class GameParser {
 //                - [Leave the artifact](#scene-leave-artifact)
 
                 // special situation to leave the menu
-                if(line.startsWith("- [Leave]")){
+                if (line.startsWith("- [Leave]")) {
                     String choiceTitle = "Leave";
                     int f = line.indexOf("#");
                     String choiceLink = line.substring(f + 1)
@@ -227,33 +220,30 @@ public class GameParser {
                             .replace(")", "")
                             .trim();
                     Choice choice = new Choice(
-                            choiceTitle, 
-                            choiceLink, 
+                            choiceTitle,
+                            choiceLink,
                             LinkType.LEAVE);
                     scene.addChoice(choice);
                     scene.setNextScene(choiceLink);
                     continue;
                 }
 
-
                 // add this choice
                 int y = line.indexOf("]");
                 int x = line.indexOf("#");
                 String choiceTitle = line.substring("- [".length(), y);
                 String choiceLink = line.substring(x + 1).replace("(", "").replace(")", "").trim();
-                
+
                 // what kind of choice type?
 //              - [Take](#item-rusty-sword)
 //              - [Lose](#item-coins-5-10)
 //              - [Continue exploring the hall](#scene-continue-hall)
-                
                 LinkType linkType;
-                if(choiceLink.startsWith("item-")){
+                if (choiceLink.startsWith("item-")) {
                     linkType = LinkType.ITEM;
-                }else
-                if(choiceLink.startsWith("scene-")){
+                } else if (choiceLink.startsWith("scene-")) {
                     linkType = LinkType.SCENE;
-                }else{
+                } else {
                     linkType = LinkType.OTHER;
                 }
 
@@ -264,106 +254,103 @@ public class GameParser {
     }
 
     private void parseChoicesRandom(Scene scene, String sceneText) {
-         // get the choices
-        String choiceBlock = StoryUtils.getTextBlock("## Random:", sceneText);
-        if (choiceBlock.isEmpty() == false) {
-            String[] lines = choiceBlock.split("\n");
-            for (String line : lines) {
-                // syntax: - 30% chance: [Fight a Skeleton Warrior](#scene-fight-skeleton)
-                if (line.startsWith("- ") == false 
-                        || line.contains("%") == false) {
-                    continue;
-                }
-                // add this choice
-                int y = line.indexOf("%");
-                String chanceValueText = line
-                        .substring("- [".length(), y);
-                
-                // try to convert the value
-                int chanceValue = Integer.parseInt(chanceValueText);
-                
-                int z1 = line.indexOf(": [");
-                int z2 = line.indexOf("]");
-                String choiceTitle = line.substring(z1 + 3, z2);
-                
-                int x = line.indexOf("](#");
-                String choiceLink = line.substring(x + 4)
-                        .replace("(", "")
-                        .replace(")", "")
-                        .trim();
-                
-                // what kind of choice type?
+        // get the choices
+        String randomBlock = StoryUtils.getTextBlock("## Random:", sceneText);
+        if (randomBlock.isEmpty()) {
+            return;
+        }
+        String[] lines = randomBlock.split("\n");
+        for (String line : lines) {
+            // syntax: - 30% chance: [Fight a Skeleton Warrior](#scene-fight-skeleton)
+            if (line.startsWith("- ") == false
+                    || line.contains("%") == false) {
+                continue;
+            }
+            // add this choice
+            int y = line.indexOf("%");
+            String chanceValueText = line
+                    .substring("- [".length(), y);
+
+            // try to convert the value
+            int chanceValue = Integer.parseInt(chanceValueText);
+
+            int z1 = line.indexOf(": [");
+            int z2 = line.indexOf("]");
+            String choiceTitle = line.substring(z1 + 3, z2);
+
+            int x = line.indexOf("](#");
+            String choiceLink = line.substring(x + 4)
+                    .replace("(", "")
+                    .replace(")", "")
+                    .trim();
+
+            // what kind of choice type?
 //              - [Take](#item-rusty-sword)
 //              - [Lose](#item-coins-5-10)
 //              - [Continue exploring the hall](#scene-continue-hall)
-                
-                LinkType linkType;
-                if(choiceLink.startsWith("item-")){
-                    linkType = LinkType.ITEM;
-                }else
-                if(choiceLink.startsWith("scene-")){
-                    linkType = LinkType.SCENE;
-                }else{
-                    linkType = LinkType.OTHER;
-                }
-
-                Choice choice = new Choice(
-                        choiceTitle, choiceLink, chanceValue, linkType);
-                scene.addRandom(choice);
+            LinkType linkType;
+            if (choiceLink.startsWith("item-")) {
+                linkType = LinkType.ITEM;
+            } else if (choiceLink.startsWith("scene-")) {
+                linkType = LinkType.SCENE;
+            } else {
+                linkType = LinkType.OTHER;
             }
+
+            Choice choice = new Choice(
+                    choiceTitle, choiceLink, chanceValue, linkType);
+            scene.addRandom(choice);
         }
     }
 
     private void parseItems(Scene scene, String sceneText) {
         ArrayList<String> itemBlocks = StoryUtils.getTextBlocks("## Item: ", sceneText);
-        if(itemBlocks.isEmpty()){
+        if (itemBlocks.isEmpty()) {
             return;
         }
-        for(String itemBlock: itemBlocks){
+        for (String itemBlock : itemBlocks) {
             Item item = parseItem(scene, itemBlock);
-            if(item == null){
+            if (item == null) {
                 continue;
             }
             // add the item
             scene.addItem(item);
         }
-        
+
     }
-    
-    private Item parseItem(Scene scene, String itemBlock){
-        
+
+    private Item parseItem(Scene scene, String itemBlock) {
+
 //        ## Item: Ancient Shield
 //        Type: Shield  
 //        Description: A shield from a bygone era, worn but sturdy.  
 //        Defense Bonus: 5  
 //        Durability: 20
-        
-        String 
-            name = null,
-            id = null,
-            description = null,
-            type = null;
-        
+        String name = null,
+                id = null,
+                description = null,
+                type = null;
+
         HashMap<String, Integer> atts = new HashMap<>();
 
         String[] lines = itemBlock.split("\n");
-        for(String line : lines){
+        for (String line : lines) {
             // fixed values
-            if(line.startsWith("## Item: ")){
+            if (line.startsWith("## Item: ")) {
                 name = line.substring("## Item: ".length());
-                id ="item-" + name.toLowerCase().replace(" ", "-");
+                id = "item-" + name.toLowerCase().replace(" ", "-");
                 continue;
             }
-            if(line.startsWith("Description: ")){
+            if (line.startsWith("Description: ")) {
                 description = line.substring("Description: ".length());
                 continue;
             }
-            if(line.startsWith("Type: ")){
+            if (line.startsWith("Type: ")) {
                 type = line.substring("Type: ".length());
                 continue;
             }
             // variable attributes
-            if(line.contains(": ")){
+            if (line.contains(": ")) {
                 int i = line.indexOf(": ");
                 String key = line.substring(0, i);
                 String valueText = line.substring(i + ": ".length());
@@ -371,24 +358,22 @@ public class GameParser {
                 atts.put(key, value);
                 continue;
             }
-            
+
             // one empty line breaks the item data
-            if(line.isEmpty()){
+            if (line.isEmpty()) {
                 break;
             }
         }
         // the item needs to have the minimum sets of data
-        if(name == null || description == null || type == null
-                || atts.isEmpty()){
+        if (name == null || description == null || type == null
+                || atts.isEmpty()) {
             return null;
         }
-        
+
         Item item = new Item(name, description, type);
         item.setId(id);
         item.addAttributes(atts);
         return item;
     }
-    
-    
 
 }

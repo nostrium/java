@@ -29,11 +29,13 @@ public class Scene {
      * Constructor for the Scene class.
      *
      * @param id the identifier of the scene
+     * @param title human readable title
      */
     public Scene(String id, String title) {
         this.id = id;
         this.title = title;
         this.choices = new ArrayList<>();
+        this.random = new ArrayList<>();
         this.items = new ArrayList<>();
     }
 

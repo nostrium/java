@@ -135,7 +135,7 @@ public class GameParserOld {
                     String itemName = line.substring(8).trim();
                     String type = reader.readLine().trim().substring(6).trim();
                     String description = reader.readLine().trim().substring(12).trim();
-                    currentScene.addItem(new Item(itemName, description, type, 0, 0, 0, 0));  // Adjusted to match Item class constructor
+                    currentScene.addItem(new Item(itemName, description, type));  // Adjusted to match Item class constructor
                 }
             }
         }

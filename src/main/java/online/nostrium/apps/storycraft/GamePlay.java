@@ -6,6 +6,7 @@
  */
 package online.nostrium.apps.storycraft;
 
+import online.nostrium.apps.storycraft.examples.StoryExample;
 import java.util.Map;
 
 /**
@@ -71,6 +72,14 @@ public class GamePlay {
         GameScreen screen = new GameScreenCLI();
         GamePlay game = new GamePlay(StoryExample.text, screen);
         game.play();
+    }
+
+    public Scene getScene(String sceneName) {
+        String id = sceneName;
+        if(sceneName.startsWith("#")){
+            id = StoryUtils.convertSceneTitleToId(sceneName);
+        }
+        return scenes.get(id);
     }
 
 }

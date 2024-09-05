@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Scanner;
 import online.nostrium.apps.storycraft.Scene;
-import online.nostrium.apps.storycraft.StoryExample;
+import online.nostrium.apps.storycraft.examples.StoryExample;
 
 /**
  * @author Brito

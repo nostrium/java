@@ -74,11 +74,6 @@ public class StoryUtils {
                 recording = true;  // Start recording the new scene
             }
             
-//            if(line.startsWith("#") && line.startsWith(id) == false){
-//                recording = false;
-//            }
-            
-
             // Continue adding lines under the current scene
             if (recording) {
                 currentScene.append(line).append("\n");
@@ -105,6 +100,17 @@ public class StoryUtils {
             }
         }
         return matchingLines;
+    }
+
+    /**
+     * Convert a Scene in markdown format to an HTML anchor
+     * @param sceneName
+     * @return 
+     */
+    static String convertSceneTitleToId(String sceneName) {
+        String anchor = "# Scene: ";
+        String title = sceneName.substring(anchor.length()).replace("\n", "");
+        return "scene-" + title.toLowerCase().replace(" ", "-");
     }
 
 
