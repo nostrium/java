@@ -13,30 +13,47 @@ import java.util.HashMap;
  * @date: 2024-09-03
  * @location: Germany
  */
-public class Item {
-
-    String name;         // The name of the item
-    String id;           // machine readable name
-    String description;  // A brief description of the item
-    String type;         // The type of item (e.g., "Weapon", "Shield", "Ring")
-    int usageLeft = 0;   // The number of times the item can be used (e.g., healing potion)
+public class Item extends GameThing{
     
-    // attributes are added to the user overall sum
-    HashMap<String, Integer> attributes = new HashMap<>();
+    private String
+            description,    // A brief description of the item
+            type;           // The type of item (e.g., "Weapon", "Shield", "Ring")
+    
+    protected int
+            usageLeft = 0;  // The number of times the item can be used (e.g., healing potion)
     
 
     /**
      * Constructor for an item with both durability and number of usages.
-     *
-     * @param name        the name of the item
-     * @param description a brief description of the item
-     * @param type        the type of the item (e.g., "Weapon", "Shield", "Ring")
      */
-    public Item(String name, String description, String type) {
-        this.name = name;
-        this.description = description;
-        this.type = type;
+    public Item() {
+        super();
     }
+    
+    @Override
+    public String toString() {
+        return "Item {" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", type='" + type + '\''
+                +
+                '}';
+    }
+    
+    
+    @Override
+    protected boolean processedSpecificLine(Scene scene, String line, HashMap<String, Integer> atts) {
+            if (line.startsWith("Description: ")) {
+                description = line.substring("Description: ".length());
+                return true;
+            }
+            if (line.startsWith("Type: ")) {
+                type = line.substring("Type: ".length());
+                return true;
+            }
+        return false;
+    }
+
 
 //    /**
 //     * Use the item in combat. This method decreases durability by 1 each time the item is used.
@@ -75,24 +92,6 @@ public class Item {
 //        return durability > 0 || usagesLeft > 0;
 //    }
 
-    @Override
-    public String toString() {
-        return "Item {" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", type='" + type + '\''
-                +
-                '}';
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -109,14 +108,6 @@ public class Item {
         this.type = type;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public int getUsageLeft() {
         return usageLeft;
     }
@@ -125,21 +116,9 @@ public class Item {
         this.usageLeft = usageLeft;
     }
 
-    public HashMap<String, Integer> getAttributes() {
-        return attributes;
+    @Override
+    protected void processedSpecificBlock(Scene scene, String textBlock) {
     }
 
-    public void setAttributes(HashMap<String, Integer> attributes) {
-        this.attributes = attributes;
-    }
     
-    
-
-    public void addAttributes(HashMap<String, Integer> atts) {
-        for(String key : atts.keySet()){
-            int value = atts.get(key);
-            this.attributes.put(key, value);
-        }
-    }
-
 }

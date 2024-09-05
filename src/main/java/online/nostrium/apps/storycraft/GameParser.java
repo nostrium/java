@@ -33,12 +33,11 @@ public class GameParser {
      * Parses the script from a file and loads the scenes.
      *
      * @param file the script file to parse
-     * @return a map of scenes
      * @throws IOException if an error occurs while reading the file
      */
-    public boolean parseScript(File file) throws IOException {
+    public void parseScript(File file) throws IOException {
         String text = FileUtils.readFileToString(file, "UTF-8");
-        return parseScript(text);
+        parseScript(text);
     }
 
     /**
@@ -46,7 +45,7 @@ public class GameParser {
      *
      * @param script the script content as a string
      */
-    public boolean parseScript(String script) {
+    public void parseScript(String script) {
         String text = normalize(script);
         ArrayList<String> sceneTexts = getTextBlocks("# Scene: ", text);
         ArrayList<Scene> scenesFound = new ArrayList<>();
@@ -59,7 +58,6 @@ public class GameParser {
         this.sceneStart = scenesFound.get(0);
         this.sceneFinish = scenesFound.get(scenesFound.size() - 1);
 
-        return true;
     }
 
 //    /**
@@ -189,6 +187,7 @@ public class GameParser {
         parseChoices(scene, sceneText);
         parseChoicesRandom(scene, sceneText);
         parseItems(scene, sceneText);
+        parseOpponents(scene, sceneText);
 
         return scene;
     }
@@ -228,26 +227,7 @@ public class GameParser {
                     continue;
                 }
 
-                // add this choice
-                int y = line.indexOf("]");
-                int x = line.indexOf("#");
-                String choiceTitle = line.substring("- [".length(), y);
-                String choiceLink = line.substring(x + 1).replace("(", "").replace(")", "").trim();
-
-                // what kind of choice type?
-//              - [Take](#item-rusty-sword)
-//              - [Lose](#item-coins-5-10)
-//              - [Continue exploring the hall](#scene-continue-hall)
-                LinkType linkType;
-                if (choiceLink.startsWith("item-")) {
-                    linkType = LinkType.ITEM;
-                } else if (choiceLink.startsWith("scene-")) {
-                    linkType = LinkType.SCENE;
-                } else {
-                    linkType = LinkType.OTHER;
-                }
-
-                Choice choice = new Choice(choiceTitle, choiceLink, linkType);
+                Choice choice = Choice.parse(line);
                 scene.addChoice(choice);
             }
         }
@@ -304,76 +284,41 @@ public class GameParser {
     }
 
     private void parseItems(Scene scene, String sceneText) {
-        ArrayList<String> itemBlocks = StoryUtils.getTextBlocks("## Item: ", sceneText);
+        String anchor = "## Item: ";
+        String anchorId = "item-";
+        ArrayList<String> itemBlocks = StoryUtils.getTextBlocks(anchor, sceneText);
         if (itemBlocks.isEmpty()) {
             return;
         }
         for (String itemBlock : itemBlocks) {
-            Item item = parseItem(scene, itemBlock);
-            if (item == null) {
+            Item item = new Item();
+            boolean result = item.parse(scene, itemBlock, anchor, anchorId);
+            if (result == false) {
                 continue;
             }
             // add the item
             scene.addItem(item);
         }
-
     }
 
-    private Item parseItem(Scene scene, String itemBlock) {
+   
 
-//        ## Item: Ancient Shield
-//        Type: Shield  
-//        Description: A shield from a bygone era, worn but sturdy.  
-//        Defense Bonus: 5  
-//        Durability: 20
-        String name = null,
-                id = null,
-                description = null,
-                type = null;
-
-        HashMap<String, Integer> atts = new HashMap<>();
-
-        String[] lines = itemBlock.split("\n");
-        for (String line : lines) {
-            // fixed values
-            if (line.startsWith("## Item: ")) {
-                name = line.substring("## Item: ".length());
-                id = "item-" + name.toLowerCase().replace(" ", "-");
-                continue;
-            }
-            if (line.startsWith("Description: ")) {
-                description = line.substring("Description: ".length());
-                continue;
-            }
-            if (line.startsWith("Type: ")) {
-                type = line.substring("Type: ".length());
-                continue;
-            }
-            // variable attributes
-            if (line.contains(": ")) {
-                int i = line.indexOf(": ");
-                String key = line.substring(0, i);
-                String valueText = line.substring(i + ": ".length());
-                int value = Integer.parseInt(valueText);
-                atts.put(key, value);
-                continue;
-            }
-
-            // one empty line breaks the item data
-            if (line.isEmpty()) {
-                break;
-            }
+    private void parseOpponents(Scene scene, String sceneText) {
+        String anchor = "## Opponent: ";
+        String anchorId = "opponent-";
+        ArrayList<String> blocks = StoryUtils.getTextBlocks(anchor, sceneText);
+        if (blocks.isEmpty()) {
+            return;
         }
-        // the item needs to have the minimum sets of data
-        if (name == null || description == null || type == null
-                || atts.isEmpty()) {
-            return null;
+        for (String itemBlock : blocks) {
+            Opponent op = new Opponent();
+            boolean result = op.parse(scene, itemBlock, anchor, anchorId);
+            if (result == false) {
+                continue;
+            }
+            // add the item
+            scene.addOpponent(op);
         }
-
-        Item item = new Item(name, description, type);
-        item.setId(id);
-        item.addAttributes(atts);
-        return item;
     }
 
 }

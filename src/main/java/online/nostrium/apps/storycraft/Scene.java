@@ -20,10 +20,11 @@ public class Scene {
     private String title;             // Human readable title 
     private String intro;             // description of the action
     private String description;       // description of the scene
-    private ArrayList<Choice> choices;// The choices available to the player in this scene
-    private ArrayList<Choice> random; // The crandom hoices available
-    private List<Item> items;         // The items present in this scene
-    private String nextScene;         // The next scene identifier after making a choice
+    private ArrayList<Choice> choices;// choices available to the player in this scene
+    private ArrayList<Choice> random; // random choices available
+    private List<Opponent> opponents; // opponents inside the scene
+    private List<Item> items;         // items present in this scene
+    private String nextScene;         // next scene identifier after making a choice
 
     /**
      * Constructor for the Scene class.
@@ -37,6 +38,7 @@ public class Scene {
         this.choices = new ArrayList<>();
         this.random = new ArrayList<>();
         this.items = new ArrayList<>();
+        this.opponents = new ArrayList<>();
     }
 
     public String getId() {
@@ -95,6 +97,10 @@ public class Scene {
         items.add(item);
     }
 
+    public void addOpponent(Opponent op) {
+        opponents.add(op);
+    }
+    
     public List<Item> getItems() {
         return items;
     }
@@ -110,5 +116,10 @@ public class Scene {
     public String getTitle() {
         return title;
     }
+
+    public List<Opponent> getOpponents() {
+        return opponents;
+    }
+
 
 }

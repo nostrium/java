@@ -17,11 +17,11 @@ public class GameScreenCLI extends GameScreen {
 
     @Override
     public void writeln(String text) {
-        
-        if(text.isEmpty()){
+
+        if (text.isEmpty()) {
             System.out.println();
         }
-        
+
         int maxLineLength = 60;
 
         while (text.length() > maxLineLength) {
@@ -47,17 +47,35 @@ public class GameScreenCLI extends GameScreen {
 
     @Override
     public String processCommand(Scene scene) {
-        // get the input from the command line
+        String messageError = "Invalid choice. Please try again.";
+        // Get the input from the command line
         Scanner scanner = new Scanner(System.in);
-        int playerChoice = scanner.nextInt();
-        
-        if(playerChoice > scene.getChoices().size()){
-            writeln("Invalid choice. Please try again.");
-            return performChoices(scene);
+        String input;
+
+        // Read the input as a string to handle both numbers and ENTER key
+        input = scanner.nextLine().trim();
+
+        // If the input is empty (ENTER pressed), select the first option
+        int playerChoice;
+        if (input.isEmpty()) {
+            playerChoice = 1;  // Equivalent to the first option
+        } else {
+            try {
+                playerChoice = Integer.parseInt(input);  // Convert input to an integer
+            } catch (NumberFormatException e) {
+                writeln(messageError);
+                return performChoices(scene);  // Invalid input, show choices again
+            }
         }
-        // the number is valid, follow the choice
-        //String[] choices = scene.getChoices().values().toArray(new String[0]);
-        return scene.getChoices().get(playerChoice -1).link;
+
+        // Check if the playerChoice is valid
+        if (playerChoice < 1 || playerChoice > scene.getChoices().size()) {
+            writeln(messageError);
+            return performChoices(scene);  // Invalid choice, show choices again
+        }
+
+        // The choice is valid, proceed with the selection
+        return scene.getChoices().get(playerChoice - 1).link;
     }
 
     @Override

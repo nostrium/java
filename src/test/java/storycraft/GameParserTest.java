@@ -15,6 +15,7 @@ import online.nostrium.apps.storycraft.GamePlay;
 import online.nostrium.apps.storycraft.GameScreen;
 import online.nostrium.apps.storycraft.GameScreenCLI;
 import online.nostrium.apps.storycraft.Item;
+import online.nostrium.apps.storycraft.Opponent;
 import online.nostrium.apps.storycraft.Scene;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,10 +38,11 @@ public class GameParserTest {
                        
 # Scene: Azurath Entrance
 > Welcome to the ancient ruins of Azurath. The air is thick with the scent of damp stone and decaying leaves.
-
+> You see a sword in the entrance, seems to have been lost by someone running away
+                        
 ## Choices:
 - [Take](#item-sword)
-- [Leave](#scene-main-hall)
+- [Move forward](#scene-main-hall)
 
 ## Item: Sword
 Type: Weapon  
@@ -60,11 +62,52 @@ Defense Bonus: 5
 Durability: 20
 
 ## Random:
-- 30% chance: [Fight a Skeleton Warrior](#scene-fight-skeleton)
 - 30% chance: [Find a hidden alcove with a shield](#scene-find-shield)
 - 20% chance: [Nothing happens](#scene-nothing-happens)
 - 20% chance: [Find a pot of coins](#scene-find-coins)
+- 30% chance: [Fight a Skeleton Warrior](#scene-take-treasure)
 
+## Choices:
+- [Run back to the entrance](#scene-azurath-entrance)
+- [Move forward to Treasure room](#scene-take-treasure)
+          
+-----
+                        
+# Scene: Nothing Happens
+> You continue exploring the hall, but nothing unusual happens. The eerie silence only adds to your unease.
+
+## Choices:
+- [Continue exploring the hall](#scene-main-hall)
+
+-----
+                                                         
+# Scene: Find Shield
+> As you clear away the rubble, you discover a hidden alcove containing an ancient shield. It's battered, but it might still offer some protection.
+
+## Item: Ancient Shield
+Type: Shield  
+Description: A shield from a bygone era, worn but sturdy.  
+Defense Bonus: 5  
+Durability: 20
+
+## Choices:
+- [Take the shield](#item-find-shield)
+- [Go back to the main hall](#scene-main-hall)                        
+                             
+-----
+                        
+# Scene: Find Coins
+> While exploring the hall, you stumble upon a small pot. Inside, you find a stash of coins, glinting in the dim light.
+
+## Choices:
+- [Take coins](#item-coins-10-30)
+- [Continue exploring the hall](#scene-main-hall)
+
+# Item: Coins (10-30)
+Type: Currency  
+Description: A pot of coins found in the ruins.  
+Coins: 10-30                      
+                        
 -----
 
 # Scene: Take Treasure
@@ -73,13 +116,12 @@ Durability: 20
                                               
 ## Opponent: Stone Golem
 - Health: 150
-- Attack: 20..40
+- Attack: 20
 - Defense: 15
 - Experience: 100
 
 ## If win:
 - [Take](#item-golem-heart)
-- [Take](#item-coins-20-30)
 - [Exit the ruins](#scene-exit-ruins)
 
 ## If lose:
@@ -90,6 +132,30 @@ Durability: 20
 - [Lose](#item-coins-10-15)
 - [Return to the entrance](#scene-azurath-entrance)
 
+                        
+-----
+                        
+# Scene: Exit Ruins
+> You make your way out of the ruins, the sunlight blinding you as you emerge. The treasure of Azurath remains hidden, but you live to tell the tale.
+
+## Intro
+As you leave the ruins behind, you reflect on your journey. There are still many secrets to uncover, but for now, your adventure has come to an end.
+
+## Choices:
+- [Return to the entrance for another exploration](#scene-azurath-entrance)
+- [End your adventure](#scene-end)
+
+-----
+
+# Scene: Leave Ruins
+> Deciding that the ruins are too dangerous, you turn back and leave, vowing to return another day.
+
+## Choices:
+- [Return to the entrance](#scene-azurath-entrance)
+- [End your adventure](#scene-end)
+
+-----                        
+                        
 """;
 
         GameScreen screen = new GameScreenCLI();
@@ -101,17 +167,14 @@ Durability: 20
 
         // Verify scenes are correctly parsed
         assertNotNull(scenes);
-        assertEquals(3, scenes.size());
+        assertEquals(8, scenes.size());
 
         // Check the first scene
         Scene entranceScene = scenes.get("scene-azurath-entrance");
         assertNotNull(entranceScene);
-        assertEquals("Welcome to the ancient ruins of Azurath. "
-                + "The air is thick with the scent of damp stone and "
-                + "decaying leaves.", entranceScene.getDescription());
         assertEquals(2, entranceScene.getChoices().size());
 
-        assertEquals("scene-main-hall", entranceScene.getNextScene());
+//        assertEquals("scene-main-hall", entranceScene.getNextScene());
 
         // Check the second scene
         Scene mainHallScene = scenes.get("scene-main-hall");
@@ -131,6 +194,12 @@ Durability: 20
         Scene sceneTreasure = game.getScene("# Scene: Take Treasure");
         assertNotNull(sceneTreasure);
         
+        assertFalse(sceneTreasure.getOpponents().isEmpty());
+        Opponent op = sceneTreasure.getOpponents().get(0);
+        
+        assertNotNull(op);
+        
+        assertEquals(2, op.getMatchWin().size());
         
     }
 

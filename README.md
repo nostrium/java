@@ -11,7 +11,7 @@
 ```
 
 Nostrium is a nostr relay that provides a BBS platform.
-Users can register using their usual nostr accounts (npub, nsec)
+Users register using their usual NOSTR accounts (npub, nsec)
 and can view forum topics, replies and everything you would
 normally expect from a BSS or forum software.
 
@@ -118,6 +118,14 @@ Network basics:
 + [ ] Daytime Protocol - 13
 + [ ] Time Protocol - 37
 + [x] Quote of the Day (QOTD) - 17
+
+Broadcast:
++ [ ] RSS
++ [ ] Web radio
+
+Cybersec:
++ [ ] TOR
++ [ ] VPN
 
 Domain/IP handling:
 + [ ] DNS (Domain Name System) - 53

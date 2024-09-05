@@ -6,8 +6,8 @@
  */
 package online.nostrium.apps.storycraft;
 
-import online.nostrium.apps.storycraft.examples.StoryExample;
 import java.util.Map;
+import online.nostrium.apps.storycraft.examples.StoryNavigateRooms;
 
 /**
  * @author Brito
@@ -40,9 +40,24 @@ public class GamePlay {
         screen.writeln("---[ " + scene.getTitle() + " ]---");
         screen.writeln("");
         screen.writeln("/// " + scene.getDescription() + " ///");
+        
+        // last scene is the end
+        if(scene == this.parser.getSceneFinish()){
+            return;
+        }
+        
+        if(scene.getChoices().isEmpty() && scene.getRandom().isEmpty()){
+            screen.writeln("["
+                    + scene.getTitle()
+                    + "] Failed to find choices on this scene");
+        }
+        
         String nextSceneId = screen.performChoices(scene);
         // check if the scene exists
-        Scene nextScene = parser.getScenes().get(nextSceneId);
+        Scene nextScene = null;
+        if(nextSceneId != null){
+            nextScene = parser.getScenes().get(nextSceneId);
+        }
 
         if (nextScene == null) {
             screen.writeln("Failed to find scene: " + nextSceneId);
@@ -68,12 +83,6 @@ public class GamePlay {
         return scenes;
     }
 
-    public static void main(String[] args) {
-        GameScreen screen = new GameScreenCLI();
-        GamePlay game = new GamePlay(StoryExample.text, screen);
-        game.play();
-    }
-
     public Scene getScene(String sceneName) {
         String id = sceneName;
         if(sceneName.startsWith("#")){
@@ -81,5 +90,13 @@ public class GamePlay {
         }
         return scenes.get(id);
     }
+    
+    
+    public static void main(String[] args) {
+        GameScreen screen = new GameScreenCLI();
+        GamePlay game = new GamePlay(StoryNavigateRooms.text, screen);
+        game.play();
+    }
+
 
 }
