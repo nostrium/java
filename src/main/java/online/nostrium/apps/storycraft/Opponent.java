@@ -31,7 +31,7 @@ public class Opponent  extends GameThing{
         ifRun = "If run";
 
     @Override
-    protected boolean processedSpecificLine(Scene scene, String line, HashMap<String, Integer> atts) {
+    protected boolean processedSpecificLine(Scene scene, String line, HashMap<String, String> atts) {
         
         return false;
     }

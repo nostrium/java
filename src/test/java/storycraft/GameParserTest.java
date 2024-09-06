@@ -17,6 +17,8 @@ import online.nostrium.apps.storycraft.GameScreenCLI;
 import online.nostrium.apps.storycraft.Item;
 import online.nostrium.apps.storycraft.Opponent;
 import online.nostrium.apps.storycraft.Scene;
+import online.nostrium.user.User;
+import online.nostrium.user.UserUtils;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -159,7 +161,8 @@ As you leave the ruins behind, you reflect on your journey. There are still many
 """;
 
         GameScreen screen = new GameScreenCLI();
-        GamePlay game = new GamePlay(script, screen);
+        User user = UserUtils.createUserAnonymous();
+        GamePlay game = new GamePlay(script, screen, user);
 
         assertTrue(game.isValid());
 

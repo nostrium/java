@@ -22,7 +22,7 @@ public abstract class GameThing {
             id;         // machine readable name
             
     // attributes are added to the user overall sum
-    HashMap<String, Integer> attributes = new HashMap<>();
+    HashMap<String, String> attributes = new HashMap<>();
     
 
     /**
@@ -55,17 +55,17 @@ public abstract class GameThing {
         this.id = id;
     }
 
-    public HashMap<String, Integer> getAttributes() {
+    public HashMap<String, String> getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(HashMap<String, Integer> attributes) {
+    public void setAttributes(HashMap<String, String> attributes) {
         this.attributes = attributes;
     }
     
-    public void addAttributes(HashMap<String, Integer> atts) {
+    public void addAttributes(HashMap<String, String> atts) {
         for(String key : atts.keySet()){
-            int value = atts.get(key);
+            String value = atts.get(key);
             this.attributes.put(key, value);
         }
     }
@@ -80,7 +80,7 @@ public abstract class GameThing {
 //                description = null,
 //                type = null;
 
-        HashMap<String, Integer> atts = new HashMap<>();
+        HashMap<String, String> atts = new HashMap<>();
         
         processedSpecificBlock(scene, textBlock);
 
@@ -90,26 +90,19 @@ public abstract class GameThing {
             if(processedSpecificLine(scene, line, atts)){
                 continue;
             }
+            // get the item name
             if (line.startsWith(anchor)) {
                 name = line.substring(anchor.length());
                 id = thingId + name.toLowerCase().replace(" ", "-");
                 continue;
             }
-//            if (line.startsWith("Description: ")) {
-//                description = line.substring("Description: ".length());
-//                continue;
-//            }
-//            if (line.startsWith("Type: ")) {
-//                type = line.substring("Type: ".length());
-//                continue;
-//            }
             // variable attributes
             if (line.contains(": ")) {
                 int i = line.indexOf(": ");
                 String key = line.substring(0, i);
                 String valueText = line.substring(i + ": ".length());
-                int value = Integer.parseInt(valueText);
-                atts.put(key, value);
+                //int value = Integer.parseInt(valueText);
+                atts.put(key, valueText);
                 continue;
             }
 
@@ -129,7 +122,7 @@ public abstract class GameThing {
     }
 
     protected abstract boolean processedSpecificLine
-        (Scene scene, String line, HashMap<String, Integer> atts);
+        (Scene scene, String line, HashMap<String, String> atts);
 
     protected abstract void processedSpecificBlock(Scene scene, String textBlock);
     

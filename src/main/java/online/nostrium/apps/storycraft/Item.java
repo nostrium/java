@@ -42,7 +42,7 @@ public class Item extends GameThing{
     
     
     @Override
-    protected boolean processedSpecificLine(Scene scene, String line, HashMap<String, Integer> atts) {
+    protected boolean processedSpecificLine(Scene scene, String line, HashMap<String, String> atts) {
             if (line.startsWith("Description: ")) {
                 description = line.substring("Description: ".length());
                 return true;

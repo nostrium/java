@@ -94,7 +94,7 @@ File sharing:
 + [ ] SFTP (SSH File Transfer Protocol) - 22
 + [ ] TFTP (Trivial File Transfer Protocol) - 69
 + [ ] Torrent - 6881..6889
-+ [ ] Git
++ [ ] Git server
 
 Email service:
 + [ ] SMTP (Simple Mail Transfer Protocol) - 25
@@ -135,11 +135,16 @@ Domain/IP handling:
 + [ ] SNTP (Simple Network Time Protocol) - 123
 + [ ] DHCP (Dynamic Host Configuration Protocol) - 67/68
 
-Contacts
+Contacts:
 + [ ] WebDAV (Web Distributed Authoring and Versioning) - 80/443
 + [ ] CalDAV (Calendaring Extensions to WebDAV) - 80/443
 + [ ] CardDAV (Address Book Extensions to WebDAV) - 80/443
 
+
+Other services:
++ [ ] DMOZ web directory
++ [ ] AI chat
++ [ ] SearX search engine (or similar)
 
 
 Forum conversion

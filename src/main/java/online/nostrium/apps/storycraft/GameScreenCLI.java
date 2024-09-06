@@ -23,7 +23,7 @@ public class GameScreenCLI extends GameScreen {
             System.out.println();
         }
 
-        int maxLineLength = 60;
+        int maxLineLength = 50;
 
         while (text.length() > maxLineLength) {
             int breakIndex = text.lastIndexOf(' ', maxLineLength);

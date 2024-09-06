@@ -8,6 +8,7 @@ package online.nostrium.apps.storycraft;
 
 import java.util.ArrayList;
 import java.util.List;
+import online.nostrium.user.User;
 
 /**
  * @author Brito
@@ -16,24 +17,25 @@ import java.util.List;
  */
 public class Player {
 
-    int health;
-    int attack;
-    int defense;
-    int experience;
-    int level;
+    User user;
+    final GameScreen screen;
     List<Item> inventory;
+    int maxSize = 10;
 
-    public Player(int health, int attack, int defense, int experience, int level) {
-        this.health = health;
-        this.attack = attack;
-        this.defense = defense;
-        this.experience = experience;
-        this.level = level;
+    public Player(User user, GameScreen screen) {
+        this.screen = screen;
+        this.user = user;
         this.inventory = new ArrayList<>();
     }
 
     public void addItem(Item item) {
+        if(inventory.size() > maxSize){
+            screen.writeln("You inventory is full! Please remove some items");
+            return;
+        }
+        screen.writeln("Added item to inventory: " + item.getName());
         inventory.add(item);
+        screen.delay(1);
     }
 
     public void removeItem(Item item) {
@@ -43,19 +45,14 @@ public class Player {
     public void listInventory() {
         System.out.println("Inventory:");
         for (Item item : inventory) {
-            System.out.println("- " + item.name);
+            screen.writeln("- " + item.name);
         }
     }
 
     @Override
     public String toString() {
-        return "Player{" +
-                "health=" + health +
-                ", attack=" + attack +
-                ", defense=" + defense +
-                ", experience=" + experience +
-                ", level=" + level +
-                ", inventory=" + inventory.size() + " items" +
-                '}';
+        return "Player{"
+                + ", inventory=" + inventory.size() + " items"
+                + '}';
     }
 }

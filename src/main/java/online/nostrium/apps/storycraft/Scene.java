@@ -139,5 +139,14 @@ public class Scene {
         this.titleRandom = titleRandom;
     }
 
+    public Item getItem(String link) {
+        for(Item item : items){
+            if(item.getId().equalsIgnoreCase(link)){
+                return item;
+            }
+        }
+        return null;
+    }
+
 
 }

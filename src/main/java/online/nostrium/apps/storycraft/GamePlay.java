@@ -7,7 +7,9 @@
 package online.nostrium.apps.storycraft;
 
 import java.util.Map;
-import online.nostrium.apps.storycraft.examples.StoryRandomRooms;
+import online.nostrium.apps.storycraft.examples.StoryRandomItems;
+import online.nostrium.user.User;
+import online.nostrium.user.UserUtils;
 
 /**
  * @author Brito
@@ -16,20 +18,34 @@ import online.nostrium.apps.storycraft.examples.StoryRandomRooms;
  */
 public class GamePlay {
 
+    Player player;
+
     boolean valid = false;  // is the script valid?
     GameParser parser = null;
     final GameScreen screen;
     Map<String, Scene> scenes;
+    int timeMessageDelay = 1;
+            
 
-    public GamePlay(String script, GameScreen screen) {
+    public GamePlay(String script, GameScreen screen, User user) {
         // parse the script
         parser = new GameParser();
         this.screen = screen;
         parser.parseScript(script); // Parse from a string for this example
         valid = parser.isValid();
         scenes = parser.getScenes();
+        // setup the Player
+        player = new Player(user, screen);
     }
 
+      private void playScene(String sceneId) {
+          Scene scene = scenes.get(sceneId);
+          if(scene == null){
+              return;
+          }
+          playScene(scene);
+      }
+    
     /**
      * Plays a scene and present the options
      *
@@ -46,19 +62,42 @@ public class GamePlay {
             return;
         }
 
+        // usually there is a choice or random choice
+        Choice choice = null;
+
         // is there a random choice first?
         if (scene.getRandom().isEmpty() == false) {
-            playRandomChoice(scene);
-            return;
+            choice = playRandomChoice(scene);
         }
 
         // is there a choice to be made?
         if (scene.getChoices().isEmpty() == false) {
-            playChoice(scene);
+            choice = screen.performChoices(scene);
+        }
+
+        // process the type of choice that was made
+        // since there was no valid choice, just exit then
+        if(choice == null){
+            return;
+        }
+        
+        // is this a scene?
+        if (choice.getLinkType() == LinkType.SCENE) {
+            playScene(choice.link);
+            return;
+        }
+        
+        if (choice.getLinkType() == LinkType.ITEM) {
+            Item item = scene.getItem(choice.link);
+            player.addItem(item);
+            playScene(scene);
             return;
         }
 
         // there are no choices, shall we go back?
+        if (scene.getScenePrevious() != null) {
+            playScene(scene.getScenePrevious());
+        }
     }
 
     public boolean play() {
@@ -85,71 +124,55 @@ public class GamePlay {
         return scenes.get(id);
     }
 
-    public void playChoice(Scene scene) {
-        if (scene.getChoices().isEmpty()) {
-            return;
-        }
-
-        Choice choice = screen.performChoices(scene);
-
-        // check if the scene exists
-        Scene nextScene = null;
-        if (choice != null) {
-            nextScene = parser.getScenes().get(choice.link);
-        }
-
-        if (nextScene == null) {
-            screen.writeln("Failed to find scene: " + choice.link);
-            return;
-        }
-
-        // play the next scene
-        nextScene.setScenePrevious(scene);
-        playScene(nextScene);
-    }
-
-    private void playRandomChoice(Scene scene) {
+    private Choice playRandomChoice(Scene scene) {
         // select a random choice
         Choice choice = StoryUtils.selectRandomChoice(scene.getRandom());
         if (choice == null) {
             screen.writeln("Invalid choice");
-            return;
+            return null;
         }
+
+        if (choice.linkType != LinkType.SCENE) {
+            return choice;
+        }
+
+        // process a scene
         String sceneId = choice.getLink();
         if (scenes.containsKey(sceneId) == false) {
             screen.writeln("Invalid scene: " + sceneId);
-            return;
+            return null;
         }
+
         Scene nextScene = scenes.get(sceneId);
         if (nextScene == null) {
             screen.writeln("Scene not found: " + sceneId);
-            return;
+            return null;
         }
-        
+
         // write the text
-        if(scene.getTitleRandom() != null){
-            int time = 2;
+        if (scene.getTitleRandom() != null) {
             screen.writeln("");
             screen.writeln("");
             screen.writeln("     " + scene.getTitleRandom() + " ");
-            screen.delay(time);
+            screen.delay(timeMessageDelay);
             screen.writeln("\t\t" + choice.title);
-            screen.delay(time);
+            screen.delay(timeMessageDelay);
         }
-        
-        
+
         // define the way back
         nextScene.setScenePrevious(scene);
+        // If the choice was a scene, play it
         playScene(nextScene);
+        return choice;
     }
-
-    
 
     public static void main(String[] args) {
         GameScreen screen = new GameScreenCLI();
         //GamePlay game = new GamePlay(StoryNavigateRooms.text, screen);
-        GamePlay game = new GamePlay(StoryRandomRooms.text, screen);
+        User user = UserUtils.createUserAnonymous();
+        user.setUsername("brito");
+        GamePlay game = new GamePlay(StoryRandomItems.text, screen, user);
         game.play();
     }
-    
+
 }
