@@ -117,6 +117,7 @@ Network basics:
 + [ ] Echo Protocol - 7
 + [ ] Daytime Protocol - 13
 + [ ] Time Protocol - 37
++ [ ] SNTP (Simple Network Time Protocol) - 123
 + [x] Quote of the Day (QOTD) - 17
 
 Broadcast:

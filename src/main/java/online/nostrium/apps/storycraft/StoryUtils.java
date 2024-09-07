@@ -59,14 +59,14 @@ public class StoryUtils {
        return text;
     }
 
-    public static ArrayList<String> getTextBlocks(String id, String source) {
+    public static ArrayList<String> getTextBlocks(String startWithId, String source) {
         ArrayList<String> sceneTexts = new ArrayList<>();
         String[] lines = source.split("\n");  // Split script into lines
         StringBuilder currentScene = new StringBuilder();
         boolean recording = false;
 
         for (String line : lines) {
-            if (line.startsWith(id)) {
+            if (line.startsWith(startWithId)) {
                 // If already recording a scene, save the previous scene
                 if (recording && currentScene.length() > 0) {
                     sceneTexts.add(currentScene.toString().trim());

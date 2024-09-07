@@ -16,7 +16,10 @@ import online.nostrium.apps.storycraft.GameScreen;
 import online.nostrium.apps.storycraft.GameScreenCLI;
 import online.nostrium.apps.storycraft.Item;
 import online.nostrium.apps.storycraft.Opponent;
+import online.nostrium.apps.storycraft.Actions;
+import online.nostrium.apps.storycraft.Player;
 import online.nostrium.apps.storycraft.Scene;
+import online.nostrium.apps.storycraft.examples.StoryRandomItems;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
 
@@ -178,7 +181,6 @@ As you leave the ruins behind, you reflect on your journey. There are still many
         assertEquals(2, entranceScene.getChoices().size());
 
 //        assertEquals("scene-main-hall", entranceScene.getNextScene());
-
         // Check the second scene
         Scene mainHallScene = scenes.get("scene-main-hall");
         assertNotNull(mainHallScene);
@@ -187,7 +189,7 @@ As you leave the ruins behind, you reflect on your journey. There are still many
         // test the main title for the random choice
         String random = mainHallScene.getTitleRandom();
         assertEquals("You look around and...", random);
-        
+
         // item testing
         assertEquals(1, entranceScene.getItems().size());
         Item sword = entranceScene.getItems().get(0);
@@ -200,14 +202,73 @@ As you leave the ruins behind, you reflect on your journey. There are still many
         // opponent
         Scene sceneTreasure = game.getScene("# Scene: Take Treasure");
         assertNotNull(sceneTreasure);
-        
+
         assertFalse(sceneTreasure.getOpponents().isEmpty());
         Opponent op = sceneTreasure.getOpponents().get(0);
-        
+
         assertNotNull(op);
-        
+
         assertEquals(2, op.getMatchWin().size());
+
+    }
+
+    @Test
+    public void testRules() {
+
+        String script2
+                = """
+# Scene: Azurath Entrance
+> Welcome to the ancient ruins of Azurath. The air is thick with the scent of damp stone and decaying leaves.
+> You see a sword in the entrance, seems to have been lost by someone running away
+
+# Action: Attack
+> Define what happens when Player A attacks player B
+
+- AttackPower = A:Attack + (A:Experience / (A:Attack * 0,5))
+- DefendPower = B:Defense + (B:Experience / (B:Defense * 0,5))
+- B:Health = B:Health - (AttackPower - DefendPower)
+
+# Player
+- Health: 60
+- Attack: 10
+- Defense: 5
+- Experience: 30
+                  
+## Opponent: Stone Golem
+- Health: 150
+- Attack: 20
+- Defense: 15
+- Experience: 100
+
+
+
+""";
+
+        Actions actionsTest = new Actions();
+        actionsTest.parse(script2);
+
+        assertEquals(1, actionsTest.getList().size());
+        assertEquals(3, actionsTest.getList().get(0).getRules().size());
+
+        // parse the script
+        GameScreen screen = new GameScreenCLI();
+        //GamePlay game = new GamePlay(StoryNavigateRooms.text, screen);
+        User user = UserUtils.createUserAnonymous();
+        user.setUsername("brito");
+        GamePlay game = new GamePlay(script2, screen, user);
+
+        Player player = game.getPlayer();
+        assertFalse(player.getAttributes().isEmpty());
+        assertEquals("60", player.getAttributes().get("Health"));
         
+        Map<String, Opponent> opponents = game.getOpponents();
+        assertFalse(opponents.isEmpty());
+        
+        String opId = "opponent-stone-golem";
+        Opponent enemy = opponents.get(opId);
+        assertNotNull(enemy);
+        Actions actions = game.getActions();
+        player.doAction(enemy, "Attack", actions);
     }
 
 }

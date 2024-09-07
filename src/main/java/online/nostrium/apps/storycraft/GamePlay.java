@@ -7,6 +7,7 @@
 package online.nostrium.apps.storycraft;
 
 import java.util.Map;
+import static online.nostrium.apps.storycraft.StoryUtils.normalize;
 import online.nostrium.apps.storycraft.examples.StoryRandomItems;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
@@ -29,13 +30,16 @@ public class GamePlay {
 
     public GamePlay(String script, GameScreen screen, User user) {
         // parse the script
+        String text = normalize(script);
+        
         parser = new GameParser();
         this.screen = screen;
-        parser.parseScript(script); // Parse from a string for this example
+        parser.parseScript(text);
         valid = parser.isValid();
         scenes = parser.getScenes();
         // setup the Player
         player = new Player(user, screen);
+        player.parse(text);
     }
 
       private void playScene(String sceneId) {
@@ -173,6 +177,18 @@ public class GamePlay {
         user.setUsername("brito");
         GamePlay game = new GamePlay(StoryRandomItems.text, screen, user);
         game.play();
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public Map<String, Opponent> getOpponents() {
+        return parser.getOpponents();
+    }
+    
+    public Actions getActions(){
+        return parser.getActions();
     }
 
 }

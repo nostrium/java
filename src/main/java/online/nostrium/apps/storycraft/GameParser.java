@@ -25,10 +25,13 @@ import org.apache.commons.io.FileUtils;
 public class GameParser {
 
     private final Map<String, Scene> scenes = new HashMap<>();
+    private final Map<String, Opponent> opponents = new HashMap<>();
 
     private Scene sceneStart = null;
     private Scene sceneFinish = null;
-
+    private Actions actions = new Actions();
+    
+    
     /**
      * Parses the script from a file and loads the scenes.
      *
@@ -57,7 +60,10 @@ public class GameParser {
         // define the first and last screens
         this.sceneStart = scenesFound.get(0);
         this.sceneFinish = scenesFound.get(scenesFound.size() - 1);
-
+        
+        // get the actions
+        actions.parse(text);
+        
     }
 
     public Map<String, Scene> getScenes() {
@@ -72,6 +78,10 @@ public class GameParser {
         return sceneFinish;
     }
 
+    public Actions getActions() {
+        return actions;
+    }
+    
     public boolean isValid() {
         return !(sceneStart == null || sceneFinish == null || scenes.isEmpty());
     }
@@ -252,7 +262,14 @@ public class GameParser {
             }
             // add the item
             scene.addOpponent(op);
+            opponents.put(op.id, op);
         }
     }
+
+    public Map<String, Opponent> getOpponents() {
+        return opponents;
+    }
+    
+    
 
 }
