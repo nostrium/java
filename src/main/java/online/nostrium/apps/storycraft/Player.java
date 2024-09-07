@@ -129,22 +129,25 @@ public class Player extends GameThing{
 //- B:Health = B:Health - (AttackPower - DefendPower)
         HashMap<String, String> tempVars = new HashMap<>();
         for (String rule : action.getRules()) {
-            // only support simple expressions for the moment
+            processRule(rule, tempVars);
+        }
+
+        System.gc();
+    }
+
+    private void processRule(String rule, HashMap<String, String> tempVars) {
+        // only support simple expressions for the moment
             if (rule.contains(" = ") == false) {
-                continue;
+                return;
             }
             // get the variable name and expression to run
             String[] data = rule.split(" = ");
             if (data.length != 2) {
-                continue;
+                return;
             }
             String varName = data[0].trim();
             String expression = data[1].trim();
 
-            
-        }
-
-        System.gc();
     }
 
 }

@@ -17,7 +17,9 @@ import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.utils.EncryptionUtils;
+import online.nostrium.utils.MathFunctions;
 import static online.nostrium.utils.TextFunctions.sha256;
+import online.nostrium.utils.time;
 
 /**
  * @author Brito
@@ -76,6 +78,12 @@ public class CommandLogin extends TerminalCommand{
         
         // get the related user
         User user = UserUtils.getUserByUsername(username);
+        
+        
+        // introduce some delay on the login
+        // make bruteforcing harder
+        int delay = MathFunctions.getRandomIntInRange(1, 4);
+        time.wait(delay);
         
         if(user == null){
             return reply(TerminalCode.NOT_FOUND, "User name was not found");

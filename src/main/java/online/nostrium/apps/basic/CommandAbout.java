@@ -11,7 +11,6 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
-import static online.nostrium.servers.terminal.TerminalColor.BLUE;
 import static online.nostrium.utils.JarUtils.getBuildTime;
 import static online.nostrium.utils.JarUtils.getVersion;
 
@@ -27,13 +26,20 @@ public class CommandAbout extends TerminalCommand{
         this.requireSlash = false;
     }
 
+    private void writeln(String line){
+        app.screen.writeln(line);
+    }
+    
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
        
         String buildTime = getBuildTime();
-        app.screen.writeln("Build Time: " + buildTime);
-        String version = getVersion();
-        app.screen.writeln("Version: " + version);
+        writeln("Build Time: " + buildTime);
+        writeln("Additional info: https://github.com/nostrium/java");
+//        writeln("-----------------");
+//        writeln("");
+//        String version = getVersion();
+//        app.screen.writeln("Version: " + version);
         
         return reply(TerminalCode.OK);
     }
@@ -45,7 +51,7 @@ public class CommandAbout extends TerminalCommand{
     
     @Override
     public String oneLineDescription() {
-        return "Say hello to something";
+        return "Info about the platform";
     }
 
 
