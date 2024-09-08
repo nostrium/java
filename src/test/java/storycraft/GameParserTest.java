@@ -118,6 +118,10 @@ Coins: 10-30
 # Scene: Take Treasure
 > As you gather the treasure, you hear a low growl from behind you. You turn to see a massive stone golem, awakened by your greed.
 
+## Choices:
+- [Take coins](#item-coins-10-30)
+- [Continue exploring the hall](#scene-main-hall)
+
                                               
 # Opponent: Stone Golem
 - Health: 150
@@ -295,7 +299,6 @@ As you leave the ruins behind, you reflect on your journey. There are still many
         // check that the health of the opponent is different now
         attackAfter = B.getAttributeAsLong("Health");
         assertEquals(-8, attackAfter);
-        
     }
 
 }
