@@ -11,7 +11,6 @@ import online.nostrium.servers.terminal.notifications.NotificationType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
-import static online.nostrium.servers.terminal.TerminalColor.GREEN;
 import online.nostrium.servers.terminal.screens.Screen;
 import online.nostrium.user.User;
 import online.nostrium.servers.terminal.TerminalColor;
@@ -60,7 +59,7 @@ public class TerminalGuessNumber extends TerminalApp {
     public CommandResponse defaultCommand(String commandInput) {
 
         // check if we are over the max
-        if (tryCounter == tryMax) {
+        if (tryCounter+1 == tryMax) {
             reset(false);
             return reply(TerminalCode.OK, "Sorry, failed to guess the number!"
                     + screen.breakLine()
@@ -89,10 +88,12 @@ public class TerminalGuessNumber extends TerminalApp {
         // increase the counter
         tryCounter++;
 
-        String text = "Attempt #" + tryCounter;
+        int attemptsMissing = tryMax - tryCounter;
+        
+        String text = "Attempts left: " + attemptsMissing + " ";
         
         if(debug){
-            text += " (value is " + chosenNumber + ")"; 
+            text += "(value is " + chosenNumber + ") "; 
         }
         
         // number is valid
@@ -123,6 +124,7 @@ public class TerminalGuessNumber extends TerminalApp {
 
     @Override
     public String getIntro() {
+        this.reset(false);
         String text = "Guess the number";
         String intro = screen.getWindowFrame(text);
         intro += "\n"

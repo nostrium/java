@@ -19,7 +19,6 @@ import online.nostrium.apps.storycraft.Opponent;
 import online.nostrium.apps.storycraft.Actions;
 import online.nostrium.apps.storycraft.Player;
 import online.nostrium.apps.storycraft.Scene;
-import online.nostrium.apps.storycraft.examples.StoryRandomItems;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
 
@@ -224,21 +223,21 @@ As you leave the ruins behind, you reflect on your journey. There are still many
 # Action: Attack
 > Define what happens when Player A attacks player B
 
-- AttackPower = A:Attack + (A:Experience / (A:Attack * 0,5))
-- DefendPower = B:Defense + (B:Experience / (B:Defense * 0,5))
-- B:Health = B:Health - (AttackPower - DefendPower)
+- AttackPower = A:Attack + (A:Experience / (A:Attack * 0.5))
+- DefendPower = B:Defense + (B:Experience / (B:Defense * 0.5))
+- B:Health = B:Health - chooseGreater(0, AttackPower - DefendPower)
 
 # Player
 - Health: 60
-- Attack: 10
+- Attack: 50
 - Defense: 5
 - Experience: 30
                   
 ## Opponent: Stone Golem
-- Health: 150
-- Attack: 20
-- Defense: 15
-- Experience: 100
+- Health: 60
+- Attack: 10
+- Defense: 5
+- Experience: 30
 
 
 
@@ -257,18 +256,34 @@ As you leave the ruins behind, you reflect on your journey. There are still many
         user.setUsername("brito");
         GamePlay game = new GamePlay(script2, screen, user);
 
-        Player player = game.getPlayer();
-        assertFalse(player.getAttributes().isEmpty());
-        assertEquals("60", player.getAttributes().get("Health"));
+        Player A = game.getPlayer();
+        assertFalse(A.getAttributes().isEmpty());
+        assertEquals("60", A.getAttributes().get("Health"));
         
         Map<String, Opponent> opponents = game.getOpponents();
         assertFalse(opponents.isEmpty());
         
         String opId = "opponent-stone-golem";
-        Opponent enemy = opponents.get(opId);
-        assertNotNull(enemy);
+        Opponent B = opponents.get(opId);
+        assertNotNull(B);
         Actions actions = game.getActions();
-        player.doAction(enemy, "Attack", actions);
+        
+        long attackBefore = B.getAttributeAsLong("Health");
+        assertEquals(60, attackBefore);
+        
+        A.doAction(B, "Attack", actions);
+
+        // check that the health of the opponent is different now
+        long attackAfter = B.getAttributeAsLong("Health");
+        assertEquals(26, attackAfter);
+
+        // attack again
+        A.doAction(B, "Attack", actions);
+
+        // check that the health of the opponent is different now
+        attackAfter = B.getAttributeAsLong("Health");
+        assertEquals(-8, attackAfter);
+        
     }
 
 }

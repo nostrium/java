@@ -16,7 +16,7 @@ import online.nostrium.user.User;
  * @date: 2024-09-03
  * @location: Germany
  */
-public class Player extends GameThing{
+public class Player extends GameThing {
 
     User user;
     final GameScreen screen;
@@ -101,7 +101,6 @@ public class Player extends GameThing{
 
     }
 
-    
     @Override
     protected boolean processedSpecificLine(Scene scene, String line, HashMap<String, String> atts) {
         return false;
@@ -109,45 +108,6 @@ public class Player extends GameThing{
 
     @Override
     protected void processedSpecificBlock(Scene scene, String textBlock) {
-    }
-
-    
-
-    public void doAction(Opponent enemy, String actionId, Actions actions) {
-        // check that the action exists
-        if (actions.has(actionId) == false) {
-            return;
-        }
-        // get the action
-        Action action = actions.get(actionId);
-
-//# Action: Attack
-//> Define what happens when Player A attacks player B
-//
-//- AttackPower = A:Attack + (A:Experience / (A:Attack * 0,5))
-//- DefendPower = B:Defense + (B:Experience / (B:Defense * 0,5))
-//- B:Health = B:Health - (AttackPower - DefendPower)
-        HashMap<String, String> tempVars = new HashMap<>();
-        for (String rule : action.getRules()) {
-            processRule(rule, tempVars);
-        }
-
-        System.gc();
-    }
-
-    private void processRule(String rule, HashMap<String, String> tempVars) {
-        // only support simple expressions for the moment
-            if (rule.contains(" = ") == false) {
-                return;
-            }
-            // get the variable name and expression to run
-            String[] data = rule.split(" = ");
-            if (data.length != 2) {
-                return;
-            }
-            String varName = data[0].trim();
-            String expression = data[1].trim();
-
     }
 
 }

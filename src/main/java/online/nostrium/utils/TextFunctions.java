@@ -215,5 +215,28 @@ public class TextFunctions {
         // Return true if the sanitized message is non-empty after all checks
         return !sanitizedMessage.isEmpty();
     }
+    
+    
+    /**
+     * Replaces the specified line in the ArrayList based on the content.
+     * 
+     * This method searches for the first occurrence of the specified old line
+     * in the ArrayList and replaces it with the new line. If the old line is 
+     * not found, the method returns the list unchanged.
+     * 
+     * @param list the ArrayList of strings where the line replacement is to be made
+     * @param oldLine the line that should be replaced
+     * @param newLine the new line that will replace the old line
+     */
+    public static void updateLineByContent(ArrayList<String> list, String oldLine, String newLine) {
+        // Find the index of the old line
+        int index = list.indexOf(oldLine);
+        
+        // If the line exists, replace it
+        if (index != -1) {
+            list.set(index, newLine);  // Replace the element at the found index
+        }
+        // If the line is not found, return without making any changes
+    }
 
 }

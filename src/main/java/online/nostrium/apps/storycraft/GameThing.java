@@ -4,7 +4,6 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-
 package online.nostrium.apps.storycraft;
 
 import java.util.HashMap;
@@ -15,15 +14,12 @@ import java.util.HashMap;
  * @location: Germany
  */
 public abstract class GameThing {
-    
-    
-    protected String 
-            name,       // The name of the item
+
+    protected String name, // The name of the item
             id;         // machine readable name
-            
+
     // attributes are added to the user overall sum
     HashMap<String, String> attributes = new HashMap<>();
-    
 
     /**
      * Constructor for an item with both durability and number of usages.
@@ -31,12 +27,12 @@ public abstract class GameThing {
      */
     public GameThing() {
     }
-    
+
     @Override
     public String toString() {
-        return "Thing {" +
-                "name='" + name + '\'' +
-                '}';
+        return "Thing {"
+                + "name='" + name + '\''
+                + '}';
     }
 
     public String getName() {
@@ -62,14 +58,14 @@ public abstract class GameThing {
     public void setAttributes(HashMap<String, String> attributes) {
         this.attributes = attributes;
     }
-    
+
     public void addAttributes(HashMap<String, String> atts) {
-        for(String key : atts.keySet()){
+        for (String key : atts.keySet()) {
             String value = atts.get(key);
             this.attributes.put(key, value);
         }
     }
-    
+
     public boolean parse(
             Scene scene, String textBlock, String anchor, String thingId) {
 //        ## Item: Ancient Shield
@@ -80,14 +76,12 @@ public abstract class GameThing {
 //                description = null,
 //                type = null;
 
-        HashMap<String, String> atts = new HashMap<>();
-        
         processedSpecificBlock(scene, textBlock);
 
         String[] lines = textBlock.split("\n");
         for (String line : lines) {
             // fixed values
-            if(processedSpecificLine(scene, line, atts)){
+            if (processedSpecificLine(scene, line, attributes)) {
                 continue;
             }
             // get the item name
@@ -97,12 +91,12 @@ public abstract class GameThing {
                 continue;
             }
             // variable attributes
-            if (line.contains(": ")) {
+            if (line.startsWith("- ") && line.contains(": ")) {
                 int i = line.indexOf(": ");
-                String key = line.substring(0, i);
+                String key = line.substring("- ".length(), i);
                 String valueText = line.substring(i + ": ".length());
                 //int value = Integer.parseInt(valueText);
-                atts.put(key, valueText);
+                attributes.put(key, valueText);
                 continue;
             }
 
@@ -113,17 +107,32 @@ public abstract class GameThing {
         }
         // the item needs to have the minimum sets of data
         if (name == null //|| description == null || type == null
-                || atts.isEmpty()) {
+                || attributes.isEmpty()) {
             return false;
         }
 
-        this.addAttributes(atts);
         return true;
     }
 
-    protected abstract boolean processedSpecificLine
-        (Scene scene, String line, HashMap<String, String> atts);
+    protected abstract boolean processedSpecificLine(Scene scene, String line, HashMap<String, String> atts);
 
     protected abstract void processedSpecificBlock(Scene scene, String textBlock);
+
+    public void doAction(GameThing thingB, String actionId, Actions actions) {
+        // check that the action exists
+        if (actions.has(actionId) == false) {
+            return;
+        }
+        // run the action
+        Action action = actions.get(actionId);
+        action.processAction(this, thingB, actionId);
+    }
+
     
+    public long getAttributeAsLong(String key) {
+        String valueText = this.attributes.get(key);
+        long value = Long.parseLong(valueText);
+        return value;
+    }
+   
 }
