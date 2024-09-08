@@ -25,11 +25,12 @@ import org.apache.commons.io.FileUtils;
 public class GameParser {
 
     private final Map<String, Scene> scenes = new HashMap<>();
-    private final Map<String, Opponent> opponents = new HashMap<>();
+    private final Items items = new Items();
+    private final Opponents opponents = new Opponents();
 
     private Scene sceneStart = null;
     private Scene sceneFinish = null;
-    private Actions actions = new Actions();
+    private final Actions actions = new Actions();
     
     
     /**
@@ -63,7 +64,8 @@ public class GameParser {
         
         // get the actions
         actions.parse(text);
-        
+        items.parse(text);
+        opponents.parse(text);
     }
 
     public Map<String, Scene> getScenes() {
@@ -119,9 +121,7 @@ public class GameParser {
 
         parseChoices(scene, sceneText);
         parseChoicesRandom(scene, sceneText);
-        parseItems(scene, sceneText);
-        parseOpponents(scene, sceneText);
-
+        
         return scene;
     }
 
@@ -227,49 +227,12 @@ public class GameParser {
         }
     }
 
-    private void parseItems(Scene scene, String sceneText) {
-        String anchor = "## Item: ";
-        String anchorId = "item-";
-        ArrayList<String> itemBlocks = StoryUtils.getTextBlocks(anchor, sceneText);
-        if (itemBlocks.isEmpty()) {
-            return;
-        }
-        for (String itemBlock : itemBlocks) {
-            Item item = new Item();
-            boolean result = item.parse(scene, itemBlock, anchor, anchorId);
-            if (result == false) {
-                continue;
-            }
-            // add the item
-            scene.addItem(item);
-        }
-    }
-
-   
-
-    private void parseOpponents(Scene scene, String sceneText) {
-        String anchor = "## Opponent: ";
-        String anchorId = "opponent-";
-        ArrayList<String> blocks = StoryUtils.getTextBlocks(anchor, sceneText);
-        if (blocks.isEmpty()) {
-            return;
-        }
-        for (String itemBlock : blocks) {
-            Opponent op = new Opponent();
-            boolean result = op.parse(scene, itemBlock, anchor, anchorId);
-            if (result == false) {
-                continue;
-            }
-            // add the item
-            scene.addOpponent(op);
-            opponents.put(op.id, op);
-        }
+    public Items getItems() {
+        return items;
     }
 
     public Map<String, Opponent> getOpponents() {
-        return opponents;
+        return opponents.getOpponents();
     }
     
-    
-
 }

@@ -91,9 +91,20 @@ public abstract class GameThing {
                 continue;
             }
             // variable attributes
+            // e.g - Durability: 10
             if (line.startsWith("- ") && line.contains(": ")) {
                 int i = line.indexOf(": ");
                 String key = line.substring("- ".length(), i);
+                String valueText = line.substring(i + ": ".length());
+                //int value = Integer.parseInt(valueText);
+                attributes.put(key, valueText);
+                continue;
+            }
+            // define variable attributes without using "- " on line start
+            // e.g Durability: 10
+            if (line.contains(": ")) {
+                int i = line.indexOf(": ");
+                String key = line.substring(0, i);
                 String valueText = line.substring(i + ": ".length());
                 //int value = Integer.parseInt(valueText);
                 attributes.put(key, valueText);

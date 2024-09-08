@@ -20,11 +20,11 @@ public class Scene {
     private String title;             // Human readable title 
     private String intro;             // description of the action
     private String description;       // description of the scene
-    private ArrayList<Choice> choices;// choices available to the player in this scene
     private String titleRandom = null; // sometimes random can have titles
+    
+    private ArrayList<Choice> choices;// choices available to the player in this scene
     private ArrayList<Choice> random; // random choices available
-    private List<Opponent> opponents; // opponents inside the scene
-    private List<Item> items;         // items present in this scene
+    
     private String nextScene;         // next scene identifier after making a choice
     private Scene scenePrevious;      // used when no other path is available
 
@@ -39,8 +39,6 @@ public class Scene {
         this.title = title;
         this.choices = new ArrayList<>();
         this.random = new ArrayList<>();
-        this.items = new ArrayList<>();
-        this.opponents = new ArrayList<>();
     }
 
     public String getId() {
@@ -74,10 +72,6 @@ public class Scene {
         this.intro = intro;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
-
     public ArrayList<Choice> getChoices() {
         return choices;
     }
@@ -94,19 +88,7 @@ public class Scene {
         random.add(choice);
     }
 
-
-    public void addItem(Item item) {
-        items.add(item);
-    }
-
-    public void addOpponent(Opponent op) {
-        opponents.add(op);
-    }
     
-    public List<Item> getItems() {
-        return items;
-    }
-
     public String getNextScene() {
         return nextScene;
     }
@@ -117,10 +99,6 @@ public class Scene {
 
     public String getTitle() {
         return title;
-    }
-
-    public List<Opponent> getOpponents() {
-        return opponents;
     }
 
     public void setScenePrevious(Scene scene) {
@@ -138,15 +116,5 @@ public class Scene {
     public void setTitleRandom(String titleRandom) {
         this.titleRandom = titleRandom;
     }
-
-    public Item getItem(String link) {
-        for(Item item : items){
-            if(item.getId().equalsIgnoreCase(link)){
-                return item;
-            }
-        }
-        return null;
-    }
-
 
 }

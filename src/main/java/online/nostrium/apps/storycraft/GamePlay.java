@@ -6,6 +6,7 @@
  */
 package online.nostrium.apps.storycraft;
 
+import java.util.ArrayList;
 import java.util.Map;
 import static online.nostrium.apps.storycraft.StoryUtils.normalize;
 import online.nostrium.apps.storycraft.examples.StoryRandomItems;
@@ -92,7 +93,7 @@ public class GamePlay {
         }
         
         if (choice.getLinkType() == LinkType.ITEM) {
-            Item item = scene.getItem(choice.link);
+            Item item = parser.getItems().getItem(choice.link);
             player.addItem(item);
             playScene(scene);
             return;
@@ -189,6 +190,10 @@ public class GamePlay {
     
     public Actions getActions(){
         return parser.getActions();
+    }
+
+    public ArrayList<Item> getItems() {
+        return this.parser.getItems().list;
     }
 
 }

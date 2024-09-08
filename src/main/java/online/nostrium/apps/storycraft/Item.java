@@ -55,43 +55,6 @@ public class Item extends GameThing{
     }
 
 
-//    /**
-//     * Use the item in combat. This method decreases durability by 1 each time the item is used.
-//     */
-//    public void useInCombat() {
-//        if (durability > 0) {
-//            durability--;
-//            writeln("%s used in combat. Durability now: %s", name, Integer.toString(durability));
-//        } else {
-//            writeln("%s is broken and can't be used.", name);
-//        }
-//    }
-//
-//    /**
-//     * Use the item for a special effect, such as healing. This method decreases the number of usages left.
-//     *
-//     * @return true if the item was successfully used, false if no usages left.
-//     */
-//    public boolean useForEffect() {
-//        if (usagesLeft > 0) {
-//            usagesLeft--;
-//            writeln("%s used for effect. Usages left: %s", name, Integer.toString(usagesLeft));
-//            return true;
-//        } else {
-//            writeln("%s is empty and can't be used.", name);
-//            return false;
-//        }
-//    }
-//
-//    /**
-//     * Check if the item is still usable based on its durability and number of usages left.
-//     *
-//     * @return true if the item can still be used, false otherwise.
-//     */
-//    public boolean isUsable() {
-//        return durability > 0 || usagesLeft > 0;
-//    }
-
     public String getDescription() {
         return description;
     }

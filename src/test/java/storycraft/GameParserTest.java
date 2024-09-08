@@ -38,7 +38,8 @@ public class GameParserTest {
     @Test
     public void testParseScriptFromString() throws IOException {
 
-        String script = """
+        String script = 
+"""
                        
 # Scene: Azurath Entrance
 > Welcome to the ancient ruins of Azurath. The air is thick with the scent of damp stone and decaying leaves.
@@ -48,7 +49,7 @@ public class GameParserTest {
 - [Take](#item-sword)
 - [Move forward](#scene-main-hall)
 
-## Item: Sword
+# Item: Sword
 Type: Weapon  
 Description: A worn and damaged sword, but it still has some fight left in it.
 Attack Bonus: 3  
@@ -59,7 +60,7 @@ Durability: 10
 # Scene: Main Hall
 > The main hall is vast, with towering pillars and a high, vaulted ceiling.
 
-## Item: Ancient Shield
+# Item: Ancient Shield 1
 Type: Shield  
 Description: A shield from a bygone era, worn but sturdy.  
 Defense Bonus: 5  
@@ -88,7 +89,7 @@ Durability: 20
 # Scene: Find Shield
 > As you clear away the rubble, you discover a hidden alcove containing an ancient shield. It's battered, but it might still offer some protection.
 
-## Item: Ancient Shield
+# Item: Ancient Shield 2
 Type: Shield  
 Description: A shield from a bygone era, worn but sturdy.  
 Defense Bonus: 5  
@@ -118,7 +119,7 @@ Coins: 10-30
 > As you gather the treasure, you hear a low growl from behind you. You turn to see a massive stone golem, awakened by your greed.
 
                                               
-## Opponent: Stone Golem
+# Opponent: Stone Golem
 - Health: 150
 - Attack: 20
 - Defense: 15
@@ -165,7 +166,7 @@ As you leave the ruins behind, you reflect on your journey. There are still many
         GameScreen screen = new GameScreenCLI();
         User user = UserUtils.createUserAnonymous();
         GamePlay game = new GamePlay(script, screen, user);
-
+        
         assertTrue(game.isValid());
 
         Map<String, Scene> scenes = game.getScenes();
@@ -190,8 +191,8 @@ As you leave the ruins behind, you reflect on your journey. There are still many
         assertEquals("You look around and...", random);
 
         // item testing
-        assertEquals(1, entranceScene.getItems().size());
-        Item sword = entranceScene.getItems().get(0);
+        assertEquals(4, game.getItems().size());
+        Item sword = game.getItems().get(0);
         assertEquals(4, mainHallScene.getRandom().size());
         assertNotNull(sword);
         assertEquals("Sword", sword.getName());
@@ -202,11 +203,12 @@ As you leave the ruins behind, you reflect on your journey. There are still many
         Scene sceneTreasure = game.getScene("# Scene: Take Treasure");
         assertNotNull(sceneTreasure);
 
-        assertFalse(sceneTreasure.getOpponents().isEmpty());
-        Opponent op = sceneTreasure.getOpponents().get(0);
+        assertFalse(game.getOpponents().isEmpty());
+        // get the first opponent listed
+        String opId = "opponent-stone-golem";
+        Opponent op = game.getOpponents().get(opId);
 
         assertNotNull(op);
-
         assertEquals(2, op.getMatchWin().size());
 
     }
@@ -216,9 +218,17 @@ As you leave the ruins behind, you reflect on your journey. There are still many
 
         String script2
                 = """
+                  
 # Scene: Azurath Entrance
 > Welcome to the ancient ruins of Azurath. The air is thick with the scent of damp stone and decaying leaves.
 > You see a sword in the entrance, seems to have been lost by someone running away
+
+## Random: You look around and...
+- 30% chance: [Find a hidden alcove with a shield](#scene-find-shield)
+- 20% chance: [Nothing happens](#scene-nothing-happens)
+- 20% chance: [Find a pot of coins](#scene-find-coins)
+- 30% chance: [Fight the stone Golem](#opponent-stone-golem); [Find a pot of coins](#scene-find-coins)
+- Afterwards: [You return to the entrance](#scene-azurath-entrance)
 
 # Action: Attack
 > Define what happens when Player A attacks player B
@@ -226,20 +236,22 @@ As you leave the ruins behind, you reflect on your journey. There are still many
 - AttackPower = A:Attack + (A:Experience / (A:Attack * 0.5))
 - DefendPower = B:Defense + (B:Experience / (B:Defense * 0.5))
 - B:Health = B:Health - chooseGreater(0, AttackPower - DefendPower)
+- If A:Health < 0 then write "You have lost"; #scene-exit-game; stop
+- If B:Health < 0 then write "You have won!"; #item-coins-10-30; stop
+
 
 # Player
 - Health: 60
 - Attack: 50
 - Defense: 5
 - Experience: 30
-                  
-## Opponent: Stone Golem
+
+# Opponent: Stone Golem 1
+- Actions: Attack
 - Health: 60
 - Attack: 10
 - Defense: 5
 - Experience: 30
-
-
 
 """;
 
@@ -247,7 +259,7 @@ As you leave the ruins behind, you reflect on your journey. There are still many
         actionsTest.parse(script2);
 
         assertEquals(1, actionsTest.getList().size());
-        assertEquals(3, actionsTest.getList().get(0).getRules().size());
+        assertEquals(5, actionsTest.getList().get(0).getRules().size());
 
         // parse the script
         GameScreen screen = new GameScreenCLI();
@@ -263,7 +275,7 @@ As you leave the ruins behind, you reflect on your journey. There are still many
         Map<String, Opponent> opponents = game.getOpponents();
         assertFalse(opponents.isEmpty());
         
-        String opId = "opponent-stone-golem";
+        String opId = "opponent-stone-golem-1";
         Opponent B = opponents.get(opId);
         assertNotNull(B);
         Actions actions = game.getActions();

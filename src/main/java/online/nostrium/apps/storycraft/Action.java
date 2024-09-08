@@ -110,7 +110,7 @@ public class Action {
     }
     
     
-     @SuppressWarnings("UnnecessaryTemporaryOnConversionFromString")
+    @SuppressWarnings("UnnecessaryTemporaryOnConversionFromString")
     private void processRule(
             String rule, GameThing A, GameThing B,
             HashMap<String, String> tempVars) {
@@ -156,6 +156,8 @@ public class Action {
                         rules, originalRule, combinedResult);
             }
         } catch (NumberFormatException e) {
+            // it was not a simple number
+            // cause an exception to happen
         }
 
         // store the translated expression
@@ -195,8 +197,6 @@ public class Action {
             result = result.replace(tag, value);
         }
 
-        // correct any commas
-        //result = result.replace(",", ".");
 
         // now calculate the formula
         boolean convertedOK = false;
