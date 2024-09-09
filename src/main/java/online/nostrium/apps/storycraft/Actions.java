@@ -79,7 +79,7 @@ public class Actions {
         this.list = list;
     }
 
-    Action get(String actionId) {
+    public Action get(String actionId) {
         for(Action action : list){
             if(action.getAction().equalsIgnoreCase(actionId)){
                 return action;

@@ -8,9 +8,17 @@
 package online.nostrium.utils;
 
 import java.util.Random;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
 import net.objecthunter.exp4j.function.Function;
+import org.apache.commons.jexl3.JexlBuilder;
+import org.apache.commons.jexl3.JexlContext;
+import org.apache.commons.jexl3.JexlEngine;
+import org.apache.commons.jexl3.JexlExpression;
+import org.apache.commons.jexl3.MapContext;
 
 /**
  * @Date: 2024-08-25
@@ -46,6 +54,33 @@ public class MathFunctions {
         double result = exp.evaluate(); // Evaluate the expression
 
         return (long) result; // Return the result as a long
+    }
+    
+    /**
+     * Evaluate a boolean expression like "60 < 0"
+     * @param expression
+     * @return
+     * @throws ScriptException 
+     */
+//    public static boolean evaluateExpressionBoolean(String expression) throws ScriptException {
+//        ScriptEngineManager manager = new ScriptEngineManager();
+//        ScriptEngine engine = manager.getEngineByName("JavaScript");
+//        // Evaluate the expression
+//        return (Boolean) engine.eval(expression);
+//    }
+    
+     public static boolean evaluateExpressionBoolean(String expression) {
+        // Create the JEXL engine
+        JexlEngine jexl = new JexlBuilder().create();
+
+        // Create the expression
+        JexlExpression jexlExpression = jexl.createExpression(expression);
+
+        // Create a JEXL context (no variables needed for this case)
+        JexlContext context = new MapContext();
+
+        // Evaluate the expression and return the result
+        return (Boolean) jexlExpression.evaluate(context);
     }
     
 }

@@ -8,6 +8,9 @@ package online.nostrium.apps.storycraft;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import online.nostrium.utils.MathFunctions;
 
 /**
  * @author Brito
@@ -219,5 +222,55 @@ public class StoryUtils {
         return null;
     }
     
+    
+    /**
+     * Compute the expression between two things
+     *
+     * @param expression
+     * @param A
+     * @param B
+     * @return
+     */
+    public static String translate(String expression, GameThing A, GameThing B) {
+        // A:Attack + (A:Experience / (A:Attack * 0,5))
+        String result = expression;
+
+        // change all A-related expressions
+        for (String attr : A.getAttributes().keySet()) {
+            String tag = "A:" + attr;
+            if (result.contains(tag) == false) {
+                continue;
+            }
+            String valueText = A.getAttributes().get(attr);
+            result = result.replace(tag, valueText);
+        }
+
+        // change all B-related expressions
+        for (String attr : B.getAttributes().keySet()) {
+            String tag = "B:" + attr;
+            if (result.contains(tag) == false) {
+                continue;
+            }
+            String value = B.getAttributes().get(attr);
+            result = result.replace(tag, value);
+        }
+
+
+        // now calculate the formula
+        boolean convertedOK = false;
+        long value = 0;
+        try {
+            value = MathFunctions.evaluateExpression(result);
+            convertedOK = true;
+        } catch (Exception ex) {
+            //Logger.getLogger(GameThing.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // don't change the value when the output failed
+        if (convertedOK) {
+            result = value + "";
+        }
+        return result;
+    }
 
 }

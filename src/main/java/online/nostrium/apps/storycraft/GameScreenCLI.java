@@ -80,6 +80,39 @@ public class GameScreenCLI extends GameScreen {
     }
 
     @Override
+    public String processCommand(String... actions) {
+        String messageError = "Invalid choice. Please try again.";
+        // Get the input from the command line
+        Scanner scanner = new Scanner(System.in);
+        String input;
+
+        // Read the input as a string to handle both numbers and ENTER key
+        input = scanner.nextLine().trim();
+
+        // If the input is empty (ENTER pressed), select the first option
+        int playerChoice;
+        if (input.isEmpty()) {
+            playerChoice = 1;  // Equivalent to the first option
+        } else {
+            try {
+                playerChoice = Integer.parseInt(input);  // Convert input to an integer
+            } catch (NumberFormatException e) {
+                writeln(messageError);
+                return performChoices(actions);  // Invalid input, show choices again
+            }
+        }
+
+        // Check if the playerChoice is valid
+        if (playerChoice < 1 || playerChoice > actions.length) {
+            writeln(messageError);
+            return performChoices(actions);  // Invalid choice, show choices again
+        }
+
+        // The choice is valid, proceed with the selection
+        return actions[playerChoice - 1];
+    }
+    
+    @Override
     public Choice performChoices(Scene scene) {
         if (scene.getChoices().isEmpty()) {
             return null;
@@ -102,6 +135,25 @@ public class GameScreenCLI extends GameScreen {
     @Override
     public void delay(int i){
         time.wait(i);
+    }
+
+    @Override
+    public String performChoices(String... actions) {
+        if (actions == null || actions.length == 0) {
+            return null;
+        }
+
+        writeln("");
+        int i = 1;
+        for (String action : actions) {
+            writeln("  ("
+                    + i
+                    + ") " + action);
+            i++;
+        }
+        writeln("");
+        writeln("Your choice: ");
+        return processCommand(actions);
     }
 
 }

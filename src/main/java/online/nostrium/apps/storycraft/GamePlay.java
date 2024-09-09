@@ -88,7 +88,7 @@ public class GamePlay {
         // is this a scene?
         if (choice.getLinkType() == LinkType.SCENE) {
             Scene nextScene = scenes.get(choice.getLinkType());
-            if(nextScene != null){
+            if (nextScene != null) {
                 nextScene.setScenePrevious(scene);
             }
             // jump to the next scene
@@ -104,7 +104,7 @@ public class GamePlay {
             playScene(scene);
             return;
         }
-        
+
         if (choice.getLinkType() == LinkType.FIGHT) {
             fight(choice, scene);
             return;
@@ -208,22 +208,88 @@ public class GamePlay {
 
     /**
      * Start a fight between the player and an opponent
+     *
      * @param choice
-     * @param scene 
+     * @param scene
      */
     private void fight(Choice choice, Scene scene) {
+
+        Player A = getPlayer();
         Opponent B = parser.getOpponent(choice);
-        if(B == null){
+
+        if (B == null) {
             screen.writeln("The opponent could not be found! :-(");
             screen.writeln("Opponent: " + choice.link);
+            screen.delay(1);
             // play the scene again
             playScene(scene);
             return;
         }
         // the opponent exists and can fight
         screen.writeln("The fight begins!");
-        
-        Player A = getPlayer();
+        screen.delay(1);
+
+        // loop to repeat the game until the stop
+        // conditions are met
+        boolean continueEvent = true;
+        while (continueEvent) {
+            continueEvent = fightAction(A, B, scene);
+        }
+
+    }
+
+    private boolean fightAction(Player A, Opponent B, Scene scene) {
+        // get the actions to play
+        String[] nextSteps = null;
+        String[] actionsAvailable = B.getActions();
+        if (actionsAvailable == null || actionsAvailable.length == 0) {
+            screen.writeln("No actions available for this opponent");
+            screen.writeln("Opponent: " + B.getName());
+            screen.delay(1);
+            return false;
+        }
+
+        // get the selected action
+        String actionSelected = screen.performChoices(actionsAvailable);
+
+        if (actionSelected == null) {
+            screen.writeln("No action was selected");
+            screen.delay(1);
+            return false;
+        }
+
+        screen.writeln("Chosen action: " + actionSelected);
+        screen.delay(1);
+
+        Action action = this.getActions().get(actionSelected);
+        if (action == null) {
+            screen.writeln("Expected action was NOT found");
+            screen.writeln("Action: " + actionSelected);
+            screen.delay(1);
+            return false;
+        }
+
+        // player attacks opponent
+        screen.writeln("You attack " + B.name);
+        action.processAction(A, B);
+        screen.delay(1);
+
+        nextSteps = action.canStop(A, B);
+        if (nextSteps != null) {
+            return false;
+        }
+
+        // opponent attacks player
+        screen.writeln(B.name + " attacks you");
+        action.processAction(B, A);
+
+        nextSteps = action.canStop(A, B);
+        if (nextSteps != null) {
+            return false;
+        }
+
+        // keep looping
+        return true;
     }
 
 }

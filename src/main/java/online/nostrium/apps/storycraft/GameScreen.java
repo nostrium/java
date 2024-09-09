@@ -16,9 +16,12 @@ public abstract class GameScreen {
 
     public abstract void writeln(String text);
     public abstract Choice processCommand(Scene scene);
-
+    public abstract String processCommand(String... actions);
+    
     public abstract Choice performChoices(Scene scene);
 
     public abstract void delay(int i); 
+
+    public abstract String performChoices(String... actionsAvailable);
     
 }

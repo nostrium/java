@@ -141,7 +141,7 @@ public abstract class GameThing {
         }
         // run the action
         Action action = actions.get(actionId);
-        action.processAction(this, thingB, actionId);
+        action.processAction(this, thingB);
     }
 
     
