@@ -161,14 +161,14 @@ public class Scene {
 //    - [Leave the ruins](#scene-leave-ruins)
 
         // get the choices
-        String choiceBlock = StoryUtils.getTextBlock("## Choices:", sceneText);
+        String choiceBlock = StoryUtils.getTextBlock("## Choice:", sceneText);
         if (choiceBlock.isEmpty() == false) {
             String[] lines = choiceBlock.split("\n");
             for (String line : lines) {
                 if (line.startsWith("- [") == false) {
                     continue;
                 }
-//                ## Choices:
+//                ## Choice:
 //                - [Take the artifact](#scene-take-artifact)
 //                - [Leave the artifact](#scene-leave-artifact)
 

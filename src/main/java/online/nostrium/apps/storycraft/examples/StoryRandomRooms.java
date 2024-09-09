@@ -36,7 +36,7 @@ public static String text =
 # Scene: Main Hall
 > The main hall is vast, with towering pillars and a high, vaulted ceiling. Broken statues and shattered pottery litter the floor.
 
-## Choices:
+## Choice:
 - [End your adventure](#scene-end)
 - [Return to the entrance](#scene-azurath-entrance)
 - [Nothing happens](#scene-nothing-happens)
@@ -46,7 +46,7 @@ public static String text =
 # Scene: Nothing Happens
 > You continue exploring the hall, but nothing unusual happens. The eerie silence only adds to your unease.
 
-## Choices:
+## Choice:
 - [End your adventure](#scene-end)
 - [Return to the entrance](#scene-azurath-entrance)
 

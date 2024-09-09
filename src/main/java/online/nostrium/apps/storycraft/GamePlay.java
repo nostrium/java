@@ -9,6 +9,7 @@ package online.nostrium.apps.storycraft;
 import java.util.ArrayList;
 import java.util.Map;
 import static online.nostrium.apps.storycraft.StoryUtils.normalize;
+import online.nostrium.apps.storycraft.examples.StoryRandomFight;
 import online.nostrium.apps.storycraft.examples.StoryRandomRooms;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
@@ -191,7 +192,8 @@ public class GamePlay {
         User user = UserUtils.createUserAnonymous();
         user.setUsername("brito");
         //GamePlay game = new GamePlay(StoryNavigateRooms.text, screen, user);
-        GamePlay game = new GamePlay(StoryRandomRooms.text, screen, user);
+        //GamePlay game = new GamePlay(StoryRandomRooms.text, screen, user);
+        GamePlay game = new GamePlay(StoryRandomFight.text, screen, user);
         game.play();
     }
 

@@ -48,6 +48,54 @@ public class StoryUtils {
         return output.toString().trim();  // Return the current scene as a single string
     }
     
+    
+//            line = line.trim();
+//            
+//            // does it start with our identifier
+//            if(line.startsWith(startWithId)){
+//                // was it recording before?
+//                if(recording){
+//                    // add the previous block being recorded
+//                    blocks.add(currentText.toString());
+//                    // start a new one
+//                    currentText.setLength(0);
+//                }else{
+//                    // start recording right now
+//                    recording = true;
+//                }
+//            }
+//            
+//            // are we recording and found a new block?
+//            if(recording 
+//                    && line.startsWith("# ")
+//                    && line.startsWith(startWithId) == false
+//                    ){
+//                recording = false;
+//                 // add the previous block being recorded
+//                blocks.add(currentText.toString());
+//                currentText.setLength(0);
+//            }
+//            
+//            
+//            // record the line
+//            if(recording){
+//                currentText.append(line).append("\n");
+//            }
+            
+            
+            
+            
+//            if(recording 
+//                    && line.startsWith("# ") 
+//                    && line.startsWith(startWithId) == false
+//                    //&& line.startsWith("----")
+//                    ){
+//                recording = false;
+//                blocks.add(currentText.toString().trim());
+//                currentText.setLength(0);  // Reset for the next scene
+//                continue;
+//            }
+    
     /**
      * Try to make sure the formatting is normalized
      * @param text
@@ -60,33 +108,51 @@ public class StoryUtils {
     }
 
     public static ArrayList<String> getTextBlocks(String startWithId, String source) {
-        ArrayList<String> sceneTexts = new ArrayList<>();
+        ArrayList<String> blocks = new ArrayList<>();
         String[] lines = source.split("\n");  // Split script into lines
-        StringBuilder currentScene = new StringBuilder();
+        StringBuilder currentText = new StringBuilder();
         boolean recording = false;
 
         for (String line : lines) {
+            
+            if(recording && line.startsWith(startWithId) == false
+                    && line.startsWith("# ")
+                    ){
+                blocks.add(currentText.toString().trim());
+                currentText.setLength(0);  // Reset for the next scene
+                recording = false;
+                continue;
+            }
+                    
+            if(recording && line.startsWith("-----")){
+                blocks.add(currentText.toString().trim());
+                currentText.setLength(0);  // Reset for the next scene
+                recording = false;
+                continue;
+            }
+            
+            
             if (line.startsWith(startWithId)) {
                 // If already recording a scene, save the previous scene
-                if (recording && currentScene.length() > 0) {
-                    sceneTexts.add(currentScene.toString().trim());
-                    currentScene.setLength(0);  // Reset for the next scene
+                if (recording && currentText.length() > 0) {
+                    blocks.add(currentText.toString().trim());
+                    currentText.setLength(0);  // Reset for the next scene
                 }
                 recording = true;  // Start recording the new scene
             }
             
             // Continue adding lines under the current scene
             if (recording) {
-                currentScene.append(line).append("\n");
+                currentText.append(line).append("\n");
             }
         }
 
         // Add the last scene if the loop ends while recording
-        if (recording && currentScene.length() > 0) {
-            sceneTexts.add(currentScene.toString().trim());
+        if (recording && currentText.length() > 0) {
+            blocks.add(currentText.toString().trim());
         }
 
-        return sceneTexts;
+        return blocks;
     }
     
     public static ArrayList<String> getMatchingLines(String key, String script) {

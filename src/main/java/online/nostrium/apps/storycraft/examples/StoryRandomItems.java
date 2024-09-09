@@ -41,6 +41,8 @@ public static String text =
 - [Get rusty sword](#item-rusty-sword)
 - [Exit the ruins](#scene-exit-ruins)
 
+-----
+
 # Scene: Nothing Happens
 > You continue exploring the hall, but nothing unusual happens. The eerie silence only adds to your unease.
 
@@ -54,9 +56,7 @@ public static String text =
 > Your adventure has come to an end. Perhaps one day you will return to the ruins of Azurath, but for now, you leave with the stories of what you encountered.
 > Thank you for playing! The ruins of Azurath will await your return.
 
-
 -----
-
 
 # Item: Rusty Sword
 Type: Weapon  
