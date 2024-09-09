@@ -17,6 +17,7 @@ public class Choice {
     final String link;
 
     final LinkType linkType;
+    String nextActions = null;
 
     int chance;
 
@@ -38,19 +39,34 @@ public class Choice {
         // - [Take](#item-golem-heart)
         int y = line.indexOf("]");
         int x = line.indexOf("#");
+        String nextActionToWrite = null;
         String choiceTitle = line.substring("- [".length(), y);
         String choiceLink = line.substring(x + 1).replace("(", "").replace(")", "").trim();
 
+        if(choiceLink.contains(": ")){
+            int z = choiceLink.indexOf(": ");
+            nextActionToWrite = choiceLink.substring(z + ": ".length());
+            choiceLink = choiceLink.substring(0, z);
+        }
+        
         LinkType linkType;
         if (choiceLink.startsWith("item-")) {
             linkType = LinkType.ITEM;
         } else if (choiceLink.startsWith("scene-")) {
             linkType = LinkType.SCENE;
+        } else if (choiceLink.startsWith("opponent-")) {
+            linkType = LinkType.FIGHT;
         } else {
             linkType = LinkType.OTHER;
         }
+        
+        Choice choice = new Choice(choiceTitle, choiceLink, linkType);
+        choice.setNextActions(nextActionToWrite);
+        return choice;
+    }
 
-        return new Choice(choiceTitle, choiceLink, linkType);
+    public void setNextActions(String nextActions) {
+        this.nextActions = nextActions;
     }
 
     @Override
@@ -76,6 +92,10 @@ public class Choice {
 
     public int getChance() {
         return chance;
+    }
+
+    public String getNextActions() {
+        return nextActions;
     }
 
 }

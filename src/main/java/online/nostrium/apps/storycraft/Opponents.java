@@ -8,7 +8,6 @@
 package online.nostrium.apps.storycraft;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,7 +29,7 @@ public class Opponents {
         }
         for (String itemBlock : blocks) {
             Opponent op = new Opponent();
-            boolean result = op.parse(null, itemBlock, anchor, anchorId);
+            boolean result = op.parse(itemBlock, anchor, anchorId);
             if (result == false) {
                 continue;
             }

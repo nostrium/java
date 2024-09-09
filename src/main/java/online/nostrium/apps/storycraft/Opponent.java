@@ -85,4 +85,12 @@ public class Opponent  extends GameThing{
         return matchRun;
     }
 
+    public String[] getActions() {
+        String id = "Actions";
+        if(attributes.containsKey(id) == false){
+            return null;
+        }
+        return this.attributes.get("Actions").split("; ");
+    }
+
 }

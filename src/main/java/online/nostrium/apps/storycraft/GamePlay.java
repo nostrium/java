@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Map;
 import static online.nostrium.apps.storycraft.StoryUtils.normalize;
 import online.nostrium.apps.storycraft.examples.StoryRandomFight;
-import online.nostrium.apps.storycraft.examples.StoryRandomRooms;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
 
@@ -88,6 +87,10 @@ public class GamePlay {
 
         // is this a scene?
         if (choice.getLinkType() == LinkType.SCENE) {
+            Scene nextScene = scenes.get(choice.getLinkType());
+            if(nextScene != null){
+                nextScene.setScenePrevious(scene);
+            }
             // jump to the next scene
             playScene(choice.link);
             return;
@@ -96,8 +99,14 @@ public class GamePlay {
         if (choice.getLinkType() == LinkType.ITEM) {
             Item item = parser.getItems().getItem(choice.link);
             player.addItem(item);
+            //player.writeStatus();
             // play the scene again
             playScene(scene);
+            return;
+        }
+        
+        if (choice.getLinkType() == LinkType.FIGHT) {
+            fight(choice, scene);
             return;
         }
 
@@ -195,6 +204,26 @@ public class GamePlay {
         //GamePlay game = new GamePlay(StoryRandomRooms.text, screen, user);
         GamePlay game = new GamePlay(StoryRandomFight.text, screen, user);
         game.play();
+    }
+
+    /**
+     * Start a fight between the player and an opponent
+     * @param choice
+     * @param scene 
+     */
+    private void fight(Choice choice, Scene scene) {
+        Opponent B = parser.getOpponent(choice);
+        if(B == null){
+            screen.writeln("The opponent could not be found! :-(");
+            screen.writeln("Opponent: " + choice.link);
+            // play the scene again
+            playScene(scene);
+            return;
+        }
+        // the opponent exists and can fight
+        screen.writeln("The fight begins!");
+        
+        Player A = getPlayer();
     }
 
 }

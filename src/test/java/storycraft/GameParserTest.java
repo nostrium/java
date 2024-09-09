@@ -17,6 +17,8 @@ import online.nostrium.apps.storycraft.GameScreenCLI;
 import online.nostrium.apps.storycraft.Item;
 import online.nostrium.apps.storycraft.Opponent;
 import online.nostrium.apps.storycraft.Actions;
+import online.nostrium.apps.storycraft.Choice;
+import online.nostrium.apps.storycraft.LinkType;
 import online.nostrium.apps.storycraft.Player;
 import online.nostrium.apps.storycraft.Scene;
 import online.nostrium.user.User;
@@ -237,7 +239,7 @@ Durability: 20
 - Defense: 5
 - Experience: 30
 
-# Opponent: Stone Golem 1
+# Opponent: Stone Golem
 - Actions: Attack
 - Health: 60
 - Attack: 10
@@ -266,7 +268,7 @@ Durability: 20
         Map<String, Opponent> opponents = game.getOpponents();
         assertFalse(opponents.isEmpty());
         
-        String opId = "opponent-stone-golem-1";
+        String opId = "opponent-stone-golem";
         Opponent B = opponents.get(opId);
         assertNotNull(B);
         Actions actions = game.getActions();
@@ -288,4 +290,48 @@ Durability: 20
         assertEquals(-8, attackAfter);
     }
 
+    
+    @Test
+    public void testChoiceWithConsequence(){
+        String line1 = "- [Fight the stone Golem](#opponent-stone-golem): #scene-victory";
+        Choice choice = Choice.parse(line1);
+        assertNotNull(choice);
+        String nextActions = choice.getNextActions();
+        assertNotNull(nextActions);
+        assertEquals("Fight the stone Golem", choice.getTitle());
+        assertEquals(LinkType.FIGHT, choice.getLinkType());
+        assertEquals("opponent-stone-golem", choice.getLink());
+        assertEquals("#scene-victory", choice.getNextActions());
+    }
+    
+    
+    @Test
+    public void testOpponent(){
+        String data = """
+                    # Opponent: Stone Golem
+                    - Actions: Attack; Magic
+                    - Health: 60
+                    - Attack: 10
+                    - Defense: 5
+                    - Experience: 30
+                      """;
+        String anchor = "# Opponent: ";
+        String anchorId = "opponent-";
+        
+        Opponent op = new Opponent();
+        op.parse(data, anchor, anchorId);
+        assertNotNull(op);
+        assertEquals("Stone Golem", op.getName());
+        assertEquals("opponent-stone-golem", op.getId());
+        
+        String[] actions = op.getActions();
+        assertEquals(2, actions.length);
+        assertEquals("Attack", actions[0]);
+        assertEquals("Magic", actions[1]);
+        
+        
+    }
+    
+    
+    
 }

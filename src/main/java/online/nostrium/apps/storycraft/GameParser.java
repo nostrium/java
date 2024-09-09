@@ -48,6 +48,7 @@ public class GameParser {
      *
      * @param script the script content as a string
      */
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
     public void parseScript(String script) {
         String text = normalize(script);
         ArrayList<String> sceneTexts = getTextBlocks("# Scene: ", text);
@@ -69,7 +70,9 @@ public class GameParser {
         
         // get the actions
         actions.parse(text);
+        // get the items
         items.parse(text);
+        // get the opponents
         opponents.parse(text);
     }
 
@@ -99,6 +102,10 @@ public class GameParser {
 
     public Map<String, Opponent> getOpponents() {
         return opponents.getOpponents();
+    }
+
+    public Opponent getOpponent(Choice choice) {
+        return opponents.getOpponents().get(choice.link);
     }
     
 }

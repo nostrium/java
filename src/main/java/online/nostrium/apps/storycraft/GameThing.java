@@ -66,15 +66,18 @@ public abstract class GameThing {
         }
     }
 
+    
+    public boolean parse(String textBlock, String anchor, String thingId) {
+        return this.parse(null, textBlock, anchor, thingId);
+    }
+    
     public boolean parse(
             Scene scene, String textBlock, String anchor, String thingId) {
-//        ## Item: Ancient Shield
+//        # Item: Ancient Shield
 //        Type: Shield  
 //        Description: A shield from a bygone era, worn but sturdy.  
 //        Defense Bonus: 5  
 //        Durability: 20
-//                description = null,
-//                type = null;
 
         processedSpecificBlock(scene, textBlock);
 
@@ -86,8 +89,10 @@ public abstract class GameThing {
             }
             // get the item name
             if (line.startsWith(anchor)) {
-                name = line.substring(anchor.length());
+                name = line.substring(anchor.length() //+ ": ".length()
+                );
                 id = thingId + name.toLowerCase().replace(" ", "-");
+                id = id.replace(":", "");
                 continue;
             }
             // variable attributes
