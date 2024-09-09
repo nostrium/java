@@ -27,8 +27,8 @@ public static String text =
 > You step into the ruins, the sound of your footsteps echoing off the stone walls. The air is cooler inside, and a sense of foreboding settles over you.
 
 ## Random: You decide to...
-- 40% [Explore the main hall](#scene-main-hall)
-- 40% [Leave the ruins](#scene-exit-ruins)
+- 70% [Explore the main hall](#scene-main-hall)
+- 10% [End your adventure](#scene-end)
 - 20% [Nothing happens](#scene-nothing-happens)
 
 -----
@@ -36,14 +36,10 @@ public static String text =
 # Scene: Main Hall
 > The main hall is vast, with towering pillars and a high, vaulted ceiling. Broken statues and shattered pottery litter the floor.
 
-## Intro
-As you move deeper into the hall, 
-you notice something glinting in the dim light. It appears to be a small, ornate chest partially buried under rubble.
-
 ## Choices:
+- [End your adventure](#scene-end)
 - [Return to the entrance](#scene-azurath-entrance)
 - [Nothing happens](#scene-nothing-happens)
-- [Exit the ruins](#scene-exit-ruins)
 
 -----
 
@@ -51,18 +47,8 @@ you notice something glinting in the dim light. It appears to be a small, ornate
 > You continue exploring the hall, but nothing unusual happens. The eerie silence only adds to your unease.
 
 ## Choices:
-- [Return to the entrance](#scene-azurath-entrance)
-- [Exit the ruins](#scene-exit-ruins)
-
------
-
-# Scene: Exit Ruins
-> You make your way out of the ruins, the sunlight blinding you as you emerge. The treasure of Azurath remains hidden, but you live to tell the tale.
->As you leave the ruins behind, you reflect on your journey. There are still many secrets to uncover, but for now, your adventure has come to an end.
-
-## Choices:
-- [Return to the entrance for another exploration](#scene-azurath-entrance)
 - [End your adventure](#scene-end)
+- [Return to the entrance](#scene-azurath-entrance)
 
 -----
 

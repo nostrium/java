@@ -261,4 +261,8 @@ public class Scene {
                 || random.isEmpty() == false;
     }
 
+    public boolean sameAs(Scene otherScene) {
+        return this.id.equalsIgnoreCase(otherScene.getId());
+    }
+
 }

@@ -9,7 +9,7 @@ package online.nostrium.apps.storycraft;
 import java.util.ArrayList;
 import java.util.Map;
 import static online.nostrium.apps.storycraft.StoryUtils.normalize;
-import online.nostrium.apps.storycraft.examples.StoryRandomItems;
+import online.nostrium.apps.storycraft.examples.StoryRandomRooms;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
 
@@ -27,12 +27,11 @@ public class GamePlay {
     final GameScreen screen;
     Map<String, Scene> scenes;
     int timeMessageDelay = 1;
-            
 
     public GamePlay(String script, GameScreen screen, User user) {
         // parse the script
         String text = normalize(script);
-        
+
         parser = new GameParser();
         this.screen = screen;
         parser.parseScript(text);
@@ -43,14 +42,14 @@ public class GamePlay {
         player.parse(text);
     }
 
-      private void playScene(String sceneId) {
-          Scene scene = scenes.get(sceneId);
-          if(scene == null){
-              return;
-          }
-          playScene(scene);
-      }
-    
+    private void playScene(String sceneId) {
+        Scene scene = scenes.get(sceneId);
+        if (scene == null) {
+            return;
+        }
+        playScene(scene);
+    }
+
     /**
      * Plays a scene and present the options
      *
@@ -63,7 +62,7 @@ public class GamePlay {
         screen.writeln("/// " + scene.getDescription() + " ///");
 
         // last scene is the end
-        if (scene == this.parser.getSceneFinish()) {
+        if (scene.sameAs(parser.getSceneFinish())) {
             return;
         }
 
@@ -82,19 +81,21 @@ public class GamePlay {
 
         // process the type of choice that was made
         // since there was no valid choice, just exit then
-        if(choice == null){
+        if (choice == null) {
             return;
         }
-        
+
         // is this a scene?
         if (choice.getLinkType() == LinkType.SCENE) {
+            // jump to the next scene
             playScene(choice.link);
             return;
         }
-        
+
         if (choice.getLinkType() == LinkType.ITEM) {
             Item item = parser.getItems().getItem(choice.link);
             player.addItem(item);
+            // play the scene again
             playScene(scene);
             return;
         }
@@ -166,18 +167,7 @@ public class GamePlay {
 
         // define the way back
         nextScene.setScenePrevious(scene);
-        // If the choice was a scene, play it
-        playScene(nextScene);
         return choice;
-    }
-
-    public static void main(String[] args) {
-        GameScreen screen = new GameScreenCLI();
-        //GamePlay game = new GamePlay(StoryNavigateRooms.text, screen);
-        User user = UserUtils.createUserAnonymous();
-        user.setUsername("brito");
-        GamePlay game = new GamePlay(StoryRandomItems.text, screen, user);
-        game.play();
     }
 
     public Player getPlayer() {
@@ -187,13 +177,22 @@ public class GamePlay {
     public Map<String, Opponent> getOpponents() {
         return parser.getOpponents();
     }
-    
-    public Actions getActions(){
+
+    public Actions getActions() {
         return parser.getActions();
     }
 
     public ArrayList<Item> getItems() {
         return this.parser.getItems().list;
+    }
+
+    public static void main(String[] args) {
+        GameScreen screen = new GameScreenCLI();
+        User user = UserUtils.createUserAnonymous();
+        user.setUsername("brito");
+        //GamePlay game = new GamePlay(StoryNavigateRooms.text, screen, user);
+        GamePlay game = new GamePlay(StoryRandomRooms.text, screen, user);
+        game.play();
     }
 
 }
