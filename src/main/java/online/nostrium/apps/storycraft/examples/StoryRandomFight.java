@@ -49,8 +49,8 @@ public static String text =
 - AttackPower = A:Attack + (A:Experience / (A:Attack * 0.5))
 - DefendPower = B:Defense + (B:Experience / (B:Defense * 0.5))
 - B:Health = B:Health - chooseGreater(0, AttackPower - DefendPower)
-- If A:Health < 0 then "You have lost"; A:Coins = 0; #scene-end; stop
-- If B:Health < 0 then write "You have won!"; A:Coins = A:Coins + 10: stop
+- If A:Health < 0 then write "You have lost"; A:Coins = 0; #scene-end
+- If B:Health < 0 then write "You have won!"; A:Coins = A:Coins + 10
 
 # Player
 - Health: 60

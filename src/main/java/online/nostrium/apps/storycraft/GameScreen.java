@@ -15,6 +15,7 @@ package online.nostrium.apps.storycraft;
 public abstract class GameScreen {
 
     public abstract void writeln(String text);
+    public abstract void clearScreen();
     public abstract Choice processCommand(Scene scene);
     public abstract String processCommand(String... actions);
     

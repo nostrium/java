@@ -87,7 +87,7 @@ public class GamePlay {
 
         // is this a scene?
         if (choice.getLinkType() == LinkType.SCENE) {
-            Scene nextScene = scenes.get(choice.getLinkType());
+            Scene nextScene = scenes.get(choice.getLink());
             if (nextScene != null) {
                 nextScene.setScenePrevious(scene);
             }
@@ -233,12 +233,18 @@ public class GamePlay {
         // conditions are met
         boolean continueEvent = true;
         while (continueEvent) {
-            continueEvent = fightAction(A, B, scene);
+            continueEvent = fightAction(A, B);
         }
 
     }
 
-    private boolean fightAction(Player A, Opponent B, Scene scene) {
+    /**
+     * 
+     * @param A Player
+     * @param B Opponent
+     * @return true to continue fighting, false to exit
+     */
+    private boolean fightAction(Player A, Opponent B) {
         // get the actions to play
         String[] nextSteps = null;
         String[] actionsAvailable = B.getActions();
@@ -275,7 +281,7 @@ public class GamePlay {
         screen.delay(1);
 
         nextSteps = action.canStop(A, B);
-        if (nextSteps != null) {
+        if (runActions(nextSteps)) {
             return false;
         }
 
@@ -284,12 +290,68 @@ public class GamePlay {
         action.processAction(B, A);
 
         nextSteps = action.canStop(A, B);
-        if (nextSteps != null) {
+        if (runActions(nextSteps)) {
             return false;
         }
 
         // keep looping
         return true;
+    }
+
+    /**
+     * Run the statements after an If condition has occurred
+     * @param nextSteps
+     * @return false to continue running
+     */
+    public boolean runActions(String[] nextSteps) {
+        if(nextSteps == null || nextSteps.length == 0){
+            return false;
+        }
+        
+        for(String step : nextSteps){
+            boolean stopRunning = runAction(step);
+            if(stopRunning){
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
+    private boolean runAction(String step) {
+        String stepLowercase = step.toLowerCase();
+        // write something on the screen
+        if(stepLowercase.startsWith("write")){
+            String text = step.substring("write ".length()).trim();
+            if(text.startsWith("\"") && text.endsWith("\"")){
+                text = text.substring(1, text.length() -1);
+            }
+            screen.writeln(text);
+            screen.delay(1);
+            // stop running?
+            return false;
+        }
+        
+        // support scenes
+        if(stepLowercase.startsWith("#scene")){
+            // remove the #
+            step = step.substring(1);
+            playScene(step);
+            // stop running?
+            return true;
+        }
+        
+        // support items
+        if(stepLowercase.startsWith("#item")){
+            Item item = parser.getItems().getItem(step);
+            if(item != null){
+                player.addItem(item);
+            }
+            // stop running?
+            return true;
+        }
+        // stop running?
+        return false;
     }
 
 }

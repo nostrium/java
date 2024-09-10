@@ -230,8 +230,8 @@ Durability: 20
 - AttackPower = A:Attack + (A:Experience / (A:Attack * 0.5))
 - DefendPower = B:Defense + (B:Experience / (B:Defense * 0.5))
 - B:Health = B:Health - chooseGreater(0, AttackPower - DefendPower)
-- If A:Health < 1 then write "You have lost"; #scene-exit-game; stop
-- If B:Health < 1 then write "You have won!"; #item-coins-10-30; stop
+- If A:Health < 1 then write "You have lost"; #scene-exit-game
+- If B:Health < 1 then write "You have won!"; #item-coins-10-30
 
 # Player
 - Health: 60
@@ -240,6 +240,15 @@ Durability: 20
 - Experience: 30
 
 # Opponent: Stone Golem
+>      .-\"""\"""-.
+>     /  >  <    \
+>    |    O   O   |
+>    |    \\____/  |
+>     \\ \\__V_V__/ /
+>      `--------`
+>       /      \
+>      |        |
+>     /| |    | |\
 - Actions: Attack
 - Health: 60
 - Attack: 10
@@ -292,6 +301,8 @@ Durability: 20
         // test the IF conditions
         String[] nextSteps = game.getActions().get("Attack").canStop(A, B);
         assertNotNull(nextSteps);
+        
+        boolean actionsDone = game.runActions(nextSteps);
     }
 
     
