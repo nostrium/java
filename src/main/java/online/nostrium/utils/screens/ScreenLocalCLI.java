@@ -4,7 +4,7 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-package online.nostrium.servers.terminal.screens;
+package online.nostrium.utils.screens;
 
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalColor;
@@ -15,7 +15,7 @@ import online.nostrium.servers.terminal.TerminalType;
  * Date: 2024-08-10
  * Location: Germany
  */
-public class ScreenTesting extends Screen{
+public class ScreenLocalCLI extends Screen{
 
     @Override
     public TerminalType getTerminalType() {

@@ -8,7 +8,7 @@ import static online.nostrium.main.Folder.nameEndingJsonUser;
 import static online.nostrium.nostr.NostrUtils.generateNostrKeys;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalCode;
-import online.nostrium.servers.terminal.screens.Screen;
+import online.nostrium.utils.screens.Screen;
 import online.nostrium.utils.EncryptionUtils;
 import online.nostrium.utils.FileFunctions;
 import online.nostrium.utils.TextFunctions;

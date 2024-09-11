@@ -4,7 +4,7 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-package online.nostrium.servers.terminal.screens;
+package online.nostrium.utils.screens;
 
 import online.nostrium.servers.qoft.QOTD;
 import online.nostrium.servers.terminal.TerminalApp;

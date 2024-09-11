@@ -26,6 +26,7 @@ public class Folder {
             nameFileConfig = "config.json",
             nameFolderData = "data",
             nameFolderWWW = "www",
+            nameFolderGPT = "gpt",
             nameFolderChat = "chat",
             nameFolderChatRoom = "room.json",
             nameFolderBase = "forum",
@@ -147,6 +148,10 @@ public class Folder {
 
     public static File getFolderLog() {
         return defaultGetFolder(nameFolderLogs);
+    }
+
+    public static File getFolderGPT() {
+         return defaultGetFolder(getFolderData(), nameFolderGPT);
     }
     
     

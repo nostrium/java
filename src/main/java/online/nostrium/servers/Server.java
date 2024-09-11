@@ -39,6 +39,9 @@ public abstract class Server {
         time.wait(1);
         if(this.isRunning){
             String text = getId() + " started on port " + getPort();
+            if(getPort() < 0){
+                text = getId() + " started";
+            }
             System.out.println(text);
         }
     }

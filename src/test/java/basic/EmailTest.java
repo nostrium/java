@@ -11,8 +11,8 @@ import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalType;
-import online.nostrium.servers.terminal.screens.Screen;
-import online.nostrium.servers.terminal.screens.ScreenTesting;
+import online.nostrium.utils.screens.Screen;
+import online.nostrium.utils.screens.ScreenLocalCLI;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -34,7 +34,7 @@ public class EmailTest {
         // needs to have a profile on disk
         user.save();
 
-        Screen screen = new ScreenTesting();
+        Screen screen = new ScreenLocalCLI();
         TerminalApp app = new TerminalEmail(screen, user);
 
         String command = "ls";

@@ -6,6 +6,13 @@
   <version>1.0.0</version>
   <description>The BBS for Nostr</description>
   <build>
+    <extensions>
+      <extension>
+        <groupId>kr.motd.maven</groupId>
+        <artifactId>os-maven-plugin</artifactId>
+        <version>1.7.0</version>
+      </extension>
+    </extensions>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -121,6 +128,7 @@
     </dependency>
   </dependencies>
   <properties>
+    <jlama.version>0.3.1</jlama.version>
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
     <nostr-java.version>0.6.1-SNAPSHOT</nostr-java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -8,7 +8,6 @@ package online.nostrium.main;
 
 import java.io.File;
 import java.util.Date;
-import online.nostrium.apps.admin.TerminalAdmin;
 import online.nostrium.logs.Log;
 import online.nostrium.nostr.nip05.NIP05_emails;
 import online.nostrium.servers.terminal.notifications.Sessions;
@@ -17,7 +16,6 @@ import online.nostrium.servers.email.ServerEmail;
 import online.nostrium.servers.finger.ServerFinger;
 import online.nostrium.servers.qoft.ServerQOTD;
 import online.nostrium.servers.telnet.ServerTelnet;
-import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalCode.BOOT;
 import online.nostrium.servers.web.ServerWeb;
@@ -41,7 +39,7 @@ public class core {
     // track the time that it is up
     public static Date uptime = new Date();
 
-    public static boolean keepRunning = true;
+    private static boolean keepRunning = true;
     
     
     public static void runServers(){
@@ -51,19 +49,21 @@ public class core {
             new ServerFinger(),
             //new ServerSSH(),
             new ServerQOTD(),
-            new ServerEmail()
+            new ServerEmail(),
+//            new ServerChatBot()
         };
 
         for (Server server : servers) {
             server.start();
             // don't keep running when a problem happened
             if (server.isRunning() == false) {
+                Log.write(TerminalCode.FAIL,"Server stopped", 
+                        server.getId() + ":" + server.getPort());
                 keepRunning = false;
             }
         }
         
         if(keepRunning){
-            //System.out.println("Nostrium is now running");
             Log.write(TerminalCode.OK,"Nostrium is now running");
         }
         
@@ -72,6 +72,7 @@ public class core {
                 // don't keep running when a problem happened
                 if (server.isRunning() == false) {
                     keepRunning = false;
+                    Log.write(TerminalCode.FAIL,"Stopped server", server.getId());
                 }
             }
             time.waitMs(500);

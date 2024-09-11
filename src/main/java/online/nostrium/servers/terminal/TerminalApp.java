@@ -16,7 +16,7 @@ import online.nostrium.apps.basic.CommandCd;
 import online.nostrium.apps.basic.CommandExit;
 import online.nostrium.apps.basic.CommandLs;
 import online.nostrium.apps.chat.CommandChatClear;
-import online.nostrium.servers.terminal.screens.Screen;
+import online.nostrium.utils.screens.Screen;
 import online.nostrium.user.User;
 import online.nostrium.logs.Log;
 import online.nostrium.main.Folder;

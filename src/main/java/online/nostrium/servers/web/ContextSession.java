@@ -12,7 +12,7 @@ import online.nostrium.main.core;
 import online.nostrium.servers.terminal.notifications.ClientType;
 import online.nostrium.servers.terminal.notifications.Session;
 import online.nostrium.servers.terminal.TerminalApp;
-import online.nostrium.servers.terminal.screens.Screen;
+import online.nostrium.utils.screens.Screen;
 
 /**
  * @author Brito

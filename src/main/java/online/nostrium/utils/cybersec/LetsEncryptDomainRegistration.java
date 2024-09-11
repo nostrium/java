@@ -16,7 +16,7 @@ import java.security.KeyPair;
 import java.security.Security;
 import java.security.cert.X509Certificate;
 import java.util.Base64;
-import online.nostrium.servers.terminal.screens.Screen;
+import online.nostrium.utils.screens.Screen;
 import org.shredzone.acme4j.exception.AcmeServerException;
 
 public class LetsEncryptDomainRegistration {

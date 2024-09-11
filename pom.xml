@@ -9,6 +9,7 @@
     
     <properties>
         <nostr-java.version>0.6.1-SNAPSHOT</nostr-java.version>
+        <jlama.version>0.3.1</jlama.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
         <maven.build.timestamp>${maven.build.timestamp}</maven.build.timestamp>
@@ -73,6 +74,15 @@
                 <version>2.22.0</version>
             </plugin>
         </plugins>
+        
+        <extensions>
+            <extension>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>os-maven-plugin</artifactId>
+                <version>1.7.0</version>
+            </extension>
+        </extensions>
+    
     </build>
     
     <repositories>
@@ -258,6 +268,12 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-jexl3</artifactId>
             <version>3.2</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.github.tjake</groupId>
+            <artifactId>jlama-core</artifactId>
+            <version>${jlama.version}</version>
         </dependency>
         
     </dependencies>

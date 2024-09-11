@@ -19,7 +19,7 @@ import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
-import online.nostrium.servers.terminal.screens.Screen;
+import online.nostrium.utils.screens.Screen;
 import online.nostrium.utils.cybersec.LetsEncryptDomainRegistration;
 import org.apache.commons.io.FileUtils;
 

@@ -20,7 +20,7 @@ import static online.nostrium.servers.terminal.TerminalColor.GREEN;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN_BRIGHT;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.TerminalUtils;
-import online.nostrium.servers.terminal.screens.Screen;
+import online.nostrium.utils.screens.Screen;
 import online.nostrium.utils.ascii.AsciiArt;
 
 /**

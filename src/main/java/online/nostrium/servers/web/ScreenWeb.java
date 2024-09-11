@@ -42,7 +42,7 @@ import static online.nostrium.servers.terminal.TerminalColor.YELLOW;
 import static online.nostrium.servers.terminal.TerminalColor.YELLOW_ON_GREEN;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.TerminalUtils;
-import online.nostrium.servers.terminal.screens.Screen;
+import online.nostrium.utils.screens.Screen;
 import static online.nostrium.servers.telnet.ScreenTelnet.ANSI_CLEAR_SCREEN;
 import static online.nostrium.servers.telnet.ScreenTelnet.ANSI_HOME;
 import static online.nostrium.servers.telnet.ScreenTelnet.ANSI_RESET;

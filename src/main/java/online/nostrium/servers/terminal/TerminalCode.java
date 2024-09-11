@@ -28,7 +28,8 @@ public enum TerminalCode {
     INVALID(301),
     CRASH(302),
     DENIED(501),
-    NOT_FOUND(404);
+    NOT_FOUND(404),
+    INFO(400);
     
     
     private final int code;

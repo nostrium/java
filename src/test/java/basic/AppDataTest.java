@@ -20,8 +20,8 @@ import online.nostrium.servers.terminal.notifications.ClientType;
 import online.nostrium.servers.terminal.notifications.Session;
 import online.nostrium.servers.terminal.notifications.Sessions;
 import online.nostrium.servers.terminal.TerminalApp;
-import online.nostrium.servers.terminal.screens.Screen;
-import online.nostrium.servers.terminal.screens.ScreenTesting;
+import online.nostrium.utils.screens.Screen;
+import online.nostrium.utils.screens.ScreenLocalCLI;
 import static online.nostrium.utils.TestingFunctions.createFakeApp;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
@@ -47,7 +47,7 @@ public class AppDataTest {
         
         // create the users
         User user1 = UserUtils.createUserAnonymous();
-        Screen screen1 = new ScreenTesting();
+        Screen screen1 = new ScreenLocalCLI();
         TerminalApp app1 = createFakeApp(screen1, user1, id, id);
         Session session1 = new Session(ClientType.TELNET, app1, user1);
         sessions.addSession(session1);

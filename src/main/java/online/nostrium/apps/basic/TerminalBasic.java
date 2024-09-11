@@ -16,7 +16,7 @@ import online.nostrium.user.TerminalUser;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
-import online.nostrium.servers.terminal.screens.Screen;
+import online.nostrium.utils.screens.Screen;
 import online.nostrium.user.User;
 import online.nostrium.servers.terminal.TerminalUtils;
 

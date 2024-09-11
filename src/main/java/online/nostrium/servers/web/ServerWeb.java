@@ -34,7 +34,7 @@ import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalType;
-import online.nostrium.servers.terminal.screens.Screen;
+import online.nostrium.utils.screens.Screen;
 
 /**
  * Web server implementation with HTTPS support.
@@ -154,6 +154,7 @@ public class ServerWeb extends Server {
         }
     }
 
+    @SuppressWarnings("UseSpecificCatch")
     private SslContext createSslContext() {
         try {
             File folder = Folder.getFolderCerts();
@@ -310,6 +311,7 @@ public class ServerWeb extends Server {
         private final Map<ChannelHandlerContext, ContextSession> ctxSessions = new HashMap<>();
 
         @Override
+        @SuppressWarnings("null")
         protected void channelRead0(ChannelHandlerContext ctx, WebSocketFrame frame) throws Exception {
             if (frame instanceof TextWebSocketFrame textWebSocketFrame) {
                 // Get the received text

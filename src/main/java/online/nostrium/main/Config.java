@@ -53,7 +53,7 @@ public class Config {
             portSSH_Debug = 2200,
             
             portHTTP = 80,
-            portHTTP_Debug = 8080,
+            portHTTP_Debug = 8000,
             portHTTPS = 443,
             portHTTPS_Debug = 44300,
             
