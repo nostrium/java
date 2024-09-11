@@ -22,7 +22,7 @@ opponent.
 > Welcome to the ancient ruins of Azurath. The air is thick with the scent of damp stone and decaying leaves.
 
 ## Choice: You look around and...
-- [Fight the stone Golem](#opponent-stone-golem): #scene-victory
+- [Fight the ogre](#opponent-ogre): #scene-victory
 - [End the game](#scene-end)
 
 ------
@@ -53,13 +53,45 @@ opponent.
 ------
 
 # Player
+>         ___              
+>        |===|            
+>        |___|            
+>  ___  /#####\       
+> | | |//#####\\      
+> |(o)|/ ##### \\     
+> | | |  ^^^^^  &[=======
+>  \_/   |#|#|         
+>        |_|_|         
+>        [ | ]   
+
 - Health: 60
 - Attack: 50
 - Defense: 5
 - Experience: 30
 - Coins = 0
                   
-# Opponent: Stone Golem
+# Opponent: Ogre
+>
+>          __,='`````'=/__
+>          '//  (o) \(o) \ `'         _,-,
+>          //|     ,_)   (`\      ,-'`_,-\
+>        ,-~~~\  `'==='  /-,      \==```` \__
+>       /        `----'     `\     \       \/
+>    ,-`                  ,   \  ,.-\       \
+>   /      ,               \,-`\`_,-`\_,..--'\
+>  ,`    ,/,              ,>,   )     \--`````\
+>  (      `\`---'`  `-,-'`_,<   \      \_,.--'`
+>   `.      `--. _,-'`_,-`  |    \
+>    [`-.___   <`_,-'`------(    /
+>    (`` _,-\   \ --`````````|--`
+>     >-`_,-`\,-` ,          |
+>   <`_,'     ,  /\          /
+>    `  \/\,-/ `/  \/`\_/V\_/
+>       (  ._. )    ( .__. )
+>       |      |    |      |
+>        \,---_|    |_---./
+>        ooOO(_)    (_)OOoo
+
 - Actions: Attack
 - Health: 60
 - Attack: 10
