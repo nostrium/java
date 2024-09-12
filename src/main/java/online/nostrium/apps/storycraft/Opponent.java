@@ -93,4 +93,5 @@ public class Opponent  extends GameThing{
         return this.attributes.get("Actions").split("; ");
     }
 
+
 }

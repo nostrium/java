@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import online.nostrium.user.User;
+import online.nostrium.utils.TextFunctions;
 
 /**
  * @author Brito
@@ -74,6 +75,12 @@ public class Player extends GameThing {
         String block = StoryUtils.getTextBlock(anchor, text);
         if (block == null || block.isEmpty()) {
             return;
+        }
+        
+        // parse the image
+        // get the image
+        if(block.contains("\n```")){
+            this.textImage = TextFunctions.extractTextBetweenTicks(block);
         }
 
         String[] lines = block.split("\n");

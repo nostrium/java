@@ -7,9 +7,10 @@
 package online.nostrium.apps.storycraft;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import online.nostrium.utils.MathFunctions;
 
 /**
@@ -271,6 +272,67 @@ public class StoryUtils {
             result = value + "";
         }
         return result;
+    }
+    
+    
+    public static String showStats(GameThing A, GameThing B) {
+        StringBuilder output = new StringBuilder();
+
+        // Retrieve and split the text images of both GameThings
+        String[] textImageA = A.getTextImage() != null ? A.getTextImage().split("\n") : new String[]{};
+        String[] textImageB = B.getTextImage() != null ? B.getTextImage().split("\n") : new String[]{};
+
+        // Calculate the difference in height to pad the shorter one
+        int maxLines = Math.max(textImageA.length, textImageB.length);
+        int paddingA = maxLines - textImageA.length;
+        int paddingB = maxLines - textImageB.length;
+
+        // Reduce the gap between the two characters
+        int gapBetweenCharacters = 10;
+
+        // Pad the shorter image with empty lines on top, depending on which one is smaller
+        for (int i = 0; i < maxLines; i++) {
+            String lineA = (i >= paddingA) ? textImageA[i - paddingA] : "";  // Add padding for A
+            String lineB = (i >= paddingB) ? textImageB[i - paddingB] : "";  // Add padding for B
+            output.append(String.format("%-30s%" + gapBetweenCharacters + "s%-30s\n", lineA, "", lineB));  // Display side by side
+        }
+
+        // Append a separator between text images and attributes
+        output.append("-----------------------------------------------------------\n");
+
+        // Retrieve and prepare the attributes of both GameThings
+        HashMap<String, String> attributesA = A.getAttributes();
+        HashMap<String, String> attributesB = B.getAttributes();
+
+        // Get the max number of attributes to ensure both are aligned
+        int maxAttributes = Math.max(attributesA.size(), attributesB.size());
+
+        // Create iterators for both attribute sets
+        Iterator<Map.Entry<String, String>> iteratorA = attributesA.entrySet().iterator();
+        Iterator<Map.Entry<String, String>> iteratorB = attributesB.entrySet().iterator();
+
+        // Print the attributes side by side, centered
+        for (int i = 0; i < maxAttributes; i++) {
+            String attributeA = iteratorA.hasNext() ? formatAttribute(iteratorA.next()) : "";
+            String attributeB = iteratorB.hasNext() ? formatAttribute(iteratorB.next()) : "";
+
+            // Center attributes under their respective images
+            output.append(String.format("%-30s%" + gapBetweenCharacters + "s%-30s\n", attributeA, "", attributeB));
+        }
+
+        // Return the entire output as a String
+        return output.toString();
+    }
+    
+
+    /**
+     * Helper method to format a key-value pair (attribute) as "key: value".
+     *
+     * @param attribute the Map.Entry representing a key-value pair from the GameThing's attributes.
+     * @return a formatted string of the form "key: value".
+     */
+    private static String formatAttribute(Map.Entry<String, String> attribute) {
+        return attribute.getKey() + ": " + attribute.getValue();
     }
 
 }

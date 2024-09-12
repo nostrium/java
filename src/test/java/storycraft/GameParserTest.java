@@ -6,6 +6,7 @@
  */
 package storycraft;
 
+import java.io.File;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,8 +22,11 @@ import online.nostrium.apps.storycraft.Choice;
 import online.nostrium.apps.storycraft.LinkType;
 import online.nostrium.apps.storycraft.Player;
 import online.nostrium.apps.storycraft.Scene;
+import online.nostrium.apps.storycraft.StoryUtils;
+import online.nostrium.main.Folder;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
+import org.apache.commons.io.FileUtils;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -343,6 +347,44 @@ Durability: 20
         assertEquals(2, actions.length);
         assertEquals("Attack", actions[0]);
         assertEquals("Magic", actions[1]);
+        
+        
+    }
+    
+    
+    @Test
+    public void testAsciiArt() throws IOException{
+        /*
+        Characters can have images, they are represented
+        with ``` in the markdown format.
+        */
+        
+        File folderBase = Folder.getFolderStories();
+        File folderExamples = new File(folderBase, "examples");
+        File file = new File(folderExamples, "FightExample.md");
+        assertTrue(file.exists());
+        String text = FileUtils.readFileToString(file, "UTF-8");
+        
+        // parse the script
+        GameScreen screen = new GameScreenCLI();
+        User user = UserUtils.createUserAnonymous();
+        GamePlay game = new GamePlay(text, screen, user);
+        
+        assertFalse(game.getOpponents().isEmpty());
+        Opponent op = game.getOpponents().get("opponent-ogre");
+        String textImage = op.getTextImage();
+        assertNotNull(textImage);
+        
+        Player player = game.getPlayer();
+        
+        text = StoryUtils.showStats(player, op);
+        
+        // check that player has stats
+        assertFalse(player.getAttributes().isEmpty());
+        assertEquals("60", player.getAttributes().get("Health"));
+        
+        System.out.println(text);
+        
         
         
     }

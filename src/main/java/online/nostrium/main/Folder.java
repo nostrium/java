@@ -28,6 +28,7 @@ public class Folder {
             nameFolderWWW = "www",
             nameFolderGPT = "gpt",
             nameFolderChat = "chat",
+            nameFolderStories = "stories",
             nameFolderChatRoom = "room.json",
             nameFolderBase = "forum",
             nameFolderUsers = "users",
@@ -148,6 +149,10 @@ public class Folder {
 
     public static File getFolderLog() {
         return defaultGetFolder(nameFolderLogs);
+    }
+    
+    public static File getFolderStories() {
+        return defaultGetFolder(nameFolderStories);
     }
 
     public static File getFolderGPT() {

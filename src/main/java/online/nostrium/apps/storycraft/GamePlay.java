@@ -6,12 +6,15 @@
  */
 package online.nostrium.apps.storycraft;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 import static online.nostrium.apps.storycraft.StoryUtils.normalize;
-import online.nostrium.apps.storycraft.examples.StoryRandomFight;
+import online.nostrium.main.Folder;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
+import org.apache.commons.io.FileUtils;
 
 /**
  * @author Brito
@@ -196,16 +199,6 @@ public class GamePlay {
         return this.parser.getItems().list;
     }
 
-    public static void main(String[] args) {
-        GameScreen screen = new GameScreenCLI();
-        User user = UserUtils.createUserAnonymous();
-        user.setUsername("brito");
-        //GamePlay game = new GamePlay(StoryNavigateRooms.text, screen, user);
-        //GamePlay game = new GamePlay(StoryRandomRooms.text, screen, user);
-        GamePlay game = new GamePlay(StoryRandomFight.text, screen, user);
-        game.play();
-    }
-
     /**
      * Start a fight between the player and an opponent
      *
@@ -225,6 +218,11 @@ public class GamePlay {
             playScene(scene);
             return;
         }
+        
+        String text = StoryUtils.showStats(A, B);
+        screen.writeln(text);
+        screen.writeln("");
+        
         // the opponent exists and can fight
         screen.writeln("The fight begins!");
         screen.delay(1);
@@ -354,4 +352,22 @@ public class GamePlay {
         return false;
     }
 
+    
+    
+    public static void main(String[] args) throws IOException {
+        GameScreen screen = new GameScreenCLI();
+        User user = UserUtils.createUserAnonymous();
+        user.setUsername("brito");
+        File folderBase = Folder.getFolderStories();
+        File folderExamples = new File(folderBase, "examples");
+        File file = new File(folderExamples, "FightExample.md");
+        String text = FileUtils.readFileToString(file, "UTF-8");
+        
+        //GamePlay game = new GamePlay(StoryNavigateRooms.text, screen, user);
+        //GamePlay game = new GamePlay(StoryRandomRooms.text, screen, user);
+        GamePlay game = new GamePlay(text, screen, user);
+        game.play();
+    }
+
+    
 }

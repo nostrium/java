@@ -238,5 +238,22 @@ public class TextFunctions {
         }
         // If the line is not found, return without making any changes
     }
+    
+    
+    public static String extractTextBetweenTicks(String inputText) {
+        // Split the input text into lines
+        String anchor = "\n```";
+        
+        int i1 = inputText.indexOf(anchor);
+        if(i1 < 0){
+            return null;
+        }
+        String text = inputText.substring(i1+ anchor.length());
+        int i2 = text.indexOf(anchor);
+        text = text.substring(0, i2);
+
+        // Return the extracted text
+        return text;
+    }
 
 }

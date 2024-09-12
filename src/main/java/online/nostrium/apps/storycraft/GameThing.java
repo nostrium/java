@@ -7,6 +7,7 @@
 package online.nostrium.apps.storycraft;
 
 import java.util.HashMap;
+import online.nostrium.utils.TextFunctions;
 
 /**
  * @author Brito
@@ -16,7 +17,8 @@ import java.util.HashMap;
 public abstract class GameThing {
 
     protected String name, // The name of the item
-            id;         // machine readable name
+            id,         // machine readable name
+            textImage = null;
 
     // attributes are added to the user overall sum
     HashMap<String, String> attributes = new HashMap<>();
@@ -80,6 +82,11 @@ public abstract class GameThing {
 //        Durability: 20
 
         processedSpecificBlock(scene, textBlock);
+        
+        // get the image
+        if(textBlock.contains("```\n")){
+            this.textImage = TextFunctions.extractTextBetweenTicks(textBlock);
+        }
 
         String[] lines = textBlock.split("\n");
         for (String line : lines) {
@@ -149,6 +156,10 @@ public abstract class GameThing {
         String valueText = this.attributes.get(key);
         long value = Long.parseLong(valueText);
         return value;
+    }
+    
+    public String getTextImage() {
+        return textImage;
     }
    
 }
