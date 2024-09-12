@@ -395,15 +395,5 @@ public class StoryUtils {
     }
     
 
-    /**
-     * Helper method to format a key-value pair (attribute) as "key: value".
-     *
-     * @param attribute the Map.Entry representing a key-value pair from the GameThing's attributes.
-     * @return a formatted string of the form "key: value".
-     */
-    private static String formatAttribute(Map.Entry<String, String> attribute) {
-        return attribute.getKey() + ": " + attribute.getValue();
-    }
-
 
 }
