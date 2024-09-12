@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.Scanner;
 import online.nostrium.apps.storycraft.GamePlay;
 import online.nostrium.apps.storycraft.GameScreen;
 import online.nostrium.apps.storycraft.GameScreenCLI;
@@ -385,7 +386,11 @@ Durability: 20
         
         System.out.println(text);
         
-        
+        System.out.println("");
+        System.out.println("Press ENTER to continue");
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine(); // Waits for the user to press Enter
+        System.exit(0);
         
     }
     

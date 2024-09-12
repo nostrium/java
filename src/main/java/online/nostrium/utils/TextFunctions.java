@@ -18,6 +18,8 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
@@ -215,40 +217,39 @@ public class TextFunctions {
         // Return true if the sanitized message is non-empty after all checks
         return !sanitizedMessage.isEmpty();
     }
-    
-    
+
     /**
      * Replaces the specified line in the ArrayList based on the content.
-     * 
+     *
      * This method searches for the first occurrence of the specified old line
-     * in the ArrayList and replaces it with the new line. If the old line is 
+     * in the ArrayList and replaces it with the new line. If the old line is
      * not found, the method returns the list unchanged.
-     * 
-     * @param list the ArrayList of strings where the line replacement is to be made
+     *
+     * @param list the ArrayList of strings where the line replacement is to be
+     * made
      * @param oldLine the line that should be replaced
      * @param newLine the new line that will replace the old line
      */
     public static void updateLineByContent(ArrayList<String> list, String oldLine, String newLine) {
         // Find the index of the old line
         int index = list.indexOf(oldLine);
-        
+
         // If the line exists, replace it
         if (index != -1) {
             list.set(index, newLine);  // Replace the element at the found index
         }
         // If the line is not found, return without making any changes
     }
-    
-    
+
     public static String extractTextBetweenTicks(String inputText) {
         // Split the input text into lines
         String anchor = "\n```";
-        
+
         int i1 = inputText.indexOf(anchor);
-        if(i1 < 0){
+        if (i1 < 0) {
             return null;
         }
-        String text = inputText.substring(i1+ anchor.length());
+        String text = inputText.substring(i1 + anchor.length());
         int i2 = text.indexOf(anchor);
         text = text.substring(0, i2);
 
@@ -256,4 +257,55 @@ public class TextFunctions {
         return text;
     }
 
+    public static String createLineWithText(int N, String text) {
+        // Use StringBuilder to create a line with N spaces
+        StringBuilder spaces = new StringBuilder();
+        for (int i = 0; i < N; i++) {
+            spaces.append(text);
+        }
+        return spaces.toString();
+    }
+
+    public static String trimLeft(String input) {
+        return input.replaceAll("^\\s+", "");  // ^\s+ matches leading whitespace
+    }
+
+    public static String trimRight(String input) {
+        return input.replaceAll("\\s+$", "");  // \s+$ matches trailing whitespace
+    }
+
+    // Standalone static method to convert HashMap to String[] list
+    public static String[] convertMapToStringArray(HashMap<String, String> map) {
+        String[] result = new String[map.size()];
+        int index = 0;
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            result[index++] = entry.getKey() + ": " + entry.getValue();
+        }
+        return result;
+    }
+    
+    // Standalone static method to convert HashMap to String[] list
+    @SuppressWarnings("UnnecessaryTemporaryOnConversionFromString")
+    public static String[] convertMapToStringArrayOnlyNumbers(HashMap<String, String> map) {
+        ArrayList<String> list = new ArrayList<>();
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            try{
+                Long.parseLong(entry.getValue());
+            }catch(NumberFormatException E){
+                continue;
+            }
+            list.add(entry.getKey() + ": " + entry.getValue());
+        }
+        return list.toArray(new String[0]);
+    }
+    
+     // Function to calculate the number of spaces needed to center the number
+    public static int calculateCenterSpaces(int number, int lineSize) {
+        // Calculate available space on the line after subtracting the number's length
+        int availableSpace = lineSize - number;
+        
+        // Return half of the available space to center the number
+        return availableSpace / 2;
+    }
+    
 }
