@@ -43,12 +43,14 @@ opponent.
 
 # Action: Attack
 > Define what happens when Player A attacks player B
-
-- AttackPower = A:Attack + (A:Experience / (A:Attack * 0.5))
-- DefendPower = B:Defense + (B:Experience / (B:Defense * 0.5))
-- B:Health = B:Health - chooseGreater(0, AttackPower - DefendPower)
-- If A:Health < 0 then write "You have lost"; A:Coins = 0; #scene-end
-- If B:Health < 0 then write "You have won!"; A:Coins = A:Coins + 10
+```
+AttackPower = A['Attack'] + (A['Experience'] / (A['Attack'] * 0.5)); 
+DefendPower = B['Defense'] + (B['Experience'] / (B['Defense'] * 0.5));
+if (B['Health'] > 0) {B['Health'] = B['Health'] - Math.max(0, AttackPower - DefendPower);}
+if (A['Health'] < 0) { A['Coins'] = 0; } // lose all coins
+if (B['Health'] < 0) { A['Coins'] = A['Coins'] + 10; } // win coins
+output = A['Health'] < 0 ? '#scene-end' : (B['Health'] < 0 ? 'You have won!' : null);
+```
 
 ------
 
@@ -67,7 +69,7 @@ opponent.
 ```
 - Actions: Attack
 - Health: 60
-- Attack: 50
+- Attack: 10
 - Defense: 5
 - Experience: 30
 - Coins = 0

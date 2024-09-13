@@ -22,7 +22,6 @@ public class Player extends GameThing {
     User user;
     final GameScreen screen;
     List<Item> inventory;
-    String title = null;
     int maxSize = 10;
 
     final String keyword = "Player";
@@ -31,6 +30,7 @@ public class Player extends GameThing {
     public Player(User user, GameScreen screen) {
         this.screen = screen;
         this.user = user;
+        this.name = user.getDisplayName();
         this.inventory = new ArrayList<>();
     }
 
@@ -41,7 +41,7 @@ public class Player extends GameThing {
         }
         screen.writeln("Added item to inventory: " + item.getName());
         inventory.add(item);
-        screen.delay(1);
+        screen.delay(1000);
     }
 
     public void removeItem(Item item) {
@@ -78,7 +78,6 @@ public class Player extends GameThing {
         }
         
         // parse the image
-        // get the image
         if(block.contains("\n```")){
             this.textImage = TextFunctions.extractTextBetweenTicks(block);
         }
@@ -87,7 +86,7 @@ public class Player extends GameThing {
         for (String line : lines) {
             // was a title defined?
             if (line.startsWith(anchor + ": ")) {
-                title = line.substring((anchor + ": ").length());
+                name = line.substring((anchor + ": ").length());
             }
 
             // variable attributes
@@ -109,7 +108,7 @@ public class Player extends GameThing {
     }
 
     @Override
-    protected boolean processedSpecificLine(Scene scene, String line, HashMap<String, String> atts) {
+    protected boolean processedSpecificLine(Scene scene, String line, HashMap<String, Object> atts) {
         return false;
     }
 

@@ -17,33 +17,38 @@ import online.nostrium.utils.time;
 public class GameScreenCLI extends GameScreen {
 
     @Override
+    public void writeln(String text, String data) {
+         System.out.println(text + ": " + data);
+    }
+    
+    @Override
     public void writeln(String text) {
-
-        if (text.isEmpty()) {
-            System.out.println();
-        }
-
-        int maxLineLength = 50;
-
-        while (text.length() > maxLineLength) {
-            int breakIndex = text.lastIndexOf(' ', maxLineLength);
-
-            // If there's no space, break at maxLineLength (this avoids infinite loops)
-            if (breakIndex == -1) {
-                breakIndex = maxLineLength;
-            }
-
-            // Print the text up to the break point
-            System.out.println(text.substring(0, breakIndex));
-
-            // Remove the printed portion from the text and trim leading spaces
-            text = text.substring(breakIndex).trim();
-        }
-
-        // Print the remaining part (if any)
-        if (!text.isEmpty()) {
-            System.out.println(text);
-        }
+         System.out.println(text);
+//        if (text.isEmpty()) {
+//            System.out.println();
+//        }
+//
+//        int maxLineLength = 80;
+//
+//        while (text.length() > maxLineLength) {
+//            int breakIndex = text.lastIndexOf(' ', maxLineLength);
+//
+//            // If there's no space, break at maxLineLength (this avoids infinite loops)
+//            if (breakIndex == -1) {
+//                breakIndex = maxLineLength;
+//            }
+//
+//            // Print the text up to the break point
+//            System.out.println(text.substring(0, breakIndex));
+//
+//            // Remove the printed portion from the text and trim leading spaces
+//            text = text.substring(breakIndex);//.trim();
+//        }
+//
+//        // Print the remaining part (if any)
+//        if (!text.isEmpty()) {
+//            System.out.println(text);
+//        }
     }
 
     @Override

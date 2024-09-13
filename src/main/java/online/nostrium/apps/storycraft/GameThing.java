@@ -21,7 +21,7 @@ public abstract class GameThing {
             textImage = null;
 
     // attributes are added to the user overall sum
-    HashMap<String, String> attributes = new HashMap<>();
+    HashMap<String, Object> attributes = new HashMap<>();
 
     /**
      * Constructor for an item with both durability and number of usages.
@@ -53,11 +53,11 @@ public abstract class GameThing {
         this.id = id;
     }
 
-    public HashMap<String, String> getAttributes() {
+    public HashMap<String, Object> getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(HashMap<String, String> attributes) {
+    public void setAttributes(HashMap<String, Object> attributes) {
         this.attributes = attributes;
     }
 
@@ -108,8 +108,14 @@ public abstract class GameThing {
                 int i = line.indexOf(": ");
                 String key = line.substring("- ".length(), i);
                 String valueText = line.substring(i + ": ".length());
-                //int value = Integer.parseInt(valueText);
-                attributes.put(key, valueText);
+                
+                try{
+                    int value = Integer.parseInt(valueText);
+                    attributes.put(key, value);
+                }catch(NumberFormatException e){
+                    attributes.put(key, valueText);
+                }
+                
                 continue;
             }
             // define variable attributes without using "- " on line start
@@ -137,25 +143,15 @@ public abstract class GameThing {
         return true;
     }
 
-    protected abstract boolean processedSpecificLine(Scene scene, String line, HashMap<String, String> atts);
+    protected abstract boolean processedSpecificLine(Scene scene, String line, HashMap<String, Object> atts);
 
     protected abstract void processedSpecificBlock(Scene scene, String textBlock);
 
-    public void doAction(GameThing thingB, String actionId, Actions actions) {
-        // check that the action exists
-        if (actions.has(actionId) == false) {
-            return;
+    public Object getAttribute(String key){
+        if(attributes.containsKey(key) == false){
+            return null;
         }
-        // run the action
-        Action action = actions.get(actionId);
-        action.processAction(this, thingB);
-    }
-
-    
-    public long getAttributeAsLong(String key) {
-        String valueText = this.attributes.get(key);
-        long value = Long.parseLong(valueText);
-        return value;
+        return attributes.get(key);
     }
     
     public String getTextImage() {

@@ -25,51 +25,32 @@ public class Actions {
         if(text == null || text.isEmpty()){
             return;
         }
+        
         // look for the specific blocks that we care
         ArrayList<String> blocks = StoryUtils.getTextBlocks(anchor, text);
         for(String block : blocks){
-            parseBlock(block);
+            Action action = new Action();
+            // parse the action
+            action.parse(block);
+            // needs to be valid (title and script)
+            if(action.isNotValid()){
+                continue;
+            }
+            list.add(action);
         }
     }
 
-    /**
-     * Extracts the needed information from the block
-     * @param block 
-     */
-    private void parseBlock(String block) {
-        Action action = new Action();
-        
-        String[] lines = block.split("\n");
-        for(String line : lines){
-            // action trigger
-            if(line.startsWith(anchor)){
-                String trigger = line.substring(anchor.length());
-                action.setAction(trigger);
-                continue;
-            }
-            // description
-            if(line.startsWith("> ")){
-                String description = line.substring("> ".length());
-                action.setDescription(description);
-                continue;
-            }
-            // expression to parse
-            if(line.startsWith("- ")){
-                action.addRule(line.substring("- ".length()));
-            }
-            
-            // reached the next section?
-            if(line.startsWith("#")){
-                break;
-            }
-            
-        }
-        if(action.getRules().isEmpty()){
+     public void run(GameThing thingA, GameThing thingB, 
+             String actionId, GameScreen screen) {
+        // check that the action exists
+        if (has(actionId) == false) {
             return;
         }
-        // add the list to our action
-        list.add(action);
+        // run the action
+        Action action = get(actionId);
+        action.processAction(thingA, thingB, screen);
     }
+    
 
     public ArrayList<Action> getList() {
         return list;
@@ -79,9 +60,9 @@ public class Actions {
         this.list = list;
     }
 
-    public Action get(String actionId) {
+    public Action get(String actionTitle) {
         for(Action action : list){
-            if(action.getAction().equalsIgnoreCase(actionId)){
+            if(action.title.equalsIgnoreCase(actionTitle)){
                 return action;
             }
         }
@@ -90,7 +71,7 @@ public class Actions {
 
     public boolean has(String actionId) {
         for(Action action : list){
-            if(action.getAction().equalsIgnoreCase(actionId)){
+            if(action.title.equalsIgnoreCase(actionId)){
                 return true;
             }
         }

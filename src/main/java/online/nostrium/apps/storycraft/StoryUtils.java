@@ -7,9 +7,6 @@
 package online.nostrium.apps.storycraft;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 import java.util.Random;
 import online.nostrium.utils.MathFunctions;
 import online.nostrium.utils.TextFunctions;
@@ -226,58 +223,58 @@ public class StoryUtils {
     }
     
     
-    /**
-     * Compute the expression between two things
-     *
-     * @param expression
-     * @param A
-     * @param B
-     * @return
-     */
-    public static String translate(String expression, GameThing A, GameThing B) {
-        // A:Attack + (A:Experience / (A:Attack * 0,5))
-        String result = expression;
-
-        // change all A-related expressions
-        for (String attr : A.getAttributes().keySet()) {
-            String tag = "A:" + attr;
-            if (result.contains(tag) == false) {
-                continue;
-            }
-            String valueText = A.getAttributes().get(attr);
-            result = result.replace(tag, valueText);
-        }
-
-        // change all B-related expressions
-        for (String attr : B.getAttributes().keySet()) {
-            String tag = "B:" + attr;
-            if (result.contains(tag) == false) {
-                continue;
-            }
-            String value = B.getAttributes().get(attr);
-            result = result.replace(tag, value);
-        }
-
-
-        // now calculate the formula
-        boolean convertedOK = false;
-        long value = 0;
-        try {
-            value = MathFunctions.evaluateExpression(result);
-            convertedOK = true;
-        } catch (Exception ex) {
-            //Logger.getLogger(GameThing.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        // don't change the value when the output failed
-        if (convertedOK) {
-            result = value + "";
-        }
-        return result;
-    }
+//    /**
+//     * Compute the expression between two things
+//     *
+//     * @param expression
+//     * @param A
+//     * @param B
+//     * @return
+//     */
+//    public static String translate(String expression, GameThing A, GameThing B) {
+//        // A:Attack + (A:Experience / (A:Attack * 0,5))
+//        String result = expression;
+//
+//        // change all A-related expressions
+//        for (String attr : A.getAttributes().keySet()) {
+//            String tag = "A:" + attr;
+//            if (result.contains(tag) == false) {
+//                continue;
+//            }
+//            String valueText = (String) A.getAttributes().get(attr);
+//            result = result.replace(tag, valueText);
+//        }
+//
+//        // change all B-related expressions
+//        for (String attr : B.getAttributes().keySet()) {
+//            String tag = "B:" + attr;
+//            if (result.contains(tag) == false) {
+//                continue;
+//            }
+//            String value = (String) B.getAttributes().get(attr);
+//            result = result.replace(tag, value);
+//        }
+//
+//
+//        // now calculate the formula
+//        boolean convertedOK = false;
+//        long value = 0;
+//        try {
+//            value = MathFunctions.evaluateExpression(result);
+//            convertedOK = true;
+//        } catch (Exception ex) {
+//            //Logger.getLogger(GameThing.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//        // don't change the value when the output failed
+//        if (convertedOK) {
+//            result = value + "";
+//        }
+//        return result;
+//    }
     
     
-    public static String showStats(GameThing A, GameThing B) {
+    public static String showIntro(GameThing A, GameThing B) {
         String[] linesA = A.textImage.split("\n");
         String[] linesB = B.textImage.split("\n");
         
@@ -377,6 +374,7 @@ public class StoryUtils {
         // produce a single string of text
         String output = "";
         for(String line : lines){
+            line = TextFunctions.trimRight(line);
             output += line + "\n";
         }
         return output;

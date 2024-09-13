@@ -31,7 +31,7 @@ public class Opponent  extends GameThing{
         ifRun = "If run";
 
     @Override
-    protected boolean processedSpecificLine(Scene scene, String line, HashMap<String, String> atts) {
+    protected boolean processedSpecificLine(Scene scene, String line, HashMap<String, Object> atts) {
         
         return false;
     }
@@ -90,7 +90,8 @@ public class Opponent  extends GameThing{
         if(attributes.containsKey(id) == false){
             return null;
         }
-        return this.attributes.get("Actions").split("; ");
+        String text = (String) this.attributes.get("Actions");
+        return text.split("; ");
     }
 
 

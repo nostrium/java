@@ -6,7 +6,6 @@
  */
 package online.nostrium.apps.storycraft;
 
-import static online.nostrium.apps.storycraft.StoryUtils.translate;
 import online.nostrium.logs.Log;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.utils.MathFunctions;
@@ -16,14 +15,14 @@ import online.nostrium.utils.MathFunctions;
  * @date: 2024-09-09
  * @location: Germany
  */
-public class IfCondition {
+public class IfCondition_Obsolete {
 
     final String keyRaw, valueRaw, expressionOriginal;
     String keyTranslated, valueComputed;
     final String[] sequences;
     boolean valid = false;
 
-    public IfCondition(String ifCondition) {
+    public IfCondition_Obsolete(String ifCondition) {
         // basic condition check
         if (ifCondition == null || ifCondition.contains(" then ") == false
                 || ifCondition.startsWith("If ") == false) {
@@ -92,7 +91,7 @@ public class IfCondition {
     public boolean isApplicable(GameThing A, GameThing B) {
         // If A:Health < 0 then write "You have lost"; #scene-exit-game; stop
         // start by changing the variables by values
-        keyTranslated = translate(this.keyRaw, A, B);
+//        keyTranslated = translate(this.keyRaw, A, B);
         // e.g. 60 < 0
         // convert to expression
         try{

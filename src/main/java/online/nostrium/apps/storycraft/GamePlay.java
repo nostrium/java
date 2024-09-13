@@ -14,6 +14,7 @@ import static online.nostrium.apps.storycraft.StoryUtils.normalize;
 import online.nostrium.main.Folder;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
+import online.nostrium.utils.TextFunctions;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -29,7 +30,7 @@ public class GamePlay {
     GameParser parser = null;
     final GameScreen screen;
     Map<String, Scene> scenes;
-    int timeMessageDelay = 1;
+    int timeMessageDelay = 500;
 
     public GamePlay(String script, GameScreen screen, User user) {
         // parse the script
@@ -109,7 +110,7 @@ public class GamePlay {
         }
 
         if (choice.getLinkType() == LinkType.FIGHT) {
-            fight(choice, scene);
+            actionChoose(choice, scene);
             return;
         }
 
@@ -205,34 +206,24 @@ public class GamePlay {
      * @param choice
      * @param scene
      */
-    private void fight(Choice choice, Scene scene) {
+    private void actionChoose(Choice choice, Scene scene) {
 
         Player A = getPlayer();
         Opponent B = parser.getOpponent(choice);
-
+        // dpes the opponent exist and can fight
         if (B == null) {
-            screen.writeln("The opponent could not be found! :-(");
+            screen.writeln("The opponent could not be found!");
             screen.writeln("Opponent: " + choice.link);
-            screen.delay(1);
+            screen.delay(timeMessageDelay);
             // play the scene again
             playScene(scene);
             return;
         }
-        
-        String text = StoryUtils.showStats(A, B);
-        screen.writeln(text);
-        screen.writeln("");
-        
-        // the opponent exists and can fight
-        screen.writeln("The fight begins!");
-        screen.delay(1);
 
-        // loop to repeat the game until the stop
-        // conditions are met
-        boolean continueEvent = true;
-        while (continueEvent) {
-            continueEvent = fightAction(A, B);
-        }
+        String text = StoryUtils.showIntro(A, B);
+        screen.writeln(text);
+        
+        actionPerform(A, B);
 
     }
 
@@ -242,106 +233,128 @@ public class GamePlay {
      * @param B Opponent
      * @return true to continue fighting, false to exit
      */
-    private boolean fightAction(Player A, Opponent B) {
-        // get the actions to play
-        String[] nextSteps = null;
+    private boolean actionPerform(Player A, Opponent B) {
+        // for example, this opponent can "Attack"
         String[] actionsAvailable = B.getActions();
         if (actionsAvailable == null || actionsAvailable.length == 0) {
-            screen.writeln("No actions available for this opponent");
+            screen.writeln("No actions available for the opponent");
             screen.writeln("Opponent: " + B.getName());
-            screen.delay(1);
+            screen.delay(timeMessageDelay);
             return false;
         }
 
         // get the selected action
+        screen.writeln("----[ Actions ]----");
         String actionSelected = screen.performChoices(actionsAvailable);
 
+        // an action needs to be taken, can also be time based
         if (actionSelected == null) {
             screen.writeln("No action was selected");
-            screen.delay(1);
+            screen.delay(timeMessageDelay);
             return false;
         }
 
-        screen.writeln("Chosen action: " + actionSelected);
-        screen.delay(1);
+        
+        screen.writeln("You choose: " + actionSelected);
+        screen.delay(timeMessageDelay);
 
         Action action = this.getActions().get(actionSelected);
         if (action == null) {
             screen.writeln("Expected action was NOT found");
             screen.writeln("Action: " + actionSelected);
-            screen.delay(1);
+            screen.delay(timeMessageDelay);
+            return false;
+        }
+        
+        // create a verb based on the action
+        // only works for english language, and not even always
+        String actionVerb = TextFunctions.generateVerb(action.getTitle());
+        
+        // ----------------------------------------------------------
+        
+        // player acts against opponent
+        screen.writeln("Player" + " " + actionVerb + " " + B.name);
+        String output = action.processAction(A, B, screen);
+        screen.delay(timeMessageDelay);
+        if (runAction(output)) {
             return false;
         }
 
-        // player attacks opponent
-        screen.writeln("You attack " + B.name);
-        action.processAction(A, B);
-        screen.delay(1);
+        // ----------------------------------------------------------
 
-        nextSteps = action.canStop(A, B);
-        if (runActions(nextSteps)) {
-            return false;
-        }
-
+        
         // opponent attacks player
-        screen.writeln(B.name + " attacks you");
-        action.processAction(B, A);
-
-        nextSteps = action.canStop(A, B);
-        if (runActions(nextSteps)) {
+        screen.writeln(B.name + " " + actionVerb + " " + "player");
+        action.processAction(B, A, screen);
+        screen.delay(timeMessageDelay);
+        if (runAction(output)) {
             return false;
         }
 
-        // keep looping
+        // ----------------------------------------------------------
+
+        // do a status overview
+        String text = StoryUtils.showIntro(A, B);
+        screen.writeln(text);
+        
+        
+        // keep looping until a rule is triggered
+        actionPerform(A, B);
         return true;
     }
+    
+    
 
-    /**
-     * Run the statements after an If condition has occurred
-     * @param nextSteps
-     * @return false to continue running
-     */
-    public boolean runActions(String[] nextSteps) {
-        if(nextSteps == null || nextSteps.length == 0){
+//    /**
+//     * Run the statements after an If condition has occurred
+//     * @param nextSteps
+//     * @return false to continue running
+//     */
+//    public boolean runActions(String[] nextSteps) {
+//        if(nextSteps == null || nextSteps.length == 0){
+//            return false;
+//        }
+//        
+//        for(String step : nextSteps){
+//            boolean stopRunning = runAction(step);
+//            if(stopRunning){
+//                return true;
+//            }
+//        }
+//        
+//        return false;
+//    }
+
+    private boolean runAction(String action) {
+        // needs to exist an action 
+        if(action == null || action.isEmpty()){
             return false;
         }
-        
-        for(String step : nextSteps){
-            boolean stopRunning = runAction(step);
-            if(stopRunning){
-                return true;
-            }
-        }
-        
-        return false;
-    }
-
-    private boolean runAction(String step) {
-        String stepLowercase = step.toLowerCase();
+        String stepLowercase = action.toLowerCase();
         // write something on the screen
-        if(stepLowercase.startsWith("write")){
-            String text = step.substring("write ".length()).trim();
-            if(text.startsWith("\"") && text.endsWith("\"")){
-                text = text.substring(1, text.length() -1);
-            }
-            screen.writeln(text);
-            screen.delay(1);
-            // stop running?
-            return false;
-        }
+//        if(stepLowercase.startsWith("write")){
+//            String text = action.substring("write ".length()).trim();
+//            if(text.startsWith("\"") && text.endsWith("\"")){
+//                text = text.substring(1, text.length() -1);
+//            }
+//            screen.writeln(text);
+//            screen.delay(timeMessageDelay);
+//            // stop running?
+//            return false;
+//        }
         
         // support scenes
         if(stepLowercase.startsWith("#scene")){
             // remove the #
-            step = step.substring(1);
-            playScene(step);
+            action = action.substring(1);
+            playScene(action);
             // stop running?
             return true;
         }
         
         // support items
         if(stepLowercase.startsWith("#item")){
-            Item item = parser.getItems().getItem(step);
+            Item item = parser.getItems().getItem(action);
             if(item != null){
                 player.addItem(item);
             }

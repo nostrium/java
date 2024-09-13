@@ -286,11 +286,11 @@ public class TextFunctions {
     
     // Standalone static method to convert HashMap to String[] list
     @SuppressWarnings("UnnecessaryTemporaryOnConversionFromString")
-    public static String[] convertMapToStringArrayOnlyNumbers(HashMap<String, String> map) {
+    public static String[] convertMapToStringArrayOnlyNumbers(HashMap<String, Object> map) {
         ArrayList<String> list = new ArrayList<>();
-        for (Map.Entry<String, String> entry : map.entrySet()) {
+        for (Map.Entry<String, Object> entry : map.entrySet()) {
             try{
-                Long.parseLong(entry.getValue());
+                Long.parseLong((String)entry.getValue());
             }catch(NumberFormatException E){
                 continue;
             }
@@ -306,6 +306,14 @@ public class TextFunctions {
         
         // Return half of the available space to center the number
         return availableSpace / 2;
+    }
+
+    public static String generateVerb(String text) {
+        text = text.toLowerCase();
+        if(text.endsWith("s") == false){
+            text += "s";
+        }
+        return text;
     }
     
 }

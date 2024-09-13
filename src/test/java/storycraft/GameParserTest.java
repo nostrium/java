@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Map;
-import java.util.Scanner;
 import online.nostrium.apps.storycraft.GamePlay;
 import online.nostrium.apps.storycraft.GameScreen;
 import online.nostrium.apps.storycraft.GameScreenCLI;
@@ -231,29 +230,19 @@ Durability: 20
 
 # Action: Attack
 > Define what happens when Player A attacks player B
-
-- AttackPower = A:Attack + (A:Experience / (A:Attack * 0.5))
-- DefendPower = B:Defense + (B:Experience / (B:Defense * 0.5))
-- B:Health = B:Health - chooseGreater(0, AttackPower - DefendPower)
-- If A:Health < 1 then write "You have lost"; #scene-exit-game
-- If B:Health < 1 then write "You have won!"; #item-coins-10-30
+```
+AttackPower = A['Attack'] + (A['Experience'] / (A['Attack'] * 0.5)); 
+DefendPower = B['Defense'] + (B['Experience'] / (B['Defense'] * 0.5));
+B['Health'] = B['Health'] - Math.max(0, AttackPower - DefendPower);
+```
 
 # Player
 - Health: 60
-- Attack: 50
+- Attack: 10
 - Defense: 5
 - Experience: 30
 
 # Opponent: Stone Golem
->      .-\"""\"""-.
->     /  >  <    \
->    |    O   O   |
->    |    \\____/  |
->     \\ \\__V_V__/ /
->      `--------`
->       /      \
->      |        |
->     /| |    | |\
 - Actions: Attack
 - Health: 60
 - Attack: 10
@@ -261,12 +250,6 @@ Durability: 20
 - Experience: 30
 
 """;
-
-        Actions actionsTest = new Actions();
-        actionsTest.parse(script2);
-
-        assertEquals(1, actionsTest.getList().size());
-        assertEquals(5, actionsTest.getList().get(0).getRules().size());
 
         // parse the script
         GameScreen screen = new GameScreenCLI();
@@ -285,29 +268,27 @@ Durability: 20
         String opId = "opponent-stone-golem";
         Opponent B = opponents.get(opId);
         assertNotNull(B);
-        Actions actions = game.getActions();
         
-        long attackBefore = B.getAttributeAsLong("Health");
+        int attackBefore = (int) B.getAttribute("Health");
         assertEquals(60, attackBefore);
         
-        A.doAction(B, "Attack", actions);
+        Actions actions = game.getActions();
+        actions.run(A, B, "Attack", screen);
 
         // check that the health of the opponent is different now
-        long attackAfter = B.getAttributeAsLong("Health");
+        int attackAfter = (int) B.getAttribute("Health");
         assertEquals(26, attackAfter);
 
         // attack again
-        A.doAction(B, "Attack", actions);
+        actions.run(A, B, "Attack", screen);
 
         // check that the health of the opponent is different now
-        attackAfter = B.getAttributeAsLong("Health");
+        attackAfter = (int) B.getAttribute("Health");
         assertEquals(-8, attackAfter);
         
         // test the IF conditions
-        String[] nextSteps = game.getActions().get("Attack").canStop(A, B);
-        assertNotNull(nextSteps);
         
-        boolean actionsDone = game.runActions(nextSteps);
+       // boolean actionsDone = game.runAction(nextSteps);
     }
 
     
@@ -378,7 +359,7 @@ Durability: 20
         
         Player player = game.getPlayer();
         
-        text = StoryUtils.showStats(player, op);
+        text = StoryUtils.showIntro(player, op);
         
         // check that player has stats
         assertFalse(player.getAttributes().isEmpty());
@@ -386,11 +367,11 @@ Durability: 20
         
         System.out.println(text);
         
-        System.out.println("");
-        System.out.println("Press ENTER to continue");
-        Scanner scanner = new Scanner(System.in);
-        scanner.nextLine(); // Waits for the user to press Enter
-        System.exit(0);
+//        System.out.println("");
+//        System.out.println("Press ENTER to continue");
+//        Scanner scanner = new Scanner(System.in);
+//        scanner.nextLine(); // Waits for the user to press Enter
+//        System.exit(0);
         
     }
     
