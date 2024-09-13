@@ -57,10 +57,6 @@ public abstract class GameThing {
         return attributes;
     }
 
-    public void setAttributes(HashMap<String, Object> attributes) {
-        this.attributes = attributes;
-    }
-
     public void addAttributes(HashMap<String, String> atts) {
         for (String key : atts.keySet()) {
             String value = atts.get(key);

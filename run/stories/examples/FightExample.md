@@ -49,6 +49,7 @@ DefendPower = B['Defense'] + (B['Experience'] / (B['Defense'] * 0.5));
 if (B['Health'] > 0) {B['Health'] = B['Health'] - Math.max(0, AttackPower - DefendPower);}
 if (A['Health'] < 0) { A['Coins'] = 0; } // lose all coins
 if (B['Health'] < 0) { A['Coins'] = A['Coins'] + 10; } // win coins
+// write an output
 output = A['Health'] < 0 ? '#scene-end' : (B['Health'] < 0 ? 'You have won!' : null);
 ```
 
@@ -68,11 +69,11 @@ output = A['Health'] < 0 ? '#scene-end' : (B['Health'] < 0 ? 'You have won!' : n
         [ | ] 
 ```
 - Actions: Attack
-- Health: 60
 - Attack: 10
+- Health: 50
 - Defense: 5
 - Experience: 30
-- Coins = 0
+- Coins: 0
          
          
 # Opponent: Ogre
@@ -98,7 +99,7 @@ output = A['Health'] < 0 ? '#scene-end' : (B['Health'] < 0 ? 'You have won!' : n
                     ooOO(_)    (_)OOoo
 ```
 - Actions: Attack
-- Health: 60
+- Health: 40
 - Attack: 10
 - Defense: 5
-- Experience: 30
+- Experience: 20

@@ -26,6 +26,7 @@ public class Player extends GameThing {
 
     final String keyword = "Player";
     final String anchor = "# " + keyword;
+    final String anchorId = "player";
 
     public Player(User user, GameScreen screen) {
         this.screen = screen;
@@ -61,7 +62,7 @@ public class Player extends GameThing {
                 + ", inventory=" + inventory.size() + " items"
                 + '}';
     }
-
+    
     /**
      * Parse player info into this object
      *
@@ -77,36 +78,56 @@ public class Player extends GameThing {
             return;
         }
         
-        // parse the image
-        if(block.contains("\n```")){
-            this.textImage = TextFunctions.extractTextBetweenTicks(block);
-        }
-
-        String[] lines = block.split("\n");
-        for (String line : lines) {
-            // was a title defined?
-            if (line.startsWith(anchor + ": ")) {
-                name = line.substring((anchor + ": ").length());
-            }
-
-            // variable attributes
-            if (line.startsWith("- ") && line.contains(": ")) {
-                int i = line.indexOf(": ");
-                String key = line.substring("- ".length(), i);
-                String valueText = line.substring(i + ": ".length());
-                attributes.put(key, valueText);
-                continue;
-            }
-
-            // one empty line breaks the item data
-            if (line.isEmpty()) {
-                break;
-            }
-
-        }
-
+        
+        parse(block, anchor, anchorId);
     }
 
+//    /**
+//     * Parse player info into this object
+//     *
+//     * @param text
+//     */
+//    public void parse(String text) {
+//        if (text == null || text.isEmpty()) {
+//            return;
+//        }
+//
+//        String block = StoryUtils.getTextBlock(anchor, text);
+//        if (block == null || block.isEmpty()) {
+//            return;
+//        }
+//        
+//        // parse the image
+//        if(block.contains("\n```")){
+//            this.textImage = TextFunctions.extractTextBetweenTicks(block);
+//        }
+//
+//        String[] lines = block.split("\n");
+//        for (String line : lines) {
+//            // was a title defined?
+//            if (line.startsWith(anchor + ": ")) {
+//                name = line.substring((anchor + ": ").length());
+//            }
+//
+//            // variable attributes
+//            if (line.startsWith("- ") && line.contains(": ")) {
+//                int i = line.indexOf(": ");
+//                String key = line.substring("- ".length(), i);
+//                String valueText = line.substring(i + ": ".length());
+//                attributes.put(key, valueText);
+//                continue;
+//            }
+//
+//            // one empty line breaks the item data
+//            if (line.isEmpty()) {
+//                break;
+//            }
+//
+//        }
+//    }
+
+    
+    
     @Override
     protected boolean processedSpecificLine(Scene scene, String line, HashMap<String, Object> atts) {
         return false;

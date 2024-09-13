@@ -39,6 +39,8 @@ public class Action {
      *
      * @param thingA Thing A that starts the action
      * @param thingB Thing B that replies to the action
+     * @param screen
+     * @return 
      */
     public String processAction(GameThing thingA, GameThing thingB, GameScreen screen) {
      

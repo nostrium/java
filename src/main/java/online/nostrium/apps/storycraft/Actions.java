@@ -40,15 +40,15 @@ public class Actions {
         }
     }
 
-     public void run(GameThing thingA, GameThing thingB, 
+     public String run(GameThing thingA, GameThing thingB, 
              String actionId, GameScreen screen) {
         // check that the action exists
         if (has(actionId) == false) {
-            return;
+            return null;
         }
         // run the action
         Action action = get(actionId);
-        action.processAction(thingA, thingB, screen);
+        return action.processAction(thingA, thingB, screen);
     }
     
 

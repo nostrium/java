@@ -233,22 +233,26 @@ Durability: 20
 ```
 AttackPower = A['Attack'] + (A['Experience'] / (A['Attack'] * 0.5)); 
 DefendPower = B['Defense'] + (B['Experience'] / (B['Defense'] * 0.5));
-B['Health'] = B['Health'] - Math.max(0, AttackPower - DefendPower);
+if (B['Health'] > 0) {B['Health'] = B['Health'] - Math.max(0, AttackPower - DefendPower);}
+if (A['Health'] < 0) { A['Coins'] = 0; } // lose all coins
+if (B['Health'] < 0) { A['Coins'] = A['Coins'] + 10; } // win coins
+// write an output
+output = A['Health'] < 0 ? '#scene-end' : (B['Health'] < 0 ? 'You have won!' : null);
 ```
 
 # Player
-- Health: 60
 - Attack: 10
+- Health: 50
 - Defense: 5
 - Experience: 30
+- Coins: 0
 
 # Opponent: Stone Golem
 - Actions: Attack
-- Health: 60
+- Health: 40
 - Attack: 10
 - Defense: 5
-- Experience: 30
-
+- Experience: 20
 """;
 
         // parse the script
@@ -260,7 +264,7 @@ B['Health'] = B['Health'] - Math.max(0, AttackPower - DefendPower);
 
         Player A = game.getPlayer();
         assertFalse(A.getAttributes().isEmpty());
-        assertEquals("60", A.getAttributes().get("Health"));
+        assertEquals(50, A.getAttributes().get("Health"));
         
         Map<String, Opponent> opponents = game.getOpponents();
         assertFalse(opponents.isEmpty());
@@ -270,21 +274,21 @@ B['Health'] = B['Health'] - Math.max(0, AttackPower - DefendPower);
         assertNotNull(B);
         
         int attackBefore = (int) B.getAttribute("Health");
-        assertEquals(60, attackBefore);
+        assertEquals(40, attackBefore);
         
         Actions actions = game.getActions();
         actions.run(A, B, "Attack", screen);
 
         // check that the health of the opponent is different now
         int attackAfter = (int) B.getAttribute("Health");
-        assertEquals(26, attackAfter);
+        assertEquals(37, attackAfter);
 
         // attack again
         actions.run(A, B, "Attack", screen);
 
         // check that the health of the opponent is different now
         attackAfter = (int) B.getAttribute("Health");
-        assertEquals(-8, attackAfter);
+        assertEquals(34, attackAfter);
         
         // test the IF conditions
         
@@ -363,7 +367,7 @@ B['Health'] = B['Health'] - Math.max(0, AttackPower - DefendPower);
         
         // check that player has stats
         assertFalse(player.getAttributes().isEmpty());
-        assertEquals("60", player.getAttributes().get("Health"));
+        assertEquals(50, player.getAttributes().get("Health"));
         
         System.out.println(text);
         

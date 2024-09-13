@@ -8,7 +8,6 @@ package online.nostrium.apps.storycraft;
 
 import java.util.ArrayList;
 import java.util.Random;
-import online.nostrium.utils.MathFunctions;
 import online.nostrium.utils.TextFunctions;
 import static online.nostrium.utils.TextFunctions.createLineWithText;
 
@@ -296,7 +295,6 @@ public class StoryUtils {
         int gapBValue = TextFunctions.calculateCenterSpaces(maxHorizontalBD, maxHorizontalB);
         String gapB = createLineWithText(gapBValue, " ");
         
-        
         output += createLineWithText(max, "-");
         output += "\n";
         output += listSideBySide(
@@ -322,6 +320,7 @@ public class StoryUtils {
         int maxVerticalA = linesA.length;
         int maxVerticalB = linesB.length;
         
+        @SuppressWarnings("UnusedAssignment")
         int larger = 0;
         if(maxVerticalA > maxVerticalB){
             larger = maxVerticalA;

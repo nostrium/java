@@ -285,16 +285,16 @@ public class TextFunctions {
     }
     
     // Standalone static method to convert HashMap to String[] list
-    @SuppressWarnings("UnnecessaryTemporaryOnConversionFromString")
+    @SuppressWarnings({"UnnecessaryTemporaryOnConversionFromString", "CollectionsToArray"})
     public static String[] convertMapToStringArrayOnlyNumbers(HashMap<String, Object> map) {
         ArrayList<String> list = new ArrayList<>();
         for (Map.Entry<String, Object> entry : map.entrySet()) {
-            try{
-                Long.parseLong((String)entry.getValue());
-            }catch(NumberFormatException E){
+            Object object = entry.getValue();
+            if(object instanceof Integer == false){
                 continue;
             }
-            list.add(entry.getKey() + ": " + entry.getValue());
+            int value = (int) entry.getValue();
+            list.add(entry.getKey() + ": " + value);
         }
         return list.toArray(new String[0]);
     }
