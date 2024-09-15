@@ -125,6 +125,7 @@ public class GameScreenCLI extends GameScreen {
     
     @Override
     public Choice performChoices(Scene scene) {
+        // is there any choice here to be made?
         if (scene.getChoices().isEmpty()) {
             return null;
         }

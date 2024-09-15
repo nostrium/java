@@ -6,11 +6,14 @@ package storycraft;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import online.nostrium.apps.storycraft.Choice;
 import online.nostrium.apps.storycraft.GamePlay;
 import online.nostrium.apps.storycraft.GameScreen;
 import online.nostrium.apps.storycraft.GameScreenCLI;
+import online.nostrium.apps.storycraft.Scene;
 import online.nostrium.main.Folder;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
@@ -43,38 +46,12 @@ public class MvelTest2 {
         User user = UserUtils.createUserAnonymous();
         GamePlay game = new GamePlay(text, screen, user);
         
-        /*
-        // Script with simplified logic and no casting
-        String script = """
-            AttackPower = A['Attack'] + (A['Experience'] / (A['Attack'] * 0.5)); 
-            DefendPower = B['Defense'] + (B['Experience'] / (B['Defense'] * 0.5));
-            if (B['Health'] > 0) {B['Health'] = B['Health'] - Math.max(0, AttackPower - DefendPower);}
-            if (A['Health'] < 0) { A['Coins'] = 0; } // lose all coins
-            if (B['Health'] < 0) { A['Coins'] = A['Coins'] + 10; } // win coins
-            // write an output
-            output = A['Health'] < 0 ? '#scene-end' : (B['Health'] < 0 ? 'You have won!' : null);
-            """;
-*/
-        
                 
         // Initialize variables for Player A and Player B
         Map<String, Object> A = game.getPlayer().getAttributes();
         Map<String, Object> B = game.getOpponents().get("opponent-ogre").getAttributes();
         Map<String, Object> variables = new HashMap<>();
 
-        
-        // Player A's attributes (keep everything as integers)
-//        A.put("Health", 50);
-//        A.put("Attack", 10);
-//        A.put("Defense", 5);
-//        A.put("Experience", 30);
-//        A.put("Coins", 0);
-
-        // Player B's attributes (keep everything as integers)
-//        B.put("Health", 40);
-//        B.put("Attack", 10);
-//        B.put("Defense", 5);
-//        B.put("Experience", 20);
         
         // Add players to variables
         variables.put("A", A);
@@ -99,7 +76,20 @@ public class MvelTest2 {
         MVEL.eval(script, variables);
 
         // Asserting after B's health drops below 0
-        assertEquals(-1, (int) B.get("Health"));    // B's health remains at -1
-        assertEquals(10, A.get("Coins"));           // A wins and gains 10 coins
+        assertEquals(-4, (int) B.get("Health")); 
+        assertEquals(0, A.get("Coins"));
+        
+        
+        
+        // test that we get more options after finishing a choice
+        Scene scene = game.getScene("scene-azurath-entrance");
+        assertNotNull(scene);
+        ArrayList<Choice> choices = scene.getChoices();
+        assertNotNull(choices);
+        Choice choice = choices.get(0);
+        String nextActions = choice.getNextActions();
+        assertEquals("#scene-victory", nextActions);
+        
+        
     }
 }

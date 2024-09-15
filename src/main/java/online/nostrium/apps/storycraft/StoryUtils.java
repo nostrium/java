@@ -49,8 +49,7 @@ public class StoryUtils {
         }
         return output.toString().trim();  // Return the current scene as a single string
     }
-    
-    
+
 //            line = line.trim();
 //            
 //            // does it start with our identifier
@@ -83,10 +82,6 @@ public class StoryUtils {
 //            if(recording){
 //                currentText.append(line).append("\n");
 //            }
-            
-            
-            
-            
 //            if(recording 
 //                    && line.startsWith("# ") 
 //                    && line.startsWith(startWithId) == false
@@ -97,16 +92,16 @@ public class StoryUtils {
 //                currentText.setLength(0);  // Reset for the next scene
 //                continue;
 //            }
-    
     /**
      * Try to make sure the formatting is normalized
+     *
      * @param text
-     * @return 
+     * @return
      */
     public static String normalize(String text) {
         // cases of text files created on windows
-       text = text.replace("\r\n", "\n");
-       return text;
+        text = text.replace("\r\n", "\n");
+        return text;
     }
 
     public static ArrayList<String> getTextBlocks(String startWithId, String source) {
@@ -116,24 +111,22 @@ public class StoryUtils {
         boolean recording = false;
 
         for (String line : lines) {
-            
-            if(recording && line.startsWith(startWithId) == false
-                    && line.startsWith("# ")
-                    ){
+
+            if (recording && line.startsWith(startWithId) == false
+                    && line.startsWith("# ")) {
                 blocks.add(currentText.toString().trim());
                 currentText.setLength(0);  // Reset for the next scene
                 recording = false;
                 continue;
             }
-                    
-            if(recording && line.startsWith("-----")){
+
+            if (recording && line.startsWith("-----")) {
                 blocks.add(currentText.toString().trim());
                 currentText.setLength(0);  // Reset for the next scene
                 recording = false;
                 continue;
             }
-            
-            
+
             if (line.startsWith(startWithId)) {
                 // If already recording a scene, save the previous scene
                 if (recording && currentText.length() > 0) {
@@ -142,7 +135,7 @@ public class StoryUtils {
                 }
                 recording = true;  // Start recording the new scene
             }
-            
+
             // Continue adding lines under the current scene
             if (recording) {
                 currentText.append(line).append("\n");
@@ -156,7 +149,7 @@ public class StoryUtils {
 
         return blocks;
     }
-    
+
     public static ArrayList<String> getMatchingLines(String key, String script) {
         ArrayList<String> matchingLines = new ArrayList<>();
         String[] lines = script.split("\n");  // Split the script into lines
@@ -173,8 +166,9 @@ public class StoryUtils {
 
     /**
      * Convert a Scene in markdown format to an HTML anchor
+     *
      * @param sceneName
-     * @return 
+     * @return
      */
     static String convertSceneTitleToId(String sceneName) {
         String anchor = "# Scene: ";
@@ -182,7 +176,6 @@ public class StoryUtils {
         return "scene-" + title.toLowerCase().replace(" ", "-");
     }
 
-    
     // Single method that normalizes the chances and selects a choice without throwing exceptions
     public static Choice selectRandomChoice(ArrayList<Choice> choices) {
         if (choices == null || choices.isEmpty()) {
@@ -220,8 +213,7 @@ public class StoryUtils {
         // If no valid choice is selected (shouldn't happen), return null
         return null;
     }
-    
-    
+
 //    /**
 //     * Compute the expression between two things
 //     *
@@ -271,66 +263,81 @@ public class StoryUtils {
 //        }
 //        return result;
 //    }
-    
-    
     public static String showIntro(GameThing A, GameThing B) {
         String[] linesA = A.textImage.split("\n");
         String[] linesB = B.textImage.split("\n");
-        
+
         // show the drawings
-        String output = listSideBySide("", linesA, "", linesB,-1);
-        
+        String output = listSideBySide("", linesA, "", linesB, -1, "");
+
         int maxHorizontalA = getMaxSizeHorizontal(linesA);
         int maxHorizontalB = getMaxSizeHorizontal(linesB);
         int max = maxHorizontalA + maxHorizontalB;
-        
+
         String[] dataA = TextFunctions.convertMapToStringArrayOnlyNumbers(A.attributes);
         String[] dataB = TextFunctions.convertMapToStringArrayOnlyNumbers(B.attributes);
-        
+
         int maxHorizontalAD = getMaxSizeHorizontal(dataA);
         int maxHorizontalBD = getMaxSizeHorizontal(dataB);
-        
+
         int gapAValue = TextFunctions.calculateCenterSpaces(maxHorizontalAD, maxHorizontalA);
         String gapA = createLineWithText(gapAValue, " ");
         int gapBValue = TextFunctions.calculateCenterSpaces(maxHorizontalBD, maxHorizontalB);
         String gapB = createLineWithText(gapBValue, " ");
-        
+
         output += createLineWithText(max, "-");
         output += "\n";
         output += listSideBySide(
-                gapA, dataA, 
-                gapB, dataB, 
-                maxHorizontalA);
-        
+                gapA, dataA,
+                gapB, dataB,
+                maxHorizontalA, "");
+
         return output;
     }
-    
-    
+
+    static String showStats(Player A, Opponent B) {
+        String[] dataA = TextFunctions.convertMapToStringArrayOnlyNumbers(A.attributes);
+        String[] dataB = TextFunctions.convertMapToStringArrayOnlyNumbers(B.attributes);
+        int maxHorizontalA = getMaxSizeHorizontal(dataA);
+
+        String divider = "  |  ";
+         // add the headers
+        String header = createLineA("[Player]", "", maxHorizontalA, "     ");
+        header += "[" + B.getName() + "]";
+        String output = "\n" + header
+                + listSideBySide(
+                "", dataA,
+                "", dataB,
+                maxHorizontalA, divider);
+
+        return output;
+    }
+
     public static String listSideBySide(
-            String preffixA, String[] linesA, 
+            String preffixA, String[] linesA,
             String preffixB, String[] linesB,
-            int border) {
-        
+            int border, String divider) {
+
         int maxHorizontalA = border;
-        
-        if(border < 0){
-            maxHorizontalA= getMaxSizeHorizontal(linesA);
+
+        if (border < 0) {
+            maxHorizontalA = getMaxSizeHorizontal(linesA);
         }
-        
+
         int maxVerticalA = linesA.length;
         int maxVerticalB = linesB.length;
-        
+
         @SuppressWarnings("UnusedAssignment")
         int larger = 0;
-        if(maxVerticalA > maxVerticalB){
+        if (maxVerticalA > maxVerticalB) {
             larger = maxVerticalA;
-        }else{
+        } else {
             larger = maxVerticalB;
         }
-        
+
         String emptyLine = createLineWithText(maxHorizontalA, " ");
         ArrayList<String> lines = new ArrayList<>();
-        
+
         /*
         0            BBB
         1            BBB
@@ -343,27 +350,26 @@ public class StoryUtils {
         8   AAAAA   BB
         9   AAAA    BB
         10  AAAAAA  BB
-        */
-        
-         // 0  to  10
+         */
+        // 0  to  10
         int countA = 0;
         int countB = 0;
-        String divider = "";
-        for(int i = 0; i < larger; i++){
+        for (int i = 0; i < larger; i++) {
             // is this still bigger than lines ?
-            String line = emptyLine + divider;
+            String line = emptyLine; //+ divider;
             // add player A when relevant
-            if(larger-i < linesA.length){
-                line = linesA[countA];
-                line = preffixA + TextFunctions.trimRight(line);
-                int value = maxHorizontalA - line.length();
-                String gap = createLineWithText(value, " ");
-                line += gap + divider;
+            if (larger - i < linesA.length) {
+                line = createLineA(linesA[countA], preffixA, maxHorizontalA, divider);
+//                line = linesA[countA];
+//                line = preffixA + TextFunctions.trimRight(line);
+//                int value = maxHorizontalA - line.length();
+//                String gap = createLineWithText(value, " ");
+//                line += gap + divider;
                 countA++;
             }
-            
+
             // now add line B
-            if(larger-i < linesB.length){
+            if (larger - i < linesB.length) {
                 line += preffixB + linesB[countB];
                 countB++;
             }
@@ -372,25 +378,31 @@ public class StoryUtils {
         }
         // produce a single string of text
         String output = "";
-        for(String line : lines){
+        for (String line : lines) {
             line = TextFunctions.trimRight(line);
             output += line + "\n";
         }
         return output;
     }
-    
-    
+
+    private static String createLineA(String line, String preffixA, 
+            int maxHorizontalA, String divider) {
+        line = preffixA + TextFunctions.trimRight(line);
+        int value = maxHorizontalA - line.length();
+        String gap = createLineWithText(value, " ");
+        line += gap + divider;
+        return line;
+    }
+
     private static int getMaxSizeHorizontal(String[] lines) {
         int i = 0;
-        for(String line : lines){
+        for (String line : lines) {
             line = TextFunctions.trimRight(line);
-            if(line.length() > i){
+            if (line.length() > i) {
                 i = line.length();
             }
         }
         return i;
     }
-    
-
 
 }

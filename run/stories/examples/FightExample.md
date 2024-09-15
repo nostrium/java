@@ -22,7 +22,7 @@ opponent.
 > Welcome to the ancient ruins of Azurath. The air is thick with the scent of damp stone and decaying leaves.
 
 ## Choice: You look around and...
-- [Fight the ogre](#opponent-ogre): #scene-victory
+- [Fight the ogre](#opponent-ogre) -> win:#scene-victory; lose:#scene-end
 - [End the game](#scene-end)
 
 ------

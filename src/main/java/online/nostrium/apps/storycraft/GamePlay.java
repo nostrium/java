@@ -14,7 +14,6 @@ import static online.nostrium.apps.storycraft.StoryUtils.normalize;
 import online.nostrium.main.Folder;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
-import online.nostrium.utils.TextFunctions;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -210,7 +209,7 @@ public class GamePlay {
 
         Player A = getPlayer();
         Opponent B = parser.getOpponent(choice);
-        // dpes the opponent exist and can fight
+        // does the opponent exist and can fight
         if (B == null) {
             screen.writeln("The opponent could not be found!");
             screen.writeln("Opponent: " + choice.link);
@@ -220,9 +219,8 @@ public class GamePlay {
             return;
         }
 
-        
-        actionPerform(A, B);
-
+        // run the action
+        actionPerform(A, B, true, choice);
     }
 
     /**
@@ -231,7 +229,7 @@ public class GamePlay {
      * @param B Opponent
      * @return true to continue fighting, false to exit
      */
-    private void actionPerform(Player A, Opponent B) {
+    private void actionPerform(Player A, Opponent B, boolean firstTime, Choice choice) {
         // for example, this opponent can "Attack"
         String[] actionsAvailable = B.getActions();
         if (actionsAvailable == null || actionsAvailable.length == 0) {
@@ -241,7 +239,13 @@ public class GamePlay {
             return;
         }
 
-        String text = StoryUtils.showIntro(A, B);
+        String text = "";
+        
+        if(firstTime){
+            text = StoryUtils.showIntro(A, B);
+        }else{
+            text = StoryUtils.showStats(A, B);
+        }
         screen.writeln(text);
         
         // get the selected action
@@ -272,8 +276,6 @@ public class GamePlay {
         // ----------------------------------------------------------
         
         // player acts against opponent
-        //screen.writeln("Player" + " " + actionVerb + " " + B.name);
-        screen.writeln(action.getTitle() + " is used");
         String output = action.processAction(A, B, screen);
         if(output == null){
             screen.writeln("Script has errors, cannot run");
@@ -283,58 +285,20 @@ public class GamePlay {
         screen.delay(timeMessageDelay);
         
         switch(output){
-            case "win": return;
+            case "win": runAction(choice.nextActions); return;
             case "lose": return;
-            case "continue": actionPerform(A, B);
+            // keep looping until a rule is triggered
+            case "continue": actionPerform(A, B, false, choice);
         }
         
         
-        // keep looping until a rule is triggered
-//        actionPerform(A, B);
-        return;
     }
     
-    
-        // ----------------------------------------------------------
-//
-//        
-//        // opponent attacks player
-//        screen.writeln(B.name + " " + actionVerb + " " + "player");
-//        action.processAction(B, A, screen);
-//        screen.delay(timeMessageDelay);
-//        if (runAction(output)) {
-//            return false;
-//        }
 
-        // ----------------------------------------------------------
-
-    
-    
-
-//    /**
-//     * Run the statements after an If condition has occurred
-//     * @param nextSteps
-//     * @return false to continue running
-//     */
-//    public boolean runActions(String[] nextSteps) {
-//        if(nextSteps == null || nextSteps.length == 0){
-//            return false;
-//        }
-//        
-//        for(String step : nextSteps){
-//            boolean stopRunning = runAction(step);
-//            if(stopRunning){
-//                return true;
-//            }
-//        }
-//        
-//        return false;
-//    }
-
-    private boolean runAction(String action) {
+    private void runAction(String action) {
         // needs to exist an action 
         if(action == null || action.isEmpty()){
-            return false;
+            return;
         }
         String stepLowercase = action.toLowerCase();
         // write something on the screen
@@ -355,7 +319,7 @@ public class GamePlay {
             action = action.substring(1);
             playScene(action);
             // stop running?
-            return true;
+            return;
         }
         
         // support items
@@ -365,10 +329,10 @@ public class GamePlay {
                 player.addItem(item);
             }
             // stop running?
-            return true;
+            return;
         }
         // stop running?
-        return false;
+        return;
     }
 
     
