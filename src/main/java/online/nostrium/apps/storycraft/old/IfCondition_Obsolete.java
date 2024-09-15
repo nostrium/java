@@ -4,8 +4,9 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-package online.nostrium.apps.storycraft;
+package online.nostrium.apps.storycraft.old;
 
+import online.nostrium.apps.storycraft.GameThing;
 import online.nostrium.logs.Log;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.utils.MathFunctions;

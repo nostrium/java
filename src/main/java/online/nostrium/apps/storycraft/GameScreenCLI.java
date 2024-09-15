@@ -22,6 +22,12 @@ public class GameScreenCLI extends GameScreen {
     }
     
     @Override
+    public void writeTitle(String text) {
+        System.out.println("----[ " + text + " ]----");
+    }
+    
+    
+    @Override
     public void writeln(String text) {
          System.out.println(text);
 //        if (text.isEmpty()) {
@@ -139,7 +145,7 @@ public class GameScreenCLI extends GameScreen {
 
     @Override
     public void delay(int i){
-        time.wait(i);
+        time.waitMs(i);
     }
 
     @Override

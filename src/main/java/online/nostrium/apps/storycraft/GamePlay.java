@@ -109,7 +109,7 @@ public class GamePlay {
             return;
         }
 
-        if (choice.getLinkType() == LinkType.FIGHT) {
+        if (choice.getLinkType() == LinkType.ACTION) {
             actionChoose(choice, scene);
             return;
         }
@@ -220,8 +220,6 @@ public class GamePlay {
             return;
         }
 
-        String text = StoryUtils.showIntro(A, B);
-        screen.writeln(text);
         
         actionPerform(A, B);
 
@@ -233,28 +231,30 @@ public class GamePlay {
      * @param B Opponent
      * @return true to continue fighting, false to exit
      */
-    private boolean actionPerform(Player A, Opponent B) {
+    private void actionPerform(Player A, Opponent B) {
         // for example, this opponent can "Attack"
         String[] actionsAvailable = B.getActions();
         if (actionsAvailable == null || actionsAvailable.length == 0) {
             screen.writeln("No actions available for the opponent");
             screen.writeln("Opponent: " + B.getName());
             screen.delay(timeMessageDelay);
-            return false;
+            return;
         }
 
+        String text = StoryUtils.showIntro(A, B);
+        screen.writeln(text);
+        
         // get the selected action
-        screen.writeln("----[ Actions ]----");
+        screen.writeTitle("Actions");
         String actionSelected = screen.performChoices(actionsAvailable);
 
         // an action needs to be taken, can also be time based
         if (actionSelected == null) {
             screen.writeln("No action was selected");
             screen.delay(timeMessageDelay);
-            return false;
+            return;
         }
 
-        
         screen.writeln("You choose: " + actionSelected);
         screen.delay(timeMessageDelay);
 
@@ -263,45 +263,51 @@ public class GamePlay {
             screen.writeln("Expected action was NOT found");
             screen.writeln("Action: " + actionSelected);
             screen.delay(timeMessageDelay);
-            return false;
+            return;
         }
         
-        // create a verb based on the action
-        // only works for english language, and not even always
-        String actionVerb = TextFunctions.generateVerb(action.getTitle());
+        // create a verb based on the action (works for english, not always)
+//        String actionVerb = TextFunctions.generateVerb(action.getTitle());
         
         // ----------------------------------------------------------
         
         // player acts against opponent
-        screen.writeln("Player" + " " + actionVerb + " " + B.name);
+        //screen.writeln("Player" + " " + actionVerb + " " + B.name);
+        screen.writeln(action.getTitle() + " is used");
         String output = action.processAction(A, B, screen);
-        screen.delay(timeMessageDelay);
-        if (runAction(output)) {
-            return false;
+        if(output == null){
+            screen.writeln("Script has errors, cannot run");
+            return;
         }
-
-        // ----------------------------------------------------------
-
+        screen.writeln("Result",output);
+        screen.delay(timeMessageDelay);
         
-        // opponent attacks player
-        screen.writeln(B.name + " " + actionVerb + " " + "player");
-        action.processAction(B, A, screen);
-        screen.delay(timeMessageDelay);
-        if (runAction(output)) {
-            return false;
+        switch(output){
+            case "win": return;
+            case "lose": return;
+            case "continue": actionPerform(A, B);
         }
-
-        // ----------------------------------------------------------
-
-        // do a status overview
-        String text = StoryUtils.showIntro(A, B);
-        screen.writeln(text);
         
         
         // keep looping until a rule is triggered
-        actionPerform(A, B);
-        return true;
+//        actionPerform(A, B);
+        return;
     }
+    
+    
+        // ----------------------------------------------------------
+//
+//        
+//        // opponent attacks player
+//        screen.writeln(B.name + " " + actionVerb + " " + "player");
+//        action.processAction(B, A, screen);
+//        screen.delay(timeMessageDelay);
+//        if (runAction(output)) {
+//            return false;
+//        }
+
+        // ----------------------------------------------------------
+
     
     
 

@@ -304,7 +304,7 @@ output = A['Health'] < 0 ? '#scene-end' : (B['Health'] < 0 ? 'You have won!' : n
         String nextActions = choice.getNextActions();
         assertNotNull(nextActions);
         assertEquals("Fight the stone Golem", choice.getTitle());
-        assertEquals(LinkType.FIGHT, choice.getLinkType());
+        assertEquals(LinkType.ACTION, choice.getLinkType());
         assertEquals("opponent-stone-golem", choice.getLink());
         assertEquals("#scene-victory", choice.getNextActions());
     }

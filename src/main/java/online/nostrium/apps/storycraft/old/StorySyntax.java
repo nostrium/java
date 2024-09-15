@@ -5,7 +5,7 @@
  * License: Apache-2.0
  */
 
-package online.nostrium.apps.storycraft;
+package online.nostrium.apps.storycraft.old;
 
 /**
  * @author Brito

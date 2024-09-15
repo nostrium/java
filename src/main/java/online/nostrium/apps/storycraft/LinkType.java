@@ -16,7 +16,7 @@ public enum LinkType {
 
     SCENE,
     ITEM,
-    FIGHT,
+    ACTION,
     LEAVE,
     OTHER
     

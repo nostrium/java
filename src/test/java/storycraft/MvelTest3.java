@@ -15,9 +15,9 @@ import org.mvel2.MVEL;
  * @date: 2024-09-06
  * @location: Germany
  */
-public class MvelTest {
+public class MvelTest3 {
 
-    public MvelTest() {
+    public MvelTest3() {
     }
 
     @Test
@@ -25,12 +25,17 @@ public class MvelTest {
         
         // Script with simplified logic and no casting
         String script = """
-            AttackPower = A['Attack'] + (A['Experience'] / (A['Attack'] * 0.5)); 
-            DefendPower = B['Defense'] + (B['Experience'] / (B['Defense'] * 0.5));
-            if (B['Health'] > 0) {B['Health'] = B['Health'] - Math.max(0, AttackPower - DefendPower);}
-            if (A['Health'] < 0) { A['Coins'] = 0; } // lose all coins
-            if (B['Health'] < 0) { A['Coins'] = A['Coins'] + 10; } // win coins
-            // write an output
+            // calculate the attack and defense for each side
+            AttackPowerA = A['Attack'] + (A['Experience'] / (A['Attack'] * 0.5)); 
+            DefendPowerA = A['Defense'] + (A['Experience'] / (A['Defense'] * 0.5));
+            AttackPowerB = B['Attack'] + (B['Experience'] / (B['Attack'] * 0.5)); 
+            DefendPowerB = B['Defense'] + (B['Experience'] / (B['Defense'] * 0.5));
+                        
+            // run the attack on both sides         
+            A['Health'] = A['Health'] - Math.max(0, AttackPowerB - DefendPowerA);
+            B['Health'] = B['Health'] - Math.max(0, AttackPowerA - DefendPowerB);
+                
+            // provide the output result
             output = A['Health'] < 0 ? 'lose' : (B['Health'] < 0 ? 'win' : 'continue');
             """;
 
@@ -40,26 +45,32 @@ public class MvelTest {
         Map<String, Object> variables = new HashMap<>();
 
         // Player A's attributes (keep everything as integers)
-        A.put("Attack", 10);
+        A.put("Attack", 40);
         A.put("Experience", 30);
-        A.put("Health", 50);
+        A.put("Health", 40);
+        A.put("Defense", 5);
         A.put("Coins", 0);
 
         // Player B's attributes (keep everything as integers)
-        B.put("Defense", 5);
-        B.put("Experience", 20);
+        B.put("Attack", 50);
+        B.put("Experience", 30);
         B.put("Health", 40);
-
+        B.put("Defense", 5);
+        
         // Add players to variables
         variables.put("A", A);
         variables.put("B", B);
 
         // Evaluate the script using MVEL
         MVEL.eval(script, variables);
+        
+        String output = (String) variables.get("output");
+        assertEquals("continue", output);
 
         // Asserting the results (with int values)
-        assertEquals(37, (int) B.get("Health"));  // After the attack, B's health should be 37
-        assertEquals(0, A.get("Coins"));          // A did not win yet, coins should be 0
+        assertEquals(16, (int) B.get("Health"));  // After the attack, B's health should be 37
+        assertEquals(6, (int) A.get("Health"));  // After the attack, B's health should be 37
+//        assertEquals(0, A.get("Coins"));          // A did not win yet, coins should be 0
 
         // Output for debugging purposes
         System.out.println("B's Health: " + B.get("Health"));
@@ -72,7 +83,6 @@ public class MvelTest {
         MVEL.eval(script, variables);
 
         // Asserting after B's health drops below 0
-        assertEquals(-1, (int) B.get("Health"));    // B's health remains at -1
-        assertEquals(10, A.get("Coins"));           // A wins and gains 10 coins
+        assertTrue((int) B.get("Health") < 0);    // B's health remains at -1
     }
 }

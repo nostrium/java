@@ -55,7 +55,7 @@ public class Choice {
         } else if (choiceLink.startsWith("scene-")) {
             linkType = LinkType.SCENE;
         } else if (choiceLink.startsWith("opponent-")) {
-            linkType = LinkType.FIGHT;
+            linkType = LinkType.ACTION;
         } else {
             linkType = LinkType.OTHER;
         }

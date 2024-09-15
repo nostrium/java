@@ -44,15 +44,19 @@ opponent.
 # Action: Attack
 > Define what happens when Player A attacks player B
 ```
-AttackPower = A['Attack'] + (A['Experience'] / (A['Attack'] * 0.5)); 
-DefendPower = B['Defense'] + (B['Experience'] / (B['Defense'] * 0.5));
-if (B['Health'] > 0) {B['Health'] = B['Health'] - Math.max(0, AttackPower - DefendPower);}
-if (A['Health'] < 0) { A['Coins'] = 0; } // lose all coins
-if (B['Health'] < 0) { A['Coins'] = A['Coins'] + 10; } // win coins
-// write an output
-output = A['Health'] < 0 ? '#scene-end' : (B['Health'] < 0 ? 'You have won!' : null);
-```
+// calculate the attack and defense for each side
+AttackPowerA = A['Attack'] + (A['Experience'] / (A['Attack'] * 0.5)); 
+DefendPowerA = A['Defense'] + (A['Experience'] / (A['Defense'] * 0.5));
+AttackPowerB = B['Attack'] + (B['Experience'] / (B['Attack'] * 0.5)); 
+DefendPowerB = B['Defense'] + (B['Experience'] / (B['Defense'] * 0.5));
 
+// run the same attack on both sides         
+A['Health'] = A['Health'] - Math.max(0, AttackPowerB - DefendPowerA);
+B['Health'] = B['Health'] - Math.max(0, AttackPowerA - DefendPowerB);
+
+// provide the output result
+output = A['Health'] < 0 ? 'lose' : (B['Health'] < 0 ? 'win' : 'continue');
+```
 ------
 
 # Player
@@ -68,7 +72,6 @@ output = A['Health'] < 0 ? '#scene-end' : (B['Health'] < 0 ? 'You have won!' : n
         |_|_|         
         [ | ] 
 ```
-- Actions: Attack
 - Attack: 10
 - Health: 50
 - Defense: 5
@@ -103,3 +106,4 @@ output = A['Health'] < 0 ? '#scene-end' : (B['Health'] < 0 ? 'You have won!' : n
 - Attack: 10
 - Defense: 5
 - Experience: 20
+- Coins: 100
