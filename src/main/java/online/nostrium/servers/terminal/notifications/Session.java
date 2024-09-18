@@ -80,6 +80,10 @@ public class Session {
     public void setApp(TerminalApp app) {
         this.app = app;
     }
+
+    public long getLastPing() {
+        return this.sessionLastActive.getTime();
+    }
     
 
 }

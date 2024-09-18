@@ -171,11 +171,6 @@ public abstract class TerminalApp {
         return new CommandResponse(app);
     }
 
-    // update a screen when shared by multiple users
-//    public abstract void receiveNotification(
-//            User userSender, 
-//            NotificationType notificationType,
-//            Object object);
     public void receiveNotification(
             User userSender,
             NotificationType notificationType,

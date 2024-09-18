@@ -32,7 +32,6 @@ public abstract class Screen {
         writeln("");
         writeln(paint(TerminalColor.DARK_GREY_ON_BLACK,"> " + QOTD.generateQuote()));
         writeln("");
-        
     }
     
     public abstract void write(String text);

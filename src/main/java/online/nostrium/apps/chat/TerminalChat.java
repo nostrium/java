@@ -115,7 +115,7 @@ public class TerminalChat extends TerminalApp {
      */
     public String createMessageLine(long timeCreated, String userId, String content){
         String timestamp = TextFunctions.convertLongToDateTime(timeCreated);
-        timestamp = screen.paint(TerminalColor.BLUE, timestamp);
+//        timestamp = screen.paint(TerminalColor.BLUE, timestamp);
         String line = timestamp
                     + " "
                     + "["

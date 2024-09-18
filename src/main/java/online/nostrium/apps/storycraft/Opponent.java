@@ -63,7 +63,8 @@ public class Opponent  extends GameThing{
             if(line.startsWith("- [") == false){
                 continue;
             }
-            Choice choice = Choice.parse(line);
+            Choice choice = new Choice();
+            choice.parse(line);
             if(choice == null){
                 continue;
             }

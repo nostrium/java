@@ -32,17 +32,21 @@ public class GamePlay {
     int timeMessageDelay = 500;
 
     public GamePlay(String script, GameScreen screen, User user) {
-        // parse the script
-        String text = normalize(script);
-
-        parser = new GameParser();
         this.screen = screen;
-        parser.parseScript(text);
-        valid = parser.isValid();
-        scenes = parser.getScenes();
-        // setup the Player
-        player = new Player(user, screen);
-        player.parse(text);
+        try {
+            // parse the script
+            String text = normalize(script);
+
+            parser = new GameParser();
+            parser.parseScript(text);
+            valid = parser.isValid();
+            scenes = parser.getScenes();
+            // setup the Player
+            player = new Player(user, screen);
+            player.parse(text);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void playScene(String sceneId) {
@@ -224,7 +228,7 @@ public class GamePlay {
     }
 
     /**
-     * 
+     *
      * @param A Player
      * @param B Opponent
      * @return true to continue fighting, false to exit
@@ -240,14 +244,14 @@ public class GamePlay {
         }
 
         String text = "";
-        
-        if(firstTime){
+
+        if (firstTime) {
             text = StoryUtils.showIntro(A, B);
-        }else{
+        } else {
             text = StoryUtils.showStats(A, B);
         }
         screen.writeln(text);
-        
+
         // get the selected action
         screen.writeTitle("Actions");
         String actionSelected = screen.performChoices(actionsAvailable);
@@ -269,35 +273,36 @@ public class GamePlay {
             screen.delay(timeMessageDelay);
             return;
         }
-        
+
         // create a verb based on the action (works for english, not always)
 //        String actionVerb = TextFunctions.generateVerb(action.getTitle());
-        
         // ----------------------------------------------------------
-        
         // player acts against opponent
         String output = action.processAction(A, B, screen);
-        if(output == null){
+        if (output == null) {
             screen.writeln("Script has errors, cannot run");
             return;
         }
-        screen.writeln("Result",output);
+        screen.writeln("Result", output);
         screen.delay(timeMessageDelay);
-        
-        switch(output){
-            case "win": runAction(choice.nextActions); return;
-            case "lose": return;
+
+        switch (output) {
+            case "win":
+                runAction(choice.nextActions);
+                return;
+            //çlkçkçl
+            case "lose":
+                return;
             // keep looping until a rule is triggered
-            case "continue": actionPerform(A, B, false, choice);
+            case "continue":
+                actionPerform(A, B, false, choice);
         }
-        
-        
+
     }
-    
 
     private void runAction(String action) {
         // needs to exist an action 
-        if(action == null || action.isEmpty()){
+        if (action == null || action.isEmpty()) {
             return;
         }
         String stepLowercase = action.toLowerCase();
@@ -312,20 +317,20 @@ public class GamePlay {
 //            // stop running?
 //            return false;
 //        }
-        
+
         // support scenes
-        if(stepLowercase.startsWith("#scene")){
+        if (stepLowercase.startsWith("#scene")) {
             // remove the #
             action = action.substring(1);
             playScene(action);
             // stop running?
             return;
         }
-        
+
         // support items
-        if(stepLowercase.startsWith("#item")){
+        if (stepLowercase.startsWith("#item")) {
             Item item = parser.getItems().getItem(action);
-            if(item != null){
+            if (item != null) {
                 player.addItem(item);
             }
             // stop running?
@@ -335,8 +340,6 @@ public class GamePlay {
         return;
     }
 
-    
-    
     public static void main(String[] args) throws IOException {
         GameScreen screen = new GameScreenCLI();
         User user = UserUtils.createUserAnonymous();
@@ -345,12 +348,11 @@ public class GamePlay {
         File folderExamples = new File(folderBase, "examples");
         File file = new File(folderExamples, "FightExample.md");
         String text = FileUtils.readFileToString(file, "UTF-8");
-        
+
         //GamePlay game = new GamePlay(StoryNavigateRooms.text, screen, user);
         //GamePlay game = new GamePlay(StoryRandomRooms.text, screen, user);
         GamePlay game = new GamePlay(text, screen, user);
         game.play();
     }
 
-    
 }

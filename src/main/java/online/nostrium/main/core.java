@@ -15,6 +15,7 @@ import online.nostrium.servers.Server;
 import online.nostrium.servers.email.ServerEmail;
 import online.nostrium.servers.finger.ServerFinger;
 import online.nostrium.servers.qoft.ServerQOTD;
+import online.nostrium.servers.telegram.ServerTelegram;
 import online.nostrium.servers.telnet.ServerTelnet;
 import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalCode.BOOT;
@@ -51,6 +52,7 @@ public class core {
             new ServerQOTD(),
             new ServerEmail(),
 //            new ServerChatBot()
+            new ServerTelegram()
         };
 
         for (Server server : servers) {

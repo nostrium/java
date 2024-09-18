@@ -298,15 +298,18 @@ output = A['Health'] < 0 ? '#scene-end' : (B['Health'] < 0 ? 'You have won!' : n
     
     @Test
     public void testChoiceWithConsequence(){
-        String line1 = "- [Fight the stone Golem](#opponent-stone-golem): #scene-victory";
-        Choice choice = Choice.parse(line1);
+        String line1 = "- [Fight the ogre](#opponent-ogre) -> win:#items-coins-100; #scene-victory; lose:#scene-end";
+        Choice choice = new Choice();
+        choice.parse(line1);
         assertNotNull(choice);
         String nextActions = choice.getNextActions();
         assertNotNull(nextActions);
-        assertEquals("Fight the stone Golem", choice.getTitle());
+        assertEquals("Fight the ogre", choice.getTitle());
         assertEquals(LinkType.ACTION, choice.getLinkType());
-        assertEquals("opponent-stone-golem", choice.getLink());
-        assertEquals("#scene-victory", choice.getNextActions());
+        assertEquals("opponent-ogre", choice.getLink());
+        assertEquals("win:#items-coins-100; #scene-victory; lose:#scene-end", choice.getNextActions());
+        assertEquals(2, choice.getActionsWin().size());
+        assertEquals(1, choice.getActionsLose().size());
     }
     
     

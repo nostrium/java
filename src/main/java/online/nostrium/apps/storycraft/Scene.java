@@ -189,7 +189,8 @@ public class Scene {
                     continue;
                 }
 
-                Choice choice = Choice.parse(line);
+                Choice choice = new Choice();
+                choice.parse(line);
                 scene.addChoice(choice);
             }
         }

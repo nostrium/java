@@ -78,6 +78,11 @@ public class Config {
             portFinger = 79,
             portFinger_Debug = 7900;
     
+    @Expose
+    public String
+            tokenTelegram = "XXXXX",
+            tokenTelegram_Debug = "YYYYY";
+    
     
     
     @Expose
