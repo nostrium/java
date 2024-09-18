@@ -52,7 +52,7 @@ User interfaces:
 + [x] telnet (server)
 + [-] SSH (server)
 + [ ] IRC (server/client)
-+ [ ] telegram (bot)
++ [x] telegram (bot)
 + [ ] simpleX (bot)
 + [ ] API (server)
 
@@ -114,7 +114,6 @@ Communication:
 Network basics:
 + [?] WHOIS - 43
 + [x] Finger - 79
-+ [ ] Echo Protocol - 7
 + [ ] Daytime Protocol - 13
 + [ ] Time Protocol - 37
 + [ ] SNTP (Simple Network Time Protocol) - 123
