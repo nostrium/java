@@ -37,11 +37,6 @@ public class ScreenLocalCLI extends Screen{
     }
 
     @Override
-    public String readln() {
-        return "";
-    }
-
-    @Override
     public String paint(TerminalColor colorType, String text) {
         return text;
     }

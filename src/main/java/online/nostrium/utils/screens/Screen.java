@@ -38,8 +38,6 @@ public abstract class Screen {
     public abstract void writeln(String text);
     public abstract void writeLikeHuman(String text, int speed);
     
-    public abstract String readln();
-
     public abstract String paint(TerminalColor colorType, String text);
     
     public abstract String getWindowFrame(String title);

@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>nostrium.online</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm/css/xterm.css">
+        <link rel="stylesheet" href="xterm.css">
         <style>
             body, html {
                 height: 100%;
@@ -27,7 +27,7 @@
     </head>
     <body>
         <div id="terminal-container"></div>
-        <script src="https://cdn.jsdelivr.net/npm/xterm/lib/xterm.js"></script>
+        <script src="xterm.js"></script>
         <script>
             const FONT_SIZE = 16;
             const CHAR_WIDTH = 9;
@@ -36,10 +36,10 @@
             function calculateTerminalSize() {
                 const cols = Math.floor(window.innerWidth / CHAR_WIDTH);
                 const rows = Math.floor(window.innerHeight / CHAR_HEIGHT);
-                return { cols, rows };
+                return {cols, rows};
             }
 
-            const { cols, rows } = calculateTerminalSize();
+            const {cols, rows} = calculateTerminalSize();
             const terminal = new Terminal({
                 theme: {
                     background: '#000000',
@@ -50,14 +50,14 @@
                 cols: cols,
                 rows: rows
             });
-            
+
             terminal.open(document.getElementById('terminal-container'));
             terminal.focus();
-            
+
             const loc = window.location;
             const wsProtocol = loc.protocol === 'https:' ? 'wss:' : 'ws:';
             const socketUrl = `${wsProtocol}//${loc.host}/ws`;
-            
+
             const socket = new WebSocket(socketUrl);
             socket.addEventListener('open', function () {
                 socket.send('>showLogo\r');
@@ -65,10 +65,10 @@
             socket.addEventListener('message', function (event) {
                 terminal.write(event.data);
             });
-            
+
             let currentInput = '';
             terminal.onData(data => {
-                if (data === '\u007F') {
+               /* if (data === '\u007F') {
                     if (currentInput.length > 0) {
                         terminal.write('\b \b');
                         currentInput = currentInput.slice(0, -1);
@@ -76,11 +76,24 @@
                 } else {
                     currentInput += data;
                     socket.send(data);
+                }*/
+
+                if (data === '\u007F') {  // Handle backspace
+                    if (currentInput.length > 0) {
+                        terminal.write('\b \b');  // Erase character locally
+                        currentInput = currentInput.slice(0, -1);
+                        socket.send('\b');  // Send backspace signal to server
+                    }
+                } else {
+                    currentInput += data;
+                    socket.send(data);  // Send the data to the server
                 }
+
+
             });
-            
-            window.addEventListener('resize', function() {
-                const { cols, rows } = calculateTerminalSize();
+
+            window.addEventListener('resize', function () {
+                const {cols, rows} = calculateTerminalSize();
                 terminal.resize(cols, rows);
             });
         </script>

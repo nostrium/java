@@ -21,9 +21,17 @@ opponent.
 # Scene: Azurath Entrance
 > Welcome to the ancient ruins of Azurath. The air is thick with the scent of damp stone and decaying leaves.
 
+
+## Meet: Ogre
+- win: #items-coins-100; #scene-victory
+- lose: #scene-end
+
+
 ## Choice: You look around and...
 - [Fight the ogre](#opponent-ogre) -> win:#items-coins-100; #scene-victory; Lose:#scene-end
 - [End the game](#scene-end)
+
+
 
 ------
 

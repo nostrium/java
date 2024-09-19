@@ -6,13 +6,16 @@
  */
 package online.nostrium.apps.email;
 
-import online.nostrium.servers.terminal.notifications.NotificationType;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import online.nostrium.servers.email.EmailUtils;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.utils.screens.Screen;
 import online.nostrium.user.User;
-import online.nostrium.user.UserType;
 import static online.nostrium.servers.email.EmailUtils.createFoldersBasic;
 import online.nostrium.servers.terminal.TerminalUtils;
 
@@ -23,6 +26,8 @@ import online.nostrium.servers.terminal.TerminalUtils;
  */
 public class TerminalEmail extends TerminalApp {
     
+    File folderBase = null;
+    
 
     public TerminalEmail(Screen screen, User user) {
         super(screen, user);
@@ -30,9 +35,15 @@ public class TerminalEmail extends TerminalApp {
         this.removeCommand("ls");
         this.addCommand(new CommandEmailLs(this));
         
+        this.removeCommand("cd");
+        this.addCommand(new CommandEmailCd(this));
+        
+        folderBase = EmailUtils.getFolderEmail(user);
+        setFolderCurrent(EmailUtils.getFolderEmail(user));
+        
         // make sure that only ADMIN can enter here
-        permissions.clearEveryone();
-        permissions.denyUserType(UserType.ANON);
+//        permissions.clearEveryone();
+//        permissions.denyUserType(UserType.ANON);
         
         createFoldersBasic(user);
     }
@@ -59,9 +70,32 @@ public class TerminalEmail extends TerminalApp {
     }
 
     // shows an intro for this app
+    @Override
     public String getId(){
-        String path = TerminalUtils.getPath(this);
+        
+        String result = "";
+        try {
+            String pathBase = this.folderBase.getCanonicalPath();
+            String pathCurrent = this.getFolderCurrent().getCanonicalPath();
+            result = pathCurrent.substring(pathBase.length());
+        } catch (IOException ex) {
+            Logger.getLogger(TerminalEmail.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        String path = TerminalUtils.getPath(this)+ result;
         return path;
+    }
+
+    public File getFolderCurrent() {
+        if(data.has("folderCurrent") == false){
+            return null;
+        }
+        return (File) data.get("folderCurrent");
+    }
+
+    public void setFolderCurrent(File folderCurrent) {
+        data.put("folderCurrent", folderCurrent);
     }
     
 

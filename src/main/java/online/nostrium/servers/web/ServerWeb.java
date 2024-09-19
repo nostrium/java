@@ -325,6 +325,16 @@ public class ServerWeb extends Server {
                     buffers.put(ctx, buffer);
                 }
 
+                // handle the backspace situation
+                if(request.equals("\b")){
+                    // reduce the buffer lenght when bigger than zero
+                    if(buffer.length() > 0){
+                        buffer.setLength(buffer.length()-1);
+                    }
+                    return;
+                }
+                
+                // shall we append the new letter?
                 buffer.append(request);
 
                 String textCurrent = buffer.toString().trim();

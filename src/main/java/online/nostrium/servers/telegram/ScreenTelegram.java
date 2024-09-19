@@ -75,11 +75,6 @@ public class ScreenTelegram extends Screen {
     }
 
     @Override
-    public String readln() {
-        return ""; // Telegram doesn't support synchronous input in the same way
-    }
-
-    @Override
     public String paint(TerminalColor colorType, String text) {
         return text; // No ANSI color support in Telegram
     }

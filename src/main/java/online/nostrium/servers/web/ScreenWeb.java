@@ -130,11 +130,6 @@ public class ScreenWeb extends Screen{
     }
 
     @Override
-    public String readln() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
     public String paint(TerminalColor colorType, String text) {
         String color = ANSI_WHITE; // default color
 

@@ -50,7 +50,7 @@ public class CommandEmailLs extends TerminalCommand {
 
     @Override
     public String oneLineDescription() {
-        return "List the available items";
+        return "List the available emails and folders";
     }
 
 }

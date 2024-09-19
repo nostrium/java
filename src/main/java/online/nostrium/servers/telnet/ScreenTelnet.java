@@ -21,7 +21,6 @@ import static online.nostrium.servers.terminal.TerminalColor.GREEN_BRIGHT;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.TerminalUtils;
 import online.nostrium.utils.screens.Screen;
-import online.nostrium.utils.ascii.AsciiArt;
 
 /**
  * Author: Brito
@@ -126,26 +125,26 @@ public class ScreenTelnet extends Screen {
         out.flush();
     }
 
-    @Override
-    public String readln() {
-        StringBuilder inputLine = new StringBuilder();
-        try {
-            int inputChar;
-            while ((inputChar = in.read()) != -1) {
-                char receivedChar = (char) inputChar;
-
-                // If newline or carriage return is detected, break the loop
-                if (receivedChar == '\n' || receivedChar == '\r') {
-                    break;
-                }
-
-                inputLine.append(receivedChar);
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(ScreenTelnet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return inputLine.toString();
-    }
+//    @Override
+//    public String readln() {
+//        StringBuilder inputLine = new StringBuilder();
+//        try {
+//            int inputChar;
+//            while ((inputChar = in.read()) != -1) {
+//                char receivedChar = (char) inputChar;
+//
+//                // If newline or carriage return is detected, break the loop
+//                if (receivedChar == '\n' || receivedChar == '\r') {
+//                    break;
+//                }
+//
+//                inputLine.append(receivedChar);
+//            }
+//        } catch (IOException ex) {
+//            Logger.getLogger(ScreenTelnet.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return inputLine.toString();
+//    }
 
     @Override
     public String paint(TerminalColor colorType, String text) {

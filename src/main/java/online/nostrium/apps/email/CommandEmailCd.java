@@ -6,6 +6,8 @@
  */
 package online.nostrium.apps.email;
 
+import java.io.File;
+import online.nostrium.servers.email.EmailUtils;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCommand;
@@ -20,7 +22,7 @@ import online.nostrium.servers.terminal.TerminalUtils;
  */
 public class CommandEmailCd extends TerminalCommand {
 
-    public CommandEmailCd(TerminalApp app) {
+    public CommandEmailCd(TerminalEmail app) {
         super(app);
         this.requireSlash = false;
         // add an alternative command
@@ -48,27 +50,16 @@ public class CommandEmailCd extends TerminalCommand {
         }
         
         
+        File folderBase = EmailUtils.getFolderEmail(app.user);
+        File folder = new File(folderBase, parameters);
+        if(folder.exists() == false){
+            return reply(TerminalCode.NOT_FOUND, "Folder not found");
+        }
         
-//        
-//        // no need to continue when there is nothing
-//        if (this.app.appChildren.isEmpty()) {
-//            return reply(TerminalCode.OK, text);
-//        }
-//
-//        // iterate all apps        
-//        for (TerminalApp appChild : this.app.appChildren) {
-//            String textName = appChild.getName();
-//            if(textName.equalsIgnoreCase(parameters)){
-//                // do we have permission to enter inside this app?
-//                if(appChild.permissions
-//                        .isPermitted(this.app.user) == false){
-//                    continue;
-//                }
-//                return reply(appChild);
-//            }
-//        }
+        // the folder exists, accept the change
+        app.data.put("folderCurrent", folder);
         
-        return reply(TerminalCode.NOT_FOUND, "Not found");
+        return reply(TerminalCode.OK);
     }
 
     @Override
