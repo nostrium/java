@@ -290,7 +290,6 @@ public class GamePlay {
             case "win":
                 runAction(choice.nextActions);
                 return;
-            //çlkçkçl
             case "lose":
                 return;
             // keep looping until a rule is triggered

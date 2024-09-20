@@ -64,6 +64,11 @@ public class ServerTelnet extends Server {
     public int getPort() {
         return core.config.debug ? core.config.portTelnet_Debug : core.config.portTelnet;
     }
+    
+    @Override
+    public int getPortSecure() {
+        return -1;
+    }
 
     @Override
     public String getId() {

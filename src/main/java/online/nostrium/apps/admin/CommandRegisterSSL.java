@@ -16,7 +16,6 @@ import static online.nostrium.main.core.config;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
-import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.utils.screens.Screen;
@@ -39,7 +38,7 @@ public class CommandRegisterSSL extends TerminalCommand{
     public CommandResponse execute(TerminalType terminalType, String parameters) {
        
         
-        String domain = config.domain;
+        String domain = config.getDomain();
         String email = "admin@" + domain;
         File folderCerts = Folder.getFolderCerts();
         File folderWellKnown = Folder.getFolderWellKnown();

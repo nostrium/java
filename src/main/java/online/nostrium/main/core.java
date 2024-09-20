@@ -83,6 +83,11 @@ public class core {
     }
 
     
+    public static void startConfig(){
+        // get the config started
+        config = Config.loadConfig();
+    }
+    
     public static void main(String[] args) {
 
         File folder = Folder.getFolderBase();
@@ -95,13 +100,10 @@ public class core {
         System.out.println("--------------------------");
         Log.write(BOOT, "Data folder", folder.getPath());
 
-        // get the config started
-        config = Config.loadConfig();
+        startConfig();
         
         // run the scheduled tasks
         NIP05_emails nip05 = new NIP05_emails();  // every 10 minutes
-    
-        
 
         // run servers and keep waiting
         runServers();

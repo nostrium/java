@@ -20,6 +20,10 @@ public class TerminalUtils {
         }
         // traverse the parent apps to build the path
         String path = app.getName();
+        String subFolders = app.getSubFolders();
+        if(subFolders.isEmpty() == false){
+            path += subFolders;
+        }
         TerminalApp appCurrent = app;
         while(appCurrent.appParent.appParent != null){
             appCurrent = appCurrent.appParent;

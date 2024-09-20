@@ -76,7 +76,12 @@ public class Config {
             portQOTD_Debug = 1700,
 
             portFinger = 79,
-            portFinger_Debug = 7900;
+            portFinger_Debug = 7900,
+    
+            portFTP = 21,
+            portFTP_Debug = 2100,
+            portFTPS = 990,
+            portFTPS_Debug = 9900;
     
     @Expose
     public String
@@ -91,7 +96,8 @@ public class Config {
 
     @Expose
     public String 
-            domain = "nostrium.online",
+            domain_production = "nostrium.online",
+            domain_debug = "127.0.0.1",
             language = "EN";
     
 //    String ForumTitle = "";
@@ -195,6 +201,14 @@ public class Config {
         }
         // the config file is valid, use it
         return config;
+    }
+    
+    public String getDomain(){
+        if(debug){
+            return domain_debug;
+        }else{
+            return domain_production;
+        }
     }
 
 }

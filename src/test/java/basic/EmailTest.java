@@ -4,8 +4,12 @@
  */
 package basic;
 
+import com.icegreen.greenmail.util.GreenMailUtil;
 import online.nostrium.apps.basic.TerminalBasic;
 import online.nostrium.apps.email.TerminalEmail;
+import online.nostrium.main.core;
+import online.nostrium.servers.email.EmailMessage;
+import online.nostrium.servers.email.ServerEmail;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
 import online.nostrium.servers.terminal.CommandResponse;
@@ -65,4 +69,39 @@ public class EmailTest {
         // delete the user
         user.delete();
     }
+    
+    @Test
+    public void sendEmailTest() {
+        
+        // load the general configuration
+        core.startConfig();
+        
+        // load the email server
+        ServerEmail server = new ServerEmail();
+        server.start();
+        
+        
+        User user = UserUtils.createUserAnonymous();
+        user.save();
+        
+        EmailMessage msg = new EmailMessage();
+        msg.setSender(user);
+        assertNotNull(msg.getSender());
+        msg.addReceiver(user);
+        msg.setTitle("Testing!");
+        msg.setBody("Testing this stuff");
+        
+//        GreenMailUtil.sendTextEmail(
+//                msg.getReceivers(), msg.getSender(),
+//        msg.getTitle(), msg.getBody(), setup
+//        );
+        
+        
+        user.delete();
+        server.stop();
+    }
+
+    
+    
+    
 }

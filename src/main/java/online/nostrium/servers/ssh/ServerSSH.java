@@ -37,6 +37,11 @@ public class ServerSSH extends Server {
     public int getPort() {
         return 7070;
     }
+    
+    @Override
+    public int getPortSecure() {
+        return -1;
+    }
 
     @Override
     protected void boot() {

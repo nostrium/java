@@ -40,6 +40,13 @@ public class CommandEmailCd extends TerminalCommand {
         
         // shall we go down one directory?
         if(parameters.equalsIgnoreCase("..")){
+            String subFolders = app.getSubFolders();
+            if(subFolders.isEmpty() == false){
+               File folder = (File) app.data.get("folderCurrent");
+               folder = folder.getParentFile();
+                app.data.put("folderCurrent", folder);
+                return reply(TerminalCode.OK);
+            }
             return reply(TerminalCode.EXIT_APP, "");
         }
         

@@ -150,4 +150,9 @@ public class ServerChatBot extends Server {
         // Optionally stop the server after some condition or time, e.g., on another thread
         // server.stop();
     }
+
+    @Override
+    public int getPortSecure() {
+        return -1;
+    }
 }

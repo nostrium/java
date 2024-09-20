@@ -278,10 +278,10 @@ public class User {
     public String getEmailAddress() {
         String name = this.username;
         if(username == null){
-            return null;
-            //name = this.npub;
+            // use the npub
+            name = this.npub;
         }
-        return name + "@" + core.config.domain;
+        return name + "@" + core.config.getDomain();
     }
 
     /**

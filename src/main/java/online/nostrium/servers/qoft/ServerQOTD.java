@@ -125,4 +125,9 @@ public class ServerQOTD extends Server {
             ctx.close();
         }
     }
+    
+    @Override
+    public int getPortSecure() {
+        return -1;
+    }
 }

@@ -66,8 +66,9 @@ public class ServerWeb extends Server {
             return core.config.portHTTP;
         }
     }
-
-    public int getPortHTTPS() {
+    
+    @Override
+    public int getPortSecure() {
         if (core.config.debug) {
             return core.config.portHTTPS_Debug;
         } else {
@@ -93,7 +94,7 @@ public class ServerWeb extends Server {
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline p = ch.pipeline();
 
-                            if (sslCtx != null && ch.localAddress().getPort() == getPortHTTPS()) {
+                            if (sslCtx != null && ch.localAddress().getPort() == getPortSecure()) {
                                 p.addLast(sslCtx.newHandler(ch.alloc()));
                             }
 
@@ -107,7 +108,7 @@ public class ServerWeb extends Server {
                     });
 
             int HTTP_PORT = this.getPort();
-            int HTTPS_PORT = getPortHTTPS();
+            int HTTPS_PORT = getPortSecure();
 
             Channel httpChannel = null;
             Channel httpsChannel = null;

@@ -186,4 +186,9 @@ public class ServerFinger extends Server {
             ctx.close();
         }
     }
+    
+    @Override
+    public int getPortSecure() {
+        return -1;
+    }
 }

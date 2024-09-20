@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>nostrium.online</title>
-        <link rel="stylesheet" href="xterm.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm/css/xterm.css">
         <style>
             body, html {
                 height: 100%;
@@ -27,7 +27,7 @@
     </head>
     <body>
         <div id="terminal-container"></div>
-        <script src="xterm.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/xterm/lib/xterm.js"></script>
         <script>
             const FONT_SIZE = 16;
             const CHAR_WIDTH = 9;
@@ -68,16 +68,7 @@
 
             let currentInput = '';
             terminal.onData(data => {
-               /* if (data === '\u007F') {
-                    if (currentInput.length > 0) {
-                        terminal.write('\b \b');
-                        currentInput = currentInput.slice(0, -1);
-                    }
-                } else {
-                    currentInput += data;
-                    socket.send(data);
-                }*/
-
+               
                 if (data === '\u007F') {  // Handle backspace
                     if (currentInput.length > 0) {
                         terminal.write('\b \b');  // Erase character locally
@@ -88,8 +79,6 @@
                     currentInput += data;
                     socket.send(data);  // Send the data to the server
                 }
-
-
             });
 
             window.addEventListener('resize', function () {

@@ -45,6 +45,11 @@ public class ServerEmail extends Server {
             return core.config.portSMTP;
         }
     }
+    
+     @Override
+    public int getPortSecure() {
+        return -1;
+    }
 
     @Override
     protected void boot() {

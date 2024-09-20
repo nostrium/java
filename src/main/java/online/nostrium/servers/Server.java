@@ -21,6 +21,8 @@ public abstract class Server {
     public abstract String getId();
     
     public abstract int getPort();
+    
+    public abstract int getPortSecure();
 
     protected abstract void boot();
 

@@ -30,6 +30,11 @@ public class ServerTelegram extends Server {
     public int getPort() {
         return -1;
     }
+    
+    @Override
+    public int getPortSecure() {
+        return -1;
+    }
 
     @Override
     protected void boot() {

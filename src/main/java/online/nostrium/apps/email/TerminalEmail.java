@@ -68,11 +68,9 @@ public class TerminalEmail extends TerminalApp {
     public String getName() {
         return "email";
     }
-
-    // shows an intro for this app
+    
     @Override
-    public String getId(){
-        
+    public String getSubFolders(){
         String result = "";
         try {
             String pathBase = this.folderBase.getCanonicalPath();
@@ -81,9 +79,14 @@ public class TerminalEmail extends TerminalApp {
         } catch (IOException ex) {
             Logger.getLogger(TerminalEmail.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        String path = TerminalUtils.getPath(this)+ result;
+        return result;
+    }
+    
+
+    // shows an intro for this app
+    @Override
+    public String getId(){
+        String path = TerminalUtils.getPath(this);
         return path;
     }
 

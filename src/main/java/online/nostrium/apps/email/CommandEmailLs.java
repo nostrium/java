@@ -7,7 +7,6 @@
 package online.nostrium.apps.email;
 
 import java.io.File;
-import online.nostrium.servers.email.EmailUtils;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
@@ -32,7 +31,8 @@ public class CommandEmailLs extends TerminalCommand {
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
 
-        File folder = EmailUtils.getFolderEmail(app.user);
+        File folder = (File) app.data.get("folderCurrent");
+                //EmailUtils.getFolderEmail(app.user);
         String dirTree = buildTree(folder);
         
         // remove the last character

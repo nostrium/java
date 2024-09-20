@@ -90,6 +90,13 @@ public abstract class TerminalApp {
         }
         commands.put(command.commandName(), command);
     }
+    
+    public String getSubFolders(){
+        return "";
+    }
+    
+    public void setSubFolders(String text){
+    }
 
     protected final void removeCommand(String commandName) {
         // find the command when existing
