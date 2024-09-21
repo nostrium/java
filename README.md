@@ -36,7 +36,7 @@ Nostrium will provide basic access for these interfaces.
 CLI navigation uses linux-style cd/ls commands.
 Type /help to see the available commands.
 
-Swiss-knife for off-grid services
+Platform for off-grid
 --------------------------------
 
 Think of Nostrium as a tool to provide Internet services
@@ -73,12 +73,13 @@ Feature roadmap
 + [ ] write text-based games
 + [ ] read/write emails
 + [ ] display static mardown files on www as HTML
-+ [ ] display images on text terminals are text
++ [ ] display images on text terminals as text
 + [ ] queue of message notifications when login
-
-
-
-
++ [ ] share/update collections
++ [ ] marketplace / wallet
++ [ ] tip/transfer between users
++ [ ] engine for text games
++ [ ] bot to bridge social networks (NOSTR, X, ..)
 
 Servers
 -------
@@ -89,7 +90,7 @@ Servers
 + [x] Telnet - 23
 
 File sharing:
-+ [ ] FTP (File Transfer Protocol) - 21
++ [x] FTP (File Transfer Protocol) - 21
 + [ ] FTPS (FTP Secure) - 990
 + [ ] SFTP (SSH File Transfer Protocol) - 22
 + [ ] TFTP (Trivial File Transfer Protocol) - 69
@@ -110,6 +111,7 @@ Communication:
 + [ ] NNTP (Network News Transfer Protocol) - 119
 + [ ] NNTPS (NNTP Secure) - 563
 + [ ] Gopher - 70
++ [ ] Rattlegram - sound
 
 Network basics:
 + [?] WHOIS - 43
@@ -124,8 +126,10 @@ Broadcast:
 + [ ] Web radio
 
 Cybersec:
++ [ ] I2P
 + [ ] TOR
 + [ ] VPN
++ [ ] SneakerNet
 
 Domain/IP handling:
 + [ ] DNS (Domain Name System) - 53

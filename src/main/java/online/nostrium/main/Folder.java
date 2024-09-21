@@ -26,6 +26,7 @@ public class Folder {
             nameFileConfig = "config.json",
             nameFolderData = "data",
             nameFolderWWW = "www",
+            nameFolderFTP = "ftp",
             nameFolderGPT = "gpt",
             nameFolderChat = "chat",
             nameFolderStories = "stories",
@@ -133,6 +134,10 @@ public class Folder {
 
     public static File getFolderWWW() {
         return defaultGetFolder(nameFolderWWW);
+    }
+    
+    public static File getFolderFTP() {
+        return defaultGetFolder(nameFolderFTP);
     }
 
     public static File getFolderCerts() {
