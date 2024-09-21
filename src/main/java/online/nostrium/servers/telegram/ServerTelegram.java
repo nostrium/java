@@ -52,10 +52,10 @@ public class ServerTelegram extends Server {
             Thread.currentThread().join();
              
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
        } catch (Exception e) {
-           e.printStackTrace();
+           //e.printStackTrace();
        }
     }
     

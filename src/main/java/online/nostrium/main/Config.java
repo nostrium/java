@@ -163,6 +163,20 @@ public class Config {
             return null;
         }
     }
+    
+    
+    @SuppressWarnings({"FinallyDiscardsException", "deprecation"})
+    public void save() {
+        try {
+            File file = Folder.getFileConfig();
+            String data = jsonExport();
+            FileUtils.writeStringToFile(file, data, "UTF-8");
+            Log.write(OK, "Created config file", file.getPath());
+        } catch (IOException ex) {
+            Logger.getLogger(Config.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        }
+    }
 
     @SuppressWarnings({"FinallyDiscardsException", "deprecation"})
     private static Config createAndWriteNew() {

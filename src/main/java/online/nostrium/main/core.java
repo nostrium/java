@@ -89,6 +89,9 @@ public class core {
     public static void startConfig(){
         // get the config started
         config = Config.loadConfig();
+        // save new settings to file
+        config.save();
+        
     }
     
     public static void main(String[] args) {

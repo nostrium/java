@@ -16,12 +16,10 @@ import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.handler.codec.http.websocketx.WebSocketFrame;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
-import io.netty.handler.stream.ChunkedFile;
 import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
 
 import java.io.File;
-import java.io.RandomAccessFile;
 import java.util.HashMap;
 import java.util.Map;
 import online.nostrium.apps.basic.TerminalBasic;
@@ -114,12 +112,13 @@ public class ServerWeb extends Server {
             Channel httpsChannel = null;
 
             try {
+                isRunning = true;
                 httpChannel = b.bind(HTTP_PORT).sync().channel();
                 //System.out.println("HTTP server started on port " + HTTP_PORT);
-                isRunning = true;
             } catch (Exception ex) {
                 System.err.println("Failed to start HTTP server on port " + HTTP_PORT + ": " + ex.getMessage());
                 ex.printStackTrace();
+                isRunning = false;
             }
 
             if (sslCtx != null) {
