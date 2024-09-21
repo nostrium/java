@@ -37,58 +37,61 @@ import org.apache.commons.io.FileUtils;
  * @location: Germany
  */
 public class FilesWeb {
-    
-    
-    // Add inline CSS to style the HTML content
-public static String css1 = "<style>" +
-    "body { " +
-        "background-color: black; " + 
-        "color: #00FF00; " + // Neon green text
-        "font-family: 'Courier New', monospace; " + // Pixelated font
-        "text-align: center; " + // Centered text for a retro feel
-        "padding: 50px; " +
-    "}" +
-    "h1 { " +
-        "color: #FF1493; " + // Neon pink for headings
-        "text-shadow: 0 0 10px #FF1493, 0 0 20px #FF1493, 0 0 30px #FF1493;" + // Neon glow effect
-        "font-size: 48px; " +
-    "}" +
-    "p { " +
-        "color: #00FFFF; " + // Neon cyan for paragraphs
-        "font-size: 20px; " +
-        "text-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 30px #00FFFF;" + // Neon glow effect for paragraphs
-    "}" +
-    "a { " +
-        "color: #FFFF00; " + // Bright yellow for links
-        "text-decoration: none; " +
-        "font-weight: bold; " +
-    "}" +
-    "a:hover { " +
-        "color: #FF4500; " + // Orange on hover
-    "}" +
-    "</style>";
 
-public static  // Add inline CSS to style the HTML content
+ static String css1 = "<style>"
+    + "body { "
+    + "background-color: black; " // Dark background for retro effect
+    + "color: white; " // White text for normal body text
+    + "font-family: 'Courier New', monospace; " // Retro pixelated font
+    + "text-align: left; " // Left-align the text
+    + "padding: 20px; "
+    + "}"
+    + "h1 { "
+    + "color: #00FF00; " // Neon green for headers
+    + "text-shadow: 0 0 1px #00FF00, 0 0 2px #00FF00; " // Tiny, subtle glow for the heading
+    + "font-size: 36px; " // Adjust heading size
+    + "}"
+    + "h2 { "
+    + "color: #00FF00; " // Same neon green for subheadings
+    + "text-shadow: 0 0 1px #00FF00, 0 0 2px #00FF00; " // Tiny, subtle glow for subheadings
+    + "font-size: 28px; "
+    + "}"
+    + "p { "
+    + "color: white; " // White color for normal text
+    + "font-size: 18px; " // Normal font size for paragraphs
+    + "}"
+    + "a { "
+    + "color: #FFD700; " // Softer yellow for links
+    + "text-decoration: none; "
+    + "font-weight: bold; "
+    + "}"
+    + "a:hover { "
+    + "color: #FF8C00; " // Softer orange on hover for links
+    + "}"
+    + "</style>";
+
+
+
+    public static // Add inline CSS to style the HTML content
             String css2 = "<style>"
-                    + "body { font-family: Arial, sans-serif; }"
-                    + "h1 { color: blue; }"
-                    + "p { color: gray; }"
-                    + "</style>";
-    
+            + "body { font-family: Arial, sans-serif; }"
+            + "h1 { color: blue; }"
+            + "p { color: gray; }"
+            + "</style>";
 
     public static void sendMarkDown(File file, ChannelHandlerContext ctx) throws IOException {
         if (file.exists() == false || file.isDirectory() || file.length() == 0) {
             sendError(ctx, HttpResponseStatus.NOT_FOUND);
             return;
         }
-        
+
         String filenameCSS = file.getName().replace(".md", ".css");
         String css = css1;
         File fileCSS = new File(file.getParent(), filenameCSS);
-        if(fileCSS.exists() && fileCSS.isFile() && fileCSS.length() > 0){
+        if (fileCSS.exists() && fileCSS.isFile() && fileCSS.length() > 0) {
             css = FileUtils.readFileToString(fileCSS, "UTF-8");
         }
-        
+
         // convert to markdown
         String text = convertMarkdownToHtml(file, css);
         if (text == null || text.length() == 0) {
@@ -225,8 +228,6 @@ public static  // Add inline CSS to style the HTML content
         }
     }
 
-   
-
     public static String convertMarkdownToHtml(File markdownFile, String css) {
         try {
             // Read the content of the markdown file into a string
@@ -267,6 +268,62 @@ public static  // Add inline CSS to style the HTML content
         }
 
         // show the files inside the folder
+        String fileList = listFilesInFolderAsHtml(folder);
+        sendText(fileList, ctx, ".html");
+    }
+    
+    public static String listFilesInFolderAsHtml(File folder) {
+    // Check if the input is a directory
+    if (!folder.isDirectory()) {
+        return "<html><body><h1>Error: Not a directory!</h1></body></html>";
     }
 
+    // Start building the HTML with a retro 80's style, including reduced header glow
+    String css = "<style>"
+            + "body { background-color: black; color: #00FF00; font-family: 'Courier New', monospace; padding: 20px; }"
+            + "h1 { color: #00FF00; text-shadow: 0 0 1px #00FF00, 0 0 2px #00FF00; font-size: 36px; }" // Reduced glow for header
+            + "a { color: #00FF99; text-decoration: none; font-weight: bold; }" // Soft green for links
+            + "a:hover { color: #33FF99; }" // Lighter green for hover effect
+            + "ul { list-style-type: none; padding-left: 0; }"
+            + "li { margin-bottom: 10px; }"
+            + "</style>";
+
+    StringBuilder htmlContent = new StringBuilder();
+    htmlContent.append("<html><head>").append(css).append("</head><body>");
+    htmlContent.append("<h1>File Listing for ").append(folder.getName()).append("</h1>");
+    htmlContent.append("<ul>");
+
+    // Add a ".." link to go back to the parent directory (if applicable)
+    File parent = folder.getParentFile();
+    if (parent != null && parent.getName().startsWith("npub") == false) {
+        htmlContent.append("<li><a href=\"../\">..</a></li>"); 
+    }
+
+    // List files and directories
+    File[] files = folder.listFiles();
+    if (files != null) {
+        for (File file : files) {
+            if (file.isDirectory()) {
+                // Add a clickable link for directories
+                htmlContent.append("<li><a href=\"")
+                        .append(file.getName())
+                        .append("/\">📁 ")
+                        .append(file.getName())
+                        .append("</a></li>");
+            } else {
+                // Add a clickable link for files
+                htmlContent.append("<li><a href=\"")
+                        .append(file.getName())
+                        .append("\">📄 ")
+                        .append(file.getName())
+                        .append("</a></li>");
+            }
+        }
+    }
+
+    htmlContent.append("</ul></body></html>");
+    return htmlContent.toString();
+}
+
+    
 }
