@@ -112,7 +112,7 @@ public class ServerFTP extends Server {
         try {
             // Start it synchronously in our localhost and in the port
             isRunning = true;
-            server.listenSync(InetAddress.getByName("localhost"), this.getPort());
+            server.listenSync(InetAddress.getByName("0.0.0.0"), this.getPort());
         } catch (IOException ex) {
             Logger.getLogger(ServerFTP.class.getName()).log(Level.SEVERE, null, ex);
         }
