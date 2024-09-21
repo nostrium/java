@@ -66,7 +66,7 @@ public class ServerWeb extends Server {
             return core.config.portHTTP;
         }
     }
-    
+
     @Override
     public int getPortSecure() {
         if (core.config.debug) {
@@ -155,6 +155,15 @@ public class ServerWeb extends Server {
         }
     }
 
+    public static void sendError(ChannelHandlerContext ctx, HttpResponseStatus status) {
+        FullHttpResponse response = new DefaultFullHttpResponse(
+                HttpVersion.HTTP_1_1, status,
+                ctx.alloc().buffer(0));
+
+        response.headers().set(HttpHeaderNames.CONTENT_TYPE, "text/plain; charset=UTF-8");
+        ctx.writeAndFlush(response).addListener(ChannelFutureListener.CLOSE);
+    }
+
     @SuppressWarnings("UseSpecificCatch")
     private SslContext createSslContext() {
         try {
@@ -228,66 +237,19 @@ public class ServerWeb extends Server {
                 uri = "/index.html";
             }
 
-            // Resolve the full file path
+            // Resolve the full file path in the central archive
             String basePath = Folder.getFolderWWW().getCanonicalPath();
             String fullPath = basePath + uri;
-
-            // Create a File object for the requested file
             File file = new File(fullPath);
-
-            // Check if the file exists and is readable
-            if (file.isHidden() || !file.exists() || !file.isFile()) {
-                sendError(ctx, HttpResponseStatus.NOT_FOUND);
-                return;
+            
+            if(file.exists() || file.isFile()){
+                // send the file
+                FilesWeb.sendFile(file, ctx);
+            }else{
+                FilesWeb.sendFileFromUser(req.uri(), ctx);
             }
-
-            try (RandomAccessFile raf = new RandomAccessFile(file, "r")) {
-                long fileLength = raf.length();
-
-                HttpResponse response = new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK);
-                HttpUtil.setContentLength(response, fileLength);
-
-                // Determine the content type
-                String contentType = "text/html; charset=UTF-8";
-                if (uri.endsWith(".js")) {
-                    contentType = "application/javascript";
-                } else if (uri.endsWith(".css")) {
-                    contentType = "text/css";
-                } else if (uri.endsWith(".txt")) {
-                    contentType = "text/plain";
-                } else if (uri.endsWith(".json")) {
-                    contentType = "application/json";
-                } else if (uri.endsWith(".png")) {
-                    contentType = "image/png";
-                } else if (uri.endsWith(".jpg") || uri.endsWith(".jpeg")) {
-                    contentType = "image/jpeg";
-                } else if (uri.endsWith(".gif")) {
-                    contentType = "image/gif";
-                }
-
-                response.headers().set(HttpHeaderNames.CONTENT_TYPE, contentType);
-
-                // Write the initial line and the header.
-                ctx.write(response);
-
-                // Write the content.
-                ctx.write(new ChunkedFile(raf, 0, fileLength, 8192), ctx.newProgressivePromise());
-
-                // Write the end marker.
-                ChannelFuture lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT);
-
-                // Close the connection once the whole content is written out.
-                lastContentFuture.addListener(ChannelFutureListener.CLOSE);
-            }
-        }
-
-        private static void sendError(ChannelHandlerContext ctx, HttpResponseStatus status) {
-            FullHttpResponse response = new DefaultFullHttpResponse(
-                    HttpVersion.HTTP_1_1, status,
-                    ctx.alloc().buffer(0));
-
-            response.headers().set(HttpHeaderNames.CONTENT_TYPE, "text/plain; charset=UTF-8");
-            ctx.writeAndFlush(response).addListener(ChannelFutureListener.CLOSE);
+            
+            
         }
 
         @Override
@@ -327,14 +289,14 @@ public class ServerWeb extends Server {
                 }
 
                 // handle the backspace situation
-                if(request.equals("\b")){
+                if (request.equals("\b")) {
                     // reduce the buffer lenght when bigger than zero
-                    if(buffer.length() > 0){
-                        buffer.setLength(buffer.length()-1);
+                    if (buffer.length() > 0) {
+                        buffer.setLength(buffer.length() - 1);
                     }
                     return;
                 }
-                
+
                 // shall we append the new letter?
                 buffer.append(request);
 

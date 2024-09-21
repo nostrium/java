@@ -111,12 +111,13 @@ public class ServerFTP extends Server {
         server.setBufferSize(1024 * 5); // 5 kilobytes
         try {
             // Start it synchronously in our localhost and in the port
+            isRunning = true;
             server.listenSync(InetAddress.getByName("localhost"), this.getPort());
         } catch (IOException ex) {
             Logger.getLogger(ServerFTP.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        isRunning = true;
+       
     }
 
     @Override
@@ -156,7 +157,7 @@ public class ServerFTP extends Server {
 
         @Override
         public void onDisconnected(FTPConnection ftpc) {
-            Log.write("FTP", TerminalCode.LOGOUT, "Diconnected", ftpc.getUsername());
+            Log.write("FTP", TerminalCode.LOGOUT, "Disconnected", ftpc.getUsername());
         }
     }
 }

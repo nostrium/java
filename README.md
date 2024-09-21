@@ -72,7 +72,7 @@ Feature roadmap
 + [ ] add x-file messages
 + [ ] write text-based games
 + [ ] read/write emails
-+ [ ] display static mardown files on www as HTML
++ [x] display static mardown files on www as HTML
 + [ ] display images on text terminals as text
 + [ ] queue of message notifications when login
 + [ ] share/update collections
