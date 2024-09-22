@@ -50,10 +50,9 @@ User interfaces:
 + [ ] NOSTR clients (Primal, Coracle, ...)
 + [x] web (server)
 + [x] telnet (server)
-+ [-] SSH (server)
++ [~] SSH (server)
 + [ ] IRC (server/client)
 + [x] telegram (bot)
-+ [ ] simpleX (bot)
 + [ ] API (server)
 
 Need other ones? Please open a ticket. 
@@ -65,28 +64,31 @@ Feature roadmap
 + [ ] spam control / approval of posts on relay
 + [ ] share nostr posts with other relays
 + [x] automatic SSL registration on Let's Encrypt
-+ [ ] file sharing with a quota (FTP, WWW)
++ [~] file sharing with a quota (FTP, WWW)
 + [ ] Android reverse proxy to a subdomain
 + [ ] launch virtual machines on browser/android
 + [ ] define personal NOSTR/NNTP/IRC/Gopher servers
 + [ ] add x-file messages
-+ [ ] write text-based games
++ [~] write text-based games
 + [ ] read/write emails
 + [x] display static mardown files on www as HTML
 + [ ] display images on text terminals as text
 + [ ] queue of message notifications when login
-+ [ ] share/update collections
++ [ ] share/update file collections
 + [ ] marketplace / wallet
-+ [ ] tip/transfer between users
++ [ ] pay/transfer crypto between users
 + [ ] engine for text games
-+ [ ] bot to bridge social networks (NOSTR, X, ..)
++ [ ] bridge posts across social networks (NOSTR, X, ..)
++ [ ] personal blog
++ [ ] personal forum
+
 
 Servers
 -------
 + [ ] NOSTR
 + [x] HTTP - 80
 + [x] HTTPS - 443
-+ [ ] SSH (Secure Shell) - 22
++ [~] SSH (Secure Shell) - 22
 + [x] Telnet - 23
 
 File sharing:
@@ -123,7 +125,7 @@ Network basics:
 
 Broadcast:
 + [ ] RSS
-+ [ ] Web radio
++ [ ] Web radio with user voting/suggestions
 
 Cybersec:
 + [ ] I2P

@@ -10,14 +10,17 @@ import com.vladsch.flexmark.html2md.converter.FlexmarkHtmlConverter;
 import com.vladsch.flexmark.profile.pegdown.Extensions;
 import com.vladsch.flexmark.profile.pegdown.PegdownOptionsAdapter;
 import com.vladsch.flexmark.util.data.DataHolder;
+import java.io.File;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.Normalizer;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -28,6 +31,32 @@ import java.util.regex.Pattern;
  * @author brito
  */
 public class TextFunctions {
+    
+    public static String getLastModifiedISO(File file) {
+        // Get the last modified time in milliseconds
+        long lastModified = file.lastModified();
+        
+        // Create a Date object
+        Date date = new Date(lastModified);
+        
+        // Create a SimpleDateFormat to format the date in ISO 8601 format
+        SimpleDateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        
+        // Return the formatted date as a string
+        return isoFormat.format(date);
+    }
+    
+     public static String humanReadableFileSize(File file) {
+        long bytes = file.length();
+        if (bytes < 1024) {
+            return bytes + " B";
+        } else {
+            int exp = (int) (Math.log(bytes) / Math.log(1024));
+            char sizePrefix = "KMGTPE".charAt(exp - 1); // Kilobyte, Megabyte, Gigabyte, etc.
+            double size = bytes / Math.pow(1024, exp);
+            return String.format("%.2f %sB", size, sizePrefix);
+        }
+    }
 
     public static boolean isValidNumberInRange(
             String numberStr, int lowerBound, int upperBound) {

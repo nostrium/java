@@ -31,6 +31,7 @@ import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.web.ServerWeb.sendError;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
+import online.nostrium.utils.TextFunctions;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -291,14 +292,17 @@ public class FilesWeb {
     }
 
     // Start building the HTML with a retro 80's style
-    String css = "<style>"
-            + "body { background-color: black; color: #00FF00; font-family: 'Courier New', monospace; padding: 20px; }"
-            + "h1 { color: #00FF00; text-shadow: 0 0 1px #00FF00, 0 0 2px #00FF00; font-size: 36px; }" // Reduced glow for header
-            + "a { color: #00FF99; text-decoration: none; font-weight: bold; }" // Soft green for links
-            + "a:hover { color: #33FF99; }" // Lighter green for hover effect
-            + "ul { list-style-type: none; padding-left: 0; }"
-            + "li { margin-bottom: 10px; }"
-            + "</style>";
+   String css = "<style>"
+    + "body { background-color: black; color: #d3d3d3; font-family: 'Courier New', monospace; padding: 20px; }" // White-grey text
+    + "desc { font-size: 12px; }" // Set normal paragraph text size to 12px
+    + "h1 { color: #00FF00; text-shadow: 0 0 1px #00FF00, 0 0 2px #00FF00; font-size: 36px; }" // Reduced glow for header
+    + "a { color: #00FF99; text-decoration: none; font-weight: bold; }" // Soft green for links
+    + "a:hover { color: #33FF99; }" // Lighter green for hover effect
+    + "ul { list-style-type: none; padding-left: 0; }"
+    + "li { margin-bottom: 10px; }"
+    + "</style>";
+
+
 
     StringBuilder htmlContent = new StringBuilder();
     htmlContent.append("<html><head>").append(css).append("</head><body>");
@@ -337,13 +341,19 @@ public class FilesWeb {
             if (file.isDirectory()) {
                 continue;
             } else {
+                String size = TextFunctions.humanReadableFileSize(file);
+                String date = TextFunctions.getLastModifiedISO(file);
                 // Add a clickable link for files
                 htmlContent.append("\n<li><a href=\"")
                         .append(requestUrl)
                         .append(filename)
                         .append("\">📄 ")
                         .append(filename)
-                        .append("</a></li>");
+                        .append("</a>"
+                                + "<desc> [" + size + "]"
+                                + "[" + date + "]"
+                                + "</desc>"
+                                + "</li>");
             }
         }
     }
