@@ -26,6 +26,8 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import online.nostrium.logs.Log;
+import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.web.ServerWeb.sendError;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
@@ -187,21 +189,24 @@ public class FilesWeb {
         User user = UserUtils.getUserByUsername(username);
         if (user == null) {
             sendError(ctx, HttpResponseStatus.NOT_FOUND);
+            Log.write("WWW", TerminalCode.NOT_FOUND, "User not found", username);
+            return;
         }
         // the user exists
-        @SuppressWarnings("null")
         File folder = new File(user.getFolder(true), "www");
         if (folder.exists() == false) {
-            FileUtils.forceMkdirParent(folder);
+            FileUtils.forceMkdir(folder);
         }
         // folder needs to really exist
         if (folder.exists() == false) {
+            Log.write(TerminalCode.FAIL, "Unable to create WWW folder", folder.getPath());
             sendError(ctx, HttpResponseStatus.INTERNAL_SERVER_ERROR);
+            return;
         }
 
         // looking for the index pages
         if (data.length == 2) {
-            launchIndexDefault(folder, ctx);
+            launchIndexDefault(folder, ctx,uri);
             return;
         }
 
@@ -215,7 +220,7 @@ public class FilesWeb {
 
         // is this a directory?
         if (file.isDirectory()) {
-            launchIndexDefault(file, ctx);
+            launchIndexDefault(file, ctx,uri);
             return;
         }
 
@@ -254,7 +259,8 @@ public class FilesWeb {
         }
     }
 
-    private static void launchIndexDefault(File folder, ChannelHandlerContext ctx) throws IOException {
+    private static void launchIndexDefault(File folder, 
+            ChannelHandlerContext ctx, String url) throws IOException {
         File file = new File(folder, "index.html");
         File fileMarkdown = new File(folder, "index.md");
 
@@ -268,17 +274,23 @@ public class FilesWeb {
         }
 
         // show the files inside the folder
-        String fileList = listFilesInFolderAsHtml(folder);
+        String fileList = listFilesInFolderAsHtml(folder, url);
         sendText(fileList, ctx, ".html");
     }
     
-    public static String listFilesInFolderAsHtml(File folder) {
+    
+    public static String listFilesInFolderAsHtml(File folder, String requestUrl) {
     // Check if the input is a directory
     if (!folder.isDirectory()) {
         return "<html><body><h1>Error: Not a directory!</h1></body></html>";
     }
 
-    // Start building the HTML with a retro 80's style, including reduced header glow
+    // Ensure requestUrl always ends with a "/" for consistent URL construction
+    if (!requestUrl.endsWith("/")) {
+        requestUrl += "/";
+    }
+
+    // Start building the HTML with a retro 80's style
     String css = "<style>"
             + "body { background-color: black; color: #00FF00; font-family: 'Courier New', monospace; padding: 20px; }"
             + "h1 { color: #00FF00; text-shadow: 0 0 1px #00FF00, 0 0 2px #00FF00; font-size: 36px; }" // Reduced glow for header
@@ -291,39 +303,59 @@ public class FilesWeb {
     StringBuilder htmlContent = new StringBuilder();
     htmlContent.append("<html><head>").append(css).append("</head><body>");
     htmlContent.append("<h1>File Listing for ").append(folder.getName()).append("</h1>");
-    htmlContent.append("<ul>");
+    htmlContent.append("<ul>\n");
 
     // Add a ".." link to go back to the parent directory (if applicable)
     File parent = folder.getParentFile();
-    if (parent != null && parent.getName().startsWith("npub") == false) {
-        htmlContent.append("<li><a href=\"../\">..</a></li>"); 
+    if (parent != null && !parent.getName().startsWith("npub")) {
+        htmlContent.append("<li><a href=\"").append(requestUrl).append("../\">..</a></li>");
     }
 
     // List files and directories
     File[] files = folder.listFiles();
+    
+    // list first the folders
     if (files != null) {
         for (File file : files) {
+            String filename = file.getName();
             if (file.isDirectory()) {
                 // Add a clickable link for directories
-                htmlContent.append("<li><a href=\"")
-                        .append(file.getName())
+                htmlContent.append("\n<li><a href=\"")
+                        .append(requestUrl)
+                        .append(filename)
                         .append("/\">📁 ")
-                        .append(file.getName())
+                        .append(filename)
                         .append("</a></li>");
+            } 
+        }
+    }
+    
+    // list second the files
+    if (files != null) {
+        for (File file : files) {
+            String filename = file.getName();
+            if (file.isDirectory()) {
+                continue;
             } else {
                 // Add a clickable link for files
-                htmlContent.append("<li><a href=\"")
-                        .append(file.getName())
+                htmlContent.append("\n<li><a href=\"")
+                        .append(requestUrl)
+                        .append(filename)
                         .append("\">📄 ")
-                        .append(file.getName())
+                        .append(filename)
                         .append("</a></li>");
             }
         }
     }
+    
+    
+    
+    
 
-    htmlContent.append("</ul></body></html>");
+    htmlContent.append("\n</ul></body></html>");
     return htmlContent.toString();
 }
+
 
     
 }
