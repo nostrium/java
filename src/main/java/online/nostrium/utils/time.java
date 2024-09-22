@@ -6,6 +6,9 @@
  */
 package online.nostrium.utils;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * @author Brito
  * @date: 2024-08-27
@@ -13,6 +16,16 @@ package online.nostrium.utils;
  */
 public class time {
 
+    public static String getTimeISO() {
+        // Create a Date object
+        Date date = new Date();
+        // Create a SimpleDateFormat to format the date in ISO 8601 format
+        SimpleDateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        
+        // Return the formatted date as a string
+        return isoFormat.format(date);
+    }
+    
     /**
      * Pauses the current thread for a while
      *

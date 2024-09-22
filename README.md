@@ -81,6 +81,7 @@ Feature roadmap
 + [ ] bridge posts across social networks (NOSTR, X, ..)
 + [ ] personal blog
 + [ ] personal forum
++ [ ] internal search engine
 
 
 Servers
@@ -160,7 +161,7 @@ and centralization of discussion groups. One of our goals is
 to provide an easy conversion of the existing forums to the
 nostr platform and provide a second life to them.
 
-+ [ ] web crawl to convert web forums (PhpBB, MyBB)
++ [ ] web crawl to convert web forums (Invision, PhpBB, MyBB)
 + [ ] tools to map older users to new nostr accounts
 
 

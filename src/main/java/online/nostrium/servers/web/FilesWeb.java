@@ -303,10 +303,16 @@ public class FilesWeb {
     + "</style>";
 
 
+    
+    String title = "<h1>File Listing for " + folder.getName() + "</h1>";
+    if(folder.getName().equals("www")){
+        title = "<h1>File Listing"  + "</h1>";
+    }
+   
 
     StringBuilder htmlContent = new StringBuilder();
     htmlContent.append("<html><head>").append(css).append("</head><body>");
-    htmlContent.append("<h1>File Listing for ").append(folder.getName()).append("</h1>");
+    htmlContent.append(title);
     htmlContent.append("<ul>\n");
 
     // Add a ".." link to go back to the parent directory (if applicable)
@@ -350,8 +356,8 @@ public class FilesWeb {
                         .append("\">📄 ")
                         .append(filename)
                         .append("</a>"
-                                + "<desc> [" + size + "]"
-                                + "[" + date + "]"
+                                + "<desc> [" + size + " | "
+                                + "" + date + "]"
                                 + "</desc>"
                                 + "</li>");
             }
