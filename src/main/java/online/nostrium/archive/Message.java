@@ -5,7 +5,7 @@
  * License: Apache-2.0
  */
 
-package online.nostrium.forum;
+package online.nostrium.archive;
 
 import com.google.gson.annotations.Expose;
 import java.util.Set;
@@ -33,6 +33,9 @@ public class Message implements Comparable<Topic>{
     
     @Expose
     protected String content;
+    
+    @Expose
+    public MessageExtra extra = new MessageExtra();
     
     
      // Implement Comparable to compare objects based on their toString() method

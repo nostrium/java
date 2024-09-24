@@ -231,9 +231,12 @@ public class ServerWeb extends Server {
             // Print the command to the server console
             System.out.println("[" + uniqueId + "] requested: " + uri);
 
+            boolean isRootRequest = false;
+            
             // Default to serving index.html if the root is requested
             if ("/".equals(uri)) {
                 uri = "/index.html";
+                isRootRequest = true;
             }
 
             // Resolve the full file path in the central archive
@@ -244,11 +247,13 @@ public class ServerWeb extends Server {
             if(file.exists() || file.isFile()){
                 // send the file
                 FilesWeb.sendFile(file, ctx);
-            }else{
+            }else
+            if(isRootRequest == false){
                 FilesWeb.sendFileFromUser(req.uri(), ctx);
             }
             
-            
+            // whatever was asked, we didn't found it
+            sendError(ctx, HttpResponseStatus.NOT_FOUND);
         }
 
         @Override

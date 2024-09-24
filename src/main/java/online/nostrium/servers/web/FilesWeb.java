@@ -185,6 +185,12 @@ public class FilesWeb {
     public static void sendFileFromUser(String uri, ChannelHandlerContext ctx) throws IOException {
         // https://nostrium.online/brito/
         String[] data = uri.split("/");
+        
+        if(data.length < 2){
+            sendError(ctx, HttpResponseStatus.NOT_FOUND);
+            Log.write("WWW", TerminalCode.NOT_FOUND, "URI not understood", uri);
+            return;
+        }
         // the position 1 should contain the username
         String username = data[1];
         User user = UserUtils.getUserByUsername(username);

@@ -25,10 +25,11 @@ public class Folder {
     public static String 
             nameFileConfig = "config.json",
             nameFolderData = "data",
-            nameFolderWWW = "www",
+            nameFolderWWW = "public",
             nameFolderFTP = "ftp",
             nameFolderGPT = "gpt",
             nameFolderChat = "chat",
+            nameFolderTemp = "temp",
             nameFolderStories = "stories",
             nameFolderChatRoom = "room.json",
             nameFolderBase = "forum",
@@ -85,6 +86,11 @@ public class Folder {
     public static File getFolderChat() {
         return defaultGetFolder(nameFolderChat);
     }
+    
+    public static File getFolderTemp() {
+        return defaultGetFolder(nameFolderTemp);
+    }
+    
     
     
     public static File getFolderProfileImages() {

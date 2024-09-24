@@ -152,6 +152,7 @@ Other services:
 + [ ] DMOZ web directory
 + [ ] AI chat
 + [ ] SearX search engine (or similar)
++ [ ] DICT https://datatracker.ietf.org/doc/html/rfc2229
 
 
 Forum conversion
