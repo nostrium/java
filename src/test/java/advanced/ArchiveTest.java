@@ -5,12 +5,16 @@
 package advanced;
 
 import java.io.File;
+import java.io.IOException;
 import online.nostrium.archive.Archive;
+import online.nostrium.archive.ArchiveType;
 import online.nostrium.archive.Group;
 import online.nostrium.archive.Message;
 import online.nostrium.archive.Topic;
+import online.nostrium.archive.forum.ForumArchive;
 import online.nostrium.main.Folder;
 import online.nostrium.utils.time;
+import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,14 +29,14 @@ public class ArchiveTest {
     }
 
     @Test
-    public void helloForum() {
+    public void helloForum() throws IOException {
         
         // save the data to disk
         File folder = Folder.getFolderTest();
         assertTrue(folder.exists());
         
 
-        Archive forum = new Archive("offgrid", folder);
+        ForumArchive forum = new ForumArchive("offgrid", folder);
         
         File folderGeneral = new File(folder, "general");
         Group group1 = new Group(folderGeneral);
@@ -60,10 +64,12 @@ public class ArchiveTest {
 "}", text);
         
         
-        forum.save();;
+        forum.save();
         assertTrue(forum.getFile().exists());
 
         
         System.gc();
+        // delete all files
+        FileUtils.deleteDirectory(folder);
     }
 }

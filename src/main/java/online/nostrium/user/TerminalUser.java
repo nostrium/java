@@ -6,7 +6,6 @@
  */
 package online.nostrium.user;
 
-import online.nostrium.main.core;
 import online.nostrium.servers.terminal.notifications.NotificationType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
@@ -42,7 +41,7 @@ public class TerminalUser extends TerminalApp {
     @Override
     public String getIntro() {
         
-        String title = "Manage your user profile";
+        String title = "User space";
         String text = screen.getWindowFrame(title);
         return text;
     }

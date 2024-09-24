@@ -10,50 +10,37 @@
 
 ```
 
-Nostrium is a nostr relay that provides a BBS platform.
-Users register using their usual NOSTR accounts (npub, nsec)
-and can view forum topics, replies and everything you would
-normally expect from a BSS or forum software.
+Internet doesn't last forever. So we provide you Nostrium
+to preserve your own piece of the network and to rebuild
+the network access for other humans that want to stay free.
 
-One of the main goals for this project is to convert existing
-BBS funcionality and forum sites into a future-proof mechanism.
-Many of the forum sites have data in locked-in formats that
-cannot be ported. With NOSTR we can rescue the data and preserve
-the information for future generations. Each account on the old
-forum is re-created as NOSTR account which can be given by the
-admins to the old users that want to continue active.
+In essence, Nostrium is your bridge to +40 types of servers
+and different protocols. If it is relevant, we'll add it.
 
-All forum posts (nostr events) are stored on the filesystem
-without using a database. This is intentional to permit the
-forum to continue functioning even if part of the database
-has become corrupted.
+Nostrium is a retro-style nostr relay that brings back BBS,
+alongside with text games and multiple ways to connect with
+other people on different platforms. Want to save your data?
+We make it easy to rescue your own data at other platforms.
 
-Another advantage is to permit the access to this forum
-through different methods. Telnet/SSH are the most common
-methods for a BBS, while forum sites prefer web interfaces.
-Nostrium will provide basic access for these interfaces.
 
-CLI navigation uses linux-style cd/ls commands.
-Type /help to see the available commands.
-
-Platform for off-grid
+Off-grid platform
 --------------------------------
 
-Think of Nostrium as a tool to provide Internet services
-even when the Internet is not available or became limited.
-For that reason, we are adding many different types of
-services.
+Below is our roadmap of services and protocols to be supported.
+If you see one that you'd like to see added, just tell us.
 
 
 User interfaces:
 
 + [ ] NOSTR clients (Primal, Coracle, ...)
-+ [x] web (server)
++ [x] [web (server)](docs/WebServer.md)
 + [x] telnet (server)
 + [~] SSH (server)
 + [ ] IRC (server/client)
 + [x] telegram (bot)
 + [ ] API (server)
++ [ ] Android
++ [ ] Desktop GUI
 
 Need other ones? Please open a ticket. 
 
@@ -71,7 +58,7 @@ Feature roadmap
 + [ ] add x-file messages
 + [~] write text-based games
 + [ ] read/write emails
-+ [x] display static mardown files on www as HTML
++ [x] [display static mardown files on www as HTML](docs/WebServer.md)
 + [ ] display images on text terminals as text
 + [ ] queue of message notifications when login
 + [ ] share/update file collections
@@ -115,6 +102,7 @@ Communication:
 + [ ] NNTPS (NNTP Secure) - 563
 + [ ] Gopher - 70
 + [ ] Rattlegram - sound
++ [ ] XMMP
 
 Network basics:
 + [?] WHOIS - 43
@@ -141,6 +129,13 @@ Domain/IP handling:
 + [ ] NTP (Network Time Protocol) - 123
 + [ ] SNTP (Simple Network Time Protocol) - 123
 + [ ] DHCP (Dynamic Host Configuration Protocol) - 67/68
+
+
+Mining/Nodes
++ [ ] Monero node
++ [ ] P2Pool monero mining
++ [ ] Signa plot farming
+
 
 Contacts:
 + [ ] WebDAV (Web Distributed Authoring and Versioning) - 80/443

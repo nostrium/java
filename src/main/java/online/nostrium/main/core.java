@@ -82,7 +82,7 @@ public class core {
             }
             time.waitMs(500);
         }
-        Log.write(TerminalCode.OK,"Stopped the servers");
+        Log.write(TerminalCode.WARNING,"Server launch had troubles");
     }
 
     

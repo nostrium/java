@@ -30,7 +30,8 @@ public enum TerminalCode {
     CRASH(302),
     DENIED(501),
     NOT_FOUND(404),
-    INFO(400);
+    INFO(400),
+    WARNING(401);
     
     
     private final int code;

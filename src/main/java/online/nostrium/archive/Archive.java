@@ -33,7 +33,7 @@ import org.apache.commons.io.FileUtils;
  * @date: 2024-09-22
  * @location: Germany
  */
-public class Archive {
+public abstract class Archive {
     
     
     private final 
@@ -50,6 +50,9 @@ public class Archive {
     @Expose
     String description;  // one line description
     
+    @Expose
+    ArchiveType type = ArchiveType.NONE;
+    
     public Archive(String id, File folder) {
         id = id.replace(" ", "").toLowerCase();
         this.id = id;
@@ -61,13 +64,21 @@ public class Archive {
                 Logger.getLogger(Archive.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        save();
+        //save();
     }
     
      // Override toString() method
     @Override
     public String toString() {
         return this.id;
+    }
+
+    public ArchiveType getType() {
+        return type;
+    }
+
+    public void setType(ArchiveType type) {
+        this.type = type;
     }
 
     public void addGroup(Group group) {
