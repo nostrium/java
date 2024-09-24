@@ -58,7 +58,7 @@ Feature roadmap
 + [ ] add x-file messages
 + [~] write text-based games
 + [ ] read/write emails
-+ [x] [display static mardown files on www as HTML](docs/WebServer.md)
++ [x] [display static mardown files on www as HTML](docs/WebPages.md)
 + [ ] display images on text terminals as text
 + [ ] queue of message notifications when login
 + [ ] share/update file collections
@@ -74,8 +74,8 @@ Feature roadmap
 Servers
 -------
 + [ ] NOSTR
-+ [x] HTTP - 80
-+ [x] HTTPS - 443
++ [x] [HTTP](docs/ServerWeb.md) - 80
++ [x] [HTTPS](docs/ServerWeb.md) - 443
 + [~] SSH (Secure Shell) - 22
 + [x] Telnet - 23
 
