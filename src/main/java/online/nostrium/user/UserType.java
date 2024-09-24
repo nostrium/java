@@ -19,5 +19,5 @@ public enum UserType {
     ANON,       // logged without registering
     MEMBER,     // registered user
     MOD,        // assigned as moderator the overall platform
-    SYSOP,      // founder or owner of the platform
+    ADMIN,      // founder or owner of the platform
 }

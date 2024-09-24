@@ -13,6 +13,7 @@ import online.nostrium.utils.EncryptionUtils;
 import online.nostrium.utils.FileFunctions;
 import online.nostrium.utils.TextFunctions;
 import static online.nostrium.utils.TextFunctions.sha256;
+import online.nostrium.utils.cybersec.DoubleCrypt;
 
 /**
  * @author Brito
@@ -32,16 +33,23 @@ public class UserUtils {
      * @return user that was automatically generated
      */
     public static User getUserAdmin() {
-        User user = new User();
-        // set nsec and npub to all zeros
-        String zeroKeys = "00000000000000000000000000000000";
-        user.setNsec(zeroKeys);
-        user.setNpub(zeroKeys);
-        user.setDisplayName("admin");
-        String timestamp = "2000-01-01T00:00:00Z";
-        user.setRegisteredTime(timestamp);
-        user.setLastLoginTime(timestamp);
-        return user;
+        return getUserByType(UserType.ADMIN);
+//        User user = new User();
+//        // set nsec and npub to all zeros
+//        String zeroKeys = "00000000000000000000000000000000";
+//        user.setNsec(zeroKeys);
+//        user.setNpub(zeroKeys);
+//        user.setDisplayName("admin");
+//        String timestamp = "2000-01-01T00:00:00Z";
+//        user.setRegisteredTime(timestamp);
+//        user.setLastLoginTime(timestamp);
+//        return user;
+    }
+    
+    public static String doubleEncrypt(User user, String text){
+        String nsecAdmin = getUserAdmin().nsec;
+        String nsecUser = user.getNsec();
+        return DoubleCrypt.encode(nsecAdmin, nsecUser, text);
     }
     
     public static String getAnonUserDisplayName(String npub){
@@ -89,6 +97,30 @@ public class UserUtils {
                         folder, nameEndingJsonUser
                 );
     }
+    
+    /**
+     * Finds an user based on username
+     * @param userType
+     * @return null when nothing was found
+     */
+    public static User getUserByType(UserType userType){
+        ArrayList<File> files = getUserFiles();
+        if(files == null || files.isEmpty()){
+            return null;
+        }
+        for(File file : files){
+            User user = User.jsonImport(file);
+            if(user == null){
+                continue;
+            }
+            // too many users don't define the user name
+            if(user.getUserType() == userType){
+                return user;
+            }
+        }
+        return null;
+    }
+    
     
     /**
      * Finds an user based on username
@@ -291,11 +323,8 @@ public class UserUtils {
                 != password.length()){
             return false;
         }
-        if(password.length() > maxCharacters || password.length() < minCharacters){
-            return false;
-        }
         // all done
-        return true;
+        return !(password.length() > maxCharacters || password.length() < minCharacters);
     }
 
     public static boolean isValidUsername(String username) {
@@ -303,12 +332,9 @@ public class UserUtils {
                  .equalsIgnoreCase(username) == false){
             return false;
         }
-        if(username.length() > maxCharacters 
-                || username.length() < minCharacters){
-            return false;
-        }
         // all done
-        return true;
+        return !(username.length() > maxCharacters
+                || username.length() < minCharacters);
     }
 
     /**
@@ -325,7 +351,7 @@ public class UserUtils {
             return;
         }
         // there is no valid user folder at this moment, first time entering
-        user.setUserType(UserType.SYSOP);
+        user.setUserType(UserType.ADMIN);
         // announce it to the user
         screen.writeln("You are the first user, you are now chosen as ADMINISTRATOR");
         screen.writeln("Please use \"register <name> <password>\" to save your account to disk.");

@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import online.nostrium.main.Folder;
 import online.nostrium.main.core;
+import online.nostrium.user.alternative.AccountsManager;
 import online.nostrium.utils.EncryptionUtils;
 import online.nostrium.utils.FileFunctions;
 import org.apache.commons.io.FileUtils;
@@ -47,6 +48,8 @@ public class User {
     String password = null,
             nsec = null;
 
+    
+    AccountsManager alternativeAccounts = new AccountsManager(this);
     
     /**
      * Provides the JSON where the file should be created
@@ -96,6 +99,10 @@ public class User {
 
         // all done
         return true;
+    }
+
+    public AccountsManager getAlternativeAccounts() {
+        return alternativeAccounts;
     }
 
     /**

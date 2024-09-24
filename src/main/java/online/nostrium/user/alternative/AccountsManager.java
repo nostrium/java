@@ -10,7 +10,6 @@ package online.nostrium.user.alternative;
 import com.google.gson.annotations.Expose;
 import java.util.ArrayList;
 import online.nostrium.user.User;
-import online.nostrium.user.UserUtils;
 
 /**
  * @author Brito
@@ -26,9 +25,6 @@ public class AccountsManager {
     
     public AccountsManager(User user) {
         this.user = user;
-        // encrypt the wordControl
-        String nsecAdmin = UserUtils.getUserAdmin().getNsec();
-        String nsecUSer = user.getNsec();
     }
 
     public ArrayList<PlatformAccount> getAccounts() {

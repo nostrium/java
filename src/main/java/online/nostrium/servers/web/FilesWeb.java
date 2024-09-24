@@ -352,7 +352,6 @@ public class FilesWeb {
         for (File file : files) {
             String filename = file.getName();
             if (file.isDirectory()) {
-                continue;
             } else {
                 String size = TextFunctions.humanReadableFileSize(file);
                 String date = TextFunctions.getLastModifiedISO(file);
@@ -362,19 +361,14 @@ public class FilesWeb {
                         .append(filename)
                         .append("\">📄 ")
                         .append(filename)
-                        .append("</a>"
-                                + "<desc> [" + size + " | "
-                                + "" + date + "]"
-                                + "</desc>"
-                                + "</li>");
+                        .append("</a><desc> [")
+                        .append(size)
+                        .append(" | ")
+                        .append(date)
+                        .append("]</desc></li>");
             }
         }
     }
-    
-    
-    
-    
-
     htmlContent.append("\n</ul></body></html>");
     return htmlContent.toString();
 }

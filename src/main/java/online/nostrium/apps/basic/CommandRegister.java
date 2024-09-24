@@ -35,7 +35,7 @@ public class CommandRegister extends TerminalCommand{
         // only valid for anon users
         User user = this.app.user;
         if(user.getUserType() != UserType.ANON
-                && user.getUserType() != UserType.SYSOP){
+                && user.getUserType() != UserType.ADMIN){
             return reply(TerminalCode.FAIL, 
                     "Can only use this command on new accounts");
         }
@@ -82,7 +82,7 @@ public class CommandRegister extends TerminalCommand{
         user.setPasswordHash(passwordHash);
         user.setDisplayName(username);
         user.setUsername(username);
-        if(user.getUserType() != UserType.SYSOP){
+        if(user.getUserType() != UserType.ADMIN){
             user.setUserType(UserType.MEMBER);
         }
         
@@ -94,8 +94,8 @@ public class CommandRegister extends TerminalCommand{
         user.save();
         this.app.updateUser(user);
         
-        if(user.getUserType() == UserType.SYSOP){
-            this.app.screen.writeln(UserType.SYSOP.toString() + " account is created.");
+        if(user.getUserType() == UserType.ADMIN){
+            this.app.screen.writeln(UserType.ADMIN.toString() + " account is created.");
         }
         
         // all done

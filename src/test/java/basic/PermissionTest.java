@@ -24,13 +24,13 @@ public class PermissionTest {
     @Test
     public void helloPermissions() {
         User user1 = UserUtils.createUserAnonymous();
-        user1.setUserType(UserType.SYSOP);
+        user1.setUserType(UserType.ADMIN);
         
         User user2 = UserUtils.createUserAnonymous();
         user2.setUserType(UserType.ANON);
         
         // set permission only for ADMIN
-        Permissions permission = new Permissions(UserType.SYSOP);
+        Permissions permission = new Permissions(UserType.ADMIN);
         
         // should not be allowed
         assertFalse(

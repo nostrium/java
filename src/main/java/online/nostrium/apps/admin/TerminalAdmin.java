@@ -31,7 +31,7 @@ public class TerminalAdmin extends TerminalApp {
         
         // make sure that only ADMIN can enter here
         permissions.clearEveryone();
-        permissions.addUserType(UserType.SYSOP);
+        permissions.addUserType(UserType.ADMIN);
     }
 
     @Override
