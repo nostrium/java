@@ -18,7 +18,10 @@ import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import online.nostrium.logs.Log;
+import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
+import online.nostrium.user.User;
+import online.nostrium.utils.screens.Screen;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -33,7 +36,7 @@ import org.apache.commons.io.FileUtils;
  * @date: 2024-09-22
  * @location: Germany
  */
-public abstract class Archive {
+public abstract class Archive extends TerminalApp{
     
     
     private final 
@@ -42,7 +45,7 @@ public abstract class Archive {
    private final File folder;     
         
     @Expose
-    final String id;      // small description without spaces and lower case
+    public final String id;      // small description without spaces and lower case
     
     @Expose
     String title;   // human readable title
@@ -53,7 +56,8 @@ public abstract class Archive {
     @Expose
     ArchiveType type = ArchiveType.NONE;
     
-    public Archive(String id, File folder) {
+    public Archive(String id, File folder, Screen screen, User user) {
+        super(screen, user);
         id = id.replace(" ", "").toLowerCase();
         this.id = id;
         this.folder = new File(folder, id);
@@ -64,7 +68,14 @@ public abstract class Archive {
                 Logger.getLogger(Archive.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        //save();
+        // add the base commands
+        
+        // list the folders/files
+        // delete a message
+        // get inside a topic
+        // write a new topic
+        // reply with a message
+        // statistics
     }
     
      // Override toString() method

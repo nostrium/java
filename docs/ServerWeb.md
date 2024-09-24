@@ -4,10 +4,13 @@ Launches a web server on port 80 (HTTP) and port 443 (HTTPS).
 
 When you are launching in debug mode, these ports are 8000 and 4430 respectively.
 
+If you are using an old browser without HTTPS support, just use port 80.
+
 
 # Shell
 
-Nostrium isn't good graphic design, so we use command line and ASCII art almost everywhere.
+Our developers aren't any good with fancy graphic designs, so we use
+the command line and ASCII art almost everywhere.
 Same concept applies to the web interface, it is mostly command line based.
 
 The set of commands is the same as in other terminals, just type **help** to see

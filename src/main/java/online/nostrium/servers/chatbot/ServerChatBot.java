@@ -16,7 +16,7 @@ import online.nostrium.main.Folder;
 import online.nostrium.servers.Server;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.utils.screens.Screen;
-import online.nostrium.utils.screens.ScreenLocalCLI;
+import online.nostrium.utils.screens.ScreenCLI;
 import online.nostrium.utils.time;
 
 /**
@@ -138,7 +138,7 @@ public class ServerChatBot extends Server {
             time.waitMs(100);
         }
         
-        Screen screen = new ScreenLocalCLI();
+        Screen screen = new ScreenCLI();
         try {
             // Example of calling the non-static chat method to send a message
             server.chat(screen, "Write a hello world in Java");

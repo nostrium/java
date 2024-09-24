@@ -15,7 +15,7 @@ import online.nostrium.servers.terminal.TerminalType;
  * Date: 2024-08-10
  * Location: Germany
  */
-public class ScreenLocalCLI extends Screen{
+public class ScreenCLI extends Screen{
 
     @Override
     public TerminalType getTerminalType() {

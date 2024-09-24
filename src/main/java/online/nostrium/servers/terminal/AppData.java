@@ -4,7 +4,6 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-
 package online.nostrium.servers.terminal;
 
 import com.google.gson.Gson;
@@ -25,47 +24,53 @@ import org.apache.commons.io.FileUtils;
  * @location: Germany
  */
 public final class AppData {
-    
+
     final TerminalApp app;
-    
-    @SuppressWarnings("unchecked")
+
     @Expose
-    HashMap<String, Object> data = new HashMap();
+    HashMap<String, Object> data = new HashMap<>();
 
     public AppData(TerminalApp app) {
         this.app = app;
         // try to load previous values
-        load();
+        load(app);
     }
-    
-    
-    public void put(String tag, Object object){
+
+    public void load(TerminalApp app) {
+        File file = getFile();
+        if (file == null || file.exists() == false) {
+            return;
+        }
+        AppData fromDisk = AppData.jsonImport(file);
+        if (fromDisk == null) {
+            return;
+        }
+        data = fromDisk.getData();
+    }
+
+    public File getFile() {
+        try {
+            if (app == null || app.getFolder() == null) {
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        File folder = app.getFolder();
+        String filename = Folder.nameFileData;
+        return new File(folder, filename);
+    }
+
+    public void put(String tag, Object object) {
         data.put(tag, object);
     }
 
     public HashMap<String, Object> getData() {
         return data;
     }
-    
-    public File getFile(){
-        File folder = app.getFolder();
-        String filename = Folder.nameFileData;
-        return new File(folder, filename);
-    }
-    
-    public void load(){
-        File file = this.getFile();
-        if(file.exists() == false){
-            return;
-        }
-        AppData fromDisk = AppData.jsonImport(file);
-        if(fromDisk == null){
-            return;
-        }
-        data = fromDisk.getData();
-    }
-    
-    public void save(){
+
+    public void save() {
         try {
             String text = this.jsonExport();
             File file = this.getFile();
@@ -74,7 +79,7 @@ public final class AppData {
             Logger.getLogger(AppData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      * Export this object as JSON
      *
@@ -89,7 +94,7 @@ public final class AppData {
         Gson gson = gsonBuilder.create();
         return gson.toJson(this);
     }
-    
+
     /**
      * Import a JSON into an object
      *
@@ -124,7 +129,7 @@ public final class AppData {
     public void delete() {
         data = new HashMap<>();
         File file = this.getFile();
-        if(file.exists()){
+        if (file.exists()) {
             file.delete();
         }
     }

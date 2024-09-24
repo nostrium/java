@@ -105,6 +105,9 @@ public class Folder {
      * @return 
      */
     public static File defaultGetFolder(File folderBase, String nameFolder){
+        if(nameFolder == null){
+            return null;
+        }
         File folder = new File(folderBase, nameFolder);
         // create the folder when it does not exist
         if(folder.exists() == false){

@@ -20,7 +20,6 @@ import online.nostrium.utils.screens.Screen;
 import online.nostrium.user.User;
 import online.nostrium.logs.Log;
 import online.nostrium.main.Folder;
-import static online.nostrium.main.Folder.namePermissions;
 import online.nostrium.utils.cybersec.Permissions;
 
 /**
@@ -31,7 +30,7 @@ import online.nostrium.utils.cybersec.Permissions;
 public abstract class TerminalApp {
 
     // settings and data for this app
-    public AppData data = new AppData(this);
+    public AppData data;
 
     // navigation between different apps
     public TerminalApp appParent = null;
@@ -48,6 +47,7 @@ public abstract class TerminalApp {
     public TerminalApp(Screen screen, User user) {
         this.screen = screen;
         this.user = user;
+        this.data = new AppData(this);
         // add the default commands
         addCommandInternal(new CommandHelp(this));
         addCommandInternal(new CommandLs(this));
@@ -56,7 +56,7 @@ public abstract class TerminalApp {
         addCommandInternal(new CommandExit(this));
 
         // add the permissions into the data storage
-        data.put(namePermissions, permissions);
+//        data.put(namePermissions, permissions);
     }
 
     public final void addCommandInternal(TerminalCommand command) {
@@ -184,11 +184,11 @@ public abstract class TerminalApp {
             Object object) {
 
         // only text messages are supported for now
-        if (object instanceof String) {
+        if (object instanceof String dataReceived) {
             String text = "["
                     + notificationType.name()
                     + "] "
-                    + (String) object;
+                    + dataReceived;
 
             screen.writeln(text);
         }

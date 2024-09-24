@@ -17,7 +17,7 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.utils.screens.Screen;
-import online.nostrium.utils.screens.ScreenLocalCLI;
+import online.nostrium.utils.screens.ScreenCLI;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -39,7 +39,7 @@ public class EmailTest {
         // needs to have a profile on disk
         user.save();
 
-        Screen screen = new ScreenLocalCLI();
+        Screen screen = new ScreenCLI();
         TerminalApp app = new TerminalEmail(screen, user);
         TerminalBasic base = new TerminalBasic(screen, user);
         base.addApp(app);

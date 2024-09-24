@@ -7,10 +7,13 @@
 
 package online.nostrium.archive.forum;
 
-import online.nostrium.archive.blog.*;
 import java.io.File;
 import online.nostrium.archive.Archive;
 import online.nostrium.archive.ArchiveType;
+import online.nostrium.servers.terminal.CommandResponse;
+import online.nostrium.servers.terminal.TerminalCode;
+import online.nostrium.user.User;
+import online.nostrium.utils.screens.Screen;
 
 /**
  * @author Brito
@@ -19,9 +22,23 @@ import online.nostrium.archive.ArchiveType;
  */
 public class ForumArchive extends Archive{
 
-    public ForumArchive(String id, File folder) {
-        super(id, folder);
+    public ForumArchive(String id, File folder, Screen screen, User user) {
+        super(id, folder, screen, user);
         setType(ArchiveType.FORUM);
+    }
+ @Override
+    public String getIntro() {
+        return "Forum";
+    }
+
+    @Override
+    public CommandResponse defaultCommand(String commandInput) {
+        return reply(TerminalCode.NOT_FOUND);
+    }
+
+    @Override
+    public String getName() {
+        return id;
     }
 
 }

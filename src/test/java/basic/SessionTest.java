@@ -14,7 +14,7 @@ import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.utils.screens.Screen;
-import online.nostrium.utils.screens.ScreenLocalCLI;
+import online.nostrium.utils.screens.ScreenCLI;
 import static online.nostrium.utils.TestingFunctions.createFakeApp;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
@@ -39,13 +39,13 @@ public class SessionTest {
         
         // create the users
         User user1 = UserUtils.createUserAnonymous();
-        Screen screen1 = new ScreenLocalCLI();
+        Screen screen1 = new ScreenCLI();
         TerminalApp app1 = createFakeApp(screen1, user1, "chat", id);
         Session session1 = new Session(ClientType.TELNET, app1, user1);
         sessions.addSession(session1);
         
         User user2 = UserUtils.createUserAnonymous();
-        Screen screen2 = new ScreenLocalCLI();
+        Screen screen2 = new ScreenCLI();
         TerminalApp app2 = createFakeApp(screen2, user2, "chat", id);
         Session session2 = new Session(ClientType.TELNET, app2, user2);
         sessions.addSession(session2);
