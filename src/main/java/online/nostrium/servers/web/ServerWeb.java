@@ -232,7 +232,7 @@ public class ServerWeb extends Server {
             System.out.println("[" + uniqueId + "] requested: " + uri);
 
             boolean isRootRequest = false;
-            
+
             // Default to serving index.html if the root is requested
             if ("/".equals(uri)) {
                 uri = "/index.html";
@@ -243,15 +243,14 @@ public class ServerWeb extends Server {
             String basePath = Folder.getFolderWWW().getCanonicalPath();
             String fullPath = basePath + uri;
             File file = new File(fullPath);
-            
-            if(file.exists() || file.isFile()){
+
+            if (file.exists() || file.isFile()) {
                 // send the file
                 FilesWeb.sendFile(file, ctx);
-            }else
-            if(isRootRequest == false){
+            } else if (isRootRequest == false) {
                 FilesWeb.sendFileFromUser(req.uri(), ctx);
             }
-            
+
             // whatever was asked, we didn't found it
             sendError(ctx, HttpResponseStatus.NOT_FOUND);
         }
