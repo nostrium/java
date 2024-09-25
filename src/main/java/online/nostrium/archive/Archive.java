@@ -18,6 +18,7 @@ import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import online.nostrium.archive.commands.CommandArchiveLs;
+import online.nostrium.archive.commands.CommandArchiveWrite;
 import online.nostrium.logs.Log;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
@@ -78,6 +79,7 @@ public abstract class Archive extends TerminalApp{
         // delete a message
         // get inside a topic
         // write a new topic
+        this.addCommand(new CommandArchiveWrite(this));
         // reply with a message
         // statistics
     }
