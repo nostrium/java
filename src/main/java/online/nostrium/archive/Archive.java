@@ -17,6 +17,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import online.nostrium.archive.commands.CommandArchiveLs;
 import online.nostrium.logs.Log;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
@@ -69,8 +70,11 @@ public abstract class Archive extends TerminalApp{
             }
         }
         // add the base commands
+        setFolderCurrent(folder);
         
         // list the folders/files
+        this.removeCommand("ls");
+        this.addCommand(new CommandArchiveLs(this));
         // delete a message
         // get inside a topic
         // write a new topic
@@ -108,6 +112,7 @@ public abstract class Archive extends TerminalApp{
         group.save();
     }
 
+    @Override
     public String getId() {
         return id;
     }
@@ -116,6 +121,7 @@ public abstract class Archive extends TerminalApp{
         return title;
     }
 
+    @Override
     public String getDescription() {
         return description;
     }
@@ -166,7 +172,37 @@ public abstract class Archive extends TerminalApp{
         }
     }
     
+    @Override
+    public String getSubFolders(){
+        String result = "";
+        try {
+            String pathBase = folder.getCanonicalPath();
+            String pathCurrent = this.getFolderCurrent().getCanonicalPath();
+            if(pathBase.length() > pathCurrent.length()){
+                result = "";
+                setFolderCurrent(folder);
+            }else{
+                result = pathCurrent.substring(pathBase.length());
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(Archive.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
+    
     public File getFile(){
         return new File(folder, filename);
     }
+    
+    public File getFolderCurrent() {
+        if(data.has("folderCurrent") == false){
+            return null;
+        }
+        return (File) data.get("folderCurrent");
+    }
+
+    public void setFolderCurrent(File folderCurrent) {
+        data.put("folderCurrent", folderCurrent);
+    }
+    
 }

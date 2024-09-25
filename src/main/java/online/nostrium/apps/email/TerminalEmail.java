@@ -41,7 +41,6 @@ public class TerminalEmail extends TerminalApp {
         folderBase = EmailUtils.getFolderEmail(user);
         setFolderCurrent(EmailUtils.getFolderEmail(user));
         
-        // make sure that only ADMIN can enter here
 //        permissions.clearEveryone();
 //        permissions.denyUserType(UserType.ANON);
         

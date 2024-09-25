@@ -82,7 +82,7 @@ public class CommandLogin extends TerminalCommand{
         
         // introduce some delay on the login
         // make bruteforcing harder
-        int delay = MathFunctions.getRandomIntInRange(1, 4);
+        int delay = MathFunctions.getRandomIntInRange(1, 1);
         time.wait(delay);
         
         if(user == null){

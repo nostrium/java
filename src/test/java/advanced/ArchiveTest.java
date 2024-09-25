@@ -72,6 +72,9 @@ public class ArchiveTest {
         assertTrue(forum.getFile().exists());
 
         
+        // get inside the folder
+        
+        
         System.gc();
         // delete all files
         FileUtils.deleteDirectory(folder);
