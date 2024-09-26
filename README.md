@@ -22,6 +22,14 @@ alongside with text games and multiple ways to connect with
 other people on different platforms. Want to save your data?
 We make it easy to rescue your own data at other platforms.
 
+Everything is a file
+-------------------
+
+This platform uses ZERO databases, everything is a file.
+Data is easy to transfer or read by other tools, in case
+part of this data becomes damaged, the rest still works.
+
+
 
 Off-grid platform
 --------------------------------
@@ -94,6 +102,7 @@ Email service:
 + [ ] POP3S (POP3 Secure) - 995
 + [ ] IMAP (Internet Message Access Protocol) - 143
 + [ ] IMAPS (IMAP Secure) - 993
++ [ ] HKP (HTTP Keyserver Protocol) - 11371
 
 Communication:
 + [ ] IRC (Internet Relay Chat) - 194
@@ -102,7 +111,11 @@ Communication:
 + [ ] NNTPS (NNTP Secure) - 563
 + [ ] Gopher - 70
 + [ ] Rattlegram - sound
-+ [ ] XMMP
++ [ ] XMMP - 5222, 5269
+
+
+Specific messengers
++ [ ] SimpleX
 
 Network basics:
 + [?] WHOIS - 43

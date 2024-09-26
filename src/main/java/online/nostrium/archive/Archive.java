@@ -63,13 +63,13 @@ public abstract class Archive extends TerminalApp{
         id = id.replace(" ", "").toLowerCase();
         this.id = id;
         this.folder = new File(folder, id);
-        if(folder.exists() == false){
-            try {
-                FileUtils.forceMkdir(folder);
-            } catch (IOException ex) {
-                Logger.getLogger(Archive.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+//        if(folder.exists() == false){
+//            try {
+//                FileUtils.forceMkdir(folder);
+//            } catch (IOException ex) {
+//                Logger.getLogger(Archive.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
         // add the base commands
         setFolderCurrent(folder);
         

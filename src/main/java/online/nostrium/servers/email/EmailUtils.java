@@ -32,10 +32,10 @@ public class EmailUtils {
             nameAttachments = "attach", // files received as attachments
             nameGarbage = "garbage";    // files deleted, removed after 30 days
 
-    public static File getFolderEmail(User user) {
-        File folderUser = user.getFolder(true);
+    public static File getFolderEmail(User user, boolean createFolder) {
+        File folderUser = user.getFolder(createFolder);
         File folder = new File(folderUser, nameEmailFolder);
-        if (folder.exists() == false) {
+        if (createFolder && folder.exists() == false) {
             try {
                 FileUtils.forceMkdir(folder);
             } catch (IOException ex) {
@@ -48,7 +48,7 @@ public class EmailUtils {
     }
 
     public static File getFolderEmail(User user, String folderName) {
-        File folderEmail = getFolderEmail(user);
+        File folderEmail = getFolderEmail(user, true);
         File folder = new File(folderEmail, folderName);
         if (folder.exists() == false) {
             try {
@@ -63,7 +63,7 @@ public class EmailUtils {
     }
     
     public static void createFoldersBasic(User user) {
-        EmailUtils.getFolderEmail(user);
+        EmailUtils.getFolderEmail(user, true);
         // create the other basic folders
         EmailUtils.getFolderEmail(user, EmailUtils.nameInbox);
         EmailUtils.getFolderEmail(user, EmailUtils.nameOutbox);

@@ -38,13 +38,13 @@ public class TerminalEmail extends TerminalApp {
         this.removeCommand("cd");
         this.addCommand(new CommandEmailCd(this));
         
-        folderBase = EmailUtils.getFolderEmail(user);
-        setFolderCurrent(EmailUtils.getFolderEmail(user));
+        folderBase = EmailUtils.getFolderEmail(user, false);
+        setFolderCurrent(folderBase);
         
 //        permissions.clearEveryone();
 //        permissions.denyUserType(UserType.ANON);
         
-        createFoldersBasic(user);
+//        createFoldersBasic(user);
     }
 
     @Override

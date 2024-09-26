@@ -231,4 +231,15 @@ public abstract class TerminalApp {
     public void log(TerminalCode code, String text, String data) {
         Log.write(this.getId(), code, text, data);
     }
+    
+    public File getFolderCurrent() {
+        if(data.has("folderCurrent") == false){
+            return null;
+        }
+        return (File) data.get("folderCurrent");
+    }
+
+    public void setFolderCurrent(File folderCurrent) {
+        data.put("folderCurrent", folderCurrent);
+    }
 }

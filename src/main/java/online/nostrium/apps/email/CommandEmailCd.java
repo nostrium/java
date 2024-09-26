@@ -57,7 +57,7 @@ public class CommandEmailCd extends TerminalCommand {
         }
         
         
-        File folderBase = EmailUtils.getFolderEmail(app.user);
+        File folderBase = EmailUtils.getFolderEmail(app.user, true);
         File folder = new File(folderBase, parameters);
         if(folder.exists() == false){
             return reply(TerminalCode.NOT_FOUND, "Folder not found");

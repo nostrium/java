@@ -17,7 +17,6 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
-import static online.nostrium.utils.ascii.DirectoryTreeBuilder.buildTree;
 import org.apache.commons.io.FileUtils;
 
 /**

@@ -26,7 +26,7 @@ public class TerminalUser extends TerminalApp {
     public TerminalUser(Screen screenAssigned, User user) {
         super(screenAssigned, user);
                 
-        File folder = user.getFolder(true);
+        File folder = user.getFolder(false);
         
         addApp(new BlogArchive("blog", folder, screen, user));
         addApp(new ForumArchive("forum", folder, screen, user));
