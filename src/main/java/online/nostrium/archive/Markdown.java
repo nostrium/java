@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.TreeSet;
+import online.nostrium.utils.time;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -32,6 +33,9 @@ import org.apache.commons.io.FileUtils;
 public class Markdown {
 
     private Topic topic = new Topic();
+    
+    public Markdown(){
+    }
 
     public Markdown(File file) throws IOException {
 
@@ -211,13 +215,16 @@ public class Markdown {
             writer.write("# " + topic.getTitle() + "\n\n"); // Add topic title as header 1
             
             writeIfNotEmpty(writer, "+ author: ", topic.getAuthor(), "\n");
+            writeIfNotEmpty(writer, "+ npub: ", topic.getNpub(), "\n");
             writeIfNotEmpty(writer, "+ date: ", topic.getDate(), "\n");
             writeIfNotEmpty(writer, "+ description: ", topic.getDescription(), "\n");
-            writeIfNotEmpty(writer, "+ date: ", topic.getDate(), "\n");
             String tags = String.join(", ", topic.getTags());
             writeIfNotEmpty(writer, "+ tags: ", tags, "\n");
-            writeIfNotEmpty(writer, "+ views: ", topic.getViews()+"", "\n");
-            // write the content
+            writeIfNotEmpty(writer, "+ views: ", topic.getViews(), "\n");
+            writeIfNotEmpty(writer, "+ like: ", topic.getLikes(), "\n");
+            writeIfNotEmpty(writer, "+ dislikes: ", topic.getDislikes(), "\n");
+            writeIfTrue(writer, "+ edited: ", topic.isEdited(), "\n");
+                // write the content
             writeIfNotEmpty(writer, "\n", topic.getContent(), "");
             // write the separator
             //writer.write("----\n");
@@ -229,10 +236,16 @@ public class Markdown {
                 
                 writer.write("## " + message.getDate() + "\n"); // Add date as header 2
                 
+                writeIfNotEmpty(writer, "+ title: ", message.getTitle(), "\n");
                 writeIfNotEmpty(writer, "+ author: ", message.getAuthor(), "\n");
+                writeIfNotEmpty(writer, "+ npub: ", message.getNpub(), "\n");
                 writeIfNotEmpty(writer, "+ date: ", message.getDate(), "\n");
                 writeIfNotEmpty(writer, "+ description: ", message.getDescription(), "\n");
                 writeIfNotEmpty(writer, "+ date: ", message.getDate(), "\n");
+                writeIfNotEmpty(writer, "+ like: ", message.getLikes(), "\n");
+                writeIfNotEmpty(writer, "+ dislikes: ", message.getDislikes(), "\n");
+                writeIfTrue(writer, "+ edited: ", message.isEdited(), "\n");
+                
                 tags = String.join(", ", message.getTags());
                 writeIfNotEmpty(writer, "+ tags: ", tags, "\n");
                 // write the content
@@ -241,6 +254,21 @@ public class Markdown {
             }
         }
     }
+    
+    private void writeIfNotEmpty(BufferedWriter writer, String t1, long value, String t2) throws IOException {
+        if(value == 0){
+            return;
+        }
+        writeIfNotEmpty(writer, t1, value + "", t2);
+    }
+    
+    private void writeIfTrue(BufferedWriter writer, String t1, boolean value, String t2) throws IOException {
+        if(value == false){
+            return;
+        }
+        writeIfNotEmpty(writer, t1, value + "", t2);
+    }
+     
     
     
     private void writeIfNotEmpty(BufferedWriter writer, String t1, String text, String t2) throws IOException {
@@ -289,6 +317,11 @@ public class Markdown {
         public TreeSet<Message> getMessages() {
             return messages;
         }
+
+        public void setDate() {
+            String date = time.getCurrentDay();
+            setDate(date);
+        }
     }
 
     public static class Message {
@@ -301,6 +334,7 @@ public class Markdown {
         private String npub = "";
         private long likes = 0; // Counter for likes
         private long dislikes = 0; // Counter for dislikes
+        private boolean edited = false;
         private final List<String> tags = new ArrayList<>(); // List for storing tags
 
         
@@ -320,6 +354,14 @@ public class Markdown {
             this.title = title;
         }
 
+        public boolean isEdited() {
+            return edited;
+        }
+
+        public void setEdited(boolean edited) {
+            this.edited = edited;
+        }
+
         public String getAuthor() {
             return author;
         }
@@ -333,7 +375,7 @@ public class Markdown {
         }
 
         public void setDate(String date) {
-            this.date = date != null ? date : ""; // Ensure date is not null
+            this.date = date;
         }
 
         public String getDescription() {
@@ -380,7 +422,7 @@ public class Markdown {
                     + ", author='" + author + '\''
                     + ", date='" + date + '\''
                     + ", description='" + description + '\''
-                    + ", authorNPUB='" + npub + '\''
+                    + ", npub='" + npub + '\''
                     + ", likes=" + likes
                     + ", dislikes=" + dislikes
                     + ", tags=" + String.join(", ", tags)

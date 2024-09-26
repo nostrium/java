@@ -236,10 +236,18 @@ public abstract class TerminalApp {
         if(data.has("folderCurrent") == false){
             return null;
         }
-        return (File) data.get("folderCurrent");
+        String name = (String) data.get("folderCurrent");
+        File folder = new File(user.getFolder(false), name);
+        return folder;
     }
 
     public void setFolderCurrent(File folderCurrent) {
-        data.put("folderCurrent", folderCurrent);
+        String text = "/";
+        String folderRoot = user.getFolder(false).getAbsolutePath();
+        String folderToAdd = folderCurrent.getAbsolutePath();
+        if(folderRoot.length() < folderToAdd.length()){
+            text = folderToAdd.substring(folderRoot.length());
+        }
+        data.put("folderCurrent", text);
     }
 }

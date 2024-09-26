@@ -12,6 +12,8 @@ import java.nio.charset.Charset;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import online.nostrium.archive.ArchiveUtils;
+import online.nostrium.archive.Markdown;
+import online.nostrium.archive.Markdown.Topic;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
@@ -37,7 +39,8 @@ public class CommandArchiveWrite extends TerminalCommand {
     public CommandResponse execute(TerminalType terminalType, String parameters) {
 
         // get the current folder
-        File folder = (File) app.data.get("folderCurrent");
+        String folderName = (String) app.data.get("folderCurrent");
+        File folder = new File(app.user.getFolder(false), folderName);
                 
         // syntax
         // write title -> content of topic
@@ -66,8 +69,17 @@ public class CommandArchiveWrite extends TerminalCommand {
         // create the filename
         String filename = ArchiveUtils.generateFilename(title) + ".md";
         File file = new File(folder, filename);
+        
+        Markdown md = new Markdown();
+        Topic topic = md.getTopic();
+        topic.setTitle(title);
+        topic.setContent(content);
+        topic.setDate();
+        topic.setAuthor(app.user.getDisplayName());
+        topic.setNpub(app.user.getNpub());
+        
         try {
-            FileUtils.writeStringToFile(file, content, Charset.defaultCharset());
+            md.saveToFile(file);
         } catch (IOException ex) {
             Logger.getLogger(CommandArchiveWrite.class.getName()).log(Level.SEVERE, null, ex);
             return reply(TerminalCode.CRASH, "Failed to write: " + filename);

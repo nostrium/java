@@ -196,15 +196,18 @@ public abstract class Archive extends TerminalApp{
         return new File(folder, filename);
     }
     
-    public File getFolderCurrent() {
-        if(data.has("folderCurrent") == false){
-            return null;
-        }
-        return (File) data.get("folderCurrent");
-    }
-
-    public void setFolderCurrent(File folderCurrent) {
-        data.put("folderCurrent", folderCurrent);
-    }
+//    @Override
+//    public File getFolderCurrent() {
+//        if(data.has("folderCurrent") == false){
+//            return null;
+//        }
+//        return (File) data.get("folderCurrent");
+//    }
+//
+//    @Override
+//    public void setFolderCurrent(File folderCurrent) {
+//        
+//        data.put("folderCurrent", folderCurrent);
+//    }
     
 }
