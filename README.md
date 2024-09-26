@@ -42,10 +42,10 @@ User interfaces:
 
 + [ ] NOSTR clients (Primal, Coracle, ...)
 + [x] [web (server)](docs/WebServer.md)
-+ [x] telnet (server)
++ [x] [telnet (server)](docs/ServerTelnet.md)
 + [~] SSH (server)
 + [ ] IRC (server/client)
-+ [x] telegram (bot)
++ [x] [telegram (bot)](docs/BotTelegram.md)
 + [ ] API (server)
 + [ ] Android
 + [ ] Desktop GUI
