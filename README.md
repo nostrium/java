@@ -14,13 +14,15 @@ Internet doesn't last forever. So we provide you Nostrium
 to preserve your own piece of the network and to rebuild
 the network access for other humans that want to stay free.
 
-In essence, Nostrium is your bridge to +40 types of servers
-and different protocols. If it is relevant, we'll add it.
+In essence, Nostrium [bridges](docs/Architecture.md) 
++40 types of servers and different protocols. If the server
+is relevant, we will add it.
 
 Nostrium is a retro-style nostr relay that brings back BBS,
 alongside with text games and multiple ways to connect with
 other people on different platforms. Want to save your data?
 We make it easy to rescue your own data at other platforms.
+
 
 Everything is a file
 -------------------
@@ -28,6 +30,10 @@ Everything is a file
 This platform uses ZERO databases, everything is a file.
 Data is easy to transfer or read by other tools, in case
 part of this data becomes damaged, the rest still works.
+
+Also, we are from 80s and fancy databases are from the 90s.
+
+From us you only get json and mardown files with data.
 
 
 
@@ -43,6 +49,7 @@ User interfaces:
 + [ ] NOSTR clients (Primal, Coracle, ...)
 + [x] [web (server)](docs/WebServer.md)
 + [x] [telnet (server)](docs/ServerTelnet.md)
++ [ ] Gopher (server/client)
 + [~] SSH (server)
 + [ ] IRC (server/client)
 + [x] [telegram (bot)](docs/BotTelegram.md)
@@ -82,6 +89,7 @@ Feature roadmap
 Servers
 -------
 + [ ] NOSTR
++ [ ] Gopher - 70
 + [x] [HTTP](docs/ServerWeb.md) - 80
 + [x] [HTTPS](docs/ServerWeb.md) - 443
 + [~] SSH (Secure Shell) - 22
@@ -109,7 +117,6 @@ Communication:
 + [ ] IRCS (IRC Secure) - 6697
 + [ ] NNTP (Network News Transfer Protocol) - 119
 + [ ] NNTPS (NNTP Secure) - 563
-+ [ ] Gopher - 70
 + [ ] Rattlegram - sound
 + [ ] XMMP - 5222, 5269
 

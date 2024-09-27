@@ -6,12 +6,9 @@
  */
 package online.nostrium.servers.telnet;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import online.nostrium.main.core;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalColor;
@@ -217,7 +214,6 @@ public class ScreenTelnet extends Screen {
      * Returns an ASCII art window frame around the given title.
      *
      * @param title The title to be framed.
-     * @param color
      * @return The framed title as a string.
      */
     @Override
