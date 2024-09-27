@@ -6,8 +6,6 @@ package advanced;
 
 import java.io.File;
 import java.io.IOException;
-import online.nostrium.archive.ArchiveType;
-import online.nostrium.archive.ArchiveUtils;
 import static online.nostrium.archive.ArchiveUtils.generateFilename;
 import online.nostrium.archive.Group;
 import online.nostrium.archive.Message;

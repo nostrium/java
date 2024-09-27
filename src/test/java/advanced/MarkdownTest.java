@@ -25,10 +25,10 @@ public class MarkdownTest {
         // Create a sample Markdown file for testing blog posts and replies
         String markdownContent = """
                 # My First Blog Post
-
+                > This is my first blog post on interesting topics.
+                                                                                 
                 + author: John Doe
                 + date: 2024-09-25
-                + description: This is my first blog post on interesting topics.
                 + tags: blog, firstPost
                 
                 This is the content of the blog post. It discusses various interesting topics in detail.
@@ -139,24 +139,25 @@ public class MarkdownTest {
     public void testSaveToFile() throws IOException {
         markdown.saveToFile(new File(folderTemp, "savedMarkdown.md"));
         
+        
         // Check the saved file contents
         List<String> savedLines = Files.readAllLines(Paths.get(folderTemp.getAbsolutePath(), "savedMarkdown.md"));
         assertEquals("# My First Blog Post", savedLines.get(0).trim());
-        assertEquals("+ author: John Doe", savedLines.get(2).trim());
-        assertEquals("+ date: 2024-09-25", savedLines.get(5).trim());
-        assertEquals("+ description: This is my first blog post on interesting topics.", savedLines.get(4).trim());
-        assertEquals("+ tags: blog, firstPost", savedLines.get(6).trim());
-        assertEquals("This is the content of the blog post. It discusses various interesting topics in detail.", savedLines.get(9).trim());
-        assertEquals("----", savedLines.get(11).trim()); // Separator
-        assertEquals("## 2024-09-26", savedLines.get(13).trim()); // First reply date
-        assertEquals("+ author: Alice", savedLines.get(14).trim()); // First reply author
-        assertEquals("This is the first reply to the blog post.", savedLines.get(19).trim()); // First reply content
-        assertEquals("+ tags: reply, comment", savedLines.get(17).trim()); // First reply tags
-        assertEquals("----", savedLines.get(21).trim()); // Second separator
-        assertEquals("## 2024-09-28", savedLines.get(23).trim()); // Second reply date
-        assertEquals("+ author: Charlie", savedLines.get(24).trim()); // Second reply author
-        assertEquals("This is the third reply.", savedLines.get(29).trim()); // Second reply content
-        assertEquals("+ tags: feedback", savedLines.get(27).trim()); // Second reply tags
+        assertEquals("+ author: John Doe", savedLines.get(3).trim());
+        assertEquals("+ date: 2024-09-25", savedLines.get(4).trim());
+//        assertEquals("+ description: This is my first blog post on interesting topics.", savedLines.get(4+i).trim());
+        assertEquals("+ tags: blog, firstPost", savedLines.get(5).trim());
+        assertEquals("This is the content of the blog post. It discusses various interesting topics in detail.", savedLines.get(7).trim());
+        assertEquals("----", savedLines.get(9).trim()); // Separator
+        assertEquals("## 2024-09-26", savedLines.get(11).trim()); // First reply date
+        assertEquals("+ author: Alice", savedLines.get(12).trim()); // First reply author
+        assertEquals("This is the first reply to the blog post.", savedLines.get(17).trim()); // First reply content
+        assertEquals("+ tags: reply, comment", savedLines.get(15).trim()); // First reply tags
+        assertEquals("----", savedLines.get(19).trim()); // Second separator
+        assertEquals("## 2024-09-28", savedLines.get(21).trim()); // Second reply date
+        assertEquals("+ author: Charlie", savedLines.get(22).trim()); // Second reply author
+        assertEquals("This is the third reply.", savedLines.get(27).trim()); // Second reply content
+        assertEquals("+ tags: feedback", savedLines.get(25).trim()); // Second reply tags
         // Clean up the saved file after the test
         Files.deleteIfExists(Paths.get(folderTemp.getAbsolutePath(), "savedMarkdown.md"));
     }

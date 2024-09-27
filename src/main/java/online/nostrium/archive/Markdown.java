@@ -77,13 +77,19 @@ public class Markdown {
                 topic.setContent(topic.getContent() + "\n" + line);
             }
 
-            if (line.startsWith("# ")) {
+            if (line.startsWith("# ") && fieldsHaveFinished == false) {
                 line = line.trim();
                 topic.setTitle(line.substring(2).trim()); // Extract topic title
                 continue;
             }
+            
+            if (line.startsWith("> ") && fieldsHaveFinished == false) {
+                line = line.trim();
+                topic.setDescription(line.substring(2).trim()); // Extract topic title
+                continue;
+            }
 
-            if (line.startsWith("+ ")) { // Check for fields starting with '+ '
+            if (line.startsWith("+ ") && fieldsHaveFinished == false) { // Check for fields starting with '+ '
                 line = line.trim();
                 String[] parts = line.substring(2).trim().split(": ", 2);
                 if (parts.length < 2) {
@@ -212,12 +218,12 @@ public class Markdown {
     public void saveToFile(File file) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             // write the topic
-            writer.write("# " + topic.getTitle() + "\n\n"); // Add topic title as header 1
+            writer.write("# " + topic.getTitle() + "\n"); // Add topic title as header 1
+            writeIfNotEmpty(writer, "> ", topic.getDescription(), "\n\n");
             
             writeIfNotEmpty(writer, "+ author: ", topic.getAuthor(), "\n");
             writeIfNotEmpty(writer, "+ npub: ", topic.getNpub(), "\n");
             writeIfNotEmpty(writer, "+ date: ", topic.getDate(), "\n");
-            writeIfNotEmpty(writer, "+ description: ", topic.getDescription(), "\n");
             String tags = String.join(", ", topic.getTags());
             writeIfNotEmpty(writer, "+ tags: ", tags, "\n");
             writeIfNotEmpty(writer, "+ views: ", topic.getViews(), "\n");
@@ -235,12 +241,12 @@ public class Markdown {
                 writer.write("\n\n----\n\n");
                 
                 writer.write("## " + message.getDate() + "\n"); // Add date as header 2
+                writeIfNotEmpty(writer, "> ", message.getDescription(), "\n");
                 
                 writeIfNotEmpty(writer, "+ title: ", message.getTitle(), "\n");
                 writeIfNotEmpty(writer, "+ author: ", message.getAuthor(), "\n");
                 writeIfNotEmpty(writer, "+ npub: ", message.getNpub(), "\n");
                 writeIfNotEmpty(writer, "+ date: ", message.getDate(), "\n");
-                writeIfNotEmpty(writer, "+ description: ", message.getDescription(), "\n");
                 writeIfNotEmpty(writer, "+ date: ", message.getDate(), "\n");
                 writeIfNotEmpty(writer, "+ like: ", message.getLikes(), "\n");
                 writeIfNotEmpty(writer, "+ dislikes: ", message.getDislikes(), "\n");
