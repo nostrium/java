@@ -6,6 +6,7 @@
  */
 package online.nostrium.main;
 
+import online.nostrium.folder.FolderUtils;
 import java.io.File;
 import java.util.Date;
 import online.nostrium.logs.Log;
@@ -96,7 +97,7 @@ public class core {
     
     public static void main(String[] args) {
 
-        File folder = Folder.getFolderBase();
+        File folder = FolderUtils.getFolderBase();
 
         String logo = AsciiArt.intro();
 

@@ -3,8 +3,8 @@ package online.nostrium.user;
 import java.io.File;
 import java.util.ArrayList;
 import online.nostrium.logs.Log;
-import online.nostrium.main.Folder;
-import static online.nostrium.main.Folder.nameEndingJsonUser;
+import online.nostrium.folder.FolderUtils;
+import static online.nostrium.folder.FolderUtils.nameEndingJsonUser;
 import static online.nostrium.nostr.NostrUtils.generateNostrKeys;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalCode;
@@ -53,7 +53,7 @@ public class UserUtils {
     }
     
     public static String getAnonUserDisplayName(String npub){
-        return Folder.nameAnonUsers
+        return FolderUtils.nameAnonUsers
                 + "#" + npub.substring(5, 8).toUpperCase();
     }
     
@@ -92,7 +92,7 @@ public class UserUtils {
      * @return 
      */
     public static ArrayList<File> getUserFiles(){
-        File folder = Folder.getFolderUsers();
+        File folder = FolderUtils.getFolderUsers();
         return FileFunctions.searchFiles(
                         folder, nameEndingJsonUser
                 );
@@ -151,8 +151,7 @@ public class UserUtils {
     
     
     public static User getUserByNpub(String npub) {
-        File folder = FileFunctions.getThirdLevelFolderForUser(
-                Folder.getFolderUsers(), npub, false);
+        File folder = FileFunctions.getThirdLevelFolderForUser(FolderUtils.getFolderUsers(), npub, false);
         File file = new File(folder, npub + nameEndingJsonUser);
         
         // user not found
@@ -177,7 +176,7 @@ public class UserUtils {
      */
     public static int countUsers() {
         int userCount = 0;
-        File folderBase = Folder.getFolderUsers();
+        File folderBase = FolderUtils.getFolderUsers();
         
         // Adjust search pattern to match the new naming convention
         ArrayList<File> files = FileFunctions.searchFiles(folderBase, "-user.json");
@@ -343,7 +342,7 @@ public class UserUtils {
      * @param screen 
      */
     public static void checkFirstTimeSetup(User user, Screen screen) {
-        File folder = Folder.getFolderUsers();
+        File folder = FolderUtils.getFolderUsers();
        
         // are there files inside?
         File[] files = folder.listFiles();

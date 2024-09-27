@@ -5,7 +5,7 @@
  * License: Apache-2.0
  */
 
-package online.nostrium.main;
+package online.nostrium.folder;
 
 import com.google.gson.annotations.Expose;
 import java.io.File;
@@ -19,10 +19,11 @@ import org.apache.commons.io.FileUtils;
  * Place: Germany
  * @author brito
  */
-public class Folder {
+public class FolderUtils {
 
     @Expose
     public static String 
+            nameFileData = "data.json",
             nameFileConfig = "config.json",
             nameFolderData = "data",
             nameFolderWWW = "public",
@@ -41,7 +42,6 @@ public class Folder {
             nameAnonUsers = "Anon",
             nameSystem = "SYSTEM",
             nameEndingJsonUser = "-user.json",
-            nameFileData = "data.json",
             namePermissions = "permissions";
     
     /**
@@ -114,7 +114,7 @@ public class Folder {
             try {
                 FileUtils.forceMkdir(folder);
             } catch (IOException ex) {
-                Logger.getLogger(Folder.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FolderUtils.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return folder;
@@ -130,7 +130,7 @@ public class Folder {
         try {
             FileUtils.deleteDirectory(folder);
         } catch (IOException ex) {
-            Logger.getLogger(Folder.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FolderUtils.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

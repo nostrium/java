@@ -6,6 +6,7 @@
  */
 package online.nostrium.main;
 
+import online.nostrium.folder.FolderUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
@@ -168,7 +169,7 @@ public class Config {
     @SuppressWarnings({"FinallyDiscardsException", "deprecation"})
     public void save() {
         try {
-            File file = Folder.getFileConfig();
+            File file = FolderUtils.getFileConfig();
             String data = jsonExport();
             FileUtils.writeStringToFile(file, data, "UTF-8");
             Log.write(OK, "Created config file", file.getPath());
@@ -182,7 +183,7 @@ public class Config {
     private static Config createAndWriteNew() {
         Config config = new Config();
         try {
-            File file = Folder.getFileConfig();
+            File file = FolderUtils.getFileConfig();
             String data = config.jsonExport();
             FileUtils.writeStringToFile(file, data);
             Log.write(OK, "Created config file", file.getPath());
@@ -200,7 +201,7 @@ public class Config {
      */
     public static Config loadConfig() {
 
-        File file = Folder.getFileConfig();
+        File file = FolderUtils.getFileConfig();
 
         // there is no file? Create one
         if (file.exists() == false) {

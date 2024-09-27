@@ -9,7 +9,7 @@ package online.nostrium.archive.blog;
 
 import java.io.File;
 import online.nostrium.archive.Archive;
-import online.nostrium.archive.ArchiveType;
+import online.nostrium.folder.FolderType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.user.User;
@@ -24,7 +24,7 @@ public class BlogArchive extends Archive{
 
     public BlogArchive(String id, File folder, Screen screen, User user) {
         super(id, folder, screen, user);
-        setType(ArchiveType.BLOG);
+        setType(FolderType.BLOG);
     }
 
     @Override

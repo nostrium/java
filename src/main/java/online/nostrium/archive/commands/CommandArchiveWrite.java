@@ -8,7 +8,6 @@ package online.nostrium.archive.commands;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import online.nostrium.archive.ArchiveUtils;
@@ -39,7 +38,7 @@ public class CommandArchiveWrite extends TerminalCommand {
     public CommandResponse execute(TerminalType terminalType, String parameters) {
 
         // get the current folder
-        String folderName = (String) app.data.get("folderCurrent");
+        String folderName = (String) app.dataUser.get("folderCurrent");
         File folder = new File(app.user.getFolder(false), folderName);
                 
         // syntax

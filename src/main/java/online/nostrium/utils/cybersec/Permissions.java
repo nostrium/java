@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import online.nostrium.user.User;
 import online.nostrium.user.UserType;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.servers.terminal.AppData;
 
 /**
@@ -204,7 +204,7 @@ public final class Permissions {
         if (data == null) {
             return;
         }
-        data.put(Folder.namePermissions, this);
+        data.put(FolderUtils.namePermissions, this);
         data.save();
     }
 

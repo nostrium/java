@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -58,7 +58,7 @@ public final class AppData {
             return null;
         }
         File folder = app.getFolder();
-        String filename = Folder.nameFileData;
+        String filename = FolderUtils.nameFileData;
         return new File(folder, filename);
     }
 

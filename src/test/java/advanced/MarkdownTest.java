@@ -12,13 +12,13 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.TreeSet;
 import online.nostrium.archive.Markdown;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 
 public class MarkdownTest {
 
     private Markdown markdown;
     
-    File folderTemp = Folder.getFolderTemp();
+    File folderTemp = FolderUtils.getFolderTemp();
 
     @BeforeEach
     public void setUp() throws IOException {

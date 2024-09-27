@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.main.old.forum.convert.ConvertIPB;
 import online.nostrium.main.old.forum.structures.ForumGroup;
 import online.nostrium.main.old.forum.structures.ForumTopic;

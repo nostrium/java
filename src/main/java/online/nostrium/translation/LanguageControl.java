@@ -9,7 +9,7 @@ package online.nostrium.translation;
 
 import java.io.File;
 import java.util.HashMap;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 
 /**
  * 
@@ -38,7 +38,7 @@ public class LanguageControl {
      */
     private void loadLanguages() {
         // find all the related files inside the folder
-        File[] files = Folder.getFolderLang().listFiles();
+        File[] files = FolderUtils.getFolderLang().listFiles();
         // empty folder?
         if(files.length == 0){
             Language langDefault = new Language(languageDefault);

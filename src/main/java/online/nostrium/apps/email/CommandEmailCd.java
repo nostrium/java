@@ -42,9 +42,9 @@ public class CommandEmailCd extends TerminalCommand {
         if(parameters.equalsIgnoreCase("..")){
             String subFolders = app.getSubFolders();
             if(subFolders.isEmpty() == false){
-               File folder = (File) app.data.get("folderCurrent");
+               File folder = (File) app.dataUser.get("folderCurrent");
                folder = folder.getParentFile();
-                app.data.put("folderCurrent", folder);
+                app.dataUser.put("folderCurrent", folder);
                 return reply(TerminalCode.OK);
             }
             return reply(TerminalCode.EXIT_APP, "");
@@ -64,7 +64,7 @@ public class CommandEmailCd extends TerminalCommand {
         }
         
         // the folder exists, accept the change
-        app.data.put("folderCurrent", folder);
+        app.dataUser.put("folderCurrent", folder);
         
         return reply(TerminalCode.OK);
     }

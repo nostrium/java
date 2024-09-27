@@ -19,7 +19,7 @@ import online.nostrium.apps.chat.CommandChatClear;
 import online.nostrium.utils.screens.Screen;
 import online.nostrium.user.User;
 import online.nostrium.logs.Log;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.utils.cybersec.Permissions;
 
 /**
@@ -30,7 +30,7 @@ import online.nostrium.utils.cybersec.Permissions;
 public abstract class TerminalApp {
 
     // settings and data for this app
-    public AppData data;
+    public AppData dataUser;
 
     // navigation between different apps
     public TerminalApp appParent = null;
@@ -42,12 +42,13 @@ public abstract class TerminalApp {
     public final Screen screen;
 
     // permissions to access this app
-    public Permissions permissions = new Permissions(data);
+    public Permissions permissions = new Permissions(dataUser);
 
     public TerminalApp(Screen screen, User user) {
         this.screen = screen;
         this.user = user;
-        this.data = new AppData(this);
+        // temporary data never saved to disk
+        this.dataUser = new AppData(this);
         // add the default commands
         addCommandInternal(new CommandHelp(this));
         addCommandInternal(new CommandLs(this));
@@ -222,8 +223,8 @@ public abstract class TerminalApp {
     }
 
     public File getFolder() {
-        File folderRoot = Folder.getFolderData();
-        return Folder.defaultGetFolder(
+        File folderRoot = FolderUtils.getFolderData();
+        return FolderUtils.defaultGetFolder(
                 folderRoot, this.getName()
         );
     }
@@ -233,10 +234,10 @@ public abstract class TerminalApp {
     }
     
     public File getFolderCurrent() {
-        if(data.has("folderCurrent") == false){
+        if(dataUser.has("folderCurrent") == false){
             return null;
         }
-        String name = (String) data.get("folderCurrent");
+        String name = (String) dataUser.get("folderCurrent");
         File folder = new File(user.getFolder(false), name);
         return folder;
     }
@@ -248,6 +249,6 @@ public abstract class TerminalApp {
         if(folderRoot.length() < folderToAdd.length()){
             text = folderToAdd.substring(folderRoot.length());
         }
-        data.put("folderCurrent", text);
+        dataUser.put("folderCurrent", text);
     }
 }

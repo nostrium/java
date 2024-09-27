@@ -7,7 +7,7 @@
 package basic;
 
 import java.io.File;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,7 +25,7 @@ public class FolderTest {
     public void getFolder() {
         // we are in development/test mode.
         // make sure we get the run folder
-        File folder = Folder.getFolderBase();
+        File folder = FolderUtils.getFolderBase();
         assertNotNull(folder);
         assertEquals("run", folder.getName());
         System.out.println(folder.getPath());

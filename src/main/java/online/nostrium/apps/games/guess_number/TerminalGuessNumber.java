@@ -173,17 +173,17 @@ public class TerminalGuessNumber extends TerminalApp {
         // records existing
         ArrayList<UserRecordGuess> scores;
         String tagByAttempts = "score_by_attempts";
-        if (data.has(tagByAttempts) == false) {
+        if (dataUser.has(tagByAttempts) == false) {
             scores = new ArrayList();
-            data.put(tagByAttempts, scores);
+            dataUser.put(tagByAttempts, scores);
         } else {
-            scores = (ArrayList<UserRecordGuess>) data.get(tagByAttempts);
+            scores = (ArrayList<UserRecordGuess>) dataUser.get(tagByAttempts);
         }
 
         // add the value
         if (scores.isEmpty()) {
             scores.add(scoreNow);
-            data.save();
+            dataUser.save();
             return;
         }
 
@@ -201,8 +201,8 @@ public class TerminalGuessNumber extends TerminalApp {
                 scores.remove(scores.size() - 1);
             }
             // save the result
-            data.put(tagByAttempts, scores);
-            data.save();
+            dataUser.put(tagByAttempts, scores);
+            dataUser.save();
             // no need to proceed forward
             break;
         }

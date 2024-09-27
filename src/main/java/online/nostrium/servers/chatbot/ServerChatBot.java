@@ -12,7 +12,7 @@ import java.io.File;
 import java.util.UUID;
 import online.nostrium.logs.Log;
 
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.servers.Server;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.utils.screens.Screen;
@@ -49,7 +49,7 @@ public class ServerChatBot extends Server {
         try {
             // Initialize the chatbot model once in the boot method
             String modelName = "tjake/TinyLlama-1.1B-Chat-v1.0-Jlama-Q4";
-            File workingDirectory = Folder.getFolderGPT();
+            File workingDirectory = FolderUtils.getFolderGPT();
 
             // Downloads the model or returns the local path if it's already downloaded
             File localModelPath = SafeTensorSupport.maybeDownloadModel(workingDirectory.getAbsolutePath(), modelName);

@@ -30,8 +30,11 @@ public class CommandArchiveLs extends TerminalCommand {
 
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
-        // get the current folder
-        File folder = (File) app.data.get("folderCurrent");
+        
+       // get the current folder
+        String folderName = (String) app.dataUser.get("folderCurrent");
+        File folder = new File(app.user.getFolder(false), folderName);
+        
         String dirTree = buildTree(folder);
         
         // remove the last character

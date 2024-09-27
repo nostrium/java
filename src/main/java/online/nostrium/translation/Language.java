@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import online.nostrium.logs.Log;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.servers.terminal.TerminalCode;
 import org.apache.commons.io.FileUtils;
 
@@ -78,7 +78,7 @@ public class Language {
     }
 
     private File getFile() {
-        File folder = Folder.getFolderLang();
+        File folder = FolderUtils.getFolderLang();
         String filename = "lang_" + getId() + ".json";
         File file = new File(folder, filename);
         return file;
@@ -101,7 +101,7 @@ public class Language {
             this.list.clear();
             this.list.putAll(item.list);
         } catch (JsonSyntaxException | IOException e) {
-            Log.write(Folder.nameFolderLang, TerminalCode.CRASH,
+            Log.write(FolderUtils.nameFolderLang, TerminalCode.CRASH,
                     "Failed to read language file", file.getPath());
         }
     }
@@ -112,7 +112,7 @@ public class Language {
         try {
             FileUtils.writeStringToFile(file, data, "UTF-8");
         } catch (IOException ex) {
-            Log.write(Folder.nameFolderLang, TerminalCode.CRASH,
+            Log.write(FolderUtils.nameFolderLang, TerminalCode.CRASH,
                     "Failed to write language file", file.getPath());
         }
     }

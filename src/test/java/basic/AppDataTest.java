@@ -53,7 +53,7 @@ public class AppDataTest {
         sessions.addSession(session1);
         
         // start testing
-        File file = app1.data.getFile();
+        File file = app1.dataUser.getFile();
         File folder = file.getParentFile();
         try {
             FileUtils.deleteDirectory(folder);
@@ -65,19 +65,19 @@ public class AppDataTest {
         assertFalse(folder.exists());
         
         // delete previous data
-        app1.data.delete();
+        app1.dataUser.delete();
                
         
         // save some values
-        app1.data.put("tag1", "value1");
-        app1.data.put("tag2", "value2");
-        assertEquals(2, app1.data.getData().size());
+        app1.dataUser.put("tag1", "value1");
+        app1.dataUser.put("tag2", "value2");
+        assertEquals(2, app1.dataUser.getData().size());
         
-        String test1 = (String) app1.data.get("tag1");
+        String test1 = (String) app1.dataUser.get("tag1");
         assertEquals("value1", test1);
         
         // save to disk
-        app1.data.save();
+        app1.dataUser.save();
         
         assertTrue(file.exists());
         assertTrue(file.length() > 0);
@@ -130,7 +130,7 @@ public class AppDataTest {
         assertEquals(2, listScore2.size());
         
         // delete previous data
-        app1.data.delete();
+        app1.dataUser.delete();
                
     }
 }

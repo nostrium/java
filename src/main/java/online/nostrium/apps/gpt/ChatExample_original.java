@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 
 /**
  * @author Brito
@@ -28,7 +28,7 @@ public class ChatExample_original {
 
     public static void sample() throws IOException {
         String model = "tjake/TinyLlama-1.1B-Chat-v1.0-Jlama-Q4";
-        File workingDirectory = Folder.getFolderGPT();
+        File workingDirectory = FolderUtils.getFolderGPT();
                 //"./models";
 
         String prompt = "What is the best season to plant avocados?";

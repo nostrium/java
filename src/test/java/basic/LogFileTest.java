@@ -21,7 +21,7 @@ import java.util.zip.ZipOutputStream;
 import online.nostrium.logs.Log;
 import online.nostrium.logs.LogItem;
 import online.nostrium.logs.LogItems;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.servers.terminal.TerminalCode;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -33,7 +33,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class LogFileTest {
 
-    private static final File folderLog = Folder.getFolderLog();
+    private static final File folderLog = FolderUtils.getFolderLog();
 
     @BeforeEach
     public void setUp() {

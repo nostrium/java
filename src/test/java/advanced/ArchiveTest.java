@@ -11,7 +11,7 @@ import online.nostrium.archive.Group;
 import online.nostrium.archive.Message;
 import online.nostrium.archive.Topic;
 import online.nostrium.archive.forum.ForumArchive;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.main.core;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
@@ -36,7 +36,7 @@ public class ArchiveTest {
     public void helloForum() throws IOException {
         
         // save the data to disk
-        File folder = Folder.getFolderTest();
+        File folder = FolderUtils.getFolderTest();
         assertTrue(folder.exists());
         
         Screen screen = new ScreenCLI();

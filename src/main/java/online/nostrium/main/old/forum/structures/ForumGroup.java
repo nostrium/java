@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.main.old.LogObsolete;
 import online.nostrium.utils.TextFunctions;
 import org.apache.commons.io.FileUtils;
@@ -92,7 +92,7 @@ public class ForumGroup {
     }
 
     public File getFolder() {
-        return new File(Folder.getFolderBaseForum(), this.getFolderName());
+        return new File(FolderUtils.getFolderBaseForum(), this.getFolderName());
     }
 
     public ArrayList<String> getForumTopics() {

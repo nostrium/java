@@ -21,7 +21,7 @@ import online.nostrium.main.old.forum.structures.ForumTopic;
 import online.nostrium.main.old.forum.structures.ForumUser;
 import online.nostrium.main.old.forum.structures.ManageTopics;
 import online.nostrium.main.old.forum.structures.ManageUsers;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.utils.ImageFunctions;
 import online.nostrium.main.old.LogObsolete;
 import online.nostrium.utils.TextFunctions;
@@ -564,7 +564,7 @@ public class ConvertIPB {
             }
 
             // get the folder
-            File file = new File(Folder.getFolderProfileImages(), fileName);
+            File file = new File(FolderUtils.getFolderProfileImages(), fileName);
             // write to disk
             FileOutputStream outputStream = new FileOutputStream(file);
             outputStream.write(data);
@@ -574,7 +574,7 @@ public class ConvertIPB {
             
 
             // save the result
-            String webName = Folder.makeWebCompatible(file);
+            String webName = FolderUtils.makeWebCompatible(file);
             user.setImageURL(webName);
             LogObsolete.write("Wrote profile image: " + webName);
 

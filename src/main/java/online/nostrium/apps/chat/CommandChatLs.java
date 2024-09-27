@@ -7,7 +7,7 @@
 package online.nostrium.apps.chat;
 
 import java.util.ArrayList;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
@@ -54,9 +54,8 @@ public class CommandChatLs extends TerminalCommand {
             String content = TextFunctions.sanitizeChatMessage(message.content);
             
             // create the line of previous messages
-            String line = ((TerminalChat) app).createMessageLine(
-                    message.created_at, 
-                    Folder.nameAnonUsers
+            String line = ((TerminalChat) app).createMessageLine(message.created_at, 
+                    FolderUtils.nameAnonUsers
                             + "#" + userId, 
                     content
             );

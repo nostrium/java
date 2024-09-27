@@ -12,7 +12,7 @@ import com.google.gson.JsonSyntaxException;
 import com.google.gson.annotations.Expose;
 import java.io.File;
 import java.io.IOException;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.main.core;
 import online.nostrium.user.alternative.AccountsManager;
 import online.nostrium.utils.EncryptionUtils;
@@ -57,15 +57,14 @@ public class User {
      * @return 
      */
     public File getFile(){
-        File folder = FileFunctions.getThirdLevelFolderForUser(
-                Folder.getFolderUsers(), npub, false);
-        File file = new File(folder, this.npub + Folder.nameEndingJsonUser);
+        File folder = FileFunctions.getThirdLevelFolderForUser(FolderUtils.getFolderUsers(), npub, false);
+        File file = new File(folder, this.npub + FolderUtils.nameEndingJsonUser);
         return file;
     }
     
     public void delete(){
         FileFunctions.deleteFolderAndParentsIfEmpty
-            (getFile(), Folder.getFolderUsers());
+            (getFile(), FolderUtils.getFolderUsers());
     }
     
     /**
@@ -256,8 +255,7 @@ public class User {
     }
 
     public File getFolder(boolean createFolder) {
-        File folder = FileFunctions.getThirdLevelFolderForUser(
-                Folder.getFolderUsers(), npub, false);
+        File folder = FileFunctions.getThirdLevelFolderForUser(FolderUtils.getFolderUsers(), npub, false);
         
         if(createFolder){
             folder.mkdirs();

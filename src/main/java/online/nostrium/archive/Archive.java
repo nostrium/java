@@ -7,6 +7,7 @@
 
 package online.nostrium.archive;
 
+import online.nostrium.folder.FolderType;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
@@ -20,6 +21,7 @@ import java.util.logging.Logger;
 import online.nostrium.archive.commands.CommandArchiveLs;
 import online.nostrium.archive.commands.CommandArchiveWrite;
 import online.nostrium.logs.Log;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.user.User;
@@ -42,9 +44,9 @@ public abstract class Archive extends TerminalApp{
     
     
     private final 
-        String filename = "archive.json";
+        String filename = FolderUtils.nameFolderData;
     
-   private final File folder;     
+    private final File folder;     
         
     @Expose
     public final String id;      // small description without spaces and lower case
@@ -56,7 +58,7 @@ public abstract class Archive extends TerminalApp{
     String description;  // one line description
     
     @Expose
-    ArchiveType type = ArchiveType.NONE;
+    FolderType type = FolderType.NONE;
     
     public Archive(String id, File folder, Screen screen, User user) {
         super(screen, user);
@@ -90,11 +92,11 @@ public abstract class Archive extends TerminalApp{
         return this.id;
     }
 
-    public ArchiveType getType() {
+    public FolderType getType() {
         return type;
     }
 
-    public void setType(ArchiveType type) {
+    public void setType(FolderType type) {
         this.type = type;
     }
 

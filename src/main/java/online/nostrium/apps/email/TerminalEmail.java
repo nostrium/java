@@ -90,14 +90,14 @@ public class TerminalEmail extends TerminalApp {
     }
 
     public File getFolderCurrent() {
-        if(data.has("folderCurrent") == false){
+        if(dataUser.has("folderCurrent") == false){
             return null;
         }
-        return (File) data.get("folderCurrent");
+        return (File) dataUser.get("folderCurrent");
     }
 
     public void setFolderCurrent(File folderCurrent) {
-        data.put("folderCurrent", folderCurrent);
+        dataUser.put("folderCurrent", folderCurrent);
     }
     
 

@@ -23,7 +23,7 @@ import online.nostrium.apps.storycraft.LinkType;
 import online.nostrium.apps.storycraft.Player;
 import online.nostrium.apps.storycraft.Scene;
 import online.nostrium.apps.storycraft.StoryUtils;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
 import org.apache.commons.io.FileUtils;
@@ -348,7 +348,7 @@ output = A['Health'] < 0 ? '#scene-end' : (B['Health'] < 0 ? 'You have won!' : n
         with ``` in the markdown format.
         */
         
-        File folderBase = Folder.getFolderStories();
+        File folderBase = FolderUtils.getFolderStories();
         File folderExamples = new File(folderBase, "examples");
         File file = new File(folderExamples, "FightExample.md");
         assertTrue(file.exists());

@@ -8,7 +8,7 @@ package online.nostrium.logs;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
-import static online.nostrium.main.Folder.nameSystem;
+import static online.nostrium.folder.FolderUtils.nameSystem;
 import static online.nostrium.main.core.lang;
 import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalCode.CRASH;
@@ -42,7 +42,7 @@ import static online.nostrium.servers.terminal.TerminalCode.NOT_FOUND;
  */
 public class Log {
 
-    static File folderLog = Folder.getFolderLog();
+    static File folderLog = FolderUtils.getFolderLog();
 
     /**
      * Get or create the folder for the current year.

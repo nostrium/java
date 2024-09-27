@@ -14,14 +14,14 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 
 public class ChatExample {
 
     // Method to interact with the chatbot (no memory) with streaming output
     public static void chat() throws IOException {
         String model = "tjake/TinyLlama-1.1B-Chat-v1.0-Jlama-Q4";
-        File workingDirectory = Folder.getFolderGPT();
+        File workingDirectory = FolderUtils.getFolderGPT();
         
         // Downloads the model or just returns the local path if it's already downloaded
         File localModelPath = SafeTensorSupport

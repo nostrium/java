@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.utils.TextFunctions;
 import org.apache.commons.io.FileUtils;
 
@@ -23,7 +23,7 @@ import org.apache.commons.io.FileUtils;
 public class ManageUsers {
 
     public static boolean hasUser(String id){
-        File folder = Folder.getFolderUsers();
+        File folder = FolderUtils.getFolderUsers();
         id = TextFunctions.cleanString(id);
         File file = new File(folder, id + ".json");
         return file.exists();
@@ -33,7 +33,7 @@ public class ManageUsers {
     public static void addUser(ForumUser forumUser){
         String text = forumUser.jsonExport();
         String filename = forumUser.getFilename();
-        File folder = Folder.getFolderUsers();
+        File folder = FolderUtils.getFolderUsers();
         File file = new File(folder, filename);
         try {
             FileUtils.writeStringToFile(file, text);

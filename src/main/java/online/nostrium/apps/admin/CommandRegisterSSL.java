@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.main.core;
 import static online.nostrium.main.core.config;
 import online.nostrium.servers.terminal.CommandResponse;
@@ -40,8 +40,8 @@ public class CommandRegisterSSL extends TerminalCommand{
         
         String domain = config.getDomain();
         String email = "admin@" + domain;
-        File folderCerts = Folder.getFolderCerts();
-        File folderWellKnown = Folder.getFolderWellKnown();
+        File folderCerts = FolderUtils.getFolderCerts();
+        File folderWellKnown = FolderUtils.getFolderWellKnown();
         File folderAcmeChallenge = new File(folderWellKnown, "acme-challenge");
         try {
             FileUtils.forceMkdir(folderAcmeChallenge);

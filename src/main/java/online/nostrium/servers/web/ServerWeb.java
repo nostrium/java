@@ -25,7 +25,7 @@ import java.util.Map;
 import online.nostrium.apps.basic.TerminalBasic;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.main.core;
 import online.nostrium.servers.Server;
 import online.nostrium.servers.terminal.CommandResponse;
@@ -166,7 +166,7 @@ public class ServerWeb extends Server {
     @SuppressWarnings("UseSpecificCatch")
     private SslContext createSslContext() {
         try {
-            File folder = Folder.getFolderCerts();
+            File folder = FolderUtils.getFolderCerts();
             File domain = new File(folder, "domain.crt");
             File keyFile = new File(folder, "domain.key"); // Private key
 
@@ -240,7 +240,7 @@ public class ServerWeb extends Server {
             }
 
             // Resolve the full file path in the central archive
-            String basePath = Folder.getFolderWWW().getCanonicalPath();
+            String basePath = FolderUtils.getFolderWWW().getCanonicalPath();
             String fullPath = basePath + uri;
             File file = new File(fullPath);
 

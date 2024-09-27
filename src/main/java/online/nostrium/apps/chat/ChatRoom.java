@@ -11,7 +11,7 @@ import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalColor;
@@ -85,7 +85,7 @@ public class ChatRoom extends JsonTextFile {
     public ChatRoom(String npub) {
         this.npub = npub;
         folder = FileFunctions.getThirdLevelFolderWithNpubOnEnd
-            (Folder.getFolderChat(), npub, true);
+            (FolderUtils.getFolderChat(), npub, true);
     }
 
     public void setFolder(File folder) {
@@ -224,13 +224,13 @@ public class ChatRoom extends JsonTextFile {
      * Delete this folder and related files
      */
     public void delete() {
-        FileFunctions.deleteFolderAndParentsIfEmpty(getFile(), Folder.getFolderChat());
+        FileFunctions.deleteFolderAndParentsIfEmpty(getFile(), FolderUtils.getFolderChat());
     }
 
     @Override
     public File getFile() {
         File folderToBeUsed = getFolder();
-        String filename = Folder.nameFolderChatRoom; // room.json
+        String filename = FolderUtils.nameFolderChatRoom; // room.json
         File file = new File(folderToBeUsed, filename);
         return file;
     }

@@ -12,7 +12,7 @@ import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import static online.nostrium.nostr.NostrUtils.generateNostrKeys;
 import online.nostrium.utils.FileFunctions;
 import online.nostrium.servers.terminal.TerminalApp;
@@ -34,7 +34,7 @@ public class ChatUtils {
      */
     public static ChatRoom createChatRoomMain(TerminalApp app) {
         User user = UserUtils.getUserAdmin();
-        ChatRoom room = ChatUtils.getOrCreateRoom(app, Folder.nameRootChat, user);
+        ChatRoom room = ChatUtils.getOrCreateRoom(app, FolderUtils.nameRootChat, user);
         return room;
     }
 
@@ -152,10 +152,9 @@ public class ChatUtils {
      * @return
      */
     public static ChatRoom getOrCreateRoom(TerminalApp app, String name, User user) {
-        File folderBase = Folder.getFolderChat();
+        File folderBase = FolderUtils.getFolderChat();
         ArrayList<File> files
-                = FileFunctions.searchFiles(
-                        folderBase, Folder.nameFolderChatRoom
+                = FileFunctions.searchFiles(folderBase, FolderUtils.nameFolderChatRoom
                 );
         // no default room found? Create a new one
         if (files.isEmpty()) {
@@ -194,8 +193,8 @@ public class ChatUtils {
      */
     public static ArrayList<ChatRoom> getChatRooms(TerminalApp app) {
         ArrayList<ChatRoom> chatRooms = new ArrayList<>();
-        File folderBase = Folder.getFolderChat();
-        ArrayList<File> files = FileFunctions.searchFiles(folderBase, Folder.nameFolderChatRoom);
+        File folderBase = FolderUtils.getFolderChat();
+        ArrayList<File> files = FileFunctions.searchFiles(folderBase, FolderUtils.nameFolderChatRoom);
 
         for (File file : files) {
             // Attempt to import the chat room from the file

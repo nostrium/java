@@ -17,7 +17,7 @@ import java.util.Map;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
 import online.nostrium.logs.Log;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.servers.terminal.TerminalCode;
 import org.apache.commons.io.FileUtils;
 
@@ -61,7 +61,7 @@ public class NIP05 {
      */
     public void save(){
         String filename = "nostr.json";
-        File file = new File(Folder.getFolderWellKnown(), filename);
+        File file = new File(FolderUtils.getFolderWellKnown(), filename);
         String text = this.toJson();
         try {
             FileUtils.writeStringToFile(file, text, "UTF-8");

@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import org.apache.commons.io.FileUtils;
 
 
@@ -76,7 +76,7 @@ public class Forum {
      * @param forumGroup 
      */
     private void createFolder(ForumGroup forumGroup) {
-        File folder = new File(Folder.getFolderBaseForum(), 
+        File folder = new File(FolderUtils.getFolderBaseForum(), 
                 forumGroup.getFolderName());
         // create the folder when it does not exist
         if(folder.exists() == false){

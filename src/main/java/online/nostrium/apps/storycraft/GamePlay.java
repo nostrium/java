@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 import static online.nostrium.apps.storycraft.StoryUtils.normalize;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
 import org.apache.commons.io.FileUtils;
@@ -343,7 +343,7 @@ public class GamePlay {
         GameScreen screen = new GameScreenCLI();
         User user = UserUtils.createUserAnonymous();
         user.setUsername("brito");
-        File folderBase = Folder.getFolderStories();
+        File folderBase = FolderUtils.getFolderStories();
         File folderExamples = new File(folderBase, "examples");
         File file = new File(folderExamples, "FightExample.md");
         String text = FileUtils.readFileToString(file, "UTF-8");

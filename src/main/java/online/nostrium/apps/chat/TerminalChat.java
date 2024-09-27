@@ -7,7 +7,7 @@
 package online.nostrium.apps.chat;
 
 import java.util.ArrayList;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.main.core;
 import online.nostrium.servers.terminal.notifications.NotificationType;
 import online.nostrium.servers.terminal.CommandResponse;
@@ -35,7 +35,7 @@ public class TerminalChat extends TerminalApp {
         super(screenAssigned, user);
         // make sure the room is not empty
         roomNow = ChatUtils.getOrCreateRoom(this,
-                    Folder.nameRootChat, UserUtils.getUserAdmin()
+                    FolderUtils.nameRootChat, UserUtils.getUserAdmin()
             );
         // let's overwrite the previous LS command
         removeCommand("ls");

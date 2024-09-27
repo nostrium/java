@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.utils.FileFunctions;
 import org.apache.commons.io.FileUtils;
 
@@ -29,7 +29,7 @@ public class ManageTopics {
      * @return null when it does not exist
      */
     public static File getTopicFile(String id){
-        File folder = Folder.getFolderBaseForum();
+        File folder = FolderUtils.getFolderBaseForum();
         return FileFunctions.searchForFile(folder, id + "-", ".json");
     }
     

@@ -27,7 +27,7 @@ import java.io.RandomAccessFile;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import online.nostrium.logs.Log;
-import online.nostrium.main.Folder;
+import online.nostrium.folder.FolderUtils;
 import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.web.ServerWeb.sendError;
 import online.nostrium.user.User;
@@ -201,7 +201,7 @@ public class FilesWeb {
             return;
         }
         // the user exists
-        File folder = new File(user.getFolder(true), Folder.nameFolderWWW);
+        File folder = new File(user.getFolder(true), FolderUtils.nameFolderWWW);
         if (folder.exists() == false) {
             FileUtils.forceMkdir(folder);
         }
@@ -312,7 +312,7 @@ public class FilesWeb {
 
     
     String title = "<h1>File Listing for " + folder.getName() + "</h1>";
-    if(folder.getName().equals(Folder.nameFolderWWW)){
+    if(folder.getName().equals(FolderUtils.nameFolderWWW)){
         title = "<h1>File Listing"  + "</h1>";
     }
    

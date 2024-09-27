@@ -31,7 +31,7 @@ public class CommandEmailLs extends TerminalCommand {
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
 
-        File folder = (File) app.data.get("folderCurrent");
+        File folder = (File) app.dataUser.get("folderCurrent");
                 //EmailUtils.getFolderEmail(app.user);
         String dirTree = buildTree(folder);
         

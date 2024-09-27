@@ -5,15 +5,16 @@
  * License: Apache-2.0
  */
 
-package online.nostrium.archive;
+package online.nostrium.folder;
 
 /**
  * @author Brito
  * @date: 2024-09-24
  * @location: Germany
  */
-public enum ArchiveType {
+public enum FolderType {
     
-    FORUM, EMAIL, BLOG, NONE
+    FORUM, EMAIL, BLOG, NONE,
+    GROUP
 
 }
