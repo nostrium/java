@@ -46,7 +46,7 @@ If you see one that you'd like to see added, just tell us.
 
 User interfaces:
 
-+ [ ] NOSTR clients (Primal, Coracle, ...)
++ [ ] NOSTR clients (Amethyst, Primal, Coracle, ...)
 + [x] [web (server)](docs/WebServer.md)
 + [x] [telnet (server)](docs/ServerTelnet.md)
 + [ ] Gopher (server/client)
@@ -63,7 +63,7 @@ Need other ones? Please open a ticket.
 Feature roadmap
 -----------------
 + [x] basic functionality (navigation, users, chat)
-+ [ ] spam control / approval of posts on relay
++ [ ] WoT spam control / approval of posts on relay
 + [ ] share nostr posts with other relays
 + [x] automatic SSL registration on Let's Encrypt
 + [~] file sharing with a quota (FTP, WWW)
@@ -96,7 +96,7 @@ Servers
 + [x] Telnet - 23
 
 File sharing:
-+ [x] FTP (File Transfer Protocol) - 21
++ [x] [FTP](docs/ServerFTP.md) (File Transfer Protocol) - 21
 + [ ] FTPS (FTP Secure) - 990
 + [ ] SFTP (SSH File Transfer Protocol) - 22
 + [ ] TFTP (Trivial File Transfer Protocol) - 69
@@ -126,11 +126,11 @@ Specific messengers
 
 Network basics:
 + [?] WHOIS - 43
-+ [x] Finger - 79
++ [x] [Finger](docs/ServerFinger.md) - 79
 + [ ] Daytime Protocol - 13
 + [ ] Time Protocol - 37
 + [ ] SNTP (Simple Network Time Protocol) - 123
-+ [x] Quote of the Day (QOTD) - 17
++ [x] [Quote of the Day](docs/ServerQOTD.md) (QOTD) - 17
 
 Broadcast:
 + [ ] RSS
