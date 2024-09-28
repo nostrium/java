@@ -32,6 +32,8 @@ import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.web.ServerWeb.sendError;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
+import static online.nostrium.user.UserUtils.isVirtualFolder;
+import online.nostrium.utils.FileFunctions;
 import online.nostrium.utils.TextFunctions;
 import org.apache.commons.io.FileUtils;
 
@@ -42,39 +44,37 @@ import org.apache.commons.io.FileUtils;
  */
 public class FilesWeb {
 
- static String css1 = "<style>"
-    + "body { "
-    + "background-color: black; " // Dark background for retro effect
-    + "color: white; " // White text for normal body text
-    + "font-family: 'Courier New', monospace; " // Retro pixelated font
-    + "text-align: left; " // Left-align the text
-    + "padding: 20px; "
-    + "}"
-    + "h1 { "
-    + "color: #00FF00; " // Neon green for headers
-    + "text-shadow: 0 0 1px #00FF00, 0 0 2px #00FF00; " // Tiny, subtle glow for the heading
-    + "font-size: 36px; " // Adjust heading size
-    + "}"
-    + "h2 { "
-    + "color: #00FF00; " // Same neon green for subheadings
-    + "text-shadow: 0 0 1px #00FF00, 0 0 2px #00FF00; " // Tiny, subtle glow for subheadings
-    + "font-size: 28px; "
-    + "}"
-    + "p { "
-    + "color: white; " // White color for normal text
-    + "font-size: 18px; " // Normal font size for paragraphs
-    + "}"
-    + "a { "
-    + "color: #FFD700; " // Softer yellow for links
-    + "text-decoration: none; "
-    + "font-weight: bold; "
-    + "}"
-    + "a:hover { "
-    + "color: #FF8C00; " // Softer orange on hover for links
-    + "}"
-    + "</style>";
-
-
+    static String css1 = "<style>"
+            + "body { "
+            + "background-color: black; " // Dark background for retro effect
+            + "color: white; " // White text for normal body text
+            + "font-family: 'Courier New', monospace; " // Retro pixelated font
+            + "text-align: left; " // Left-align the text
+            + "padding: 20px; "
+            + "}"
+            + "h1 { "
+            + "color: #00FF00; " // Neon green for headers
+            + "text-shadow: 0 0 1px #00FF00, 0 0 2px #00FF00; " // Tiny, subtle glow for the heading
+            + "font-size: 36px; " // Adjust heading size
+            + "}"
+            + "h2 { "
+            + "color: #00FF00; " // Same neon green for subheadings
+            + "text-shadow: 0 0 1px #00FF00, 0 0 2px #00FF00; " // Tiny, subtle glow for subheadings
+            + "font-size: 28px; "
+            + "}"
+            + "p { "
+            + "color: white; " // White color for normal text
+            + "font-size: 18px; " // Normal font size for paragraphs
+            + "}"
+            + "a { "
+            + "color: #FFD700; " // Softer yellow for links
+            + "text-decoration: none; "
+            + "font-weight: bold; "
+            + "}"
+            + "a:hover { "
+            + "color: #FF8C00; " // Softer orange on hover for links
+            + "}"
+            + "</style>";
 
     public static // Add inline CSS to style the HTML content
             String css2 = "<style>"
@@ -186,8 +186,8 @@ public class FilesWeb {
     public static void sendFileFromUser(String uri, ChannelHandlerContext ctx) throws IOException {
         // https://nostrium.online/brito/
         String[] data = uri.split("/");
-        
-        if(data.length < 2){
+
+        if (data.length < 2) {
             sendError(ctx, HttpResponseStatus.NOT_FOUND);
             Log.write("WWW", TerminalCode.NOT_FOUND, "URI not understood", uri);
             return;
@@ -214,7 +214,7 @@ public class FilesWeb {
 
         // no arguments? looking for the index pages
         if (data.length == 2) {
-            launchIndexDefault(folder, ctx,uri);
+            launchIndexDefault(folder, ctx, uri, user);
             return;
         }
 
@@ -229,11 +229,17 @@ public class FilesWeb {
         // check if the path is talking about an app
         String[] sections = path.split("/");
         // http://nostrium.online/brito/blog
-        //wdwqd
-        
+
+        // is this a virtual directory?
+        if (data.length >= 3) {
+            if (isVirtualFolder(data[2])) {
+                file = new File(user.getFolder(false), path);
+            }
+        }
+
         // is this a directory?
         if (file.isDirectory()) {
-            launchIndexDefault(file, ctx,uri);
+            launchIndexDefault(file, ctx, uri, user);
             return;
         }
 
@@ -272,8 +278,8 @@ public class FilesWeb {
         }
     }
 
-    private static void launchIndexDefault(File folder, 
-            ChannelHandlerContext ctx, String url) throws IOException {
+    private static void launchIndexDefault(File folder,
+            ChannelHandlerContext ctx, String url, User user) throws IOException {
         File file = new File(folder, "index.html");
         File fileMarkdown = new File(folder, "index.md");
 
@@ -287,77 +293,75 @@ public class FilesWeb {
         }
 
         // show the files inside the folder
-        String fileList = listFilesInFolderAsHtml(folder, url);
+        String fileList = listFilesInFolderAsHtml(folder, url, user);
         sendText(fileList, ctx, ".html");
     }
-    
-    
-    public static String listFilesInFolderAsHtml(File folder, String requestUrl) {
-    // Check if the input is a directory
-    if (!folder.isDirectory()) {
-        return "<html><body><h1>Error: Not a directory!</h1></body></html>";
-    }
 
-    // Ensure requestUrl always ends with a "/" for consistent URL construction
-    if (!requestUrl.endsWith("/")) {
-        requestUrl += "/";
-    }
-
-    // Start building the HTML with a retro 80's style
-   String css = "<style>"
-    + "body { background-color: black; color: #d3d3d3; font-family: 'Courier New', monospace; padding: 20px; }" // White-grey text
-    + "desc { font-size: 12px; }" // Set normal paragraph text size to 12px
-    + "h1 { color: #00FF00; text-shadow: 0 0 1px #00FF00, 0 0 2px #00FF00; font-size: 36px; }" // Reduced glow for header
-    + "a { color: #00FF99; text-decoration: none; font-weight: bold; }" // Soft green for links
-    + "a:hover { color: #33FF99; }" // Lighter green for hover effect
-    + "ul { list-style-type: none; padding-left: 0; }"
-    + "li { margin-bottom: 10px; }"
-    + "</style>";
-
-
-    
-    String title = "<h1>File Listing for " + folder.getName() + "</h1>";
-    if(folder.getName().equals(FolderUtils.nameFolderWWW)){
-        title = "<h1>File Listing"  + "</h1>";
-    }
-   
-
-    StringBuilder htmlContent = new StringBuilder();
-    htmlContent.append("<html><head>").append(css).append("</head><body>");
-    htmlContent.append(title);
-    htmlContent.append("<ul>\n");
-
-    // Add a ".." link to go back to the parent directory (if applicable)
-    File parent = folder.getParentFile();
-    if (parent != null && !parent.getName().startsWith("npub")) {
-        htmlContent.append("<li><a href=\"").append(requestUrl).append("../\">..</a></li>");
-    }
-
-    // List files and directories
-    File[] files = folder.listFiles();
-    
-    // list first the folders
-    if (files != null) {
-        for (File file : files) {
-            String filename = file.getName();
-            if (file.isDirectory()) {
-                // Add a clickable link for directories
-                htmlContent.append("\n<li><a href=\"")
-                        .append(requestUrl)
-                        .append(filename)
-                        .append("/\">📁 ")
-                        .append(filename)
-                        .append("</a></li>");
-            } 
+    public static String listFilesInFolderAsHtml(File folder, String requestUrl, User user) {
+        // Check if the input is a directory
+        if (!folder.isDirectory()) {
+            return "<html><body><h1>Error: Not a directory!</h1></body></html>";
         }
-    }
-    
-    // list second the files
-    if (files != null) {
-        for (File file : files) {
-            String filename = file.getName();
-            if (file.isDirectory()) {
-            } else {
+
+        // Ensure requestUrl always ends with a "/" for consistent URL construction
+        if (!requestUrl.endsWith("/")) {
+            requestUrl += "/";
+        }
+
+        // Start building the HTML with a retro 80's style
+        String css = "<style>"
+                + "body { background-color: black; color: #d3d3d3; font-family: 'Courier New', monospace; padding: 20px; }" // White-grey text
+                + "desc { font-size: 12px; }" // Set normal paragraph text size to 12px
+                + "h1 { color: #00FF00; text-shadow: 0 0 1px #00FF00, 0 0 2px #00FF00; font-size: 36px; }" // Reduced glow for header
+                + "a { color: #00FF99; text-decoration: none; font-weight: bold; }" // Soft green for links
+                + "a:hover { color: #33FF99; }" // Lighter green for hover effect
+                + "ul { list-style-type: none; padding-left: 0; }"
+                + "li { margin-bottom: 10px; }"
+                + "</style>";
+
+        String title = "<h1>File Listing for " + folder.getName() + "</h1>";
+        if (folder.getName().equals(FolderUtils.nameFolderWWW)) {
+            title = "<h1>File Listing" + "</h1>";
+        }
+
+        StringBuilder htmlContent = new StringBuilder();
+        htmlContent.append("<html><head>").append(css).append("</head><body>");
+        htmlContent.append(title);
+        htmlContent.append("<ul>\n");
+
+        // Add a ".." link to go back to the parent directory (if applicable)
+        File parent = folder.getParentFile();
+        if (parent != null && !parent.getName().startsWith("npub")) {
+            htmlContent.append("<li><a href=\"").append(requestUrl).append("../\">..</a></li>");
+        } 
+        
+        // test if we are on the root level
+        String rootTest = requestUrl.replace("/", "");
+        // list the virtual folders, but only on the root
+        if(user.getUsername().equalsIgnoreCase(rootTest)){
+            for (String folderName : UserUtils.virtualFolderNames) {
+                File folderVirtual = new File(user.getFolder(false), folderName);
+                addHTMLFolder(folderVirtual, htmlContent, requestUrl);
+            }
+        }
+
+        // List files and directories
+        File[] files = folder.listFiles();
+
+        // list the existing folders
+        if (files != null) {
+            for (File item : files) {
+                addHTMLFolder(item, htmlContent, requestUrl);
+            }
+        }
+
+        // list second the files
+        if (files != null) {
+            for (File file : files) {
+                String filename = file.getName();
+                if (file.isDirectory()) {
+                    continue;
+                }
                 String size = TextFunctions.humanReadableFileSize(file);
                 String date = TextFunctions.getLastModifiedISO(file);
                 // Add a clickable link for files
@@ -371,13 +375,37 @@ public class FilesWeb {
                         .append(" | ")
                         .append(date)
                         .append("]</desc></li>");
+
             }
         }
+        htmlContent.append("\n</ul></body></html>");
+        return htmlContent.toString();
     }
-    htmlContent.append("\n</ul></body></html>");
-    return htmlContent.toString();
-}
 
+    /**
+     * Add the HTML related to a folder and count the files inside the folder
+     * @param folder
+     * @param htmlContent
+     * @param requestUrl 
+     */
+    private static void addHTMLFolder(File folder,
+            StringBuilder htmlContent, String requestUrl) {
+        if (folder.exists() == false || folder.isFile()) {
+            return;
+        }
+        String filename = folder.getName();
+        // count the number of files inside
+        long countFiles = FileFunctions.countFiles(folder);
+        String fileCount = " (" + countFiles + ")";
+        // Add a clickable link for directories
+        htmlContent.append("\n<li><a href=\"")
+                .append(requestUrl)
+                .append(filename)
+                .append("/\">📁 ")
+                .append(filename)
+                .append("</a>"
+                        + fileCount
+                        + "</li>");
+    }
 
-    
 }

@@ -26,6 +26,13 @@ public class UserUtils {
             minCharacters = 4,
             maxCharacters = 64,
             maxCharactersAbout = 256;
+    
+    public final static String[] 
+            virtualFolderNames = new String[]{
+            "blog",
+            "forum"
+        };
+    
 
     /**
      * Create an admin user with nsec and npub set to all zeros
@@ -384,4 +391,18 @@ public class UserUtils {
         return user;
     }
 
+    public static boolean isVirtualFolder(String folderName){
+        if(folderName == null){
+            return false;
+        }
+        
+        for(String name : virtualFolderNames){
+            if(name.equalsIgnoreCase(folderName)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
 }

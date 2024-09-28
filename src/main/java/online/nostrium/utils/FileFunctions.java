@@ -272,4 +272,25 @@ public class FileFunctions {
         }
     }
 
+    public static long countFiles(File item) {
+        // Base case: if the item is not a directory, return 1 (it is a file)
+        if (!item.isDirectory()) {
+            return 1;
+        }
+
+        // Initialize file count
+        long count = 0;
+
+        // List all files and directories in the current directory
+        File[] files = item.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                // Recursively count files in subdirectories
+                count += countFiles(file);
+            }
+        }
+
+        return count;
+    }
+
 }
