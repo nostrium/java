@@ -10,11 +10,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import online.nostrium.archive.Archive;
 import online.nostrium.archive.ArchiveUtils;
 import online.nostrium.archive.Markdown;
 import online.nostrium.archive.Markdown.Topic;
+import online.nostrium.folder.FolderData;
+import online.nostrium.folder.FolderType;
 import online.nostrium.servers.terminal.CommandResponse;
-import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
@@ -27,7 +29,7 @@ import org.apache.commons.io.FileUtils;
  */
 public class CommandArchiveWrite extends TerminalCommand {
 
-    public CommandArchiveWrite(TerminalApp app) {
+    public CommandArchiveWrite(Archive app) {
         super(app);
         this.requireSlash = false;
         // add an alternative command
@@ -40,9 +42,21 @@ public class CommandArchiveWrite extends TerminalCommand {
         // get the current folder
         String folderName = (String) app.dataUser.get("folderCurrent");
         File folder = new File(app.user.getFolder(false), folderName);
-                
+        
         // syntax
         // write title -> content of topic
+        
+        // get the base folder
+        Archive appArchive = (Archive) app;
+        File appFolder = appArchive.getFolder();
+        
+        // create the folder data
+        FolderData folderData;
+        if(FolderData.doesNotExit(appFolder)){
+            folderData = new FolderData(appFolder, FolderType.BLOG, true); 
+        }else{
+            folderData = FolderData.importFile(appFolder);
+        }
         
          // folder needs to exist
         if(folder.exists() == false){

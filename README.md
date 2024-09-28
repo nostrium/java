@@ -240,6 +240,10 @@ License
 
 Apache License 2.0
 
+Details about license and components for this platform
+are documented at the [Bill of Materials](docs/bom.md).
+
+
 
 Help wanted
 -----------

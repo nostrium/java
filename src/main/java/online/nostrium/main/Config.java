@@ -58,6 +58,9 @@ public class Config {
             portHTTPS = 443,
             portHTTPS_Debug = 44300,
             
+            portGopher = 70,
+            portGopher_Debug = 7000,
+            
             portSMTP = 25,
             portSMTP_Debug = 2500,
             portSMTPS = 465,

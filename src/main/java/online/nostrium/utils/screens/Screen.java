@@ -12,6 +12,7 @@ import online.nostrium.servers.terminal.TerminalColor;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.servers.terminal.notifications.Session;
 import online.nostrium.utils.ascii.AsciiArt;
 
 /**
@@ -20,7 +21,6 @@ import online.nostrium.utils.ascii.AsciiArt;
  * Location: Germany
  */
 public abstract class Screen {
-    
     
     public abstract TerminalType getTerminalType();
     

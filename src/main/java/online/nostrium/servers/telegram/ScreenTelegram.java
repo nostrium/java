@@ -19,6 +19,7 @@ import org.telegram.telegrambots.meta.generics.TelegramClient;
 import java.util.Timer;
 import java.util.TimerTask;
 import online.nostrium.servers.qoft.QOTD;
+import online.nostrium.servers.terminal.notifications.Session;
 import online.nostrium.utils.ascii.AsciiArt;
 
 /**

@@ -245,7 +245,7 @@ public class ServerWeb extends Server {
             File file = new File(fullPath);
 
             if (file.exists() || file.isFile()) {
-                // send the file
+                // send the file from the public service
                 FilesWeb.sendFile(file, ctx);
             } else if (isRootRequest == false) {
                 FilesWeb.sendFileFromUser(req.uri(), ctx);

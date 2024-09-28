@@ -50,14 +50,14 @@ public final class AppData {
 
     public File getFile() {
         try {
-            if (app == null || app.getFolder() == null) {
+            if (app == null || app.getFolderCommonData() == null) {
                 return null;
             }
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
-        File folder = app.getFolder();
+        File folder = app.getFolderCommonData();
         String filename = FolderUtils.nameFileData;
         return new File(folder, filename);
     }

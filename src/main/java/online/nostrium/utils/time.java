@@ -36,6 +36,17 @@ public class time {
         return isoFormat.format(date);
     }
     
+    
+    public static String getCurrentYear() {
+        // Create a Date object
+        Date date = new Date();
+        // Create a SimpleDateFormat to format the date in ISO 8601 format
+        SimpleDateFormat isoFormat = new SimpleDateFormat("yyyy");
+        
+        // Return the formatted date as a string
+        return isoFormat.format(date);
+    }
+    
     /**
      * Pauses the current thread for a while
      *
@@ -65,5 +76,6 @@ public class time {
         }
 
     }
+
     
 }

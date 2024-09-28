@@ -200,19 +200,19 @@ public class FilesWeb {
             Log.write("WWW", TerminalCode.NOT_FOUND, "User not found", username);
             return;
         }
-        // the user exists
+        // the user exists, there needs to exist a WWW folder (called public)
         File folder = new File(user.getFolder(true), FolderUtils.nameFolderWWW);
         if (folder.exists() == false) {
             FileUtils.forceMkdir(folder);
         }
-        // folder needs to really exist
+        // public folder needs to really exist
         if (folder.exists() == false) {
             Log.write(TerminalCode.FAIL, "Unable to create WWW folder", folder.getPath());
             sendError(ctx, HttpResponseStatus.INTERNAL_SERVER_ERROR);
             return;
         }
 
-        // looking for the index pages
+        // no arguments? looking for the index pages
         if (data.length == 2) {
             launchIndexDefault(folder, ctx,uri);
             return;
@@ -226,6 +226,11 @@ public class FilesWeb {
         path = path.substring(1);
         File file = new File(folder, path);
 
+        // check if the path is talking about an app
+        String[] sections = path.split("/");
+        // http://nostrium.online/brito/blog
+        //wdwqd
+        
         // is this a directory?
         if (file.isDirectory()) {
             launchIndexDefault(file, ctx,uri);

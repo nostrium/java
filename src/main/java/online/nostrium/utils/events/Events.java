@@ -22,22 +22,64 @@ public class Events {
         list.put(eventId, event);
     }
     
-    public void triggerBefore(String eventId){
-        Event event = list.get(eventId);
-        if(event == null){
-            event = new Event();
-            list.put(eventId, event);
+    
+    public void add(String eventId) {
+        // don't override an existing event
+        if(list.containsKey(eventId)){
+            return;
         }
-        event.before();
+        // add the new event
+        Event event = new Event();
+        list.put(eventId, event);
     }
     
-    public void triggerAfter(String eventId){
+    public void triggerBefore(String eventId, Object object){
         Event event = list.get(eventId);
         if(event == null){
             event = new Event();
             list.put(eventId, event);
         }
-        event.after();
+        event.before(object);
     }
+    
+    /**
+     * Provides an object for the first action that matches the eventId
+     * to provide an another object based on the input
+     * @param eventId
+     * @param object
+     * @return 
+     */
+    public ActionResult getResult(String eventId, Object object){
+        Event event = list.get(eventId);
+        if(event == null){
+            return null;
+        }
+        return event.getAction(object);
+    }
+    
+    public void triggerAfter(String eventId, Object object){
+        Event event = list.get(eventId);
+        if(event == null){
+            event = new Event();
+            list.put(eventId, event);
+        }
+        event.after(object);
+    }
+
+    /**
+     * Add action that will be triggered by a specific event id
+     * @param eventId
+     * @param action 
+     */
+    public void addAction(String eventId, Action action) {
+        // create the event id in case it doesn't exist
+        if(list.containsKey(eventId) == false){
+            add(eventId);
+        }
+        // add the actions
+        Event event = list.get(eventId);
+        event.add(action);
+    }
+
     
 }

@@ -222,7 +222,7 @@ public abstract class TerminalApp {
         }
     }
 
-    public File getFolder() {
+    public File getFolderCommonData() {
         File folderRoot = FolderUtils.getFolderData();
         return FolderUtils.defaultGetFolder(
                 folderRoot, this.getName()

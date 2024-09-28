@@ -45,10 +45,25 @@ public class Event {
     /**
      * Starts all the actions before this event
      */
-    public void before(){
+    public ActionResult getAction(Object object){
         for(Action action : actions){
             long time = System.currentTimeMillis();
-            action.before();
+            ActionResult result = action.doAction(object);
+            action.timeToRunAfter = System.currentTimeMillis() - time;
+            return result;
+        }
+        return null;
+    }
+    
+    /**
+     * Starts all the actions before this event
+     * @param object
+     * @return 
+     */
+    public void before(Object object){
+        for(Action action : actions){
+            long time = System.currentTimeMillis();
+            action.before(object);
             action.timeToRunAfter = System.currentTimeMillis() - time;
         }
     }
@@ -56,10 +71,10 @@ public class Event {
     /**
      * Starts all the actions after this event
      */
-    public void after(){
+    public void after(Object object){
         for(Action action : actions){
             long time = System.currentTimeMillis();
-            action.after();
+            action.after(object);
             action.timeToRunAfter = System.currentTimeMillis() - time;
         }
     }

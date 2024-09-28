@@ -27,7 +27,8 @@ public abstract class Action {
     boolean separateThread = false; // run on a separate thread
     
     protected abstract String getId();
-    protected abstract ActionResult before();
-    protected abstract ActionResult after();
+    protected abstract ActionResult doAction(Object object);
+    protected abstract ActionResult before(Object object);
+    protected abstract ActionResult after(Object object);
 
 }

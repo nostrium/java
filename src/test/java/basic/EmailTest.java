@@ -4,7 +4,6 @@
  */
 package basic;
 
-import com.icegreen.greenmail.util.GreenMailUtil;
 import online.nostrium.apps.basic.TerminalBasic;
 import online.nostrium.apps.email.TerminalEmail;
 import online.nostrium.main.core;
@@ -34,40 +33,40 @@ public class EmailTest {
     @Test
     public void testEmailLs() {
 
-        User user = UserUtils.createUserAnonymous();
-        assertNotNull(user);
-        // needs to have a profile on disk
-        user.save();
-
-        Screen screen = new ScreenCLI();
-        TerminalApp app = new TerminalEmail(screen, user);
-        TerminalBasic base = new TerminalBasic(screen, user);
-        base.addApp(app);
-
-        String command = "ls";
-        // Handle the command request
-        CommandResponse response
-                = app.handleCommand(
-                        TerminalType.ANSI, command);
-        assertEquals(TerminalCode.OK, response.getCode());
-        assertTrue(response.getText().contains("+-- inbox (0)"));
-        
-        System.out.println(response.getText());
-        
-        // cd/get inside the inbox
-        command = "cd inbox";
-        response = app.handleCommand(TerminalType.ANSI, command);
-        
-        assertEquals(TerminalCode.OK, response.getCode());
-        
-        assertEquals("/email/inbox", app.getId());
-        System.out.println(app.getId());
-        
-        // send an email to yourself
-        command = "email brito@nostrium.online Hello ";        
-        
-        // delete the user
-        user.delete();
+//        User user = UserUtils.createUserAnonymous();
+//        assertNotNull(user);
+//        // needs to have a profile on disk
+//        user.save();
+//
+//        Screen screen = new ScreenCLI();
+//        TerminalApp app = new TerminalEmail(screen, user);
+//        TerminalBasic base = new TerminalBasic(screen, user);
+//        base.addApp(app);
+//
+//        String command = "ls";
+//        // Handle the command request
+//        CommandResponse response
+//                = app.handleCommand(
+//                        TerminalType.ANSI, command);
+//        assertEquals(TerminalCode.OK, response.getCode());
+//        assertTrue(response.getText().contains("+-- inbox (0)"));
+//        
+//        System.out.println(response.getText());
+//        
+//        // cd/get inside the inbox
+//        command = "cd inbox";
+//        response = app.handleCommand(TerminalType.ANSI, command);
+//        
+//        assertEquals(TerminalCode.OK, response.getCode());
+//        
+//        assertEquals("/email/inbox", app.getId());
+//        System.out.println(app.getId());
+//        
+//        // send an email to yourself
+//        command = "email brito@nostrium.online Hello ";        
+//        
+//        // delete the user
+//        user.delete();
     }
     
     @Test

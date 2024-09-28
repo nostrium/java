@@ -62,6 +62,29 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.22.0</version>
       </plugin>
+      <plugin>
+        <groupId>org.cyclonedx</groupId>
+        <artifactId>cyclonedx-maven-plugin</artifactId>
+        <version>2.7.9</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>makeAggregateBom</goal>
+            </goals>
+            <configuration>
+              <includeCompileScope>true</includeCompileScope>
+              <includeProvidedScope>true</includeProvidedScope>
+              <includeRuntimeScope>true</includeRuntimeScope>
+              <includeSystemScope>true</includeSystemScope>
+              <includeTestScope>false</includeTestScope>
+              <includeLicenseText>true</includeLicenseText>
+              <outputFormat>json</outputFormat>
+              <outputName>bom</outputName>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
   <repositories>

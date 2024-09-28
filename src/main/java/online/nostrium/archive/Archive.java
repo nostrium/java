@@ -176,6 +176,10 @@ public abstract class Archive extends TerminalApp{
         }
     }
     
+    public File getFolder(){
+        return folder;
+    }
+    
     @Override
     public String getSubFolders(){
         String result = "";
