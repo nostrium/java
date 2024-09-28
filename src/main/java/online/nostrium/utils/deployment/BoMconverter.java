@@ -33,7 +33,7 @@ public class BoMconverter {
 
     public static void convertBomToMarkdown(String jsonFilePath, String outputFilePath) throws IOException {
         File jsonFile = new File(jsonFilePath);
-        if(jsonFile.exists() == false){
+        if (jsonFile.exists() == false) {
             System.err.println("Couldn't find the Bill Of Materials file");
             return;
         }
@@ -157,7 +157,7 @@ public class BoMconverter {
             String version = component.get("version").getAsString();
             String license = getLicenseInfo(component);
             String result = "+ " + name + " " + version;
-            if(license != null && license.isEmpty() == false){
+            if (license != null && license.isEmpty() == false) {
                 result += " (" + license + ")";
             }
             result += "\n";
@@ -178,6 +178,13 @@ public class BoMconverter {
             if (component.has("description")) {
                 markdown.append("- Description: ").append(component.get("description").getAsString()).append("\n");
             }
+            if (component.has("licenses")) {
+                String license = getLicenseInfo(component);
+                if (license != null && license.isEmpty() == false) {
+                    markdown.append("- License: ").append(license).append("\n");
+                }
+            }
+
             if (component.has("copyright")) {
                 markdown.append("- Copyright: ").append(component.get("copyright").getAsString()).append("\n");
             }
@@ -222,7 +229,7 @@ public class BoMconverter {
                 + "- Lines of Code: %d\n"
                 + "- Overall project size: %.2f KB\n"
                 + "- 3rd party components: %d\n",
-                 fileCount, totalLines, totalSize / 1024.0, components.size());
+                fileCount, totalLines, totalSize / 1024.0, components.size());
     }
 
     // Method to format license names
