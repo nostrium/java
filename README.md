@@ -24,16 +24,18 @@ other people on different platforms. Want to save your data?
 We make it easy to rescue your own data at other platforms.
 
 
-Everything is a file
--------------------
+Everything is a file with text
+-----------------------------
 
-This platform uses ZERO databases, everything is a file.
-Data is easy to transfer or read by other tools, in case
+This platform uses ZERO databases, everything is a file,
+which is easy to transfer and parse by other tools. In case
 part of this data becomes damaged, the rest still works.
+All data is stored on plain text JSON and mardown files.
 
-Also, we are from 80s and fancy databases are from the 90s.
-
-From us you only get json and mardown files with data.
+Please don't try to convince us otherwise. We are from
+the 80s, fancy databases are lame 90s. Just ain't our thing.
+Same philosophy applies to our visual graphics. Everything
+here is WYSIWG because text is beautiful and king in hard times.
 
 
 
