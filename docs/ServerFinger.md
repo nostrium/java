@@ -27,5 +27,5 @@ After that, use the following syntax:
 finger brito@nostrium.online
 ```
 
-This is will query the server and provide information
+This will query the server and provide information
 about the user.
