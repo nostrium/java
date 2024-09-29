@@ -9,7 +9,7 @@ package online.nostrium.apps.chat;
 import java.util.ArrayList;
 import online.nostrium.folder.FolderUtils;
 import online.nostrium.main.core;
-import online.nostrium.servers.terminal.notifications.NotificationType;
+import online.nostrium.session.NotificationType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;

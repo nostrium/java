@@ -5,7 +5,7 @@
  * License: Apache-2.0
  */
 
-package online.nostrium.servers.terminal.notifications;
+package online.nostrium.session;
 
 import java.util.Date;
 import online.nostrium.user.User;

@@ -7,7 +7,7 @@
 package online.nostrium.apps.games.gods;
 
 import online.nostrium.apps.basic.CommandLs;
-import online.nostrium.servers.terminal.notifications.NotificationType;
+import online.nostrium.session.NotificationType;
 import online.nostrium.apps.games.gods.arena.TerminalGODS_Arena;
 import online.nostrium.apps.games.gods.bank.TerminalGODS_Bank;
 import online.nostrium.apps.games.gods.walk.TerminalGODS_Walk;

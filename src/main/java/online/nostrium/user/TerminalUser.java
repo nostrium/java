@@ -9,7 +9,7 @@ package online.nostrium.user;
 import java.io.File;
 import online.nostrium.archive.blog.BlogArchive;
 import online.nostrium.archive.forum.ForumArchive;
-import online.nostrium.servers.terminal.notifications.NotificationType;
+import online.nostrium.session.NotificationType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;

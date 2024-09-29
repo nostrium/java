@@ -11,7 +11,7 @@ import online.nostrium.apps.basic.CommandHelp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import online.nostrium.servers.terminal.notifications.NotificationType;
+import online.nostrium.session.NotificationType;
 import online.nostrium.apps.basic.CommandCd;
 import online.nostrium.apps.basic.CommandExit;
 import online.nostrium.apps.basic.CommandLs;

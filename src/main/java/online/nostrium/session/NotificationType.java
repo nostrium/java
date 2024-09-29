@@ -5,7 +5,7 @@
  * License: Apache-2.0
  */
 
-package online.nostrium.servers.terminal.notifications;
+package online.nostrium.session;
 
 /**
  * Author: Brito

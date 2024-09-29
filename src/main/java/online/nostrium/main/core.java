@@ -11,7 +11,7 @@ import java.io.File;
 import java.util.Date;
 import online.nostrium.logs.Log;
 import online.nostrium.nostr.nip05.NIP05_emails;
-import online.nostrium.servers.terminal.notifications.Sessions;
+import online.nostrium.session.Sessions;
 import online.nostrium.servers.Server;
 import online.nostrium.servers.email.ServerEmail;
 import online.nostrium.servers.finger.ServerFinger;

@@ -7,7 +7,7 @@
 package online.nostrium.apps.basic;
 
 import online.nostrium.apps.admin.TerminalAdmin;
-import online.nostrium.servers.terminal.notifications.NotificationType;
+import online.nostrium.session.NotificationType;
 import online.nostrium.apps.chat.TerminalChat;
 import online.nostrium.apps.email.TerminalEmail;
 import online.nostrium.apps.games.TerminalGames;

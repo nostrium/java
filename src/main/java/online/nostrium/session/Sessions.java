@@ -4,7 +4,7 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-package online.nostrium.servers.terminal.notifications;
+package online.nostrium.session;
 
 import java.util.Date;
 import java.util.Iterator;

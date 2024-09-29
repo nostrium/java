@@ -8,7 +8,7 @@ package online.nostrium.apps.games;
 
 import online.nostrium.apps.games.gods.TerminalGODS;
 import online.nostrium.apps.games.guess_number.TerminalGuessNumber;
-import online.nostrium.servers.terminal.notifications.NotificationType;
+import online.nostrium.session.NotificationType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;

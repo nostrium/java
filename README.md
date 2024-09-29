@@ -104,6 +104,7 @@ File sharing:
 + [ ] TFTP (Trivial File Transfer Protocol) - 69
 + [ ] Torrent - 6881..6889
 + [ ] Git server
++ [ ] Blossom
 
 Email service:
 + [ ] SMTP (Simple Mail Transfer Protocol) - 25
