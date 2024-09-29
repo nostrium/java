@@ -22,14 +22,12 @@ import io.netty.handler.ssl.SslContextBuilder;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import online.nostrium.apps.basic.TerminalBasic;
-import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
 import online.nostrium.folder.FolderUtils;
 import online.nostrium.main.core;
+import static online.nostrium.main.core.sessions;
 import online.nostrium.servers.Server;
 import online.nostrium.servers.terminal.CommandResponse;
-import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.session.ChannelType;
@@ -229,10 +227,10 @@ public class ServerWeb extends Server {
 
             // Determine the requested URI
             String uri = req.uri();
-            String uniqueId = getId(ctx);
+            String sessionId = getId(ctx);
 
             // Print the command to the server console
-            System.out.println("[" + uniqueId + "] requested: " + uri);
+            System.out.println("[" + sessionId + "] requested: " + uri);
 
             boolean isRootRequest = false;
 
@@ -250,8 +248,10 @@ public class ServerWeb extends Server {
             if (file.exists() || file.isFile()) {
                 // send the file from the public service
                 FilesWeb.sendFile(file, ctx);
+                return;
             } else if (isRootRequest == false) {
                 FilesWeb.sendFileFromUser(req.uri(), ctx);
+                return;
             }
 
             // whatever was asked, we didn't found it
@@ -277,7 +277,6 @@ public class ServerWeb extends Server {
 
         // Store a buffer for each connected channel to accumulate text until a full line is received
         private final Map<ChannelHandlerContext, StringBuilder> buffers = new HashMap<>();
-        private final Map<ChannelHandlerContext, ContextSession> ctxSessions = new HashMap<>();
 
         @Override
         @SuppressWarnings("null")
@@ -338,59 +337,61 @@ public class ServerWeb extends Server {
         }
 
         private void processCommand(ChannelHandlerContext ctx, String textCurrent) {
-            ContextSession ctxSession = ctxSessions.get(ctx);
-
-            if (ctxSession == null) {
-                String sessionId = getId(ctx);
-                Session session = SessionUtils
-                        .getOrCreateSession(ChannelType.WEB, sessionId);
+            
+            String sessionId = getId(ctx);
+            Session session;
+            if(core.sessions.has(ChannelType.WEB, sessionId)){
+                session = SessionUtils
+                    .getOrCreateSession(ChannelType.WEB, sessionId);
+            }else{
+                // create a new one
+                session = SessionUtils
+                    .getOrCreateSession(ChannelType.WEB, sessionId);
                 Screen screen = new ScreenWeb(session, ctx);
-                User user = UserUtils.createUserAnonymous();
-                UserUtils.checkFirstTimeSetup(user, screen);
-                ctxSession = new ContextSession(screen, user, sessionId);
-                ctxSessions.put(ctx, ctxSession);
+                session.setScreen(screen);
+                UserUtils.checkFirstTimeSetup(session.getUser(), screen);
             }
+            
+            
+            session.getScreen().writeln("");
 
-            ctxSession.ping();
-            ctxSession.screen.writeln("");
-
-            CommandResponse response = ctxSession.app.handleCommand(TerminalType.ANSI, textCurrent);
+            CommandResponse response = session.getApp()
+                    .handleCommand(TerminalType.ANSI, textCurrent);
 
             if (response == null) {
-                ctxSession.screen.writeUserPrompt(ctxSession.app);
+                session.getScreen().writeUserPrompt(session.getApp());
                 return;
             }
 
             if (textCurrent.startsWith(">")) {
                 textCurrent = textCurrent.substring(1);
                 if ("showLogo".equals(textCurrent)) {
-                    ctxSession.screen.writeln(ctxSession.app.getIntro());
-                    ctxSession.screen.writeUserPrompt(ctxSession.app);
+                    session.getScreen().writeln(session.getApp().getIntro());
+                    session.getScreen().writeUserPrompt(session.getApp());
                 }
                 return;
             }
 
             if (response.getCode() == TerminalCode.NOT_FOUND && response.getText().isEmpty()) {
-                ctxSession.screen.writeln("Not found");
+                session.getScreen().writeln("Not found");
             }
 
-            if (response.getCode() == TerminalCode.EXIT_APP && ctxSession.app.appParent != null) {
-                ctxSession.app = ctxSession.app.appParent;
+            if (response.getCode() == TerminalCode.EXIT_APP && session.getApp().appParent != null) {
+                session.setApp(session.getApp().appParent);
             }
 
             if (response.getCode() == TerminalCode.CHANGE_APP) {
-                ctxSession.app = response.getApp();
-                ctxSession.session.setApp(ctxSession.app);
-                if (ctxSession.app.appParent != null) {
-                    ctxSession.screen.writeln(ctxSession.app.getIntro());
+                session.setApp(response.getApp());
+                if (session.getApp().appParent != null) {
+                    session.getScreen().writeln(session.getApp().getIntro());
                 }
             }
 
             if (response.getText().length() > 0) {
-                ctxSession.screen.writeln(response.getText());
+                session.getScreen().writeln(response.getText());
             }
 
-            ctxSession.screen.writeUserPrompt(ctxSession.app);
+            session.getScreen().writeUserPrompt(session.getApp());
         }
     }
 }

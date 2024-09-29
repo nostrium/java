@@ -22,7 +22,6 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.utils.screens.Screen;
-import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
 import online.nostrium.servers.Server;
 import online.nostrium.session.SessionUtils;
@@ -126,7 +125,6 @@ public class ServerTelnet extends Server {
                 
                 
                 // start with the basic app
-               // User user = UserUtils.createUserAnonymous();
                 TerminalApp app = new TerminalBasic(session);
 
                 

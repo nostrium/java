@@ -29,7 +29,9 @@ public class SessionUtils {
     public static Session getOrCreateSession(ChannelType channelType, String sessionId){
         if(core.sessions.has(channelType, sessionId)){
             // get the existing session
-            return core.sessions.get(channelType, sessionId);
+            Session session = core.sessions.get(channelType, sessionId);
+            session.ping();
+            return session;
         }else{
             // create a new session
             Session session = new Session(channelType, sessionId);
@@ -37,9 +39,12 @@ public class SessionUtils {
             User user = UserUtils.createUserAnonymous();
             session.setUser(user);
             // setup the initial app
+            TerminalApp app = new TerminalBasic(session);
+            session.setApp(app);
             
             // add this session to the monitoring
             core.sessions.addSession(session);
+            session.ping();
             return session;
         }
         

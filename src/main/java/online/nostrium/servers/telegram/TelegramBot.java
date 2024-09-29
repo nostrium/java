@@ -6,15 +6,16 @@
  */
 package online.nostrium.servers.telegram;
 
-import java.util.HashMap;
 import online.nostrium.apps.basic.TerminalBasic;
 import online.nostrium.main.core;
+import static online.nostrium.main.core.sessions;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.session.ChannelType;
 import online.nostrium.session.Session;
+import online.nostrium.session.SessionUtils;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
 import online.nostrium.utils.screens.Screen;
@@ -33,8 +34,6 @@ public class TelegramBot implements LongPollingSingleThreadUpdateConsumer {
 
     private final TelegramClient telegramClient;
     private final String token;
-
-    HashMap<Long, Session> sessions = new HashMap<>();
 
     public TelegramBot(String botToken) {
         token = botToken;
@@ -135,18 +134,15 @@ public class TelegramBot implements LongPollingSingleThreadUpdateConsumer {
 
         // Get the user's Telegram ID (a unique identifier for the user)
         Long sessionIdNumber = userFromMessage.getId();
-        Session session = null;
-        if (sessions.containsKey(sessionIdNumber)) {
-            session = sessions.get(sessionIdNumber);
-        } else {
-            User user = UserUtils.createUserAnonymous();
-            TerminalApp app = new TerminalBasic(session);
-            String sessionId = sessionIdNumber + "";
-            session = new Session(ChannelType.TELEGRAM, sessionId);
+        String sessionId = sessionIdNumber + "";
+        Session session;
+        
+        if(sessions.has(ChannelType.TELEGRAM, sessionId)){
+            session = SessionUtils.getOrCreateSession(ChannelType.TELEGRAM, sessionId);
+        }else{
+            session = SessionUtils.getOrCreateSession(ChannelType.TELEGRAM, sessionId);
             Screen screen = new ScreenTelegram(session, telegramClient, sessionIdNumber);
-            session.setup(app, user, screen);
-            core.sessions.addSession(session);
-            // show the intro
+            session.setScreen(screen);
             screen.writeIntro();
         }
 
