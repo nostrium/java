@@ -14,6 +14,7 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.session.Session;
 import online.nostrium.utils.EncryptionUtils;
 import static online.nostrium.utils.TextFunctions.sha256;
 
@@ -24,8 +25,8 @@ import static online.nostrium.utils.TextFunctions.sha256;
  */
 public class CommandRegister extends TerminalCommand{
 
-    public CommandRegister(TerminalApp app) {
-        super(app);
+    public CommandRegister(TerminalApp app, Session session) {
+        super(app, session);
         this.requireSlash = false;
     }
 
@@ -33,7 +34,7 @@ public class CommandRegister extends TerminalCommand{
     public CommandResponse execute(TerminalType terminalType, String parameters) {
         
         // only valid for anon users
-        User user = this.app.user;
+        User user = session.getUser();
         if(user.getUserType() != UserType.ANON
                 && user.getUserType() != UserType.ADMIN){
             return reply(TerminalCode.FAIL, 
@@ -95,7 +96,7 @@ public class CommandRegister extends TerminalCommand{
         this.app.updateUser(user);
         
         if(user.getUserType() == UserType.ADMIN){
-            this.app.screen.writeln(UserType.ADMIN.toString() + " account is created.");
+            session.getScreen().writeln(UserType.ADMIN.toString() + " account is created.");
         }
         
         // all done

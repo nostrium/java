@@ -13,11 +13,10 @@ import online.nostrium.session.NotificationType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
-import online.nostrium.servers.terminal.TerminalColor;
-import online.nostrium.utils.screens.Screen;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
 import online.nostrium.servers.terminal.TerminalUtils;
+import online.nostrium.session.Session;
 import online.nostrium.utils.TextFunctions;
 
 /**
@@ -31,16 +30,16 @@ public class TerminalChat extends TerminalApp {
     public ChatRoom roomNow = null;
             
     @SuppressWarnings("LeakingThisInConstructor")
-    public TerminalChat(Screen screenAssigned, User user) {
-        super(screenAssigned, user);
+    public TerminalChat(Session session) {
+        super(session);
         // make sure the room is not empty
         roomNow = ChatUtils.getOrCreateRoom(this,
                     FolderUtils.nameRootChat, UserUtils.getUserAdmin()
             );
         // let's overwrite the previous LS command
         removeCommand("ls");
-        addCommand(new CommandChatLs(this, roomNow));
-        addCommand(new CommandChatClear(this));
+        addCommand(new CommandChatLs(this, roomNow, session));
+        addCommand(new CommandChatClear(this, session));
     }
 
     @Override
@@ -52,7 +51,7 @@ public class TerminalChat extends TerminalApp {
     public String getIntro() {
 
         String title = "Chat";
-        String intro = screen.getWindowFrame(title);
+        String intro = session.getScreen().getWindowFrame(title);
         
         // read the number of messages
         int countMessages;
@@ -75,10 +74,10 @@ public class TerminalChat extends TerminalApp {
     public CommandResponse defaultCommand(String commandInput) {
         
         // delete the current line before writing new stuff
-        screen.deleteCurrentLine();
+        session.getScreen().deleteCurrentLine();
         
         // write the chat message on the room
-        CommandResponse reply = roomNow.sendChatText(user, commandInput);
+        CommandResponse reply = roomNow.sendChatText(session.getUser(), commandInput);
         // when something went wrong, stop it here
         if(reply.getCode() != TerminalCode.OK){
             return reply;
@@ -87,17 +86,17 @@ public class TerminalChat extends TerminalApp {
         
         String line = createMessageLine(
                 System.currentTimeMillis() / 1000L, 
-                user.getDisplayName(), 
+                session.getUser().getDisplayName(), 
                 reply.getText()
         );
         
         // write the new line
-        screen.writeln(line);
+        session.getScreen().writeln(line);
         
         // send a notification
         core.sessions.sendNotification(
                 this.getId(), 
-                user, 
+                session.getUser(), 
                 NotificationType.UPDATE, 
                 line
         );
@@ -132,11 +131,11 @@ public class TerminalChat extends TerminalApp {
         if(notificationType != NotificationType.UPDATE){
             return;
         }
-        if(userSender.sameAs(this.user)){
+        if(userSender.sameAs(session.getUser())){
             return;
         }
         String line = (String) object;
-        screen.deleteCurrentLine();
+        session.getScreen().deleteCurrentLine();
         
         // break the text in two parts
         int i = line.indexOf("]") + 1;
@@ -144,10 +143,10 @@ public class TerminalChat extends TerminalApp {
         String line2 = line.substring(i);
         
         // write the text in different speed
-        screen.write(line1);
-        screen.writeLikeHuman(line2, 25);
+        session.getScreen().write(line1);
+        session.getScreen().writeLikeHuman(line2, 25);
         
-        screen.writeUserPrompt(this);
+        session.getScreen().writeUserPrompt(this);
     }
     
     @Override

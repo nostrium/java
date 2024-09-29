@@ -7,6 +7,7 @@
 package online.nostrium.servers.terminal;
 
 import java.util.ArrayList;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -14,6 +15,8 @@ import java.util.ArrayList;
  * @location: Germany
  */
 public abstract class TerminalCommand {
+    
+    final public Session session;
 
     final protected TerminalApp app;
     // force commands to use a slash
@@ -25,12 +28,13 @@ public abstract class TerminalCommand {
     public ArrayList<String> 
             commandsAlternative = new ArrayList();
     
-    public TerminalCommand(TerminalApp app) {
+    public TerminalCommand(TerminalApp app, Session session) {
+        this.session = session;
         this.app = app;
     }
     
     protected String paint(TerminalColor colorType, String text) {
-        return app.screen.paint(colorType, text);
+        return session.getScreen().paint(colorType, text);
     }
     
     

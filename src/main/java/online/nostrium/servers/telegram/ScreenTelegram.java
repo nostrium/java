@@ -36,7 +36,8 @@ public class ScreenTelegram extends Screen {
 
     private static final long MESSAGE_DELAY = 1000; // 1 second delay
 
-    public ScreenTelegram(TelegramClient telegramClient, long chatId) {
+    public ScreenTelegram(Session session, TelegramClient telegramClient, long chatId) {
+        super(session);
         this.telegramClient = telegramClient;
         this.chatId = chatId;
         this.messageBuffer = new StringBuilder();
@@ -103,7 +104,7 @@ public class ScreenTelegram extends Screen {
     @Override
     public void writeUserPrompt(TerminalApp app) {
         String path = TerminalUtils.getPath(app);
-        String userPrompt = app.user.getDisplayName() + ":" + path + "> ";
+        String userPrompt = app.session.getUser().getDisplayName() + ":" + path + "> ";
         writeln(userPrompt);
     }
 

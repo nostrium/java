@@ -13,7 +13,7 @@ import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalUtils;
-import online.nostrium.utils.screens.Screen;
+import online.nostrium.session.Session;
 
 /**
  * @Date: 2024-08-25
@@ -22,9 +22,9 @@ import online.nostrium.utils.screens.Screen;
  */
 public class TestingFunctions {
 
-    public static TerminalApp createFakeApp(Screen screen, User user, String appName, String id){
+    public static TerminalApp createFakeApp(Session session, String appName, String id){
         
-        TerminalApp app = new TerminalApp(screen, user) {
+        TerminalApp app = new TerminalApp(session) {
             
             String latestNotification = null;
             

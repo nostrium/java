@@ -12,6 +12,7 @@ import online.nostrium.archive.Archive;
 import online.nostrium.folder.FolderType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalCode;
+import online.nostrium.session.Session;
 import online.nostrium.user.User;
 import online.nostrium.utils.screens.Screen;
 
@@ -22,8 +23,8 @@ import online.nostrium.utils.screens.Screen;
  */
 public class BlogArchive extends Archive{
 
-    public BlogArchive(String id, File folder, Screen screen, User user) {
-        super(id, folder, screen, user);
+    public BlogArchive(String id, File folder, Session session) {
+        super(id, folder, session);
         setType(FolderType.BLOG);
     }
 

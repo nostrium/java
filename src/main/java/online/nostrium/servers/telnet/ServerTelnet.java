@@ -14,7 +14,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 import online.nostrium.main.core;
-import online.nostrium.session.ClientType;
+import online.nostrium.session.ChannelType;
 import online.nostrium.session.Session;
 import online.nostrium.apps.basic.TerminalBasic;
 import online.nostrium.servers.terminal.CommandResponse;
@@ -25,6 +25,7 @@ import online.nostrium.utils.screens.Screen;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
 import online.nostrium.servers.Server;
+import online.nostrium.session.SessionUtils;
 
 /**
  *
@@ -112,21 +113,29 @@ public class ServerTelnet extends Server {
                 InputStream in = clientSocket.getInputStream();
                 PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true)) {
 
-                // the handler of text on the screen
-                Screen screen = new ScreenTelnet(in, out);
+                // use the IP address as sessionId
+                String sessionId = clientSocket.getInetAddress().toString();
 
+                // get the corresponding session
+                Session session = 
+                        SessionUtils.getOrCreateSession(ChannelType.TELNET, sessionId);
+                
+               // the handler of text on the screen, always needs to be updated
+                Screen screen = new ScreenTelnet(in, out, session);
+                session.setScreen(screen);
+                
+                
                 // start with the basic app
-                User user = UserUtils.createUserAnonymous();
-                TerminalApp app = new TerminalBasic(screen, user);
+               // User user = UserUtils.createUserAnonymous();
+                TerminalApp app = new TerminalBasic(session);
 
-                Session session = new Session(ClientType.TELNET, app, user);
-                core.sessions.addSession(session);
+                
 
                 // show the intro
                 screen.writeIntro();
                 
                 // is this the first user ever? Make him admin
-                UserUtils.checkFirstTimeSetup(user, screen);
+                UserUtils.checkFirstTimeSetup(session.getUser(), screen);
 
                 // write the start prompt
                 screen.writeUserPrompt(app);

@@ -11,9 +11,9 @@ import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
-import online.nostrium.utils.screens.Screen;
 import online.nostrium.user.User;
 import online.nostrium.servers.terminal.TerminalUtils;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -22,8 +22,8 @@ import online.nostrium.servers.terminal.TerminalUtils;
  */
 public class TerminalGODS_Bank extends TerminalApp {
 
-    public TerminalGODS_Bank(Screen screen, User user) {
-        super(screen, user);
+    public TerminalGODS_Bank(Session session) {
+        super(session);
         // add some specific commands
 //        addCommand(new CommandGodsClear(this));
 //        addCommand(new CommandLs(this));
@@ -73,7 +73,7 @@ public class TerminalGODS_Bank extends TerminalApp {
 
     @Override
     public void receiveNotification(User userSender, NotificationType notificationType, Object object) {
-        screen.writeln("Received a notification");
+        session.getScreen().writeln("Received a notification");
     }
     
     @Override

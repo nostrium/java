@@ -11,6 +11,7 @@ import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
+import online.nostrium.session.Session;
 import online.nostrium.utils.screens.Screen;
 import online.nostrium.user.User;
 import online.nostrium.user.UserType;
@@ -23,11 +24,11 @@ import online.nostrium.user.UserType;
 public class TerminalAdmin extends TerminalApp {
     
 
-    public TerminalAdmin(Screen screen, User user) {
-        super(screen, user);
+    public TerminalAdmin(Session session) {
+        super(session);
          // add apps inside
-        this.addCommand(new CommandRegisterSSL(this));
-        this.addCommand(new CommandAdminLog(this));
+        this.addCommand(new CommandRegisterSSL(this, session));
+        this.addCommand(new CommandAdminLog(this, session));
         
         // make sure that only ADMIN can enter here
         permissions.clearEveryone();
@@ -46,7 +47,7 @@ public class TerminalAdmin extends TerminalApp {
 
     @Override
     public String getIntro() {
-        String text = screen.getWindowFrame("Administration");
+        String text = session.getScreen().getWindowFrame("Administration");
         String intro = paint(GREEN, text);
         return intro;
     }

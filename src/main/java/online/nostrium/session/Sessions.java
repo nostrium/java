@@ -14,8 +14,9 @@ import java.util.concurrent.TimeUnit;
 import online.nostrium.user.User;
 
 /**
- * Author: Brito
- * Date: 2024-08-10 Location: Germany
+ * @author Brito
+ * @date: 2024-08-10
+ * @location: Germany
  */
 public class Sessions {
 
@@ -68,5 +69,33 @@ public class Sessions {
 
     public int countSessions() {
         return list.size();
+    }
+
+    /**
+     * Look inside all available sessions to see if any of them
+     * contains the same sessionId and sessionType. When a match
+     * is found then it will resume the session.
+     * @param channelType
+     * @param sessionId
+     * @return 
+     */
+    public boolean has(ChannelType channelType, String sessionId) {
+        for(Session session : list){
+            if(session.channelType == channelType
+                    && session.sessionId.equals(sessionId)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Session get(ChannelType channelType, String sessionId) {
+        for(Session session : list){
+            if(session.channelType == channelType
+                    && session.sessionId.equals(sessionId)){
+                return session;
+            }
+        }
+        return null;
     }
 }

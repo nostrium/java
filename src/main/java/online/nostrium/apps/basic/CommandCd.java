@@ -12,6 +12,7 @@ import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.TerminalUtils;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -20,8 +21,8 @@ import online.nostrium.servers.terminal.TerminalUtils;
  */
 public class CommandCd extends TerminalCommand {
 
-    public CommandCd(TerminalApp app) {
-        super(app);
+    public CommandCd(TerminalApp app, Session session) {
+        super(app, session);
         this.requireSlash = false;
         // add an alternative command
         this.commandsAlternative.add("chdir");
@@ -59,7 +60,7 @@ public class CommandCd extends TerminalCommand {
             if(textName.equalsIgnoreCase(parameters)){
                 // do we have permission to enter inside this app?
                 if(appChild.permissions
-                        .isPermitted(this.app.user) == false){
+                        .isPermitted(session.getUser()) == false){
                     continue;
                 }
                 return reply(appChild);

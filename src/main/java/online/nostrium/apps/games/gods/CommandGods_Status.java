@@ -8,9 +8,9 @@ package online.nostrium.apps.games.gods;
 
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalCode;
-import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -19,8 +19,8 @@ import online.nostrium.servers.terminal.TerminalType;
  */
 public class CommandGods_Status extends TerminalCommand {
 
-    public CommandGods_Status(TerminalGODS app) {
-        super(app);
+    public CommandGods_Status(TerminalGODS app, Session session) {
+        super(app, session);
         this.requireSlash = false;
         // add an alternative command
         this.commandsAlternative.add("s");
@@ -28,10 +28,10 @@ public class CommandGods_Status extends TerminalCommand {
 
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
-        app.screen.clearScreen();
+        session.getScreen().clearScreen();
         String text = "";
         
-        text += this.app.screen.getWindowFrame("STATUS");
+        text += session.getScreen().getWindowFrame("STATUS");
         
         
         text += "\n"

@@ -15,6 +15,7 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -23,8 +24,8 @@ import online.nostrium.servers.terminal.TerminalType;
  */
 public class CommandUserSet extends TerminalCommand{
 
-    public CommandUserSet(TerminalApp app) {
-        super(app);
+    public CommandUserSet(TerminalApp app, Session session) {
+        super(app, session);
         this.requireSlash = false;
     }
 
@@ -41,7 +42,7 @@ public class CommandUserSet extends TerminalCommand{
         String text = parameters.substring(action.length() + 1);
         
         // get the user
-        User user = this.app.user;
+        User user = session.getUser();
         
         return switch (action) {
             case "username" -> setUsername(user, text);

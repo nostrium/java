@@ -14,6 +14,7 @@ import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -22,8 +23,8 @@ import static online.nostrium.servers.terminal.TerminalColor.GREEN;
  */
 public class CommandHelp extends TerminalCommand {
 
-    public CommandHelp(TerminalApp app) {
-        super(app);
+    public CommandHelp(TerminalApp app, Session session) {
+        super(app, session);
         this.commandsAlternative.add("?");
         this.requireSlash = false;
     }
@@ -31,9 +32,9 @@ public class CommandHelp extends TerminalCommand {
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
         
-        String text = app.screen.getWindowFrame("Help menu")
-                + app.screen.breakLine()
-                + app.screen.breakLine()
+        String text = session.getScreen().getWindowFrame("Help menu")
+                + session.getScreen().breakLine()
+                + session.getScreen().breakLine()
                 ;
         
         // list all the apps first
@@ -42,19 +43,19 @@ public class CommandHelp extends TerminalCommand {
             for (TerminalApp appHere : this.app.appChildren) {
                 
                 // avoid listing non-permitted apps
-                if(appHere.permissions.isPermitted(appHere.user) == false){
+                if(appHere.permissions.isPermitted(session.getUser()) == false){
                     continue;
                 }
                 
                 String textName = "[" + appHere.getName() + "]";
                 text += " "
-                        + appHere.screen.breakLine()
+                        + session.getScreen().breakLine()
                         + " "
                         + paint(GREEN, textName)
                         + ": "
                         + appHere.getDescription();
             }
-            text += app.screen.breakLine() + app.screen.breakLine();
+            text += session.getScreen().breakLine() + session.getScreen().breakLine();
         }
         
         

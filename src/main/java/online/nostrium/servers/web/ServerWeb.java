@@ -32,6 +32,9 @@ import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.session.ChannelType;
+import online.nostrium.session.Session;
+import online.nostrium.session.SessionUtils;
 import online.nostrium.utils.screens.Screen;
 
 /**
@@ -338,12 +341,13 @@ public class ServerWeb extends Server {
             ContextSession ctxSession = ctxSessions.get(ctx);
 
             if (ctxSession == null) {
-                String uniqueId = getId(ctx);
-                Screen screen = new ScreenWeb(ctx);
+                String sessionId = getId(ctx);
+                Session session = SessionUtils
+                        .getOrCreateSession(ChannelType.WEB, sessionId);
+                Screen screen = new ScreenWeb(session, ctx);
                 User user = UserUtils.createUserAnonymous();
                 UserUtils.checkFirstTimeSetup(user, screen);
-                TerminalApp app = new TerminalBasic(screen, user);
-                ctxSession = new ContextSession(screen, user, app, uniqueId);
+                ctxSession = new ContextSession(screen, user, sessionId);
                 ctxSessions.put(ctx, ctxSession);
             }
 

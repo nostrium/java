@@ -17,6 +17,7 @@ import static online.nostrium.servers.terminal.TerminalColor.GREEN;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN_BRIGHT;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.TerminalUtils;
+import online.nostrium.session.Session;
 import online.nostrium.utils.screens.Screen;
 
 /**
@@ -58,7 +59,8 @@ public class ScreenTelnet extends Screen {
             ANSI_BROWN = "\u001B[38;5;94m",
             ANSI_DESERT_SAND = "\u001B[38;5;229m";
 
-    public ScreenTelnet(InputStream in, PrintWriter out) { // Modified constructor to accept InputStream instead of BufferedReader
+    public ScreenTelnet(InputStream in, PrintWriter out, Session session) { 
+        super(session);
         this.in = in;
         this.out = out;
     }
@@ -255,7 +257,7 @@ public class ScreenTelnet extends Screen {
     public void writeUserPrompt(TerminalApp app) {
         String path = TerminalUtils.getPath(app);
 
-        String userPrompt = paint(GREEN_BRIGHT, app.user.getDisplayName())
+        String userPrompt = paint(GREEN_BRIGHT, session.getUser().getDisplayName())
                 + ":"
                 + path
                 + "> ";

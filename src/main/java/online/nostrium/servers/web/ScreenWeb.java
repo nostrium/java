@@ -47,6 +47,7 @@ import static online.nostrium.servers.telnet.ScreenTelnet.ANSI_CLEAR_SCREEN;
 import static online.nostrium.servers.telnet.ScreenTelnet.ANSI_HOME;
 import static online.nostrium.servers.telnet.ScreenTelnet.ANSI_RESET;
 import static online.nostrium.servers.telnet.ScreenTelnet.ANSI_WHITE;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -57,7 +58,8 @@ public class ScreenWeb extends Screen{
     
     final ChannelHandlerContext ctx;
 
-    public ScreenWeb(ChannelHandlerContext ctx) {
+    public ScreenWeb(Session session, ChannelHandlerContext ctx) {
+        super(session);
         this.ctx = ctx;
     }
 
@@ -256,7 +258,8 @@ public class ScreenWeb extends Screen{
     public void writeUserPrompt(TerminalApp app) {
         String path = TerminalUtils.getPath(app);
 
-        String userPrompt = paint(GREEN_BRIGHT, app.user.getDisplayName())
+        String userPrompt = paint(GREEN_BRIGHT, 
+                session.getUser().getDisplayName())
                 + ":"
                 + path
                 + "> ";

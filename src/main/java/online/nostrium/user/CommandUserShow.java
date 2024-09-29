@@ -12,6 +12,7 @@ import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -20,14 +21,14 @@ import online.nostrium.servers.terminal.TerminalType;
  */
 public class CommandUserShow extends TerminalCommand{
 
-    public CommandUserShow(TerminalApp app) {
-        super(app);
+    public CommandUserShow(TerminalApp app, Session session) {
+        super(app, session);
         this.requireSlash = false;
     }
     
     private String show(String tag, String value) {
     return 
-            app.screen.paint(TerminalColor.GREEN, tag)
+            session.getScreen().paint(TerminalColor.GREEN, tag)
             + ": " + value + "\n";
 }
 
@@ -36,16 +37,16 @@ public CommandResponse execute(TerminalType terminalType, String parameters) {
     // try to save the user
     String output = "";
     
-    output += show("npub", this.app.user.getNpub());
-    output += show("nsec", this.app.user.getNsec());
-    output += show("username", noneWhenEmpty(this.app.user.username));
-    output += show("password hash", noneWhenEmpty(this.app.user.passwordHash));
-    output += show("type", noneWhenEmpty(this.app.user.userType.toString()));
-    output += show("email", noneWhenEmpty(this.app.user.getEmailAddress()));
-    output += show("about", noneWhenEmpty(this.app.user.aboutMe));
-    output += show("www", noneWhenEmpty(this.app.user.website));
-    output += show("updated", noneWhenEmpty(this.app.user.lastLoginTime));
-    output += show("registered", noneWhenEmpty(this.app.user.registeredTime));
+    output += show("npub", session.getUser().getNpub());
+    output += show("nsec", session.getUser().getNsec());
+    output += show("username", noneWhenEmpty(session.getUser().username));
+    output += show("password hash", noneWhenEmpty(session.getUser().passwordHash));
+    output += show("type", noneWhenEmpty(session.getUser().userType.toString()));
+    output += show("email", noneWhenEmpty(session.getUser().getEmailAddress()));
+    output += show("about", noneWhenEmpty(session.getUser().aboutMe));
+    output += show("www", noneWhenEmpty(session.getUser().website));
+    output += show("updated", noneWhenEmpty(session.getUser().lastLoginTime));
+    output += show("registered", noneWhenEmpty(session.getUser().registeredTime));
     
     return reply(TerminalCode.OK, output);
 }

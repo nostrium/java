@@ -12,6 +12,7 @@ import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
+import online.nostrium.session.Session;
 import online.nostrium.utils.TextFunctions;
 import static online.nostrium.utils.TextFunctions.sha256;
 
@@ -24,15 +25,15 @@ public class CommandUserPassword extends TerminalCommand{
 
     int minCharacters = 4;
     
-    public CommandUserPassword(TerminalApp app) {
-        super(app);
+    public CommandUserPassword(TerminalApp app, Session session) {
+        super(app, session);
         this.requireSlash = false;
     }
 
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
         
-        if(this.app.user.username == null){
+        if(session.getUser().username == null){
             return reply(TerminalCode.INCOMPLETE, "Please define your username before setting a password");
         }
         
@@ -63,7 +64,7 @@ public class CommandUserPassword extends TerminalCommand{
         String passwordHash = sha256(parameters);
         
         // change the password and save to disk
-        app.user.setPasswordHash(passwordHash);
+        session.getUser().setPasswordHash(passwordHash);
         
         
         return reply(TerminalCode.OK, ""

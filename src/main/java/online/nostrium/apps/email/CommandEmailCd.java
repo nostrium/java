@@ -14,6 +14,7 @@ import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.TerminalUtils;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -22,8 +23,8 @@ import online.nostrium.servers.terminal.TerminalUtils;
  */
 public class CommandEmailCd extends TerminalCommand {
 
-    public CommandEmailCd(TerminalEmail app) {
-        super(app);
+    public CommandEmailCd(TerminalEmail app, Session session) {
+        super(app, session);
         this.requireSlash = false;
         // add an alternative command
         this.commandsAlternative.add("chdir");
@@ -57,7 +58,7 @@ public class CommandEmailCd extends TerminalCommand {
         }
         
         
-        File folderBase = EmailUtils.getFolderEmail(app.user, true);
+        File folderBase = EmailUtils.getFolderEmail(session.getUser(), true);
         File folder = new File(folderBase, parameters);
         if(folder.exists() == false){
             return reply(TerminalCode.NOT_FOUND, "Folder not found");

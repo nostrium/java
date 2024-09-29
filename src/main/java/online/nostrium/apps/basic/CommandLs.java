@@ -12,6 +12,7 @@ import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -20,8 +21,8 @@ import online.nostrium.servers.terminal.TerminalType;
  */
 public class CommandLs extends TerminalCommand {
 
-    public CommandLs(TerminalApp app) {
-        super(app);
+    public CommandLs(TerminalApp app, Session session) {
+        super(app, session);
         this.requireSlash = false;
         // add an alternative command
         this.commandsAlternative.add("dir");
@@ -39,7 +40,7 @@ public class CommandLs extends TerminalCommand {
         // iterate all apps        
         for (TerminalApp app : this.app.appChildren) {
             // don't list when permissions don't permit
-            if(app.permissions.isPermitted(this.app.user) == false){
+            if(app.permissions.isPermitted(session.getUser()) == false){
                 continue;
             }
             

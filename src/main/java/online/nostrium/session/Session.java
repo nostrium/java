@@ -10,6 +10,7 @@ package online.nostrium.session;
 import java.util.Date;
 import online.nostrium.user.User;
 import online.nostrium.servers.terminal.TerminalApp;
+import online.nostrium.utils.screens.Screen;
 
 /**
  * Author: Brito
@@ -18,19 +19,51 @@ import online.nostrium.servers.terminal.TerminalApp;
  */
 public class Session {
     
-    final Date sessionStarted;        // when it was started
+    final String sessionId;     // unique identifier of session that is running
+    final Date sessionStarted;  // when it was started
+    final ChannelType channelType;  // what kind of terminal is being used
     Date sessionLastActive;     // when it was last doing something
     TerminalApp app;            // the current app
     User user;                  // who is using this
-    final ClientType clientType;      // what kind of terminal is being used
+    Screen screen;
     private boolean timeToStop = false;
 
-    public Session(ClientType clientType, TerminalApp app, User user) {
+    public Session(
+            ChannelType clientType, String sessionId, 
+            TerminalApp app, User user, Screen screen) {
+        this.sessionId = sessionId;
         this.app = app;
-        this.clientType = clientType;
+        this.channelType = clientType;
         this.sessionStarted = new Date();
         this.sessionLastActive = new Date();
         this.user = user;
+        this.screen = screen;
+    }
+    
+    public Session(ChannelType clientType, String sessionId) {
+        this.sessionId = sessionId;
+        this.channelType = clientType;
+        this.sessionStarted = new Date();
+        this.sessionLastActive = new Date();
+    }
+    
+    public void setup(TerminalApp app, User user, Screen screen){
+         this.app = app;
+         this.user = user;
+         this.screen = screen;
+    }
+    
+
+    public ChannelType getChannelType() {
+        return channelType;
+    }
+
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public Screen getScreen() {
+        return screen;
     }
 
     /**
@@ -60,8 +93,8 @@ public class Session {
         return user;
     }
 
-    public ClientType getClientType() {
-        return clientType;
+    public ChannelType getClientType() {
+        return channelType;
     }
 
     public boolean isTimeToStop() {
@@ -84,6 +117,9 @@ public class Session {
     public long getLastPing() {
         return this.sessionLastActive.getTime();
     }
-    
+
+    public void setScreen(Screen screen) {
+        this.screen = screen;
+    }
 
 }

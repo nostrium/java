@@ -12,6 +12,7 @@ import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -20,8 +21,8 @@ import static online.nostrium.servers.terminal.TerminalColor.BLUE;
  */
 public class CommandHello extends TerminalCommand{
 
-    public CommandHello(TerminalApp app) {
-        super(app);
+    public CommandHello(TerminalApp app, Session session) {
+        super(app, session);
     }
 
     @Override

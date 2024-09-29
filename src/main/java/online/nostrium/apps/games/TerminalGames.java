@@ -13,9 +13,9 @@ import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
-import online.nostrium.utils.screens.Screen;
 import online.nostrium.user.User;
 import online.nostrium.servers.terminal.TerminalUtils;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -25,11 +25,11 @@ import online.nostrium.servers.terminal.TerminalUtils;
 public class TerminalGames extends TerminalApp {
     
 
-    public TerminalGames(Screen screen, User user) {
-        super(screen, user);
+    public TerminalGames(Session session) {
+        super(session);
          // add apps inside
-        addApp(new TerminalGODS(screen, user));
-        addApp(new TerminalGuessNumber(screen, user));
+        addApp(new TerminalGODS(session));
+        addApp(new TerminalGuessNumber(session));
     }
 
     @Override

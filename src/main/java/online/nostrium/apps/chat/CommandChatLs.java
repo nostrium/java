@@ -12,6 +12,7 @@ import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.session.Session;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
 import online.nostrium.utils.TextFunctions;
@@ -25,8 +26,8 @@ public class CommandChatLs extends TerminalCommand {
 
     final ChatRoom room;
     
-    public CommandChatLs(TerminalChat app, ChatRoom room) {
-        super(app);
+    public CommandChatLs(TerminalChat app, ChatRoom room, Session session) {
+        super(app, session);
         this.room = room;
         this.requireSlash = false;
         // add an alternative command

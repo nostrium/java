@@ -16,7 +16,7 @@ import online.nostrium.servers.terminal.AppData;
 import online.nostrium.apps.games.guess_number.UserRecordGuess;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
-import online.nostrium.session.ClientType;
+import online.nostrium.session.ChannelType;
 import online.nostrium.session.Session;
 import online.nostrium.session.Sessions;
 import online.nostrium.servers.terminal.TerminalApp;
@@ -47,9 +47,10 @@ public class AppDataTest {
         
         // create the users
         User user1 = UserUtils.createUserAnonymous();
-        Screen screen1 = new ScreenCLI();
-        TerminalApp app1 = createFakeApp(screen1, user1, id, id);
-        Session session1 = new Session(ClientType.TELNET, app1, user1);
+        Session session1 = new Session(ChannelType.TELNET, "1");
+        TerminalApp app1 = createFakeApp(session1, id, id);
+        Screen screen1 = new ScreenCLI(session1);
+        session1.setup(app1, user1, screen1);
         sessions.addSession(session1);
         
         // start testing

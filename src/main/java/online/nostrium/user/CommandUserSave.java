@@ -13,6 +13,7 @@ import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
 import static online.nostrium.servers.terminal.TerminalColor.RED;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -21,20 +22,20 @@ import static online.nostrium.servers.terminal.TerminalColor.RED;
  */
 public class CommandUserSave extends TerminalCommand{
 
-    public CommandUserSave(TerminalApp app) {
-        super(app);
+    public CommandUserSave(TerminalApp app, Session session) {
+        super(app, session);
         this.requireSlash = false;
     }
 
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
         
-        if(app.user.hasPassword() == false){
+        if(session.getUser().hasPassword() == false){
             return reply(TerminalCode.FAIL, "You need to first define a username and password");
         }
         
         // try to save the user
-        if(app.user.save()){
+        if(session.getUser().save()){
             return reply(TerminalCode.OK, paint(BLUE, "Saved to disk"));
         }else{
             return reply(TerminalCode.FAIL, paint(RED, "Failed to save"));

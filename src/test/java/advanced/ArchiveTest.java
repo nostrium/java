@@ -13,6 +13,8 @@ import online.nostrium.archive.Topic;
 import online.nostrium.archive.forum.ForumArchive;
 import online.nostrium.folder.FolderUtils;
 import online.nostrium.main.core;
+import online.nostrium.session.ChannelType;
+import online.nostrium.session.Session;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
 import online.nostrium.utils.screens.Screen;
@@ -34,16 +36,20 @@ public class ArchiveTest {
 
     @Test
     public void helloForum() throws IOException {
+        core.startConfig();
         
-        // save the data to disk
+        // folder to use for saving the data to disk
         File folder = FolderUtils.getFolderTest();
         assertTrue(folder.exists());
         
-        Screen screen = new ScreenCLI();
         User user = UserUtils.createUserAnonymous();
-        core.startConfig();
+        Session session = new Session(ChannelType.API, "1");
+        session.setUser(user);
+        Screen screen = new ScreenCLI(session);
+        session.setScreen(screen);
         
-        ForumArchive forum = new ForumArchive("offgrid", folder, screen, user);
+        ForumArchive forum = new ForumArchive("offgrid", folder, session);
+        session.setup(forum, user, screen);
         
         File folderGeneral = new File(folder, "general");
         Group group1 = new Group(folderGeneral);

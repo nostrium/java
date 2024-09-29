@@ -11,6 +11,7 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -19,8 +20,8 @@ import online.nostrium.servers.terminal.TerminalType;
  */
 public class CommandGodsWalk extends TerminalCommand {
 
-    public CommandGodsWalk(TerminalApp app) {
-        super(app);
+    public CommandGodsWalk(TerminalApp app, Session session) {
+        super(app, session);
         this.requireSlash = false;
         // add an alternative command
         this.commandsAlternative.add("w");
@@ -28,7 +29,7 @@ public class CommandGodsWalk extends TerminalCommand {
 
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
-        app.screen.clearScreen();
+        session.getScreen().clearScreen();
         
         // start a fight
         

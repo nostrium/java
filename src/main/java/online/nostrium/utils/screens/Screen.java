@@ -22,6 +22,12 @@ import online.nostrium.utils.ascii.AsciiArt;
  */
 public abstract class Screen {
     
+    public final Session session;
+
+    public Screen(Session session) {
+        this.session = session;
+    }
+    
     public abstract TerminalType getTerminalType();
     
     public void writeIntro(){

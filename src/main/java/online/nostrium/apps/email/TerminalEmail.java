@@ -14,10 +14,8 @@ import online.nostrium.servers.email.EmailUtils;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
-import online.nostrium.utils.screens.Screen;
-import online.nostrium.user.User;
-import static online.nostrium.servers.email.EmailUtils.createFoldersBasic;
 import online.nostrium.servers.terminal.TerminalUtils;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -29,16 +27,16 @@ public class TerminalEmail extends TerminalApp {
     File folderBase = null;
     
 
-    public TerminalEmail(Screen screen, User user) {
-        super(screen, user);
+    public TerminalEmail(Session session) {
+        super(session);
          // add apps inside
         this.removeCommand("ls");
-        this.addCommand(new CommandEmailLs(this));
+        this.addCommand(new CommandEmailLs(this, session));
         
         this.removeCommand("cd");
-        this.addCommand(new CommandEmailCd(this));
+        this.addCommand(new CommandEmailCd(this, session));
         
-        folderBase = EmailUtils.getFolderEmail(user, false);
+        folderBase = EmailUtils.getFolderEmail(session.getUser(), false);
         setFolderCurrent(folderBase);
         
 //        permissions.clearEveryone();
@@ -59,7 +57,8 @@ public class TerminalEmail extends TerminalApp {
 
     @Override
     public String getIntro() {
-        screen.writeln(screen.getWindowFrame("Email"));
+        session.getScreen().writeln(
+                session.getScreen().getWindowFrame("Email"));
         return "Type 'help' to see the available commands";
     }
 

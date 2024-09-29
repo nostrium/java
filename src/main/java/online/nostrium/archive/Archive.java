@@ -24,8 +24,7 @@ import online.nostrium.logs.Log;
 import online.nostrium.folder.FolderUtils;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
-import online.nostrium.user.User;
-import online.nostrium.utils.screens.Screen;
+import online.nostrium.session.Session;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -60,8 +59,8 @@ public abstract class Archive extends TerminalApp{
     @Expose
     FolderType type = FolderType.NONE;
     
-    public Archive(String id, File folder, Screen screen, User user) {
-        super(screen, user);
+    public Archive(String id, File folder, Session session) {
+        super(session);
         id = id.replace(" ", "").toLowerCase();
         this.id = id;
         this.folder = new File(folder, id);
@@ -77,11 +76,11 @@ public abstract class Archive extends TerminalApp{
         
         // list the folders/files
         this.removeCommand("ls");
-        this.addCommand(new CommandArchiveLs(this));
+        this.addCommand(new CommandArchiveLs(this, session));
         // delete a message
         // get inside a topic
         // write a new topic
-        this.addCommand(new CommandArchiveWrite(this));
+        this.addCommand(new CommandArchiveWrite(this, session));
         // reply with a message
         // statistics
     }

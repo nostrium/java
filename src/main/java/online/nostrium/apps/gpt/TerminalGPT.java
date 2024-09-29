@@ -11,6 +11,7 @@ import online.nostrium.session.NotificationType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
+import online.nostrium.session.Session;
 import online.nostrium.utils.screens.Screen;
 
 /**
@@ -20,8 +21,8 @@ import online.nostrium.utils.screens.Screen;
  */
 public class TerminalGPT extends TerminalApp {
 
-    public TerminalGPT(Screen screenAssigned, User user) {
-        super(screenAssigned, user);
+    public TerminalGPT(Session session) {
+        super(session);
 //        addCommand(new CommandUserShow(this));
 //        //addCommand(new CommandUserPassword(this));
 //        //addCommand(new CommandUserSave(this));
@@ -41,8 +42,8 @@ public class TerminalGPT extends TerminalApp {
     @Override
     public String getIntro() {
         String title = "GPT";
-        String text = screen.getWindowFrame(title);
-        text += screen.breakLine();
+        String text = session.getScreen().getWindowFrame(title);
+        text += session.getScreen().breakLine();
         text += "Write a question or type 'help' to see the available commands";
         return text;
     }
@@ -54,7 +55,7 @@ public class TerminalGPT extends TerminalApp {
 
     @Override
     public void receiveNotification(User userSender, NotificationType notificationType, Object object) {
-        screen.writeln("Received a notification");
+        session.getScreen().writeln("Received a notification");
     }
 
 }

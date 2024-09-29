@@ -11,6 +11,7 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -19,8 +20,8 @@ import online.nostrium.servers.terminal.TerminalType;
  */
 public class CommandMkdir extends TerminalCommand{
 
-    public CommandMkdir(TerminalApp app) {
-        super(app);
+    public CommandMkdir(TerminalApp app, Session session) {
+        super(app, session);
         this.requireSlash = false;
         // add an alternative command
         this.commandsAlternative.add("md");

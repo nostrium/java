@@ -12,6 +12,7 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.session.Session;
 import static online.nostrium.utils.ascii.DirectoryTreeBuilder.buildTree;
 
 /**
@@ -21,8 +22,8 @@ import static online.nostrium.utils.ascii.DirectoryTreeBuilder.buildTree;
  */
 public class CommandEmailLs extends TerminalCommand {
 
-    public CommandEmailLs(TerminalApp app) {
-        super(app);
+    public CommandEmailLs(TerminalApp app, Session session) {
+        super(app, session);
         this.requireSlash = false;
         // add an alternative command
         this.commandsAlternative.add("dir");

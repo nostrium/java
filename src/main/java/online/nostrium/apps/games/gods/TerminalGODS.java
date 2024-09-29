@@ -15,9 +15,9 @@ import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
-import online.nostrium.utils.screens.Screen;
 import online.nostrium.user.User;
 import online.nostrium.servers.terminal.TerminalUtils;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -28,17 +28,17 @@ public class TerminalGODS extends TerminalApp {
     
     public GODS_Status status = GODS_Status.loadFromFile(this);
 
-    public TerminalGODS(Screen screen, User user) {
-        super(screen, user);
+    public TerminalGODS(Session session) {
+        super(session);
         // add some specific commands
-        addCommand(new CommandGodsClear(this));
-        addCommand(new CommandLs(this));
-        addCommand(new CommandGods_Status(this));
+        addCommand(new CommandGodsClear(this, session));
+        addCommand(new CommandLs(this, session));
+        addCommand(new CommandGods_Status(this, session));
         
          // add apps inside
-        addApp(new TerminalGODS_Walk(screen, user));
-        addApp(new TerminalGODS_Arena(screen, user));
-        addApp(new TerminalGODS_Bank(screen, user));
+        addApp(new TerminalGODS_Walk(session));
+        addApp(new TerminalGODS_Arena(session));
+        addApp(new TerminalGODS_Bank(session));
     }
 
     @Override
@@ -89,7 +89,7 @@ public class TerminalGODS extends TerminalApp {
 
     @Override
     public void receiveNotification(User userSender, NotificationType notificationType, Object object) {
-        screen.writeln("Received a notification");
+        session.getScreen().writeln("Received a notification");
     }
     
     @Override

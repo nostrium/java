@@ -16,10 +16,10 @@ import online.nostrium.apps.basic.CommandCd;
 import online.nostrium.apps.basic.CommandExit;
 import online.nostrium.apps.basic.CommandLs;
 import online.nostrium.apps.chat.CommandChatClear;
-import online.nostrium.utils.screens.Screen;
 import online.nostrium.user.User;
 import online.nostrium.logs.Log;
 import online.nostrium.folder.FolderUtils;
+import online.nostrium.session.Session;
 import online.nostrium.utils.cybersec.Permissions;
 
 /**
@@ -29,6 +29,9 @@ import online.nostrium.utils.cybersec.Permissions;
  */
 public abstract class TerminalApp {
 
+    // define the session where the app is running
+    public final Session session;
+    
     // settings and data for this app
     public AppData dataUser;
 
@@ -36,25 +39,22 @@ public abstract class TerminalApp {
     public TerminalApp appParent = null;
     @SuppressWarnings("unchecked")
     public ArrayList<TerminalApp> appChildren = new ArrayList();
-    public User user;
-
+    
     public final Map<String, TerminalCommand> commands = new HashMap<>();
-    public final Screen screen;
 
     // permissions to access this app
     public Permissions permissions = new Permissions(dataUser);
 
-    public TerminalApp(Screen screen, User user) {
-        this.screen = screen;
-        this.user = user;
+    public TerminalApp(Session session) {
+        this.session = session;
         // temporary data never saved to disk
         this.dataUser = new AppData(this);
         // add the default commands
-        addCommandInternal(new CommandHelp(this));
-        addCommandInternal(new CommandLs(this));
-        addCommandInternal(new CommandCd(this));
-        addCommandInternal(new CommandChatClear(this));
-        addCommandInternal(new CommandExit(this));
+        addCommandInternal(new CommandHelp(this, session));
+        addCommandInternal(new CommandLs(this, session));
+        addCommandInternal(new CommandCd(this, session));
+        addCommandInternal(new CommandChatClear(this, session));
+        addCommandInternal(new CommandExit(this, session));
 
         // add the permissions into the data storage
 //        data.put(namePermissions, permissions);
@@ -157,7 +157,7 @@ public abstract class TerminalApp {
     }
 
     public String paint(TerminalColor colorType, String text) {
-        return screen.paint(colorType, text);
+        return session.getScreen().paint(colorType, text);
     }
 
     // provide a one-line description of the app
@@ -191,7 +191,7 @@ public abstract class TerminalApp {
                     + "] "
                     + dataReceived;
 
-            screen.writeln(text);
+            session.getScreen().writeln(text);
         }
     }
 
@@ -212,7 +212,7 @@ public abstract class TerminalApp {
     }
 
     private void setNewUser(TerminalApp app, User user) {
-        app.user = user;
+        session.setUser(user);
         if (app.appChildren.isEmpty()) {
             return;
         }
@@ -238,13 +238,13 @@ public abstract class TerminalApp {
             return null;
         }
         String name = (String) dataUser.get("folderCurrent");
-        File folder = new File(user.getFolder(false), name);
+        File folder = new File(session.getUser().getFolder(false), name);
         return folder;
     }
 
     public void setFolderCurrent(File folderCurrent) {
         String text = "/";
-        String folderRoot = user.getFolder(false).getAbsolutePath();
+        String folderRoot = session.getUser().getFolder(false).getAbsolutePath();
         String folderToAdd = folderCurrent.getAbsolutePath();
         if(folderRoot.length() < folderToAdd.length()){
             text = folderToAdd.substring(folderRoot.length());

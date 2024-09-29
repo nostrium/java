@@ -12,7 +12,7 @@ package online.nostrium.session;
  * Date: 2024-08-10
  * Location: Germany
  */
-public enum ClientType {
+public enum ChannelType {
     
     TELNET,
     SSH,

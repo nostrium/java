@@ -7,9 +7,10 @@
 
 package online.nostrium.servers.web;
 
+import online.nostrium.apps.basic.TerminalBasic;
 import online.nostrium.user.User;
 import online.nostrium.main.core;
-import online.nostrium.session.ClientType;
+import online.nostrium.session.ChannelType;
 import online.nostrium.session.Session;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.utils.screens.Screen;
@@ -24,16 +25,18 @@ public class ContextSession {
     final Screen screen;
     User user;
     TerminalApp app;
-    final String uniqueId;
+    final String sessionId;
     final Session session;
 
-    public ContextSession(Screen screen, User user, TerminalApp app, String uniqueId) {
+    public ContextSession(Screen screen, User user, String uniqueId) {
         this.screen = screen;
         this.user = user;
-        this.app = app;
-        this.uniqueId = uniqueId;
+        this.sessionId = uniqueId;
         // register this visitor as a session
-        session = new Session(ClientType.WEB, app, user);
+        session = new Session(ChannelType.WEB, sessionId);
+        app = new TerminalBasic(session);
+        session.setup(app, user, screen);
+                
         core.sessions.addSession(session);
     }
     
@@ -47,7 +50,7 @@ public class ContextSession {
     }
 
     public String getUniqueId() {
-        return uniqueId;
+        return sessionId;
     }
 
     public User getUser() {

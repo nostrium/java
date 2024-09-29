@@ -11,8 +11,8 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.session.Session;
 import static online.nostrium.utils.JarUtils.getBuildTime;
-import static online.nostrium.utils.JarUtils.getVersion;
 
 /**
  * @author Brito
@@ -21,13 +21,13 @@ import static online.nostrium.utils.JarUtils.getVersion;
  */
 public class CommandAbout extends TerminalCommand{
 
-    public CommandAbout(TerminalApp app) {
-        super(app);
+    public CommandAbout(TerminalApp app, Session session) {
+        super(app, session);
         this.requireSlash = false;
     }
 
     private void writeln(String line){
-        app.screen.writeln(line);
+        session.getScreen().writeln(line);
     }
     
     @Override

@@ -9,6 +9,7 @@ package online.nostrium.utils.screens;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.session.Session;
 
 /**
  * Author: Brito
@@ -16,6 +17,10 @@ import online.nostrium.servers.terminal.TerminalType;
  * Location: Germany
  */
 public class ScreenCLI extends Screen{
+
+    public ScreenCLI(Session session) {
+        super(session);
+    }
 
     @Override
     public TerminalType getTerminalType() {

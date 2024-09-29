@@ -16,9 +16,9 @@ import online.nostrium.user.TerminalUser;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
-import online.nostrium.utils.screens.Screen;
 import online.nostrium.user.User;
 import online.nostrium.servers.terminal.TerminalUtils;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -27,25 +27,25 @@ import online.nostrium.servers.terminal.TerminalUtils;
  */
 public class TerminalBasic extends TerminalApp {
 
-    public TerminalBasic(Screen screen, User user) {
-        super(screen, user);
+    public TerminalBasic(Session session) {
+        super(session);
         // add some specific commands
-        addCommand(new CommandHello(this));
-        addCommand(new CommandTime(this));
-        addCommand(new CommandStatus(this));
+        addCommand(new CommandHello(this, session));
+        addCommand(new CommandTime(this, session));
+        addCommand(new CommandStatus(this, session));
         //addCommand(new CommandVanity(this));
-        addCommand(new CommandLogin(this));
-        addCommand(new CommandRegister(this));
+        addCommand(new CommandLogin(this, session));
+        addCommand(new CommandRegister(this, session));
         
-        addCommand(new CommandAbout(this));
+        addCommand(new CommandAbout(this, session));
         
         // add apps inside
-        addApp(new TerminalAdmin(screen, user));
-        addApp(new TerminalUser(screen, user));
-        addApp(new TerminalChat(screen, user));
-        addApp(new TerminalGames(screen, user));
-        addApp(new TerminalNostr(screen, user));
-        addApp(new TerminalEmail(screen, user));
+        addApp(new TerminalAdmin(session));
+        addApp(new TerminalUser(session));
+        addApp(new TerminalChat(session));
+        addApp(new TerminalGames(session));
+        addApp(new TerminalNostr(session));
+        addApp(new TerminalEmail(session));
     }
 
     @Override
@@ -67,7 +67,7 @@ public class TerminalBasic extends TerminalApp {
 //                "The NOSTR BBS! Type 'help' to list the commands."
 //                        + "\n"
 //                );
-        screen.writeIntro();
+        session.getScreen().writeIntro();
         return "";
     }
 
@@ -78,7 +78,7 @@ public class TerminalBasic extends TerminalApp {
 
     @Override
     public void receiveNotification(User userSender, NotificationType notificationType, Object object) {
-        screen.writeln("Received a notification");
+        session.getScreen().writeln("Received a notification");
     }
     
     @Override

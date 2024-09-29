@@ -13,7 +13,7 @@ import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalType;
-import online.nostrium.session.ClientType;
+import online.nostrium.session.ChannelType;
 import online.nostrium.session.Session;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
@@ -61,15 +61,14 @@ public class TelegramBot implements LongPollingSingleThreadUpdateConsumer {
      */
     private void handleCommand(Update update) {
 
-        long chat_id = update.getMessage().getChatId();
-        Screen screen = new ScreenTelegram(telegramClient, chat_id);
-
-        Session session = getSession(update, screen);
+        long chatId = update.getMessage().getChatId();
+        
+        Session session = getSession(update);
         // don't reply to bots
         if (session == null) {
             return;
         }
-
+        
         // get the text
         String text = update.getMessage().getText();
 
@@ -78,7 +77,7 @@ public class TelegramBot implements LongPollingSingleThreadUpdateConsumer {
 
         if (lastPingAccepted > session.getLastPing()) {
             // show the intro
-            screen.writeIntro();
+            session.getScreen().writeIntro();
         }
         // Show that the session is still active
         session.ping();
@@ -91,7 +90,7 @@ public class TelegramBot implements LongPollingSingleThreadUpdateConsumer {
         // Ignore null responses
         if (response == null) {
             // Output the next prompt
-            screen.writeUserPrompt(session.getApp());
+            session.getScreen().writeUserPrompt(session.getApp());
             return;
         }
 
@@ -105,18 +104,18 @@ public class TelegramBot implements LongPollingSingleThreadUpdateConsumer {
         if (response.getCode() == TerminalCode.CHANGE_APP) {
             session.setApp(response.getApp());
             if (session.getApp().appParent != null) {
-                screen.writeln(session.getApp().getIntro());
+                session.getScreen().writeln(session.getApp().getIntro());
             }
         }
 
         // Output the reply
         if (response.getText().length() > 0) {
             // Output the message
-            screen.writeln(response.getText());
+            session.getScreen().writeln(response.getText());
         }
 
         // Output the next prompt
-        screen.writeUserPrompt(session.getApp());
+        session.getScreen().writeUserPrompt(session.getApp());
 
     }
 
@@ -126,7 +125,7 @@ public class TelegramBot implements LongPollingSingleThreadUpdateConsumer {
      * @param update
      * @return
      */
-    private Session getSession(Update update, Screen screen) {
+    private Session getSession(Update update) {
 
         Message message = update.getMessage();
         org.telegram.telegrambots.meta.api.objects.User userFromMessage = message.getFrom();
@@ -135,15 +134,17 @@ public class TelegramBot implements LongPollingSingleThreadUpdateConsumer {
         }
 
         // Get the user's Telegram ID (a unique identifier for the user)
-        Long userId = userFromMessage.getId();
+        Long sessionIdNumber = userFromMessage.getId();
         Session session = null;
-        if (sessions.containsKey(userId)) {
-            session = sessions.get(userId);
+        if (sessions.containsKey(sessionIdNumber)) {
+            session = sessions.get(sessionIdNumber);
         } else {
             User user = UserUtils.createUserAnonymous();
-            TerminalApp app = new TerminalBasic(screen, user);
-            session = new Session(ClientType.TELEGRAM, app, user);
-            sessions.put(userId, session);
+            TerminalApp app = new TerminalBasic(session);
+            String sessionId = sessionIdNumber + "";
+            session = new Session(ChannelType.TELEGRAM, sessionId);
+            Screen screen = new ScreenTelegram(session, telegramClient, sessionIdNumber);
+            session.setup(app, user, screen);
             core.sessions.addSession(session);
             // show the intro
             screen.writeIntro();

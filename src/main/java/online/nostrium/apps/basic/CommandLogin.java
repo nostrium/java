@@ -16,6 +16,7 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.session.Session;
 import online.nostrium.utils.EncryptionUtils;
 import online.nostrium.utils.MathFunctions;
 import static online.nostrium.utils.TextFunctions.sha256;
@@ -28,8 +29,8 @@ import online.nostrium.utils.time;
  */
 public class CommandLogin extends TerminalCommand{
 
-    public CommandLogin(TerminalApp app) {
-        super(app);
+    public CommandLogin(TerminalApp app, Session session) {
+        super(app, session);
         this.requireSlash = false;
     }
 
@@ -141,7 +142,7 @@ public class CommandLogin extends TerminalCommand{
     }
 
     private CommandResponse registerUsingNsec(Identity userNostr) {
-        app.screen.writeln("NSEC is valid, but user was not yet registered here.");
+        session.getScreen().writeln("NSEC is valid, but user was not yet registered here.");
         
         // create the new account
         String nsec = userNostr.getPrivateKey().toBech32String();
@@ -152,7 +153,7 @@ public class CommandLogin extends TerminalCommand{
         // save to disk
         user.save();
         // update the user info
-        app.screen.writeln("Please type 'cd user' and 'help' to customize your account");
+        session.getScreen().writeln("Please type 'cd user' and 'help' to customize your account");
         this.app.updateUser(user);
         return reply(TerminalCode.OK, "Logged with success");
     }

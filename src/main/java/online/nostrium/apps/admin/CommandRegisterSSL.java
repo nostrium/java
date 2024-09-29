@@ -18,6 +18,7 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.session.Session;
 import online.nostrium.utils.screens.Screen;
 import online.nostrium.utils.cybersec.LetsEncryptDomainRegistration;
 import org.apache.commons.io.FileUtils;
@@ -29,8 +30,8 @@ import org.apache.commons.io.FileUtils;
  */
 public class CommandRegisterSSL extends TerminalCommand{
 
-    public CommandRegisterSSL(TerminalApp app) {
-        super(app);
+    public CommandRegisterSSL(TerminalApp app, Session session) {
+        super(app, session);
         this.requireSlash = false;
     }
 
@@ -52,7 +53,7 @@ public class CommandRegisterSSL extends TerminalCommand{
         boolean useStaging = core.config.debug;
         
         // output the setting being used
-        Screen screen = app.screen;
+        Screen screen = session.getScreen();
         screen.writeln(screen.getWindowFrame("SSL registration"));
         screen.writeln("domain: " + domain);
         screen.writeln("email: " + email);

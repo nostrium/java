@@ -7,13 +7,12 @@
 package online.nostrium.apps.nostr;
 
 import online.nostrium.user.User;
-import online.nostrium.main.core;
 import online.nostrium.session.NotificationType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalUtils;
-import online.nostrium.utils.screens.Screen;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -22,8 +21,8 @@ import online.nostrium.utils.screens.Screen;
  */
 public class TerminalNostr extends TerminalApp {
 
-    public TerminalNostr(Screen screenAssigned, User user) {
-        super(screenAssigned, user);
+    public TerminalNostr(Session session) {
+        super(session);
 //        addCommand(new CommandUserShow(this));
 //        //addCommand(new CommandUserPassword(this));
 //        //addCommand(new CommandUserSave(this));
@@ -45,8 +44,8 @@ public class TerminalNostr extends TerminalApp {
     @Override
     public String getIntro() {
         String title = "NOSTR";
-        String text = screen.getWindowFrame(title);
-        text += screen.breakLine();
+        String text = session.getScreen().getWindowFrame(title);
+        text += session.getScreen().breakLine();
         text += "Type 'help' to see the available commands";
         return text;
     }
@@ -58,7 +57,7 @@ public class TerminalNostr extends TerminalApp {
 
     @Override
     public void receiveNotification(User userSender, NotificationType notificationType, Object object) {
-        screen.writeln("Received a notification");
+        session.getScreen().writeln("Received a notification");
     }
 
     @Override

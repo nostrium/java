@@ -12,6 +12,7 @@ import static online.nostrium.servers.terminal.TerminalColor.BLUE;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -20,8 +21,8 @@ import online.nostrium.servers.terminal.TerminalType;
  */
 public class CommandExit extends TerminalCommand{
 
-    public CommandExit(TerminalApp app) {
-        super(app);
+    public CommandExit(TerminalApp app, Session session) {
+        super(app, session);
         //this.commandsAlternative.add("return");
         this.commandsAlternative.add("quit");
     }

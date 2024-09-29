@@ -14,6 +14,7 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.session.Session;
 import online.nostrium.utils.TextFunctions;
 
 /**
@@ -23,8 +24,8 @@ import online.nostrium.utils.TextFunctions;
  */
 public class CommandAdminLog extends TerminalCommand {
 
-    public CommandAdminLog(TerminalApp app) {
-        super(app);
+    public CommandAdminLog(TerminalApp app, Session session) {
+        super(app, session);
         this.requireSlash = false;
     }
 
@@ -32,10 +33,10 @@ public class CommandAdminLog extends TerminalCommand {
     public CommandResponse execute(TerminalType terminalType, String parameters) {
         
         if(parameters.isEmpty()){
-            app.screen.writeln("Showing the most recent log items:");
+            session.getScreen().writeln("Showing the most recent log items:");
             ArrayList<LogItem> items = Log.getListLastItems(100);
             for(LogItem item : items){
-                app.screen.writeln(getText(item));
+                session.getScreen().writeln(getText(item));
             }
             return reply(TerminalCode.OK, "sup");
         }

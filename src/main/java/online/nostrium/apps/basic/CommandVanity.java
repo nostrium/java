@@ -13,6 +13,7 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.session.Session;
 import online.nostrium.utils.TextFunctions;
 
 /**
@@ -22,8 +23,8 @@ import online.nostrium.utils.TextFunctions;
  */
 public class CommandVanity extends TerminalCommand {
 
-    public CommandVanity(TerminalApp app) {
-        super(app);
+    public CommandVanity(TerminalApp app, Session session) {
+        super(app, session);
         this.requireSlash = false;
     }
 
@@ -46,7 +47,7 @@ public class CommandVanity extends TerminalCommand {
         long maxTries = 1_000_000_000;
         long counter = 0;
         long updateCount = 0;
-        app.screen.writeln("Looking for NPUB starting with: " + parameters);
+        session.getScreen().writeln("Looking for NPUB starting with: " + parameters);
         while(maxTries > counter){
             counter++;
             User user = UserUtils.createUserAnonymous();
@@ -61,8 +62,8 @@ public class CommandVanity extends TerminalCommand {
             // output some status
             if(counter > updateCount + 1000){
                 updateCount = counter;
-                app.screen.deleteCurrentLine();
-                app.screen.write("Tries: " + counter);
+                session.getScreen().deleteCurrentLine();
+                session.getScreen().write("Tries: " + counter);
             }
             
         }

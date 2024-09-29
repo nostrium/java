@@ -20,6 +20,7 @@ import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.session.Session;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -29,8 +30,8 @@ import org.apache.commons.io.FileUtils;
  */
 public class CommandArchiveWrite extends TerminalCommand {
 
-    public CommandArchiveWrite(Archive app) {
-        super(app);
+    public CommandArchiveWrite(Archive app, Session session) {
+        super(app, session);
         this.requireSlash = false;
         // add an alternative command
         //this.commandsAlternative.add("");
@@ -41,7 +42,7 @@ public class CommandArchiveWrite extends TerminalCommand {
 
         // get the current folder
         String folderName = (String) app.dataUser.get("folderCurrent");
-        File folder = new File(app.user.getFolder(false), folderName);
+        File folder = new File(session.getUser().getFolder(false), folderName);
         
         // syntax
         // write title -> content of topic
@@ -88,8 +89,8 @@ public class CommandArchiveWrite extends TerminalCommand {
         topic.setTitle(title);
         topic.setContent(content);
         topic.setDate();
-        topic.setAuthor(app.user.getDisplayName());
-        topic.setNpub(app.user.getNpub());
+        topic.setAuthor(session.getUser().getDisplayName());
+        topic.setNpub(session.getUser().getNpub());
         
         try {
             md.saveToFile(file);

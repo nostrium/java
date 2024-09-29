@@ -14,7 +14,7 @@ import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalUtils;
-import online.nostrium.utils.screens.Screen;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -23,18 +23,18 @@ import online.nostrium.utils.screens.Screen;
  */
 public class TerminalUser extends TerminalApp {
 
-    public TerminalUser(Screen screenAssigned, User user) {
-        super(screenAssigned, user);
+    public TerminalUser(Session session) {
+        super(session);
                 
-        File folder = user.getFolder(false);
+        File folder = session.getUser().getFolder(false);
         
-        addApp(new BlogArchive("blog", folder, screen, user));
-        addApp(new ForumArchive("forum", folder, screen, user));
+        addApp(new BlogArchive("blog", folder, session));
+        addApp(new ForumArchive("forum", folder, session));
         
-        addCommand(new CommandUserShow(this));
+        addCommand(new CommandUserShow(this, session));
         //addCommand(new CommandUserPassword(this));
         //addCommand(new CommandUserSave(this));
-        addCommand(new CommandUserSet(this));
+        addCommand(new CommandUserSet(this, session));
     }
 
     @Override
@@ -51,7 +51,7 @@ public class TerminalUser extends TerminalApp {
     public String getIntro() {
         
         String title = "User space";
-        String text = screen.getWindowFrame(title);
+        String text = session.getScreen().getWindowFrame(title);
         return text;
     }
 
@@ -62,7 +62,7 @@ public class TerminalUser extends TerminalApp {
 
     @Override
     public void receiveNotification(User userSender, NotificationType notificationType, Object object) {
-        screen.writeln("Received a notification");
+        session.getScreen().writeln("Received a notification");
     }
 
     @Override

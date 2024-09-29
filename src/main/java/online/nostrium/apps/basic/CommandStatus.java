@@ -22,6 +22,7 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -30,8 +31,8 @@ import online.nostrium.servers.terminal.TerminalType;
  */
 public class CommandStatus extends TerminalCommand {
 
-    public CommandStatus(TerminalApp app) {
-        super(app);
+    public CommandStatus(TerminalApp app, Session session) {
+        super(app, session);
         this.requireSlash = false;
     }
 

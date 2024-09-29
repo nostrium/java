@@ -11,10 +11,10 @@ import online.nostrium.session.NotificationType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
-import online.nostrium.utils.screens.Screen;
 import online.nostrium.user.User;
 import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.servers.terminal.TerminalUtils;
+import online.nostrium.session.Session;
 import online.nostrium.utils.MathFunctions;
 import online.nostrium.utils.TextFunctions;
 
@@ -34,8 +34,8 @@ public class TerminalGuessNumber extends TerminalApp {
     int maxScoreRecords = 10;
     boolean debug = false;
 
-    public TerminalGuessNumber(Screen screen, User user) {
-        super(screen, user);
+    public TerminalGuessNumber(Session session) {
+        super(session);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class TerminalGuessNumber extends TerminalApp {
         chosenNumber = MathFunctions.getRandomIntInRange(min+2, max-2);
         timeStart = System.currentTimeMillis();
         if(clearScreen){
-            screen.clearScreen();
+            session.getScreen().clearScreen();
         }
     }
 
@@ -62,7 +62,7 @@ public class TerminalGuessNumber extends TerminalApp {
         if (tryCounter+1 == tryMax) {
             reset(false);
             return reply(TerminalCode.OK, "Sorry, failed to guess the number!"
-                    + screen.breakLine()
+                    + session.getScreen().breakLine()
                     + "The number was: " + chosenNumber
                     + "\n"
                     + "Please try with a new number, guess again:");
@@ -115,7 +115,7 @@ public class TerminalGuessNumber extends TerminalApp {
                 log(TerminalCode.CRASH, "Failed to write record", e.getMessage());
             }
             reset(false);
-            text = screen.paint(TerminalColor.GREEN_BRIGHT, 
+            text = session.getScreen().paint(TerminalColor.GREEN_BRIGHT, 
                     "Congratulations!");
         }
 
@@ -126,7 +126,7 @@ public class TerminalGuessNumber extends TerminalApp {
     public String getIntro() {
         this.reset(false);
         String text = "Guess the number";
-        String intro = screen.getWindowFrame(text);
+        String intro = session.getScreen().getWindowFrame(text);
         intro += "\n"
                 + "\n"
                 + "You have 6 attempts to guess a number between 1 and 100"
@@ -165,7 +165,7 @@ public class TerminalGuessNumber extends TerminalApp {
         long timeRequired = System.currentTimeMillis() - timeStart;
         UserRecordGuess scoreNow = new UserRecordGuess(
                 this.tryCounter,
-                this.user.getNpub(),
+                session.getUser().getNpub(),
                 System.currentTimeMillis(),
                 timeRequired
         );

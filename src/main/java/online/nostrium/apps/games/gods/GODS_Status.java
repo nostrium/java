@@ -58,7 +58,7 @@ public class GODS_Status {
     }
     
     public static GODS_Status loadFromFile(TerminalGODS app) {
-        User user = app.user;
+        User user = app.session.getUser();
         File folder = user.getFolder(false);
         File file = new File(folder, GODS_definitions.jsonStatusFilename);
         

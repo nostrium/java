@@ -12,6 +12,7 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.session.Session;
 import static online.nostrium.utils.ascii.DirectoryTreeBuilder.buildTree;
 
 /**
@@ -21,8 +22,8 @@ import static online.nostrium.utils.ascii.DirectoryTreeBuilder.buildTree;
  */
 public class CommandArchiveLs extends TerminalCommand {
 
-    public CommandArchiveLs(TerminalApp app) {
-        super(app);
+    public CommandArchiveLs(TerminalApp app, Session session) {
+        super(app, session);
         this.requireSlash = false;
         // add an alternative command
         this.commandsAlternative.add("dir");
@@ -33,7 +34,7 @@ public class CommandArchiveLs extends TerminalCommand {
         
        // get the current folder
         String folderName = (String) app.dataUser.get("folderCurrent");
-        File folder = new File(app.user.getFolder(false), folderName);
+        File folder = new File(session.getUser().getFolder(false), folderName);
         
         String dirTree = buildTree(folder);
         

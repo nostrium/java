@@ -11,6 +11,7 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
+import online.nostrium.session.Session;
 
 /**
  * @author Brito
@@ -19,8 +20,8 @@ import online.nostrium.servers.terminal.TerminalType;
  */
 public class CommandTime extends TerminalCommand{
 
-    public CommandTime(TerminalApp app) {
-        super(app);
+    public CommandTime(TerminalApp app, Session session) {
+        super(app, session);
     }
 
     @Override
