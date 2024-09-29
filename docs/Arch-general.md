@@ -57,8 +57,8 @@ people that access the plaform through different channels
 + can define quotas and restrictions, for example the max
 number of pages or requested within a minute
 
-The session template is found at [Session.java](src/main/java/online/nostrium/session/Session.java).
+The session template is found at [Session.java](/src/main/java/online/nostrium/session/Session.java).
 
 You find examples of the usage at:
-+ [SessionTest.java](src/test/java/basic/SessionTest.java)
++ [SessionTest.java](/src/test/java/basic/SessionTest.java)
 
