@@ -25,7 +25,6 @@ import java.util.Map;
 import online.nostrium.user.UserUtils;
 import online.nostrium.folder.FolderUtils;
 import online.nostrium.main.core;
-import static online.nostrium.main.core.sessions;
 import online.nostrium.servers.Server;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalCode;

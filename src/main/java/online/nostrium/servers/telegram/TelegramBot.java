@@ -6,18 +6,13 @@
  */
 package online.nostrium.servers.telegram;
 
-import online.nostrium.apps.basic.TerminalBasic;
-import online.nostrium.main.core;
 import static online.nostrium.main.core.sessions;
 import online.nostrium.servers.terminal.CommandResponse;
-import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.session.ChannelType;
 import online.nostrium.session.Session;
 import online.nostrium.session.SessionUtils;
-import online.nostrium.user.User;
-import online.nostrium.user.UserUtils;
 import online.nostrium.utils.screens.Screen;
 import org.telegram.telegrambots.client.okhttp.OkHttpTelegramClient;
 import org.telegram.telegrambots.longpolling.util.LongPollingSingleThreadUpdateConsumer;
