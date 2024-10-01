@@ -136,7 +136,7 @@ public class ServerTelnet extends Server {
                 UserUtils.checkFirstTimeSetup(session.getUser(), screen);
 
                 // write the start prompt
-                screen.writeUserPrompt(app);
+                screen.writeUserPrompt();
 
                 int inputChar;
                 StringBuilder inputBuffer = new StringBuilder();
@@ -160,7 +160,7 @@ public class ServerTelnet extends Server {
                                     // Clear the entire line and move cursor to start
                                     screen.deleteCurrentLine();
                                     screen.deletePreviousLine();
-                                    screen.writeUserPrompt(app);
+                                    screen.writeUserPrompt();
                                     out.print(inputBuffer.toString() + "\n");
                                     out.flush();
                                 }
@@ -173,14 +173,14 @@ public class ServerTelnet extends Server {
                                     // Clear the entire line and move cursor to start
                                     screen.deletePreviousLine();
                                     screen.deleteCurrentLine();
-                                    screen.writeUserPrompt(app);
+                                    screen.writeUserPrompt();
                                     out.print(inputBuffer.toString());
                                     out.flush();
                                 } else {
                                     historyIndex = commandHistory.size();
                                     inputBuffer.setLength(0);
                                     screen.deleteCurrentLine();
-                                    screen.writeUserPrompt(app);
+                                    screen.writeUserPrompt();
                                 }
                                 continue;
                             }
@@ -230,7 +230,7 @@ public class ServerTelnet extends Server {
                     // Ignore null responses
                     if (response == null) {
                         // Output the next prompt
-                        screen.writeUserPrompt(app);
+                        screen.writeUserPrompt();
                         continue;
                     }
 
@@ -266,7 +266,7 @@ public class ServerTelnet extends Server {
                     }
 
                     // Output the next prompt
-                    screen.writeUserPrompt(app);
+                    screen.writeUserPrompt();
                 }
 
                 // Close the session

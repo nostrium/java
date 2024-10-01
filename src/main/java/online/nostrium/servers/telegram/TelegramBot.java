@@ -84,7 +84,7 @@ public class TelegramBot implements LongPollingSingleThreadUpdateConsumer {
         // Ignore null responses
         if (response == null) {
             // Output the next prompt
-            session.getScreen().writeUserPrompt(session.getApp());
+            session.getScreen().writeUserPrompt();
             return;
         }
 
@@ -109,7 +109,7 @@ public class TelegramBot implements LongPollingSingleThreadUpdateConsumer {
         }
 
         // Output the next prompt
-        session.getScreen().writeUserPrompt(session.getApp());
+        session.getScreen().writeUserPrompt();
 
     }
 

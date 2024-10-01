@@ -358,7 +358,7 @@ public class ServerWeb extends Server {
                     .handleCommand(TerminalType.ANSI, textCurrent);
 
             if (response == null) {
-                session.getScreen().writeUserPrompt(session.getApp());
+                session.getScreen().writeUserPrompt();
                 return;
             }
 
@@ -366,7 +366,7 @@ public class ServerWeb extends Server {
                 textCurrent = textCurrent.substring(1);
                 if ("showLogo".equals(textCurrent)) {
                     session.getScreen().writeln(session.getApp().getIntro());
-                    session.getScreen().writeUserPrompt(session.getApp());
+                    session.getScreen().writeUserPrompt();
                 }
                 return;
             }
@@ -390,7 +390,7 @@ public class ServerWeb extends Server {
                 session.getScreen().writeln(response.getText());
             }
 
-            session.getScreen().writeUserPrompt(session.getApp());
+            session.getScreen().writeUserPrompt();
         }
     }
 }

@@ -10,7 +10,6 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.Random;
 import online.nostrium.main.core;
-import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalColor;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
@@ -254,8 +253,8 @@ public class ScreenTelnet extends Screen {
     }
 
     @Override
-    public void writeUserPrompt(TerminalApp app) {
-        String path = TerminalUtils.getPath(app);
+    public void writeUserPrompt() {
+        String path = TerminalUtils.getPath(session.getApp());
 
         String userPrompt = paint(GREEN_BRIGHT, session.getUser().getDisplayName())
                 + ":"

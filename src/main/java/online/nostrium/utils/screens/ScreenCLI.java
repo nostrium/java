@@ -6,7 +6,6 @@
  */
 package online.nostrium.utils.screens;
 
-import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.session.Session;
@@ -64,7 +63,7 @@ public class ScreenCLI extends Screen{
     }
 
     @Override
-    public void writeUserPrompt(TerminalApp app) {
+    public void writeUserPrompt() {
     }
     
     @Override

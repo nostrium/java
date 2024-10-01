@@ -146,7 +146,7 @@ public class TerminalChat extends TerminalApp {
         session.getScreen().write(line1);
         session.getScreen().writeLikeHuman(line2, 25);
         
-        session.getScreen().writeUserPrompt(this);
+        session.getScreen().writeUserPrompt();
     }
     
     @Override

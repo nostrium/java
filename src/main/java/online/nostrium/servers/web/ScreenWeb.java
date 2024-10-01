@@ -11,7 +11,6 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import java.util.Random;
 import online.nostrium.main.core;
-import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalColor;
 import static online.nostrium.servers.terminal.TerminalColor.BLACK;
 import static online.nostrium.servers.terminal.TerminalColor.BLACK_ON_WHITE;
@@ -255,8 +254,8 @@ public class ScreenWeb extends Screen{
     }
 
     @Override
-    public void writeUserPrompt(TerminalApp app) {
-        String path = TerminalUtils.getPath(app);
+    public void writeUserPrompt() {
+        String path = TerminalUtils.getPath(session.getApp());
 
         String userPrompt = paint(GREEN_BRIGHT, 
                 session.getUser().getDisplayName())

@@ -102,9 +102,9 @@ public class ScreenTelegram extends Screen {
     }
 
     @Override
-    public void writeUserPrompt(TerminalApp app) {
-        String path = TerminalUtils.getPath(app);
-        String userPrompt = app.session.getUser().getDisplayName() + ":" + path + "> ";
+    public void writeUserPrompt() {
+        String path = TerminalUtils.getPath(session.getApp());
+        String userPrompt = session.getUser().getDisplayName() + ":" + path + "> ";
         writeln(userPrompt);
     }
 
