@@ -7,6 +7,7 @@
 package online.nostrium.apps.basic;
 
 import nostr.id.Identity;
+import online.nostrium.main.core;
 import online.nostrium.user.User;
 import online.nostrium.user.UserType;
 import online.nostrium.user.UserUtils;
@@ -20,6 +21,9 @@ import online.nostrium.session.Session;
 import online.nostrium.utils.EncryptionUtils;
 import online.nostrium.utils.MathFunctions;
 import static online.nostrium.utils.TextFunctions.sha256;
+import online.nostrium.utils.events.ActionResult;
+import online.nostrium.utils.events.ActionType;
+import online.nostrium.utils.events.EventIndex;
 import online.nostrium.utils.time;
 
 /**
@@ -59,6 +63,16 @@ public class CommandLogin extends TerminalCommand{
 
 
     private CommandResponse loginWithUserPassword(String parameters) {
+        
+        // start an event
+        ActionResult result = 
+                core.events.getResult(EventIndex.login, session);
+        // is the login allowed to proceed?
+        if(result.getType() == ActionType.STOP_NOW){
+            return reply(TerminalCode.DENIED, "Login denied");
+        }
+        
+        
         String[] value = parameters.split(" ");
         
         // syntax needs to be correct
@@ -108,6 +122,9 @@ public class CommandLogin extends TerminalCommand{
         
         // update the user info
         this.app.updateUser(user);
+        
+        // mark a good login
+        core.events.triggerAfter(EventIndex.login, session);
         
         // all done
         return reply(TerminalCode.OK, "Logged with success");

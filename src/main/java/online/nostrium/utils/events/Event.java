@@ -78,4 +78,8 @@ public class Event {
             action.timeToRunAfter = System.currentTimeMillis() - time;
         }
     }
+
+    public List<Action> getActions() {
+        return actions;
+    }
 }

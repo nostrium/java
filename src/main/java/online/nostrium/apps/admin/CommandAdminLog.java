@@ -38,9 +38,9 @@ public class CommandAdminLog extends TerminalCommand {
             for(LogItem item : items){
                 session.getScreen().writeln(getText(item));
             }
-            return reply(TerminalCode.OK, "sup");
+            return reply(TerminalCode.OK);
         }
-        return reply(TerminalCode.OK, "sup");
+        return reply(TerminalCode.OK);
     }
     
     private String getText(LogItem item) {

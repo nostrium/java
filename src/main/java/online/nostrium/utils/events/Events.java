@@ -47,14 +47,22 @@ public class Events {
      * to provide an another object based on the input
      * @param eventId
      * @param object
-     * @return 
+     * @return all good when ActionType == NOTHING 
      */
     public ActionResult getResult(String eventId, Object object){
         Event event = list.get(eventId);
         if(event == null){
-            return null;
+            event = new Event();
         }
-        return event.getAction(object);
+        
+        ActionResult output = new ActionResult(ActionType.NOTHING, "", null);
+        for(Action action : event.getActions()){
+            ActionResult result = action.doAction(object);
+            if(result.getType() != ActionType.NOTHING){
+                output = result;
+            }
+        }
+        return output;
     }
     
     public void triggerAfter(String eventId, Object object){

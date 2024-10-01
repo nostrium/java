@@ -13,8 +13,10 @@ package online.nostrium.utils.events;
  * @location: Germany
  */
 public enum ActionType {
+    STOP_NOW,
     FAILED,
     OK,
     WARNING,
-    NOT_YET_STARTED
+    NOT_YET_STARTED,
+    NOTHING
 }

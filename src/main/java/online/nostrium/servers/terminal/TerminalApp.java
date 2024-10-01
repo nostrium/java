@@ -209,6 +209,7 @@ public abstract class TerminalApp {
             }
         }
         setNewUser(rootApp, user);
+        session.setUser(user);
     }
 
     private void setNewUser(TerminalApp app, User user) {

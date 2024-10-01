@@ -44,6 +44,32 @@ public class FileFunctions {
 
         return resultList;
     }
+    
+    
+    /**
+     * Searches all subfolders from a starting folder for files
+     *
+     * @param startingFolder the folder to start the search from
+     * @return an ArrayList of files that match the criteria
+     */
+    public static ArrayList<File> searchFiles(File startingFolder) {
+        ArrayList<File> resultList = new ArrayList<>();
+
+        if (startingFolder.isDirectory()) {
+            File[] files = startingFolder.listFiles();
+            if (files != null) {
+                for (File file : files) {
+                    if (file.isDirectory()) {
+                        resultList.addAll(searchFiles(file));
+                    } else {
+                        resultList.add(file);
+                    }
+                }
+            }
+        }
+
+        return resultList;
+    }
 
     /**
      * Looks inside a folder for a file that begins and ends with specific
