@@ -7,18 +7,13 @@
 
 package online.nostrium.session.maps;
 
-import java.io.File;
-import online.nostrium.servers.terminal.TerminalApp;
-
 /**
  * @author Brito
  * @date: 2024-10-01
  * @location: Germany
  */
-public class MapKey {
-
-    String virtualPath;
-    File realFile;
-    TerminalApp appRelated;
-    
+public enum MapType {
+    FILE,
+    FOLDER,
+    APP
 }

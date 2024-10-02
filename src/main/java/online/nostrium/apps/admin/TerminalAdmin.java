@@ -12,7 +12,6 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
 import online.nostrium.session.Session;
-import online.nostrium.utils.screens.Screen;
 import online.nostrium.user.User;
 import online.nostrium.user.UserType;
 

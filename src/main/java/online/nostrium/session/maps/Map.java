@@ -8,22 +8,59 @@
 package online.nostrium.session.maps;
 
 import java.io.File;
-import java.util.ArrayList;
-import online.nostrium.utils.FileFunctions;
+import online.nostrium.servers.terminal.TerminalApp;
 
 /**
  * @author Brito
  * @date: 2024-10-01
  * @location: Germany
  */
-public class Map {
+public abstract class Map implements Comparable<Map>{
+    
+    public final String name;
+    public final MapType type;
+    
+    File realFile = null;
+    TerminalApp appRelated = null;
 
-    public void index(File folder, Map map){
-        ArrayList<File> files = FileFunctions.searchFiles(folder);
-        String startPath = "";
-//        for(File file : files){
-//            MapKey key = new MapKey();
-//        }
+    public Map(MapType type, String virtualPath) {
+        this.name = virtualPath;
+        this.type = type;
     }
+
+    @Override
+    public String toString(){
+        return this.name;
+    }
+    
+    @Override
+    public int compareTo(Map other) {
+        // compare based on folder vs file
+        if(type != other.type){
+            return this.toString().compareTo(other.toString());
+        }
+        // compare based on file name
+        return other.toString().compareTo(this.toString());
+    }
+
+    public File getRealFile() {
+        return realFile;
+    }
+
+    public void setRealFile(File realFile) {
+        this.realFile = realFile;
+    }
+
+    public TerminalApp getAppRelated() {
+        return appRelated;
+    }
+
+    public void setAppRelated(TerminalApp appRelated) {
+        this.appRelated = appRelated;
+    }
+
+    // find all files, folders, apps and related items
+    public abstract void index();
+
     
 }

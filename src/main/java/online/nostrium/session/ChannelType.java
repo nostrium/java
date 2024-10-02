@@ -20,6 +20,7 @@ public enum ChannelType {
     WEB,
     TELEGRAM,
     IRC,
-    API
+    API,
+    CLI
 
 }

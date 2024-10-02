@@ -4,21 +4,20 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-
 package online.nostrium.session;
 
 import java.util.Date;
 import online.nostrium.user.User;
 import online.nostrium.servers.terminal.TerminalApp;
+import online.nostrium.session.maps.Map;
+import online.nostrium.session.maps.MapApp;
 import online.nostrium.utils.screens.Screen;
 
 /**
- * Author: Brito
- * Date: 2024-08-10
- * Location: Germany
+ * Author: Brito Date: 2024-08-10 Location: Germany
  */
 public class Session {
-    
+
     final String sessionId;     // unique identifier of session that is running
     final Date sessionStarted;  // when it was started
     final ChannelType channelType;  // what kind of terminal is being used
@@ -27,9 +26,10 @@ public class Session {
     User user;                  // who is using this
     Screen screen;
     private boolean timeToStop = false;
+    private Map map = null;
 
     public Session(
-            ChannelType clientType, String sessionId, 
+            ChannelType clientType, String sessionId,
             TerminalApp app, User user, Screen screen) {
         this.sessionId = sessionId;
         this.app = app;
@@ -38,21 +38,25 @@ public class Session {
         this.sessionLastActive = new Date();
         this.user = user;
         this.screen = screen;
+        map = new MapApp(app);
+        map.index();
     }
-    
+
     public Session(ChannelType clientType, String sessionId) {
         this.sessionId = sessionId;
         this.channelType = clientType;
         this.sessionStarted = new Date();
         this.sessionLastActive = new Date();
     }
-    
-    public void setup(TerminalApp app, User user, Screen screen){
-         this.app = app;
-         this.user = user;
-         this.screen = screen;
+
+    public void setup(TerminalApp app, User user, Screen screen) {
+        this.app = app;
+        this.user = user;
+        this.screen = screen;
+        // index the app
+        map = new MapApp(app);
+        map.index();
     }
-    
 
     public ChannelType getChannelType() {
         return channelType;
@@ -120,6 +124,14 @@ public class Session {
 
     public void setScreen(Screen screen) {
         this.screen = screen;
+    }
+
+    public Map getCurrentLocation() {
+        return map;
+    }
+
+    public void setCurrentLocation(Map currentLocation) {
+        this.map = currentLocation;
     }
 
 }

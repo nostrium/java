@@ -73,7 +73,7 @@ public abstract class TerminalApp {
     // shows an intro for this app
     public abstract String getIntro();
 
-    // shows an intro for this app
+    // shows a path id for this app
     public String getId() {
         String path = TerminalUtils.getPath(this);
         return path;
@@ -165,6 +165,7 @@ public abstract class TerminalApp {
 
     public abstract CommandResponse defaultCommand(String commandInput);
 
+    // get a name that we can type on the CLI
     public abstract String getName();
 
     protected CommandResponse reply(TerminalCode code, String text) {

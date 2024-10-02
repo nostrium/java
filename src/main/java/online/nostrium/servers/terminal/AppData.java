@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import online.nostrium.folder.FolderUtils;
+import online.nostrium.logs.Log;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -33,7 +34,11 @@ public final class AppData {
     public AppData(TerminalApp app) {
         this.app = app;
         // try to load previous values
-        load(app);
+        try{
+            load(app);
+        } catch (Exception e){
+            Log.write("APPDATA", TerminalCode.CRASH, "Failed to load", app.getName());
+        }
     }
 
     public void load(TerminalApp app) {
