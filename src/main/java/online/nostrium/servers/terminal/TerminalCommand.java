@@ -17,6 +17,7 @@ import online.nostrium.session.Session;
 public abstract class TerminalCommand {
     
     final public Session session;
+    final public String name;
 
     final protected TerminalApp app;
     // force commands to use a slash
@@ -31,6 +32,7 @@ public abstract class TerminalCommand {
     public TerminalCommand(TerminalApp app, Session session) {
         this.session = session;
         this.app = app;
+        this.name = commandName();
     }
     
     protected String paint(TerminalColor colorType, String text) {

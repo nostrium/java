@@ -72,5 +72,4 @@ public abstract class Map implements Comparable<Map>{
     // find all files, folders, apps and related items
     public abstract void index();
 
-    
 }

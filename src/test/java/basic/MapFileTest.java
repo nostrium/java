@@ -58,6 +58,8 @@ public class MapFileTest {
         
         assertTrue(map.getApps().size() > 0);
         
+        System.out.println(map.getTree());
+        
     }
     
 }

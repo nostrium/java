@@ -4,7 +4,6 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-
 package online.nostrium.session.maps;
 
 import java.io.File;
@@ -16,44 +15,44 @@ import java.util.TreeSet;
  * @date: 2024-10-01
  * @location: Germany
  */
-public class MapFolder extends Map{
+public class MapFolder extends Map {
 
     Map parent = null;
     Set<MapFolder> folders = new TreeSet<>();
     Set<MapFile> files = new TreeSet<>();
     Set<MapApp> apps = new TreeSet<>();
-    
+
     public MapFolder(String virtualPath) {
         super(MapType.FOLDER, virtualPath);
     }
-    
+
     public MapFolder(File folder) {
         super(MapType.APP, folder.getName());
         realFile = folder;
     }
-    
+
     @Override
-    public void index(){
+    public void index() {
         indexFolder();
     }
 
-    public void indexFolder(){
-        if(realFile == null || realFile.isFile()){
+    public void indexFolder() {
+        if (realFile == null || realFile.isFile()) {
             return;
         }
-        
+
         // list the files
         File[] filesFound = realFile.listFiles();
-        if(filesFound == null || filesFound.length == 0){
+        if (filesFound == null || filesFound.length == 0) {
             return;
         }
         // iterate all found files
-        for(File item : filesFound){
-            if(item.isFile()){
+        for (File item : filesFound) {
+            if (item.isFile()) {
                 MapFile mapFile = new MapFile(item.getName());
                 mapFile.realFile = item;
                 files.add(mapFile);
-            }else{
+            } else {
                 // crawl inside the next folders and apps
                 MapFolder mapFolder = new MapFolder(item.getName());
                 mapFolder.setRealFile(item);
@@ -63,7 +62,7 @@ public class MapFolder extends Map{
             }
         }
     }
-    
+
     public Map getParent() {
         return parent;
     }
@@ -73,7 +72,7 @@ public class MapFolder extends Map{
     }
 
     public void indexApps() {
-        for(MapApp app : apps){
+        for (MapApp app : apps) {
             app.index();
         }
     }
@@ -89,5 +88,44 @@ public class MapFolder extends Map{
     public Set<MapApp> getApps() {
         return apps;
     }
-    
+
+    public String getTree() {
+        StringBuilder treeBuilder = new StringBuilder();
+        buildTree(treeBuilder, "", true);
+        return treeBuilder.toString();
+    }
+
+    public void buildTree(StringBuilder builder, String prefix, boolean isTail) {
+        // Append the current folder name
+        builder.append(prefix)
+                .append(isTail ? "└── " : "├── ")
+                .append(getName())
+                .append("\n");
+
+        // List the folders (recursive)
+        int folderCount = folders.size();
+        int folderIndex = 0;
+        for (MapFolder folder : folders) {
+            folder.buildTree(builder, prefix + (isTail ? "    " : "│   "), ++folderIndex == folderCount);
+        }
+
+        // List the apps (recursive)
+        int appCount = apps.size();
+        int appIndex = 0;
+        for (MapApp app : apps) {
+            app.buildTree(builder, prefix + (isTail ? "    " : "│   "), ++appIndex == appCount);
+        }
+
+        // List the files
+        int fileCount = files.size();
+        int fileIndex = 0;
+        for (MapFile file : files) {
+            builder.append(prefix)
+                    .append(isTail ? "    " : "│   ")
+                    .append(fileIndex++ == fileCount - 1 ? "└── " : "├── ")
+                    .append(file.getName())
+                    .append("\n");
+        }
+    }
+
 }
