@@ -47,7 +47,7 @@ public class CommandHelp extends TerminalCommand {
                     continue;
                 }
                 
-                String textName = "[" + appHere.getName() + "]";
+                String textName = "[" + appHere.getPathWithName() + "]";
                 text += " "
                         + session.getScreen().breakLine()
                         + " "
@@ -107,7 +107,7 @@ public class CommandHelp extends TerminalCommand {
             if(command.internalCommand == false){
                 addDivider = true;
             }
-            String commandNames = command.getName();
+            String commandNames = command.getPathWithName();
             if (command.commandsAlternative.isEmpty() == false) {
                 for (String commandToAdd : command.commandsAlternative) {
                     if (command.requireSlash) {
@@ -139,7 +139,7 @@ public class CommandHelp extends TerminalCommand {
                 continue;
             }
             TerminalCommand command = app.commands.get(commandName);
-            String commandNames = command.getName();
+            String commandNames = command.getPathWithName();
             if (command.commandsAlternative.isEmpty() == false) {
                 for (String commandToAdd : command.commandsAlternative) {
                     if (command.requireSlash) {

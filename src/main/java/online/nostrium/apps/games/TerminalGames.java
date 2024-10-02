@@ -50,7 +50,7 @@ public class TerminalGames extends TerminalApp {
     }
 
     @Override
-    public String getName() {
+    public String getPathWithName() {
         return "games";
     }
 

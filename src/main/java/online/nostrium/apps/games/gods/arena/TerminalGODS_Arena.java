@@ -65,7 +65,7 @@ public class TerminalGODS_Arena extends TerminalApp {
     }
 
     @Override
-    public String getName() {
+    public String getPathWithName() {
         return "arena";
     }
 

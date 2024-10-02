@@ -37,7 +37,7 @@ public final class AppData {
         try{
             load(app);
         } catch (Exception e){
-            Log.write("APPDATA", TerminalCode.CRASH, "Failed to load", app.getName());
+            Log.write("APPDATA", TerminalCode.CRASH, "Failed to load", app.getPathWithName());
         }
     }
 

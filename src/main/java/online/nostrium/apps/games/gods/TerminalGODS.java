@@ -83,7 +83,7 @@ public class TerminalGODS extends TerminalApp {
     
 
     @Override
-    public String getName() {
+    public String getPathWithName() {
         return "gods";
     }
 

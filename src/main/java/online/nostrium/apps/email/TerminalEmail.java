@@ -63,7 +63,7 @@ public class TerminalEmail extends TerminalApp {
     }
 
     @Override
-    public String getName() {
+    public String getPathWithName() {
         return "email";
     }
     

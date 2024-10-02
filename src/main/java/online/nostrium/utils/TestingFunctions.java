@@ -53,7 +53,7 @@ public class TestingFunctions {
             }
 
             @Override
-            public String getName() {
+            public String getPathWithName() {
                 return appName;
             }
 

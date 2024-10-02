@@ -52,7 +52,7 @@ public class TerminalAdmin extends TerminalApp {
     }
 
     @Override
-    public String getName() {
+    public String getPathWithName() {
         return "admin";
     }
 

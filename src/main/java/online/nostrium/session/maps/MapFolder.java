@@ -32,6 +32,7 @@ public class MapFolder extends Map{
         realFile = folder;
     }
     
+    @Override
     public void index(){
         indexFolder();
     }

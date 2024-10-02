@@ -67,7 +67,7 @@ public class TerminalGODS_Bank extends TerminalApp {
     }
 
     @Override
-    public String getName() {
+    public String getPathWithName() {
         return "bank";
     }
 

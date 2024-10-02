@@ -19,7 +19,7 @@ public class TerminalUtils {
             return "/";
         }
         // traverse the parent apps to build the path
-        String path = app.getName();
+        String path = app.getPathWithName();
         String subFolders = app.getSubFolders();
         if(subFolders.isEmpty() == false){
             path += subFolders;
@@ -27,7 +27,7 @@ public class TerminalUtils {
         TerminalApp appCurrent = app;
         while(appCurrent.appParent.appParent != null){
             appCurrent = appCurrent.appParent;
-            path = appCurrent.getName() + "/" + path;
+            path = appCurrent.getPathWithName() + "/" + path;
         }
         path = "/" + path;
         return path;

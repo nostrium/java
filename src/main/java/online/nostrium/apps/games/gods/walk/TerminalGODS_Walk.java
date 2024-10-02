@@ -66,7 +66,7 @@ public class TerminalGODS_Walk extends TerminalApp {
     }
 
     @Override
-    public String getName() {
+    public String getPathWithName() {
         return "walk";
     }
 

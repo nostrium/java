@@ -81,6 +81,10 @@ public class Session {
         this.user = user;
     }
 
+    public Map getMap() {
+        return map;
+    }
+
     public Date getSessionStarted() {
         return sessionStarted;
     }

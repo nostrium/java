@@ -56,7 +56,7 @@ public class TerminalUser extends TerminalApp {
     }
 
     @Override
-    public String getName() {
+    public String getPathWithName() {
         return "user";
     }
 

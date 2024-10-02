@@ -51,7 +51,7 @@ public class TerminalNostr extends TerminalApp {
     }
 
     @Override
-    public String getName() {
+    public String getPathWithName() {
         return "nostr";
     }
 

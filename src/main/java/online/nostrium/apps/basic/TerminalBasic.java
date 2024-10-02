@@ -72,7 +72,7 @@ public class TerminalBasic extends TerminalApp {
     }
 
     @Override
-    public String getName() {
+    public String getPathWithName() {
         return "basic";
     }
 

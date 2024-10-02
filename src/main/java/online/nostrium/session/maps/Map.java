@@ -59,6 +59,16 @@ public abstract class Map implements Comparable<Map>{
         this.appRelated = appRelated;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public MapType getType() {
+        return type;
+    }
+    
+    
+
     // find all files, folders, apps and related items
     public abstract void index();
 

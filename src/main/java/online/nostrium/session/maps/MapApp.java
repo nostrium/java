@@ -10,6 +10,7 @@ package online.nostrium.session.maps;
 import java.util.Set;
 import java.util.TreeSet;
 import online.nostrium.servers.terminal.TerminalApp;
+import online.nostrium.servers.terminal.TerminalCommand;
 
 /**
  * @author Brito
@@ -17,15 +18,16 @@ import online.nostrium.servers.terminal.TerminalApp;
  * @location: Germany
  */
 public class MapApp extends Map{
-    MapApp parent = null;
+    Map parent = null;
     Set<MapFolder> folders = new TreeSet<>();
     Set<MapApp> apps = new TreeSet<>();
+    Set<MapCommand> commands = new TreeSet<>();
     Set<MapFile> files = new TreeSet<>();
     
     
 
     public MapApp(TerminalApp app) {
-        super(MapType.APP, app.getName());
+        super(MapType.APP, app.getPathWithName());
         this.appRelated = app;
     }
     
@@ -51,6 +53,11 @@ public class MapApp extends Map{
             mapApp.setParent(this);
             mapApp.index();
             apps.add(mapApp);
+            // add the commands too
+            for(TerminalCommand command : app.commands.values()){
+                MapCommand mapCmd = new MapCommand(command);
+                commands.add(mapCmd);
+            }
         }
     }
 
@@ -61,8 +68,18 @@ public class MapApp extends Map{
     public void setParent(MapApp parent) {
         this.parent = parent;
     }
-
    
+    public Set<MapApp> getApps(){
+        return this.apps;
+    }
+
+    public Set<MapFile> getFiles(){
+        return this.files;
+    }
+
+    public Set<MapFolder> getFolders(){
+        return this.folders;
+    }
 
 
     

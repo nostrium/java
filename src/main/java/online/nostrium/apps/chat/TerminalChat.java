@@ -66,7 +66,7 @@ public class TerminalChat extends TerminalApp {
     }
 
     @Override
-    public String getName() {
+    public String getPathWithName() {
         return "chat";
     }
 

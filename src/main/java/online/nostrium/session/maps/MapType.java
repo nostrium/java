@@ -15,5 +15,6 @@ package online.nostrium.session.maps;
 public enum MapType {
     FILE,
     FOLDER,
-    APP
+    APP,
+    COMMAND
 }

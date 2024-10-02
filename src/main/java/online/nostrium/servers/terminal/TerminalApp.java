@@ -166,7 +166,7 @@ public abstract class TerminalApp {
     public abstract CommandResponse defaultCommand(String commandInput);
 
     // get a name that we can type on the CLI
-    public abstract String getName();
+    public abstract String getPathWithName();
 
     protected CommandResponse reply(TerminalCode code, String text) {
         return new CommandResponse(code, text);
@@ -226,8 +226,7 @@ public abstract class TerminalApp {
 
     public File getFolderCommonData() {
         File folderRoot = FolderUtils.getFolderData();
-        return FolderUtils.defaultGetFolder(
-                folderRoot, this.getName()
+        return FolderUtils.defaultGetFolder(folderRoot, this.getPathWithName()
         );
     }
 

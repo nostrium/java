@@ -44,7 +44,7 @@ public class CommandLs extends TerminalCommand {
                 continue;
             }
             
-            String textName = app.getName() + "/";
+            String textName = app.getPathWithName() + "/";
             text += ""
                     + paint(GREEN, textName)
                     + "\t";

@@ -39,7 +39,7 @@ public class BlogArchive extends Archive{
     }
 
     @Override
-    public String getName() {
+    public String getPathWithName() {
         return id;
     }
 

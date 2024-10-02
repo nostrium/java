@@ -43,7 +43,7 @@ public abstract class TerminalCommand {
     public abstract CommandResponse execute(TerminalType terminalType, String parameters); // test to be run when calling this command
 
     public boolean hasCommand(String commandToFind){
-        if(getName().equalsIgnoreCase(commandToFind)){
+        if(getPathWithName().equalsIgnoreCase(commandToFind)){
             return true;
         }
         // look inside the alternative commands
@@ -63,7 +63,7 @@ public abstract class TerminalCommand {
      * Provides the name that is used for calling this command
      * @return the name with slash when applicable
      */
-    public String getName() {
+    public String getPathWithName() {
         if(requireSlash == false){
             return commandName();
         }else{
