@@ -17,7 +17,6 @@ import java.util.TreeSet;
  */
 public class MapFolder extends Map {
 
-    Map parent = null;
     Set<MapFolder> folders = new TreeSet<>();
     Set<MapFile> files = new TreeSet<>();
     Set<MapApp> apps = new TreeSet<>();
@@ -51,24 +50,17 @@ public class MapFolder extends Map {
             if (item.isFile()) {
                 MapFile mapFile = new MapFile(item.getName());
                 mapFile.realFile = item;
+                mapFile.setParent(this);
                 files.add(mapFile);
             } else {
                 // crawl inside the next folders and apps
                 MapFolder mapFolder = new MapFolder(item.getName());
                 mapFolder.setRealFile(item);
                 mapFolder.index();
-                mapFolder.parent = this;
+                mapFolder.setParent(this);
                 folders.add(mapFolder);
             }
         }
-    }
-
-    public Map getParent() {
-        return parent;
-    }
-
-    public void setParent(MapFolder parent) {
-        this.parent = parent;
     }
 
     public void indexApps() {
@@ -113,7 +105,7 @@ public class MapFolder extends Map {
         int appCount = apps.size();
         int appIndex = 0;
         for (MapApp app : apps) {
-            app.buildTree(builder, prefix + (isTail ? "    " : "│   "), ++appIndex == appCount);
+            app.buildTree(builder, prefix + (isTail ? "    " : "│   "), ++appIndex == appCount, false);
         }
 
         // List the files

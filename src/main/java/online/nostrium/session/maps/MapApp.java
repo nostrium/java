@@ -18,7 +18,7 @@ import online.nostrium.servers.terminal.TerminalCommand;
  */
 public class MapApp extends Map {
 
-    Map parent = null;
+    
     Set<MapFolder> folders = new TreeSet<>();
     Set<MapApp> apps = new TreeSet<>();
     Set<MapCommand> commands = new TreeSet<>();
@@ -54,17 +54,10 @@ public class MapApp extends Map {
             // add the commands too
             for (TerminalCommand command : app.commands.values()) {
                 MapCommand mapCmd = new MapCommand(command);
+                mapCmd.setParent(mapApp);
                 mapApp.addCommand(mapCmd);
             }
         }
-    }
-
-    public Map getParent() {
-        return parent;
-    }
-
-    public void setParent(MapApp parent) {
-        this.parent = parent;
     }
 
     public Set<MapApp> getApps() {
@@ -138,4 +131,5 @@ public class MapApp extends Map {
 
         
     }
+
 }

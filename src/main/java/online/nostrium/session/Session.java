@@ -27,6 +27,8 @@ public class Session {
     Screen screen;
     private boolean timeToStop = false;
     private Map map = null;
+    private Map currentLocation = null;
+    
 
     public Session(
             ChannelType clientType, String sessionId,
@@ -40,6 +42,7 @@ public class Session {
         this.screen = screen;
         map = new MapApp(app);
         map.index();
+        currentLocation = map;
     }
 
     public Session(ChannelType clientType, String sessionId) {
@@ -56,6 +59,7 @@ public class Session {
         // index the app
         map = new MapApp(app);
         map.index();
+        currentLocation = map;
     }
 
     public ChannelType getChannelType() {
@@ -131,11 +135,11 @@ public class Session {
     }
 
     public Map getCurrentLocation() {
-        return map;
+        return currentLocation;
     }
 
     public void setCurrentLocation(Map currentLocation) {
-        this.map = currentLocation;
+        this.currentLocation = currentLocation;
     }
 
 }
