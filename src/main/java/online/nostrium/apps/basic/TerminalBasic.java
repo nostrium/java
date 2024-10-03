@@ -17,7 +17,6 @@ import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.user.User;
-import online.nostrium.servers.terminal.TerminalUtils;
 import online.nostrium.session.Session;
 
 /**
@@ -60,13 +59,6 @@ public class TerminalBasic extends TerminalApp {
 
     @Override
     public String getIntro() {
-        
-//        String intro = paint(GREEN, AsciiArt.intro())
-//                + "\n\n"
-//                + paint(BLUE,
-//                "The NOSTR BBS! Type 'help' to list the commands."
-//                        + "\n"
-//                );
         session.getScreen().writeIntro();
         return "";
     }

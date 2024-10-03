@@ -15,6 +15,7 @@ import online.nostrium.session.NotificationType;
 import online.nostrium.apps.basic.CommandCd;
 import online.nostrium.apps.basic.CommandExit;
 import online.nostrium.apps.basic.CommandLs;
+import online.nostrium.apps.basic.CommandTree;
 import online.nostrium.apps.chat.CommandChatClear;
 import online.nostrium.user.User;
 import online.nostrium.logs.Log;
@@ -58,6 +59,7 @@ public abstract class TerminalApp {
         addCommandInternal(new CommandLs(this, session));
         addCommandInternal(new CommandCd(this, session));
         addCommandInternal(new CommandChatClear(this, session));
+        addCommandInternal(new CommandTree(this, session));
         addCommandInternal(new CommandExit(this, session));
 
         // add the permissions into the data storage

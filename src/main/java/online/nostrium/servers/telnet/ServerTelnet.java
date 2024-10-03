@@ -124,8 +124,8 @@ public class ServerTelnet extends Server {
                // the handler of text on the screen, always needs to be updated
                 session.setScreen(screen);
                 // start with the basic app
-                TerminalApp app = new TerminalBasic(session);
-                session.setup(app, session.getUser(), screen);
+                TerminalApp app1 = new TerminalBasic(session);
+                session.setup(app1, session.getUser(), screen);
                 
 
                 // show the intro
@@ -223,7 +223,7 @@ public class ServerTelnet extends Server {
 
                     // Handle the command request
                     CommandResponse response = 
-                            app.handleCommand(
+                            session.getApp().handleCommand(
                                     TerminalType.ANSI, inputLine);
 
                     // Ignore null responses
@@ -245,16 +245,17 @@ public class ServerTelnet extends Server {
                     }
 
                     // Is it time to go down one app?
-                    if (response.getCode() == TerminalCode.EXIT_APP && app.appParent != null) {
-                        app = app.appParent;
+                    if (response.getCode() == TerminalCode.EXIT_APP
+                            && session.getApp().appParent != null) {
+                        //app = app.appParent;
                     }
 
                     // Is it time to change apps?
                     if (response.getCode() == TerminalCode.CHANGE_APP) {
-                        app = session.getApp();
+                        //app = session.getApp();
                         //session.setApp(app);
-                        if (app.appParent != null) {
-                            out.println(app.getIntro());
+                        if (session.getApp().appParent != null) {
+                            out.println(session.getApp().getIntro());
                         }
                     }
 

@@ -55,8 +55,6 @@ public class TelegramBot implements LongPollingSingleThreadUpdateConsumer {
      */
     private void handleCommand(Update update) {
 
-        long chatId = update.getMessage().getChatId();
-        
         Session session = getSession(update);
         // don't reply to bots
         if (session == null) {
@@ -96,7 +94,6 @@ public class TelegramBot implements LongPollingSingleThreadUpdateConsumer {
 
         // Is it time to change apps?
         if (response.getCode() == TerminalCode.CHANGE_APP) {
-            session.setApp(response.getApp());
             if (session.getApp().appParent != null) {
                 session.getScreen().writeln(session.getApp().getIntro());
             }

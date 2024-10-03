@@ -11,7 +11,6 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalType;
-import online.nostrium.servers.terminal.TerminalUtils;
 import online.nostrium.session.Session;
 import online.nostrium.session.maps.Map;
 import online.nostrium.session.maps.MapType;

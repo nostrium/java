@@ -29,6 +29,7 @@ public abstract class TerminalCommand {
     public ArrayList<String> 
             commandsAlternative = new ArrayList();
     
+    @SuppressWarnings("OverridableMethodCallInConstructor")
     public TerminalCommand(TerminalApp app, Session session) {
         this.session = session;
         this.app = app;

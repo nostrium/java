@@ -381,7 +381,7 @@ public class ServerWeb extends Server {
             }
 
             if (response.getCode() == TerminalCode.CHANGE_APP) {
-                session.setApp(response.getApp());
+                //session.setApp(response.getApp());
                 if (session.getApp().appParent != null) {
                     session.getScreen().writeln(session.getApp().getIntro());
                 }
