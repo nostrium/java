@@ -7,8 +7,6 @@
 package online.nostrium.session.maps;
 
 import java.io.File;
-import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * @author Brito

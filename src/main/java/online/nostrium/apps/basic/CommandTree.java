@@ -52,7 +52,7 @@ public class CommandTree extends TerminalCommand {
 
     @Override
     public String oneLineDescription() {
-        return "Show a tree with the items and sub-items";
+        return "Show a tree of items available";
     }
 
 }

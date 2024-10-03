@@ -121,7 +121,10 @@ public class CommandLogin extends TerminalCommand{
         user.setNsec(nsecDec);
         
         // update the user info
-        this.app.updateUser(user);
+        //this.app.updateUser(user);
+        session.setUser(user);
+        // update the map index, since permissions might have changed
+        session.getMap().index();
         
         // mark a good login
         core.events.triggerAfter(EventIndex.login, session);

@@ -11,6 +11,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCommand;
+import online.nostrium.user.User;
 
 /**
  * @author Brito
@@ -46,6 +47,13 @@ public class MapBox extends Map {
         }
         // add app apps
         for (TerminalApp app : appRelated.appChildren) {
+            
+            // only include if you have permission
+            User user = app.session.getUser();
+            if(app.permissions.isPermitted(user)==false){
+                continue;
+            }
+            
             // create a new map app
             MapApp mapApp = new MapApp(app);
             mapApp.setAppRelated(app);

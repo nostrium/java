@@ -41,7 +41,7 @@ public abstract class Map implements Comparable<Map> {
             return this.toString().compareTo(other.toString());
         }
         // compare based on file name
-        return other.toString().compareTo(this.toString());
+        return this.toString().compareTo(other.toString());
     }
 
     public File getRealFile() {
