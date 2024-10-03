@@ -146,12 +146,12 @@ public class TerminalChat extends TerminalApp {
         session.getScreen().write(line1);
         session.getScreen().writeLikeHuman(line2, 25);
         
-        session.getScreen().writeUserPrompt();
+        session.getScreen().writeUserPrompt(session);
     }
     
     @Override
     public String getId() {
-        String path = TerminalUtils.getPath(this)
+        String path = session.getCurrentLocation().getPath()
                 + "#"
                 + roomNow.name;
         return path;

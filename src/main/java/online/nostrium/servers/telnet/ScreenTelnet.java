@@ -58,8 +58,7 @@ public class ScreenTelnet extends Screen {
             ANSI_BROWN = "\u001B[38;5;94m",
             ANSI_DESERT_SAND = "\u001B[38;5;229m";
 
-    public ScreenTelnet(InputStream in, PrintWriter out, Session session) { 
-        super(session);
+    public ScreenTelnet(InputStream in, PrintWriter out) { 
         this.in = in;
         this.out = out;
     }
@@ -253,8 +252,8 @@ public class ScreenTelnet extends Screen {
     }
 
     @Override
-    public void writeUserPrompt() {
-        String path = TerminalUtils.getPath(session.getApp());
+    public void writeUserPrompt(Session session) {
+        String path = session.getCurrentLocation().getPath();
 
         String userPrompt = paint(GREEN_BRIGHT, session.getUser().getDisplayName())
                 + ":"

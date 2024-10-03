@@ -17,10 +17,6 @@ import online.nostrium.session.Session;
  */
 public class ScreenCLI extends Screen{
 
-    public ScreenCLI(Session session) {
-        super(session);
-    }
-
     @Override
     public TerminalType getTerminalType() {
         return TerminalType.PLAIN;
@@ -63,7 +59,7 @@ public class ScreenCLI extends Screen{
     }
 
     @Override
-    public void writeUserPrompt() {
+    public void writeUserPrompt(Session session) {
     }
     
     @Override

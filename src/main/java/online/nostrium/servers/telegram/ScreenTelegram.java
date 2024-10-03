@@ -7,7 +7,6 @@
 
 package online.nostrium.servers.telegram;
 
-import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalColor;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.servers.terminal.TerminalUtils;
@@ -36,8 +35,7 @@ public class ScreenTelegram extends Screen {
 
     private static final long MESSAGE_DELAY = 1000; // 1 second delay
 
-    public ScreenTelegram(Session session, TelegramClient telegramClient, long chatId) {
-        super(session);
+    public ScreenTelegram(TelegramClient telegramClient, long chatId) {
         this.telegramClient = telegramClient;
         this.chatId = chatId;
         this.messageBuffer = new StringBuilder();
@@ -102,8 +100,8 @@ public class ScreenTelegram extends Screen {
     }
 
     @Override
-    public void writeUserPrompt() {
-        String path = TerminalUtils.getPath(session.getApp());
+    public void writeUserPrompt(Session session) {
+        String path = session.getCurrentLocation().getPath();
         String userPrompt = session.getUser().getDisplayName() + ":" + path + "> ";
         writeln(userPrompt);
     }

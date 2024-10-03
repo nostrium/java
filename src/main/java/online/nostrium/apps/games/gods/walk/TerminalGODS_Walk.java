@@ -77,8 +77,7 @@ public class TerminalGODS_Walk extends TerminalApp {
     
     @Override
     public String getId() {
-        String path = TerminalUtils.getPath(this);
-        return path;
+        return session.getCurrentLocation().getPath();
     }
 
 }

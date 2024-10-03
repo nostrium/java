@@ -7,6 +7,7 @@
 package online.nostrium.session.maps;
 
 import java.io.File;
+import java.util.TreeSet;
 import online.nostrium.servers.terminal.TerminalApp;
 
 /**
@@ -23,8 +24,8 @@ public abstract class Map implements Comparable<Map> {
     File realFile = null;
     TerminalApp appRelated = null;
 
-    public Map(MapType type, String virtualPath) {
-        this.name = virtualPath;
+    public Map(MapType type, String name) {
+        this.name = name;
         this.type = type;
     }
 
@@ -71,13 +72,41 @@ public abstract class Map implements Comparable<Map> {
     public abstract void index();
 
     /**
+     * Provides a path of this item inside the map
+     * For example /user/forum/section1/
+     * @return the canonical path
+     */
+    public String getPath(){
+        String path = getName();
+        if(this.getParent() == null){
+            return "/";
+        }
+        if(this.getParent().getParent() == null){
+            return "/" + getName();
+        }
+        
+        Map map = this;
+        while(map.getParent() != null){
+            map = map.getParent();
+            // build the path, don't include the root element
+            if(map.getParent() != null){
+                path = map.getName() + "/" + path;
+            }else{
+                path = "/" + path;
+            }
+        }
+        
+        return path;
+    }
+    
+    /**
      * Finds a folder, app or file within a given path. This is roughly
      * equivalent to CD in linux
      *
      * @param path e.g. /user/forum
      * @return null when the path was not found
      */
-    public Map getPath(String path) {
+    public Map findPath(String path) {
         // Sanity check for the input path
         if (path == null) {
             return null;
@@ -86,6 +115,16 @@ public abstract class Map implements Comparable<Map> {
         // are talking about this map?
         if(path.isEmpty() || path.equals(".")) {
             return this;
+        }
+        
+        // is it the parent path?
+        if(path.equals("../") || path.equals("..")){
+            if(this.getParent()!= null){
+                return this.getParent();
+            }else{
+                // just means that exist no parent, should be null
+                return null;
+            }
         }
 
         // ending with a slash for some reason?
@@ -118,24 +157,14 @@ public abstract class Map implements Comparable<Map> {
                 map = map.getParent();
             }
             // proceed from the root, but without the slash
-            return map.getPath(path);
-        }
-        
-        // is it the parent path?
-        if(path.equals("../")){
-            if(this.getParent()!= null){
-                return this.getParent();
-            }else{
-                // just means that exist no parent, should be null
-                return null;
-            }
+            return map.findPath(path);
         }
         
         // is it something at the parent path?
         if(path.startsWith("../")){
             path = path.substring(3);
             if(this.getParent()!= null){
-                return this.getParent().getPath(path);
+                return this.getParent().findPath(path);
             }else{
                 // just means that exist no parent, should be null
                 return null;
@@ -167,7 +196,7 @@ public abstract class Map implements Comparable<Map> {
                 return null;
             }else{
                 path = path.substring(i+1);
-                return next.getPath(path);
+                return next.findPath(path);
             }
         }
     }
@@ -241,67 +270,46 @@ public abstract class Map implements Comparable<Map> {
     public void setParent(Map parent) {
         this.parent = parent;
     }
+
+    /**
+     * Equivalent in Linux to the LS command
+     * @param parameters
+     * @return 
+     */
+    public TreeSet<Map> listFiles(String parameters) {
+        TreeSet<Map> list = new TreeSet<>();
+        // is this an app?
+        if(this instanceof MapApp mapApp){
+            // first list the apps
+            for(MapApp map : mapApp.getApps()){
+                list.add(map);
+            }
+            // then add the folders
+            for(MapFolder map : mapApp.getFolders()){
+                list.add(map);
+            }
+            // finally the files
+            for(MapFile map : mapApp.getFiles()){
+                list.add(map);
+            }
+        }
+        // is this a folder?
+        if(this instanceof MapFolder mapFolder){
+            // first list the apps
+            for(MapApp map : mapFolder.getApps()){
+                list.add(map);
+            }
+            // then add the folders
+            for(MapFolder map : mapFolder.getFolders()){
+                list.add(map);
+            }
+            // finally the files
+            for(MapFile map : mapFolder.getFiles()){
+                list.add(map);
+            }
+        }
+        return list;
+    }
     
-    
-//    // Split the path into segments
-//    String[] items = path.split("/");
-//
-//    // Start from the current map (this)
-//    Map current = this;
-//
-//    // Iterate through each segment in the path
-//    for (String item : items) {
-//        if (item.isEmpty() || item.equals(".")) {
-//            continue;  // Skip empty or current directory symbol (.)
-//        }
-//
-//        boolean found = false;
-//
-//        // If current is a folder, check for folders or files
-//        if (current instanceof MapFolder) {
-//            // Check in folders
-//            for (MapFolder folder : ((MapFolder) current).getFolders()) {
-//                if (folder.getName().equals(item)) {
-//                    current = folder;
-//                    found = true;
-//                    break;
-//                }
-//            }
-//
-//            // If not found in folders, check in files
-//            if (!found) {
-//                for (MapFile file : ((MapFolder) current).getFiles()) {
-//                    if (file.getName().equals(item)) {
-//                        current = file;
-//                        found = true;
-//                        break;
-//                    }
-//                }
-//            }
-//        }
-//
-//        // If current is an app, check for apps and commands
-//        if (!found && current instanceof MapApp) {
-//            // Check in apps
-//            for (MapApp app : ((MapApp) current).getApps()) {
-//                if (app.getName().equals(item)) {
-//                    current = app;
-//                    found = true;
-//                    break;
-//                }
-//            }
-//
-//           
-//        }
-//
-//        // If nothing was found for this segment, the path does not exist
-//        if (!found) {
-//            return null;
-//        }
-//    }
-//
-//    // Return the final resolved map object (folder, app, file, or command)
-//    return current;
-//}
 
 }

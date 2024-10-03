@@ -12,7 +12,6 @@ import online.nostrium.session.NotificationType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
-import online.nostrium.servers.terminal.TerminalUtils;
 import online.nostrium.session.Session;
 
 /**
@@ -35,7 +34,7 @@ public class TestingFunctions {
 
             @Override
             public String getId() {
-                String path = TerminalUtils.getPath(this);
+                String path = "root";
                 return path + ""
                         + "/"
                         + appName

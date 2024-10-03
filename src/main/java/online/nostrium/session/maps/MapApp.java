@@ -27,6 +27,7 @@ public class MapApp extends Map {
     public MapApp(TerminalApp app) {
         super(MapType.APP, app.getPathWithName());
         this.appRelated = app;
+        app.setMap(this);
     }
 
     @Override

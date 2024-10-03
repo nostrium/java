@@ -338,15 +338,16 @@ public class ServerWeb extends Server {
         private void processCommand(ChannelHandlerContext ctx, String textCurrent) {
             
             String sessionId = getId(ctx);
+            Screen screen = new ScreenWeb(ctx);
+                
             Session session;
             if(core.sessions.has(ChannelType.WEB, sessionId)){
                 session = SessionUtils
-                    .getOrCreateSession(ChannelType.WEB, sessionId);
+                    .getOrCreateSession(ChannelType.WEB, sessionId, screen);
             }else{
                 // create a new one
                 session = SessionUtils
-                    .getOrCreateSession(ChannelType.WEB, sessionId);
-                Screen screen = new ScreenWeb(session, ctx);
+                    .getOrCreateSession(ChannelType.WEB, sessionId, screen);
                 session.setScreen(screen);
                 UserUtils.checkFirstTimeSetup(session.getUser(), screen);
             }
@@ -358,7 +359,7 @@ public class ServerWeb extends Server {
                     .handleCommand(TerminalType.ANSI, textCurrent);
 
             if (response == null) {
-                session.getScreen().writeUserPrompt();
+                session.getScreen().writeUserPrompt(session);
                 return;
             }
 
@@ -366,7 +367,7 @@ public class ServerWeb extends Server {
                 textCurrent = textCurrent.substring(1);
                 if ("showLogo".equals(textCurrent)) {
                     session.getScreen().writeln(session.getApp().getIntro());
-                    session.getScreen().writeUserPrompt();
+                    session.getScreen().writeUserPrompt(session);
                 }
                 return;
             }
@@ -390,7 +391,7 @@ public class ServerWeb extends Server {
                 session.getScreen().writeln(response.getText());
             }
 
-            session.getScreen().writeUserPrompt();
+            session.getScreen().writeUserPrompt(session);
         }
     }
 }

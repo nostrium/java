@@ -40,14 +40,14 @@ public class SessionTest {
         // create the users
         User user1 = UserUtils.createUserAnonymous();
         Session session1 = new Session(ChannelType.TELNET, "1");
-        Screen screen1 = new ScreenCLI(session1);
+        Screen screen1 = new ScreenCLI();
         TerminalApp app1 = createFakeApp(session1, "chat", id);
         session1.setup(app1, user1, screen1);
         sessions.addSession(session1);
         
         User user2 = UserUtils.createUserAnonymous();
         Session session2 = new Session(ChannelType.TELNET, "2");
-        Screen screen2 = new ScreenCLI(session2);
+        Screen screen2 = new ScreenCLI();
         TerminalApp app2 = createFakeApp(session2, "chat", id);
         session2.setup(app2, user2, screen2);
         sessions.addSession(session2);

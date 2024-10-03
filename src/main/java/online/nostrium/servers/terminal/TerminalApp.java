@@ -20,6 +20,7 @@ import online.nostrium.user.User;
 import online.nostrium.logs.Log;
 import online.nostrium.folder.FolderUtils;
 import online.nostrium.session.Session;
+import online.nostrium.session.maps.MapApp;
 import online.nostrium.utils.cybersec.Permissions;
 
 /**
@@ -34,7 +35,10 @@ public abstract class TerminalApp {
     
     // settings and data for this app
     public AppData dataUser;
-
+    
+    // map for this app
+    private MapApp map = null;
+    
     // navigation between different apps
     public TerminalApp appParent = null;
     @SuppressWarnings("unchecked")
@@ -75,8 +79,7 @@ public abstract class TerminalApp {
 
     // shows a path id for this app
     public String getId() {
-        String path = TerminalUtils.getPath(this);
-        return path;
+        return map.getPath();
     }
 
     /**
@@ -252,4 +255,14 @@ public abstract class TerminalApp {
         }
         dataUser.put("folderCurrent", text);
     }
+
+    public void setMap(MapApp map) {
+        this.map = map;
+    }
+
+    public MapApp getMap() {
+        return map;
+    }
+    
+    
 }

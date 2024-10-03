@@ -114,19 +114,18 @@ public class ServerTelnet extends Server {
 
                 // use the IP address as sessionId
                 String sessionId = clientSocket.getInetAddress().toString();
-
+                Screen screen = new ScreenTelnet(in, out);
+                
                 // get the corresponding session
                 Session session = 
-                        SessionUtils.getOrCreateSession(ChannelType.TELNET, sessionId);
+                        SessionUtils.getOrCreateSession(
+                                ChannelType.TELNET, sessionId, screen);
                 
                // the handler of text on the screen, always needs to be updated
-                Screen screen = new ScreenTelnet(in, out, session);
                 session.setScreen(screen);
-                
-                
                 // start with the basic app
                 TerminalApp app = new TerminalBasic(session);
-
+                session.setup(app, session.getUser(), screen);
                 
 
                 // show the intro
@@ -136,7 +135,7 @@ public class ServerTelnet extends Server {
                 UserUtils.checkFirstTimeSetup(session.getUser(), screen);
 
                 // write the start prompt
-                screen.writeUserPrompt();
+                screen.writeUserPrompt(session);
 
                 int inputChar;
                 StringBuilder inputBuffer = new StringBuilder();
@@ -160,7 +159,7 @@ public class ServerTelnet extends Server {
                                     // Clear the entire line and move cursor to start
                                     screen.deleteCurrentLine();
                                     screen.deletePreviousLine();
-                                    screen.writeUserPrompt();
+                                    screen.writeUserPrompt(session);
                                     out.print(inputBuffer.toString() + "\n");
                                     out.flush();
                                 }
@@ -173,14 +172,14 @@ public class ServerTelnet extends Server {
                                     // Clear the entire line and move cursor to start
                                     screen.deletePreviousLine();
                                     screen.deleteCurrentLine();
-                                    screen.writeUserPrompt();
+                                    screen.writeUserPrompt(session);
                                     out.print(inputBuffer.toString());
                                     out.flush();
                                 } else {
                                     historyIndex = commandHistory.size();
                                     inputBuffer.setLength(0);
                                     screen.deleteCurrentLine();
-                                    screen.writeUserPrompt();
+                                    screen.writeUserPrompt(session);
                                 }
                                 continue;
                             }
@@ -230,7 +229,7 @@ public class ServerTelnet extends Server {
                     // Ignore null responses
                     if (response == null) {
                         // Output the next prompt
-                        screen.writeUserPrompt();
+                        screen.writeUserPrompt(session);
                         continue;
                     }
 
@@ -252,8 +251,8 @@ public class ServerTelnet extends Server {
 
                     // Is it time to change apps?
                     if (response.getCode() == TerminalCode.CHANGE_APP) {
-                        app = response.getApp();
-                        session.setApp(app);
+                        app = session.getApp();
+                        //session.setApp(app);
                         if (app.appParent != null) {
                             out.println(app.getIntro());
                         }
@@ -266,7 +265,7 @@ public class ServerTelnet extends Server {
                     }
 
                     // Output the next prompt
-                    screen.writeUserPrompt();
+                    screen.writeUserPrompt(session);
                 }
 
                 // Close the session

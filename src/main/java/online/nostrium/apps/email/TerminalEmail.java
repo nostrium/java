@@ -84,20 +84,10 @@ public class TerminalEmail extends TerminalApp {
     // shows an intro for this app
     @Override
     public String getId(){
-        String path = TerminalUtils.getPath(this);
-        return path;
+        return session.getCurrentLocation().getPath();
     }
 
-    public File getFolderCurrent() {
-        if(dataUser.has("folderCurrent") == false){
-            return null;
-        }
-        return (File) dataUser.get("folderCurrent");
-    }
-
-    public void setFolderCurrent(File folderCurrent) {
-        dataUser.put("folderCurrent", folderCurrent);
-    }
+    
     
 
 }

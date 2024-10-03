@@ -57,8 +57,7 @@ public class ScreenWeb extends Screen{
     
     final ChannelHandlerContext ctx;
 
-    public ScreenWeb(Session session, ChannelHandlerContext ctx) {
-        super(session);
+    public ScreenWeb(ChannelHandlerContext ctx) {
         this.ctx = ctx;
     }
 
@@ -254,8 +253,8 @@ public class ScreenWeb extends Screen{
     }
 
     @Override
-    public void writeUserPrompt() {
-        String path = TerminalUtils.getPath(session.getApp());
+    public void writeUserPrompt(Session session) {
+        String path = session.getCurrentLocation().getPath();
 
         String userPrompt = paint(GREEN_BRIGHT, 
                 session.getUser().getDisplayName())

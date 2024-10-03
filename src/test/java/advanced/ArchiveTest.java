@@ -45,7 +45,7 @@ public class ArchiveTest {
         User user = UserUtils.createUserAnonymous();
         Session session = new Session(ChannelType.API, "1");
         session.setUser(user);
-        Screen screen = new ScreenCLI(session);
+        Screen screen = new ScreenCLI();
         session.setScreen(screen);
         
         ForumArchive forum = new ForumArchive("offgrid", folder, session);

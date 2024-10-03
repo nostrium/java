@@ -7,7 +7,6 @@
 package online.nostrium.utils.screens;
 
 import online.nostrium.servers.qoft.QOTD;
-import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalColor;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
@@ -21,12 +20,6 @@ import online.nostrium.utils.ascii.AsciiArt;
  * Location: Germany
  */
 public abstract class Screen {
-    
-    public final Session session;
-
-    public Screen(Session session) {
-        this.session = session;
-    }
     
     public abstract TerminalType getTerminalType();
     
@@ -56,7 +49,7 @@ public abstract class Screen {
     public abstract void deleteCurrentLine();
     public abstract void deletePreviousLine();
     
-    public abstract void writeUserPrompt();
+    public abstract void writeUserPrompt(Session session);
 
     public abstract String breakLine();
     

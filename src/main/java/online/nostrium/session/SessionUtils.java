@@ -12,6 +12,7 @@ import online.nostrium.main.core;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
+import online.nostrium.utils.screens.Screen;
 
 /**
  * @author Brito
@@ -24,9 +25,10 @@ public class SessionUtils {
      * 
      * @param channelType the channel being used
      * @param sessionId
+     * @param screen
      * @return 
      */
-    public static Session getOrCreateSession(ChannelType channelType, String sessionId){
+    public static Session getOrCreateSession(ChannelType channelType, String sessionId, Screen screen){
         if(core.sessions.has(channelType, sessionId)){
             // get the existing session
             Session session = core.sessions.get(channelType, sessionId);
@@ -38,9 +40,9 @@ public class SessionUtils {
             // setup an anonymous user at the beginning
             User user = UserUtils.createUserAnonymous();
             session.setUser(user);
-            // setup the initial app
             TerminalApp app = new TerminalBasic(session);
-            session.setApp(app);
+            
+            session.setup(app, user, screen);
             
             // add this session to the monitoring
             core.sessions.addSession(session);

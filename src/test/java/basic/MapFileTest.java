@@ -5,6 +5,7 @@
 package basic;
 
 import java.io.File;
+import java.util.TreeSet;
 import online.nostrium.apps.basic.TerminalBasic;
 import online.nostrium.folder.FolderUtils;
 import online.nostrium.main.core;
@@ -45,7 +46,7 @@ public class MapFileTest {
     public void mapAppTest() {
         core.startConfig();
         Session session = new Session(ChannelType.CLI, "test");
-        ScreenCLI screen = new ScreenCLI(session);
+        ScreenCLI screen = new ScreenCLI();
         User user = UserUtils.createUserAnonymous();
         session.setUser(user);
         session.setScreen(screen);
@@ -64,32 +65,64 @@ public class MapFileTest {
         
         // test that we can navigate
         String path = "/user/forum";
-        Map test1 = map.getPath(path);
+        Map test1 = map.findPath(path);
         assertEquals("forum", test1.getName());
         
         // test the ../
-        Map test2 = test1.getPath("../");
+        Map test2 = test1.findPath("../");
         assertEquals("user", test2.getName());
         
+        // test the ..
+        Map test2_1 = test1.findPath("..");
+        assertEquals("user", test2_1.getName());
+        
+        
         // test the ../
-        Map test3 = test2.getPath("/");
+        Map test3 = test2.findPath("/");
         assertEquals("basic", test3.getName());
         
         // test jumping ../
-        Map test4 = test1.getPath("../blog");
+        Map test4 = test1.findPath("../blog");
         assertEquals("blog", test4.getName());
         
         // test ./
-        Map test5 = test4.getPath("./blog");
+        Map test5 = test4.findPath("./blog");
         assertEquals("blog", test5.getName());
         
         // test multiple ../../
-        Map test6 = test1.getPath("../../admin");
+        Map test6 = test1.findPath("../../admin");
         assertEquals("admin", test6.getName());
+    }
+    
+    @Test
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
+    public void mapListTest() {
+        core.startConfig();
+        Session session = new Session(ChannelType.CLI, "test");
+        ScreenCLI screen = new ScreenCLI();
+        User user = UserUtils.createUserAnonymous();
+        session.setUser(user);
+        session.setScreen(screen);
+        try{
+            TerminalBasic app = new TerminalBasic(session);
+            session.setup(app, UserUtils.createUserAnonymous(), screen);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         
+        MapApp map = (MapApp) session.getMap();
         
-        System.gc();
-      
+        assertTrue(map.getApps().size() > 0);
+        
+        System.out.println(map.getTree());
+        
+        // test that we can navigate
+        String path = "/user/";
+        Map test1 = map.findPath(path);
+        assertEquals("user", test1.getName());
+        
+        TreeSet<Map> list = test1.listFiles("");
+        assertEquals(2, list.size());
     }
     
 }

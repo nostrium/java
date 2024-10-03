@@ -67,8 +67,7 @@ public class TerminalUser extends TerminalApp {
 
     @Override
     public String getId() {
-        String path = TerminalUtils.getPath(this);
-        return path;
+        return this.getMap().getPath();
     }
 
 }

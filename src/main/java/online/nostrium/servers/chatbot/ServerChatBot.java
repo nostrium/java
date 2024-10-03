@@ -138,7 +138,7 @@ public class ServerChatBot extends Server {
             time.waitMs(100);
         }
         
-        Screen screen = new ScreenCLI(null);
+        Screen screen = new ScreenCLI();
         try {
             // Example of calling the non-static chat method to send a message
             server.chat(screen, "Write a hello world in Java");

@@ -14,7 +14,9 @@ import online.nostrium.session.maps.MapApp;
 import online.nostrium.utils.screens.Screen;
 
 /**
- * Author: Brito Date: 2024-08-10 Location: Germany
+ * @Author: Brito
+ * @Date: 2024-08-10
+ * @Location: Germany
  */
 public class Session {
 
@@ -138,8 +140,16 @@ public class Session {
         return currentLocation;
     }
 
+    /**
+     * Define where the user is currently located
+     * @param currentLocation 
+     */
     public void setCurrentLocation(Map currentLocation) {
         this.currentLocation = currentLocation;
+        // update the app currently active
+        if(this.currentLocation instanceof MapApp mapApp){
+            this.setApp(map.getAppRelated());
+        }
     }
 
 }

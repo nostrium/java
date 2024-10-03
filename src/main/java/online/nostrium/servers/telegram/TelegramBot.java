@@ -84,7 +84,7 @@ public class TelegramBot implements LongPollingSingleThreadUpdateConsumer {
         // Ignore null responses
         if (response == null) {
             // Output the next prompt
-            session.getScreen().writeUserPrompt();
+            session.getScreen().writeUserPrompt(session);
             return;
         }
 
@@ -109,7 +109,7 @@ public class TelegramBot implements LongPollingSingleThreadUpdateConsumer {
         }
 
         // Output the next prompt
-        session.getScreen().writeUserPrompt();
+        session.getScreen().writeUserPrompt(session);
 
     }
 
@@ -131,13 +131,12 @@ public class TelegramBot implements LongPollingSingleThreadUpdateConsumer {
         Long sessionIdNumber = userFromMessage.getId();
         String sessionId = sessionIdNumber + "";
         Session session;
-        
+        Screen screen = new ScreenTelegram(telegramClient, sessionIdNumber);
+            
         if(sessions.has(ChannelType.TELEGRAM, sessionId)){
-            session = SessionUtils.getOrCreateSession(ChannelType.TELEGRAM, sessionId);
+            session = SessionUtils.getOrCreateSession(ChannelType.TELEGRAM, sessionId, screen);
         }else{
-            session = SessionUtils.getOrCreateSession(ChannelType.TELEGRAM, sessionId);
-            Screen screen = new ScreenTelegram(session, telegramClient, sessionIdNumber);
-            session.setScreen(screen);
+            session = SessionUtils.getOrCreateSession(ChannelType.TELEGRAM, sessionId, screen);
             screen.writeIntro();
         }
 
