@@ -18,6 +18,7 @@ import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
 import online.nostrium.utils.screens.ScreenCLI;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
@@ -59,6 +60,7 @@ public class MapFileTest {
         
         MapApp map = (MapApp) session.getMap();
         
+        assertNotNull(map);
         assertTrue(map.getApps().size() > 0);
         
         System.out.println(map.getTree());
@@ -90,8 +92,8 @@ public class MapFileTest {
         assertEquals("blog", test5.getName());
         
         // test multiple ../../
-        Map test6 = test1.findPath("../../admin");
-        assertEquals("admin", test6.getName());
+        Map test6 = test1.findPath("../../email");
+        assertEquals("email", test6.getName());
     }
     
     @Test

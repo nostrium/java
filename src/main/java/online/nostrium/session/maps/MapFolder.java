@@ -25,7 +25,7 @@ public class MapFolder extends MapBox {
 
     public MapFolder(File folder) {
         super(MapType.APP, folder.getName());
-        realFile = folder;
+        relatedFile = folder;
     }
 
 //    @Override

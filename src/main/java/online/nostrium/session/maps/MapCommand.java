@@ -23,10 +23,6 @@ public class MapCommand extends Map{
         this.cmd = cmd;
     }
 
-    @Override
-    public void index() {
-    }
-
     public TerminalCommand getCmd() {
         return cmd;
     }

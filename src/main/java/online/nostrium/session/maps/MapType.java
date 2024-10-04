@@ -16,5 +16,6 @@ public enum MapType {
     FILE,
     FOLDER,
     APP,
-    COMMAND
+    COMMAND,
+    LINK
 }

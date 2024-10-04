@@ -18,6 +18,7 @@ import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.session.Session;
+import online.nostrium.session.maps.MapBox;
 import online.nostrium.utils.EncryptionUtils;
 import online.nostrium.utils.MathFunctions;
 import static online.nostrium.utils.TextFunctions.sha256;
@@ -124,7 +125,8 @@ public class CommandLogin extends TerminalCommand{
         //this.app.updateUser(user);
         session.setUser(user);
         // update the map index, since permissions might have changed
-        session.getMap().index();
+        MapBox map = (MapBox) session.getMap();
+        map.index();
         
         // mark a good login
         core.events.triggerAfter(EventIndex.login, session);

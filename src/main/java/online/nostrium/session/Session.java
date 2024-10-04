@@ -11,6 +11,7 @@ import online.nostrium.user.User;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.session.maps.Map;
 import online.nostrium.session.maps.MapApp;
+import online.nostrium.session.maps.MapBox;
 import online.nostrium.utils.screens.Screen;
 
 /**
@@ -28,7 +29,7 @@ public class Session {
     User user;                  // who is using this
     Screen screen;
     private boolean timeToStop = false;
-    private Map map = null;
+    private MapBox map = null;
     private Map currentLocation = null;
     
 

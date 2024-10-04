@@ -21,8 +21,8 @@ public abstract class Map implements Comparable<Map> {
     public final MapType type;
     private Map parent = null;
 
-    File realFile = null;
-    TerminalApp appRelated = null;
+    File relatedFile = null;
+    TerminalApp relatedApp = null;
 
     public Map(MapType type, String name) {
         this.name = name;
@@ -45,19 +45,19 @@ public abstract class Map implements Comparable<Map> {
     }
 
     public File getRealFile() {
-        return realFile;
+        return relatedFile;
     }
 
     public void setRealFile(File realFile) {
-        this.realFile = realFile;
+        this.relatedFile = realFile;
     }
 
     public TerminalApp getAppRelated() {
-        return appRelated;
+        return relatedApp;
     }
 
     public void setAppRelated(TerminalApp appRelated) {
-        this.appRelated = appRelated;
+        this.relatedApp = appRelated;
     }
 
     public String getName() {
@@ -69,7 +69,7 @@ public abstract class Map implements Comparable<Map> {
     }
 
     // find all files, folders, apps and related items
-    public abstract void index();
+    //public abstract void index();
 
     /**
      * Provides a path of this item inside the map
@@ -163,8 +163,8 @@ public abstract class Map implements Comparable<Map> {
         // is it something at the parent path?
         if(path.startsWith("../")){
             path = path.substring(3);
-            if(this.getParent()!= null){
-                return this.getParent().findPath(path);
+            if(getParent()!= null){
+                return getParent().findPath(path);
             }else{
                 // just means that exist no parent, should be null
                 return null;

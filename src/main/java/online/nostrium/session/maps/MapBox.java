@@ -24,29 +24,31 @@ public class MapBox extends Map {
     Set<MapApp> apps = new TreeSet<>();
     Set<MapCommand> commands = new TreeSet<>();
     Set<MapFile> files = new TreeSet<>();
+    Set<MapLink> links = new TreeSet<>();
 
     public MapBox(MapType type, String name) {
         super(type, name);
     }
 
-    @Override
     public void index() {
-        if (appRelated == null) {
-            return;
+        if (relatedApp != null) {
+            // add the apps
+            indexApps();
         }
-
-        // add the apps
-        indexApps();
-        indexFolder();
+        if(relatedFile != null 
+                && relatedFile.exists() 
+                && relatedFile.isDirectory()){
+            indexFolder();
+        }
     }
 
     private void indexApps() {
         // needs to have an associated app
-        if (appRelated == null) {
+        if (relatedApp == null) {
             return;
         }
         // add app apps
-        for (TerminalApp app : appRelated.appChildren) {
+        for (TerminalApp app : relatedApp.appChildren) {
             
             // only include if you have permission
             User user = app.session.getUser();
@@ -70,12 +72,12 @@ public class MapBox extends Map {
     }
 
     public void indexFolder() {
-        if (realFile == null || realFile.isFile()) {
+        if (relatedFile == null || relatedFile.isFile()) {
             return;
         }
 
         // list the files
-        File[] filesFound = realFile.listFiles();
+        File[] filesFound = relatedFile.listFiles();
         if (filesFound == null || filesFound.length == 0) {
             return;
         }
@@ -83,7 +85,7 @@ public class MapBox extends Map {
         for (File item : filesFound) {
             if (item.isFile()) {
                 MapFile mapFile = new MapFile(item.getName());
-                mapFile.realFile = item;
+                mapFile.relatedFile = item;
                 mapFile.setParent(this);
                 files.add(mapFile);
             } else {
@@ -109,10 +111,27 @@ public class MapBox extends Map {
         return this.folders;
     }
 
+    public Set<MapCommand> getCommands() {
+        return commands;
+    }
+
+    public Set<MapLink> getLinks() {
+        return links;
+    }
+
     public void addCommand(MapCommand mapCmd) {
         commands.add(mapCmd);
     }
 
+    public void addLink(MapLink mapLink) {
+        links.add(mapLink);
+    }
+
+    public void addFolder(MapFolder mapFolder) {
+        folders.add(mapFolder);
+    }
+
+    
     public String getTree() {
         StringBuilder treeBuilder = new StringBuilder();
         buildTree(treeBuilder, "", true, true);

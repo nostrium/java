@@ -17,11 +17,5 @@ public class MapFile extends Map{
     public MapFile(String virtualPath) {
         super(MapType.FILE, virtualPath);
     }
-
-    @Override
-    public void index() {
-        // not applicable to this case
-    }
-
     
 }

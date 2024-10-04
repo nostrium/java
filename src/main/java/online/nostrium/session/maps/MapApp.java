@@ -23,7 +23,7 @@ public class MapApp extends MapBox {
 
     public MapApp(TerminalApp app) {
         super(MapType.APP, app.getPathWithName());
-        this.appRelated = app;
+        this.relatedApp = app;
         app.setMap(this);
     }
 

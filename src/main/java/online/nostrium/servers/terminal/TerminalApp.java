@@ -22,6 +22,8 @@ import online.nostrium.logs.Log;
 import online.nostrium.folder.FolderUtils;
 import online.nostrium.session.Session;
 import online.nostrium.session.maps.MapApp;
+import online.nostrium.session.maps.MapFolder;
+import online.nostrium.session.maps.MapLink;
 import online.nostrium.utils.cybersec.Permissions;
 
 /**
@@ -74,6 +76,17 @@ public abstract class TerminalApp {
     public final void addApp(TerminalApp app) {
         app.appParent = this;
         this.appChildren.add(app);
+    }
+    
+    public final void addFolder(File folder) {
+        MapFolder mapFolder = new MapFolder(folder);
+        this.map.addFolder(mapFolder);
+    }
+
+    
+    public final void addLink(String virtualPath, TerminalApp app) {
+        MapLink mapLink = new MapLink(virtualPath, app);
+        this.map.addLink(mapLink);
     }
 
     // shows an intro for this app

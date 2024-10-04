@@ -13,7 +13,6 @@ import online.nostrium.session.NotificationType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
-import online.nostrium.servers.terminal.TerminalUtils;
 import online.nostrium.session.Session;
 
 /**
@@ -31,9 +30,10 @@ public class TerminalUser extends TerminalApp {
         addApp(new BlogArchive("blog", folder, session));
         addApp(new ForumArchive("forum", folder, session));
         
+        File folderToAdd = new File(session.getUser().getFolder(false), "public");
+//        addFolder(folderToAdd);
+        
         addCommand(new CommandUserShow(this, session));
-        //addCommand(new CommandUserPassword(this));
-        //addCommand(new CommandUserSave(this));
         addCommand(new CommandUserSet(this, session));
     }
 
