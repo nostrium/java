@@ -124,7 +124,7 @@ public class MapFileTest {
         assertEquals("user", test1.getName());
         
         TreeSet<Map> list = test1.listFiles("");
-        assertEquals(2, list.size());
+        assertEquals(3, list.size());
     }
     
 }

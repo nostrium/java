@@ -21,7 +21,7 @@ public abstract class Map implements Comparable<Map> {
     public final MapType type;
     private Map parent = null;
 
-    File relatedFile = null;
+    File relatedFolder = null;
     TerminalApp relatedApp = null;
 
     public Map(MapType type, String name) {
@@ -45,11 +45,11 @@ public abstract class Map implements Comparable<Map> {
     }
 
     public File getRealFile() {
-        return relatedFile;
+        return relatedFolder;
     }
 
     public void setRealFile(File realFile) {
-        this.relatedFile = realFile;
+        this.relatedFolder = realFile;
     }
 
     public TerminalApp getAppRelated() {

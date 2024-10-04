@@ -14,6 +14,7 @@ import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.session.Session;
+import online.nostrium.session.maps.MapFolder;
 
 /**
  * @author Brito
@@ -31,7 +32,9 @@ public class TerminalUser extends TerminalApp {
         addApp(new ForumArchive("forum", folder, session));
         
         File folderToAdd = new File(session.getUser().getFolder(false), "public");
-//        addFolder(folderToAdd);
+        MapFolder mapFolder = addFolder(folderToAdd);
+        // add the link the forum and blog?
+        
         
         addCommand(new CommandUserShow(this, session));
         addCommand(new CommandUserSet(this, session));

@@ -11,6 +11,7 @@ import online.nostrium.apps.basic.CommandHelp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeSet;
 import online.nostrium.session.NotificationType;
 import online.nostrium.apps.basic.CommandCd;
 import online.nostrium.apps.basic.CommandExit;
@@ -46,6 +47,8 @@ public abstract class TerminalApp {
     public TerminalApp appParent = null;
     @SuppressWarnings("unchecked")
     public ArrayList<TerminalApp> appChildren = new ArrayList();
+    public TreeSet<MapFolder> folders = new TreeSet<>();
+    public TreeSet<MapLink> links = new TreeSet<>();
     
     public final Map<String, TerminalCommand> commands = new HashMap<>();
 
@@ -78,9 +81,10 @@ public abstract class TerminalApp {
         this.appChildren.add(app);
     }
     
-    public final void addFolder(File folder) {
+    public final MapFolder addFolder(File folder) {
         MapFolder mapFolder = new MapFolder(folder);
-        this.map.addFolder(mapFolder);
+        folders.add(mapFolder);
+        return mapFolder;
     }
 
     

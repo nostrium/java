@@ -35,9 +35,7 @@ public class MapBox extends Map {
             // add the apps
             indexApps();
         }
-        if(relatedFile != null 
-                && relatedFile.exists() 
-                && relatedFile.isDirectory()){
+        if (relatedFolder != null) {
             indexFolder();
         }
     }
@@ -47,37 +45,48 @@ public class MapBox extends Map {
         if (relatedApp == null) {
             return;
         }
-        // add app apps
+
+        // add the commands 
+        for (TerminalCommand command : relatedApp.commands.values()) {
+            MapCommand mapCmd = new MapCommand(command);
+            mapCmd.setParent(this);
+            addCommand(mapCmd);
+        }
+        // Add any links and virtual folders
+        links.addAll(relatedApp.links);
+        folders.addAll(relatedApp.folders);
+
+        
+        // add the apps
         for (TerminalApp app : relatedApp.appChildren) {
-            
+
             // only include if you have permission
             User user = app.session.getUser();
-            if(app.permissions.isPermitted(user)==false){
+            if (app.permissions.isPermitted(user) == false) {
                 continue;
             }
-            
             // create a new map app
             MapApp mapApp = new MapApp(app);
             mapApp.setAppRelated(app);
             mapApp.setParent(this);
             mapApp.index();
+            // all done
             apps.add(mapApp);
-            // add the commands too
-            for (TerminalCommand command : app.commands.values()) {
-                MapCommand mapCmd = new MapCommand(command);
-                mapCmd.setParent(mapApp);
-                mapApp.addCommand(mapCmd);
-            }
         }
     }
 
     public void indexFolder() {
-        if (relatedFile == null || relatedFile.isFile()) {
+        if (relatedFolder == null) {
+            return;
+        }
+
+        // the folder is mentioned but does not exist (yet)
+        if (relatedFolder.exists() == false) {
             return;
         }
 
         // list the files
-        File[] filesFound = relatedFile.listFiles();
+        File[] filesFound = relatedFolder.listFiles();
         if (filesFound == null || filesFound.length == 0) {
             return;
         }
@@ -85,7 +94,7 @@ public class MapBox extends Map {
         for (File item : filesFound) {
             if (item.isFile()) {
                 MapFile mapFile = new MapFile(item.getName());
-                mapFile.relatedFile = item;
+                mapFile.relatedFolder = item;
                 mapFile.setParent(this);
                 files.add(mapFile);
             } else {
@@ -131,7 +140,6 @@ public class MapBox extends Map {
         folders.add(mapFolder);
     }
 
-    
     public String getTree() {
         StringBuilder treeBuilder = new StringBuilder();
         buildTree(treeBuilder, "", true, true);
@@ -142,7 +150,7 @@ public class MapBox extends Map {
         if (isRoot == false) {
             // Append the current app name
             builder.append(prefix).append(isTail ? "└── " : "├── ")
-//                    .append("[app] ")
+                    //                    .append("[app] ")
                     .append(getName())
                     .append("\n");
         }
@@ -162,7 +170,6 @@ public class MapBox extends Map {
 //                    .append(command.getName())
 //                    .append("\n");
 //        }
-
         // List the files
         int fileCount = files.size();
         int fileIndex = 0;
@@ -175,6 +182,13 @@ public class MapBox extends Map {
                     .append("\n");
         }
 
+        // List the apps (recursive)
+        int appCount = apps.size();
+        int appIndex = 0;
+        for (MapApp app : apps) {
+            app.buildTree(builder, prefix + (isTail ? "    " : "│   "), ++appIndex == appCount, false);
+        }
+
         // List the folders
         int folderCount = folders.size();
         int folderIndex = 0;
@@ -182,12 +196,18 @@ public class MapBox extends Map {
             folder.buildTree(builder, prefix + (isTail ? "    " : "│   "), ++folderIndex == folderCount, false);
         }
 
-        // List the apps (recursive)
-        int appCount = apps.size();
-        int appIndex = 0;
-        for (MapApp app : apps) {
-            app.buildTree(builder, prefix + (isTail ? "    " : "│   "), ++appIndex == appCount, false);
+        // List the virtual folders
+        int linkCount = links.size();
+        int linkIndex = 0;
+        for (MapLink link : links) {
+            builder.append(prefix)
+                    .append(isTail ? "    " : "│   ")
+                    .append(linkIndex++ == linkCount - 1 ? "└── " : "├── ")
+                    .append("[link] ")
+                    .append(link.getName())
+                    .append("\n");
         }
+
     }
 
 }
