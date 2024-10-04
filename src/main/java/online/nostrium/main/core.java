@@ -110,10 +110,14 @@ public class core {
         startConfig();
         
         // run the scheduled tasks
-        NIP05_emails nip05 = new NIP05_emails();  // every 10 minutes
+        runScheduledTasksAndActions();
 
         // run servers and keep waiting
         runServers();
+    }
+
+    private static void runScheduledTasksAndActions() {
+        NIP05_emails nip05 = new NIP05_emails();  // every 10 minutes
     }
 
 

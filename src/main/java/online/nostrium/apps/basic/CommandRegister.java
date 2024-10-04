@@ -6,6 +6,7 @@
  */
 package online.nostrium.apps.basic;
 
+import online.nostrium.main.core;
 import online.nostrium.user.User;
 import online.nostrium.user.UserType;
 import online.nostrium.user.UserUtils;
@@ -17,6 +18,7 @@ import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.session.Session;
 import online.nostrium.utils.EncryptionUtils;
 import static online.nostrium.utils.TextFunctions.sha256;
+import online.nostrium.utils.events.EventIndex;
 
 /**
  * @author Brito
@@ -98,6 +100,10 @@ public class CommandRegister extends TerminalCommand{
         if(user.getUserType() == UserType.ADMIN){
             session.getScreen().writeln(UserType.ADMIN.toString() + " account is created.");
         }
+        
+        // mark a good registration
+        core.events.triggerAfter(EventIndex.register, session);
+        
         
         // all done
         return reply(TerminalCode.OK, "You are now registered");
