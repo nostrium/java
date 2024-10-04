@@ -36,6 +36,7 @@ import static online.nostrium.user.UserUtils.isVirtualFolder;
 import online.nostrium.utils.FileFunctions;
 import online.nostrium.utils.TextFunctions;
 import org.apache.commons.io.FileUtils;
+import org.apache.tika.Tika;
 
 /**
  * @author Brito
@@ -164,23 +165,8 @@ public class FilesWeb {
     }
 
     public static String getMimeType(String uri) {
-        String contentType = "text/html; charset=UTF-8";
-        if (uri.endsWith(".js")) {
-            contentType = "application/javascript";
-        } else if (uri.endsWith(".css")) {
-            contentType = "text/css";
-        } else if (uri.endsWith(".txt")) {
-            contentType = "text/plain";
-        } else if (uri.endsWith(".json")) {
-            contentType = "application/json";
-        } else if (uri.endsWith(".png")) {
-            contentType = "image/png";
-        } else if (uri.endsWith(".jpg") || uri.endsWith(".jpeg")) {
-            contentType = "image/jpeg";
-        } else if (uri.endsWith(".gif")) {
-            contentType = "image/gif";
-        }
-        return contentType;
+        Tika tika = new Tika();
+        return tika.detect(uri);
     }
 
     public static void sendFileFromUser(String uri, ChannelHandlerContext ctx) throws IOException {

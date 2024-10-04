@@ -31,6 +31,7 @@ public class TerminalUser extends TerminalApp {
         addApp(new BlogArchive("blog", folder, session));
         addApp(new ForumArchive("forum", folder, session));
         
+        // add a folder that does not need to exist unless used, but should be listed
         File folderToAdd = new File(session.getUser().getFolder(false), "public");
         MapFolder mapFolder = addFolder(folderToAdd);
         // add the link the forum and blog?
