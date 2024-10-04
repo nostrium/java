@@ -158,7 +158,7 @@ public class CommandLogin extends TerminalCommand{
         
         user.setNsec(nsec);
         // update the user info
-        this.app.updateUser(user);
+        session.setUser(user);
         // all done
         return reply(TerminalCode.OK, "Logged with success");
     }
@@ -176,7 +176,7 @@ public class CommandLogin extends TerminalCommand{
         user.save();
         // update the user info
         session.getScreen().writeln("Please type 'cd user' and 'help' to customize your account");
-        this.app.updateUser(user);
+        session.setUser(user);
         return reply(TerminalCode.OK, "Logged with success");
     }
 

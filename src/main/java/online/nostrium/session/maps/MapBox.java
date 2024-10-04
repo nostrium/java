@@ -11,6 +11,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCommand;
+import online.nostrium.session.RestrictedFiles;
 import online.nostrium.user.User;
 
 /**
@@ -31,6 +32,20 @@ public class MapBox extends Map {
     }
 
     public void index() {
+        // clear previous data
+        folders.clear();
+        apps.clear();
+        commands.clear();
+        files.clear();
+        links.clear();
+        
+        // specific for the user app
+        if(relatedApp != null
+                && relatedApp.getRelatedFolder() != null){
+            relatedFolder = relatedApp.getRelatedFolder();
+        }
+        
+        // start the new indexing
         if (relatedApp != null) {
             // add the apps
             indexApps();
@@ -92,6 +107,11 @@ public class MapBox extends Map {
         }
         // iterate all found files
         for (File item : filesFound) {
+            
+            if(RestrictedFiles.dontList(item)){
+                continue;
+            }
+            
             if (item.isFile()) {
                 MapFile mapFile = new MapFile(item.getName());
                 mapFile.relatedFolder = item;

@@ -95,7 +95,7 @@ public class CommandRegister extends TerminalCommand{
         
         // update the user info
         user.save();
-        this.app.updateUser(user);
+        session.setUser(user);
         
         if(user.getUserType() == UserType.ADMIN){
             session.getScreen().writeln(UserType.ADMIN.toString() + " account is created.");

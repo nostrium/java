@@ -23,6 +23,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import online.nostrium.session.RestrictedFiles;
 import online.nostrium.user.User;
 
 /**
@@ -38,8 +39,7 @@ public class NativeFileSystemModded implements IFileSystem<File> {
     private final User user;
 
     public boolean isBlackListed(File file) {
-        String filename = file.getName();
-        return filename.endsWith("-user.json");
+        return RestrictedFiles.dontList(file);
     }
 
     /**

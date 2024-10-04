@@ -86,6 +86,11 @@ public class Session {
 
     public void setUser(User user) {
         this.user = user;
+        // need to trigger a new indexing
+        if(map!= null){
+            map.index();
+            setCurrentLocation(map);
+        }
     }
 
     public Map getMap() {

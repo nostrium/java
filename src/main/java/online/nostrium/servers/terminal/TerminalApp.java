@@ -202,6 +202,10 @@ public abstract class TerminalApp {
         return new CommandResponse(app);
     }
 
+    public File getRelatedFolder() {
+        return null;
+    }
+
     public void receiveNotification(
             User userSender,
             NotificationType notificationType,
@@ -218,33 +222,33 @@ public abstract class TerminalApp {
         }
     }
 
-    /**
-     * Update all apps with the new user info
-     *
-     * @param user
-     */
-    public void updateUser(User user) {
-        TerminalApp rootApp = this;
-        // travel to the root app
-        if (this.appParent != null) {
-            while (rootApp.appParent != null) {
-                rootApp = rootApp.appParent;
-            }
-        }
-        setNewUser(rootApp, user);
-        session.setUser(user);
-    }
-
-    private void setNewUser(TerminalApp app, User user) {
-        session.setUser(user);
-        if (app.appChildren.isEmpty()) {
-            return;
-        }
-        // change for all new cases
-        for (TerminalApp appChild : app.appChildren) {
-            setNewUser(appChild, user);
-        }
-    }
+//    /**
+//     * Update all apps with the new user info
+//     *
+//     * @param user
+//     */
+//    public void updateUser(User user) {
+//        TerminalApp rootApp = this;
+//        // travel to the root app
+//        if (this.appParent != null) {
+//            while (rootApp.appParent != null) {
+//                rootApp = rootApp.appParent;
+//            }
+//        }
+//        setNewUser(rootApp, user);
+//        session.setUser(user);
+//    }
+//
+//    private void setNewUser(TerminalApp app, User user) {
+//        session.setUser(user);
+//        if (app.appChildren.isEmpty()) {
+//            return;
+//        }
+//        // change for all new cases
+//        for (TerminalApp appChild : app.appChildren) {
+//            setNewUser(appChild, user);
+//        }
+//    }
 
     public File getFolderCommonData() {
         File folderRoot = FolderUtils.getFolderData();

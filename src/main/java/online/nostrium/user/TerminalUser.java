@@ -35,10 +35,16 @@ public class TerminalUser extends TerminalApp {
         File folderToAdd = new File(session.getUser().getFolder(false), "public");
         MapFolder mapFolder = addFolder(folderToAdd);
         // add the link the forum and blog?
-        
+        //User user = session.getUser();
+        //mapFolder.index();
         
         addCommand(new CommandUserShow(this, session));
         addCommand(new CommandUserSet(this, session));
+    }
+    
+    @Override
+    public File getRelatedFolder() {
+        return session.getUser().getFolder(false);
     }
 
     @Override
@@ -53,7 +59,6 @@ public class TerminalUser extends TerminalApp {
 
     @Override
     public String getIntro() {
-        
         String title = "User space";
         String text = session.getScreen().getWindowFrame(title);
         return text;
