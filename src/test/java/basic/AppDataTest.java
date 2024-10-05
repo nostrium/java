@@ -47,7 +47,7 @@ public class AppDataTest {
         
         // create the users
         User user1 = UserUtils.createUserAnonymous();
-        Session session1 = new Session(ChannelType.TELNET, "1");
+        Session session1 = new Session(ChannelType.CLI, "1");
         TerminalApp app1 = createFakeApp(session1, id, id);
         Screen screen1 = new ScreenCLI();
         session1.setup(app1, user1, screen1);

@@ -38,13 +38,13 @@ public class MapBox extends Map {
         commands.clear();
         files.clear();
         links.clear();
-        
+
         // specific for the user app
-        if(relatedApp != null
-                && relatedApp.getRelatedFolder() != null){
+        if (relatedApp != null
+                && relatedApp.getRelatedFolder() != null) {
             relatedFolder = relatedApp.getRelatedFolder();
         }
-        
+
         // start the new indexing
         if (relatedApp != null) {
             // add the apps
@@ -71,7 +71,6 @@ public class MapBox extends Map {
         links.addAll(relatedApp.links);
         folders.addAll(relatedApp.folders);
 
-        
         // add the apps
         for (TerminalApp app : relatedApp.appChildren) {
 
@@ -107,11 +106,11 @@ public class MapBox extends Map {
         }
         // iterate all found files
         for (File item : filesFound) {
-            
-            if(RestrictedFiles.dontList(item)){
+
+            if (RestrictedFiles.dontList(item)) {
                 continue;
             }
-            
+
             if (item.isFile()) {
                 MapFile mapFile = new MapFile(item.getName());
                 mapFile.relatedFolder = item;
@@ -227,7 +226,6 @@ public class MapBox extends Map {
                     .append(link.getName())
                     .append("\n");
         }
-
     }
 
 }

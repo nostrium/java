@@ -26,23 +26,23 @@ import org.apache.commons.io.FileUtils;
  */
 public final class AppData {
 
-    final TerminalApp app;
+    //final TerminalApp app;
+    final transient File file;
 
     @Expose
     HashMap<String, Object> data = new HashMap<>();
 
     public AppData(TerminalApp app) {
-        this.app = app;
+        file = this.setFile(app);
         // try to load previous values
         try{
-            load(app);
+            load();
         } catch (Exception e){
             Log.write("APPDATA", TerminalCode.CRASH, "Failed to load", app.getPathWithName());
         }
     }
 
-    public void load(TerminalApp app) {
-        File file = getFile();
+    public void load() {
         if (file == null || file.exists() == false) {
             return;
         }
@@ -53,7 +53,7 @@ public final class AppData {
         data = fromDisk.getData();
     }
 
-    public File getFile() {
+    public File setFile(TerminalApp app) {
         try {
             if (app == null || app.getFolderCommonData() == null) {
                 return null;
@@ -77,8 +77,7 @@ public final class AppData {
 
     public void save() {
         try {
-            String text = this.jsonExport();
-            File file = this.getFile();
+            String text = jsonExport();
             FileUtils.writeStringToFile(file, text, "UTF-8");
         } catch (IOException ex) {
             Logger.getLogger(AppData.class.getName()).log(Level.SEVERE, null, ex);
@@ -117,7 +116,7 @@ public final class AppData {
             Gson gson = new Gson();
             AppData item = gson.fromJson(text, AppData.class);
             return item;
-        } catch (JsonSyntaxException | IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -131,9 +130,12 @@ public final class AppData {
         return data.get(tag);
     }
 
+    public File getFile() {
+        return file;
+    }
+
     public void delete() {
         data = new HashMap<>();
-        File file = this.getFile();
         if (file.exists()) {
             file.delete();
         }

@@ -344,5 +344,19 @@
             <version>2.9.2</version>
         </dependency>
         
+        
+        <dependency>
+    <groupId>org.apache.mina</groupId>
+    <artifactId>mina-core</artifactId>
+    <version>2.1.5</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/net.wimpi/telnetd-x -->
+<dependency>
+    <groupId>net.wimpi</groupId>
+    <artifactId>telnetd-x</artifactId>
+    <version>2.1.1</version>
+</dependency>
+
+        
     </dependencies>
 </project>
