@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>nostrium.online</title>
+        <link rel="stylesheet" href="xterm.css">
+        <style>
+            body, html {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: black;
+            }
+            #terminal-container {
+                height: 100vh;
+                width: 100vw;
+                background-color: black;
+            }
+            .xterm {
+                font-family: monospace;
+                font-size: 18px;
+                color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="terminal-container"></div>
+        <script src="xterm.js"></script>
+        <script>
+            const FONT_SIZE = 16;
+            const CHAR_WIDTH = 9;
+            const CHAR_HEIGHT = 18;
+
+            function calculateTerminalSize() {
+                const cols = Math.floor(window.innerWidth / CHAR_WIDTH);
+                const rows = Math.floor(window.innerHeight / CHAR_HEIGHT);
+                return {cols, rows};
+            }
+
+            const {cols, rows} = calculateTerminalSize();
+            const terminal = new Terminal({
+                theme: {
+                    background: '#000000',
+                    foreground: '#00FF00'
+                },
+                fontSize: FONT_SIZE,
+                cursorBlink: true,
+                cols: cols,
+                rows: rows
+            });
+
+            terminal.open(document.getElementById('terminal-container'));
+            terminal.focus();
+
+            const loc = window.location;
+            const wsProtocol = loc.protocol === 'https:' ? 'wss:' : 'ws:';
+            const socketUrl = `${wsProtocol}//${loc.host}/ws`;
+
+            const socket = new WebSocket(socketUrl);
+            let currentInput = '';
+            
+            socket.addEventListener('open', function () {
+                // how the intro logo
+                socket.send('>showLogo\r');
+            });
+            socket.addEventListener('message', function (event) {
+                const message = event.data;
+                // Check if the message is an autocomplete suggestion
+                if (message.startsWith('AUTO_COMPLETE:')) {
+                    const suggestion = message.replace('AUTO_COMPLETE:', '').trim();
+                    currentInput = suggestion;  // set the suggestion to the current input
+                    console.log("Autocomplete: " + suggestion);
+                    wasHistoryCommand = true;
+                } else {
+                    terminal.write(message);  // Handle other messages from the server
+                }
+                
+            });
+
+            const history = []; // Array to store command history
+            let historyIndex = -1; // Track the current index in history
+            let wasHistoryCommand = false;
+            terminal.onData(data => {
+                if (data === '\r') {  // Handle Enter key
+                    if (currentInput.length > 0) {
+                        // new command being dispatched to server
+                        addToHistory(currentInput); // Add the command to history
+                        // when it was a history command, needs to be injected
+                        if (wasHistoryCommand) {
+                            data = currentInput + data;
+                            console.log("Sending history command: " + data);
+                            clearCurrentInput();
+                            wasHistoryCommand = false;
+                        } else {
+                            // just send the \r sign
+                        }
+                        socket.send(data); // Send the command to the server
+                        console.log("Sending: " + data);
+                        
+                        currentInput = ''; // Clear the current input
+                    }
+                } else
+                if (data === '\u007F') {  // Handle backspace
+                    if (currentInput.length > 0) {
+                        terminal.write('\b \b');  // Erase character locally
+                        currentInput = currentInput.slice(0, -1);
+                        socket.send('\b');  // Send backspace signal to server
+                    }
+                } else if (data === '\u001B[A') {  // Handle cursor up
+                    handleCursorUp();
+                } else if (data === '\u001B[B') {  // Handle cursor down (if you want this as well)
+                    handleCursorDown();
+                } else if (data === '\t') {  // Handle cursor down (if you want this as well)
+                    handleAutoComplete(currentInput);
+                } else {
+                    currentInput += data;
+                    socket.send(data);  // Send the data to the server
+                }
+            });
+
+            /**
+             * Asks the server to autocomplete what is on the input line
+             */
+            function handleAutoComplete(text) {
+                // Clear current input
+                //clearCurrentInput();
+                // Send the currnet input to the server
+                socket.send(text + '\t');
+            }
+
+
+            function handleCursorUp() {
+                if (history.length > 0) {
+                    // Move to the previous command in history
+                    if (historyIndex < history.length - 1) {
+                        historyIndex++;
+                    }
+
+                    // Ensure we don't exceed the bounds of the history array
+                    const commandIndex = history.length - 1 - historyIndex;
+                    if (commandIndex >= 0) {
+                        const command = history[commandIndex];
+
+                        // Clear current input
+                        clearCurrentInput();
+
+                        // Write the command to the terminal
+                        terminal.write(command); // Write the command
+                        currentInput = command; // Update currentInput
+                        wasHistoryCommand = true;
+                    }
+                } else {
+                    console.log("No history available to display.");
+                }
+            }
+
+            function handleCursorDown() {
+                if (history.length > 0) {
+                    // Move to the next command in history
+                    if (historyIndex > 0) {
+                        historyIndex--;
+                    }
+
+                    // Ensure we don't exceed the bounds of the history array
+                    const commandIndex = history.length - 1 - historyIndex;
+                    if (commandIndex >= 0 && commandIndex < history.length) {
+                        const command = history[commandIndex];
+
+                        // Clear current input
+                        clearCurrentInput();
+
+                        // Write the command to the terminal
+                        terminal.write(command); // Write the command
+                        currentInput = command; // Update currentInput
+                        wasHistoryCommand = false;
+                    }
+                } else {
+                    console.log("No history available to display.");
+                }
+            }
+
+
+
+
+            function clearCurrentInput() {
+                for (let i = 0; i < currentInput.length; i++) {
+                    terminal.write('\b \b'); // Move cursor back, write space, move cursor back
+                }
+                currentInput = ''; // Clear current input variable
+            }
+
+            function addToHistory(command) {
+                history.push(command);
+                historyIndex = -1; // Reset the history index for new input
+                console.log("Command added to history:", command);
+            }
+
+            window.addEventListener('resize', function () {
+                const {cols, rows} = calculateTerminalSize();
+                terminal.resize(cols, rows);
+            });
+        </script>
+    </body>
+</html>

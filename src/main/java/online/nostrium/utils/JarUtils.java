@@ -7,10 +7,17 @@
 
 package online.nostrium.utils;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 import java.util.jar.Manifest;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.Enumeration;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 /**
  * @author Brito
@@ -65,7 +72,85 @@ public class JarUtils {
             return "Error reading version";
         }
     }
+   
+    /**
+     * Extracts the folder from inside the JAR to the specified output location.
+     * It will only extract files that don't already exist on the disk.
+     *
+     * @param jarFolderPath The folder path inside the JAR (e.g., "resources/extract/")
+     * @param outputFolder  The destination folder on the disk as a File object
+     */
+    public static void extractFolderFromJar(String jarFolderPath, File outputFolder) {
+        try {
+            // Get the URL of the resource folder (inside the JAR)
+            URL resourceUrl = JarUtils.class.getClassLoader().getResource(jarFolderPath);
+            if (resourceUrl == null) {
+                System.out.println("Resource folder not found in the JAR");
+                return;
+            }
 
+            // Convert the URL to the path of the JAR file
+            String jarPath = resourceUrl.toURI().getSchemeSpecificPart();
+            jarPath = jarPath.substring(5, jarPath.indexOf("!")); // Remove "file:" and everything after "!"
+
+            // Open the JAR file
+            try (JarFile jarFile = new JarFile(jarPath)) {
+                Enumeration<JarEntry> entries = jarFile.entries();
+
+                // Iterate through the entries in the JAR file
+                while (entries.hasMoreElements()) {
+                    JarEntry entry = entries.nextElement();
+                    String entryName = entry.getName();
+
+                    // Check if the entry is in the target folder
+                    if (entryName.startsWith(jarFolderPath) && !entry.isDirectory()) {
+                        // Compute the output file path
+                        String relativePath = entryName.substring(jarFolderPath.length());
+                        File outputFile = new File(outputFolder, relativePath);
+
+                        // Check if the file already exists on disk
+                        if (!outputFile.exists()) {
+                            // Ensure that the output directories exist
+                            outputFile.getParentFile().mkdirs();
+
+                            // Extract the file from the JAR
+                            try (InputStream inputStream = jarFile.getInputStream(entry);
+                                 FileOutputStream outputStream = new FileOutputStream(outputFile)) {
+
+                                byte[] buffer = new byte[1024];
+                                int bytesRead;
+                                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                                    outputStream.write(buffer, 0, bytesRead);
+                                }
+                                System.out.println("Extracted: " + outputFile.getPath());
+                            }
+                        } else {
+                            System.out.println("File already exists, skipping: " + outputFile.getPath());
+                        }
+                    }
+                }
+            }
+
+        } catch (URISyntaxException | IOException e) {
+            e.printStackTrace();
+        }
+        
+        
+    }
+
+    /**
+     * Checks if the application is running from inside a JAR file.
+     * 
+     * @return true if running from a JAR (production mode), false if running from classes (development mode)
+     */
+    public static boolean isRunningFromJar() {
+        // Get the path of the current class
+        String classPath = JarUtils.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+
+        // Check if the class path ends with .jar (indicating that it's running from a JAR file)
+        return classPath.endsWith(".jar");
+    }
+    
 
     public static void main(String[] args) {
         String buildTime = getBuildTime();

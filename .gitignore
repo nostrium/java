@@ -1,5 +1,7 @@
 # Ignore the run directory and everything inside it
 /run/*
+/temp/*
+
 
 # Ignore build directories
 /build/

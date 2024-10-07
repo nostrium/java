@@ -23,6 +23,7 @@ import online.nostrium.servers.terminal.TerminalCode;
 import static online.nostrium.servers.terminal.TerminalCode.BOOT;
 import online.nostrium.servers.web.ServerWeb;
 import online.nostrium.translation.LanguageControl;
+import online.nostrium.utils.JarUtils;
 import online.nostrium.utils.ascii.AsciiArt;
 import online.nostrium.utils.events.Events;
 import online.nostrium.utils.time;
@@ -93,6 +94,7 @@ public class core {
         // save new settings to file
         config.save();
         
+        extractFilesIfNeeded();
     }
     
     public static void main(String[] args) {
@@ -118,6 +120,21 @@ public class core {
 
     private static void runScheduledTasksAndActions() {
         NIP05_emails nip05 = new NIP05_emails();  // every 10 minutes
+    }
+
+    /**
+     * Extracts the files inside resources/extract to the root folder
+     * when they are not yet existing.
+     */
+    private static void extractFilesIfNeeded() {
+        File folderOutput = FolderUtils.getFolderBase();
+        
+        // update files in production mode
+        if(JarUtils.isRunningFromJar()){
+            String path = "extract";
+            JarUtils.extractFolderFromJar(path, folderOutput);
+        }
+        
     }
 
 
