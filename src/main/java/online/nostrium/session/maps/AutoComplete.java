@@ -16,7 +16,18 @@ import java.util.TreeSet;
 public class AutoComplete {
 
     public static String autoComplete(String text, MapBox map) {
-        return autoComplete(text, map, true);
+        String output = autoComplete(text, map, true);
+        
+        if(output == null || output.isEmpty()){
+            return "";
+        }
+        // when there are no multiple choices, then include the original cmd
+        if(output.contains(" | ") == false){
+            String[] data = text.split(" ");
+            // (!) ATTENTION: this only supports one level of completion
+            output = data[0] + " " + output;
+        }
+        return output;
     }
 
     private static String autoComplete(String text, MapBox map, boolean addCommands) {
@@ -24,7 +35,6 @@ public class AutoComplete {
         // typical command: cd user
         // first part is a command
         // second part is almost always a folder, app or link
-        String output = "";
         if (text.isEmpty()
                 || text.contains(" ") == false) {
             // this is likely a command
@@ -57,6 +67,7 @@ public class AutoComplete {
                     matches.add(item.getName());
                 }
             }
+            
             // return the matches
             if (matches.isEmpty() == false) {
                 return String.join(" | ", matches);

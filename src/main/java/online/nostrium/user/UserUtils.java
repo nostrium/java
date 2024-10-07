@@ -53,6 +53,20 @@ public class UserUtils {
 //        return user;
     }
     
+     public static User getFakeUserAdmin() {
+        User user = new User();
+        // set nsec and npub to all zeros
+        String zeroKeys = "00000000000000000000000000000000";
+        user.setNsec(zeroKeys);
+        user.setNpub(zeroKeys);
+        user.setDisplayName("admin");
+        String timestamp = "2000-01-01T00:00:00Z";
+        user.setRegisteredTime(timestamp);
+        user.setLastLoginTime(timestamp);
+        return user;
+    }
+
+    
     public static String doubleEncrypt(User user, String text){
         String nsecAdmin = getUserAdmin().nsec;
         String nsecUser = user.getNsec();

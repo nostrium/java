@@ -31,16 +31,18 @@ public class TerminalChat extends TerminalApp {
     @SuppressWarnings("LeakingThisInConstructor")
     public TerminalChat(Session session) {
         super(session);
+        
+        User userAdmin = UserUtils.getFakeUserAdmin();
+        if (userAdmin != null) {
+            roomNow = ChatUtils.getOrCreateRoom(this,
+                FolderUtils.nameRootChat, UserUtils.getUserAdmin());
+        }
+        
         // let's overwrite the previous LS command
         removeCommand("ls");
         addCommand(new CommandChatLs(this, roomNow, session));
         addCommand(new CommandChatClear(this, session));
 
-        User userAdmin = UserUtils.getUserAdmin();
-        if (userAdmin == null) {
-            // first time running, there yet no admin
-            return;
-        }
 
     }
 
@@ -76,11 +78,9 @@ public class TerminalChat extends TerminalApp {
     public CommandResponse defaultCommand(String commandInput) {
 
         if (roomNow == null) {
-            User userAdmin = UserUtils.getUserAdmin();
-
             // make sure the room is not empty
             roomNow = ChatUtils.getOrCreateRoom(this,
-                    FolderUtils.nameRootChat, userAdmin);
+                FolderUtils.nameRootChat, UserUtils.getFakeUserAdmin());
         }
         
         // delete the current line before writing new stuff
