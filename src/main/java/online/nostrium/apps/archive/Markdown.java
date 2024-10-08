@@ -4,7 +4,7 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-package online.nostrium.archive;
+package online.nostrium.apps.archive;
 
 import java.io.BufferedWriter;
 import java.io.File;

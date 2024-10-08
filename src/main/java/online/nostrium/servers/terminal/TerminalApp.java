@@ -8,23 +8,16 @@ package online.nostrium.servers.terminal;
 
 import java.io.File;
 import online.nostrium.apps.basic.CommandHelp;
-import java.util.HashMap;
-import java.util.Map;
-import online.nostrium.session.NotificationType;
 import online.nostrium.apps.basic.CommandCd;
 import online.nostrium.apps.basic.CommandExit;
 import online.nostrium.apps.basic.CommandLs;
 import online.nostrium.apps.basic.CommandTree;
 import online.nostrium.apps.chat.CommandChatClear;
-import online.nostrium.user.User;
 import online.nostrium.logs.Log;
-import online.nostrium.folder.FolderUtils;
 import online.nostrium.servers.web.App;
 import online.nostrium.session.Session;
-import online.nostrium.session.maps.MapApp;
 import online.nostrium.session.maps.MapFolder;
 import online.nostrium.session.maps.MapLink;
-import online.nostrium.utils.cybersec.Permissions;
 
 /**
  * @author Brito
@@ -32,15 +25,6 @@ import online.nostrium.utils.cybersec.Permissions;
  * @location: Germany
  */
 public abstract class TerminalApp extends App{
-    
-    // settings and data for this app
-    public AppData dataUser;
-    
-    // map for this app
-    private MapApp map = null;
-    
-    // permissions to access this app
-    public Permissions permissions = new Permissions(dataUser);
 
     public TerminalApp(Session session) {
         super(session);
@@ -80,14 +64,6 @@ public abstract class TerminalApp extends App{
         this.map.addLink(mapLink);
     }
 
-    // shows an intro for this app
-    public abstract String getIntro();
-
-    // shows a path id for this app
-    public String getPathVirtual() {
-        return map.getPath();
-    }
-
     /**
      * Adds a new command, avoid duplicates
      *
@@ -118,64 +94,9 @@ public abstract class TerminalApp extends App{
 
     }
 
-    /**
-     * A new command was received, is it a valid one?
-     *
-     * @param terminalType specific color capacities of terminal
-     * @param commandInput
-     * @return null when nothing relevant needs to be done
-     */
-    public CommandResponse handleCommand(
-            TerminalType terminalType, String commandInput) {
-        // needs to have something for processing
-        if (commandInput == null || commandInput.length() == 0) {
-            return null;
-        }
-
-        // don't accept commands too big for processing
-        if (commandInput.length() > 16384) {
-            return null;
-        }
-
-        String commandToProcess = commandInput.toLowerCase();
-        String parameters = "";
-        int pos = commandToProcess.indexOf(" ");
-        // there is a space, get the command until the space
-        if (pos > 0) {
-            commandToProcess = commandToProcess.substring(0, pos);
-            parameters = commandInput.substring(pos + 1);
-        }
-
-        // try to get this command
-        TerminalCommand cmd = null;
-        for (TerminalCommand command : commands.values()) {
-            // found a command
-            if (command.hasCommand(commandToProcess)) {
-                cmd = command;
-                break;
-            }
-        }
-
-        //TerminalCommand cmd = commands.get(commandToProcess);
-        if (cmd != null) {
-            return cmd.execute(terminalType, parameters);
-        } else {
-            // command was not recognized, run the default
-            return defaultCommand(commandInput);
-        }
-    }
-
     public String paint(TerminalColor colorType, String text) {
         return session.getScreen().paint(colorType, text);
     }
-
-    // provide a one-line description of the app
-    public abstract String getDescription();
-
-    public abstract CommandResponse defaultCommand(String commandInput);
-
-    // get a name that we can type on the CLI
-    public abstract String getIdName();
 
     protected CommandResponse reply(TerminalCode code, String text) {
         return new CommandResponse(code, text);
@@ -192,29 +113,6 @@ public abstract class TerminalApp extends App{
     @Override
     public File getRelatedFolder() {
         return null;
-    }
-
-    public void receiveNotification(
-            User userSender,
-            NotificationType notificationType,
-            Object object) {
-
-        // only text messages are supported for now
-        if (object instanceof String dataReceived) {
-            String text = "["
-                    + notificationType.name()
-                    + "] "
-                    + dataReceived;
-
-            session.getScreen().writeln(text);
-        }
-    }
-
-
-    public File getFolderCommonData() {
-        File folderRoot = FolderUtils.getFolderData();
-        return FolderUtils.defaultGetFolder(folderRoot, this.getIdName()
-        );
     }
 
     public void log(TerminalCode code, String text, String data) {
@@ -239,14 +137,5 @@ public abstract class TerminalApp extends App{
         }
         dataUser.put("folderCurrent", text);
     }
-
-    public void setMap(MapApp map) {
-        this.map = map;
-    }
-
-    public MapApp getMap() {
-        return map;
-    }
-    
     
 }

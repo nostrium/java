@@ -5,7 +5,7 @@
  * License: Apache-2.0
  */
 
-package online.nostrium.archive;
+package online.nostrium.apps.archive;
 
 /**
  * @author Brito

@@ -5,10 +5,10 @@
  * License: Apache-2.0
  */
 
-package online.nostrium.archive.forum;
+package online.nostrium.apps.archive.forum;
 
 import java.io.File;
-import online.nostrium.archive.Archive;
+import online.nostrium.apps.archive.Archive;
 import online.nostrium.folder.FolderType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalCode;

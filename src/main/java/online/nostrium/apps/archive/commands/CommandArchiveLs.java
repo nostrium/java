@@ -4,7 +4,7 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-package online.nostrium.archive.commands;
+package online.nostrium.apps.archive.commands;
 
 import java.io.File;
 import online.nostrium.servers.terminal.CommandResponse;

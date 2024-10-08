@@ -5,7 +5,7 @@
  * License: Apache-2.0
  */
 
-package online.nostrium.archive;
+package online.nostrium.apps.archive;
 
 import com.google.gson.annotations.Expose;
 import java.util.ArrayList;

@@ -11,7 +11,6 @@ import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalColor;
-import static online.nostrium.servers.terminal.TerminalColor.GREEN;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.session.Session;
@@ -50,24 +49,6 @@ public class CommandLs extends TerminalCommand {
                     + "\t";
         }
 
-//        String text = "";
-//        // no need to continue when there is nothing
-//        if (this.app.appChildren.isEmpty()) {
-//            return reply(TerminalCode.OK, text);
-//        }
-//
-//        // iterate all apps        
-//        for (TerminalApp app : this.app.appChildren) {
-//            // don't list when permissions don't permit
-//            if(app.permissions.isPermitted(session.getUser()) == false){
-//                continue;
-//            }
-//            
-//            String textName = app.getPathWithName() + "/";
-//            text += ""
-//                    + paint(GREEN, textName)
-//                    + "\t";
-//        }
         return reply(TerminalCode.OK, text);
     }
 

@@ -5,7 +5,7 @@
  * License: Apache-2.0
  */
 
-package online.nostrium.archive;
+package online.nostrium.apps.archive;
 
 import online.nostrium.folder.FolderType;
 import com.google.gson.Gson;
@@ -18,8 +18,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import online.nostrium.archive.commands.CommandArchiveLs;
-import online.nostrium.archive.commands.CommandArchiveWrite;
+import online.nostrium.apps.archive.commands.CommandArchiveWrite;
 import online.nostrium.logs.Log;
 import online.nostrium.folder.FolderUtils;
 import online.nostrium.servers.terminal.TerminalApp;
@@ -45,8 +44,6 @@ public abstract class Archive extends TerminalApp{
     private final 
         String filename = FolderUtils.nameFolderData;
     
-    private final File folder;     
-        
     @Expose
     public final String id;      // small description without spaces and lower case
     
@@ -63,7 +60,11 @@ public abstract class Archive extends TerminalApp{
         super(session);
         id = id.replace(" ", "").toLowerCase();
         this.id = id;
-        this.folder = new File(folder, id);
+        this.relatedFolder = new File(folder, id);
+        
+        
+        //this.getMap().setRelatedFolderOrFile(folder);
+        
 //        if(folder.exists() == false){
 //            try {
 //                FileUtils.forceMkdir(folder);
@@ -75,8 +76,8 @@ public abstract class Archive extends TerminalApp{
         setFolderCurrent(folder);
         
         // list the folders/files
-        this.removeCommand("ls");
-        this.addCommand(new CommandArchiveLs(this, session));
+        //this.removeCommand("ls");
+        //this.addCommand(new CommandArchiveLs(this, session));
         // delete a message
         // get inside a topic
         // write a new topic
@@ -101,7 +102,7 @@ public abstract class Archive extends TerminalApp{
 
     public void addGroup(Group group) {
         String idToAdd = group.getId();
-        File folderGroup = new File(folder, idToAdd);
+        File folderGroup = new File(relatedFolder, idToAdd);
         if(folderGroup.exists() == false){
             try {
                 FileUtils.forceMkdir(folderGroup);
@@ -132,7 +133,7 @@ public abstract class Archive extends TerminalApp{
     public Set<String> getGroups() {
         Set<String> list = new TreeSet<>();
         // list all files inside the folder
-        File[] files = folder.listFiles();
+        File[] files = relatedFolder.listFiles();
         for(File file : files){
             if(file.isFile()){
                 continue;
@@ -176,18 +177,18 @@ public abstract class Archive extends TerminalApp{
     }
     
     public File getFolder(){
-        return folder;
+        return relatedFolder;
     }
     
     @Override
     public String getSubFolders(){
         String result = "";
         try {
-            String pathBase = folder.getCanonicalPath();
+            String pathBase = relatedFolder.getCanonicalPath();
             String pathCurrent = this.getFolderCurrent().getCanonicalPath();
             if(pathBase.length() > pathCurrent.length()){
                 result = "";
-                setFolderCurrent(folder);
+                setFolderCurrent(relatedFolder);
             }else{
                 result = pathCurrent.substring(pathBase.length());
             }
@@ -198,7 +199,7 @@ public abstract class Archive extends TerminalApp{
     }
     
     public File getFile(){
-        return new File(folder, filename);
+        return new File(relatedFolder, filename);
     }
     
     

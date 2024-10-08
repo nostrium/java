@@ -4,16 +4,16 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-package online.nostrium.archive.commands;
+package online.nostrium.apps.archive.commands;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import online.nostrium.archive.Archive;
-import online.nostrium.archive.ArchiveUtils;
-import online.nostrium.archive.Markdown;
-import online.nostrium.archive.Markdown.Topic;
+import online.nostrium.apps.archive.Archive;
+import online.nostrium.apps.archive.ArchiveUtils;
+import online.nostrium.apps.archive.Markdown;
+import online.nostrium.apps.archive.Markdown.Topic;
 import online.nostrium.folder.FolderData;
 import online.nostrium.folder.FolderType;
 import online.nostrium.servers.terminal.CommandResponse;
@@ -47,6 +47,18 @@ public class CommandArchiveWrite extends TerminalCommand {
         // syntax
         // write title -> content of topic
         
+        // check if the command has data we can use
+         String data[] = parameters.split(" -> ");
+        
+        if(data.length != 2){
+            return reply(TerminalCode.INVALID, "Invalid syntax. Example of usage: "
+                        + "write Title -> Content to write");
+        }
+
+        String title = data[0];
+        String content = data[1];
+        
+        
         // get the base folder
         Archive appArchive = (Archive) app;
         File appFolder = appArchive.getFolder();
@@ -70,15 +82,6 @@ public class CommandArchiveWrite extends TerminalCommand {
             }
         }
         
-        String data[] = parameters.split(" -> ");
-        
-        if(data.length != 2){
-            return reply(TerminalCode.INVALID, "Invalid syntax. Example of usage: "
-                        + "write Title -> Content to write");
-        }
-
-        String title = data[0];
-        String content = data[1];
         
         // create the filename
         String filename = ArchiveUtils.generateFilename(title) + ".md";

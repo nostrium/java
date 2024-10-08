@@ -5,7 +5,7 @@
  * License: Apache-2.0
  */
 
-package online.nostrium.archive;
+package online.nostrium.apps.archive;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

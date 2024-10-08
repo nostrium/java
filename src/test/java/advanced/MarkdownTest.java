@@ -11,7 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.TreeSet;
-import online.nostrium.archive.Markdown;
+import online.nostrium.apps.archive.Markdown;
 import online.nostrium.folder.FolderUtils;
 
 public class MarkdownTest {

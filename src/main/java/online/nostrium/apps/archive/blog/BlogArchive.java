@@ -5,16 +5,14 @@
  * License: Apache-2.0
  */
 
-package online.nostrium.archive.blog;
+package online.nostrium.apps.archive.blog;
 
 import java.io.File;
-import online.nostrium.archive.Archive;
+import online.nostrium.apps.archive.Archive;
 import online.nostrium.folder.FolderType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.session.Session;
-import online.nostrium.user.User;
-import online.nostrium.utils.screens.Screen;
 
 /**
  * @author Brito

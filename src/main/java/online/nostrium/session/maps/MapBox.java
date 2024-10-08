@@ -7,9 +7,10 @@
 package online.nostrium.session.maps;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
-import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.web.App;
 import online.nostrium.session.RestrictedFiles;
@@ -118,14 +119,46 @@ public class MapBox extends Map {
                 mapFile.setParent(this);
                 files.add(mapFile);
             } else {
+                // avoid folder names with the same name as apps
+                // because it should be the apps indexing the files
+
                 // crawl inside the next folders and apps
                 MapFolder mapFolder = new MapFolder(item.getName());
-                mapFolder.setRealFile(item);
+                mapFolder.setRelatedFolderOrFile(item);
                 mapFolder.index();
                 mapFolder.setParent(this);
                 folders.add(mapFolder);
             }
         }
+
+        // move the files in folders with same name to the
+        // apps where they are found
+        ArrayList<MapFolder> toRemoveFolders = new ArrayList<>();
+        for (MapFolder folder : this.folders) {
+            MapApp app = getAppWithName(folder.getName());
+            if (app == null) {
+                continue;
+            }
+            // found a match, merge it
+            app.getFolders().addAll(folder.folders);
+            app.getFiles().addAll(folder.files);
+            app.getApps().addAll(folder.apps);
+            app.getLinks().addAll(folder.links);
+            toRemoveFolders.add(folder);
+        }
+        // remove all the folders
+        for(MapFolder toRemoveFolder : toRemoveFolders){
+            folders.remove(toRemoveFolder);
+        }
+    }
+
+    private MapApp getAppWithName(String name) {
+        for (MapApp app : this.apps) {
+            if (app.getName().equals(name)) {
+                return app;
+            }
+        }
+        return null;
     }
 
     public Set<MapApp> getApps() {

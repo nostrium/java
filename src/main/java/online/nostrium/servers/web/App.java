@@ -36,9 +36,12 @@ public abstract class App {
     public final Session session;
     // settings and data for this app
     public AppData dataUser;
+    
+    // is there a folder associated to this app?
+    protected File relatedFolder = null;    
 
     // map for this app
-    private MapApp map = null;
+    protected MapApp map = null;
 
     // navigation between different apps
     public TerminalApp appParent = null;
@@ -72,9 +75,13 @@ public abstract class App {
     public void setMap(MapApp map) {
         this.map = map;
     }
+    
+    public MapApp getMap() {
+        return map;
+    }
 
     public File getRelatedFolder() {
-        return null;
+        return this.relatedFolder;
     }
 
     // shows a path id for this app

@@ -8,7 +8,6 @@ package online.nostrium.session.maps;
 
 import java.io.File;
 import java.util.TreeSet;
-import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.web.App;
 
 /**
@@ -45,11 +44,11 @@ public abstract class Map implements Comparable<Map> {
         return this.toString().compareTo(other.toString());
     }
 
-    public File getRealFile() {
+    public File getRelatedFolderOrFile() {
         return relatedFolder;
     }
 
-    public void setRealFile(File realFile) {
+    public void setRelatedFolderOrFile(File realFile) {
         this.relatedFolder = realFile;
     }
 

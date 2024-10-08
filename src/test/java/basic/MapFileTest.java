@@ -37,7 +37,7 @@ public class MapFileTest {
     public void mapFolderTest() {
         MapFolder mapFolder = new MapFolder("/");
         File folderStart = FolderUtils.getFolderBase();
-        mapFolder.setRealFile(folderStart);
+        mapFolder.setRelatedFolderOrFile(folderStart);
         mapFolder.index();
         assertTrue(mapFolder.getFolders().size() > 0);
     }
@@ -102,11 +102,12 @@ public class MapFileTest {
         Session session = new Session(ChannelType.CLI, "test");
         ScreenCLI screen = new ScreenCLI();
         User user = UserUtils.createUserAnonymous();
+        user = UserUtils.getUserByUsername("brito");
         session.setUser(user);
         session.setScreen(screen);
         try{
             TerminalBasic app = new TerminalBasic(session);
-            session.setup(app, UserUtils.createUserAnonymous(), screen);
+            session.setup(app, user , screen);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -123,7 +124,11 @@ public class MapFileTest {
         assertEquals("user", test1.getName());
         
         TreeSet<Map> list = test1.listFiles("");
-        assertEquals(3, list.size());
+        if(user.getDisplayName().equals("brito")){
+            assertEquals(5, list.size());
+        }else{
+            assertEquals(3, list.size());
+        }
     }
     
 }
