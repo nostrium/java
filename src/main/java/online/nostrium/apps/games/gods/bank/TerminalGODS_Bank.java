@@ -67,7 +67,7 @@ public class TerminalGODS_Bank extends TerminalApp {
     }
 
     @Override
-    public String getPathWithName() {
+    public String getIdName() {
         return "bank";
     }
 
@@ -77,7 +77,7 @@ public class TerminalGODS_Bank extends TerminalApp {
     }
     
     @Override
-    public String getId() {
+    public String getPathVirtual() {
         return session.getCurrentLocation().getPath();
     }
 

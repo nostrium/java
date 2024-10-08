@@ -11,6 +11,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCommand;
+import online.nostrium.servers.web.App;
 import online.nostrium.session.RestrictedFiles;
 import online.nostrium.user.User;
 
@@ -72,7 +73,7 @@ public class MapBox extends Map {
         folders.addAll(relatedApp.folders);
 
         // add the apps
-        for (TerminalApp app : relatedApp.appChildren) {
+        for (App app : relatedApp.appChildren) {
 
             // only include if you have permission
             User user = app.session.getUser();

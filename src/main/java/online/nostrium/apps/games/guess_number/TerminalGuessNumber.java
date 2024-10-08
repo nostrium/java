@@ -143,7 +143,7 @@ public class TerminalGuessNumber extends TerminalApp {
     }
 
     @Override
-    public String getPathWithName() {
+    public String getIdName() {
         return "guess";
     }
 
@@ -152,7 +152,7 @@ public class TerminalGuessNumber extends TerminalApp {
     }
 
     @Override
-    public String getId() {
+    public String getPathVirtual() {
         return session.getCurrentLocation().getPath();
     }
 

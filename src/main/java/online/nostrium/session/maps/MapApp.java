@@ -6,7 +6,7 @@
  */
 package online.nostrium.session.maps;
 
-import online.nostrium.servers.terminal.TerminalApp;
+import online.nostrium.servers.web.App;
 
 /**
  * @author Brito
@@ -21,8 +21,8 @@ public class MapApp extends MapBox {
 //    Set<MapCommand> commands = new TreeSet<>();
 //    Set<MapFile> files = new TreeSet<>();
 
-    public MapApp(TerminalApp app) {
-        super(MapType.APP, app.getPathWithName());
+    public MapApp(App app) {
+        super(MapType.APP, app.getIdName());
         this.relatedApp = app;
         app.setMap(this);
     }

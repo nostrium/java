@@ -49,7 +49,7 @@ public class TerminalGPT extends TerminalApp {
     }
 
     @Override
-    public String getPathWithName() {
+    public String getIdName() {
         return "gpt";
     }
 

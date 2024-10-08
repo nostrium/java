@@ -8,10 +8,8 @@ package online.nostrium.servers.terminal;
 
 import java.io.File;
 import online.nostrium.apps.basic.CommandHelp;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeSet;
 import online.nostrium.session.NotificationType;
 import online.nostrium.apps.basic.CommandCd;
 import online.nostrium.apps.basic.CommandExit;
@@ -21,6 +19,7 @@ import online.nostrium.apps.chat.CommandChatClear;
 import online.nostrium.user.User;
 import online.nostrium.logs.Log;
 import online.nostrium.folder.FolderUtils;
+import online.nostrium.servers.web.App;
 import online.nostrium.session.Session;
 import online.nostrium.session.maps.MapApp;
 import online.nostrium.session.maps.MapFolder;
@@ -32,10 +31,7 @@ import online.nostrium.utils.cybersec.Permissions;
  * @date: 2024-08-04
  * @location: Germany
  */
-public abstract class TerminalApp {
-
-    // define the session where the app is running
-    public final Session session;
+public abstract class TerminalApp extends App{
     
     // settings and data for this app
     public AppData dataUser;
@@ -43,20 +39,11 @@ public abstract class TerminalApp {
     // map for this app
     private MapApp map = null;
     
-    // navigation between different apps
-    public TerminalApp appParent = null;
-    @SuppressWarnings("unchecked")
-    public ArrayList<TerminalApp> appChildren = new ArrayList();
-    public TreeSet<MapFolder> folders = new TreeSet<>();
-    public TreeSet<MapLink> links = new TreeSet<>();
-    
-    public final Map<String, TerminalCommand> commands = new HashMap<>();
-
     // permissions to access this app
     public Permissions permissions = new Permissions(dataUser);
 
     public TerminalApp(Session session) {
-        this.session = session;
+        super(session);
         // temporary data never saved to disk
         this.dataUser = new AppData(this);
         // add the default commands
@@ -97,7 +84,7 @@ public abstract class TerminalApp {
     public abstract String getIntro();
 
     // shows a path id for this app
-    public String getId() {
+    public String getPathVirtual() {
         return map.getPath();
     }
 
@@ -188,7 +175,7 @@ public abstract class TerminalApp {
     public abstract CommandResponse defaultCommand(String commandInput);
 
     // get a name that we can type on the CLI
-    public abstract String getPathWithName();
+    public abstract String getIdName();
 
     protected CommandResponse reply(TerminalCode code, String text) {
         return new CommandResponse(code, text);
@@ -202,6 +189,7 @@ public abstract class TerminalApp {
         return new CommandResponse(app);
     }
 
+    @Override
     public File getRelatedFolder() {
         return null;
     }
@@ -222,42 +210,15 @@ public abstract class TerminalApp {
         }
     }
 
-//    /**
-//     * Update all apps with the new user info
-//     *
-//     * @param user
-//     */
-//    public void updateUser(User user) {
-//        TerminalApp rootApp = this;
-//        // travel to the root app
-//        if (this.appParent != null) {
-//            while (rootApp.appParent != null) {
-//                rootApp = rootApp.appParent;
-//            }
-//        }
-//        setNewUser(rootApp, user);
-//        session.setUser(user);
-//    }
-//
-//    private void setNewUser(TerminalApp app, User user) {
-//        session.setUser(user);
-//        if (app.appChildren.isEmpty()) {
-//            return;
-//        }
-//        // change for all new cases
-//        for (TerminalApp appChild : app.appChildren) {
-//            setNewUser(appChild, user);
-//        }
-//    }
 
     public File getFolderCommonData() {
         File folderRoot = FolderUtils.getFolderData();
-        return FolderUtils.defaultGetFolder(folderRoot, this.getPathWithName()
+        return FolderUtils.defaultGetFolder(folderRoot, this.getIdName()
         );
     }
 
     public void log(TerminalCode code, String text, String data) {
-        Log.write(this.getId(), code, text, data);
+        Log.write(this.getPathVirtual(), code, text, data);
     }
     
     public File getFolderCurrent() {

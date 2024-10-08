@@ -63,7 +63,7 @@ public class TerminalEmail extends TerminalApp {
     }
 
     @Override
-    public String getPathWithName() {
+    public String getIdName() {
         return "email";
     }
     
@@ -83,7 +83,7 @@ public class TerminalEmail extends TerminalApp {
 
     // shows an intro for this app
     @Override
-    public String getId(){
+    public String getPathVirtual(){
         return session.getCurrentLocation().getPath();
     }
 

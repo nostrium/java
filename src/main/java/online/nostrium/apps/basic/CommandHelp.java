@@ -14,6 +14,7 @@ import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
 import static online.nostrium.servers.terminal.TerminalColor.BLUE;
 import static online.nostrium.servers.terminal.TerminalColor.GREEN;
+import online.nostrium.servers.web.App;
 import online.nostrium.session.Session;
 
 /**
@@ -40,14 +41,14 @@ public class CommandHelp extends TerminalCommand {
         // list all the apps first
         if (this.app.appChildren.isEmpty() == false) {
             text += "Available apps (type cd to enter them):";
-            for (TerminalApp appHere : this.app.appChildren) {
+            for (App appHere : this.app.appChildren) {
                 
                 // avoid listing non-permitted apps
                 if(appHere.permissions.isPermitted(session.getUser()) == false){
                     continue;
                 }
                 
-                String textName = "[" + appHere.getPathWithName() + "]";
+                String textName = "[" + appHere.getIdName() + "]";
                 text += " "
                         + session.getScreen().breakLine()
                         + " "

@@ -64,7 +64,7 @@ public class TerminalBasic extends TerminalApp {
     }
 
     @Override
-    public String getPathWithName() {
+    public String getIdName() {
         return "basic";
     }
 
@@ -74,7 +74,7 @@ public class TerminalBasic extends TerminalApp {
     }
     
     @Override
-    public String getId() {
+    public String getPathVirtual() {
         return session.getCurrentLocation().getPath();
     }
 

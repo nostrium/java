@@ -33,7 +33,7 @@ public class TestingFunctions {
             }
 
             @Override
-            public String getId() {
+            public String getPathVirtual() {
                 String path = "root";
                 return path + ""
                         + "/"
@@ -52,7 +52,7 @@ public class TestingFunctions {
             }
 
             @Override
-            public String getPathWithName() {
+            public String getIdName() {
                 return appName;
             }
 

@@ -116,7 +116,7 @@ public abstract class Archive extends TerminalApp{
     }
 
     @Override
-    public String getId() {
+    public String getPathVirtual() {
         return id;
     }
 

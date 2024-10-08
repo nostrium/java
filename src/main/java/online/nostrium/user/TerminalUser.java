@@ -72,7 +72,7 @@ public class TerminalUser extends TerminalApp {
     }
 
     @Override
-    public String getPathWithName() {
+    public String getIdName() {
         return "user";
     }
 
@@ -82,7 +82,7 @@ public class TerminalUser extends TerminalApp {
     }
 
     @Override
-    public String getId() {
+    public String getPathVirtual() {
         return this.getMap().getPath();
     }
 

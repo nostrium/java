@@ -8,6 +8,7 @@
 package online.nostrium.session.maps;
 
 import online.nostrium.servers.terminal.TerminalApp;
+import online.nostrium.servers.web.App;
 import online.nostrium.session.Session;
 
 /**
@@ -18,7 +19,7 @@ import online.nostrium.session.Session;
 public class MapUtils {
     
     public static MapApp createInitialMap(Session session){
-        TerminalApp app = session.getApp();
+        App app = session.getApp();
         MapApp mapApp = new MapApp(app);
         mapApp.index();
         session.setCurrentLocation(mapApp);

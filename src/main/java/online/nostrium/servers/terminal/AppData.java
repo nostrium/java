@@ -8,7 +8,6 @@ package online.nostrium.servers.terminal;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonSyntaxException;
 import com.google.gson.annotations.Expose;
 import java.io.File;
 import java.io.IOException;
@@ -17,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import online.nostrium.folder.FolderUtils;
 import online.nostrium.logs.Log;
+import online.nostrium.servers.web.App;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -32,13 +32,13 @@ public final class AppData {
     @Expose
     HashMap<String, Object> data = new HashMap<>();
 
-    public AppData(TerminalApp app) {
+    public AppData(App app) {
         file = this.setFile(app);
         // try to load previous values
         try{
             load();
         } catch (Exception e){
-            Log.write("APPDATA", TerminalCode.CRASH, "Failed to load", app.getPathWithName());
+            Log.write("APPDATA", TerminalCode.CRASH, "Failed to load", app.getIdName());
         }
     }
 
@@ -53,7 +53,7 @@ public final class AppData {
         data = fromDisk.getData();
     }
 
-    public File setFile(TerminalApp app) {
+    public File setFile(App app) {
         try {
             if (app == null || app.getFolderCommonData() == null) {
                 return null;

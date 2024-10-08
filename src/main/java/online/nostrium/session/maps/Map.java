@@ -9,6 +9,7 @@ package online.nostrium.session.maps;
 import java.io.File;
 import java.util.TreeSet;
 import online.nostrium.servers.terminal.TerminalApp;
+import online.nostrium.servers.web.App;
 
 /**
  * @author Brito
@@ -22,7 +23,7 @@ public abstract class Map implements Comparable<Map> {
     private Map parent = null;
 
     File relatedFolder = null;
-    TerminalApp relatedApp = null;
+    App relatedApp = null;
 
     public Map(MapType type, String name) {
         this.name = name;
@@ -52,11 +53,11 @@ public abstract class Map implements Comparable<Map> {
         this.relatedFolder = realFile;
     }
 
-    public TerminalApp getAppRelated() {
+    public App getAppRelated() {
         return relatedApp;
     }
 
-    public void setAppRelated(TerminalApp appRelated) {
+    public void setAppRelated(App appRelated) {
         this.relatedApp = appRelated;
     }
 

@@ -9,6 +9,7 @@ package online.nostrium.session;
 import java.util.Date;
 import online.nostrium.user.User;
 import online.nostrium.servers.terminal.TerminalApp;
+import online.nostrium.servers.web.App;
 import online.nostrium.session.maps.Map;
 import online.nostrium.session.maps.MapApp;
 import online.nostrium.session.maps.MapBox;
@@ -25,7 +26,7 @@ public class Session {
     final Date sessionStarted;  // when it was started
     final ChannelType channelType;  // what kind of terminal is being used
     Date sessionLastActive;     // when it was last doing something
-    TerminalApp app;            // the current app
+    App app;            // the current app
     User user;                  // who is using this
     Screen screen;
     private boolean timeToStop = false;
@@ -105,7 +106,7 @@ public class Session {
         return sessionLastActive;
     }
 
-    public TerminalApp getApp() {
+    public App getApp() {
         return app;
     }
 
@@ -126,11 +127,11 @@ public class Session {
     }
 
     boolean hasId(String id) {
-        String appId = app.getId();
+        String appId = app.getPathVirtual();
         return appId.equalsIgnoreCase(id);
     }
 
-    public void setApp(TerminalApp app) {
+    public void setApp(App app) {
         this.app = app;
     }
 

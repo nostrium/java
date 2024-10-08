@@ -70,7 +70,7 @@ public class TerminalChat extends TerminalApp {
     }
 
     @Override
-    public String getPathWithName() {
+    public String getIdName() {
         return "chat";
     }
 
@@ -104,7 +104,7 @@ public class TerminalChat extends TerminalApp {
 
         // send a notification
         core.sessions.sendNotification(
-                this.getId(),
+                this.getPathVirtual(),
                 session.getUser(),
                 NotificationType.UPDATE,
                 line
@@ -158,7 +158,7 @@ public class TerminalChat extends TerminalApp {
     }
 
     @Override
-    public String getId() {
+    public String getPathVirtual() {
         String path = session.getCurrentLocation().getPath()
                 + "#"
                 + roomNow.name;

@@ -36,7 +36,7 @@ public class ForumArchive extends Archive{
     }
 
     @Override
-    public String getPathWithName() {
+    public String getIdName() {
         return id;
     }
 

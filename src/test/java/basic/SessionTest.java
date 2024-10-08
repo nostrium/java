@@ -55,7 +55,7 @@ public class SessionTest {
         
         // send the first notification, for example a new chat line
         String message = "Hello!";
-        String appId = app1.getId();
+        String appId = app1.getPathVirtual();
         sessions.sendNotification(appId, user1, NotificationType.UPDATE, message);
         // this should have arrived to session 2 also
         String result = app2.getDescription();

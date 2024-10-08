@@ -219,16 +219,31 @@ public class FilesWeb {
     }
     
     
-    
+    /**
+     * Deliver the requested service, the processing for this function
+     * is more CPU-intensive than desired, but a first implementation
+     * is needed even if not optimally programmed
+     * @param folder
+     * @param path
+     * @param user
+     * @param ctx
+     * @param data
+     * @param uri
+     * @throws IOException 
+     */
     private static void sendFileFolderOrApp(
             File folder, String path, 
             User user, ChannelHandlerContext ctx,
             String[] data, String uri) throws IOException {
         
+        // try to create a file to the expected locaion
         File file = new File(folder, path);
+        
         // is this a virtual directory?
         if (data.length >= 3) {
+            // harcoded cases for the blog and forum sites
             if (isVirtualFolder(data[2])) {
+                // what happens when we want to serve a website?
                 file = new File(user.getFolder(false), path);
             }
         }
