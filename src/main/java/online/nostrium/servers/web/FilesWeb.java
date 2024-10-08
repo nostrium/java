@@ -204,18 +204,28 @@ public class FilesWeb {
             return;
         }
 
+        
+        // build the path after the username
         String path = "";
         for (int i = 3; i <= data.length; i++) {
             int index = i - 1;
             path += "/" + data[index];
         }
         path = path.substring(1);
-        File file = new File(folder, path);
 
         // check if the path is talking about an app
-        String[] sections = path.split("/");
+        sendFileFolderOrApp(folder, path, user, ctx, data, uri);
         // http://nostrium.online/brito/blog
-
+    }
+    
+    
+    
+    private static void sendFileFolderOrApp(
+            File folder, String path, 
+            User user, ChannelHandlerContext ctx,
+            String[] data, String uri) throws IOException {
+        
+        File file = new File(folder, path);
         // is this a virtual directory?
         if (data.length >= 3) {
             if (isVirtualFolder(data[2])) {
@@ -235,9 +245,10 @@ public class FilesWeb {
             sendMarkDown(file, ctx);
         } else {
             sendFile(file, ctx);
-        }
+        }        
     }
 
+    
     public static String convertMarkdownToHtml(File markdownFile, String css) {
         try {
             // Read the content of the markdown file into a string
@@ -282,6 +293,7 @@ public class FilesWeb {
         String fileList = listFilesInFolderAsHtml(folder, url, user);
         sendText(fileList, ctx, ".html");
     }
+    
 
     public static String listFilesInFolderAsHtml(File folder, String requestUrl, User user) {
         // Check if the input is a directory
@@ -393,5 +405,6 @@ public class FilesWeb {
                         + fileCount
                         + "</li>");
     }
+
 
 }

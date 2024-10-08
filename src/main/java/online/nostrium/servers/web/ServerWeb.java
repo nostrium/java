@@ -253,6 +253,7 @@ public class ServerWeb extends Server {
                 FilesWeb.sendFile(file, ctx);
                 return;
             } else if (isRootRequest == false) {
+                // file from a specific user
                 FilesWeb.sendFileFromUser(req.uri(), ctx);
                 return;
             }

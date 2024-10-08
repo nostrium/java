@@ -6,13 +6,6 @@
   <version>1.0.0</version>
   <description>The BBS for Nostr</description>
   <build>
-    <extensions>
-      <extension>
-        <groupId>kr.motd.maven</groupId>
-        <artifactId>os-maven-plugin</artifactId>
-        <version>1.7.0</version>
-      </extension>
-    </extensions>
     <resources>
       <resource>
         <directory>src/main/resources</directory>

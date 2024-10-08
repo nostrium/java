@@ -8,7 +8,7 @@ We would like to thank the open source community for the
 available software that permits this platform to exist.
 
 
-Generated on 2024-10-04.
+Generated on 2024-10-07.
 
 ## Summary of Licenses Used by Components
 
@@ -16,7 +16,7 @@ Generated on 2024-10-04.
     +------------------------------+-------+
     | License                      | Count |
     +------------------------------+-------+
-    | Apache-2.0                   |   109 |
+    | Apache-2.0                   |   111 |
     | BSD-2-Clause                 |    49 |
     | MIT                          |    13 |
     | BSD-3-Clause                 |     8 |
@@ -34,6 +34,7 @@ Generated on 2024-10-04.
     | Go License                   |     1 |
     | CDDL-1.1                     |     1 |
     | MPL-1.1                      |     1 |
+    | Modified BSD TelnetD license |     1 |
     +------------------------------+-------+
 ```
 
@@ -41,9 +42,9 @@ Generated on 2024-10-04.
 
 - BOM Format: CycloneDX
 - Spec Version: 1.4
-- Serial Number: urn:uuid:18e355f9-1b72-4719-8246-5431e23345e3
+- Serial Number: urn:uuid:8e05c1ce-e71c-4af6-84f0-998d5426c1af
 - Version: 1
-- Timestamp: 2024-09-29T20:25:05Z
+- Timestamp: 2024-10-07T10:38:16Z
 - Tool: CycloneDX Maven plugin
 - Component: nostrium
   - Version: 1.0.0
@@ -51,10 +52,10 @@ Generated on 2024-10-04.
 
 ## Summary of Source Code
 
-- Number of source files: 232
-- Lines of Code: 25920
-- Overall project size: 759.90 KB
-- 3rd party components: 220
+- Number of source files: 234
+- Lines of Code: 26343
+- Overall project size: 775.02 KB
+- 3rd party components: 224
 
 
 # Detailed Components
@@ -279,6 +280,10 @@ Generated on 2024-10-04.
 + plexus-cipher 1.4 (Apache-2.0)
 + javax.inject 1 (Apache-2.0)
 + asm 9.5 (BSD-3-Clause)
++ tika-core 2.9.2 (Apache-2.0)
++ mina-core 2.1.5 (Apache-2.0)
++ telnetd-x 2.1.1 (Modified BSD TelnetD license)
++ log4j 1.2.9
 
 ### 1. acme4j
 - Group: org.shredzone.acme4j
@@ -2002,4 +2007,34 @@ Generated on 2024-10-04.
 - PURL: pkg:maven/org.ow2.asm/asm@9.5?type=jar
 - Description: ASM, a very small and fast Java bytecode manipulation framework
 - License: BSD-3-Clause
+
+### 221. tika-core
+- Group: org.apache.tika
+- Type: library
+- Version: 2.9.2
+- PURL: pkg:maven/org.apache.tika/tika-core@2.9.2?type=jar
+- Description: This is the core Apache Tika™ toolkit library from which all other modules inherit functionality. It also includes the core facades for the Tika API.
+- License: Apache-2.0
+
+### 222. mina-core
+- Group: org.apache.mina
+- Type: library
+- Version: 2.1.5
+- PURL: pkg:maven/org.apache.mina/mina-core@2.1.5?type=jar
+- Description: Apache MINA is a network application framework which helps users develop high performance and highly scalable network applications easily. It provides an abstract event-driven asynchronous API over various transports such as TCP/IP and UDP/IP via Java NIO.
+- License: Apache-2.0
+
+### 223. telnetd-x
+- Group: net.wimpi
+- Type: library
+- Version: 2.1.1
+- PURL: pkg:maven/net.wimpi/telnetd-x@2.1.1?type=jar
+- Description: The Java Telnet Daemon
+- License: Modified BSD TelnetD license
+
+### 224. log4j
+- Group: log4j
+- Type: library
+- Version: 1.2.9
+- PURL: pkg:maven/log4j/log4j@1.2.9?type=jar
 

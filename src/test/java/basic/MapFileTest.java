@@ -11,10 +11,8 @@ import online.nostrium.folder.FolderUtils;
 import online.nostrium.main.core;
 import online.nostrium.session.ChannelType;
 import online.nostrium.session.Session;
-import online.nostrium.session.maps.AutoComplete;
 import online.nostrium.session.maps.Map;
 import online.nostrium.session.maps.MapApp;
-import online.nostrium.session.maps.MapBox;
 import online.nostrium.session.maps.MapFolder;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
@@ -79,7 +77,6 @@ public class MapFileTest {
         // test the ..
         Map test2_1 = test1.findPath("..");
         assertEquals("user", test2_1.getName());
-        
         
         // test the ../
         Map test3 = test2.findPath("/");

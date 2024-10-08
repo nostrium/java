@@ -15,6 +15,7 @@ import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.session.Session;
 import online.nostrium.session.maps.MapFolder;
+import online.nostrium.session.maps.MapLink;
 
 /**
  * @author Brito
@@ -28,15 +29,21 @@ public class TerminalUser extends TerminalApp {
                 
         File folder = session.getUser().getFolder(false);
         
-        addApp(new BlogArchive("blog", folder, session));
-        addApp(new ForumArchive("forum", folder, session));
+        BlogArchive appBlog = new BlogArchive("blog", folder, session);
+        addApp(appBlog);
+        
+        ForumArchive appForum = new ForumArchive("forum", folder, session);
+        addApp(appForum);
         
         // add a folder that does not need to exist unless used, but should be listed
         File folderToAdd = new File(session.getUser().getFolder(false), "public");
         MapFolder mapFolder = addFolder(folderToAdd);
         // add the link the forum and blog?
-        //User user = session.getUser();
-        //mapFolder.index();
+        // this makes sure the blog is reachable both on the private area
+        // for writing blog posts and on the public www server area for reading
+        MapLink indexBlog = new MapLink("blog", appBlog);
+        mapFolder.addLink(indexBlog);
+        
         
         addCommand(new CommandUserShow(this, session));
         addCommand(new CommandUserSet(this, session));
