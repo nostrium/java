@@ -7,6 +7,7 @@
 package online.nostrium.apps.basic;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.List;
 import online.nostrium.servers.terminal.CommandResponse;
@@ -22,9 +23,9 @@ import org.apache.commons.io.FileUtils;
  * @date: 2024-10-11
  * @location: Germany
  */
-public class CommandHead extends TerminalCommand {
+public class CommandTail extends TerminalCommand {
 
-    public CommandHead(TerminalApp app, Session session) {
+    public CommandTail(TerminalApp app, Session session) {
         super(app, session);
         this.requireSlash = false;
         // add an alternative command
@@ -34,7 +35,7 @@ public class CommandHead extends TerminalCommand {
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
         // syntax
-        // head 10 filename.txt
+        // tail 10 filename.txt
 
         // get the base folder
         File folder = session.getCurrentLocation().getRelatedFolderOrFile();
@@ -62,12 +63,17 @@ public class CommandHead extends TerminalCommand {
             int value = Integer.parseInt(valueText);
             List<String> lines = FileUtils.readLines(file, Charset.defaultCharset());
             
-            for(int i = 0; i < value && i < lines.size(); i++){
+            int pos = lines.size() - value;
+            if(pos < 0){
+                pos = 0;
+            }
+            
+            for(int i = pos; i < lines.size(); i++){
                 session.getScreen().writeln(lines.get(i));
             }
             
             
-        } catch (Exception ex) {
+        } catch (IOException | NumberFormatException ex) {
             //Logger.getLogger(CommandHead.class.getName()).log(Level.SEVERE, null, ex);
             return reply(TerminalCode.INVALID, "Invalid syntax");
         }
@@ -78,12 +84,12 @@ public class CommandHead extends TerminalCommand {
 
     @Override
     public String commandName() {
-        return "head";
+        return "tail";
     }
 
     @Override
     public String oneLineDescription() {
-        return "Read N top lines from a file";
+        return "Read N bottom lines from a file";
     }
 
 }
