@@ -11,6 +11,7 @@ import online.nostrium.apps.basic.CommandAbout;
 import online.nostrium.apps.basic.CommandHelp;
 import online.nostrium.apps.basic.CommandCd;
 import online.nostrium.apps.basic.CommandExit;
+import online.nostrium.apps.basic.CommandHead;
 import online.nostrium.apps.basic.CommandLogin;
 import online.nostrium.apps.basic.CommandLs;
 import online.nostrium.apps.basic.CommandRead;
@@ -45,6 +46,7 @@ public abstract class TerminalApp extends App{
         addCommandInternal(new CommandExit(this, session));
 
         addCommand(new CommandRead(this, session));
+        addCommand(new CommandHead(this, session));
         
         
         addCommand(new CommandTime(this, session));
