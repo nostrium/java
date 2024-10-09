@@ -34,7 +34,7 @@ public class CommandLs extends TerminalCommand {
 
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
-
+        
         TreeSet<Map> list = session.getCurrentLocation().listFiles(parameters);
 
         String text = "";

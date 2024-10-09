@@ -33,6 +33,9 @@ public class CommandCd extends TerminalCommand {
     public CommandResponse execute(TerminalType terminalType, String parameters) {
         String text = "";
         
+        // remove empty spaces from the edges
+        parameters = parameters.trim();
+        
         // no need to continue when there are no parameters
         if(parameters == null || parameters.isEmpty()){
             return reply(TerminalCode.INVALID, text);
