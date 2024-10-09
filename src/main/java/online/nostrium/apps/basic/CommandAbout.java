@@ -34,7 +34,7 @@ public class CommandAbout extends TerminalCommand{
     public CommandResponse execute(TerminalType terminalType, String parameters) {
        
         String buildTime = getBuildTime();
-        writeln("Build Time: " + buildTime);
+        writeln("Build Date: " + buildTime);
         writeln("Additional info: https://github.com/nostrium/java");
 //        writeln("-----------------");
 //        writeln("");

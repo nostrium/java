@@ -7,10 +7,16 @@
 package online.nostrium.servers.terminal;
 
 import java.io.File;
+import online.nostrium.apps.basic.CommandAbout;
 import online.nostrium.apps.basic.CommandHelp;
 import online.nostrium.apps.basic.CommandCd;
 import online.nostrium.apps.basic.CommandExit;
+import online.nostrium.apps.basic.CommandLogin;
 import online.nostrium.apps.basic.CommandLs;
+import online.nostrium.apps.basic.CommandRead;
+import online.nostrium.apps.basic.CommandRegister;
+import online.nostrium.apps.basic.CommandStatus;
+import online.nostrium.apps.basic.CommandTime;
 import online.nostrium.apps.basic.CommandTree;
 import online.nostrium.apps.chat.CommandChatClear;
 import online.nostrium.logs.Log;
@@ -37,6 +43,17 @@ public abstract class TerminalApp extends App{
         addCommandInternal(new CommandChatClear(this, session));
         addCommandInternal(new CommandTree(this, session));
         addCommandInternal(new CommandExit(this, session));
+
+        addCommand(new CommandRead(this, session));
+        
+        
+        addCommand(new CommandTime(this, session));
+        addCommand(new CommandStatus(this, session));
+        //addCommand(new CommandVanity(this));
+        addCommand(new CommandLogin(this, session));
+        addCommand(new CommandRegister(this, session));
+        
+        addCommand(new CommandAbout(this, session));
 
         // add the permissions into the data storage
 //        data.put(namePermissions, permissions);

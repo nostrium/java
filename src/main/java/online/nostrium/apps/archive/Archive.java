@@ -18,7 +18,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import online.nostrium.apps.archive.commands.CommandArchiveRead;
+import online.nostrium.apps.basic.CommandRead;
 import online.nostrium.apps.archive.commands.CommandArchiveWrite;
 import online.nostrium.logs.Log;
 import online.nostrium.folder.FolderUtils;
@@ -67,15 +67,6 @@ public abstract class Archive extends TerminalApp{
             map.setRelatedFolderOrFile(relatedFolder);
         }
         
-        //this.getMap().setRelatedFolderOrFile(folder);
-        
-//        if(folder.exists() == false){
-//            try {
-//                FileUtils.forceMkdir(folder);
-//            } catch (IOException ex) {
-//                Logger.getLogger(Archive.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
         // add the base commands
         setFolderCurrent(folder);
         
@@ -86,7 +77,7 @@ public abstract class Archive extends TerminalApp{
         // get inside a topic
         // write a new topic
         this.addCommand(new CommandArchiveWrite(this, session));
-        this.addCommand(new CommandArchiveRead(this, session));
+//        this.addCommand(new CommandRead(this, session));
         // reply with a message
         // statistics
     }

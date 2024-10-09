@@ -30,13 +30,6 @@ public class TerminalBasic extends TerminalApp {
         super(session);
         // add some specific commands
         addCommand(new CommandHello(this, session));
-        addCommand(new CommandTime(this, session));
-        addCommand(new CommandStatus(this, session));
-        //addCommand(new CommandVanity(this));
-        addCommand(new CommandLogin(this, session));
-        addCommand(new CommandRegister(this, session));
-        
-        addCommand(new CommandAbout(this, session));
         
         // add apps inside
         addApp(new TerminalAdmin(session));
