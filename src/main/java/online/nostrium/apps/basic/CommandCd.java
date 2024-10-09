@@ -35,7 +35,7 @@ public class CommandCd extends TerminalCommand {
         
         // no need to continue when there are no parameters
         if(parameters == null || parameters.isEmpty()){
-            return reply(TerminalCode.OK, text);
+            return reply(TerminalCode.INVALID, text);
         }
         
         // change to a new location
@@ -50,43 +50,16 @@ public class CommandCd extends TerminalCommand {
             return reply(TerminalCode.INVALID, "Not a folder nor app, cannot change to that location");
         }
         
+        if(map.getRelatedFolderOrFile() == null){
+            map.setRelatedFolderOrFile(map.getAppRelated().getRelatedFolder());
+        }
+        
         // set the new location
         session.setCurrentLocation(map);
         
         
         return reply(TerminalCode.CHANGE_APP, "");
         
-//        // shall we go down one directory?
-//        if(parameters.equalsIgnoreCase("..")){
-//            return reply(TerminalCode.EXIT_APP, "");
-//        }
-//        
-//        // move to the root directory
-//        if(parameters.equalsIgnoreCase("/")){
-//            TerminalApp appRoot = TerminalUtils.getAppRoot(this.app);
-//            return reply(appRoot);
-//        }
-//        
-//        
-//        // no need to continue when there is nothing
-//        if (this.app.appChildren.isEmpty()) {
-//            return reply(TerminalCode.OK, text);
-//        }
-//
-//        // iterate all apps        
-//        for (TerminalApp appChild : this.app.appChildren) {
-//            String textName = appChild.getPathWithName();
-//            if(textName.equalsIgnoreCase(parameters)){
-//                // do we have permission to enter inside this app?
-//                if(appChild.permissions
-//                        .isPermitted(session.getUser()) == false){
-//                    continue;
-//                }
-//                return reply(appChild);
-//            }
-//        }
-//        
-//        return reply(TerminalCode.NOT_FOUND, "Not found");
     }
 
     @Override

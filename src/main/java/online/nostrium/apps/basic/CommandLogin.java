@@ -125,8 +125,9 @@ public class CommandLogin extends TerminalCommand{
         //this.app.updateUser(user);
         session.setUser(user);
         // update the map index, since permissions might have changed
-        MapBox map = (MapBox) session.getMap();
-        map.index();
+        TerminalBasic app = new TerminalBasic(session);
+        session.setup(app, user, session.getScreen());
+                //(MapBox) session.getMap();
         
         // mark a good login
         core.events.triggerAfter(EventIndex.login, session);

@@ -81,7 +81,7 @@ public abstract class App {
     }
 
     public File getRelatedFolder() {
-        return this.relatedFolder;
+        return relatedFolder;
     }
 
     // shows a path id for this app

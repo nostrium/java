@@ -86,6 +86,7 @@ public class MapBox extends Map {
             mapApp.setAppRelated(app);
             mapApp.setParent(this);
             mapApp.index();
+            app.setMap(mapApp);
             // all done
             apps.add(mapApp);
         }
@@ -144,6 +145,7 @@ public class MapBox extends Map {
             app.getFiles().addAll(folder.files);
             app.getApps().addAll(folder.apps);
             app.getLinks().addAll(folder.links);
+            app.setRelatedFolderOrFile(folder.relatedFolder);
             toRemoveFolders.add(folder);
         }
         // remove all the folders

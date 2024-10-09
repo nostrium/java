@@ -45,11 +45,23 @@ public abstract class Map implements Comparable<Map> {
     }
 
     public File getRelatedFolderOrFile() {
-        return relatedFolder;
+        if(relatedFolder != null){
+            return relatedFolder;
+        }
+        
+//        if(relatedApp != null){
+//            String folderPath = relatedApp.getRelatedFolder().getPath();
+//            File folder = new File(folderPath);
+//            if(folder != null){
+//                return folder;
+//            }
+//        }
+        
+        return null;
     }
 
-    public void setRelatedFolderOrFile(File realFile) {
-        this.relatedFolder = realFile;
+    public void setRelatedFolderOrFile(File realFolderOrFile) {
+        this.relatedFolder = realFolderOrFile;
     }
 
     public App getAppRelated() {
