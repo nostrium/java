@@ -7,15 +7,19 @@
 
 package online.nostrium.servers.email;
 
+import com.icegreen.greenmail.store.FolderException;
 import com.icegreen.greenmail.util.GreenMail;
 import com.icegreen.greenmail.util.ServerSetup;
 import com.icegreen.greenmail.util.GreenMailUtil;
+import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import online.nostrium.main.core;
 import online.nostrium.servers.Server;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * To send emails from the command line in Linux, try something like:
@@ -63,6 +67,7 @@ public class ServerEmail extends Server {
         startEmailMonitoring();
     }
 
+    @SuppressWarnings("Convert2Lambda")
     private void startEmailMonitoring() {
         new Thread(new Runnable() {
             @Override
@@ -96,21 +101,16 @@ public class ServerEmail extends Server {
             // Retrieve all messages
             List<MimeMessage> messages = Arrays.asList(greenMail.getReceivedMessages());
             for (MimeMessage message : messages) {
-                
                 // Process each email
-                System.out.println("Received email from: " + message.getFrom());
-                System.out.println("Subject: " + message.getSubject());
-                System.out.println("Body: " + GreenMailUtil.getBody(message));
-
-                // Here, you can add code to process the email further, such as saving it, 
-                // triggering other actions, etc.
+                EmailProcess.receive(message);
             }
 
             // Clear processed emails from GreenMail's storage to avoid reprocessing
             greenMail.purgeEmailFromAllMailboxes();
-        } catch (Exception e) {
+        } catch (FolderException e) {
             e.printStackTrace();
         }
     }
 
+   
 }

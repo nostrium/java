@@ -6,8 +6,11 @@
  */
 package online.nostrium.servers.email;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import java.util.ArrayList;
+import java.util.HashMap;
 import online.nostrium.user.User;
 
 /**
@@ -19,16 +22,16 @@ public class EmailMessage {
 
     @Expose
     String 
-        sender = null,      // who is sending this email
+        from = null,      // who is sending this email
         title = null,       // what is the title
         body = null;        // what is the content of the message
 
     @Expose
     ArrayList<String> 
-            receivers = new ArrayList<>(),              // who is receiving?
-            headers = new ArrayList<>(),                // forensics
+            toUsers = new ArrayList<>(),              // who is receiving?
             attachments = new ArrayList<>();            // which files attached?
 
+    
     @Expose
     boolean readByReceiver = false; // was this read by the intended reader?
 
@@ -36,7 +39,9 @@ public class EmailMessage {
     long timeReceived = -1,     // when was it received?
             timeCreated = -1;   // when was it created?
     
-
+    @Expose
+    HashMap<String, String> headers = new HashMap<>();
+    
     @Expose
     EmailMessage messageParent = null; // is it part of a conversation?
 
@@ -50,16 +55,16 @@ public class EmailMessage {
 
     
     
-    public String getSender() {
-        return sender;
+    public String getFrom() {
+        return from;
     }
 
-    public void setSender(String sender) {
-        this.sender = sender;
+    public void setFrom(String sender) {
+        this.from = sender;
     }
     
-    public void setSender(User user) {
-        this.sender = user.getEmailAddress();
+    public void setFrom(User user) {
+        this.from = user.getEmailAddress();
     }
 
     public String getTitle() {
@@ -78,31 +83,32 @@ public class EmailMessage {
         this.body = body;
     }
 
-    public ArrayList<String> getReceivers() {
-        return receivers;
+    public String getToUsers() {
+        String recipients = String.join(",", toUsers);
+        return recipients;
     }
 
-    public void setReceivers(ArrayList<String> receivers) {
-        this.receivers = receivers;
+    public void setToUsers(ArrayList<String> receivers) {
+        this.toUsers = receivers;
     }
     
     public void addReceiver(User user) {
         String emailAddress = user.getEmailAddress();
-        addReceiver(emailAddress);
+        addToUser(emailAddress);
     }
     
-    public void addReceiver(String receiver) {
-        if(receivers.contains(receiver)){
+    public void addToUser(String receiver) {
+        if(toUsers.contains(receiver)){
             return;
         }
-        receivers.add(receiver);
+        toUsers.add(receiver);
     }
 
-    public ArrayList<String> getHeaders() {
+    public HashMap<String, String> getHeaders() {
         return headers;
     }
 
-    public void setHeaders(ArrayList<String> headers) {
+    public void setHeaders(HashMap<String, String> headers) {
         this.headers = headers;
     }
 
@@ -154,7 +160,20 @@ public class EmailMessage {
         this.timeCreated = timeCreated;
     }
 
-
+    /**
+     * Export this object as JSON
+     *
+     * @return null if something went wrong
+     */
+    public String jsonExport() {
+        GsonBuilder gsonBuilder = new GsonBuilder()
+                .excludeFieldsWithoutExposeAnnotation()
+                //.enableComplexMapKeySerialization()
+                //.setLenient()
+                .setPrettyPrinting();
+        Gson gson = gsonBuilder.create();
+        return gson.toJson(this);
+    }
 
     
 }

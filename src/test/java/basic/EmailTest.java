@@ -4,21 +4,16 @@
  */
 package basic;
 
-import online.nostrium.apps.basic.TerminalBasic;
-import online.nostrium.apps.email.TerminalEmail;
+import com.icegreen.greenmail.util.ServerSetup;
+import static com.icegreen.greenmail.util.ServerSetup.PROTOCOL_SMTP;
 import online.nostrium.main.core;
 import online.nostrium.servers.email.EmailMessage;
+import online.nostrium.servers.email.EmailUtils;
 import online.nostrium.servers.email.ServerEmail;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
-import online.nostrium.servers.terminal.CommandResponse;
-import online.nostrium.servers.terminal.TerminalApp;
-import online.nostrium.servers.terminal.TerminalCode;
-import online.nostrium.servers.terminal.TerminalType;
-import online.nostrium.utils.screens.Screen;
-import online.nostrium.utils.screens.ScreenCLI;
+import online.nostrium.utils.time;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Brito
@@ -31,8 +26,41 @@ public class EmailTest {
     }
 
     @Test
-    public void testEmailLs() {
-
+    public void testEmailReceive(){
+        // start the config
+        core.startConfig();
+        
+        // start the email server
+        ServerEmail server = new ServerEmail();
+        server.start();
+        
+        User user1 = UserUtils.createUserAnonymous();
+        user1.save();
+        
+        ServerSetup serverSMTP = 
+                new ServerSetup(2500, "127.0.0.1", PROTOCOL_SMTP);
+        
+        
+        String mailTo = user1.getNpub() + "@" + core.config.getDomain();
+        String mailFrom = "brito@localhost";
+        
+        EmailMessage msg = new EmailMessage();
+        msg.setFrom(mailFrom);
+        msg.addToUser(mailTo);
+        msg.setTitle("Hello Title!");
+        msg.setBody("Hello there, this is the text body");
+        
+        EmailUtils.sendEmail(msg, serverSMTP);
+        
+        time.wait(3);
+        
+        // delete all files
+        user1.delete();
+    }
+    
+    
+//    @Test
+//    public void testEmailLs() {
 //        User user = UserUtils.createUserAnonymous();
 //        assertNotNull(user);
 //        // needs to have a profile on disk
@@ -67,40 +95,37 @@ public class EmailTest {
 //        
 //        // delete the user
 //        user.delete();
-    }
-    
-    @Test
-    public void sendEmailTest() {
-        
-        // load the general configuration
-        core.startConfig();
-        
-        // load the email server
-        ServerEmail server = new ServerEmail();
-        server.start();
-        
-        
-        User user = UserUtils.createUserAnonymous();
-        user.save();
-        
-        EmailMessage msg = new EmailMessage();
-        msg.setSender(user);
-        assertNotNull(msg.getSender());
-        msg.addReceiver(user);
-        msg.setTitle("Testing!");
-        msg.setBody("Testing this stuff");
-        
+//    }
+//    
+//    @Test
+//    public void sendEmailTest() {
+//        
+//        // load the general configuration
+//        core.startConfig();
+//        
+//        // load the email server
+//        ServerEmail server = new ServerEmail();
+//        server.start();
+//        
+//        
+//        User user = UserUtils.createUserAnonymous();
+//        user.save();
+//        
+//        EmailMessage msg = new EmailMessage();
+//        msg.setSender(user);
+//        assertNotNull(msg.getSender());
+//        msg.addReceiver(user);
+//        msg.setTitle("Testing!");
+//        msg.setBody("Testing this stuff");
+//        
 //        GreenMailUtil.sendTextEmail(
 //                msg.getReceivers(), msg.getSender(),
 //        msg.getTitle(), msg.getBody(), setup
 //        );
-        
-        
-        user.delete();
-        server.stop();
-    }
+//        
+//        
+//        user.delete();
+//        server.stop();
+//    }
 
-    
-    
-    
 }

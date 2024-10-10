@@ -417,6 +417,14 @@ public class UserUtils {
         }
         return false;
     }
+
+    public static User getUserByNameOrNpub(String username) {
+        if(username.startsWith("npub1")){
+            return getUserByNpub(username);
+        }else{
+            return getUserByUsername(username);
+        }
+    }
     
     
 }
