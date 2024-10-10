@@ -262,6 +262,10 @@ public class MapBox extends Map {
                     .append(link.getName())
                     .append("\n");
         }
+//        // remove the last \n
+//        if(builder.length() > 0){
+//            builder.setLength(builder.length() -1);
+//        }
     }
 
     public void addFile(MapFile mapFile) {

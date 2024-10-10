@@ -42,6 +42,7 @@ public class CommandTree extends TerminalCommand {
         }
         
         String tree = map.getTree();
+        tree = tree.substring(0, tree.length()-1);
         return reply(TerminalCode.OK, tree);
     }
 

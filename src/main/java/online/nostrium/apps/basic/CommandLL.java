@@ -17,6 +17,7 @@ import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.session.Session;
 import online.nostrium.session.maps.Map;
 import online.nostrium.session.maps.MapApp;
+import online.nostrium.session.maps.MapBox;
 import online.nostrium.session.maps.MapFile;
 import online.nostrium.session.maps.MapFolder;
 import online.nostrium.utils.TextFunctions;
@@ -138,26 +139,19 @@ public class CommandLL extends TerminalCommand {
 
     private long countItems(Map map) {
         int count = 0;
-        if(map instanceof MapApp mapApp){
+        if(map instanceof MapBox mapApp){
             count += mapApp.getFiles().size();
             count += mapApp.getLinks().size();
             for(MapApp app1 : mapApp.getApps()){
+                count++;
                 count += countItems(app1);
             }
             for(MapFolder app1 : mapApp.getFolders()){
+                count++;
                 count += countItems(app1);
             }
         }
-        if(map instanceof MapFolder mapApp){
-            count += mapApp.getFiles().size();
-            count += mapApp.getLinks().size();
-            for(MapApp app1 : mapApp.getApps()){
-                count += countItems(app1);
-            }
-            for(MapFolder app1 : mapApp.getFolders()){
-                count += countItems(app1);
-            }
-        }
+        
         return count;       
     }
 
