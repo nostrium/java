@@ -306,7 +306,7 @@ public class FilesWeb {
 
         // show the files inside the folder
         String fileList = listFilesInFolderAsHtml(folder, url, user);
-        sendText(fileList, ctx, ".html");
+        sendText(fileList, ctx, "index.html");
     }
     
 
@@ -338,7 +338,7 @@ public class FilesWeb {
         }
 
         StringBuilder htmlContent = new StringBuilder();
-        htmlContent.append("<html><head>").append(css).append("</head><body>");
+        htmlContent.append("<html><head><meta charset=\"UTF-8\">").append(css).append("</head><body>");
         htmlContent.append(title);
         htmlContent.append("<ul>\n");
 
@@ -381,7 +381,8 @@ public class FilesWeb {
                 htmlContent.append("\n<li><a href=\"")
                         .append(requestUrl)
                         .append(filename)
-                        .append("\">📄 ")
+                        .append("\">")
+                        .append("📄 ")
                         .append(filename)
                         .append("</a><desc> [")
                         .append(size)

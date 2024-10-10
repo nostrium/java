@@ -21,7 +21,7 @@ public class MapFolder extends MapBox {
 
     public MapFolder(File folder) {
         super(MapType.FOLDER, folder.getName());
-        relatedFolder = folder;
+        relatedFolderOrFile = folder;
     }
 
 }

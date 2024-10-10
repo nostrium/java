@@ -12,6 +12,7 @@ import online.nostrium.apps.basic.CommandHelp;
 import online.nostrium.apps.basic.CommandCd;
 import online.nostrium.apps.basic.CommandExit;
 import online.nostrium.apps.basic.CommandHead;
+import online.nostrium.apps.basic.CommandLL;
 import online.nostrium.apps.basic.CommandLogin;
 import online.nostrium.apps.basic.CommandLs;
 import online.nostrium.apps.basic.CommandRead;
@@ -19,6 +20,7 @@ import online.nostrium.apps.basic.CommandRegister;
 import online.nostrium.apps.basic.CommandStatus;
 import online.nostrium.apps.basic.CommandTail;
 import online.nostrium.apps.basic.CommandTime;
+import online.nostrium.apps.basic.CommandTouch;
 import online.nostrium.apps.basic.CommandTree;
 import online.nostrium.apps.chat.CommandChatClear;
 import online.nostrium.logs.Log;
@@ -41,23 +43,25 @@ public abstract class TerminalApp extends App{
         // add the default commands
         addCommandInternal(new CommandHelp(this, session));
         addCommandInternal(new CommandLs(this, session));
+        addCommandInternal(new CommandLL(this, session));
         addCommandInternal(new CommandCd(this, session));
         addCommandInternal(new CommandChatClear(this, session));
         addCommandInternal(new CommandTree(this, session));
         addCommandInternal(new CommandExit(this, session));
 
-        addCommand(new CommandRead(this, session));
-        addCommand(new CommandHead(this, session));
-        addCommand(new CommandTail(this, session));
+        addCommandInternal(new CommandRead(this, session));
+        addCommandInternal(new CommandHead(this, session));
+        addCommandInternal(new CommandTail(this, session));
+        addCommandInternal(new CommandTouch(this, session));
         
         
-        addCommand(new CommandTime(this, session));
-        addCommand(new CommandStatus(this, session));
+        addCommandInternal(new CommandTime(this, session));
+        addCommandInternal(new CommandStatus(this, session));
         //addCommand(new CommandVanity(this));
-        addCommand(new CommandLogin(this, session));
-        addCommand(new CommandRegister(this, session));
+        addCommandInternal(new CommandLogin(this, session));
+        addCommandInternal(new CommandRegister(this, session));
         
-        addCommand(new CommandAbout(this, session));
+        addCommandInternal(new CommandAbout(this, session));
 
         // add the permissions into the data storage
 //        data.put(namePermissions, permissions);

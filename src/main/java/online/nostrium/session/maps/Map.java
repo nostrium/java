@@ -21,7 +21,7 @@ public abstract class Map implements Comparable<Map> {
     public final MapType type;
     private Map parent = null;
 
-    File relatedFolder = null;
+    File relatedFolderOrFile = null;
     App relatedApp = null;
 
     public Map(MapType type, String name) {
@@ -38,15 +38,15 @@ public abstract class Map implements Comparable<Map> {
     public int compareTo(Map other) {
         // compare based on folder vs file
         if (type != other.type) {
-            return this.toString().compareTo(other.toString());
+            return type.toString().compareTo(other.type.toString());
         }
         // compare based on file name
         return this.toString().compareTo(other.toString());
     }
 
     public File getRelatedFolderOrFile() {
-        if(relatedFolder != null){
-            return relatedFolder;
+        if(relatedFolderOrFile != null){
+            return relatedFolderOrFile;
         }
         
 //        if(relatedApp != null){
@@ -61,7 +61,7 @@ public abstract class Map implements Comparable<Map> {
     }
 
     public void setRelatedFolderOrFile(File realFolderOrFile) {
-        this.relatedFolder = realFolderOrFile;
+        this.relatedFolderOrFile = realFolderOrFile;
     }
 
     public App getAppRelated() {

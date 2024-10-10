@@ -113,28 +113,28 @@ public class ServerTelnet extends Server {
                 InputStream in = clientSocket.getInputStream();
                 PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true)) {
             
-                
-// IAC DO LINEMODE (255, 253, 34)
-out.print((char) 255);
-out.print((char) 253);
-out.print((char) 34);
-
-// IAC SB LINEMODE MODE 0 IAC SE (255, 250, 34, 1, 0, 255, 240)
-out.print((char) 255);
-out.print((char) 250);
-out.print((char) 34);
-out.print((char) 1);
-out.print((char) 0);
-out.print((char) 255);
-out.print((char) 240);
-
-// IAC WILL ECHO (255, 251, 1)
-out.print((char) 255);
-out.print((char) 251);
-out.print((char) 1);
-
-// Ensure the data is flushed out to the client
-out.flush();
+//                
+//// IAC DO LINEMODE (255, 253, 34)
+//out.print((char) 255);
+//out.print((char) 253);
+//out.print((char) 34);
+//
+//// IAC SB LINEMODE MODE 0 IAC SE (255, 250, 34, 1, 0, 255, 240)
+//out.print((char) 255);
+//out.print((char) 250);
+//out.print((char) 34);
+//out.print((char) 1);
+//out.print((char) 0);
+//out.print((char) 255);
+//out.print((char) 240);
+//
+//// IAC WILL ECHO (255, 251, 1)
+//out.print((char) 255);
+//out.print((char) 251);
+//out.print((char) 1);
+//
+//// Ensure the data is flushed out to the client
+//out.flush();
 
 
                 // use the IP address as sessionId

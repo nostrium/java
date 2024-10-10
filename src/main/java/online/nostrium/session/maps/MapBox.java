@@ -44,7 +44,7 @@ public class MapBox extends Map {
         // specific for the user app
         if (relatedApp != null
                 && relatedApp.getRelatedFolder() != null) {
-            relatedFolder = relatedApp.getRelatedFolder();
+            relatedFolderOrFile = relatedApp.getRelatedFolder();
         }
 
         // start the new indexing
@@ -52,7 +52,7 @@ public class MapBox extends Map {
             // add the apps
             indexApps();
         }
-        if (relatedFolder != null) {
+        if (relatedFolderOrFile != null) {
             indexFolder();
         }
     }
@@ -93,17 +93,17 @@ public class MapBox extends Map {
     }
 
     public void indexFolder() {
-        if (relatedFolder == null) {
+        if (relatedFolderOrFile == null) {
             return;
         }
 
         // the folder is mentioned but does not exist (yet)
-        if (relatedFolder.exists() == false) {
+        if (relatedFolderOrFile.exists() == false) {
             return;
         }
 
         // list the files
-        File[] filesFound = relatedFolder.listFiles();
+        File[] filesFound = relatedFolderOrFile.listFiles();
         if (filesFound == null || filesFound.length == 0) {
             return;
         }
@@ -116,7 +116,7 @@ public class MapBox extends Map {
 
             if (item.isFile()) {
                 MapFile mapFile = new MapFile(item.getName());
-                mapFile.relatedFolder = item;
+                mapFile.relatedFolderOrFile = item;
                 mapFile.setParent(this);
                 files.add(mapFile);
             } else {
@@ -145,7 +145,7 @@ public class MapBox extends Map {
             app.getFiles().addAll(folder.files);
             app.getApps().addAll(folder.apps);
             app.getLinks().addAll(folder.links);
-            app.setRelatedFolderOrFile(folder.relatedFolder);
+            app.setRelatedFolderOrFile(folder.relatedFolderOrFile);
             toRemoveFolders.add(folder);
         }
         // remove all the folders
@@ -262,6 +262,10 @@ public class MapBox extends Map {
                     .append(link.getName())
                     .append("\n");
         }
+    }
+
+    public void addFile(MapFile mapFile) {
+        files.add(mapFile);
     }
 
 }
