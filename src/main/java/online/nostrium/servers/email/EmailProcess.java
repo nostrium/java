@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import online.nostrium.main.core;
+import online.nostrium.session.NotificationType;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
 

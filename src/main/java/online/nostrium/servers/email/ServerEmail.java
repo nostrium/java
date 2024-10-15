@@ -4,30 +4,27 @@
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-
 package online.nostrium.servers.email;
 
 import com.icegreen.greenmail.store.FolderException;
 import com.icegreen.greenmail.util.GreenMail;
 import com.icegreen.greenmail.util.ServerSetup;
-import com.icegreen.greenmail.util.GreenMailUtil;
-import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import online.nostrium.main.core;
 import online.nostrium.servers.Server;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * To send emails from the command line in Linux, try something like:
- * 
-sendemail -f example@example.com -t admin@nostrium.online -u "Test title" -m "This is a test email" -s 127.0.0.1:2500 -xu your-email@example.com -xp your-email-password
- * 
- * 
- * 
+ *
+ * sendemail -f example@example.com -t admin@nostrium.online -u "Test title" -m
+ * "This is a test email" -s 127.0.0.1:2500 -xu your-email@example.com -xp
+ * your-email-password
+ *
+ *
+ *
  * @author Brito
  * @date: 2024-08-31
  * @location: Germany
@@ -49,16 +46,26 @@ public class ServerEmail extends Server {
             return core.config.portSMTP;
         }
     }
-    
-     @Override
+
+    @Override
     public int getPortSecure() {
         return -1;
     }
 
+    public static ServerSetup getServerSetup() {
+        int port = core.config.portSMTP;
+        if (core.config.debug) {
+            port = core.config.portSMTP_Debug;
+        }
+
+        return new ServerSetup(port,
+                null, ServerSetup.PROTOCOL_SMTP);
+    }
+
     @Override
     protected void boot() {
-        ServerSetup setup = new ServerSetup(getPort(), null, ServerSetup.PROTOCOL_SMTP);
-        greenMail = new GreenMail(setup);
+
+        greenMail = new GreenMail(getServerSetup());
         greenMail.start();
         //System.out.println("SMTP Server started on port: " + getPort());
         isRunning = true;
@@ -86,13 +93,11 @@ public class ServerEmail extends Server {
             }
         }).start();
     }
-    
-    
+
     @Override
     public void shutdown() {
         if (greenMail != null) {
             greenMail.stop();
-            //System.out.println("SMTP Server stopped.");
         }
     }
 
@@ -112,5 +117,4 @@ public class ServerEmail extends Server {
         }
     }
 
-   
 }

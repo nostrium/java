@@ -285,7 +285,8 @@ public class ServerWeb extends Server {
         @Override
         @SuppressWarnings("null")
         protected void channelRead0(ChannelHandlerContext ctx, WebSocketFrame frame) throws Exception {
-            if (frame instanceof TextWebSocketFrame textWebSocketFrame) {
+            if (frame instanceof TextWebSocketFrame) {
+                TextWebSocketFrame textWebSocketFrame = (TextWebSocketFrame) frame;
                 // Get the received text
                 String request = textWebSocketFrame.text();
 

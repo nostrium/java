@@ -6,52 +6,52 @@
  */
 package online.nostrium.apps.email;
 
-import java.io.File;
+import online.nostrium.servers.email.EmailMessage;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalCommand;
 import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.session.Session;
-import static online.nostrium.utils.ascii.DirectoryTreeBuilder.buildTree;
 
 /**
  * @author Brito
- * @date: 2024-09-02
+ * @date: 2024-10-11
  * @location: Germany
  */
-public class CommandEmailLs extends TerminalCommand {
+public class CommandEmailWrite extends TerminalCommand {
 
-    public CommandEmailLs(TerminalApp app, Session session) {
+    public CommandEmailWrite(TerminalApp app, Session session) {
         super(app, session);
         this.requireSlash = false;
-        // add an alternative command
-        this.commandsAlternative.add("dir");
     }
 
     @Override
     public CommandResponse execute(TerminalType terminalType, String parameters) {
+        // syntax:
+        // write
+        
+        TerminalEmail emailApp = (TerminalEmail) app;
+    
+        // start a new message to be written
+        emailApp.message = new EmailMessage();
+        
+        session.getScreen().writeln("You are now writing an email.");
+        session.getScreen().writeln("Available commands: RESET, STOP or SEND");
+        session.getScreen().writeln("Please start by writing a title for the email:");
+        
+        return reply(TerminalCode.OK);
 
-        File folder = (File) app.dataUser.get("folderCurrent");
-                //EmailUtils.getFolderEmail(app.user);
-        String dirTree = buildTree(folder);
-        
-        // remove the last character
-        if(dirTree.length() > 0){
-            dirTree = dirTree.substring(0, dirTree.length()-1);
-        }
-        
-        return reply(TerminalCode.OK, dirTree);
     }
 
     @Override
     public String commandName() {
-        return "ls";
+        return "write";
     }
 
     @Override
     public String oneLineDescription() {
-        return "List the available emails and folders";
+        return "Write an email";
     }
 
 }

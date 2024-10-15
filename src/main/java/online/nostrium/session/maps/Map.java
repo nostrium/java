@@ -226,7 +226,8 @@ public abstract class Map implements Comparable<Map> {
         }
         
         // then let's start with apps
-        if(this instanceof MapApp mapApp){
+        if(this instanceof MapApp){
+            MapApp mapApp = (MapApp) this;
             for(MapApp app : mapApp.getApps()){
                 if(app.getName().equals(name)){
                     return app;
@@ -248,7 +249,8 @@ public abstract class Map implements Comparable<Map> {
             return null;
         }
         // was not an app, is it a folder?
-        if(this instanceof MapFolder mapFolder){
+        if(this instanceof MapFolder){
+            MapFolder mapFolder = (MapFolder) this;
             // can it be an app?
             for(MapApp app : mapFolder.getApps()){
                 if(app.getName().equals(name)){
@@ -291,7 +293,8 @@ public abstract class Map implements Comparable<Map> {
     public TreeSet<Map> listFiles(String parameters) {
         TreeSet<Map> list = new TreeSet<>();
         // is this an app?
-        if(this instanceof MapApp mapApp){
+        if(this instanceof MapApp){
+            MapApp mapApp = (MapApp) this;
             // first list the apps
             for(MapApp map : mapApp.getApps()){
                 list.add(map);
@@ -306,7 +309,8 @@ public abstract class Map implements Comparable<Map> {
             }
         }
         // is this a folder?
-        if(this instanceof MapFolder mapFolder){
+        if(this instanceof MapFolder){
+            MapFolder mapFolder = (MapFolder) this;
             // first list the apps
             for(MapApp map : mapFolder.getApps()){
                 list.add(map);

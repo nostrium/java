@@ -91,8 +91,8 @@ public class MapFileTest {
         assertEquals("blog", test5.getName());
         
         // test multiple ../../
-        Map test6 = test1.findPath("../../email");
-        assertEquals("email", test6.getName());
+        Map test6 = test1.findPath("../../user");
+        assertEquals("user", test6.getName());
     }
     
     @Test

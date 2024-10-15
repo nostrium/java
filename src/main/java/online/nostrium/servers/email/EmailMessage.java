@@ -70,6 +70,13 @@ public class EmailMessage {
     public String getTitle() {
         return title;
     }
+    
+     public String getTitleNeverNull() {
+        if(title == null || title.isEmpty()){
+            return "(No title)";
+        }
+        return title;
+    }
 
     public void setTitle(String title) {
         this.title = title;
@@ -83,9 +90,13 @@ public class EmailMessage {
         this.body = body;
     }
 
-    public String getToUsers() {
+    public String getToUsersSingleLine() {
         String recipients = String.join(",", toUsers);
         return recipients;
+    }
+    
+    public ArrayList<String> getToUsers() {
+        return toUsers;
     }
 
     public void setToUsers(ArrayList<String> receivers) {

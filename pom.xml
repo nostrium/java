@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>online</groupId>
     <artifactId>nostrium</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
     
     <properties>
@@ -25,8 +25,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>20</source>
-                    <target>20</target>
+                    <source>16</source>
+                    <target>16</target>
                     <compilerArgs>
                         <arg>-Xlint:deprecation</arg>
                         <arg>-Xlint:unchecked</arg>

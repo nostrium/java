@@ -6,13 +6,18 @@ package basic;
 
 import com.icegreen.greenmail.util.ServerSetup;
 import static com.icegreen.greenmail.util.ServerSetup.PROTOCOL_SMTP;
+import java.io.File;
 import online.nostrium.main.core;
 import online.nostrium.servers.email.EmailMessage;
 import online.nostrium.servers.email.EmailUtils;
+import static online.nostrium.servers.email.EmailUtils.getFolderEmail;
 import online.nostrium.servers.email.ServerEmail;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
 import online.nostrium.utils.time;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -50,9 +55,19 @@ public class EmailTest {
         msg.setTitle("Hello Title!");
         msg.setBody("Hello there, this is the text body");
         
+        // get the inbox folder
+        File folderInbox = getFolderEmail(user1, "inbox");
+        assertTrue(folderInbox.exists());
+        
         EmailUtils.sendEmail(msg, serverSMTP);
         
         time.wait(3);
+        
+        assertTrue(folderInbox.exists());
+        
+        File[] files = folderInbox.listFiles();
+        assertEquals(1, files.length);
+        
         
         // delete all files
         user1.delete();
@@ -97,35 +112,6 @@ public class EmailTest {
 //        user.delete();
 //    }
 //    
-//    @Test
-//    public void sendEmailTest() {
-//        
-//        // load the general configuration
-//        core.startConfig();
-//        
-//        // load the email server
-//        ServerEmail server = new ServerEmail();
-//        server.start();
-//        
-//        
-//        User user = UserUtils.createUserAnonymous();
-//        user.save();
-//        
-//        EmailMessage msg = new EmailMessage();
-//        msg.setSender(user);
-//        assertNotNull(msg.getSender());
-//        msg.addReceiver(user);
-//        msg.setTitle("Testing!");
-//        msg.setBody("Testing this stuff");
-//        
-//        GreenMailUtil.sendTextEmail(
-//                msg.getReceivers(), msg.getSender(),
-//        msg.getTitle(), msg.getBody(), setup
-//        );
-//        
-//        
-//        user.delete();
-//        server.stop();
-//    }
+
 
 }

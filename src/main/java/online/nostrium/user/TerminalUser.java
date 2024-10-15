@@ -9,6 +9,7 @@ package online.nostrium.user;
 import java.io.File;
 import online.nostrium.apps.archive.blog.BlogArchive;
 import online.nostrium.apps.archive.forum.ForumArchive;
+import online.nostrium.apps.email.TerminalEmail;
 import online.nostrium.session.NotificationType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
@@ -34,6 +35,10 @@ public class TerminalUser extends TerminalApp {
         
         ForumArchive appForum = new ForumArchive("forum", folder, session);
         addApp(appForum);
+        
+        // add the email for this user
+        addApp(new TerminalEmail(session));
+        
         
         // add a folder that does not need to exist unless used, but should be listed
         File folderToAdd = new File(session.getUser().getFolder(false), "public");

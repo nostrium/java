@@ -37,7 +37,7 @@ public class TerminalBasic extends TerminalApp {
         addApp(new TerminalChat(session));
         addApp(new TerminalGames(session));
         addApp(new TerminalNostr(session));
-        addApp(new TerminalEmail(session));
+        
     }
 
     @Override

@@ -154,7 +154,8 @@ public class Session {
     public void setCurrentLocation(Map currentLocation) {
         this.currentLocation = currentLocation;
         // update the app currently active
-        if(this.currentLocation instanceof MapApp mapApp){
+        if(this.currentLocation instanceof MapApp){
+            MapApp mapApp = (MapApp) this.currentLocation;
             this.setApp(mapApp.getAppRelated());
         }
     }

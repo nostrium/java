@@ -95,7 +95,8 @@ public abstract class App {
             Object object) {
 
         // only text messages are supported for now
-        if (object instanceof String dataReceived) {
+        if (object instanceof String) {
+            String dataReceived = (String) object;
             String text = "["
                     + notificationType.name()
                     + "] "

@@ -84,7 +84,8 @@ public class CommandLL extends TerminalCommand {
             }
             
             // are we handling a file?
-            if(map instanceof MapFile mapFile){
+            if(map instanceof MapFile){
+                MapFile mapFile = (MapFile) map;
                 File file = mapFile.getRelatedFolderOrFile();
                 
                 // setup the time of the file
@@ -139,7 +140,8 @@ public class CommandLL extends TerminalCommand {
 
     private long countItems(Map map) {
         int count = 0;
-        if(map instanceof MapBox mapApp){
+        if(map instanceof MapBox){
+            MapBox mapApp = (MapBox) map;
             count += mapApp.getFiles().size();
             count += mapApp.getLinks().size();
             for(MapApp app1 : mapApp.getApps()){
