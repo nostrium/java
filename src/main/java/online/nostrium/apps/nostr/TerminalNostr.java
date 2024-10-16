@@ -11,7 +11,6 @@ import online.nostrium.session.NotificationType;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
-import online.nostrium.servers.terminal.TerminalUtils;
 import online.nostrium.session.Session;
 
 /**
@@ -23,6 +22,7 @@ public class TerminalNostr extends TerminalApp {
 
     public TerminalNostr(Session session) {
         super(session);
+        this.addApp(new TerminalNostrGlobal(session));
 //        addCommand(new CommandUserShow(this));
 //        //addCommand(new CommandUserPassword(this));
 //        //addCommand(new CommandUserSave(this));
@@ -36,8 +36,6 @@ public class TerminalNostr extends TerminalApp {
 
     @Override
     public CommandResponse defaultCommand(String commandInput) {
-        
-        
         return reply(TerminalCode.NOT_FOUND);
     }
 

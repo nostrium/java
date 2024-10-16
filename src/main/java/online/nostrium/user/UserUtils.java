@@ -40,17 +40,23 @@ public class UserUtils {
      * @return user that was automatically generated
      */
     public static User getUserAdmin() {
-        return getUserByType(UserType.ADMIN);
-//        User user = new User();
-//        // set nsec and npub to all zeros
-//        String zeroKeys = "00000000000000000000000000000000";
-//        user.setNsec(zeroKeys);
-//        user.setNpub(zeroKeys);
-//        user.setDisplayName("admin");
-//        String timestamp = "2000-01-01T00:00:00Z";
-//        user.setRegisteredTime(timestamp);
-//        user.setLastLoginTime(timestamp);
-//        return user;
+        User user = getUserByType(UserType.ADMIN);
+        
+        if(user != null){
+            return user;
+        }
+        
+        user = new User();
+        // set nsec and npub to all zeros
+        String zeroKeys = "00000000000000000000000000000000";
+        user.setNsec(zeroKeys);
+        user.setNpub(zeroKeys);
+        user.setDisplayName("admin");
+        String timestamp = "2000-01-01T00:00:00Z";
+        user.setRegisteredTime(timestamp);
+        user.setLastLoginTime(timestamp);
+        
+        return user;
     }
     
      public static User getFakeUserAdmin() {

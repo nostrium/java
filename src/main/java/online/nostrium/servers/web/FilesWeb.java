@@ -77,8 +77,7 @@ public class FilesWeb {
             + "}"
             + "</style>";
 
-    public static // Add inline CSS to style the HTML content
-            String css2 = "<style>"
+    public static String css2 = "<style>"
             + "body { font-family: Arial, sans-serif; }"
             + "h1 { color: blue; }"
             + "p { color: gray; }"
@@ -133,36 +132,74 @@ public class FilesWeb {
         lastContentFuture.addListener(ChannelFutureListener.CLOSE);
     }
 
+  
     public static void sendFile(File file, ChannelHandlerContext ctx) throws IOException {
-        // Check if the file exists and is readable
-        if (file.isHidden() || !file.exists() || !file.isFile()) {
-            sendError(ctx, HttpResponseStatus.NOT_FOUND);
-            return;
-        }
+    // Check if the file exists and is readable
+    if (file.isHidden() || !file.exists() || !file.isFile()) {
+        sendError(ctx, HttpResponseStatus.NOT_FOUND);
+        return;
+    }
 
-        try (RandomAccessFile raf = new RandomAccessFile(file, "r")) {
-            long fileLength = raf.length();
+    // Define the maximum size to load into memory (100 MB)
+    final long MAX_MEMORY_SIZE = 100 * 1024 * 1024;
 
+    RandomAccessFile raf = null;
+    try {
+        // Get the file length
+        long fileLength = file.length();
+
+        // If the file is larger than 100 MB, send it via ChunkedFile
+        if (fileLength > MAX_MEMORY_SIZE) {
+            raf = new RandomAccessFile(file, "r");
+
+            // Prepare the HTTP response with Content-Length
             HttpResponse response = new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK);
-            HttpUtil.setContentLength(response, fileLength);
+            response.headers().set(HttpHeaderNames.CONTENT_TYPE, FilesWeb.getMimeType(file.getName()));
+            response.headers().set(HttpHeaderNames.CONTENT_LENGTH, fileLength);
 
-            // Determine the content type
-            String contentType = FilesWeb.getMimeType(file.getName());
-            response.headers().set(HttpHeaderNames.CONTENT_TYPE, contentType);
-
-            // Write the initial line and the header.
+            // Write the response headers
             ctx.write(response);
 
-            // Write the content.
+            // Write the file content in chunks
             ctx.write(new ChunkedFile(raf, 0, fileLength, 8192), ctx.newProgressivePromise());
 
-            // Write the end marker.
-            ChannelFuture lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT);
+            // Write the end marker and close the connection
+            ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT).addListener(ChannelFutureListener.CLOSE);
 
-            // Close the connection once the whole content is written out.
-            lastContentFuture.addListener(ChannelFutureListener.CLOSE);
+        } else {
+            // File is small enough, load it into memory
+            byte[] fileBytes = Files.readAllBytes(file.toPath());
+
+            // Prepare the HTTP response with Content-Length
+            HttpResponse response = new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK);
+            response.headers().set(HttpHeaderNames.CONTENT_TYPE, FilesWeb.getMimeType(file.getName()));
+            response.headers().set(HttpHeaderNames.CONTENT_LENGTH, fileBytes.length);
+
+            // Write the response headers
+            ctx.write(response);
+
+            // Write the file content in one go
+            ctx.write(Unpooled.copiedBuffer(fileBytes), ctx.newProgressivePromise());
+
+            // Write the end marker and close the connection
+            ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT).addListener(ChannelFutureListener.CLOSE);
+        }
+    } catch (Exception e) {
+        // Log any exceptions during the file send process
+        Log.write(TerminalCode.CRASH, "Error while sending file: " + e.getMessage());
+        sendError(ctx, HttpResponseStatus.INTERNAL_SERVER_ERROR);
+    } finally {
+        // Ensure RandomAccessFile is closed
+        if (raf != null) {
+            try {
+                raf.close();
+            } catch (IOException e) {
+                Log.write(TerminalCode.CRASH, "Failed to close RandomAccessFile: " + e.getMessage());
+            }
         }
     }
+}
+
 
     public static String getMimeType(String uri) {
         Tika tika = new Tika();
@@ -170,7 +207,6 @@ public class FilesWeb {
     }
 
     public static void sendFileFromUser(String uri, ChannelHandlerContext ctx) throws IOException {
-        // https://nostrium.online/brito/
         String[] data = uri.split("/");
 
         if (data.length < 2) {
@@ -178,7 +214,6 @@ public class FilesWeb {
             Log.write("WWW", TerminalCode.NOT_FOUND, "URI not understood", uri);
             return;
         }
-        // the position 1 should contain the username
         String username = data[1];
         User user = UserUtils.getUserByUsername(username);
         if (user == null) {
@@ -186,26 +221,20 @@ public class FilesWeb {
             Log.write("WWW", TerminalCode.NOT_FOUND, "User not found", username);
             return;
         }
-        // the user exists, there needs to exist a WWW folder (called public)
         File folder = new File(user.getFolder(true), FolderUtils.nameFolderWWW);
         if (folder.exists() == false) {
             FileUtils.forceMkdir(folder);
         }
-        // public folder needs to really exist
         if (folder.exists() == false) {
             Log.write(TerminalCode.FAIL, "Unable to create WWW folder", folder.getPath());
             sendError(ctx, HttpResponseStatus.INTERNAL_SERVER_ERROR);
             return;
         }
-
-        // no arguments? looking for the index pages
         if (data.length == 2) {
             launchIndexDefault(folder, ctx, uri, user);
             return;
         }
 
-        
-        // build the path after the username
         String path = "";
         for (int i = 3; i <= data.length; i++) {
             int index = i - 1;
@@ -213,79 +242,49 @@ public class FilesWeb {
         }
         path = path.substring(1);
 
-        // check if the path is talking about an app
         sendFileFolderOrApp(folder, path, user, ctx, data, uri);
-        // http://nostrium.online/brito/blog
     }
-    
-    
-    /**
-     * Deliver the requested service, the processing for this function
-     * is more CPU-intensive than desired, but a first implementation
-     * is needed even if not optimally programmed
-     * @param folder
-     * @param path
-     * @param user
-     * @param ctx
-     * @param data
-     * @param uri
-     * @throws IOException 
-     */
+
     private static void sendFileFolderOrApp(
-            File folder, String path, 
+            File folder, String path,
             User user, ChannelHandlerContext ctx,
             String[] data, String uri) throws IOException {
-        
-        // try to create a file to the expected locaion
         File file = new File(folder, path);
-        
-        // is this a virtual directory?
+
         if (data.length >= 3) {
-            // harcoded cases for the blog and forum sites
             if (isVirtualFolder(data[2])) {
-                // what happens when we want to serve a website?
                 file = new File(user.getFolder(false), path);
             }
         }
 
-        // is this a directory?
         if (file.isDirectory()) {
             launchIndexDefault(file, ctx, uri, user);
             return;
         }
 
-        // it is a file
         if (file.getName().endsWith(".md")) {
-            // convert Markdown files
             sendMarkDown(file, ctx);
         } else {
             sendFile(file, ctx);
-        }        
+        }
     }
 
-    
     public static String convertMarkdownToHtml(File markdownFile, String css) {
         try {
-            // Read the content of the markdown file into a string
             String markdownContent = new String(Files.readAllBytes(markdownFile.toPath()));
 
-            // Initialize the Flexmark parser and renderer
             Parser parser = Parser.builder().build();
             HtmlRenderer renderer = HtmlRenderer.builder().build();
 
-            // Parse the markdown to a Node object
             Node document = parser.parse(markdownContent);
-            // Render the Node object to HTML
             String htmlContent = renderer.render(document);
 
-            // Combine the CSS with the HTML content
             return "<html><head>" + css + "</head><body>" + htmlContent + "</body></html>";
         } catch (IOException e) {
-            // Return the original markdown content if an exception occurs
             try {
                 return new String(Files.readAllBytes(markdownFile.toPath()));
             } catch (IOException ex) {
-                return ""; // Return an empty string if both attempts fail
+                return "";
             }
         }
     }
@@ -304,30 +303,25 @@ public class FilesWeb {
             return;
         }
 
-        // show the files inside the folder
         String fileList = listFilesInFolderAsHtml(folder, url, user);
         sendText(fileList, ctx, "index.html");
     }
-    
 
     public static String listFilesInFolderAsHtml(File folder, String requestUrl, User user) {
-        // Check if the input is a directory
         if (!folder.isDirectory()) {
             return "<html><body><h1>Error: Not a directory!</h1></body></html>";
         }
 
-        // Ensure requestUrl always ends with a "/" for consistent URL construction
         if (!requestUrl.endsWith("/")) {
             requestUrl += "/";
         }
 
-        // Start building the HTML with a retro 80's style
         String css = "<style>"
-                + "body { background-color: black; color: #d3d3d3; font-family: 'Courier New', monospace; padding: 20px; }" // White-grey text
-                + "desc { font-size: 12px; }" // Set normal paragraph text size to 12px
-                + "h1 { color: #00FF00; text-shadow: 0 0 1px #00FF00, 0 0 2px #00FF00; font-size: 36px; }" // Reduced glow for header
-                + "a { color: #00FF99; text-decoration: none; font-weight: bold; }" // Soft green for links
-                + "a:hover { color: #33FF99; }" // Lighter green for hover effect
+                + "body { background-color: black; color: #d3d3d3; font-family: 'Courier New', monospace; padding: 20px; }"
+                + "desc { font-size: 12px; }"
+                + "h1 { color: #00FF00; text-shadow: 0 0 1px #00FF00, 0 0 2px #00FF00; font-size: 36px; }"
+                + "a { color: #00FF99; text-decoration: none; font-weight: bold; }"
+                + "a:hover { color: #33FF99; }"
                 + "ul { list-style-type: none; padding-left: 0; }"
                 + "li { margin-bottom: 10px; }"
                 + "</style>";
@@ -342,33 +336,27 @@ public class FilesWeb {
         htmlContent.append(title);
         htmlContent.append("<ul>\n");
 
-        // Add a ".." link to go back to the parent directory (if applicable)
         File parent = folder.getParentFile();
         if (parent != null && !parent.getName().startsWith("npub")) {
             htmlContent.append("<li><a href=\"").append(requestUrl).append("../\">..</a></li>");
-        } 
-        
-        // test if we are on the root level
+        }
+
         String rootTest = requestUrl.replace("/", "");
-        // list the virtual folders, but only on the root
-        if(user.getUsername().equalsIgnoreCase(rootTest)){
+        if (user.getUsername().equalsIgnoreCase(rootTest)) {
             for (String folderName : UserUtils.virtualFolderNames) {
                 File folderVirtual = new File(user.getFolder(false), folderName);
                 addHTMLFolder(folderVirtual, htmlContent, requestUrl);
             }
         }
 
-        // List files and directories
         File[] files = folder.listFiles();
 
-        // list the existing folders
         if (files != null) {
             for (File item : files) {
                 addHTMLFolder(item, htmlContent, requestUrl);
             }
         }
 
-        // list second the files
         if (files != null) {
             for (File file : files) {
                 String filename = file.getName();
@@ -377,7 +365,6 @@ public class FilesWeb {
                 }
                 String size = TextFunctions.humanReadableFileSize(file);
                 String date = TextFunctions.getLastModifiedISO(file);
-                // Add a clickable link for files
                 htmlContent.append("\n<li><a href=\"")
                         .append(requestUrl)
                         .append(filename)
@@ -396,22 +383,14 @@ public class FilesWeb {
         return htmlContent.toString();
     }
 
-    /**
-     * Add the HTML related to a folder and count the files inside the folder
-     * @param folder
-     * @param htmlContent
-     * @param requestUrl 
-     */
     private static void addHTMLFolder(File folder,
             StringBuilder htmlContent, String requestUrl) {
         if (folder.exists() == false || folder.isFile()) {
             return;
         }
         String filename = folder.getName();
-        // count the number of files inside
         long countFiles = FileFunctions.countFiles(folder);
         String fileCount = " (" + countFiles + ")";
-        // Add a clickable link for directories
         htmlContent.append("\n<li><a href=\"")
                 .append(requestUrl)
                 .append(filename)
@@ -421,6 +400,5 @@ public class FilesWeb {
                         + fileCount
                         + "</li>");
     }
-
 
 }

@@ -1,21 +1,16 @@
 /*
- * The root app
+ * NOSTR operations
  *
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
-package online.nostrium.apps.basic;
+package online.nostrium.apps.nostr;
 
-import online.nostrium.apps.admin.TerminalAdmin;
+import online.nostrium.user.User;
 import online.nostrium.session.NotificationType;
-import online.nostrium.apps.chat.TerminalChat;
-import online.nostrium.apps.games.TerminalGames;
-import online.nostrium.apps.nostr.TerminalNostr;
-import online.nostrium.user.TerminalUser;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalApp;
 import online.nostrium.servers.terminal.TerminalCode;
-import online.nostrium.user.User;
 import online.nostrium.session.Session;
 
 /**
@@ -23,48 +18,47 @@ import online.nostrium.session.Session;
  * @date: 2024-08-04
  * @location: Germany
  */
-public class TerminalBasic extends TerminalApp {
+public class TerminalNostrGlobal extends TerminalApp {
 
-    public TerminalBasic(Session session) {
+    public TerminalNostrGlobal(Session session) {
         super(session);
-        // add some specific commands
-        addCommand(new CommandHello(this, session));
         
-        // add apps inside
-        addApp(new TerminalAdmin(session));
-        addApp(new TerminalUser(session));
-        addApp(new TerminalChat(session));
-        //addApp(new TerminalGames(session));
-        addApp(new TerminalNostr(session));
-        
+//        addCommand(new CommandUserShow(this));
+//        //addCommand(new CommandUserPassword(this));
+//        //addCommand(new CommandUserSave(this));
+//        addCommand(new CommandUserSet(this));
     }
 
     @Override
     public String getDescription() {
-        return "The basic CLI app";
+        return "Global texts from different relays";
     }
 
     @Override
     public CommandResponse defaultCommand(String commandInput) {
+        session.getScreen().writeln("I'm here");
         return reply(TerminalCode.NOT_FOUND);
     }
 
     @Override
     public String getIntro() {
-        session.getScreen().writeIntro();
-        return "";
+        String title = "Global texts";
+        String text = session.getScreen().getWindowFrame(title);
+        text += session.getScreen().breakLine();
+        text += "Type 'help' to see the available commands";
+        return text;
     }
 
     @Override
     public String getIdName() {
-        return "basic";
+        return "global";
     }
 
     @Override
     public void receiveNotification(User userSender, NotificationType notificationType, Object object) {
         session.getScreen().writeln("Received a notification");
     }
-    
+
     @Override
     public String getPathVirtual() {
         return session.getCurrentLocation().getPath();

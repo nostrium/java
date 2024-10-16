@@ -19,6 +19,7 @@ import online.nostrium.logs.Log;
 import static online.nostrium.servers.terminal.TerminalCode.INVALID;
 import static online.nostrium.servers.terminal.TerminalCode.OK;
 import online.nostrium.servers.terminal.TerminalColor;
+import online.nostrium.utils.JarUtils;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -30,11 +31,24 @@ public class Config {
 
     // variables start with upper case to improve 
     // JSON readability when exported/imported
-    
     @Expose
-    public boolean 
-            debug = true,
-            useSSL = true,
+    public boolean debug = true;
+
+    @Expose
+    public String domain_production = "nostrium.online",
+            domain_debug = "127.0.0.1",
+            language = "EN";
+
+    @Expose
+    public String tokenTelegram = "XXXXX",
+            tokenTelegram_Debug = "YYYYY";
+
+    @Expose
+    public TerminalColor colorAppsDefault
+            = TerminalColor.GREEN_BRIGHT;
+
+    @Expose
+    public boolean useSSL = true,
             enableServerTelnet = true,
             enableServerWWW = true,
             enableServerSSH = true,
@@ -44,66 +58,39 @@ public class Config {
             enableServerIRC = true,
             enableServerFTP = true,
             enableServerFinger = true;
-    
+
     @Expose
-    public int 
-            portTelnet = 23,
+    public int portTelnet = 23,
             portTelnet_Debug = 2300,
-            
             portSSH = 22,
             portSSH_Debug = 2200,
-            
             portHTTP = 80,
             portHTTP_Debug = 8000,
             portHTTPS = 443,
             portHTTPS_Debug = 44300,
-            
             portGopher = 70,
             portGopher_Debug = 7000,
-            
             portSMTP = 25,
             portSMTP_Debug = 2500,
             portSMTPS = 465,
             portSMTPS_Debug = 4650,
-            
             portIMAP = 143,
             portIMAP_Debug = 14300,
             portIMAPS = 993,
             portIMAPS_Debug = 9930,
-    
             portPOP3 = 110,
             portPOP3_Debug = 11000,
             portPOP3S = 995,
             portPOP3S_Debug = 9950,
-
             portQOTD = 17,
             portQOTD_Debug = 1700,
-
             portFinger = 79,
             portFinger_Debug = 7900,
-    
             portFTP = 21,
             portFTP_Debug = 2100,
             portFTPS = 990,
             portFTPS_Debug = 9900;
-    
-    @Expose
-    public String
-            tokenTelegram = "XXXXX",
-            tokenTelegram_Debug = "YYYYY";
-    
-    
-    
-    @Expose
-    public TerminalColor colorAppsDefault = 
-            TerminalColor.GREEN_BRIGHT;
 
-    @Expose
-    public String 
-            domain_production = "nostrium.online",
-            domain_debug = "127.0.0.1",
-            language = "EN";
-    
 //    String ForumTitle = "";
 //    String ForumDescription = "";
 //    String ForumTheme = "default";
@@ -128,8 +115,6 @@ public class Config {
 //        new Level3()
 //    }; 
 //    URLtype URLtype = IPB;
-    
-    
     /**
      * Export this object as JSON
      *
@@ -167,8 +152,7 @@ public class Config {
             return null;
         }
     }
-    
-    
+
     @SuppressWarnings({"FinallyDiscardsException", "deprecation"})
     public void save() {
         try {
@@ -186,6 +170,13 @@ public class Config {
     private static Config createAndWriteNew() {
         Config config = new Config();
         try {
+            // are we in dev or production mode?
+            boolean prodMode =  JarUtils.isRunningFromJar();
+            // running in production, start without debug then
+            if(prodMode){
+                config.debug = false;
+            }
+            
             File file = FolderUtils.getFileConfig();
             String data = config.jsonExport();
             FileUtils.writeStringToFile(file, data);
@@ -200,7 +191,8 @@ public class Config {
     /**
      * Load the configuration from disk, when it does not exist then it will
      * create one.
-     * @return 
+     *
+     * @return
      */
     public static Config loadConfig() {
 
@@ -220,11 +212,11 @@ public class Config {
         // the config file is valid, use it
         return config;
     }
-    
-    public String getDomain(){
-        if(debug){
+
+    public String getDomain() {
+        if (debug) {
             return domain_debug;
-        }else{
+        } else {
             return domain_production;
         }
     }
