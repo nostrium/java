@@ -19,6 +19,9 @@ import java.util.logging.Logger;
 import online.nostrium.logs.Log;
 import online.nostrium.main.core;
 import online.nostrium.servers.Server;
+import online.nostrium.servers.ports.PortId;
+import online.nostrium.servers.ports.PortType;
+import online.nostrium.servers.ports.ServerPort;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
@@ -39,23 +42,22 @@ public class ServerFTP extends Server {
     }
 
     @Override
-    public int getPort() {
-        if (core.config.debug) {
-            return core.config.portFTP_Debug;
-        } else {
-            return core.config.portFTP;
-        }
+    public void setupPorts() {
+        ServerPort port = new ServerPort(PortId.FTP.toString(),
+                PortType.NONENCRYPTED,
+                PortId.FTP.getPortNumber(),
+                PortId.FTP_Debug.getPortNumber()
+        );
+        ports.add(port);
+        port = new ServerPort(PortId.FTPS.toString(),
+                PortType.ENCRYPTED,
+                PortId.FTPS.getPortNumber(),
+                PortId.FTPS_Debug.getPortNumber()
+        );
+        ports.add(port);
+        
     }
-
-    @Override
-    public int getPortSecure() {
-        if (core.config.debug) {
-            return core.config.portFTPS_Debug;
-        } else {
-            return core.config.portFTPS;
-        }
-    }
-
+    
     @Override
     protected void boot() {
         
@@ -112,7 +114,8 @@ public class ServerFTP extends Server {
         try {
             // Start it synchronously in our localhost and in the port
             isRunning = true;
-            server.listenSync(InetAddress.getByName("0.0.0.0"), this.getPort());
+            int port = ports.get(PortId.FTP);
+            server.listenSync(InetAddress.getByName("0.0.0.0"), port);
         } catch (IOException ex) {
             Logger.getLogger(ServerFTP.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -21,6 +21,9 @@ import online.nostrium.folder.FolderUtils;
 import online.nostrium.logs.Log;
 import online.nostrium.servers.terminal.TerminalCode;
 import java.nio.charset.Charset;
+import online.nostrium.servers.ports.PortId;
+import online.nostrium.servers.ports.PortType;
+import online.nostrium.servers.ports.ServerPort;
 
 /**
  * @author Brito
@@ -38,15 +41,15 @@ public class ServerGopher extends Server {
     }
 
     @Override
-    public int getPort() {
-        return core.config.debug ? core.config.portGopher_Debug : core.config.portGopher;
+    public void setupPorts() {
+        ServerPort port = new ServerPort(PortId.Gopher.toString(),
+                PortType.NONENCRYPTED,
+                PortId.Gopher.getPortNumber(),
+                PortId.Gopher_Debug.getPortNumber()
+        );
+        ports.add(port);
     }
-
-    @Override
-    public int getPortSecure() {
-        return -1;  // No HTTPS for Gopher
-    }
-
+   
     @Override
     protected void boot() {
         bossGroup = new NioEventLoopGroup(1);
@@ -67,7 +70,7 @@ public class ServerGopher extends Server {
                     }
                 });
 
-            int port = getPort();
+            int port = ports.get(PortId.Gopher);
             Channel ch = b.bind(port).sync().channel();
             System.out.println("Gopher server started on port " + port);
 

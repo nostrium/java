@@ -7,6 +7,9 @@
 package online.nostrium.servers;
 
 import online.nostrium.main.core;
+import online.nostrium.servers.ports.PortId;
+import online.nostrium.servers.ports.PortType;
+import online.nostrium.servers.ports.ServerPort;
 
 /**
  * @author Brito
@@ -21,22 +24,15 @@ public class ServerExample extends Server {
     }
 
     @Override
-    public int getPort() {
-        if (core.config.debug) {
-            return core.config.portFTP_Debug;
-        } else {
-            return core.config.portFTP;
-        }
+    public void setupPorts() {
+        ServerPort port = new ServerPort(PortId.QOTD.toString(),
+                PortType.NONENCRYPTED,
+                PortId.QOTD.getPortNumber(),
+                PortId.QOTD_Debug.getPortNumber()
+        );
+        ports.add(port);
     }
     
-    @Override
-    public int getPortSecure() {
-        if (core.config.debug) {
-            return core.config.portFTPS_Debug;
-        } else {
-            return core.config.portFTPS;
-        }
-    }
 
     @Override
     protected void boot() {

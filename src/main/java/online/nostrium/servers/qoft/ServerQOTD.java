@@ -22,6 +22,9 @@ import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.stream.ChunkedWriteHandler;
 import online.nostrium.main.core;
 import online.nostrium.servers.Server;
+import online.nostrium.servers.ports.PortId;
+import online.nostrium.servers.ports.PortType;
+import online.nostrium.servers.ports.ServerPort;
 
 import static online.nostrium.servers.qoft.QOTD.generateQuote;
 
@@ -44,15 +47,17 @@ public class ServerQOTD extends Server {
     public String getId() {
         return "Server_QOTD";
     }
-
+    
     @Override
-    public int getPort() {
-        if (core.config.debug) {
-            return core.config.portQOTD_Debug;
-        } else {
-            return core.config.portQOTD;
-        }
+    public void setupPorts() {
+        ServerPort port = new ServerPort(PortId.QOTD.toString(),
+                PortType.NONENCRYPTED,
+                PortId.QOTD.getPortNumber(),
+                PortId.QOTD_Debug.getPortNumber()
+        );
+        ports.add(port);
     }
+
 
     @Override
     protected void boot() {
@@ -78,7 +83,8 @@ public class ServerQOTD extends Server {
             isRunning = true;
 
             // Bind and start to accept incoming connections.
-            ChannelFuture f = b.bind(getPort()).sync();
+            int port = ports.get(PortId.QOTD);
+            ChannelFuture f = b.bind(port).sync();
 
             // Wait until the server socket is closed.
             f.channel().closeFuture().sync();
@@ -126,8 +132,4 @@ public class ServerQOTD extends Server {
         }
     }
     
-    @Override
-    public int getPortSecure() {
-        return -1;
-    }
 }

@@ -166,7 +166,8 @@ public class EmailUtils {
                 msg.getFrom(),
                 msg.getTitleNeverNull(),
                 msg.getBody(),
-                ServerEmail.getServerSetup()
+                new ServerSetup(25,
+                "0.0.0.0", ServerSetup.PROTOCOL_SMTP)
         );
 
     }

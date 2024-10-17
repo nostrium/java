@@ -8,7 +8,7 @@ We would like to thank the open source community for the
 available software that permits this platform to exist.
 
 
-Generated on 2024-10-16.
+Generated on 2024-10-17.
 
 ## Summary of Licenses Used by Components
 
@@ -42,9 +42,9 @@ Generated on 2024-10-16.
 
 - BOM Format: CycloneDX
 - Spec Version: 1.4
-- Serial Number: urn:uuid:71827a67-def0-4410-bce5-209ff9878d67
+- Serial Number: urn:uuid:696da8a7-f049-4872-9ebe-43386d88b53a
 - Version: 1
-- Timestamp: 2024-10-15T23:13:48Z
+- Timestamp: 2024-10-16T10:32:55Z
 - Tool: CycloneDX Maven plugin
 - Component: nostrium
   - Version: 1.0.1
@@ -52,9 +52,9 @@ Generated on 2024-10-16.
 
 ## Summary of Source Code
 
-- Number of source files: 246
-- Lines of Code: 27610
-- Overall project size: 812.89 KB
+- Number of source files: 251
+- Lines of Code: 27925
+- Overall project size: 821.54 KB
 - 3rd party components: 224
 
 

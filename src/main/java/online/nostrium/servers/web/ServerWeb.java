@@ -27,7 +27,9 @@ import online.nostrium.folder.FolderUtils;
 import online.nostrium.logs.Log;
 import online.nostrium.main.core;
 import online.nostrium.servers.Server;
-import online.nostrium.servers.telnet.TelnetUtils;
+import online.nostrium.servers.ports.PortId;
+import online.nostrium.servers.ports.PortType;
+import online.nostrium.servers.ports.ServerPort;
 import online.nostrium.servers.terminal.CommandResponse;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.servers.terminal.TerminalType;
@@ -61,21 +63,22 @@ public class ServerWeb extends Server {
     }
 
     @Override
-    public int getPort() {
-        if (core.config.debug) {
-            return core.config.portHTTP_Debug;
-        } else {
-            return core.config.portHTTP;
-        }
-    }
+    public void setupPorts() {
+        // add HTTP
+        ServerPort portHTTP = new ServerPort(PortId.HTTP.toString(),
+                PortType.NONENCRYPTED,
+                PortId.HTTP.getPortNumber(),
+                PortId.HTTP_Debug.getPortNumber()
+        );
+        ports.add(portHTTP);
 
-    @Override
-    public int getPortSecure() {
-        if (core.config.debug) {
-            return core.config.portHTTPS_Debug;
-        } else {
-            return core.config.portHTTPS;
-        }
+        // add HTTPS
+        ServerPort portHTTPS = new ServerPort(PortId.HTTPS.toString(),
+                PortType.ENCRYPTED,
+                PortId.HTTPS.getPortNumber(),
+                PortId.HTTPS_Debug.getPortNumber()
+        );
+        ports.add(portHTTPS);
     }
 
     @Override
@@ -83,6 +86,9 @@ public class ServerWeb extends Server {
     protected void boot() {
         bossGroup = new NioEventLoopGroup(1);
         workerGroup = new NioEventLoopGroup();
+
+        int HTTP_PORT = ports.get(PortId.HTTP);
+        int HTTPS_PORT = ports.get(PortId.HTTPS);
 
         try {
             // Load the SSL context
@@ -96,7 +102,8 @@ public class ServerWeb extends Server {
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline p = ch.pipeline();
 
-                            if (sslCtx != null && ch.localAddress().getPort() == getPortSecure()) {
+
+                            if (sslCtx != null && ch.localAddress().getPort() == HTTPS_PORT) {
                                 p.addLast(sslCtx.newHandler(ch.alloc()));
                             }
 
@@ -108,9 +115,6 @@ public class ServerWeb extends Server {
                             p.addLast(new WebSocketFrameHandler());
                         }
                     });
-
-            int HTTP_PORT = this.getPort();
-            int HTTPS_PORT = getPortSecure();
 
             Channel httpChannel = null;
             Channel httpsChannel = null;
@@ -179,7 +183,10 @@ public class ServerWeb extends Server {
                 return null;
             }
 
-            return SslContextBuilder.forServer(domain, keyFile).build();
+            // Specify TLS versions explicitly
+            return SslContextBuilder.forServer(domain, keyFile)
+                    .protocols("TLSv1.2", "TLSv1.3") // Use TLS 1.2 or TLS 1.3
+                    .build();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -356,11 +363,11 @@ public class ServerWeb extends Server {
             text = text.substring(0, text.length() - 1);
             String suggestion = AutoComplete.autoComplete(text, map);
             Log.write(TerminalCode.OK, "Suggestion: " + suggestion);
-            
-            if(suggestion.isEmpty()){
+
+            if (suggestion.isEmpty()) {
                 return;
             }
-            
+
             // multiple choice
             if (suggestion.contains(" | ")) {
                 // try to see if it works

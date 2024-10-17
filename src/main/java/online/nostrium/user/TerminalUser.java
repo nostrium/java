@@ -33,8 +33,8 @@ public class TerminalUser extends TerminalApp {
         BlogArchive appBlog = new BlogArchive("blog", folder, session);
         addApp(appBlog);
         
-        ForumArchive appForum = new ForumArchive("forum", folder, session);
-        addApp(appForum);
+//        ForumArchive appForum = new ForumArchive("forum", folder, session);
+//        addApp(appForum);
         
         // add the email for this user
         addApp(new TerminalEmail(session));

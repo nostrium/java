@@ -27,15 +27,9 @@ public class ServerTelegram extends Server {
     }
 
     @Override
-    public int getPort() {
-        return -1;
+    public void setupPorts() {
     }
     
-    @Override
-    public int getPortSecure() {
-        return -1;
-    }
-
     @Override
     protected void boot() {
        

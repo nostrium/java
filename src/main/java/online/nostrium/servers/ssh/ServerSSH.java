@@ -19,6 +19,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Paths;
 import java.util.Collections;
+import online.nostrium.servers.ports.PortId;
+import online.nostrium.servers.ports.PortType;
+import online.nostrium.servers.ports.ServerPort;
 import org.apache.sshd.server.Environment;
 import org.apache.sshd.server.ExitCallback;
 import org.apache.sshd.server.channel.ChannelSession;
@@ -32,21 +35,22 @@ public class ServerSSH extends Server {
     public String getId() {
         return "Server_SSH";
     }
-
-    @Override
-    public int getPort() {
-        return 7070;
-    }
     
     @Override
-    public int getPortSecure() {
-        return -1;
+    public void setupPorts() {
+        ServerPort port = new ServerPort(PortId.SSH.toString(),
+                PortType.ENCRYPTED,
+                PortId.SSH.getPortNumber(),
+                PortId.SSH_Debug.getPortNumber()
+        );
+        ports.add(port);
     }
+
 
     @Override
     protected void boot() {
         sshd = SshServer.setUpDefaultServer();
-        sshd.setPort(getPort());
+        sshd.setPort(ports.get(PortId.SSH));
 
         // Set the key pair provider (usually RSA keys)
         sshd.setKeyPairProvider(new SimpleGeneratorHostKeyProvider(Paths.get("hostkey.ser")));
@@ -72,7 +76,7 @@ public class ServerSSH extends Server {
         try {
             sshd.start();
             isRunning = true;
-            System.out.println("SSH Server started on port: " + getPort());
+            //System.out.println("SSH Server started on port: " + getPort());
         } catch (IOException e) {
             e.printStackTrace();
         }

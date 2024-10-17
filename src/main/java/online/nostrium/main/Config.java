@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import online.nostrium.logs.Log;
+import online.nostrium.servers.ports.DeployType;
 import static online.nostrium.servers.terminal.TerminalCode.INVALID;
 import static online.nostrium.servers.terminal.TerminalCode.OK;
 import online.nostrium.servers.terminal.TerminalColor;
@@ -171,12 +172,12 @@ public class Config {
         Config config = new Config();
         try {
             // are we in dev or production mode?
-            boolean prodMode =  JarUtils.isRunningFromJar();
+            boolean prodMode = JarUtils.isRunningFromJar();
             // running in production, start without debug then
-            if(prodMode){
+            if (prodMode) {
                 config.debug = false;
             }
-            
+
             File file = FolderUtils.getFileConfig();
             String data = config.jsonExport();
             FileUtils.writeStringToFile(file, data);
@@ -220,5 +221,19 @@ public class Config {
             return domain_production;
         }
     }
+
+    /**
+     * Debug is assumed as development environment,
+     * whereas non-debug is considered production.
+     * @return 
+     */
+    public DeployType getDeployType() {
+        if (this.debug) {
+            return DeployType.DEVELOPMENT;
+        } else {
+            return DeployType.PRODUCTION;
+        }
+    }
+;
 
 }

@@ -16,7 +16,6 @@ import online.nostrium.user.User;
 import online.nostrium.user.UserUtils;
 import online.nostrium.utils.time;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 

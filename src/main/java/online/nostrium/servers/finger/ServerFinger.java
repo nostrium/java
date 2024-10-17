@@ -31,6 +31,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import online.nostrium.servers.ports.PortId;
+import online.nostrium.servers.ports.PortType;
+import online.nostrium.servers.ports.ServerPort;
 
 /**
  * 
@@ -56,13 +59,15 @@ public class ServerFinger extends Server {
     }
 
     @Override
-    public int getPort() {
-        if (core.config.debug) {
-            return core.config.portFinger_Debug;
-        } else {
-            return core.config.portFinger;
-        }
+    public void setupPorts() {
+        ServerPort port = new ServerPort(PortId.Finger.toString(),
+                PortType.NONENCRYPTED,
+                PortId.Finger.getPortNumber(),
+                PortId.Finger_Debug.getPortNumber()
+        );
+        ports.add(port);
     }
+    
 
     @Override
     protected void boot() {
@@ -91,7 +96,8 @@ public class ServerFinger extends Server {
             startCleanupTask();
 
             // Bind and start to accept incoming connections.
-            ChannelFuture f = b.bind(getPort()).sync();
+            int port = ports.get(PortId.Finger);
+            ChannelFuture f = b.bind(port).sync();
 
             // Wait until the server socket is closed.
             f.channel().closeFuture().sync();
@@ -187,8 +193,4 @@ public class ServerFinger extends Server {
         }
     }
     
-    @Override
-    public int getPortSecure() {
-        return -1;
-    }
 }

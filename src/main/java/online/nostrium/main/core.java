@@ -65,7 +65,7 @@ public class core {
             // don't keep running when a problem happened
             if (server.isRunning() == false) {
                 Log.write(TerminalCode.FAIL,"Server stopped", 
-                        server.getId() + ":" + server.getPort());
+                        server.getId() + ":" + server.getPorts().getInfo());
                 keepRunning = false;
             }
         }

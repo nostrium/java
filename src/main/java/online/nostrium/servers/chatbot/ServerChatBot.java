@@ -14,6 +14,9 @@ import online.nostrium.logs.Log;
 
 import online.nostrium.folder.FolderUtils;
 import online.nostrium.servers.Server;
+import online.nostrium.servers.ports.PortId;
+import online.nostrium.servers.ports.PortType;
+import online.nostrium.servers.ports.ServerPort;
 import online.nostrium.servers.terminal.TerminalCode;
 import online.nostrium.utils.screens.Screen;
 import online.nostrium.utils.screens.ScreenCLI;
@@ -38,9 +41,9 @@ public class ServerChatBot extends Server {
     }
 
     @Override
-    public int getPort() {
-        return -1; // Since this isn't an HTTP server, port is not used
+    public void setupPorts() {
     }
+    
 
     @Override
     @SuppressWarnings("UseSpecificCatch")
@@ -82,7 +85,7 @@ public class ServerChatBot extends Server {
     @Override
     public void stop() {
         keepRunning = false;
-        String text = getId() + " stopped on port " + getPort();
+        String text = getId() + " stopped";
         System.out.println(text);
         shutdown();
     }
@@ -151,8 +154,4 @@ public class ServerChatBot extends Server {
         // server.stop();
     }
 
-    @Override
-    public int getPortSecure() {
-        return -1;
-    }
 }

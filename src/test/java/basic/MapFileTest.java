@@ -66,9 +66,9 @@ public class MapFileTest {
         System.out.println(map.getTree());
         
         // test that we can navigate
-        String path = "/user/forum";
+        String path = "/user/blog";
         Map test1 = map.findPath(path);
-        assertEquals("forum", test1.getName());
+        assertEquals("blog", test1.getName());
         
         // test the ../
         Map test2 = test1.findPath("../");
@@ -125,7 +125,7 @@ public class MapFileTest {
         
         TreeSet<Map> list = test1.listFiles("");
         if(user.getDisplayName().equals("brito")){
-            assertEquals(5, list.size());
+            assertEquals(4, list.size());
         }else{
             assertEquals(3, list.size());
         }

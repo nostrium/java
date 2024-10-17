@@ -24,6 +24,9 @@ import online.nostrium.servers.terminal.TerminalType;
 import online.nostrium.utils.screens.Screen;
 import online.nostrium.user.UserUtils;
 import online.nostrium.servers.Server;
+import online.nostrium.servers.ports.PortId;
+import online.nostrium.servers.ports.PortType;
+import online.nostrium.servers.ports.ServerPort;
 import online.nostrium.session.SessionUtils;
 
 /**
@@ -44,7 +47,7 @@ public class ServerTelnet extends Server {
     
     @Override
     protected void boot() {
-        int PORT = getPort();
+        int PORT = ports.get(PortId.Telnet);
         try {
             serverSocket = new ServerSocket(PORT);
             isRunning = true;
@@ -61,13 +64,13 @@ public class ServerTelnet extends Server {
     }
 
     @Override
-    public int getPort() {
-        return core.config.debug ? core.config.portTelnet_Debug : core.config.portTelnet;
-    }
-    
-    @Override
-    public int getPortSecure() {
-        return -1;
+    public void setupPorts() {
+        ServerPort port = new ServerPort(PortId.Telnet.toString(),
+                PortType.NONENCRYPTED,
+                PortId.Telnet.getPortNumber(),
+                PortId.Telnet_Debug.getPortNumber()
+        );
+        ports.add(port);
     }
 
     @Override

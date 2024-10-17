@@ -10,11 +10,13 @@ import com.icegreen.greenmail.store.FolderException;
 import com.icegreen.greenmail.util.GreenMail;
 import com.icegreen.greenmail.util.ServerSetup;
 import jakarta.mail.internet.MimeMessage;
-import online.nostrium.main.core;
 import online.nostrium.servers.Server;
 
 import java.util.Arrays;
 import java.util.List;
+import online.nostrium.servers.ports.PortId;
+import online.nostrium.servers.ports.PortType;
+import online.nostrium.servers.ports.ServerPort;
 
 /**
  * To send emails from the command line in Linux, try something like:
@@ -23,6 +25,13 @@ import java.util.List;
  * "This is a test email" -s 127.0.0.1:2500 -xu your-email@example.com -xp
  * your-email-password
  *
+ * 
+sendemail -f example@example.com -t brito@nostrium.net -u "Test title" -m
+ * "This is a test email" -s 127.0.0.1:2500 -xu your-email@example.com -xp
+ * your-email-password
+
+
+
  *
  *
  * @author Brito
@@ -37,29 +46,24 @@ public class ServerEmail extends Server {
     public String getId() {
         return "Server_Email";
     }
-
+    
     @Override
-    public int getPort() {
-        if (core.config.debug) {
-            return core.config.portSMTP_Debug;
-        } else {
-            return core.config.portSMTP;
-        }
+    public void setupPorts() {
+        // add SMTP
+        ServerPort port = new ServerPort(PortId.SMTP.toString(),
+                PortType.NONENCRYPTED,
+                PortId.SMTP.getPortNumber(),
+                PortId.SMTP_Debug.getPortNumber()
+        );
+        ports.add(port);
     }
 
-    @Override
-    public int getPortSecure() {
-        return -1;
-    }
 
-    public static ServerSetup getServerSetup() {
-        int port = core.config.portSMTP;
-        if (core.config.debug) {
-            port = core.config.portSMTP_Debug;
-        }
+    public ServerSetup getServerSetup() {
+        int port = ports.get(PortId.SMTP);
 
         return new ServerSetup(port,
-                null, ServerSetup.PROTOCOL_SMTP);
+                "0.0.0.0", ServerSetup.PROTOCOL_SMTP);
     }
 
     @Override

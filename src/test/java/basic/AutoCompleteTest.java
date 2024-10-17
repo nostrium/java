@@ -61,7 +61,7 @@ public class AutoCompleteTest {
         assertEquals("cd | clear", suggestion);
         
         suggestion = AutoComplete.autoComplete("cd ", map1);
-        assertEquals("blog | email | forum | public", suggestion);
+        assertEquals("blog | email | public", suggestion);
         
         suggestion = AutoComplete.autoComplete("cd p", map1);
         assertEquals("cd public", suggestion);
