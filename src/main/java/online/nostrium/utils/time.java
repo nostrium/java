@@ -7,6 +7,9 @@
 package online.nostrium.utils;
 
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 /**
@@ -75,6 +78,25 @@ public class time {
         } catch (InterruptedException ex) {
         }
 
+    }
+    
+    public static long getCurrentDayInUnix() {
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+        
+        // Convert the date to Unix time (seconds since 1970-01-01 00:00:00 UTC)
+        long unixTime = currentDate
+                            .atStartOfDay(ZoneId.systemDefault())
+                            .toEpochSecond();
+        
+        return unixTime;
+    }
+    
+    public static long getCurrentTimeInUnix() {
+        // Get the current time as Unix timestamp
+        long unixTime = Instant.now().getEpochSecond();
+        
+        return unixTime;
     }
 
     

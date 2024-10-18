@@ -1,6 +1,13 @@
-/*
+/**
  * NOSTR operations
- *
+ * 
+ * What is expected from here
+ *  + automatically produce a CSV list of available NOSTR relays
+ *  ++ evaluate them based on geo-location, online availability, activity, etc
+ *  ++ navigate relays like remote folders
+ *  ++ add new relays as needed (custom user provided)
+ * 
+ * 
  * Copyright (c) Nostrium contributors
  * License: Apache-2.0
  */
